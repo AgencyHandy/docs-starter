@@ -1,0 +1,172 @@
+---
+title: "Time Tracking and Timesheet Management in AgencyHandy"
+sidebarTitle: "Timesheet"
+description: "Log time with a live timer or manual entry, filter work logs by task, member, or service, and export timesheet data as CSV or XLSX in AgencyHandy."
+---
+
+The Timesheet feature in AgencyHandy gives you a central panel for tracking every hour your team spends on tasks. You can start a live timer on any task, log time after the fact with a manual entry, and then slice and dice the data by date range, team member, or service. When you need to report on productivity or bill for time, you can export everything to CSV or XLSX in a few clicks. It's the essential tool for keeping your team accountable and your time-based billing accurate.
+
+## Who Can Use Timesheet Features
+
+| Feature | Super Admin | Admin | PM | Employee |
+|---------|:-----------:|:-----:|:--:|:--------:|
+| View own time logs | ✅ | ✅ | ✅ | ✅ |
+| Log time for others | ✅ | ✅ | ✅ | ❌ |
+| Edit time entries | ✅ | ✅ | ✅ | ❌ |
+| Export timesheet data | ✅ | ✅ | ✅ | ❌ |
+
+<Note>
+  Tasks must exist before time can be tracked against them. Ensure tasks are created within orders before attempting to log time.
+</Note>
+
+## Viewing the Timesheet
+
+<Steps>
+  <Step title="Open the Timesheet">
+    Click **Timesheet** in the main left sidebar. You'll see a table listing all time logs for your team.
+
+    Each row shows the date, team member, task name, service, time logged, and any notes attached to the entry.
+  </Step>
+</Steps>
+
+## Adding a Time Entry
+
+You have two options for logging time: a live timer for work in progress, or a manual entry for time you've already completed.
+
+<Tabs>
+  <Tab title="Start a Timer">
+    <Steps>
+      <Step title="Select a task">
+        In the Timesheet view, find or select the task you're about to work on.
+      </Step>
+      <Step title="Click Start Timer">
+        Click **Start Timer** to begin tracking time in real time. The timer runs until you stop it.
+      </Step>
+      <Step title="Stop when done">
+        Click **Stop** when you finish the work. AgencyHandy automatically logs the elapsed time against the selected task.
+      </Step>
+    </Steps>
+
+    <Tip>
+      Use the timer for ongoing work to ensure precise tracking. Manually rounding up or estimating time after the fact is less accurate than letting the timer run.
+    </Tip>
+  </Tab>
+  <Tab title="Manual Entry">
+    <Steps>
+      <Step title="Click + Add Entry">
+        In the Timesheet panel, click **+ Add Entry**. A form will appear.
+      </Step>
+      <Step title="Fill in the entry details">
+        - **Task** — select the task this time applies to
+        - **Team Member** — assign the time to the correct person (Admins and Managers can log for others)
+        - **Time Spent** — enter the hours and minutes
+        - **Notes** — add any context about what was worked on
+      </Step>
+      <Step title="Save">
+        Click **Save** to record the entry. It will appear in the timesheet table immediately.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Filtering by Date Range
+
+Use the date filters to focus on a specific time period.
+
+<Steps>
+  <Step title="Open date filters">
+    Click the date filter controls at the top right of the Timesheet panel.
+  </Step>
+  <Step title="Select a range">
+    Choose from preset ranges:
+    - **Daily** — today's logs only
+    - **Weekly** — the current week
+    - **Monthly** — the current month
+
+    For longer projects or historical reporting, select a **Custom** date range by entering a start and end date.
+  </Step>
+  <Step title="Apply">
+    Click **Apply** to update the table with logs from the selected period.
+  </Step>
+</Steps>
+
+<Tip>
+  Filter before exporting to generate focused reports. Exporting the full unfiltered timesheet can produce very large files for active agencies.
+</Tip>
+
+## Grouping Entries
+
+Grouping rearranges how the timesheet rows are organized without removing any data. It helps you read and analyze the logs more quickly.
+
+<Steps>
+  <Step title="Open the Group By dropdown">
+    Click the **Group By** dropdown near the top of the Timesheet panel.
+  </Step>
+  <Step title="Select a grouping">
+    Choose from the following options:
+
+    | Group By Option | What It Shows |
+    |----------------|---------------|
+    | **Task Name** | All time entries grouped under each task |
+    | **Team Member** | All entries grouped under each person |
+    | **Service → Task Name** | Entries grouped by service, then broken down by task within each service |
+  </Step>
+</Steps>
+
+<Note>
+  Grouping is a visual-only change — it does not affect the underlying data or what gets exported. Exports always include all visible rows.
+</Note>
+
+## Viewing Task Details from the Timesheet
+
+<Steps>
+  <Step title="Click a task name">
+    In the timesheet table, click on any **Task Name**. AgencyHandy navigates you to that task's full detail page.
+  </Step>
+  <Step title="Review the task context">
+    On the task detail page, you'll find the complete time log history, attached notes, assignees, status, and other task-level information. Use this view to investigate entries or verify what work was done.
+  </Step>
+</Steps>
+
+## Exporting Timesheet Data
+
+Export your timesheet for payroll, client billing reports, or external project management tools.
+
+<Steps>
+  <Step title="Apply filters first (recommended)">
+    Use the date range filter to narrow the export to the period you need. This keeps the file focused and manageable.
+  </Step>
+  <Step title="Click Export">
+    Click the **Export** button at the top of the Timesheet panel.
+  </Step>
+  <Step title="Choose a format">
+    Select either:
+    - **CSV** — for spreadsheet tools like Excel, Google Sheets, or data pipelines
+    - **XLSX** — for Excel-formatted workbooks with column formatting preserved
+  </Step>
+  <Step title="Download the file">
+    The file downloads to your device automatically. Each export includes all visible columns: date, team member, task name, service, time logged, and notes.
+  </Step>
+</Steps>
+
+<Warning>
+  If the export does not trigger a download, your browser's **pop-up blocker** may be preventing the file from downloading. Disable pop-up blocking for AgencyHandy and try again.
+</Warning>
+
+## Additional Notes
+
+<Accordion title="Timer vs. manual entry">
+  The timer is best for active, real-time work. Manual entries are best when you forgot to start the timer or need to record time retroactively. Both methods produce identical log entries in the timesheet table.
+</Accordion>
+
+<Accordion title="Grouping vs. filtering">
+  Filters **reduce** what rows are shown in the table. Grouping **reorganizes** the rows that are already visible. You can apply both at the same time — filter to a date range, then group by team member to see each person's totals for that period.
+</Accordion>
+
+<Accordion title="Exports include all visible columns">
+  Every export captures the current state of the visible table: date, user, task, service, time, and notes. If you've applied a group-by setting, the export reflects the grouping structure as well.
+</Accordion>
+
+<Accordion title="Custom ranges for historical data">
+  For long-running projects or quarterly reviews, use the custom date range option to pull historical timesheet data beyond the preset daily/weekly/monthly windows.
+</Accordion>

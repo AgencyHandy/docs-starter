@@ -1,0 +1,162 @@
+---
+title: "Support Tickets — Handle Client Inquiries in AgencyHandy"
+sidebarTitle: "Support Tickets"
+description: "Create, edit, and manage support tickets in AgencyHandy to track client inquiries, set priorities, assign statuses, and keep a full interaction history."
+---
+
+AgencyHandy's Ticket feature gives your agency a structured way to handle client inquiries, issues, and requests. Instead of letting questions get lost in emails or chat threads, every support request lives in a ticket with a subject, priority, assignee, and status — all searchable and trackable from one dashboard. Both your team and your clients can create tickets, and the full history of each ticket is preserved so nothing falls through the cracks.
+
+## Accessing the Ticket Dashboard
+
+Click **Tickets** in the left sidebar to open the Ticket Dashboard. From here you can:
+
+- Create, edit, and delete tickets
+- Search tickets by **subject**, **client name**, or **Order ID**
+- View ticket status and priority at a glance
+- Monitor all open, on-hold, and closed tickets across the agency
+
+## What Tickets Do
+
+<CardGroup cols={3}>
+  <Card title="Support Request Management" icon="headset">
+    Clients and agency team members can submit questions, issues, or requests through the ticketing system. Every submission is logged and tracked.
+  </Card>
+  <Card title="Issue Resolution Tracking" icon="circle-check">
+    Assign tickets to team members, set priorities, and update statuses as work progresses toward resolution. Everyone stays informed.
+  </Card>
+  <Card title="Communication History" icon="clock-rotate-left">
+    Every ticket maintains a full history of actions, updates, and interactions. Review past communications at any time for context or audit purposes.
+  </Card>
+</CardGroup>
+
+## Creating a Ticket
+
+Both agency team members and clients can create tickets. The creation process is the same for both.
+
+**Who can create tickets:** Super Admin, Admin, PM, and Client.
+
+<Steps>
+  <Step title="Open the Ticket Dashboard">
+    Click **Tickets** in the left sidebar.
+  </Step>
+  <Step title="Click + Create Ticket">
+    Click the **+ Create Ticket** button. A form will appear.
+  </Step>
+  <Step title="Select the client">
+    Choose the client's name from the dropdown list. This links the ticket to the correct client profile.
+  </Step>
+  <Step title="Link to an order (optional)">
+    Enter the **Order ID** to associate the ticket with a specific order. This is helpful for billing or project-related issues. You can also create a ticket without an Order ID for general inquiries.
+  </Step>
+  <Step title="Fill in ticket details">
+    Complete the following fields:
+
+    | Field | Description |
+    |-------|-------------|
+    | **Subject** | A brief, descriptive title for the ticket |
+    | **Description** | A detailed explanation of the issue or request |
+    | **Assignee Name** | The team member responsible for resolving this ticket |
+    | **Priority** | Urgency level: Highest, High, Normal, Low, or Lowest |
+    | **Issued Date** | The date the ticket was created (recorded automatically) |
+    | **Status** | Current state: Open, Hold, or Close |
+  </Step>
+  <Step title="Click Create">
+    Click **Create** to save the ticket. It will appear in the Ticket Dashboard immediately.
+  </Step>
+</Steps>
+
+## Ticket Statuses
+
+Tickets move through three statuses as work progresses:
+
+| Status | Meaning |
+|--------|---------|
+| **Open** | The ticket has been submitted and is actively being worked on |
+| **Hold** | Work on the ticket is temporarily paused, typically waiting for more information |
+| **Close** | The issue has been resolved and the ticket is archived for reference |
+
+<Tip>
+  Use **Hold** status when you're waiting on a client response or an external dependency. This keeps the ticket visible without cluttering the active queue.
+</Tip>
+
+## Editing a Ticket
+
+Agency team members can update ticket details at any time to reflect new information, priority changes, or resolution updates.
+
+**Who can edit tickets:** Super Admin, Admin, and PM. Clients can create tickets but cannot edit them.
+
+<Note>
+  Only tickets created from the **agency side** can be edited. Tickets submitted by clients cannot be modified by the client after submission.
+</Note>
+
+<Steps>
+  <Step title="Open the Ticket Dashboard">
+    Navigate to **Tickets** in the left sidebar.
+  </Step>
+  <Step title="Select the ticket to edit">
+    Tick the checkbox next to the ticket you want to edit. The **Edit Ticket** button will become active.
+  </Step>
+  <Step title="Click Edit Ticket">
+    Click the **Edit Ticket** button. The ticket form will open with all existing details pre-filled.
+  </Step>
+  <Step title="Make your changes">
+    Update any fields that need to change — the description, priority, assignee, status, or other details.
+  </Step>
+  <Step title="Save">
+    Click **Save** to apply your changes. The ticket is updated immediately in the dashboard.
+  </Step>
+  <Step title="Communicate updates">
+    If the change is significant — such as a priority escalation or assignee swap — notify the relevant team members so they can respond appropriately.
+  </Step>
+</Steps>
+
+## Deleting a Ticket
+
+Remove outdated or unnecessary tickets to keep the dashboard clean and relevant.
+
+**Who can delete tickets:** Super Admin, Admin, and PM.
+
+<Steps>
+  <Step title="Select the ticket">
+    In the Ticket Dashboard, tick the checkbox next to the ticket you want to delete. The **Delete** button will activate.
+  </Step>
+  <Step title="Click Delete">
+    Click **Delete**. A confirmation modal will appear.
+  </Step>
+  <Step title="Confirm deletion">
+    Confirm your decision in the modal. The ticket is permanently removed from the system.
+  </Step>
+  <Step title="Verify removal">
+    Check the ticket list or search for the ticket by subject or Order ID to confirm it no longer exists.
+  </Step>
+</Steps>
+
+<Warning>
+  Deleting a ticket is **permanent and cannot be undone**. Before deleting, make sure any important communications or resolution notes from the ticket have been documented elsewhere.
+</Warning>
+
+## Searching and Filtering Tickets
+
+Use the search bar at the top of the Ticket Dashboard to find tickets quickly. You can search by:
+
+- **Subject** — the ticket title
+- **Client name** — all tickets from a specific client
+- **Order ID** — all tickets linked to a specific order
+
+## Best Practices for Using Tickets
+
+<Accordion title="Set priority levels consistently">
+  Agree on a priority scale with your team before you start creating tickets. If "High" means different things to different people, escalation workflows break down. Use Highest only for issues that block client deliverables.
+</Accordion>
+
+<Accordion title="Link tickets to orders when possible">
+  Connecting a ticket to an Order ID makes it much easier to track which client issue is affecting which project. This also helps when reviewing past tickets for a specific order.
+</Accordion>
+
+<Accordion title="Close tickets promptly after resolution">
+  Once an issue is resolved, change the status to **Close** right away. Leaving tickets open after resolution inflates your active queue and makes it harder to spot genuine work in progress.
+</Accordion>
+
+<Accordion title="Use the Hold status for waiting periods">
+  When you're waiting on a client or a third party, set the ticket to **Hold** rather than leaving it Open. This gives your team a clear signal that no action is needed until a response arrives.
+</Accordion>

@@ -1,0 +1,149 @@
+---
+title: "Bank Transfer, Crypto, and Wise Payment Methods Setup"
+sidebarTitle: "Other Payments"
+description: "Enable manual payment alternatives — bank wire transfer, cryptocurrency, and Wise — so clients who prefer non-card methods can pay your invoices."
+---
+
+AgencyHandy supports three manual payment methods in addition to Stripe and PayPal: **Bank Transfer**, **Crypto**, and **Wise**. Each is designed for a specific type of client or workflow. All three require you to manually mark an invoice as **Paid** after you receive the funds, since AgencyHandy cannot automatically confirm off-platform transfers.
+
+<Note>
+  Only **SuperAdmin** and **Admin** roles can enable or configure these payment methods.
+</Note>
+
+<Tabs>
+  <Tab title="Bank Transfer">
+    ## Bank Transfer
+
+    The Bank Transfer method lets you accept manual wire or ACH payments from clients. You provide your banking details through a rich-text editor, and AgencyHandy displays those instructions to clients during checkout and inside the invoice.
+
+    ### Enable Bank Transfer
+
+    <Steps>
+      <Step title="Open Bank Payment settings">
+        In the left sidebar, go to **Integrations → Bank Payment Method**.
+      </Step>
+
+      <Step title="Fill in your transfer instructions">
+        Use the rich-text editor to enter your banking details. Include all fields your clients need to complete the transfer:
+
+        - **Recipient's Name**
+        - **Account Number**
+        - **Bank Name**
+        - **Routing Number**
+        - **Account Type** (e.g., Checking, Savings)
+        - **Bank Address**
+
+        You can also add memos, notes, or a support contact. There is no character limit, and the editor supports bold, underline, lists, links, and image formatting.
+      </Step>
+
+      <Step title="Set proof of payment requirement (optional)">
+        Toggle **Payment Screenshot is Required** if you want clients to upload a screenshot before their order is processed.
+
+        - **Enabled** — clients must upload a valid screenshot at checkout. No order is created until a file is uploaded.
+        - **Disabled** — clients can proceed without uploading proof. The order and invoice are created immediately.
+      </Step>
+
+      <Step title="Save">
+        Click **Update** to save your setup. Click **Cancel** to discard changes.
+      </Step>
+    </Steps>
+
+    ### Client experience
+
+    When a client selects Bank Transfer at checkout, they see your custom transfer instructions. If proof is required, a file-upload prompt appears and the order is held until they upload a screenshot.
+
+    After you receive the funds in your bank account, open the invoice in AgencyHandy and manually mark it as **Paid** to release the order.
+
+    <Tip>
+      Include a unique reference code in your instructions (e.g., the invoice number) so you can match incoming transfers to specific orders without confusion.
+    </Tip>
+  </Tab>
+
+  <Tab title="Crypto">
+    ## Crypto Payment
+
+    The Crypto Payment method lets you accept cryptocurrency from clients using a wallet-based transfer. You configure your wallet details and instructions once; clients see them at checkout and in the invoice. Currently, **USDC** is the supported cryptocurrency.
+
+    ### Enable Crypto Payment
+
+    <Steps>
+      <Step title="Open Crypto Payment settings">
+        In the left sidebar, go to **Integrations → Crypto Payment**. A wallet setup screen opens with a rich-text editor.
+      </Step>
+
+      <Step title="Enter your wallet details">
+        Fill in the following fields:
+
+        - **Cryptocurrency Type** — currently USDC is supported.
+        - **Wallet Address** — your public wallet address for receiving funds.
+        - **Network Type** — e.g., ERC-20, TRC-20.
+        - **Additional Instructions** — memo, tag, minimum amount, support contact, or any other guidance for your clients.
+      </Step>
+
+      <Step title="Set proof of payment requirement (optional)">
+        Toggle **Require Proof of Payment**:
+
+        - **Enabled** — clients must upload a file (e.g., a transaction screenshot) before the order and invoice are created.
+        - **Disabled** — an order and invoice are created as soon as the client selects crypto payment, without requiring proof.
+      </Step>
+
+      <Step title="Save">
+        Click **Save** to store your setup. You can edit or disconnect Crypto Payment at any time from the same screen.
+      </Step>
+    </Steps>
+
+    ### Client checkout flow
+
+    When a client selects Crypto at checkout:
+
+    1. An **Order** (status: *Pending*) and an **Invoice** (status: *Open*) are created.
+    2. The client is shown your wallet address and instructions.
+    3. If proof is required, a file-upload button appears. The client must upload their transaction screenshot before the order proceeds.
+    4. After the transfer is complete and you have verified the funds on-chain, open the invoice in AgencyHandy and mark it as **Paid**.
+    5. When an invoice is marked **Paid** and the order is *Pending*, the order status automatically updates to *Ongoing*.
+
+    <Note>
+      Crypto Payment only appears at checkout if it is enabled in **Workspace Settings → Payment Methods** AND in the relevant **Service Group → Payment Availability** settings. Disabling it in Workspace Settings hides it everywhere, regardless of service-level settings.
+    </Note>
+
+    <Tip>
+      If a service does not support USDC, the Crypto payment option is automatically hidden for that service. Make sure USDC is enabled in your service settings if you want clients to pay with crypto.
+    </Tip>
+  </Tab>
+
+  <Tab title="Wise">
+    ## Wise Payment
+
+    The Wise Payment method lets clients pay via a Wise payment link. You add the link once inside an invoice, and it is automatically included in all future subscription invoices. Wise is ideal for international clients who prefer bank-to-bank transfers with lower fees than traditional wire transfers.
+
+    ### Add Wise as a payment method
+
+    <Steps>
+      <Step title="Open the Invoice module">
+        In the left sidebar, click **Invoices**, then click **Create Invoice**.
+      </Step>
+
+      <Step title="Add your Wise link">
+        Inside the invoice modal, scroll to the **Payment Methods** section. Click **Add Wise as a payment method**, then paste your Wise payment link into the input field.
+      </Step>
+
+      <Step title="Save the invoice">
+        Click **Save** or continue to finalize the invoice. Your Wise payment link is now embedded and visible to the client.
+      </Step>
+    </Steps>
+
+    ### How it works for clients
+
+    The Wise link appears as a clickable button on the client's invoice. The client opens the link, completes the transfer through their Wise account, and sends you confirmation. Because AgencyHandy does not receive automatic confirmation from Wise, you must manually mark the invoice as **Paid** after you receive the funds.
+
+    <Warning>
+      Wise **cannot** be used for automated upsell or marketplace payments. Only one Wise payment link can be added per invoice. Double-check the link before sending — an incorrect link means the client's payment goes to the wrong account.
+    </Warning>
+
+    ### Platform behavior
+
+    - Once a Wise link is added, it automatically appears on all future **subscription** invoices unless you update or remove it.
+    - AgencyHandy does not perform any automatic currency conversion. The client transfers in whatever currency your Wise link is configured for.
+    - You are responsible for tracking payments and marking invoices as Paid after confirming receipt.
+  </Tab>
+</Tabs>

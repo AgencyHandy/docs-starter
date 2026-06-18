@@ -1,0 +1,100 @@
+---
+title: "Invoice Management Overview for AgencyHandy Agencies"
+sidebarTitle: "Invoices"
+description: "Explore AgencyHandy's invoicing system — billing, payment tracking, recurring invoices, statuses, direct invoices, and financial record exports."
+---
+
+AgencyHandy's invoice feature gives your agency a complete billing and payment management system inside the same platform you use to manage clients, orders, and projects. You can create professional invoices, send them to clients by email, track payment status in real time, automate recurring billing for subscription services, and export your financial records whenever you need them. Every invoice is tied to your agency's logo and address automatically, keeping your communications consistently on-brand.
+
+## Who Can Create Invoices
+
+Only users with the following roles can create and manage invoices:
+
+- **Super Admin**
+- **Admin**
+- **Project Manager (PM)**
+
+Clients can view and download invoices but cannot create or edit them.
+
+## Invoice Dashboard
+
+To open the Invoice Dashboard, click **Invoices** in the left sidebar. From here you can:
+
+- Create, edit, and delete invoices
+- Search invoices by **client name**, **order ID**, or **service name**
+- Filter and sort the invoice list
+- View invoice status at a glance
+- Access invoice settings including prefix configuration
+
+## What Invoices Do
+
+<CardGroup cols={2}>
+  <Card title="Billing & Invoicing" icon="file-invoice-dollar">
+    Create and send professional invoices for any service or product you deliver to clients, with full control over amounts, discounts, and due dates.
+  </Card>
+  <Card title="Payment Tracking" icon="chart-line">
+    Monitor whether invoices have been viewed, paid, or are overdue. The system automatically records paid dates and void dates as status changes occur.
+  </Card>
+  <Card title="Recurring Billing" icon="rotate">
+    Automate invoice generation for subscription-based services. AgencyHandy generates and delivers recurring invoices on each billing cycle without manual intervention.
+  </Card>
+  <Card title="Project Integration" icon="diagram-project">
+    Link invoices directly to orders and services so billing is always tied to the underlying work. Billable items can be added accurately to each invoice.
+  </Card>
+</CardGroup>
+
+## Invoice Statuses
+
+Every invoice moves through a defined lifecycle. Understanding these statuses helps you manage your receivables effectively.
+
+| Status | Description |
+|--------|-------------|
+| **Draft** | The invoice has been created but not finalized. You can edit any part of it. Once ready, finalize it by changing the status to Open. Draft invoices not tied to a subscription can be deleted. |
+| **Open / Unpaid** | The invoice is finalized and awaiting payment. The agency sends this to the client, who can view and pay it. You can change an Open invoice to Paid, Void, or Uncollectable. |
+| **Paid** | The invoice has been paid. The system records the paid date automatically when you mark an invoice as Paid. |
+| **Void** | The invoice has been canceled. The system records the void date automatically. |
+| **Uncollectable** | The client is unlikely to pay. Treat this as bad debt in your accounting process. |
+
+<Note>
+  When you send an invoice to a client using the **Send to Client** button, the status automatically changes from **Draft** to **Open**. Only the agency can change the status from Open to Paid, Void, or Uncollectable.
+</Note>
+
+## Direct Invoices (Without an Order ID)
+
+AgencyHandy supports **Direct Invoices** — invoices that are not linked to any existing order. This is useful for one-off billing, ad-hoc payments, or invoicing contacts who are not yet registered as clients in your system.
+
+Key capabilities of Direct Invoices:
+
+- Send invoices without selecting an Order ID
+- Invoice any existing client or use **Independent Email** to send to any email address
+- Add items, taxes, and discounts manually
+- Send immediately or save as a draft
+
+<Tip>
+  Use Direct Invoices when you need to bill a client quickly for work that doesn't have a formal order in AgencyHandy, such as rush projects, consulting calls, or out-of-scope work.
+</Tip>
+
+## Exporting Invoices
+
+You can export your invoice list for use in external accounting tools or for record-keeping. The export includes all visible columns: invoice ID, client name, service, amounts, status, and dates. Access the export option from the Invoice Dashboard.
+
+## Invoice Settings
+
+Configure global invoice settings from the **Settings** button in the top-right corner of the Invoice Dashboard. This includes:
+
+- **Invoice prefix** — customize the prefix that appears before every invoice number
+- **Reminder templates** — set up automated payment reminders for open invoices
+
+## Related Features
+
+<CardGroup cols={3}>
+  <Card title="Create an Invoice" icon="plus" href="/invoices/create-invoice">
+    Step-by-step guide to creating, filling out, and sending an invoice.
+  </Card>
+  <Card title="Subscriptions" icon="rotate" href="/invoices/subscriptions">
+    How recurring billing works and how to manage subscription invoices.
+  </Card>
+  <Card title="Support Tickets" icon="ticket" href="/tickets/support-tickets">
+    Handle client billing questions through the support ticket system.
+  </Card>
+</CardGroup>

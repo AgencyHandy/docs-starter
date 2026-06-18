@@ -1,0 +1,77 @@
+---
+title: "Connect Stripe to Accept Online Payments in AgencyHandy"
+sidebarTitle: "Stripe"
+description: "Link your Stripe account to AgencyHandy to send invoices and collect secure online payments from clients without leaving the platform."
+---
+
+AgencyHandy's Stripe integration lets you accept card payments directly from your clients through invoices you send inside the platform. Once connected, your clients see a familiar Stripe-hosted checkout, and payment status syncs back to AgencyHandy automatically — no manual reconciliation needed.
+
+<Note>
+  Only **SuperAdmin** and **Admin** roles can connect or manage the Stripe integration. You must also have a verified Stripe account with the appropriate permissions before starting.
+</Note>
+
+## Connect Stripe
+
+<Steps>
+  <Step title="Open Stripe Integration settings">
+    In the left sidebar, navigate to **Integrations → Stripe Integration**.
+  </Step>
+
+  <Step title="Authorize on Stripe">
+    Click **Connect Stripe**. You are redirected to Stripe's authorization screen. Sign in to your Stripe account and click **Allow** to grant AgencyHandy access. Once approved, Stripe redirects you back to AgencyHandy automatically.
+  </Step>
+
+  <Step title="Configure payment preferences">
+    After the redirect, configure the following options:
+
+    - **Currency** — choose the default billing currency for your workspace.
+    - **Payment methods** — enable or disable card types (Visa, Mastercard, etc.) as supported by your Stripe account.
+    - **Billing preferences** — optionally set a tax rate, invoice prefix, or default payment terms and due dates.
+  </Step>
+
+  <Step title="Save and confirm">
+    Click **Save**. A confirmation banner appears when the integration is active. Stripe is now linked to your workspace and your clients can pay invoices online.
+  </Step>
+</Steps>
+
+## Test the integration
+
+Before sending live invoices, run a quick end-to-end test to confirm the connection is working correctly.
+
+<Steps>
+  <Step title="Create a test invoice">
+    Create a draft invoice inside AgencyHandy and assign it a small amount.
+  </Step>
+  <Step title="Send to yourself">
+    Send the invoice to your own email address or to a team member who can help with the test.
+  </Step>
+  <Step title="Complete a test payment">
+    Open the invoice link and complete the payment using a Stripe test card (e.g., `4242 4242 4242 4242`) if your Stripe account is in test mode, or a real card in live mode.
+  </Step>
+  <Step title="Verify the status update">
+    Return to AgencyHandy and confirm that the invoice status changed to **Paid**. If it did, your integration is working correctly.
+  </Step>
+</Steps>
+
+## Manage your Stripe connection
+
+Return to **Integrations → Stripe Integration** at any time to:
+
+- **Update payment settings** — change currency, payment methods, or billing preferences.
+- **Review connection status** — check whether Stripe is currently active.
+- **Disconnect** — click **Disconnect** to unlink your Stripe account. Payment collection pauses immediately until you reconnect.
+- **Reconnect** — click **Connect Stripe** again and reauthorize to restore the integration.
+
+<Warning>
+  Disconnecting Stripe pauses payment collection for all outstanding invoices. Clients will not be able to pay online until you reconnect and re-authorize.
+</Warning>
+
+## Additional notes
+
+<Note>
+  AgencyHandy never stores your payment credentials. All payment data is handled exclusively by Stripe's secure infrastructure.
+</Note>
+
+- **One account per workspace** — you can only connect a single Stripe account to each AgencyHandy workspace. To switch accounts, disconnect the current one first, then reconnect with the new account.
+- **Live invoice status** — all invoices linked to Stripe continue to reflect real-time status updates received directly from Stripe.
+- **Currency** — make sure the currency configured in AgencyHandy matches the currency enabled in your Stripe account to avoid payment errors.

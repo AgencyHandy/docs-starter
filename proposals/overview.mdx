@@ -1,0 +1,217 @@
+---
+title: "Create and Send Proposals to Clients in AgencyHandy"
+sidebarTitle: "Proposals"
+description: "Build, customize, and send professional proposals in AgencyHandy — covering service pricing, packages, client acceptance, and auto-order creation."
+---
+
+AgencyHandy's Proposal feature gives you a professional, end-to-end workflow for turning inquiries into active projects. You can build detailed proposals with services, packages, add-ons, taxes, and legal terms — then send them to clients or leads directly from the platform. Once a client accepts, AgencyHandy can automatically create an order and invoice, removing the manual back-and-forth that slows deals down.
+
+<Note>
+  Only **Super Admins** and **Admins** can create and send proposals. Project Managers (PMs) can view proposals but cannot send them.
+</Note>
+
+## Proposal Dashboard
+
+To open the Proposal Dashboard, click **Proposals** in the left sidebar. The dashboard lists all your sent and received proposals and shows:
+
+- **Status** — Draft, Sent, Accepted, or Pending
+- **Creation date**, **send date**, and **expiry date**
+- **View status** — whether the client has opened the proposal
+- Action menu to **edit**, **send**, **share**, or **delete** each proposal
+
+You can search proposals by ID and filter or sort the list to find what you need quickly.
+
+## Creating a Proposal
+
+Click **Create Proposal** to open the proposal builder. It is organized into three sections: **Overview**, **Terms & Conditions**, and **Setup**.
+
+### Overview
+
+The Overview section is where you build the proposal's content and pricing.
+
+#### Proposal & Client Information
+
+Fill in the following fields at the top of the proposal:
+
+- **Proposal Name** and **Proposal ID**
+- **Client or Lead** — supports multiple email addresses; mark one as Primary
+- **Company Name** and **Address** (country, state, city, zip, additional details)
+- **Assignee**, **Send Date**, and **Expiry Date**
+
+#### Content Blocks
+
+Each content block uses an embedded editor so you can tailor the narrative to each client:
+
+- **Introduction** — set the scene and context for the engagement
+- **About Us** — highlight your agency's expertise
+- **What You Get** — define the scope and deliverables clearly
+- **Guarantee** — outline any assurances or commitments
+
+#### Offerings — Services, Packages, Add-ons & Taxes
+
+The Offerings section is where you configure pricing.
+
+<Accordion title="Services">
+  Add one or more services to the proposal. For each service, you can:
+
+  - Select a **pricing type**: One-time or Subscription
+  - Choose the **service currency** (different services can use different currencies in the same proposal)
+</Accordion>
+
+<Accordion title="Packages">
+  Within each service, add existing packages or create new ones on the fly. For each package, define:
+
+  - Package name
+  - Quantity and pricing per unit
+  - Total amount
+
+  You can remove packages at any time before sending.
+</Accordion>
+
+<Accordion title="Add-ons">
+  Attach optional add-ons to any service. Add-ons appear as extras that clients can see alongside the core service price. You can create new add-ons directly from the proposal builder without leaving the form.
+</Accordion>
+
+<Accordion title="Items">
+  Add one-time custom items with a defined quantity and unit price. Items are useful for ad-hoc costs like setup fees or one-off deliverables.
+</Accordion>
+
+<Accordion title="Tax Rates">
+  Apply existing tax rates or create new ones directly from the proposal. Select whether each tax is **Exclusive** (added on top of the price) or **Inclusive** (already included). Taxes are calculated per service.
+</Accordion>
+
+### Terms & Conditions
+
+Use the Terms & Conditions section to add proposal-specific legal language. Include cancellation policies, refund terms, usage rights, and any other conditions relevant to the engagement. This section helps ensure both parties understand their obligations before acceptance.
+
+### Setup
+
+The Setup section controls what happens after the proposal is sent.
+
+<CardGroup cols={2}>
+  <Card title="Post-acceptance Action" icon="bolt">
+    Choose what AgencyHandy does when the proposal is accepted: **Do Nothing**, or **Create Order & Invoice** automatically.
+  </Card>
+  <Card title="Reminders" icon="bell">
+    Configure reminder notifications to nudge clients who haven't responded by the expiry date.
+  </Card>
+  <Card title="Password Protection" icon="lock">
+    Add a password to the public proposal link so only the intended recipient can view it.
+  </Card>
+  <Card title="Comments" icon="message">
+    Allow clients to leave comments on the public proposal view for easier back-and-forth discussion.
+  </Card>
+</CardGroup>
+
+## Sending a Proposal
+
+At any point during creation, you can save the proposal as a **Draft** or **Preview** it. When it's ready, click **Send** to deliver it to the client or lead.
+
+After sending:
+
+- A public link is generated automatically
+- The proposal status updates from **Draft** to **Sent**
+- AgencyHandy tracks whether the client has viewed the proposal
+
+From the proposal's action menu you can also re-send, download, share the public link, view comments, or delete the proposal.
+
+## Sending a Proposal with a Specific Package
+
+If you want to send a quick proposal tied directly to a specific service package, use the **Create Proposal** shortcut form:
+
+<Steps>
+  <Step title="Open the Proposal section">
+    Navigate to **Proposals** in the left sidebar and click **+ Create Proposal**.
+  </Step>
+  <Step title="Fill out the proposal form">
+    Enter the **client's name** and select the **service**. If the service has multiple packages, they will appear automatically — select the appropriate one.
+
+    Optionally, assign a **Manager** to the proposal.
+  </Step>
+  <Step title="Add order details">
+    Write an **Order Brief** (required) describing what the client will receive. Attach any supporting files up to 1 GB.
+  </Step>
+  <Step title="Set pricing and terms">
+    Confirm the **pricing type** (one-time or subscription), set the **duration**, **quantity**, **budget**, and **currency**. Add any **Terms and Conditions** relevant to the proposal.
+  </Step>
+  <Step title="Create and send">
+    Click **Create** to finalize and send the proposal to the client. The proposal will appear in both your Sent list and the client's Received section.
+  </Step>
+</Steps>
+
+<Note>
+  Double-check the auto-filled pricing and duration before clicking Create. Once sent, the client can accept, reject, or download the proposal from their Received section.
+</Note>
+
+## Proposal Status Lifecycle
+
+| Status | Meaning |
+|--------|---------|
+| **Draft** | The proposal has been created but not yet sent. |
+| **Sent** | The proposal has been delivered to the client or lead. |
+| **Pending** | The client has reviewed and sent the proposal back for discussion. |
+| **Accepted** | Either party has formally accepted the proposal terms. An order is created automatically if configured. |
+| **Rejected** | Either party has rejected the proposal. The sender receives a notification with the reason. |
+
+## Accepting a Proposal
+
+Either the agency or the client can accept a received proposal. When acceptance happens, AgencyHandy creates an order automatically (if configured in Setup).
+
+<Steps>
+  <Step title="Go to Received proposals">
+    Click **Proposals** in the sidebar, then select the **Received** tab.
+  </Step>
+  <Step title="Open the proposal">
+    Select the proposal you want to accept from the list and review its details.
+  </Step>
+  <Step title="Click Accept">
+    Click the **Accept** button to formally accept the proposal. The status updates immediately and both parties are notified.
+  </Step>
+</Steps>
+
+<Note>
+  If the agency is the one accepting, Super Admins and Admins receive notifications. If the client accepts, AgencyHandy notifies the agency's Super Admin and Admin users.
+</Note>
+
+## Rejecting a Proposal
+
+If the proposed terms, pricing, or scope don't match your requirements, you can reject the proposal and provide a reason.
+
+<Steps>
+  <Step title="Go to Received proposals">
+    Navigate to **Proposals → Received**.
+  </Step>
+  <Step title="Select and review the proposal">
+    Choose the proposal you want to reject and review its details.
+  </Step>
+  <Step title="Click Reject">
+    Click **Reject** and confirm your decision. The proposal sender receives a notification along with the reason you provided.
+  </Step>
+</Steps>
+
+<Warning>
+  Rejected proposals **cannot be re-sent**. Both parties must create a new proposal to restart negotiations.
+</Warning>
+
+## Public Proposal View
+
+When you send a proposal, clients receive a link to a public view where they can:
+
+- Review all services, pricing, packages, and taxes
+- Accept or reject the proposal
+- Leave comments (if comments are enabled)
+- Access the proposal securely with a password (if password protection is enabled)
+
+## Additional Notes
+
+<Accordion title="Multiple emails and leads">
+  You can add multiple email addresses to a single proposal and mark one as the Primary contact. Proposals work with both registered clients and unregistered leads.
+</Accordion>
+
+<Accordion title="Auto-generated orders and invoices">
+  When you configure the Setup section to "Create Order & Invoice" on acceptance, AgencyHandy automatically generates the linked order and invoice the moment a proposal is accepted — no manual steps required.
+</Accordion>
+
+<Accordion title="Proposal activity tracking">
+  Every proposal includes a full activity trail. You can see when the proposal was created, sent, viewed, accepted, or rejected, all from within AgencyHandy.
+</Accordion>

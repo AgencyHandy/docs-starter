@@ -1,0 +1,235 @@
+---
+title: "Create, Send, and Manage Client Invoices in AgencyHandy"
+sidebarTitle: "Create Invoice"
+description: "Step-by-step guide to creating an invoice in AgencyHandy — choose a client, set amounts, add notes, send to client, and configure payment reminders."
+---
+
+Creating an invoice in AgencyHandy is a straightforward process that ties your billing directly to clients and orders. You fill in the client, link the order, set amounts, add any notes, and send — all from a single form. Once sent, you can track payment status, set automated reminders, and download the invoice as a PDF at any time.
+
+<Note>
+  You must be a **Super Admin**, **Admin**, or **PM** to create invoices. At least one client must exist in your workspace before you can generate an invoice.
+</Note>
+
+## Invoice Prefix Settings
+
+Before you start creating invoices, consider configuring your invoice prefix. The prefix appears before every invoice number and helps identify invoices as belonging to your agency.
+
+<Steps>
+  <Step title="Open Invoice Settings">
+    In the Invoice Dashboard, click the **Settings** button in the top-right corner.
+  </Step>
+  <Step title="Set your prefix">
+    Navigate to the **Invoice Prefix** field and enter the prefix you want (for example, `INV-` or your agency's initials).
+  </Step>
+  <Step title="Save">
+    Click **Save** to apply the prefix to all future invoices.
+  </Step>
+</Steps>
+
+## Creating an Invoice
+
+<Steps>
+  <Step title="Open the Invoice Dashboard">
+    Click **Invoices** in the left sidebar to open the Invoice Dashboard.
+  </Step>
+  <Step title="Start a new invoice">
+    Click **+ Create Invoice**. The invoice creation form will open.
+  </Step>
+  <Step title="Select the client">
+    Choose the client's name from the dropdown list. This is a required field. All Order IDs associated with that client will populate automatically in the next field.
+
+    To create a **Direct Invoice** (not linked to an order), you can leave the Order ID field empty or select **Independent Email** to invoice any email address outside your client list.
+  </Step>
+  <Step title="Select the Order ID">
+    Select the specific Order ID you are billing for. This links the invoice to the correct order in the system. For direct invoices, skip this field.
+  </Step>
+  <Step title="Enter the billing address">
+    Fill in the **Bill Payment Address**:
+    - Country, State, and City
+    - Zip code
+    - Street address (if applicable)
+
+    This address appears on the printed invoice for compliance and clarity.
+  </Step>
+  <Step title="Set order and financial details">
+    Under **Order Details**, enter the following:
+
+    | Field | Description |
+    |-------|-------------|
+    | **Currency** | The currency in which you want to be paid |
+    | **Order ID – Amount** | The monetary value associated with the order |
+    | **Discount (%)** and **Discount Amount** | Apply any applicable discounts |
+    | **Paid Amount** | Any amount the client has already paid |
+    | **Due Amount** | The outstanding balance remaining |
+    | **Total Amount** | The full payable amount for the order |
+
+    For **Direct Invoices**, click **Add Item** to add line items manually. Enter the item name, quantity, and price. You can add multiple items. Use **+ Tax Rates** to apply or create tax rates (inclusive or exclusive).
+  </Step>
+  <Step title="Add a note (optional)">
+    In the **Note** field, add any additional context for the client — for example, payment instructions, project references, or a personal message.
+  </Step>
+  <Step title="Review the details panel">
+    The right-side **Details** panel gives you a live summary of:
+
+    - Invoice status (Draft by default)
+    - Client name, company name, and address
+    - Bill payment address
+    - Service name and Order ID
+    - Created date and due date
+    - Total amount
+
+    Review everything carefully before proceeding.
+  </Step>
+  <Step title="Send to client or save as draft">
+    - Click **Send to Client** to email the invoice immediately. The status changes from **Draft** to **Open** automatically.
+    - Click **Save as Draft** if you want to finalize it later.
+  </Step>
+</Steps>
+
+<Note>
+  The agency logo and address are added to the invoice automatically by the system — you don't need to enter them manually on each invoice.
+</Note>
+
+## Invoice Status Transitions
+
+Once an invoice is created, it follows a defined status flow. Only the agency can move an invoice between statuses.
+
+```
+Draft → Open (when sent to client)
+Open  → Paid           (payment received)
+Open  → Void           (invoice canceled)
+Open  → Uncollectable  (debt written off)
+```
+
+<Warning>
+  Invoices can only be **edited** while they are in **Draft** status. Once an invoice is moved to Open, you cannot edit it. If you need to make changes, void the invoice and create a new one.
+</Warning>
+
+## Editing an Invoice
+
+You can edit an invoice only while it is in **Draft** status.
+
+<Steps>
+  <Step title="Open the invoice">
+    In the Invoice Dashboard, find the draft invoice you want to edit. Click it or tick the checkbox next to it.
+  </Step>
+  <Step title="Click Edit">
+    Select the **Edit** option from the action menu. The invoice form will open with all existing details pre-filled.
+  </Step>
+  <Step title="Make your changes">
+    Update any fields — billing details, service descriptions, quantities, amounts, or payment terms.
+  </Step>
+  <Step title="Save">
+    Click **Save** to apply your changes.
+  </Step>
+</Steps>
+
+## Sending an Invoice to a Client
+
+If you saved the invoice as a draft and want to send it later:
+
+<Steps>
+  <Step title="Find the invoice">
+    In the Invoice Dashboard, locate the draft invoice you want to send.
+  </Step>
+  <Step title="Click Send Invoice">
+    Open the invoice and click the **Send Invoice** button. AgencyHandy delivers the invoice to the client's email address on file.
+  </Step>
+  <Step title="Confirm delivery">
+    Check for the confirmation message to verify the invoice was sent successfully. The invoice status updates to **Open**.
+  </Step>
+</Steps>
+
+<Note>
+  If an invoice is in **Draft** status and you update the service name, the new name will be reflected in the invoice. Once the status changes to Open, Paid, Uncollectable, or Void, the service name on the invoice is locked and will not update.
+</Note>
+
+## Downloading and Printing an Invoice
+
+Both the agency and the client can download an invoice at any time.
+
+<Steps>
+  <Step title="Open the invoice">
+    Go to the Invoice Dashboard and select the invoice you want to download.
+  </Step>
+  <Step title="Access download/print">
+    Click the **Download** or **Print** option from the invoice action menu.
+  </Step>
+  <Step title="Choose your format">
+    Select **PDF** for downloading or choose your printer settings for a physical copy.
+  </Step>
+  <Step title="Save or print">
+    Save the file to your device or send it to the printer. After printing, archive the invoice or share it with stakeholders as needed.
+  </Step>
+</Steps>
+
+## Setting Reminders on Invoices
+
+The Invoice Reminder feature lets you automatically notify clients about upcoming, due, or overdue invoices so you get paid on time without manual follow-up.
+
+<Note>
+  Reminders only work on invoices that have an **Open** status and a set **due date**.
+</Note>
+
+<Steps>
+  <Step title="Open Invoice Settings">
+    Click the **Settings** button at the top right of the Invoice Dashboard.
+  </Step>
+  <Step title="Navigate to Reminder settings">
+    Scroll to the bottom of the **Template** section in the left panel, then click **Edit** to open the reminder configuration modal.
+  </Step>
+  <Step title="Choose a reminder type">
+    Select one of the following:
+
+    - **Sequenced Reminder** — creates a series of reminders at intervals you define
+    - **Don't Send Reminder** — disables reminders for the selected invoices
+  </Step>
+  <Step title="Configure reminder details">
+    For each reminder in the sequence:
+    - Choose the **reminder template** (for example, "Upcoming Invoice Payment Reminder")
+    - Set the **remind date** — for example, 3 days before or after the due date
+    - Specify whether it triggers **before** or **after** the due date
+  </Step>
+  <Step title="Add more reminders if needed">
+    Click **+ Add Another Reminder** to build a full reminder sequence. Click the **Delete** button next to any reminder to remove it.
+  </Step>
+  <Step title="Apply to active invoices (optional)">
+    Tick the checkbox to **apply these reminder settings to currently active invoices** if you want the new configuration to cover invoices already in Open status.
+  </Step>
+  <Step title="Save">
+    Click **Update** to save and activate the reminder schedule.
+  </Step>
+</Steps>
+
+## Direct Invoices (Without an Order ID)
+
+When you need to bill a client quickly without creating an order first, use the Direct Invoice workflow.
+
+<Steps>
+  <Step title="Start a new invoice">
+    Go to **Invoices → Create Invoice**.
+  </Step>
+  <Step title="Choose recipient type">
+    Select **Individual** or **Company** as the recipient type.
+  </Step>
+  <Step title="Select or enter the recipient">
+    - Choose an **existing client** from the dropdown, or
+    - Select **Independent Email** to type any email address — even one not registered as a client
+  </Step>
+  <Step title="Leave Order ID empty">
+    Skip the Order ID field. AgencyHandy creates a standalone invoice not linked to any order.
+  </Step>
+  <Step title="Add items, taxes, and discounts">
+    Click **Add Item** to add line items with names, quantities, and prices. Apply tax rates and discounts as needed. The total updates automatically.
+  </Step>
+  <Step title="Set billing address and notes">
+    Enter the bill payment address and add any notes for the client.
+  </Step>
+  <Step title="Send or save">
+    Click **Send Invoice** to deliver it immediately, or **Save as Draft** to review it first.
+  </Step>
+</Steps>
+
+<Tip>
+  Direct Invoices are perfect for rush requests, consulting calls, or any work you need to bill for outside the normal order workflow. Payment tracking for standalone invoices must be managed manually.
+</Tip>

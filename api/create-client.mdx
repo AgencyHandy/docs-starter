@@ -1,0 +1,137 @@
+---
+title: "AgencyHandy API: Create a New Client Programmatically"
+sidebarTitle: "Create Client"
+description: "Programmatically add new clients to your AgencyHandy workspace by posting to the bulk-client endpoint with name, email, and contact details."
+---
+
+The Create Client endpoint lets you add clients directly to your AgencyHandy workspace from an external system. Unlike leads, clients are fully onboarded contacts who can be assigned to orders, invoices, and projects. Use this endpoint to sync new clients from a CRM, onboarding form, or any other data source.
+
+<Note>
+  Before using this endpoint, complete the [Getting Started](/api/getting-started) guide to obtain your API key and Company ID. Unlike the Create Lead endpoint, creating a client does **not** require a separate Role ID lookup step.
+</Note>
+
+## Prerequisites
+
+- ✅ API key generated from **Workspace Config → API Key**
+- ✅ Company ID retrieved from `GET {{URL}}/accounts/companies`
+
+---
+
+## Endpoint
+
+```
+POST {{URL}}/members/bulk-client
+```
+
+## Headers
+
+| Header | Value |
+|---|---|
+| `x-api-key` | Your API key |
+| `companyId` | Your Company ID |
+| `Content-Type` | `application/json` |
+
+## Request body
+
+The request body is a **JSON array**. You can create one or more clients in a single request.
+
+<ParamField body="firstName" type="string" required>
+  The client's first name.
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  The client's last name.
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  The client's email address. Must be unique within your workspace.
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  Set to `false` for a brand-new client. Set to `true` when converting an existing lead into a client.
+</ParamField>
+
+<ParamField body="status" type="string">
+  The client's status. Common values: `New`, `Active`. Defaults to `New` if omitted.
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  The client's phone number.
+</ParamField>
+
+<ParamField body="source" type="string">
+  How you acquired this client. Example values: `website`, `referral`, `social`.
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  The client's position within the board column. Defaults to `1`.
+</ParamField>
+
+## Example request
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-client" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyId: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+## Success response
+
+```json
+{
+  "message": "Client created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  Confirmation string on success.
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  Array of created client objects.
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  Unique ID of the newly created client. Use this ID when assigning the client to orders or invoices via the API.
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  The full name of the client (firstName + lastName).
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  The status of the client as stored.
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  The role assigned to the member — will be `"client"`.
+</ResponseField>
+
+<Note>
+  The `companyId` header for this endpoint uses a capital **I** in `Id` — `companyId` — unlike some other endpoints that use `companyid` (all lowercase). Use the exact casing shown above to avoid authentication errors.
+</Note>
+
+<Tip>
+  Pass multiple client objects in the array to bulk-create clients in a single API call. Each object must have a unique `email` address. Duplicate emails will cause a validation error for that entry.
+</Tip>

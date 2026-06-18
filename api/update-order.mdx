@@ -1,0 +1,205 @@
+---
+title: "AgencyHandy API: Update an Existing Order with PUT"
+sidebarTitle: "Update Order"
+description: "Use the AgencyHandy API to update order details, change status, reassign project managers, and attach files to an existing order via PUT request."
+---
+
+The Update Order endpoint lets you modify an existing order (project) in AgencyHandy — change its name, status, budget, timeline, assigned managers, and more — all from an external system or automation script. The endpoint also supports file attachments, which are appended to the order's system folder.
+
+<Note>
+  Before using this endpoint, complete the [Getting Started](/api/getting-started) guide to obtain your API key and Company ID.
+</Note>
+
+<Warning>
+  This endpoint uses `Authorization: Bearer <token>` (a signed-in member's access token) rather than just the `x-api-key` header. Make sure your caller is authenticated as an **approved member** of the target company. Unauthorized callers receive a `403 PermissionError`.
+</Warning>
+
+## Prerequisites
+
+- ✅ A valid **Bearer token** for an approved workspace member
+- ✅ **Company ID** retrieved from `GET {{URL}}/accounts/companies`
+- ✅ The **Order ID** (Project ID, `pid`) of the order you want to update
+
+---
+
+## Endpoint
+
+```
+PUT {{URL}}/orders?pid=<ORDER_ID>
+```
+
+**Content-Type:** `multipart/form-data` — use this even when no files are attached to satisfy the server's multipart parser.
+
+## Headers
+
+| Header | Required | Description |
+|---|---|---|
+| `Authorization` | Yes | `Bearer <ACCESS_TOKEN>` — the signed-in member's access token. |
+| `companyid` | Yes | Mongo ObjectId of the company the order belongs to. |
+| `clientid` | Optional | Real-time client socket ID. When supplied, notifications include it. |
+
+## Query parameters
+
+<ParamField query="pid" type="string" required>
+  The Order / Project ID to update. Pass this as a query string parameter.
+</ParamField>
+
+## Request body fields
+
+<ParamField body="name" type="string">
+  Updates the order title. Minimum 2 characters.
+</ParamField>
+
+<ParamField body="status" type="string">
+  New status for the order. Must be one of: `Pending`, `Ongoing`, `Review`, `Completed`, `Cancelled`.
+
+  **Allowed transitions:**
+  - `Review` can only follow `Ongoing` or another `Review`. Jumping from `Pending` directly to `Review` returns a `400 ValidationError`.
+  - Orders already `Completed` or `Cancelled` cannot be updated.
+  - Clients cannot cancel an order that has moved past `Pending`.
+</ParamField>
+
+<ParamField body="budget" type="number">
+  Total budget figure. Must be `≥ 0`. Uses the order's existing currency unless `currency` is also provided.
+</ParamField>
+
+<ParamField body="currency" type="string">
+  Currency code for the budget. Examples: `USD`, `CAD`, `EUR`.
+</ParamField>
+
+<ParamField body="quantity" type="number">
+  Number of units purchased for the package. Must be `≥ 1`.
+</ParamField>
+
+<ParamField body="deadline" type="string">
+  ISO 8601 date string for the order's due date. Example: `"2025-12-31T00:00:00.000Z"`.
+</ParamField>
+
+<ParamField body="kickoffDate" type="string">
+  ISO 8601 date string for the project start date.
+</ParamField>
+
+<ParamField body="notes" type="string">
+  Internal notes visible to your team.
+</ParamField>
+
+<ParamField body="brief" type="string">
+  Client brief or project summary.
+</ParamField>
+
+<ParamField body="assignedProjectManagers" type="array">
+  Complete list of project manager member IDs to assign to this order. New IDs are added to the team; removed IDs are deleted. Each ID must belong to a member with a `projectManager` role inside the same company.
+</ParamField>
+
+<ParamField body="markTasksAsDone" type="boolean">
+  **Required** when `status` is `Completed` or `Cancelled`. When `true`, all tasks in the order are marked done after the status change. When `false`, tasks remain in their current state.
+</ParamField>
+
+<ParamField body="rejectRequestedTasks" type="boolean">
+  Allowed only when `status` is `Completed` or `Cancelled`. When `true`, all outstanding client-requested tasks are rejected after the status update.
+</ParamField>
+
+<ParamField body="repeatCount" type="number">
+  Required only for **subscription** orders when changing recurrence frequency. Pair with `repeatDuration`.
+</ParamField>
+
+<ParamField body="repeatDuration" type="string">
+  Required alongside `repeatCount` for subscription orders. One of: `day`, `week`, `month`, `year`.
+</ParamField>
+
+<ParamField body="billingCycleCount" type="number">
+  Optional limit on recurring billing cycles. Defaults to `0` (no limit).
+</ParamField>
+
+<ParamField body="billingCycleEvent" type="string">
+  How each billing cycle is handled. One of: `createOrderWithTask`, `noChange`.
+</ParamField>
+
+<ParamField body="files" type="file">
+  Zero or more file attachments. Files are appended to the order's system folder; existing files are never overwritten. Use `multipart/form-data` encoding and attach each file under the `files` field.
+</ParamField>
+
+---
+
+## Example request
+
+<CodeGroup>
+
+```bash cURL (no files)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "currency=USD" \
+  --form "quantity=1" \
+  --form "assignedProjectManagers[]=PROJECT_MANAGER_ID" \
+  --form "notes=Scope finalized with client." \
+  --form "brief=Launch-ready design refresh."
+```
+
+```bash cURL (with file)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "repeatCount=3" \
+  --form "repeatDuration=month" \
+  --form "billingCycleEvent=createOrderWithTask" \
+  --form "files=@/path/to/creative-brief.pdf"
+```
+
+</CodeGroup>
+
+**Equivalent JSON payload** (convert to multipart form entries when sending files):
+
+```json
+{
+  "name": "Website Redesign",
+  "status": "Review",
+  "budget": 12000,
+  "currency": "USD",
+  "quantity": 1,
+  "assignedProjectManagers": ["{{PROJECT_MANAGER_ID}}"],
+  "repeatCount": 3,
+  "repeatDuration": "month",
+  "billingCycleEvent": "createOrderWithTask",
+  "notes": "Scope finalized with client.",
+  "brief": "Launch-ready design refresh."
+}
+```
+
+---
+
+## Responses
+
+| HTTP Status | Description |
+|---|---|
+| `200 OK` | Update succeeded. |
+| `400 ValidationError` | Invalid order ID, blocked status transition, or malformed payload. Response includes `fieldName` when relevant. |
+| `403 PermissionError` | Caller is not an approved member, lacks the company role, the workspace subscription has expired, or a client attempted a forbidden cancel. |
+| `500 Internal Server Error` | Unhandled exception — check server logs. |
+
+### Success response
+
+```json
+{
+  "message": "Project has been updated"
+}
+```
+
+---
+
+## Business rules and side effects
+
+- **Status transitions** are restricted. `Review` can only follow `Ongoing` or another `Review`. Attempting `Pending → Review` returns `400 ValidationError`.
+- Moving a status from `Pending` to `Ongoing`, `Review`, or `Completed` activates the order's file folder so uploaded files become accessible to the project team.
+- Setting `status` to `Completed` or `Cancelled` **requires** `markTasksAsDone` to be explicitly set to `true` or `false`.
+- Status changes to `Review`, `Completed`, or `Cancelled` automatically trigger client notifications:
+  - **Review** — notifies the client that review is needed.
+  - **Completed** — sends the `orderCompletion` notification to the client.
+  - **Cancelled** — sends the `orderCancellation` notification to the client.
+- Every successful update fires an `ORDER.UPDATED` webhook event with the updated order document and attachment metadata, if you have an active webhook subscribed to that event.

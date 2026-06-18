@@ -1,0 +1,139 @@
+{
+  "projectType": "saas",
+  "projectName": "AgencyHandy",
+  "projectDescription": "AgencyHandy is an all-in-one client portal and agency management platform that consolidates CRM, orders, invoicing, proposals, task management, and team collaboration into a single workspace.",
+  "theme": "almond",
+  "primaryColor": "#6C5CE7",
+  "lightColor": "#EDE9FF",
+  "darkColor": "#4B3CC7",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "User Guide",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "getting-started/introduction",
+              "getting-started/sign-up",
+              "getting-started/log-in",
+              "getting-started/dashboard-overview"
+            ]
+          },
+          {
+            "group": "Workspace Setup",
+            "pages": [
+              "workspace/general-settings",
+              "workspace/appearance",
+              "workspace/custom-domain",
+              "workspace/email-setup",
+              "workspace/portals"
+            ]
+          },
+          {
+            "group": "CRM",
+            "pages": [
+              "crm/leads",
+              "crm/clients"
+            ]
+          },
+          {
+            "group": "Services & Orders",
+            "pages": [
+              "services/overview",
+              "services/create-service",
+              "orders/overview",
+              "orders/create-order",
+              "orders/tasks"
+            ]
+          },
+          {
+            "group": "Proposals & Invoices",
+            "pages": [
+              "proposals/overview",
+              "invoices/overview",
+              "invoices/create-invoice",
+              "invoices/subscriptions"
+            ]
+          },
+          {
+            "group": "Team & Tasks",
+            "pages": [
+              "teams/manage-team",
+              "tasks/all-tasks",
+              "tasks/timesheet",
+              "tickets/support-tickets"
+            ]
+          },
+          {
+            "group": "Forms & Files",
+            "pages": [
+              "forms/order-forms",
+              "forms/intake-forms",
+              "files/manage-files"
+            ]
+          },
+          {
+            "group": "Account & Billing",
+            "pages": [
+              "account/profile",
+              "account/plans-pricing",
+              "account/multiple-workspaces"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Integrations & API",
+        "groups": [
+          {
+            "group": "Payment Integrations",
+            "pages": [
+              "integrations/stripe",
+              "integrations/paypal",
+              "integrations/other-payments"
+            ]
+          },
+          {
+            "group": "Other Integrations",
+            "pages": [
+              "integrations/slack",
+              "integrations/webhooks"
+            ]
+          },
+          {
+            "group": "API Reference",
+            "pages": [
+              "api/getting-started",
+              "api/create-lead",
+              "api/create-client",
+              "api/update-order"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Client portal with branded custom domain and white-labeling",
+    "CRM with Kanban-based lead management and client profiles",
+    "Service catalog with multiple packages, pricing tiers, and default task automation",
+    "Order management with task tracking, file feedback, and client approval",
+    "Proposal creation and sending with accept/reject workflow",
+    "Invoicing and subscription billing with Stripe, PayPal, and other payment methods",
+    "Team management with role-based permissions",
+    "Support ticket system for client inquiries",
+    "Timesheet and time tracking per task",
+    "Intake and order forms for structured client onboarding",
+    "Webhook management for real-time event automation",
+    "REST API for creating leads, clients, and updating orders"
+  ],
+  "publicApiSurface": [
+    "GET /accounts/companies — list companies associated with an API key",
+    "POST /leads — create a new lead",
+    "POST /clients — create a new client",
+    "PATCH /orders/:id — update an existing order",
+    "Webhooks: Lead.Created, Lead.Updated, Lead.Deleted",
+    "API Key generation via Workspace Config → API Key tab"
+  ]
+}

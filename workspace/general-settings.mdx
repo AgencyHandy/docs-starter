@@ -1,0 +1,123 @@
+---
+title: "Configure Your AgencyHandy Workspace General Settings"
+sidebarTitle: "General Settings"
+description: "Set your workspace name, upload logos, add your agency address, and select the correct timezone to personalize your AgencyHandy workspace."
+---
+
+The General Settings page is the first place you'll visit after signing in to AgencyHandy. It lets you establish your agency's identity on the platform — from your logo and workspace name to your physical address and timezone. Every change you make here applies globally across the workspace for all users.
+
+<Note>
+  Only **Super Admins** and **Admins** can access and modify Workspace Config settings. If you don't see the **Workspace Config** option in the left navigation, contact your Super Admin to adjust your role permissions.
+</Note>
+
+## Accessing General Settings
+
+<Steps>
+  <Step title="Open Workspace Config">
+    Log in to your AgencyHandy account. In the left navigation menu, click **Workspace Config**.
+  </Step>
+  <Step title="Select General Settings">
+    Click **General Settings** from the Workspace Config submenu. The General Settings panel opens on the right.
+  </Step>
+</Steps>
+
+---
+
+## Uploading Your Workspace Logo
+
+AgencyHandy supports three distinct logo types, each displayed in a different part of the interface:
+
+| Logo Type        | Dimensions   | Where It Appears                                |
+|------------------|-------------|--------------------------------------------------|
+| Circle Logo      | 32 × 32 px  | Profile areas and compact UI elements            |
+| Favicon Logo     | 16 × 16 px  | Browser tab icon                                 |
+| Rectangle Logo   | 142 × 36 px | Sidebar header (replaces circle logo when set)   |
+
+**Supported formats:** PNG, JPG, SVG
+
+<Steps>
+  <Step title="Click Upload Logo">
+    Under the logo section, click the **Upload Logo** button for the logo type you want to set.
+  </Step>
+  <Step title="Select your image file">
+    Browse to the image on your device. Make sure the file matches the required dimensions and is in a supported format.
+  </Step>
+  <Step title="Confirm the upload">
+    The logo preview updates immediately. Repeat for each logo type as needed.
+  </Step>
+</Steps>
+
+<Tip>
+  Uploading a **Rectangle Logo** will replace the Circle Logo in the sidebar and automatically hide the workspace name text next to it. The rectangle logo also becomes the primary logo used in all other contexts where a logo is displayed — even if a circle logo is also uploaded.
+</Tip>
+
+---
+
+## Setting Your Workspace Name and Address
+
+### Workspace Name
+
+Enter your agency's name in the **Workspace Name** field. This name:
+
+- Appears throughout the platform for identification.
+- Is used in the default AgencyHandy subdomain (e.g., `yourname.agencyhandy.com`).
+
+<Warning>
+  Changing your workspace name updates your default subdomain immediately. If you share the default subdomain link with clients, they will need the updated URL. Consider setting up a [custom domain](/workspace/custom-domain) to avoid this issue.
+</Warning>
+
+### Workspace Address
+
+Enter your agency's full physical address in the **Workspace Address** field. This address is used for official representation on invoices and client-facing documents, so ensure it is accurate and current.
+
+---
+
+## Selecting Your Timezone
+
+<Steps>
+  <Step title="Open the Time Zone dropdown">
+    Scroll to the **Time Zone** field and click the dropdown to expand the timezone list.
+  </Step>
+  <Step title="Choose your timezone">
+    Select the timezone that matches your agency's primary operating location. All task deadlines, scheduled notifications, calendar events, and timestamps across the workspace are based on this setting.
+  </Step>
+</Steps>
+
+<Warning>
+  An incorrect timezone setting causes scheduling errors for tasks, meetings, and invoice due dates. Double-check this setting before inviting your team or clients.
+</Warning>
+
+---
+
+## Saving Your Changes
+
+After filling in or updating any fields, click **Save Changes** at the bottom of the General Settings panel. All updates are applied globally and are immediately visible to every user in the workspace.
+
+---
+
+## Danger Zone: Deleting Your Workspace
+
+At the bottom of the General Settings panel, there is a **Danger Zone** section containing the **Delete Workspace** button.
+
+<Warning>
+  Deleting your workspace is **permanent and irreversible**. All data — including clients, orders, invoices, projects, and configurations — will be permanently erased. There is no recovery option. Only proceed if you are absolutely certain.
+</Warning>
+
+---
+
+## Best Practices
+
+<CardGroup cols={2}>
+  <Card title="Verify logo dimensions" icon="image">
+    Upload logos at the exact recommended pixel dimensions to prevent stretching, cropping, or blurry display across the platform.
+  </Card>
+  <Card title="Keep branding current" icon="paintbrush">
+    Update your logo and address whenever your agency rebrands or changes location to keep all documents and client-facing pages accurate.
+  </Card>
+  <Card title="Set timezone first" icon="clock">
+    Configure your timezone before creating services, tasks, or scheduling anything to ensure all timestamps align correctly from the start.
+  </Card>
+  <Card title="Limit admin access" icon="shield">
+    Only grant Super Admin or Admin roles to personnel who genuinely need to modify workspace configurations, to prevent accidental changes.
+  </Card>
+</CardGroup>

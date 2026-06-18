@@ -1,0 +1,188 @@
+---
+title: "Configure Outgoing Email, SMTP, and Email Templates"
+sidebarTitle: "Email Setup"
+description: "Configure a custom sender email address, connect an SMTP server, add DKIM/SPF records for deliverability, and customize email templates in AgencyHandy."
+---
+
+AgencyHandy's email setup lets you replace the default `noreply@agencyhandy.com` sender with your own branded email address, configure a dedicated SMTP server for reliable delivery, and customize the templates used for client notifications, invoices, proposals, and more. Setting this up properly ensures your emails reach clients' inboxes — not their spam folders — and that every message reflects your agency's identity.
+
+<Note>
+  Only **Super Admins** and **Admins** can configure email settings. Navigate to **Workspace Config → Email Setup** to access these options.
+</Note>
+
+---
+
+## Overview of Email Setup Components
+
+<CardGroup cols={2}>
+  <Card title="Custom Email Address" icon="envelope">
+    Set the sender name and email address that clients see when they receive messages from your workspace.
+  </Card>
+  <Card title="DKIM & SPF Records" icon="shield-check">
+    Add DNS authentication records to prove your emails are legitimate and prevent them from being flagged as spam.
+  </Card>
+  <Card title="SMTP Server" icon="server">
+    Connect your own mail server (e.g., Gmail, Outlook, or a custom domain server) to send all outgoing emails from AgencyHandy.
+  </Card>
+  <Card title="Email Templates" icon="file-lines">
+    Customize the content, subject lines, and branding for every automated email AgencyHandy sends to clients.
+  </Card>
+</CardGroup>
+
+---
+
+## Part 1: Set Up a Custom Email Address
+
+Before configuring your sender email, you need a registered domain with email hosting. Popular providers include Google Workspace, Microsoft 365, Zoho Mail, and Cloudflare Email Routing.
+
+<Steps>
+  <Step title="Register a domain and set up email hosting">
+    If you haven't already, register a domain with a registrar (e.g., GoDaddy, Namecheap, Cloudflare) and sign up for an email hosting provider. Make sure you can create and manage email addresses on that domain (e.g., `hello@youragency.com`).
+  </Step>
+  <Step title="Navigate to Email Setup in AgencyHandy">
+    Log in to AgencyHandy. Go to **Workspace Config** in the left navigation, then click **Email Setup**.
+  </Step>
+  <Step title="Enter your sender name and email">
+    In the **Sender Name** field, type the name clients will see as the sender (e.g., `AgencyHandy Support` or your agency's name). In the **Sender Email** field, enter the custom email address (e.g., `hello@youragency.com`). Click **Save**.
+  </Step>
+  <Step title="Verify your email address">
+    AgencyHandy sends a verification link to the email address you entered. Open your email inbox, find the verification message, and click the link to confirm ownership.
+  </Step>
+  <Step title="Configure DKIM, SPF, and DMARC DNS records">
+    After saving your sender email, AgencyHandy provides you with the DNS records you need to add:
+
+    - **SPF record** (TXT type) — authorizes AgencyHandy to send emails on behalf of your domain.
+    - **DKIM records** (3 CNAME records) — add cryptographic signatures to outgoing emails so receiving servers can verify authenticity.
+    - **DMARC record** — defines how recipient servers should handle emails that fail authentication checks.
+
+    Add all of these records to your domain's DNS settings at your registrar. For DKIM CNAME records, make sure **Proxy Status is disabled** if you use Cloudflare.
+  </Step>
+  <Step title="Confirm active status">
+    Return to the Email Setup page in AgencyHandy. Once all DNS records have propagated (this can take between 2 minutes and 2 hours), the email status updates from **Pending** to show a green checkmark ✅. Your custom email is now active.
+  </Step>
+</Steps>
+
+<Tip>
+  Use [MXToolbox](https://mxtoolbox.com/DKIM.aspx) or [dmarcian's DKIM Validator](https://dmarcian.com/dkim-validator/) to verify your DKIM records are correctly configured. Refresh the Email Setup page periodically while waiting for propagation.
+</Tip>
+
+---
+
+## Part 2: Configure DKIM & SPF (Standalone Setup)
+
+If you need to generate or regenerate DKIM and SPF records independently, follow this path:
+
+**Workspace Config → Emails → DKIM & SPF Setup → Generate DKIM and SPF records.**
+
+Then add the records to your DNS:
+
+| Record Type | DNS Type | What to Configure                                                                           |
+|-------------|----------|---------------------------------------------------------------------------------------------|
+| SPF         | TXT      | Copy the **Name** and **Value** from AgencyHandy and add a new TXT record in your DNS       |
+| DKIM (×3)   | CNAME    | Copy each **Name** and **Value** pair; add 3 separate CNAME records with proxy disabled     |
+
+<Note>
+  DKIM and SPF records can take anywhere from **2 minutes to 2 hours** to propagate. If the status still shows pending after 2 hours, verify that the records were entered without typos and that no conflicting records exist.
+</Note>
+
+---
+
+## Part 3: Set Up SMTP
+
+SMTP (Simple Mail Transfer Protocol) lets you route all outgoing AgencyHandy emails through your own verified mail server, giving you more control over deliverability and branding.
+
+<Note>
+  You can use either a **Custom Domain Email** or an **SMTP Email Provider** — not both simultaneously. Switching between them is possible at any time, but you will need to re-enter your email configuration when switching back to a custom email.
+</Note>
+
+<Steps>
+  <Step title="Open SMTP Server settings">
+    Go to **Workspace Config → Email Setup**, then click **SMTP Server**.
+  </Step>
+  <Step title="Switch to SMTP Provider (if needed)">
+    If you already have a custom email configured, a confirmation popup appears asking if you want to switch. Click **Switch to SMTP** to proceed. This disables the existing custom email setup.
+  </Step>
+  <Step title="Enter your SMTP credentials">
+    Fill in the required fields:
+
+    | Field       | Example Value          | Notes                                     |
+    |-------------|------------------------|-------------------------------------------|
+    | Host Name   | `smtp.gmail.com`       | Your email provider's SMTP server address |
+    | User Name   | `you@yourdomain.com`   | Your full email address                   |
+    | Password    | App password           | Use an app-specific password (see below)  |
+    | Port        | `465` or `587`         | 465 for SSL, 587 for TLS                  |
+    | Auto TLS    | Toggle on/off          | Optional — enables automatic TLS upgrade  |
+
+    Click **Save** when done.
+  </Step>
+  <Step title="Generate an app password (Gmail example)">
+    If you're using Gmail with 2-Factor Authentication enabled (required for app passwords):
+
+    1. Go to [myaccount.google.com/security](https://myaccount.google.com/security) and confirm 2-Step Verification is active.
+    2. Visit [myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords).
+    3. Click **Select app**, choose **Mail** (or enter a custom name), then click **Select device** and choose your setup.
+    4. Click **Create** — Google generates a 16-character app password.
+    5. Copy the password and paste it into the **Password** field in AgencyHandy's SMTP settings.
+
+    <Warning>
+      Use the **app password**, not your regular Google account password. Using your regular password will fail if 2FA is enabled and may trigger security alerts.
+    </Warning>
+  </Step>
+  <Step title="Confirm the setup">
+    After saving, AgencyHandy displays a success message confirming _"SMTP is created successfully."_ Your saved host, username, and port details appear on the SMTP settings page.
+  </Step>
+  <Step title="Test the SMTP connection">
+    Click the **Test** button and enter a recipient email address. AgencyHandy sends a test email to that address. Check the inbox for the confirmation message: _"This is a confirmation that your email setup in Agency Handy is working properly."_
+  </Step>
+</Steps>
+
+<Tip>
+  Only one SMTP configuration can be active per workspace at a time. Once SMTP is configured, all outgoing emails from AgencyHandy — invoices, proposals, task notifications — will be sent through your SMTP server.
+</Tip>
+
+---
+
+## Part 4: Customize Email Templates
+
+AgencyHandy includes pre-built templates for every automated email it sends. You can customize each one to match your brand tone and include relevant dynamic content.
+
+**Available templates include:**
+- Client Sign-up
+- Send Proposal
+- Task Review
+- Send Invoice
+- Invoice & Subscription Reminders
+- Ticket Creation Notifications
+
+<Steps>
+  <Step title="Open Email Templates">
+    Go to **Workspace Config → Emails**, then select **Email Template** from the submenu.
+  </Step>
+  <Step title="Select a template to edit">
+    The full list of available templates is displayed. Click any template to open its configuration page.
+  </Step>
+  <Step title="Customize the template fields">
+    Update the following as needed:
+    - **Sender Email:** Choose which configured email address sends this template.
+    - **Subject:** Write a clear, concise subject line.
+    - **Body:** Edit the message content to match your agency's tone and messaging.
+    - **Dynamic Variables:** Insert placeholders like `{{client_name}}`, `{{company_name}}`, or `{{invoice_id}}` to auto-populate client-specific data.
+    - **Social Media Links:** Add links to your agency's social profiles to encourage engagement.
+  </Step>
+  <Step title="Send a test email">
+    Click **Send Test** to send a preview of the template to your inbox. Verify the formatting, content, and that all dynamic variables resolve correctly.
+  </Step>
+  <Step title="Save your changes">
+    Click **Save Changes** to apply the updated template. The new version will be used for all future automated emails matching that template type.
+  </Step>
+</Steps>
+
+---
+
+## Important Notes
+
+- **SMTP and custom email are mutually exclusive.** Only one method can be active at a time per workspace.
+- **Re-enter email on switch.** If you switch from SMTP back to a custom email setup, you must re-enter your custom email credentials.
+- **Incorrect SMTP credentials block all outgoing emails.** Double-check your hostname, port, username, and password if emails stop sending after an SMTP change.
+- **DKIM/SPF propagation takes time.** Wait up to 2 hours and refresh the Email Setup page before concluding there is an error.
+- **Dynamic variables are case-sensitive.** Use them exactly as shown in the template editor to ensure they populate correctly.

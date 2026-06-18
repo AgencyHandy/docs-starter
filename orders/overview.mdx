@@ -1,0 +1,91 @@
+---
+title: "Orders Overview: Managing Client Work in AgencyHandy"
+sidebarTitle: "Overview"
+description: "Understand how orders work in AgencyHandy — statuses, roles, order details, manual orders, and add-ons for unpublished services."
+---
+
+Orders are the operational backbone of AgencyHandy. An order represents a client's request for a service or product, and it acts as the central workspace where your team tracks progress, manages tasks, exchanges feedback, and delivers results. Whether a client places an order through your published service catalog or your team creates one manually, every order follows the same structured lifecycle that keeps your agency organized and your clients informed.
+
+## What an Order Contains
+
+Every order surfaces key information at a glance and gives team members a single place to coordinate work:
+
+| Field | Description |
+|---|---|
+| **Order ID** | Auto-generated unique identifier for each order |
+| **Client** | The client the order belongs to |
+| **Service** | The service being delivered |
+| **Project Manager (PM)** | The team member responsible for delivery (optional) |
+| **Budget** | Agreed price for the order |
+| **Kick-off Date** | When work begins |
+| **Due Date** | Deadline for order completion |
+| **Order Brief** | Client instructions, notes, and attached reference files |
+| **Tasks** | Discrete work items assigned to team members |
+| **Discussions** | Threaded conversations between agency staff and clients |
+
+## Order Statuses
+
+Every order moves through a fixed set of statuses. You cannot add or rename these statuses.
+
+<Note>
+Only Super Admins, Admins, and Project Managers can change an order's status.
+</Note>
+
+| Status | What It Means |
+|---|---|
+| **Pending** | The order has been created and is awaiting work to begin |
+| **Ongoing** | Active work is in progress |
+| **In Review** | Deliverables have been submitted and are awaiting client or internal review |
+| **Complete** | The order has been fully delivered and accepted |
+| **Cancelled** | The order has been cancelled and is no longer active |
+
+## Role-Based Access
+
+Different roles in AgencyHandy have different capabilities within orders:
+
+| Role | Can Create Orders | Can Edit Orders | Can Delete Orders | Can Change Status | Can Add Tasks | Can Add Team Members |
+|---|---|---|---|---|---|---|
+| **Super Admin** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Admin** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Project Manager (PM)** | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ |
+| **Employee** | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| **Client** | ❌ | ❌ | ❌ | ❌ | ✅ (request only) | ❌ |
+
+<Tip>
+Clients can send feedback and participate in discussions on orders. Employees assigned to an order can view and work on tasks but cannot manage the order itself.
+</Tip>
+
+## What You Can Do With Orders
+
+AgencyHandy gives you a full toolkit for managing orders throughout their lifecycle:
+
+- **Create orders** for clients — either from published services or manually for services still in development
+- **Accept and reject** client-submitted orders, with the option to provide a reason when rejecting
+- **View order details** including progress, assigned team members, kick-off and due dates, budget, and brief
+- **Sort, filter, and search** across all orders by ID, status, client name, or other criteria
+- **Add tasks** directly within an order to track and assign discrete units of work
+- **Start discussions** to communicate with clients and team members in context
+
+## Manual Orders for Unpublished Services
+
+You are not limited to creating orders only for services you have published publicly. Super Admins and Admins can create manual orders for unpublished services — useful when a service is still under development, temporarily unavailable, or being offered to a specific client before its official launch.
+
+When you open the order creation form, the **Service** dropdown shows both published and unpublished services, so you can select whichever applies. All other order fields and workflows behave the same as a standard order.
+
+## Add-Ons in Manual Orders
+
+When building a manual order, you can include **add-on services** to let clients receive customized packages beyond the core service. Add-ons must be created in advance and linked to the relevant service in the **Forms** section before they appear as an option in the order form.
+
+<Note>
+The add-on selection only appears in the manual order form if at least one add-on has been connected to the selected service. If you do not see it, verify that your add-on is properly linked in the service configuration.
+</Note>
+
+Once a service with linked add-ons is selected, you can include those add-ons before finalizing and submitting the order.
+
+## Notifications
+
+AgencyHandy automatically notifies the right people as orders move forward:
+
+- When an order is created by a PM, Admin, or Super Admin, all Super Admins in your company gain access and the client receives a creation notification.
+- When a team member is added to an order, that member receives a notification.
+- When tasks are created within an order, the client receives a notification.

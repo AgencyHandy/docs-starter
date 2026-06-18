@@ -1,0 +1,290 @@
+---
+title: "Customize Client Portals, Access Controls, and Tax Rates"
+sidebarTitle: "Portals"
+description: "Brand your client sign-in and sign-up pages, control sidebar visibility by role, and configure tax rates for invoices and checkout in AgencyHandy."
+---
+
+AgencyHandy gives you deep control over what your clients see and experience — from the very first page they land on when signing in, to which sections of the platform they can navigate after logging in. This page covers four interconnected configuration areas: the **Sign-in Portal**, the **Sign-up Portal**, **Sidebar & Access controls**, and **Tax Rates**. Together, these settings let you create a polished, role-appropriate experience for every user in your workspace.
+
+<Note>
+  All settings on this page require **Super Admin** or **Admin** access. Navigate to **Workspace Config** in the left sidebar to access each section.
+</Note>
+
+---
+
+<Tabs>
+  <Tab title="Sign-in Portal">
+    ## Sign-in Portal
+
+    The Sign-in Portal is the login page your clients and team members see when they access your AgencyHandy workspace. Customizing it ensures the first impression clients have is fully on-brand — complete with your agency's imagery, headline, and messaging.
+
+    ### What You Can Customize
+
+    | Element     | Description                                          | Limit                   |
+    |-------------|------------------------------------------------------|-------------------------|
+    | **Heading** | The main title displayed at the top of the login page | Max 120 characters      |
+    | **Image**   | A branded photo or illustration shown on the page    | PNG, JPG, JPEG — max 5 MB |
+    | **Subtext** | A short message below the login fields               | Max 300 characters      |
+
+    ### Steps to Customize the Sign-in Portal
+
+    <Steps>
+      <Step title="Open Sign-in Portal settings">
+        Go to **Workspace Config** in the left navigation, then select **Sign-in Portal** from the submenu.
+      </Step>
+      <Step title="Enter a custom heading">
+        Type your desired heading in the **Heading** field. Keep it concise and relevant — for example, _"Welcome back to [Agency Name]"_ or _"Your Client Portal."_ The maximum length is 120 characters.
+      </Step>
+      <Step title="Upload a branded image">
+        Click the upload area or drag and drop an image file (PNG, JPG, or JPEG, maximum 5 MB) to add a visual element to the sign-in page. This image typically appears alongside the login form.
+
+        <Tip>
+          Use a high-quality image that represents your agency — a photo of your team, a clean brand illustration, or a professional background. Ensure the file size is under 5 MB to avoid upload errors.
+        </Tip>
+      </Step>
+      <Step title="Add subtext">
+        In the **Subtext** field, write a brief message to appear below the login fields — for example, a welcome note, support contact, or a short tagline. Keep it under 300 characters.
+      </Step>
+      <Step title="Preview and save">
+        Review the sign-in page layout using the preview. Once you're satisfied, click **Save** (or **Update**) to apply the changes. Changes take effect immediately.
+      </Step>
+    </Steps>
+
+    ### Resetting to Defaults
+
+    Click **Reset Default Settings** on the Sign-in Portal page to remove all customizations and restore the original AgencyHandy sign-in page.
+
+    <Warning>
+      Resetting to defaults is irreversible. All custom headings, images, and subtext will be permanently removed. Click **Cancel** if you are not sure — unsaved changes are discarded and the current saved settings remain intact.
+    </Warning>
+
+    ### Best Practices
+
+    - Keep the heading short and welcoming — clients see it before they log in, so make it reassuring.
+    - Use a professional image that represents your agency. Avoid generic stock photos that feel disconnected from your brand.
+    - Preview on different screen sizes before saving to ensure the image and text layout looks correct.
+    - If the image fails to upload, confirm it meets the format (PNG, JPG, JPEG) and size (under 5 MB) requirements.
+  </Tab>
+
+  <Tab title="Sign-up Portal">
+    ## Sign-up Portal
+
+    The Sign-up Portal is the registration page new clients land on when they create an account in your workspace. Customizing it creates a consistent branded experience from the very first interaction a prospective client has with your agency's platform.
+
+    ### What You Can Customize
+
+    | Element     | Description                                           | Limit                    |
+    |-------------|-------------------------------------------------------|--------------------------|
+    | **Heading** | The main title displayed at the top of the sign-up page | Max 120 characters     |
+    | **Image**   | A branded photo or illustration shown on the page     | PNG, JPG, JPEG — max 5 MB |
+    | **Subtext** | A short message below the registration fields         | Max 300 characters       |
+
+    ### Steps to Customize the Sign-up Portal
+
+    <Steps>
+      <Step title="Open Sign-up Portal settings">
+        Go to **Workspace Config** in the left navigation, then select **Sign-up Portal** from the submenu.
+      </Step>
+      <Step title="Enter a custom heading">
+        Type a heading in the **Heading** field that welcomes new clients. For example, _"Get started with [Agency Name]"_ or _"Create your client account."_ Maximum 120 characters.
+      </Step>
+      <Step title="Upload a branded image">
+        Click the upload area or drag and drop an image file (PNG, JPG, or JPEG, maximum 5 MB). This image is displayed on the sign-up page alongside the registration form.
+
+        <Tip>
+          Use the same visual style and color palette on both your Sign-in and Sign-up portal images to create a cohesive experience across the two pages.
+        </Tip>
+      </Step>
+      <Step title="Add subtext">
+        Write a short supporting message in the **Subtext** field — for example, instructions on what to expect after signing up, or a brief value proposition. Maximum 300 characters.
+      </Step>
+      <Step title="Preview and save">
+        Review the sign-up page using the preview option. Click **Save** (or **Update**) to apply changes immediately.
+      </Step>
+    </Steps>
+
+    ### Resetting to Defaults
+
+    Click **Reset Default Settings** on the Sign-up Portal page to remove all customizations and restore the original AgencyHandy sign-up page.
+
+    <Warning>
+      This action cannot be undone. All custom heading, image, and subtext configurations will be permanently erased.
+    </Warning>
+
+    ### Best Practices
+
+    - Match the tone of the sign-up heading to your overall client communication style — professional, friendly, or both.
+    - Keep subtext focused: tell new clients what happens after they register (e.g., _"Once you sign up, our team will send you a welcome email within 24 hours."_).
+    - Test the sign-up flow yourself after saving changes to confirm the page looks and behaves as expected.
+  </Tab>
+
+  <Tab title="Sidebar & Access">
+    ## Sidebar & Access Controls
+
+    The Sidebar & Access settings let you control exactly what each user role can see in the left navigation menu. You can rename menu items to match your agency's terminology, swap out default icons for custom ones, and toggle the visibility of any menu section per role. The result is a cleaner, purpose-built interface for every person who logs in.
+
+    ### Roles You Can Configure
+
+    - Client
+    - Super Admin
+    - Admin
+    - Manager
+    - Assignee
+    - Custom (any custom roles you've created under Roles & Permissions)
+
+    ### Steps to Customize Sidebar Menu Items
+
+    <Steps>
+      <Step title="Open Sidebar & Access settings">
+        Go to **Workspace Config**, then select **Sidebar & Access** from the settings menu.
+      </Step>
+      <Step title="Click Customize">
+        Click the **Customize** button at the top of the panel. The full list of current sidebar menu items appears under the **Main** category.
+      </Step>
+      <Step title="Rename a menu item">
+        Click on any menu item's text field and type the new label. For example, rename "Dashboard" to "Overview" or "CRM" to "Contacts." Click **Save** to apply the new name.
+      </Step>
+      <Step title="Change a menu icon">
+        Click the icon next to a menu item name. A popup opens with a set of icon options — select one from the library, or upload a custom 32×32 px image to use your own branded icon. Click **Save** to apply.
+      </Step>
+    </Steps>
+
+    ### Steps to Configure Role-Based Visibility
+
+    <Steps>
+      <Step title="Click Edit Access">
+        Click the **Edit Access** button (next to the **Customize** button). You'll see tabs for each available role.
+      </Step>
+      <Step title="Select a role">
+        Click the tab for the role you want to configure — for example, **Client**.
+      </Step>
+      <Step title="Toggle menu item visibility">
+        For each menu item listed, use the toggle to show or hide it for the selected role. For example, you might hide **Invoices** and **Subscriptions** from Clients while keeping them visible to Admins and Managers.
+      </Step>
+      <Step title="Save your changes">
+        Click **Save**. The updated visibility settings take effect immediately — users see the changes on their next page navigation or after logging back in.
+      </Step>
+      <Step title="Reset to defaults if needed">
+        Click **Reset to Default** on any role's tab to restore the original visibility settings for that role.
+      </Step>
+    </Steps>
+
+    <Tip>
+      A clean, minimal sidebar improves the client experience. Showing clients only what they need — such as **Dashboard**, **Orders**, and **Messages** — reduces confusion and prevents them from stumbling across internal-only sections.
+    </Tip>
+
+    ### Example Role Configurations
+
+    | Role        | Recommended Visible Sections                              |
+    |-------------|-----------------------------------------------------------|
+    | Client      | Dashboard, Orders, Messages, Invoices (if needed)         |
+    | Manager     | CRM, Projects, Timesheet, Tasks                           |
+    | Assignee    | Dashboard, Tasks, Projects, Messages                      |
+    | Super Admin | All sections (no restrictions)                            |
+
+    ### Important Notes
+
+    - **Changes are instant:** Role visibility updates reflect immediately after users refresh or log back in.
+    - **Most permissive role wins:** If a user holds multiple roles, the role with the broadest access takes precedence.
+    - **Custom icons:** Upload 32×32 px images to match your agency's brand visuals in the sidebar.
+    - **Naming consistency:** Use clear, consistent naming conventions your whole team understands — avoid abbreviations or internal jargon that new team members won't recognize.
+  </Tab>
+
+  <Tab title="Tax Rates">
+    ## Tax Rates
+
+    The Tax Rates feature lets you create, manage, and apply tax configurations across your services, subscriptions, and invoices. You can set up multiple tax types — VAT, GST, Sales Tax, and others — with country-specific and state-specific rates, support for both inclusive and exclusive pricing models, and automatic application at checkout based on client location.
+
+    <Note>
+      Only **Super Admins** and **Admins** can create, edit, or delete tax configurations.
+    </Note>
+
+    ### Tax Concepts at a Glance
+
+    | Concept       | Definition                                                                                          |
+    |---------------|-----------------------------------------------------------------------------------------------------|
+    | **Exclusive** | Tax is added on top of the listed price at checkout (e.g., $100 + 10% tax = $110 total)            |
+    | **Inclusive** | Tax is already included in the price shown to the customer (e.g., $110 total already includes tax) |
+    | **Tax ID**    | Your agency's business tax identification number, shown on invoices                                 |
+
+    ### Step 1: Create a Tax Rate
+
+    <Steps>
+      <Step title="Open Tax Rates">
+        Go to **Workspace Config**, then click the **Tax Rates** tab.
+      </Step>
+      <Step title="Click + New Tax">
+        Click the **+ New Tax** button. A form appears.
+      </Step>
+      <Step title="Fill in the tax details">
+        Complete the following fields:
+
+        - **Title / Tax Type** *(required)*: Enter a descriptive name, e.g., Standard VAT, Reduced GST, or US Sales Tax. Maximum 255 characters.
+        - **Tax ID** *(optional)*: Your agency's business tax identification number. Maximum 20 characters.
+        - **Home Country**: Select the primary country this tax applies to.
+        - **Home Country General Tax Rate %** *(optional)*: The default rate for your home country.
+        - **Country-Specific Rates** *(optional)*: Add per-country rates with optional state, ZIP code, and percentage. This is useful for agencies serving clients in multiple tax jurisdictions.
+      </Step>
+      <Step title="Set the status">
+        Toggle the tax to **Active** to make it immediately available for use in services and invoices. Set it to **Inactive** to save the configuration without applying it to new purchases yet.
+      </Step>
+      <Step title="Save">
+        Click **Save**. The tax appears in your Tax Rates list and is now available to link to services.
+      </Step>
+    </Steps>
+
+    <Tip>
+      You can support up to 4 decimal places in tax rate percentages. A 0% tax rate is valid — use it for zero-rated items or compliance scenarios where tax must be listed but amounts to zero.
+    </Tip>
+
+    ### Step 2: Link Taxes to Services
+
+    <Steps>
+      <Step title="Open the service for editing">
+        Navigate to **Services** and create a new service or edit an existing one.
+      </Step>
+      <Step title="Go to the Additional Info section">
+        Proceed to Step 3 (Additional Info) of the service setup wizard.
+      </Step>
+      <Step title="Add taxes to the service">
+        Click **Add Tax** and select one or more tax types from your configured list. Choose whether taxes apply as **inclusive** or **exclusive** for this service. This setting applies to all linked taxes on the service, including setup fees and add-ons.
+      </Step>
+    </Steps>
+
+    ### Step 3: How Taxes Are Applied
+
+    Taxes can be applied **automatically during checkout** or **manually on invoices**:
+
+    **Automatic (Checkout)**
+    - Taxes linked to a service are automatically calculated based on the client's billing location.
+    - The client must provide their country, state, and ZIP code at checkout for location-based tax to apply.
+    - For Stripe India accounts, full location information (country, state, ZIP) is mandatory.
+
+    **Manual (Invoice)**
+    - When creating an invoice manually, click **Add Taxes** to choose which taxes to apply.
+    - Billing address fields populate automatically.
+    - **Only exclusive taxes** can be applied to manual invoices — inclusive taxes are not supported in this flow.
+
+    ### Invoice Tax Display
+
+    Every invoice that includes a tax shows the following details:
+
+    - **Tax Name** — the label you entered (e.g., VAT, GST)
+    - **Tax Percentage** — the applied rate (e.g., 15%)
+    - **Tax Amount** — the calculated amount charged
+
+    ### Managing Existing Tax Rates
+
+    - **Edit a tax:** Click the tax entry in the list to update its title, rate, or country rules. Updates apply to future invoices and purchases only.
+    - **Delete a tax:** Deleted taxes no longer apply to new purchases or subscriptions, but existing invoices that included them are unaffected.
+    - **Deactivate a tax:** Set a tax to **Inactive** to stop applying it to new purchases without deleting the configuration.
+
+    ### Important Notes
+
+    - **Coupon discounts apply before tax:** When a client uses a discount coupon, the tax is calculated on the discounted price, not the original price.
+    - **Multiple taxes per service:** You can attach more than one tax to a single service (e.g., VAT + GST simultaneously).
+    - **Tax applies to add-ons and setup fees:** If your service has a setup fee or add-ons, tax is applied to those amounts as well.
+    - **Client location is prefilled:** If a client has a billing country and state saved in their profile, those fields are pre-populated at checkout. However, editing the location during checkout does **not** update the client's profile.
+    - **ZIP code-based state detection:** For U.S. clients, the system can automatically detect the state from the ZIP code and apply the correct regional tax if configured.
+  </Tab>
+</Tabs>

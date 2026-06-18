@@ -1,0 +1,240 @@
+---
+title: "Task Management: Creating and Tracking Work in Orders"
+sidebarTitle: "Tasks"
+description: "Create, edit, and manage tasks inside orders — including time tracking, file feedback, client-requested tasks, and cross-order task visibility."
+---
+
+Tasks are the units of work that turn an order into a deliverable. Each task lives inside a specific order, can be assigned to a team member, and tracks its own status, timeline, attachments, and feedback thread. This page explains how to create and manage tasks, how clients can request tasks, how time tracking and file feedback work, and how to view tasks across all orders at once.
+
+## Role Requirements
+
+| Action | Who Can Do It |
+|---|---|
+| Create tasks | Super Admin, Admin, Project Manager |
+| Edit tasks | Super Admin, Admin, Project Manager |
+| Delete tasks | Super Admin, Admin, Project Manager |
+| View tasks in review / done | Super Admin, Admin, PM, Client |
+| Send and reply to feedback | Super Admin, Admin, PM |
+| Log time on tasks | All assigned users (Superadmins and Admins can log on behalf of others) |
+| Request a task (client) | Client |
+| Approve / reject requested tasks | Super Admin, Admin |
+
+<Note>
+Employees assigned to an order can see tasks that are in **In Review** or **Done** status. Tasks in **In Progress** are not visible to employees.
+</Note>
+
+## Create a Task
+
+<Steps>
+  <Step title="Open the order">
+    Navigate to **Orders** in the left sidebar and click the order where you want to add a task.
+  </Step>
+
+  <Step title="Add a new task">
+    Inside the order, scroll to the **Tasks** section and click **+ Add New Task**. A task creation form will appear.
+  </Step>
+
+  <Step title="Fill in the task details">
+    Complete the available fields:
+
+    | Field | Notes |
+    |---|---|
+    | **Task Name** | A clear, concise title for the work item |
+    | **Description** | Detailed context, requirements, or instructions |
+    | **Assignee** | The team member responsible for completing the task |
+    | **Label** | Categorical tag for organizing tasks (e.g., Design, Copy) |
+    | **Start Date** | When work on the task begins |
+    | **Due Date** | When the task must be completed |
+    | **Client Review Required** | Checkbox that requires the client to approve the task before it is marked Done — checked by default |
+    | **Attachments** | Reference files or supporting materials |
+  </Step>
+
+  <Step title="Save the task">
+    Click **Save** to create the task. The client receives an automatic notification that a new task has been added to their order.
+  </Step>
+</Steps>
+
+<Tip>
+The **Client Review Required** checkbox is enabled by default on every new task. If a task is purely internal and does not need client sign-off, you can uncheck it before saving.
+</Tip>
+
+## Task Statuses
+
+Tasks move through the following statuses:
+
+- **In Progress** — The task is being worked on (not visible to clients or employees)
+- **In Review** — The task has been submitted for review; visible to clients
+- **Done** — The task has been approved and completed
+
+<Note>
+When a client or reviewer rejects a task from **In Review**, its status automatically reverts to **In Progress**.
+</Note>
+
+## Task Modal and Activity Page
+
+Clicking on any task opens the **Task Modal**, a full-detail view that serves as the task's activity hub. From here you can see and manage:
+
+- Current status, assignee, start date, and due date
+- Task description and any attached files
+- All feedback threads and replies
+- A complete activity log showing every update, comment, and status change on the task
+
+Anyone who is part of the order — including clients, when client review is enabled — can access the task modal for tasks they have visibility on.
+
+## Edit a Task
+
+To update a task's details after it has been created, open the task modal and modify the relevant fields (name, description, assignee, dates, label, or attachments). Save your changes to apply the update. Only Super Admins, Admins, and PMs can edit tasks.
+
+## Delete a Task
+
+To delete a task, open it and use the delete option in the task's action menu. Deletion is permanent — all associated time logs and file versions are removed along with the task.
+
+<Warning>
+Deleting a task also removes all file versions and their associated feedback comments. This action cannot be undone.
+</Warning>
+
+## Time Tracking
+
+AgencyHandy includes built-in time tracking so your team can log hours directly against tasks — no external tool required.
+
+### Starting the Timer
+
+<Steps>
+  <Step title="Open the task">
+    Go to **Orders → Tasks** and open the task you want to track time on.
+  </Step>
+
+  <Step title="Start the timer">
+    Click **Start Timer**. The timer begins running and displays the task name, real-time elapsed time, and total time logged.
+  </Step>
+
+  <Step title="Pause or stop when done">
+    Click **Pause Timer** to temporarily halt tracking, or **Stop Timer** to finalize the entry. When you stop, you will confirm the date, start time, end time, total duration, and an optional note.
+  </Step>
+</Steps>
+
+<Note>
+You can only have one active timer running at a time. Starting a new timer automatically pauses any existing one.
+</Note>
+
+<Warning>
+If a task is marked **Done**, the timer is disabled. Reopen the task to re-enable time logging.
+</Warning>
+
+### Manual Time Entry
+
+If you need to log time retroactively, click **Manual Time Entry** on the task and enter:
+
+- **Date**
+- **Start Time and End Time** (or a **Duration** in hours and minutes)
+- **Notes** (optional)
+
+Multiple users can log time against the same task simultaneously. Superadmins and Admins can create manual time entries on behalf of any user.
+
+### Work Logs
+
+Click the **Work Log** button next to the timer to see a full breakdown of all time entries on the task, including date, start/end times, total active time, and any notes. Admins and Superadmins can delete any entry; regular users can only delete their own.
+
+### Timesheets
+
+Navigate to **Timesheets** from the left sidebar for a cross-order view of all time logged. You can filter by task name, order ID, assignee, or date range (daily, weekly, monthly), and group results by team member, service name, or task name. You can also start a timer or add a manual entry directly from the Timesheets view.
+
+## File Feedback
+
+AgencyHandy's file feedback system lets you and your clients leave precise, visual comments on deliverables — directly inside tasks. It supports images, PDFs, videos, and live websites, with version control and threaded discussions built in.
+
+### Uploading a File for Review
+
+Open the task, click the **➕** icon in the **Attachments** section, and upload an image, PDF, video, or paste a live website URL.
+
+### Leaving Feedback by File Type
+
+**Images and PDFs**
+Open the file and use the annotation toolbar (Arrow, Line, Rectangle, Highlight) to mark up specific areas. Select a region, type your comment, and choose whether to share it with your team, the client, or both. You can also undo or redo annotations and change annotation colors.
+
+**Videos**
+Open the video and pause it at the exact frame where your feedback applies. Type your comment — the video pauses automatically while you type. The feedback is timestamped to that moment. You can remove the timestamp to leave a general comment instead.
+
+**Live Websites**
+Add the site URL to the task using the **➕** button, then install the AgencyHandy browser extension. Open the site in **View Mode** (interactive) or switch to **Review Mode** to take a screenshot and annotate it with draw, text, or shape tools.
+
+### Comment Actions
+
+Each comment has a three-dot menu with options to:
+
+- Edit the comment
+- Copy the reply
+- Delete the comment
+- Restrict visibility to the internal team only
+
+### Resolving Feedback
+
+Click the **✓** button on a comment to mark it as **Resolved**. Resolved comments remain visible for reference and can be reopened. You receive a notification when a comment you left is resolved by someone else.
+
+### File Versions
+
+Click **Upload New Version** to add a revised file. Previous versions and their feedback are preserved and accessible from the version dropdown. When opening an older version, AgencyHandy notifies you that a newer version exists.
+
+You can label each file as **Needs Review** or **Approved** to communicate review status at a glance.
+
+<Note>
+Clients can only leave feedback on files if the **Client Review Required** checkbox is enabled on the task. File feedback is available only inside tasks or orders — not in the service catalog or profile images.
+</Note>
+
+## Client-Requested Tasks
+
+Clients can submit task requests from their portal, giving them a structured way to surface additional needs without bypassing your approval process.
+
+### Client Workflow
+
+<Steps>
+  <Step title="Access Requests">
+    The client clicks **Requests** in their Client Portal sidebar — or uses the **+ Request a Task** button directly inside an order.
+  </Step>
+
+  <Step title="Fill in the request form">
+    The client provides:
+    - **Order** (mandatory — requests must be tied to an existing order)
+    - **Task Name** (mandatory)
+    - **Description** (optional)
+    - **Attachments** (optional — up to 1 GB; formats include PDF, DOCX, JPG, PNG, MP4, ZIP, and more)
+    - **Start and End Dates** (optional)
+  </Step>
+
+  <Step title="Submit the request">
+    The client clicks **Request**. The task appears in their portal as **Pending** and your agency receives a notification.
+  </Step>
+</Steps>
+
+### Agency Workflow
+
+<Steps>
+  <Step title="View incoming requests">
+    Click **Requests** in the Agency Portal sidebar. All pending requests appear in a list view. You can filter by client or order ID, sort alphabetically or by issue date, and use **Preferences** to show or hide columns.
+  </Step>
+
+  <Step title="Review the request">
+    Click a request to read the description and preview any attachments before making a decision.
+  </Step>
+
+  <Step title="Approve or reject">
+    Use the action buttons beside each request to approve or reject individually — or use the top-right bulk actions to approve or reject all requests at once.
+
+    - **Approved** requests become active tasks in the order and follow the normal task workflow.
+    - **Rejected** requests remain logged with a **Rejected** status and are not added to the order.
+  </Step>
+</Steps>
+
+<Note>
+Clients cannot bypass the approval step. A request always requires agency action before it becomes a live task. Pending requests remain visible to both the client and the agency until a decision is made.
+</Note>
+
+## All Tasks View
+
+Beyond managing tasks inside individual orders, you can view tasks across every order from a single screen. Navigate to **Tasks** in the left sidebar to access the **All Tasks** page. From here you can:
+
+- See every task you have visibility on, regardless of which order it belongs to
+- Filter and sort by status, assignee, due date, or order
+- Quickly identify overdue or at-risk items across your entire workload
+
+This cross-order visibility is especially useful for Project Managers and Admins who need to balance team capacity and track delivery health at the agency level.

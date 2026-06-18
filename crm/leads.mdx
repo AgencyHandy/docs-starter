@@ -1,0 +1,211 @@
+---
+title: "Manage Leads: Pipeline, Email, and Client Conversion"
+sidebarTitle: "Leads"
+description: "Manage your sales pipeline with a Kanban board—track lead stages, filter by agent or source, send emails, and convert leads to clients."
+---
+
+The Leads section of AgencyHandy's CRM gives you a visual, drag-and-drop Kanban board to manage every prospect from first contact to signed client. Each lead lives on a card that travels through seven predefined pipeline stages, and you can filter, search, import, export, email, and convert leads without ever switching to another tool.
+
+## Pipeline Stages
+
+Every lead you create starts in the **New** stage and can be moved forward as your relationship develops:
+
+| Stage | What it means |
+|---|---|
+| **New** | Lead just entered the pipeline |
+| **Contacted** | You've reached out at least once |
+| **Qualified** | Lead meets your target-client criteria |
+| **Working** | Active conversations underway |
+| **Proposal Sent** | A formal proposal has been delivered |
+| **Negotiation** | Terms are being discussed |
+| **Client** | Ready to convert to a client account |
+
+<Note>
+  Moving a lead to the **Client** stage on the board does not automatically convert it — you still need to click **Convert to Client** inside the lead card to move it to the Clients tab.
+</Note>
+
+## Creating a Lead
+
+<Steps>
+  <Step title="Open the Leads board">
+    From the left sidebar, click **CRM**, then select the **Leads** tab. The Kanban board loads with all your existing pipeline stages.
+  </Step>
+  <Step title="Click Create Lead">
+    Select the **+ Create Lead** button at the top right of the board. A creation form opens.
+  </Step>
+  <Step title="Fill in lead details">
+    Complete the fields below. **Name** and **Email** are mandatory; everything else is optional but recommended for better filtering and reporting.
+
+    - **First Name / Last Name** *(mandatory)*
+    - **Email** *(mandatory)*
+    - **Company Name**
+    - **Category**
+    - **Status** — sets the initial Kanban stage (defaults to New)
+    - **Source** — e.g., Facebook, Website *(max 50 characters; text beyond this is truncated with a tooltip)*
+    - **Lead Value** — estimated deal worth
+    - **Phone Number**
+    - **Website**
+    - **Assigned Agent** — team member responsible for this lead
+    - **Last Interaction** — date of most recent contact
+    - **Address** — Country, State, City, Zip Code
+    - **Attachments** — PDFs, JPEGs, PNGs, and text files can be previewed directly in the lead modal; unsupported formats prompt a download instead
+  </Step>
+  <Step title="Save the lead">
+    Click **Create**. The lead card appears in the **New** column on the Kanban board.
+  </Step>
+</Steps>
+
+<Tip>
+  Upload PDF briefs or proposal documents as attachments so your team can review them without leaving the lead modal.
+</Tip>
+
+## Tracking Leads on the Kanban Board
+
+Once leads exist on the board, you have several ways to work with them:
+
+- **Drag and drop** — grab any lead card and drop it into a different stage column to reflect its current status.
+- **Click a card** — opens the lead detail modal where you can edit all fields, view notes, check the activity log, send an email, or convert to a client.
+- **Print lead details** — use the **Print** button in the top-right corner of the lead modal to generate a printable summary.
+
+## Editing a Lead
+
+Open any lead card and click **Edit** (or directly update the contact info or notes fields shown in the modal). Changes are saved immediately and recorded in the activity log.
+
+<Note>
+  If an email address already exists as both a client and a lead, that lead **cannot** be converted to a client. Resolve the duplicate before attempting conversion.
+</Note>
+
+## Converting a Lead to a Client
+
+<Steps>
+  <Step title="Open the lead card">
+    Click the lead you want to promote on the Kanban board.
+  </Step>
+  <Step title="Click Convert to Client">
+    Select the **Convert to Client** button inside the lead modal.
+  </Step>
+  <Step title="Confirm">
+    A confirmation banner appears: *"Lead has moved to the Clients Tab."* The card disappears from the Kanban board, and all lead notes and history are preserved in the new client record.
+  </Step>
+</Steps>
+
+## Filtering and Searching Leads
+
+Use the toolbar above the Kanban board to narrow down what you see:
+
+<CardGroup cols={2}>
+  <Card title="Search Bar" icon="magnifying-glass">
+    Type a name or email to instantly surface matching leads across all pipeline stages.
+  </Card>
+  <Card title="Assigned Agent" icon="user">
+    Filter the board to show only leads assigned to a specific team member.
+  </Card>
+  <Card title="Lead Value" icon="dollar-sign">
+    Narrow by estimated deal size to prioritise high-value prospects.
+  </Card>
+  <Card title="Last Interaction Date" icon="calendar">
+    Identify leads that haven't been touched recently and need follow-up.
+  </Card>
+  <Card title="Source" icon="signal">
+    View only leads from a particular channel, such as Website or Facebook.
+  </Card>
+</CardGroup>
+
+## Emailing Leads
+
+You can compose and send emails directly from the Kanban board or from inside a lead modal — no external email client required.
+
+| Field | Details |
+|---|---|
+| **To** | Pre-filled with the lead's email address |
+| **Subject** | Mandatory; maximum 250 characters |
+| **Body** | Rich text editor; maximum 10,000 characters |
+| **Attachments** | Up to 5 files; total size limit 25 MB |
+
+## Notes
+
+Each lead includes a dedicated **Notes** section inside the detail modal. Notes are editable and deletable, and each note displays the name of the team member who wrote it along with a timestamp. Use notes to log call summaries, client preferences, or follow-up reminders that the whole team can see.
+
+## Importing Leads
+
+Bring an existing prospect list into AgencyHandy in bulk using a CSV or Excel file.
+
+<Steps>
+  <Step title="Open the Import dialog">
+    On the Leads board, click the **Import** button at the top right.
+  </Step>
+  <Step title="Upload your file">
+    Drag and drop or browse for your CSV or Excel file. The file must include at minimum a **Name** and **Email** column.
+  </Step>
+  <Step title="Map columns">
+    The importer shows a column mapper. Match each column in your file to the corresponding AgencyHandy field. Optional mappable fields include: Source, Lead Value, Phone Number, Company Name, and Address.
+  </Step>
+  <Step title="Confirm and import">
+    Review the preview table to verify data accuracy, then click **Confirm** followed by **Save**. Your leads appear on the Kanban board immediately.
+  </Step>
+</Steps>
+
+<Warning>
+  Leads with email addresses that already exist in your Clients tab will not be converted through the import — you must handle those duplicates manually.
+</Warning>
+
+## Exporting Leads
+
+Export your pipeline data for reporting, backups, or integration with other tools.
+
+<Steps>
+  <Step title="Click Export">
+    Select the **Export** button from the Leads toolbar.
+  </Step>
+  <Step title="Choose your columns">
+    Select **All Columns** to export every field, or choose **Custom Columns** to pick only the data you need.
+  </Step>
+  <Step title="Select format and download">
+    Choose **CSV** or **XLSX**, then click **Export**. The file downloads to your device.
+  </Step>
+</Steps>
+
+## Activity Log
+
+Every change made to a lead is automatically recorded in the **Activity Log** tab inside the lead modal.
+
+The log captures:
+
+- **User** — which team member made the change
+- **Details** — what changed, for example *"Status changed from 'New' to 'Contacted'"*
+- Attachment uploads, note additions, and field edits
+
+Activity logs cannot be edited or deleted and are visible to admins and managers.
+
+## Automated Reminders and Tasks
+
+AgencyHandy sends automated notifications when a lead has been idle in any stage beyond a configurable number of days — for example, *"Follow up with [Lead Name]."* Key actions such as sending a proposal can also automatically generate tasks in the task manager to keep your delivery process on track.
+
+## Webhooks for Lead Events
+
+AgencyHandy fires webhook events for the following lead actions, enabling you to connect external CRMs, automation tools, or data pipelines:
+
+<Accordion title="Lead.Created">
+  Fires when a new lead is created. Payload includes: lead ID, status, source, assigned agent, and timestamps.
+</Accordion>
+
+<Accordion title="Lead.Updated">
+  Fires when any field on a lead is updated. Payload includes the same fields plus a summary of what changed.
+</Accordion>
+
+<Accordion title="Lead.Deleted">
+  Fires when a lead is deleted from the system. Payload includes the lead ID and deletion timestamp.
+</Accordion>
+
+<Tip>
+  Configure webhooks in **Settings → Integrations → Webhooks** to start receiving real-time lead events in your external systems.
+</Tip>
+
+## Reporting Metrics
+
+Track your pipeline health with built-in reporting metrics:
+
+- Number of leads per stage
+- Conversion rates from lead to client
+- Average time a lead spends in each stage
+- Best-performing agents by conversion volume

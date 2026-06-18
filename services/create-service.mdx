@@ -1,0 +1,260 @@
+---
+title: "How to Create a Service with Packages, Tasks, and FAQs"
+sidebarTitle: "Create Service"
+description: "Step-by-step guide to building an AgencyHandy service: choose billing type, configure packages, set default tasks, add FAQs, and publish."
+---
+
+Creating a service in AgencyHandy is the first step to selling your agency's offerings through the platform. A single service can contain up to five pricing packages, automated default tasks that fire when an order is placed, FAQs to reduce pre-sales questions, a portfolio attachment for social proof, and an optional intake form — all configured in one place before you publish.
+
+<Note>
+  You need a **Super Admin** or **Admin** role to create services. Other roles require explicit service permissions to access this section.
+</Note>
+
+<Steps>
+  <Step title="Choose the service type">
+    Open **Services** from the left sidebar and click **+ Service** to start a new listing.
+
+    At the top of the page, select your billing model:
+
+    - **One-Time Service** — the client pays a single fee and receives the deliverable once. Best for projects with a clear scope: website builds, logo packages, audits, etc.
+    - **Subscription Service** — billing recurs automatically on the schedule you define. Best for retainers, ongoing content, managed services, or maintenance plans.
+
+    <Warning>
+      The service type is locked after you save. If you need a different billing model, create a new service.
+    </Warning>
+  </Step>
+
+  <Step title="Add service details">
+    Expand the **Service Details** section and fill in the following fields:
+
+    **Service Name** *(mandatory)*
+    This is how the service appears to clients everywhere in the platform — in the catalog, on invoices, and inside the order workspace. Make it clear and descriptive.
+
+    **Media Upload**
+    Upload one or more preview images to represent the service visually. High-quality images increase client trust and conversion rates.
+
+    **Service Description**
+    Write a thorough explanation of what the service includes, who it's for, and what clients can expect. Use this space to differentiate your offering.
+
+    **Tax Settings**
+    Choose whether tax is **inclusive** (already built into the price) or **exclusive** (added on top at checkout).
+
+    **Currency**
+    Set the currency for all packages in this service. All packages within a single service share the same currency.
+
+    <Tip>
+      Upload preview images in a 16:9 ratio for the best presentation in the client portal.
+    </Tip>
+  </Step>
+
+  <Step title="Create packages">
+    Expand **Package Details** and click **+ New Package** to add your first pricing tier. You can create up to **5 packages** per service.
+
+    For each package, configure the following:
+
+    **Package Name** *(mandatory)*
+    The name clients see, such as *Basic*, *Standard*, or *Premium*.
+
+    **Package Icon** *(optional)*
+    Select a built-in icon or upload a custom one. Uploaded icons must be **32 × 32 pixels**.
+
+    **Package Media** *(optional)*
+    Upload a cover image specific to this package. Accepted formats: PNG, JPG, JPEG. Maximum file size: **5 MB**. Maximum 1 file per package. Recommended ratio: **16:9**.
+
+    **Package Brief** *(optional)*
+    A one-line summary of this package's deliverables. Maximum **140 characters**.
+
+    **What's Included** *(mandatory)*
+    List the specific deliverables included in this package. You can add up to **15 line items** per package. Each bullet should describe one concrete deliverable (e.g., *"5 blog posts per month, up to 1,000 words each"*).
+
+    <Tip>
+      After creating multiple packages, drag them to reorder how they display to clients. Mark one as **Most Popular** to draw attention to your recommended tier.
+    </Tip>
+  </Step>
+
+  <Step title="Set pricing and delivery rules">
+    Inside each package, set the core pricing fields and any optional controls:
+
+    **Amount** *(mandatory)*
+    The price a client pays for this package.
+
+    **Delivery Time** *(mandatory)*
+    The estimated number of days to deliver the service after purchase.
+
+    **Optional pricing controls:**
+
+    <Accordion title="Add Discount">
+      Apply a percentage or flat-amount reduction to this package's price. The discounted price displays to clients alongside the original price, creating an effective promotional effect.
+    </Accordion>
+
+    <Accordion title="Add Trial Period (subscription only)">
+      Offer a free or reduced-price trial before the regular subscription billing begins. This option is only available on subscription-type services.
+    </Accordion>
+
+    <Accordion title="Add Quantity Limit">
+      Cap the number of units a client can purchase in a single checkout session. Use this for limited-availability packages or services with capacity constraints.
+    </Accordion>
+
+    <Accordion title="Add More Price Details">
+      Break down the total cost into individual line items — for example, showing *base price + setup fee + per-unit cost*. Each breakdown label supports a maximum of **20 characters**.
+    </Accordion>
+
+    <Note>
+      All required fields (Amount and Delivery Time) must be completed for every package before you can publish the service.
+    </Note>
+  </Step>
+
+  <Step title="Add default tasks for automation">
+    Every package includes a **Default Tasks** section. Tasks defined here automatically generate inside the order workspace the moment a client purchases this package — no manual setup needed after each sale.
+
+    Click **+ Add More** to open the task creation modal. For each task, you can configure:
+
+    | Field | Details |
+    |---|---|
+    | **Task Name** | Mandatory; maximum **160 characters** |
+    | **Description** | Detailed instructions for the assignee |
+    | **Assignee** | Team member responsible for completing this task |
+    | **Attachment** | Upload reference files; accepted formats: csv, odt, doc, docx, htm, html, pdf, ppt, pptx, txt, xls, xlsx, jpg, jpeg, png, gif, webp, svg, ai, mp4, mp3, wav, zip, rar; max file size **1 GB** per file |
+    | **Label** | Tag the task for filtering and reporting |
+    | **Status** | Initial status when the task is created |
+    | **Client Review** | Toggle on if this task requires client sign-off before it's considered complete |
+
+    Add as many tasks as needed to fully cover the delivery process for this package. Consistent default tasks ensure every order follows the same quality-controlled workflow.
+
+    <Tip>
+      Map your default tasks to your internal SOP. For example, a *Social Media Management* package might auto-generate tasks like *Content Calendar Draft*, *Client Approval*, *Schedule Posts*, and *Monthly Report*.
+    </Tip>
+  </Step>
+
+  <Step title="Add FAQs and portfolio">
+    Expand the **Additional Information** section to add two optional but high-impact elements:
+
+    **Portfolio Attachment**
+    Link a portfolio category to this service so clients can browse relevant samples of your past work directly on the service listing. You can connect an existing portfolio category or create a new one from this screen.
+
+    **Frequently Asked Questions (FAQs)**
+    Click **+ Add** to insert a question-and-answer pair. Add as many FAQs as relevant — common topics include:
+
+    - Content originality and rights
+    - Revision and feedback process
+    - Scope boundaries and what's *not* included
+    - Timelines and communication cadence
+    - Payment and refund policies
+
+    Well-written FAQs reduce back-and-forth before purchase and help clients self-qualify.
+  </Step>
+
+  <Step title="Attach an intake form">
+    An intake form collects the information you need from a client before work begins — for example, brand guidelines, access credentials, target audience, or project goals.
+
+    - Click **+ Create New Intake Form** to build a form from scratch, or select an existing form from the dropdown.
+    - If this service doesn't require an intake form, click **Skip** to bypass this section.
+    - Click **Update** to save your intake form selection and continue.
+
+    <Note>
+      The intake form is optional but strongly recommended for services that require client-specific inputs before delivery can start.
+    </Note>
+  </Step>
+
+  <Step title="Publish the service">
+    At the bottom of the service editor:
+
+    1. Toggle **Publish this Service** to the ON position.
+    2. Click **Save** (or **Update Service** if editing an existing service).
+
+    Once published, the service becomes immediately visible to clients in the portal. If you leave the toggle off, the service is saved as a draft and only visible to your team.
+
+    <Tip>
+      Use draft mode to prepare a service in advance and publish it at launch time — useful for seasonal promotions or new offering announcements.
+    </Tip>
+  </Step>
+</Steps>
+
+## Add-On Setup
+
+Add-ons are optional extras that clients can select during checkout — for example, *Rush Delivery*, *Extra Revisions*, or a *Monthly Report*. They let you upsell complementary services without creating entirely new listings.
+
+### Creating an Add-On
+
+<Steps>
+  <Step title="Open Add-Ons">
+    Go to **Services** in the sidebar, click the **down arrow** button next to the Services heading, and select **Add-Ons**.
+  </Step>
+  <Step title="Create a new add-on">
+    Click **+ Add New Add-on** and fill in:
+
+    - **Add-on Name**
+    - **Description** — use the rich text editor to clearly explain what the add-on includes
+    - **Pricing Type** — choose *One-Time* or *Subscription*
+    - **Pricing details:**
+      - *One-time:* enter the amount and currency
+      - *Subscription:* set the billing interval (e.g., every 1 month), an optional billing cycle limit, the subscription fee, and currency
+  </Step>
+  <Step title="Publish and save">
+    Toggle **Publish** ON, then click **Create**. Only published add-ons are visible when connecting them to order forms.
+  </Step>
+</Steps>
+
+### Attaching an Add-On to an Order Form
+
+<Steps>
+  <Step title="Open the order form">
+    Navigate to **Forms** and open the relevant order form.
+  </Step>
+  <Step title="Select the service">
+    Choose the service you want to attach the add-on to.
+  </Step>
+  <Step title="Add the add-ons">
+    Select the **Add-ons** section from the left panel, then choose the add-ons you want to associate with this service.
+  </Step>
+  <Step title="Save the form">
+    Click **Save**. Clients will now see the selected add-ons as optional extras during checkout.
+  </Step>
+</Steps>
+
+<Note>
+  Add-ons must use the same currency as the service they're attached to. If currencies don't match, the add-on won't appear in the selection list.
+</Note>
+
+### Subscription Add-On Billing Behavior
+
+When the billing cycles of a service and a subscription add-on differ, AgencyHandy handles the overlap automatically:
+
+<Accordion title="Add-on has more cycles than the service">
+  Both the service and add-on are billed together for the service's duration. After the service ends, the add-on continues billing alone for its remaining cycles.
+
+  **Example:** Service runs for 4 cycles, add-on runs for 5 cycles → billed together for 4 cycles, add-on billed alone for 1 additional cycle.
+</Accordion>
+
+<Accordion title="Add-on has fewer cycles than the service">
+  Both the service and add-on are billed together for the add-on's duration. After the add-on ends, the service continues billing alone for its remaining cycles.
+
+  **Example:** Service runs for 5 cycles, add-on runs for 3 cycles → billed together for 3 cycles, service billed alone for 2 additional cycles.
+</Accordion>
+
+## Editing a Service
+
+After a service is published, you can update any field without interrupting existing orders.
+
+1. Go to **Services** and find the service you want to update.
+2. Click the **three-dot menu** (⋮) on the right side of the service row.
+3. Select **Edit**. The service editor opens with all existing settings populated.
+4. Make your changes — update the title, description, pricing, media, packages, tasks, or FAQs.
+5. Click **Update Service** to save.
+
+<Warning>
+  Changes to package pricing or delivery time take effect for **new orders only**. Existing orders are not retroactively affected.
+</Warning>
+
+## Field Reference
+
+| Field | Limit |
+|---|---|
+| Packages per service | Up to 5 |
+| Deliverables per package (What's Included) | Up to 15 |
+| Package Brief | 140 characters |
+| Package icon size | 32 × 32 px |
+| Package media file size | 5 MB (PNG, JPG, JPEG) |
+| Task name | 160 characters |
+| Task attachment file size | 1 GB per file |
+| Price breakdown label | 20 characters |

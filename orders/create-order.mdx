@@ -1,0 +1,143 @@
+---
+title: "How to Create, Edit, and Delete Orders in AgencyHandy"
+sidebarTitle: "Create Order"
+description: "Step-by-step guide to creating, editing, and deleting orders in AgencyHandy — including role requirements, form fields, and status transitions."
+---
+
+Creating an order in AgencyHandy gives you a structured workspace for delivering a service to a client. You fill in the key details upfront — client, service, pricing, dates, and a project brief — and everything else, from tasks to discussions, flows from that single record. This page walks you through creating an order from scratch, updating it after the fact, changing its status, and deleting it when it is no longer needed.
+
+## Requirements
+
+- You must be logged in to AgencyHandy.
+- You must hold a **Super Admin**, **Admin**, or **Project Manager** role to create or edit orders.
+- Only **Super Admins** and **Admins** can delete orders.
+
+## Create a New Order
+
+<Steps>
+  <Step title="Navigate to Orders">
+    In the left sidebar of your AgencyHandy dashboard, click **Orders**.
+  </Step>
+
+  <Step title="Open the creation form">
+    Click **+ Create New Order** in the top-right corner. A form will appear.
+  </Step>
+
+  <Step title="Fill in the order details">
+    Complete the fields in the form:
+
+    | Field | Required | Notes |
+    |---|---|---|
+    | **Client** | ✅ | Select from your existing client list |
+    | **Service** | ✅ | Includes both published and unpublished services |
+    | **Project Manager** | ❌ | Optional; assign a PM to own the delivery |
+    | **Quantity** | ✅ | Number of units being ordered |
+    | **Price** | ✅ | Agreed budget for the order |
+    | **Kick-off Date** | ✅ | When work begins |
+    | **Due Date** | ✅ | Delivery deadline |
+    | **Order Brief** | ❌ | Instructions, requirements, or reference notes for your team |
+    | **Attachments** | ❌ | Supporting files relevant to the order |
+
+    <Tip>
+      If the selected service has add-ons linked to it, an **Add-On** section will appear in the form. Include any relevant add-ons before submitting.
+    </Tip>
+  </Step>
+
+  <Step title="Review your entries">
+    Double-check all fields for accuracy — especially the client, service, price, and due date.
+  </Step>
+
+  <Step title="Submit the order">
+    Click **Create** to finalize the order. You will receive a confirmation message once it is created successfully.
+  </Step>
+</Steps>
+
+### What Happens After You Create an Order
+
+- All Super Admins in your company automatically gain access to the new order.
+- The client receives a notification that their order has been created.
+- The order appears in the **Orders** list with a status of **Pending**.
+
+## Edit or Update an Order
+
+You can update an order at any point to correct details, adjust pricing, change the due date, or accommodate client requests.
+
+<Note>
+You must be a **Super Admin**, **Admin**, or **Project Manager** to edit an order.
+</Note>
+
+<Steps>
+  <Step title="Open the Orders list">
+    Navigate to **Orders** in the left sidebar.
+  </Step>
+
+  <Step title="Select the order to edit">
+    Locate the order you want to update and tick the checkbox beside it.
+  </Step>
+
+  <Step title="Activate the edit button">
+    An **Edit** button will appear in the top-right corner. Click it to open the order details in edit mode.
+  </Step>
+
+  <Step title="Modify the necessary fields">
+    Update any fields that need to change — client details, service, pricing, dates, brief, or assigned PM.
+  </Step>
+
+  <Step title="Save your changes">
+    Click **Update** to save. A confirmation message will confirm the update was successful.
+  </Step>
+</Steps>
+
+## Change an Order's Status
+
+Order status reflects where a piece of work stands in your delivery pipeline. AgencyHandy defines five fixed statuses — you cannot add or rename them.
+
+| Status | Meaning |
+|---|---|
+| **Pending** | Created, not yet started |
+| **Ongoing** | Actively being worked on |
+| **In Review** | Submitted for review; awaiting acceptance |
+| **Complete** | Delivered and accepted |
+| **Cancelled** | No longer active |
+
+<Note>
+Only **Super Admins**, **Admins**, and **Project Managers** can change an order's status. Employees and clients cannot change status.
+</Note>
+
+To update the status, open the order and use the status selector at the top of the order detail page. Select the new status from the dropdown and confirm.
+
+## Delete an Order
+
+Deleting an order permanently removes it from the system. Use this only when an order is truly obsolete — for example, if it was created in error or is a duplicate.
+
+<Warning>
+Order deletion is irreversible. Once you delete an order, it cannot be recovered. Proceed with caution.
+</Warning>
+
+<Note>
+Only **Super Admins** and **Admins** can delete orders.
+</Note>
+
+<Steps>
+  <Step title="Navigate to Orders">
+    Click **Orders** in the left sidebar.
+  </Step>
+
+  <Step title="Find the order to delete">
+    Scroll or search for the order you want to remove from the list.
+  </Step>
+
+  <Step title="Initiate deletion">
+    Click the **trash bin icon** associated with the order.
+  </Step>
+
+  <Step title="Confirm deletion">
+    A confirmation prompt will appear. Confirm to permanently delete the order.
+  </Step>
+</Steps>
+
+After deletion, review your remaining orders to ensure everything is in order. The deleted entry will no longer appear in any list or report.
+
+## Adding Team Members to an Order
+
+Super Admins, Admins, and PMs can add employees to an order at any time. When a team member is added, they receive an in-app notification. Assigned employees gain visibility into the order and its tasks, but they cannot manage the order itself (edit details, change status, or delete it).

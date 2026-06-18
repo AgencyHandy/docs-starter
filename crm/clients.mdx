@@ -1,0 +1,218 @@
+---
+title: "Client Management: Profiles, Import, and Configuration"
+sidebarTitle: "Clients"
+description: "Create and import client profiles in AgencyHandy, track orders and invoices, manage portal access, and organize clients with categories."
+---
+
+The Clients section of AgencyHandy's CRM is your centralized hub for every organization or individual that has moved past the prospect stage. Here you can create client profiles manually or in bulk, keep contact details current, track recent orders and invoices, segment clients into custom categories, and monitor portal access — all from one list view.
+
+<Note>
+  You need a **Super Admin** or **Admin** role to create, edit, import, or configure client profiles. Managers can view client details and activity logs.
+</Note>
+
+## Creating a Client Profile
+
+When you onboard a new client, AgencyHandy creates a portal account for them and sends a secure login invitation.
+
+<Steps>
+  <Step title="Navigate to Clients">
+    Log in to your AgencyHandy account, then click **CRM** in the left sidebar and select the **Clients** tab.
+  </Step>
+  <Step title="Open the creation form">
+    Click **+ Create Client** in the top-right corner. A form opens.
+  </Step>
+  <Step title="Enter client information">
+    Fill in the client's details:
+
+    - **First Name / Last Name** *(mandatory)*
+    - **Email** *(mandatory — used to send the portal invitation)*
+    - **Company Name**
+    - **Phone Number**
+    - **Country, State, City, Zip Code**
+    - **Category** — assign an existing configuration category if applicable
+  </Step>
+  <Step title="Save the profile">
+    Click **Create**. The profile is added to your client list immediately.
+  </Step>
+</Steps>
+
+<Note>
+  After you create the profile, the client receives an email containing a secure login URL. Clicking that URL activates their portal account and lets them log in for the first time.
+</Note>
+
+## Importing Clients from CSV
+
+If you're migrating from another platform or have a spreadsheet of existing clients, you can import them all at once.
+
+<Steps>
+  <Step title="Click Import">
+    From the Clients list, click the **Import** button at the top right.
+  </Step>
+  <Step title="Upload your CSV file">
+    Drag and drop your file onto the upload area, or click to browse and select it. AgencyHandy accepts CSV files containing the following fields:
+
+    - Client Name *(required)*
+    - Email *(required)*
+    - Company Name
+    - Country
+    - State
+    - City
+    - Zip Code
+  </Step>
+  <Step title="Map your columns">
+    AgencyHandy automatically detects column names that match its field names. For any unmatched columns, use the dropdown menus to manually map them to the correct system fields.
+  </Step>
+  <Step title="Preview and confirm">
+    Review the preview table to catch any formatting issues before the data is saved.
+  </Step>
+  <Step title="Finalize the import">
+    Click **Save**. A confirmation message appears once all records are imported successfully.
+  </Step>
+</Steps>
+
+<Tip>
+  If your spreadsheet column headers match AgencyHandy's field names exactly (e.g., "email", "company name"), the mapper fills in automatically — no manual matching required.
+</Tip>
+
+## Exporting Clients
+
+Back up your client database or share it with stakeholders by exporting to CSV or Excel.
+
+<Steps>
+  <Step title="Click Export">
+    From the Clients list, click the **Export** button at the top right.
+  </Step>
+  <Step title="Customize your export">
+    Choose which columns to include — select **All Columns** for a complete export, or pick specific fields such as name, contact details, company, or address.
+  </Step>
+  <Step title="Choose a format">
+    Select **CSV** or **XLSX** depending on your intended use.
+  </Step>
+  <Step title="Download the file">
+    Click **Export**. The file generates and downloads to your device. Store it securely to protect client data.
+  </Step>
+</Steps>
+
+## Editing a Client Profile
+
+<Steps>
+  <Step title="Select the client">
+    In the Clients list, click the checkbox next to the client you want to update, or click directly on their name to open their profile.
+  </Step>
+  <Step title="Enter edit mode">
+    Click the **Edit** button in the top-right corner of the client profile. An edit form appears.
+  </Step>
+  <Step title="Update the information">
+    Modify any fields — name, email, phone, address, company, or category.
+  </Step>
+  <Step title="Save your changes">
+    Click **Update**. A confirmation message confirms the profile has been saved successfully.
+  </Step>
+</Steps>
+
+## Searching, Sorting, and Filtering
+
+The Clients list gives you several tools to find the right client quickly:
+
+<CardGroup cols={2}>
+  <Card title="Search by Name" icon="magnifying-glass">
+    Type a client's name in the search bar to instantly filter the list.
+  </Card>
+  <Card title="Filter by Company" icon="building">
+    Narrow the list to clients associated with a specific company.
+  </Card>
+  <Card title="Filter by Email" icon="envelope">
+    Locate a client when you know their email address but not their name.
+  </Card>
+  <Card title="Filter by Status" icon="circle-check">
+    Show only active, inactive, or invited clients.
+  </Card>
+  <Card title="Sort Alphabetically" icon="arrow-down-a-z">
+    Sort the full client list A–Z or Z–A by name for quick reference.
+  </Card>
+  <Card title="Filter by Category" icon="tag">
+    Show only clients assigned to a specific configuration category.
+  </Card>
+</CardGroup>
+
+## Tracking Client Activity
+
+Inside each client profile you'll find tabs that give you a live picture of that client's engagement with your agency:
+
+<Accordion title="Recent Orders">
+  View a history of all orders placed by the client, including service name, package, status, and date. This gives you a quick snapshot of their purchasing history without leaving the CRM.
+</Accordion>
+
+<Accordion title="Recent Tickets">
+  See all support or service tickets submitted by the client. Use this view to prioritize responses and ensure no request falls through the cracks.
+</Accordion>
+
+<Accordion title="Recent Invoices">
+  Access a log of all invoices generated for the client, including payment status. This helps you monitor outstanding balances and invoice history in one place.
+</Accordion>
+
+## Client Configuration (Categories)
+
+Client Configuration lets you create color-coded categories to segment your client list — for example, *High Priority*, *Retainer*, or *On Hold*. Categories appear as filter options on the client list so you can instantly surface the right group.
+
+<Steps>
+  <Step title="Open Configuration">
+    From the Clients section, click the **Configuration** button.
+  </Step>
+  <Step title="Create a new category">
+    Click **+ Create Category**.
+  </Step>
+  <Step title="Enter category details">
+    - **Category Name** — a unique, descriptive label (e.g., *Enterprise Clients*)
+    - **Short Description** — a brief note explaining the category's purpose
+    - **Color** — choose a distinct color for quick visual recognition
+  </Step>
+  <Step title="Save the category">
+    Click **Create**. The category is now available to assign when editing client profiles.
+  </Step>
+  <Step title="Assign clients to the category">
+    Open any client profile, click **Edit**, select the **Category** field, and choose the relevant category. Click **Update** to save.
+  </Step>
+</Steps>
+
+<Tip>
+  Use consistent color conventions across categories — for example, red for high-urgency clients and green for fully onboarded accounts — to make the list scannable at a glance.
+</Tip>
+
+## Client Activity Log
+
+The Activity Log records every login and logout event for a client's portal account, giving you a clear audit trail of their engagement.
+
+**To view the log:**
+
+1. Go to **Clients** and open a specific client's profile.
+2. Click the **Activity Log** tab in the top navigation bar of the profile.
+3. Review the chronological list of authentication events.
+
+**What the log shows:**
+
+- Exact date and timestamp of each **login**
+- Exact date and timestamp of each **logout**
+- A running history of all authentication events
+
+The log updates in real time and cannot be edited or deleted. Clients do not have access to their own activity log — it is for administrative and compliance visibility only.
+
+<Note>
+  At this stage, the activity log captures authentication events only (login and logout). Actions taken within the portal — such as viewing orders — are not yet logged here.
+</Note>
+
+## Emailing a Client
+
+You can send an email to any client directly from their profile without leaving AgencyHandy. Open the client's profile and use the **Email** option to compose your message. The **To** field is pre-filled with the client's email address.
+
+## Client Impersonation
+
+Admins can impersonate a client account to see exactly what the client sees in their portal — useful for troubleshooting access issues or walking a client through a process during a support call. Look for the **Impersonate** option inside the client's profile.
+
+<Warning>
+  Use impersonation for support purposes only. Any actions taken while impersonating a client are performed on their behalf and will be reflected in their account.
+</Warning>
+
+## Company Accounts (B2B)
+
+If you work with businesses rather than individuals, you can set a **Company Name** on any client profile to group contacts under the same organization. The Clients list can be filtered by company, making it easy to view all contacts at a given account together.

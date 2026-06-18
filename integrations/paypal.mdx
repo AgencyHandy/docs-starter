@@ -1,0 +1,70 @@
+---
+title: "Connect PayPal for Secure Client Payment Collection"
+sidebarTitle: "PayPal"
+description: "Link your PayPal account to AgencyHandy and let clients pay invoices using PayPal's trusted, globally recognized payment platform."
+---
+
+AgencyHandy's PayPal integration gives your clients a secure, familiar way to pay invoices without a credit card. PayPal supports a wide range of international currencies, making it especially useful for agencies with clients outside of their home country.
+
+<Note>
+  PayPal **cannot** be used for upsells due to platform-level currency and regional limitations. For upsell payments, use Stripe instead.
+</Note>
+
+<Note>
+  Only **SuperAdmin** and **Admin** roles can connect or manage the PayPal integration. You must have an active PayPal account before you start.
+</Note>
+
+## Connect PayPal
+
+<Steps>
+  <Step title="Open PayPal Integration settings">
+    Sign in to AgencyHandy, then go to **Integrations → PayPal Integration** in the left sidebar.
+  </Step>
+
+  <Step title="Start the connection">
+    Click **Connect PayPal**. You are redirected to PayPal's login page.
+  </Step>
+
+  <Step title="Authorize AgencyHandy">
+    Sign in to your PayPal account and review the permissions requested. Click **Allow** (or **Grant**) to authorize AgencyHandy to access your account.
+  </Step>
+
+  <Step title="Confirm the connection">
+    After successful authorization, PayPal redirects you back to AgencyHandy. A confirmation message — **PayPal Connected** — appears on the integration card. Clients can now pay invoices using PayPal.
+  </Step>
+</Steps>
+
+## How clients pay via PayPal
+
+Once the integration is active, a **Pay with PayPal** button appears on any invoice you send. Your client clicks the button, logs in to their PayPal account (or pays as a guest depending on their region), and completes the payment. AgencyHandy updates the invoice status automatically when payment is confirmed by PayPal.
+
+## Supported currencies
+
+AgencyHandy supports the following currencies for PayPal payments:
+
+| Region | Currencies |
+|---|---|
+| Americas | USD, CAD, BRL, MXN |
+| Europe | EUR, GBP, CHF, NOK, SEK, DKK, PLN, CZK, HUF |
+| Asia-Pacific | AUD, NZD, JPY, HKD, SGD, MYR, PHP, THB, TWD |
+| Middle East / Other | ILS, CNY |
+
+<Warning>
+  Some currencies have restrictions:
+  - **JPY** and a few others do not support decimal amounts — avoid fractional invoice totals.
+  - **BRL** is only available for Brazilian PayPal accounts. If your account is not based in Brazil, BRL payments are automatically converted to your primary currency.
+  - Certain currencies are only available for in-country accounts. Confirm your account's holding currency matches your invoice currency to prevent errors.
+</Warning>
+
+<Note>
+  PayPal applies its own conversion fees and spreads when currency conversion occurs. These are not controlled by AgencyHandy.
+</Note>
+
+## Test the integration
+
+Before using PayPal for real client invoices, run a quick test:
+
+1. Create a test invoice in AgencyHandy using a [supported currency](#supported-currencies).
+2. Send the invoice to a secondary PayPal account you control.
+3. Complete the payment from the secondary account.
+4. Return to AgencyHandy and confirm the invoice status updated to **Paid** and that the funds appear in your PayPal account.

@@ -1,0 +1,179 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "almond",
+  "name": "AgencyHandy",
+  "description": "AgencyHandy documentation — learn how to manage clients, orders, invoices, and your team from a single platform.",
+  "colors": {
+    "primary": "#6C5CE7",
+    "light": "#EDE9FF",
+    "dark": "#4B3CC7"
+  },
+  "favicon": "/favicon.ico",
+  "icons": {
+    "library": "lucide"
+  },
+  "styling": {
+    "eyebrows": "breadcrumbs"
+  },
+  "contextual": {
+    "options": ["copy", "view", "assistant", "mcp", "add-mcp"]
+  },
+  "logo": {
+    "light": "https://media.brand.dev/a0ee703a-a72d-4617-b74e-ac9f1d6da0ab.svg",
+    "dark": "https://media.brand.dev/a0ee703a-a72d-4617-b74e-ac9f1d6da0ab.svg"
+  },
+  "navbar": {
+    "links": [],
+    "primary": {
+      "type": "button",
+      "label": "Sign In",
+      "href": "https://app.agencyhandy.com"
+    }
+  },
+  "navigation": {
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Home",
+          "icon": "house",
+          "href": "/"
+        },
+        {
+          "anchor": "AgencyHandy App",
+          "icon": "arrow-up-right",
+          "href": "https://app.agencyhandy.com"
+        },
+        {
+          "anchor": "Support",
+          "icon": "life-buoy",
+          "href": "https://www.agencyhandy.com"
+        }
+      ]
+    },
+    "directory": "card",
+    "tabs": [
+      {
+        "tab": "User Guide",
+        "groups": [
+          {
+            "group": "Get Started",
+            "icon": "rocket",
+            "expanded": true,
+            "pages": [
+              "getting-started/introduction",
+              "getting-started/sign-up",
+              "getting-started/log-in",
+              "getting-started/dashboard-overview"
+            ]
+          },
+          {
+            "group": "Workspace Setup",
+            "icon": "settings",
+            "pages": [
+              "workspace/general-settings",
+              "workspace/appearance",
+              "workspace/custom-domain",
+              "workspace/email-setup",
+              "workspace/portals"
+            ]
+          },
+          {
+            "group": "CRM",
+            "icon": "users",
+            "pages": [
+              "crm/leads",
+              "crm/clients"
+            ]
+          },
+          {
+            "group": "Services & Orders",
+            "icon": "package",
+            "pages": [
+              "services/overview",
+              "services/create-service",
+              "orders/overview",
+              "orders/create-order",
+              "orders/tasks"
+            ]
+          },
+          {
+            "group": "Proposals & Invoices",
+            "icon": "file-text",
+            "pages": [
+              "proposals/overview",
+              "invoices/overview",
+              "invoices/create-invoice",
+              "invoices/subscriptions"
+            ]
+          },
+          {
+            "group": "Team & Tasks",
+            "icon": "circle-check",
+            "pages": [
+              "teams/manage-team",
+              "tasks/all-tasks",
+              "tasks/timesheet",
+              "tickets/support-tickets"
+            ]
+          },
+          {
+            "group": "Forms & Files",
+            "icon": "layout-template",
+            "pages": [
+              "forms/order-forms",
+              "forms/intake-forms",
+              "files/manage-files"
+            ]
+          },
+          {
+            "group": "Account & Billing",
+            "icon": "credit-card",
+            "pages": [
+              "account/profile",
+              "account/plans-pricing",
+              "account/multiple-workspaces"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Integrations & API",
+        "groups": [
+          {
+            "group": "Payments",
+            "icon": "credit-card",
+            "pages": [
+              "integrations/stripe",
+              "integrations/paypal",
+              "integrations/other-payments"
+            ]
+          },
+          {
+            "group": "Integrations",
+            "icon": "plug",
+            "pages": [
+              "integrations/slack",
+              "integrations/webhooks"
+            ]
+          },
+          {
+            "group": "API Reference",
+            "icon": "code",
+            "pages": [
+              "api/getting-started",
+              "api/create-lead",
+              "api/create-client",
+              "api/update-order"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "socials": {
+      "x": "https://x.com/agencyhandy",
+      "linkedin": "https://linkedin.com/company/agencyhandy"
+    }
+  }
+}

@@ -1,0 +1,162 @@
+---
+title: "Subscription Billing and Recurring Invoices in AgencyHandy"
+sidebarTitle: "Subscriptions"
+description: "How AgencyHandy handles recurring subscription billing — automated invoices, billing cycles, payment methods, cancellations, and Wise payment links."
+---
+
+AgencyHandy's subscription billing system lets you automate the entire recurring revenue workflow. When a client subscribes to a service, the platform creates a Subscription ID, generates orders, and issues invoices automatically on each billing cycle — whether that's daily, weekly, monthly, or yearly. You stay in control: you can view subscription details, monitor payment history, handle failed payments, and cancel subscriptions when needed, all from within AgencyHandy.
+
+## How Subscription Billing Works
+
+The subscription lifecycle in AgencyHandy follows six key stages.
+
+<Steps>
+  <Step title="Create a subscription-based service">
+    Navigate to **Services** and click **Create New Service**. Select **Subscription** as the service type.
+
+    Define:
+    - **Billing Cycle** — Daily, Weekly, Monthly, or Yearly
+    - **Renewal Behavior** — Create New Order, Update Existing Order, or Keep Unchanged
+    - **Pricing & Payment Method** — PayPal, Stripe, or Manual
+
+    Click **Publish** to make the service available.
+  </Step>
+  <Step title="Client purchases the subscription">
+    The client selects the subscription service, proceeds to checkout, and chooses a payment method.
+
+    AgencyHandy automatically:
+    - Creates a **Subscription ID**
+    - Generates an **Order**
+    - Issues an **Invoice**
+
+    For **PayPal or Stripe** payments, the invoice is marked **Paid** instantly. For **Manual Payment**, the invoice stays **Open** until the agency confirms receipt.
+  </Step>
+  <Step title="Automated recurring billing">
+    On each renewal date, AgencyHandy processes the payment automatically (for PayPal/Stripe) and generates the next invoice.
+
+    If payment succeeds, the invoice is marked **Paid**. If it fails:
+    - The invoice remains **Open**
+    - The client receives a **Failed Payment Notification**
+    - The agency receives an alert to retry or request updated payment details
+  </Step>
+  <Step title="Manage active subscriptions">
+    Navigate to **Subscription Management** in the left sidebar to view all active and inactive subscriptions. Select any subscription to see its full details.
+  </Step>
+  <Step title="Handle cancellations">
+    When you cancel a subscription, you can choose to:
+    - **Cancel completely** — stop all future billing and orders
+    - **Keep the last active order running** — let the client continue receiving service through the current period's deadline
+
+    To delete a service entirely, all active subscriptions on that service must be canceled first.
+  </Step>
+  <Step title="Notifications">
+    The system automatically sends:
+    - **Renewal Reminders** before the next billing date
+    - **Payment Confirmations** after successful charges
+    - **Failed Payment Alerts** to both the client and agency admins
+  </Step>
+</Steps>
+
+## Subscription Details Page
+
+The Subscription Details page gives you a complete picture of any individual subscription — from the service and package down to every invoice and event log entry.
+
+### How to Access
+
+1. Go to **Subscriptions** in the left sidebar
+2. Click on any subscription from the list to open its detail page
+
+### What You Can See
+
+<Tabs>
+  <Tab title="Subscription Info">
+    - **Service Name** and **Package Name**
+    - **Client Name**
+    - **Billing Cycle** (e.g., Monthly, Yearly)
+    - **Kick Off Date** and **End Date**
+    - Subscription **Status** (Active or Inactive)
+  </Tab>
+  <Tab title="Payment Details">
+    - **Subscription Fee**
+    - **Total Number of Payments** made to date
+    - **Payment Method** (Stripe, PayPal, Wise, Manual Banking, etc.)
+    - **Next Payment Date**
+  </Tab>
+  <Tab title="Order History">
+    - **Order ID**
+    - **Status** (e.g., Ongoing, Completed)
+    - **Kick Off Date** and **Due Date** for each order
+  </Tab>
+  <Tab title="Invoice History">
+    - **Invoice ID**
+    - **Amount**
+    - **Status** (Open, Paid, etc.)
+    - **Payment Date** and **Due Date**
+  </Tab>
+  <Tab title="Event Logs">
+    A chronological audit trail of all activities related to the subscription — status changes, payment events, cancellations, and more.
+  </Tab>
+</Tabs>
+
+<Note>
+  A single subscription can have multiple linked orders and invoices. Invoices tied to subscriptions update dynamically when payments are received.
+</Note>
+
+## Wise Support for Manual Subscription Invoices
+
+If you collect international payments, you can embed a **Wise payment link** directly into subscription invoices. This gives clients a convenient way to pay without needing to set up a bank transfer manually.
+
+### Requirements
+
+- An active AgencyHandy account
+- An active **Wise account** with a valid payment link generated
+
+### Steps to Add a Wise Link to an Invoice
+
+<Steps>
+  <Step title="Open the Invoice section">
+    Click **Invoices** in the left sidebar, then click **+ Create Invoice**.
+  </Step>
+  <Step title="Select the client and order">
+    Choose the client from the dropdown. All related Order IDs will appear. Select the relevant Order ID and enter the amount and any items being billed.
+  </Step>
+  <Step title="Apply discounts and taxes">
+    Add any applicable discount percentage, discount amount, paid amount, due amount, and VAT/tax details. Include billing address and notes as needed.
+  </Step>
+  <Step title="Add the Wise payment link">
+    In the **Payment Method** section, select **Wise** as the payment option. Paste your Wise payment link into the provided field.
+  </Step>
+  <Step title="Save the invoice">
+    Click **Save** to finalize the invoice. The Wise payment link will appear in the invoice so the client can pay directly.
+  </Step>
+</Steps>
+
+<Tip>
+  Always double-check your Wise payment link and invoice totals before saving. Verify that the order details, discounts, and tax information are accurate to avoid billing errors.
+</Tip>
+
+## Important Notes on Subscription Billing
+
+<Accordion title="Who can cancel subscriptions?">
+  Only **Super Admins** and **Admins** can cancel subscriptions. Clients cannot cancel their own subscriptions — they must request cancellation through the agency.
+</Accordion>
+
+<Accordion title="Subscription IDs are permanent">
+  Once a subscription is created, its Subscription ID cannot be edited. This ensures consistent tracking throughout the subscription's lifetime.
+</Accordion>
+
+<Accordion title="Failed payments and order creation">
+  When a payment fails, the invoice remains Open and a new order is created for the failed period. The subscription status stays **Active** until an admin manually retries the payment or cancels the subscription.
+</Accordion>
+
+<Accordion title="Manual payment orders">
+  If a client pays outside of Stripe or PayPal (e.g., via bank transfer), the admin must manually mark the invoice as **Paid** in AgencyHandy. The system does not do this automatically for manual payments.
+</Accordion>
+
+<Accordion title="Unpaid self-checkout attempts">
+  If a client starts a subscription checkout but does not complete payment, they remain in the system as a **Lead** until they successfully subscribe.
+</Accordion>
+
+<Accordion title="Invoice due dates">
+  Due dates for subscription invoices are set automatically based on the billing cycle you configured (e.g., monthly invoices are due one month after the kick-off date).
+</Accordion>

@@ -1,0 +1,132 @@
+---
+title: "Manage Your Agency Team Members and Roles in AgencyHandy"
+sidebarTitle: "Manage Team"
+description: "Invite team members by email, assign roles and permissions, change roles for existing members, and remove users from your agency workspace in AgencyHandy."
+---
+
+AgencyHandy's Teams feature gives you a secure, organized way to build and manage your agency's workforce. You invite members by email, assign them a role that controls what they can see and do, and they receive a secure login link to complete onboarding. As your team evolves, you can update roles at any time or remove members to keep access tight and relevant.
+
+## Accessing the Team Dashboard
+
+Click **Teams** in the left sidebar to open the Team Dashboard. Here you see a list of all current team members along with their assigned roles. From this view you can invite new members, update roles, and remove people from the workspace.
+
+## Roles in AgencyHandy
+
+AgencyHandy has five default roles, each with preset permission levels. When you invite a team member, you assign one of these roles. You can change a member's role at any point after they join.
+
+| Role | Typical Capabilities |
+|------|---------------------|
+| **Super Admin** | Full access to everything — all settings, all data, all team management actions |
+| **Admin** | Broad access including invoices, proposals, orders, team management, and settings |
+| **Project Manager (PM)** | Manages orders assigned to them, views tasks for their orders, can invite team members |
+| **Employee** | Limited to tasks directly assigned to them; no access to financial or admin sections |
+
+<Note>
+  Only **Super Admins** and **Admins** can change roles or delete team members. PMs can invite new members but cannot change or remove existing ones.
+</Note>
+
+## Inviting a Team Member
+
+<Steps>
+  <Step title="Open the Team Dashboard">
+    Click **Teams** in the left sidebar.
+  </Step>
+  <Step title="Click + Create Team">
+    Click the **+ Create Team** button. An invitation form will appear.
+  </Step>
+  <Step title="Enter the email address">
+    Type the email address of the person you want to invite. This is required.
+  </Step>
+  <Step title="Assign a role">
+    Select the appropriate role from the dropdown. Choose carefully — this determines what the new member can access from their first login.
+  </Step>
+  <Step title="Send the invitation">
+    Click **Invite**. AgencyHandy sends the invited person an email with:
+    - A **secure login URL** to your agency's workspace
+    - A **computer-generated password** to use on first login
+  </Step>
+  <Step title="Member completes onboarding">
+    The invited team member follows the link in their email, logs in with the provided credentials, and completes the onboarding process. Once they log in, they are added to your agency workspace and can start collaborating immediately.
+  </Step>
+</Steps>
+
+<Tip>
+  Ask the new team member to change their computer-generated password to something secure after their first login.
+</Tip>
+
+## Setting Roles for Team Members
+
+You can assign or update roles in two ways: during the invitation, or after the member has already joined.
+
+<Tabs>
+  <Tab title="While Inviting">
+    When you fill out the invitation form, select the role from the dropdown before clicking **Invite**. The role takes effect as soon as the member logs in for the first time.
+  </Tab>
+  <Tab title="For Existing Members">
+    1. Go to **Teams** in the left sidebar to open the Team Dashboard.
+    2. Find the team member whose role you want to change.
+    3. Click the **down arrow** button to the right of their name.
+    4. A list of default role names will appear. Select the new role.
+    5. The role updates immediately — no save step required.
+  </Tab>
+</Tabs>
+
+<Warning>
+  Only **Super Admins** and **Admins** can change an existing team member's role.
+</Warning>
+
+## Role Permissions Summary
+
+Use this table as a quick reference when deciding which role to assign.
+
+| Feature | Super Admin | Admin | PM | Employee |
+|---------|:-----------:|:-----:|:--:|:--------:|
+| Create & send proposals | ✅ | ✅ | ❌ | ❌ |
+| Create & manage invoices | ✅ | ✅ | ✅ | ❌ |
+| Manage all orders | ✅ | ✅ | Assigned only | ❌ |
+| View all tasks | ✅ | ✅ | Assigned orders only | Assigned tasks only |
+| Invite team members | ✅ | ✅ | ✅ | ❌ |
+| Change roles / remove members | ✅ | ✅ | ❌ | ❌ |
+| Access invoice & agency settings | ✅ | ✅ | ❌ | ❌ |
+| Cancel subscriptions | ✅ | ✅ | ❌ | ❌ |
+| Export timesheet data | ✅ | ✅ | ✅ | ❌ |
+
+## Removing a Team Member
+
+When someone leaves your agency or no longer needs access, remove them from the workspace to protect your data.
+
+<Steps>
+  <Step title="Open the Team Dashboard">
+    Navigate to **Teams** in the left sidebar.
+  </Step>
+  <Step title="Select the member to remove">
+    Tick the checkbox next to the team member you want to remove. The **Delete** button will become active.
+  </Step>
+  <Step title="Click Delete">
+    Click the **Delete** button. A confirmation modal will appear.
+  </Step>
+  <Step title="Confirm the removal">
+    Confirm your decision. AgencyHandy immediately revokes the member's access to the workspace and all associated resources.
+  </Step>
+  <Step title="Complete any handovers">
+    After removal, reassign any open tasks or orders the member was responsible for, and update relevant documentation and access permissions accordingly.
+  </Step>
+</Steps>
+
+<Warning>
+  Removing a team member **cannot be undone**. Their access is revoked permanently. If you need to give the same person access again in the future, you must send a new invitation.
+</Warning>
+
+## Additional Notes
+
+<Accordion title="Secure onboarding via email">
+  Every invitation is delivered through a secure login URL. The invited person uses this URL along with a computer-generated password to access the platform for the first time. This ensures that only the intended person gains access.
+</Accordion>
+
+<Accordion title="Role changes take effect immediately">
+  When you update a team member's role, the change applies instantly. There is no pending or confirmation step — the member's new permissions are active on their next page load.
+</Accordion>
+
+<Accordion title="Team members and task visibility">
+  An Employee can only see tasks that are directly assigned to them. A PM can only see tasks within orders where they are assigned as the Manager. Super Admins and Admins see everything. Keep this in mind when assigning roles to avoid confusion about missing tasks or orders.
+</Accordion>

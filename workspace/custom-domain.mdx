@@ -1,0 +1,126 @@
+---
+title: "Connect a Custom Domain to Your AgencyHandy Workspace"
+sidebarTitle: "Custom Domain"
+description: "Link your own subdomain (e.g., portal.yourcompany.com) to AgencyHandy by adding a CNAME record at your DNS registrar — no coding required."
+---
+
+By default, your AgencyHandy workspace is accessible at a subdomain under `agencyhandy.com`. Connecting a custom domain lets you replace that default URL with your own branded address — for example, `portal.youragency.com` — giving clients a seamless, professional experience that reinforces your brand from the very first page they land on.
+
+<Note>
+  Only **Super Admins** and **Admins** can configure a custom domain. You must also own the domain and have access to its DNS settings at your registrar to complete this setup.
+</Note>
+
+---
+
+## How It Works
+
+When you add a custom domain in AgencyHandy, the platform provides you with a **CNAME record**. You add that record to your domain's DNS settings at your registrar (GoDaddy, Namecheap, Cloudflare, etc.), and AgencyHandy verifies the connection once DNS has propagated.
+
+---
+
+## Step-by-Step Setup
+
+<Steps>
+  <Step title="Open Custom Domain settings">
+    Log in to your AgencyHandy account. Navigate to **Workspace Config** in the left sidebar, then click **Custom Domain**.
+  </Step>
+  <Step title="Add your custom domain">
+    Click the **+ Add Custom Domain** button. In the input field that appears, enter the subdomain you want to use — for example, `portal.youragency.com`.
+
+    <Warning>
+      Do **not** use `www` as your subdomain (i.e., avoid `www.youragency.com`). The `www` prefix can cause configuration conflicts and prevents successful verification. Use a different subdomain such as `portal`, `client`, `app`, or `hub`.
+    </Warning>
+  </Step>
+  <Step title="Copy the CNAME record details">
+    After submitting your domain, AgencyHandy displays the DNS record you need to add:
+
+    | Field   | Value                                          |
+    |---------|------------------------------------------------|
+    | **Type**  | CNAME                                        |
+    | **Name**  | Your subdomain (e.g., `portal`)              |
+    | **Value** | The target provided by AgencyHandy           |
+
+    Copy these values carefully — you'll need them in the next step.
+  </Step>
+  <Step title="Add the CNAME record at your DNS registrar">
+    Log in to your domain registrar's dashboard (e.g., GoDaddy, Namecheap, Cloudflare). Navigate to the DNS management section for your domain and add the CNAME record using the Type, Name, and Value copied from AgencyHandy.
+
+    See the registrar-specific guidance below for Cloudflare.
+  </Step>
+  <Step title="Save the domain in AgencyHandy">
+    Return to AgencyHandy and click **Save Domain**. The status will initially show as **Disconnected** — this is expected while DNS propagates.
+  </Step>
+  <Step title="Wait for DNS propagation and verify">
+    DNS changes can take anywhere from a few minutes to **up to 48 hours** to propagate globally, depending on your registrar and TTL settings. Click **Refresh** periodically to check the connection status.
+
+    Once propagation is complete, the status changes to **Connected** ✅.
+  </Step>
+</Steps>
+
+<Warning>
+  DNS propagation can take up to **48 hours**. If your domain still shows **Disconnected** after 48 hours, double-check that the CNAME record is correct and that no conflicting DNS records exist for the same subdomain.
+</Warning>
+
+---
+
+## Cloudflare-Specific Instructions
+
+If your domain is managed through Cloudflare, there is one critical setting you must configure correctly:
+
+<Steps>
+  <Step title="Sign in to Cloudflare and select your domain">
+    Open your [Cloudflare dashboard](https://dash.cloudflare.com) and click on the domain you are connecting to AgencyHandy.
+  </Step>
+  <Step title="Navigate to DNS settings">
+    Click the **DNS** tab in the top navigation of the domain settings panel.
+  </Step>
+  <Step title="Add the CNAME record">
+    Click **+ Add Record** and fill in the fields:
+    - **Type:** CNAME
+    - **Name:** Your subdomain (e.g., `portal`)
+    - **Target/Content:** The value provided by AgencyHandy
+    - **TTL:** Set to **2 minutes** (or the lowest available option) during initial setup
+  </Step>
+  <Step title="Disable the Cloudflare proxy (critical)">
+    In the **Proxy status** column, make sure the toggle is set to **DNS only** (the cloud icon should appear grey, not orange).
+
+    <Warning>
+      If the Cloudflare proxy is **enabled** (orange cloud icon), the CNAME record will not resolve correctly and AgencyHandy cannot verify your domain. You must set it to **DNS Only** for the connection to work.
+    </Warning>
+  </Step>
+  <Step title="Save the record">
+    Review all values for accuracy and click **Save**.
+  </Step>
+</Steps>
+
+<Tip>
+  Use [dnschecker.org](https://dnschecker.org) to monitor your CNAME record's propagation across different global regions. Look for green check marks across all regions before expecting AgencyHandy to confirm the connection.
+</Tip>
+
+---
+
+## Monitoring Your Connection Status
+
+After saving, return to **Workspace Config → Custom Domain** in AgencyHandy to track the status:
+
+| Status           | Meaning                                                              |
+|------------------|----------------------------------------------------------------------|
+| **Disconnected** | DNS record has not yet propagated or contains an error               |
+| **Connected**    | Domain is verified and active — clients can access your workspace via the custom URL |
+
+---
+
+## Updating or Removing a Custom Domain
+
+- **To update your domain:** Delete the existing entry and add the new domain using the same setup steps above.
+- **To delete your domain:** Click the **Delete** button next to your domain in the Custom Domain panel and confirm the deletion. Your workspace will revert to the default AgencyHandy URL. You can re-add any domain at any time.
+
+---
+
+## Important Notes
+
+- **Use a subdomain, not a root domain:** AgencyHandy custom domains require a subdomain (e.g., `portal.youragency.com`), not a root/apex domain (e.g., `youragency.com`).
+- **Avoid `www`:** The `www` subdomain can cause issues during verification. Use a custom subdomain name instead.
+- **Exact records required:** Enter the CNAME Type, Name, and Value exactly as shown in AgencyHandy. Any typo or missing character prevents the connection.
+- **Cloudflare proxy must be off:** Always set Cloudflare records to **DNS Only** for AgencyHandy custom domain verification.
+- **Admin-only access:** Only Super Admins and Admins can add, modify, or delete custom domain settings.

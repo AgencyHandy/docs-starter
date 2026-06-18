@@ -1,0 +1,126 @@
+---
+title: "All Tasks — Centralized Task Management in AgencyHandy"
+sidebarTitle: "All Tasks"
+description: "Use the All Tasks page for a real-time, role-filtered view of every task across ongoing and in-review orders — with search, filters, and sorting."
+---
+
+The All Tasks page in AgencyHandy gives you a single, centralized view of every task that belongs to active workflows across your agency. Rather than hunting through individual orders, you can see all relevant tasks in one place, filter them down by assignee, priority, or date, and make edits directly from the list. Visibility is automatically scoped to your role — Super Admins see everything, Managers see their assigned orders, and Employees see only their own tasks.
+
+## Accessing the All Tasks Page
+
+1. Log in to your AgencyHandy account.
+2. Click **Tasks** in the left sidebar.
+3. Select **All Tasks** to open the centralized task dashboard.
+
+<Note>
+  The All Tasks page only displays tasks from orders that are in **Ongoing** or **In Review** status. Tasks tied to orders in any other state (e.g., Completed, Pending) do not appear here.
+</Note>
+
+## Task Visibility by Role
+
+What you see on the All Tasks page depends entirely on your role.
+
+| Role | What They See |
+|------|---------------|
+| **Super Admin / Admin** | All tasks across every order, team, and status |
+| **Project Manager (PM)** | Only tasks from orders where they are assigned as the Manager |
+| **Employee / Assignee** | Only tasks directly assigned to them — even if teammates are working on the same order |
+
+<Tip>
+  If a PM cannot find a task they expect to see, confirm that they are assigned as the Manager on the relevant order. PMs do not see tasks unless they are the assigned Manager for that order.
+</Tip>
+
+## When Tasks Appear on This Page
+
+Tasks show up on the All Tasks page when these conditions are met:
+
+<CardGroup cols={2}>
+  <Card title="Orders that trigger task visibility" icon="circle-check">
+    - Manual orders (one-time or subscription) are created
+    - Catalog orders via Stripe or manual payment methods are placed
+    - A proposal is accepted by the agency
+  </Card>
+  <Card title="Orders that keep tasks hidden" icon="eye-slash">
+    - Client-requested tasks the agency has not yet accepted
+    - Trial orders the agency has not yet accepted
+    - Orders with pending status awaiting manual bank payment confirmation
+  </Card>
+</CardGroup>
+
+## Searching, Filtering, and Sorting
+
+The All Tasks page includes a full set of controls to help you find exactly what you need.
+
+### Search
+
+Use the search bar to locate tasks by name, assignee, or related order. Results update in real time as you type.
+
+### Filters
+
+Click **Filter → + Add Filter** to open the filter panel. You can combine multiple filters for precise results:
+
+| Filter | What It Does |
+|--------|--------------|
+| **Order ID** | Show tasks linked to a specific order number |
+| **Assignee** | Show tasks assigned to a particular team member |
+| **Status** | Filter by task progress: Pending, In Progress, Review, Done, etc. |
+| **Priority** | Focus on High, Medium, or Low priority tasks |
+| **Label** | Narrow down by task labels or categories |
+| **Kick Off Date** | Show tasks starting on or after a specific date |
+| **End Date** | Show tasks due by a specific date |
+
+<Note>
+  Filters are available only on the All Tasks page. They persist during your browser session but reset on page refresh. Filters affect only your view and do not change what other users see.
+</Note>
+
+To clear all filters, click **Clear Filters** to return to the full, unfiltered list.
+
+### Sorting
+
+Sort the task list by:
+- **Due date** — surface tasks that are coming up or already overdue
+- **Priority** — bring the most critical tasks to the top
+- **Creation time** — see recently added tasks first
+
+### Breadcrumb Navigation
+
+Use the breadcrumb trail at the top of the page to maintain context as you navigate between subtasks, task lists, and parent orders. This is especially helpful when drilling into a specific task and then needing to return to the broader list.
+
+## Editing Tasks
+
+You can modify tasks on the All Tasks page in two ways:
+
+<Tabs>
+  <Tab title="Inline Editing">
+    Click directly into an editable field within the task row — such as the status, assignee, or due date — and make your change without leaving the list view. This is the fastest option for quick updates.
+  </Tab>
+  <Tab title="Modal Editing">
+    Click on the task name to open the full task detail modal. From here you can update all task properties, add notes, view subtasks, and see the complete task history. Use this for more thorough edits or when you need context.
+  </Tab>
+</Tabs>
+
+## Task Deletion Rules
+
+Tasks on the All Tasks page are tied directly to their parent orders.
+
+- When an **order is deleted**, all tasks associated with that order are **automatically and permanently removed** from the All Tasks page.
+- This deletion affects all user roles — no one will be able to see those tasks after the order is deleted.
+- **There is no recovery option** for tasks deleted through order deletion.
+
+<Warning>
+  Deleting an order permanently removes all of its tasks. Make sure any important task history or deliverable records are saved elsewhere before deleting an order.
+</Warning>
+
+## Additional Notes
+
+<Accordion title="Real-time updates">
+  Changes to orders, task assignments, or task statuses reflect in real time on the All Tasks page. If a teammate updates a task while you have the page open, you'll see the change without needing to refresh.
+</Accordion>
+
+<Accordion title="Client-requested tasks">
+  Tasks submitted by clients do not appear on the All Tasks page until the agency explicitly accepts them. Until accepted, these tasks remain in a pending state and are not visible in the centralized view.
+</Accordion>
+
+<Accordion title="Tasks and order status">
+  Tasks only appear for orders in Ongoing or In Review status. If an order moves to Completed or is paused, its tasks are no longer shown here. Navigate to the specific order to view tasks tied to orders outside these statuses.
+</Accordion>
