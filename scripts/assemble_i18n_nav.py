@@ -89,6 +89,8 @@ def build_language(code, labels):
                  "href": "https://app.agencyhandy.com"},
                 {"anchor": labels["anchor_community"], "icon": "users",
                  "href": "https://community.agencyhandy.com"},
+                {"anchor": labels.get("anchor_blog", "Blog"), "icon": "newspaper",
+                 "href": "https://www.agencyhandy.com/blog"},
             ]
         },
         "navbar": {
