@@ -1,0 +1,126 @@
+---
+title: "Koble et egendefinert domene til AgencyHandy-arbeidsområdet ditt"
+sidebarTitle: "Egendefinert domene"
+description: "Koble ditt eget underdomene (f.eks. portal.dittselskap.com) til AgencyHandy ved å legge til en CNAME-post hos DNS-registraren din — ingen koding nødvendig."
+---
+
+Som standard er AgencyHandy-arbeidsområdet ditt tilgjengelig på et underdomene under `agencyhandy.com`. Ved å koble til et egendefinert domene kan du erstatte den standard-URL-en med din egen merkevareadresse — for eksempel `portal.dittbyrå.com` — noe som gir kundene en sømløs, profesjonell opplevelse som forsterker merkevaren din fra den aller første siden de lander på.
+
+<Note>
+  Bare **superadministratorer** og **administratorer** kan konfigurere et egendefinert domene. Du må også eie domenet og ha tilgang til DNS-innstillingene hos registraren din for å fullføre dette oppsettet.
+</Note>
+
+---
+
+## Slik fungerer det
+
+Når du legger til et egendefinert domene i AgencyHandy, gir plattformen deg en **CNAME-post**. Du legger til den posten i domenets DNS-innstillinger hos registraren din (GoDaddy, Namecheap, Cloudflare osv.), og AgencyHandy verifiserer tilkoblingen når DNS har propagert.
+
+---
+
+## Trinn-for-trinn-oppsett
+
+<Steps>
+  <Step title="Åpne innstillinger for egendefinert domene">
+    Logg inn på AgencyHandy-kontoen din. Naviger til **Workspace Config** i venstre sidestolpe, og klikk deretter på **Custom Domain**.
+  </Step>
+  <Step title="Legg til det egendefinerte domenet ditt">
+    Klikk på knappen **+ Add Custom Domain**. I inndatafeltet som vises, skriver du inn underdomenet du vil bruke — for eksempel `portal.dittbyrå.com`.
+
+    <Warning>
+      Ikke bruk `www` som underdomene (dvs. unngå `www.dittbyrå.com`). `www`-prefikset kan forårsake konfigurasjonskonflikter og hindrer vellykket verifisering. Bruk et annet underdomene som `portal`, `client`, `app` eller `hub`.
+    </Warning>
+  </Step>
+  <Step title="Kopier CNAME-postdetaljene">
+    Etter å ha sendt inn domenet ditt, viser AgencyHandy DNS-posten du trenger å legge til:
+
+    | Felt | Verdi |
+    |---|---|
+    | **Type** | CNAME |
+    | **Navn** | Underdomenet ditt (f.eks. `portal`) |
+    | **Verdi** | Målet levert av AgencyHandy |
+
+    Kopier disse verdiene nøye — du trenger dem i neste trinn.
+  </Step>
+  <Step title="Legg til CNAME-posten hos DNS-registraren din">
+    Logg inn på registrarens dashbord (f.eks. GoDaddy, Namecheap, Cloudflare). Naviger til DNS-administrasjonsseksjonen for domenet ditt og legg til CNAME-posten ved hjelp av type, navn og verdi kopiert fra AgencyHandy.
+
+    Se den registrarspesifikke veiledningen nedenfor for Cloudflare.
+  </Step>
+  <Step title="Lagre domenet i AgencyHandy">
+    Gå tilbake til AgencyHandy og klikk **Save Domain**. Statusen vil først vises som **Disconnected** — dette er forventet mens DNS propagerer.
+  </Step>
+  <Step title="Vent på DNS-propagering og verifiser">
+    DNS-endringer kan ta alt fra noen minutter til **opptil 48 timer** å propagere globalt, avhengig av registraren og TTL-innstillinger. Klikk **Refresh** med jevne mellomrom for å sjekke tilkoblingsstatusen.
+
+    Når propageringen er fullført, endres statusen til **Connected** ✅.
+  </Step>
+</Steps>
+
+<Warning>
+  DNS-propagering kan ta opptil **48 timer**. Hvis domenet fortsatt viser **Disconnected** etter 48 timer, dobbeltsjekk at CNAME-posten er korrekt og at ingen motstridende DNS-poster eksisterer for samme underdomene.
+</Warning>
+
+---
+
+## Cloudflare-spesifikke instruksjoner
+
+Hvis domenet ditt administreres gjennom Cloudflare, er det én kritisk innstilling du må konfigurere riktig:
+
+<Steps>
+  <Step title="Logg inn på Cloudflare og velg domenet ditt">
+    Åpne [Cloudflare-dashbordet](https://dash.cloudflare.com) og klikk på domenet du kobler til AgencyHandy.
+  </Step>
+  <Step title="Naviger til DNS-innstillinger">
+    Klikk på **DNS**-fanen i toppnavigasjonen i domenets innstillingspanel.
+  </Step>
+  <Step title="Legg til CNAME-posten">
+    Klikk **+ Add Record** og fyll inn feltene:
+    - **Type:** CNAME
+    - **Navn:** Underdomenet ditt (f.eks. `portal`)
+    - **Mål/Innhold:** Verdien levert av AgencyHandy
+    - **TTL:** Sett til **2 minutter** (eller det laveste tilgjengelige alternativet) under det innledende oppsettet
+  </Step>
+  <Step title="Deaktiver Cloudflare-proxyen (kritisk)">
+    I kolonnen **Proxy-status** sørger du for at veksleknappen er satt til **DNS only** (sky-ikonet skal vises grått, ikke oransje).
+
+    <Warning>
+      Hvis Cloudflare-proxyen er **aktivert** (oransje sky-ikon), vil CNAME-posten ikke løses riktig og AgencyHandy kan ikke verifisere domenet ditt. Du må sette det til **DNS Only** for at tilkoblingen skal fungere.
+    </Warning>
+  </Step>
+  <Step title="Lagre posten">
+    Gjennomgå alle verdier for nøyaktighet og klikk **Save**.
+  </Step>
+</Steps>
+
+<Tip>
+  Bruk [dnschecker.org](https://dnschecker.org) for å overvåke CNAME-postens propagering på tvers av ulike globale regioner. Se etter grønne haker i alle regioner før du forventer at AgencyHandy bekrefter tilkoblingen.
+</Tip>
+
+---
+
+## Overvåke tilkoblingsstatusen din
+
+Etter lagring, gå tilbake til **Workspace Config → Custom Domain** i AgencyHandy for å spore statusen:
+
+| Status | Betydning |
+|---|---|
+| **Disconnected** | DNS-post har ennå ikke propagert eller inneholder en feil |
+| **Connected** | Domenet er verifisert og aktivt — kunder kan få tilgang til arbeidsområdet ditt via den egendefinerte URL-en |
+
+---
+
+## Oppdatere eller fjerne et egendefinert domene
+
+- **For å oppdatere domenet:** Slett den eksisterende oppføringen og legg til det nye domenet ved hjelp av de samme oppsettstrinnene ovenfor.
+- **For å slette domenet:** Klikk på **Delete**-knappen ved siden av domenet ditt i panelet for egendefinert domene og bekreft slettingen. Arbeidsområdet ditt vil gå tilbake til standard AgencyHandy-URL. Du kan legge til et domene på nytt når som helst.
+
+---
+
+## Viktige merknader
+
+- **Bruk et underdomene, ikke et rotdomene:** AgencyHandy egendefinerte domener krever et underdomene (f.eks. `portal.dittbyrå.com`), ikke et rot-/apex-domene (f.eks. `dittbyrå.com`).
+- **Unngå `www`:** `www`-underdomenet kan forårsake problemer under verifisering. Bruk et egendefinert undernavn i stedet.
+- **Nøyaktige poster kreves:** Skriv inn CNAME-type, -navn og -verdi nøyaktig slik det vises i AgencyHandy. En skrivefeil eller et manglende tegn forhindrer tilkoblingen.
+- **Cloudflare-proxy må være av:** Sett alltid Cloudflare-poster til **DNS Only** for verifisering av AgencyHandy egendefinert domene.
+- **Kun administratortilgang:** Bare superadministratorer og administratorer kan legge til, endre eller slette innstillinger for egendefinert domene.

@@ -1,0 +1,196 @@
+---
+title: "Zarządzanie webhookami: tworzenie, testowanie i uwierzytelnianie"
+sidebarTitle: "Webhooks"
+description: "Skonfiguruj webhooks w AgencyHandy, aby przesyłać dane zdarzeń w czasie rzeczywistym do zewnętrznych systemów za każdym razem, gdy zmieniają się zamówienia, zadania, faktury lub inne elementy."
+---
+
+Webhooks pozwalają AgencyHandy przesyłać dane do Twoich zewnętrznych systemów w momencie zmiany — bez konieczności odpytywania. Gdy skonfigurowane zdarzenie zostanie uruchomione (na przykład zamówienie zostanie zaktualizowane lub zgłoszenie zostanie utworzone), AgencyHandy wysyła żądanie HTTP POST z ładunkiem JSON na podany przez Ciebie adres URL punktu końcowego. Ułatwia to synchronizację zewnętrznych narzędzi, takich jak systemy CRM, systemy rozliczeniowe lub niestandardowe pulpity nawigacyjne, z Twoją przestrzenią roboczą AgencyHandy w czasie rzeczywistym.
+
+<Note>
+  Przestrzenie robocze w planie Business Pro obsługują do **30 000 zdarzeń webhook** na okres rozliczeniowy. Przed skonfigurowaniem automatyzacji o dużej częstotliwości sprawdź limity swojego planu.
+</Note>
+
+## Obsługiwane zdarzenia
+
+Możesz subskrybować webhook do dowolnej kombinacji następujących zdarzeń:
+
+| Kategoria | Zdarzenia |
+|---|---|
+| **Usługa** | Utworzona, zaktualizowana, usunięta |
+| **Zamówienie** | Utworzone, zaktualizowane, usunięte |
+| **Zadanie** | Utworzone, przypisane, ukończone, zaktualizowane |
+| **Faktura** | Zmiana statusu |
+| **Klient / Użytkownik** | Nowy klient dodany, klient/użytkownik usunięty |
+| **Propozycja** | Wysłana, odebrana, zaakceptowana, odrzucona |
+| **Zgłoszenie** | Utworzone, przypisane, zmiana statusu |
+| **Płatność** | Odebrana, nieudana |
+| **Pakiet usług** | Utworzony, zaktualizowany, usunięty |
+
+## Utwórz webhook
+
+<Steps>
+  <Step title="Przejdź do zarządzania webhookami">
+    Na lewym pasku bocznym przejdź do **Integracje → Zarządzanie webhookami**.
+  </Step>
+
+  <Step title="Uwierzytelnij swój token">
+    Kliknij przycisk **Zarządzanie**, aby uwierzytelnić swój token webhook. Ten token służy do podpisywania wychodzących ładunków, dzięki czemu możesz zweryfikować, że pochodzą z AgencyHandy.
+  </Step>
+
+  <Step title="Utwórz nowy webhook">
+    Kliknij **Utwórz nowy webhook**, aby otworzyć formularz konfiguracji webhooka.
+  </Step>
+
+  <Step title="Wprowadź adres URL punktu końcowego">
+    W polu **Adres URL punktu końcowego** wprowadź adres URL zewnętrznego systemu, który powinien odbierać dane webhooks. Musi to być publicznie dostępny punkt końcowy **POST**.
+  </Step>
+
+  <Step title="Wybierz typ zawartości">
+    Wybierz **JSON** jako typ zawartości. AgencyHandy wysyła wszystkie ładunki webhooks jako `application/json`.
+  </Step>
+
+  <Step title="Wybierz zdarzenia webhooks">
+    Wybierz każde zdarzenie, które powinno wyzwolić ten webhook. Możesz wybierać zdarzenia z wielu kategorii — na przykład **Zamówienie: Utworzone** i **Faktura: Zmiana statusu** mogą wskazywać na ten sam punkt końcowy.
+  </Step>
+
+  <Step title="Aktywuj webhook">
+    Włącz przycisk radiowy **Aktywny**. Gdy jest aktywny, AgencyHandy dostarcza ładunki dla wszystkich wybranych zdarzeń do Twojego punktu końcowego w czasie rzeczywistym.
+  </Step>
+
+  <Step title="Zapisz konfigurację">
+    Sprawdź ustawienia, a następnie kliknij **Zapisz**. Webhook pojawia się na liście i natychmiast zaczyna dostarczać zdarzenia.
+  </Step>
+</Steps>
+
+## Przetestuj webhook
+
+Po utworzeniu webhooka wyślij testowy ładunek, aby potwierdzić, że Twój punkt końcowy jest dostępny i poprawnie przetwarza dane.
+
+<Steps>
+  <Step title="Otwórz webhook">
+    Na liście zarządzania webhookami kliknij webhook, który chcesz przetestować.
+  </Step>
+
+  <Step title="Kliknij Testuj zdarzenie">
+    Kliknij przycisk **Testuj zdarzenie** na stronie szczegółów webhooka.
+  </Step>
+
+  <Step title="Wybierz zdarzenie testowe">
+    Wybierz przykładowe zdarzenie z listy zdarzeń skonfigurowanych dla tego webhooka (np. **Zamówienie: Utworzone**).
+  </Step>
+
+  <Step title="Wyślij testowy ładunek">
+    Kliknij **Wyślij**. AgencyHandy opublikuje przykładowy ładunek na Twoim adresie URL punktu końcowego.
+  </Step>
+
+  <Step title="Zweryfikuj wynik">
+    Sprawdź swój zewnętrzny system, aby potwierdzić, że testowy ładunek dotarł i został przetworzony zgodnie z oczekiwaniami. W AgencyHandy kliknij webhook, aby przejrzeć jego **historię** — możesz zobaczyć pełne żądanie, odpowiedź zwróconą przez Twój punkt końcowy i ponownie dostarczyć dowolne poprzednie zdarzenie, jeśli zajdzie taka potrzeba.
+  </Step>
+</Steps>
+
+<Tip>
+  Użyj narzędzia takiego jak [Webhook.site](https://webhook.site) lub [RequestBin](https://requestbin.com) jako tymczasowego punktu końcowego podczas konfiguracji, aby sprawdzić dokładny kształt ładunku przed podłączeniem rzeczywistego systemu.
+</Tip>
+
+## Uwierzytelniaj ładunki webhooków
+
+Każde wychodzące żądanie webhook z AgencyHandy zawiera nagłówek sygnatury, którego Twój punkt końcowy może użyć do weryfikacji, że ładunek jest autentyczny i nie został zmodyfikowany.
+
+### Nagłówek sygnatury
+
+```
+x-ah-sig: <signature>
+```
+
+AgencyHandy dodaje ten nagłówek do każdego żądania webhook. Wyodrębnij wartość z przychodzących żądań i przekaż ją do punktu końcowego weryfikacji.
+
+### Zweryfikuj sygnaturę webhooka
+
+Wyślij następujące żądanie, aby potwierdzić autentyczność ładunku:
+
+```
+POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature
+Content-Type: application/json
+```
+
+<ParamField body="webhookId" type="string" required>
+  Identyfikator webhooka, który otrzymał zdarzenie. Znajdziesz go na stronie szczegółów webhooka w AgencyHandy.
+</ParamField>
+
+<ParamField body="signature" type="string" required>
+  Wartość nagłówka `x-ah-sig` z przychodzącego żądania webhooka.
+</ParamField>
+
+<ParamField body="secret" type="string" required>
+  Sekret webhooka widoczny na stronie szczegółów webhooka w AgencyHandy.
+</ParamField>
+
+<ParamField body="payload" type="object" required>
+  Surowe ciało JSON odebrane z żądania webhooka AgencyHandy.
+</ParamField>
+
+<CodeGroup>
+
+```javascript JavaScript
+const url = 'https://api.agencyhandy.com/api/v1/webhooks/verify-signature';
+
+const postData = {
+  webhookId: 'your_webhook_id',
+  signature: 'your_signature',   // value of x-ah-sig header
+  secret: 'your_webhook_secret',
+  payload: {},                   // the parsed JSON body from AgencyHandy
+};
+
+const response = await fetch(url, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(postData),
+});
+
+const data = await response.json();
+console.log(data); // { "verification_status": "SUCCESS" }
+```
+
+```bash cURL
+curl -X POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature \
+  -H "Content-Type: application/json" \
+  -d '{
+    "webhookId": "your_webhook_id",
+    "signature": "your_signature",
+    "secret": "your_webhook_secret",
+    "payload": {}
+  }'
+```
+
+</CodeGroup>
+
+**Odpowiedzi**
+
+<ResponseField name="verification_status" type="string">
+  `SUCCESS` gdy sygnatura jest prawidłowa. `FAILED` gdy weryfikacja nie powiedzie się (HTTP 403).
+</ResponseField>
+
+```json Success (200)
+{
+  "verification_status": "SUCCESS"
+}
+```
+
+```json Failure (403)
+{
+  "type": "PermissionError",
+  "status": 403,
+  "verification_status": "FAILED"
+}
+```
+
+<Warning>
+  Zachowaj poufność swojego sekretu webhooka. Regularnie go rotuj i natychmiast aktualizuj logikę weryfikacji po rotacji. Nigdy nie ujawniaj go w kodzie po stronie klienta ani w publicznych repozytoriach.
+</Warning>
+
+## Ważne uwagi
+
+- Adres URL Twojego punktu końcowego musi być **publicznie dostępnym adresem URL HTTPS POST**.
+- Jeśli Twój punkt końcowy jest tymczasowo niedostępny, sprawdź panel historii webhooka w AgencyHandy — możesz **ponownie dostarczyć** dowolne poprzednie zdarzenie bezpośrednio stamtąd.
+- Regularnie monitoruj aktywność webhooków, aby wykrywać nieudane dostarczenia lub nieautoryzowane próby dostępu.
+- Webhooks, które wielokrotnie kończą się niepowodzeniem, mogą zostać wstrzymane przez AgencyHandy — przeglądaj dzienniki dostaw, aby wcześnie wykrywać problemy.

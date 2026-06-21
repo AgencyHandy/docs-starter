@@ -5,3 +5,13 @@
 # Draft content
 drafts/
 *.draft.mdx
+
+# Raw scraped source material (reference only, not published)
+sources/
+
+# Languages not supported by Mintlify's language switcher (translations kept for future use)
+bn/
+fa/
+th/
+lt/
+mn/

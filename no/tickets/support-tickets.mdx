@@ -1,0 +1,162 @@
+---
+title: "Støttesaker — Håndter kundehenvendelser i AgencyHandy"
+sidebarTitle: "Støttesaker"
+description: "Opprett, rediger og administrer støttesaker i AgencyHandy for å spore kundehenvendelser, angi prioriteter, tildele statuser og bevare full interaksjonshistorikk."
+---
+
+AgencyHandys saksfunksjon gir byrået ditt en strukturert måte å håndtere kundehenvendelser, problemer og forespørsler på. I stedet for at spørsmål forsvinner i e-posttråder eller chatmeldinger, finnes hver støtteforespørsel i en sak med emne, prioritet, ansvarlig og status — alt søkbart og sporbart fra ett dashbord. Både teamet og kundene dine kan opprette saker, og hele historikken for hver sak bevares slik at ingenting faller mellom stolene.
+
+## Tilgang til saksdashbordet
+
+Klikk **Saker** i venstre sidefelt for å åpne saksdashbordet. Herfra kan du:
+
+- Opprette, redigere og slette saker
+- Søke etter saker etter **emne**, **kundenavn** eller **ordre-ID**
+- Se saksstatus og prioritet med ett blikk
+- Overvåke alle åpne, ventende og lukkede saker på tvers av byrået
+
+## Hva saker gjør
+
+<CardGroup cols={3}>
+  <Card title="Håndtering av støtteforespørsler" icon="headset">
+    Kunder og byråets teammedlemmer kan sende inn spørsmål, problemer eller forespørsler via sakssystemet. Alle innleveringer blir loggført og sporet.
+  </Card>
+  <Card title="Sporing av problemløsning" icon="circle-check">
+    Tildel saker til teammedlemmer, angi prioriteter og oppdater statuser etter hvert som arbeidet skrider mot løsning. Alle holdes informert.
+  </Card>
+  <Card title="Kommunikasjonshistorikk" icon="clock-rotate-left">
+    Hver sak bevarer en fullstendig historikk over handlinger, oppdateringer og interaksjoner. Gå gjennom tidligere kommunikasjon når som helst for kontekst eller revisjonsformål.
+  </Card>
+</CardGroup>
+
+## Opprette en sak
+
+Både byråets teammedlemmer og kunder kan opprette saker. Opprettelsesprosessen er den samme for begge.
+
+**Hvem kan opprette saker:** Super Admin, Admin, PM og Kunde.
+
+<Steps>
+  <Step title="Åpne saksdashbordet">
+    Klikk **Saker** i venstre sidefelt.
+  </Step>
+  <Step title="Klikk + Opprett sak">
+    Klikk knappen **+ Opprett sak**. Et skjema vises.
+  </Step>
+  <Step title="Velg kunden">
+    Velg kundens navn fra nedtrekkslisten. Dette kobler saken til riktig kundeprofil.
+  </Step>
+  <Step title="Koble til en ordre (valgfritt)">
+    Skriv inn **ordre-ID** for å knytte saken til en bestemt ordre. Dette er nyttig for fakturerings- eller prosjektrelaterte problemer. Du kan også opprette en sak uten ordre-ID for generelle henvendelser.
+  </Step>
+  <Step title="Fyll inn saksdetaljer">
+    Fyll ut følgende felter:
+
+    | Felt | Beskrivelse |
+    |-------|-------------|
+    | **Emne** | En kort, beskrivende tittel for saken |
+    | **Beskrivelse** | En detaljert forklaring av problemet eller forespørselen |
+    | **Ansvarlig navn** | Teammedlemmet som er ansvarlig for å løse saken |
+    | **Prioritet** | Hastighet: Høyest, Høy, Normal, Lav eller Lavest |
+    | **Utstedelsesdato** | Datoen saken ble opprettet (registreres automatisk) |
+    | **Status** | Gjeldende tilstand: Åpen, Venter eller Lukket |
+  </Step>
+  <Step title="Klikk Opprett">
+    Klikk **Opprett** for å lagre saken. Den vil vises i saksdashbordet umiddelbart.
+  </Step>
+</Steps>
+
+## Saksstatuser
+
+Saker beveger seg gjennom tre statuser etter hvert som arbeidet skrider frem:
+
+| Status | Betydning |
+|--------|---------|
+| **Åpen** | Saken er innsendt og det arbeides aktivt med den |
+| **Venter** | Arbeidet med saken er midlertidig satt på pause, typisk i påvente av mer informasjon |
+| **Lukket** | Problemet er løst og saken er arkivert for referanse |
+
+<Tip>
+  Bruk statusen **Venter** når du avventer svar fra kunden eller en ekstern avhengighet. Dette holder saken synlig uten å fylle opp den aktive køen.
+</Tip>
+
+## Redigere en sak
+
+Byråets teammedlemmer kan oppdatere saksdetaljer når som helst for å reflektere ny informasjon, prioritetsendringer eller løsningsoppdateringer.
+
+**Hvem kan redigere saker:** Super Admin, Admin og PM. Kunder kan opprette saker, men kan ikke redigere dem.
+
+<Note>
+  Bare saker opprettet fra **byråsiden** kan redigeres. Saker innsendt av kunder kan ikke endres av kunden etter innsending.
+</Note>
+
+<Steps>
+  <Step title="Åpne saksdashbordet">
+    Naviger til **Saker** i venstre sidefelt.
+  </Step>
+  <Step title="Velg saken som skal redigeres">
+    Kryss av i avmerkingsboksen ved siden av saken du vil redigere. Knappen **Rediger sak** vil bli aktiv.
+  </Step>
+  <Step title="Klikk Rediger sak">
+    Klikk knappen **Rediger sak**. Saksskjemaet åpnes med alle eksisterende detaljer forhåndsutfylt.
+  </Step>
+  <Step title="Gjør endringene dine">
+    Oppdater felt som trenger endring — beskrivelse, prioritet, ansvarlig, status eller andre detaljer.
+  </Step>
+  <Step title="Lagre">
+    Klikk **Lagre** for å anvende endringene. Saken oppdateres umiddelbart i dashbordet.
+  </Step>
+  <Step title="Kommuniser oppdateringer">
+    Hvis endringen er vesentlig — for eksempel en prioritetseskalering eller bytte av ansvarlig — varsle de relevante teammedlemmene slik at de kan reagere på riktig måte.
+  </Step>
+</Steps>
+
+## Slette en sak
+
+Fjern utdaterte eller unødvendige saker for å holde dashbordet ryddig og relevant.
+
+**Hvem kan slette saker:** Super Admin, Admin og PM.
+
+<Steps>
+  <Step title="Velg saken">
+    I saksdashbordet, kryss av i avmerkingsboksen ved siden av saken du vil slette. Knappen **Slett** vil aktiveres.
+  </Step>
+  <Step title="Klikk Slett">
+    Klikk **Slett**. En bekreftelsesdialog vises.
+  </Step>
+  <Step title="Bekreft slettingen">
+    Bekreft beslutningen din i dialogen. Saken fjernes permanent fra systemet.
+  </Step>
+  <Step title="Bekreft fjerning">
+    Sjekk saklisten eller søk etter saken etter emne eller ordre-ID for å bekrefte at den ikke lenger finnes.
+  </Step>
+</Steps>
+
+<Warning>
+  Sletting av en sak er **permanent og kan ikke angres**. Før du sletter, sørg for at all viktig kommunikasjon eller løsningsnotater fra saken er dokumentert et annet sted.
+</Warning>
+
+## Søke og filtrere saker
+
+Bruk søkefeltet øverst i saksdashbordet for å finne saker raskt. Du kan søke etter:
+
+- **Emne** — sakstittelen
+- **Kundenavn** — alle saker fra en bestemt kunde
+- **Ordre-ID** — alle saker knyttet til en bestemt ordre
+
+## Beste praksis for bruk av saker
+
+<Accordion title="Angi prioritetsnivåer konsekvent">
+  Bli enig om en prioritetsskala med teamet ditt før du begynner å opprette saker. Hvis «Høy» betyr forskjellige ting for forskjellige personer, bryter eskaleringsprosessene sammen. Bruk Høyest bare for problemer som blokkerer kundenes leveranser.
+</Accordion>
+
+<Accordion title="Koble saker til ordrer når mulig">
+  Å koble en sak til en ordre-ID gjør det mye enklere å spore hvilke kundeproblemer som påvirker hvilke prosjekter. Dette hjelper også ved gjennomgang av tidligere saker for en bestemt ordre.
+</Accordion>
+
+<Accordion title="Lukk saker umiddelbart etter løsning">
+  Når et problem er løst, endre statusen til **Lukket** med en gang. Å la saker stå åpne etter løsning fyller opp den aktive køen og gjør det vanskeligere å oppdage pågående arbeid.
+</Accordion>
+
+<Accordion title="Bruk Venter-status i venteperioder">
+  Når du venter på en kunde eller en tredjepart, sett saken til **Venter** i stedet for å la den stå åpen. Dette gir teamet ditt et tydelig signal om at ingen handling er nødvendig før et svar ankommer.
+</Accordion>

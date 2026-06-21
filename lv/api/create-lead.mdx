@@ -1,0 +1,201 @@
+---
+title: "AgencyHandy API: programmatiska jauna potenciālā klienta izveide"
+sidebarTitle: "Izveidot lead"
+description: "Izmantojiet AgencyHandy API, lai programmatiskā veidā izveidotu jaunus potenciālos klientus (leads), nosūtot POST pieprasījumu uz bulk-lead galapunktu ar nepieciešamajiem laukiem."
+---
+
+Potenciālā klienta izveides galapunkts ļauj programmatiskā veidā pievienot jaunus potenciālos klientus (leads) savai AgencyHandy darbvietai no jebkuras ārējas sistēmas — tīmekļa veidlapas, CRM, mārketinga automatizācijas platformas vai pielāgota skripta. Caur šo galapunktu izveidotie potenciālie klienti nekavējoties parādās jūsu potenciālo klientu konveijerā, tāpat kā manuāli pievienotie.
+
+<Note>
+  Pirms šī galapunkta izmantošanas izpildiet rokasgrāmatu [Darba sākšana](/lv/api/getting-started), lai iegūtu API atslēgu un uzņēmuma ID. Jums arī jāiegūst **klienta lomas ID**, kas ir nepieciešams, veidojot potenciālo klientu.
+</Note>
+
+## Priekšnosacījumi
+
+- ✅ API atslēga ģenerēta no **Workspace Config → API Key**
+- ✅ Uzņēmuma ID iegūts no `GET {{URL}}/accounts/companies`
+- ✅ Klienta lomas ID iegūts (skatiet 1. darbību zemāk)
+
+---
+
+## 1. darbība: iegūt klienta lomas ID
+
+Pirms potenciālā klienta izveides jums ir nepieciešams lomas ID `client` lomai jūsu uzņēmumā.
+
+### Galapunkts
+
+```
+GET {{URL}}/roles?type=company
+```
+
+### Galvenes
+
+| Galvene | Vērtība |
+|---|---|
+| `x-api-key` | Jūsu API atslēga |
+| `companyid` | Jūsu uzņēmuma ID |
+
+### Piemēra pieprasījums
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/roles?type=company" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>"
+```
+
+### Piemēra atbilde
+
+```json
+{
+  "roles": [
+    {
+      "_id": "6525994184e9ddd798534535",
+      "role": {
+        "_id": "6525994184e9ddd79853451e",
+        "responsibility": "",
+        "name": "client"
+      },
+      "company": "6525994184e9ddd79853450e",
+      "createdAt": "2023-10-10T18:34:41.567Z",
+      "updatedAt": "2024-10-01T07:28:48.340Z",
+      "__v": 0,
+      "type": "company"
+    }
+  ]
+}
+```
+
+Atrodiet ierakstu, kur `roles[0].role.name === "client"`, un izvelciet **ārējo** `_id` — tas ir `roles[0]._id`, **nevis** `roles[0].role._id`.
+
+```javascript
+const clientRoleId = roles.find(r => r.role.name === "client")._id;
+// e.g. "6525994184e9ddd798534535"
+```
+
+<Warning>
+  Izmantojiet `roles[0]._id` (uzņēmuma-lomas kartējuma ID), **nevis** `roles[0].role._id` (lomas definīcijas ID). Nepareiza ID izmantošana izraisa potenciālā klienta izveides pieprasījuma kļūdu.
+</Warning>
+
+---
+
+## 2. darbība: izveidot jaunu potenciālo klientu
+
+### Galapunkts
+
+```
+POST {{URL}}/members/bulk-lead
+```
+
+### Galvenes
+
+| Galvene | Vērtība |
+|---|---|
+| `x-api-key` | Jūsu API atslēga |
+| `companyid` | Jūsu uzņēmuma ID |
+| `Content-Type` | `application/json` |
+
+### Pieprasījuma pamatteksts
+
+Pieprasījuma pamatteksts ir **JSON masīvs** — vienā izsaukumā var izveidot vienu vai vairākus potenciālos klientus.
+
+<ParamField body="firstName" type="string" required>
+  Potenciālā klienta vārds.
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  Potenciālā klienta uzvārds.
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  Potenciālā klienta e-pasta adrese. Jābūt unikālai jūsu darbvietā.
+</ParamField>
+
+<ParamField body="role" type="string" required>
+  Klienta lomas ID, kas iegūts 1. darbībā (t.i., `roles[0]._id`).
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  Veidojot potenciālo klientu, jāiestata uz `false`. Iestatiet uz `true` tikai konvertējot potenciālo klientu par pilnvērtīgu klientu.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Potenciālā klienta konveijera statuss. Izplatītas vērtības: `New`, `Contacted`, `Qualified`. Noklusējums ir `New`, ja izlaists.
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  Potenciālā klienta tālruņa numurs.
+</ParamField>
+
+<ParamField body="source" type="string">
+  Kā iegūts šis potenciālais klients. Piemēra vērtības: `website`, `referral`, `social`.
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  Potenciālā klienta pozīcija (kārtība) konveijera paneļa kolonnā. Noklusējums ir `1`.
+</ParamField>
+
+### Piemēra pieprasījums
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-lead" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "role": "6525994184e9ddd798534535",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+### Veiksmīga atbilde
+
+```json
+{
+  "message": "Lead created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  Apstiprinājuma virkne: `"Lead created successfully"`.
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  Izveidoto potenciālo klientu objektu masīvs.
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  Jaunizveidotā potenciālā klienta unikālais ID. Saglabājiet to, ja nepieciešams atsaukties uz potenciālo klientu turpmākajos API izsaukumos.
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  Potenciālā klienta pilnais vārds (vārds + uzvārds).
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  Saglabātais potenciālā klienta konveijera statuss.
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  Dalībniekam piešķirtās lomas nosaukums — būs `"client"`.
+</ResponseField>
+
+<Tip>
+  Masīvā varat nodot vairākus potenciālo klientu objektus, lai vienā API izsaukumā izveidotu vairākus potenciālos klientus. Katram objektam jāiekļauj visi obligātie lauki ar savu unikālo e-pasta adresi.
+</Tip>

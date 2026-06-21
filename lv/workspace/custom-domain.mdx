@@ -1,0 +1,126 @@
+---
+title: "Pievienot Pielāgotu Domēnu AgencyHandy Darbvietai"
+sidebarTitle: "Pielāgots Domēns"
+description: "Saistiet savu apakšdomēnu (piemēram, portal.yourcompany.com) ar AgencyHandy, pievienojot CNAME ierakstu DNS reģistratoram — programmēšana nav nepieciešama."
+---
+
+Pēc noklusējuma jūsu AgencyHandy darbvietai var piekļūt caur apakšdomēnu vietnē `agencyhandy.com`. Pielāgota domēna pievienošana ļauj aizstāt šo noklusējuma URL ar savu zīmola adresi — piemēram, `portal.youragency.com` — sniedzot klientiem nevainojamu, profesionālu pieredzi, kas nostiprina jūsu zīmolu jau pirmajā lapā, uz kuras viņi nokļūst.
+
+<Note>
+  Tikai **Super Administratori** un **Administratori** var konfigurēt pielāgotu domēnu. Jums arī jābūt domēna īpašniekam un jābūt piekļuvei tā DNS iestatījumiem pie registratora, lai pabeigtu šo iestatīšanu.
+</Note>
+
+---
+
+## Kā Tas Darbojas
+
+Kad AgencyHandy pievienojat pielāgotu domēnu, platforma nodrošina jums **CNAME ierakstu**. Jūs pievienojat šo ierakstu sava domēna DNS iestatījumos pie registratora (GoDaddy, Namecheap, Cloudflare utt.), un AgencyHandy verificē savienojumu pēc DNS izplatīšanas.
+
+---
+
+## Iestatīšana Soli pa Solim
+
+<Steps>
+  <Step title="Atveriet Custom Domain iestatījumus">
+    Piesakieties savā AgencyHandy kontā. Kreisajā sānjoslā dodieties uz **Workspace Config**, pēc tam noklikšķiniet uz **Custom Domain**.
+  </Step>
+  <Step title="Pievienojiet savu pielāgoto domēnu">
+    Noklikšķiniet uz pogas **+ Add Custom Domain**. Parādītajā ievades laukā ievadiet apakšdomēnu, kuru vēlaties izmantot — piemēram, `portal.youragency.com`.
+
+    <Warning>
+      **Neizmantojiet** `www` kā apakšdomēnu (t.i., izvairieties no `www.youragency.com`). Prefikss `www` var izraisīt konfigurācijas konfliktus un neļauj veiksmīgi verificēt. Izmantojiet citu apakšdomēnu, piemēram, `portal`, `client`, `app` vai `hub`.
+    </Warning>
+  </Step>
+  <Step title="Nokopējiet CNAME ieraksta informāciju">
+    Pēc domēna iesniegšanas AgencyHandy parāda DNS ierakstu, kas jums jāpievieno:
+
+    | Lauks   | Vērtība                                         |
+    |---------|-------------------------------------------------|
+    | **Type**  | CNAME                                         |
+    | **Name**  | Jūsu apakšdomēns (piemēram, `portal`)         |
+    | **Value** | AgencyHandy norādītais mērķis                 |
+
+    Rūpīgi nokopējiet šīs vērtības — tās būs nepieciešamas nākamajā solī.
+  </Step>
+  <Step title="Pievienojiet CNAME ierakstu pie DNS registratora">
+    Piesakieties sava domēna registratora panelī (piemēram, GoDaddy, Namecheap, Cloudflare). Dodieties uz sava domēna DNS pārvaldības sadaļu un pievienojiet CNAME ierakstu, izmantojot no AgencyHandy nokopēto Type, Name un Value.
+
+    Skatiet tālāk norādītos reģistratoram specifiskos norādījumus Cloudflare gadījumā.
+  </Step>
+  <Step title="Saglabājiet domēnu AgencyHandy">
+    Atgriezieties AgencyHandy un noklikšķiniet uz **Save Domain**. Statuss sākotnēji tiks rādīts kā **Disconnected** — tas ir sagaidāms, kamēr DNS izplatās.
+  </Step>
+  <Step title="Gaidiet DNS izplatīšanos un verificējiet">
+    DNS izmaiņu izplatīšanās visā pasaulē var aizņemt no dažām minūtēm līdz **48 stundām**, atkarībā no jūsu registratora un TTL iestatījumiem. Periodiski noklikšķiniet uz **Refresh**, lai pārbaudītu savienojuma statusu.
+
+    Pēc izplatīšanās pabeigšanas statuss mainās uz **Connected** ✅.
+  </Step>
+</Steps>
+
+<Warning>
+  DNS izplatīšanās var aizņemt līdz **48 stundām**. Ja domēns joprojām rāda **Disconnected** pēc 48 stundām, pārbaudiet, vai CNAME ieraksts ir pareizs un vai tam pašam apakšdomēnam nav pretrunīgu DNS ierakstu.
+</Warning>
+
+---
+
+## Cloudflare Specifiski Norādījumi
+
+Ja jūsu domēns tiek pārvaldīts caur Cloudflare, ir viens kritisks iestatījums, kas jums ir pareizi jākonfigurē:
+
+<Steps>
+  <Step title="Piesakieties Cloudflare un atlasiet savu domēnu">
+    Atveriet savu [Cloudflare paneli](https://dash.cloudflare.com) un noklikšķiniet uz domēna, kuru savienojat ar AgencyHandy.
+  </Step>
+  <Step title="Dodieties uz DNS iestatījumiem">
+    Noklikšķiniet uz cilnes **DNS** domēna iestatījumu paneļa augšējā navigācijā.
+  </Step>
+  <Step title="Pievienojiet CNAME ierakstu">
+    Noklikšķiniet uz **+ Add Record** un aizpildiet laukus:
+    - **Type:** CNAME
+    - **Name:** Jūsu apakšdomēns (piemēram, `portal`)
+    - **Target/Content:** AgencyHandy norādītā vērtība
+    - **TTL:** Iestatiet uz **2 minūtēm** (vai zemāko pieejamo opciju) sākotnējās iestatīšanas laikā
+  </Step>
+  <Step title="Atspējojiet Cloudflare starpniekserveri (kritiski)">
+    Kolonnā **Proxy status** pārliecinieties, ka pārslēgs ir iestatīts uz **DNS only** (mākoņa ikonai jāizskatās pelēkai, nevis oranžai).
+
+    <Warning>
+      Ja Cloudflare starpniekserveris ir **iespējots** (oranža mākoņa ikona), CNAME ieraksts netiks pareizi atrisināts un AgencyHandy nevarēs verificēt jūsu domēnu. Savienojuma darbībai jāiestata **DNS Only**.
+    </Warning>
+  </Step>
+  <Step title="Saglabājiet ierakstu">
+    Pārskatiet visas vērtības precizitātei un noklikšķiniet uz **Save**.
+  </Step>
+</Steps>
+
+<Tip>
+  Izmantojiet [dnschecker.org](https://dnschecker.org), lai uzraudzītu sava CNAME ieraksta izplatīšanos dažādos globālos reģionos. Pirms gaidāt, ka AgencyHandy apstiprinās savienojumu, meklējiet zaļas atzīmes visos reģionos.
+</Tip>
+
+---
+
+## Savienojuma Statusa Uzraudzība
+
+Pēc saglabāšanas atgriezieties AgencyHandy sadaļā **Workspace Config → Custom Domain**, lai sekotu statusam:
+
+| Statuss          | Nozīme                                                                        |
+|------------------|-------------------------------------------------------------------------------|
+| **Disconnected** | DNS ieraksts vēl nav izplatījies vai satur kļūdu                              |
+| **Connected**    | Domēns ir verificēts un aktīvs — klienti var piekļūt jūsu darbvietai caur pielāgoto URL |
+
+---
+
+## Pielāgotā Domēna Atjaunināšana vai Noņemšana
+
+- **Lai atjauninātu domēnu:** Dzēsiet esošo ierakstu un pievienojiet jauno domēnu, veicot tos pašus iestatīšanas soļus.
+- **Lai dzēstu domēnu:** Noklikšķiniet uz pogas **Delete** blakus savam domēnam Pielāgotā Domēna panelī un apstipriniet dzēšanu. Jūsu darbvieta atgriezīsies uz noklusējuma AgencyHandy URL. Jebkuru domēnu var pievienot atkārtoti jebkurā laikā.
+
+---
+
+## Svarīgas Piezīmes
+
+- **Izmantojiet apakšdomēnu, nevis saknes domēnu:** AgencyHandy pielāgotiem domēniem nepieciešams apakšdomēns (piemēram, `portal.youragency.com`), nevis saknes/virsotnes domēns (piemēram, `youragency.com`).
+- **Izvairieties no `www`:** Apakšdomēns `www` var radīt problēmas verificēšanas laikā. Tā vietā izmantojiet pielāgotu apakšdomēna nosaukumu.
+- **Nepieciešami precīzi ieraksti:** Ievadiet CNAME Type, Name un Value tieši tā, kā parādīts AgencyHandy. Jebkura drukas kļūda vai trūkstošā rakstzīme neļauj savienojumam darboties.
+- **Cloudflare starpniekserveris jābūt atspējotam:** Vienmēr iestatiet Cloudflare ierakstus uz **DNS Only** AgencyHandy pielāgotā domēna verificēšanai.
+- **Tikai administratoru piekļuve:** Tikai Super Administratori un Administratori var pievienot, modificēt vai dzēst pielāgotā domēna iestatījumus.

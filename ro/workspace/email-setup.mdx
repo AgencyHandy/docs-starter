@@ -1,0 +1,188 @@
+---
+title: "Configurați Email de Ieșire, SMTP și Șabloane de Email"
+sidebarTitle: "Configurare Email"
+description: "Configurați o adresă de email personalizată ca expeditor, conectați un server SMTP, adăugați înregistrări DKIM/SPF pentru livrabilitate și personalizați șabloanele de email în AgencyHandy."
+---
+
+Configurarea emailului în AgencyHandy vă permite să înlocuiți expeditorul implicit `noreply@agencyhandy.com` cu propria adresă de email de marcă, să configurați un server SMTP dedicat pentru livrare fiabilă și să personalizați șabloanele utilizate pentru notificările clienților, facturi, propuneri și altele. Configurarea corectă asigură că emailurile dvs. ajung în căsuța de primire a clienților — nu în dosarul de spam — și că fiecare mesaj reflectă identitatea agenției dvs.
+
+<Note>
+  Doar **Super Adminii** și **Adminii** pot configura setările de email. Navigați la **Workspace Config → Email Setup** pentru a accesa aceste opțiuni.
+</Note>
+
+---
+
+## Prezentare generală a componentelor de configurare email
+
+<CardGroup cols={2}>
+  <Card title="Adresă de Email Personalizată" icon="envelope">
+    Setați numele expeditorului și adresa de email pe care clienții le văd când primesc mesaje din spațiul dvs. de lucru.
+  </Card>
+  <Card title="Înregistrări DKIM & SPF" icon="shield-check">
+    Adăugați înregistrări DNS de autentificare pentru a dovedi că emailurile dvs. sunt legitime și pentru a preveni marcarea lor ca spam.
+  </Card>
+  <Card title="Server SMTP" icon="server">
+    Conectați propriul server de email (de ex., Gmail, Outlook sau un server de domeniu personalizat) pentru a trimite toate emailurile de ieșire din AgencyHandy.
+  </Card>
+  <Card title="Șabloane de Email" icon="file-lines">
+    Personalizați conținutul, liniile de subiect și branding-ul pentru fiecare email automat pe care AgencyHandy îl trimite clienților.
+  </Card>
+</CardGroup>
+
+---
+
+## Partea 1: Configurați o Adresă de Email Personalizată
+
+Înainte de a configura emailul expeditorului, aveți nevoie de un domeniu înregistrat cu găzduire de email. Printre furnizorii populari se numără Google Workspace, Microsoft 365, Zoho Mail și Cloudflare Email Routing.
+
+<Steps>
+  <Step title="Înregistrați un domeniu și configurați găzduirea de email">
+    Dacă nu ați făcut-o deja, înregistrați un domeniu la un registrar (de ex., GoDaddy, Namecheap, Cloudflare) și abonați-vă la un furnizor de găzduire de email. Asigurați-vă că puteți crea și gestiona adrese de email pe acel domeniu (de ex., `hello@agenţiadvs.com`).
+  </Step>
+  <Step title="Navigați la Email Setup în AgencyHandy">
+    Conectați-vă la AgencyHandy. Mergeți la **Workspace Config** în navigarea din stânga, apoi faceți clic pe **Email Setup**.
+  </Step>
+  <Step title="Introduceți numele expeditorului și emailul">
+    În câmpul **Sender Name**, tastați numele pe care clienții îl vor vedea ca expeditor (de ex., `Suport AgencyHandy` sau numele agenției dvs.). În câmpul **Sender Email**, introduceți adresa de email personalizată (de ex., `hello@agenţiadvs.com`). Faceți clic pe **Save**.
+  </Step>
+  <Step title="Verificați adresa de email">
+    AgencyHandy trimite un link de verificare la adresa de email introdusă. Deschideți căsuța de primire, găsiți mesajul de verificare și faceți clic pe link pentru a confirma proprietatea.
+  </Step>
+  <Step title="Configurați înregistrările DNS DKIM, SPF și DMARC">
+    După salvarea emailului expeditorului, AgencyHandy vă furnizează înregistrările DNS pe care trebuie să le adăugați:
+
+    - **Înregistrare SPF** (tip TXT) — autorizează AgencyHandy să trimită emailuri în numele domeniului dvs.
+    - **Înregistrări DKIM** (3 înregistrări CNAME) — adaugă semnături criptografice emailurilor de ieșire astfel încât serverele destinatare să poată verifica autenticitatea.
+    - **Înregistrare DMARC** — definește modul în care serverele destinatare ar trebui să gestioneze emailurile care eșuează la verificările de autentificare.
+
+    Adăugați toate aceste înregistrări în setările DNS ale domeniului dvs. la registrar. Pentru înregistrările DKIM CNAME, asigurați-vă că **Proxy Status este dezactivat** dacă utilizați Cloudflare.
+  </Step>
+  <Step title="Confirmați starea activă">
+    Reveniți la pagina Email Setup din AgencyHandy. Odată ce toate înregistrările DNS s-au propagat (acest lucru poate dura între 2 minute și 2 ore), starea emailului se actualizează din **Pending** și afișează o bifă verde ✅. Emailul dvs. personalizat este acum activ.
+  </Step>
+</Steps>
+
+<Tip>
+  Utilizați [MXToolbox](https://mxtoolbox.com/DKIM.aspx) sau [Validatorul DKIM de la dmarcian](https://dmarcian.com/dkim-validator/) pentru a verifica că înregistrările dvs. DKIM sunt configurate corect. Reîmprospătați periodic pagina Email Setup în timp ce așteptați propagarea.
+</Tip>
+
+---
+
+## Partea 2: Configurați DKIM & SPF (Configurare Independentă)
+
+Dacă trebuie să generați sau să regenerați înregistrările DKIM și SPF independent, urmați această cale:
+
+**Workspace Config → Emails → DKIM & SPF Setup → Generate DKIM and SPF records.**
+
+Apoi adăugați înregistrările în DNS-ul dvs.:
+
+| Tip Înregistrare | Tip DNS | Ce să Configurați                                                                                |
+|------------------|---------|--------------------------------------------------------------------------------------------------|
+| SPF              | TXT     | Copiați **Name** și **Value** din AgencyHandy și adăugați o nouă înregistrare TXT în DNS-ul dvs.|
+| DKIM (×3)        | CNAME   | Copiați fiecare pereche **Name** și **Value**; adăugați 3 înregistrări CNAME separate cu proxy dezactivat |
+
+<Note>
+  Înregistrările DKIM și SPF pot dura oriunde de la **2 minute la 2 ore** pentru a se propaga. Dacă starea este încă în așteptare după 2 ore, verificați că înregistrările au fost introduse fără greșeli de tastare și că nu există înregistrări conflictuale.
+</Note>
+
+---
+
+## Partea 3: Configurați SMTP
+
+SMTP (Simple Mail Transfer Protocol) vă permite să rutați toate emailurile de ieșire din AgencyHandy prin propriul server de email verificat, oferindu-vă mai mult control asupra livrabilității și branding-ului.
+
+<Note>
+  Puteți utiliza fie un **Email de Domeniu Personalizat**, fie un **Furnizor de Email SMTP** — nu ambele simultan. Comutarea între ele este posibilă oricând, dar va trebui să reintroduceți configurația emailului la revenirea la un email personalizat.
+</Note>
+
+<Steps>
+  <Step title="Deschideți setările SMTP Server">
+    Mergeți la **Workspace Config → Email Setup**, apoi faceți clic pe **SMTP Server**.
+  </Step>
+  <Step title="Comutați la Furnizor SMTP (dacă este necesar)">
+    Dacă aveți deja un email personalizat configurat, apare o fereastră de confirmare care vă întreabă dacă doriți să comutați. Faceți clic pe **Switch to SMTP** pentru a continua. Aceasta dezactivează configurarea existentă a emailului personalizat.
+  </Step>
+  <Step title="Introduceți acreditările SMTP">
+    Completați câmpurile obligatorii:
+
+    | Câmp        | Valoare Exemplu        | Note                                                    |
+    |-------------|------------------------|---------------------------------------------------------|
+    | Host Name   | `smtp.gmail.com`       | Adresa serverului SMTP a furnizorului dvs. de email     |
+    | User Name   | `you@yourdomain.com`   | Adresa dvs. completă de email                           |
+    | Password    | Parolă aplicație       | Utilizați o parolă specifică aplicației (vezi mai jos)  |
+    | Port        | `465` sau `587`        | 465 pentru SSL, 587 pentru TLS                          |
+    | Auto TLS    | Activat/dezactivat     | Opțional — activează upgrade-ul automat TLS             |
+
+    Faceți clic pe **Save** când ați terminat.
+  </Step>
+  <Step title="Generați o parolă de aplicație (exemplu Gmail)">
+    Dacă utilizați Gmail cu Autentificare în 2 Pași activată (necesară pentru parolele de aplicație):
+
+    1. Mergeți la [myaccount.google.com/security](https://myaccount.google.com/security) și confirmați că Verificarea în 2 Pași este activă.
+    2. Vizitați [myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords).
+    3. Faceți clic pe **Select app**, alegeți **Mail** (sau introduceți un nume personalizat), apoi faceți clic pe **Select device** și alegeți configurarea dvs.
+    4. Faceți clic pe **Create** — Google generează o parolă de aplicație de 16 caractere.
+    5. Copiați parola și lipiți-o în câmpul **Password** din setările SMTP ale AgencyHandy.
+
+    <Warning>
+      Utilizați **parola de aplicație**, nu parola obișnuită a contului Google. Utilizarea parolei obișnuite va eșua dacă 2FA este activat și poate declanșa alerte de securitate.
+    </Warning>
+  </Step>
+  <Step title="Confirmați configurarea">
+    După salvare, AgencyHandy afișează un mesaj de succes care confirmă _„SMTP is created successfully.“_ Detaliile salvate privind gazda, numele de utilizator și portul apar pe pagina de setări SMTP.
+  </Step>
+  <Step title="Testați conexiunea SMTP">
+    Faceți clic pe butonul **Test** și introduceți o adresă de email destinatar. AgencyHandy trimite un email de test la acea adresă. Verificați căsuța de primire pentru mesajul de confirmare: _„This is a confirmation that your email setup in Agency Handy is working properly.“_
+  </Step>
+</Steps>
+
+<Tip>
+  O singură configurație SMTP poate fi activă per spațiu de lucru la un moment dat. Odată ce SMTP este configurat, toate emailurile de ieșire din AgencyHandy — facturi, propuneri, notificări de sarcini — vor fi trimise prin serverul dvs. SMTP.
+</Tip>
+
+---
+
+## Partea 4: Personalizați Șabloanele de Email
+
+AgencyHandy include șabloane pre-construite pentru fiecare email automat pe care îl trimite. Puteți personaliza fiecare șablon pentru a se potrivi cu tonul brandului dvs. și pentru a include conținut dinamic relevant.
+
+**Șabloanele disponibile includ:**
+- Înregistrare Client
+- Trimite Propunere
+- Recenzie Sarcină
+- Trimite Factură
+- Mementouri Factură & Abonament
+- Notificări Creare Tichet
+
+<Steps>
+  <Step title="Deschideți Șabloanele de Email">
+    Mergeți la **Workspace Config → Emails**, apoi selectați **Email Template** din submeniu.
+  </Step>
+  <Step title="Selectați un șablon de editat">
+    Lista completă a șabloanelor disponibile este afișată. Faceți clic pe orice șablon pentru a deschide pagina de configurare a acestuia.
+  </Step>
+  <Step title="Personalizați câmpurile șablonului">
+    Actualizați următoarele după cum este necesar:
+    - **Sender Email:** Alegeți ce adresă de email configurată trimite acest șablon.
+    - **Subject:** Scrieți o linie de subiect clară și concisă.
+    - **Body:** Editați conținutul mesajului pentru a se potrivi cu tonul și mesajele agenției dvs.
+    - **Dynamic Variables:** Inserați substituenți precum `{{client_name}}`, `{{company_name}}` sau `{{invoice_id}}` pentru a completa automat datele specifice clientului.
+    - **Social Media Links:** Adăugați linkuri la profilurile sociale ale agenției dvs. pentru a încuraja interacțiunea.
+  </Step>
+  <Step title="Trimiteți un email de test">
+    Faceți clic pe **Send Test** pentru a trimite o previzualizare a șablonului în căsuța dvs. de primire. Verificați formatarea, conținutul și că toate variabilele dinamice se rezolvă corect.
+  </Step>
+  <Step title="Salvați modificările">
+    Faceți clic pe **Save Changes** pentru a aplica șablonul actualizat. Noua versiune va fi utilizată pentru toate emailurile automate viitoare care corespund tipului de șablon respectiv.
+  </Step>
+</Steps>
+
+---
+
+## Note Importante
+
+- **SMTP și emailul personalizat sunt mutual exclusive.** Doar o metodă poate fi activă la un moment dat per spațiu de lucru.
+- **Reintroduceți emailul la comutare.** Dacă comutați de la SMTP înapoi la o configurație de email personalizat, trebuie să reintroduceți acreditările emailului personalizat.
+- **Acreditările SMTP incorecte blochează toate emailurile de ieșire.** Verificați de două ori numele gazdei, portul, numele de utilizator și parola dacă emailurile nu mai sunt trimise după o modificare SMTP.
+- **Propagarea DKIM/SPF necesită timp.** Așteptați până la 2 ore și reîmprospătați pagina Email Setup înainte de a concluziona că există o eroare.
+- **Variabilele dinamice sunt sensibile la majuscule.** Utilizați-le exact așa cum sunt afișate în editorul de șabloane pentru a asigura completarea corectă.

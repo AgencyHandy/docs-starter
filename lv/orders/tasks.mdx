@@ -1,0 +1,240 @@
+---
+title: "Uzdevumu pārvaldība: darba izveide un izsekošana pasūtījumos"
+sidebarTitle: "Uzdevumi"
+description: "Izveidojiet, rediģējiet un pārvaldiet uzdevumus pasūtījumos — ieskaitot laika izsekošanu, failu atsauksmes, klientu pieprasītos uzdevumus un uzdevumu pārskatu visiem pasūtījumiem."
+---
+
+Uzdevumi ir darba vienības, kas pārvērš pasūtījumu par piegādājamu rezultātu. Katrs uzdevums atrodas konkrētā pasūtījumā, var tikt piešķirts komandas dalībniekam un izseko savu statusu, laika grafiku, pielikumus un atsauksmju pavedienu. Šī lapa skaidro, kā izveidot un pārvaldīt uzdevumus, kā klienti var pieprasīt uzdevumus, kā darbojas laika izsekošana un failu atsauksmes, kā arī kā apskatīt uzdevumus visiem pasūtījumiem vienlaikus.
+
+## Lomu prasības
+
+| Darbība | Kas var to veikt |
+|---|---|
+| Izveidot uzdevumus | Super administrators, Administrators, Projektu vadītājs |
+| Rediģēt uzdevumus | Super administrators, Administrators, Projektu vadītājs |
+| Dzēst uzdevumus | Super administrators, Administrators, Projektu vadītājs |
+| Skatīt uzdevumus pārskatīšanā / pabeigtus | Super administrators, Administrators, Projektu vadītājs, Klients |
+| Sūtīt un atbildēt uz atsauksmēm | Super administrators, Administrators, Projektu vadītājs |
+| Reģistrēt laiku uzdevumiem | Visi piešķirtie lietotāji (Super administratori un Administratori var reģistrēt citu vārdā) |
+| Pieprasīt uzdevumu (klients) | Klients |
+| Apstiprināt / noraidīt pieprasītos uzdevumus | Super administrators, Administrators |
+
+<Note>
+Pasūtījumam piešķirtie darbinieki var redzēt uzdevumus, kas atrodas statusā **Pārskatīšanā** vai **Pabeigts**. Uzdevumi statusā **Notiek** darbiniekiem nav redzami.
+</Note>
+
+## Izveidot uzdevumu
+
+<Steps>
+  <Step title="Atveriet pasūtījumu">
+    Kreisajā sānjoslā pārejiet uz **Pasūtījumi** un noklikšķiniet uz pasūtījuma, kuram vēlaties pievienot uzdevumu.
+  </Step>
+
+  <Step title="Pievienojiet jaunu uzdevumu">
+    Pasūtījumā ritiniet uz leju līdz sadaļai **Uzdevumi** un noklikšķiniet uz **+ Pievienot jaunu uzdevumu**. Parādīsies uzdevuma izveides forma.
+  </Step>
+
+  <Step title="Aizpildiet uzdevuma datus">
+    Aizpildiet pieejamos laukus:
+
+    | Lauks | Piezīmes |
+    |---|---|
+    | **Uzdevuma nosaukums** | Skaidrs, kodolīgs darba vienuma virsraksts |
+    | **Apraksts** | Detalizēts konteksts, prasības vai instrukcijas |
+    | **Izpildītājs** | Komandas dalībnieks, kas atbild par uzdevuma izpildi |
+    | **Etiķete** | Kategorijas atzīme uzdevumu organizēšanai (piemēram, Dizains, Teksts) |
+    | **Sākuma datums** | Kad sākas darbs pie uzdevuma |
+    | **Izpildes termiņš** | Kad uzdevums jāpabeidz |
+    | **Nepieciešama klienta pārskatīšana** | Izvēles rūtiņa, kas prasa klientam apstiprināt uzdevumu pirms tā atzīmēšanas kā Pabeigts — pēc noklusējuma atzīmēta |
+    | **Pielikumi** | Atsauces faili vai papildu materiāli |
+  </Step>
+
+  <Step title="Saglabājiet uzdevumu">
+    Noklikšķiniet uz **Saglabāt**, lai izveidotu uzdevumu. Klients automātiski saņem paziņojumu, ka viņa pasūtījumam pievienots jauns uzdevums.
+  </Step>
+</Steps>
+
+<Tip>
+Izvēles rūtiņa **Nepieciešama klienta pārskatīšana** pēc noklusējuma ir iespējota katram jaunam uzdevumam. Ja uzdevums ir tikai iekšējs un klienta apstiprinājums nav nepieciešams, varat to noņemt pirms saglabāšanas.
+</Tip>
+
+## Uzdevumu statusi
+
+Uzdevumi virzās caur šādiem statusiem:
+
+- **Notiek** — uzdevums tiek veikts (nav redzams klientiem vai darbiniekiem)
+- **Pārskatīšanā** — uzdevums iesniegts pārskatīšanai; redzams klientiem
+- **Pabeigts** — uzdevums apstiprināts un pabeigts
+
+<Note>
+Kad klients vai pārskatītājs noraida uzdevumu no statusa **Pārskatīšanā**, tā statuss automātiski atgriežas uz **Notiek**.
+</Note>
+
+## Uzdevuma modālis un aktivitātes lapa
+
+Noklikšķinot uz jebkura uzdevuma, tiek atvērts **Uzdevuma modālis** — pilna detaļu skats, kas kalpo kā uzdevuma darbību centrs. No šejienes varat apskatīt un pārvaldīt:
+
+- Pašreizējo statusu, izpildītāju, sākuma datumu un izpildes termiņu
+- Uzdevuma aprakstu un visus pievienotos failus
+- Visus atsauksmju pavedienus un atbildes
+- Pilnu aktivitātes žurnālu, kurā redzami visi atjauninājumi, komentāri un statusa izmaiņas attiecībā uz uzdevumu
+
+Ikviens, kas ir pasūtījuma dalībnieks — ieskaitot klientus, ja klienta pārskatīšana ir iespējota — var piekļūt uzdevuma modālim tiem uzdevumiem, kurus viņi var redzēt.
+
+## Rediģēt uzdevumu
+
+Lai atjauninātu uzdevuma datus pēc tā izveides, atveriet uzdevuma modāli un modificējiet attiecīgos laukus (nosaukumu, aprakstu, izpildītāju, datumus, etiķeti vai pielikumus). Saglabājiet izmaiņas, lai tās piemērotu. Tikai Super administratori, Administratori un projektu vadītāji var rediģēt uzdevumus.
+
+## Dzēst uzdevumu
+
+Lai dzēstu uzdevumu, atveriet to un izmantojiet dzēšanas opciju uzdevuma darbību izvēlnē. Dzēšana ir neatgriezeniska — visi saistītie laika žurnāli un failu versijas tiek noņemtas kopā ar uzdevumu.
+
+<Warning>
+Dzēšot uzdevumu, tiek noņemtas arī visas failu versijas un to saistītie atsauksmju komentāri. Šo darbību nevar atsaukt.
+</Warning>
+
+## Laika izsekošana
+
+AgencyHandy ietver iebūvētu laika izsekošanu, lai jūsu komanda varētu reģistrēt stundas tieši pret uzdevumiem — nav nepieciešams ārējs rīks.
+
+### Taimera palaišana
+
+<Steps>
+  <Step title="Atveriet uzdevumu">
+    Pārejiet uz **Pasūtījumi → Uzdevumi** un atveriet uzdevumu, kuram vēlaties izsekot laiku.
+  </Step>
+
+  <Step title="Palaidiet taimeri">
+    Noklikšķiniet uz **Palaist taimeri**. Taimeris sāk darboties un parāda uzdevuma nosaukumu, reāllaikā pagājušo laiku un kopējo reģistrēto laiku.
+  </Step>
+
+  <Step title="Apturiet vai apstādiniet, kad esat pabeidzis">
+    Noklikšķiniet uz **Apturēt taimeri**, lai uz laiku pārtrauktu izsekošanu, vai **Apstādināt taimeri**, lai pabeigtu ierakstu. Apstādinot, apstipriniet datumu, sākuma laiku, beigu laiku, kopējo ilgumu un neobligātu piezīmi.
+  </Step>
+</Steps>
+
+<Note>
+Vienlaikus var darboties tikai viens aktīvs taimeris. Jauna taimera palaišana automātiski aptur esošo.
+</Note>
+
+<Warning>
+Ja uzdevums ir atzīmēts kā **Pabeigts**, taimeris ir atspējots. Atkārtoti atveriet uzdevumu, lai atkārtoti iespējotu laika reģistrēšanu.
+</Warning>
+
+### Manuālais laika ieraksts
+
+Ja laiks jāreģistrē ar atpakaļejošu datumu, noklikšķiniet uz **Manuālais laika ieraksts** uzdevumā un ievadiet:
+
+- **Datumu**
+- **Sākuma laiku un beigu laiku** (vai **Ilgumu** stundās un minūtēs)
+- **Piezīmes** (neobligāti)
+
+Vairāki lietotāji var vienlaikus reģistrēt laiku pret vienu un to pašu uzdevumu. Super administratori un Administratori var izveidot manuālus laika ierakstus jebkura lietotāja vārdā.
+
+### Darba žurnāli
+
+Noklikšķiniet uz pogas **Darba žurnāls** blakus taimerim, lai apskatītu pilnu visu laika ierakstu sadalījumu uzdevumam, ieskaitot datumu, sākuma/beigu laikus, kopējo aktīvo laiku un jebkādas piezīmes. Administratori un Super administratori var dzēst jebkuru ierakstu; parastie lietotāji var dzēst tikai savus.
+
+### Laika uzskaites lapas
+
+Kreisajā sānjoslā pārejiet uz **Laika uzskaites lapas**, lai apskatītu visu reģistrēto laiku visiem pasūtījumiem vienā ekrānā. Varat filtrēt pēc uzdevuma nosaukuma, pasūtījuma ID, izpildītāja vai datumu diapazona (dienā, nedēļā, mēnesī) un grupēt rezultātus pēc komandas dalībnieka, pakalpojuma nosaukuma vai uzdevuma nosaukuma. Tāpat varat palaist taimeri vai pievienot manuālu ierakstu tieši no laika uzskaites lapas skata.
+
+## Failu atsauksmes
+
+AgencyHandy failu atsauksmju sistēma ļauj jums un jūsu klientiem atstāt precīzus, vizuālus komentārus par piegādājamajiem rezultātiem — tieši uzdevumu ietvaros. Tā atbalsta attēlus, PDF failus, videoklipus un tiešsaistes vietnes, ar versiju kontroli un pavedienu diskusijām.
+
+### Faila augšupielāde pārskatīšanai
+
+Atveriet uzdevumu, noklikšķiniet uz **➕** ikonas sadaļā **Pielikumi** un augšupielādējiet attēlu, PDF, videoklipu vai ielīmējiet tiešsaistes vietnes URL.
+
+### Atsauksmju atstāšana pēc faila tipa
+
+**Attēli un PDF faili**
+Atveriet failu un izmantojiet anotāciju rīkjoslu (Bultiņa, Līnija, Taisnstūris, Izcēlums), lai iezīmētu konkrētas vietas. Atlasiet apgabalu, ierakstiet komentāru un izvēlieties, vai to kopīgot ar komandu, klientu vai abiem. Varat arī atsaukt vai atkārtot anotācijas un mainīt to krāsas.
+
+**Videoklipi**
+Atveriet videoklipu un apturiet to tajā kadrā, kur attiecas jūsu atsauksme. Ierakstiet komentāru — videoklips automātiski apstājas rakstīšanas laikā. Atsauksme saņem laikspiedolu attiecīgajam brīdim. Varat noņemt laikspiedolu, lai atstātu vispārīgu komentāru.
+
+**Tiešsaistes vietnes**
+Pievienojiet vietnes URL uzdevumam, izmantojot pogu **➕**, pēc tam instalējiet AgencyHandy pārlūka paplašinājumu. Atveriet vietni **Skatīšanas režīmā** (interaktīvs) vai pārslēdzieties uz **Pārskatīšanas režīmu**, lai uzņemtu ekrānuzņēmumu un anotētu to ar zīmēšanas, teksta vai formas rīkiem.
+
+### Komentāru darbības
+
+Katram komentāram ir trīs punktu izvēlne ar iespējām:
+
+- Rediģēt komentāru
+- Kopēt atbildi
+- Dzēst komentāru
+- Ierobežot redzamību tikai iekšējai komandai
+
+### Atsauksmju atrisināšana
+
+Noklikšķiniet uz pogas **✓** pie komentāra, lai atzīmētu to kā **Atrisināts**. Atrisinātie komentāri paliek redzami uzziņai un var tikt atkārtoti atvērti. Saņemsiet paziņojumu, kad kāds cits atrisina jūsu atstātu komentāru.
+
+### Failu versijas
+
+Noklikšķiniet uz **Augšupielādēt jaunu versiju**, lai pievienotu pārskatītu failu. Iepriekšējās versijas un to atsauksmes tiek saglabātas un pieejamas no versiju nolaižamās izvēlnes. Atverot vecāku versiju, AgencyHandy paziņo, ka pastāv jaunāka versija.
+
+Katru failu varat atzīmēt kā **Nepieciešama pārskatīšana** vai **Apstiprināts**, lai pārskatīšanas statusu varētu uzreiz novērtēt.
+
+<Note>
+Klienti var atstāt atsauksmes par failiem tikai tad, ja uzdevumā ir iespējota izvēles rūtiņa **Nepieciešama klienta pārskatīšana**. Failu atsauksmes ir pieejamas tikai uzdevumu vai pasūtījumu ietvaros — ne pakalpojumu katalogā vai profila attēlos.
+</Note>
+
+## Klientu pieprasītie uzdevumi
+
+Klienti var iesniegt uzdevumu pieprasījumus no sava portāla, sniedzot tiem strukturētu veidu, kā paust papildu vajadzības, neapejot jūsu apstiprināšanas procesu.
+
+### Klienta darbplūsma
+
+<Steps>
+  <Step title="Piekļūt pieprasījumiem">
+    Klients noklikšķina uz **Pieprasījumi** sava Klienta portāla sānjoslā — vai izmanto pogu **+ Pieprasīt uzdevumu** tieši pasūtījuma ietvaros.
+  </Step>
+
+  <Step title="Aizpildīt pieprasījuma formu">
+    Klients norāda:
+    - **Pasūtījumu** (obligāts — pieprasījumiem jābūt piesaistītiem esošam pasūtījumam)
+    - **Uzdevuma nosaukumu** (obligāts)
+    - **Aprakstu** (neobligāts)
+    - **Pielikumus** (neobligāts — līdz 1 GB; formāti ietver PDF, DOCX, JPG, PNG, MP4, ZIP un citus)
+    - **Sākuma un beigu datumus** (neobligāts)
+  </Step>
+
+  <Step title="Iesniegt pieprasījumu">
+    Klients noklikšķina uz **Pieprasīt**. Uzdevums parādās viņa portālā kā **Gaida** un jūsu aģentūra saņem paziņojumu.
+  </Step>
+</Steps>
+
+### Aģentūras darbplūsma
+
+<Steps>
+  <Step title="Apskatīt ienākošos pieprasījumus">
+    Aģentūras portāla sānjoslā noklikšķiniet uz **Pieprasījumi**. Visi gaidošie pieprasījumi parādās saraksta skatā. Varat filtrēt pēc klienta vai pasūtījuma ID, kārtot alfabētiski vai pēc iesniegšanas datuma, kā arī izmantot **Preferences**, lai rādītu vai slēptu kolonnas.
+  </Step>
+
+  <Step title="Pārskatīt pieprasījumu">
+    Noklikšķiniet uz pieprasījuma, lai izlasītu aprakstu un priekšskatītu pielikumus pirms lēmuma pieņemšanas.
+  </Step>
+
+  <Step title="Apstiprināt vai noraidīt">
+    Izmantojiet darbību pogas pie katra pieprasījuma, lai apstiprinātu vai noraidītu individuāli — vai izmantojiet masveida darbības augšējā labajā stūrī, lai apstiprinātu vai noraidītu visus pieprasījumus vienlaikus.
+
+    - **Apstiprinātie** pieprasījumi kļūst par aktīviem uzdevumiem pasūtījumā un seko parastajai uzdevumu darbplūsmai.
+    - **Noraidītie** pieprasījumi paliek reģistrēti ar statusu **Noraidīts** un netiek pievienoti pasūtījumam.
+  </Step>
+</Steps>
+
+<Note>
+Klienti nevar apiet apstiprināšanas soli. Pieprasījumam vienmēr nepieciešama aģentūras rīcība, pirms tas kļūst par aktīvu uzdevumu. Gaidošie pieprasījumi paliek redzami gan klientam, gan aģentūrai, līdz tiek pieņemts lēmums.
+</Note>
+
+## Visu uzdevumu skats
+
+Papildus uzdevumu pārvaldībai atsevišķos pasūtījumos, varat apskatīt uzdevumus visiem pasūtījumiem no viena ekrāna. Kreisajā sānjoslā pārejiet uz **Uzdevumi**, lai piekļūtu lapai **Visi uzdevumi**. No šejienes varat:
+
+- Apskatīt katru uzdevumu, kuram jums ir redzamība, neatkarīgi no tā, kuram pasūtījumam tas pieder
+- Filtrēt un kārtot pēc statusa, izpildītāja, izpildes termiņa vai pasūtījuma
+- Ātri identificēt kavētos vai riskantus elementus visā jūsu darba slodzē
+
+Šī pārjoma redzamība ir īpaši noderīga projektu vadītājiem un Administratoriem, kuriem jālīdzsvaro komandas kapacitāte un jāseko piegādes stāvoklim aģentūras līmenī.

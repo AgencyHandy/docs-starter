@@ -1,0 +1,188 @@
+---
+title: "Konfiguracja wychodzących wiadomości e-mail, SMTP i szablonów e-mail"
+sidebarTitle: "Konfiguracja e-mail"
+description: "Skonfiguruj własny adres e-mail nadawcy, podłącz serwer SMTP, dodaj rekordy DKIM/SPF dla dostarczalności i dostosuj szablony e-mail w AgencyHandy."
+---
+
+Konfiguracja e-mail w AgencyHandy umożliwia zastąpienie domyślnego adresu nadawcy `noreply@agencyhandy.com` własnym brandowanym adresem e-mail, skonfigurowanie dedykowanego serwera SMTP dla niezawodnego dostarczania wiadomości oraz dostosowanie szablonów używanych do powiadomień dla klientów, faktur, ofert i nie tylko. Prawidłowa konfiguracja zapewnia, że Twoje e-maile trafiają do skrzynki odbiorczej klientów — a nie do folderu ze spamem — i że każda wiadomość odzwierciedla tożsamość Twojej agencji.
+
+<Note>
+  Tylko **Super Administratorzy** i **Administratorzy** mogą konfigurować ustawienia e-mail. Przejdź do **Konfiguracja obszaru roboczego → Konfiguracja e-mail**, aby uzyskać dostęp do tych opcji.
+</Note>
+
+---
+
+## Przegląd elementów konfiguracji e-mail
+
+<CardGroup cols={2}>
+  <Card title="Własny adres e-mail" icon="envelope">
+    Ustaw nazwę nadawcy i adres e-mail, które klienci widzą, gdy otrzymują wiadomości z Twojego obszaru roboczego.
+  </Card>
+  <Card title="Rekordy DKIM i SPF" icon="shield-check">
+    Dodaj rekordy uwierzytelniania DNS, aby potwierdzić autentyczność Twoich e-maili i zapobiec oznaczaniu ich jako spam.
+  </Card>
+  <Card title="Serwer SMTP" icon="server">
+    Podłącz własny serwer pocztowy (np. Gmail, Outlook lub serwer domeny niestandardowej), aby wysyłać wszystkie wychodzące e-maile z AgencyHandy.
+  </Card>
+  <Card title="Szablony e-mail" icon="file-lines">
+    Dostosuj treść, tematy i branding dla każdego automatycznego e-maila, który AgencyHandy wysyła do klientów.
+  </Card>
+</CardGroup>
+
+---
+
+## Część 1: Konfiguracja własnego adresu e-mail
+
+Przed skonfigurowaniem adresu e-mail nadawcy potrzebujesz zarejestrowanej domeny z hostingiem poczty e-mail. Popularne dostawcy to Google Workspace, Microsoft 365, Zoho Mail i Cloudflare Email Routing.
+
+<Steps>
+  <Step title="Zarejestruj domenę i skonfiguruj hosting poczty e-mail">
+    Jeśli jeszcze tego nie zrobiłeś, zarejestruj domenę u rejestratora (np. GoDaddy, Namecheap, Cloudflare) i zarejestruj się u dostawcy hostingu poczty e-mail. Upewnij się, że możesz tworzyć adresy e-mail w tej domenie i zarządzać nimi (np. `hello@twojagencja.com`).
+  </Step>
+  <Step title="Przejdź do Konfiguracji e-mail w AgencyHandy">
+    Zaloguj się do AgencyHandy. Przejdź do **Konfiguracja obszaru roboczego** w lewej nawigacji, a następnie kliknij **Konfiguracja e-mail**.
+  </Step>
+  <Step title="Wprowadź nazwę nadawcy i adres e-mail">
+    W polu **Nazwa nadawcy** wpisz nazwę, którą klienci zobaczą jako nadawcę (np. `Wsparcie AgencyHandy` lub nazwa Twojej agencji). W polu **E-mail nadawcy** wprowadź własny adres e-mail (np. `hello@twojagencja.com`). Kliknij **Zapisz**.
+  </Step>
+  <Step title="Zweryfikuj swój adres e-mail">
+    AgencyHandy wysyła link weryfikacyjny na podany adres e-mail. Otwórz skrzynkę odbiorczą, znajdź wiadomość weryfikacyjną i kliknij link, aby potwierdzić własność.
+  </Step>
+  <Step title="Skonfiguruj rekordy DNS DKIM, SPF i DMARC">
+    Po zapisaniu adresu e-mail nadawcy AgencyHandy udostępnia rekordy DNS, które musisz dodać:
+
+    - **Rekord SPF** (typ TXT) — upoważnia AgencyHandy do wysyłania e-maili w imieniu Twojej domeny.
+    - **Rekordy DKIM** (3 rekordy CNAME) — dodają kryptograficzne podpisy do wychodzących e-maili, aby serwery odbierające mogły zweryfikować autentyczność.
+    - **Rekord DMARC** — określa, jak serwery odbiorców powinny obsługiwać e-maile, które nie przeszły weryfikacji.
+
+    Dodaj wszystkie te rekordy do ustawień DNS Twojej domeny u rejestratora. W przypadku rekordów DKIM CNAME upewnij się, że **Status proxy jest wyłączony**, jeśli korzystasz z Cloudflare.
+  </Step>
+  <Step title="Potwierdź status aktywny">
+    Wróć do strony Konfiguracja e-mail w AgencyHandy. Gdy wszystkie rekordy DNS zostaną rozpropagowane (może to potrwać od 2 minut do 2 godzin), status e-mail zmieni się z **Oczekujący** na zielony znacznik wyboru ✅. Twój własny adres e-mail jest teraz aktywny.
+  </Step>
+</Steps>
+
+<Tip>
+  Użyj [MXToolbox](https://mxtoolbox.com/DKIM.aspx) lub [Walidatora DKIM dmarcian](https://dmarcian.com/dkim-validator/), aby sprawdzić, czy Twoje rekordy DKIM są prawidłowo skonfigurowane. Odświeżaj stronę Konfiguracja e-mail co jakiś czas podczas oczekiwania na propagację.
+</Tip>
+
+---
+
+## Część 2: Konfiguracja DKIM i SPF (konfiguracja samodzielna)
+
+Jeśli chcesz wygenerować lub ponownie wygenerować rekordy DKIM i SPF niezależnie, postępuj według tej ścieżki:
+
+**Konfiguracja obszaru roboczego → E-maile → Konfiguracja DKIM i SPF → Wygeneruj rekordy DKIM i SPF.**
+
+Następnie dodaj rekordy do swojego DNS:
+
+| Typ rekordu | Typ DNS | Co skonfigurować                                                                                       |
+|-------------|---------|--------------------------------------------------------------------------------------------------------|
+| SPF         | TXT     | Skopiuj **Nazwę** i **Wartość** z AgencyHandy i dodaj nowy rekord TXT w swoim DNS                     |
+| DKIM (×3)   | CNAME   | Skopiuj każdą parę **Nazwa** i **Wartość**; dodaj 3 osobne rekordy CNAME z wyłączonym proxy            |
+
+<Note>
+  Propagacja rekordów DKIM i SPF może potrwać od **2 minut do 2 godzin**. Jeśli status nadal jest oczekujący po 2 godzinach, sprawdź, czy rekordy zostały wprowadzone bez błędów i czy nie istnieją sprzeczne rekordy.
+</Note>
+
+---
+
+## Część 3: Konfiguracja SMTP
+
+SMTP (Simple Mail Transfer Protocol) umożliwia kierowanie wszystkich wychodzących e-maili AgencyHandy przez własny zweryfikowany serwer pocztowy, zapewniając większą kontrolę nad dostarczalnością i brandingiem.
+
+<Note>
+  Możesz używać albo **E-maila z domeną niestandardową**, albo **Dostawcy e-mail SMTP** — nie obu jednocześnie. Przełączanie między nimi jest możliwe w dowolnym momencie, ale przy powrocie do własnego adresu e-mail konieczne będzie ponowne wprowadzenie konfiguracji e-mail.
+</Note>
+
+<Steps>
+  <Step title="Otwórz ustawienia serwera SMTP">
+    Przejdź do **Konfiguracja obszaru roboczego → Konfiguracja e-mail**, a następnie kliknij **Serwer SMTP**.
+  </Step>
+  <Step title="Przełącz na dostawcę SMTP (jeśli potrzeba)">
+    Jeśli masz już skonfigurowany własny adres e-mail, pojawi się okno potwierdzenia z pytaniem, czy chcesz się przełączyć. Kliknij **Przełącz na SMTP**, aby kontynuować. To wyłącza istniejącą konfigurację własnego adresu e-mail.
+  </Step>
+  <Step title="Wprowadź dane uwierzytelniające SMTP">
+    Wypełnij wymagane pola:
+
+    | Pole        | Przykładowa wartość    | Uwagi                                                      |
+    |-------------|------------------------|------------------------------------------------------------|
+    | Nazwa hosta | `smtp.gmail.com`       | Adres serwera SMTP Twojego dostawcy poczty e-mail          |
+    | Nazwa użytkownika | `ty@twojadomena.com` | Twój pełny adres e-mail                               |
+    | Hasło       | Hasło do aplikacji     | Użyj hasła specyficznego dla aplikacji (patrz niżej)       |
+    | Port        | `465` lub `587`        | 465 dla SSL, 587 dla TLS                                   |
+    | Auto TLS    | Włącz/wyłącz          | Opcjonalne — umożliwia automatyczne uaktualnienie TLS      |
+
+    Po zakończeniu kliknij **Zapisz**.
+  </Step>
+  <Step title="Wygeneruj hasło do aplikacji (przykład Gmail)">
+    Jeśli używasz Gmail z włączonym uwierzytelnianiem dwuetapowym (wymaganym do haseł aplikacji):
+
+    1. Przejdź do [myaccount.google.com/security](https://myaccount.google.com/security) i potwierdź, że weryfikacja dwuetapowa jest aktywna.
+    2. Odwiedź [myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords).
+    3. Kliknij **Wybierz aplikację**, wybierz **Poczta** (lub wprowadź niestandardową nazwę), a następnie kliknij **Wybierz urządzenie** i wybierz swoją konfigurację.
+    4. Kliknij **Utwórz** — Google generuje 16-znakowe hasło do aplikacji.
+    5. Skopiuj hasło i wklej je w pole **Hasło** w ustawieniach SMTP AgencyHandy.
+
+    <Warning>
+      Użyj **hasła do aplikacji**, a nie swojego zwykłego hasła do konta Google. Użycie zwykłego hasła nie powiedzie się, jeśli włączone jest 2FA, i może wywołać alerty bezpieczeństwa.
+    </Warning>
+  </Step>
+  <Step title="Potwierdź konfigurację">
+    Po zapisaniu AgencyHandy wyświetla komunikat o powodzeniu potwierdzający _„SMTP został pomyślnie utworzony.”_ Zapisane dane hosta, nazwy użytkownika i portu pojawiają się na stronie ustawień SMTP.
+  </Step>
+  <Step title="Przetestuj połączenie SMTP">
+    Kliknij przycisk **Test** i wprowadź adres e-mail odbiorcy. AgencyHandy wysyła testowy e-mail na ten adres. Sprawdź skrzynkę odbiorczą, czy zawiera wiadomość potwierdzającą: _„To jest potwierdzenie, że konfiguracja poczty e-mail w Agency Handy działa prawidłowo.”_
+  </Step>
+</Steps>
+
+<Tip>
+  W danym momencie dla obszaru roboczego może być aktywna tylko jedna konfiguracja SMTP. Po skonfigurowaniu SMTP wszystkie wychodzące e-maile z AgencyHandy — faktury, oferty, powiadomienia o zadaniach — będą wysyłane przez Twój serwer SMTP.
+</Tip>
+
+---
+
+## Część 4: Dostosowywanie szablonów e-mail
+
+AgencyHandy zawiera gotowe szablony dla każdego automatycznego e-maila, który wysyła. Możesz dostosować każdy z nich, aby pasował do tonu Twojej marki i zawierał odpowiednie dynamiczne treści.
+
+**Dostępne szablony obejmują:**
+- Rejestracja klienta
+- Wyślij ofertę
+- Przegląd zadania
+- Wyślij fakturę
+- Przypomnienia o fakturach i subskrypcjach
+- Powiadomienia o utworzeniu zgłoszenia
+
+<Steps>
+  <Step title="Otwórz szablony e-mail">
+    Przejdź do **Konfiguracja obszaru roboczego → E-maile**, a następnie wybierz **Szablon e-mail** z podmenu.
+  </Step>
+  <Step title="Wybierz szablon do edycji">
+    Wyświetlana jest pełna lista dostępnych szablonów. Kliknij dowolny szablon, aby otworzyć jego stronę konfiguracji.
+  </Step>
+  <Step title="Dostosuj pola szablonu">
+    Zaktualizuj następujące elementy według potrzeb:
+    - **E-mail nadawcy:** Wybierz, który skonfigurowany adres e-mail wysyła ten szablon.
+    - **Temat:** Napisz jasny, zwięzły temat wiadomości.
+    - **Treść:** Edytuj zawartość wiadomości, aby pasowała do tonu i przekazu Twojej agencji.
+    - **Zmienne dynamiczne:** Wstaw symbole zastępcze takie jak `{{client_name}}`, `{{company_name}}` lub `{{invoice_id}}`, aby automatycznie uzupełniać dane specyficzne dla klienta.
+    - **Linki do mediów społecznościowych:** Dodaj linki do profili społecznościowych Twojej agencji, aby zachęcić do interakcji.
+  </Step>
+  <Step title="Wyślij testowy e-mail">
+    Kliknij **Wyślij test**, aby wysłać podgląd szablonu na swój adres e-mail. Sprawdź formatowanie, treść i czy wszystkie zmienne dynamiczne są prawidłowo wypełniane.
+  </Step>
+  <Step title="Zapisz zmiany">
+    Kliknij **Zapisz zmiany**, aby zastosować zaktualizowany szablon. Nowa wersja będzie używana dla wszystkich przyszłych automatycznych e-maili pasujących do tego typu szablonu.
+  </Step>
+</Steps>
+
+---
+
+## Ważne informacje
+
+- **SMTP i własny adres e-mail wzajemnie się wykluczają.** W danym momencie dla obszaru roboczego może być aktywna tylko jedna metoda.
+- **Ponowne wprowadzenie adresu e-mail przy zmianie.** Jeśli przełączysz się z SMTP z powrotem na konfigurację własnego adresu e-mail, musisz ponownie wprowadzić dane logowania własnego adresu e-mail.
+- **Nieprawidłowe dane uwierzytelniające SMTP blokują wszystkie wychodzące e-maile.** Sprawdź dokładnie nazwę hosta, port, nazwę użytkownika i hasło, jeśli e-maile przestały być wysyłane po zmianie SMTP.
+- **Propagacja DKIM/SPF zajmuje czas.** Poczekaj do 2 godzin i odśwież stronę Konfiguracja e-mail przed stwierdzeniem, że wystąpił błąd.
+- **Zmienne dynamiczne rozróżniają wielkość liter.** Używaj ich dokładnie tak, jak pokazano w edytorze szablonów, aby zapewnić ich prawidłowe wypełnianie.

@@ -1,0 +1,201 @@
+---
+title: "AgencyHandy API: Programmatisch een Nieuwe Lead Aanmaken"
+sidebarTitle: "Lead Aanmaken"
+description: "Gebruik de AgencyHandy API om programmatisch nieuwe leads aan te maken door een POST-verzoek te sturen naar het bulk-lead-eindpunt met de vereiste velden."
+---
+
+Met het eindpunt Lead aanmaken kunt u programmatisch nieuwe leads toevoegen aan uw AgencyHandy-werkruimte vanuit elk extern systeem — een webformulier, een CRM, een marketingautomatiseringsplatform of een aangepast script. Leads die via dit eindpunt worden aangemaakt, verschijnen onmiddellijk in uw lead-pipeline, alsof ze handmatig zijn toegevoegd.
+
+<Note>
+  Voltooi voordat u dit eindpunt gebruikt de gids [Aan de Slag](/nl/api/getting-started) om uw API-sleutel en Bedrijfs-ID te verkrijgen. U heeft ook uw **Klantrol-ID** nodig, die vereist is bij het aanmaken van een lead.
+</Note>
+
+## Vereisten
+
+- ✅ API-sleutel gegenereerd vanuit **Werkruimteconfiguratie → API-sleutel**
+- ✅ Bedrijfs-ID opgehaald via `GET {{URL}}/accounts/companies`
+- ✅ Klantrol-ID opgehaald (zie Stap 1 hieronder)
+
+---
+
+## Stap 1: Haal de Klantrol-ID op
+
+Voordat u een lead aanmaakt, heeft u de Rol-ID nodig voor de `client`-rol in uw bedrijf.
+
+### Eindpunt
+
+```
+GET {{URL}}/roles?type=company
+```
+
+### Headers
+
+| Header | Waarde |
+|---|---|
+| `x-api-key` | Uw API-sleutel |
+| `companyid` | Uw Bedrijfs-ID |
+
+### Voorbeeldverzoek
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/roles?type=company" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>"
+```
+
+### Voorbeeldantwoord
+
+```json
+{
+  "roles": [
+    {
+      "_id": "6525994184e9ddd798534535",
+      "role": {
+        "_id": "6525994184e9ddd79853451e",
+        "responsibility": "",
+        "name": "client"
+      },
+      "company": "6525994184e9ddd79853450e",
+      "createdAt": "2023-10-10T18:34:41.567Z",
+      "updatedAt": "2024-10-01T07:28:48.340Z",
+      "__v": 0,
+      "type": "company"
+    }
+  ]
+}
+```
+
+Zoek het item waar `roles[0].role.name === "client"` en extraheer de **buitenste** `_id` — dat is `roles[0]._id`, **niet** `roles[0].role._id`.
+
+```javascript
+const clientRoleId = roles.find(r => r.role.name === "client")._id;
+// bijv. "6525994184e9ddd798534535"
+```
+
+<Warning>
+  Gebruik `roles[0]._id` (het bedrijfsrol-koppeling-ID), **niet** `roles[0].role._id` (het roldefinitie-ID). Het gebruik van het verkeerde ID zorgt ervoor dat het verzoek voor het aanmaken van de lead mislukt.
+</Warning>
+
+---
+
+## Stap 2: Maak een nieuwe lead aan
+
+### Eindpunt
+
+```
+POST {{URL}}/members/bulk-lead
+```
+
+### Headers
+
+| Header | Waarde |
+|---|---|
+| `x-api-key` | Uw API-sleutel |
+| `companyid` | Uw Bedrijfs-ID |
+| `Content-Type` | `application/json` |
+
+### Verzoekbody
+
+De verzoekbody is een **JSON-array** — u kunt één of meer leads aanmaken in één aanroep.
+
+<ParamField body="firstName" type="string" required>
+  De voornaam van de lead.
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  De achternaam van de lead.
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  Het e-mailadres van de lead. Moet uniek zijn binnen uw werkruimte.
+</ParamField>
+
+<ParamField body="role" type="string" required>
+  De Klantrol-ID opgehaald in Stap 1 (d.w.z. `roles[0]._id`).
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  Moet worden ingesteld op `false` bij het aanmaken van een lead. Stel in op `true` alleen bij het converteren van een lead naar een volwaardige klant.
+</ParamField>
+
+<ParamField body="status" type="string">
+  De pipelinestatus van de lead. Veelgebruikte waarden: `New`, `Contacted`, `Qualified`. Standaard `New` indien weggelaten.
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  Het telefoonnummer van de lead.
+</ParamField>
+
+<ParamField body="source" type="string">
+  Hoe u deze lead heeft verkregen. Voorbeeldwaarden: `website`, `referral`, `social`.
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  De positie (volgorde) van de lead binnen de pipelinebordkolom. Standaard `1`.
+</ParamField>
+
+### Voorbeeldverzoek
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-lead" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "role": "6525994184e9ddd798534535",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+### Succesantwoord
+
+```json
+{
+  "message": "Lead created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  Bevestigingsreeks: `"Lead created successfully"`.
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  Array van aangemaakte lead-objecten.
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  Het unieke ID van de nieuw aangemaakte lead. Bewaar dit als u naar de lead wilt verwijzen in volgende API-aanroepen.
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  De volledige naam van de lead (voornaam + achternaam).
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  De pipelinestatus van de lead zoals opgeslagen.
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  De rolnaam die aan het lid is toegewezen — wordt `"client"`.
+</ResponseField>
+
+<Tip>
+  U kunt meerdere lead-objecten in de array doorgeven om meerdere leads aan te maken in één API-aanroep. Elk object moet alle vereiste velden bevatten met een eigen uniek e-mailadres.
+</Tip>

@@ -1,0 +1,149 @@
+---
+title: "Pankkisiirron, kryptovaluutan ja Wise-maksutapojen käyttöönotto"
+sidebarTitle: "Muut maksutavat"
+description: "Ota käyttöön manuaaliset maksuvaihtoehdot — pankkisiirto, kryptovaluutta ja Wise — jotta kortittomat asiakkaat voivat maksaa laskusi."
+---
+
+AgencyHandy tukee kolmea manuaalista maksutapaa Stripen ja PayPalin lisäksi: **pankkisiirto**, **krypto** ja **Wise**. Jokainen on suunniteltu tietynlaiselle asiakkaalle tai työnkululle. Kaikkien kolmen osalta sinun on merkittävä lasku manuaalisesti tilaan **Paid** varojen vastaanottamisen jälkeen, koska AgencyHandy ei pysty automaattisesti vahvistamaan alustan ulkopuolisia siirtoja.
+
+<Note>
+  Ainoastaan **SuperAdmin**- ja **Admin**-roolit voivat ottaa käyttöön tai määrittää näitä maksutapoja.
+</Note>
+
+<Tabs>
+  <Tab title="Bank Transfer">
+    ## Pankkisiirto
+
+    Pankkisiirto-menetelmällä voit ottaa vastaan manuaalisia siirto- tai ACH-maksuja asiakkailta. Annat pankkitietosi rich text -editorin kautta, ja AgencyHandy näyttää nämä ohjeet asiakkaille kassalla ja laskun sisällä.
+
+    ### Ota pankkisiirto käyttöön
+
+    <Steps>
+      <Step title="Avaa pankkimaksuasetukset">
+        Siirry vasemmassa sivupalkissa kohtaan **Integrations → Bank Payment Method**.
+      </Step>
+
+      <Step title="Täytä siirto-ohjeet">
+        Syötä pankkitietosi rich text -editorilla. Sisällytä kaikki kentät, joita asiakkaat tarvitsevat siirron suorittamiseen:
+
+        - **Saajan nimi**
+        - **Tilinumero**
+        - **Pankin nimi**
+        - **Reittinumero**
+        - **Tilityyppi** (esim. käyttötili, säästötili)
+        - **Pankin osoite**
+
+        Voit lisätä myös muistiinpanoja, huomautuksia tai tukiyhteystiedot. Merkkimäärää ei ole rajoitettu, ja editori tukee lihavointia, alleviivausta, luetteloita, linkkejä ja kuvien muotoilua.
+      </Step>
+
+      <Step title="Aseta maksutodisteen vaatimus (valinnainen)">
+        Ota käyttöön **Payment Screenshot is Required**, jos haluat asiakkaiden lataavan kuvakaappauksen ennen tilauksen käsittelyä.
+
+        - **Käytössä** — asiakkaiden on ladattava voimassa oleva kuvakaappaus kassalla. Tilausta ei luoda ennen tiedoston lataamista.
+        - **Pois käytöstä** — asiakkaat voivat jatkaa ilman todisteen lataamista. Tilaus ja lasku luodaan välittömästi.
+      </Step>
+
+      <Step title="Tallenna">
+        Tallenna asetuksesi napsauttamalla **Update**. Hylkää muutokset napsauttamalla **Cancel**.
+      </Step>
+    </Steps>
+
+    ### Asiakkaan kokemus
+
+    Kun asiakas valitsee kassalla pankkisiirron, hän näkee mukautetut siirto-ohjeesi. Jos todiste vaaditaan, näyttöön ilmestyy tiedostonlatausvinkki ja tilaus pidätetään, kunnes he lataavat kuvakaappauksen.
+
+    Saatuasi varat pankkitilillesi, avaa lasku AgencyHandyssa ja merkitse se manuaalisesti tilaan **Paid** tilauksen vapauttamiseksi.
+
+    <Tip>
+      Sisällytä ohjeisiin yksilöllinen viitekoodi (esim. laskun numero), jotta voit yhdistää saapuvat siirrot tiettyihin tilauksiin ilman sekaannusta.
+    </Tip>
+  </Tab>
+
+  <Tab title="Crypto">
+    ## Kryptomaksu
+
+    Kryptomaksu-menetelmällä voit ottaa vastaan kryptovaluuttaa asiakkailta lompakkopohjaisen siirron avulla. Määrität lompakkotietosi ja ohjeet kerran; asiakkaat näkevät ne kassalla ja laskussa. Tällä hetkellä tuettuna kryptovaluuttana on **USDC**.
+
+    ### Ota kryptomaksu käyttöön
+
+    <Steps>
+      <Step title="Avaa kryptomaksuasetukset">
+        Siirry vasemmassa sivupalkissa kohtaan **Integrations → Crypto Payment**. Lompakon asetusnäyttö avautuu rich text -editorilla.
+      </Step>
+
+      <Step title="Syötä lompakkotietosi">
+        Täytä seuraavat kentät:
+
+        - **Kryptovaluuttatyyppi** — tällä hetkellä USDC on tuettu.
+        - **Lompakko-osoite** — julkinen lompakko-osoitteesi varojen vastaanottamista varten.
+        - **Verkkotyyppi** — esim. ERC-20, TRC-20.
+        - **Lisäohjeet** — muistio, tunniste, vähimmäismäärä, tukiyhteystieto tai muu asiakkaille tarkoitettu ohjeistus.
+      </Step>
+
+      <Step title="Aseta maksutodisteen vaatimus (valinnainen)">
+        Ota käyttöön tai poista käytöstä **Require Proof of Payment**:
+
+        - **Käytössä** — asiakkaiden on ladattava tiedosto (esim. tapahtumakuvakaappaus) ennen tilauksen ja laskun luomista.
+        - **Pois käytöstä** — tilaus ja lasku luodaan heti, kun asiakas valitsee kryptomaksun, ilman todisteen vaatimista.
+      </Step>
+
+      <Step title="Tallenna">
+        Tallenna asetuksesi napsauttamalla **Save**. Voit muokata tai poistaa kryptomaksun milloin tahansa samalta näytöltä.
+      </Step>
+    </Steps>
+
+    ### Asiakkaan kassavirta
+
+    Kun asiakas valitsee krypton kassalla:
+
+    1. Luodaan **tilaus** (tila: *Pending*) ja **lasku** (tila: *Open*).
+    2. Asiakkaalle näytetään lompakko-osoitteesi ja ohjeet.
+    3. Jos todiste vaaditaan, näyttöön ilmestyy tiedostonlatamispainike. Asiakkaan on ladattava tapahtumakaappaus ennen tilauksen etenemistä.
+    4. Siirron valmistuttua ja vahvistettuasi varat ketjussa, avaa lasku AgencyHandyssa ja merkitse se tilaan **Paid**.
+    5. Kun lasku merkitään tilaan **Paid** ja tilaus on *Pending*-tilassa, tilauksen tila päivittyy automaattisesti tilaan *Ongoing*.
+
+    <Note>
+      Kryptomaksu näkyy kassalla vain, jos se on käytössä sekä **Workspace Settings → Payment Methods** -kohdassa ETTÄ kyseisen **Service Group → Payment Availability** -asetuksissa. Sen poistaminen käytöstä työtilan asetuksissa piilottaa sen kaikkialta palvelutason asetuksista riippumatta.
+    </Note>
+
+    <Tip>
+      Jos palvelu ei tue USDC:tä, kryptomaksuvaihtoehto piilotetaan automaattisesti kyseiseltä palvelulta. Varmista, että USDC on käytössä palveluasetuksissasi, jos haluat asiakkaiden maksavan kryptolla.
+    </Tip>
+  </Tab>
+
+  <Tab title="Wise">
+    ## Wise-maksu
+
+    Wise-maksumenetelmä antaa asiakkaiden maksaa Wise-maksulinkin kautta. Lisäät linkin kerran laskun sisään, ja se sisällytetään automaattisesti kaikkiin tuleviin tilauslaskuihin. Wise sopii erinomaisesti kansainvälisille asiakkaille, jotka suosivat pankki-pankki-siirtoja perinteisiä pankkisiirtoja pienemmillä kuluilla.
+
+    ### Lisää Wise maksutavaksi
+
+    <Steps>
+      <Step title="Avaa Invoices-moduuli">
+        Napsauta vasemmassa sivupalkissa **Invoices** ja sitten **Create Invoice**.
+      </Step>
+
+      <Step title="Lisää Wise-linkkisi">
+        Vieritä laskumodaalissa kohtaan **Payment Methods**. Napsauta **Add Wise as a payment method** ja liitä Wise-maksulinkkisi syötekenttään.
+      </Step>
+
+      <Step title="Tallenna lasku">
+        Napsauta **Save** tai jatka laskun viimeistelyä. Wise-maksulinkkisi on nyt upotettu ja näkyy asiakkaalle.
+      </Step>
+    </Steps>
+
+    ### Miten se toimii asiakkaille
+
+    Wise-linkki näkyy napsautettavana painikkeena asiakkaan laskussa. Asiakas avaa linkin, suorittaa siirron Wise-tilinsä kautta ja lähettää sinulle vahvistuksen. Koska AgencyHandy ei saa automaattista vahvistusta Wiseltä, sinun on merkittävä lasku manuaalisesti tilaan **Paid** varojen vastaanottamisen jälkeen.
+
+    <Warning>
+      Wisea **ei** voida käyttää automaattisiin lisämyynti- tai markkinapaiksamaksuihin. Yhdelle laskulle voidaan lisätä vain yksi Wise-maksulinkki. Tarkista linkki ennen lähettämistä — väärä linkki tarkoittaa, että asiakkaan maksu menee väärään tiliin.
+    </Warning>
+
+    ### Alustan toiminta
+
+    - Kun Wise-linkki on lisätty, se näkyy automaattisesti kaikissa tulevissa **tilaus**laskuissa, ellei sitä päivitetä tai poisteta.
+    - AgencyHandy ei suorita automaattista valuuttamuunnosta. Asiakas siirtää siinä valuutassa, joksi Wise-linkkisi on määritetty.
+    - Olet vastuussa maksujen seurannasta ja laskujen merkitsemisestä maksetuiksi vahvistettuasi vastaanoton.
+  </Tab>
+</Tabs>

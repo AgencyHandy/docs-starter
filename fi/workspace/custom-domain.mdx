@@ -1,0 +1,126 @@
+---
+title: "Yhdistä mukautettu verkkotunnus AgencyHandy-työtilaan"
+sidebarTitle: "Mukautettu verkkotunnus"
+description: "Yhdistä oma aliverkkotunnuksesi (esim. portal.yrityksesi.fi) AgencyHandyyn lisäämällä CNAME-tietue DNS-rekisterinpitäjälläsi — ei koodausta tarvita."
+---
+
+Oletuksena AgencyHandy-työtilasi on käytettävissä `agencyhandy.com`-aliverkkotunnuksessa. Mukautetun verkkotunnuksen yhdistäminen mahdollistaa oletusarvoisen URL-osoitteen korvaamisen omalla brändätyllä osoitteella — esimerkiksi `portal.toimistosi.fi` — antaen asiakkaille saumattoman, ammattimaisen kokemuksen, joka vahvistaa brändiäsi ensimmäiseltä sivulta alkaen.
+
+<Note>
+  Vain **pääjärjestelmänvalvojat** ja **järjestelmänvalvojat** voivat määrittää mukautetun verkkotunnuksen. Sinulla on myös oltava verkkotunnuksen omistajuus ja pääsy sen DNS-asetuksiin rekisterinpitäjällä tämän asennuksen suorittamiseksi.
+</Note>
+
+---
+
+## Miten se toimii
+
+Kun lisäät mukautetun verkkotunnuksen AgencyHandyssa, alusta tarjoaa sinulle **CNAME-tietueen**. Lisäät sen verkkotunnuksesi DNS-asetuksiin rekisterinpitäjälläsi (GoDaddy, Namecheap, Cloudflare jne.), ja AgencyHandy tarkistaa yhteyden, kun DNS on levinnyt.
+
+---
+
+## Vaiheittainen asennus
+
+<Steps>
+  <Step title="Avaa Custom Domain -asetukset">
+    Kirjaudu AgencyHandy-tiliisi. Siirry vasemman sivupalkin **Workspace Config** -kohtaan ja klikkaa **Custom Domain**.
+  </Step>
+  <Step title="Lisää mukautettu verkkotunnuksesi">
+    Klikkaa **+ Add Custom Domain** -painiketta. Syötä näkyvään syöttökenttään haluamasi aliverkkotunnus — esimerkiksi `portal.toimistosi.fi`.
+
+    <Warning>
+      **Älä** käytä `www`:tä aliverkkotunnuksena (eli vältä `www.toimistosi.fi`). `www`-etuliite voi aiheuttaa konfiguraatioristiriitoja ja estää onnistuneen vahvistuksen. Käytä eri aliverkkotunnusta, kuten `portal`, `client`, `app` tai `hub`.
+    </Warning>
+  </Step>
+  <Step title="Kopioi CNAME-tietueen tiedot">
+    Verkkotunnuksesi lähettämisen jälkeen AgencyHandy näyttää lisättävän DNS-tietueen:
+
+    | Kenttä | Arvo |
+    |---|---|
+    | **Tyyppi** | CNAME |
+    | **Nimi** | Aliverkkotunnuksesi (esim. `portal`) |
+    | **Arvo** | AgencyHandyn antama kohde |
+
+    Kopioi nämä arvot huolellisesti — tarvitset niitä seuraavassa vaiheessa.
+  </Step>
+  <Step title="Lisää CNAME-tietue DNS-rekisterinpitäjälläsi">
+    Kirjaudu verkkotunnuksen rekisterinpitäjäsi hallintapaneeliin (esim. GoDaddy, Namecheap, Cloudflare). Siirry verkkotunnuksesi DNS-hallintaosioon ja lisää CNAME-tietue AgencyHandystä kopioidun tyypin, nimen ja arvon avulla.
+
+    Katso alla oleva rekisterinpitäjäkohtainen ohje Cloudflaren osalta.
+  </Step>
+  <Step title="Tallenna verkkotunnus AgencyHandyssa">
+    Palaa AgencyHandyyn ja klikkaa **Save Domain**. Tila näyttää aluksi **Disconnected** — tämä on odotettua DNS:n leviämisen aikana.
+  </Step>
+  <Step title="Odota DNS:n leviämistä ja vahvista">
+    DNS-muutokset voivat kestää muutamasta minuutista **jopa 48 tuntiin** levitäkseen globaalisti, riippuen rekisterinpitäjästä ja TTL-asetuksista. Klikkaa **Refresh** säännöllisesti tarkistaaksesi yhteyden tilan.
+
+    Kun leviäminen on valmis, tila muuttuu **Connected** ✅ -tilaksi.
+  </Step>
+</Steps>
+
+<Warning>
+  DNS:n leviäminen voi kestää jopa **48 tuntia**. Jos verkkotunnuksesi näyttää edelleen **Disconnected** 48 tunnin jälkeen, tarkista, että CNAME-tietue on oikein ja että samalle aliverkkotunnukselle ei ole ristiriitaisia DNS-tietueita.
+</Warning>
+
+---
+
+## Cloudflare-kohtaiset ohjeet
+
+Jos verkkotunnuksesi hallitaan Cloudflaren kautta, on yksi kriittinen asetus, joka sinun on määritettävä oikein:
+
+<Steps>
+  <Step title="Kirjaudu Cloudflareen ja valitse verkkotunnuksesi">
+    Avaa [Cloudflare-hallintapaneelisi](https://dash.cloudflare.com) ja klikkaa verkkotunnusta, jonka yhdistät AgencyHandyyn.
+  </Step>
+  <Step title="Siirry DNS-asetuksiin">
+    Klikkaa **DNS**-välilehteä verkkotunnuksen asetuspaneelin ylänavigoinnissa.
+  </Step>
+  <Step title="Lisää CNAME-tietue">
+    Klikkaa **+ Add Record** ja täytä kentät:
+    - **Tyyppi:** CNAME
+    - **Nimi:** Aliverkkotunnuksesi (esim. `portal`)
+    - **Kohde/Sisältö:** AgencyHandyn antama arvo
+    - **TTL:** Aseta **2 minuuttiin** (tai pienimpään saatavilla olevaan vaihtoehtoon) alkuasennuksen aikana
+  </Step>
+  <Step title="Poista Cloudflare-välityspalvelin käytöstä (kriittinen)">
+    **Proxy status** -sarakkeessa varmista, että vaihtokytkimen asetus on **DNS only** (pilvi-kuvakkeen tulee näkyä harmaana, ei oranssina).
+
+    <Warning>
+      Jos Cloudflare-välityspalvelin on **käytössä** (oranssi pilvi-kuvake), CNAME-tietue ei ratkea oikein ja AgencyHandy ei voi vahvistaa verkkotunnustasi. Sen on oltava **DNS Only** -tilassa, jotta yhteys toimii.
+    </Warning>
+  </Step>
+  <Step title="Tallenna tietue">
+    Tarkista kaikki arvot tarkkuuden varalta ja klikkaa **Save**.
+  </Step>
+</Steps>
+
+<Tip>
+  Käytä [dnschecker.org](https://dnschecker.org)-sivustoa seurataksesi CNAME-tietueesi leviämistä eri globaaleilla alueilla. Odota vihreitä valintamerkkejä kaikilla alueilla ennen kuin odotat AgencyHandyn vahvistavan yhteyden.
+</Tip>
+
+---
+
+## Yhteyden tilan seuranta
+
+Tallentamisen jälkeen palaa **Workspace Config → Custom Domain** -kohtaan AgencyHandyssa tilan seuraamiseksi:
+
+| Tila | Merkitys |
+|---|---|
+| **Disconnected** | DNS-tietue ei ole vielä levinnyt tai sisältää virheen |
+| **Connected** | Verkkotunnus on vahvistettu ja aktiivinen — asiakkaat voivat käyttää työtilasi mukautetun URL-osoitteen kautta |
+
+---
+
+## Mukautetun verkkotunnuksen päivittäminen tai poistaminen
+
+- **Verkkotunnuksen päivittäminen:** Poista olemassa oleva merkintä ja lisää uusi verkkotunnus käyttäen samoja yllä olevia asennusvaiheita.
+- **Verkkotunnuksen poistaminen:** Klikkaa **Delete**-painiketta verkkotunnuksesi vieressä Custom Domain -paneelissa ja vahvista poisto. Työtilasi palautuu oletusarvoiseen AgencyHandy-URL-osoitteeseen. Voit lisätä minkä tahansa verkkotunnuksen uudelleen milloin tahansa.
+
+---
+
+## Tärkeät huomiot
+
+- **Käytä aliverkkotunnusta, ei juuriverkkotunnusta:** AgencyHandyn mukautetut verkkotunnukset vaativat aliverkkotunnuksen (esim. `portal.toimistosi.fi`), ei juuri-/apex-verkkotunnusta (esim. `toimistosi.fi`).
+- **Vältä `www`:tä:** `www`-aliverkkotunnus voi aiheuttaa ongelmia vahvistuksen aikana. Käytä sen sijaan mukautettua aliverkkotunnuksen nimeä.
+- **Täsmälliset tietueet vaaditaan:** Syötä CNAME-tyypin, nimen ja arvon täsmälleen AgencyHandyssä näytetyllä tavalla. Mikä tahansa kirjoitusvirhe tai puuttuva merkki estää yhteyden.
+- **Cloudflare-välityspalvelin on oltava pois päältä:** Aseta Cloudflare-tietueet aina **DNS Only** -tilaan AgencyHandyn mukautetun verkkotunnuksen vahvistusta varten.
+- **Vain järjestelmänvalvojan pääsy:** Vain pääjärjestelmänvalvojat ja järjestelmänvalvojat voivat lisätä, muokata tai poistaa mukautetun verkkotunnuksen asetuksia.

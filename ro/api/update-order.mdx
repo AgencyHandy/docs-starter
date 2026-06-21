@@ -1,0 +1,205 @@
+---
+title: "API AgencyHandy: Actualizați o comandă existentă cu PUT"
+sidebarTitle: "Actualizare Comandă"
+description: "Utilizați API-ul AgencyHandy pentru a actualiza detaliile comenzii, a modifica statusul, a reatribui managerii de proiect și a atașa fișiere la o comandă existentă prin solicitare PUT."
+---
+
+Endpoint-ul Actualizare Comandă vă permite să modificați o comandă (proiect) existentă în AgencyHandy — schimbați numele, statusul, bugetul, termenul limită, managerii atribuiți și multe altele — totul dintr-un sistem extern sau script de automatizare. Endpoint-ul acceptă și atașamente de fișiere, care sunt adăugate în folderul de sistem al comenzii.
+
+<Note>
+  Înainte de a utiliza acest endpoint, parcurgeți ghidul [Noțiuni de bază](/ro/api/getting-started) pentru a obține cheia API și ID-ul companiei.
+</Note>
+
+<Warning>
+  Acest endpoint utilizează `Authorization: Bearer <token>` (token-ul de acces al unui membru autentificat) mai degrabă decât doar header-ul `x-api-key`. Asigurați-vă că apelantul este autentificat ca **membru aprobat** al companiei vizate. Apelantii neautorizați primesc o eroare `403 PermissionError`.
+</Warning>
+
+## Cerințe preliminare
+
+- ✅ Un **Bearer token** valid pentru un membru aprobat al spațiului de lucru
+- ✅ **ID-ul companiei** recuperat din `GET {{URL}}/accounts/companies`
+- ✅ **ID-ul comenzii** (ID proiect, `pid`) al comenzii pe care doriți să o actualizați
+
+---
+
+## Endpoint
+
+```
+PUT {{URL}}/orders?pid=<ORDER_ID>
+```
+
+**Content-Type:** `multipart/form-data` — utilizați aceasta chiar și atunci când nu sunt atașate fișiere pentru a satisface parserul multipart al serverului.
+
+## Header-e
+
+| Header | Obligatoriu | Descriere |
+|---|---|---|
+| `Authorization` | Da | `Bearer <ACCESS_TOKEN>` — token-ul de acces al membrului autentificat. |
+| `companyid` | Da | Mongo ObjectId al companiei căreia îi aparține comanda. |
+| `clientid` | Opțional | ID socket în timp real al clientului. Când este furnizat, notificările îl includ. |
+
+## Parametri de interogare
+
+<ParamField query="pid" type="string" required>
+  ID-ul comenzii / proiectului de actualizat. Transmiteți-l ca parametru de interogare.
+</ParamField>
+
+## Câmpurile corpului solicitării
+
+<ParamField body="name" type="string">
+  Actualizează titlul comenzii. Minimum 2 caractere.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Noul status al comenzii. Trebuie să fie unul dintre: `Pending`, `Ongoing`, `Review`, `Completed`, `Cancelled`.
+
+  **Tranziții permise:**
+  - `Review` poate urma numai după `Ongoing` sau alt `Review`. Saltul de la `Pending` direct la `Review` returnează o eroare `400 ValidationError`.
+  - Comenzile deja `Completed` sau `Cancelled` nu pot fi actualizate.
+  - Clienții nu pot anula o comandă care a trecut de `Pending`.
+</ParamField>
+
+<ParamField body="budget" type="number">
+  Suma totală a bugetului. Trebuie să fie `≥ 0`. Utilizează valuta existentă a comenzii, cu excepția cazului în care este furnizat și `currency`.
+</ParamField>
+
+<ParamField body="currency" type="string">
+  Codul valutar pentru buget. Exemple: `USD`, `CAD`, `EUR`.
+</ParamField>
+
+<ParamField body="quantity" type="number">
+  Numărul de unități achiziționate pentru pachet. Trebuie să fie `≥ 1`.
+</ParamField>
+
+<ParamField body="deadline" type="string">
+  Șir de date ISO 8601 pentru data scadentă a comenzii. Exemplu: `"2025-12-31T00:00:00.000Z"`.
+</ParamField>
+
+<ParamField body="kickoffDate" type="string">
+  Șir de date ISO 8601 pentru data de start a proiectului.
+</ParamField>
+
+<ParamField body="notes" type="string">
+  Note interne vizibile echipei dvs.
+</ParamField>
+
+<ParamField body="brief" type="string">
+  Rezumatul proiectului sau brieful clientului.
+</ParamField>
+
+<ParamField body="assignedProjectManagers" type="array">
+  Lista completă a ID-urilor membrilor managerilor de proiect de atribuit acestei comenzi. ID-urile noi sunt adăugate în echipă; ID-urile eliminate sunt șterse. Fiecare ID trebuie să aparțină unui membru cu rolul `projectManager` în aceeași companie.
+</ParamField>
+
+<ParamField body="markTasksAsDone" type="boolean">
+  **Obligatoriu** când `status` este `Completed` sau `Cancelled`. Când este `true`, toate sarcinile din comandă sunt marcate ca finalizate după modificarea statusului. Când este `false`, sarcinile rămân în starea lor curentă.
+</ParamField>
+
+<ParamField body="rejectRequestedTasks" type="boolean">
+  Permis numai când `status` este `Completed` sau `Cancelled`. Când este `true`, toate sarcinile solicitate de client aflate în așteptare sunt respinse după actualizarea statusului.
+</ParamField>
+
+<ParamField body="repeatCount" type="number">
+  Necesar numai pentru comenzile de **abonament** la schimbarea frecvenței de recurență. Combinați cu `repeatDuration`.
+</ParamField>
+
+<ParamField body="repeatDuration" type="string">
+  Necesar alături de `repeatCount` pentru comenzile de abonament. Unul dintre: `day`, `week`, `month`, `year`.
+</ParamField>
+
+<ParamField body="billingCycleCount" type="number">
+  Limită opțională pentru ciclurile de facturare recurentă. Implicit `0` (fără limită).
+</ParamField>
+
+<ParamField body="billingCycleEvent" type="string">
+  Cum este gestionat fiecare ciclu de facturare. Unul dintre: `createOrderWithTask`, `noChange`.
+</ParamField>
+
+<ParamField body="files" type="file">
+  Zero sau mai multe atașamente de fișiere. Fișierele sunt adăugate în folderul de sistem al comenzii; fișierele existente nu sunt niciodată suprascrise. Utilizați codificarea `multipart/form-data` și atașați fiecare fișier sub câmpul `files`.
+</ParamField>
+
+---
+
+## Exemplu de solicitare
+
+<CodeGroup>
+
+```bash cURL (no files)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "currency=USD" \
+  --form "quantity=1" \
+  --form "assignedProjectManagers[]=PROJECT_MANAGER_ID" \
+  --form "notes=Scope finalized with client." \
+  --form "brief=Launch-ready design refresh."
+```
+
+```bash cURL (with file)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "repeatCount=3" \
+  --form "repeatDuration=month" \
+  --form "billingCycleEvent=createOrderWithTask" \
+  --form "files=@/path/to/creative-brief.pdf"
+```
+
+</CodeGroup>
+
+**Payload JSON echivalent** (convertiți la intrări de formular multipart la trimiterea fișierelor):
+
+```json
+{
+  "name": "Website Redesign",
+  "status": "Review",
+  "budget": 12000,
+  "currency": "USD",
+  "quantity": 1,
+  "assignedProjectManagers": ["{{PROJECT_MANAGER_ID}}"],
+  "repeatCount": 3,
+  "repeatDuration": "month",
+  "billingCycleEvent": "createOrderWithTask",
+  "notes": "Scope finalized with client.",
+  "brief": "Launch-ready design refresh."
+}
+```
+
+---
+
+## Răspunsuri
+
+| Status HTTP | Descriere |
+|---|---|
+| `200 OK` | Actualizare reușită. |
+| `400 ValidationError` | ID comandă invalid, tranziție de status blocată sau payload malformat. Răspunsul include `fieldName` când este relevant. |
+| `403 PermissionError` | Apelantul nu este un membru aprobat, nu are rolul în companie, abonamentul spațiului de lucru a expirat sau un client a încercat o anulare interzisă. |
+| `500 Internal Server Error` | Excepție necontrolată — verificați jurnalele serverului. |
+
+### Răspuns de succes
+
+```json
+{
+  "message": "Project has been updated"
+}
+```
+
+---
+
+## Reguli de afaceri și efecte secundare
+
+- **Tranzițiile de status** sunt restricționate. `Review` poate urma numai după `Ongoing` sau alt `Review`. Încercarea `Pending → Review` returnează `400 ValidationError`.
+- Mutarea unui status din `Pending` în `Ongoing`, `Review` sau `Completed` activează folderul de fișiere al comenzii, astfel încât fișierele încărcate devin accesibile echipei de proiect.
+- Setarea `status` la `Completed` sau `Cancelled` **necesită** ca `markTasksAsDone` să fie setat explicit la `true` sau `false`.
+- Modificările de status la `Review`, `Completed` sau `Cancelled` declanșează automat notificări pentru client:
+  - **Review** — notifică clientul că este necesară revizuirea.
+  - **Completed** — trimite notificarea `orderCompletion` clientului.
+  - **Cancelled** — trimite notificarea `orderCancellation` clientului.
+- Fiecare actualizare reușită declanșează un eveniment webhook `ORDER.UPDATED` cu documentul comenzii actualizat și metadatele atașamentelor, dacă aveți un webhook activ abonat la acel eveniment.

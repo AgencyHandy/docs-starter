@@ -1,0 +1,260 @@
+---
+title: "Paketler, Görevler ve SSS'lerle Hizmet Oluşturma"
+sidebarTitle: "Hizmet Oluştur"
+description: "AgencyHandy hizmeti oluşturma adım adım kılavuzu: faturalama türü seçin, paketleri yapılandırın, varsayılan görevleri ayarlayın, SSS ekleyin ve yayınlayın."
+---
+
+AgencyHandy'de hizmet oluşturmak, ajansınızın tekliflerini platform aracılığıyla satmaya başlamanın ilk adımıdır. Tek bir hizmet, beş adede kadar fiyat paketi, sipariş verildiğinde tetiklenen otomatik varsayılan görevler, satış öncesi soruları azaltmaya yönelik SSS'ler, sosyal kanıt için portföy eki ve isteğe bağlı bir giriş formu içerebilir — tümü yayınlamadan önce tek bir yerde yapılandırılır.
+
+<Note>
+  Hizmet oluşturmak için **Süper Yönetici** veya **Yönetici** rolüne ihtiyacınız var. Diğer roller bu bölüme erişmek için açık hizmet izinleri gerektirir.
+</Note>
+
+<Steps>
+  <Step title="Hizmet türünü seçin">
+    Sol kenar çubuğundan **Hizmetler**'i açın ve yeni bir liste başlatmak için **+ Hizmet**'e tıklayın.
+
+    Sayfanın üst kısmında faturalama modelinizi seçin:
+
+    - **Tek Seferlik Hizmet** — müşteri tek bir ücret öder ve teslim edilecekleri bir kez alır. Net bir kapsama sahip projeler için en iyisi: web sitesi yapımı, logo paketleri, denetimler, vb.
+    - **Abonelik Hizmeti** — faturalama, tanımladığınız programa göre otomatik olarak tekrarlanır. Danışmanlık anlaşmaları, süregelen içerik, yönetilen hizmetler veya bakım planları için en iyisi.
+
+    <Warning>
+      Hizmet türü, kaydettiğinizde kilitlenir. Farklı bir faturalama modeline ihtiyacınız varsa yeni bir hizmet oluşturun.
+    </Warning>
+  </Step>
+
+  <Step title="Hizmet ayrıntılarını ekleyin">
+    **Hizmet Ayrıntıları** bölümünü genişletin ve aşağıdaki alanları doldurun:
+
+    **Hizmet Adı** *(zorunlu)*
+    Hizmetin platformun her yerinde — katalogda, faturalarda ve sipariş çalışma alanında — müşterilere nasıl göründüğüdür. Açık ve açıklayıcı yapın.
+
+    **Medya Yükleme**
+    Hizmeti görsel olarak temsil etmek için bir veya daha fazla önizleme görseli yükleyin. Yüksek kaliteli görseller müşteri güvenini ve dönüşüm oranlarını artırır.
+
+    **Hizmet Açıklaması**
+    Hizmetin neleri kapsadığına, kimin için olduğuna ve müşterilerin neler bekleyebileceğine dair kapsamlı bir açıklama yazın. Teklifinizi farklılaştırmak için bu alanı kullanın.
+
+    **Vergi Ayarları**
+    Verginin **dahil** (fiyata zaten dahil) mi yoksa **hariç** (ödeme sırasında üzerine eklenen) mi olduğunu seçin.
+
+    **Para Birimi**
+    Bu hizmetteki tüm paketler için para birimini ayarlayın. Tek bir hizmet içindeki tüm paketler aynı para birimini paylaşır.
+
+    <Tip>
+      Müşteri portalında en iyi sunumu için önizleme görsellerini 16:9 oranında yükleyin.
+    </Tip>
+  </Step>
+
+  <Step title="Paketler oluşturun">
+    **Paket Ayrıntıları**'nı genişletin ve ilk fiyat kademesini eklemek için **+ Yeni Paket**'e tıklayın. Hizmet başına en fazla **5 paket** oluşturabilirsiniz.
+
+    Her paket için şunları yapılandırın:
+
+    **Paket Adı** *(zorunlu)*
+    Müşterilerin gördüğü ad, ör. *Temel*, *Standart* veya *Premium*.
+
+    **Paket Simgesi** *(isteğe bağlı)*
+    Yerleşik bir simge seçin veya özel bir simge yükleyin. Yüklenen simgeler **32 × 32 piksel** olmalıdır.
+
+    **Paket Medyası** *(isteğe bağlı)*
+    Bu pakete özgü bir kapak görseli yükleyin. Kabul edilen biçimler: PNG, JPG, JPEG. Maksimum dosya boyutu: **5 MB**. Paket başına maksimum 1 dosya. Önerilen oran: **16:9**.
+
+    **Paket Özeti** *(isteğe bağlı)*
+    Bu paketin teslim edileceklerinin tek satırlık bir özeti. Maksimum **140 karakter**.
+
+    **Neler Dahil** *(zorunlu)*
+    Bu pakete dahil edilen teslim edilecekleri listeleyin. Paket başına **15 satır öğesine** kadar ekleyebilirsiniz. Her madde bir somut teslim edilecekleri tanımlamalıdır (ör. *"Aylık 5 blog yazısı, her biri 1.000 kelimeye kadar"*).
+
+    <Tip>
+      Birden fazla paket oluşturduktan sonra, müşterilere nasıl görüntülendiklerini yeniden sıralamak için onları sürükleyin. Önerilen kademize dikkat çekmek için birini **En Popüler** olarak işaretleyin.
+    </Tip>
+  </Step>
+
+  <Step title="Fiyatlandırma ve teslimat kurallarını belirleyin">
+    Her paketin içinde temel fiyatlandırma alanlarını ve isteğe bağlı kontrolleri ayarlayın:
+
+    **Tutar** *(zorunlu)*
+    Müşterinin bu paket için ödediği fiyat.
+
+    **Teslimat Süresi** *(zorunlu)*
+    Satın alma sonrasında hizmetin teslim edileceği tahmini gün sayısı.
+
+    **İsteğe bağlı fiyatlandırma kontrolleri:**
+
+    <Accordion title="İndirim Ekle">
+      Bu paketin fiyatına yüzde veya sabit tutarlı indirim uygulayın. İndirimli fiyat, müşterilere orijinal fiyatın yanında görüntülenerek etkili bir promosyon efekti yaratır.
+    </Accordion>
+
+    <Accordion title="Deneme Süresi Ekle (yalnızca abonelik)">
+      Normal abonelik faturalanması başlamadan önce ücretsiz veya indirimli fiyatlı bir deneme süresi sunun. Bu seçenek yalnızca abonelik türündeki hizmetlerde mevcuttur.
+    </Accordion>
+
+    <Accordion title="Miktar Sınırı Ekle">
+      Müşterinin tek bir ödeme oturumunda satın alabileceği birim sayısını sınırlayın. Sınırlı mevcutlu paketler veya kapasite kısıtlamaları olan hizmetler için kullanın.
+    </Accordion>
+
+    <Accordion title="Daha Fazla Fiyat Ayrıntısı Ekle">
+      Toplam maliyeti tek tek satır öğelerine bölün — örneğin *temel fiyat + kurulum ücreti + birim başına maliyet* göstermek gibi. Her dökümün etiketi maksimum **20 karakter** destekler.
+    </Accordion>
+
+    <Note>
+      Hizmeti yayınlayabilmeniz için her pakette tüm zorunlu alanların (Tutar ve Teslimat Süresi) tamamlanmış olması gerekir.
+    </Note>
+  </Step>
+
+  <Step title="Otomasyon için varsayılan görevler ekleyin">
+    Her paket bir **Varsayılan Görevler** bölümü içerir. Burada tanımlanan görevler, bir müşteri bu paketi satın aldığı anda sipariş çalışma alanında otomatik olarak oluşturulur — her satıştan sonra manuel kurulum gerekmez.
+
+    Görev oluşturma modalini açmak için **+ Daha Fazla Ekle**'ye tıklayın. Her görev için şunları yapılandırabilirsiniz:
+
+    | Alan | Ayrıntılar |
+    |---|---|
+    | **Görev Adı** | Zorunlu; maksimum **160 karakter** |
+    | **Açıklama** | Atanan kişi için ayrıntılı talimatlar |
+    | **Atanan** | Bu görevi tamamlamaktan sorumlu ekip üyesi |
+    | **Ek** | Referans dosyaları yükleyin; kabul edilen biçimler: csv, odt, doc, docx, htm, html, pdf, ppt, pptx, txt, xls, xlsx, jpg, jpeg, png, gif, webp, svg, ai, mp4, mp3, wav, zip, rar; dosya başına maksimum boyut **1 GB** |
+    | **Etiket** | Filtreleme ve raporlama için görevi etiketleyin |
+    | **Durum** | Görev oluşturulduğundaki başlangıç durumu |
+    | **Müşteri İncelemesi** | Bu görev tamamlanmış sayılmadan önce müşteri onayı gerektiriyorsa açın |
+
+    Bu paket için teslimat sürecini tam olarak kapsayacak kadar görev ekleyin. Tutarlı varsayılan görevler, her siparişin aynı kalite kontrollü iş akışını izlemesini sağlar.
+
+    <Tip>
+      Varsayılan görevlerinizi dahili standart işletim prosedürünüzle eşleştirin. Örneğin, bir *Sosyal Medya Yönetimi* paketi *İçerik Takvimi Taslağı*, *Müşteri Onayı*, *Gönderileri Zamanla* ve *Aylık Rapor* gibi görevleri otomatik olarak oluşturabilir.
+    </Tip>
+  </Step>
+
+  <Step title="SSS'ler ve portföy ekleyin">
+    İki isteğe bağlı ancak yüksek etkili öğe eklemek için **Ek Bilgi** bölümünü genişletin:
+
+    **Portföy Eki**
+    Müşterilerin hizmet listesinde doğrudan geçmiş çalışmalarınızdan ilgili örneklere göz atabilmesi için bu hizmete bir portföy kategorisi bağlayın. Mevcut bir portföy kategorisini bağlayabilir veya bu ekrandan yeni bir kategori oluşturabilirsiniz.
+
+    **Sık Sorulan Sorular (SSS'ler)**
+    Soru-cevap çifti eklemek için **+ Ekle**'ye tıklayın. İlgili olduğu kadar SSS ekleyin — yaygın konular şunlardır:
+
+    - İçerik özgünlüğü ve haklar
+    - Revizyon ve geri bildirim süreci
+    - Kapsam sınırları ve *dahil olmayan* unsurlar
+    - Zaman çizelgeleri ve iletişim sıklığı
+    - Ödeme ve iade politikaları
+
+    İyi yazılmış SSS'ler, satın alma öncesi ileri geri iletişimi azaltır ve müşterilerin kendilerini ön elemelerine yardımcı olur.
+  </Step>
+
+  <Step title="Giriş formu ekleyin">
+    Giriş formu, çalışmaya başlamadan önce bir müşteriden ihtiyaç duyduğunuz bilgileri toplar — örneğin marka kılavuzları, erişim bilgileri, hedef kitle veya proje hedefleri.
+
+    - Sıfırdan form oluşturmak için **+ Yeni Giriş Formu Oluştur**'a tıklayın veya açılır menüden mevcut bir formu seçin.
+    - Bu hizmet giriş formu gerektirmiyorsa, bu bölümü atlamak için **Atla**'ya tıklayın.
+    - Giriş formu seçiminizi kaydetmek ve devam etmek için **Güncelle**'ye tıklayın.
+
+    <Note>
+      Giriş formu isteğe bağlıdır ancak teslimatın başlayabilmesi için müşteriye özgü girdiler gerektiren hizmetler için kesinlikle önerilir.
+    </Note>
+  </Step>
+
+  <Step title="Hizmeti yayınlayın">
+    Hizmet düzenleyicisinin alt kısmında:
+
+    1. **Bu Hizmeti Yayınla** düğmesini AÇIK konumuna getirin.
+    2. **Kaydet**'e (veya mevcut bir hizmeti düzenliyorsanız **Hizmeti Güncelle**'ye) tıklayın.
+
+    Yayınlandıktan sonra hizmet, müşterilere portalde hemen görünür hale gelir. Düğmeyi kapalı bırakırsanız hizmet taslak olarak kaydedilir ve yalnızca ekibinize görünür.
+
+    <Tip>
+      Bir hizmeti önceden hazırlamak ve lansman zamanında yayınlamak için taslak modunu kullanın — mevsimsel promosyonlar veya yeni teklif duyuruları için kullanışlıdır.
+    </Tip>
+  </Step>
+</Steps>
+
+## Eklenti Kurulumu
+
+Eklentiler, müşterilerin ödeme sırasında seçebileceği isteğe bağlı ekstralar — örneğin *Acele Teslimat*, *Ekstra Revizyon* veya *Aylık Rapor*. Tamamen yeni listeler oluşturmadan tamamlayıcı hizmetlerin ek satışını yapmanızı sağlarlar.
+
+### Eklenti Oluşturma
+
+<Steps>
+  <Step title="Eklentiler'i açın">
+    Kenar çubuğunda **Hizmetler**'e gidin, Hizmetler başlığının yanındaki **aşağı ok** düğmesine tıklayın ve **Eklentiler**'i seçin.
+  </Step>
+  <Step title="Yeni eklenti oluşturun">
+    **+ Yeni Eklenti Ekle**'ye tıklayın ve doldurun:
+
+    - **Eklenti Adı**
+    - **Açıklama** — eklentinin neleri kapsadığını açıkça açıklamak için zengin metin düzenleyiciyi kullanın
+    - **Fiyatlandırma Türü** — *Tek Seferlik* veya *Abonelik* seçin
+    - **Fiyatlandırma ayrıntıları:**
+      - *Tek seferlik:* tutarı ve para birimini girin
+      - *Abonelik:* faturalama aralığını (ör. her 1 ayda bir), isteğe bağlı bir faturalama döngüsü sınırını, abonelik ücretini ve para birimini ayarlayın
+  </Step>
+  <Step title="Yayınlayın ve kaydedin">
+    **Yayınla**'yı AÇIN, ardından **Oluştur**'a tıklayın. Yalnızca yayınlanan eklentiler sipariş formlarına bağlanırken görünür.
+  </Step>
+</Steps>
+
+### Bir Sipariş Formuna Eklenti Ekleme
+
+<Steps>
+  <Step title="Sipariş formunu açın">
+    **Formlar**'a gidin ve ilgili sipariş formunu açın.
+  </Step>
+  <Step title="Hizmeti seçin">
+    Eklentiyi eklemek istediğiniz hizmeti seçin.
+  </Step>
+  <Step title="Eklentileri ekleyin">
+    Sol panelden **Eklentiler** bölümünü seçin, ardından bu hizmetle ilişkilendirmek istediğiniz eklentileri seçin.
+  </Step>
+  <Step title="Formu kaydedin">
+    **Kaydet**'e tıklayın. Müşteriler artık ödeme sırasında seçilen eklentileri isteğe bağlı ekstralar olarak görecektir.
+  </Step>
+</Steps>
+
+<Note>
+  Eklentiler, bağlı oldukları hizmetle aynı para birimini kullanmalıdır. Para birimleri eşleşmezse eklenti seçim listesinde görünmez.
+</Note>
+
+### Abonelik Eklentisi Faturalama Davranışı
+
+Bir hizmet ile abonelik eklentisinin faturalama döngüleri farklı olduğunda, AgencyHandy örtüşmeyi otomatik olarak yönetir:
+
+<Accordion title="Eklentinin döngüleri hizmetinkinden fazla">
+  Hem hizmet hem eklenti, hizmetin süresi boyunca birlikte faturalandırılır. Hizmet sona erdikten sonra eklenti, kalan döngüleri için yalnız faturalama yapmaya devam eder.
+
+  **Örnek:** Hizmet 4 döngü çalışır, eklenti 5 döngü çalışır → 4 döngü birlikte faturalandırılır, eklenti 1 ek döngü için tek başına faturalandırılır.
+</Accordion>
+
+<Accordion title="Eklentinin döngüleri hizmetinkinden az">
+  Hem hizmet hem eklenti, eklentinin süresi boyunca birlikte faturalandırılır. Eklenti sona erdikten sonra hizmet, kalan döngüleri için yalnız faturalama yapmaya devam eder.
+
+  **Örnek:** Hizmet 5 döngü çalışır, eklenti 3 döngü çalışır → 3 döngü birlikte faturalandırılır, hizmet 2 ek döngü için tek başına faturalandırılır.
+</Accordion>
+
+## Hizmet Düzenleme
+
+Bir hizmet yayınlandıktan sonra, mevcut siparişleri kesintiye uğratmadan herhangi bir alanı güncelleyebilirsiniz.
+
+1. **Hizmetler**'e gidin ve güncellemek istediğiniz hizmeti bulun.
+2. Hizmet satırının sağ tarafındaki **üç nokta menüsüne** (⋮) tıklayın.
+3. **Düzenle**'yi seçin. Hizmet düzenleyici tüm mevcut ayarlar doldurulmuş şekilde açılır.
+4. Değişikliklerinizi yapın — başlık, açıklama, fiyatlandırma, medya, paketler, görevler veya SSS'leri güncelleyin.
+5. Kaydetmek için **Hizmeti Güncelle**'ye tıklayın.
+
+<Warning>
+  Paket fiyatlandırma veya teslimat süresi değişiklikleri yalnızca **yeni siparişler** için geçerli olur. Mevcut siparişler geriye dönük olarak etkilenmez.
+</Warning>
+
+## Alan Referansı
+
+| Alan | Sınır |
+|---|---|
+| Hizmet başına paket | 5'e kadar |
+| Paket başına teslim edilecekler (Neler Dahil) | 15'e kadar |
+| Paket Özeti | 140 karakter |
+| Paket simge boyutu | 32 × 32 px |
+| Paket medya dosya boyutu | 5 MB (PNG, JPG, JPEG) |
+| Görev adı | 160 karakter |
+| Görev eki dosya boyutu | Dosya başına 1 GB |
+| Fiyat dökümü etiketi | 20 karakter |

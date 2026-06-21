@@ -1,0 +1,77 @@
+---
+title: "Anslut Stripe för att ta emot onlinebetalningar i AgencyHandy"
+sidebarTitle: "Stripe"
+description: "Länka ditt Stripe-konto till AgencyHandy för att skicka fakturor och ta emot säkra onlinebetalningar från klienter utan att lämna plattformen."
+---
+
+AgencyHandy's Stripe-integration låter dig ta emot kortbetalningar direkt från dina klienter via fakturor du skickar inuti plattformen. När den är ansluten ser dina klienter en välbekant Stripe-värd utcheckning, och betalningsstatus synkroniseras tillbaka till AgencyHandy automatiskt — ingen manuell avstämning behövs.
+
+<Note>
+  Endast rollerna **SuperAdmin** och **Admin** kan ansluta eller hantera Stripe-integrationen. Du måste också ha ett verifierat Stripe-konto med lämpliga behörigheter innan du börjar.
+</Note>
+
+## Anslut Stripe
+
+<Steps>
+  <Step title="Öppna inställningar för Stripe-integration">
+    I det vänstra sidofältet, navigera till **Integrationer → Stripe-integration**.
+  </Step>
+
+  <Step title="Auktorisera på Stripe">
+    Klicka på **Anslut Stripe**. Du omdirigeras till Stripes auktoriseringsskärm. Logga in på ditt Stripe-konto och klicka på **Tillåt** för att bevilja AgencyHandy åtkomst. När det har godkänts omdirigerar Stripe dig tillbaka till AgencyHandy automatiskt.
+  </Step>
+
+  <Step title="Konfigurera betalningspreferenser">
+    Efter omdirigeringen konfigurerar du följande alternativ:
+
+    - **Valuta** — välj standardfaktureringsvalutan för din arbetsyta.
+    - **Betalningsmetoder** — aktivera eller inaktivera korttyper (Visa, Mastercard, etc.) som stöds av ditt Stripe-konto.
+    - **Faktureringspreferenser** — ange valfritt en skattesats, fakturaprefix eller standardbetalningsvillkor och förfallodatum.
+  </Step>
+
+  <Step title="Spara och bekräfta">
+    Klicka på **Spara**. En bekräftelsebanner visas när integrationen är aktiv. Stripe är nu kopplat till din arbetsyta och dina klienter kan betala fakturor online.
+  </Step>
+</Steps>
+
+## Testa integrationen
+
+Innan du skickar riktiga fakturor, kör ett snabbt end-to-end-test för att bekräfta att anslutningen fungerar korrekt.
+
+<Steps>
+  <Step title="Skapa en testfaktura">
+    Skapa en utkastfaktura inuti AgencyHandy och tilldela den ett litet belopp.
+  </Step>
+  <Step title="Skicka till dig själv">
+    Skicka fakturan till din egen e-postadress eller till en teammedlem som kan hjälpa till med testet.
+  </Step>
+  <Step title="Genomför en testbetalning">
+    Öppna fakturalänken och genomför betalningen med ett Stripe-testkort (t.ex. `4242 4242 4242 4242`) om ditt Stripe-konto är i testläge, eller ett riktigt kort i liveläge.
+  </Step>
+  <Step title="Verifiera statusuppdateringen">
+    Återgå till AgencyHandy och bekräfta att fakturastatusen ändrades till **Betald**. Om den gjorde det fungerar din integration korrekt.
+  </Step>
+</Steps>
+
+## Hantera din Stripe-anslutning
+
+Återgå till **Integrationer → Stripe-integration** när som helst för att:
+
+- **Uppdatera betalningsinställningar** — ändra valuta, betalningsmetoder eller faktureringspreferenser.
+- **Granska anslutningsstatus** — kontrollera om Stripe för närvarande är aktivt.
+- **Koppla från** — klicka på **Koppla från** för att ta bort länken till ditt Stripe-konto. Betalningsinsamling pausas omedelbart tills du återansluter.
+- **Återanslut** — klicka på **Anslut Stripe** igen och reauktorisera för att återställa integrationen.
+
+<Warning>
+  Frånkoppling av Stripe pausar betalningsinsamling för alla utestående fakturor. Klienter kommer inte att kunna betala online förrän du återansluter och reauktoriserar.
+</Warning>
+
+## Ytterligare anteckningar
+
+<Note>
+  AgencyHandy lagrar aldrig dina betalningsuppgifter. All betalningsdata hanteras uteslutande av Stripes säkra infrastruktur.
+</Note>
+
+- **Ett konto per arbetsyta** — du kan bara ansluta ett enda Stripe-konto till varje AgencyHandy-arbetsyta. För att byta konton, koppla från det nuvarande kontot först och anslut sedan med det nya.
+- **Live fakturastatus** — alla fakturor kopplade till Stripe fortsätter att återspegla realtidsstatusuppdateringar mottagna direkt från Stripe.
+- **Valuta** — se till att valutan konfigurerad i AgencyHandy matchar valutan aktiverad i ditt Stripe-konto för att undvika betalningsfel.

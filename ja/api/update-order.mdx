@@ -1,0 +1,205 @@
+---
+title: "AgencyHandy API：PUTで既存の注文を更新する"
+sidebarTitle: "注文を更新する"
+description: "AgencyHandy APIを使用して、PUTリクエストで注文の詳細を更新し、ステータスを変更し、プロジェクトマネージャーを再割り当てし、既存の注文にファイルを添付します。"
+---
+
+注文更新エンドポイントを使用すると、AgencyHandy内の既存の注文（プロジェクト）を — 名前、ステータス、予算、タイムライン、割り当てマネージャーなど — 外部システムや自動化スクリプトから変更できます。このエンドポイントはファイル添付もサポートしており、注文のシステムフォルダに追加されます。
+
+<Note>
+  このエンドポイントを使用する前に、[入門ガイド](/ja/api/getting-started)を完了してAPIキーと会社IDを取得してください。
+</Note>
+
+<Warning>
+  このエンドポイントは`x-api-key`ヘッダーだけでなく、`Authorization: Bearer <token>`（サインイン済みメンバーのアクセストークン）を使用します。呼び出し元が対象会社の**承認済みメンバー**として認証されていることを確認してください。未承認の呼び出し元は`403 PermissionError`を受け取ります。
+</Warning>
+
+## 前提条件
+
+- ✅ 承認済みワークスペースメンバーの有効な**Bearerトークン**
+- ✅ `GET {{URL}}/accounts/companies`から取得した**会社ID**
+- ✅ 更新したい注文の**注文ID**（プロジェクトID、`pid`）
+
+---
+
+## エンドポイント
+
+```
+PUT {{URL}}/orders?pid=<ORDER_ID>
+```
+
+**Content-Type:** `multipart/form-data` — ファイルが添付されていない場合でも、サーバーのマルチパートパーサーを満たすためにこれを使用します。
+
+## ヘッダー
+
+| ヘッダー | 必須 | 説明 |
+|---|---|---|
+| `Authorization` | はい | `Bearer <ACCESS_TOKEN>` — サインイン済みメンバーのアクセストークン。 |
+| `companyid` | はい | 注文が属する会社のMongo ObjectId。 |
+| `clientid` | 任意 | リアルタイムクライアントソケットID。指定されると、通知にそれが含まれます。 |
+
+## クエリパラメータ
+
+<ParamField query="pid" type="string" required>
+  更新する注文/プロジェクトID。クエリ文字列パラメータとして渡します。
+</ParamField>
+
+## リクエストボディのフィールド
+
+<ParamField body="name" type="string">
+  注文タイトルを更新します。最小2文字。
+</ParamField>
+
+<ParamField body="status" type="string">
+  注文の新しいステータス。`Pending`、`Ongoing`、`Review`、`Completed`、`Cancelled`のいずれかである必要があります。
+
+  **許可される遷移：**
+  - `Review`は`Ongoing`または別の`Review`の後にのみ続けることができます。`Pending`から直接`Review`に移行しようとすると`400 ValidationError`が返されます。
+  - すでに`Completed`または`Cancelled`の注文は更新できません。
+  - クライアントは`Pending`を過ぎた注文をキャンセルできません。
+</ParamField>
+
+<ParamField body="budget" type="number">
+  合計予算額。`≥ 0`である必要があります。`currency`も指定されない限り、注文の既存通貨を使用します。
+</ParamField>
+
+<ParamField body="currency" type="string">
+  予算の通貨コード。例：`USD`、`CAD`、`EUR`。
+</ParamField>
+
+<ParamField body="quantity" type="number">
+  パッケージに対して購入されたユニット数。`≥ 1`である必要があります。
+</ParamField>
+
+<ParamField body="deadline" type="string">
+  注文の期限のISO 8601日付文字列。例：`"2025-12-31T00:00:00.000Z"`。
+</ParamField>
+
+<ParamField body="kickoffDate" type="string">
+  プロジェクト開始日のISO 8601日付文字列。
+</ParamField>
+
+<ParamField body="notes" type="string">
+  チームに表示される内部メモ。
+</ParamField>
+
+<ParamField body="brief" type="string">
+  クライアントのブリーフまたはプロジェクトの概要。
+</ParamField>
+
+<ParamField body="assignedProjectManagers" type="array">
+  この注文に割り当てるプロジェクトマネージャーメンバーIDの完全なリスト。新しいIDはチームに追加され、削除されたIDは削除されます。各IDは同じ会社内で`projectManager`ロールを持つメンバーに属している必要があります。
+</ParamField>
+
+<ParamField body="markTasksAsDone" type="boolean">
+  `status`が`Completed`または`Cancelled`の場合に**必須**です。`true`の場合、ステータス変更後に注文内のすべてのタスクが完了としてマークされます。`false`の場合、タスクは現在の状態のままになります。
+</ParamField>
+
+<ParamField body="rejectRequestedTasks" type="boolean">
+  `status`が`Completed`または`Cancelled`の場合のみ許可されます。`true`の場合、ステータス更新後に未処理のクライアントリクエストタスクがすべて却下されます。
+</ParamField>
+
+<ParamField body="repeatCount" type="number">
+  繰り返し頻度を変更する場合の**サブスクリプション**注文にのみ必要です。`repeatDuration`とペアで使用します。
+</ParamField>
+
+<ParamField body="repeatDuration" type="string">
+  サブスクリプション注文の`repeatCount`と共に必須です。`day`、`week`、`month`、`year`のいずれかです。
+</ParamField>
+
+<ParamField body="billingCycleCount" type="number">
+  定期請求サイクルのオプションの上限。デフォルトは`0`（制限なし）。
+</ParamField>
+
+<ParamField body="billingCycleEvent" type="string">
+  各請求サイクルの処理方法。`createOrderWithTask`、`noChange`のいずれかです。
+</ParamField>
+
+<ParamField body="files" type="file">
+  ゼロ個以上のファイル添付。ファイルは注文のシステムフォルダに追加され、既存のファイルが上書きされることはありません。`multipart/form-data`エンコーディングを使用し、`files`フィールドの下に各ファイルを添付します。
+</ParamField>
+
+---
+
+## リクエスト例
+
+<CodeGroup>
+
+```bash cURL (no files)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "currency=USD" \
+  --form "quantity=1" \
+  --form "assignedProjectManagers[]=PROJECT_MANAGER_ID" \
+  --form "notes=Scope finalized with client." \
+  --form "brief=Launch-ready design refresh."
+```
+
+```bash cURL (with file)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "repeatCount=3" \
+  --form "repeatDuration=month" \
+  --form "billingCycleEvent=createOrderWithTask" \
+  --form "files=@/path/to/creative-brief.pdf"
+```
+
+</CodeGroup>
+
+**同等のJSONペイロード**（ファイル送信時はマルチパートフォームエントリに変換）：
+
+```json
+{
+  "name": "Website Redesign",
+  "status": "Review",
+  "budget": 12000,
+  "currency": "USD",
+  "quantity": 1,
+  "assignedProjectManagers": ["{{PROJECT_MANAGER_ID}}"],
+  "repeatCount": 3,
+  "repeatDuration": "month",
+  "billingCycleEvent": "createOrderWithTask",
+  "notes": "Scope finalized with client.",
+  "brief": "Launch-ready design refresh."
+}
+```
+
+---
+
+## レスポンス
+
+| HTTPステータス | 説明 |
+|---|---|
+| `200 OK` | 更新が成功しました。 |
+| `400 ValidationError` | 無効な注文ID、ブロックされたステータス遷移、または不正なペイロード。該当する場合はレスポンスに`fieldName`が含まれます。 |
+| `403 PermissionError` | 呼び出し元が承認済みメンバーではない、会社ロールがない、ワークスペースのサブスクリプションが期限切れ、またはクライアントが禁止されたキャンセルを試みた場合。 |
+| `500 Internal Server Error` | 未処理の例外 — サーバーログを確認してください。 |
+
+### 成功レスポンス
+
+```json
+{
+  "message": "Project has been updated"
+}
+```
+
+---
+
+## ビジネスルールと副作用
+
+- **ステータス遷移**は制限されています。`Review`は`Ongoing`または別の`Review`の後にのみ続けることができます。`Pending → Review`を試みると`400 ValidationError`が返されます。
+- ステータスを`Pending`から`Ongoing`、`Review`、または`Completed`に移動すると、注文のファイルフォルダが有効化され、アップロードされたファイルがプロジェクトチームにアクセス可能になります。
+- `status`を`Completed`または`Cancelled`に設定する場合は、`markTasksAsDone`を明示的に`true`または`false`に設定することが**必須**です。
+- `Review`、`Completed`、または`Cancelled`へのステータス変更は自動的にクライアント通知をトリガーします：
+  - **Review** — レビューが必要であることをクライアントに通知します。
+  - **Completed** — クライアントに`orderCompletion`通知を送信します。
+  - **Cancelled** — クライアントに`orderCancellation`通知を送信します。
+- 成功した更新ごとに、そのイベントに登録されたアクティブなWebhookがある場合、更新された注文ドキュメントと添付メタデータを含む`ORDER.UPDATED` Webhookイベントが発行されます。

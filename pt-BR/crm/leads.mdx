@@ -1,0 +1,211 @@
+---
+title: "Gerenciar Leads: Pipeline, E-mail e Conversão em Clientes"
+sidebarTitle: "Leads"
+description: "Gerencie seu pipeline de vendas com um quadro Kanban — acompanhe estágios de leads, filtre por agente ou origem, envie e-mails e converta leads em clientes."
+---
+
+A seção de Leads do CRM do AgencyHandy oferece um quadro Kanban visual com arrastar e soltar para gerenciar cada prospect desde o primeiro contato até se tornar um cliente. Cada lead vive em um cartão que percorre sete estágios predefinidos do pipeline, e você pode filtrar, pesquisar, importar, exportar, enviar e-mails e converter leads sem precisar mudar para outra ferramenta.
+
+## Estágios do Pipeline
+
+Todo lead criado começa no estágio **Novo** e pode ser movido adiante conforme o relacionamento avança:
+
+| Estágio | O que significa |
+|---|---|
+| **Novo** | Lead acabou de entrar no pipeline |
+| **Contatado** | Você já entrou em contato pelo menos uma vez |
+| **Qualificado** | O lead atende aos critérios de cliente-alvo |
+| **Em Andamento** | Conversas ativas em andamento |
+| **Proposta Enviada** | Uma proposta formal foi entregue |
+| **Negociação** | Os termos estão sendo discutidos |
+| **Cliente** | Pronto para ser convertido em uma conta de cliente |
+
+<Note>
+  Mover um lead para o estágio **Cliente** no quadro não o converte automaticamente — você ainda precisa clicar em **Converter em Cliente** dentro do cartão do lead para movê-lo para a aba de Clientes.
+</Note>
+
+## Criando um Lead
+
+<Steps>
+  <Step title="Abra o quadro de Leads">
+    Na barra lateral esquerda, clique em **CRM** e selecione a aba **Leads**. O quadro Kanban carrega com todos os estágios do pipeline existentes.
+  </Step>
+  <Step title="Clique em Criar Lead">
+    Selecione o botão **+ Criar Lead** no canto superior direito do quadro. Um formulário de criação é aberto.
+  </Step>
+  <Step title="Preencha os detalhes do lead">
+    Complete os campos abaixo. **Nome** e **E-mail** são obrigatórios; todo o resto é opcional, mas recomendado para melhor filtragem e relatórios.
+
+    - **Nome / Sobrenome** *(obrigatório)*
+    - **E-mail** *(obrigatório)*
+    - **Nome da Empresa**
+    - **Categoria**
+    - **Status** — define o estágio inicial no Kanban (padrão: Novo)
+    - **Origem** — por exemplo, Facebook, Website *(máximo de 50 caracteres; o texto além disso é truncado com uma dica ao passar o mouse)*
+    - **Valor do Lead** — valor estimado do negócio
+    - **Número de Telefone**
+    - **Website**
+    - **Agente Responsável** — membro da equipe responsável por este lead
+    - **Última Interação** — data do contato mais recente
+    - **Endereço** — País, Estado, Cidade, CEP
+    - **Anexos** — PDFs, JPEGs, PNGs e arquivos de texto podem ser visualizados diretamente no modal do lead; formatos não suportados solicitam um download
+  </Step>
+  <Step title="Salve o lead">
+    Clique em **Criar**. O cartão do lead aparece na coluna **Novo** do quadro Kanban.
+  </Step>
+</Steps>
+
+<Tip>
+  Faça upload de briefings em PDF ou documentos de proposta como anexos para que sua equipe possa revisá-los sem sair do modal do lead.
+</Tip>
+
+## Acompanhando Leads no Quadro Kanban
+
+Uma vez que os leads existam no quadro, você tem várias maneiras de trabalhar com eles:
+
+- **Arrastar e soltar** — pegue qualquer cartão de lead e solte-o em uma coluna de estágio diferente para refletir seu status atual.
+- **Clicar em um cartão** — abre o modal de detalhes do lead onde você pode editar todos os campos, visualizar notas, verificar o log de atividades, enviar um e-mail ou converter em cliente.
+- **Imprimir detalhes do lead** — use o botão **Imprimir** no canto superior direito do modal do lead para gerar um resumo imprimível.
+
+## Editando um Lead
+
+Abra qualquer cartão de lead e clique em **Editar** (ou atualize diretamente as informações de contato ou campos de notas exibidos no modal). As alterações são salvas imediatamente e registradas no log de atividades.
+
+<Note>
+  Se um endereço de e-mail já existir como cliente e como lead, esse lead **não poderá** ser convertido em cliente. Resolva a duplicidade antes de tentar a conversão.
+</Note>
+
+## Convertendo um Lead em Cliente
+
+<Steps>
+  <Step title="Abra o cartão do lead">
+    Clique no lead que deseja promover no quadro Kanban.
+  </Step>
+  <Step title="Clique em Converter em Cliente">
+    Selecione o botão **Converter em Cliente** dentro do modal do lead.
+  </Step>
+  <Step title="Confirme">
+    Um banner de confirmação aparece: *"Lead movido para a Aba de Clientes."* O cartão desaparece do quadro Kanban e todas as notas e o histórico do lead são preservados no novo registro de cliente.
+  </Step>
+</Steps>
+
+## Filtrando e Pesquisando Leads
+
+Use a barra de ferramentas acima do quadro Kanban para refinar o que você vê:
+
+<CardGroup cols={2}>
+  <Card title="Barra de Pesquisa" icon="magnifying-glass">
+    Digite um nome ou e-mail para encontrar instantaneamente leads correspondentes em todos os estágios do pipeline.
+  </Card>
+  <Card title="Agente Responsável" icon="user">
+    Filtre o quadro para mostrar apenas leads atribuídos a um membro específico da equipe.
+  </Card>
+  <Card title="Valor do Lead" icon="dollar-sign">
+    Refine por tamanho estimado do negócio para priorizar prospects de alto valor.
+  </Card>
+  <Card title="Data da Última Interação" icon="calendar">
+    Identifique leads que não receberam atenção recentemente e precisam de acompanhamento.
+  </Card>
+  <Card title="Origem" icon="signal">
+    Veja apenas leads de um canal específico, como Website ou Facebook.
+  </Card>
+</CardGroup>
+
+## Enviando E-mails para Leads
+
+Você pode redigir e enviar e-mails diretamente do quadro Kanban ou de dentro de um modal de lead — sem necessidade de cliente de e-mail externo.
+
+| Campo | Detalhes |
+|---|---|
+| **Para** | Preenchido automaticamente com o endereço de e-mail do lead |
+| **Assunto** | Obrigatório; máximo de 250 caracteres |
+| **Corpo** | Editor de texto rico; máximo de 10.000 caracteres |
+| **Anexos** | Até 5 arquivos; limite total de 25 MB |
+
+## Notas
+
+Cada lead inclui uma seção dedicada de **Notas** dentro do modal de detalhes. As notas são editáveis e excluíveis, e cada nota exibe o nome do membro da equipe que a escreveu junto com um registro de data e hora. Use as notas para registrar resumos de chamadas, preferências do cliente ou lembretes de acompanhamento que toda a equipe pode ver.
+
+## Importando Leads
+
+Traga uma lista de prospects existente para o AgencyHandy em massa usando um arquivo CSV ou Excel.
+
+<Steps>
+  <Step title="Abra o diálogo de Importação">
+    No quadro de Leads, clique no botão **Importar** no canto superior direito.
+  </Step>
+  <Step title="Faça upload do seu arquivo">
+    Arraste e solte ou navegue para selecionar seu arquivo CSV ou Excel. O arquivo deve incluir no mínimo uma coluna **Nome** e uma coluna **E-mail**.
+  </Step>
+  <Step title="Mapeie as colunas">
+    O importador exibe um mapeador de colunas. Associe cada coluna do seu arquivo ao campo correspondente do AgencyHandy. Os campos opcionais mapeáveis incluem: Origem, Valor do Lead, Número de Telefone, Nome da Empresa e Endereço.
+  </Step>
+  <Step title="Confirme e importe">
+    Revise a tabela de prévia para verificar a precisão dos dados, depois clique em **Confirmar** seguido de **Salvar**. Seus leads aparecem no quadro Kanban imediatamente.
+  </Step>
+</Steps>
+
+<Warning>
+  Leads com endereços de e-mail que já existem na aba de Clientes não serão convertidos através da importação — você deve tratar essas duplicidades manualmente.
+</Warning>
+
+## Exportando Leads
+
+Exporte os dados do seu pipeline para relatórios, backups ou integração com outras ferramentas.
+
+<Steps>
+  <Step title="Clique em Exportar">
+    Selecione o botão **Exportar** na barra de ferramentas de Leads.
+  </Step>
+  <Step title="Escolha suas colunas">
+    Selecione **Todas as Colunas** para exportar todos os campos ou escolha **Colunas Personalizadas** para selecionar apenas os dados de que precisa.
+  </Step>
+  <Step title="Selecione o formato e baixe">
+    Escolha **CSV** ou **XLSX** e clique em **Exportar**. O arquivo é baixado para o seu dispositivo.
+  </Step>
+</Steps>
+
+## Log de Atividades
+
+Cada alteração feita em um lead é registrada automaticamente na aba **Log de Atividades** dentro do modal do lead.
+
+O log registra:
+
+- **Usuário** — qual membro da equipe fez a alteração
+- **Detalhes** — o que mudou, por exemplo *"Status alterado de 'Novo' para 'Contatado'"*
+- Uploads de anexos, adições de notas e edições de campos
+
+Os logs de atividades não podem ser editados ou excluídos e são visíveis para admins e gerentes.
+
+## Lembretes e Tarefas Automatizados
+
+O AgencyHandy envia notificações automáticas quando um lead ficou inativo em qualquer estágio além de um número configurável de dias — por exemplo, *"Faça um acompanhamento com [Nome do Lead]."* Ações-chave, como o envio de uma proposta, também podem gerar automaticamente tarefas no gerenciador de tarefas para manter seu processo de entrega nos trilhos.
+
+## Webhooks para Eventos de Lead
+
+O AgencyHandy dispara eventos de webhook para as seguintes ações de lead, permitindo que você conecte CRMs externos, ferramentas de automação ou pipelines de dados:
+
+<Accordion title="Lead.Created">
+  Disparado quando um novo lead é criado. O payload inclui: ID do lead, status, origem, agente responsável e registros de data e hora.
+</Accordion>
+
+<Accordion title="Lead.Updated">
+  Disparado quando qualquer campo de um lead é atualizado. O payload inclui os mesmos campos mais um resumo do que mudou.
+</Accordion>
+
+<Accordion title="Lead.Deleted">
+  Disparado quando um lead é excluído do sistema. O payload inclui o ID do lead e o registro de data e hora da exclusão.
+</Accordion>
+
+<Tip>
+  Configure webhooks em **Configurações → Integrações → Webhooks** para começar a receber eventos de lead em tempo real nos seus sistemas externos.
+</Tip>
+
+## Métricas de Relatório
+
+Acompanhe a saúde do seu pipeline com métricas de relatório integradas:
+
+- Número de leads por estágio
+- Taxas de conversão de lead para cliente
+- Tempo médio que um lead permanece em cada estágio
+- Melhores agentes por volume de conversão

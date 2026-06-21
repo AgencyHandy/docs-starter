@@ -1,0 +1,69 @@
+---
+title: "Připojte Slack k přijímání upozornění AgencyHandy v reálném čase"
+sidebarTitle: "Slack"
+description: "Propojte svůj workspace Slack s AgencyHandy, aby se aktualizace objednávek, změny úkolů a upozornění na tikety automaticky odesílaly do kanálu Slack."
+---
+
+Integrace Slack v AgencyHandy udržuje váš tým v obraze, aniž by musel kdokoli přepínat mezi aplikacemi. Po připojení AgencyHandy automaticky odesílá oznámení do vámi zvoleného kanálu Slack vždy, když se změní úkoly, objednávky nebo jiné aktivity workspace — takže váš tým vždy ví, co se děje v reálném čase.
+
+<Note>
+  Integraci Slack může připojit nebo spravovat pouze role **SuperAdmin**, **Admin** a **Manager** (s oprávněními k integraci). K autorizaci připojení potřebujete práva správce workspace Slack.
+</Note>
+
+## Připojení Slack
+
+<Steps>
+  <Step title="Otevřete Integrace">
+    V levém postranním panelu klikněte na **Integrace**.
+  </Step>
+
+  <Step title="Najděte kartu Slack">
+    Přejděte na kartu **Slack** a klikněte na **Připojit**.
+  </Step>
+
+  <Step title="Autorizujte AgencyHandy ve Slack">
+    Otevře se okno autorizace Slack. Pokud ještě nejste přihlášeni do svého workspace Slack, přihlaste se nyní. Zkontrolujte oprávnění, která AgencyHandy požaduje, a klikněte na **Povolit** pro udělení přístupu.
+  </Step>
+
+  <Step title="Vyberte kanál pro oznámení">
+    Po autorizaci zvolte kanál Slack, kde chcete zobrazovat oznámení AgencyHandy. Z rozbalovacího seznamu vyberte kanál a kliknutím na **Uložit** potvrďte.
+  </Step>
+
+  <Step title="Potvrďte nastavení">
+    Karta Slack se aktualizuje a zobrazí **Připojeno**. AgencyHandy okamžitě začne odesílat oznámení do vybraného kanálu.
+  </Step>
+</Steps>
+
+## Jaká oznámení se odesílají do Slack
+
+AgencyHandy odešle zprávu do Slack vždy, když nastane některá z následujících událostí:
+
+| Kategorie | Události, které spustí oznámení |
+|---|---|
+| **Úkoly** | Úkol vytvořen, aktualizován, přiřazen nebo dokončen |
+| **Objednávky** | Objednávka vytvořena nebo změněn stav |
+| **Komentáře** | Nový komentář přidán k úkolu nebo objednávce |
+| **Přílohy souborů** | Soubor nebo příloha přidána k úkolu |
+| **Tikety** | Tiket vytvořen, přiřazen nebo změněn stav |
+
+Každá zpráva ve Slack obsahuje:
+
+- **Název** úkolu, objednávky nebo tiketu
+- **Změnu stavu** nebo akci, která zprávu spustila
+- **Odkaz** zpět na příslušnou položku v AgencyHandy
+
+Když je k úkolu přidán soubor nebo příloha, zpráva ve Slack obsahuje také náhled dané přílohy.
+
+<Tip>
+  Zvolte vyhrazený kanál **#agency-handy-alerts** (nebo podobný), abyste měli oznámení přehledně organizovaná a zabránili jejich zahlcení hlavních týmových kanálů.
+</Tip>
+
+## Odpojení Slack
+
+Chcete-li zastavit oznámení, vraťte se do **Integrace** a na kartě Slack klikněte na **Odpojit**. Všechna oznámení okamžitě přestanou.
+
+## Důležité poznámky
+
+- **Jeden workspace na připojení** — ke každému workspace AgencyHandy lze připojit pouze jeden workspace Slack. Chcete-li přejít na jiný workspace Slack, odpojte stávající a znovu připojte nový.
+- **Viditelnost kanálu** — oznámení jsou viditelná pro všechny v daném kanálu Slack. Ujistěte se, že kanál je vhodný pro úroveň sdílených podrobností (např. nezveřejňujte citlivé detaily objednávek klientů ve veřejném kanálu).
+- **Opětovná autorizace** — pokud vypršela platnost vašeho tokenu Slack nebo se změnila oprávnění, vraťte se do Integrace a znovu připojte, abyste obnovili oznámení.

@@ -1,0 +1,188 @@
+---
+title: "Izejošā e-pasta, SMTP un e-pasta veidņu konfigurācija"
+sidebarTitle: "E-pasta iestatīšana"
+description: "Konfigurējiet pielāgotu sūtītāja e-pasta adresi, pievienojiet SMTP serveri, pievienojiet DKIM/SPF ierakstus piegādājamībai un pielāgojiet e-pasta veidnes AgencyHandy."
+---
+
+AgencyHandy e-pasta iestatīšana ļauj aizstāt noklusējuma `noreply@agencyhandy.com` sūtītāju ar jūsu zīmolam atbilstošu e-pasta adresi, konfigurēt dedikētu SMTP serveri uzticamai piegādei un pielāgot veidnes, ko izmanto klientu paziņojumiem, rēķiniem, piedāvājumiem un citiem nolūkiem. Pareiza iestatīšana nodrošina, ka jūsu e-pasti nonāk klientu iesūtnē — nevis surogātpasta mapē — un katrs ziņojums atspoguļo jūsu aģentūras identitāti.
+
+<Note>
+  Tikai **Super administratori** un **Administratori** var konfigurēt e-pasta iestatījumus. Dodieties uz **Workspace Config → Email Setup**, lai piekļūtu šīm opcijām.
+</Note>
+
+---
+
+## E-pasta iestatīšanas komponentu pārskats
+
+<CardGroup cols={2}>
+  <Card title="Pielāgota e-pasta adrese" icon="envelope">
+    Iestatiet sūtītāja vārdu un e-pasta adresi, ko klienti redz, saņemot ziņojumus no jūsu darbvietas.
+  </Card>
+  <Card title="DKIM un SPF ieraksti" icon="shield-check">
+    Pievienojiet DNS autentifikācijas ierakstus, lai pierādītu, ka jūsu e-pasti ir likumīgi un novērstu to atzīmēšanu kā surogātpasts.
+  </Card>
+  <Card title="SMTP serveris" icon="server">
+    Pievienojiet savu pasta serveri (piemēram, Gmail, Outlook vai pielāgota domēna serveri), lai nosūtītu visus izejošos e-pastus no AgencyHandy.
+  </Card>
+  <Card title="E-pasta veidnes" icon="file-lines">
+    Pielāgojiet saturu, temata rindiņas un zīmolu katram automatizētajam e-pastam, ko AgencyHandy nosūta klientiem.
+  </Card>
+</CardGroup>
+
+---
+
+## 1. daļa: Pielāgotas e-pasta adreses iestatīšana
+
+Pirms sūtītāja e-pasta konfigurēšanas jums ir nepieciešams reģistrēts domēns ar e-pasta mitināšanu. Populāri pakalpojumu sniedzēji ietver Google Workspace, Microsoft 365, Zoho Mail un Cloudflare Email Routing.
+
+<Steps>
+  <Step title="Reģistrējiet domēnu un iestatiet e-pasta mitināšanu">
+    Ja vēl neesat to izdarījis, reģistrējiet domēnu pie reģistrētāja (piemēram, GoDaddy, Namecheap, Cloudflare) un reģistrējieties e-pasta mitināšanas pakalpojumu sniedzējam. Pārliecinieties, ka varat izveidot un pārvaldīt e-pasta adreses šajā domēnā (piemēram, `hello@jusuagentura.lv`).
+  </Step>
+  <Step title="Dodieties uz E-pasta iestatīšanu AgencyHandy">
+    Piesakieties AgencyHandy. Dodieties uz **Workspace Config** kreisajā navigācijā, pēc tam noklikšķiniet uz **Email Setup**.
+  </Step>
+  <Step title="Ievadiet sūtītāja vārdu un e-pastu">
+    Laukā **Sender Name** ievadiet vārdu, ko klienti redzēs kā sūtītāju (piemēram, `AgencyHandy Atbalsts` vai jūsu aģentūras nosaukums). Laukā **Sender Email** ievadiet pielāgoto e-pasta adresi (piemēram, `hello@jusuagentura.lv`). Noklikšķiniet uz **Save**.
+  </Step>
+  <Step title="Verificējiet savu e-pasta adresi">
+    AgencyHandy nosūta verifikācijas saiti uz jūsu ievadīto e-pasta adresi. Atveriet e-pasta iesūtni, atrodiet verifikācijas ziņojumu un noklikšķiniet uz saites, lai apstiprinātu īpašumtiesības.
+  </Step>
+  <Step title="Konfigurējiet DKIM, SPF un DMARC DNS ierakstus">
+    Pēc sūtītāja e-pasta saglabāšanas AgencyHandy nodrošina DNS ierakstus, kas jums jāpievieno:
+
+    - **SPF ieraksts** (TXT tips) — pilnvaro AgencyHandy sūtīt e-pastus jūsu domēna vārdā.
+    - **DKIM ieraksti** (3 CNAME ieraksti) — pievieno kriptogrāfiskus parakstus izejošajiem e-pastiem, lai saņēmēju serveri varētu verificēt autentiskumu.
+    - **DMARC ieraksts** — nosaka, kā saņēmēju serveri rīkojas ar e-pastiem, kas neizdod autentifikācijas pārbaudes.
+
+    Pievienojiet visus šos ierakstus sava domēna DNS iestatījumos pie sava reģistrētāja. DKIM CNAME ierakstiem pārliecinieties, ka **Proxy Status ir atspējots**, ja izmantojat Cloudflare.
+  </Step>
+  <Step title="Apstipriniet aktīvo statusu">
+    Atgriezieties AgencyHandy E-pasta iestatīšanas lapā. Kad visi DNS ieraksti ir izplatīti (tas var aizņemt no 2 minūtēm līdz 2 stundām), e-pasta statuss atjauninās no **Pending** uz zaļu atzīmi ✅. Jūsu pielāgotais e-pasts tagad ir aktīvs.
+  </Step>
+</Steps>
+
+<Tip>
+  Izmantojiet [MXToolbox](https://mxtoolbox.com/DKIM.aspx) vai [dmarcian's DKIM Validator](https://dmarcian.com/dkim-validator/), lai verificētu, ka jūsu DKIM ieraksti ir pareizi konfigurēti. Periodiski atsvaidziniet E-pasta iestatīšanas lapu, gaidot izplatīšanu.
+</Tip>
+
+---
+
+## 2. daļa: DKIM un SPF konfigurācija (atsevišķa iestatīšana)
+
+Ja nepieciešams ģenerēt vai reģenerēt DKIM un SPF ierakstus neatkarīgi, sekojiet šim ceļam:
+
+**Workspace Config → Emails → DKIM & SPF Setup → Generate DKIM and SPF records.**
+
+Pēc tam pievienojiet ierakstus savā DNS:
+
+| Ieraksta tips | DNS tips | Ko konfigurēt                                                                                      |
+|---------------|----------|----------------------------------------------------------------------------------------------------|
+| SPF           | TXT      | Kopējiet **Name** un **Value** no AgencyHandy un pievienojiet jaunu TXT ierakstu savā DNS          |
+| DKIM (×3)     | CNAME    | Kopējiet katru **Name** un **Value** pāri; pievienojiet 3 atsevišķus CNAME ierakstus ar atspējotu proxy |
+
+<Note>
+  DKIM un SPF ierakstiem var būt nepieciešamas no **2 minūtēm līdz 2 stundām**, lai izplatītos. Ja statuss joprojām rāda "pending" pēc 2 stundām, pārbaudiet, vai ieraksti tika ievadīti bez drukas kļūdām un vai nav pretrunīgu ierakstu.
+</Note>
+
+---
+
+## 3. daļa: SMTP iestatīšana
+
+SMTP (Simple Mail Transfer Protocol) ļauj maršrutēt visus izejošos AgencyHandy e-pastus caur jūsu verificēto pasta serveri, dodot jums lielāku kontroli pār piegādājamību un zīmolu.
+
+<Note>
+  Varat izmantot vai nu **Pielāgota domēna e-pastu** vai **SMTP e-pasta pakalpojumu sniedzēju** — ne abus vienlaikus. Pārslēgšanās starp tiem ir iespējama jebkurā laikā, taču jums būs jāievada e-pasta konfigurācija atkārtoti, pārslēdzoties atpakaļ uz pielāgoto e-pastu.
+</Note>
+
+<Steps>
+  <Step title="Atveriet SMTP servera iestatījumus">
+    Dodieties uz **Workspace Config → Email Setup**, pēc tam noklikšķiniet uz **SMTP Server**.
+  </Step>
+  <Step title="Pārslēdzieties uz SMTP pakalpojumu sniedzēju (ja nepieciešams)">
+    Ja jums jau ir konfigurēts pielāgots e-pasts, parādās apstiprinājuma uznirstošais logs, kas jautā, vai vēlaties pārslēgties. Noklikšķiniet uz **Switch to SMTP**, lai turpinātu. Tas atspējo esošo pielāgotā e-pasta iestatījumu.
+  </Step>
+  <Step title="Ievadiet SMTP akreditācijas datus">
+    Aizpildiet obligātos laukus:
+
+    | Lauks       | Piemēra vērtība        | Piezīmes                                          |
+    |-------------|------------------------|---------------------------------------------------|
+    | Host Name   | `smtp.gmail.com`       | Jūsu e-pasta pakalpojumu sniedzēja SMTP servera adrese |
+    | User Name   | `jus@jusudomens.com`   | Jūsu pilnā e-pasta adrese                         |
+    | Password    | Lietotnes parole       | Izmantojiet lietotnes specifisko paroli (skatīt zemāk) |
+    | Port        | `465` vai `587`        | 465 SSL, 587 TLS                                  |
+    | Auto TLS    | Ieslēgt/izslēgt        | Neobligāti — iespējo automātisku TLS jauninājumu  |
+
+    Noklikšķiniet uz **Save**, kad esat pabeidzis.
+  </Step>
+  <Step title="Ģenerējiet lietotnes paroli (Gmail piemērs)">
+    Ja izmantojat Gmail ar iespējotu 2 faktoru autentifikāciju (nepieciešams lietotnes parolēm):
+
+    1. Dodieties uz [myaccount.google.com/security](https://myaccount.google.com/security) un apstipriniet, ka 2 soļu verificēšana ir aktīva.
+    2. Apmeklējiet [myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords).
+    3. Noklikšķiniet uz **Select app**, izvēlieties **Mail** (vai ievadiet pielāgotu nosaukumu), pēc tam noklikšķiniet uz **Select device** un izvēlieties savu iestatījumu.
+    4. Noklikšķiniet uz **Create** — Google ģenerē 16 rakstzīmju lietotnes paroli.
+    5. Kopējiet paroli un ielīmējiet to laukā **Password** AgencyHandy SMTP iestatījumos.
+
+    <Warning>
+      Izmantojiet **lietotnes paroli**, nevis parasto Google konta paroli. Parastās paroles izmantošana neizdosies, ja ir iespējota 2FA, un var izraisīt drošības brīdinājumus.
+    </Warning>
+  </Step>
+  <Step title="Apstipriniet iestatīšanu">
+    Pēc saglabāšanas AgencyHandy parāda veiksmes ziņojumu, apstiprinot _"SMTP is created successfully."_ Jūsu saglabātā hosta, lietotājvārda un porta dati parādās SMTP iestatījumu lapā.
+  </Step>
+  <Step title="Pārbaudiet SMTP savienojumu">
+    Noklikšķiniet uz pogas **Test** un ievadiet saņēmēja e-pasta adresi. AgencyHandy nosūta testa e-pastu uz šo adresi. Pārbaudiet iesūtni uz apstiprinājuma ziņojumu: _"This is a confirmation that your email setup in Agency Handy is working properly."_
+  </Step>
+</Steps>
+
+<Tip>
+  Katrā darbvietā vienlaikus var būt aktīva tikai viena SMTP konfigurācija. Kad SMTP ir konfigurēts, visi izejošie e-pasti no AgencyHandy — rēķini, piedāvājumi, uzdevumu paziņojumi — tiks nosūtīti caur jūsu SMTP serveri.
+</Tip>
+
+---
+
+## 4. daļa: E-pasta veidņu pielāgošana
+
+AgencyHandy ietver iepriekš izveidotas veidnes katram automatizētajam e-pastam, ko tas nosūta. Varat pielāgot katru no tām, lai atbilstu jūsu zīmola tonim un iekļautu atbilstošu dinamisko saturu.
+
+**Pieejamās veidnes ietver:**
+- Klienta reģistrācija
+- Piedāvājuma nosūtīšana
+- Uzdevuma pārskats
+- Rēķina nosūtīšana
+- Rēķinu un abonementa atgādinājumi
+- Atbalsta pieteikuma izveides paziņojumi
+
+<Steps>
+  <Step title="Atveriet E-pasta veidnes">
+    Dodieties uz **Workspace Config → Emails**, pēc tam apakšizvēlnē atlasiet **Email Template**.
+  </Step>
+  <Step title="Atlasiet veidni rediģēšanai">
+    Tiek parādīts visu pieejamo veidņu pilns saraksts. Noklikšķiniet uz jebkuras veidnes, lai atvērtu tās konfigurācijas lapu.
+  </Step>
+  <Step title="Pielāgojiet veidnes laukus">
+    Atjauniniet tālāk norādīto pēc nepieciešamības:
+    - **Sender Email:** Izvēlieties, kura konfigurētā e-pasta adrese nosūta šo veidni.
+    - **Subject:** Uzrakstiet skaidru, kodolīgu temata rindiņu.
+    - **Body:** Rediģējiet ziņojuma saturu, lai atbilstu jūsu aģentūras tonim un vēstījumam.
+    - **Dynamic Variables:** Ievietojiet vietturos, piemēram, `{{client_name}}`, `{{company_name}}` vai `{{invoice_id}}`, lai automātiski aizpildītu klientam specifiskos datus.
+    - **Social Media Links:** Pievienojiet saites uz jūsu aģentūras sociālajiem profiliem, lai veicinātu iesaistīšanos.
+  </Step>
+  <Step title="Nosūtiet testa e-pastu">
+    Noklikšķiniet uz **Send Test**, lai nosūtītu veidnes priekšskatījumu uz jūsu iesūtni. Pārbaudiet formatējumu, saturu un vai visi dinamiskie mainīgie tiek pareizi aizpildīti.
+  </Step>
+  <Step title="Saglabājiet izmaiņas">
+    Noklikšķiniet uz **Save Changes**, lai lietotu atjaunināto veidni. Jaunā versija tiks izmantota visiem turpmākajiem automatizētajiem e-pastiem, kas atbilst šim veidnes tipam.
+  </Step>
+</Steps>
+
+---
+
+## Svarīgas piezīmes
+
+- **SMTP un pielāgots e-pasts ir savstarpēji izslēdzoši.** Vienlaikus var būt aktīva tikai viena metode katrā darbvietā.
+- **Atkārtoti ievadiet e-pastu pārslēgšanās gadījumā.** Ja pārslēdzaties no SMTP atpakaļ uz pielāgotu e-pasta iestatījumu, jums jāievada pielāgotā e-pasta akreditācijas dati atkārtoti.
+- **Nepareizi SMTP akreditācijas dati bloķē visus izejošos e-pastus.** Divreiz pārbaudiet sava hosta nosaukumu, portu, lietotājvārdu un paroli, ja e-pasti pārstāj sūtīties pēc SMTP izmaiņām.
+- **DKIM/SPF izplatīšana prasa laiku.** Pagaidiet līdz 2 stundām un atsvaidziniet E-pasta iestatīšanas lapu, pirms secināt, ka ir radusies kļūda.
+- **Dinamiskie mainīgie ir reģistrjutīgi.** Izmantojiet tos tieši tā, kā parādīts veidnes redaktorā, lai nodrošinātu pareizu aizpildīšanu.

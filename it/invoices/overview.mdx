@@ -1,0 +1,100 @@
+---
+title: "Panoramica della Gestione delle Fatture per le Agenzie su AgencyHandy"
+sidebarTitle: "Fatture"
+description: "Esplora il sistema di fatturazione di AgencyHandy — fatturazione, monitoraggio dei pagamenti, fatture ricorrenti, stati, fatture dirette ed esportazione dei registri finanziari."
+---
+
+La funzionalità di fatturazione di AgencyHandy offre alla tua agenzia un sistema completo di fatturazione e gestione dei pagamenti all'interno della stessa piattaforma che usi per gestire clienti, ordini e progetti. Puoi creare fatture professionali, inviarle ai clienti via e-mail, monitorare lo stato dei pagamenti in tempo reale, automatizzare la fatturazione ricorrente per i servizi in abbonamento ed esportare i tuoi registri finanziari ogni volta che ne hai bisogno. Ogni fattura è associata automaticamente al logo e all'indirizzo della tua agenzia, mantenendo le tue comunicazioni coerentemente in linea con il brand.
+
+## Chi Può Creare Fatture
+
+Solo gli utenti con i seguenti ruoli possono creare e gestire le fatture:
+
+- **Super Admin**
+- **Admin**
+- **Project Manager (PM)**
+
+I clienti possono visualizzare e scaricare le fatture, ma non possono crearle o modificarle.
+
+## Dashboard Fatture
+
+Per aprire la Dashboard Fatture, clicca su **Fatture** nella barra laterale sinistra. Da qui puoi:
+
+- Creare, modificare ed eliminare fatture
+- Cercare fatture per **nome cliente**, **ID ordine** o **nome servizio**
+- Filtrare e ordinare l'elenco delle fatture
+- Visualizzare lo stato delle fatture a colpo d'occhio
+- Accedere alle impostazioni delle fatture inclusa la configurazione del prefisso
+
+## Cosa Fanno le Fatture
+
+<CardGroup cols={2}>
+  <Card title="Fatturazione e Invoicing" icon="file-invoice-dollar">
+    Crea e invia fatture professionali per qualsiasi servizio o prodotto che consegni ai clienti, con pieno controllo su importi, sconti e date di scadenza.
+  </Card>
+  <Card title="Monitoraggio dei Pagamenti" icon="chart-line">
+    Controlla se le fatture sono state visualizzate, pagate o sono scadute. Il sistema registra automaticamente le date di pagamento e di annullamento al variare degli stati.
+  </Card>
+  <Card title="Fatturazione Ricorrente" icon="rotate">
+    Automatizza la generazione delle fatture per i servizi in abbonamento. AgencyHandy genera e consegna fatture ricorrenti ad ogni ciclo di fatturazione senza intervento manuale.
+  </Card>
+  <Card title="Integrazione con i Progetti" icon="diagram-project">
+    Collega le fatture direttamente a ordini e servizi in modo che la fatturazione sia sempre legata al lavoro sottostante. Gli elementi fatturabili possono essere aggiunti con precisione a ogni fattura.
+  </Card>
+</CardGroup>
+
+## Stati delle Fatture
+
+Ogni fattura attraversa un ciclo di vita definito. Comprendere questi stati ti aiuta a gestire efficacemente i tuoi crediti.
+
+| Stato | Descrizione |
+|--------|-------------|
+| **Bozza** | La fattura è stata creata ma non finalizzata. Puoi modificare qualsiasi parte di essa. Una volta pronta, finalizzala cambiando lo stato in Aperta. Le fatture in bozza non collegate a un abbonamento possono essere eliminate. |
+| **Aperta / Non Pagata** | La fattura è finalizzata e in attesa di pagamento. L'agenzia la invia al cliente, che può visualizzarla e pagarla. Puoi cambiare una fattura Aperta in Pagata, Annullata o Non Recuperabile. |
+| **Pagata** | La fattura è stata pagata. Il sistema registra automaticamente la data di pagamento quando contrassegni una fattura come Pagata. |
+| **Annullata** | La fattura è stata cancellata. Il sistema registra automaticamente la data di annullamento. |
+| **Non Recuperabile** | È improbabile che il cliente paghi. Trattala come credito inesigibile nel tuo processo contabile. |
+
+<Note>
+  Quando invii una fattura a un cliente usando il pulsante **Invia al Cliente**, lo stato cambia automaticamente da **Bozza** ad **Aperta**. Solo l'agenzia può cambiare lo stato da Aperta a Pagata, Annullata o Non Recuperabile.
+</Note>
+
+## Fatture Dirette (Senza ID Ordine)
+
+AgencyHandy supporta le **Fatture Dirette** — fatture non collegate ad alcun ordine esistente. Questo è utile per fatturazioni una tantum, pagamenti ad hoc o per fatturare contatti non ancora registrati come clienti nel sistema.
+
+Funzionalità chiave delle Fatture Dirette:
+
+- Invia fatture senza selezionare un ID ordine
+- Fattura qualsiasi cliente esistente o usa **E-mail Indipendente** per inviare a qualsiasi indirizzo e-mail
+- Aggiungi articoli, tasse e sconti manualmente
+- Invia immediatamente o salva come bozza
+
+<Tip>
+  Usa le Fatture Dirette quando devi fatturare rapidamente a un cliente per un lavoro che non ha un ordine formale in AgencyHandy, come progetti urgenti, consulenze o lavori fuori scopo.
+</Tip>
+
+## Esportazione delle Fatture
+
+Puoi esportare il tuo elenco di fatture per l'utilizzo in strumenti contabili esterni o per la conservazione dei registri. L'esportazione include tutte le colonne visibili: ID fattura, nome cliente, servizio, importi, stato e date. Accedi all'opzione di esportazione dalla Dashboard Fatture.
+
+## Impostazioni Fatture
+
+Configura le impostazioni globali delle fatture dal pulsante **Impostazioni** nell'angolo in alto a destra della Dashboard Fatture. Questo include:
+
+- **Prefisso fattura** — personalizza il prefisso che appare prima di ogni numero di fattura
+- **Modelli di promemoria** — configura promemoria automatici di pagamento per le fatture aperte
+
+## Funzionalità Correlate
+
+<CardGroup cols={3}>
+  <Card title="Crea una Fattura" icon="plus" href="/it/invoices/create-invoice">
+    Guida passo passo per creare, compilare e inviare una fattura.
+  </Card>
+  <Card title="Abbonamenti" icon="rotate" href="/it/invoices/subscriptions">
+    Come funziona la fatturazione ricorrente e come gestire le fatture di abbonamento.
+  </Card>
+  <Card title="Ticket di Supporto" icon="ticket" href="/it/tickets/support-tickets">
+    Gestisci le domande di fatturazione dei clienti tramite il sistema di ticket di supporto.
+  </Card>
+</CardGroup>

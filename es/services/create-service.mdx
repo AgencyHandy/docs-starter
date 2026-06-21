@@ -1,0 +1,260 @@
+---
+title: "Cómo crear un servicio con paquetes, tareas y preguntas frecuentes"
+sidebarTitle: "Crear servicio"
+description: "Guía paso a paso para construir un servicio de AgencyHandy: elija el tipo de facturación, configure paquetes, establezca tareas predeterminadas, agregue preguntas frecuentes y publique."
+---
+
+Crear un servicio en AgencyHandy es el primer paso para vender las ofertas de su agencia a través de la plataforma. Un solo servicio puede contener hasta cinco paquetes de precios, tareas predeterminadas automatizadas que se activan cuando se realiza un pedido, preguntas frecuentes para reducir las preguntas previas a la venta, un adjunto de portafolio como prueba social y un formulario de admisión opcional, todo configurado en un solo lugar antes de publicar.
+
+<Note>
+  Necesita un rol de **Super Admin** o **Admin** para crear servicios. Otros roles requieren permisos de servicio explícitos para acceder a esta sección.
+</Note>
+
+<Steps>
+  <Step title="Elija el tipo de servicio">
+    Abra **Services** en la barra lateral izquierda y haga clic en **+ Service** para iniciar un nuevo listado.
+
+    En la parte superior de la página, seleccione su modelo de facturación:
+
+    - **Servicio único**: el cliente paga una sola tarifa y recibe el entregable una vez. Lo mejor para proyectos con un alcance claro: creación de sitios web, paquetes de logotipos, auditorías, etc.
+    - **Servicio de suscripción**: la facturación se repite automáticamente según la programación que defina. Lo mejor para retainers, contenido continuo, servicios gestionados o planes de mantenimiento.
+
+    <Warning>
+      El tipo de servicio queda bloqueado después de guardar. Si necesita un modelo de facturación diferente, cree un nuevo servicio.
+    </Warning>
+  </Step>
+
+  <Step title="Agregue los detalles del servicio">
+    Expanda la sección **Service Details** y complete los siguientes campos:
+
+    **Service Name** *(obligatorio)*
+    Así es como el servicio aparece ante los clientes en todas partes de la plataforma: en el catálogo, en las facturas y dentro del espacio de trabajo del pedido. Hágalo claro y descriptivo.
+
+    **Media Upload**
+    Suba una o más imágenes de vista previa para representar el servicio visualmente. Las imágenes de alta calidad aumentan la confianza del cliente y las tasas de conversión.
+
+    **Service Description**
+    Escriba una explicación exhaustiva de lo que incluye el servicio, para quién es y qué pueden esperar los clientes. Use este espacio para diferenciar su oferta.
+
+    **Tax Settings**
+    Elija si el impuesto es **inclusive** (ya incorporado en el precio) o **exclusive** (agregado encima en el pago).
+
+    **Currency**
+    Establezca la moneda para todos los paquetes de este servicio. Todos los paquetes dentro de un solo servicio comparten la misma moneda.
+
+    <Tip>
+      Suba imágenes de vista previa en una proporción de 16:9 para la mejor presentación en el portal del cliente.
+    </Tip>
+  </Step>
+
+  <Step title="Cree paquetes">
+    Expanda **Package Details** y haga clic en **+ New Package** para agregar su primer nivel de precios. Puede crear hasta **5 paquetes** por servicio.
+
+    Para cada paquete, configure lo siguiente:
+
+    **Package Name** *(obligatorio)*
+    El nombre que ven los clientes, como *Básico*, *Estándar* o *Premium*.
+
+    **Package Icon** *(opcional)*
+    Seleccione un icono integrado o suba uno personalizado. Los iconos subidos deben ser de **32 × 32 píxeles**.
+
+    **Package Media** *(opcional)*
+    Suba una imagen de portada específica para este paquete. Formatos aceptados: PNG, JPG, JPEG. Tamaño máximo de archivo: **5 MB**. Máximo 1 archivo por paquete. Proporción recomendada: **16:9**.
+
+    **Package Brief** *(opcional)*
+    Un resumen de una línea de los entregables de este paquete. Máximo **140 caracteres**.
+
+    **What's Included** *(obligatorio)*
+    Enumere los entregables específicos incluidos en este paquete. Puede agregar hasta **15 elementos de línea** por paquete. Cada viñeta debe describir un entregable concreto (por ejemplo, *"5 publicaciones de blog al mes, de hasta 1.000 palabras cada una"*).
+
+    <Tip>
+      Después de crear varios paquetes, arrástrelos para reordenar cómo se muestran ante los clientes. Marque uno como **Most Popular** para llamar la atención sobre el nivel que recomienda.
+    </Tip>
+  </Step>
+
+  <Step title="Establezca las reglas de precios y entrega">
+    Dentro de cada paquete, establezca los campos de precios principales y cualquier control opcional:
+
+    **Amount** *(obligatorio)*
+    El precio que paga un cliente por este paquete.
+
+    **Delivery Time** *(obligatorio)*
+    El número estimado de días para entregar el servicio después de la compra.
+
+    **Controles de precios opcionales:**
+
+    <Accordion title="Agregar descuento">
+      Aplique una reducción de porcentaje o de monto fijo al precio de este paquete. El precio con descuento se muestra a los clientes junto al precio original, creando un efecto promocional eficaz.
+    </Accordion>
+
+    <Accordion title="Agregar período de prueba (solo suscripción)">
+      Ofrezca una prueba gratuita o de precio reducido antes de que comience la facturación regular de la suscripción. Esta opción solo está disponible en servicios de tipo suscripción.
+    </Accordion>
+
+    <Accordion title="Agregar límite de cantidad">
+      Limite el número de unidades que un cliente puede comprar en una sola sesión de pago. Use esto para paquetes de disponibilidad limitada o servicios con restricciones de capacidad.
+    </Accordion>
+
+    <Accordion title="Agregar más detalles de precios">
+      Desglose el costo total en elementos de línea individuales; por ejemplo, mostrando *precio base + tarifa de configuración + costo por unidad*. Cada etiqueta de desglose admite un máximo de **20 caracteres**.
+    </Accordion>
+
+    <Note>
+      Todos los campos obligatorios (Amount y Delivery Time) deben completarse para cada paquete antes de poder publicar el servicio.
+    </Note>
+  </Step>
+
+  <Step title="Agregue tareas predeterminadas para la automatización">
+    Cada paquete incluye una sección **Default Tasks**. Las tareas definidas aquí se generan automáticamente dentro del espacio de trabajo del pedido en el momento en que un cliente compra este paquete, sin necesidad de configuración manual después de cada venta.
+
+    Haga clic en **+ Add More** para abrir la ventana modal de creación de tareas. Para cada tarea, puede configurar:
+
+    | Campo | Detalles |
+    |---|---|
+    | **Task Name** | Obligatorio; máximo **160 caracteres** |
+    | **Description** | Instrucciones detalladas para el responsable |
+    | **Assignee** | Miembro del equipo responsable de completar esta tarea |
+    | **Attachment** | Suba archivos de referencia; formatos aceptados: csv, odt, doc, docx, htm, html, pdf, ppt, pptx, txt, xls, xlsx, jpg, jpeg, png, gif, webp, svg, ai, mp4, mp3, wav, zip, rar; tamaño máximo de archivo **1 GB** por archivo |
+    | **Label** | Etiquete la tarea para filtrado e informes |
+    | **Status** | Estado inicial cuando se crea la tarea |
+    | **Client Review** | Active si esta tarea requiere la aprobación del cliente antes de considerarse completa |
+
+    Agregue tantas tareas como sea necesario para cubrir completamente el proceso de entrega de este paquete. Las tareas predeterminadas consistentes garantizan que cada pedido siga el mismo flujo de trabajo con control de calidad.
+
+    <Tip>
+      Asigne sus tareas predeterminadas a su SOP interno. Por ejemplo, un paquete de *Gestión de redes sociales* podría generar automáticamente tareas como *Borrador del calendario de contenido*, *Aprobación del cliente*, *Programar publicaciones* e *Informe mensual*.
+    </Tip>
+  </Step>
+
+  <Step title="Agregue preguntas frecuentes y portafolio">
+    Expanda la sección **Additional Information** para agregar dos elementos opcionales pero de gran impacto:
+
+    **Portfolio Attachment**
+    Vincule una categoría de portafolio a este servicio para que los clientes puedan explorar muestras relevantes de su trabajo anterior directamente en el listado del servicio. Puede conectar una categoría de portafolio existente o crear una nueva desde esta pantalla.
+
+    **Preguntas frecuentes (FAQs)**
+    Haga clic en **+ Add** para insertar un par de pregunta y respuesta. Agregue tantas preguntas frecuentes como sean relevantes; los temas comunes incluyen:
+
+    - Originalidad del contenido y derechos
+    - Proceso de revisión y comentarios
+    - Límites del alcance y lo que *no* está incluido
+    - Plazos y ritmo de comunicación
+    - Políticas de pago y reembolso
+
+    Las preguntas frecuentes bien redactadas reducen el ir y venir antes de la compra y ayudan a los clientes a autocalificarse.
+  </Step>
+
+  <Step title="Adjunte un formulario de admisión">
+    Un formulario de admisión recopila la información que necesita de un cliente antes de comenzar el trabajo; por ejemplo, las directrices de marca, las credenciales de acceso, el público objetivo o los objetivos del proyecto.
+
+    - Haga clic en **+ Create New Intake Form** para construir un formulario desde cero, o seleccione un formulario existente del menú desplegable.
+    - Si este servicio no requiere un formulario de admisión, haga clic en **Skip** para omitir esta sección.
+    - Haga clic en **Update** para guardar su selección de formulario de admisión y continuar.
+
+    <Note>
+      El formulario de admisión es opcional, pero se recomienda encarecidamente para los servicios que requieren entradas específicas del cliente antes de que pueda comenzar la entrega.
+    </Note>
+  </Step>
+
+  <Step title="Publique el servicio">
+    En la parte inferior del editor de servicios:
+
+    1. Cambie **Publish this Service** a la posición ON.
+    2. Haga clic en **Save** (o **Update Service** si está editando un servicio existente).
+
+    Una vez publicado, el servicio se vuelve visible de inmediato para los clientes en el portal. Si deja el interruptor desactivado, el servicio se guarda como borrador y solo es visible para su equipo.
+
+    <Tip>
+      Use el modo borrador para preparar un servicio con anticipación y publicarlo en el momento del lanzamiento, útil para promociones de temporada o anuncios de nuevas ofertas.
+    </Tip>
+  </Step>
+</Steps>
+
+## Configuración de complementos
+
+Los complementos son extras opcionales que los clientes pueden seleccionar durante el pago; por ejemplo, *Entrega urgente*, *Revisiones adicionales* o un *Informe mensual*. Le permiten vender servicios complementarios sin crear listados completamente nuevos.
+
+### Crear un complemento
+
+<Steps>
+  <Step title="Abra Add-Ons">
+    Vaya a **Services** en la barra lateral, haga clic en el botón de **flecha hacia abajo** junto al encabezado Services y seleccione **Add-Ons**.
+  </Step>
+  <Step title="Cree un nuevo complemento">
+    Haga clic en **+ Add New Add-on** y complete:
+
+    - **Add-on Name**
+    - **Description**: use el editor de texto enriquecido para explicar claramente qué incluye el complemento
+    - **Pricing Type**: elija *One-Time* o *Subscription*
+    - **Detalles de precios:**
+      - *Único:* ingrese el monto y la moneda
+      - *Suscripción:* establezca el intervalo de facturación (por ejemplo, cada 1 mes), un límite de ciclo de facturación opcional, la tarifa de suscripción y la moneda
+  </Step>
+  <Step title="Publique y guarde">
+    Cambie **Publish** a ON, luego haga clic en **Create**. Solo los complementos publicados son visibles al conectarlos a los formularios de pedido.
+  </Step>
+</Steps>
+
+### Adjuntar un complemento a un formulario de pedido
+
+<Steps>
+  <Step title="Abra el formulario de pedido">
+    Vaya a **Forms** y abra el formulario de pedido correspondiente.
+  </Step>
+  <Step title="Seleccione el servicio">
+    Elija el servicio al que desea adjuntar el complemento.
+  </Step>
+  <Step title="Agregue los complementos">
+    Seleccione la sección **Add-ons** en el panel izquierdo, luego elija los complementos que desea asociar con este servicio.
+  </Step>
+  <Step title="Guarde el formulario">
+    Haga clic en **Save**. Los clientes ahora verán los complementos seleccionados como extras opcionales durante el pago.
+  </Step>
+</Steps>
+
+<Note>
+  Los complementos deben usar la misma moneda que el servicio al que están adjuntos. Si las monedas no coinciden, el complemento no aparecerá en la lista de selección.
+</Note>
+
+### Comportamiento de facturación de complementos de suscripción
+
+Cuando los ciclos de facturación de un servicio y un complemento de suscripción difieren, AgencyHandy maneja la superposición automáticamente:
+
+<Accordion title="El complemento tiene más ciclos que el servicio">
+  Tanto el servicio como el complemento se facturan juntos durante la duración del servicio. Después de que el servicio finaliza, el complemento continúa facturándose solo durante sus ciclos restantes.
+
+  **Ejemplo:** el servicio dura 4 ciclos, el complemento dura 5 ciclos → se facturan juntos durante 4 ciclos, el complemento se factura solo durante 1 ciclo adicional.
+</Accordion>
+
+<Accordion title="El complemento tiene menos ciclos que el servicio">
+  Tanto el servicio como el complemento se facturan juntos durante la duración del complemento. Después de que el complemento finaliza, el servicio continúa facturándose solo durante sus ciclos restantes.
+
+  **Ejemplo:** el servicio dura 5 ciclos, el complemento dura 3 ciclos → se facturan juntos durante 3 ciclos, el servicio se factura solo durante 2 ciclos adicionales.
+</Accordion>
+
+## Editar un servicio
+
+Después de publicar un servicio, puede actualizar cualquier campo sin interrumpir los pedidos existentes.
+
+1. Vaya a **Services** y encuentre el servicio que desea actualizar.
+2. Haga clic en el **menú de tres puntos** (⋮) en el lado derecho de la fila del servicio.
+3. Seleccione **Edit**. El editor de servicios se abre con todos los ajustes existentes ya completados.
+4. Realice sus cambios: actualice el título, la descripción, los precios, el contenido multimedia, los paquetes, las tareas o las preguntas frecuentes.
+5. Haga clic en **Update Service** para guardar.
+
+<Warning>
+  Los cambios en los precios de los paquetes o el tiempo de entrega surten efecto solo para **nuevos pedidos**. Los pedidos existentes no se ven afectados de forma retroactiva.
+</Warning>
+
+## Referencia de campos
+
+| Campo | Límite |
+|---|---|
+| Paquetes por servicio | Hasta 5 |
+| Entregables por paquete (What's Included) | Hasta 15 |
+| Package Brief | 140 caracteres |
+| Tamaño del icono del paquete | 32 × 32 px |
+| Tamaño del archivo multimedia del paquete | 5 MB (PNG, JPG, JPEG) |
+| Nombre de la tarea | 160 caracteres |
+| Tamaño del archivo adjunto de la tarea | 1 GB por archivo |
+| Etiqueta de desglose de precios | 20 caracteres |

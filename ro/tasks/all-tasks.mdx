@@ -1,0 +1,126 @@
+---
+title: "Toate Sarcinile — Gestionare Centralizată a Sarcinilor în AgencyHandy"
+sidebarTitle: "Toate Sarcinile"
+description: "Folosește pagina Toate Sarcinile pentru o vizualizare în timp real, filtrată pe rol, a fiecărei sarcini din comenzile active și în revizuire — cu căutare, filtre și sortare."
+---
+
+Pagina Toate Sarcinile din AgencyHandy îți oferă o vizualizare unică, centralizată a fiecărei sarcini care aparține fluxurilor de lucru active din agenția ta. În loc să cauți prin comenzile individuale, poți vedea toate sarcinile relevante într-un singur loc, le poți filtra după persoana atribuită, prioritate sau dată și poți face editări direct din listă. Vizibilitatea este ajustată automat la rolul tău — Super Adminii văd totul, Managerii văd comenzile lor atribuite, iar Angajații văd doar propriile lor sarcini.
+
+## Accesarea Paginii Toate Sarcinile
+
+1. Autentifică-te în contul tău AgencyHandy.
+2. Apasă **Tasks** în bara laterală stângă.
+3. Selectează **All Tasks** pentru a deschide tabloul de bord centralizat al sarcinilor.
+
+<Note>
+  Pagina Toate Sarcinile afișează doar sarcini din comenzile cu starea **Ongoing** sau **In Review**. Sarcinile legate de comenzi în orice altă stare (ex. Completed, Pending) nu apar aici.
+</Note>
+
+## Vizibilitatea Sarcinilor pe Rol
+
+Ce vezi pe pagina Toate Sarcinile depinde în întregime de rolul tău.
+
+| Rol | Ce Văd |
+|------|---------------|
+| **Super Admin / Admin** | Toate sarcinile din fiecare comandă, echipă și stare |
+| **Project Manager (PM)** | Doar sarcinile din comenzile unde sunt atribuiți ca Manager |
+| **Employee / Assignee** | Doar sarcinile atribuite direct lor — chiar dacă colegii de echipă lucrează la aceeași comandă |
+
+<Tip>
+  Dacă un PM nu poate găsi o sarcină pe care se așteaptă să o vadă, confirmă că este atribuit ca Manager pe comanda relevantă. PM-urile nu văd sarcini dacă nu sunt Managerul atribuit pentru acea comandă.
+</Tip>
+
+## Când Apar Sarcinile pe Această Pagină
+
+Sarcinile apar pe pagina Toate Sarcinile când sunt îndeplinite aceste condiții:
+
+<CardGroup cols={2}>
+  <Card title="Comenzi care declanșează vizibilitatea sarcinilor" icon="circle-check">
+    - Comenzile manuale (unice sau prin abonament) sunt create
+    - Comenzile din catalog prin Stripe sau metodele de plată manuală sunt plasate
+    - O propunere este acceptată de agenție
+  </Card>
+  <Card title="Comenzi care mențin sarcinile ascunse" icon="eye-slash">
+    - Sarcinile solicitate de clienți pe care agenția nu le-a acceptat încă
+    - Comenzile de probă pe care agenția nu le-a acceptat încă
+    - Comenzile cu stare pending în așteptarea confirmării plății bancare manuale
+  </Card>
+</CardGroup>
+
+## Căutare, Filtrare și Sortare
+
+Pagina Toate Sarcinile include un set complet de controale pentru a te ajuta să găsești exact ce ai nevoie.
+
+### Căutare
+
+Folosește bara de căutare pentru a localiza sarcini după nume, persoana atribuită sau comanda aferentă. Rezultatele se actualizează în timp real pe măsură ce tastezi.
+
+### Filtre
+
+Apasă **Filter → + Add Filter** pentru a deschide panoul de filtre. Poți combina mai multe filtre pentru rezultate precise:
+
+| Filtru | Ce Face |
+|--------|--------------|
+| **Order ID** | Arată sarcinile legate de un număr de comandă specific |
+| **Assignee** | Arată sarcinile atribuite unui anumit membru al echipei |
+| **Status** | Filtrează după progresul sarcinii: Pending, In Progress, Review, Done, etc. |
+| **Priority** | Concentrează-te pe sarcinile cu Prioritate Înaltă, Medie sau Scăzută |
+| **Label** | Restrânge după etichete sau categorii de sarcini |
+| **Kick Off Date** | Arată sarcinile care încep la sau după o dată specifică |
+| **End Date** | Arată sarcinile scadente până la o dată specifică |
+
+<Note>
+  Filtrele sunt disponibile doar pe pagina Toate Sarcinile. Persistă pe durata sesiunii browserului, dar se resetează la reîmprospătarea paginii. Filtrele afectează doar vizualizarea ta și nu schimbă ceea ce văd ceilalți utilizatori.
+</Note>
+
+Pentru a șterge toate filtrele, apasă **Clear Filters** pentru a reveni la lista completă, nefiltrată.
+
+### Sortare
+
+Sortează lista de sarcini după:
+- **Data scadenței** — evidențiază sarcinile care se apropie sau sunt deja restante
+- **Prioritate** — aduce sarcinile cele mai critice în prim plan
+- **Ora creării** — afișează mai întâi sarcinile adăugate recent
+
+### Navigare prin Breadcrumb
+
+Folosește traseul breadcrumb din partea de sus a paginii pentru a menține contextul pe măsură ce navighezi între subsarcini, liste de sarcini și comenzile părinte. Aceasta este deosebit de utilă când te aprofundezi într-o sarcină specifică și trebuie apoi să te întorci la lista mai largă.
+
+## Editarea Sarcinilor
+
+Poți modifica sarcini pe pagina Toate Sarcinile în două moduri:
+
+<Tabs>
+  <Tab title="Editare Inline">
+    Apasă direct într-un câmp editabil din rândul sarcinii — cum ar fi starea, persoana atribuită sau data scadenței — și fă modificarea fără a părăsi vizualizarea listei. Aceasta este cea mai rapidă opțiune pentru actualizări rapide.
+  </Tab>
+  <Tab title="Editare prin Modal">
+    Apasă pe numele sarcinii pentru a deschide modalul complet de detalii ale sarcinii. De aici poți actualiza toate proprietățile sarcinii, adăuga note, vizualiza subsarcini și vedea istoricul complet al sarcinii. Folosește aceasta pentru editări mai complexe sau când ai nevoie de context.
+  </Tab>
+</Tabs>
+
+## Regulile de Ștergere a Sarcinilor
+
+Sarcinile de pe pagina Toate Sarcinile sunt legate direct de comenzile lor părinte.
+
+- Când o **comandă este ștearsă**, toate sarcinile asociate cu acea comandă sunt **eliminate automat și permanent** din pagina Toate Sarcinile.
+- Această ștergere afectează toate rolurile de utilizator — nimeni nu va putea vedea acele sarcini după ce comanda este ștearsă.
+- **Nu există nicio opțiune de recuperare** pentru sarcinile șterse prin ștergerea comenzii.
+
+<Warning>
+  Ștergerea unei comenzi elimină permanent toate sarcinile sale. Asigură-te că orice istoric important al sarcinilor sau înregistrări de livrabile sunt salvate în altă parte înainte de a șterge o comandă.
+</Warning>
+
+## Note Suplimentare
+
+<Accordion title="Actualizări în timp real">
+  Modificările la comenzi, atribuirile de sarcini sau stările sarcinilor se reflectă în timp real pe pagina Toate Sarcinile. Dacă un coleg actualizează o sarcină în timp ce ai pagina deschisă, vei vedea modificarea fără a fi nevoie să reîmprospătezi.
+</Accordion>
+
+<Accordion title="Sarcini solicitate de clienți">
+  Sarcinile trimise de clienți nu apar pe pagina Toate Sarcinile până când agenția nu le acceptă în mod explicit. Până la acceptare, aceste sarcini rămân în stare de așteptare și nu sunt vizibile în vizualizarea centralizată.
+</Accordion>
+
+<Accordion title="Sarcini și starea comenzilor">
+  Sarcinile apar doar pentru comenzile cu starea Ongoing sau In Review. Dacă o comandă trece la Completed sau este pusă în pauză, sarcinile sale nu mai sunt afișate aici. Navighează la comanda specifică pentru a vizualiza sarcinile legate de comenzile din afara acestor stări.
+</Accordion>

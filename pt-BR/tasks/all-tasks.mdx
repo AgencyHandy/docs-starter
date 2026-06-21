@@ -1,0 +1,126 @@
+---
+title: "Todas as Tarefas — Gerenciamento Centralizado de Tarefas no AgencyHandy"
+sidebarTitle: "Todas as Tarefas"
+description: "Use a página Todas as Tarefas para uma visualização em tempo real, filtrada por função, de cada tarefa em pedidos em andamento e em revisão — com pesquisa, filtros e classificação."
+---
+
+A página Todas as Tarefas no AgencyHandy oferece uma visualização única e centralizada de cada tarefa que pertence aos fluxos de trabalho ativos em toda a sua agência. Em vez de procurar em pedidos individuais, você pode ver todas as tarefas relevantes em um só lugar, filtrá-las por responsável, prioridade ou data, e fazer edições diretamente na lista. A visibilidade é automaticamente limitada à sua função — Super Admins veem tudo, Gerentes veem seus pedidos atribuídos e Funcionários veem apenas suas próprias tarefas.
+
+## Acessando a Página Todas as Tarefas
+
+1. Faça login na sua conta do AgencyHandy.
+2. Clique em **Tarefas** na barra lateral esquerda.
+3. Selecione **Todas as Tarefas** para abrir o painel centralizado de tarefas.
+
+<Note>
+  A página Todas as Tarefas exibe apenas tarefas de pedidos com status **Em Andamento** ou **Em Revisão**. Tarefas vinculadas a pedidos em qualquer outro estado (ex.: Concluído, Pendente) não aparecem aqui.
+</Note>
+
+## Visibilidade de Tarefas por Função
+
+O que você vê na página Todas as Tarefas depende inteiramente da sua função.
+
+| Função | O Que Eles Veem |
+|------|---------------|
+| **Super Admin / Admin** | Todas as tarefas de todos os pedidos, equipes e status |
+| **Gerente de Projetos (GP)** | Apenas tarefas de pedidos em que estão atribuídos como Gerente |
+| **Funcionário / Responsável** | Apenas tarefas diretamente atribuídas a eles — mesmo que colegas de equipe estejam trabalhando no mesmo pedido |
+
+<Tip>
+  Se um GP não conseguir encontrar uma tarefa que esperava ver, confirme se ele está atribuído como Gerente no pedido relevante. GPs não veem tarefas a menos que sejam o Gerente atribuído para aquele pedido.
+</Tip>
+
+## Quando as Tarefas Aparecem Nesta Página
+
+As tarefas aparecem na página Todas as Tarefas quando estas condições são atendidas:
+
+<CardGroup cols={2}>
+  <Card title="Pedidos que acionam a visibilidade de tarefas" icon="circle-check">
+    - Pedidos manuais (únicos ou por assinatura) são criados
+    - Pedidos do catálogo via Stripe ou métodos de pagamento manual são realizados
+    - Uma proposta é aceita pela agência
+  </Card>
+  <Card title="Pedidos que mantêm tarefas ocultas" icon="eye-slash">
+    - Tarefas solicitadas por clientes que a agência ainda não aceitou
+    - Pedidos de teste que a agência ainda não aceitou
+    - Pedidos com status pendente aguardando confirmação de pagamento bancário manual
+  </Card>
+</CardGroup>
+
+## Pesquisa, Filtros e Classificação
+
+A página Todas as Tarefas inclui um conjunto completo de controles para ajudá-lo a encontrar exatamente o que precisa.
+
+### Pesquisa
+
+Use a barra de pesquisa para localizar tarefas por nome, responsável ou pedido relacionado. Os resultados são atualizados em tempo real enquanto você digita.
+
+### Filtros
+
+Clique em **Filtro → + Adicionar Filtro** para abrir o painel de filtros. Você pode combinar vários filtros para resultados precisos:
+
+| Filtro | O Que Faz |
+|--------|--------------|
+| **ID do Pedido** | Mostrar tarefas vinculadas a um número de pedido específico |
+| **Responsável** | Mostrar tarefas atribuídas a um membro específico da equipe |
+| **Status** | Filtrar pelo andamento da tarefa: Pendente, Em Andamento, Em Revisão, Concluída, etc. |
+| **Prioridade** | Focar em tarefas de prioridade Alta, Média ou Baixa |
+| **Etiqueta** | Restringir por etiquetas ou categorias de tarefas |
+| **Data de Início** | Mostrar tarefas iniciando em ou após uma data específica |
+| **Data de Término** | Mostrar tarefas com entrega até uma data específica |
+
+<Note>
+  Os filtros estão disponíveis apenas na página Todas as Tarefas. Eles persistem durante a sessão do navegador, mas são redefinidos ao atualizar a página. Os filtros afetam apenas a sua visualização e não alteram o que outros usuários veem.
+</Note>
+
+Para limpar todos os filtros, clique em **Limpar Filtros** para retornar à lista completa e sem filtros.
+
+### Classificação
+
+Classifique a lista de tarefas por:
+- **Data de entrega** — destaque tarefas próximas do prazo ou já atrasadas
+- **Prioridade** — traga as tarefas mais críticas para o topo
+- **Data de criação** — veja as tarefas adicionadas recentemente primeiro
+
+### Navegação por Trilha
+
+Use a trilha de navegação no topo da página para manter o contexto ao navegar entre subtarefas, listas de tarefas e pedidos principais. Isso é especialmente útil ao detalhar uma tarefa específica e depois precisar voltar à lista mais ampla.
+
+## Editando Tarefas
+
+Você pode modificar tarefas na página Todas as Tarefas de duas formas:
+
+<Tabs>
+  <Tab title="Edição Inline">
+    Clique diretamente em um campo editável na linha da tarefa — como status, responsável ou data de entrega — e faça sua alteração sem sair da visualização de lista. Esta é a opção mais rápida para atualizações rápidas.
+  </Tab>
+  <Tab title="Edição por Modal">
+    Clique no nome da tarefa para abrir o modal completo de detalhes da tarefa. A partir daqui você pode atualizar todas as propriedades da tarefa, adicionar notas, ver subtarefas e consultar o histórico completo. Use esta opção para edições mais detalhadas ou quando precisar de contexto.
+  </Tab>
+</Tabs>
+
+## Regras de Exclusão de Tarefas
+
+As tarefas na página Todas as Tarefas estão diretamente vinculadas aos seus pedidos principais.
+
+- Quando um **pedido é excluído**, todas as tarefas associadas a esse pedido são **automaticamente e permanentemente removidas** da página Todas as Tarefas.
+- Essa exclusão afeta todas as funções de usuário — ninguém poderá ver essas tarefas após a exclusão do pedido.
+- **Não há opção de recuperação** para tarefas excluídas por meio da exclusão de pedidos.
+
+<Warning>
+  Excluir um pedido remove permanentemente todas as suas tarefas. Certifique-se de que qualquer histórico importante de tarefas ou registros de entrega sejam salvos em outro lugar antes de excluir um pedido.
+</Warning>
+
+## Notas Adicionais
+
+<Accordion title="Atualizações em tempo real">
+  As alterações em pedidos, atribuições de tarefas ou status de tarefas se refletem em tempo real na página Todas as Tarefas. Se um colega de equipe atualizar uma tarefa enquanto você tiver a página aberta, você verá a alteração sem precisar atualizar.
+</Accordion>
+
+<Accordion title="Tarefas solicitadas por clientes">
+  As tarefas enviadas por clientes não aparecem na página Todas as Tarefas até que a agência as aceite explicitamente. Até serem aceitas, essas tarefas permanecem em estado pendente e não são visíveis na visualização centralizada.
+</Accordion>
+
+<Accordion title="Tarefas e status do pedido">
+  As tarefas aparecem apenas para pedidos com status Em Andamento ou Em Revisão. Se um pedido for movido para Concluído ou pausado, suas tarefas não são mais exibidas aqui. Navegue até o pedido específico para visualizar tarefas vinculadas a pedidos fora desses status.
+</Accordion>

@@ -1,0 +1,196 @@
+---
+title: "إدارة Webhooks: الإنشاء والاختبار والمصادقة"
+sidebarTitle: "Webhooks"
+description: "أعدّ webhooks في AgencyHandy لدفع بيانات الأحداث في الوقت الفعلي إلى الأنظمة الخارجية عند تغيير الطلبات أو المهام أو الفواتير أو الكيانات الأخرى."
+---
+
+تتيح Webhooks لـ AgencyHandy دفع البيانات إلى أنظمتك الخارجية في اللحظة التي يتغير فيها شيء ما — دون الحاجة إلى الاستطلاع الدوري. عند إطلاق حدث مُكوَّن (على سبيل المثال، تحديث طلب أو إنشاء تذكرة)، ترسل AgencyHandy طلب HTTP POST مع حمولة JSON إلى عنوان URL الذي تحدده. يجعل هذا من السهل إبقاء الأدوات الخارجية مثل أنظمة إدارة علاقات العملاء (CRMs) وأنظمة الفوترة ولوحات المعلومات المخصصة متزامنة مع مساحة عمل AgencyHandy في الوقت الفعلي.
+
+<Note>
+  تدعم مساحات عمل خطة Business Pro ما يصل إلى **30,000 حدث webhook** لكل فترة فوترة. تحقق من حدود خطتك قبل إعداد أتمتة ذات حجم كبير.
+</Note>
+
+## الأحداث المدعومة
+
+يمكنك الاشتراك في webhook لأي مجموعة من الأحداث التالية:
+
+| الفئة | الأحداث |
+|---|---|
+| **الخدمة** | الإنشاء، التحديث، الحذف |
+| **الطلب** | الإنشاء، التحديث، الحذف |
+| **المهمة** | الإنشاء، التعيين، الإكمال، التحديث |
+| **الفاتورة** | تغيير الحالة |
+| **العميل / المستخدم** | إضافة عميل جديد، حذف عميل/مستخدم |
+| **العرض** | الإرسال، الاستلام، القبول، الرفض |
+| **التذكرة** | الإنشاء، التعيين، تغيير الحالة |
+| **الدفع** | الاستلام، الفشل |
+| **حزمة الخدمة** | الإنشاء، التحديث، الحذف |
+
+## إنشاء webhook
+
+<Steps>
+  <Step title="الانتقال إلى إدارة Webhooks">
+    في الشريط الجانبي الأيسر، انتقل إلى **التكاملات ← إدارة Webhooks**.
+  </Step>
+
+  <Step title="مصادقة الرمز الخاص بك">
+    انقر على زر **الإدارة** لمصادقة رمز webhook الخاص بك. يُستخدم هذا الرمز لتوقيع الحمولات الصادرة حتى تتمكن من التحقق من أنها صادرة من AgencyHandy.
+  </Step>
+
+  <Step title="إنشاء webhook جديد">
+    انقر على **إنشاء Webhook جديد** لفتح نموذج تكوين webhook.
+  </Step>
+
+  <Step title="إدخال عنوان URL للنقطة النهائية">
+    في حقل **عنوان URL للنقطة النهائية**، أدخل عنوان URL للنظام الخارجي الذي يجب أن يستقبل بيانات webhook. يجب أن يكون هذا نقطة نهائية **POST** يمكن الوصول إليها علنًا.
+  </Step>
+
+  <Step title="اختيار نوع المحتوى">
+    اختر **JSON** كنوع المحتوى. ترسل AgencyHandy جميع حمولات webhook بصيغة `application/json`.
+  </Step>
+
+  <Step title="اختيار أحداث webhook">
+    اختر كل حدث يجب أن يُشغّل هذا webhook. يمكنك اختيار أحداث من فئات متعددة — على سبيل المثال، **الطلب: تم الإنشاء** و**الفاتورة: تغيير الحالة** يمكن أن يشيرا إلى نفس النقطة النهائية.
+  </Step>
+
+  <Step title="تفعيل webhook">
+    فعّل زر **نشط**. عند التفعيل، تُرسل AgencyHandy الحمولات لجميع الأحداث المختارة إلى نقطتك النهائية في الوقت الفعلي.
+  </Step>
+
+  <Step title="حفظ التكوين">
+    راجع إعداداتك، ثم انقر على **حفظ**. يظهر webhook في القائمة ويبدأ في تسليم الأحداث فورًا.
+  </Step>
+</Steps>
+
+## اختبار webhook
+
+بعد إنشاء webhook، أرسل حمولة اختبار للتأكد من أن نقطتك النهائية يمكن الوصول إليها وتعالج البيانات بشكل صحيح.
+
+<Steps>
+  <Step title="فتح webhook">
+    من قائمة إدارة Webhooks، انقر على webhook الذي تريد اختباره.
+  </Step>
+
+  <Step title="النقر على اختبار الحدث">
+    انقر على زر **اختبار الحدث** في صفحة تفاصيل webhook.
+  </Step>
+
+  <Step title="اختيار حدث اختبار">
+    اختر حدثًا نموذجيًا من قائمة الأحداث المُكوَّنة على هذا webhook (مثل **الطلب: تم الإنشاء**).
+  </Step>
+
+  <Step title="إرسال حمولة الاختبار">
+    انقر على **إرسال**. تنشر AgencyHandy حمولة نموذجية إلى عنوان URL لنقطتك النهائية.
+  </Step>
+
+  <Step title="التحقق من النتيجة">
+    تحقق من نظامك الخارجي للتأكد من وصول حمولة الاختبار ومعالجتها كما هو متوقع. في AgencyHandy، انقر داخل webhook لمراجعة **السجل** الخاص به — يمكنك رؤية الطلب الكامل والاستجابة التي أعادتها نقطتك النهائية، وإعادة تسليم أي حدث سابق إذا لزم الأمر.
+  </Step>
+</Steps>
+
+<Tip>
+  استخدم أداة مثل [Webhook.site](https://webhook.site) أو [RequestBin](https://requestbin.com) كنقطة نهائية مؤقتة أثناء الإعداد لفحص شكل الحمولة الدقيق قبل ربط نظامك الفعلي.
+</Tip>
+
+## مصادقة حمولات webhook
+
+كل طلب webhook صادر من AgencyHandy يتضمن ترويسة توقيع يمكن لنقطتك النهائية استخدامها للتحقق من أن الحمولة أصيلة ولم يتم العبث بها.
+
+### ترويسة التوقيع
+
+```
+x-ah-sig: <signature>
+```
+
+تضيف AgencyHandy هذه الترويسة إلى كل طلب webhook. استخرج القيمة من الطلبات الواردة ومررها إلى نقطة نهاية التحقق.
+
+### التحقق من توقيع webhook
+
+أرسل الطلب التالي للتأكد من صحة الحمولة:
+
+```
+POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature
+Content-Type: application/json
+```
+
+<ParamField body="webhookId" type="string" required>
+  معرّف webhook الذي استقبل الحدث. ابحث عنه في صفحة تفاصيل webhook في AgencyHandy.
+</ParamField>
+
+<ParamField body="signature" type="string" required>
+  قيمة ترويسة `x-ah-sig` من طلب webhook الوارد.
+</ParamField>
+
+<ParamField body="secret" type="string" required>
+  السر الخاص بـ webhook المعروض في صفحة تفاصيله في AgencyHandy.
+</ParamField>
+
+<ParamField body="payload" type="object" required>
+  نص JSON الخام المستلم من طلب webhook الخاص بـ AgencyHandy.
+</ParamField>
+
+<CodeGroup>
+
+```javascript JavaScript
+const url = 'https://api.agencyhandy.com/api/v1/webhooks/verify-signature';
+
+const postData = {
+  webhookId: 'your_webhook_id',
+  signature: 'your_signature',   // value of x-ah-sig header
+  secret: 'your_webhook_secret',
+  payload: {},                   // the parsed JSON body from AgencyHandy
+};
+
+const response = await fetch(url, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(postData),
+});
+
+const data = await response.json();
+console.log(data); // { "verification_status": "SUCCESS" }
+```
+
+```bash cURL
+curl -X POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature \
+  -H "Content-Type: application/json" \
+  -d '{
+    "webhookId": "your_webhook_id",
+    "signature": "your_signature",
+    "secret": "your_webhook_secret",
+    "payload": {}
+  }'
+```
+
+</CodeGroup>
+
+**الاستجابات**
+
+<ResponseField name="verification_status" type="string">
+  `SUCCESS` عند صحة التوقيع. `FAILED` عند فشل التحقق (HTTP 403).
+</ResponseField>
+
+```json Success (200)
+{
+  "verification_status": "SUCCESS"
+}
+```
+
+```json Failure (403)
+{
+  "type": "PermissionError",
+  "status": 403,
+  "verification_status": "FAILED"
+}
+```
+
+<Warning>
+  احتفظ بسر webhook طيّ الكتمان. قم بتدويره دوريًا وحدّث منطق التحقق الخاص بك فور التدوير. لا تكشف عنه أبدًا في الكود الخاص بالعميل أو المستودعات العامة.
+</Warning>
+
+## ملاحظات مهمة
+
+- يجب أن يكون عنوان URL لنقطتك النهائية **عنوان HTTPS POST يمكن الوصول إليه علنًا**.
+- إذا كانت نقطتك النهائية غير متاحة مؤقتًا، تحقق من لوحة السجل الخاصة بـ webhook في AgencyHandy — يمكنك **إعادة تسليم** أي حدث سابق مباشرةً من هناك.
+- راقب نشاط webhook بانتظام للكشف عن عمليات التسليم الفاشلة أو محاولات الوصول غير المصرح به.
+- قد تُوقِف AgencyHandy Webhooks التي تفشل بشكل متكرر — راجع سجلات التسليم للكشف عن المشكلات مبكرًا.

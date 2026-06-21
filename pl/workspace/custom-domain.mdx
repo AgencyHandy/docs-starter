@@ -1,0 +1,126 @@
+---
+title: "Podłącz własną domenę do workspace AgencyHandy"
+sidebarTitle: "Własna domena"
+description: "Połącz swoją subdomenę (np. portal.twojakurma.com) z AgencyHandy, dodając rekord CNAME u swojego rejestratora DNS — bez pisania kodu."
+---
+
+Domyślnie Twój workspace AgencyHandy jest dostępny pod subdomeną `agencyhandy.com`. Podłączenie własnej domeny pozwala zastąpić ten domyślny adres URL własnym, markowym adresem — na przykład `portal.twojaagencja.com` — zapewniając klientom płynne, profesjonalne doświadczenie wzmacniające Twoją markę od samej pierwszej strony, na której wylądują.
+
+<Note>
+  Tylko **Super Administratorzy** i **Administratorzy** mogą konfigurować własną domenę. Musisz również posiadać domenę i mieć dostęp do jej ustawień DNS u swojego rejestratora, aby ukończyć tę konfigurację.
+</Note>
+
+---
+
+## Jak to działa
+
+Gdy dodasz własną domenę w AgencyHandy, platforma udostępni Ci **rekord CNAME**. Dodajesz ten rekord do ustawień DNS swojej domeny u rejestratora (GoDaddy, Namecheap, Cloudflare itp.), a AgencyHandy weryfikuje połączenie po propagacji DNS.
+
+---
+
+## Konfiguracja krok po kroku
+
+<Steps>
+  <Step title="Otwórz ustawienia własnej domeny">
+    Zaloguj się na konto AgencyHandy. Przejdź do **Workspace Config** w lewym pasku bocznym, a następnie kliknij **Custom Domain**.
+  </Step>
+  <Step title="Dodaj własną domenę">
+    Kliknij przycisk **+ Add Custom Domain**. W polu wejściowym, które się pojawi, wpisz subdomenę, której chcesz użyć — na przykład `portal.twojaagencja.com`.
+
+    <Warning>
+      **Nie** używaj `www` jako subdomeny (tzn. unikaj `www.twojaagencja.com`). Prefiks `www` może powodować konflikty konfiguracji i uniemożliwia pomyślną weryfikację. Użyj innej subdomeny, takiej jak `portal`, `client`, `app` lub `hub`.
+    </Warning>
+  </Step>
+  <Step title="Skopiuj szczegóły rekordu CNAME">
+    Po przesłaniu domeny AgencyHandy wyświetla rekord DNS, który musisz dodać:
+
+    | Pole | Wartość |
+    |---|---|
+    | **Type** | CNAME |
+    | **Name** | Twoja subdomena (np. `portal`) |
+    | **Value** | Cel podany przez AgencyHandy |
+
+    Dokładnie skopiuj te wartości — będą potrzebne w następnym kroku.
+  </Step>
+  <Step title="Dodaj rekord CNAME u swojego rejestratora DNS">
+    Zaloguj się do panelu swojego rejestratora domen (np. GoDaddy, Namecheap, Cloudflare). Przejdź do sekcji zarządzania DNS dla swojej domeny i dodaj rekord CNAME, używając wartości Type, Name i Value skopiowanych z AgencyHandy.
+
+    Zapoznaj się z poniższymi wskazówkami dotyczącymi Cloudflare.
+  </Step>
+  <Step title="Zapisz domenę w AgencyHandy">
+    Wróć do AgencyHandy i kliknij **Save Domain**. Status będzie początkowo wyświetlany jako **Disconnected** — jest to oczekiwane podczas propagacji DNS.
+  </Step>
+  <Step title="Poczekaj na propagację DNS i zweryfikuj">
+    Zmiany DNS mogą trwać od kilku minut do **nawet 48 godzin**, w zależności od rejestratora i ustawień TTL. Klikaj **Refresh** okresowo, aby sprawdzić status połączenia.
+
+    Po zakończeniu propagacji status zmienia się na **Connected** ✅.
+  </Step>
+</Steps>
+
+<Warning>
+  Propagacja DNS może trwać do **48 godzin**. Jeśli Twoja domena nadal wyświetla **Disconnected** po 48 godzinach, sprawdź dokładnie, czy rekord CNAME jest prawidłowy i czy dla tej samej subdomeny nie istnieją konfliktujące rekordy DNS.
+</Warning>
+
+---
+
+## Instrukcje specyficzne dla Cloudflare
+
+Jeśli Twoja domena jest zarządzana przez Cloudflare, istnieje jedno krytyczne ustawienie, które musisz prawidłowo skonfigurować:
+
+<Steps>
+  <Step title="Zaloguj się do Cloudflare i wybierz domenę">
+    Otwórz [panel Cloudflare](https://dash.cloudflare.com) i kliknij domenę, którą podłączasz do AgencyHandy.
+  </Step>
+  <Step title="Przejdź do ustawień DNS">
+    Kliknij kartę **DNS** w górnej nawigacji panelu ustawień domeny.
+  </Step>
+  <Step title="Dodaj rekord CNAME">
+    Kliknij **+ Add Record** i wypełnij pola:
+    - **Type:** CNAME
+    - **Name:** Twoja subdomena (np. `portal`)
+    - **Target/Content:** Wartość podana przez AgencyHandy
+    - **TTL:** Ustaw na **2 minuty** (lub najniższą dostępną opcję) podczas początkowej konfiguracji
+  </Step>
+  <Step title="Wyłącz proxy Cloudflare (krytyczne)">
+    W kolumnie **Proxy status** upewnij się, że przełącznik jest ustawiony na **DNS only** (ikona chmury powinna być szara, a nie pomarańczowa).
+
+    <Warning>
+      Jeśli proxy Cloudflare jest **włączone** (pomarańczowa ikona chmury), rekord CNAME nie zostanie prawidłowo rozwiązany i AgencyHandy nie będzie mogło zweryfikować Twojej domeny. Musisz ustawić ją na **DNS Only**, aby połączenie działało.
+    </Warning>
+  </Step>
+  <Step title="Zapisz rekord">
+    Sprawdź dokładność wszystkich wartości i kliknij **Save**.
+  </Step>
+</Steps>
+
+<Tip>
+  Użyj [dnschecker.org](https://dnschecker.org), aby monitorować propagację rekordu CNAME w różnych regionach globalnych. Szukaj zielonych znaczników wyboru we wszystkich regionach, zanim będziesz oczekiwać od AgencyHandy potwierdzenia połączenia.
+</Tip>
+
+---
+
+## Monitorowanie statusu połączenia
+
+Po zapisaniu wróć do **Workspace Config → Custom Domain** w AgencyHandy, aby śledzić status:
+
+| Status | Znaczenie |
+|---|---|
+| **Disconnected** | Rekord DNS nie został jeszcze propagowany lub zawiera błąd |
+| **Connected** | Domena jest zweryfikowana i aktywna — klienci mogą uzyskać dostęp do workspace przez niestandardowy adres URL |
+
+---
+
+## Aktualizowanie lub usuwanie własnej domeny
+
+- **Aby zaktualizować domenę:** Usuń istniejący wpis i dodaj nową domenę, korzystając z tych samych kroków konfiguracji powyżej.
+- **Aby usunąć domenę:** Kliknij przycisk **Delete** obok domeny w panelu własnej domeny i potwierdź usunięcie. Twój workspace powróci do domyślnego adresu URL AgencyHandy. Możesz ponownie dodać dowolną domenę w dowolnym momencie.
+
+---
+
+## Ważne informacje
+
+- **Używaj subdomeny, nie domeny głównej:** Własne domeny AgencyHandy wymagają subdomeny (np. `portal.twojaagencja.com`), a nie domeny głównej/apex (np. `twojaagencja.com`).
+- **Unikaj `www`:** Subdomena `www` może powodować problemy podczas weryfikacji. Zamiast tego używaj niestandardowej nazwy subdomeny.
+- **Wymagane dokładne rekordy:** Wpisz Type, Name i Value CNAME dokładnie tak, jak pokazano w AgencyHandy. Każda literówka lub brakujący znak uniemożliwia połączenie.
+- **Proxy Cloudflare musi być wyłączone:** Zawsze ustawiaj rekordy Cloudflare na **DNS Only** do weryfikacji własnej domeny AgencyHandy.
+- **Dostęp tylko dla administratorów:** Tylko Super Administratorzy i Administratorzy mogą dodawać, modyfikować lub usuwać ustawienia własnej domeny.

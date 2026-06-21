@@ -1,0 +1,188 @@
+---
+title: "Konfigurasi Email Keluar, SMTP, dan Template Email"
+sidebarTitle: "Pengaturan Email"
+description: "Konfigurasi alamat email pengirim kustom, hubungkan server SMTP, tambahkan catatan DKIM/SPF untuk ketercapaian pengiriman, dan sesuaikan template email di AgencyHandy."
+---
+
+Pengaturan email AgencyHandy memungkinkan Anda mengganti pengirim default `noreply@agencyhandy.com` dengan alamat email bermerek milik Anda sendiri, mengonfigurasi server SMTP khusus untuk pengiriman yang andal, dan menyesuaikan template yang digunakan untuk notifikasi klien, invoice, proposal, dan lainnya. Mengonfigurasi ini dengan benar memastikan email Anda sampai ke kotak masuk klien — bukan folder spam — dan setiap pesan mencerminkan identitas agensi Anda.
+
+<Note>
+  Hanya **Super Admin** dan **Admin** yang dapat mengonfigurasi pengaturan email. Buka **Workspace Config → Email Setup** untuk mengakses opsi-opsi ini.
+</Note>
+
+---
+
+## Ikhtisar Komponen Pengaturan Email
+
+<CardGroup cols={2}>
+  <Card title="Alamat Email Kustom" icon="envelope">
+    Tetapkan nama pengirim dan alamat email yang dilihat klien saat mereka menerima pesan dari workspace Anda.
+  </Card>
+  <Card title="Catatan DKIM & SPF" icon="shield-check">
+    Tambahkan catatan autentikasi DNS untuk membuktikan bahwa email Anda sah dan mencegahnya ditandai sebagai spam.
+  </Card>
+  <Card title="Server SMTP" icon="server">
+    Hubungkan server email Anda sendiri (misalnya Gmail, Outlook, atau server domain kustom) untuk mengirim semua email keluar dari AgencyHandy.
+  </Card>
+  <Card title="Template Email" icon="file-lines">
+    Sesuaikan konten, baris subjek, dan branding untuk setiap email otomatis yang dikirim AgencyHandy kepada klien.
+  </Card>
+</CardGroup>
+
+---
+
+## Bagian 1: Menyiapkan Alamat Email Kustom
+
+Sebelum mengonfigurasi email pengirim, Anda memerlukan domain terdaftar dengan layanan hosting email. Penyedia populer termasuk Google Workspace, Microsoft 365, Zoho Mail, dan Cloudflare Email Routing.
+
+<Steps>
+  <Step title="Daftarkan domain dan siapkan hosting email">
+    Jika belum, daftarkan domain dengan registrar (misalnya GoDaddy, Namecheap, Cloudflare) dan daftar ke penyedia hosting email. Pastikan Anda dapat membuat dan mengelola alamat email di domain tersebut (misalnya `hello@youragency.com`).
+  </Step>
+  <Step title="Buka Email Setup di AgencyHandy">
+    Masuk ke AgencyHandy. Buka **Workspace Config** di navigasi kiri, lalu klik **Email Setup**.
+  </Step>
+  <Step title="Masukkan nama pengirim dan email">
+    Di kolom **Sender Name**, ketik nama yang akan dilihat klien sebagai pengirim (misalnya `AgencyHandy Support` atau nama agensi Anda). Di kolom **Sender Email**, masukkan alamat email kustom (misalnya `hello@youragency.com`). Klik **Save**.
+  </Step>
+  <Step title="Verifikasi alamat email Anda">
+    AgencyHandy mengirimkan tautan verifikasi ke alamat email yang Anda masukkan. Buka kotak masuk email Anda, temukan pesan verifikasi, dan klik tautan untuk mengonfirmasi kepemilikan.
+  </Step>
+  <Step title="Konfigurasi catatan DNS DKIM, SPF, dan DMARC">
+    Setelah menyimpan email pengirim, AgencyHandy menyediakan catatan DNS yang perlu Anda tambahkan:
+
+    - **Catatan SPF** (tipe TXT) — memberikan wewenang kepada AgencyHandy untuk mengirim email atas nama domain Anda.
+    - **Catatan DKIM** (3 catatan CNAME) — menambahkan tanda tangan kriptografi pada email keluar agar server penerima dapat memverifikasi keasliannya.
+    - **Catatan DMARC** — mendefinisikan cara server penerima menangani email yang gagal pemeriksaan autentikasi.
+
+    Tambahkan semua catatan ini ke pengaturan DNS domain Anda di registrar. Untuk catatan CNAME DKIM, pastikan **Proxy Status dinonaktifkan** jika Anda menggunakan Cloudflare.
+  </Step>
+  <Step title="Konfirmasi status aktif">
+    Kembali ke halaman Email Setup di AgencyHandy. Setelah semua catatan DNS telah menyebar (ini dapat memakan waktu antara 2 menit hingga 2 jam), status email diperbarui dari **Pending** menjadi menampilkan tanda centang hijau ✅. Email kustom Anda sekarang aktif.
+  </Step>
+</Steps>
+
+<Tip>
+  Gunakan [MXToolbox](https://mxtoolbox.com/DKIM.aspx) atau [dmarcian's DKIM Validator](https://dmarcian.com/dkim-validator/) untuk memverifikasi bahwa catatan DKIM Anda dikonfigurasi dengan benar. Muat ulang halaman Email Setup secara berkala saat menunggu penyebaran.
+</Tip>
+
+---
+
+## Bagian 2: Konfigurasi DKIM & SPF (Pengaturan Mandiri)
+
+Jika Anda perlu membuat atau membuat ulang catatan DKIM dan SPF secara independen, ikuti jalur ini:
+
+**Workspace Config → Emails → DKIM & SPF Setup → Generate DKIM and SPF records.**
+
+Kemudian tambahkan catatan ke DNS Anda:
+
+| Tipe Catatan | Tipe DNS | Yang Perlu Dikonfigurasi                                                                           |
+|-------------|----------|---------------------------------------------------------------------------------------------|
+| SPF         | TXT      | Salin **Name** dan **Value** dari AgencyHandy dan tambahkan catatan TXT baru di DNS Anda       |
+| DKIM (×3)   | CNAME    | Salin setiap pasangan **Name** dan **Value**; tambahkan 3 catatan CNAME terpisah dengan proxy dinonaktifkan     |
+
+<Note>
+  Catatan DKIM dan SPF dapat memakan waktu **2 menit hingga 2 jam** untuk menyebar. Jika status masih menunjukkan pending setelah 2 jam, verifikasi bahwa catatan dimasukkan tanpa kesalahan ketik dan tidak ada catatan yang bertentangan.
+</Note>
+
+---
+
+## Bagian 3: Menyiapkan SMTP
+
+SMTP (Simple Mail Transfer Protocol) memungkinkan Anda merutekan semua email keluar AgencyHandy melalui server email terverifikasi Anda sendiri, memberi Anda kontrol lebih besar atas ketercapaian pengiriman dan branding.
+
+<Note>
+  Anda dapat menggunakan **Email Domain Kustom** atau **Penyedia Email SMTP** — tidak keduanya secara bersamaan. Beralih di antara keduanya dimungkinkan kapan saja, tetapi Anda perlu memasukkan kembali konfigurasi email saat beralih kembali ke email kustom.
+</Note>
+
+<Steps>
+  <Step title="Buka pengaturan SMTP Server">
+    Buka **Workspace Config → Email Setup**, lalu klik **SMTP Server**.
+  </Step>
+  <Step title="Beralih ke Penyedia SMTP (jika diperlukan)">
+    Jika Anda sudah memiliki email kustom yang dikonfigurasi, popup konfirmasi muncul menanyakan apakah Anda ingin beralih. Klik **Switch to SMTP** untuk melanjutkan. Ini menonaktifkan pengaturan email kustom yang ada.
+  </Step>
+  <Step title="Masukkan kredensial SMTP Anda">
+    Isi kolom yang diperlukan:
+
+    | Kolom       | Contoh Nilai           | Catatan                                     |
+    |-------------|------------------------|-------------------------------------------|
+    | Host Name   | `smtp.gmail.com`       | Alamat server SMTP penyedia email Anda |
+    | User Name   | `you@yourdomain.com`   | Alamat email lengkap Anda                   |
+    | Password    | Kata sandi aplikasi           | Gunakan kata sandi khusus aplikasi (lihat di bawah)  |
+    | Port        | `465` atau `587`         | 465 untuk SSL, 587 untuk TLS                  |
+    | Auto TLS    | Aktif/nonaktif          | Opsional — mengaktifkan peningkatan TLS otomatis  |
+
+    Klik **Save** setelah selesai.
+  </Step>
+  <Step title="Buat kata sandi aplikasi (contoh Gmail)">
+    Jika Anda menggunakan Gmail dengan Autentikasi 2 Faktor diaktifkan (diperlukan untuk kata sandi aplikasi):
+
+    1. Buka [myaccount.google.com/security](https://myaccount.google.com/security) dan konfirmasi bahwa Verifikasi 2 Langkah aktif.
+    2. Kunjungi [myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords).
+    3. Klik **Select app**, pilih **Mail** (atau masukkan nama kustom), lalu klik **Select device** dan pilih pengaturan Anda.
+    4. Klik **Create** — Google membuat kata sandi aplikasi 16 karakter.
+    5. Salin kata sandi dan tempel ke kolom **Password** di pengaturan SMTP AgencyHandy.
+
+    <Warning>
+      Gunakan **kata sandi aplikasi**, bukan kata sandi akun Google biasa Anda. Menggunakan kata sandi biasa akan gagal jika 2FA diaktifkan dan dapat memicu peringatan keamanan.
+    </Warning>
+  </Step>
+  <Step title="Konfirmasi pengaturan">
+    Setelah menyimpan, AgencyHandy menampilkan pesan sukses yang mengonfirmasi _"SMTP is created successfully."_ Detail host, nama pengguna, dan port yang tersimpan muncul di halaman pengaturan SMTP.
+  </Step>
+  <Step title="Uji koneksi SMTP">
+    Klik tombol **Test** dan masukkan alamat email penerima. AgencyHandy mengirim email uji ke alamat tersebut. Periksa kotak masuk untuk pesan konfirmasi: _"This is a confirmation that your email setup in Agency Handy is working properly."_
+  </Step>
+</Steps>
+
+<Tip>
+  Hanya satu konfigurasi SMTP yang dapat aktif per workspace pada satu waktu. Setelah SMTP dikonfigurasi, semua email keluar dari AgencyHandy — invoice, proposal, notifikasi tugas — akan dikirim melalui server SMTP Anda.
+</Tip>
+
+---
+
+## Bagian 4: Sesuaikan Template Email
+
+AgencyHandy menyertakan template bawaan untuk setiap email otomatis yang dikirimnya. Anda dapat menyesuaikan setiap template agar sesuai dengan nada merek Anda dan menyertakan konten dinamis yang relevan.
+
+**Template yang tersedia meliputi:**
+- Pendaftaran Klien
+- Kirim Proposal
+- Tinjauan Tugas
+- Kirim Invoice
+- Pengingat Invoice & Langganan
+- Notifikasi Pembuatan Tiket
+
+<Steps>
+  <Step title="Buka Template Email">
+    Buka **Workspace Config → Emails**, lalu pilih **Email Template** dari submenu.
+  </Step>
+  <Step title="Pilih template untuk diedit">
+    Daftar lengkap template yang tersedia ditampilkan. Klik template mana pun untuk membuka halaman konfigurasinya.
+  </Step>
+  <Step title="Sesuaikan kolom template">
+    Perbarui hal berikut sesuai kebutuhan:
+    - **Sender Email:** Pilih alamat email yang dikonfigurasi untuk mengirim template ini.
+    - **Subject:** Tulis baris subjek yang jelas dan ringkas.
+    - **Body:** Edit konten pesan agar sesuai dengan nada dan pesan agensi Anda.
+    - **Dynamic Variables:** Sisipkan placeholder seperti `{{client_name}}`, `{{company_name}}`, atau `{{invoice_id}}` untuk mengisi data spesifik klien secara otomatis.
+    - **Social Media Links:** Tambahkan tautan ke profil media sosial agensi Anda untuk mendorong keterlibatan.
+  </Step>
+  <Step title="Kirim email uji">
+    Klik **Send Test** untuk mengirim pratinjau template ke kotak masuk Anda. Verifikasi pemformatan, konten, dan bahwa semua variabel dinamis terisi dengan benar.
+  </Step>
+  <Step title="Simpan perubahan Anda">
+    Klik **Save Changes** untuk menerapkan template yang diperbarui. Versi baru akan digunakan untuk semua email otomatis mendatang yang sesuai dengan tipe template tersebut.
+  </Step>
+</Steps>
+
+---
+
+## Catatan Penting
+
+- **SMTP dan email kustom bersifat eksklusif.** Hanya satu metode yang dapat aktif dalam satu waktu per workspace.
+- **Masukkan kembali email saat beralih.** Jika Anda beralih dari SMTP kembali ke pengaturan email kustom, Anda harus memasukkan kembali kredensial email kustom Anda.
+- **Kredensial SMTP yang salah memblokir semua email keluar.** Periksa kembali nama host, port, nama pengguna, dan kata sandi Anda jika email berhenti terkirim setelah perubahan SMTP.
+- **Penyebaran DKIM/SPF membutuhkan waktu.** Tunggu hingga 2 jam dan muat ulang halaman Email Setup sebelum menyimpulkan ada kesalahan.
+- **Variabel dinamis bersifat sensitif huruf besar-kecil.** Gunakan persis seperti yang ditampilkan di editor template untuk memastikan pengisian yang benar.

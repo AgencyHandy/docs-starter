@@ -1,0 +1,188 @@
+---
+title: "Configurar E-mail de Saída, SMTP e Modelos de E-mail"
+sidebarTitle: "Configuração de E-mail"
+description: "Configure um endereço de e-mail personalizado para o remetente, conecte um servidor SMTP, adicione registros DKIM/SPF para melhor entregabilidade e personalize modelos de e-mail no AgencyHandy."
+---
+
+A configuração de e-mail do AgencyHandy permite substituir o remetente padrão `noreply@agencyhandy.com` pelo seu próprio endereço de e-mail com a identidade da sua agência, configurar um servidor SMTP dedicado para entrega confiável e personalizar os modelos utilizados para notificações de clientes, faturas, propostas e muito mais. Configurar isso corretamente garante que seus e-mails cheguem à caixa de entrada dos clientes — e não à pasta de spam — e que cada mensagem reflita a identidade da sua agência.
+
+<Note>
+  Somente **Super Admins** e **Admins** podem configurar as definições de e-mail. Acesse **Configuração do Workspace → Configuração de E-mail** para acessar essas opções.
+</Note>
+
+---
+
+## Visão Geral dos Componentes de Configuração de E-mail
+
+<CardGroup cols={2}>
+  <Card title="Endereço de E-mail Personalizado" icon="envelope">
+    Defina o nome do remetente e o endereço de e-mail que os clientes veem ao receber mensagens do seu workspace.
+  </Card>
+  <Card title="Registros DKIM e SPF" icon="shield-check">
+    Adicione registros de autenticação DNS para comprovar que seus e-mails são legítimos e evitar que sejam marcados como spam.
+  </Card>
+  <Card title="Servidor SMTP" icon="server">
+    Conecte seu próprio servidor de e-mail (por exemplo, Gmail, Outlook ou um servidor de domínio personalizado) para enviar todos os e-mails de saída do AgencyHandy.
+  </Card>
+  <Card title="Modelos de E-mail" icon="file-lines">
+    Personalize o conteúdo, as linhas de assunto e a identidade visual de cada e-mail automático que o AgencyHandy envia aos clientes.
+  </Card>
+</CardGroup>
+
+---
+
+## Parte 1: Configurar um Endereço de E-mail Personalizado
+
+Antes de configurar seu e-mail de remetente, você precisa de um domínio registrado com hospedagem de e-mail. Provedores populares incluem Google Workspace, Microsoft 365, Zoho Mail e Cloudflare Email Routing.
+
+<Steps>
+  <Step title="Registre um domínio e configure a hospedagem de e-mail">
+    Caso ainda não tenha feito isso, registre um domínio em um registrador (por exemplo, GoDaddy, Namecheap, Cloudflare) e contrate um provedor de hospedagem de e-mail. Certifique-se de que é possível criar e gerenciar endereços de e-mail nesse domínio (por exemplo, `hello@suaagencia.com`).
+  </Step>
+  <Step title="Acesse a Configuração de E-mail no AgencyHandy">
+    Faça login no AgencyHandy. Vá até **Configuração do Workspace** na navegação à esquerda e clique em **Configuração de E-mail**.
+  </Step>
+  <Step title="Insira o nome e o e-mail do remetente">
+    No campo **Nome do Remetente**, digite o nome que os clientes verão como remetente (por exemplo, `Suporte AgencyHandy` ou o nome da sua agência). No campo **E-mail do Remetente**, insira o endereço de e-mail personalizado (por exemplo, `hello@suaagencia.com`). Clique em **Salvar**.
+  </Step>
+  <Step title="Verifique seu endereço de e-mail">
+    O AgencyHandy envia um link de verificação para o endereço de e-mail informado. Abra sua caixa de entrada, encontre a mensagem de verificação e clique no link para confirmar a propriedade.
+  </Step>
+  <Step title="Configure os registros DNS DKIM, SPF e DMARC">
+    Após salvar o e-mail do remetente, o AgencyHandy fornece os registros DNS que você precisa adicionar:
+
+    - **Registro SPF** (tipo TXT) — autoriza o AgencyHandy a enviar e-mails em nome do seu domínio.
+    - **Registros DKIM** (3 registros CNAME) — adicionam assinaturas criptográficas aos e-mails de saída para que os servidores receptores possam verificar a autenticidade.
+    - **Registro DMARC** — define como os servidores destinatários devem tratar e-mails que falham nas verificações de autenticação.
+
+    Adicione todos esses registros às configurações de DNS do seu domínio no seu registrador. Para os registros CNAME do DKIM, certifique-se de que o **Status de Proxy está desabilitado** se você utiliza Cloudflare.
+  </Step>
+  <Step title="Confirme o status ativo">
+    Volte para a página de Configuração de E-mail no AgencyHandy. Assim que todos os registros DNS forem propagados (isso pode levar entre 2 minutos e 2 horas), o status do e-mail será atualizado de **Pendente** para exibir um ✅ verde. Seu e-mail personalizado está agora ativo.
+  </Step>
+</Steps>
+
+<Tip>
+  Use o [MXToolbox](https://mxtoolbox.com/DKIM.aspx) ou o [Validador DKIM do dmarcian](https://dmarcian.com/dkim-validator/) para verificar se seus registros DKIM estão configurados corretamente. Atualize a página de Configuração de E-mail periodicamente enquanto aguarda a propagação.
+</Tip>
+
+---
+
+## Parte 2: Configurar DKIM e SPF (Configuração Independente)
+
+Se você precisar gerar ou regenerar registros DKIM e SPF de forma independente, siga este caminho:
+
+**Configuração do Workspace → E-mails → Configuração DKIM e SPF → Gerar registros DKIM e SPF.**
+
+Em seguida, adicione os registros ao seu DNS:
+
+| Tipo de Registro | Tipo DNS | O Que Configurar                                                                                     |
+|------------------|----------|------------------------------------------------------------------------------------------------------|
+| SPF              | TXT      | Copie o **Nome** e o **Valor** do AgencyHandy e adicione um novo registro TXT no seu DNS             |
+| DKIM (×3)        | CNAME    | Copie cada par **Nome** e **Valor**; adicione 3 registros CNAME separados com proxy desabilitado     |
+
+<Note>
+  Os registros DKIM e SPF podem levar de **2 minutos a 2 horas** para serem propagados. Se o status ainda estiver pendente após 2 horas, verifique se os registros foram inseridos sem erros de digitação e se não há registros conflitantes.
+</Note>
+
+---
+
+## Parte 3: Configurar o SMTP
+
+O SMTP (Simple Mail Transfer Protocol) permite rotear todos os e-mails de saída do AgencyHandy pelo seu próprio servidor de e-mail verificado, oferecendo mais controle sobre a entregabilidade e a identidade visual.
+
+<Note>
+  Você pode usar **E-mail de Domínio Personalizado** ou **Provedor de E-mail SMTP** — não ambos simultaneamente. É possível alternar entre eles a qualquer momento, mas será necessário reinserir as configurações de e-mail ao voltar para um e-mail personalizado.
+</Note>
+
+<Steps>
+  <Step title="Abra as configurações do Servidor SMTP">
+    Acesse **Configuração do Workspace → Configuração de E-mail** e clique em **Servidor SMTP**.
+  </Step>
+  <Step title="Mude para o Provedor SMTP (se necessário)">
+    Se você já tiver um e-mail personalizado configurado, um pop-up de confirmação será exibido perguntando se deseja fazer a troca. Clique em **Mudar para SMTP** para prosseguir. Isso desabilita a configuração de e-mail personalizado existente.
+  </Step>
+  <Step title="Insira suas credenciais SMTP">
+    Preencha os campos obrigatórios:
+
+    | Campo       | Valor de Exemplo       | Observações                                            |
+    |-------------|------------------------|--------------------------------------------------------|
+    | Host Name   | `smtp.gmail.com`       | Endereço do servidor SMTP do seu provedor de e-mail    |
+    | User Name   | `voce@seudominio.com`  | Seu endereço de e-mail completo                        |
+    | Password    | Senha de aplicativo    | Use uma senha específica para o aplicativo (veja abaixo) |
+    | Port        | `465` ou `587`         | 465 para SSL, 587 para TLS                             |
+    | Auto TLS    | Ativar/desativar       | Opcional — habilita a atualização automática de TLS    |
+
+    Clique em **Salvar** ao concluir.
+  </Step>
+  <Step title="Gere uma senha de aplicativo (exemplo Gmail)">
+    Se estiver usando Gmail com autenticação de dois fatores habilitada (obrigatório para senhas de aplicativo):
+
+    1. Acesse [myaccount.google.com/security](https://myaccount.google.com/security) e confirme que a verificação em duas etapas está ativa.
+    2. Acesse [myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords).
+    3. Clique em **Selecionar aplicativo**, escolha **E-mail** (ou insira um nome personalizado), depois clique em **Selecionar dispositivo** e escolha sua configuração.
+    4. Clique em **Criar** — o Google gera uma senha de aplicativo de 16 caracteres.
+    5. Copie a senha e cole-a no campo **Password** nas configurações SMTP do AgencyHandy.
+
+    <Warning>
+      Use a **senha de aplicativo**, não sua senha regular da conta Google. O uso da senha regular falhará se a autenticação de dois fatores estiver habilitada e pode disparar alertas de segurança.
+    </Warning>
+  </Step>
+  <Step title="Confirme a configuração">
+    Após salvar, o AgencyHandy exibe uma mensagem de sucesso confirmando _"SMTP criado com sucesso."_ O host, o nome de usuário e os detalhes de porta salvos aparecem na página de configurações SMTP.
+  </Step>
+  <Step title="Teste a conexão SMTP">
+    Clique no botão **Testar** e insira um endereço de e-mail destinatário. O AgencyHandy envia um e-mail de teste para esse endereço. Verifique a caixa de entrada para a mensagem de confirmação: _"Esta é uma confirmação de que a configuração de e-mail no Agency Handy está funcionando corretamente."_
+  </Step>
+</Steps>
+
+<Tip>
+  Apenas uma configuração SMTP pode estar ativa por workspace ao mesmo tempo. Uma vez configurado o SMTP, todos os e-mails de saída do AgencyHandy — faturas, propostas, notificações de tarefas — serão enviados pelo seu servidor SMTP.
+</Tip>
+
+---
+
+## Parte 4: Personalizar Modelos de E-mail
+
+O AgencyHandy inclui modelos pré-criados para cada e-mail automático que envia. Você pode personalizar cada um para combinar com o tom da sua marca e incluir conteúdo dinâmico relevante.
+
+**Modelos disponíveis incluem:**
+- Cadastro de Cliente
+- Envio de Proposta
+- Revisão de Tarefa
+- Envio de Fatura
+- Lembretes de Fatura e Assinatura
+- Notificações de Criação de Ticket
+
+<Steps>
+  <Step title="Abra os Modelos de E-mail">
+    Acesse **Configuração do Workspace → E-mails** e selecione **Modelo de E-mail** no submenu.
+  </Step>
+  <Step title="Selecione um modelo para editar">
+    A lista completa de modelos disponíveis é exibida. Clique em qualquer modelo para abrir sua página de configuração.
+  </Step>
+  <Step title="Personalize os campos do modelo">
+    Atualize os seguintes campos conforme necessário:
+    - **E-mail do Remetente:** Escolha qual endereço de e-mail configurado envia este modelo.
+    - **Assunto:** Escreva uma linha de assunto clara e concisa.
+    - **Corpo:** Edite o conteúdo da mensagem para combinar com o tom e a comunicação da sua agência.
+    - **Variáveis Dinâmicas:** Insira marcadores como `{{client_name}}`, `{{company_name}}` ou `{{invoice_id}}` para preencher automaticamente dados específicos do cliente.
+    - **Links de Redes Sociais:** Adicione links para os perfis sociais da sua agência para incentivar o engajamento.
+  </Step>
+  <Step title="Envie um e-mail de teste">
+    Clique em **Enviar Teste** para enviar uma prévia do modelo para sua caixa de entrada. Verifique a formatação, o conteúdo e se todas as variáveis dinâmicas são resolvidas corretamente.
+  </Step>
+  <Step title="Salve suas alterações">
+    Clique em **Salvar Alterações** para aplicar o modelo atualizado. A nova versão será usada em todos os futuros e-mails automáticos correspondentes a esse tipo de modelo.
+  </Step>
+</Steps>
+
+---
+
+## Observações Importantes
+
+- **SMTP e e-mail personalizado são mutuamente exclusivos.** Apenas um método pode estar ativo por vez por workspace.
+- **Reinsira o e-mail ao trocar.** Se você alternar do SMTP de volta para uma configuração de e-mail personalizado, deverá reinserir suas credenciais de e-mail personalizado.
+- **Credenciais SMTP incorretas bloqueiam todos os e-mails de saída.** Verifique novamente o nome do host, a porta, o nome de usuário e a senha se os e-mails pararem de ser enviados após uma alteração no SMTP.
+- **A propagação de DKIM/SPF leva tempo.** Aguarde até 2 horas e atualize a página de Configuração de E-mail antes de concluir que há um erro.
+- **As variáveis dinâmicas diferenciam maiúsculas de minúsculas.** Use-as exatamente como mostrado no editor de modelos para garantir que sejam preenchidas corretamente.

@@ -1,0 +1,69 @@
+---
+title: "連接 Slack 以接收 AgencyHandy 即時通知"
+sidebarTitle: "Slack"
+description: "將您的 Slack 工作區連結至 AgencyHandy，讓訂單更新、任務變更及工單通知自動發布至 Slack 頻道。"
+---
+
+AgencyHandy 的 Slack 整合讓您的團隊隨時掌握最新動態，無需在應用程式之間切換。連接後，每當任務、訂單或其他工作區活動發生變更，AgencyHandy 就會自動將通知發布到您選擇的 Slack 頻道 — 讓您的團隊始終即時掌握最新資訊。
+
+<Note>
+  只有 **SuperAdmin**、**Admin** 和具有整合權限的 **Manager** 角色可以連接或管理 Slack 整合。您需要 Slack 工作區管理員權限才能授權連接。
+</Note>
+
+## 連接 Slack
+
+<Steps>
+  <Step title="開啟整合">
+    在左側側邊欄，點擊 **Integrations**。
+  </Step>
+
+  <Step title="找到 Slack 卡片">
+    向下捲動至 **Slack** 卡片，然後點擊 **Connect**。
+  </Step>
+
+  <Step title="在 Slack 中授權 AgencyHandy">
+    Slack 授權視窗將會開啟。若您尚未登入 Slack 工作區，請立即登入。檢閱 AgencyHandy 要求的權限，然後點擊 **Allow** 以授予存取權限。
+  </Step>
+
+  <Step title="選擇通知頻道">
+    授權後，選擇您希望 AgencyHandy 通知出現的 Slack 頻道。從下拉選單中選擇一個頻道，然後點擊 **Save** 以確認。
+  </Step>
+
+  <Step title="確認設定">
+    Slack 卡片更新為顯示 **Connected**。AgencyHandy 將立即開始向選定頻道發布通知。
+  </Step>
+</Steps>
+
+## 哪些通知會傳送至 Slack
+
+每當以下任何事件發生時，AgencyHandy 就會發布 Slack 訊息：
+
+| 類別 | 觸發通知的事件 |
+|---|---|
+| **任務** | 任務已建立、更新、指派或完成 |
+| **訂單** | 訂單已建立或狀態已變更 |
+| **評論** | 已在任務或訂單中新增評論 |
+| **檔案附件** | 已在任務中新增檔案或附件 |
+| **工單** | 工單已建立、指派或狀態已變更 |
+
+每則 Slack 訊息包含：
+
+- 任務、訂單或工單的**名稱**
+- 觸發訊息的**狀態變更**或動作
+- 返回 AgencyHandy 中相關項目的**連結**
+
+當任務中新增檔案或附件時，Slack 訊息也會包含該附件的預覽。
+
+<Tip>
+  選擇一個專用的 **#agency-handy-alerts** 頻道（或類似名稱），以保持通知有序整理，避免佔用主要團隊頻道。
+</Tip>
+
+## 中斷 Slack 連接
+
+若要停止通知，請返回 **Integrations** 並點擊 Slack 卡片上的 **Disconnect**。所有通知將立即停止。
+
+## 重要注意事項
+
+- **每次連接僅限一個工作區** — 每個 AgencyHandy 工作區只能連接一個 Slack 工作區。若要切換至不同的 Slack 工作區，請先中斷目前的連接，再重新連接。
+- **頻道可見性** — 通知對所選 Slack 頻道中的所有人可見。請確保頻道適合所分享的詳細程度（例如，避免將敏感的客戶訂單詳情發布至公開頻道）。
+- **重新授權** — 若您的 Slack 權杖過期或權限變更，請返回整合並重新連接以恢復通知。

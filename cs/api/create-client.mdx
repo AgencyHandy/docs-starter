@@ -1,0 +1,137 @@
+---
+title: "AgencyHandy API: Vytvoření nového klienta programově"
+sidebarTitle: "Vytvoření klienta"
+description: "Programově přidávejte nové klienty do svého workspace AgencyHandy odesláním požadavku na endpoint bulk-client se jménem, e-mailem a kontaktními údaji."
+---
+
+Endpoint pro vytvoření klienta umožňuje přidávat klienty přímo do vašeho workspace AgencyHandy z externího systému. Na rozdíl od leadů jsou klienti plnohodnotně zaregistrované kontakty, které lze přiřazovat k objednávkám, fakturám a projektům. Pomocí tohoto endpointu synchronizujte nové klienty z CRM, onboardingového formuláře nebo jiného datového zdroje.
+
+<Note>
+  Před použitím tohoto endpointu dokončete průvodce [Začínáme](/cs/api/getting-started) a získejte svůj API klíč a ID společnosti. Na rozdíl od endpointu pro vytvoření leadu vytvoření klienta **nevyžaduje** samostatný krok vyhledání ID role.
+</Note>
+
+## Předpoklady
+
+- ✅ API klíč vygenerovaný z **Konfigurace workspace → API klíč**
+- ✅ ID společnosti získané z `GET {{URL}}/accounts/companies`
+
+---
+
+## Endpoint
+
+```
+POST {{URL}}/members/bulk-client
+```
+
+## Hlavičky
+
+| Hlavička | Hodnota |
+|---|---|
+| `x-api-key` | Váš API klíč |
+| `companyId` | Vaše ID společnosti |
+| `Content-Type` | `application/json` |
+
+## Tělo požadavku
+
+Tělo požadavku je **JSON pole**. V jednom požadavku můžete vytvořit jednoho nebo více klientů.
+
+<ParamField body="firstName" type="string" required>
+  Křestní jméno klienta.
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  Příjmení klienta.
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  E-mailová adresa klienta. Musí být jedinečná v rámci vašeho workspace.
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  Pro zcela nového klienta nastavte na `false`. Nastavte na `true` při převodu stávajícího leadu na klienta.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Stav klienta. Běžné hodnoty: `New`, `Active`. Výchozí hodnota je `New`, pokud není zadáno.
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  Telefonní číslo klienta.
+</ParamField>
+
+<ParamField body="source" type="string">
+  Způsob získání tohoto klienta. Příklady hodnot: `website`, `referral`, `social`.
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  Pozice klienta ve sloupci nástěnky. Výchozí hodnota je `1`.
+</ParamField>
+
+## Ukázkový požadavek
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-client" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyId: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+## Odpověď při úspěchu
+
+```json
+{
+  "message": "Client created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  Potvrzovací řetězec při úspěchu.
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  Pole vytvořených objektů klientů.
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  Jedinečné ID nově vytvořeného klienta. Toto ID použijte při přiřazování klienta k objednávkám nebo fakturám prostřednictvím API.
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  Celé jméno klienta (křestní jméno + příjmení).
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  Stav klienta tak, jak je uložen.
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  Role přiřazená členovi — bude `"client"`.
+</ResponseField>
+
+<Note>
+  Hlavička `companyId` pro tento endpoint používá velké **I** v `Id` — `companyId` — na rozdíl od některých jiných endpointů, které používají `companyid` (vše malými písmeny). Použijte přesné psaní uvedené výše, abyste předešli chybám ověřování.
+</Note>
+
+<Tip>
+  Předejte více objektů klientů v poli a vytvořte tak klienty hromadně v jednom volání API. Každý objekt musí mít jedinečnou `email` adresu. Duplicitní e-maily způsobí chybu ověření pro daný záznam.
+</Tip>

@@ -1,0 +1,211 @@
+---
+title: "Administrar leads: pipeline, correo y conversión a cliente"
+sidebarTitle: "Leads"
+description: "Administre su pipeline de ventas con un tablero Kanban: realice seguimiento de las etapas de los leads, filtre por agente u origen, envíe correos y convierta leads en clientes."
+---
+
+La sección Leads del CRM de AgencyHandy le ofrece un tablero Kanban visual de arrastrar y soltar para administrar cada prospecto desde el primer contacto hasta convertirse en cliente firmado. Cada lead vive en una tarjeta que recorre siete etapas predefinidas del pipeline, y puede filtrar, buscar, importar, exportar, enviar correos y convertir leads sin cambiar nunca a otra herramienta.
+
+## Etapas del pipeline
+
+Cada lead que crea comienza en la etapa **New** y puede avanzar a medida que se desarrolla su relación:
+
+| Etapa | Qué significa |
+|---|---|
+| **New** | El lead acaba de entrar en el pipeline |
+| **Contacted** | Se ha puesto en contacto al menos una vez |
+| **Qualified** | El lead cumple con sus criterios de cliente objetivo |
+| **Working** | Conversaciones activas en curso |
+| **Proposal Sent** | Se ha entregado una propuesta formal |
+| **Negotiation** | Se están discutiendo los términos |
+| **Client** | Listo para convertirse en una cuenta de cliente |
+
+<Note>
+  Mover un lead a la etapa **Client** en el tablero no lo convierte automáticamente: aún debe hacer clic en **Convert to Client** dentro de la tarjeta del lead para moverlo a la pestaña Clients.
+</Note>
+
+## Crear un lead
+
+<Steps>
+  <Step title="Abra el tablero de leads">
+    En la barra lateral izquierda, haga clic en **CRM** y luego seleccione la pestaña **Leads**. El tablero Kanban se carga con todas sus etapas de pipeline existentes.
+  </Step>
+  <Step title="Haga clic en Create Lead">
+    Seleccione el botón **+ Create Lead** en la parte superior derecha del tablero. Se abre un formulario de creación.
+  </Step>
+  <Step title="Complete los detalles del lead">
+    Complete los campos a continuación. **Name** y **Email** son obligatorios; todo lo demás es opcional pero recomendado para un mejor filtrado e informes.
+
+    - **First Name / Last Name** *(obligatorio)*
+    - **Email** *(obligatorio)*
+    - **Company Name**
+    - **Category**
+    - **Status**: establece la etapa inicial del Kanban (el valor predeterminado es New)
+    - **Source**: por ejemplo, Facebook, sitio web *(máximo 50 caracteres; el texto que exceda este límite se trunca con una información sobre herramientas)*
+    - **Lead Value**: valor estimado del trato
+    - **Phone Number**
+    - **Website**
+    - **Assigned Agent**: miembro del equipo responsable de este lead
+    - **Last Interaction**: fecha del contacto más reciente
+    - **Address**: país, estado, ciudad, código postal
+    - **Attachments**: los archivos PDF, JPEG, PNG y de texto se pueden previsualizar directamente en la ventana modal del lead; los formatos no compatibles solicitan una descarga en su lugar
+  </Step>
+  <Step title="Guarde el lead">
+    Haga clic en **Create**. La tarjeta del lead aparece en la columna **New** del tablero Kanban.
+  </Step>
+</Steps>
+
+<Tip>
+  Suba resúmenes en PDF o documentos de propuesta como archivos adjuntos para que su equipo pueda revisarlos sin salir de la ventana modal del lead.
+</Tip>
+
+## Seguimiento de leads en el tablero Kanban
+
+Una vez que los leads existen en el tablero, tiene varias formas de trabajar con ellos:
+
+- **Arrastrar y soltar**: tome cualquier tarjeta de lead y suéltela en una columna de etapa diferente para reflejar su estado actual.
+- **Hacer clic en una tarjeta**: abre la ventana modal de detalles del lead, donde puede editar todos los campos, ver notas, consultar el registro de actividad, enviar un correo o convertir a cliente.
+- **Imprimir los detalles del lead**: use el botón **Print** en la esquina superior derecha de la ventana modal del lead para generar un resumen imprimible.
+
+## Editar un lead
+
+Abra cualquier tarjeta de lead y haga clic en **Edit** (o actualice directamente los campos de información de contacto o notas que se muestran en la ventana modal). Los cambios se guardan de inmediato y se registran en el registro de actividad.
+
+<Note>
+  Si una dirección de correo ya existe tanto como cliente como lead, ese lead **no** se puede convertir en cliente. Resuelva el duplicado antes de intentar la conversión.
+</Note>
+
+## Convertir un lead en cliente
+
+<Steps>
+  <Step title="Abra la tarjeta del lead">
+    Haga clic en el lead que desea promover en el tablero Kanban.
+  </Step>
+  <Step title="Haga clic en Convert to Client">
+    Seleccione el botón **Convert to Client** dentro de la ventana modal del lead.
+  </Step>
+  <Step title="Confirme">
+    Aparece un banner de confirmación: *"Lead has moved to the Clients Tab."* La tarjeta desaparece del tablero Kanban y todas las notas e historial del lead se conservan en el nuevo registro del cliente.
+  </Step>
+</Steps>
+
+## Filtrar y buscar leads
+
+Use la barra de herramientas sobre el tablero Kanban para acotar lo que ve:
+
+<CardGroup cols={2}>
+  <Card title="Barra de búsqueda" icon="magnifying-glass">
+    Escriba un nombre o correo para mostrar al instante los leads coincidentes en todas las etapas del pipeline.
+  </Card>
+  <Card title="Agente asignado" icon="user">
+    Filtre el tablero para mostrar solo los leads asignados a un miembro específico del equipo.
+  </Card>
+  <Card title="Valor del lead" icon="dollar-sign">
+    Acote por tamaño estimado del trato para priorizar los prospectos de alto valor.
+  </Card>
+  <Card title="Fecha de última interacción" icon="calendar">
+    Identifique los leads que no se han tocado recientemente y necesitan seguimiento.
+  </Card>
+  <Card title="Origen" icon="signal">
+    Vea solo los leads de un canal en particular, como sitio web o Facebook.
+  </Card>
+</CardGroup>
+
+## Enviar correos a leads
+
+Puede redactar y enviar correos directamente desde el tablero Kanban o desde dentro de la ventana modal de un lead, sin necesidad de un cliente de correo externo.
+
+| Campo | Detalles |
+|---|---|
+| **To** | Se completa previamente con la dirección de correo del lead |
+| **Subject** | Obligatorio; máximo 250 caracteres |
+| **Body** | Editor de texto enriquecido; máximo 10.000 caracteres |
+| **Attachments** | Hasta 5 archivos; límite de tamaño total de 25 MB |
+
+## Notas
+
+Cada lead incluye una sección **Notes** dedicada dentro de la ventana modal de detalles. Las notas son editables y eliminables, y cada nota muestra el nombre del miembro del equipo que la escribió junto con una marca de tiempo. Use las notas para registrar resúmenes de llamadas, preferencias del cliente o recordatorios de seguimiento que todo el equipo pueda ver.
+
+## Importar leads
+
+Traiga una lista de prospectos existente a AgencyHandy de forma masiva usando un archivo CSV o Excel.
+
+<Steps>
+  <Step title="Abra el cuadro de diálogo de importación">
+    En el tablero de leads, haga clic en el botón **Import** en la parte superior derecha.
+  </Step>
+  <Step title="Suba su archivo">
+    Arrastre y suelte o busque su archivo CSV o Excel. El archivo debe incluir como mínimo una columna **Name** y una columna **Email**.
+  </Step>
+  <Step title="Asigne las columnas">
+    El importador muestra un asignador de columnas. Haga coincidir cada columna de su archivo con el campo correspondiente de AgencyHandy. Los campos opcionales asignables incluyen: Source, Lead Value, Phone Number, Company Name y Address.
+  </Step>
+  <Step title="Confirme e importe">
+    Revise la tabla de vista previa para verificar la exactitud de los datos, luego haga clic en **Confirm** seguido de **Save**. Sus leads aparecen en el tablero Kanban de inmediato.
+  </Step>
+</Steps>
+
+<Warning>
+  Los leads con direcciones de correo que ya existen en su pestaña Clients no se convertirán durante la importación: debe manejar esos duplicados manualmente.
+</Warning>
+
+## Exportar leads
+
+Exporte los datos de su pipeline para informes, copias de seguridad o integración con otras herramientas.
+
+<Steps>
+  <Step title="Haga clic en Export">
+    Seleccione el botón **Export** en la barra de herramientas de leads.
+  </Step>
+  <Step title="Elija sus columnas">
+    Seleccione **All Columns** para exportar todos los campos, o elija **Custom Columns** para seleccionar solo los datos que necesita.
+  </Step>
+  <Step title="Seleccione el formato y descargue">
+    Elija **CSV** o **XLSX**, luego haga clic en **Export**. El archivo se descarga en su dispositivo.
+  </Step>
+</Steps>
+
+## Registro de actividad
+
+Cada cambio realizado en un lead se registra automáticamente en la pestaña **Activity Log** dentro de la ventana modal del lead.
+
+El registro captura:
+
+- **User**: qué miembro del equipo realizó el cambio
+- **Details**: qué cambió, por ejemplo *"Status changed from 'New' to 'Contacted'"*
+- Cargas de archivos adjuntos, adiciones de notas y ediciones de campos
+
+Los registros de actividad no se pueden editar ni eliminar y son visibles para los admins y managers.
+
+## Recordatorios y tareas automatizados
+
+AgencyHandy envía notificaciones automatizadas cuando un lead ha estado inactivo en cualquier etapa más allá de un número configurable de días, por ejemplo, *"Follow up with [Lead Name]."* Acciones clave como enviar una propuesta también pueden generar automáticamente tareas en el administrador de tareas para mantener su proceso de entrega en marcha.
+
+## Webhooks para eventos de leads
+
+AgencyHandy dispara eventos de webhook para las siguientes acciones de leads, lo que le permite conectar CRMs externos, herramientas de automatización o canalizaciones de datos:
+
+<Accordion title="Lead.Created">
+  Se dispara cuando se crea un nuevo lead. El payload incluye: ID del lead, estado, origen, agente asignado y marcas de tiempo.
+</Accordion>
+
+<Accordion title="Lead.Updated">
+  Se dispara cuando se actualiza cualquier campo de un lead. El payload incluye los mismos campos más un resumen de lo que cambió.
+</Accordion>
+
+<Accordion title="Lead.Deleted">
+  Se dispara cuando se elimina un lead del sistema. El payload incluye el ID del lead y la marca de tiempo de eliminación.
+</Accordion>
+
+<Tip>
+  Configure los webhooks en **Settings → Integrations → Webhooks** para comenzar a recibir eventos de leads en tiempo real en sus sistemas externos.
+</Tip>
+
+## Métricas de informes
+
+Realice un seguimiento de la salud de su pipeline con las métricas de informes integradas:
+
+- Número de leads por etapa
+- Tasas de conversión de lead a cliente
+- Tiempo promedio que un lead pasa en cada etapa
+- Agentes con mejor rendimiento por volumen de conversión

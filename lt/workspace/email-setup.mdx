@@ -1,0 +1,188 @@
+---
+title: "Siunčiamų el. laiškų, SMTP ir el. laiškų šablonų konfigūravimas"
+sidebarTitle: "El. pašto nustatymai"
+description: "Sukonfigūruokite pasirinktinį siuntėjo el. pašto adresą, prijunkite SMTP serverį, pridėkite DKIM/SPF įrašus geresniam pristatymui ir tinkinkite el. laiškų šablonus AgencyHandy."
+---
+
+AgencyHandy el. pašto nustatymai leidžia jums pakeisti numatytąjį `noreply@agencyhandy.com` siuntėją savo paženklintu el. pašto adresu, sukonfigūruoti specialų SMTP serverį patikimam pristatymui ir tinkinti šablonus, naudojamus klientų pranešimams, sąskaitoms faktūroms, pasiūlymams ir daugiau. Tinkamai tai nustatę užtikrinsite, kad jūsų el. laiškai pasieks klientų pašto dėžutes — ne šlamšto aplankus — ir kad kiekvienas pranešimas atspindės jūsų agentūros tapatybę.
+
+<Note>
+  Tik **Super administratoriai** ir **Administratoriai** gali konfigūruoti el. pašto nustatymus. Eikite į **Darbo erdvės konfigūracija → El. pašto nustatymai**, kad pasiektumėte šias parinktis.
+</Note>
+
+---
+
+## El. pašto nustatymų komponentų apžvalga
+
+<CardGroup cols={2}>
+  <Card title="Pasirinktinis el. pašto adresas" icon="envelope">
+    Nustatykite siuntėjo vardą ir el. pašto adresą, kurį klientai mato gavę pranešimus iš jūsų darbo erdvės.
+  </Card>
+  <Card title="DKIM ir SPF įrašai" icon="shield-check">
+    Pridėkite DNS autentifikavimo įrašus, kad įrodytumėte, jog jūsų el. laiškai yra teisėti ir nebebūtų pažymimi kaip šlamštas.
+  </Card>
+  <Card title="SMTP serveris" icon="server">
+    Prijunkite savo pašto serverį (pvz., Gmail, Outlook ar pasirinktinio domeno serverį), kad siųstumėte visus siunčiamus el. laiškus iš AgencyHandy.
+  </Card>
+  <Card title="El. laiškų šablonai" icon="file-lines">
+    Tinkinkite kiekvieno automatinio el. laiško, kurį AgencyHandy siunčia klientams, turinį, temos eilutes ir prekės ženklo elementus.
+  </Card>
+</CardGroup>
+
+---
+
+## 1 dalis: Pasirinktinio el. pašto adreso nustatymas
+
+Prieš konfigūruodami siuntėjo el. paštą, turite turėti registruotą domeną su el. pašto priegloba. Populiarūs tiekėjai: Google Workspace, Microsoft 365, Zoho Mail ir Cloudflare el. pašto maršrutizavimas.
+
+<Steps>
+  <Step title="Užregistruokite domeną ir nustatykite el. pašto prieglobą">
+    Jei dar neturite, užregistruokite domeną pas registratorių (pvz., GoDaddy, Namecheap, Cloudflare) ir prisiregistruokite prie el. pašto prieglob tiekėjo. Įsitikinkite, kad galite kurti ir valdyti el. pašto adresus tame domene (pvz., `hello@youragency.com`).
+  </Step>
+  <Step title="Eikite į el. pašto nustatymus AgencyHandy">
+    Prisijunkite prie AgencyHandy. Kairėje naršymo srityje eikite į **Darbo erdvės konfigūracija**, tada spustelėkite **El. pašto nustatymai**.
+  </Step>
+  <Step title="Įveskite siuntėjo vardą ir el. paštą">
+    Lauke **Siuntėjo vardas** įveskite vardą, kurį klientai matys kaip siuntėją (pvz., `AgencyHandy palaikymas` arba jūsų agentūros pavadinimas). Lauke **Siuntėjo el. paštas** įveskite pasirinktinį el. pašto adresą (pvz., `hello@youragency.com`). Spustelėkite **Išsaugoti**.
+  </Step>
+  <Step title="Patvirtinkite savo el. pašto adresą">
+    AgencyHandy siunčia patvirtinimo nuorodą įvestu el. pašto adresu. Atidarykite el. pašto dėžutę, raskite patvirtinimo pranešimą ir spustelėkite nuorodą, kad patvirtintumėte nuosavybę.
+  </Step>
+  <Step title="Sukonfigūruokite DKIM, SPF ir DMARC DNS įrašus">
+    Išsaugoję siuntėjo el. paštą, AgencyHandy pateikia DNS įrašus, kuriuos reikia pridėti:
+
+    - **SPF įrašas** (TXT tipas) — įgalioja AgencyHandy siųsti el. laiškus jūsų domeno vardu.
+    - **DKIM įrašai** (3 CNAME įrašai) — prideda kriptografinius parašus prie siunčiamų el. laiškų, kad priimantys serveriai galėtų patvirtinti autentiškumą.
+    - **DMARC įrašas** — apibrėžia, kaip gavėjų serveriai turėtų tvarkyti el. laiškus, kurie nepraeina autentifikavimo patikrinimų.
+
+    Pridėkite visus šiuos įrašus prie savo domeno DNS nustatymų pas registratorių. DKIM CNAME įrašams įsitikinkite, kad **įgaliotojo serverio būsena išjungta**, jei naudojate Cloudflare.
+  </Step>
+  <Step title="Patvirtinkite aktyvią būseną">
+    Grįžkite į AgencyHandy el. pašto nustatymų puslapį. Kai visi DNS įrašai bus išplatinti (tai gali užtrukti nuo 2 minučių iki 2 valandų), el. pašto būsena atsinaujins iš **Laukiama** ir rodys žalią varnelę ✅. Jūsų pasirinktinis el. paštas dabar aktyvus.
+  </Step>
+</Steps>
+
+<Tip>
+  Naudokite [MXToolbox](https://mxtoolbox.com/DKIM.aspx) arba [dmarcian's DKIM Validator](https://dmarcian.com/dkim-validator/), kad patikrintumėte, ar jūsų DKIM įrašai tinkamai sukonfigūruoti. Periodiškai atnaujinkite el. pašto nustatymų puslapį laukdami platinimo.
+</Tip>
+
+---
+
+## 2 dalis: DKIM ir SPF konfigūravimas (atskiras nustatymas)
+
+Jei reikia sugeneruoti arba iš naujo sugeneruoti DKIM ir SPF įrašus atskirai, vadovaukitės šiuo keliu:
+
+**Darbo erdvės konfigūracija → El. laiškai → DKIM ir SPF nustatymas → Generuoti DKIM ir SPF įrašus.**
+
+Tada pridėkite įrašus prie savo DNS:
+
+| Įrašo tipas | DNS tipas | Ką konfigūruoti                                                                                      |
+|-------------|-----------|------------------------------------------------------------------------------------------------------|
+| SPF         | TXT       | Nukopijuokite **Pavadinimą** ir **Reikšmę** iš AgencyHandy ir pridėkite naują TXT įrašą savo DNS    |
+| DKIM (×3)   | CNAME     | Nukopijuokite kiekvieną **Pavadinimo** ir **Reikšmės** porą; pridėkite 3 atskirus CNAME įrašus su išjungtu įgaliotuoju serveriu |
+
+<Note>
+  DKIM ir SPF įrašų platinimas gali užtrukti nuo **2 minučių iki 2 valandų**. Jei po 2 valandų būsena vis dar rodo laukiamą, patikrinkite, ar įrašai buvo įvesti be rašybos klaidų ir ar nėra prieštaringų įrašų.
+</Note>
+
+---
+
+## 3 dalis: SMTP nustatymas
+
+SMTP (paprastasis pašto perdavimo protokolas) leidžia nukreipti visus siunčiamus AgencyHandy el. laiškus per jūsų patvirtintą pašto serverį, suteikiant jums daugiau kontrolės dėl pristatymo ir prekės ženklo.
+
+<Note>
+  Galite naudoti **pasirinktinio domeno el. paštą** arba **SMTP el. pašto tiekėją** — ne abu vienu metu. Jų keitimas galimas bet kuriuo metu, tačiau grįžę prie pasirinktinio el. pašto turėsite iš naujo įvesti savo el. pašto konfigūraciją.
+</Note>
+
+<Steps>
+  <Step title="Atidarykite SMTP serverio nustatymus">
+    Eikite į **Darbo erdvės konfigūracija → El. pašto nustatymai**, tada spustelėkite **SMTP serveris**.
+  </Step>
+  <Step title="Perjunkite į SMTP tiekėją (jei reikia)">
+    Jei jau turite sukonfigūruotą pasirinktinį el. paštą, pasirodo patvirtinimo iššokantis langas, kuriame klausiama, ar norite perjungti. Spustelėkite **Perjungti į SMTP**, kad tęstumėte. Tai išjungia esamą pasirinktinio el. pašto nustatymą.
+  </Step>
+  <Step title="Įveskite savo SMTP kredencialus">
+    Užpildykite reikiamus laukus:
+
+    | Laukas          | Pavyzdinė reikšmė        | Pastabos                                         |
+    |-----------------|--------------------------|--------------------------------------------------|
+    | Pagrindinio kompiuterio vardas | `smtp.gmail.com`  | Jūsų el. pašto tiekėjo SMTP serverio adresas |
+    | Vartotojo vardas | `you@yourdomain.com`    | Jūsų visas el. pašto adresas                    |
+    | Slaptažodis     | Programos slaptažodis    | Naudokite programai skirtą slaptažodį (žr. žemiau) |
+    | Prievadas       | `465` arba `587`         | 465 SSL, 587 TLS                                 |
+    | Automatinis TLS | Įjungti/išjungti         | Neprivaloma — įgalina automatinį TLS atnaujinimą |
+
+    Baigę spustelėkite **Išsaugoti**.
+  </Step>
+  <Step title="Sugeneruokite programos slaptažodį (Gmail pavyzdys)">
+    Jei naudojate Gmail su įjungtu dviejų veiksnių autentifikavimu (būtinas programos slaptažodžiams):
+
+    1. Eikite į [myaccount.google.com/security](https://myaccount.google.com/security) ir patvirtinkite, kad dviejų veiksnių tikrinimas aktyvus.
+    2. Apsilankykite [myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords).
+    3. Spustelėkite **Pasirinkti programą**, pasirinkite **Paštas** (arba įveskite pasirinktinį pavadinimą), tada spustelėkite **Pasirinkti įrenginį** ir pasirinkite savo nustatymą.
+    4. Spustelėkite **Kurti** — Google sugeneruoja 16 simbolių programos slaptažodį.
+    5. Nukopijuokite slaptažodį ir įklijuokite jį į AgencyHandy SMTP nustatymų lauką **Slaptažodis**.
+
+    <Warning>
+      Naudokite **programos slaptažodį**, o ne įprastą Google paskyros slaptažodį. Naudojant įprastą slaptažodį, kai įjungtas dviejų veiksnių autentifikavimas, prisijungimas nepavyks ir gali suaktyvinti saugos perspėjimus.
+    </Warning>
+  </Step>
+  <Step title="Patvirtinkite nustatymą">
+    Išsaugoję AgencyHandy parodo sėkmės pranešimą, patvirtinantį _„SMTP sukurtas sėkmingai.“_ Jūsų išsaugoti pagrindinio kompiuterio, vartotojo vardo ir prievado duomenys rodomi SMTP nustatymų puslapyje.
+  </Step>
+  <Step title="Išbandykite SMTP ryšį">
+    Spustelėkite mygtuką **Testas** ir įveskite gavėjo el. pašto adresą. AgencyHandy siunčia bandomąjį el. laišką tuo adresu. Patikrinkite pašto dėžutę, ar yra patvirtinimo pranešimas: _„Tai patvirtinimas, kad jūsų el. pašto nustatymas Agency Handy veikia tinkamai.“_
+  </Step>
+</Steps>
+
+<Tip>
+  Vienu metu gali būti aktyvus tik vienas SMTP konfigūravimas darbo erdvėje. Sukonfigūravus SMTP, visi siunčiami el. laiškai iš AgencyHandy — sąskaitos faktūros, pasiūlymai, užduočių pranešimai — bus siunčiami per jūsų SMTP serverį.
+</Tip>
+
+---
+
+## 4 dalis: El. laiškų šablonų tinkinimas
+
+AgencyHandy apima iš anksto sukurtus šablonus kiekvienam automatiniam el. laiškui, kurį siunčia. Galite tinkinti kiekvieną, kad atitiktų jūsų prekės ženklo toną ir apimtų svarbų dinaminį turinį.
+
+**Galimi šablonai:**
+- Kliento registracija
+- Pasiūlymo siuntimas
+- Užduoties peržiūra
+- Sąskaitos faktūros siuntimas
+- Sąskaitų faktūrų ir prenumeratų priminimai
+- Bilieto sukūrimo pranešimai
+
+<Steps>
+  <Step title="Atidarykite el. laiškų šablonus">
+    Eikite į **Darbo erdvės konfigūracija → El. laiškai**, tada submeniu pasirinkite **El. laiško šablonas**.
+  </Step>
+  <Step title="Pasirinkite šabloną redagavimui">
+    Rodomas visas galimų šablonų sąrašas. Spustelėkite bet kurį šabloną, kad atidarytumėte jo konfigūracijos puslapį.
+  </Step>
+  <Step title="Tinkinkite šablono laukus">
+    Atnaujinkite šiuos laukus pagal poreikį:
+    - **Siuntėjo el. paštas:** pasirinkite, kuris sukonfigūruotas el. pašto adresas siuntinėja šį šabloną.
+    - **Tema:** parašykite aiškią, glaustą temos eilutę.
+    - **Turinys:** redaguokite pranešimo turinį, kad atitiktų jūsų agentūros toną ir žinutę.
+    - **Dinaminiai kintamieji:** įterpkite žymiklius, pvz., `{{client_name}}`, `{{company_name}}` arba `{{invoice_id}}`, kad automatiškai užpildytumėte konkrečius kliento duomenis.
+    - **Socialinių tinklų nuorodos:** pridėkite nuorodas į savo agentūros socialinius profilius, kad skatintumėte įsitraukimą.
+  </Step>
+  <Step title="Siųskite bandomąjį el. laišką">
+    Spustelėkite **Siųsti testą**, kad išsiųstumėte šablono peržiūrą į savo pašto dėžutę. Patikrinkite formatavimą, turinį ir ar visi dinaminiai kintamieji išsprendžiami teisingai.
+  </Step>
+  <Step title="Išsaugokite pakeitimus">
+    Spustelėkite **Išsaugoti pakeitimus**, kad pritaikytumėte atnaujintą šabloną. Nauja versija bus naudojama visiems būsimiems automatiniams el. laiškams, atitinkantiems šio šablono tipą.
+  </Step>
+</Steps>
+
+---
+
+## Svarbios pastabos
+
+- **SMTP ir pasirinktinis el. paštas yra tarpusavyje nesuderinami.** Vienu metu gali būti aktyvus tik vienas metodas vienoje darbo erdvėje.
+- **Iš naujo įveskite el. paštą keičiant.** Jei perjungiate iš SMTP atgal į pasirinktinį el. pašto nustatymą, turite iš naujo įvesti savo pasirinktinio el. pašto kredencialus.
+- **Neteisingi SMTP kredencialai blokuoja visus siunčiamus el. laiškus.** Dar kartą patikrinkite pagrindinio kompiuterio vardą, prievadą, vartotojo vardą ir slaptažodį, jei el. laiškai nustoja siunčiami po SMTP pakeitimo.
+- **DKIM/SPF platinimas užtrunka.** Palaukite iki 2 valandų ir atnaujinkite el. pašto nustatymų puslapį, prieš darydami išvadą, kad yra klaida.
+- **Dinaminiai kintamieji skiria didžiąsias ir mažąsias raides.** Naudokite juos tiksliai taip, kaip parodyta šablono rengyklėje, kad užtikrintumėte tinkamą užpildymą.

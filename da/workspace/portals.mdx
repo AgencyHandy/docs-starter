@@ -1,0 +1,290 @@
+---
+title: "Tilpas klientportaler, adgangskontroller og skattesatser"
+sidebarTitle: "Portaler"
+description: "Brandmærk dine klienters login- og tilmeldingssider, styr sidebjælkens synlighed efter rolle, og konfigurer skattesatser for fakturaer og betaling i AgencyHandy."
+---
+
+AgencyHandy giver dig dyb kontrol over, hvad dine klienter ser og oplever — fra den allerførste side, de lander på, når de logger ind, til hvilke sektioner af platformen de kan navigere i efter login. Denne side dækker fire sammenkoblede konfigurationsområder: **Log ind-portalen**, **Tilmeldings-portalen**, **Sidebjælke & adgangskontroller** og **Skattesatser**. Tilsammen lader disse indstillinger dig skabe en poleret, rollepassende oplevelse for alle brugere i dit workspace.
+
+<Note>
+  Alle indstillinger på denne side kræver **Super Admin**- eller **Admin**-adgang. Gå til **Workspace Config** i venstre sidebjælke for at tilgå hver sektion.
+</Note>
+
+---
+
+<Tabs>
+  <Tab title="Sign-in Portal">
+    ## Log ind-portal
+
+    Log ind-portalen er den loginside, dine klienter og teammedlemmer ser, når de tilgår dit AgencyHandy-workspace. Tilpasning af den sikrer, at det første indtryk, klienter har, er fuldt brandmærket — komplet med dit bureaus billeder, overskrift og budskab.
+
+    ### Hvad du kan tilpasse
+
+    | Element       | Beskrivelse                                                    | Grænse                    |
+    |---------------|----------------------------------------------------------------|---------------------------|
+    | **Overskrift** | Hovedtitlen der vises øverst på loginsiden                    | Maks. 120 tegn            |
+    | **Billede**   | Et brandmærket foto eller illustration vist på siden          | PNG, JPG, JPEG — maks. 5 MB |
+    | **Undertekst** | En kort besked under loginfelterne                            | Maks. 300 tegn            |
+
+    ### Trin til at tilpasse log ind-portalen
+
+    <Steps>
+      <Step title="Åbn indstillinger for log ind-portal">
+        Gå til **Workspace Config** i venstre navigation, og vælg derefter **Log ind-portal** fra undermenuen.
+      </Step>
+      <Step title="Indtast en tilpasset overskrift">
+        Skriv din ønskede overskrift i feltet **Overskrift**. Hold den kortfattet og relevant — for eksempel _"Velkommen tilbage til [Bureaunavn]"_ eller _"Din klientportal."_ Den maksimale længde er 120 tegn.
+      </Step>
+      <Step title="Upload et brandmærket billede">
+        Klik på uploadområdet eller træk og slip en billedfil (PNG, JPG eller JPEG, maksimalt 5 MB) for at tilføje et visuelt element til loginsiden. Dette billede vises typisk ved siden af loginformularen.
+
+        <Tip>
+          Brug et billede af høj kvalitet, der repræsenterer dit bureau — et foto af dit team, en ren brandillustration eller en professionel baggrund. Sørg for, at filstørrelsen er under 5 MB for at undgå uploadfejl.
+        </Tip>
+      </Step>
+      <Step title="Tilføj undertekst">
+        I feltet **Undertekst** skal du skrive en kort besked, der vises under loginfelterne — for eksempel en velkomstnote, supportkontakt eller en kort tagline. Hold den under 300 tegn.
+      </Step>
+      <Step title="Forhåndsvis og gem">
+        Gennemgå loginsidelayoutet ved hjælp af forhåndsvisningen. Når du er tilfreds, klik på **Gem** (eller **Opdater**) for at anvende ændringerne. Ændringer træder i kraft med det samme.
+      </Step>
+    </Steps>
+
+    ### Nulstilling til standardindstillinger
+
+    Klik på **Nulstil standardindstillinger** på siden Log ind-portal for at fjerne alle tilpasninger og gendanne den originale AgencyHandy-loginside.
+
+    <Warning>
+      Nulstilling til standardindstillinger kan ikke fortrydes. Alle tilpassede overskrifter, billeder og undertekster slettes permanent. Klik på **Annuller**, hvis du er usikker — ikke-gemte ændringer kasseres, og de aktuelle gemte indstillinger forbliver intakte.
+    </Warning>
+
+    ### Bedste praksis
+
+    - Hold overskriften kort og indbydende — klienter ser den, inden de logger ind, så gør den beroligende.
+    - Brug et professionelt billede, der repræsenterer dit bureau. Undgå generiske stockfotos, der føles afkoblet fra dit brand.
+    - Forhåndsvis på forskellige skærmstørrelser inden lagring for at sikre, at billede og tekstlayout ser korrekt ud.
+    - Hvis billedet ikke kan uploades, skal du bekræfte, at det opfylder format- (PNG, JPG, JPEG) og størrelseskravene (under 5 MB).
+  </Tab>
+
+  <Tab title="Sign-up Portal">
+    ## Tilmeldings-portal
+
+    Tilmeldings-portalen er den registreringsside, nye klienter lander på, når de opretter en konto i dit workspace. Tilpasning af den skaber en konsistent brandmærket oplevelse fra den allerførste interaktion, en potentiel klient har med dit bureaus platform.
+
+    ### Hvad du kan tilpasse
+
+    | Element       | Beskrivelse                                                        | Grænse                    |
+    |---------------|--------------------------------------------------------------------|---------------------------|
+    | **Overskrift** | Hovedtitlen der vises øverst på tilmeldingssiden                  | Maks. 120 tegn            |
+    | **Billede**   | Et brandmærket foto eller illustration vist på siden              | PNG, JPG, JPEG — maks. 5 MB |
+    | **Undertekst** | En kort besked under registreringsfelterne                        | Maks. 300 tegn            |
+
+    ### Trin til at tilpasse tilmeldings-portalen
+
+    <Steps>
+      <Step title="Åbn indstillinger for tilmeldings-portal">
+        Gå til **Workspace Config** i venstre navigation, og vælg derefter **Tilmeldings-portal** fra undermenuen.
+      </Step>
+      <Step title="Indtast en tilpasset overskrift">
+        Skriv en overskrift i feltet **Overskrift**, der byder nye klienter velkommen. For eksempel _"Kom i gang med [Bureaunavn]"_ eller _"Opret din klientkonto."_ Maksimalt 120 tegn.
+      </Step>
+      <Step title="Upload et brandmærket billede">
+        Klik på uploadområdet eller træk og slip en billedfil (PNG, JPG eller JPEG, maksimalt 5 MB). Dette billede vises på tilmeldingssiden ved siden af registreringsformularen.
+
+        <Tip>
+          Brug samme visuelle stil og farvepalet på både din log ind- og tilmeldings-portals billeder for at skabe en sammenhængende oplevelse på tværs af de to sider.
+        </Tip>
+      </Step>
+      <Step title="Tilføj undertekst">
+        Skriv en kort støttebesked i feltet **Undertekst** — for eksempel vejledning om, hvad der sker efter tilmelding, eller en kort værdibeskrivelse. Maksimalt 300 tegn.
+      </Step>
+      <Step title="Forhåndsvis og gem">
+        Gennemgå tilmeldingssiden ved hjælp af forhåndsvisningsindstillingen. Klik på **Gem** (eller **Opdater**) for at anvende ændringer med det samme.
+      </Step>
+    </Steps>
+
+    ### Nulstilling til standardindstillinger
+
+    Klik på **Nulstil standardindstillinger** på siden Tilmeldings-portal for at fjerne alle tilpasninger og gendanne den originale AgencyHandy-tilmeldingsside.
+
+    <Warning>
+      Denne handling kan ikke fortrydes. Alle tilpassede overskrifter, billeder og undertekstkonfigurationer slettes permanent.
+    </Warning>
+
+    ### Bedste praksis
+
+    - Match tonen i tilmeldingsoverskriften til din overordnede klientkommunikationsstil — professionel, venlig eller begge dele.
+    - Hold underteksten fokuseret: fortæl nye klienter, hvad der sker, efter de registrerer sig (f.eks. _"Når du tilmelder dig, sender vores team dig en velkomst-e-mail inden for 24 timer."_).
+    - Test selv tilmeldingsflowet efter at have gemt ændringer for at bekræfte, at siden ser ud og opfører sig som forventet.
+  </Tab>
+
+  <Tab title="Sidebar & Access">
+    ## Sidebjælke & adgangskontroller
+
+    Indstillingerne for Sidebjælke & adgang lader dig kontrollere præcis, hvad hver brugerrolle kan se i venstre navigationsmenu. Du kan omdøbe menupunkter, så de matcher dit bureaus terminologi, bytte standardikoner ud med tilpassede og slå synligheden til/fra for enhver menusektion per rolle. Resultatet er en renere, målrettet grænseflade for alle, der logger ind.
+
+    ### Roller du kan konfigurere
+
+    - Klient
+    - Super Admin
+    - Admin
+    - Manager
+    - Medarbejder
+    - Tilpasset (alle tilpassede roller, du har oprettet under Roller & tilladelser)
+
+    ### Trin til at tilpasse sidebjælkens menupunkter
+
+    <Steps>
+      <Step title="Åbn indstillinger for Sidebjælke & adgang">
+        Gå til **Workspace Config**, og vælg derefter **Sidebjælke & adgang** fra indstillingsmenuen.
+      </Step>
+      <Step title="Klik på Tilpas">
+        Klik på knappen **Tilpas** øverst i panelet. Den komplette liste over aktuelle sidebjælkemenupunkter vises under kategorien **Hoved**.
+      </Step>
+      <Step title="Omdøb et menupunkt">
+        Klik på et menupunkts tekstfelt og skriv den nye etiket. For eksempel omdøb "Dashboard" til "Oversigt" eller "CRM" til "Kontakter." Klik på **Gem** for at anvende det nye navn.
+      </Step>
+      <Step title="Skift et menuikon">
+        Klik på ikonet ved siden af et menupunkts navn. En popup åbnes med en række ikonindstillinger — vælg et fra biblioteket, eller upload et tilpasset billede på 32×32 px for at bruge dit eget brandmærkede ikon. Klik på **Gem** for at anvende.
+      </Step>
+    </Steps>
+
+    ### Trin til at konfigurere rollebaseret synlighed
+
+    <Steps>
+      <Step title="Klik på Rediger adgang">
+        Klik på knappen **Rediger adgang** (ved siden af knappen **Tilpas**). Du vil se faner for hver tilgængelig rolle.
+      </Step>
+      <Step title="Vælg en rolle">
+        Klik på fanen for den rolle, du vil konfigurere — for eksempel **Klient**.
+      </Step>
+      <Step title="Slå synlighed af menupunkter til/fra">
+        For hvert angivne menupunkt kan du bruge til/fra-knappen til at vise eller skjule det for den valgte rolle. For eksempel kan du skjule **Fakturaer** og **Abonnementer** fra klienter, mens de forbliver synlige for admins og managers.
+      </Step>
+      <Step title="Gem dine ændringer">
+        Klik på **Gem**. De opdaterede synlighedsindstillinger træder i kraft med det samme — brugere ser ændringerne ved næste sidenavigation eller efter at have logget ind igen.
+      </Step>
+      <Step title="Nulstil til standardindstillinger, hvis nødvendigt">
+        Klik på **Nulstil til standard** på en hvilken som helst rolles fane for at gendanne de originale synlighedsindstillinger for den pågældende rolle.
+      </Step>
+    </Steps>
+
+    <Tip>
+      En ren, minimal sidebjælke forbedrer klientoplevelsen. At vise klienter kun det, de har brug for — såsom **Dashboard**, **Ordrer** og **Beskeder** — reducerer forvirring og forhindrer dem i at støde ind i interne sektioner.
+    </Tip>
+
+    ### Eksempel på rollekonfigurationer
+
+    | Rolle        | Anbefalede synlige sektioner                                    |
+    |--------------|-----------------------------------------------------------------|
+    | Klient       | Dashboard, Ordrer, Beskeder, Fakturaer (hvis nødvendigt)        |
+    | Manager      | CRM, Projekter, Timeseddel, Opgaver                             |
+    | Medarbejder  | Dashboard, Opgaver, Projekter, Beskeder                         |
+    | Super Admin  | Alle sektioner (ingen begrænsninger)                            |
+
+    ### Vigtige noter
+
+    - **Ændringer er øjeblikkelige:** Opdateringer af rollesynlighed afspejles øjeblikkeligt, efter brugere opdaterer eller logger ind igen.
+    - **Den mest tilladte rolle vinder:** Hvis en bruger har flere roller, har rollen med den bredeste adgang forrang.
+    - **Tilpassede ikoner:** Upload billeder på 32×32 px, der matcher dit bureaus brandvisuals i sidebjælken.
+    - **Navnekonsistens:** Brug klare, konsistente navnekonventioner, som hele dit team forstår — undgå forkortelser eller intern jargon, som nye teammedlemmer ikke kender.
+  </Tab>
+
+  <Tab title="Tax Rates">
+    ## Skattesatser
+
+    Funktionen Skattesatser lader dig oprette, administrere og anvende skattekonfigurationer på tværs af dine ydelser, abonnementer og fakturaer. Du kan opsætte flere skattetyper — moms, GST, salgsskat og andre — med lande- og statsspecifikke satser, understøttelse af både inklusive og eksklusive prismodeller og automatisk anvendelse ved betaling baseret på klientens placering.
+
+    <Note>
+      Kun **Super Admins** og **Admins** kan oprette, redigere eller slette skattekonfigurationer.
+    </Note>
+
+    ### Skattekoncepter i oversigt
+
+    | Begreb          | Definition                                                                                                       |
+    |-----------------|------------------------------------------------------------------------------------------------------------------|
+    | **Eksklusiv**   | Skat lægges oveni den angivne pris ved betaling (f.eks. 100 kr. + 10% skat = 110 kr. i alt)                    |
+    | **Inklusiv**    | Skat er allerede inkluderet i den viste pris (f.eks. 110 kr. i alt inkluderer allerede skat)                    |
+    | **Skatte-ID**   | Dit bureaus skatteregistreringsnummer, vist på fakturaer                                                         |
+
+    ### Trin 1: Opret en skattesats
+
+    <Steps>
+      <Step title="Åbn Skattesatser">
+        Gå til **Workspace Config**, og klik derefter på fanen **Skattesatser**.
+      </Step>
+      <Step title="Klik på + Ny skat">
+        Klik på knappen **+ Ny skat**. En formular vises.
+      </Step>
+      <Step title="Udfyld skatteoplysningerne">
+        Udfyld følgende felter:
+
+        - **Titel / Skattetype** *(påkrævet)*: Indtast et beskrivende navn, f.eks. Standard moms, Reduceret GST eller US salgsskat. Maksimalt 255 tegn.
+        - **Skatte-ID** *(valgfrit)*: Dit bureaus skatteregistreringsnummer. Maksimalt 20 tegn.
+        - **Hjemland**: Vælg det primære land, denne skat gælder for.
+        - **Hjemlands generelle skattesats %** *(valgfrit)*: Standardsatsen for dit hjemland.
+        - **Landsspecifikke satser** *(valgfrit)*: Tilføj per-lands satser med valgfri stat, postnummer og procent. Dette er nyttigt for bureauer, der betjener klienter i flere skattejurisdiktioner.
+      </Step>
+      <Step title="Angiv status">
+        Slå skatten til **Aktiv** for at gøre den umiddelbart tilgængelig til brug i ydelser og fakturaer. Sæt den til **Inaktiv** for at gemme konfigurationen uden at anvende den på nye køb endnu.
+      </Step>
+      <Step title="Gem">
+        Klik på **Gem**. Skatten vises i din liste over skattesatser og er nu tilgængelig til at tilknytte ydelser.
+      </Step>
+    </Steps>
+
+    <Tip>
+      Du kan understøtte op til 4 decimaler i skattesatsernes procenter. En skattesats på 0% er gyldig — brug den til nulsatsvarer eller compliance-scenarier, hvor skat skal anføres, men beløbet er nul.
+    </Tip>
+
+    ### Trin 2: Tilknyt skatter til ydelser
+
+    <Steps>
+      <Step title="Åbn ydelsen til redigering">
+        Naviger til **Ydelser** og opret en ny ydelse eller rediger en eksisterende.
+      </Step>
+      <Step title="Gå til sektionen Yderligere oplysninger">
+        Fortsæt til trin 3 (Yderligere oplysninger) i ydelsesopsætningsguiden.
+      </Step>
+      <Step title="Tilføj skatter til ydelsen">
+        Klik på **Tilføj skat**, og vælg en eller flere skattetyper fra din konfigurerede liste. Vælg, om skatter gælder som **inklusive** eller **eksklusive** for denne ydelse. Denne indstilling gælder for alle tilknyttede skatter på ydelsen, herunder opsætningsgebyrer og tilvalg.
+      </Step>
+    </Steps>
+
+    ### Trin 3: Sådan anvendes skatter
+
+    Skatter kan anvendes **automatisk ved betaling** eller **manuelt på fakturaer**:
+
+    **Automatisk (betaling)**
+    - Skatter tilknyttet en ydelse beregnes automatisk baseret på klientens faktureringssted.
+    - Klienten skal angive sit land, stat og postnummer ved betaling for at anvende stedsbaseret skat.
+    - For Stripe Indien-konti er fulde stedsoplysninger (land, stat, postnummer) obligatoriske.
+
+    **Manuelt (faktura)**
+    - Når du opretter en faktura manuelt, klik på **Tilføj skatter** for at vælge, hvilke skatter der skal anvendes.
+    - Faktureringsadressefelter udfyldes automatisk.
+    - **Kun eksklusive skatter** kan anvendes på manuelle fakturaer — inklusive skatter understøttes ikke i dette flow.
+
+    ### Visning af skat på faktura
+
+    Alle fakturaer, der inkluderer en skat, viser følgende oplysninger:
+
+    - **Skattenavn** — den etiket, du har angivet (f.eks. moms, GST)
+    - **Skatteprocent** — den anvendte sats (f.eks. 25%)
+    - **Skattebeløb** — det beregnede opkrævede beløb
+
+    ### Administration af eksisterende skattesatser
+
+    - **Rediger en skat:** Klik på skatteposten på listen for at opdatere dens titel, sats eller landsregler. Opdateringer gælder kun for fremtidige fakturaer og køb.
+    - **Slet en skat:** Slettede skatter gælder ikke længere for nye køb eller abonnementer, men eksisterende fakturaer, der inkluderede dem, er upåvirket.
+    - **Deaktiver en skat:** Sæt en skat til **Inaktiv** for at stoppe anvendelsen på nye køb uden at slette konfigurationen.
+
+    ### Vigtige noter
+
+    - **Kuponrabatter anvendes før skat:** Når en klient bruger en rabatkupon, beregnes skatten på den nedsatte pris, ikke den originale pris.
+    - **Flere skatter per ydelse:** Du kan tilknytte mere end én skat til en enkelt ydelse (f.eks. moms + GST på samme tid).
+    - **Skat gælder for tilvalg og opsætningsgebyrer:** Hvis din ydelse har et opsætningsgebyr eller tilvalg, anvendes skat på disse beløb også.
+    - **Klientens placering er forudfyldt:** Hvis en klient har et faktureringsland og en stat gemt i sin profil, er disse felter forudfyldt ved betaling. Det at redigere placeringen under betaling opdaterer dog **ikke** klientens profil.
+    - **Statsregistrering baseret på postnummer:** For amerikanske klienter kan systemet automatisk registrere staten fra postnummeret og anvende den korrekte regionale skat, hvis den er konfigureret.
+  </Tab>
+</Tabs>

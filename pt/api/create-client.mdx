@@ -1,0 +1,137 @@
+---
+title: "API AgencyHandy: Criar um Novo Cliente Programaticamente"
+sidebarTitle: "Criar Cliente"
+description: "Adicione novos clientes programaticamente ao seu workspace AgencyHandy, enviando para o endpoint bulk-client o nome, e-mail e dados de contacto."
+---
+
+O endpoint Criar Cliente permite-lhe adicionar clientes diretamente ao seu workspace AgencyHandy a partir de um sistema externo. Ao contrário dos leads, os clientes são contactos totalmente integrados que podem ser atribuídos a encomendas, faturas e projetos. Utilize este endpoint para sincronizar novos clientes a partir de um CRM, formulário de integração ou qualquer outra fonte de dados.
+
+<Note>
+  Antes de utilizar este endpoint, complete o guia de [Primeiros Passos](/pt/api/getting-started) para obter a sua chave de API e ID de Empresa. Ao contrário do endpoint Criar Lead, criar um cliente **não** requer uma etapa separada de consulta de ID de Função.
+</Note>
+
+## Pré-requisitos
+
+- ✅ Chave de API gerada em **Configuração do Workspace → Chave de API**
+- ✅ ID de Empresa obtido a partir de `GET {{URL}}/accounts/companies`
+
+---
+
+## Endpoint
+
+```
+POST {{URL}}/members/bulk-client
+```
+
+## Cabeçalhos
+
+| Cabeçalho | Valor |
+|---|---|
+| `x-api-key` | A sua chave de API |
+| `companyId` | O seu ID de Empresa |
+| `Content-Type` | `application/json` |
+
+## Corpo do pedido
+
+O corpo do pedido é um **array JSON**. Pode criar um ou mais clientes num único pedido.
+
+<ParamField body="firstName" type="string" required>
+  O primeiro nome do cliente.
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  O apelido do cliente.
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  O endereço de e-mail do cliente. Deve ser único no seu workspace.
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  Defina como `false` para um cliente completamente novo. Defina como `true` ao converter um lead existente num cliente.
+</ParamField>
+
+<ParamField body="status" type="string">
+  O estado do cliente. Valores comuns: `New`, `Active`. Predefinição para `New` se omitido.
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  O número de telefone do cliente.
+</ParamField>
+
+<ParamField body="source" type="string">
+  Como adquiriu este cliente. Valores de exemplo: `website`, `referral`, `social`.
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  A posição do cliente na coluna do quadro. Predefinição para `1`.
+</ParamField>
+
+## Exemplo de pedido
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-client" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyId: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+## Resposta de sucesso
+
+```json
+{
+  "message": "Client created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  Texto de confirmação em caso de sucesso.
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  Array de objetos de cliente criados.
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  ID único do cliente recém-criado. Utilize este ID ao atribuir o cliente a encomendas ou faturas através da API.
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  O nome completo do cliente (firstName + lastName).
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  O estado do cliente tal como armazenado.
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  A função atribuída ao membro — será `"client"`.
+</ResponseField>
+
+<Note>
+  O cabeçalho `companyId` para este endpoint utiliza **I** maiúsculo em `Id` — `companyId` — ao contrário de alguns outros endpoints que utilizam `companyid` (tudo em minúsculas). Utilize a capitalização exata indicada acima para evitar erros de autenticação.
+</Note>
+
+<Tip>
+  Passe múltiplos objetos de cliente no array para criar clientes em massa numa única chamada à API. Cada objeto deve ter um endereço de `email` único. E-mails duplicados causarão um erro de validação para essa entrada.
+</Tip>

@@ -1,0 +1,77 @@
+---
+title: "Połącz Stripe, aby akceptować płatności online w AgencyHandy"
+sidebarTitle: "Stripe"
+description: "Połącz swoje konto Stripe z AgencyHandy, aby wysyłać faktury i pobierać bezpieczne płatności online od klientów bez opuszczania platformy."
+---
+
+Integracja AgencyHandy ze Stripe umożliwia akceptowanie płatności kartą bezpośrednio od klientów za pośrednictwem faktur wysyłanych wewnątrz platformy. Po połączeniu klienci widzą znany im checkout hostowany przez Stripe, a status płatności automatycznie synchronizuje się z AgencyHandy — bez konieczności ręcznego uzgadniania.
+
+<Note>
+  Tylko role **SuperAdmin** i **Admin** mogą łączyć integrację Stripe lub nią zarządzać. Przed rozpoczęciem musisz również posiadać zweryfikowane konto Stripe z odpowiednimi uprawnieniami.
+</Note>
+
+## Łączenie Stripe
+
+<Steps>
+  <Step title="Otwórz ustawienia integracji Stripe">
+    Na lewym pasku bocznym przejdź do **Integracje → Integracja Stripe**.
+  </Step>
+
+  <Step title="Autoryzuj w Stripe">
+    Kliknij **Połącz Stripe**. Zostaniesz przekierowany do ekranu autoryzacji Stripe. Zaloguj się na swoje konto Stripe i kliknij **Zezwól**, aby przyznać AgencyHandy dostęp. Po zatwierdzeniu Stripe automatycznie przekieruje Cię z powrotem do AgencyHandy.
+  </Step>
+
+  <Step title="Skonfiguruj preferencje płatności">
+    Po przekierowaniu skonfiguruj następujące opcje:
+
+    - **Waluta** — wybierz domyślną walutę rozliczeniową dla swojego obszaru roboczego.
+    - **Metody płatności** — włącz lub wyłącz typy kart (Visa, Mastercard itp.) obsługiwane przez Twoje konto Stripe.
+    - **Preferencje rozliczeniowe** — opcjonalnie ustaw stawkę podatkową, prefiks faktury lub domyślne warunki płatności i terminy płatności.
+  </Step>
+
+  <Step title="Zapisz i potwierdź">
+    Kliknij **Zapisz**. Gdy integracja jest aktywna, pojawia się baner potwierdzający. Stripe jest teraz połączony z Twoim obszarem roboczym, a klienci mogą płacić faktury online.
+  </Step>
+</Steps>
+
+## Testowanie integracji
+
+Przed wysłaniem faktur na żywo przeprowadź szybki test kompleksowy, aby potwierdzić, że połączenie działa prawidłowo.
+
+<Steps>
+  <Step title="Utwórz fakturę testową">
+    Utwórz roboczą fakturę w AgencyHandy i przypisz jej niewielką kwotę.
+  </Step>
+  <Step title="Wyślij do siebie">
+    Wyślij fakturę na swój własny adres e-mail lub do członka zespołu, który może pomóc w teście.
+  </Step>
+  <Step title="Dokonaj płatności testowej">
+    Otwórz link do faktury i dokonaj płatności przy użyciu testowej karty Stripe (np. `4242 4242 4242 4242`), jeśli Twoje konto Stripe jest w trybie testowym, lub prawdziwej karty w trybie produkcyjnym.
+  </Step>
+  <Step title="Zweryfikuj aktualizację statusu">
+    Wróć do AgencyHandy i potwierdź, że status faktury zmienił się na **Opłacona**. Jeśli tak się stało, integracja działa prawidłowo.
+  </Step>
+</Steps>
+
+## Zarządzanie połączeniem Stripe
+
+Wróć do **Integracje → Integracja Stripe** w dowolnym momencie, aby:
+
+- **Zaktualizować ustawienia płatności** — zmienić walutę, metody płatności lub preferencje rozliczeniowe.
+- **Sprawdzić status połączenia** — zweryfikować, czy Stripe jest aktualnie aktywny.
+- **Rozłączyć** — kliknij **Rozłącz**, aby odłączyć konto Stripe. Pobieranie płatności zostaje natychmiast wstrzymane do czasu ponownego połączenia.
+- **Ponownie połączyć** — kliknij ponownie **Połącz Stripe** i ponownie autoryzuj, aby przywrócić integrację.
+
+<Warning>
+  Rozłączenie Stripe wstrzymuje pobieranie płatności dla wszystkich zaległych faktur. Klienci nie będą mogli płacić online, dopóki nie ponownie połączysz i nie zautoryzujesz integracji.
+</Warning>
+
+## Dodatkowe uwagi
+
+<Note>
+  AgencyHandy nigdy nie przechowuje Twoich danych uwierzytelniających do płatności. Wszystkie dane dotyczące płatności są obsługiwane wyłącznie przez bezpieczną infrastrukturę Stripe.
+</Note>
+
+- **Jedno konto na obszar roboczy** — możesz połączyć tylko jedno konto Stripe z każdym obszarem roboczym AgencyHandy. Aby zmienić konta, najpierw rozłącz obecne, a następnie połącz nowe.
+- **Status faktury na żywo** — wszystkie faktury powiązane ze Stripe nadal odzwierciedlają aktualizacje statusu w czasie rzeczywistym otrzymywane bezpośrednio ze Stripe.
+- **Waluta** — upewnij się, że waluta skonfigurowana w AgencyHandy odpowiada walucie włączonej na Twoim koncie Stripe, aby uniknąć błędów płatności.

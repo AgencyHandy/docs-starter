@@ -1,0 +1,162 @@
+---
+title: "Palaikymo bilietai — klientų užklausų valdymas AgencyHandy"
+sidebarTitle: "Palaikymo bilietai"
+description: "Kurkite, redaguokite ir valdykite palaikymo bilietus AgencyHandy, kad galėtumėte sekti klientų užklausas, nustatyti prioritetus, priskirti būsenas ir išsaugoti visą sąveikų istoriją."
+---
+
+AgencyHandy bilietų funkcija suteikia jūsų agentūrai struktūrizuotą būdą tvarkyti klientų užklausas, problemas ir prašymus. Užuot leidę klausimams pasimesti el. laiškuose ar pokalbių gijose, kiekviena palaikymo užklausa saugoma biliete su tema, prioritetu, vykdytoju ir būsena — visa tai galima ieškoti ir sekti viename informaciniame skydelyje. Tiek jūsų komanda, tiek klientai gali kurti bilietus, o visa kiekvieno bilieto istorija išsaugoma, kad niekas nepraslystų pro akis.
+
+## Prieiga prie bilietų informacinio skydelio
+
+Kairiajame šoniniame meniu spustelėkite **Bilietai**, kad atidarytumėte bilietų informacinį skydelį. Čia galite:
+
+- Kurti, redaguoti ir šalinti bilietus
+- Ieškoti bilietų pagal **temą**, **kliento vardą** arba **užsakymo ID**
+- Iš karto matyti bilieto būseną ir prioritetą
+- Stebėti visus atvirus, sulaikytus ir uždarytus agentūros bilietus
+
+## Ką daro bilietai
+
+<CardGroup cols={3}>
+  <Card title="Palaikymo užklausų valdymas" icon="headset">
+    Klientai ir agentūros komandos nariai gali teikti klausimus, problemas ar prašymus per bilietų sistemą. Kiekvienas pateikimas yra registruojamas ir sekamas.
+  </Card>
+  <Card title="Problemų sprendimo sekimas" icon="circle-check">
+    Priskirkite bilietus komandos nariams, nustatykite prioritetus ir atnaujinkite būsenas, kol darbas juda link sprendimo. Visi lieka informuoti.
+  </Card>
+  <Card title="Komunikacijos istorija" icon="clock-rotate-left">
+    Kiekvienas bilietas išsaugo visą veiksmų, atnaujinimų ir sąveikų istoriją. Peržiūrėkite ankstesnius ryšius bet kuriuo metu kontekstui arba audito tikslais.
+  </Card>
+</CardGroup>
+
+## Bilieto kūrimas
+
+Tiek agentūros komandos nariai, tiek klientai gali kurti bilietus. Kūrimo procesas abiem yra vienodas.
+
+**Kas gali kurti bilietus:** Super administratorius, administratorius, projekto vadovas ir klientas.
+
+<Steps>
+  <Step title="Atidarykite bilietų informacinį skydelį">
+    Kairiajame šoniniame meniu spustelėkite **Bilietai**.
+  </Step>
+  <Step title="Spustelėkite + Kurti bilietą">
+    Spustelėkite mygtuką **+ Kurti bilietą**. Pasirodys forma.
+  </Step>
+  <Step title="Pasirinkite klientą">
+    Išskleidžiamajame sąraše pasirinkite kliento vardą. Tai susieja bilietą su tinkamu kliento profiliu.
+  </Step>
+  <Step title="Susieti su užsakymu (nebūtina)">
+    Įveskite **užsakymo ID**, kad susietumėte bilietą su konkrečiu užsakymu. Tai naudinga atsiskaitymo ar su projektu susijusių problemų atveju. Taip pat galite sukurti bilietą be užsakymo ID bendrosioms užklausoms.
+  </Step>
+  <Step title="Užpildykite bilieto informaciją">
+    Užpildykite šiuos laukus:
+
+    | Laukas | Aprašymas |
+    |-------|-------------|
+    | **Tema** | Trumpas, aprašomasis bilieto pavadinimas |
+    | **Aprašymas** | Išsamus problemos ar prašymo paaiškinimas |
+    | **Vykdytojo vardas** | Komandos narys, atsakingas už šio bilieto sprendimą |
+    | **Prioritetas** | Skubumo lygis: aukščiausias, aukštas, įprastas, žemas arba žemiausias |
+    | **Išdavimo data** | Bilieto sukūrimo data (įrašoma automatiškai) |
+    | **Būsena** | Dabartinė būsena: atidarytas, sulaikytas arba uždarytas |
+  </Step>
+  <Step title="Spustelėkite Kurti">
+    Spustelėkite **Kurti**, kad išsaugotumėte bilietą. Jis iš karto pasirodys bilietų informaciniame skydelyje.
+  </Step>
+</Steps>
+
+## Bilietų būsenos
+
+Bilietai pereina tris būsenas, kai darbas juda į priekį:
+
+| Būsena | Reikšmė |
+|--------|---------|
+| **Atidarytas** | Bilietas buvo pateiktas ir aktyviai dirbama su juo |
+| **Sulaikytas** | Darbas su bilietu laikinai pristabdytas, paprastai laukiama daugiau informacijos |
+| **Uždarytas** | Problema išspręsta ir bilietas archyvuotas kaip nuoroda |
+
+<Tip>
+  Naudokite **sulaikymo** būseną, kai laukiate kliento atsakymo ar išorinio priklausomybės. Taip bilietas išlieka matomas, neužgriozdindamas aktyvios eilės.
+</Tip>
+
+## Bilieto redagavimas
+
+Agentūros komandos nariai gali bet kada atnaujinti bilieto informaciją, kad atspindėtų naują informaciją, prioriteto pakeitimus ar sprendimo atnaujinimus.
+
+**Kas gali redaguoti bilietus:** Super administratorius, administratorius ir projekto vadovas. Klientai gali kurti bilietus, tačiau negali jų redaguoti.
+
+<Note>
+  Galima redaguoti tik bilietus, sukurtus **agentūros pusėje**. Klientų pateiktų bilietų klientas negali keisti po pateikimo.
+</Note>
+
+<Steps>
+  <Step title="Atidarykite bilietų informacinį skydelį">
+    Kairiajame šoniniame meniu eikite į **Bilietai**.
+  </Step>
+  <Step title="Pasirinkite bilietą redagavimui">
+    Pažymėkite žymimąjį langelį šalia norimo redaguoti bilieto. Mygtukas **Redaguoti bilietą** taps aktyvus.
+  </Step>
+  <Step title="Spustelėkite Redaguoti bilietą">
+    Spustelėkite mygtuką **Redaguoti bilietą**. Bilieto forma atsidarys su visais esamais duomenimis iš anksto užpildyta.
+  </Step>
+  <Step title="Atlikite pakeitimus">
+    Atnaujinkite laukus, kuriuos reikia pakeisti — aprašymą, prioritetą, vykdytoją, būseną ar kitą informaciją.
+  </Step>
+  <Step title="Išsaugoti">
+    Spustelėkite **Išsaugoti**, kad pritaikytumėte pakeitimus. Bilietas iš karto atnaujinamas informaciniame skydelyje.
+  </Step>
+  <Step title="Pranešti apie atnaujinimus">
+    Jei pakeitimas yra reikšmingas — pavyzdžiui, prioriteto eskalavimas arba vykdytojo keitimas — pranešite atitinkamiems komandos nariams, kad jie galėtų tinkamai reaguoti.
+  </Step>
+</Steps>
+
+## Bilieto šalinimas
+
+Pašalinkite pasenusus ar nereikalingus bilietus, kad informacinis skydelis liktų švarus ir aktualus.
+
+**Kas gali šalinti bilietus:** Super administratorius, administratorius ir projekto vadovas.
+
+<Steps>
+  <Step title="Pasirinkite bilietą">
+    Bilietų informaciniame skydelyje pažymėkite žymimąjį langelį šalia norimo šalinti bilieto. Mygtukas **Šalinti** aktyvuosis.
+  </Step>
+  <Step title="Spustelėkite Šalinti">
+    Spustelėkite **Šalinti**. Pasirodys patvirtinimo langas.
+  </Step>
+  <Step title="Patvirtinkite šalinimą">
+    Patvirtinkite savo sprendimą lange. Bilietas yra visam laikui pašalinamas iš sistemos.
+  </Step>
+  <Step title="Patikrinkite pašalinimą">
+    Peržiūrėkite bilietų sąrašą arba ieškokite bilieto pagal temą ar užsakymo ID, kad patvirtintumėte, jog jo nebėra.
+  </Step>
+</Steps>
+
+<Warning>
+  Bilieto šalinimas yra **negrįžtamas ir jo negalima atšaukti**. Prieš šalindami įsitikinkite, kad svarbi komunikacija ar sprendimo pastabos iš bilieto buvo užfiksuotos kitur.
+</Warning>
+
+## Bilietų paieška ir filtravimas
+
+Naudokite paieškos juostą bilietų informacinio skydelio viršuje, kad greitai rastumėte bilietus. Galite ieškoti pagal:
+
+- **Temą** — bilieto pavadinimą
+- **Kliento vardą** — visus bilietus iš konkretaus kliento
+- **Užsakymo ID** — visus bilietus, susietus su konkrečiu užsakymu
+
+## Geriausia bilietų naudojimo praktika
+
+<Accordion title="Nuosekliai nustatykite prioritetų lygius">
+  Susitarkite su komanda dėl prioritetų skalės prieš pradėdami kurti bilietus. Jei „aukštas“ skirtingiems žmonėms reiškia skirtingus dalykus, eskalavimo darbo eigos sutriks. Naudokite aukščiausią prioritetą tik problemoms, kurios blokuoja klientų pristatymus.
+</Accordion>
+
+<Accordion title="Kai įmanoma, susiekite bilietus su užsakymais">
+  Bilieto susiejimas su užsakymo ID labai palengvina sekimą, kuri kliento problema veikia kurį projektą. Tai taip pat padeda peržiūrint ankstesnius konkrečio užsakymo bilietus.
+</Accordion>
+
+<Accordion title="Operatyviai uždarykite bilietus po sprendimo">
+  Kai problema išspręsta, iš karto pakeiskite būseną į **Uždarytas**. Bilietų palikimas atvirtų po sprendimo išpučia jūsų aktyvią eilę ir apsunkina tikro vykstančio darbo pastebėjimą.
+</Accordion>
+
+<Accordion title="Naudokite sulaikymo būseną laukimo laikotarpiams">
+  Kai laukiate kliento ar trečiosios šalies, nustatykite bilietą į **Sulaikytas**, o ne palikite atvirą. Tai suteikia jūsų komandai aiškų signalą, kad jokio veiksmo nereikia, kol neateis atsakymas.
+</Accordion>

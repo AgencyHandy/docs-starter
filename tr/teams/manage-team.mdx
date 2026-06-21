@@ -1,0 +1,132 @@
+---
+title: "AgencyHandy'de Ajans Ekip Üyelerini ve Rolleri Yönetme"
+sidebarTitle: "Ekibi Yönet"
+description: "Ekip üyelerini e-posta ile davet etme, roller ve izinler atama, mevcut üyeler için rolleri değiştirme ve kullanıcıları AgencyHandy çalışma alanınızdan kaldırma."
+---
+
+AgencyHandy'nin Ekipler özelliği, ajansınızın iş gücünü oluşturmak ve yönetmek için güvenli ve düzenli bir yol sunar. Üyeleri e-posta ile davet edersiniz, neyi görebileceklerini ve yapabileceklerini kontrol eden bir rol atarsınız; onlar da güvenli bir giriş bağlantısıyla kaydı tamamlar. Ekibiniz büyüdükçe rolleri istediğiniz zaman güncelleyebilir veya erişimi güncel ve ilgili tutmak için üyeleri kaldırabilirsiniz.
+
+## Ekip Dashboard'una Erişim
+
+Ekip Dashboard'unu açmak için sol kenar çubuğunda **Ekipler**'e tıklayın. Burada atanmış rolleriyle birlikte tüm mevcut ekip üyelerinin listesini görürsünüz. Bu görünümden yeni üyeler davet edebilir, rolleri güncelleyebilir ve çalışma alanından kişileri kaldırabilirsiniz.
+
+## AgencyHandy'deki Roller
+
+AgencyHandy'nin önceden belirlenmiş izin seviyelerine sahip beş varsayılan rolü vardır. Bir ekip üyesini davet ettiğinizde bu rollerden birini atarsınız. Üye katıldıktan sonra herhangi bir noktada rolünü değiştirebilirsiniz.
+
+| Rol | Tipik Yetenekler |
+|------|---------------------|
+| **Süper Yönetici** | Her şeye tam erişim — tüm ayarlar, tüm veriler, tüm ekip yönetimi eylemleri |
+| **Yönetici** | Faturalar, teklifler, siparişler, ekip yönetimi ve ayarlar dahil geniş erişim |
+| **Proje Yöneticisi (PM)** | Kendisine atanan siparişleri yönetir, siparişlerine ait görevleri görüntüler, ekip üyesi davet edebilir |
+| **Çalışan** | Doğrudan kendisine atanan görevlerle sınırlıdır; finansal veya yönetim bölümlerine erişimi yoktur |
+
+<Note>
+  Yalnızca **Süper Yöneticiler** ve **Yöneticiler** rolleri değiştirebilir veya ekip üyelerini silebilir. PM'ler yeni üyeler davet edebilir ancak mevcut üyeleri değiştiremez veya kaldıramaz.
+</Note>
+
+## Ekip Üyesi Davet Etme
+
+<Steps>
+  <Step title="Ekip Dashboard'unu Açın">
+    Sol kenar çubuğunda **Ekipler**'e tıklayın.
+  </Step>
+  <Step title="+ Ekip Oluştur'a tıklayın">
+    **+ Ekip Oluştur** düğmesine tıklayın. Bir davet formu görünecektir.
+  </Step>
+  <Step title="E-posta adresini girin">
+    Davet etmek istediğiniz kişinin e-posta adresini yazın. Bu zorunludur.
+  </Step>
+  <Step title="Bir rol atayın">
+    Açılır menüden uygun rolü seçin. Dikkatli seçin — bu, yeni üyenin ilk girişinden itibaren neye erişebileceğini belirler.
+  </Step>
+  <Step title="Daveti gönderin">
+    **Davet Et**'e tıklayın. AgencyHandy, davet edilen kişiye şunları içeren bir e-posta gönderir:
+    - Ajansınızın çalışma alanına **güvenli giriş URL'si**
+    - İlk girişte kullanılacak **bilgisayar tarafından oluşturulan şifre**
+  </Step>
+  <Step title="Üye kaydı tamamlar">
+    Davet edilen ekip üyesi e-postasındaki bağlantıyı takip eder, verilen kimlik bilgileriyle giriş yapar ve kayıt sürecini tamamlar. Giriş yaptıktan sonra ajans çalışma alanınıza eklenir ve hemen işbirliği yapmaya başlayabilir.
+  </Step>
+</Steps>
+
+<Tip>
+  Yeni ekip üyesinden, ilk girişinden sonra bilgisayar tarafından oluşturulan şifresini güvenli bir şifreyle değiştirmesini isteyin.
+</Tip>
+
+## Ekip Üyeleri İçin Rol Belirleme
+
+Rolleri iki şekilde atayabilir veya güncelleyebilirsiniz: davet sırasında veya üye zaten katıldıktan sonra.
+
+<Tabs>
+  <Tab title="Davet Ederken">
+    Davet formunu doldururken **Davet Et**'e tıklamadan önce açılır menüden rolü seçin. Rol, üye ilk kez giriş yaptığında geçerli olur.
+  </Tab>
+  <Tab title="Mevcut Üyeler İçin">
+    1. Ekip Dashboard'unu açmak için sol kenar çubuğunda **Ekipler**'e gidin.
+    2. Rolünü değiştirmek istediğiniz ekip üyesini bulun.
+    3. Adlarının sağındaki **aşağı ok** düğmesine tıklayın.
+    4. Varsayılan rol adlarının listesi görünecektir. Yeni rolü seçin.
+    5. Rol anında güncellenir — kayıt adımı gerekmez.
+  </Tab>
+</Tabs>
+
+<Warning>
+  Yalnızca **Süper Yöneticiler** ve **Yöneticiler** mevcut bir ekip üyesinin rolünü değiştirebilir.
+</Warning>
+
+## Rol İzinleri Özeti
+
+Hangi rolü atayacağınıza karar verirken bu tabloyu hızlı referans olarak kullanın.
+
+| Özellik | Süper Yönetici | Yönetici | PM | Çalışan |
+|---------|:-----------:|:-----:|:--:|:--------:|
+| Teklif oluşturma ve gönderme | ✅ | ✅ | ❌ | ❌ |
+| Fatura oluşturma ve yönetme | ✅ | ✅ | ✅ | ❌ |
+| Tüm siparişleri yönetme | ✅ | ✅ | Yalnızca atananlar | ❌ |
+| Tüm görevleri görüntüleme | ✅ | ✅ | Yalnızca atanılan siparişler | Yalnızca atanılan görevler |
+| Ekip üyelerini davet etme | ✅ | ✅ | ✅ | ❌ |
+| Rolleri değiştirme / üyeleri kaldırma | ✅ | ✅ | ❌ | ❌ |
+| Fatura ve ajans ayarlarına erişim | ✅ | ✅ | ❌ | ❌ |
+| Abonelikleri iptal etme | ✅ | ✅ | ❌ | ❌ |
+| Zaman çizelgesi verilerini dışa aktarma | ✅ | ✅ | ✅ | ❌ |
+
+## Ekip Üyesini Kaldırma
+
+Biri ajansınızdan ayrıldığında veya artık erişime ihtiyaç duymadığında, verilerinizi korumak için onları çalışma alanından kaldırın.
+
+<Steps>
+  <Step title="Ekip Dashboard'unu Açın">
+    Sol kenar çubuğunda **Ekipler**'e gidin.
+  </Step>
+  <Step title="Kaldırılacak üyeyi seçin">
+    Kaldırmak istediğiniz ekip üyesinin yanındaki onay kutusunu işaretleyin. **Sil** düğmesi etkin hale gelecektir.
+  </Step>
+  <Step title="Sil'e tıklayın">
+    **Sil** düğmesine tıklayın. Bir onay modalı görünecektir.
+  </Step>
+  <Step title="Kaldırmayı onaylayın">
+    Kararınızı onaylayın. AgencyHandy, üyenin çalışma alanına ve ilgili tüm kaynaklara erişimini anında iptal eder.
+  </Step>
+  <Step title="Devir teslim işlemlerini tamamlayın">
+    Kaldırma işleminin ardından, üyenin sorumlu olduğu açık görevleri veya siparişleri yeniden atayın ve ilgili belgeleri ve erişim izinlerini buna göre güncelleyin.
+  </Step>
+</Steps>
+
+<Warning>
+  Bir ekip üyesini kaldırma işlemi **geri alınamaz**. Erişimleri kalıcı olarak iptal edilir. Aynı kişiye gelecekte tekrar erişim vermeniz gerekirse yeni bir davet göndermeniz gerekir.
+</Warning>
+
+## Ek Notlar
+
+<Accordion title="E-posta ile güvenli kayıt">
+  Her davet güvenli bir giriş URL'si aracılığıyla iletilir. Davet edilen kişi, platforma ilk kez erişmek için bu URL'yi bilgisayar tarafından oluşturulan şifreyle birlikte kullanır. Bu, yalnızca hedeflenen kişinin erişim kazanmasını sağlar.
+</Accordion>
+
+<Accordion title="Rol değişiklikleri anında geçerli olur">
+  Bir ekip üyesinin rolünü güncellediğinizde değişiklik anında uygulanır. Beklemede olan veya onay adımı yoktur — üyenin yeni izinleri bir sonraki sayfa yüklemesinde etkin olur.
+</Accordion>
+
+<Accordion title="Ekip üyeleri ve görev görünürlüğü">
+  Çalışan yalnızca doğrudan kendisine atanmış görevleri görebilir. PM yalnızca Yönetici olarak atandığı siparişler içindeki görevleri görebilir. Süper Yöneticiler ve Yöneticiler her şeyi görür. Eksik görevler veya siparişler konusundaki karışıklığı önlemek için roller atarken bunu göz önünde bulundurun.
+</Accordion>

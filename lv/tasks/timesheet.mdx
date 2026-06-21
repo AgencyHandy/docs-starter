@@ -1,0 +1,172 @@
+---
+title: "Laika izsekošana un laika uzskaites lapas pārvaldība AgencyHandy"
+sidebarTitle: "Laika uzskaites lapa"
+description: "Reģistrējiet laiku ar tiešraides taimeri vai manuālu ierakstu, filtrējiet darba žurnālus pēc uzdevuma, dalībnieka vai pakalpojuma, un eksportējiet laika uzskaites lapas datus kā CSV vai XLSX AgencyHandy."
+---
+
+AgencyHandy laika uzskaites lapas funkcija sniedz centrālu paneli, lai izsekotu katru stundu, ko jūsu komanda pavada uzdevumiem. Varat palaist tiešraides taimeri jebkuram uzdevumam, reģistrēt laiku ar atpakaļejošu datumu, izmantojot manuālu ierakstu, un pēc tam sadalīt datus pēc datumu diapazona, komandas dalībnieka vai pakalpojuma. Kad nepieciešams ziņot par produktivitāti vai izrakstīt rēķinu par laiku, varat eksportēt visu kā CSV vai XLSX dažos klikšķos. Tas ir būtisks rīks, lai nodrošinātu komandas atbildību un precizitāti laika norēķinos.
+
+## Kas var izmantot laika uzskaites lapas funkcijas
+
+| Funkcija | Super administrators | Administrators | PV | Darbinieks |
+|---------|:-----------:|:-----:|:--:|:--------:|
+| Skatīt savus laika žurnālus | ✅ | ✅ | ✅ | ✅ |
+| Reģistrēt laiku citu vārdā | ✅ | ✅ | ✅ | ❌ |
+| Rediģēt laika ierakstus | ✅ | ✅ | ✅ | ❌ |
+| Eksportēt laika uzskaites lapas datus | ✅ | ✅ | ✅ | ❌ |
+
+<Note>
+  Pirms laika izsekošanas uzdevumiem tiem jāpastāv. Pārliecinieties, ka uzdevumi ir izveidoti pasūtījumos, pirms mēģināt reģistrēt laiku.
+</Note>
+
+## Laika uzskaites lapas apskate
+
+<Steps>
+  <Step title="Atveriet laika uzskaites lapu">
+    Kreisajā sānjoslā noklikšķiniet uz **Laika uzskaites lapa**. Redzēsiet tabulu ar visiem komandas laika žurnāliem.
+
+    Katrā rindā ir norādīts datums, komandas dalībnieks, uzdevuma nosaukums, pakalpojums, reģistrētais laiks un jebkādas piezīmes, kas pievienotas ierakstam.
+  </Step>
+</Steps>
+
+## Laika ieraksta pievienošana
+
+Laika reģistrēšanai ir divas iespējas: tiešraides taimeris darbam, kas notiek, vai manuāls ieraksts laikam, ko jau esat pavadījis.
+
+<Tabs>
+  <Tab title="Palaist taimeri">
+    <Steps>
+      <Step title="Atlasiet uzdevumu">
+        Laika uzskaites lapas skatā atrodiet vai atlasiet uzdevumu, pie kura gatavojaties strādāt.
+      </Step>
+      <Step title="Noklikšķiniet uz Palaist taimeri">
+        Noklikšķiniet uz **Palaist taimeri**, lai reāllaikā sāktu izsekot laiku. Taimeris darbojas, līdz to apstādināt.
+      </Step>
+      <Step title="Apstādiniet, kad esat pabeidzis">
+        Kad darbs ir pabeigts, noklikšķiniet uz **Apstādināt**. AgencyHandy automātiski reģistrē pagājušo laiku pret atlasīto uzdevumu.
+      </Step>
+    </Steps>
+
+    <Tip>
+      Izmantojiet taimeri aktīvam, reāllaika darbam, lai nodrošinātu precīzu izsekošanu. Laika manuāla noapaļošana vai aplēse pēc fakta ir mazāk precīza nekā taimera darbināšana.
+    </Tip>
+  </Tab>
+  <Tab title="Manuāls ieraksts">
+    <Steps>
+      <Step title="Noklikšķiniet uz + Pievienot ierakstu">
+        Laika uzskaites lapas panelī noklikšķiniet uz **+ Pievienot ierakstu**. Parādīsies forma.
+      </Step>
+      <Step title="Aizpildiet ieraksta datus">
+        - **Uzdevums** — atlasiet uzdevumu, uz kuru attiecas šis laiks
+        - **Komandas dalībnieks** — piešķiriet laiku pareizajai personai (Administratori un Vadītāji var reģistrēt citu vārdā)
+        - **Pavadītais laiks** — ievadiet stundas un minūtes
+        - **Piezīmes** — pievienojiet jebkuru kontekstu par paveikto darbu
+      </Step>
+      <Step title="Saglabāt">
+        Noklikšķiniet uz **Saglabāt**, lai reģistrētu ierakstu. Tas nekavējoties parādīsies laika uzskaites lapas tabulā.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Filtrēšana pēc datumu diapazona
+
+Izmantojiet datumu filtrus, lai koncentrētos uz konkrētu laika periodu.
+
+<Steps>
+  <Step title="Atveriet datumu filtrus">
+    Laika uzskaites lapas paneļa augšējā labajā pusē noklikšķiniet uz datumu filtru vadīklām.
+  </Step>
+  <Step title="Atlasiet diapazonu">
+    Izvēlieties no iepriekš iestatītajiem diapazoniem:
+    - **Dienas** — tikai šodienas žurnāli
+    - **Nedēļas** — pašreizējā nedēļa
+    - **Mēneša** — pašreizējais mēnesis
+
+    Ilgākiem projektiem vai vēsturiskajiem pārskatiem atlasiet **Pielāgotu** datumu diapazonu, ievadot sākuma un beigu datumu.
+  </Step>
+  <Step title="Piemērot">
+    Noklikšķiniet uz **Piemērot**, lai atjauninātu tabulu ar atlasītā perioda žurnāliem.
+  </Step>
+</Steps>
+
+<Tip>
+  Pirms eksportēšanas filtrējiet, lai ģenerētu fokusētus pārskatus. Eksportējot pilnu nefiltreētu laika uzskaites lapu, var rasties ļoti lieli faili aktīvām aģentūrām.
+</Tip>
+
+## Ierakstu grupēšana
+
+Grupēšana pārkārto laika uzskaites lapas rindas bez datu noņemšanas. Tas palīdz ātrāk lasīt un analizēt žurnālus.
+
+<Steps>
+  <Step title="Atveriet nolaižamo izvēlni Grupēt pēc">
+    Laika uzskaites lapas paneļa augšdaļā noklikšķiniet uz nolaižamās izvēlnes **Grupēt pēc**.
+  </Step>
+  <Step title="Atlasiet grupēšanu">
+    Izvēlieties no šādām iespējām:
+
+    | Grupēšanas opcija | Ko tā rāda |
+    |----------------|---------------|
+    | **Uzdevuma nosaukums** | Visi laika ieraksti grupēti zem katra uzdevuma |
+    | **Komandas dalībnieks** | Visi ieraksti grupēti zem katras personas |
+    | **Pakalpojums → Uzdevuma nosaukums** | Ieraksti grupēti pēc pakalpojuma, pēc tam sadalīti pēc uzdevuma katrā pakalpojumā |
+  </Step>
+</Steps>
+
+<Note>
+  Grupēšana ir tikai vizuāla izmaiņa — tā neietekmē pamatā esošos datus vai eksportēto saturu. Eksporti vienmēr ietver visas redzamās rindas.
+</Note>
+
+## Uzdevuma detaļu apskate no laika uzskaites lapas
+
+<Steps>
+  <Step title="Noklikšķiniet uz uzdevuma nosaukuma">
+    Laika uzskaites lapas tabulā noklikšķiniet uz jebkura **Uzdevuma nosaukuma**. AgencyHandy aizved jūs uz attiecīgā uzdevuma pilnās detaļas lapu.
+  </Step>
+  <Step title="Pārskatiet uzdevuma kontekstu">
+    Uzdevuma detaļu lapā atradīsiet pilnīgu laika žurnāla vēsturi, pievienotās piezīmes, izpildītājus, statusu un citu uzdevuma līmeņa informāciju. Izmantojiet šo skatu, lai izpētītu ierakstus vai verificētu paveikto darbu.
+  </Step>
+</Steps>
+
+## Laika uzskaites lapas datu eksports
+
+Eksportējiet savu laika uzskaites lapu algu aprēķinam, klientu norēķinu pārskatiem vai ārējiem projektu pārvaldības rīkiem.
+
+<Steps>
+  <Step title="Vispirms piemērojiet filtrus (ieteicams)">
+    Izmantojiet datumu diapazona filtru, lai sašaurinātu eksportu nepieciešamajam periodam. Tas saglabā failu fokusētu un pārvaldāmu.
+  </Step>
+  <Step title="Noklikšķiniet uz Eksportēt">
+    Laika uzskaites lapas paneļa augšdaļā noklikšķiniet uz pogas **Eksportēt**.
+  </Step>
+  <Step title="Izvēlieties formātu">
+    Atlasiet:
+    - **CSV** — izklājlapu rīkiem, piemēram, Excel, Google Sheets, vai datu konveijeru rīkiem
+    - **XLSX** — Excel formatētām darbgrāmatām ar saglabātu kolonnu formatējumu
+  </Step>
+  <Step title="Lejupielādējiet failu">
+    Fails automātiski tiek lejupielādēts uz jūsu ierīci. Katrs eksports ietver visas redzamās kolonnas: datumu, komandas dalībnieku, uzdevuma nosaukumu, pakalpojumu, reģistrēto laiku un piezīmes.
+  </Step>
+</Steps>
+
+<Warning>
+  Ja eksports neaktivizē lejupielādi, jūsu pārlūka **uznirstošo logu bloķētājs** var liegt faila lejupielādi. Atspējojiet uznirstošo logu bloķēšanu AgencyHandy un mēģiniet vēlreiz.
+</Warning>
+
+## Papildu piezīmes
+
+<Accordion title="Taimeris pret manuālo ierakstu">
+  Taimeris ir vislabāk piemērots aktīvam, reāllaika darbam. Manuālie ieraksti ir vislabāk piemēroti gadījumiem, kad aizmirsāt palaist taimeri vai laiks jāreģistrē ar atpakaļejošu datumu. Abas metodes laika uzskaites lapas tabulā rada identiskus žurnāla ierakstus.
+</Accordion>
+
+<Accordion title="Grupēšana pret filtrēšanu">
+  Filtri **samazina** tabulā rādāmās rindas. Grupēšana **pārkārto** jau redzamās rindas. Abus var piemērot vienlaikus — filtrējiet pēc datumu diapazona, pēc tam grupējiet pēc komandas dalībnieka, lai redzētu katras personas kopsummas attiecīgajam periodam.
+</Accordion>
+
+<Accordion title="Eksporti ietver visas redzamās kolonnas">
+  Katrs eksports iegūst pašreizējo redzamās tabulas stāvokli: datumu, lietotāju, uzdevumu, pakalpojumu, laiku un piezīmes. Ja esat piemērojis grupēšanas iestatījumu, eksports arī atspoguļo grupēšanas struktūru.
+</Accordion>
+
+<Accordion title="Pielāgoti diapazoni vēsturiskajiem datiem">
+  Ilgstošiem projektiem vai ceturkšņa pārskatiem izmantojiet pielāgotā datumu diapazona opciju, lai iegūtu vēsturiskos laika uzskaites lapas datus ārpus iepriekš iestatītajiem dienas/nedēļas/mēneša logiem.
+</Accordion>

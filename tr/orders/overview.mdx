@@ -1,0 +1,91 @@
+---
+title: "Siparişlere Genel Bakış: AgencyHandy'de Müşteri İşlerini Yönetme"
+sidebarTitle: "Genel Bakış"
+description: "AgencyHandy'de siparişlerin nasıl çalıştığını anlayın — durumlar, roller, sipariş ayrıntıları, manuel siparişler ve yayınlanmamış hizmetler için eklentiler."
+---
+
+Siparişler, AgencyHandy'nin operasyonel omurgasıdır. Bir sipariş, müşterinin bir hizmet veya ürün talebini temsil eder ve ekibinizin ilerlemeyi takip ettiği, görevleri yönettiği, geri bildirim alışverişinde bulunduğu ve sonuçları teslim ettiği merkezi çalışma alanı olarak işlev görür. İster bir müşteri yayınlanmış hizmet kataloğunuzdan sipariş versin, ister ekibiniz manuel olarak bir tane oluştursun, her sipariş ajansınızı düzenli ve müşterilerinizi bilgili tutan aynı yapılandırılmış yaşam döngüsünü izler.
+
+## Sipariş Neleri Kapsar
+
+Her sipariş, temel bilgileri bir bakışta sunar ve ekip üyelerine çalışmayı koordine edecek tek bir yer sağlar:
+
+| Alan | Açıklama |
+|---|---|
+| **Sipariş Kimliği** | Her sipariş için otomatik oluşturulan benzersiz tanımlayıcı |
+| **Müşteri** | Siparişin ait olduğu müşteri |
+| **Hizmet** | Teslim edilen hizmet |
+| **Proje Yöneticisi (PY)** | Teslimattan sorumlu ekip üyesi (isteğe bağlı) |
+| **Bütçe** | Sipariş için kararlaştırılan fiyat |
+| **Başlangıç Tarihi** | Çalışmanın başlayacağı tarih |
+| **Teslim Tarihi** | Siparişin tamamlanması için son tarih |
+| **Sipariş Özeti** | Müşteri talimatları, notlar ve eklenmiş referans dosyaları |
+| **Görevler** | Ekip üyelerine atanan ayrı iş kalemleri |
+| **Tartışmalar** | Ajans personeli ile müşteriler arasındaki konulu görüşmeler |
+
+## Sipariş Durumları
+
+Her sipariş sabit bir durum kümesinden geçer. Bu durumları ekleyemez veya yeniden adlandıramazsınız.
+
+<Note>
+Yalnızca Süper Yöneticiler, Yöneticiler ve Proje Yöneticileri bir siparişin durumunu değiştirebilir.
+</Note>
+
+| Durum | Anlamı |
+|---|---|
+| **Beklemede** | Sipariş oluşturuldu ve çalışmanın başlaması bekleniyor |
+| **Devam Ediyor** | Aktif çalışma sürüyor |
+| **İncelemede** | Teslim edilecekler sunuldu ve müşteri veya dahili inceleme bekleniyor |
+| **Tamamlandı** | Sipariş tamamen teslim edildi ve kabul edildi |
+| **İptal Edildi** | Sipariş iptal edildi ve artık aktif değil |
+
+## Role Dayalı Erişim
+
+AgencyHandy'deki farklı roller, siparişler içinde farklı yeteneklere sahiptir:
+
+| Rol | Sipariş Oluşturabilir | Sipariş Düzenleyebilir | Sipariş Silebilir | Durumu Değiştirebilir | Görev Ekleyebilir | Ekip Üyesi Ekleyebilir |
+|---|---|---|---|---|---|---|
+| **Süper Yönetici** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Yönetici** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Proje Yöneticisi (PY)** | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ |
+| **Çalışan** | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| **Müşteri** | ❌ | ❌ | ❌ | ❌ | ✅ (yalnızca istek) | ❌ |
+
+<Tip>
+Müşteriler geri bildirim gönderebilir ve siparişlerdeki tartışmalara katılabilir. Bir siparişe atanan çalışanlar görevleri görüntüleyip üzerinde çalışabilir ancak siparişin kendisini yönetemez.
+</Tip>
+
+## Siparişlerle Neler Yapabilirsiniz
+
+AgencyHandy, siparişleri yaşam döngüleri boyunca yönetmek için eksiksiz bir araç seti sunar:
+
+- Yayınlanan hizmetlerden veya hâlâ geliştirilmekte olan hizmetler için manuel olarak müşterilere **sipariş oluşturun**
+- Reddederken gerekçe belirtme seçeneğiyle müşteri tarafından gönderilen siparişleri **kabul edin ve reddedin**
+- İlerleme, atanan ekip üyeleri, başlangıç ve teslim tarihleri, bütçe ve özet dahil olmak üzere **sipariş ayrıntılarını görüntüleyin**
+- Kimliğe, duruma, müşteri adına veya diğer kriterlere göre tüm siparişlerde **sıralama, filtreleme ve arama yapın**
+- Ayrı iş birimlerini takip etmek ve atamak için doğrudan sipariş içinde **görev ekleyin**
+- Müşteriler ve ekip üyeleriyle bağlam içinde iletişim kurmak için **tartışma başlatın**
+
+## Yayınlanmamış Hizmetler için Manuel Siparişler
+
+Sipariş oluşturmak yalnızca kamuya yayınladığınız hizmetlerle sınırlı değildir. Süper Yöneticiler ve Yöneticiler, yayınlanmamış hizmetler için manuel siparişler oluşturabilir — hizmet hâlâ geliştirme aşamasındayken, geçici olarak kullanılamadığında veya resmi lansmanından önce belirli bir müşteriye sunulduğunda kullanışlıdır.
+
+Sipariş oluşturma formunu açtığınızda **Hizmet** açılır menüsü hem yayınlanan hem de yayınlanmamış hizmetleri gösterir; böylece hangisi uygunsa seçebilirsiniz. Diğer tüm sipariş alanları ve iş akışları standart bir siparişle aynı şekilde çalışır.
+
+## Manuel Siparişlerde Eklentiler
+
+Manuel sipariş oluştururken müşterilerin temel hizmetin ötesinde özelleştirilmiş paketler alabilmesi için **eklenti hizmetleri** ekleyebilirsiniz. Eklentilerin önceden oluşturulmuş ve sipariş formunda seçenek olarak görünmeden önce **Formlar** bölümünde ilgili hizmete bağlanmış olması gerekir.
+
+<Note>
+Eklenti seçimi, manuel sipariş formunda yalnızca seçilen hizmete en az bir eklenti bağlanmışsa görünür. Görmüyorsanız eklentinizin hizmet yapılandırmasında düzgün bağlandığını doğrulayın.
+</Note>
+
+Bağlı eklentilere sahip bir hizmet seçildikten sonra siparişi sonuçlandırıp göndermeden önce bu eklentileri dahil edebilirsiniz.
+
+## Bildirimler
+
+AgencyHandy, siparişler ilerledikçe doğru kişileri otomatik olarak bilgilendirir:
+
+- Bir PY, Yönetici veya Süper Yönetici tarafından sipariş oluşturulduğunda, şirketinizdeki tüm Süper Yöneticiler erişim kazanır ve müşteri oluşturma bildirimi alır.
+- Bir ekip üyesi siparişe eklendiğinde, o üye bildirim alır.
+- Bir sipariş içinde görevler oluşturulduğunda, müşteri bildirim alır.

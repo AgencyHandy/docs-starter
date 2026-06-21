@@ -1,0 +1,205 @@
+---
+title: "AgencyHandy API: PUT을 사용하여 기존 주문 업데이트"
+sidebarTitle: "주문 업데이트"
+description: "AgencyHandy API를 사용하여 PUT 요청을 통해 주문 세부 정보 변경, 상태 변경, 프로젝트 매니저 재배정, 기존 주문에 파일 첨부 등을 수행하세요."
+---
+
+주문 업데이트 엔드포인트를 사용하면 AgencyHandy의 기존 주문(프로젝트)을 수정할 수 있습니다 — 이름, 상태, 예산, 일정, 배정된 매니저 등을 외부 시스템이나 자동화 스크립트에서 변경할 수 있습니다. 엔드포인트는 파일 첨부도 지원하며, 파일은 주문의 시스템 폴더에 추가됩니다.
+
+<Note>
+  이 엔드포인트를 사용하기 전에 [시작하기](/ko/api/getting-started) 가이드를 완료하여 API 키와 회사 ID를 얻으세요.
+</Note>
+
+<Warning>
+  이 엔드포인트는 `x-api-key` 헤더 대신 `Authorization: Bearer <token>` (로그인된 구성원의 액세스 토큰)을 사용합니다. 호출자가 대상 회사의 **승인된 구성원**으로 인증되어 있는지 확인하세요. 승인되지 않은 호출자는 `403 PermissionError`를 받습니다.
+</Warning>
+
+## 사전 요구 사항
+
+- ✅ 승인된 워크스페이스 구성원의 유효한 **Bearer 토큰**
+- ✅ `GET {{URL}}/accounts/companies`에서 조회한 **회사 ID**
+- ✅ 업데이트하려는 주문의 **주문 ID** (프로젝트 ID, `pid`)
+
+---
+
+## 엔드포인트
+
+```
+PUT {{URL}}/orders?pid=<ORDER_ID>
+```
+
+**Content-Type:** `multipart/form-data` — 파일이 첨부되지 않는 경우에도 서버의 멀티파트 파서를 충족하기 위해 이를 사용합니다.
+
+## 헤더
+
+| 헤더 | 필수 | 설명 |
+|---|---|---|
+| `Authorization` | 예 | `Bearer <ACCESS_TOKEN>` — 로그인된 구성원의 액세스 토큰. |
+| `companyid` | 예 | 주문이 속한 회사의 Mongo ObjectId. |
+| `clientid` | 선택 | 실시간 클라이언트 소켓 ID. 제공 시 알림에 포함됩니다. |
+
+## 쿼리 파라미터
+
+<ParamField query="pid" type="string" required>
+  업데이트할 주문 / 프로젝트 ID입니다. 쿼리 문자열 파라미터로 전달합니다.
+</ParamField>
+
+## 요청 본문 필드
+
+<ParamField body="name" type="string">
+  주문 제목을 업데이트합니다. 최소 2자 이상이어야 합니다.
+</ParamField>
+
+<ParamField body="status" type="string">
+  주문의 새 상태입니다. 다음 중 하나여야 합니다: `Pending`, `Ongoing`, `Review`, `Completed`, `Cancelled`.
+
+  **허용된 전환:**
+  - `Review`는 `Ongoing` 또는 다른 `Review` 다음에만 올 수 있습니다. `Pending`에서 직접 `Review`로 이동하면 `400 ValidationError`가 반환됩니다.
+  - 이미 `Completed` 또는 `Cancelled` 상태인 주문은 업데이트할 수 없습니다.
+  - 클라이언트는 `Pending`을 지난 주문을 취소할 수 없습니다.
+</ParamField>
+
+<ParamField body="budget" type="number">
+  총 예산 금액입니다. `≥ 0`이어야 합니다. `currency`도 함께 제공되지 않는 한 주문의 기존 통화를 사용합니다.
+</ParamField>
+
+<ParamField body="currency" type="string">
+  예산의 통화 코드입니다. 예시: `USD`, `CAD`, `EUR`.
+</ParamField>
+
+<ParamField body="quantity" type="number">
+  패키지에 대해 구매한 단위 수입니다. `≥ 1`이어야 합니다.
+</ParamField>
+
+<ParamField body="deadline" type="string">
+  주문 마감일에 대한 ISO 8601 날짜 문자열입니다. 예시: `"2025-12-31T00:00:00.000Z"`.
+</ParamField>
+
+<ParamField body="kickoffDate" type="string">
+  프로젝트 시작일에 대한 ISO 8601 날짜 문자열입니다.
+</ParamField>
+
+<ParamField body="notes" type="string">
+  팀에게 표시되는 내부 메모입니다.
+</ParamField>
+
+<ParamField body="brief" type="string">
+  클라이언트 브리프 또는 프로젝트 요약입니다.
+</ParamField>
+
+<ParamField body="assignedProjectManagers" type="array">
+  이 주문에 배정할 프로젝트 매니저 구성원 ID의 전체 목록입니다. 새 ID는 팀에 추가되고, 제거된 ID는 삭제됩니다. 각 ID는 동일 회사 내 `projectManager` 역할을 가진 구성원에 속해야 합니다.
+</ParamField>
+
+<ParamField body="markTasksAsDone" type="boolean">
+  `status`가 `Completed` 또는 `Cancelled`일 때 **필수**입니다. `true`이면 상태 변경 후 주문의 모든 태스크가 완료로 표시됩니다. `false`이면 태스크가 현재 상태를 유지합니다.
+</ParamField>
+
+<ParamField body="rejectRequestedTasks" type="boolean">
+  `status`가 `Completed` 또는 `Cancelled`일 때만 허용됩니다. `true`이면 상태 업데이트 후 클라이언트가 요청한 모든 미결 태스크가 거절됩니다.
+</ParamField>
+
+<ParamField body="repeatCount" type="number">
+  반복 빈도 변경 시 **구독** 주문에만 필요합니다. `repeatDuration`과 함께 사용합니다.
+</ParamField>
+
+<ParamField body="repeatDuration" type="string">
+  구독 주문에 `repeatCount`와 함께 필수입니다. 다음 중 하나: `day`, `week`, `month`, `year`.
+</ParamField>
+
+<ParamField body="billingCycleCount" type="number">
+  반복 청구 주기에 대한 선택적 제한입니다. 기본값은 `0` (제한 없음)입니다.
+</ParamField>
+
+<ParamField body="billingCycleEvent" type="string">
+  각 청구 주기를 처리하는 방법입니다. 다음 중 하나: `createOrderWithTask`, `noChange`.
+</ParamField>
+
+<ParamField body="files" type="file">
+  파일 첨부 (0개 이상). 파일은 주문의 시스템 폴더에 추가되며, 기존 파일은 절대 덮어쓰지 않습니다. `multipart/form-data` 인코딩을 사용하고 각 파일을 `files` 필드 아래에 첨부합니다.
+</ParamField>
+
+---
+
+## 요청 예시
+
+<CodeGroup>
+
+```bash cURL (no files)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "currency=USD" \
+  --form "quantity=1" \
+  --form "assignedProjectManagers[]=PROJECT_MANAGER_ID" \
+  --form "notes=Scope finalized with client." \
+  --form "brief=Launch-ready design refresh."
+```
+
+```bash cURL (with file)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "repeatCount=3" \
+  --form "repeatDuration=month" \
+  --form "billingCycleEvent=createOrderWithTask" \
+  --form "files=@/path/to/creative-brief.pdf"
+```
+
+</CodeGroup>
+
+**동등한 JSON 페이로드** (파일 전송 시 멀티파트 폼 항목으로 변환):
+
+```json
+{
+  "name": "Website Redesign",
+  "status": "Review",
+  "budget": 12000,
+  "currency": "USD",
+  "quantity": 1,
+  "assignedProjectManagers": ["{{PROJECT_MANAGER_ID}}"],
+  "repeatCount": 3,
+  "repeatDuration": "month",
+  "billingCycleEvent": "createOrderWithTask",
+  "notes": "Scope finalized with client.",
+  "brief": "Launch-ready design refresh."
+}
+```
+
+---
+
+## 응답
+
+| HTTP 상태 | 설명 |
+|---|---|
+| `200 OK` | 업데이트 성공. |
+| `400 ValidationError` | 유효하지 않은 주문 ID, 차단된 상태 전환, 또는 잘못된 형식의 페이로드. 관련된 경우 응답에 `fieldName`이 포함됩니다. |
+| `403 PermissionError` | 호출자가 승인된 구성원이 아니거나, 회사 역할이 없거나, 워크스페이스 구독이 만료되었거나, 클라이언트가 금지된 취소를 시도했습니다. |
+| `500 Internal Server Error` | 처리되지 않은 예외 — 서버 로그를 확인하세요. |
+
+### 성공 응답
+
+```json
+{
+  "message": "Project has been updated"
+}
+```
+
+---
+
+## 비즈니스 규칙 및 부작용
+
+- **상태 전환**에는 제한이 있습니다. `Review`는 `Ongoing` 또는 다른 `Review` 다음에만 올 수 있습니다. `Pending → Review` 시도는 `400 ValidationError`를 반환합니다.
+- 상태가 `Pending`에서 `Ongoing`, `Review`, 또는 `Completed`로 이동하면 주문의 파일 폴더가 활성화되어 업로드된 파일이 프로젝트 팀에게 접근 가능해집니다.
+- `status`를 `Completed` 또는 `Cancelled`로 설정하는 경우 `markTasksAsDone`을 명시적으로 `true` 또는 `false`로 설정해야 **합니다**.
+- `Review`, `Completed`, 또는 `Cancelled`로의 상태 변경은 자동으로 클라이언트 알림을 트리거합니다:
+  - **Review** — 검토가 필요하다는 알림을 클라이언트에게 보냅니다.
+  - **Completed** — 클라이언트에게 `orderCompletion` 알림을 전송합니다.
+  - **Cancelled** — 클라이언트에게 `orderCancellation` 알림을 전송합니다.
+- 해당 이벤트를 구독하는 활성 웹훅이 있는 경우, 모든 성공적인 업데이트는 업데이트된 주문 문서 및 첨부 파일 메타데이터와 함께 `ORDER.UPDATED` 웹훅 이벤트를 발생시킵니다.

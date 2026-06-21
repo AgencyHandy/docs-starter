@@ -1,0 +1,205 @@
+---
+title: "API AgencyHandy: Aggiorna un Ordine Esistente con PUT"
+sidebarTitle: "Update Order"
+description: "Usa l'API AgencyHandy per aggiornare i dettagli degli ordini, cambiare lo stato, riassegnare i project manager e allegare file a un ordine esistente tramite richiesta PUT."
+---
+
+L'endpoint Aggiorna Ordine ti consente di modificare un ordine (progetto) esistente in AgencyHandy — cambiarne il nome, lo stato, il budget, la tempistica, i manager assegnati e altro ancora — tutto da un sistema esterno o uno script di automazione. L'endpoint supporta anche gli allegati file, che vengono aggiunti alla cartella di sistema dell'ordine.
+
+<Note>
+  Prima di utilizzare questo endpoint, completa la guida [Getting Started](/it/api/getting-started) per ottenere la tua chiave API e l'ID Azienda.
+</Note>
+
+<Warning>
+  Questo endpoint usa `Authorization: Bearer <token>` (il token di accesso di un membro autenticato) anziché solo l'header `x-api-key`. Assicurati che il tuo chiamante sia autenticato come **membro approvato** dell'azienda di destinazione. I chiamanti non autorizzati ricevono un `403 PermissionError`.
+</Warning>
+
+## Prerequisiti
+
+- ✅ Un **token Bearer** valido per un membro approvato del workspace
+- ✅ **ID Azienda** recuperato da `GET {{URL}}/accounts/companies`
+- ✅ L'**ID Ordine** (ID Progetto, `pid`) dell'ordine che vuoi aggiornare
+
+---
+
+## Endpoint
+
+```
+PUT {{URL}}/orders?pid=<ORDER_ID>
+```
+
+**Content-Type:** `multipart/form-data` — usa questo anche quando non vengono allegati file per soddisfare il parser multipart del server.
+
+## Header
+
+| Header | Obbligatorio | Descrizione |
+|---|---|---|
+| `Authorization` | Sì | `Bearer <ACCESS_TOKEN>` — il token di accesso del membro autenticato. |
+| `companyid` | Sì | ObjectId Mongo dell'azienda a cui appartiene l'ordine. |
+| `clientid` | Opzionale | ID socket client in tempo reale. Se fornito, le notifiche lo includono. |
+
+## Parametri di query
+
+<ParamField query="pid" type="string" required>
+  L'ID Ordine / Progetto da aggiornare. Passalo come parametro della stringa di query.
+</ParamField>
+
+## Campi del corpo della richiesta
+
+<ParamField body="name" type="string">
+  Aggiorna il titolo dell'ordine. Minimo 2 caratteri.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Nuovo stato per l'ordine. Deve essere uno tra: `Pending`, `Ongoing`, `Review`, `Completed`, `Cancelled`.
+
+  **Transizioni consentite:**
+  - `Review` può seguire solo `Ongoing` o un altro `Review`. Passare direttamente da `Pending` a `Review` restituisce un `400 ValidationError`.
+  - Gli ordini già `Completed` o `Cancelled` non possono essere aggiornati.
+  - I clienti non possono annullare un ordine che è passato oltre `Pending`.
+</ParamField>
+
+<ParamField body="budget" type="number">
+  Importo totale del budget. Deve essere `≥ 0`. Usa la valuta esistente dell'ordine a meno che non venga fornita anche `currency`.
+</ParamField>
+
+<ParamField body="currency" type="string">
+  Codice valuta per il budget. Esempi: `USD`, `CAD`, `EUR`.
+</ParamField>
+
+<ParamField body="quantity" type="number">
+  Numero di unità acquistate per il pacchetto. Deve essere `≥ 1`.
+</ParamField>
+
+<ParamField body="deadline" type="string">
+  Stringa di data ISO 8601 per la scadenza dell'ordine. Esempio: `"2025-12-31T00:00:00.000Z"`.
+</ParamField>
+
+<ParamField body="kickoffDate" type="string">
+  Stringa di data ISO 8601 per la data di inizio del progetto.
+</ParamField>
+
+<ParamField body="notes" type="string">
+  Note interne visibili al tuo team.
+</ParamField>
+
+<ParamField body="brief" type="string">
+  Brief del cliente o riepilogo del progetto.
+</ParamField>
+
+<ParamField body="assignedProjectManagers" type="array">
+  Elenco completo degli ID membro dei project manager da assegnare a questo ordine. I nuovi ID vengono aggiunti al team; gli ID rimossi vengono eliminati. Ogni ID deve appartenere a un membro con ruolo `projectManager` all'interno della stessa azienda.
+</ParamField>
+
+<ParamField body="markTasksAsDone" type="boolean">
+  **Obbligatorio** quando `status` è `Completed` o `Cancelled`. Quando `true`, tutte le attività nell'ordine vengono segnate come completate dopo il cambio di stato. Quando `false`, le attività rimangono nel loro stato attuale.
+</ParamField>
+
+<ParamField body="rejectRequestedTasks" type="boolean">
+  Consentito solo quando `status` è `Completed` o `Cancelled`. Quando `true`, tutte le attività in sospeso richieste dal cliente vengono rifiutate dopo l'aggiornamento dello stato.
+</ParamField>
+
+<ParamField body="repeatCount" type="number">
+  Richiesto solo per gli ordini di **abbonamento** quando si cambia la frequenza di ricorrenza. Da abbinare a `repeatDuration`.
+</ParamField>
+
+<ParamField body="repeatDuration" type="string">
+  Richiesto insieme a `repeatCount` per gli ordini di abbonamento. Uno tra: `day`, `week`, `month`, `year`.
+</ParamField>
+
+<ParamField body="billingCycleCount" type="number">
+  Limite opzionale sui cicli di fatturazione ricorrenti. Predefinito a `0` (nessun limite).
+</ParamField>
+
+<ParamField body="billingCycleEvent" type="string">
+  Come viene gestito ogni ciclo di fatturazione. Uno tra: `createOrderWithTask`, `noChange`.
+</ParamField>
+
+<ParamField body="files" type="file">
+  Zero o più allegati file. I file vengono aggiunti alla cartella di sistema dell'ordine; i file esistenti non vengono mai sovrascritti. Usa la codifica `multipart/form-data` e allega ogni file nel campo `files`.
+</ParamField>
+
+---
+
+## Richiesta di esempio
+
+<CodeGroup>
+
+```bash cURL (no files)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "currency=USD" \
+  --form "quantity=1" \
+  --form "assignedProjectManagers[]=PROJECT_MANAGER_ID" \
+  --form "notes=Scope finalized with client." \
+  --form "brief=Launch-ready design refresh."
+```
+
+```bash cURL (with file)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "repeatCount=3" \
+  --form "repeatDuration=month" \
+  --form "billingCycleEvent=createOrderWithTask" \
+  --form "files=@/path/to/creative-brief.pdf"
+```
+
+</CodeGroup>
+
+**Payload JSON equivalente** (converti in voci del modulo multipart quando invii file):
+
+```json
+{
+  "name": "Website Redesign",
+  "status": "Review",
+  "budget": 12000,
+  "currency": "USD",
+  "quantity": 1,
+  "assignedProjectManagers": ["{{PROJECT_MANAGER_ID}}"],
+  "repeatCount": 3,
+  "repeatDuration": "month",
+  "billingCycleEvent": "createOrderWithTask",
+  "notes": "Scope finalized with client.",
+  "brief": "Launch-ready design refresh."
+}
+```
+
+---
+
+## Risposte
+
+| Stato HTTP | Descrizione |
+|---|---|
+| `200 OK` | Aggiornamento riuscito. |
+| `400 ValidationError` | ID ordine non valido, transizione di stato bloccata o payload malformato. La risposta include `fieldName` quando pertinente. |
+| `403 PermissionError` | Il chiamante non è un membro approvato, non ha il ruolo aziendale, l'abbonamento al workspace è scaduto, o un cliente ha tentato una cancellazione non consentita. |
+| `500 Internal Server Error` | Eccezione non gestita — controlla i log del server. |
+
+### Risposta di successo
+
+```json
+{
+  "message": "Project has been updated"
+}
+```
+
+---
+
+## Regole di business ed effetti collaterali
+
+- Le **transizioni di stato** sono limitate. `Review` può seguire solo `Ongoing` o un altro `Review`. Il tentativo `Pending → Review` restituisce `400 ValidationError`.
+- Spostare uno stato da `Pending` a `Ongoing`, `Review` o `Completed` attiva la cartella file dell'ordine in modo che i file caricati diventino accessibili al team di progetto.
+- Impostare `status` su `Completed` o `Cancelled` **richiede** che `markTasksAsDone` sia esplicitamente impostato su `true` o `false`.
+- I cambi di stato in `Review`, `Completed` o `Cancelled` attivano automaticamente le notifiche ai clienti:
+  - **Review** — notifica al cliente che è necessaria una revisione.
+  - **Completed** — invia la notifica `orderCompletion` al cliente.
+  - **Cancelled** — invia la notifica `orderCancellation` al cliente.
+- Ogni aggiornamento riuscito genera un evento webhook `ORDER.UPDATED` con il documento dell'ordine aggiornato e i metadati degli allegati, se hai un webhook attivo sottoscritto a quell'evento.

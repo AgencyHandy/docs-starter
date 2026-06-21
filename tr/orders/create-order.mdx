@@ -1,0 +1,143 @@
+---
+title: "AgencyHandy'de Sipariş Oluşturma, Düzenleme ve Silme"
+sidebarTitle: "Sipariş Oluştur"
+description: "AgencyHandy'de sipariş oluşturma, düzenleme ve silme için adım adım kılavuz — rol gereksinimleri, form alanları ve durum geçişleri dahil."
+---
+
+AgencyHandy'de bir sipariş oluşturmak, bir müşteriye hizmet sunmak için yapılandırılmış bir çalışma alanı sağlar. Müşteri, hizmet, fiyatlandırma, tarihler ve proje özeti gibi temel bilgileri önceden doldurursunuz; görevlerden tartışmalara kadar her şey bu tek kayıttan akar. Bu sayfa, sıfırdan sipariş oluşturma, sonradan güncelleme, durumunu değiştirme ve artık gerekli olmadığında silme adımlarını açıklar.
+
+## Gereksinimler
+
+- AgencyHandy'ye giriş yapmış olmanız gerekir.
+- Sipariş oluşturmak veya düzenlemek için **Süper Yönetici**, **Yönetici** veya **Proje Yöneticisi** rolüne sahip olmanız gerekir.
+- Siparişleri yalnızca **Süper Yöneticiler** ve **Yöneticiler** silebilir.
+
+## Yeni Sipariş Oluştur
+
+<Steps>
+  <Step title="Siparişlere Git">
+    AgencyHandy dashboard'unuzun sol kenar çubuğunda **Siparişler**'e tıklayın.
+  </Step>
+
+  <Step title="Oluşturma formunu açın">
+    Sağ üst köşedeki **+ Yeni Sipariş Oluştur** düğmesine tıklayın. Bir form görünecektir.
+  </Step>
+
+  <Step title="Sipariş bilgilerini doldurun">
+    Formdaki alanları tamamlayın:
+
+    | Alan | Zorunlu | Notlar |
+    |---|---|---|
+    | **Müşteri** | ✅ | Mevcut müşteri listenizden seçin |
+    | **Hizmet** | ✅ | Yayımlanmış ve yayımlanmamış hizmetleri içerir |
+    | **Proje Yöneticisi** | ❌ | İsteğe bağlı; teslimatı üstlenmesi için bir PM atayın |
+    | **Miktar** | ✅ | Sipariş edilen birim sayısı |
+    | **Fiyat** | ✅ | Sipariş için üzerinde anlaşılan bütçe |
+    | **Başlangıç Tarihi** | ✅ | Çalışmanın başladığı tarih |
+    | **Bitiş Tarihi** | ✅ | Teslim son tarihi |
+    | **Sipariş Özeti** | ❌ | Ekibiniz için talimatlar, gereksinimler veya referans notları |
+    | **Ekler** | ❌ | Siparişle ilgili destekleyici dosyalar |
+
+    <Tip>
+      Seçilen hizmetin bağlı eklentileri varsa formda bir **Eklenti** bölümü görünecektir. Göndermeden önce ilgili eklentileri ekleyin.
+    </Tip>
+  </Step>
+
+  <Step title="Girişlerinizi gözden geçirin">
+    Özellikle müşteri, hizmet, fiyat ve bitiş tarihi olmak üzere tüm alanları doğruluk açısından kontrol edin.
+  </Step>
+
+  <Step title="Siparişi gönderin">
+    Siparişi tamamlamak için **Oluştur**'a tıklayın. Sipariş başarıyla oluşturulduğunda bir onay mesajı alacaksınız.
+  </Step>
+</Steps>
+
+### Sipariş Oluşturduktan Sonra Ne Olur
+
+- Şirketinizdeki tüm Süper Yöneticiler yeni siparişe otomatik olarak erişim kazanır.
+- Müşteri, siparişinin oluşturulduğuna dair bir bildirim alır.
+- Sipariş, **Beklemede** durumuyla **Siparişler** listesinde görünür.
+
+## Sipariş Düzenleme veya Güncelleme
+
+Bilgileri düzeltmek, fiyatlandırmayı ayarlamak, bitiş tarihini değiştirmek veya müşteri taleplerini karşılamak için siparişi herhangi bir zamanda güncelleyebilirsiniz.
+
+<Note>
+Bir siparişi düzenlemek için **Süper Yönetici**, **Yönetici** veya **Proje Yöneticisi** olmanız gerekir.
+</Note>
+
+<Steps>
+  <Step title="Siparişler listesini açın">
+    Sol kenar çubuğunda **Siparişler**'e gidin.
+  </Step>
+
+  <Step title="Düzenlenecek siparişi seçin">
+    Güncellemek istediğiniz siparişi bulun ve yanındaki onay kutusunu işaretleyin.
+  </Step>
+
+  <Step title="Düzenle düğmesini etkinleştirin">
+    Sağ üst köşede bir **Düzenle** düğmesi görünecektir. Sipariş ayrıntılarını düzenleme modunda açmak için tıklayın.
+  </Step>
+
+  <Step title="Gerekli alanları değiştirin">
+    Değiştirilmesi gereken alanları güncelleyin — müşteri bilgileri, hizmet, fiyatlandırma, tarihler, özet veya atanan PM.
+  </Step>
+
+  <Step title="Değişikliklerinizi kaydedin">
+    Kaydetmek için **Güncelle**'ye tıklayın. Güncellemenin başarılı olduğunu bir onay mesajı doğrulayacaktır.
+  </Step>
+</Steps>
+
+## Sipariş Durumunu Değiştir
+
+Sipariş durumu, bir işin teslimat sürecinizdeki yerini yansıtır. AgencyHandy beş sabit durum tanımlar — bunları ekleyemez veya yeniden adlandıramazsınız.
+
+| Durum | Anlamı |
+|---|---|
+| **Beklemede** | Oluşturuldu, henüz başlanmadı |
+| **Devam Ediyor** | Aktif olarak üzerinde çalışılıyor |
+| **İncelemede** | İnceleme için gönderildi; kabul bekleniyor |
+| **Tamamlandı** | Teslim edildi ve kabul edildi |
+| **İptal Edildi** | Artık aktif değil |
+
+<Note>
+Yalnızca **Süper Yöneticiler**, **Yöneticiler** ve **Proje Yöneticileri** bir siparişin durumunu değiştirebilir. Çalışanlar ve müşteriler durumu değiştiremez.
+</Note>
+
+Durumu güncellemek için siparişi açın ve sipariş ayrıntı sayfasının üst kısmındaki durum seçiciyi kullanın. Açılır menüden yeni durumu seçin ve onaylayın.
+
+## Sipariş Silme
+
+Bir siparişi silmek, onu sistemden kalıcı olarak kaldırır. Bunu yalnızca bir sipariş gerçekten geçerliliğini yitirdiğinde kullanın — örneğin hatayla oluşturulmuşsa veya mükerrer ise.
+
+<Warning>
+Sipariş silme işlemi geri alınamaz. Bir siparişi sildikten sonra kurtarılamaz. Dikkatli ilerleyin.
+</Warning>
+
+<Note>
+Siparişleri yalnızca **Süper Yöneticiler** ve **Yöneticiler** silebilir.
+</Note>
+
+<Steps>
+  <Step title="Siparişlere Git">
+    Sol kenar çubuğunda **Siparişler**'e tıklayın.
+  </Step>
+
+  <Step title="Silinecek siparişi bulun">
+    Listeden kaldırmak istediğiniz siparişi kaydırarak veya arayarak bulun.
+  </Step>
+
+  <Step title="Silme işlemini başlatın">
+    Siparişle ilişkili **çöp kutusu simgesi**ne tıklayın.
+  </Step>
+
+  <Step title="Silmeyi onaylayın">
+    Bir onay istemi görünecektir. Siparişi kalıcı olarak silmek için onaylayın.
+  </Step>
+</Steps>
+
+Silme işleminin ardından kalan siparişlerinizi gözden geçirerek her şeyin yolunda olduğundan emin olun. Silinen kayıt artık hiçbir listede veya raporda görünmeyecektir.
+
+## Bir Siparişe Ekip Üyesi Ekleme
+
+Süper Yöneticiler, Yöneticiler ve PM'ler herhangi bir zamanda bir siparişe çalışan ekleyebilir. Ekip üyesi eklendiğinde, bu kişiye uygulama içi bir bildirim gönderilir. Atanan çalışanlar sipariş ve görevlerine ilişkin görünürlük kazanır; ancak siparişi yönetemezler (bilgileri düzenleyemez, durumu değiştiremez veya silemezler).

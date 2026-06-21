@@ -1,0 +1,100 @@
+---
+title: "Prezentare Generală a Gestionării Facturilor pentru Agențiile AgencyHandy"
+sidebarTitle: "Facturi"
+description: "Explorează sistemul de facturare AgencyHandy — facturare, urmărirea plăților, facturi recurente, stări, facturi directe și exporturi de înregistrări financiare."
+---
+
+Funcția de facturare a AgencyHandy oferă agenției tale un sistem complet de gestionare a facturării și plăților în cadrul aceleiași platforme pe care o folosești pentru a gestiona clienți, comenzi și proiecte. Poți crea facturi profesionale, le poți trimite clienților prin email, poți urmări starea plăților în timp real, automatiza facturarea recurentă pentru servicii de abonament și exporta înregistrările financiare ori de câte ori ai nevoie. Fiecare factură este legată automat de logo-ul și adresa agenției tale, menținând comunicările tale consecvent în identitatea vizuală a brandului.
+
+## Cine Poate Crea Facturi
+
+Doar utilizatorii cu următoarele roluri pot crea și gestiona facturi:
+
+- **Super Admin**
+- **Admin**
+- **Project Manager (PM)**
+
+Clienții pot vizualiza și descărca facturi, dar nu le pot crea sau edita.
+
+## Tabloul de Bord al Facturilor
+
+Pentru a deschide Tabloul de Bord al Facturilor, apasă **Invoices** în bara laterală stângă. De aici poți:
+
+- Crea, edita și șterge facturi
+- Căuta facturi după **numele clientului**, **ID-ul comenzii** sau **numele serviciului**
+- Filtra și sorta lista de facturi
+- Vizualiza starea facturilor dintr-o privire
+- Accesa setările facturilor, inclusiv configurarea prefixului
+
+## Ce Fac Facturile
+
+<CardGroup cols={2}>
+  <Card title="Facturare și Invoicing" icon="file-invoice-dollar">
+    Creează și trimite facturi profesionale pentru orice serviciu sau produs livrat clienților, cu control complet asupra sumelor, reducerilor și datelor scadenței.
+  </Card>
+  <Card title="Urmărirea Plăților" icon="chart-line">
+    Monitorizează dacă facturile au fost vizualizate, plătite sau sunt restante. Sistemul înregistrează automat datele de plată și de anulare pe măsură ce apar schimbările de stare.
+  </Card>
+  <Card title="Facturare Recurentă" icon="rotate">
+    Automatizează generarea facturilor pentru servicii bazate pe abonament. AgencyHandy generează și livrează facturi recurente la fiecare ciclu de facturare fără intervenție manuală.
+  </Card>
+  <Card title="Integrare cu Proiectele" icon="diagram-project">
+    Leagă facturile direct de comenzi și servicii, astfel încât facturarea este întotdeauna legată de munca de bază. Elementele facturabile pot fi adăugate cu precizie la fiecare factură.
+  </Card>
+</CardGroup>
+
+## Stările Facturilor
+
+Fiecare factură parcurge un ciclu de viață definit. Înțelegerea acestor stări te ajută să gestionezi eficient creanțele.
+
+| Stare | Descriere |
+|--------|-------------|
+| **Draft** | Factura a fost creată, dar nu finalizată. Poți edita orice parte din ea. Odată pregătită, finalizează-o schimbând starea în Open. Facturile în stadiu Draft care nu sunt legate de un abonament pot fi șterse. |
+| **Open / Unpaid** | Factura este finalizată și în așteptarea plății. Agenția o trimite clientului, care o poate vizualiza și plăti. Poți schimba o factură Open în Paid, Void sau Uncollectable. |
+| **Paid** | Factura a fost plătită. Sistemul înregistrează automat data plății când marchezi o factură ca Paid. |
+| **Void** | Factura a fost anulată. Sistemul înregistrează automat data anulării. |
+| **Uncollectable** | Clientul este puțin probabil să plătească. Tratează aceasta ca o creanță nerecuperabilă în procesul tău contabil. |
+
+<Note>
+  Când trimiți o factură unui client folosind butonul **Send to Client**, starea se schimbă automat din **Draft** în **Open**. Doar agenția poate schimba starea din Open în Paid, Void sau Uncollectable.
+</Note>
+
+## Facturi Directe (Fără un ID de Comandă)
+
+AgencyHandy suportă **Facturi Directe** — facturi care nu sunt legate de nicio comandă existentă. Aceasta este utilă pentru facturare ad-hoc, plăți ocazionale sau facturarea contactelor care nu sunt încă înregistrate ca clienți în sistemul tău.
+
+Capacități cheie ale Facturilor Directe:
+
+- Trimite facturi fără a selecta un ID de Comandă
+- Facturează orice client existent sau folosește **Independent Email** pentru a trimite la orice adresă de email
+- Adaugă articole, taxe și reduceri manual
+- Trimite imediat sau salvează ca ciornă
+
+<Tip>
+  Folosește Facturile Directe când trebuie să facturezi un client rapid pentru o lucrare care nu are o comandă formală în AgencyHandy, cum ar fi proiecte urgente, consultații sau lucrări în afara domeniului.
+</Tip>
+
+## Exportarea Facturilor
+
+Poți exporta lista de facturi pentru utilizare în instrumente externe de contabilitate sau pentru arhivare. Exportul include toate coloanele vizibile: ID factură, numele clientului, serviciul, sumele, starea și datele. Accesează opțiunea de export din Tabloul de Bord al Facturilor.
+
+## Setările Facturilor
+
+Configurează setările globale ale facturilor din butonul **Settings** din colțul din dreapta sus al Tabloului de Bord al Facturilor. Aceasta include:
+
+- **Prefixul facturii** — personalizează prefixul care apare înaintea fiecărui număr de factură
+- **Șabloane de reamintire** — configurează memento-uri automate de plată pentru facturile deschise
+
+## Funcții Conexe
+
+<CardGroup cols={3}>
+  <Card title="Crearea unei Facturi" icon="plus" href="/ro/invoices/create-invoice">
+    Ghid pas cu pas pentru crearea, completarea și trimiterea unei facturi.
+  </Card>
+  <Card title="Abonamente" icon="rotate" href="/ro/invoices/subscriptions">
+    Cum funcționează facturarea recurentă și cum să gestionezi facturile de abonament.
+  </Card>
+  <Card title="Tichete de Suport" icon="ticket" href="/ro/tickets/support-tickets">
+    Gestionează întrebările de facturare ale clienților prin sistemul de tichete de suport.
+  </Card>
+</CardGroup>

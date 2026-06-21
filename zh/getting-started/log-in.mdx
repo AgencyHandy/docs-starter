@@ -1,0 +1,119 @@
+---
+title: "登录 AgencyHandy：访问您的代理机构仪表板"
+sidebarTitle: "登录"
+description: "使用凭据或 Google SSO 登录 AgencyHandy、保持登录状态以及在忘记密码时重置密码的分步指南。"
+---
+
+登录 AgencyHandy 后，您可以立即访问代理机构的工作区——包括待处理订单、客户沟通、任务、发票和团队管理。每次登录都与您唯一的工作区名称绑定，因此即使多个代理机构使用相同的电子邮件地址，AgencyHandy 也能将您路由至正确的账户。
+
+<Note>
+  登录前，您需要已注册的 AgencyHandy 账户。如果您尚未创建账户，请先阅读[注册](/zh/getting-started/sign-up)指南。
+</Note>
+
+## 使用电子邮件和密码登录
+
+<Steps>
+  <Step title="前往 AgencyHandy 网站">
+    在浏览器中打开 [agencyhandy.com](https://www.agencyhandy.com/)，然后点击顶部导航中的 **登录** 按钮。
+  </Step>
+
+  <Step title="输入您的工作区名称">
+    输入您注册时选择的**工作区名称**。这是您代理机构的唯一标识符——仅限小写字母、数字和连字符。点击 **继续** 进入凭据输入界面。
+
+    <Tip>
+      不确定工作区名称？查看您注册时收到的确认邮件——其中包含您的工作区 URL。
+    </Tip>
+  </Step>
+
+  <Step title="输入您的电子邮件和密码">
+    提供与您 AgencyHandy 账户关联的**电子邮件**和**密码**。
+  </Step>
+
+  <Step title="保持登录（可选）">
+    如果您希望 AgencyHandy 在此设备上记住您的会话，请勾选 **保持登录** 复选框。启用此选项后，在您手动退出之前，无需再次输入凭据。
+
+    <Warning>
+      请勿在共享或公共计算机上启用**保持登录**。任何可访问该设备的人都将能够在不输入密码的情况下打开您的工作区。
+    </Warning>
+  </Step>
+
+  <Step title="点击登录">
+    点击 **登录** 按钮。AgencyHandy 验证您的凭据后，会直接将您带至代理机构仪表板。
+  </Step>
+</Steps>
+
+## 使用 Google 登录（SSO）
+
+AgencyHandy 支持通过 Google 进行单点登录（SSO），让您完全跳过手动输入密码的步骤。
+
+<Tabs>
+  <Tab title="如何使用 Google SSO">
+    <Steps>
+      <Step title="前往登录页面">
+        访问 [agencyhandy.com](https://www.agencyhandy.com/) 并点击 **登录**。
+      </Step>
+      <Step title="点击“使用 Google 继续”">
+        在登录界面，点击 **使用 Google 继续** 按钮，而非输入工作区名称和密码。
+      </Step>
+      <Step title="选择您的 Google 账户">
+        Google 将提示您选择要使用的账户。请选择电子邮件地址与您 AgencyHandy 账户匹配的账户。
+      </Step>
+      <Step title="授予权限（如有提示）">
+        首次使用 Google 登录时，系统可能会要求您授权 AgencyHandy 访问您的基本个人资料信息。接受权限以继续。
+      </Step>
+      <Step title="访问您的仪表板">
+        AgencyHandy 验证您的 Google 身份后，将自动跳转至您的代理机构仪表板。
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="账户关联机制">
+    当您使用 Google 登录时，AgencyHandy 会检查 Google 电子邮件地址是否与现有账户匹配：
+
+    - **电子邮件已存在**——AgencyHandy 立即将您登录至该账户。
+    - **电子邮件不存在**——AgencyHandy 使用您的 Google 个人资料详情创建新账户。
+
+    关联后，您的 Google 电子邮件将成为该工作区的主要登录身份。如果您已设置密码，仍可使用电子邮件和密码登录。
+
+    <Note>
+      您的 SSO 会话与标准登录会话行为相同。您可以随时退出，下次访问时使用 Google 重新验证即可立即完成。
+    </Note>
+  </Tab>
+  <Tab title="重要说明">
+    - 使用 Google 验证时，请使用与您 AgencyHandy 账户**相同的电子邮件地址**，以确保无缝登录。
+    - 如果您在 Google 账户设置中撤销了 AgencyHandy 的访问权限，Google SSO 登录将被阻止。请使用电子邮件和密码重新获得访问权限。
+    - Google 身份验证遵循 Google 自身的安全协议，包括在您的 Google 账户上启用了双因素身份验证的情况下同样适用。
+    - 基于密码的登录方式始终作为备用方式可用。
+  </Tab>
+</Tabs>
+
+## 重置密码
+
+如果您忘记了密码，可以直接从登录页面重置，无需联系支持团队。
+
+<Steps>
+  <Step title="点击“忘记密码”">
+    在 AgencyHandy 登录页面，点击密码字段下方的 **忘记密码** 链接。
+  </Step>
+  <Step title="输入您的注册电子邮件地址">
+    输入与您 AgencyHandy 账户关联的电子邮件地址并提交表单。AgencyHandy 将向该地址发送密码重置邮件。
+  </Step>
+  <Step title="复制验证码">
+    打开收件箱中的重置邮件，复制其中提供的验证码。
+  </Step>
+  <Step title="粘贴验证码并继续">
+    返回 AgencyHandy 重置页面，将验证码粘贴到验证字段中，然后点击 **继续**。
+  </Step>
+  <Step title="创建并确认新密码">
+    在 **新密码** 字段中输入新密码，并在 **确认密码** 字段中再次输入。确保新密码符合与原密码相同的要求：
+    - 至少 8 个字符
+    - 至少包含一个大写字母、一个小写字母、一个数字和一个特殊字符
+    - 不含空格
+  </Step>
+  <Step title="使用新密码登录">
+    返回登录页面，输入工作区名称和电子邮件，使用新密码登录。
+  </Step>
+</Steps>
+
+<Note>
+  重置邮件有时会进入垃圾邮件文件夹。如果几分钟内未收到邮件，请先检查那里，再申请重新发送。
+</Note>

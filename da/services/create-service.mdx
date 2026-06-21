@@ -1,0 +1,260 @@
+---
+title: "Sådan opretter du en ydelse med pakker, opgaver og FAQ'er"
+sidebarTitle: "Opret ydelse"
+description: "Trinvis vejledning til at bygge en AgencyHandy-ydelse: vælg faktureringstype, konfigurer pakker, angiv standardopgaver, tilføj FAQ'er, og publicer."
+---
+
+At oprette en ydelse i AgencyHandy er det første skridt til at sælge dit bureaus tilbud via platformen. En enkelt ydelse kan indeholde op til fem prispakker, automatiserede standardopgaver der aktiveres, når en ordre afgives, FAQ'er der reducerer spørgsmål inden køb, en portfoliotilknytning til socialt bevis og en valgfri intake-formular — alt konfigureret ét sted, inden du publicerer.
+
+<Note>
+  Du skal have en rolle som **Super Admin** eller **Admin** for at oprette ydelser. Andre roller kræver eksplicitte ydelsestilladelser for at tilgå denne sektion.
+</Note>
+
+<Steps>
+  <Step title="Vælg ydelsestype">
+    Åbn **Ydelser** fra venstre sidebjælke og klik på **+ Ydelse** for at starte et nyt opslag.
+
+    Øverst på siden skal du vælge din faktureringsmodel:
+
+    - **Engangsydelse** — klienten betaler et enkelt gebyr og modtager leverancen én gang. Bedst til projekter med et klart omfang: hjemmesideudvikling, logopakker, revisioner osv.
+    - **Abonnementsydelse** — fakturering gentages automatisk efter den tidsplan, du definerer. Bedst til retainere, løbende indhold, administrerede ydelser eller vedligeholdelsesplaner.
+
+    <Warning>
+      Ydelsestypen låses, efter du gemmer. Hvis du har brug for en anden faktureringsmodel, skal du oprette en ny ydelse.
+    </Warning>
+  </Step>
+
+  <Step title="Tilføj ydelsesdetaljer">
+    Udvid sektionen **Ydelsesdetaljer** og udfyld følgende felter:
+
+    **Ydelsesnavn** *(obligatorisk)*
+    Dette er, hvordan ydelsen vises for klienter overalt på platformen — i kataloget, på fakturaer og inde i ordre-workspacen. Gør det klart og beskrivende.
+
+    **Medieupload**
+    Upload et eller flere forhåndsvisningsbilleder til visuelt at repræsentere ydelsen. Billeder af høj kvalitet øger klienttillid og konverteringsrater.
+
+    **Ydelssbeskrivelse**
+    Skriv en grundig forklaring af, hvad ydelsen inkluderer, hvem den er til, og hvad klienter kan forvente. Brug dette rum til at differentiere dit tilbud.
+
+    **Skatteindstillinger**
+    Vælg, om skat er **inklusiv** (allerede inkluderet i prisen) eller **eksklusiv** (tilføjet oveni ved betaling).
+
+    **Valuta**
+    Angiv valutaen for alle pakker i denne ydelse. Alle pakker inden for en enkelt ydelse deler den samme valuta.
+
+    <Tip>
+      Upload forhåndsvisningsbilleder i et 16:9-format for den bedste præsentation i klientportalen.
+    </Tip>
+  </Step>
+
+  <Step title="Opret pakker">
+    Udvid **Pakkedetaljer** og klik på **+ Ny pakke** for at tilføje dit første prisniveau. Du kan oprette op til **5 pakker** per ydelse.
+
+    For hver pakke skal du konfigurere følgende:
+
+    **Pakkenavn** *(obligatorisk)*
+    Det navn, klienter ser, f.eks. *Basis*, *Standard* eller *Premium*.
+
+    **Pakkeikon** *(valgfrit)*
+    Vælg et indbygget ikon eller upload et tilpasset. Uploadede ikoner skal være **32 × 32 pixels**.
+
+    **Pakkemedier** *(valgfrit)*
+    Upload et forsidebillede specifikt for denne pakke. Accepterede formater: PNG, JPG, JPEG. Maksimal filstørrelse: **5 MB**. Maksimalt 1 fil per pakke. Anbefalet format: **16:9**.
+
+    **Pakkeresumé** *(valgfrit)*
+    En en-linjes opsummering af denne pakkes leverancer. Maksimalt **140 tegn**.
+
+    **Hvad der er inkluderet** *(obligatorisk)*
+    List de specifikke leverancer inkluderet i denne pakke. Du kan tilføje op til **15 punkter** per pakke. Hvert punkt bør beskrive én konkret leverance (f.eks. *"5 blogindlæg per måned, op til 1.000 ord hvert"*).
+
+    <Tip>
+      Efter oprettelse af flere pakker kan du trække dem for at ændre den rækkefølge, de vises for klienter. Markér én som **Mest populær** for at tiltrække opmærksomhed mod dit anbefalede niveau.
+    </Tip>
+  </Step>
+
+  <Step title="Angiv prissætning og leveringsregler">
+    Inde i hver pakke skal du angive de centrale prisfelter og eventuelle valgfrie kontroller:
+
+    **Beløb** *(obligatorisk)*
+    Den pris, en klient betaler for denne pakke.
+
+    **Leveringstid** *(obligatorisk)*
+    Det estimerede antal dage til levering af ydelsen efter køb.
+
+    **Valgfrie priskontroller:**
+
+    <Accordion title="Tilføj rabat">
+      Anvend en procentuel eller fast reduktion på denne pakkes pris. Den nedsatte pris vises for klienter ved siden af den originale pris, hvilket skaber en effektiv kampagneffekt.
+    </Accordion>
+
+    <Accordion title="Tilføj prøveperiode (kun abonnement)">
+      Tilbyd en gratis eller nedsat prøveperiode inden den normale abonnementsfakturering begynder. Denne mulighed er kun tilgængelig på abonnementstyper.
+    </Accordion>
+
+    <Accordion title="Tilføj mængdegrænse">
+      Begræns antallet af enheder, en klient kan købe i en enkelt bestillingssession. Brug dette til pakker med begrænset tilgængelighed eller ydelser med kapacitetsbegrænsninger.
+    </Accordion>
+
+    <Accordion title="Tilføj flere prisdetaljer">
+      Opdel den samlede pris i individuelle linjer — for eksempel ved at vise *basispris + opsætningsgebyr + pris per enhed*. Hver opdelsesetiket understøtter maksimalt **20 tegn**.
+    </Accordion>
+
+    <Note>
+      Alle påkrævede felter (Beløb og Leveringstid) skal udfyldes for alle pakker, inden du kan publicere ydelsen.
+    </Note>
+  </Step>
+
+  <Step title="Tilføj standardopgaver til automatisering">
+    Hver pakke indeholder en sektion **Standardopgaver**. Opgaver defineret her genereres automatisk inde i ordre-workspacen, i det øjeblik en klient køber denne pakke — ingen manuel opsætning er nødvendig efter hvert salg.
+
+    Klik på **+ Tilføj flere** for at åbne opgaveoprettelsesmodalen. For hver opgave kan du konfigurere:
+
+    | Felt | Detaljer |
+    |---|---|
+    | **Opgavenavn** | Obligatorisk; maksimalt **160 tegn** |
+    | **Beskrivelse** | Detaljerede instruktioner til den ansvarlige |
+    | **Ansvarlig** | Teammedlem ansvarlig for at fuldføre denne opgave |
+    | **Vedhæftede filer** | Upload referencefiler; accepterede formater: csv, odt, doc, docx, htm, html, pdf, ppt, pptx, txt, xls, xlsx, jpg, jpeg, png, gif, webp, svg, ai, mp4, mp3, wav, zip, rar; maks. filstørrelse **1 GB** per fil |
+    | **Etiket** | Tag opgaven til filtrering og rapportering |
+    | **Status** | Indledende status, når opgaven oprettes |
+    | **Klientgennemgang** | Slå til, hvis denne opgave kræver klientgodkendelse inden den betragtes som fuldført |
+
+    Tilføj så mange opgaver som nødvendigt til fuldt ud at dække leveringsprocessen for denne pakke. Konsistente standardopgaver sikrer, at alle ordrer følger den samme kvalitetsstyrede arbejdsgang.
+
+    <Tip>
+      Kortlæg dine standardopgaver til din interne SOP. For eksempel kan en pakke med *Styring af sociale medier* automatisk generere opgaver som *Udkast til indholdskalender*, *Klientgodkendelse*, *Planlæg opslag* og *Månedlig rapport*.
+    </Tip>
+  </Step>
+
+  <Step title="Tilføj FAQ'er og portfolio">
+    Udvid sektionen **Yderligere oplysninger** for at tilføje to valgfrie, men højtpåvirkende elementer:
+
+    **Portfoliotilknytning**
+    Link en portfoliokategori til denne ydelse, så klienter kan gennemse relevante eksempler på dit tidligere arbejde direkte på ydelsesopslaget. Du kan tilknytte en eksisterende portfoliokategori eller oprette en ny fra denne skærm.
+
+    **Ofte stillede spørgsmål (FAQ'er)**
+    Klik på **+ Tilføj** for at indsætte et spørgsmål-og-svar-par. Tilføj så mange FAQ'er som relevant — almindelige emner inkluderer:
+
+    - Indholdsoriginalitet og rettigheder
+    - Revisions- og feedbackproces
+    - Omfangsgrænser og hvad der *ikke* er inkluderet
+    - Tidslinjer og kommunikationskadence
+    - Betalings- og refusionspolitikker
+
+    Velskrevne FAQ'er reducerer frem-og-tilbage-kommunikation inden køb og hjælper klienter med at selvkvalificere sig.
+  </Step>
+
+  <Step title="Tilknyt en intake-formular">
+    En intake-formular indsamler de oplysninger, du har brug for fra en klient, inden arbejdet begynder — for eksempel brandretningslinjer, adgangsoplysninger, målgruppe eller projektmål.
+
+    - Klik på **+ Opret ny intake-formular** for at bygge en formular fra bunden, eller vælg en eksisterende formular fra rullemenuen.
+    - Hvis denne ydelse ikke kræver en intake-formular, klik på **Spring over** for at springe denne sektion over.
+    - Klik på **Opdater** for at gemme dit intake-formularvalg og fortsætte.
+
+    <Note>
+      Intake-formularen er valgfri, men stærkt anbefalet til ydelser, der kræver klientspecifikke input, inden levering kan påbegyndes.
+    </Note>
+  </Step>
+
+  <Step title="Publicer ydelsen">
+    Nederst i ydelsesreditoren:
+
+    1. Slå **Publicer denne ydelse** til TIL-position.
+    2. Klik på **Gem** (eller **Opdater ydelse**, hvis du redigerer en eksisterende ydelse).
+
+    Når den er publiceret, bliver ydelsen øjeblikkeligt synlig for klienter i portalen. Hvis du lader kontakten være slukket, gemmes ydelsen som en kladde og er kun synlig for dit team.
+
+    <Tip>
+      Brug kladdetilstand til at forberede en ydelse på forhånd og publicere den ved lanceringstidspunktet — nyttigt til sæsonmæssige kampagner eller nye tilbudsannonceringer.
+    </Tip>
+  </Step>
+</Steps>
+
+## Opsætning af tilvalg
+
+Tilvalg er valgfrie ekstra funktioner, som klienter kan vælge ved betaling — for eksempel *Ekspreslevering*, *Ekstra revisioner* eller en *Månedlig rapport*. De lader dig mersælge komplementære ydelser uden at oprette helt nye opslag.
+
+### Oprettelse af et tilvalg
+
+<Steps>
+  <Step title="Åbn Tilvalg">
+    Gå til **Ydelser** i sidebjælken, klik på **pil ned**-knappen ved siden af overskriften Ydelser, og vælg **Tilvalg**.
+  </Step>
+  <Step title="Opret et nyt tilvalg">
+    Klik på **+ Tilføj nyt tilvalg** og udfyld:
+
+    - **Navn på tilvalg**
+    - **Beskrivelse** — brug rich text-editoren til tydeligt at forklare, hvad tilvalget inkluderer
+    - **Pristype** — vælg *Engangsbrug* eller *Abonnement*
+    - **Prisdetaljer:**
+      - *Engangsbrug:* indtast beløb og valuta
+      - *Abonnement:* angiv faktureringsintervallet (f.eks. hver 1. måned), en valgfri grænse for faktureringsperioder, abonnementsgebyret og valuta
+  </Step>
+  <Step title="Publicer og gem">
+    Slå **Publicer** TIL, og klik derefter på **Opret**. Kun publicerede tilvalg er synlige, når de tilknyttes bestillingsformularer.
+  </Step>
+</Steps>
+
+### Tilknytning af et tilvalg til en bestillingsformular
+
+<Steps>
+  <Step title="Åbn bestillingsformularen">
+    Naviger til **Formularer**, og åbn den relevante bestillingsformular.
+  </Step>
+  <Step title="Vælg ydelsen">
+    Vælg den ydelse, du vil tilknytte tilvalget til.
+  </Step>
+  <Step title="Tilføj tilvalg">
+    Vælg sektionen **Tilvalg** fra venstre panel, og vælg derefter de tilvalg, du vil knytte til denne ydelse.
+  </Step>
+  <Step title="Gem formularen">
+    Klik på **Gem**. Klienter vil nu se de valgte tilvalg som valgfrie ekstra funktioner ved betaling.
+  </Step>
+</Steps>
+
+<Note>
+  Tilvalg skal bruge den samme valuta som den ydelse, de er tilknyttet. Hvis valutaerne ikke stemmer overens, vises tilvalget ikke i valglisten.
+</Note>
+
+### Faktureringsadfærd for abonnementstilvalg
+
+Når faktureringsperioderne for en ydelse og et abonnementstilvalg er forskellige, håndterer AgencyHandy overlappet automatisk:
+
+<Accordion title="Tilvalget har flere perioder end ydelsen">
+  Både ydelsen og tilvalget faktureres samlet i ydelsens varighed. Når ydelsen slutter, fortsætter tilvalget med at fakturere alene for sine resterende perioder.
+
+  **Eksempel:** Ydelse kører i 4 perioder, tilvalg kører i 5 perioder → faktureres samlet i 4 perioder, tilvalg faktureres alene i 1 yderligere periode.
+</Accordion>
+
+<Accordion title="Tilvalget har færre perioder end ydelsen">
+  Både ydelsen og tilvalget faktureres samlet i tilvalgets varighed. Når tilvalget slutter, fortsætter ydelsen med at fakturere alene for sine resterende perioder.
+
+  **Eksempel:** Ydelse kører i 5 perioder, tilvalg kører i 3 perioder → faktureres samlet i 3 perioder, ydelse faktureres alene i 2 yderligere perioder.
+</Accordion>
+
+## Redigering af en ydelse
+
+Når en ydelse er publiceret, kan du opdatere ethvert felt uden at afbryde eksisterende ordrer.
+
+1. Gå til **Ydelser**, og find den ydelse, du vil opdatere.
+2. Klik på **trepunktsmenuen** (⋮) i højre side af ydelsesrækken.
+3. Vælg **Rediger**. Ydelsesreditoren åbnes med alle eksisterende indstillinger udfyldt.
+4. Foretag dine ændringer — opdater titel, beskrivelse, prissætning, medier, pakker, opgaver eller FAQ'er.
+5. Klik på **Opdater ydelse** for at gemme.
+
+<Warning>
+  Ændringer i pakkepris eller leveringstid træder kun i kraft for **nye ordrer**. Eksisterende ordrer påvirkes ikke med tilbagevirkende kraft.
+</Warning>
+
+## Feltreferencer
+
+| Felt | Grænse |
+|---|---|
+| Pakker per ydelse | Op til 5 |
+| Leverancer per pakke (Hvad der er inkluderet) | Op til 15 |
+| Pakkeresumé | 140 tegn |
+| Pakkeikonsstørrelse | 32 × 32 px |
+| Pakkemediets filstørrelse | 5 MB (PNG, JPG, JPEG) |
+| Opgavenavn | 160 tegn |
+| Vedhæftet fils størrelse for opgave | 1 GB per fil |
+| Etiket for prisopdeling | 20 tegn |

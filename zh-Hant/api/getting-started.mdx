@@ -1,0 +1,114 @@
+---
+title: "AgencyHandy API：驗證與入門指南"
+sidebarTitle: "入門指南"
+description: "產生 API 金鑰、查詢您的公司 ID，並透過此快速設定指南開始建立與 AgencyHandy REST API 的整合。"
+---
+
+AgencyHandy API 讓您能夠從任何外部系統或腳本自動化潛在客戶建立、客戶管理、訂單更新等操作。每個請求都需使用您從工作區設定中產生的 API 金鑰進行驗證。本指南將引導您取得憑證並進行第一次 API 呼叫。
+
+<Note>
+  您必須是 AgencyHandy 工作區的 **SuperAdmin** 或 **Admin** 才能產生 API 金鑰。
+</Note>
+
+## 基礎 URL
+
+所有 API 請求均向以下地址發送：
+
+```
+https://api.agencyhandy.com
+```
+
+在 API 文件中所有範例請求中，請以此基礎 URL 替換 `{{URL}}`。
+
+## 步驟 1：產生 API 金鑰
+
+<Steps>
+  <Step title="開啟工作區設定">
+    前往您的工作區設定：
+
+    ```
+    {{workspaceUrl}}/workspace-config?tab=api-key
+    ```
+
+    這將開啟工作區設定中的 **API Key** 標籤頁。
+  </Step>
+
+  <Step title="產生並複製您的 API 金鑰">
+    點擊 **Generate**（若金鑰已存在則點擊 **Regenerate**）。複製 API 金鑰並妥善儲存 — 請將其視為密碼。離開頁面後，AgencyHandy 將不再顯示此金鑰。
+  </Step>
+</Steps>
+
+<Warning>
+  重新產生 API 金鑰會立即使舊金鑰失效。任何使用舊金鑰的現有整合將停止運作，直到您使用新金鑰更新它們為止。
+</Warning>
+
+## 步驟 2：取得您的公司 ID
+
+大多數 API 端點需要一個 `companyid` 標頭，用以識別請求所指向的工作區。使用以下端點來獲取您的公司 ID。
+
+### 端點
+
+```
+GET {{URL}}/accounts/companies
+```
+
+### 標頭
+
+| 標頭 | 值 |
+|---|---|
+| `x-api-key` | 您的 API 金鑰 |
+
+### 範例請求
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/accounts/companies" \
+  --header "x-api-key: <YOUR_API_KEY>"
+```
+
+### 範例回應
+
+```json
+{
+  "message": "Companies associated with API token.",
+  "companies": [
+    {
+      "_id": "6525994184e9ddd79853450e",
+      "name": "onethread123",
+      "logo": "",
+      "extraSmallLogo": "",
+      "largeLogo": ""
+    }
+  ]
+}
+```
+
+<Steps>
+  <Step title="找到您的公司 ID">
+    在回應中，找到 `companies` 陣列內的 `_id` 欄位。這就是您的**公司 ID**。
+
+    ```javascript
+    const companyId = response.companies[0]._id;
+    // e.g. "6525994184e9ddd79853450e"
+    ```
+  </Step>
+
+  <Step title="儲存公司 ID">
+    儲存公司 ID 以供所有後續 API 請求使用。您將以 `companyid` 標頭傳遞它：
+
+    | 標頭 | 值 |
+    |---|---|
+    | `x-api-key` | 您的 API 金鑰 |
+    | `companyid` | 您的公司 ID |
+  </Step>
+</Steps>
+
+## 驗證摘要
+
+每個已驗證的 API 請求至少需要：
+
+```
+x-api-key: <YOUR_API_KEY>
+companyid: <YOUR_COMPANY_ID>
+```
+
+備妥您的 API 金鑰和公司 ID 後，您就可以使用 AgencyHandy API 的其餘功能了。請繼續前往下方的其中一個端點指南。

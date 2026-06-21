@@ -1,0 +1,149 @@
+---
+title: "Einrichtung von Banküberweisung, Krypto und Wise als Zahlungsmethoden"
+sidebarTitle: "Weitere Zahlungen"
+description: "Aktivieren Sie manuelle Zahlungsalternativen — Banküberweisung, Kryptowährung und Wise — damit Kunden, die keine Kartenzahlung bevorzugen, Ihre Rechnungen begleichen können."
+---
+
+AgencyHandy unterstützt neben Stripe und PayPal drei manuelle Zahlungsmethoden: **Banküberweisung**, **Krypto** und **Wise**. Jede ist für einen bestimmten Kundentyp oder Workflow konzipiert. Bei allen drei müssen Sie eine Rechnung manuell als **Bezahlt** markieren, nachdem Sie die Zahlung erhalten haben, da AgencyHandy außerhalb der Plattform getätigte Überweisungen nicht automatisch bestätigen kann.
+
+<Note>
+  Nur **SuperAdmin**- und **Admin**-Rollen können diese Zahlungsmethoden aktivieren oder konfigurieren.
+</Note>
+
+<Tabs>
+  <Tab title="Bank Transfer">
+    ## Banküberweisung
+
+    Die Banküberweisung ermöglicht es Ihnen, manuelle SEPA- oder internationale Überweisungen von Kunden entgegenzunehmen. Sie geben Ihre Bankdaten über einen Rich-Text-Editor ein, und AgencyHandy zeigt diese Anweisungen Kunden beim Checkout und innerhalb der Rechnung an.
+
+    ### Banküberweisung aktivieren
+
+    <Steps>
+      <Step title="Einstellungen für Bankzahlung öffnen">
+        Navigieren Sie in der linken Seitenleiste zu **Integrationen → Bank Payment Method**.
+      </Step>
+
+      <Step title="Überweisungsanweisungen ausfüllen">
+        Verwenden Sie den Rich-Text-Editor, um Ihre Bankdaten einzugeben. Fügen Sie alle Felder ein, die Ihre Kunden für die Überweisung benötigen:
+
+        - **Name des Empfängers**
+        - **Kontonummer**
+        - **Bankname**
+        - **Bankleitzahl**
+        - **Kontotyp** (z. B. Girokonto, Sparkonto)
+        - **Bankadresse**
+
+        Sie können auch Vermerke, Hinweise oder einen Support-Kontakt hinzufügen. Es gibt keine Zeichenbegrenzung, und der Editor unterstützt Fettdruck, Unterstreichung, Listen, Links und Bildformatierung.
+      </Step>
+
+      <Step title="Zahlungsnachweis-Anforderung festlegen (optional)">
+        Aktivieren Sie **Zahlungsscreenshot erforderlich**, wenn Kunden vor der Bearbeitung ihrer Bestellung einen Screenshot hochladen sollen.
+
+        - **Aktiviert** — Kunden müssen beim Checkout einen gültigen Screenshot hochladen. Es wird keine Bestellung erstellt, bis eine Datei hochgeladen wurde.
+        - **Deaktiviert** — Kunden können ohne Hochladen eines Nachweises fortfahren. Die Bestellung und Rechnung werden sofort erstellt.
+      </Step>
+
+      <Step title="Speichern">
+        Klicken Sie auf **Aktualisieren**, um Ihre Einstellungen zu speichern. Klicken Sie auf **Abbrechen**, um Änderungen zu verwerfen.
+      </Step>
+    </Steps>
+
+    ### Kundenerfahrung
+
+    Wenn ein Kunde beim Checkout Banküberweisung auswählt, sieht er Ihre individuellen Überweisungsanweisungen. Wenn ein Nachweis erforderlich ist, erscheint eine Datei-Upload-Aufforderung, und die Bestellung wird zurückgehalten, bis ein Screenshot hochgeladen wurde.
+
+    Nachdem Sie die Zahlung auf Ihrem Bankkonto erhalten haben, öffnen Sie die Rechnung in AgencyHandy und markieren Sie sie manuell als **Bezahlt**, um die Bestellung freizugeben.
+
+    <Tip>
+      Fügen Sie in Ihre Anweisungen einen eindeutigen Referenzcode ein (z. B. die Rechnungsnummer), damit Sie eingehende Überweisungen bestimmten Bestellungen ohne Verwechslung zuordnen können.
+    </Tip>
+  </Tab>
+
+  <Tab title="Crypto">
+    ## Krypto-Zahlung
+
+    Die Krypto-Zahlungsmethode ermöglicht es Ihnen, Kryptowährungen von Kunden über eine wallet-basierte Überweisung entgegenzunehmen. Sie konfigurieren Ihre Wallet-Daten und Anweisungen einmalig; Kunden sehen diese beim Checkout und in der Rechnung. Derzeit wird **USDC** als unterstützte Kryptowährung angeboten.
+
+    ### Krypto-Zahlung aktivieren
+
+    <Steps>
+      <Step title="Einstellungen für Krypto-Zahlung öffnen">
+        Navigieren Sie in der linken Seitenleiste zu **Integrationen → Crypto Payment**. Ein Wallet-Einrichtungsbildschirm mit einem Rich-Text-Editor öffnet sich.
+      </Step>
+
+      <Step title="Wallet-Daten eingeben">
+        Füllen Sie die folgenden Felder aus:
+
+        - **Kryptowährungstyp** — derzeit wird USDC unterstützt.
+        - **Wallet-Adresse** — Ihre öffentliche Wallet-Adresse für den Empfang von Geldern.
+        - **Netzwerktyp** — z. B. ERC-20, TRC-20.
+        - **Zusätzliche Anweisungen** — Verwendungszweck, Tag, Mindestbetrag, Support-Kontakt oder sonstige Hinweise für Ihre Kunden.
+      </Step>
+
+      <Step title="Zahlungsnachweis-Anforderung festlegen (optional)">
+        Aktivieren Sie **Zahlungsnachweis erforderlich**:
+
+        - **Aktiviert** — Kunden müssen eine Datei hochladen (z. B. einen Transaktions-Screenshot), bevor die Bestellung und Rechnung erstellt werden.
+        - **Deaktiviert** — Eine Bestellung und Rechnung werden erstellt, sobald der Kunde die Krypto-Zahlung auswählt, ohne einen Nachweis zu verlangen.
+      </Step>
+
+      <Step title="Speichern">
+        Klicken Sie auf **Speichern**, um Ihre Einstellungen zu sichern. Sie können die Krypto-Zahlung jederzeit über denselben Bildschirm bearbeiten oder deaktivieren.
+      </Step>
+    </Steps>
+
+    ### Checkout-Ablauf für Kunden
+
+    Wenn ein Kunde beim Checkout Krypto auswählt:
+
+    1. Eine **Bestellung** (Status: *Ausstehend*) und eine **Rechnung** (Status: *Offen*) werden erstellt.
+    2. Dem Kunden werden Ihre Wallet-Adresse und Anweisungen angezeigt.
+    3. Wenn ein Nachweis erforderlich ist, erscheint eine Datei-Upload-Schaltfläche. Der Kunde muss seinen Transaktions-Screenshot hochladen, bevor die Bestellung fortgesetzt wird.
+    4. Nachdem die Überweisung abgeschlossen ist und Sie die Mittel on-chain verifiziert haben, öffnen Sie die Rechnung in AgencyHandy und markieren Sie sie als **Bezahlt**.
+    5. Wenn eine Rechnung als **Bezahlt** markiert wird und die Bestellung *Ausstehend* ist, wird der Bestellstatus automatisch auf *Laufend* aktualisiert.
+
+    <Note>
+      Krypto-Zahlung erscheint beim Checkout nur, wenn sie in den **Workspace-Einstellungen → Zahlungsmethoden** UND in den entsprechenden **Service-Gruppe → Zahlungsverfügbarkeit**-Einstellungen aktiviert ist. Wenn Sie sie in den Workspace-Einstellungen deaktivieren, wird sie überall ausgeblendet, unabhängig von den Einstellungen auf Service-Ebene.
+    </Note>
+
+    <Tip>
+      Wenn ein Service USDC nicht unterstützt, wird die Krypto-Zahlungsoption für diesen Service automatisch ausgeblendet. Stellen Sie sicher, dass USDC in Ihren Service-Einstellungen aktiviert ist, wenn Kunden mit Krypto bezahlen sollen.
+    </Tip>
+  </Tab>
+
+  <Tab title="Wise">
+    ## Wise-Zahlung
+
+    Die Wise-Zahlungsmethode ermöglicht es Kunden, über einen Wise-Zahlungslink zu bezahlen. Sie fügen den Link einmalig innerhalb einer Rechnung hinzu, und er wird automatisch in allen zukünftigen Abonnement-Rechnungen eingebunden. Wise ist ideal für internationale Kunden, die Bank-zu-Bank-Überweisungen mit niedrigeren Gebühren als traditionelle Überweisungen bevorzugen.
+
+    ### Wise als Zahlungsmethode hinzufügen
+
+    <Steps>
+      <Step title="Rechnungsmodul öffnen">
+        Klicken Sie in der linken Seitenleiste auf **Rechnungen** und dann auf **Rechnung erstellen**.
+      </Step>
+
+      <Step title="Ihren Wise-Link hinzufügen">
+        Scrollen Sie im Rechnungsmodal zum Abschnitt **Zahlungsmethoden**. Klicken Sie auf **Wise als Zahlungsmethode hinzufügen** und fügen Sie dann Ihren Wise-Zahlungslink in das Eingabefeld ein.
+      </Step>
+
+      <Step title="Rechnung speichern">
+        Klicken Sie auf **Speichern** oder fahren Sie fort, um die Rechnung abzuschließen. Ihr Wise-Zahlungslink ist nun eingebettet und für den Kunden sichtbar.
+      </Step>
+    </Steps>
+
+    ### Funktionsweise für Kunden
+
+    Der Wise-Link erscheint als anklickbare Schaltfläche auf der Rechnung des Kunden. Der Kunde öffnet den Link, schließt die Überweisung über sein Wise-Konto ab und sendet Ihnen eine Bestätigung. Da AgencyHandy keine automatische Bestätigung von Wise erhält, müssen Sie die Rechnung manuell als **Bezahlt** markieren, nachdem Sie die Zahlung erhalten haben.
+
+    <Warning>
+      Wise **kann nicht** für automatisierte Upsell- oder Marktplatzzahlungen verwendet werden. Pro Rechnung kann nur ein Wise-Zahlungslink hinzugefügt werden. Überprüfen Sie den Link sorgfältig vor dem Senden — ein falscher Link bedeutet, dass die Zahlung des Kunden auf das falsche Konto geht.
+    </Warning>
+
+    ### Plattformverhalten
+
+    - Sobald ein Wise-Link hinzugefügt wurde, erscheint er automatisch auf allen zukünftigen **Abonnement**-Rechnungen, es sei denn, Sie aktualisieren oder entfernen ihn.
+    - AgencyHandy führt keine automatische Währungsumrechnung durch. Der Kunde überweist in der Währung, für die Ihr Wise-Link konfiguriert ist.
+    - Sie sind dafür verantwortlich, Zahlungen zu verfolgen und Rechnungen als Bezahlt zu markieren, nachdem Sie den Zahlungseingang bestätigt haben.
+  </Tab>
+</Tabs>

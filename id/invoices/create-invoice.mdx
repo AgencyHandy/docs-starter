@@ -1,0 +1,235 @@
+---
+title: "Buat, Kirim, dan Kelola Invoice Klien di AgencyHandy"
+sidebarTitle: "Buat Invoice"
+description: "Panduan langkah demi langkah untuk membuat invoice di AgencyHandy — pilih klien, tetapkan jumlah, tambahkan catatan, kirim ke klien, dan konfigurasikan pengingat pembayaran."
+---
+
+Membuat invoice di AgencyHandy adalah proses yang mudah yang menghubungkan penagihan Anda langsung ke klien dan order. Anda mengisi klien, menghubungkan order, menetapkan jumlah, menambahkan catatan, dan mengirim — semuanya dari satu formulir. Setelah dikirim, Anda dapat melacak status pembayaran, mengatur pengingat otomatis, dan mengunduh invoice sebagai PDF kapan saja.
+
+<Note>
+  Anda harus menjadi **Super Admin**, **Admin**, atau **PM** untuk membuat invoice. Setidaknya satu klien harus ada di workspace Anda sebelum Anda dapat membuat invoice.
+</Note>
+
+## Pengaturan Awalan Invoice
+
+Sebelum mulai membuat invoice, pertimbangkan untuk mengonfigurasi awalan invoice Anda. Awalan muncul sebelum setiap nomor invoice dan membantu mengidentifikasi invoice sebagai milik agensi Anda.
+
+<Steps>
+  <Step title="Buka Pengaturan Invoice">
+    Di Dasbor Invoice, klik tombol **Settings** di sudut kanan atas.
+  </Step>
+  <Step title="Tetapkan awalan Anda">
+    Navigasi ke kolom **Invoice Prefix** dan masukkan awalan yang Anda inginkan (misalnya, `INV-` atau inisial agensi Anda).
+  </Step>
+  <Step title="Simpan">
+    Klik **Save** untuk menerapkan awalan ke semua invoice mendatang.
+  </Step>
+</Steps>
+
+## Membuat Invoice
+
+<Steps>
+  <Step title="Buka Dasbor Invoice">
+    Klik **Invoices** di bilah sisi kiri untuk membuka Dasbor Invoice.
+  </Step>
+  <Step title="Mulai invoice baru">
+    Klik **+ Create Invoice**. Formulir pembuatan invoice akan terbuka.
+  </Step>
+  <Step title="Pilih klien">
+    Pilih nama klien dari daftar tarik-turun. Ini adalah kolom yang wajib diisi. Semua ID Order yang terkait dengan klien tersebut akan otomatis muncul di kolom berikutnya.
+
+    Untuk membuat **Invoice Langsung** (tidak terhubung ke order), Anda dapat mengosongkan kolom ID Order atau pilih **Independent Email** untuk menagih alamat email mana pun di luar daftar klien Anda.
+  </Step>
+  <Step title="Pilih ID Order">
+    Pilih ID Order spesifik yang Anda tagihkan. Ini menghubungkan invoice ke order yang benar dalam sistem. Untuk invoice langsung, lewati kolom ini.
+  </Step>
+  <Step title="Masukkan alamat penagihan">
+    Isi **Bill Payment Address**:
+    - Negara, Negara Bagian, dan Kota
+    - Kode pos
+    - Alamat jalan (jika berlaku)
+
+    Alamat ini muncul pada invoice yang dicetak untuk kepatuhan dan kejelasan.
+  </Step>
+  <Step title="Tetapkan detail order dan keuangan">
+    Di bawah **Order Details**, masukkan hal berikut:
+
+    | Kolom | Deskripsi |
+    |-------|-------------|
+    | **Currency** | Mata uang yang ingin Anda terima pembayarannya |
+    | **Order ID – Amount** | Nilai moneter yang terkait dengan order |
+    | **Discount (%)** dan **Discount Amount** | Terapkan diskon yang berlaku |
+    | **Paid Amount** | Jumlah yang telah dibayar klien |
+    | **Due Amount** | Saldo yang masih harus dibayar |
+    | **Total Amount** | Jumlah total yang harus dibayar untuk order |
+
+    Untuk **Invoice Langsung**, klik **Add Item** untuk menambahkan item baris secara manual. Masukkan nama item, jumlah, dan harga. Anda dapat menambahkan beberapa item. Gunakan **+ Tax Rates** untuk menerapkan atau membuat tarif pajak (inklusif atau eksklusif).
+  </Step>
+  <Step title="Tambahkan catatan (opsional)">
+    Di kolom **Note**, tambahkan konteks tambahan untuk klien — misalnya, instruksi pembayaran, referensi proyek, atau pesan pribadi.
+  </Step>
+  <Step title="Tinjau panel detail">
+    Panel **Details** di sisi kanan memberi Anda ringkasan langsung dari:
+
+    - Status invoice (Draft secara default)
+    - Nama klien, nama perusahaan, dan alamat
+    - Alamat pembayaran tagihan
+    - Nama layanan dan ID Order
+    - Tanggal dibuat dan tanggal jatuh tempo
+    - Jumlah total
+
+    Tinjau semuanya dengan cermat sebelum melanjutkan.
+  </Step>
+  <Step title="Kirim ke klien atau simpan sebagai draft">
+    - Klik **Send to Client** untuk mengirim invoice melalui email segera. Status berubah dari **Draft** menjadi **Open** secara otomatis.
+    - Klik **Save as Draft** jika Anda ingin menyelesaikannya nanti.
+  </Step>
+</Steps>
+
+<Note>
+  Logo dan alamat agensi ditambahkan ke invoice secara otomatis oleh sistem — Anda tidak perlu memasukkannya secara manual pada setiap invoice.
+</Note>
+
+## Transisi Status Invoice
+
+Setelah invoice dibuat, invoice mengikuti alur status yang ditentukan. Hanya agensi yang dapat memindahkan invoice antar status.
+
+```
+Draft → Open (saat dikirim ke klien)
+Open  → Paid           (pembayaran diterima)
+Open  → Void           (invoice dibatalkan)
+Open  → Uncollectable  (piutang dihapuskan)
+```
+
+<Warning>
+  Invoice hanya dapat **diedit** saat dalam status **Draft**. Setelah invoice dipindahkan ke Open, Anda tidak dapat mengeditnya. Jika Anda perlu membuat perubahan, batalkan invoice dan buat yang baru.
+</Warning>
+
+## Mengedit Invoice
+
+Anda hanya dapat mengedit invoice saat statusnya **Draft**.
+
+<Steps>
+  <Step title="Buka invoice">
+    Di Dasbor Invoice, temukan invoice draft yang ingin Anda edit. Klik invoice tersebut atau centang kotak di sebelahnya.
+  </Step>
+  <Step title="Klik Edit">
+    Pilih opsi **Edit** dari menu tindakan. Formulir invoice akan terbuka dengan semua detail yang sudah terisi sebelumnya.
+  </Step>
+  <Step title="Buat perubahan Anda">
+    Perbarui kolom apa pun — detail penagihan, deskripsi layanan, jumlah, besaran, atau ketentuan pembayaran.
+  </Step>
+  <Step title="Simpan">
+    Klik **Save** untuk menerapkan perubahan Anda.
+  </Step>
+</Steps>
+
+## Mengirim Invoice ke Klien
+
+Jika Anda menyimpan invoice sebagai draft dan ingin mengirimnya nanti:
+
+<Steps>
+  <Step title="Temukan invoice">
+    Di Dasbor Invoice, temukan invoice draft yang ingin Anda kirim.
+  </Step>
+  <Step title="Klik Send Invoice">
+    Buka invoice dan klik tombol **Send Invoice**. AgencyHandy mengirimkan invoice ke alamat email klien yang terdaftar.
+  </Step>
+  <Step title="Konfirmasi pengiriman">
+    Periksa pesan konfirmasi untuk memverifikasi bahwa invoice berhasil dikirim. Status invoice diperbarui menjadi **Open**.
+  </Step>
+</Steps>
+
+<Note>
+  Jika invoice dalam status **Draft** dan Anda memperbarui nama layanan, nama baru akan tercermin dalam invoice. Setelah status berubah menjadi Open, Paid, Uncollectable, atau Void, nama layanan pada invoice dikunci dan tidak akan diperbarui.
+</Note>
+
+## Mengunduh dan Mencetak Invoice
+
+Baik agensi maupun klien dapat mengunduh invoice kapan saja.
+
+<Steps>
+  <Step title="Buka invoice">
+    Pergi ke Dasbor Invoice dan pilih invoice yang ingin Anda unduh.
+  </Step>
+  <Step title="Akses unduhan/cetak">
+    Klik opsi **Download** atau **Print** dari menu tindakan invoice.
+  </Step>
+  <Step title="Pilih format Anda">
+    Pilih **PDF** untuk mengunduh atau pilih pengaturan printer Anda untuk salinan fisik.
+  </Step>
+  <Step title="Simpan atau cetak">
+    Simpan file ke perangkat Anda atau kirim ke printer. Setelah mencetak, arsipkan invoice atau bagikan dengan pemangku kepentingan sesuai kebutuhan.
+  </Step>
+</Steps>
+
+## Mengatur Pengingat pada Invoice
+
+Fitur Pengingat Invoice memungkinkan Anda secara otomatis memberi tahu klien tentang invoice yang akan datang, jatuh tempo, atau sudah melewati batas waktu sehingga Anda dibayar tepat waktu tanpa tindak lanjut manual.
+
+<Note>
+  Pengingat hanya berfungsi pada invoice yang berstatus **Open** dan memiliki **tanggal jatuh tempo** yang ditetapkan.
+</Note>
+
+<Steps>
+  <Step title="Buka Pengaturan Invoice">
+    Klik tombol **Settings** di kanan atas Dasbor Invoice.
+  </Step>
+  <Step title="Navigasi ke pengaturan Pengingat">
+    Gulir ke bagian bawah bagian **Template** di panel kiri, lalu klik **Edit** untuk membuka modal konfigurasi pengingat.
+  </Step>
+  <Step title="Pilih jenis pengingat">
+    Pilih salah satu dari berikut:
+
+    - **Sequenced Reminder** — membuat serangkaian pengingat pada interval yang Anda tentukan
+    - **Don't Send Reminder** — menonaktifkan pengingat untuk invoice yang dipilih
+  </Step>
+  <Step title="Konfigurasikan detail pengingat">
+    Untuk setiap pengingat dalam urutan:
+    - Pilih **template pengingat** (misalnya, "Upcoming Invoice Payment Reminder")
+    - Tetapkan **tanggal pengingat** — misalnya, 3 hari sebelum atau sesudah tanggal jatuh tempo
+    - Tentukan apakah dipicu **sebelum** atau **sesudah** tanggal jatuh tempo
+  </Step>
+  <Step title="Tambahkan lebih banyak pengingat jika diperlukan">
+    Klik **+ Add Another Reminder** untuk membangun urutan pengingat lengkap. Klik tombol **Delete** di sebelah pengingat mana pun untuk menghapusnya.
+  </Step>
+  <Step title="Terapkan ke invoice aktif (opsional)">
+    Centang kotak untuk **menerapkan pengaturan pengingat ini ke invoice yang sudah aktif** jika Anda ingin konfigurasi baru mencakup invoice yang sudah berstatus Open.
+  </Step>
+  <Step title="Simpan">
+    Klik **Update** untuk menyimpan dan mengaktifkan jadwal pengingat.
+  </Step>
+</Steps>
+
+## Invoice Langsung (Tanpa ID Order)
+
+Ketika Anda perlu menagih klien dengan cepat tanpa membuat order terlebih dahulu, gunakan alur kerja Invoice Langsung.
+
+<Steps>
+  <Step title="Mulai invoice baru">
+    Pergi ke **Invoices → Create Invoice**.
+  </Step>
+  <Step title="Pilih jenis penerima">
+    Pilih **Individual** atau **Company** sebagai jenis penerima.
+  </Step>
+  <Step title="Pilih atau masukkan penerima">
+    - Pilih **klien yang sudah ada** dari tarik-turun, atau
+    - Pilih **Independent Email** untuk mengetik alamat email mana pun — bahkan yang tidak terdaftar sebagai klien
+  </Step>
+  <Step title="Kosongkan kolom ID Order">
+    Lewati kolom ID Order. AgencyHandy membuat invoice mandiri yang tidak terhubung ke order mana pun.
+  </Step>
+  <Step title="Tambahkan item, pajak, dan diskon">
+    Klik **Add Item** untuk menambahkan item baris dengan nama, jumlah, dan harga. Terapkan tarif pajak dan diskon sesuai kebutuhan. Total diperbarui secara otomatis.
+  </Step>
+  <Step title="Tetapkan alamat penagihan dan catatan">
+    Masukkan alamat pembayaran tagihan dan tambahkan catatan untuk klien.
+  </Step>
+  <Step title="Kirim atau simpan">
+    Klik **Send Invoice** untuk mengirimkannya segera, atau **Save as Draft** untuk meninjaunya terlebih dahulu.
+  </Step>
+</Steps>
+
+<Tip>
+  Invoice Langsung sangat cocok untuk permintaan mendesak, panggilan konsultasi, atau pekerjaan apa pun yang perlu Anda tagihkan di luar alur kerja order normal. Pelacakan pembayaran untuk invoice mandiri harus dikelola secara manual.
+</Tip>

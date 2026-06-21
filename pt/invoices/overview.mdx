@@ -1,0 +1,100 @@
+---
+title: "Visão Geral da Gestão de Faturas para Agências no AgencyHandy"
+sidebarTitle: "Faturas"
+description: "Explore o sistema de faturação do AgencyHandy — faturação, acompanhamento de pagamentos, faturas recorrentes, estados, faturas diretas e exportação de registos financeiros."
+---
+
+A funcionalidade de faturas do AgencyHandy oferece à sua agência um sistema completo de faturação e gestão de pagamentos dentro da mesma plataforma que utiliza para gerir clientes, encomendas e projetos. Pode criar faturas profissionais, enviá-las a clientes por email, acompanhar o estado de pagamento em tempo real, automatizar a faturação recorrente para serviços por subscrição e exportar os seus registos financeiros sempre que necessário. Cada fatura é automaticamente associada ao logótipo e morada da sua agência, mantendo as suas comunicações consistentemente alinhadas com a sua marca.
+
+## Quem Pode Criar Faturas
+
+Apenas os utilizadores com as seguintes funções podem criar e gerir faturas:
+
+- **Super Admin**
+- **Admin**
+- **Gestor de Projeto (GP)**
+
+Os clientes podem visualizar e descarregar faturas, mas não podem criá-las nem editá-las.
+
+## Painel de Faturas
+
+Para abrir o Painel de Faturas, clique em **Invoices** na barra lateral esquerda. A partir daqui pode:
+
+- Criar, editar e eliminar faturas
+- Pesquisar faturas por **nome do cliente**, **ID de encomenda** ou **nome do serviço**
+- Filtrar e ordenar a lista de faturas
+- Ver o estado das faturas de forma imediata
+- Aceder às definições de faturas, incluindo a configuração do prefixo
+
+## O Que as Faturas Fazem
+
+<CardGroup cols={2}>
+  <Card title="Faturação" icon="file-invoice-dollar">
+    Crie e envie faturas profissionais para qualquer serviço ou produto que entregue aos clientes, com controlo total sobre valores, descontos e datas de vencimento.
+  </Card>
+  <Card title="Acompanhamento de Pagamentos" icon="chart-line">
+    Monitorize se as faturas foram visualizadas, pagas ou estão em atraso. O sistema regista automaticamente as datas de pagamento e de anulação à medida que os estados mudam.
+  </Card>
+  <Card title="Faturação Recorrente" icon="rotate">
+    Automatize a geração de faturas para serviços por subscrição. O AgencyHandy gera e entrega faturas recorrentes em cada ciclo de faturação sem intervenção manual.
+  </Card>
+  <Card title="Integração com Projetos" icon="diagram-project">
+    Associe faturas diretamente a encomendas e serviços para que a faturação esteja sempre ligada ao trabalho subjacente. Os itens faturáveis podem ser adicionados com precisão a cada fatura.
+  </Card>
+</CardGroup>
+
+## Estados das Faturas
+
+Cada fatura passa por um ciclo de vida definido. Compreender estes estados ajuda-o a gerir as suas receitas a receber de forma eficaz.
+
+| Estado | Descrição |
+|--------|-------------|
+| **Draft** | A fatura foi criada mas não finalizada. Pode editar qualquer parte. Quando estiver pronta, finalize-a alterando o estado para Open. As faturas em rascunho não associadas a uma subscrição podem ser eliminadas. |
+| **Open / Unpaid** | A fatura está finalizada e a aguardar pagamento. A agência envia-a ao cliente, que pode visualizá-la e pagá-la. Pode alterar uma fatura Open para Paid, Void ou Uncollectable. |
+| **Paid** | A fatura foi paga. O sistema regista automaticamente a data de pagamento quando marca uma fatura como Paid. |
+| **Void** | A fatura foi cancelada. O sistema regista automaticamente a data de anulação. |
+| **Uncollectable** | O cliente dificilmente irá pagar. Trate esta situação como dívida incobrável no seu processo contabilístico. |
+
+<Note>
+  Quando envia uma fatura a um cliente usando o botão **Send to Client**, o estado muda automaticamente de **Draft** para **Open**. Apenas a agência pode alterar o estado de Open para Paid, Void ou Uncollectable.
+</Note>
+
+## Faturas Diretas (Sem ID de Encomenda)
+
+O AgencyHandy suporta **Faturas Diretas** — faturas que não estão associadas a nenhuma encomenda existente. Isto é útil para faturação pontual, pagamentos ad-hoc ou faturar contactos que ainda não estão registados como clientes no seu sistema.
+
+Principais capacidades das Faturas Diretas:
+
+- Enviar faturas sem selecionar um ID de encomenda
+- Faturar qualquer cliente existente ou usar **Independent Email** para enviar para qualquer endereço de email
+- Adicionar itens, impostos e descontos manualmente
+- Enviar imediatamente ou guardar como rascunho
+
+<Tip>
+  Use Faturas Diretas quando precisa de faturar um cliente rapidamente por trabalho que não tem uma encomenda formal no AgencyHandy, como projetos urgentes, consultas ou trabalho fora do âmbito acordado.
+</Tip>
+
+## Exportar Faturas
+
+Pode exportar a sua lista de faturas para uso em ferramentas de contabilidade externas ou para arquivo. A exportação inclui todas as colunas visíveis: ID da fatura, nome do cliente, serviço, valores, estado e datas. Aceda à opção de exportação a partir do Painel de Faturas.
+
+## Definições de Faturas
+
+Configure as definições globais de faturas a partir do botão **Settings** no canto superior direito do Painel de Faturas. Isto inclui:
+
+- **Prefixo de fatura** — personalize o prefixo que aparece antes de cada número de fatura
+- **Modelos de lembrete** — configure lembretes de pagamento automáticos para faturas em aberto
+
+## Funcionalidades Relacionadas
+
+<CardGroup cols={3}>
+  <Card title="Criar uma Fatura" icon="plus" href="/pt/invoices/create-invoice">
+    Guia passo a passo para criar, preencher e enviar uma fatura.
+  </Card>
+  <Card title="Subscrições" icon="rotate" href="/pt/invoices/subscriptions">
+    Como funciona a faturação recorrente e como gerir faturas de subscrição.
+  </Card>
+  <Card title="Pedidos de Suporte" icon="ticket" href="/pt/tickets/support-tickets">
+    Trate as questões de faturação dos clientes através do sistema de pedidos de suporte.
+  </Card>
+</CardGroup>

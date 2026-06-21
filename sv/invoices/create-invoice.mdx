@@ -1,0 +1,235 @@
+---
+title: "Skapa, skicka och hantera klientfakturor i AgencyHandy"
+sidebarTitle: "Skapa faktura"
+description: "Steg-för-steg-guide för att skapa en faktura i AgencyHandy — välj klient, ange belopp, lägg till anteckningar, skicka till klient och konfigurera betalningspåminnelser."
+---
+
+Att skapa en faktura i AgencyHandy är en enkel process som kopplar din fakturering direkt till klienter och beställningar. Du fyller i klienten, kopplar beställningen, anger belopp, lägger till eventuella anteckningar och skickar — allt från ett enda formulär. När fakturan är skickad kan du spåra betalningsstatus, ange automatiska påminnelser och ladda ned fakturan som PDF när som helst.
+
+<Note>
+  Du måste vara **Super Admin**, **Admin** eller **PM** för att skapa fakturor. Minst en klient måste finnas i din arbetsyta innan du kan generera en faktura.
+</Note>
+
+## Inställningar för fakturaprefix
+
+Innan du börjar skapa fakturor bör du konfigurera ditt fakturaprefix. Prefixet visas före varje fakturanummer och hjälper till att identifiera fakturor som tillhörande din byrå.
+
+<Steps>
+  <Step title="Öppna fakturainställningar">
+    Klicka på knappen **Inställningar** i det övre högra hörnet i fakturainstrumentpanelen.
+  </Step>
+  <Step title="Ange ditt prefix">
+    Navigera till fältet **Fakturaprefix** och ange det prefix du vill ha (till exempel `FAKT-` eller din byrås initialer).
+  </Step>
+  <Step title="Spara">
+    Klicka på **Spara** för att tillämpa prefixet på alla framtida fakturor.
+  </Step>
+</Steps>
+
+## Skapa en faktura
+
+<Steps>
+  <Step title="Öppna fakturainstrumentpanelen">
+    Klicka på **Fakturor** i den vänstra sidopanelen för att öppna fakturainstrumentpanelen.
+  </Step>
+  <Step title="Starta en ny faktura">
+    Klicka på **+ Skapa faktura**. Formuläret för att skapa faktura öppnas.
+  </Step>
+  <Step title="Välj klienten">
+    Välj klientens namn från rullgardinsmenyn. Detta är ett obligatoriskt fält. Alla beställnings-ID:n kopplade till den klienten fylls automatiskt i nästa fält.
+
+    För att skapa en **Direktfaktura** (inte kopplad till en beställning) kan du lämna fältet Beställnings-ID tomt eller välja **Oberoende e-post** för att fakturera valfri e-postadress utanför din klientlista.
+  </Step>
+  <Step title="Välj beställnings-ID">
+    Välj det specifika beställnings-ID du fakturerar för. Detta kopplar fakturan till rätt beställning i systemet. För direktfakturor, hoppa över detta fält.
+  </Step>
+  <Step title="Ange faktureringsadress">
+    Fyll i **Faktureringsadress**:
+    - Land, stat och stad
+    - Postnummer
+    - Gatuadress (om tillämpligt)
+
+    Denna adress visas på den utskrivna fakturan för efterlevnad och tydlighet.
+  </Step>
+  <Step title="Ange beställnings- och ekonomiska uppgifter">
+    Under **Beställningsuppgifter** anger du följande:
+
+    | Fält | Beskrivning |
+    |-------|-------------|
+    | **Valuta** | Den valuta du vill bli betald i |
+    | **Beställnings-ID – Belopp** | Det monetära värdet kopplat till beställningen |
+    | **Rabatt (%)** och **Rabattbelopp** | Tillämpa eventuella tillämpliga rabatter |
+    | **Betalt belopp** | Eventuellt belopp som klienten redan har betalat |
+    | **Förfallet belopp** | Det utestående saldot |
+    | **Totalt belopp** | Det totala beloppet som ska betalas för beställningen |
+
+    För **Direktfakturor** klickar du på **Lägg till post** för att lägga till radposter manuellt. Ange postnamn, kvantitet och pris. Du kan lägga till flera poster. Använd **+ Skattesatser** för att tillämpa eller skapa skattesatser (inkluderande eller exkluderande).
+  </Step>
+  <Step title="Lägg till en anteckning (valfritt)">
+    I fältet **Anteckning** lägger du till ytterligare sammanhang för klienten — till exempel betalningsinstruktioner, projektreferenser eller ett personligt meddelande.
+  </Step>
+  <Step title="Granska detaljpanelen">
+    Den **Detalj**-panelen till höger ger dig en liveöversikt över:
+
+    - Fakturastatus (Utkast som standard)
+    - Klientnamn, företagsnamn och adress
+    - Faktureringsadress
+    - Tjänstnamn och beställnings-ID
+    - Skapat datum och förfallodatum
+    - Totalt belopp
+
+    Granska allt noggrant innan du fortsätter.
+  </Step>
+  <Step title="Skicka till klient eller spara som utkast">
+    - Klicka på **Skicka till klient** för att e-posta fakturan omedelbart. Statusen ändras automatiskt från **Utkast** till **Öppen**.
+    - Klicka på **Spara som utkast** om du vill slutföra den senare.
+  </Step>
+</Steps>
+
+<Note>
+  Byråns logotyp och adress läggs till fakturan automatiskt av systemet — du behöver inte ange dem manuellt på varje faktura.
+</Note>
+
+## Statusövergångar för fakturor
+
+När en faktura har skapats följer den ett definierat statusflöde. Endast byrån kan flytta en faktura mellan statusar.
+
+```
+Utkast → Öppen (när skickad till klient)
+Öppen  → Betald           (betalning mottagen)
+Öppen  → Annullerad       (faktura avbruten)
+Öppen  → Indrivbar        (skuld avskriven)
+```
+
+<Warning>
+  Fakturor kan bara **redigeras** när de är i **Utkast**-status. När en faktura har flyttats till Öppen kan du inte redigera den. Om du behöver göra ändringar, annullera fakturan och skapa en ny.
+</Warning>
+
+## Redigera en faktura
+
+Du kan redigera en faktura endast när den är i **Utkast**-status.
+
+<Steps>
+  <Step title="Öppna fakturan">
+    I fakturainstrumentpanelen hittar du utkastfakturan du vill redigera. Klicka på den eller markera kryssrutan bredvid den.
+  </Step>
+  <Step title="Klicka på Redigera">
+    Välj alternativet **Redigera** från åtgärdsmenyn. Fakturaformuläret öppnas med alla befintliga uppgifter förifyllda.
+  </Step>
+  <Step title="Gör dina ändringar">
+    Uppdatera valfria fält — faktureringsuppgifter, tjänstbeskrivningar, kvantiteter, belopp eller betalningsvillkor.
+  </Step>
+  <Step title="Spara">
+    Klicka på **Spara** för att tillämpa dina ändringar.
+  </Step>
+</Steps>
+
+## Skicka en faktura till en klient
+
+Om du sparade fakturan som ett utkast och vill skicka den senare:
+
+<Steps>
+  <Step title="Hitta fakturan">
+    I fakturainstrumentpanelen hittar du utkastfakturan du vill skicka.
+  </Step>
+  <Step title="Klicka på Skicka faktura">
+    Öppna fakturan och klicka på knappen **Skicka faktura**. AgencyHandy levererar fakturan till klientens registrerade e-postadress.
+  </Step>
+  <Step title="Bekräfta leverans">
+    Kontrollera bekräftelsemeddelandet för att verifiera att fakturan skickades. Fakturastatusen uppdateras till **Öppen**.
+  </Step>
+</Steps>
+
+<Note>
+  Om en faktura är i **Utkast**-status och du uppdaterar tjänstnamnet återspeglas det nya namnet i fakturan. När statusen ändras till Öppen, Betald, Indrivbar eller Annullerad låses tjänstnamnet på fakturan och uppdateras inte.
+</Note>
+
+## Ladda ned och skriva ut en faktura
+
+Både byrån och klienten kan ladda ned en faktura när som helst.
+
+<Steps>
+  <Step title="Öppna fakturan">
+    Gå till fakturainstrumentpanelen och välj fakturan du vill ladda ned.
+  </Step>
+  <Step title="Öppna nedladdning/utskrift">
+    Klicka på alternativet **Ladda ned** eller **Skriv ut** från fakturans åtgärdsmeny.
+  </Step>
+  <Step title="Välj ditt format">
+    Välj **PDF** för nedladdning eller välj dina skrivarinställningar för en fysisk kopia.
+  </Step>
+  <Step title="Spara eller skriv ut">
+    Spara filen på din enhet eller skicka den till skrivaren. Efter utskrift, arkivera fakturan eller dela den med intressenter efter behov.
+  </Step>
+</Steps>
+
+## Ange påminnelser för fakturor
+
+Fakturapåminnelsefunktionen låter dig automatiskt meddela klienter om kommande, förfallna eller överskridna fakturor så att du får betalt i tid utan manuell uppföljning.
+
+<Note>
+  Påminnelser fungerar bara på fakturor med statusen **Öppen** och ett angivet **förfallodatum**.
+</Note>
+
+<Steps>
+  <Step title="Öppna fakturainställningar">
+    Klicka på knappen **Inställningar** längst upp till höger i fakturainstrumentpanelen.
+  </Step>
+  <Step title="Navigera till påminnelseinställningar">
+    Bläddra till botten av **Mall**-avsnittet i den vänstra panelen och klicka sedan på **Redigera** för att öppna konfigurationsmodalen för påminnelser.
+  </Step>
+  <Step title="Välj en påminnelsetyp">
+    Välj ett av följande:
+
+    - **Sekventiell påminnelse** — skapar en serie påminnelser vid intervall du definierar
+    - **Skicka inte påminnelse** — inaktiverar påminnelser för de valda fakturorna
+  </Step>
+  <Step title="Konfigurera påminnelseuppgifter">
+    För varje påminnelse i sekvensen:
+    - Välj **påminnelsemall** (till exempel "Kommande fakturapåminnelse")
+    - Ange **påminnelsedatum** — till exempel 3 dagar före eller efter förfallodatumet
+    - Ange om det utlöses **före** eller **efter** förfallodatumet
+  </Step>
+  <Step title="Lägg till fler påminnelser vid behov">
+    Klicka på **+ Lägg till ytterligare påminnelse** för att bygga en fullständig påminnelsesekvens. Klicka på knappen **Ta bort** bredvid valfri påminnelse för att ta bort den.
+  </Step>
+  <Step title="Tillämpa på aktiva fakturor (valfritt)">
+    Markera kryssrutan för att **tillämpa dessa påminnelseinställningar på för närvarande aktiva fakturor** om du vill att den nya konfigurationen ska gälla fakturor som redan är i Öppen-status.
+  </Step>
+  <Step title="Spara">
+    Klicka på **Uppdatera** för att spara och aktivera påminnelseschemat.
+  </Step>
+</Steps>
+
+## Direktfakturor (utan beställnings-ID)
+
+När du snabbt behöver fakturera en klient utan att först skapa en beställning använder du arbetsflödet för direktfaktura.
+
+<Steps>
+  <Step title="Starta en ny faktura">
+    Gå till **Fakturor → Skapa faktura**.
+  </Step>
+  <Step title="Välj mottagartyp">
+    Välj **Individ** eller **Företag** som mottagartyp.
+  </Step>
+  <Step title="Välj eller ange mottagaren">
+    - Välj en **befintlig klient** från rullgardinsmenyn, eller
+    - Välj **Oberoende e-post** för att skriva in valfri e-postadress — även en som inte är registrerad som klient
+  </Step>
+  <Step title="Lämna beställnings-ID tomt">
+    Hoppa över fältet Beställnings-ID. AgencyHandy skapar en fristående faktura som inte är kopplad till någon beställning.
+  </Step>
+  <Step title="Lägg till poster, skatter och rabatter">
+    Klicka på **Lägg till post** för att lägga till radposter med namn, kvantiteter och priser. Tillämpa skattesatser och rabatter efter behov. Totalen uppdateras automatiskt.
+  </Step>
+  <Step title="Ange faktureringsadress och anteckningar">
+    Ange faktureringsadressen och lägg till eventuella anteckningar för klienten.
+  </Step>
+  <Step title="Skicka eller spara">
+    Klicka på **Skicka faktura** för att leverera den omedelbart, eller **Spara som utkast** för att granska den först.
+  </Step>
+</Steps>
+
+<Tip>
+  Direktfakturor är perfekta för brådskande förfrågningar, konsultsamtal eller arbete du behöver fakturera utanför det normala beställningsarbetsflödet. Betalningsspårning för fristående fakturor måste hanteras manuellt.
+</Tip>

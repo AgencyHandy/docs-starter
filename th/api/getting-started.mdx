@@ -1,0 +1,114 @@
+---
+title: "AgencyHandy API: การยืนยันตัวตนและการเริ่มต้นใช้งาน"
+sidebarTitle: "Getting Started"
+description: "สร้าง API key ค้นหา Company ID และเริ่มสร้างการผสานรวมกับ AgencyHandy REST API ด้วยคู่มือการตั้งค่าเบื้องต้นนี้"
+---
+
+AgencyHandy API ช่วยให้คุณสามารถอัตโนมัติการสร้าง lead การจัดการลูกค้า การอัปเดตออเดอร์ และอื่นๆ อีกมากมายจากระบบภายนอกหรือสคริปต์ใดก็ได้ ทุกคำขอต้องยืนยันตัวตนด้วย API key ที่คุณสร้างจากการตั้งค่า workspace คู่มือนี้จะแนะนำคุณผ่านขั้นตอนการรับข้อมูลรับรองและการเรียก API ครั้งแรก
+
+<Note>
+  คุณต้องเป็น **SuperAdmin** หรือ **Admin** บน AgencyHandy workspace ของคุณเพื่อสร้าง API key
+</Note>
+
+## Base URL
+
+คำขอ API ทั้งหมดส่งไปยัง:
+
+```
+https://api.agencyhandy.com
+```
+
+แทนที่ `{{URL}}` ด้วย base URL นี้ในคำขอตัวอย่างทั้งหมดตลอดเอกสาร API
+
+## ขั้นตอนที่ 1: สร้าง API key
+
+<Steps>
+  <Step title="เปิด Workspace Configuration">
+    ไปที่การตั้งค่า workspace ของคุณที่:
+
+    ```
+    {{workspaceUrl}}/workspace-config?tab=api-key
+    ```
+
+    ซึ่งจะเปิดแท็บ **API Key** ภายใน Workspace Configuration
+  </Step>
+
+  <Step title="สร้างและคัดลอก API key ของคุณ">
+    คลิก **Generate** (หรือ **Regenerate** หาก key มีอยู่แล้ว) คัดลอก API key และเก็บไว้อย่างปลอดภัย — ปฏิบัติต่อมันเหมือนรหัสผ่าน AgencyHandy จะไม่แสดงอีกครั้งหลังจากคุณออกจากหน้า
+  </Step>
+</Steps>
+
+<Warning>
+  การสร้าง API key ใหม่จะทำให้ key เดิมหมดความถูกต้องทันที การผสานรวมที่มีอยู่ทั้งหมดที่ใช้ key เก่าจะหยุดทำงานจนกว่าคุณจะอัปเดตด้วย key ใหม่
+</Warning>
+
+## ขั้นตอนที่ 2: ดึงข้อมูล Company ID ของคุณ
+
+endpoint API ส่วนใหญ่ต้องการ header `companyid` ที่ระบุว่า workspace ใดที่คำขอกำหนดเป้าหมาย ใช้ endpoint ต่อไปนี้เพื่อดึงข้อมูล Company ID ของคุณ
+
+### Endpoint
+
+```
+GET {{URL}}/accounts/companies
+```
+
+### Headers
+
+| Header | Value |
+|---|---|
+| `x-api-key` | API key ของคุณ |
+
+### ตัวอย่างคำขอ
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/accounts/companies" \
+  --header "x-api-key: <YOUR_API_KEY>"
+```
+
+### ตัวอย่างการตอบสนอง
+
+```json
+{
+  "message": "Companies associated with API token.",
+  "companies": [
+    {
+      "_id": "6525994184e9ddd79853450e",
+      "name": "onethread123",
+      "logo": "",
+      "extraSmallLogo": "",
+      "largeLogo": ""
+    }
+  ]
+}
+```
+
+<Steps>
+  <Step title="ค้นหา Company ID ของคุณ">
+    ในการตอบสนอง ค้นหาช่อง `_id` ภายในอาร์เรย์ `companies` นี่คือ **Company ID** ของคุณ
+
+    ```javascript
+    const companyId = response.companies[0]._id;
+    // e.g. "6525994184e9ddd79853450e"
+    ```
+  </Step>
+
+  <Step title="บันทึก Company ID">
+    บันทึก Company ID เพื่อใช้ในคำขอ API ถัดไปทั้งหมด คุณจะส่งมันเป็น header `companyid`:
+
+    | Header | Value |
+    |---|---|
+    | `x-api-key` | API key ของคุณ |
+    | `companyid` | Company ID ของคุณ |
+  </Step>
+</Steps>
+
+## สรุปการยืนยันตัวตน
+
+คำขอ API ที่ต้องยืนยันตัวตนทุกรายการต้องมีอย่างน้อย:
+
+```
+x-api-key: <YOUR_API_KEY>
+companyid: <YOUR_COMPANY_ID>
+```
+
+เมื่อมี API key และ Company ID ในมือแล้ว คุณพร้อมที่จะใช้งาน AgencyHandy API ส่วนที่เหลือ ดำเนินการต่อไปยังคู่มือ endpoint ด้านล่าง

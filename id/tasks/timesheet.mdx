@@ -1,0 +1,172 @@
+---
+title: "Pelacakan Waktu dan Manajemen Timesheet di AgencyHandy"
+sidebarTitle: "Timesheet"
+description: "Catat waktu dengan penghitung waktu langsung atau entri manual, filter log kerja berdasarkan tugas, anggota, atau layanan, dan ekspor data timesheet sebagai CSV atau XLSX di AgencyHandy."
+---
+
+Fitur Timesheet di AgencyHandy memberi Anda panel terpusat untuk melacak setiap jam yang dihabiskan tim Anda pada tugas. Anda dapat memulai penghitung waktu langsung pada tugas mana pun, mencatat waktu setelah fakta dengan entri manual, lalu memilah data berdasarkan rentang tanggal, anggota tim, atau layanan. Ketika Anda perlu melaporkan produktivitas atau menagih berdasarkan waktu, Anda dapat mengekspor semuanya ke CSV atau XLSX dalam beberapa klik. Ini adalah alat penting untuk menjaga tim Anda tetap bertanggung jawab dan penagihan berbasis waktu Anda tetap akurat.
+
+## Siapa yang Dapat Menggunakan Fitur Timesheet
+
+| Fitur | Super Admin | Admin | PM | Employee |
+|---------|:-----------:|:-----:|:--:|:--------:|
+| Lihat log waktu sendiri | ✅ | ✅ | ✅ | ✅ |
+| Catat waktu untuk orang lain | ✅ | ✅ | ✅ | ❌ |
+| Edit entri waktu | ✅ | ✅ | ✅ | ❌ |
+| Ekspor data timesheet | ✅ | ✅ | ✅ | ❌ |
+
+<Note>
+  Tugas harus ada sebelum waktu dapat dilacak terhadapnya. Pastikan tugas dibuat dalam order sebelum mencoba mencatat waktu.
+</Note>
+
+## Melihat Timesheet
+
+<Steps>
+  <Step title="Buka Timesheet">
+    Klik **Timesheet** di bilah sisi kiri utama. Anda akan melihat tabel yang mencantumkan semua log waktu untuk tim Anda.
+
+    Setiap baris menampilkan tanggal, anggota tim, nama tugas, layanan, waktu yang dicatat, dan catatan apa pun yang terlampir pada entri.
+  </Step>
+</Steps>
+
+## Menambahkan Entri Waktu
+
+Anda memiliki dua opsi untuk mencatat waktu: penghitung waktu langsung untuk pekerjaan yang sedang berjalan, atau entri manual untuk waktu yang telah Anda selesaikan.
+
+<Tabs>
+  <Tab title="Mulai Penghitung Waktu">
+    <Steps>
+      <Step title="Pilih tugas">
+        Di tampilan Timesheet, temukan atau pilih tugas yang akan Anda kerjakan.
+      </Step>
+      <Step title="Klik Start Timer">
+        Klik **Start Timer** untuk mulai melacak waktu secara real-time. Penghitung waktu berjalan hingga Anda menghentikannya.
+      </Step>
+      <Step title="Hentikan setelah selesai">
+        Klik **Stop** ketika Anda selesai mengerjakan. AgencyHandy secara otomatis mencatat waktu yang telah berlalu terhadap tugas yang dipilih.
+      </Step>
+    </Steps>
+
+    <Tip>
+      Gunakan penghitung waktu untuk pekerjaan yang sedang berjalan untuk memastikan pelacakan yang tepat. Membulatkan atau memperkirakan waktu secara manual setelah fakta kurang akurat dibandingkan membiarkan penghitung waktu berjalan.
+    </Tip>
+  </Tab>
+  <Tab title="Entri Manual">
+    <Steps>
+      <Step title="Klik + Add Entry">
+        Di panel Timesheet, klik **+ Add Entry**. Sebuah formulir akan muncul.
+      </Step>
+      <Step title="Isi detail entri">
+        - **Task** — pilih tugas yang waktu ini berlaku untuknya
+        - **Team Member** — tetapkan waktu ke orang yang tepat (Admin dan Manager dapat mencatat untuk orang lain)
+        - **Time Spent** — masukkan jam dan menit
+        - **Notes** — tambahkan konteks tentang apa yang dikerjakan
+      </Step>
+      <Step title="Simpan">
+        Klik **Save** untuk mencatat entri. Entri akan segera muncul dalam tabel timesheet.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Memfilter Berdasarkan Rentang Tanggal
+
+Gunakan filter tanggal untuk berfokus pada periode waktu tertentu.
+
+<Steps>
+  <Step title="Buka filter tanggal">
+    Klik kontrol filter tanggal di kanan atas panel Timesheet.
+  </Step>
+  <Step title="Pilih rentang">
+    Pilih dari rentang prasetel:
+    - **Daily** — hanya log hari ini
+    - **Weekly** — minggu saat ini
+    - **Monthly** — bulan saat ini
+
+    Untuk proyek yang lebih panjang atau pelaporan historis, pilih rentang tanggal **Custom** dengan memasukkan tanggal mulai dan akhir.
+  </Step>
+  <Step title="Terapkan">
+    Klik **Apply** untuk memperbarui tabel dengan log dari periode yang dipilih.
+  </Step>
+</Steps>
+
+<Tip>
+  Filter sebelum mengekspor untuk menghasilkan laporan yang terfokus. Mengekspor timesheet penuh yang tidak difilter dapat menghasilkan file yang sangat besar untuk agensi yang aktif.
+</Tip>
+
+## Mengelompokkan Entri
+
+Pengelompokan mengatur ulang cara baris timesheet diorganisir tanpa menghapus data apa pun. Ini membantu Anda membaca dan menganalisis log dengan lebih cepat.
+
+<Steps>
+  <Step title="Buka tarik-turun Group By">
+    Klik tarik-turun **Group By** di dekat bagian atas panel Timesheet.
+  </Step>
+  <Step title="Pilih pengelompokan">
+    Pilih dari opsi berikut:
+
+    | Opsi Group By | Yang Ditampilkan |
+    |----------------|---------------|
+    | **Task Name** | Semua entri waktu dikelompokkan di bawah setiap tugas |
+    | **Team Member** | Semua entri dikelompokkan di bawah setiap orang |
+    | **Service → Task Name** | Entri dikelompokkan berdasarkan layanan, lalu dipecah berdasarkan tugas dalam setiap layanan |
+  </Step>
+</Steps>
+
+<Note>
+  Pengelompokan hanya merupakan perubahan visual — tidak memengaruhi data yang mendasarinya atau apa yang diekspor. Ekspor selalu mencakup semua baris yang terlihat.
+</Note>
+
+## Melihat Detail Tugas dari Timesheet
+
+<Steps>
+  <Step title="Klik nama tugas">
+    Di tabel timesheet, klik **Nama Tugas** mana pun. AgencyHandy menavigasi Anda ke halaman detail lengkap tugas tersebut.
+  </Step>
+  <Step title="Tinjau konteks tugas">
+    Di halaman detail tugas, Anda akan menemukan riwayat log waktu lengkap, catatan terlampir, penanggung jawab, status, dan informasi tingkat tugas lainnya. Gunakan tampilan ini untuk menyelidiki entri atau memverifikasi pekerjaan apa yang telah dilakukan.
+  </Step>
+</Steps>
+
+## Mengekspor Data Timesheet
+
+Ekspor timesheet Anda untuk penggajian, laporan penagihan klien, atau alat manajemen proyek eksternal.
+
+<Steps>
+  <Step title="Terapkan filter terlebih dahulu (disarankan)">
+    Gunakan filter rentang tanggal untuk mempersempit ekspor ke periode yang Anda butuhkan. Ini menjaga file tetap terfokus dan mudah dikelola.
+  </Step>
+  <Step title="Klik Export">
+    Klik tombol **Export** di bagian atas panel Timesheet.
+  </Step>
+  <Step title="Pilih format">
+    Pilih salah satu:
+    - **CSV** — untuk alat spreadsheet seperti Excel, Google Sheets, atau pipeline data
+    - **XLSX** — untuk buku kerja berformat Excel dengan pemformatan kolom yang dipertahankan
+  </Step>
+  <Step title="Unduh file">
+    File diunduh ke perangkat Anda secara otomatis. Setiap ekspor mencakup semua kolom yang terlihat: tanggal, anggota tim, nama tugas, layanan, waktu yang dicatat, dan catatan.
+  </Step>
+</Steps>
+
+<Warning>
+  Jika ekspor tidak memicu unduhan, **pemblokir pop-up** browser Anda mungkin mencegah file diunduh. Nonaktifkan pemblokiran pop-up untuk AgencyHandy dan coba lagi.
+</Warning>
+
+## Catatan Tambahan
+
+<Accordion title="Penghitung waktu vs. entri manual">
+  Penghitung waktu paling baik untuk pekerjaan aktif dan real-time. Entri manual paling baik ketika Anda lupa memulai penghitung waktu atau perlu mencatat waktu secara retroaktif. Kedua metode menghasilkan entri log yang identik dalam tabel timesheet.
+</Accordion>
+
+<Accordion title="Pengelompokan vs. filter">
+  Filter **mengurangi** baris yang ditampilkan dalam tabel. Pengelompokan **mengatur ulang** baris yang sudah terlihat. Anda dapat menerapkan keduanya sekaligus — filter ke rentang tanggal, lalu kelompokkan berdasarkan anggota tim untuk melihat total setiap orang untuk periode tersebut.
+</Accordion>
+
+<Accordion title="Ekspor mencakup semua kolom yang terlihat">
+  Setiap ekspor menangkap kondisi tabel yang terlihat saat ini: tanggal, pengguna, tugas, layanan, waktu, dan catatan. Jika Anda telah menerapkan pengaturan group-by, ekspor mencerminkan struktur pengelompokan tersebut juga.
+</Accordion>
+
+<Accordion title="Rentang kustom untuk data historis">
+  Untuk proyek yang berjalan lama atau tinjauan triwulanan, gunakan opsi rentang tanggal kustom untuk menarik data timesheet historis di luar jendela harian/mingguan/bulanan yang telah ditetapkan.
+</Accordion>

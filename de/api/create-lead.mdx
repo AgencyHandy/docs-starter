@@ -1,0 +1,201 @@
+---
+title: "AgencyHandy API: Einen neuen Lead programmgesteuert erstellen"
+sidebarTitle: "Lead erstellen"
+description: "Verwenden Sie die AgencyHandy-API, um neue Leads programmgesteuert zu erstellen, indem Sie eine POST-Anfrage an den Bulk-Lead-Endpunkt mit den erforderlichen Feldern senden."
+---
+
+Der Endpunkt „Lead erstellen“ ermöglicht es Ihnen, neue Leads aus jedem externen System — einem Webformular, einem CRM, einer Marketing-Automatisierungsplattform oder einem benutzerdefinierten Skript — programmgesteuert zu Ihrem AgencyHandy-Workspace hinzuzufügen. Über diesen Endpunkt erstellte Leads erscheinen sofort in Ihrer Lead-Pipeline, genau wie wenn sie manuell hinzugefügt worden wären.
+
+<Note>
+  Bevor Sie diesen Endpunkt verwenden, schließen Sie den Leitfaden [Erste Schritte](/de/api/getting-started) ab, um Ihren API-Schlüssel und Ihre Unternehmens-ID zu erhalten. Sie müssen außerdem Ihre **Kunden-Rollen-ID** abrufen, die beim Erstellen eines Leads erforderlich ist.
+</Note>
+
+## Voraussetzungen
+
+- ✅ API-Schlüssel generiert aus **Workspace-Konfiguration → API-Schlüssel**
+- ✅ Unternehmens-ID abgerufen aus `GET {{URL}}/accounts/companies`
+- ✅ Kunden-Rollen-ID abgerufen (siehe Schritt 1 unten)
+
+---
+
+## Schritt 1: Kunden-Rollen-ID abrufen
+
+Bevor Sie einen Lead erstellen, benötigen Sie die Rollen-ID für die `client`-Rolle in Ihrem Unternehmen.
+
+### Endpunkt
+
+```
+GET {{URL}}/roles?type=company
+```
+
+### Header
+
+| Header | Wert |
+|---|---|
+| `x-api-key` | Ihr API-Schlüssel |
+| `companyid` | Ihre Unternehmens-ID |
+
+### Beispielanfrage
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/roles?type=company" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>"
+```
+
+### Beispielantwort
+
+```json
+{
+  "roles": [
+    {
+      "_id": "6525994184e9ddd798534535",
+      "role": {
+        "_id": "6525994184e9ddd79853451e",
+        "responsibility": "",
+        "name": "client"
+      },
+      "company": "6525994184e9ddd79853450e",
+      "createdAt": "2023-10-10T18:34:41.567Z",
+      "updatedAt": "2024-10-01T07:28:48.340Z",
+      "__v": 0,
+      "type": "company"
+    }
+  ]
+}
+```
+
+Suchen Sie den Eintrag, bei dem `roles[0].role.name === "client"` gilt, und extrahieren Sie die **äußere** `_id` — das ist `roles[0]._id`, **nicht** `roles[0].role._id`.
+
+```javascript
+const clientRoleId = roles.find(r => r.role.name === "client")._id;
+// e.g. "6525994184e9ddd798534535"
+```
+
+<Warning>
+  Verwenden Sie `roles[0]._id` (die Unternehmensrollen-Zuordnungs-ID), **nicht** `roles[0].role._id` (die Rollendefinitions-ID). Die Verwendung der falschen ID führt dazu, dass die Lead-Erstellungsanfrage fehlschlägt.
+</Warning>
+
+---
+
+## Schritt 2: Neuen Lead erstellen
+
+### Endpunkt
+
+```
+POST {{URL}}/members/bulk-lead
+```
+
+### Header
+
+| Header | Wert |
+|---|---|
+| `x-api-key` | Ihr API-Schlüssel |
+| `companyid` | Ihre Unternehmens-ID |
+| `Content-Type` | `application/json` |
+
+### Anfrage-Body
+
+Der Anfrage-Body ist ein **JSON-Array** — Sie können einen oder mehrere Leads in einem einzigen Aufruf erstellen.
+
+<ParamField body="firstName" type="string" required>
+  Der Vorname des Leads.
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  Der Nachname des Leads.
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  Die E-Mail-Adresse des Leads. Muss innerhalb Ihres Workspaces eindeutig sein.
+</ParamField>
+
+<ParamField body="role" type="string" required>
+  Die in Schritt 1 abgerufene Kunden-Rollen-ID (d. h. `roles[0]._id`).
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  Muss beim Erstellen eines Leads auf `false` gesetzt werden. Nur auf `true` setzen, wenn ein Lead in einen vollständigen Kunden umgewandelt wird.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Der Pipeline-Status des Leads. Häufige Werte: `New`, `Contacted`, `Qualified`. Standardmäßig `New`, wenn nicht angegeben.
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  Die Telefonnummer des Leads.
+</ParamField>
+
+<ParamField body="source" type="string">
+  Wie Sie diesen Lead gewonnen haben. Beispielwerte: `website`, `referral`, `social`.
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  Die Position (Reihenfolge) des Leads in der Pipeline-Board-Spalte. Standardmäßig `1`.
+</ParamField>
+
+### Beispielanfrage
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-lead" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "role": "6525994184e9ddd798534535",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+### Erfolgsantwort
+
+```json
+{
+  "message": "Lead created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  Bestätigungszeichenfolge: `"Lead created successfully"`.
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  Array der erstellten Lead-Objekte.
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  Die eindeutige ID des neu erstellten Leads. Speichern Sie diese, wenn Sie den Lead in nachfolgenden API-Aufrufen referenzieren müssen.
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  Der vollständige Name des Leads (Vorname + Nachname).
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  Der gespeicherte Pipeline-Status des Leads.
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  Der dem Mitglied zugewiesene Rollenname — wird `"client"` sein.
+</ResponseField>
+
+<Tip>
+  Sie können mehrere Lead-Objekte im Array übergeben, um mehrere Leads in einem einzigen API-Aufruf zu erstellen. Jedes Objekt muss alle Pflichtfelder mit einer eigenen eindeutigen E-Mail-Adresse enthalten.
+</Tip>

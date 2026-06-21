@@ -1,0 +1,149 @@
+---
+title: "Opsætning af bankoverførsel, krypto og Wise som betalingsmetoder"
+sidebarTitle: "Andre betalinger"
+description: "Aktiver manuelle betalingsalternativer — bankoverførsel, kryptovaluta og Wise — så klienter, der foretrækker metoder uden kort, kan betale dine fakturaer."
+---
+
+AgencyHandy understøtter tre manuelle betalingsmetoder ud over Stripe og PayPal: **Bankoverførsel**, **Krypto** og **Wise**. Hver er designet til en bestemt type klient eller arbejdsgang. Alle tre kræver, at du manuelt markerer en faktura som **Betalt**, efter du har modtaget midlerne, da AgencyHandy ikke automatisk kan bekræfte overførsler foretaget uden for platformen.
+
+<Note>
+  Kun **SuperAdmin**- og **Admin**-roller kan aktivere eller konfigurere disse betalingsmetoder.
+</Note>
+
+<Tabs>
+  <Tab title="Bank Transfer">
+    ## Bankoverførsel
+
+    Bankoverførselsmetoden lader dig modtage manuelle wire- eller ACH-betalinger fra klienter. Du angiver dine bankoplysninger via en teksteditor med formatering, og AgencyHandy viser disse instruktioner til klienter ved kassen og inde i fakturaen.
+
+    ### Aktiver bankoverførsel
+
+    <Steps>
+      <Step title="Åbn indstillinger for bankbetaling">
+        Gå til **Integrationer → Bank Payment Method** i den venstre sidebjælke.
+      </Step>
+
+      <Step title="Udfyld dine overførselsoplysninger">
+        Brug teksteditoren med formatering til at indtaste dine bankoplysninger. Inkluder alle felter, som dine klienter skal bruge for at gennemføre overførslen:
+
+        - **Modtagers navn**
+        - **Kontonummer**
+        - **Banknavn**
+        - **Registreringsnummer**
+        - **Kontotype** (f.eks. Lønkonto, Opsparingskonto)
+        - **Bankadresse**
+
+        Du kan også tilføje noter, bemærkninger eller en supportkontakt. Der er ingen tegnbegrænsning, og editoren understøtter fed, understreget, lister, links og billedformatering.
+      </Step>
+
+      <Step title="Angiv krav om betalingsbevis (valgfrit)">
+        Slå **Payment Screenshot is Required** til, hvis du ønsker, at klienter uploader et skærmbillede, inden deres ordre behandles.
+
+        - **Aktiveret** — klienter skal uploade et gyldigt skærmbillede ved kassen. Ingen ordre oprettes, før en fil er uploadet.
+        - **Deaktiveret** — klienter kan fortsætte uden at uploade bevis. Ordren og fakturaen oprettes med det samme.
+      </Step>
+
+      <Step title="Gem">
+        Klik på **Update** for at gemme din opsætning. Klik på **Cancel** for at kassere ændringer.
+      </Step>
+    </Steps>
+
+    ### Klientoplevelse
+
+    Når en klient vælger bankoverførsel ved kassen, ser vedkommende dine brugerdefinerede overførselsoplysninger. Hvis bevis er påkrævet, vises en filupload-prompt, og ordren holdes tilbage, indtil klienten uploader et skærmbillede.
+
+    Når du har modtaget midlerne på din bankkonto, skal du åbne fakturaen i AgencyHandy og manuelt markere den som **Betalt** for at frigive ordren.
+
+    <Tip>
+      Inkluder en unik referencekode i dine instruktioner (f.eks. fakturanummeret), så du kan matche indgående overførsler med specifikke ordrer uden forvirring.
+    </Tip>
+  </Tab>
+
+  <Tab title="Crypto">
+    ## Kryptobetaling
+
+    Kryptobetaling lader dig modtage kryptovaluta fra klienter via en wallet-baseret overførsel. Du konfigurerer dine wallet-oplysninger og instruktioner én gang; klienter ser dem ved kassen og i fakturaen. I øjeblikket er **USDC** den understøttede kryptovaluta.
+
+    ### Aktiver kryptobetaling
+
+    <Steps>
+      <Step title="Åbn indstillinger for kryptobetaling">
+        Gå til **Integrationer → Crypto Payment** i den venstre sidebjælke. En wallet-opsætningsskærm åbnes med en teksteditor med formatering.
+      </Step>
+
+      <Step title="Indtast dine wallet-oplysninger">
+        Udfyld følgende felter:
+
+        - **Cryptocurrency Type** — i øjeblikket understøttes USDC.
+        - **Wallet Address** — din offentlige wallet-adresse til modtagelse af midler.
+        - **Network Type** — f.eks. ERC-20, TRC-20.
+        - **Additional Instructions** — memo, tag, minimumsbeløb, supportkontakt eller anden vejledning til dine klienter.
+      </Step>
+
+      <Step title="Angiv krav om betalingsbevis (valgfrit)">
+        Slå **Require Proof of Payment** til:
+
+        - **Aktiveret** — klienter skal uploade en fil (f.eks. et transaktionsskærmbillede), før ordren og fakturaen oprettes.
+        - **Deaktiveret** — en ordre og faktura oprettes, så snart klienten vælger kryptobetaling, uden at kræve bevis.
+      </Step>
+
+      <Step title="Gem">
+        Klik på **Save** for at gemme din opsætning. Du kan redigere eller frakoble kryptobetaling til enhver tid fra samme skærm.
+      </Step>
+    </Steps>
+
+    ### Klientens betalingsflow ved kassen
+
+    Når en klient vælger Krypto ved kassen:
+
+    1. En **Ordre** (status: *Afventer*) og en **Faktura** (status: *Åben*) oprettes.
+    2. Klienten vises din wallet-adresse og instruktioner.
+    3. Hvis bevis er påkrævet, vises en filupload-knap. Klienten skal uploade sit transaktionsskærmbillede, før ordren fortsætter.
+    4. Når overførslen er gennemført, og du har verificeret midlerne on-chain, skal du åbne fakturaen i AgencyHandy og markere den som **Betalt**.
+    5. Når en faktura markeres som **Betalt**, og ordren har status *Afventer*, opdateres ordrestatus automatisk til *Igangværende*.
+
+    <Note>
+      Kryptobetaling vises kun ved kassen, hvis den er aktiveret i **Workspace-indstillinger → Betalingsmetoder** OG i de relevante **Servicegruppe → Betalingstilgængelighed**-indstillinger. Deaktivering i workspace-indstillinger skjuler den overalt, uanset indstillinger på serviceniveau.
+    </Note>
+
+    <Tip>
+      Hvis en tjeneste ikke understøtter USDC, skjules kryptobetalingsmulighederne automatisk for den pågældende tjeneste. Sørg for, at USDC er aktiveret i dine tjenesteindstillinger, hvis du ønsker, at klienter kan betale med krypto.
+    </Tip>
+  </Tab>
+
+  <Tab title="Wise">
+    ## Wise-betaling
+
+    Wise-betalingsmetoden lader klienter betale via et Wise-betalingslink. Du tilføjer linket én gang inde i en faktura, og det medtages automatisk i alle fremtidige abonnementsfakturaer. Wise er ideelt til internationale klienter, der foretrækker bank-til-bank-overførsler med lavere gebyrer end traditionelle bankoverførsler.
+
+    ### Tilføj Wise som betalingsmetode
+
+    <Steps>
+      <Step title="Åbn fakturamodulet">
+        Klik på **Fakturaer** i den venstre sidebjælke, og klik derefter på **Opret faktura**.
+      </Step>
+
+      <Step title="Tilføj dit Wise-link">
+        Inde i fakturamodalen skal du rulle til afsnittet **Betalingsmetoder**. Klik på **Add Wise as a payment method**, og indsæt derefter dit Wise-betalingslink i inputfeltet.
+      </Step>
+
+      <Step title="Gem fakturaen">
+        Klik på **Gem**, eller fortsæt for at færdiggøre fakturaen. Dit Wise-betalingslink er nu integreret og synligt for klienten.
+      </Step>
+    </Steps>
+
+    ### Sådan fungerer det for klienter
+
+    Wise-linket vises som en klikbar knap på klientens faktura. Klienten åbner linket, gennemfører overførslen via sin Wise-konto og sender dig bekræftelse. Da AgencyHandy ikke modtager automatisk bekræftelse fra Wise, skal du manuelt markere fakturaen som **Betalt**, efter du har modtaget midlerne.
+
+    <Warning>
+      Wise **kan ikke** bruges til automatiserede upsell- eller markedspladsbetalinger. Kun ét Wise-betalingslink kan tilføjes pr. faktura. Dobbelttjek linket, inden du sender — et forkert link betyder, at klientens betaling går til den forkerte konto.
+    </Warning>
+
+    ### Platformadfærd
+
+    - Når et Wise-link er tilføjet, vises det automatisk på alle fremtidige **abonnements**fakturaer, medmindre du opdaterer eller fjerner det.
+    - AgencyHandy udfører ingen automatisk valutakonvertering. Klienten overfører i den valuta, dit Wise-link er konfigureret til.
+    - Du er ansvarlig for at spore betalinger og markere fakturaer som Betalt efter bekræftelse af modtagelse.
+  </Tab>
+</Tabs>

@@ -1,0 +1,143 @@
+---
+title: "Kaip kurti, redaguoti ir ištrinti užsakymus AgencyHandy"
+sidebarTitle: "Kurti užsakymą"
+description: "Žingsnis po žingsnio vadovas, kaip kurti, redaguoti ir ištrinti užsakymus AgencyHandy — įskaitant vaidmenų reikalavimus, formos laukus ir būsenų perėjimus."
+---
+
+Sukūrę užsakymą AgencyHandy, gausite struktūruotą darbo erdvę paslaugai teikti klientui. Iš anksto užpildote pagrindinę informaciją — klientą, paslaugą, kainodarą, datas ir projekto aprašą — ir visa kita, nuo užduočių iki diskusijų, kyla iš to vieno įrašo. Šiame puslapyje aprašoma, kaip sukurti užsakymą nuo nulio, jį atnaujinti, pakeisti jo būseną ir ištrinti, kai jis nebereikalingas.
+
+## Reikalavimai
+
+- Turite būti prisijungę prie AgencyHandy.
+- Norėdami kurti ar redaguoti užsakymus, turite turėti **Super administratoriaus**, **Administratoriaus** arba **Projektų vadovo** vaidmenį.
+- Tik **Super administratoriai** ir **Administratoriai** gali ištrinti užsakymus.
+
+## Sukurti naują užsakymą
+
+<Steps>
+  <Step title="Pereiti į užsakymus">
+    AgencyHandy informacijos suvestinės kairiajame šoninėje juostoje spustelėkite **Užsakymai**.
+  </Step>
+
+  <Step title="Atidaryti kūrimo formą">
+    Viršutiniame dešiniajame kampe spustelėkite **+ Kurti naują užsakymą**. Pasirodys forma.
+  </Step>
+
+  <Step title="Užpildyti užsakymo informaciją">
+    Užpildykite formos laukus:
+
+    | Laukas | Privalomas | Pastabos |
+    |---|---|---|
+    | **Klientas** | ✅ | Pasirinkite iš esamo klientų sąrašo |
+    | **Paslauga** | ✅ | Apima ir paskelbtas, ir nepaskelbtas paslaugas |
+    | **Projektų vadovas** | ❌ | Neprivalomas; paskirti projektų vadovą pristatymui valdyti |
+    | **Kiekis** | ✅ | Užsakomų vienetų skaičius |
+    | **Kaina** | ✅ | Suderintas užsakymo biudžetas |
+    | **Pradžios data** | ✅ | Kada pradedamas darbas |
+    | **Terminas** | ✅ | Pristatymo terminas |
+    | **Užsakymo aprašas** | ❌ | Instrukcijos, reikalavimai ar nuorodos pastabos jūsų komandai |
+    | **Priedai** | ❌ | Palaikančios bylos, susijusios su užsakymu |
+
+    <Tip>
+      Jei pasirinktai paslaugai yra susieti papildomi elementai (add-ons), formoje pasirodys skyrius **Papildomi elementai**. Prieš pateikdami įtraukite visus reikalingus papildomus elementus.
+    </Tip>
+  </Step>
+
+  <Step title="Patikrinti įvestus duomenis">
+    Dar kartą patikrinkite visus laukus, ypač klientą, paslaugą, kainą ir terminą.
+  </Step>
+
+  <Step title="Pateikti užsakymą">
+    Spustelėkite **Kurti**, kad užsakymas būtų sukurtas. Sėkmingai sukūrus gausite patvirtinimo pranešimą.
+  </Step>
+</Steps>
+
+### Kas nutinka sukūrus užsakymą
+
+- Visi jūsų įmonės Super administratoriai automatiškai gauna prieigą prie naujojo užsakymo.
+- Klientas gauna pranešimą, kad jo užsakymas sukurtas.
+- Užsakymas atsiranda **Užsakymų** sąraše su būsena **Laukiama**.
+
+## Redaguoti arba atnaujinti užsakymą
+
+Užsakymą galite atnaujinti bet kuriuo metu — taisyti detales, koreguoti kainą, keisti terminą arba atsižvelgti į kliento prašymus.
+
+<Note>
+Norint redaguoti užsakymą, reikia būti **Super administratoriumi**, **Administratoriumi** arba **Projektų vadovu**.
+</Note>
+
+<Steps>
+  <Step title="Atidaryti užsakymų sąrašą">
+    Kairiajame šoninėje juostoje pereikite į **Užsakymai**.
+  </Step>
+
+  <Step title="Pasirinkti redaguojamą užsakymą">
+    Raskite norimą atnaujinti užsakymą ir pažymėkite jo žymimąjį langelį.
+  </Step>
+
+  <Step title="Aktyvuoti redagavimo mygtuką">
+    Viršutiniame dešiniajame kampe pasirodys mygtukas **Redaguoti**. Spustelėkite jį, kad atidarytumėte užsakymo duomenis redagavimo režimu.
+  </Step>
+
+  <Step title="Keisti reikiamus laukus">
+    Atnaujinkite visus laukus, kuriuos reikia keisti — kliento duomenis, paslaugą, kainodarą, datas, aprašą ar paskirtą projektų vadovą.
+  </Step>
+
+  <Step title="Išsaugoti pakeitimus">
+    Spustelėkite **Atnaujinti**, kad išsaugotumėte. Patvirtinimo pranešimas patvirtins, kad atnaujinimas buvo sėkmingas.
+  </Step>
+</Steps>
+
+## Keisti užsakymo būseną
+
+Užsakymo būsena atspindi, kokiame etape yra darbas jūsų pristatymo proceso metu. AgencyHandy apibrėžia penkias fiksuotas būsenas — jų negalima pridėti ar pervardyti.
+
+| Būsena | Reikšmė |
+|---|---|
+| **Laukiama** | Sukurta, dar nepradėta |
+| **Vykdoma** | Aktyviai dirbama |
+| **Peržiūroje** | Pateikta peržiūrai; laukiama patvirtinimo |
+| **Baigta** | Pristatyta ir patvirtinta |
+| **Atšaukta** | Nebevykdoma |
+
+<Note>
+Tik **Super administratoriai**, **Administratoriai** ir **Projektų vadovai** gali keisti užsakymo būseną. Darbuotojai ir klientai negali keisti būsenos.
+</Note>
+
+Norėdami atnaujinti būseną, atidarykite užsakymą ir naudokite būsenos parinkiklį užsakymo detalių puslapio viršuje. Iš išskleidžiamojo sąrašo pasirinkite naują būseną ir patvirtinkite.
+
+## Ištrinti užsakymą
+
+Ištrynus užsakymą, jis pašalinamas iš sistemos visam laikui. Naudokite tai tik tada, kai užsakymas tikrai nebereikalingas — pavyzdžiui, jei jis buvo sukurtas per klaidą arba yra dublikatas.
+
+<Warning>
+Užsakymo ištrynimas yra negrįžtamas. Ištrynę užsakymą, jo atkurti nebus galima. Elkitės atsargiai.
+</Warning>
+
+<Note>
+Tik **Super administratoriai** ir **Administratoriai** gali ištrinti užsakymus.
+</Note>
+
+<Steps>
+  <Step title="Pereiti į užsakymus">
+    Kairiajame šoninėje juostoje spustelėkite **Užsakymai**.
+  </Step>
+
+  <Step title="Rasti trintiną užsakymą">
+    Slinkite arba ieškokite užsakymo, kurį norite pašalinti iš sąrašo.
+  </Step>
+
+  <Step title="Pradėti trynimą">
+    Spustelėkite **šiukšliadėžės piktogramą** prie atitinkamo užsakymo.
+  </Step>
+
+  <Step title="Patvirtinti trynimą">
+    Pasirodys patvirtinimo užklausa. Patvirtinkite, kad užsakymas būtų ištrintas visam laikui.
+  </Step>
+</Steps>
+
+Po ištrynimo peržiūrėkite likusius užsakymus ir įsitikinkite, kad viskas tvarkoje. Ištrintas įrašas nebeatsiras jokiame sąraše ar ataskaitoje.
+
+## Komandos narių pridėjimas prie užsakymo
+
+Super administratoriai, Administratoriai ir Projektų vadovai bet kuriuo metu gali pridėti darbuotojus prie užsakymo. Pridėjus komandos narį, jis gauna pranešimą programėlėje. Paskirti darbuotojai gauna prieigą prie užsakymo ir jo užduočių, tačiau negali valdyti paties užsakymo (redaguoti detalių, keisti būsenos ar ištrinti jo).

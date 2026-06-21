@@ -1,0 +1,217 @@
+---
+title: "Crear y enviar propuestas a los clientes en AgencyHandy"
+sidebarTitle: "Propuestas"
+description: "Construya, personalice y envíe propuestas profesionales en AgencyHandy, cubriendo precios de servicios, paquetes, aceptación del cliente y creación automática de pedidos."
+---
+
+La función de propuestas de AgencyHandy le ofrece un flujo de trabajo profesional de principio a fin para convertir las consultas en proyectos activos. Puede construir propuestas detalladas con servicios, paquetes, complementos, impuestos y términos legales, y luego enviarlas a clientes o leads directamente desde la plataforma. Una vez que un cliente acepta, AgencyHandy puede crear automáticamente un pedido y una factura, eliminando el ir y venir manual que ralentiza los acuerdos.
+
+<Note>
+  Solo los **Super Admins** y los **Admins** pueden crear y enviar propuestas. Los Project Managers (PMs) pueden ver las propuestas pero no pueden enviarlas.
+</Note>
+
+## Panel de propuestas
+
+Para abrir el panel de propuestas, haga clic en **Proposals** en la barra lateral izquierda. El panel enumera todas sus propuestas enviadas y recibidas y muestra:
+
+- **Estado**: Draft, Sent, Accepted o Pending
+- **Fecha de creación**, **fecha de envío** y **fecha de vencimiento**
+- **Estado de visualización**: si el cliente ha abierto la propuesta
+- Menú de acciones para **editar**, **enviar**, **compartir** o **eliminar** cada propuesta
+
+Puede buscar propuestas por ID y filtrar u ordenar la lista para encontrar rápidamente lo que necesita.
+
+## Crear una propuesta
+
+Haga clic en **Create Proposal** para abrir el constructor de propuestas. Está organizado en tres secciones: **Overview**, **Terms & Conditions** y **Setup**.
+
+### Overview
+
+La sección Overview es donde construye el contenido y los precios de la propuesta.
+
+#### Información de la propuesta y del cliente
+
+Complete los siguientes campos en la parte superior de la propuesta:
+
+- **Proposal Name** y **Proposal ID**
+- **Client or Lead**: admite varias direcciones de correo; marque una como Primary
+- **Company Name** y **Address** (país, estado, ciudad, código postal, detalles adicionales)
+- **Assignee**, **Send Date** y **Expiry Date**
+
+#### Bloques de contenido
+
+Cada bloque de contenido usa un editor integrado para que pueda adaptar la narrativa a cada cliente:
+
+- **Introduction**: establezca el contexto del compromiso
+- **About Us**: destaque la experiencia de su agencia
+- **What You Get**: defina claramente el alcance y los entregables
+- **Guarantee**: describa cualquier garantía o compromiso
+
+#### Ofertas: servicios, paquetes, complementos e impuestos
+
+La sección Offerings es donde configura los precios.
+
+<Accordion title="Servicios">
+  Agregue uno o más servicios a la propuesta. Para cada servicio, puede:
+
+  - Seleccionar un **tipo de precio**: único o suscripción
+  - Elegir la **moneda del servicio** (diferentes servicios pueden usar diferentes monedas en la misma propuesta)
+</Accordion>
+
+<Accordion title="Paquetes">
+  Dentro de cada servicio, agregue paquetes existentes o cree nuevos sobre la marcha. Para cada paquete, defina:
+
+  - Nombre del paquete
+  - Cantidad y precio por unidad
+  - Monto total
+
+  Puede eliminar paquetes en cualquier momento antes de enviar.
+</Accordion>
+
+<Accordion title="Complementos">
+  Adjunte complementos opcionales a cualquier servicio. Los complementos aparecen como extras que los clientes pueden ver junto al precio del servicio principal. Puede crear nuevos complementos directamente desde el constructor de propuestas sin salir del formulario.
+</Accordion>
+
+<Accordion title="Elementos">
+  Agregue elementos personalizados únicos con una cantidad y un precio unitario definidos. Los elementos son útiles para costos puntuales como tarifas de configuración o entregables únicos.
+</Accordion>
+
+<Accordion title="Tasas de impuestos">
+  Aplique tasas de impuestos existentes o cree nuevas directamente desde la propuesta. Seleccione si cada impuesto es **Exclusive** (agregado encima del precio) o **Inclusive** (ya incluido). Los impuestos se calculan por servicio.
+</Accordion>
+
+### Terms & Conditions
+
+Use la sección Terms & Conditions para agregar lenguaje legal específico de la propuesta. Incluya políticas de cancelación, términos de reembolso, derechos de uso y cualquier otra condición relevante para el compromiso. Esta sección ayuda a garantizar que ambas partes entiendan sus obligaciones antes de la aceptación.
+
+### Setup
+
+La sección Setup controla lo que sucede después de enviar la propuesta.
+
+<CardGroup cols={2}>
+  <Card title="Acción posterior a la aceptación" icon="bolt">
+    Elija lo que hace AgencyHandy cuando se acepta la propuesta: **No hacer nada** o **Crear pedido y factura** automáticamente.
+  </Card>
+  <Card title="Recordatorios" icon="bell">
+    Configure notificaciones de recordatorio para incitar a los clientes que no han respondido antes de la fecha de vencimiento.
+  </Card>
+  <Card title="Protección con contraseña" icon="lock">
+    Agregue una contraseña al enlace público de la propuesta para que solo el destinatario previsto pueda verla.
+  </Card>
+  <Card title="Comentarios" icon="message">
+    Permita que los clientes dejen comentarios en la vista pública de la propuesta para facilitar la discusión de ida y vuelta.
+  </Card>
+</CardGroup>
+
+## Enviar una propuesta
+
+En cualquier momento durante la creación, puede guardar la propuesta como **Draft** o **Preview** (vista previa). Cuando esté lista, haga clic en **Send** para entregarla al cliente o lead.
+
+Después de enviar:
+
+- Se genera un enlace público automáticamente
+- El estado de la propuesta cambia de **Draft** a **Sent**
+- AgencyHandy rastrea si el cliente ha visto la propuesta
+
+Desde el menú de acciones de la propuesta también puede reenviar, descargar, compartir el enlace público, ver comentarios o eliminar la propuesta.
+
+## Enviar una propuesta con un paquete específico
+
+Si desea enviar una propuesta rápida vinculada directamente a un paquete de servicio específico, use el formulario abreviado **Create Proposal**:
+
+<Steps>
+  <Step title="Abra la sección de propuestas">
+    Vaya a **Proposals** en la barra lateral izquierda y haga clic en **+ Create Proposal**.
+  </Step>
+  <Step title="Complete el formulario de propuesta">
+    Ingrese el **nombre del cliente** y seleccione el **servicio**. Si el servicio tiene varios paquetes, aparecerán automáticamente: seleccione el adecuado.
+
+    Opcionalmente, asigne un **Manager** a la propuesta.
+  </Step>
+  <Step title="Agregue los detalles del pedido">
+    Escriba un **Order Brief** (obligatorio) que describa lo que recibirá el cliente. Adjunte cualquier archivo de apoyo de hasta 1 GB.
+  </Step>
+  <Step title="Establezca los precios y términos">
+    Confirme el **tipo de precio** (único o suscripción), establezca la **duración**, la **cantidad**, el **presupuesto** y la **moneda**. Agregue cualquier **término y condición** relevante para la propuesta.
+  </Step>
+  <Step title="Cree y envíe">
+    Haga clic en **Create** para finalizar y enviar la propuesta al cliente. La propuesta aparecerá tanto en su lista de enviados como en la sección de recibidos del cliente.
+  </Step>
+</Steps>
+
+<Note>
+  Verifique dos veces los precios y la duración completados automáticamente antes de hacer clic en Create. Una vez enviada, el cliente puede aceptar, rechazar o descargar la propuesta desde su sección de recibidos.
+</Note>
+
+## Ciclo de vida del estado de la propuesta
+
+| Estado | Significado |
+|--------|---------|
+| **Draft** | La propuesta se ha creado pero aún no se ha enviado. |
+| **Sent** | La propuesta se ha entregado al cliente o lead. |
+| **Pending** | El cliente ha revisado y devuelto la propuesta para su discusión. |
+| **Accepted** | Cualquiera de las partes ha aceptado formalmente los términos de la propuesta. Se crea un pedido automáticamente si está configurado. |
+| **Rejected** | Cualquiera de las partes ha rechazado la propuesta. El remitente recibe una notificación con el motivo. |
+
+## Aceptar una propuesta
+
+Tanto la agencia como el cliente pueden aceptar una propuesta recibida. Cuando se produce la aceptación, AgencyHandy crea un pedido automáticamente (si está configurado en Setup).
+
+<Steps>
+  <Step title="Vaya a las propuestas recibidas">
+    Haga clic en **Proposals** en la barra lateral, luego seleccione la pestaña **Received**.
+  </Step>
+  <Step title="Abra la propuesta">
+    Seleccione la propuesta que desea aceptar de la lista y revise sus detalles.
+  </Step>
+  <Step title="Haga clic en Accept">
+    Haga clic en el botón **Accept** para aceptar formalmente la propuesta. El estado se actualiza de inmediato y ambas partes son notificadas.
+  </Step>
+</Steps>
+
+<Note>
+  Si la agencia es la que acepta, los Super Admins y Admins reciben notificaciones. Si el cliente acepta, AgencyHandy notifica a los usuarios Super Admin y Admin de la agencia.
+</Note>
+
+## Rechazar una propuesta
+
+Si los términos, precios o alcance propuestos no coinciden con sus requisitos, puede rechazar la propuesta y proporcionar un motivo.
+
+<Steps>
+  <Step title="Vaya a las propuestas recibidas">
+    Vaya a **Proposals → Received**.
+  </Step>
+  <Step title="Seleccione y revise la propuesta">
+    Elija la propuesta que desea rechazar y revise sus detalles.
+  </Step>
+  <Step title="Haga clic en Reject">
+    Haga clic en **Reject** y confirme su decisión. El remitente de la propuesta recibe una notificación junto con el motivo que usted proporcionó.
+  </Step>
+</Steps>
+
+<Warning>
+  Las propuestas rechazadas **no se pueden reenviar**. Ambas partes deben crear una nueva propuesta para reiniciar las negociaciones.
+</Warning>
+
+## Vista pública de la propuesta
+
+Cuando envía una propuesta, los clientes reciben un enlace a una vista pública donde pueden:
+
+- Revisar todos los servicios, precios, paquetes e impuestos
+- Aceptar o rechazar la propuesta
+- Dejar comentarios (si los comentarios están habilitados)
+- Acceder a la propuesta de forma segura con una contraseña (si la protección con contraseña está habilitada)
+
+## Notas adicionales
+
+<Accordion title="Múltiples correos y leads">
+  Puede agregar varias direcciones de correo a una sola propuesta y marcar una como el contacto Primary. Las propuestas funcionan tanto con clientes registrados como con leads no registrados.
+</Accordion>
+
+<Accordion title="Pedidos y facturas generados automáticamente">
+  Cuando configura la sección Setup en "Crear pedido y factura" al aceptar, AgencyHandy genera automáticamente el pedido y la factura vinculados en el momento en que se acepta una propuesta, sin pasos manuales necesarios.
+</Accordion>
+
+<Accordion title="Seguimiento de la actividad de la propuesta">
+  Cada propuesta incluye un rastro de actividad completo. Puede ver cuándo se creó, envió, vio, aceptó o rechazó la propuesta, todo desde dentro de AgencyHandy.
+</Accordion>

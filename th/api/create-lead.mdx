@@ -1,0 +1,201 @@
+---
+title: "AgencyHandy API: สร้าง Lead ใหม่แบบโปรแกรม"
+sidebarTitle: "Create Lead"
+description: "ใช้ AgencyHandy API เพื่อสร้าง lead ใหม่แบบโปรแกรมโดยส่งคำขอ POST ไปยัง endpoint bulk-lead พร้อมช่องที่จำเป็น"
+---
+
+endpoint Create Lead ให้คุณเพิ่ม lead ใหม่เข้าสู่ AgencyHandy workspace ของคุณจากระบบภายนอกใดก็ได้แบบโปรแกรม ไม่ว่าจะเป็นแบบฟอร์มเว็บ CRM แพลตฟอร์มการตลาดอัตโนมัติ หรือสคริปต์กำหนดเอง lead ที่สร้างผ่าน endpoint นี้จะปรากฏใน pipeline ของคุณทันที เหมือนกับที่เพิ่มด้วยตนเอง
+
+<Note>
+  ก่อนใช้ endpoint นี้ ให้ทำคู่มือ [Getting Started](/th/api/getting-started) ให้เสร็จสิ้นเพื่อรับ API key และ Company ID ของคุณ คุณยังต้องดึงข้อมูล **Client Role ID** ซึ่งจำเป็นเมื่อสร้าง lead
+</Note>
+
+## ข้อกำหนดเบื้องต้น
+
+- ✅ สร้าง API key จาก **Workspace Config → API Key**
+- ✅ ดึงข้อมูล Company ID จาก `GET {{URL}}/accounts/companies`
+- ✅ ดึงข้อมูล Client Role ID แล้ว (ดูขั้นตอนที่ 1 ด้านล่าง)
+
+---
+
+## ขั้นตอนที่ 1: รับ Client Role ID
+
+ก่อนสร้าง lead คุณต้องมี Role ID สำหรับบทบาท `client` ในบริษัทของคุณ
+
+### Endpoint
+
+```
+GET {{URL}}/roles?type=company
+```
+
+### Headers
+
+| Header | Value |
+|---|---|
+| `x-api-key` | API key ของคุณ |
+| `companyid` | Company ID ของคุณ |
+
+### ตัวอย่างคำขอ
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/roles?type=company" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>"
+```
+
+### ตัวอย่างการตอบสนอง
+
+```json
+{
+  "roles": [
+    {
+      "_id": "6525994184e9ddd798534535",
+      "role": {
+        "_id": "6525994184e9ddd79853451e",
+        "responsibility": "",
+        "name": "client"
+      },
+      "company": "6525994184e9ddd79853450e",
+      "createdAt": "2023-10-10T18:34:41.567Z",
+      "updatedAt": "2024-10-01T07:28:48.340Z",
+      "__v": 0,
+      "type": "company"
+    }
+  ]
+}
+```
+
+ค้นหารายการที่ `roles[0].role.name === "client"` และดึง `_id` **ด้านนอก** — นั่นคือ `roles[0]._id` **ไม่ใช่** `roles[0].role._id`
+
+```javascript
+const clientRoleId = roles.find(r => r.role.name === "client")._id;
+// e.g. "6525994184e9ddd798534535"
+```
+
+<Warning>
+  ใช้ `roles[0]._id` (ID การแมป company-role) **ไม่ใช่** `roles[0].role._id` (ID นิยามบทบาท) การใช้ ID ที่ผิดจะทำให้คำขอสร้าง lead ล้มเหลว
+</Warning>
+
+---
+
+## ขั้นตอนที่ 2: สร้าง lead ใหม่
+
+### Endpoint
+
+```
+POST {{URL}}/members/bulk-lead
+```
+
+### Headers
+
+| Header | Value |
+|---|---|
+| `x-api-key` | API key ของคุณ |
+| `companyid` | Company ID ของคุณ |
+| `Content-Type` | `application/json` |
+
+### Request body
+
+request body เป็น **JSON array** — คุณสามารถสร้าง lead หนึ่งรายการหรือมากกว่าในการเรียกครั้งเดียว
+
+<ParamField body="firstName" type="string" required>
+  ชื่อจริงของ lead
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  นามสกุลของ lead
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  ที่อยู่อีเมลของ lead ต้องไม่ซ้ำกันภายใน workspace ของคุณ
+</ParamField>
+
+<ParamField body="role" type="string" required>
+  Client Role ID ที่ดึงมาจากขั้นตอนที่ 1 (คือ `roles[0]._id`)
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  ต้องตั้งเป็น `false` เมื่อสร้าง lead ตั้งเป็น `true` เฉพาะเมื่อแปลง lead เป็นลูกค้าเต็มรูปแบบ
+</ParamField>
+
+<ParamField body="status" type="string">
+  สถานะ pipeline ของ lead ค่าทั่วไป: `New`, `Contacted`, `Qualified` ค่าเริ่มต้นเป็น `New` หากไม่ระบุ
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  หมายเลขโทรศัพท์ของ lead
+</ParamField>
+
+<ParamField body="source" type="string">
+  วิธีที่คุณได้รับ lead นี้ ตัวอย่างค่า: `website`, `referral`, `social`
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  ตำแหน่ง (ลำดับ) ของ lead ภายในคอลัมน์บอร์ด pipeline ค่าเริ่มต้นเป็น `1`
+</ParamField>
+
+### ตัวอย่างคำขอ
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-lead" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "role": "6525994184e9ddd798534535",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+### การตอบสนองเมื่อสำเร็จ
+
+```json
+{
+  "message": "Lead created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  สตริงยืนยัน: `"Lead created successfully"`
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  อาร์เรย์ของออบเจกต์ lead ที่สร้างขึ้น
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  ID เฉพาะของ lead ที่สร้างใหม่ เก็บไว้หากคุณต้องการอ้างอิง lead ในการเรียก API ถัดไป
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  ชื่อเต็มของ lead (firstName + lastName)
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  สถานะ pipeline ของ lead ตามที่จัดเก็บ
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  ชื่อบทบาทที่มอบหมายให้สมาชิก — จะเป็น `"client"`
+</ResponseField>
+
+<Tip>
+  คุณสามารถส่งออบเจกต์ lead หลายรายการในอาร์เรย์เพื่อสร้าง lead หลายรายการในการเรียก API ครั้งเดียว แต่ละออบเจกต์ต้องมีช่องที่จำเป็นทั้งหมดพร้อมที่อยู่อีเมลเฉพาะของตนเอง
+</Tip>

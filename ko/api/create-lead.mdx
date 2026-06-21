@@ -1,0 +1,201 @@
+---
+title: "AgencyHandy API: 프로그래밍 방식으로 새 리드 생성"
+sidebarTitle: "리드 생성"
+description: "AgencyHandy API를 사용하여 bulk-lead 엔드포인트에 필수 필드와 함께 POST 요청을 전송하여 프로그래밍 방식으로 새 리드를 생성하세요."
+---
+
+리드 생성 엔드포인트를 사용하면 외부 시스템 — 웹 양식, CRM, 마케팅 자동화 플랫폼, 또는 맞춤 스크립트 — 에서 AgencyHandy 워크스페이스에 프로그래밍 방식으로 새 리드를 추가할 수 있습니다. 이 엔드포인트를 통해 생성된 리드는 수동으로 추가한 것처럼 즉시 리드 파이프라인에 나타납니다.
+
+<Note>
+  이 엔드포인트를 사용하기 전에 [시작하기](/ko/api/getting-started) 가이드를 완료하여 API 키와 회사 ID를 얻으세요. 리드를 생성할 때 필요한 **클라이언트 역할 ID**도 가져와야 합니다.
+</Note>
+
+## 사전 요구 사항
+
+- ✅ **워크스페이스 설정 → API 키**에서 생성된 API 키
+- ✅ `GET {{URL}}/accounts/companies`에서 조회한 회사 ID
+- ✅ 클라이언트 역할 ID 조회 (아래 1단계 참조)
+
+---
+
+## 1단계: 클라이언트 역할 ID 가져오기
+
+리드를 생성하기 전에 회사의 `client` 역할에 대한 역할 ID가 필요합니다.
+
+### 엔드포인트
+
+```
+GET {{URL}}/roles?type=company
+```
+
+### 헤더
+
+| 헤더 | 값 |
+|---|---|
+| `x-api-key` | API 키 |
+| `companyid` | 회사 ID |
+
+### 요청 예시
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/roles?type=company" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>"
+```
+
+### 응답 예시
+
+```json
+{
+  "roles": [
+    {
+      "_id": "6525994184e9ddd798534535",
+      "role": {
+        "_id": "6525994184e9ddd79853451e",
+        "responsibility": "",
+        "name": "client"
+      },
+      "company": "6525994184e9ddd79853450e",
+      "createdAt": "2023-10-10T18:34:41.567Z",
+      "updatedAt": "2024-10-01T07:28:48.340Z",
+      "__v": 0,
+      "type": "company"
+    }
+  ]
+}
+```
+
+`roles[0].role.name === "client"`인 항목을 찾아 **외부** `_id` — 즉 `roles[0]._id` (**`roles[0].role._id`가 아님**)를 추출합니다.
+
+```javascript
+const clientRoleId = roles.find(r => r.role.name === "client")._id;
+// e.g. "6525994184e9ddd798534535"
+```
+
+<Warning>
+  `roles[0]._id` (회사-역할 매핑 ID)를 사용하세요, `roles[0].role._id` (역할 정의 ID)**가 아닙니다**. 잘못된 ID를 사용하면 리드 생성 요청이 실패합니다.
+</Warning>
+
+---
+
+## 2단계: 새 리드 생성
+
+### 엔드포인트
+
+```
+POST {{URL}}/members/bulk-lead
+```
+
+### 헤더
+
+| 헤더 | 값 |
+|---|---|
+| `x-api-key` | API 키 |
+| `companyid` | 회사 ID |
+| `Content-Type` | `application/json` |
+
+### 요청 본문
+
+요청 본문은 **JSON 배열**입니다 — 단일 호출로 하나 이상의 리드를 생성할 수 있습니다.
+
+<ParamField body="firstName" type="string" required>
+  리드의 이름입니다.
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  리드의 성입니다.
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  리드의 이메일 주소입니다. 워크스페이스 내에서 고유해야 합니다.
+</ParamField>
+
+<ParamField body="role" type="string" required>
+  1단계에서 조회한 클라이언트 역할 ID (즉, `roles[0]._id`)입니다.
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  리드를 생성할 때는 `false`로 설정해야 합니다. 리드를 전체 클라이언트로 전환할 때만 `true`로 설정합니다.
+</ParamField>
+
+<ParamField body="status" type="string">
+  리드의 파이프라인 상태입니다. 일반적인 값: `New`, `Contacted`, `Qualified`. 생략 시 기본값은 `New`입니다.
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  리드의 전화번호입니다.
+</ParamField>
+
+<ParamField body="source" type="string">
+  이 리드를 획득한 경로입니다. 예시 값: `website`, `referral`, `social`.
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  파이프라인 보드 열 내에서 리드의 위치(순서)입니다. 기본값은 `1`입니다.
+</ParamField>
+
+### 요청 예시
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-lead" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "role": "6525994184e9ddd798534535",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+### 성공 응답
+
+```json
+{
+  "message": "Lead created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  확인 문자열: `"Lead created successfully"`.
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  생성된 리드 객체의 배열입니다.
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  새로 생성된 리드의 고유 ID입니다. 이후 API 호출에서 리드를 참조해야 하는 경우 저장하세요.
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  리드의 전체 이름 (이름 + 성)입니다.
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  저장된 리드의 파이프라인 상태입니다.
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  구성원에게 배정된 역할 이름 — `"client"`가 됩니다.
+</ResponseField>
+
+<Tip>
+  배열에 여러 리드 객체를 전달하여 단일 API 호출로 여러 리드를 생성할 수 있습니다. 각 객체에는 고유한 이메일 주소와 함께 필수 필드가 모두 포함되어야 합니다.
+</Tip>

@@ -1,0 +1,117 @@
+---
+title: "Mukauta AgencyHandy-työtilasi värimaailmaa"
+sidebarTitle: "Ulkoasu"
+description: "Käytä brändivärejäsi AgencyHandyn sivupalkkiin ja käyttöliittymään — pääväri, tausta, teksti ja hover-tilat — näkyvät välittömästi kaikille käyttäjille."
+---
+
+Ulkoasuasetukset antavat sinulle täyden hallinnan AgencyHandy-työtilasi ulkoasun suhteen. Voit yhdenmukaistaa alustan värimaailman toimistosi brändi-identiteetin kanssa mukauttamalla pääväriä, sivupalkin taustaväriä, sivupalkin tekstiväriä ja sivupalkin navigointielementtien hover-korostusväriä. Jokainen tallentamasi muutos tulee voimaan välittömästi koko työtilassa kaikille käyttäjille — sivua ei tarvitse päivittää.
+
+<Note>
+  Vain **pääjärjestelmänvalvojat** ja **järjestelmänvalvojat** voivat käyttää ja muokata ulkoasuasetuksia. Jos et näe tätä vaihtoehtoa **Workspace Config** -kohdassa, pyydä pääjärjestelmänvalvojaasi tarkistamaan roolisi.
+</Note>
+
+## Ulkoasuasetusten käyttö
+
+<Steps>
+  <Step title="Avaa Workspace Config">
+    Klikkaa vasemman navigointivalikon **Workspace Config** -kohtaa.
+  </Step>
+  <Step title="Valitse Appearance">
+    Klikkaa **Appearance** (joskus merkitty **Visual Settings**) alivalikosta.
+  </Step>
+</Steps>
+
+---
+
+## Jokaisen visuaalisen elementin mukauttaminen
+
+### Pääväri
+
+Pääväriä sovelletaan painikkeisiin, aktiivisiin linkkeihin, korostettuihin tiloihin ja tärkeisiin käyttöliittymäelementteihin kaikkialla alustalla.
+
+- Valitse väri, joka heijastaa ydibrändi-identiteettiäsi.
+- Tämä on vaikuttavin väriasetus, koska se näkyy kaikkialla käyttöliittymässä.
+
+### Sivupalkin taustaväri
+
+Sivupalkin tausta asettaa vasemman navigointipaneelin perussävyn.
+
+- Käytä väriä, joka luo selkeän visuaalisen erottelun sivupalkin ja pääsisältöalueen välille.
+- Tummat taustat vaalealla tekstillä toimivat yleensä parhaiten luettavuuden kannalta.
+
+### Sivupalkin tekstiväri
+
+Sivupalkin tekstiväri hallitsee vasemman valikon kaikkien navigointielementtien nimiöiden väriä.
+
+- Valitse aina väri, jolla on vahva kontrasti sivupalkin taustaväriin nähden.
+- Heikko kontrasti tekee linkeistä vaikeampia lukea ja heikentää saavutettavuutta.
+
+### Sivupalkin hover-taustaväri
+
+Tämä väri näkyy taustakorostuksena, kun käyttäjä siirtää kursorinsa sivupalkin navigointielementin päälle.
+
+- Se merkitsee interaktiivisuutta ja auttaa käyttäjiä ymmärtämään, mitä kohdetta he ovat aikeissa klikata.
+- Valitse väri, joka on selvästi erottuva sekä oletussivupalkin taustasta että aktiivisen kohteen väristä.
+
+---
+
+## Värivalintojen käyttöönotto
+
+<Steps>
+  <Step title="Avaa värinvalitsin kullekin kentälle">
+    Klikkaa värinäytettä minkä tahansa neljän ulkoasukentän vieressä — pääväri, sivupalkin tausta, sivupalkin tekstiväri tai sivupalkin hover-taustaväri — avataksesi värinvalitsimen.
+  </Step>
+  <Step title="Syötä hex-koodi tai valitse väri">
+    Kirjoita brändisi tarkka hex-koodi (esim. `#3B5BDB`) suoraan syöttökenttään tai käytä visuaalista valitsinta valitaksesi sävy.
+  </Step>
+  <Step title="Esikatsele muutoksia">
+    Tarkista, miltä päivitetyt värit näyttävät sivupalkissa ja kaikkialla käyttöliittymässä ennen tallentamista.
+  </Step>
+  <Step title="Klikkaa Save Changes">
+    Kun olet tyytyväinen tulokseen, klikkaa **Save Changes**. Päivitetty ulkoasu otetaan käyttöön globaalisti ja välittömästi kaikille työtilan käyttäjille.
+  </Step>
+</Steps>
+
+<Tip>
+  Pidä kirjaa brändisi hex-värikoodeista helposti saatavilla olevassa paikassa (brändin tyylioppaassa tai muistiinpanotiedostossa). Haluat käyttää täsmälleen samoja arvoja johdonmukaisesti — erityisesti jos joudut koskaan nollaamaan ja määrittämään ulkoasuasetukset uudelleen.
+</Tip>
+
+---
+
+## Oletusteen palauttaminen
+
+Jos haluat poistaa kaiken mukautetun bränäyksen ja palauttaa alkuperäisen AgencyHandy-värimaailman, klikkaa **Reset Default Settings** -painiketta Ulkoasu-sivulla.
+
+<Warning>
+  Oletuksiin palauttaminen hylkää pysyvästi kaikki mukautetut värimuutokset. Tätä toimintoa ei voi kumota. Jos haluat säilyttää nykyiset asetuksesi, kirjoita hex-koodisi muistiin ennen nollaamista.
+</Warning>
+
+---
+
+## Värikontrastin parhaat käytännöt
+
+Hyvä värikontrasti ei ole pelkästään suunnittelumieltymys — se vaikuttaa suoraan luettavuuteen ja saavutettavuuteen tiimillesi ja asiakkaillesi.
+
+<CardGroup cols={2}>
+  <Card title="Tavoittele WCAG AA -kontrastisuhdetta" icon="eye">
+    Normaalille leipätekstille käytä vähintään **4,5:1** kontrastisuhdetta tekstin ja taustan välillä. Suurelle tekstille tai kuvakkeille **3:1** -suhde on hyväksyttävä. Käytä työkalua kuten [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/) varmistaaksesi sen.
+  </Card>
+  <Card title="Vältä heikon kontrastin yhdistelmiä" icon="triangle-exclamation">
+    Älä yhdistä värejä kuten vaaleanharmaa teksti valkoisella tai keltainen teksti valkoisella — nämä eivät täytä saavutettavuusstandardeja ja rasittavat silmiä pitkissä istunnoissa.
+  </Card>
+  <Card title="Testaa hover-tilat harkitusti" icon="arrow-pointer">
+    Hover-värien tulee olla selvästi erilaisia sekä lepotilasta että aktiivisesta tilasta. Jos ne näyttävät samalta, käyttäjät menettävät tärkeän visuaalisen palautteen.
+  </Card>
+  <Card title="Pysy johdonmukaisena brändisi kanssa" icon="paintbrush">
+    Käytä samaa pääväriä täällä kuin verkkosivustollasi, tarjouksissasi ja laskuissasi. Johdonmukaisuus rakentaa tunnistettavuutta ja ammattimaisuutta kaikissa asiakaskosketuspisteissä.
+  </Card>
+</CardGroup>
+
+---
+
+## Tärkeät huomiot
+
+- **Välitön globaali vaikutus:** Kaikki tallennetut ulkoasumuutokset otetaan käyttöön välittömästi koko työtilassa. Jokainen kirjautunut käyttäjä näkee päivityksen seuraavalla navigointitoimellaan.
+- **Yksi aktiivinen teema:** Moniteematukea ei ole — yksi värijoukko koskee koko työtilaa kaikissa rooleissa.
+- **Roolirajoitus:** Vain pääjärjestelmänvalvojat ja järjestelmänvalvojat voivat tehdä ulkoasumuutoksia. Tavalliset tiimin jäsenet ja asiakkaat eivät voi muokata värejä.
+- **Nollaus on pysyvää:** **Reset Default Settings** -painiketta ei voi kumota, joten käytä sitä vain silloin, kun tarkoituksellisesti haluat poistaa kaikki mukautetut värit.

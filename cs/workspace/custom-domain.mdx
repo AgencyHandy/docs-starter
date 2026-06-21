@@ -1,0 +1,126 @@
+---
+title: "Připojení vlastní domény k pracovnímu prostoru AgencyHandy"
+sidebarTitle: "Vlastní doména"
+description: "Propojte vlastní subdoménu (např. portal.vasefirma.com) s AgencyHandy přidáním záznamu CNAME u vašeho DNS registrátora — bez nutnosti programování."
+---
+
+Ve výchozím nastavení je váš pracovní prostor AgencyHandy přístupný na subdoméně pod `agencyhandy.com`. Připojení vlastní domény vám umožní nahradit tuto výchozí URL vlastní firemní adresou — například `portal.vasagentura.com` — čímž klientům poskytnete bezproblémový a profesionální zážitek, který posiluje vaši značku již od první stránky, na které se ocitnou.
+
+<Note>
+  Vlastní doménu mohou konfigurovat pouze **Super administrátoři** a **Administrátoři**. Musíte také vlastnit doménu a mít přístup k jejímu nastavení DNS u vašeho registrátora, abyste mohli toto nastavení dokončit.
+</Note>
+
+---
+
+## Jak to funguje
+
+Když v AgencyHandy přidáte vlastní doménu, platforma vám poskytne **záznam CNAME**. Tento záznam přidáte do nastavení DNS vaší domény u registrátora (GoDaddy, Namecheap, Cloudflare atd.) a AgencyHandy po rozšíření DNS ověří připojení.
+
+---
+
+## Nastavení krok za krokem
+
+<Steps>
+  <Step title="Otevřete nastavení Vlastní domény">
+    Přihlaste se ke svému účtu AgencyHandy. V levém postranním panelu přejděte na **Konfigurace pracovního prostoru** a klikněte na **Vlastní doména**.
+  </Step>
+  <Step title="Přidejte svou vlastní doménu">
+    Klikněte na tlačítko **+ Přidat vlastní doménu**. Do zobrazené vstupního pole zadejte subdoménu, kterou chcete použít — například `portal.vasagentura.com`.
+
+    <Warning>
+      **Nepoužívejte** `www` jako subdoménu (tj. vyhněte se `www.vasagentura.com`). Předpona `www` může způsobit konflikty konfigurace a brání úspěšnému ověření. Použijte jinou subdoménu, jako je `portal`, `client`, `app` nebo `hub`.
+    </Warning>
+  </Step>
+  <Step title="Zkopírujte podrobnosti záznamu CNAME">
+    Po odeslání domény AgencyHandy zobrazí DNS záznam, který je potřeba přidat:
+
+    | Pole | Hodnota |
+    |---------|------------------------------------------------|
+    | **Typ** | CNAME |
+    | **Název** | Vaše subdoména (např. `portal`) |
+    | **Hodnota** | Cíl poskytnutý AgencyHandy |
+
+    Tyto hodnoty pečlivě zkopírujte — budete je potřebovat v dalším kroku.
+  </Step>
+  <Step title="Přidejte záznam CNAME u vašeho DNS registrátora">
+    Přihlaste se do dashboardu svého DNS registrátora (např. GoDaddy, Namecheap, Cloudflare). Přejděte do sekce správy DNS pro svou doménu a přidejte záznam CNAME pomocí hodnot Typ, Název a Hodnota zkopírovaných z AgencyHandy.
+
+    Níže naleznete pokyny specifické pro registrátora Cloudflare.
+  </Step>
+  <Step title="Uložte doménu v AgencyHandy">
+    Vraťte se do AgencyHandy a klikněte na **Uložit doménu**. Stav se zpočátku zobrazí jako **Odpojeno** — to je očekávané chování po dobu rozšíření DNS.
+  </Step>
+  <Step title="Počkejte na rozšíření DNS a ověřte">
+    Rozšíření DNS může trvat od několika minut až po **48 hodin** v závislosti na vašem registrátorovi a nastavení TTL. Pravidelně klikejte na **Obnovit** a kontrolujte stav připojení.
+
+    Jakmile je rozšíření dokončeno, stav se změní na **Připojeno** ✅.
+  </Step>
+</Steps>
+
+<Warning>
+  Rozšíření DNS může trvat až **48 hodin**. Pokud vaše doména stále zobrazuje **Odpojeno** po 48 hodinách, zkontrolujte, zda je záznam CNAME správný a zda pro stejnou subdoménu neexistují žádné konfliktní záznamy DNS.
+</Warning>
+
+---
+
+## Pokyny specifické pro Cloudflare
+
+Pokud je vaše doména spravována přes Cloudflare, je nutné správně nakonfigurovat jedno kritické nastavení:
+
+<Steps>
+  <Step title="Přihlaste se do Cloudflare a vyberte svou doménu">
+    Otevřete svůj [dashboard Cloudflare](https://dash.cloudflare.com) a klikněte na doménu, kterou připojujete k AgencyHandy.
+  </Step>
+  <Step title="Přejděte na nastavení DNS">
+    Klikněte na záložku **DNS** v horní navigaci panelu nastavení domény.
+  </Step>
+  <Step title="Přidejte záznam CNAME">
+    Klikněte na **+ Přidat záznam** a vyplňte pole:
+    - **Typ:** CNAME
+    - **Název:** Vaše subdoména (např. `portal`)
+    - **Cíl/Obsah:** Hodnota poskytnutá AgencyHandy
+    - **TTL:** Nastavte na **2 minuty** (nebo nejnižší dostupnou možnost) během počátečního nastavení
+  </Step>
+  <Step title="Vypněte proxy Cloudflare (kritické)">
+    Ve sloupci **Stav proxy** se ujistěte, že přepínač je nastaven na **Pouze DNS** (ikona cloudu by měla být šedá, nikoli oranžová).
+
+    <Warning>
+      Pokud je proxy Cloudflare **povolena** (oranžová ikona cloudu), záznam CNAME se nebude správně přeložovat a AgencyHandy nemůže ověřit vaši doménu. Pro fungování připojení jej musíte nastavit na **Pouze DNS**.
+    </Warning>
+  </Step>
+  <Step title="Uložte záznam">
+    Zkontrolujte přesnost všech hodnot a klikněte na **Uložit**.
+  </Step>
+</Steps>
+
+<Tip>
+  Použijte [dnschecker.org](https://dnschecker.org) ke sledování rozšíření záznamu CNAME napříč různými globálními regiony. Před tím, než budete očekávat potvrzení připojení od AgencyHandy, hledejte zelené značky zaškrtnutí ve všech regionech.
+</Tip>
+
+---
+
+## Sledování stavu připojení
+
+Po uložení se vraťte do **Konfigurace pracovního prostoru → Vlastní doména** v AgencyHandy a sledujte stav:
+
+| Stav | Význam |
+|------------------|----------------------------------------------------------------------|
+| **Odpojeno** | Záznam DNS se ještě nerozšířil nebo obsahuje chybu |
+| **Připojeno** | Doména je ověřena a aktivní — klienti mají přístup k vašemu pracovnímu prostoru prostřednictvím vlastní URL |
+
+---
+
+## Aktualizace nebo odebrání vlastní domény
+
+- **Aktualizace domény:** Odstraňte stávající záznam a přidejte novou doménu pomocí stejných výše uvedených kroků nastavení.
+- **Smazání domény:** Klikněte na tlačítko **Smazat** vedle vaší domény v panelu Vlastní domény a potvrďte smazání. Váš pracovní prostor se vrátí na výchozí URL AgencyHandy. Kteroukoli doménu můžete kdykoli znovu přidat.
+
+---
+
+## Důležité poznámky
+
+- **Používejte subdoménu, nikoli kořenovou doménu:** Vlastní domény AgencyHandy vyžadují subdoménu (např. `portal.vasagentura.com`), nikoli kořenovou/apex doménu (např. `vasagentura.com`).
+- **Vyhněte se `www`:** Subdoména `www` může způsobovat problémy při ověřování. Místo ní použijte vlastní název subdomény.
+- **Přesné záznamy jsou povinné:** Zadejte typ CNAME, název a hodnotu přesně tak, jak jsou zobrazeny v AgencyHandy. Jakákoli překlep nebo chybějící znak zabrání připojení.
+- **Proxy Cloudflare musí být vypnuto:** Záznamy Cloudflare vždy nastavte na **Pouze DNS** pro ověření vlastní domény AgencyHandy.
+- **Přístup pouze pro administrátory:** Vlastní nastavení domény mohou přidávat, upravovat nebo mazat pouze Super administrátoři a Administrátoři.

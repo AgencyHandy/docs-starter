@@ -1,0 +1,235 @@
+---
+title: "Kurti, siųsti ir valdyti klientų sąskaitas faktūras AgencyHandy"
+sidebarTitle: "Kurti sąskaitą faktūrą"
+description: "Žingsnis po žingsnio vadovas, kaip sukurti sąskaitą faktūrą AgencyHandy — pasirinkti klientą, nustatyti sumas, pridėti pastabas, siųsti klientui ir konfigūruoti mokėjimo priminimus."
+---
+
+Sąskaitos faktūros kūrimas AgencyHandy yra paprastas procesas, tiesiogiai susiejantis jūsų atsiskaitymą su klientais ir užsakymais. Jūs užpildote klientą, susiete užsakymą, nustatote sumas, pridedate visas pastabas ir siunčiate — visa tai iš vienos formos. Išsiuntus galite sekti mokėjimo būseną, nustatyti automatinius priminimus ir bet kuriuo metu atsisiųsti sąskaitą faktūrą kaip PDF.
+
+<Note>
+  Norėdami kurti sąskaitas faktūras, turite būti **Super administratoriumi**, **Administratoriumi** arba **Projektų vadovu**. Prieš generuodami sąskaitą faktūrą, jūsų darbo erdvėje turi egzistuoti bent vienas klientas.
+</Note>
+
+## Sąskaitos faktūros priešdėlio nustatymai
+
+Prieš pradėdami kurti sąskaitas faktūras, apsvarstykite sąskaitos faktūros priešdėlio konfigūravimą. Priešdėlis rodomas prieš kiekvieną sąskaitos faktūros numerį ir padeda identifikuoti sąskaitas faktūras kaip priklausančias jūsų agentūrai.
+
+<Steps>
+  <Step title="Atidaryti sąskaitų faktūrų nustatymus">
+    Sąskaitų faktūrų informacijos suvestinėje spustelėkite mygtuką **Nustatymai** viršutiniame dešiniajame kampe.
+  </Step>
+  <Step title="Nustatyti priešdėlį">
+    Pereikite į lauką **Sąskaitos faktūros priešdėlis** ir įveskite norimą priešdėlį (pvz., `SF-` arba jūsų agentūros inicialai).
+  </Step>
+  <Step title="Išsaugoti">
+    Spustelėkite **Išsaugoti**, kad priešdėlis būtų taikomas visoms būsimoms sąskaitoms faktūroms.
+  </Step>
+</Steps>
+
+## Sąskaitos faktūros kūrimas
+
+<Steps>
+  <Step title="Atidaryti sąskaitų faktūrų informacijos suvestinę">
+    Kairiajame šoninėje juostoje spustelėkite **Sąskaitos faktūros**, kad atidarytumėte Sąskaitų faktūrų informacijos suvestinę.
+  </Step>
+  <Step title="Pradėti naują sąskaitą faktūrą">
+    Spustelėkite **+ Kurti sąskaitą faktūrą**. Atidarys sąskaitos faktūros kūrimo forma.
+  </Step>
+  <Step title="Pasirinkti klientą">
+    Iš išskleidžiamojo sąrašo pasirinkite kliento pavadinimą. Tai privalomas laukas. Visi su tuo klientu susieti užsakymų ID automatiškai užpildys kitą lauką.
+
+    Norėdami sukurti **Tiesioginę sąskaitą faktūrą** (nesusijusią su užsakymu), galite palikti užsakymo ID lauką tuščią arba pasirinkti **Nepriklausomą el. paštą**, kad išrašytumėte sąskaitą faktūrą bet kuriam el. pašto adresui, nepriklausomai nuo klientų sąrašo.
+  </Step>
+  <Step title="Pasirinkti užsakymo ID">
+    Pasirinkite konkretų užsakymo ID, už kurį atsiskaitote. Tai susieja sąskaitą faktūrą su tinkamu užsakymu sistemoje. Tiesioginėms sąskaitoms faktūroms praleiskite šį lauką.
+  </Step>
+  <Step title="Įvesti atsiskaitymo adresą">
+    Užpildykite **Mokėjimo adresas**:
+    - Šalis, valstija ir miestas
+    - Pašto kodas
+    - Gatvės adresas (jei taikoma)
+
+    Šis adresas rodomas atspausdintoje sąskaitoje faktūroje atitikties ir aiškumo tikslais.
+  </Step>
+  <Step title="Nustatyti užsakymo ir finansines detales">
+    Skyriuje **Užsakymo detalės** įveskite:
+
+    | Laukas | Aprašas |
+    |-------|-------------|
+    | **Valiuta** | Valiuta, kuria norite gauti apmokėjimą |
+    | **Užsakymo ID – Suma** | Su užsakymu susijusi piniginė vertė |
+    | **Nuolaida (%)** ir **Nuolaidos suma** | Taikyti visas taikytinas nuolaidas |
+    | **Apmokėta suma** | Bet kokia suma, kurią klientas jau sumokėjo |
+    | **Mokėtina suma** | Likusi neapmokėta suma |
+    | **Bendra suma** | Visa mokėtina suma už užsakymą |
+
+    **Tiesioginėms sąskaitoms faktūroms** spustelėkite **Pridėti elementą**, kad rankiniu būdu pridėtumėte eilutės elementus. Įveskite elemento pavadinimą, kiekį ir kainą. Galite pridėti kelis elementus. Naudokite **+ Mokesčių tarifai**, kad pritaikytumėte arba sukurtumėte mokesčių tarifus (įskaitomus arba papildomus).
+  </Step>
+  <Step title="Pridėti pastabą (neprivaloma)">
+    Lauke **Pastaba** pridėkite bet kokią papildomą informaciją klientui — pvz., mokėjimo instrukcijas, projekto nuorodas ar asmeninį pranešimą.
+  </Step>
+  <Step title="Peržiūrėti detalių skydelį">
+    Dešinėje pusėje esantis **Detalių** skydelis suteikia jums gyvą santrauką:
+
+    - Sąskaitos faktūros būsena (Juodraštis pagal numatytuosius nustatymus)
+    - Kliento pavadinimas, įmonės pavadinimas ir adresas
+    - Mokėjimo adresas
+    - Paslaugos pavadinimas ir užsakymo ID
+    - Sukūrimo data ir terminas
+    - Bendra suma
+
+    Atidžiai peržiūrėkite viską prieš tęsdami.
+  </Step>
+  <Step title="Siųsti klientui arba išsaugoti kaip juodraštį">
+    - Spustelėkite **Siųsti klientui**, kad nedelsiant išsiųstumėte sąskaitą faktūrą el. paštu. Būsena automatiškai pasikeičia iš **Juodraštis** į **Atvira**.
+    - Spustelėkite **Išsaugoti kaip juodraštį**, jei norite jį vėliau užbaigti.
+  </Step>
+</Steps>
+
+<Note>
+  Agentūros logotipas ir adresas automatiškai pridedami prie sąskaitos faktūros sistemos — kiekvienoje sąskaitoje faktūroje nereikia jų įvesti rankiniu būdu.
+</Note>
+
+## Sąskaitos faktūros būsenų perėjimai
+
+Sukūrus sąskaitą faktūrą, ji vykdo apibrėžtą būsenų eigą. Tik agentūra gali perkelti sąskaitą faktūrą tarp būsenų.
+
+```
+Juodraštis → Atvira (kai išsiųsta klientui)
+Atvira  → Apmokėta       (gautas mokėjimas)
+Atvira  → Negaliojanti   (sąskaita faktūra atšaukta)
+Atvira  → Nesurenkama    (skola nurašyta)
+```
+
+<Warning>
+  Sąskaitas faktūras galima **redaguoti** tik tada, kai jos yra **Juodraščio** būsenoje. Kai sąskaita faktūra pereina į Atvirą, jos redaguoti negalima. Jei reikia atlikti pakeitimus, anuliuokite sąskaitą faktūrą ir sukurkite naują.
+</Warning>
+
+## Sąskaitos faktūros redagavimas
+
+Sąskaitą faktūrą galite redaguoti tik tada, kai ji yra **Juodraščio** būsenoje.
+
+<Steps>
+  <Step title="Atidaryti sąskaitą faktūrą">
+    Sąskaitų faktūrų informacijos suvestinėje raskite juodraščio sąskaitą faktūrą, kurią norite redaguoti. Spustelėkite ją arba pažymėkite šalia esantį žymimąjį langelį.
+  </Step>
+  <Step title="Spustelėti Redaguoti">
+    Iš veiksmų meniu pasirinkite parinktį **Redaguoti**. Sąskaitos faktūros forma atidarys su visomis esamomis detalėmis iš anksto užpildytomis.
+  </Step>
+  <Step title="Atlikti pakeitimus">
+    Atnaujinkite bet kuriuos laukus — atsiskaitymo detales, paslaugų aprašymus, kiekius, sumas ar mokėjimo sąlygas.
+  </Step>
+  <Step title="Išsaugoti">
+    Spustelėkite **Išsaugoti**, kad pritaikytumėte pakeitimus.
+  </Step>
+</Steps>
+
+## Sąskaitos faktūros siuntimas klientui
+
+Jei išsaugojote sąskaitą faktūrą kaip juodraštį ir norite ją vėliau išsiųsti:
+
+<Steps>
+  <Step title="Rasti sąskaitą faktūrą">
+    Sąskaitų faktūrų informacijos suvestinėje raskite juodraščio sąskaitą faktūrą, kurią norite išsiųsti.
+  </Step>
+  <Step title="Spustelėti Siųsti sąskaitą faktūrą">
+    Atidarykite sąskaitą faktūrą ir spustelėkite mygtuką **Siųsti sąskaitą faktūrą**. AgencyHandy pristato sąskaitą faktūrą kliento nurodytu el. pašto adresu.
+  </Step>
+  <Step title="Patvirtinti pristatymą">
+    Patikrinkite patvirtinimo pranešimą, kad įsitikintumėte, jog sąskaita faktūra buvo išsiųsta sėkmingai. Sąskaitos faktūros būsena atnaujinama į **Atvira**.
+  </Step>
+</Steps>
+
+<Note>
+  Jei sąskaita faktūra yra **Juodraščio** būsenoje ir atnaujinate paslaugos pavadinimą, naujas pavadinimas bus atspindėtas sąskaitoje faktūroje. Kai būsena pasikeičia į Atvira, Apmokėta, Nesurenkama arba Negaliojanti, sąskaitos faktūros paslaugos pavadinimas užrakinamas ir nebus atnaujinamas.
+</Note>
+
+## Sąskaitos faktūros atsisiuntimas ir spausdinimas
+
+Tiek agentūra, tiek klientas bet kuriuo metu gali atsisiųsti sąskaitą faktūrą.
+
+<Steps>
+  <Step title="Atidaryti sąskaitą faktūrą">
+    Eikite į Sąskaitų faktūrų informacijos suvestinę ir pasirinkite sąskaitą faktūrą, kurią norite atsisiųsti.
+  </Step>
+  <Step title="Pasiekti atsisiuntimą/spausdinimą">
+    Iš sąskaitos faktūros veiksmų meniu spustelėkite parinktį **Atsisiųsti** arba **Spausdinti**.
+  </Step>
+  <Step title="Pasirinkti formatą">
+    Pasirinkite **PDF** atsisiuntimui arba pasirinkite spausdintuvo nustatymus fizinei kopijai.
+  </Step>
+  <Step title="Išsaugoti arba spausdinti">
+    Išsaugokite failą savo įrenginyje arba siųskite jį į spausdintuvą. Po spausdinimo archyvuokite sąskaitą faktūrą arba dalinkitės ja su suinteresuotomis šalimis, jei reikia.
+  </Step>
+</Steps>
+
+## Priminimų nustatymas sąskaitose faktūrose
+
+Sąskaitos faktūros priminimo funkcija leidžia automatiškai pranešti klientams apie artėjančias, mokėtinas ar vėluojančias sąskaitas faktūras, kad gautumėte mokėjimą laiku be rankinio tolesniųjų veiksmų.
+
+<Note>
+  Priminimai veikia tik sąskaitoms faktūroms, kurių būsena yra **Atvira** ir nustatytas **terminas**.
+</Note>
+
+<Steps>
+  <Step title="Atidaryti sąskaitų faktūrų nustatymus">
+    Sąskaitų faktūrų informacijos suvestinės viršutiniame dešiniajame kampe spustelėkite mygtuką **Nustatymai**.
+  </Step>
+  <Step title="Pereiti į priminimų nustatymus">
+    Kairiajame skydelyje slinkite žemyn iki skyriaus **Šablonas** apačios, tada spustelėkite **Redaguoti**, kad atidarytumėte priminimų konfigūracijos modalą.
+  </Step>
+  <Step title="Pasirinkti priminimo tipą">
+    Pasirinkite vieną iš šių:
+
+    - **Nuoseklus priminimas** — sukuria priminimų seriją jūsų nustatytais intervalais
+    - **Nesiųsti priminimo** — išjungia priminimus pasirinktoms sąskaitoms faktūroms
+  </Step>
+  <Step title="Konfigūruoti priminimo detales">
+    Kiekvienam sekos priminimui:
+    - Pasirinkite **priminimo šabloną** (pvz., „Artėjančio mokėjimo priminimas“)
+    - Nustatykite **priminimo datą** — pvz., 3 dienos prieš arba po termino
+    - Nurodykite, ar jis suveikia **prieš** ar **po** termino
+  </Step>
+  <Step title="Pridėti daugiau priminimų, jei reikia">
+    Spustelėkite **+ Pridėti kitą priminimą**, kad sukurtumėte visą priminimų seką. Norėdami pašalinti priminimą, spustelėkite mygtuką **Ištrinti** šalia jo.
+  </Step>
+  <Step title="Taikyti aktyvoms sąskaitoms faktūroms (neprivaloma)">
+    Pažymėkite žymimąjį langelį, kad **pritaikytumėte šiuos priminimų nustatymus šiuo metu aktyvoms sąskaitoms faktūroms**, jei norite, kad nauja konfigūracija apimtų sąskaitas faktūras, jau esančias Atviroje būsenoje.
+  </Step>
+  <Step title="Išsaugoti">
+    Spustelėkite **Atnaujinti**, kad išsaugotumėte ir aktyvuotumėte priminimų grafiką.
+  </Step>
+</Steps>
+
+## Tiesioginės sąskaitos faktūros (be užsakymo ID)
+
+Kai reikia greitai išskaityti klientui nesukūrus pirmiausia užsakymo, naudokite tiesioginės sąskaitos faktūros darbo eigą.
+
+<Steps>
+  <Step title="Pradėti naują sąskaitą faktūrą">
+    Eikite į **Sąskaitos faktūros → Kurti sąskaitą faktūrą**.
+  </Step>
+  <Step title="Pasirinkti gavėjo tipą">
+    Pasirinkite **Asmuo** arba **Įmonė** kaip gavėjo tipą.
+  </Step>
+  <Step title="Pasirinkti arba įvesti gavėją">
+    - Pasirinkite **esamą klientą** iš išskleidžiamojo sąrašo, arba
+    - Pasirinkite **Nepriklausomą el. paštą**, kad įvestumėte bet kurį el. pašto adresą — net tą, kuris nėra registruotas kaip klientas
+  </Step>
+  <Step title="Palikti užsakymo ID tuščią">
+    Praleiskite užsakymo ID lauką. AgencyHandy sukuria atskirą sąskaitą faktūrą, nesusietą su jokiu užsakymu.
+  </Step>
+  <Step title="Pridėti elementus, mokesčius ir nuolaidas">
+    Spustelėkite **Pridėti elementą**, kad pridėtumėte eilutės elementus su pavadinimais, kiekiais ir kainomis. Taikykite mokesčių tarifus ir nuolaidas pagal poreikį. Bendra suma atnaujinama automatiškai.
+  </Step>
+  <Step title="Nustatyti atsiskaitymo adresą ir pastabas">
+    Įveskite mokėjimo adresą ir pridėkite bet kokias pastabas klientui.
+  </Step>
+  <Step title="Siųsti arba išsaugoti">
+    Spustelėkite **Siųsti sąskaitą faktūrą**, kad nedelsiant pristatytumėte, arba **Išsaugoti kaip juodraštį**, kad pirmiausia jį peržiūrėtumėte.
+  </Step>
+</Steps>
+
+<Tip>
+  Tiesioginės sąskaitos faktūros puikiai tinka skubiems prašymams, konsultaciniams skambučiams ar bet kokiam darbui, už kurį reikia atsiskaityti ne pagal įprastą užsakymų darbo eigą. Atskirų sąskaitų faktūrų mokėjimų sekimas turi būti valdomas rankiniu būdu.
+</Tip>

@@ -1,0 +1,260 @@
+---
+title: "Kā izveidot pakalpojumu ar paketēm, uzdevumiem un BUJ"
+sidebarTitle: "Izveidot pakalpojumu"
+description: "Soli pa solim pamācība AgencyHandy pakalpojuma veidošanai: izvēlieties norēķinu veidu, konfigurējiet paketes, iestatiet noklusējuma uzdevumus, pievienojiet BUJ un publicējiet."
+---
+
+Pakalpojuma izveide AgencyHandy ir pirmais solis, lai pārdotu jūsu aģentūras piedāvājumus caur platformu. Viens pakalpojums var saturēt līdz piecām cenu paketēm, automatizētus noklusējuma uzdevumus, kas tiek aktivizēti, kad tiek veikts pasūtījums, BUJ, lai samazinātu pārdošanas iepriekšējos jautājumus, portfolio pievienošanu sociālajam pierādījumam un neobligātu uzņemšanas veidlapu — viss konfigurēts vienā vietā pirms publicēšanas.
+
+<Note>
+  Lai izveidotu pakalpojumus, jums nepieciešama **Super administratora** vai **Administratora** loma. Citām lomām nepieciešamas eksplicītas pakalpojumu atļaujas, lai piekļūtu šai sadaļai.
+</Note>
+
+<Steps>
+  <Step title="Izvēlieties pakalpojuma veidu">
+    Kreisajā sānjoslā atveriet **Services** un noklikšķiniet uz **+ Service**, lai sāktu jaunu sarakstu.
+
+    Lapas augšpusē atlasiet norēķinu modeli:
+
+    - **One-Time Service** — klients maksā vienreizēju maksu un vienu reizi saņem piegādājamo darbu. Vispiemērotākais projektiem ar skaidru apjomu: vietņu izstrāde, logotipu paketes, auditi u.c.
+    - **Subscription Service** — norēķini automātiski atkārtojas jūsu definētajā grafikā. Vispiemērotākais ilgtermiņa līgumiem, regulāram saturam, pārvaldītiem pakalpojumiem vai uzturēšanas plāniem.
+
+    <Warning>
+      Pakalpojuma veids tiek bloķēts pēc saglabāšanas. Ja nepieciešams cits norēķinu modelis, izveidojiet jaunu pakalpojumu.
+    </Warning>
+  </Step>
+
+  <Step title="Pievienojiet pakalpojuma detaļas">
+    Izvērsiet sadaļu **Service Details** un aizpildiet šādus laukus:
+
+    **Service Name** *(obligāts)*
+    Tā pakalpojums parādās klientiem visur platformā — katalogā, rēķinos un pasūtījuma darbvietā. Padariet to skaidru un aprakstošu.
+
+    **Media Upload**
+    Augšupielādējiet vienu vai vairākus priekšskatījuma attēlus, lai vizuāli pārstāvētu pakalpojumu. Augstas kvalitātes attēli palielina klientu uzticību un konversijas rādītājus.
+
+    **Service Description**
+    Uzrakstiet rūpīgu skaidrojumu par to, ko ietver pakalpojums, kam tas paredzēts un ko klienti var sagaidīt. Izmantojiet šo vietu, lai diferencētu savu piedāvājumu.
+
+    **Tax Settings**
+    Izvēlieties, vai nodoklis ir **iekļaujošs** (jau iekļauts cenā) vai **neiekļaujošs** (pievienots papildus maksājuma apstrādē).
+
+    **Currency**
+    Iestatiet valūtu visām šī pakalpojuma paketēm. Visas paketes vienā pakalpojumā izmanto vienu un to pašu valūtu.
+
+    <Tip>
+      Augšupielādējiet priekšskatījuma attēlus 16:9 proporcijā, lai nodrošinātu labāko prezentāciju klientu portālā.
+    </Tip>
+  </Step>
+
+  <Step title="Izveidojiet paketes">
+    Izvērsiet **Package Details** un noklikšķiniet uz **+ New Package**, lai pievienotu pirmo cenu līmeni. Varat izveidot līdz **5 paketēm** vienam pakalpojumam.
+
+    Katrai paketei konfigurējiet tālāk norādīto:
+
+    **Package Name** *(obligāts)*
+    Klientiem redzamais nosaukums, piemēram, *Pamata*, *Standarta* vai *Premium*.
+
+    **Package Icon** *(neobligāts)*
+    Atlasiet iebūvētu ikonu vai augšupielādējiet pielāgotu. Augšupielādētajām ikonām jābūt **32 × 32 pikseļi**.
+
+    **Package Media** *(neobligāts)*
+    Augšupielādējiet vāka attēlu, kas specifisks šai paketei. Pieņemtie formāti: PNG, JPG, JPEG. Maksimālais faila izmērs: **5 MB**. Maks. 1 fails vienai paketei. Ieteicamā proporcija: **16:9**.
+
+    **Package Brief** *(neobligāts)*
+    Šīs paketes piegādājamo darbu vienas rindiņas kopsavilkums. Maks. **140 rakstzīmes**.
+
+    **What's Included** *(obligāts)*
+    Uzskaitiet konkrētos piegādājamos darbus, kas iekļauti šajā paketē. Varat pievienot līdz **15 rindas vienumiem** vienai paketei. Katrai atzīmei jāapraksta viens konkrēts piegādājamais darbs (piemēram, *"5 bloga ieraksti mēnesī, līdz 1000 vārdiem katrs"*).
+
+    <Tip>
+      Pēc vairāku pakešu izveides velciet tās, lai mainītu secību, kādā tās tiek rādītas klientiem. Atzīmējiet vienu kā **Populārāko**, lai pievērstu uzmanību jūsu ieteicamajam līmenim.
+    </Tip>
+  </Step>
+
+  <Step title="Iestatiet cenas un piegādes noteikumus">
+    Katrā paketē iestatiet galvenos cenu laukus un neobligātās kontroles:
+
+    **Amount** *(obligāts)*
+    Cena, ko klients maksā par šo paketi.
+
+    **Delivery Time** *(obligāts)*
+    Paredzamais piegādes dienu skaits pēc pirkuma.
+
+    **Neobligātās cenu kontroles:**
+
+    <Accordion title="Add Discount">
+      Piemērojiet procentu vai fiksētas summas samazinājumu šīs paketes cenai. Klientiem tiek rādīta atlaidei pakļautā cena kopā ar sākotnējo cenu, radot efektīvu reklāmas efektu.
+    </Accordion>
+
+    <Accordion title="Add Trial Period (subscription only)">
+      Piedāvājiet bezmaksas vai samazinātas cenas izmēģinājumu pirms regulārā abonementa norēķinu sākšanās. Šī opcija ir pieejama tikai abonementa tipa pakalpojumiem.
+    </Accordion>
+
+    <Accordion title="Add Quantity Limit">
+      Ierobežojiet vienību skaitu, ko klients var iegādāties vienā maksājuma apstrādes sesijā. Izmantojiet to ierobežotas pieejamības paketēm vai pakalpojumiem ar kapacitātes ierobežojumiem.
+    </Accordion>
+
+    <Accordion title="Add More Price Details">
+      Sadaliet kopējos izdevumus atsevišķos rindas vienumu elementos — piemēram, rādot *pamata cenu + iestatīšanas maksu + par vienību*. Katra sadalījuma etiķete atbalsta maks. **20 rakstzīmes**.
+    </Accordion>
+
+    <Note>
+      Pirms pakalpojuma publicēšanas visiem obligātajiem laukiem (Amount un Delivery Time) jābūt aizpildītiem katrai paketei.
+    </Note>
+  </Step>
+
+  <Step title="Pievienojiet noklusējuma uzdevumus automatizācijai">
+    Katra pakete ietver sadaļu **Default Tasks**. Šeit definētie uzdevumi automātiski ģenerējas pasūtījuma darbvietā, tiklīdz klients iegādājas šo paketi — pēc katras pārdošanas nav nepieciešama manuāla iestatīšana.
+
+    Noklikšķiniet uz **+ Add More**, lai atvērtu uzdevuma izveides modāli. Katram uzdevumam varat konfigurēt:
+
+    | Lauks | Detaļas |
+    |---|---|
+    | **Task Name** | Obligāts; maks. **160 rakstzīmes** |
+    | **Description** | Sīki norādījumi izpildītājam |
+    | **Assignee** | Komandas loceklis, kas atbild par šī uzdevuma izpildi |
+    | **Attachment** | Augšupielādējiet atsauces failus; pieņemtie formāti: csv, odt, doc, docx, htm, html, pdf, ppt, pptx, txt, xls, xlsx, jpg, jpeg, png, gif, webp, svg, ai, mp4, mp3, wav, zip, rar; maks. faila izmērs **1 GB** par failu |
+    | **Label** | Atzīmējiet uzdevumu filtrēšanai un atskaitēm |
+    | **Status** | Sākotnējais statuss, kad uzdevums tiek izveidots |
+    | **Client Review** | Ieslēdziet, ja šim uzdevumam pirms pabeigšanas nepieciešama klienta apstiprinājums |
+
+    Pievienojiet tik daudz uzdevumu, cik nepieciešams, lai pilnībā aptvertu šīs paketes piegādes procesu. Konsekventi noklusējuma uzdevumi nodrošina, ka katrs pasūtījums seko vienam un tam pašam kvalitātes kontroles darbplūsmai.
+
+    <Tip>
+      Kartējiet noklusējuma uzdevumus savai iekšējai SOP. Piemēram, *Sociālo mediju pārvaldības* pakete var automātiski ģenerēt uzdevumus, piemēram, *Satura kalendāra melnraksts*, *Klienta apstiprinājums*, *Ierakstu plānošana* un *Ikmēneša ziņojums*.
+    </Tip>
+  </Step>
+
+  <Step title="Pievienojiet BUJ un portfolio">
+    Izvērsiet sadaļu **Additional Information**, lai pievienotu divus neobligātus, bet liela iespaida elementus:
+
+    **Portfolio Attachment**
+    Saistiet portfolio kategoriju ar šo pakalpojumu, lai klienti varētu pārlūkot atbilstošus jūsu iepriekšējo darbu paraugus tieši pakalpojuma sarakstā. Varat savienot esošu portfolio kategoriju vai izveidot jaunu no šī ekrāna.
+
+    **Bieži uzdotie jautājumi (BUJ)**
+    Noklikšķiniet uz **+ Add**, lai ievietotu jautājuma un atbildes pāri. Pievienojiet tik daudz BUJ, cik nepieciešams — izplatītas tēmas ietver:
+
+    - Satura oriģinalitāte un tiesības
+    - Labojumu un atsauksmju process
+    - Apjoma robežas un kas *nav* iekļauts
+    - Grafiki un komunikācijas ritms
+    - Maksājumu un atmaksas politikas
+
+    Labi uzrakstīti BUJ samazina sarakstīšanos pirms pirkuma un palīdz klientiem pašiem kvalificēties.
+  </Step>
+
+  <Step title="Pievienojiet uzņemšanas veidlapu">
+    Uzņemšanas veidlapa savāc informāciju, kas jums nepieciešama no klienta pirms darba sākšanas — piemēram, zīmola vadlīnijas, piekļuves akreditācijas dati, mērķauditorija vai projekta mērķi.
+
+    - Noklikšķiniet uz **+ Create New Intake Form**, lai veidotu veidlapu no nulles, vai no nolaižamās izvēlnes atlasiet esošu veidlapu.
+    - Ja šim pakalpojumam nav nepieciešama uzņemšanas veidlapa, noklikšķiniet uz **Skip**, lai izlaist šo sadaļu.
+    - Noklikšķiniet uz **Update**, lai saglabātu uzņemšanas veidlapas atlasi un turpinātu.
+
+    <Note>
+      Uzņemšanas veidlapa ir neobligāta, taču stingri ieteicama pakalpojumiem, kuriem pirms piegādes sākšanas nepieciešamas klientam specifiski ievades dati.
+    </Note>
+  </Step>
+
+  <Step title="Publicējiet pakalpojumu">
+    Pakalpojumu redaktora apakšā:
+
+    1. Ieslēdziet opciju **Publish this Service** pozīcijā ON.
+    2. Noklikšķiniet uz **Save** (vai **Update Service**, ja rediģējat esošu pakalpojumu).
+
+    Kad publicēts, pakalpojums kļūst nekavējoties redzams klientiem portālā. Ja atstājat pārslēgu izslēgtu, pakalpojums tiek saglabāts kā melnraksts un redzams tikai jūsu komandai.
+
+    <Tip>
+      Izmantojiet melnraksta režīmu, lai sagatavotu pakalpojumu iepriekš un publicētu to palaišanas laikā — noderīgi sezonālām akcijām vai jaunu piedāvājumu paziņojumiem.
+    </Tip>
+  </Step>
+</Steps>
+
+## Papildinājumu iestatīšana
+
+Papildinājumi ir neobligātas papildu iespējas, ko klienti var atlasīt maksājuma apstrādē — piemēram, *Ātrā piegāde*, *Papildu labojumi* vai *Ikmēneša ziņojums*. Tie ļauj veikt papildu pārdošanu, neveidojot pilnīgi jaunus sarakstus.
+
+### Papildinājuma izveide
+
+<Steps>
+  <Step title="Atveriet papildinājumus">
+    Sānjoslā dodieties uz **Services**, noklikšķiniet uz **lejupvērstās bultiņas** pogas blakus virsrakstam Services un atlasiet **Add-Ons**.
+  </Step>
+  <Step title="Izveidojiet jaunu papildinājumu">
+    Noklikšķiniet uz **+ Add New Add-on** un aizpildiet:
+
+    - **Add-on Name**
+    - **Description** — izmantojiet bagātināta teksta redaktoru, lai skaidri izskaidrotu, ko papildinājums ietver
+    - **Pricing Type** — izvēlieties *One-Time* vai *Subscription*
+    - **Cenas detaļas:**
+      - *Vienreizējs:* ievadiet summu un valūtu
+      - *Abonements:* iestatiet norēķinu intervālu (piemēram, ik 1 mēnesi), neobligātu norēķinu ciklu ierobežojumu, abonementa maksu un valūtu
+  </Step>
+  <Step title="Publicējiet un saglabājiet">
+    Ieslēdziet opciju **Publish** pozīcijā ON, pēc tam noklikšķiniet uz **Create**. Tikai publicētie papildinājumi ir redzami, tos pievienojot pasūtījuma veidlapām.
+  </Step>
+</Steps>
+
+### Papildinājuma pievienošana pasūtījuma veidlapai
+
+<Steps>
+  <Step title="Atveriet pasūtījuma veidlapu">
+    Dodieties uz **Forms** un atveriet atbilstošo pasūtījuma veidlapu.
+  </Step>
+  <Step title="Atlasiet pakalpojumu">
+    Izvēlieties pakalpojumu, kuram vēlaties pievienot papildinājumu.
+  </Step>
+  <Step title="Pievienojiet papildinājumus">
+    No kreisā paneļa atlasiet sadaļu **Add-ons**, pēc tam izvēlieties papildinājumus, kurus vēlaties saistīt ar šo pakalpojumu.
+  </Step>
+  <Step title="Saglabājiet veidlapu">
+    Noklikšķiniet uz **Save**. Klienti tagad redzēs atlasītos papildinājumus kā neobligātas papildu iespējas maksājuma apstrādē.
+  </Step>
+</Steps>
+
+<Note>
+  Papildinājumiem jāizmanto viena un tā pati valūta kā pakalpojumam, kuram tie tiek pievienoti. Ja valūtas nesakrīt, papildinājums neparādīsies atlases sarakstā.
+</Note>
+
+### Abonementa papildinājumu norēķinu uzvedība
+
+Kad pakalpojuma un abonementa papildinājuma norēķinu cikli atšķiras, AgencyHandy automātiski apstrādā pārklāšanos:
+
+<Accordion title="Papildinājumam ir vairāk ciklu nekā pakalpojumam">
+  Gan pakalpojums, gan papildinājums tiek iekasēti kopā pakalpojuma darbības laikā. Pēc pakalpojuma beigām papildinājums turpina iekasēt maksu atsevišķi par atlikušajiem cikliem.
+
+  **Piemērs:** Pakalpojums darbojas 4 ciklus, papildinājums — 5 ciklus → iekasēts kopā 4 ciklus, papildinājums iekasēts atsevišķi par 1 papildu ciklu.
+</Accordion>
+
+<Accordion title="Papildinājumam ir mazāk ciklu nekā pakalpojumam">
+  Gan pakalpojums, gan papildinājums tiek iekasēti kopā papildinājuma darbības laikā. Pēc papildinājuma beigām pakalpojums turpina iekasēt maksu atsevišķi par atlikušajiem cikliem.
+
+  **Piemērs:** Pakalpojums darbojas 5 ciklus, papildinājums — 3 ciklus → iekasēts kopā 3 ciklus, pakalpojums iekasēts atsevišķi par 2 papildu cikliem.
+</Accordion>
+
+## Pakalpojuma rediģēšana
+
+Pēc pakalpojuma publicēšanas varat atjaunināt jebkuru lauku, netraucējot esošos pasūtījumus.
+
+1. Dodieties uz **Services** un atrodiet pakalpojumu, kuru vēlaties atjaunināt.
+2. Noklikšķiniet uz **trīs punktu izvēlnes** (⋮) pakalpojuma rindas labajā pusē.
+3. Atlasiet **Edit**. Pakalpojumu redaktors atveras ar visiem esošajiem iestatījumiem.
+4. Veiciet izmaiņas — atjauniniet nosaukumu, aprakstu, cenas, multividi, paketes, uzdevumus vai BUJ.
+5. Noklikšķiniet uz **Update Service**, lai saglabātu.
+
+<Warning>
+  Pakešu cenu vai piegādes laika izmaiņas stājas spēkā tikai **jauniem pasūtījumiem**. Esošie pasūtījumi netiek retroaktīvi ietekmēti.
+</Warning>
+
+## Lauku uzziņa
+
+| Lauks | Ierobežojums |
+|---|---|
+| Paketes vienam pakalpojumam | Līdz 5 |
+| Piegādājamie darbi vienā paketē (What's Included) | Līdz 15 |
+| Paketes kopsavilkums | 140 rakstzīmes |
+| Paketes ikonas izmērs | 32 × 32 px |
+| Paketes multivides faila izmērs | 5 MB (PNG, JPG, JPEG) |
+| Uzdevuma nosaukums | 160 rakstzīmes |
+| Uzdevuma pielikuma faila izmērs | 1 GB par failu |
+| Cenas sadalījuma etiķete | 20 rakstzīmes |

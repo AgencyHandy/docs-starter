@@ -1,0 +1,218 @@
+---
+title: "Manajemen Klien: Profil, Impor, dan Konfigurasi"
+sidebarTitle: "Klien"
+description: "Buat dan impor profil klien di AgencyHandy, lacak pesanan dan invoice, kelola akses portal, dan atur klien dengan kategori."
+---
+
+Bagian Klien di CRM AgencyHandy adalah pusat terpusat untuk setiap organisasi atau individu yang telah melewati tahap prospek. Di sini Anda dapat membuat profil klien secara manual atau massal, memperbarui detail kontak, melacak pesanan dan invoice terbaru, mengelompokkan klien ke dalam kategori kustom, dan memantau akses portal — semuanya dari satu tampilan daftar.
+
+<Note>
+  Anda memerlukan peran **Super Admin** atau **Admin** untuk membuat, mengedit, mengimpor, atau mengonfigurasi profil klien. Manajer dapat melihat detail klien dan log aktivitas.
+</Note>
+
+## Membuat Profil Klien
+
+Saat Anda menerima klien baru, AgencyHandy membuat akun portal untuk mereka dan mengirimkan undangan login yang aman.
+
+<Steps>
+  <Step title="Buka Klien">
+    Masuk ke akun AgencyHandy Anda, lalu klik **CRM** di sidebar kiri dan pilih tab **Clients**.
+  </Step>
+  <Step title="Buka formulir pembuatan">
+    Klik **+ Create Client** di sudut kanan atas. Sebuah formulir terbuka.
+  </Step>
+  <Step title="Masukkan informasi klien">
+    Isi detail klien:
+
+    - **First Name / Last Name** *(wajib)*
+    - **Email** *(wajib — digunakan untuk mengirim undangan portal)*
+    - **Company Name**
+    - **Phone Number**
+    - **Country, State, City, Zip Code**
+    - **Category** — tetapkan kategori konfigurasi yang ada jika berlaku
+  </Step>
+  <Step title="Simpan profil">
+    Klik **Create**. Profil langsung ditambahkan ke daftar klien Anda.
+  </Step>
+</Steps>
+
+<Note>
+  Setelah Anda membuat profil, klien menerima email berisi URL login yang aman. Mengklik URL tersebut mengaktifkan akun portal mereka dan memungkinkan mereka login untuk pertama kalinya.
+</Note>
+
+## Mengimpor Klien dari CSV
+
+Jika Anda bermigrasi dari platform lain atau memiliki spreadsheet klien yang sudah ada, Anda dapat mengimpornya sekaligus.
+
+<Steps>
+  <Step title="Klik Import">
+    Dari daftar Klien, klik tombol **Import** di kanan atas.
+  </Step>
+  <Step title="Unggah file CSV Anda">
+    Seret dan lepas file Anda ke area unggah, atau klik untuk menelusuri dan memilihnya. AgencyHandy menerima file CSV yang berisi kolom berikut:
+
+    - Client Name *(wajib)*
+    - Email *(wajib)*
+    - Company Name
+    - Country
+    - State
+    - City
+    - Zip Code
+  </Step>
+  <Step title="Petakan kolom Anda">
+    AgencyHandy secara otomatis mendeteksi nama kolom yang cocok dengan nama kolomnya. Untuk kolom yang tidak cocok, gunakan menu dropdown untuk memetakannya secara manual ke kolom sistem yang benar.
+  </Step>
+  <Step title="Pratinjau dan konfirmasi">
+    Tinjau tabel pratinjau untuk menangkap masalah pemformatan sebelum data disimpan.
+  </Step>
+  <Step title="Selesaikan impor">
+    Klik **Save**. Pesan konfirmasi muncul setelah semua catatan berhasil diimpor.
+  </Step>
+</Steps>
+
+<Tip>
+  Jika header kolom spreadsheet Anda persis cocok dengan nama kolom AgencyHandy (misalnya, "email", "company name"), pemetaan terisi secara otomatis — tidak perlu pencocokan manual.
+</Tip>
+
+## Mengekspor Klien
+
+Cadangkan basis data klien Anda atau bagikan dengan pemangku kepentingan dengan mengekspor ke CSV atau Excel.
+
+<Steps>
+  <Step title="Klik Export">
+    Dari daftar Klien, klik tombol **Export** di kanan atas.
+  </Step>
+  <Step title="Sesuaikan ekspor Anda">
+    Pilih kolom mana yang akan disertakan — pilih **All Columns** untuk ekspor lengkap, atau pilih kolom tertentu seperti nama, detail kontak, perusahaan, atau alamat.
+  </Step>
+  <Step title="Pilih format">
+    Pilih **CSV** atau **XLSX** tergantung penggunaan yang Anda inginkan.
+  </Step>
+  <Step title="Unduh file">
+    Klik **Export**. File dibuat dan diunduh ke perangkat Anda. Simpan dengan aman untuk melindungi data klien.
+  </Step>
+</Steps>
+
+## Mengedit Profil Klien
+
+<Steps>
+  <Step title="Pilih klien">
+    Di daftar Klien, klik kotak centang di sebelah klien yang ingin Anda perbarui, atau klik langsung nama mereka untuk membuka profil mereka.
+  </Step>
+  <Step title="Masuk ke mode edit">
+    Klik tombol **Edit** di sudut kanan atas profil klien. Formulir edit muncul.
+  </Step>
+  <Step title="Perbarui informasi">
+    Ubah kolom mana pun — nama, email, telepon, alamat, perusahaan, atau kategori.
+  </Step>
+  <Step title="Simpan perubahan Anda">
+    Klik **Update**. Pesan konfirmasi mengonfirmasi bahwa profil telah berhasil disimpan.
+  </Step>
+</Steps>
+
+## Mencari, Mengurutkan, dan Memfilter
+
+Daftar Klien memberi Anda beberapa alat untuk menemukan klien yang tepat dengan cepat:
+
+<CardGroup cols={2}>
+  <Card title="Cari berdasarkan Nama" icon="magnifying-glass">
+    Ketik nama klien di bilah pencarian untuk langsung memfilter daftar.
+  </Card>
+  <Card title="Filter berdasarkan Perusahaan" icon="building">
+    Persempit daftar ke klien yang terkait dengan perusahaan tertentu.
+  </Card>
+  <Card title="Filter berdasarkan Email" icon="envelope">
+    Temukan klien saat Anda mengetahui alamat email mereka tetapi bukan nama mereka.
+  </Card>
+  <Card title="Filter berdasarkan Status" icon="circle-check">
+    Tampilkan hanya klien aktif, tidak aktif, atau yang diundang.
+  </Card>
+  <Card title="Urutkan Secara Alfabetis" icon="arrow-down-a-z">
+    Urutkan daftar klien lengkap A–Z atau Z–A berdasarkan nama untuk referensi cepat.
+  </Card>
+  <Card title="Filter berdasarkan Kategori" icon="tag">
+    Tampilkan hanya klien yang ditugaskan ke kategori konfigurasi tertentu.
+  </Card>
+</CardGroup>
+
+## Melacak Aktivitas Klien
+
+Di dalam setiap profil klien Anda akan menemukan tab yang memberi Anda gambaran langsung keterlibatan klien tersebut dengan agensi Anda:
+
+<Accordion title="Recent Orders">
+  Lihat riwayat semua pesanan yang dilakukan klien, termasuk nama layanan, paket, status, dan tanggal. Ini memberi Anda gambaran cepat tentang riwayat pembelian mereka tanpa meninggalkan CRM.
+</Accordion>
+
+<Accordion title="Recent Tickets">
+  Lihat semua tiket dukungan atau layanan yang diajukan oleh klien. Gunakan tampilan ini untuk memprioritaskan respons dan memastikan tidak ada permintaan yang terlewat.
+</Accordion>
+
+<Accordion title="Recent Invoices">
+  Akses log semua invoice yang dibuat untuk klien, termasuk status pembayaran. Ini membantu Anda memantau saldo yang belum dibayar dan riwayat invoice di satu tempat.
+</Accordion>
+
+## Konfigurasi Klien (Kategori)
+
+Konfigurasi Klien memungkinkan Anda membuat kategori berkode warna untuk mengelompokkan daftar klien — misalnya, *Prioritas Tinggi*, *Retainer*, atau *Ditangguhkan*. Kategori muncul sebagai opsi filter di daftar klien sehingga Anda dapat langsung menemukan grup yang tepat.
+
+<Steps>
+  <Step title="Buka Configuration">
+    Dari bagian Klien, klik tombol **Configuration**.
+  </Step>
+  <Step title="Buat kategori baru">
+    Klik **+ Create Category**.
+  </Step>
+  <Step title="Masukkan detail kategori">
+    - **Category Name** — label unik dan deskriptif (misalnya, *Klien Enterprise*)
+    - **Short Description** — catatan singkat yang menjelaskan tujuan kategori
+    - **Color** — pilih warna yang berbeda untuk pengenalan visual cepat
+  </Step>
+  <Step title="Simpan kategori">
+    Klik **Create**. Kategori sekarang tersedia untuk ditetapkan saat mengedit profil klien.
+  </Step>
+  <Step title="Tetapkan klien ke kategori">
+    Buka profil klien mana pun, klik **Edit**, pilih kolom **Category**, dan pilih kategori yang relevan. Klik **Update** untuk menyimpan.
+  </Step>
+</Steps>
+
+<Tip>
+  Gunakan konvensi warna yang konsisten di seluruh kategori — misalnya, merah untuk klien mendesak dan hijau untuk akun yang sepenuhnya terdaftar — agar daftar mudah dipindai sekilas.
+</Tip>
+
+## Log Aktivitas Klien
+
+Log Aktivitas mencatat setiap kejadian login dan logout untuk akun portal klien, memberi Anda jejak audit yang jelas tentang keterlibatan mereka.
+
+**Untuk melihat log:**
+
+1. Buka **Clients** dan buka profil klien tertentu.
+2. Klik tab **Activity Log** di bilah navigasi atas profil.
+3. Tinjau daftar kronologis kejadian autentikasi.
+
+**Yang ditampilkan log:**
+
+- Tanggal dan stempel waktu tepat dari setiap **login**
+- Tanggal dan stempel waktu tepat dari setiap **logout**
+- Riwayat berjalan dari semua kejadian autentikasi
+
+Log diperbarui secara real time dan tidak dapat diedit atau dihapus. Klien tidak memiliki akses ke log aktivitas mereka sendiri — ini hanya untuk visibilitas administratif dan kepatuhan.
+
+<Note>
+  Pada tahap ini, log aktivitas hanya mencatat kejadian autentikasi (login dan logout). Tindakan yang dilakukan dalam portal — seperti melihat pesanan — belum dicatat di sini.
+</Note>
+
+## Mengirim Email ke Klien
+
+Anda dapat mengirim email ke klien mana pun langsung dari profil mereka tanpa meninggalkan AgencyHandy. Buka profil klien dan gunakan opsi **Email** untuk menyusun pesan Anda. Kolom **To** terisi otomatis dengan alamat email klien.
+
+## Peniruan Klien
+
+Admin dapat meniru akun klien untuk melihat persis apa yang dilihat klien di portal mereka — berguna untuk memecahkan masalah akses atau memandu klien melalui suatu proses selama panggilan dukungan. Cari opsi **Impersonate** di dalam profil klien.
+
+<Warning>
+  Gunakan peniruan hanya untuk tujuan dukungan. Tindakan apa pun yang dilakukan saat meniru klien dilakukan atas nama mereka dan akan tercermin dalam akun mereka.
+</Warning>
+
+## Akun Perusahaan (B2B)
+
+Jika Anda bekerja dengan bisnis daripada individu, Anda dapat menetapkan **Company Name** pada profil klien mana pun untuk mengelompokkan kontak di bawah organisasi yang sama. Daftar Klien dapat difilter berdasarkan perusahaan, sehingga mudah melihat semua kontak pada akun tertentu secara bersamaan.

@@ -1,0 +1,162 @@
+---
+title: "Cobrança por Assinatura e Faturas Recorrentes no AgencyHandy"
+sidebarTitle: "Assinaturas"
+description: "Como o AgencyHandy gerencia a cobrança recorrente por assinatura — faturas automatizadas, ciclos de cobrança, métodos de pagamento, cancelamentos e links de pagamento via Wise."
+---
+
+O sistema de cobrança por assinatura do AgencyHandy permite automatizar todo o fluxo de receita recorrente. Quando um cliente assina um serviço, a plataforma cria um ID de Assinatura, gera pedidos e emite faturas automaticamente em cada ciclo de cobrança — seja diário, semanal, mensal ou anual. Você mantém o controle: pode visualizar os detalhes da assinatura, monitorar o histórico de pagamentos, lidar com pagamentos falhos e cancelar assinaturas quando necessário, tudo dentro do AgencyHandy.
+
+## Como Funciona a Cobrança por Assinatura
+
+O ciclo de vida da assinatura no AgencyHandy segue seis etapas principais.
+
+<Steps>
+  <Step title="Criar um serviço baseado em assinatura">
+    Navegue até **Serviços** e clique em **Criar Novo Serviço**. Selecione **Assinatura** como o tipo de serviço.
+
+    Defina:
+    - **Ciclo de Cobrança** — Diário, Semanal, Mensal ou Anual
+    - **Comportamento de Renovação** — Criar Novo Pedido, Atualizar Pedido Existente ou Manter Inalterado
+    - **Precificação e Método de Pagamento** — PayPal, Stripe ou Manual
+
+    Clique em **Publicar** para disponibilizar o serviço.
+  </Step>
+  <Step title="Cliente adquire a assinatura">
+    O cliente seleciona o serviço de assinatura, prossegue para o checkout e escolhe um método de pagamento.
+
+    O AgencyHandy automaticamente:
+    - Cria um **ID de Assinatura**
+    - Gera um **Pedido**
+    - Emite uma **Fatura**
+
+    Para pagamentos via **PayPal ou Stripe**, a fatura é marcada como **Paga** instantaneamente. Para **Pagamento Manual**, a fatura permanece **Aberta** até que a agência confirme o recebimento.
+  </Step>
+  <Step title="Cobrança recorrente automatizada">
+    Em cada data de renovação, o AgencyHandy processa o pagamento automaticamente (para PayPal/Stripe) e gera a próxima fatura.
+
+    Se o pagamento for bem-sucedido, a fatura é marcada como **Paga**. Se falhar:
+    - A fatura permanece **Aberta**
+    - O cliente recebe uma **Notificação de Falha no Pagamento**
+    - A agência recebe um alerta para tentar novamente ou solicitar dados de pagamento atualizados
+  </Step>
+  <Step title="Gerenciar assinaturas ativas">
+    Navegue até **Gerenciamento de Assinaturas** na barra lateral esquerda para visualizar todas as assinaturas ativas e inativas. Selecione qualquer assinatura para ver seus detalhes completos.
+  </Step>
+  <Step title="Lidar com cancelamentos">
+    Ao cancelar uma assinatura, você pode escolher:
+    - **Cancelar completamente** — encerrar toda a cobrança futura e os pedidos
+    - **Manter o último pedido ativo** — permitir que o cliente continue recebendo o serviço até o prazo do período atual
+
+    Para excluir um serviço completamente, todas as assinaturas ativas nesse serviço devem ser canceladas primeiro.
+  </Step>
+  <Step title="Notificações">
+    O sistema envia automaticamente:
+    - **Lembretes de Renovação** antes da próxima data de cobrança
+    - **Confirmações de Pagamento** após cobranças bem-sucedidas
+    - **Alertas de Falha no Pagamento** tanto para o cliente quanto para os administradores da agência
+  </Step>
+</Steps>
+
+## Página de Detalhes da Assinatura
+
+A página de Detalhes da Assinatura oferece um panorama completo de qualquer assinatura individual — desde o serviço e pacote até cada fatura e registro de eventos.
+
+### Como Acessar
+
+1. Vá para **Assinaturas** na barra lateral esquerda
+2. Clique em qualquer assinatura da lista para abrir sua página de detalhes
+
+### O Que Você Pode Ver
+
+<Tabs>
+  <Tab title="Informações da Assinatura">
+    - **Nome do Serviço** e **Nome do Pacote**
+    - **Nome do Cliente**
+    - **Ciclo de Cobrança** (ex.: Mensal, Anual)
+    - **Data de Início** e **Data de Término**
+    - **Status** da Assinatura (Ativa ou Inativa)
+  </Tab>
+  <Tab title="Detalhes de Pagamento">
+    - **Taxa de Assinatura**
+    - **Número Total de Pagamentos** realizados até a data
+    - **Método de Pagamento** (Stripe, PayPal, Wise, Transferência Bancária Manual, etc.)
+    - **Próxima Data de Pagamento**
+  </Tab>
+  <Tab title="Histórico de Pedidos">
+    - **ID do Pedido**
+    - **Status** (ex.: Em Andamento, Concluído)
+    - **Data de Início** e **Data de Entrega** para cada pedido
+  </Tab>
+  <Tab title="Histórico de Faturas">
+    - **ID da Fatura**
+    - **Valor**
+    - **Status** (Aberta, Paga, etc.)
+    - **Data de Pagamento** e **Data de Vencimento**
+  </Tab>
+  <Tab title="Registros de Eventos">
+    Um histórico cronológico de todas as atividades relacionadas à assinatura — mudanças de status, eventos de pagamento, cancelamentos e mais.
+  </Tab>
+</Tabs>
+
+<Note>
+  Uma única assinatura pode ter vários pedidos e faturas vinculados. As faturas relacionadas a assinaturas são atualizadas dinamicamente quando os pagamentos são recebidos.
+</Note>
+
+## Suporte ao Wise para Faturas de Assinatura Manual
+
+Se você coleta pagamentos internacionais, pode incorporar um **link de pagamento Wise** diretamente nas faturas de assinatura. Isso oferece aos clientes uma forma conveniente de pagar sem precisar configurar uma transferência bancária manualmente.
+
+### Requisitos
+
+- Uma conta ativa no AgencyHandy
+- Uma conta ativa no **Wise** com um link de pagamento válido gerado
+
+### Passos para Adicionar um Link Wise a uma Fatura
+
+<Steps>
+  <Step title="Abrir a seção de Faturas">
+    Clique em **Faturas** na barra lateral esquerda e depois clique em **+ Criar Fatura**.
+  </Step>
+  <Step title="Selecionar o cliente e o pedido">
+    Escolha o cliente no menu suspenso. Todos os IDs de Pedido relacionados serão exibidos. Selecione o ID do Pedido relevante e insira o valor e quaisquer itens sendo faturados.
+  </Step>
+  <Step title="Aplicar descontos e impostos">
+    Adicione qualquer percentual de desconto, valor de desconto, valor pago, valor devido e detalhes de IVA/imposto aplicáveis. Inclua endereço de cobrança e notas conforme necessário.
+  </Step>
+  <Step title="Adicionar o link de pagamento Wise">
+    Na seção **Método de Pagamento**, selecione **Wise** como opção de pagamento. Cole seu link de pagamento Wise no campo fornecido.
+  </Step>
+  <Step title="Salvar a fatura">
+    Clique em **Salvar** para finalizar a fatura. O link de pagamento Wise aparecerá na fatura para que o cliente possa pagar diretamente.
+  </Step>
+</Steps>
+
+<Tip>
+  Sempre verifique seu link de pagamento Wise e os totais da fatura antes de salvar. Certifique-se de que os detalhes do pedido, descontos e informações fiscais estejam corretos para evitar erros de cobrança.
+</Tip>
+
+## Notas Importantes sobre a Cobrança por Assinatura
+
+<Accordion title="Quem pode cancelar assinaturas?">
+  Somente **Super Admins** e **Admins** podem cancelar assinaturas. Os clientes não podem cancelar suas próprias assinaturas — eles devem solicitar o cancelamento à agência.
+</Accordion>
+
+<Accordion title="IDs de Assinatura são permanentes">
+  Uma vez que uma assinatura é criada, seu ID de Assinatura não pode ser editado. Isso garante um rastreamento consistente durante toda a vida útil da assinatura.
+</Accordion>
+
+<Accordion title="Pagamentos falhos e criação de pedidos">
+  Quando um pagamento falha, a fatura permanece Aberta e um novo pedido é criado para o período em questão. O status da assinatura permanece **Ativa** até que um administrador tente novamente o pagamento manualmente ou cancele a assinatura.
+</Accordion>
+
+<Accordion title="Pedidos de pagamento manual">
+  Se um cliente pagar fora do Stripe ou PayPal (ex.: por transferência bancária), o administrador deve marcar manualmente a fatura como **Paga** no AgencyHandy. O sistema não faz isso automaticamente para pagamentos manuais.
+</Accordion>
+
+<Accordion title="Tentativas de checkout próprio não pagas">
+  Se um cliente iniciar um checkout de assinatura mas não concluir o pagamento, ele permanece no sistema como um **lead** até que se inscreva com sucesso.
+</Accordion>
+
+<Accordion title="Datas de vencimento das faturas">
+  As datas de vencimento das faturas de assinatura são definidas automaticamente com base no ciclo de cobrança configurado (ex.: faturas mensais vencem um mês após a data de início).
+</Accordion>

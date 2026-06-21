@@ -1,0 +1,137 @@
+---
+title: "AgencyHandy API: Einen neuen Kunden programmgesteuert erstellen"
+sidebarTitle: "Kunden erstellen"
+description: "Fügen Sie neue Kunden programmgesteuert zu Ihrem AgencyHandy-Workspace hinzu, indem Sie eine POST-Anfrage an den Bulk-Client-Endpunkt mit Name, E-Mail und Kontaktdaten senden."
+---
+
+Der Endpunkt „Kunden erstellen“ ermöglicht es Ihnen, Kunden direkt aus einem externen System zu Ihrem AgencyHandy-Workspace hinzuzufügen. Im Gegensatz zu Leads sind Kunden vollständig eingebundene Kontakte, die Bestellungen, Rechnungen und Projekten zugewiesen werden können. Verwenden Sie diesen Endpunkt, um neue Kunden aus einem CRM, einem Onboarding-Formular oder einer anderen Datenquelle zu synchronisieren.
+
+<Note>
+  Bevor Sie diesen Endpunkt verwenden, schließen Sie den Leitfaden [Erste Schritte](/de/api/getting-started) ab, um Ihren API-Schlüssel und Ihre Unternehmens-ID zu erhalten. Im Gegensatz zum Endpunkt „Lead erstellen“ erfordert das Erstellen eines Kunden **keinen** separaten Schritt zum Abrufen der Rollen-ID.
+</Note>
+
+## Voraussetzungen
+
+- ✅ API-Schlüssel generiert aus **Workspace-Konfiguration → API-Schlüssel**
+- ✅ Unternehmens-ID abgerufen aus `GET {{URL}}/accounts/companies`
+
+---
+
+## Endpunkt
+
+```
+POST {{URL}}/members/bulk-client
+```
+
+## Header
+
+| Header | Wert |
+|---|---|
+| `x-api-key` | Ihr API-Schlüssel |
+| `companyId` | Ihre Unternehmens-ID |
+| `Content-Type` | `application/json` |
+
+## Anfrage-Body
+
+Der Anfrage-Body ist ein **JSON-Array**. Sie können einen oder mehrere Kunden in einer einzigen Anfrage erstellen.
+
+<ParamField body="firstName" type="string" required>
+  Der Vorname des Kunden.
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  Der Nachname des Kunden.
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  Die E-Mail-Adresse des Kunden. Muss innerhalb Ihres Workspaces eindeutig sein.
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  Auf `false` setzen für einen völlig neuen Kunden. Auf `true` setzen, wenn ein bestehender Lead in einen Kunden umgewandelt wird.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Der Status des Kunden. Häufige Werte: `New`, `Active`. Standardmäßig `New`, wenn nicht angegeben.
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  Die Telefonnummer des Kunden.
+</ParamField>
+
+<ParamField body="source" type="string">
+  Wie Sie diesen Kunden gewonnen haben. Beispielwerte: `website`, `referral`, `social`.
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  Die Position des Kunden in der Board-Spalte. Standardmäßig `1`.
+</ParamField>
+
+## Beispielanfrage
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-client" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyId: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+## Erfolgsantwort
+
+```json
+{
+  "message": "Client created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  Bestätigungszeichenfolge bei Erfolg.
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  Array der erstellten Kunden-Objekte.
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  Eindeutige ID des neu erstellten Kunden. Verwenden Sie diese ID, wenn Sie den Kunden über die API Bestellungen oder Rechnungen zuweisen.
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  Der vollständige Name des Kunden (Vorname + Nachname).
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  Der gespeicherte Status des Kunden.
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  Die dem Mitglied zugewiesene Rolle — wird `"client"` sein.
+</ResponseField>
+
+<Note>
+  Der `companyId`-Header für diesen Endpunkt verwendet ein großes **I** in `Id` — `companyId` — im Gegensatz zu einigen anderen Endpunkten, die `companyid` (alles Kleinbuchstaben) verwenden. Verwenden Sie die exakte Groß-/Kleinschreibung wie oben angegeben, um Authentifizierungsfehler zu vermeiden.
+</Note>
+
+<Tip>
+  Übergeben Sie mehrere Kunden-Objekte im Array, um Kunden in einem einzigen API-Aufruf massenweise zu erstellen. Jedes Objekt muss eine eindeutige `email`-Adresse haben. Doppelte E-Mail-Adressen führen für diesen Eintrag zu einem Validierungsfehler.
+</Tip>

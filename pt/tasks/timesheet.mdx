@@ -1,0 +1,172 @@
+---
+title: "Registo de Tempo e Gestão de Folhas de Ponto no AgencyHandy"
+sidebarTitle: "Folha de Ponto"
+description: "Registe tempo com um temporizador em direto ou entrada manual, filtre registos de trabalho por tarefa, membro ou serviço, e exporte dados de folhas de ponto em CSV ou XLSX no AgencyHandy."
+---
+
+A funcionalidade de Folha de Ponto no AgencyHandy oferece-lhe um painel central para acompanhar cada hora que a sua equipa passa em tarefas. Pode iniciar um temporizador em direto em qualquer tarefa, registar tempo depois do facto com uma entrada manual, e depois analisar os dados por intervalo de datas, membro da equipa ou serviço. Quando precisa de reportar produtividade ou faturar tempo, pode exportar tudo para CSV ou XLSX em poucos cliques. É a ferramenta essencial para manter a sua equipa responsável e a sua faturação por tempo precisa.
+
+## Quem Pode Usar as Funcionalidades de Folha de Ponto
+
+| Funcionalidade | Super Admin | Admin | Gestor de Projeto | Colaborador |
+|---------|:-----------:|:-----:|:--:|:--------:|
+| Ver os seus próprios registos de tempo | ✅ | ✅ | ✅ | ✅ |
+| Registar tempo para outros | ✅ | ✅ | ✅ | ❌ |
+| Editar entradas de tempo | ✅ | ✅ | ✅ | ❌ |
+| Exportar dados de folha de ponto | ✅ | ✅ | ✅ | ❌ |
+
+<Note>
+  As tarefas devem existir antes de poder registar tempo nelas. Certifique-se de que as tarefas são criadas dentro das encomendas antes de tentar registar tempo.
+</Note>
+
+## Ver a Folha de Ponto
+
+<Steps>
+  <Step title="Abrir a Folha de Ponto">
+    Clique em **Timesheet** na barra lateral principal esquerda. Verá uma tabela com todos os registos de tempo da sua equipa.
+
+    Cada linha mostra a data, membro da equipa, nome da tarefa, serviço, tempo registado e quaisquer notas anexadas à entrada.
+  </Step>
+</Steps>
+
+## Adicionar uma Entrada de Tempo
+
+Tem duas opções para registar tempo: um temporizador em direto para trabalho em curso, ou uma entrada manual para tempo que já concluiu.
+
+<Tabs>
+  <Tab title="Iniciar um Temporizador">
+    <Steps>
+      <Step title="Selecionar uma tarefa">
+        Na vista de Folha de Ponto, localize ou selecione a tarefa em que vai trabalhar.
+      </Step>
+      <Step title="Clicar em Start Timer">
+        Clique em **Start Timer** para começar a registar tempo em tempo real. O temporizador corre até o parar.
+      </Step>
+      <Step title="Parar quando terminar">
+        Clique em **Stop** quando terminar o trabalho. O AgencyHandy regista automaticamente o tempo decorrido na tarefa selecionada.
+      </Step>
+    </Steps>
+
+    <Tip>
+      Use o temporizador para trabalho em curso para garantir um registo preciso. Arredondar ou estimar o tempo depois do facto é menos exato do que deixar o temporizador correr.
+    </Tip>
+  </Tab>
+  <Tab title="Entrada Manual">
+    <Steps>
+      <Step title="Clicar em + Add Entry">
+        No painel de Folha de Ponto, clique em **+ Add Entry**. Aparecerá um formulário.
+      </Step>
+      <Step title="Preencher os detalhes da entrada">
+        - **Task** — selecione a tarefa à qual este tempo se aplica
+        - **Team Member** — atribua o tempo à pessoa correta (Admins e Gestores de Projeto podem registar em nome de outros)
+        - **Time Spent** — introduza as horas e minutos
+        - **Notes** — adicione qualquer contexto sobre o que foi trabalhado
+      </Step>
+      <Step title="Guardar">
+        Clique em **Save** para registar a entrada. Aparecerá imediatamente na tabela da folha de ponto.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Filtrar por Intervalo de Datas
+
+Use os filtros de data para focar num período específico.
+
+<Steps>
+  <Step title="Abrir os filtros de data">
+    Clique nos controlos de filtro de data no canto superior direito do painel de Folha de Ponto.
+  </Step>
+  <Step title="Selecionar um intervalo">
+    Escolha entre intervalos predefinidos:
+    - **Daily** — apenas os registos de hoje
+    - **Weekly** — a semana atual
+    - **Monthly** — o mês atual
+
+    Para projetos mais longos ou relatórios históricos, selecione um intervalo de datas **Custom** introduzindo uma data de início e de fim.
+  </Step>
+  <Step title="Aplicar">
+    Clique em **Apply** para atualizar a tabela com os registos do período selecionado.
+  </Step>
+</Steps>
+
+<Tip>
+  Filtre antes de exportar para gerar relatórios focados. Exportar a folha de ponto completa sem filtros pode produzir ficheiros muito grandes para agências ativas.
+</Tip>
+
+## Agrupar Entradas
+
+O agrupamento reorganiza a forma como as linhas da folha de ponto são organizadas sem remover dados. Ajuda a ler e analisar os registos mais rapidamente.
+
+<Steps>
+  <Step title="Abrir o menu suspenso Group By">
+    Clique no menu suspenso **Group By** perto do topo do painel de Folha de Ponto.
+  </Step>
+  <Step title="Selecionar um agrupamento">
+    Escolha entre as seguintes opções:
+
+    | Opção Group By | O Que Mostra |
+    |----------------|---------------|
+    | **Task Name** | Todas as entradas de tempo agrupadas por tarefa |
+    | **Team Member** | Todas as entradas agrupadas por pessoa |
+    | **Service → Task Name** | Entradas agrupadas por serviço, depois detalhadas por tarefa dentro de cada serviço |
+  </Step>
+</Steps>
+
+<Note>
+  O agrupamento é apenas uma alteração visual — não afeta os dados subjacentes nem o que é exportado. As exportações incluem sempre todas as linhas visíveis.
+</Note>
+
+## Ver Detalhes de Tarefas a partir da Folha de Ponto
+
+<Steps>
+  <Step title="Clicar no nome de uma tarefa">
+    Na tabela da folha de ponto, clique em qualquer **Task Name**. O AgencyHandy navega-o para a página de detalhes completos dessa tarefa.
+  </Step>
+  <Step title="Rever o contexto da tarefa">
+    Na página de detalhes da tarefa, encontrará o histórico completo do registo de tempo, notas anexadas, responsáveis, estado e outras informações ao nível da tarefa. Use esta vista para investigar entradas ou verificar o trabalho realizado.
+  </Step>
+</Steps>
+
+## Exportar Dados da Folha de Ponto
+
+Exporte a sua folha de ponto para processamento salarial, relatórios de faturação de clientes ou ferramentas externas de gestão de projetos.
+
+<Steps>
+  <Step title="Aplicar filtros primeiro (recomendado)">
+    Use o filtro de intervalo de datas para restringir a exportação ao período de que necessita. Isto mantém o ficheiro focado e de tamanho gerível.
+  </Step>
+  <Step title="Clicar em Export">
+    Clique no botão **Export** no topo do painel de Folha de Ponto.
+  </Step>
+  <Step title="Escolher um formato">
+    Selecione:
+    - **CSV** — para ferramentas de folha de cálculo como Excel, Google Sheets ou pipelines de dados
+    - **XLSX** — para livros de trabalho formatados em Excel com formatação de colunas preservada
+  </Step>
+  <Step title="Descarregar o ficheiro">
+    O ficheiro é descarregado automaticamente para o seu dispositivo. Cada exportação inclui todas as colunas visíveis: data, membro da equipa, nome da tarefa, serviço, tempo registado e notas.
+  </Step>
+</Steps>
+
+<Warning>
+  Se a exportação não iniciar um descarregamento, o **bloqueador de pop-ups** do seu navegador pode estar a impedir o ficheiro de ser descarregado. Desative o bloqueio de pop-ups para o AgencyHandy e tente novamente.
+</Warning>
+
+## Notas Adicionais
+
+<Accordion title="Temporizador vs. entrada manual">
+  O temporizador é ideal para trabalho ativo em tempo real. As entradas manuais são mais adequadas quando se esqueceu de iniciar o temporizador ou precisa de registar tempo retroativamente. Ambos os métodos produzem entradas de registo idênticas na tabela da folha de ponto.
+</Accordion>
+
+<Accordion title="Agrupamento vs. filtragem">
+  Os filtros **reduzem** as linhas mostradas na tabela. O agrupamento **reorganiza** as linhas que já estão visíveis. Pode aplicar ambos ao mesmo tempo — filtrar por um intervalo de datas e depois agrupar por membro da equipa para ver os totais de cada pessoa nesse período.
+</Accordion>
+
+<Accordion title="As exportações incluem todas as colunas visíveis">
+  Cada exportação captura o estado atual da tabela visível: data, utilizador, tarefa, serviço, tempo e notas. Se tiver aplicado uma configuração de agrupamento, a exportação reflete também a estrutura de agrupamento.
+</Accordion>
+
+<Accordion title="Intervalos personalizados para dados históricos">
+  Para projetos de longa duração ou revisões trimestrais, use a opção de intervalo de datas personalizado para obter dados históricos da folha de ponto além das janelas predefinidas diária/semanal/mensal.
+</Accordion>

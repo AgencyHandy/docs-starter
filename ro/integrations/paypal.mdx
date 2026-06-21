@@ -1,0 +1,70 @@
+---
+title: "Conectați PayPal pentru colectarea securizată a plăților de la clienți"
+sidebarTitle: "PayPal"
+description: "Conectați contul dvs. PayPal la AgencyHandy și permiteți clienților să plătească facturile folosind platforma de plăți de încredere și recunoscută global a PayPal."
+---
+
+Integrarea PayPal a AgencyHandy le oferă clienților dvs. o modalitate sigură și familiară de a plăti facturile fără un card de credit. PayPal acceptă o gamă largă de valute internaționale, ceea ce îl face deosebit de util pentru agențiile cu clienți din afara țării lor de origine.
+
+<Note>
+  PayPal **nu poate** fi utilizat pentru upsell-uri din cauza limitărilor de monedă și regionale la nivel de platformă. Pentru plățile de upsell, utilizați Stripe în schimb.
+</Note>
+
+<Note>
+  Numai rolurile **SuperAdmin** și **Admin** pot conecta sau gestiona integrarea PayPal. Trebuie să aveți un cont PayPal activ înainte de a începe.
+</Note>
+
+## Conectați PayPal
+
+<Steps>
+  <Step title="Deschideți setările integrării PayPal">
+    Conectați-vă la AgencyHandy, apoi accesați **Integrări → Integrare PayPal** în bara laterală din stânga.
+  </Step>
+
+  <Step title="Porniți conexiunea">
+    Faceți clic pe **Conectați PayPal**. Veți fi redirecționat la pagina de autentificare PayPal.
+  </Step>
+
+  <Step title="Autorizați AgencyHandy">
+    Conectați-vă la contul dvs. PayPal și examinați permisiunile solicitate. Faceți clic pe **Allow** (sau **Grant**) pentru a autoriza AgencyHandy să acceseze contul dvs.
+  </Step>
+
+  <Step title="Confirmați conexiunea">
+    După autorizarea cu succes, PayPal vă redirecționează înapoi la AgencyHandy. Un mesaj de confirmare — **PayPal Connected** — apare pe cardul de integrare. Clienții pot acum plăti facturile folosind PayPal.
+  </Step>
+</Steps>
+
+## Cum plătesc clienții prin PayPal
+
+Odată ce integrarea este activă, un buton **Plătește cu PayPal** apare pe orice factură pe care o trimiteți. Clientul dvs. face clic pe buton, se conectează la contul său PayPal (sau plătește ca oaspete, în funcție de regiune) și finalizează plata. AgencyHandy actualizează automat statusul facturii când plata este confirmată de PayPal.
+
+## Valute acceptate
+
+AgencyHandy acceptă următoarele valute pentru plățile PayPal:
+
+| Regiune | Valute |
+|---|---|
+| America | USD, CAD, BRL, MXN |
+| Europa | EUR, GBP, CHF, NOK, SEK, DKK, PLN, CZK, HUF |
+| Asia-Pacific | AUD, NZD, JPY, HKD, SGD, MYR, PHP, THB, TWD |
+| Orientul Mijlociu / Alte | ILS, CNY |
+
+<Warning>
+  Unele valute au restricții:
+  - **JPY** și câteva altele nu acceptă sume cu zecimale — evitați totalurile de factură fracționate.
+  - **BRL** este disponibil numai pentru conturile PayPal braziliene. Dacă contul dvs. nu este bazat în Brazilia, plățile BRL sunt convertite automat la valuta dvs. principală.
+  - Anumite valute sunt disponibile numai pentru conturile din țara respectivă. Confirmați că valuta deținută de contul dvs. corespunde cu valuta facturii pentru a preveni erorile.
+</Warning>
+
+<Note>
+  PayPal aplică propriile comisioane de conversie și marje atunci când are loc conversia valutară. Acestea nu sunt controlate de AgencyHandy.
+</Note>
+
+## Testați integrarea
+
+Înainte de a utiliza PayPal pentru facturile reale ale clienților, efectuați un test rapid:
+
+1. Creați o factură de test în AgencyHandy folosind o [valută acceptată](#valute-acceptate).
+2. Trimiteți factura la un cont PayPal secundar pe care îl controlați.
+3. Finalizați plata din contul secundar.
+4. Reveniți la AgencyHandy și confirmați că statusul facturii s-a actualizat la **Plătit** și că fondurile apar în contul dvs. PayPal.

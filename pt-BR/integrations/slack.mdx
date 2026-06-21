@@ -1,0 +1,69 @@
+---
+title: "Conecte o Slack para Receber Alertas em Tempo Real do AgencyHandy"
+sidebarTitle: "Slack"
+description: "Vincule seu workspace do Slack ao AgencyHandy para que atualizações de pedidos, alterações de tarefas e alertas de tickets sejam publicados automaticamente em um canal do Slack."
+---
+
+A integração do AgencyHandy com o Slack mantém sua equipe informada sem que ninguém precise alternar entre aplicativos. Uma vez conectado, o AgencyHandy publica notificações automáticas no canal do Slack de sua escolha sempre que tarefas, pedidos ou outras atividades do workspace mudam — para que sua equipe saiba sempre o que está acontecendo em tempo real.
+
+<Note>
+  Apenas os perfis **SuperAdmin**, **Admin** e **Gerente** (com permissões de integração) podem conectar ou gerenciar a integração com o Slack. Você precisa de direitos de administrador do workspace do Slack para autorizar a conexão.
+</Note>
+
+## Conectar o Slack
+
+<Steps>
+  <Step title="Abrir Integrações">
+    Na barra lateral esquerda, clique em **Integrações**.
+  </Step>
+
+  <Step title="Encontrar o cartão do Slack">
+    Role até o cartão do **Slack** e clique em **Conectar**.
+  </Step>
+
+  <Step title="Autorizar o AgencyHandy no Slack">
+    Uma janela de autorização do Slack é aberta. Se você ainda não estiver conectado ao seu workspace do Slack, faça login agora. Revise as permissões que o AgencyHandy solicita e clique em **Permitir** para conceder acesso.
+  </Step>
+
+  <Step title="Selecionar um canal de notificações">
+    Após a autorização, escolha o canal do Slack onde deseja que as notificações do AgencyHandy apareçam. Selecione um canal no menu suspenso e clique em **Salvar** para confirmar.
+  </Step>
+
+  <Step title="Confirmar a configuração">
+    O cartão do Slack é atualizado para mostrar **Conectado**. O AgencyHandy começa imediatamente a publicar notificações no canal selecionado.
+  </Step>
+</Steps>
+
+## Quais notificações são enviadas ao Slack
+
+O AgencyHandy publica uma mensagem no Slack sempre que qualquer um dos seguintes eventos ocorre:
+
+| Categoria | Eventos que acionam uma notificação |
+|---|---|
+| **Tarefas** | Tarefa criada, atualizada, atribuída ou concluída |
+| **Pedidos** | Pedido criado ou status alterado |
+| **Comentários** | Novo comentário adicionado a uma tarefa ou pedido |
+| **Anexos de arquivos** | Arquivo ou anexo adicionado a uma tarefa |
+| **Tickets** | Ticket criado, atribuído ou status alterado |
+
+Cada mensagem do Slack inclui:
+
+- O **nome** da tarefa, pedido ou ticket
+- A **alteração de status** ou ação que acionou a mensagem
+- Um **link** de volta ao item relevante no AgencyHandy
+
+Quando um arquivo ou anexo é adicionado a uma tarefa, a mensagem do Slack também inclui uma prévia desse anexo.
+
+<Tip>
+  Escolha um canal dedicado **#agencyhandy-alertas** (ou similar) para manter as notificações organizadas e evitar que poluam seus canais principais da equipe.
+</Tip>
+
+## Desconectar o Slack
+
+Para interromper as notificações, volte a **Integrações** e clique em **Desconectar** no cartão do Slack. Todas as notificações param imediatamente.
+
+## Notas importantes
+
+- **Um workspace por conexão** — você só pode conectar um único workspace do Slack a cada workspace do AgencyHandy. Para mudar para um workspace do Slack diferente, desconecte o atual e reconecte.
+- **Visibilidade do canal** — as notificações são visíveis para todos no canal do Slack selecionado. Certifique-se de que o canal é apropriado para o nível de detalhe sendo compartilhado (ex.: evite publicar detalhes de pedidos sensíveis de clientes em um canal público).
+- **Reautorização** — se o token do Slack expirar ou as permissões mudarem, volte a Integrações e reconecte para restaurar as notificações.

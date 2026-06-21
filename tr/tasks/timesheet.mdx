@@ -1,0 +1,172 @@
+---
+title: "AgencyHandy'de Zaman Takibi ve Zaman Çizelgesi Yönetimi"
+sidebarTitle: "Zaman Çizelgesi"
+description: "Canlı zamanlayıcı veya manuel girişle zaman kaydedin, iş günlüklerini göreve, üyeye veya hizmete göre filtreleyin ve AgencyHandy'de zaman çizelgesi verilerini CSV veya XLSX olarak dışa aktarın."
+---
+
+AgencyHandy'deki Zaman Çizelgesi özelliği, ekibinizin görevlere harcadığı her saati takip etmek için merkezi bir panel sunar. Herhangi bir görevde canlı zamanlayıcı başlatabilir, sonradan manuel giriş ile zaman kaydedebilir, ardından verileri tarih aralığı, ekip üyesi veya hizmete göre dilimleyip analiz edebilirsiniz. Verimlilik raporu hazırlamanız veya zamana dayalı faturalandırma yapmanız gerektiğinde her şeyi birkaç tıklamayla CSV veya XLSX olarak dışa aktarabilirsiniz. Ekibinizin hesap verebilirliğini ve zamana dayalı faturalandırmanızın doğruluğunu korumanın temel aracıdır.
+
+## Zaman Çizelgesi Özelliklerini Kimler Kullanabilir
+
+| Özellik | Süper Yönetici | Yönetici | PM | Çalışan |
+|---------|:-----------:|:-----:|:--:|:--------:|
+| Kendi zaman günlüklerini görüntüleme | ✅ | ✅ | ✅ | ✅ |
+| Başkaları için zaman kaydetme | ✅ | ✅ | ✅ | ❌ |
+| Zaman girişlerini düzenleme | ✅ | ✅ | ✅ | ❌ |
+| Zaman çizelgesi verilerini dışa aktarma | ✅ | ✅ | ✅ | ❌ |
+
+<Note>
+  Zaman takibi yapabilmek için görevlerin mevcut olması gerekir. Zaman kaydetmeye çalışmadan önce görevlerin siparişler içinde oluşturulduğundan emin olun.
+</Note>
+
+## Zaman Çizelgesini Görüntüleme
+
+<Steps>
+  <Step title="Zaman Çizelgesini Açın">
+    Ana sol kenar çubuğunda **Zaman Çizelgesi**'ne tıklayın. Ekibinizin tüm zaman günlüklerini listeleyen bir tablo göreceksiniz.
+
+    Her satır tarih, ekip üyesi, görev adı, hizmet, kaydedilen süre ve girişe eklenmiş notları gösterir.
+  </Step>
+</Steps>
+
+## Zaman Girişi Ekleme
+
+Zaman kaydetmek için iki seçeneğiniz vardır: devam eden çalışma için canlı zamanlayıcı veya zaten tamamladığınız süre için manuel giriş.
+
+<Tabs>
+  <Tab title="Zamanlayıcı Başlat">
+    <Steps>
+      <Step title="Bir görev seçin">
+        Zaman Çizelgesi görünümünde, üzerinde çalışmak üzere olduğunuz görevi bulun veya seçin.
+      </Step>
+      <Step title="Zamanlayıcıyı Başlat'a tıklayın">
+        Gerçek zamanlı zaman takibini başlatmak için **Zamanlayıcıyı Başlat**'a tıklayın. Zamanlayıcı siz durdurana kadar çalışır.
+      </Step>
+      <Step title="Bitince durdurun">
+        İşi tamamladığınızda **Durdur**'a tıklayın. AgencyHandy, geçen süreyi seçilen göreve karşı otomatik olarak kaydeder.
+      </Step>
+    </Steps>
+
+    <Tip>
+      Hassas takip sağlamak için devam eden çalışmalar için zamanlayıcıyı kullanın. Sonradan zamanı yuvarlamak veya tahmin etmek, zamanlayıcıyı çalıştırmaktan daha az doğrudur.
+    </Tip>
+  </Tab>
+  <Tab title="Manuel Giriş">
+    <Steps>
+      <Step title="+ Giriş Ekle'ye tıklayın">
+        Zaman Çizelgesi panelinde **+ Giriş Ekle**'ye tıklayın. Bir form görünecektir.
+      </Step>
+      <Step title="Giriş bilgilerini doldurun">
+        - **Görev** — bu sürenin ait olduğu görevi seçin
+        - **Ekip Üyesi** — süreyi doğru kişiye atayın (Yöneticiler ve Proje Yöneticileri başkaları adına kaydedebilir)
+        - **Harcanan Süre** — saat ve dakikaları girin
+        - **Notlar** — üzerinde çalışılan şeyle ilgili bağlam ekleyin
+      </Step>
+      <Step title="Kaydedin">
+        Girişi kaydetmek için **Kaydet**'e tıklayın. Zaman çizelgesi tablosunda hemen görünecektir.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Tarih Aralığına Göre Filtreleme
+
+Belirli bir zaman dilimine odaklanmak için tarih filtrelerini kullanın.
+
+<Steps>
+  <Step title="Tarih filtrelerini açın">
+    Zaman Çizelgesi panelinin sağ üst köşesindeki tarih filtresi kontrollerine tıklayın.
+  </Step>
+  <Step title="Bir aralık seçin">
+    Önceden ayarlanmış aralıklardan birini seçin:
+    - **Günlük** — yalnızca bugünün günlükleri
+    - **Haftalık** — mevcut hafta
+    - **Aylık** — mevcut ay
+
+    Daha uzun projeler veya geçmiş raporlama için başlangıç ve bitiş tarihi girerek **Özel** tarih aralığı seçin.
+  </Step>
+  <Step title="Uygulayın">
+    Tabloyu seçilen dönemdeki günlüklerle güncellemek için **Uygula**'ya tıklayın.
+  </Step>
+</Steps>
+
+<Tip>
+  Odaklanmış raporlar oluşturmak için dışa aktarmadan önce filtreleyin. Tam filtresiz zaman çizelgesini dışa aktarmak, aktif ajanslar için çok büyük dosyalar oluşturabilir.
+</Tip>
+
+## Girişleri Gruplama
+
+Gruplama, zaman çizelgesi satırlarının düzenlenme biçimini herhangi bir veriyi kaldırmadan yeniden düzenler. Günlükleri daha hızlı okumanıza ve analiz etmenize yardımcı olur.
+
+<Steps>
+  <Step title="Gruplama Ölçütü açılır menüsünü açın">
+    Zaman Çizelgesi panelinin üst kısmındaki **Gruplama Ölçütü** açılır menüsüne tıklayın.
+  </Step>
+  <Step title="Bir gruplama seçin">
+    Aşağıdaki seçeneklerden birini seçin:
+
+    | Gruplama Ölçütü | Gösterdiği |
+    |----------------|---------------|
+    | **Görev Adı** | Her görev altında gruplanmış tüm zaman girişleri |
+    | **Ekip Üyesi** | Her kişi altında gruplanmış tüm girişler |
+    | **Hizmet → Görev Adı** | Hizmete göre gruplandırılmış, ardından her hizmet içinde göreve göre ayrılmış girişler |
+  </Step>
+</Steps>
+
+<Note>
+  Gruplama yalnızca görsel bir değişikliktir — temel verileri veya dışa aktarılanları etkilemez. Dışa aktarma işlemleri her zaman tüm görünür satırları içerir.
+</Note>
+
+## Zaman Çizelgesinden Görev Ayrıntılarını Görüntüleme
+
+<Steps>
+  <Step title="Bir görev adına tıklayın">
+    Zaman çizelgesi tablosunda herhangi bir **Görev Adı**'na tıklayın. AgencyHandy sizi o görevin tam ayrıntı sayfasına yönlendirir.
+  </Step>
+  <Step title="Görev bağlamını inceleyin">
+    Görev ayrıntı sayfasında tam zaman günlüğü geçmişini, eklenmiş notları, atanan kişileri, durumu ve diğer görev düzeyinde bilgileri bulacaksınız. Girişleri araştırmak veya yapılan çalışmayı doğrulamak için bu görünümü kullanın.
+  </Step>
+</Steps>
+
+## Zaman Çizelgesi Verilerini Dışa Aktarma
+
+Bordro, müşteri faturalama raporları veya harici proje yönetimi araçları için zaman çizelgenizi dışa aktarın.
+
+<Steps>
+  <Step title="Önce filtreler uygulayın (önerilir)">
+    Dışa aktarmayı ihtiyacınız olan döneme daraltmak için tarih aralığı filtresini kullanın. Bu, dosyayı odaklı ve yönetilebilir tutar.
+  </Step>
+  <Step title="Dışa Aktar'a tıklayın">
+    Zaman Çizelgesi panelinin üst kısmındaki **Dışa Aktar** düğmesine tıklayın.
+  </Step>
+  <Step title="Format seçin">
+    Şunlardan birini seçin:
+    - **CSV** — Excel, Google Sheets gibi elektronik tablo araçları veya veri hatları için
+    - **XLSX** — sütun biçimlendirmesi korunmuş Excel biçimli çalışma kitapları için
+  </Step>
+  <Step title="Dosyayı indirin">
+    Dosya cihazınıza otomatik olarak indirilir. Her dışa aktarma tüm görünür sütunları içerir: tarih, ekip üyesi, görev adı, hizmet, kaydedilen süre ve notlar.
+  </Step>
+</Steps>
+
+<Warning>
+  Dışa aktarma bir indirmeyi tetiklemiyorsa tarayıcınızın **açılır pencere engelleyicisi** dosyanın indirilmesini engelliyor olabilir. AgencyHandy için açılır pencere engellemesini devre dışı bırakın ve tekrar deneyin.
+</Warning>
+
+## Ek Notlar
+
+<Accordion title="Zamanlayıcı ve manuel giriş karşılaştırması">
+  Zamanlayıcı, aktif gerçek zamanlı çalışma için en uygundur. Manuel girişler, zamanlayıcıyı başlatmayı unuttuğunuzda veya zamanı geriye dönük kaydetmeniz gerektiğinde en uygundur. Her iki yöntem de zaman çizelgesi tablosunda özdeş günlük girişleri üretir.
+</Accordion>
+
+<Accordion title="Gruplama ve filtreleme karşılaştırması">
+  Filtreler, tabloda gösterilen satırları **azaltır**. Gruplama, halihazırda görünür olan satırları **yeniden düzenler**. Her ikisini aynı anda uygulayabilirsiniz — bir tarih aralığına göre filtreleyin, ardından o dönem için her kişinin toplamlarını görmek amacıyla ekip üyesine göre gruplayın.
+</Accordion>
+
+<Accordion title="Dışa aktarmalar tüm görünür sütunları içerir">
+  Her dışa aktarma, görünür tablonun mevcut durumunu yakalar: tarih, kullanıcı, görev, hizmet, süre ve notlar. Gruplama ayarı uyguladıysanız dışa aktarma gruplama yapısını da yansıtır.
+</Accordion>
+
+<Accordion title="Geçmiş veriler için özel aralıklar">
+  Uzun soluklu projeler veya üç aylık incelemeler için, önceden ayarlanmış günlük/haftalık/aylık pencerelerin ötesinde geçmiş zaman çizelgesi verilerini çekmek amacıyla özel tarih aralığı seçeneğini kullanın.
+</Accordion>

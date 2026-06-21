@@ -1,0 +1,211 @@
+---
+title: "Leads verwalten: Pipeline, E-Mail und Kundenkonvertierung"
+sidebarTitle: "Leads"
+description: "Verwalten Sie Ihre Vertriebspipeline mit einem Kanban-Board — verfolgen Sie Lead-Phasen, filtern Sie nach Mitarbeiter oder Quelle, senden Sie E-Mails und konvertieren Sie Leads zu Kunden."
+---
+
+Der Leads-Bereich des CRM von AgencyHandy bietet Ihnen ein visuelles Drag-and-Drop-Kanban-Board, um jeden Interessenten vom ersten Kontakt bis zum unterzeichneten Kunden zu verwalten. Jeder Lead befindet sich auf einer Karte, die durch sieben vordefinierte Pipeline-Phasen wandert, und Sie können Leads filtern, suchen, importieren, exportieren, per E-Mail kontaktieren und konvertieren, ohne jemals zu einem anderen Tool wechseln zu müssen.
+
+## Pipeline-Phasen
+
+Jeder Lead, den Sie erstellen, startet in der Phase **Neu** und kann vorwärts bewegt werden, wenn sich Ihre Beziehung entwickelt:
+
+| Phase | Bedeutung |
+|---|---|
+| **Neu** | Lead ist gerade in die Pipeline eingetreten |
+| **Kontaktiert** | Sie haben mindestens einmal Kontakt aufgenommen |
+| **Qualifiziert** | Lead erfüllt Ihre Zielkunden-Kriterien |
+| **In Bearbeitung** | Aktive Gespräche sind im Gange |
+| **Angebot gesendet** | Ein formelles Angebot wurde übermittelt |
+| **Verhandlung** | Konditionen werden besprochen |
+| **Kunde** | Bereit zur Konvertierung in ein Kundenkonto |
+
+<Note>
+  Das Verschieben eines Leads in die Phase **Kunde** auf dem Board konvertiert ihn nicht automatisch — Sie müssen innerhalb der Lead-Karte noch auf **In Kunden umwandeln** klicken, um ihn auf die Registerkarte Kunden zu übertragen.
+</Note>
+
+## Lead erstellen
+
+<Steps>
+  <Step title="Das Leads-Board öffnen">
+    Klicken Sie in der linken Seitenleiste auf **CRM** und wählen Sie dann die Registerkarte **Leads**. Das Kanban-Board lädt mit allen Ihren bestehenden Pipeline-Phasen.
+  </Step>
+  <Step title="Auf Lead erstellen klicken">
+    Wählen Sie oben rechts auf dem Board die Schaltfläche **+ Lead erstellen**. Ein Erstellungsformular öffnet sich.
+  </Step>
+  <Step title="Lead-Details ausfüllen">
+    Füllen Sie die folgenden Felder aus. **Name** und **E-Mail** sind obligatorisch; alles andere ist optional, aber für bessere Filterung und Berichterstattung empfohlen.
+
+    - **Vorname / Nachname** *(obligatorisch)*
+    - **E-Mail** *(obligatorisch)*
+    - **Unternehmensname**
+    - **Kategorie**
+    - **Status** — legt die anfängliche Kanban-Phase fest (Standard: Neu)
+    - **Quelle** — z. B. Facebook, Website *(max. 50 Zeichen; Text darüber hinaus wird mit einem Tooltip abgeschnitten)*
+    - **Lead-Wert** — geschätzter Auftragswert
+    - **Telefonnummer**
+    - **Website**
+    - **Zugewiesener Mitarbeiter** — Teammitglied, das für diesen Lead verantwortlich ist
+    - **Letzte Interaktion** — Datum des letzten Kontakts
+    - **Adresse** — Land, Bundesland, Stadt, PLZ
+    - **Anhänge** — PDFs, JPEGs, PNGs und Textdateien können direkt im Lead-Modal in der Vorschau angezeigt werden; nicht unterstützte Formate fordern zum Download auf
+  </Step>
+  <Step title="Lead speichern">
+    Klicken Sie auf **Erstellen**. Die Lead-Karte erscheint in der Spalte **Neu** auf dem Kanban-Board.
+  </Step>
+</Steps>
+
+<Tip>
+  Laden Sie PDF-Briefings oder Angebotsdokumente als Anhänge hoch, damit Ihr Team sie überprüfen kann, ohne das Lead-Modal zu verlassen.
+</Tip>
+
+## Leads auf dem Kanban-Board verfolgen
+
+Sobald Leads auf dem Board vorhanden sind, haben Sie mehrere Möglichkeiten, mit ihnen zu arbeiten:
+
+- **Drag-and-Drop** — greifen Sie eine Lead-Karte und legen Sie sie in eine andere Phasenspalte, um den aktuellen Status widerzuspiegeln.
+- **Auf eine Karte klicken** — öffnet das Lead-Detail-Modal, wo Sie alle Felder bearbeiten, Notizen einsehen, das Aktivitätsprotokoll prüfen, eine E-Mail senden oder in einen Kunden umwandeln können.
+- **Lead-Details drucken** — verwenden Sie die Schaltfläche **Drucken** oben rechts im Lead-Modal, um eine druckbare Zusammenfassung zu erstellen.
+
+## Lead bearbeiten
+
+Öffnen Sie eine Lead-Karte und klicken Sie auf **Bearbeiten** (oder aktualisieren Sie direkt die Kontaktinformations- oder Notizfelder im Modal). Änderungen werden sofort gespeichert und im Aktivitätsprotokoll aufgezeichnet.
+
+<Note>
+  Wenn eine E-Mail-Adresse bereits sowohl als Kunde als auch als Lead existiert, kann dieser Lead **nicht** in einen Kunden umgewandelt werden. Beheben Sie das Duplikat, bevor Sie eine Konvertierung versuchen.
+</Note>
+
+## Lead in Kunden umwandeln
+
+<Steps>
+  <Step title="Lead-Karte öffnen">
+    Klicken Sie auf dem Kanban-Board auf den Lead, den Sie befördern möchten.
+  </Step>
+  <Step title="Auf In Kunden umwandeln klicken">
+    Wählen Sie im Lead-Modal die Schaltfläche **In Kunden umwandeln**.
+  </Step>
+  <Step title="Bestätigen">
+    Ein Bestätigungsbanner erscheint: *„Lead wurde in die Kunden-Registerkarte verschoben.“* Die Karte verschwindet vom Kanban-Board, und alle Lead-Notizen und der Verlauf werden im neuen Kundeneintrag gespeichert.
+  </Step>
+</Steps>
+
+## Leads filtern und suchen
+
+Verwenden Sie die Symbolleiste oberhalb des Kanban-Boards, um Ihre Ansicht einzugrenzen:
+
+<CardGroup cols={2}>
+  <Card title="Suchleiste" icon="magnifying-glass">
+    Geben Sie einen Namen oder eine E-Mail ein, um übereinstimmende Leads sofort über alle Pipeline-Phasen hinweg anzuzeigen.
+  </Card>
+  <Card title="Zugewiesener Mitarbeiter" icon="user">
+    Filtern Sie das Board, um nur Leads anzuzeigen, die einem bestimmten Teammitglied zugewiesen sind.
+  </Card>
+  <Card title="Lead-Wert" icon="dollar-sign">
+    Eingrenzen nach geschätzter Auftragsgröße, um hochwertige Interessenten zu priorisieren.
+  </Card>
+  <Card title="Datum der letzten Interaktion" icon="calendar">
+    Identifizieren Sie Leads, die zuletzt nicht kontaktiert wurden und ein Follow-up benötigen.
+  </Card>
+  <Card title="Quelle" icon="signal">
+    Zeigen Sie nur Leads aus einem bestimmten Kanal an, z. B. Website oder Facebook.
+  </Card>
+</CardGroup>
+
+## Leads per E-Mail kontaktieren
+
+Sie können E-Mails direkt vom Kanban-Board oder aus einem Lead-Modal heraus verfassen und senden — kein externer E-Mail-Client erforderlich.
+
+| Feld | Details |
+|---|---|
+| **An** | Vorausgefüllt mit der E-Mail-Adresse des Leads |
+| **Betreff** | Obligatorisch; maximal 250 Zeichen |
+| **Inhalt** | Rich-Text-Editor; maximal 10.000 Zeichen |
+| **Anhänge** | Bis zu 5 Dateien; Gesamtgrößenlimit 25 MB |
+
+## Notizen
+
+Jeder Lead enthält einen dedizierten Bereich **Notizen** im Detail-Modal. Notizen sind bearbeitbar und löschbar, und jede Notiz zeigt den Namen des Teammitglieds, das sie verfasst hat, sowie einen Zeitstempel. Verwenden Sie Notizen, um Gesprächszusammenfassungen, Kundenpräferenzen oder Follow-up-Erinnerungen zu protokollieren, die das gesamte Team einsehen kann.
+
+## Leads importieren
+
+Bringen Sie eine bestehende Interessentenliste in AgencyHandy mit einer CSV- oder Excel-Datei in großen Mengen ein.
+
+<Steps>
+  <Step title="Importdialog öffnen">
+    Klicken Sie auf dem Leads-Board oben rechts auf die Schaltfläche **Importieren**.
+  </Step>
+  <Step title="Datei hochladen">
+    Ziehen Sie Ihre CSV- oder Excel-Datei per Drag-and-Drop oder suchen Sie sie. Die Datei muss mindestens eine Spalte **Name** und **E-Mail** enthalten.
+  </Step>
+  <Step title="Spalten zuordnen">
+    Der Importer zeigt einen Spalten-Mapper an. Ordnen Sie jede Spalte in Ihrer Datei dem entsprechenden AgencyHandy-Feld zu. Optionale zuordnungsfähige Felder umfassen: Quelle, Lead-Wert, Telefonnummer, Unternehmensname und Adresse.
+  </Step>
+  <Step title="Bestätigen und importieren">
+    Überprüfen Sie die Vorschautabelle, um die Datengenauigkeit zu verifizieren, und klicken Sie dann auf **Bestätigen** und anschließend auf **Speichern**. Ihre Leads erscheinen sofort auf dem Kanban-Board.
+  </Step>
+</Steps>
+
+<Warning>
+  Leads mit E-Mail-Adressen, die bereits in Ihrer Kunden-Registerkarte vorhanden sind, werden beim Import nicht konvertiert — Sie müssen diese Duplikate manuell behandeln.
+</Warning>
+
+## Leads exportieren
+
+Exportieren Sie Ihre Pipeline-Daten für Berichte, Backups oder die Integration mit anderen Tools.
+
+<Steps>
+  <Step title="Auf Exportieren klicken">
+    Wählen Sie in der Leads-Symbolleiste die Schaltfläche **Exportieren**.
+  </Step>
+  <Step title="Spalten auswählen">
+    Wählen Sie **Alle Spalten**, um alle Felder zu exportieren, oder **Benutzerdefinierte Spalten**, um nur die benötigten Daten auszuwählen.
+  </Step>
+  <Step title="Format auswählen und herunterladen">
+    Wählen Sie **CSV** oder **XLSX** und klicken Sie dann auf **Exportieren**. Die Datei wird auf Ihr Gerät heruntergeladen.
+  </Step>
+</Steps>
+
+## Aktivitätsprotokoll
+
+Jede an einem Lead vorgenommene Änderung wird automatisch im Reiter **Aktivitätsprotokoll** im Lead-Modal aufgezeichnet.
+
+Das Protokoll erfasst:
+
+- **Benutzer** — welches Teammitglied die Änderung vorgenommen hat
+- **Details** — was geändert wurde, zum Beispiel *„Status von ‚Neu' auf ‚Kontaktiert' geändert“*
+- Anhang-Uploads, Notizenhinzufügungen und Feldbearbeitungen
+
+Aktivitätsprotokolle können nicht bearbeitet oder gelöscht werden und sind für Admins und Manager sichtbar.
+
+## Automatisierte Erinnerungen und Aufgaben
+
+AgencyHandy sendet automatisierte Benachrichtigungen, wenn ein Lead in einer Phase über eine konfigurierbare Anzahl von Tagen hinaus inaktiv war — zum Beispiel *„Nachfassen bei [Lead-Name].“* Wichtige Aktionen wie das Senden eines Angebots können auch automatisch Aufgaben im Aufgabenmanager erstellen, um Ihren Lieferprozess auf Kurs zu halten.
+
+## Webhooks für Lead-Ereignisse
+
+AgencyHandy löst Webhook-Ereignisse für die folgenden Lead-Aktionen aus, sodass Sie externe CRM-Systeme, Automatisierungstools oder Datenpipelines verbinden können:
+
+<Accordion title="Lead.Created">
+  Wird ausgelöst, wenn ein neuer Lead erstellt wird. Payload enthält: Lead-ID, Status, Quelle, zugewiesener Mitarbeiter und Zeitstempel.
+</Accordion>
+
+<Accordion title="Lead.Updated">
+  Wird ausgelöst, wenn ein Feld eines Leads aktualisiert wird. Payload enthält dieselben Felder sowie eine Zusammenfassung der Änderungen.
+</Accordion>
+
+<Accordion title="Lead.Deleted">
+  Wird ausgelöst, wenn ein Lead aus dem System gelöscht wird. Payload enthält die Lead-ID und den Lösch-Zeitstempel.
+</Accordion>
+
+<Tip>
+  Konfigurieren Sie Webhooks unter **Einstellungen → Integrationen → Webhooks**, um Echtzeit-Lead-Ereignisse in Ihren externen Systemen zu empfangen.
+</Tip>
+
+## Berichtskennzahlen
+
+Verfolgen Sie den Zustand Ihrer Pipeline mit integrierten Berichtskennzahlen:
+
+- Anzahl der Leads pro Phase
+- Konvertierungsrate von Lead zu Kunde
+- Durchschnittliche Zeit, die ein Lead in jeder Phase verbringt
+- Leistungsstärkste Mitarbeiter nach Konvertierungsvolumen

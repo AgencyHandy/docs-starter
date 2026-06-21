@@ -1,0 +1,201 @@
+---
+title: "AgencyHandy API: Dasturlash orqali yangi lead yaratish"
+sidebarTitle: "Lead yaratish"
+description: "AgencyHandy API yordamida bulk-lead endpointiga POST so'rovi yuborib, zarur maydonlar bilan yangi leadlarni dasturlash orqali yarating."
+---
+
+Lead yaratish endpointi istalgan tashqi tizimdan — veb-forma, CRM, marketing avtomatsiyasi platformasi yoki maxsus skriptdan — AgencyHandy ish muhitingizga yangi leadlarni dasturlash orqali qo'shish imkonini beradi. Ushbu endpoint orqali yaratilgan leadlar qo'lda qo'shilgandek darhol lead quvurida paydo bo'ladi.
+
+<Note>
+  Ushbu endpointdan foydalanishdan oldin, API kaliti va Kompaniya ID sini olish uchun [Boshlash](/uz/api/getting-started) qo'llanmasini bajaring. Shuningdek, lead yaratishda talab qilinadigan **Mijoz roli ID** sini olishingiz kerak.
+</Note>
+
+## Oldindan talab qilinadigan shartlar
+
+- ✅ **Workspace Config → API Key** dan yaratilgan API kaliti
+- ✅ `GET {{URL}}/accounts/companies` dan olingan Kompaniya ID si
+- ✅ Mijoz roli ID si olindi (quyidagi 1-qadam ga qarang)
+
+---
+
+## 1-qadam: Mijoz roli ID sini oling
+
+Lead yaratishdan oldin kompaniyangizdagi `client` roli uchun Rol ID sini olishingiz kerak.
+
+### Endpoint
+
+```
+GET {{URL}}/roles?type=company
+```
+
+### Sarlavhalar
+
+| Sarlavha | Qiymat |
+|---|---|
+| `x-api-key` | Sizning API kalitingiz |
+| `companyid` | Sizning Kompaniya ID ingiz |
+
+### Namuna so'rov
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/roles?type=company" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>"
+```
+
+### Namuna javob
+
+```json
+{
+  "roles": [
+    {
+      "_id": "6525994184e9ddd798534535",
+      "role": {
+        "_id": "6525994184e9ddd79853451e",
+        "responsibility": "",
+        "name": "client"
+      },
+      "company": "6525994184e9ddd79853450e",
+      "createdAt": "2023-10-10T18:34:41.567Z",
+      "updatedAt": "2024-10-01T07:28:48.340Z",
+      "__v": 0,
+      "type": "company"
+    }
+  ]
+}
+```
+
+`roles[0].role.name === "client"` bo'lgan yozuvni toping va **tashqi** `_id` ni ajratib oling — bu `roles[0]._id`, **`roles[0].role._id`** emas.
+
+```javascript
+const clientRoleId = roles.find(r => r.role.name === "client")._id;
+// e.g. "6525994184e9ddd798534535"
+```
+
+<Warning>
+  `roles[0]._id` ni (kompaniya-rol bog'lash ID si) ishlating, **`roles[0].role._id`** ni (rol ta'rif ID si) emas. Noto'g'ri ID ishlatilsa, lead yaratish so'rovi muvaffaqiyatsiz bo'ladi.
+</Warning>
+
+---
+
+## 2-qadam: Yangi lead yarating
+
+### Endpoint
+
+```
+POST {{URL}}/members/bulk-lead
+```
+
+### Sarlavhalar
+
+| Sarlavha | Qiymat |
+|---|---|
+| `x-api-key` | Sizning API kalitingiz |
+| `companyid` | Sizning Kompaniya ID ingiz |
+| `Content-Type` | `application/json` |
+
+### So'rov tanasi
+
+So'rov tanasi **JSON massivi** — bitta chaqiruvda bir yoki bir nechta lead yaratish mumkin.
+
+<ParamField body="firstName" type="string" required>
+  Leadning ismi.
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  Leadning familiyasi.
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  Leadning elektron pochta manzili. Ish muhitingizda noyob bo'lishi kerak.
+</ParamField>
+
+<ParamField body="role" type="string" required>
+  1-qadamda olingan Mijoz roli ID si (ya'ni `roles[0]._id`).
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  Lead yaratishda `false` ga o'rnatilishi shart. Faqat leadni to'liq mijozga aylantirish vaqtida `true` ga o'rnating.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Leadning quvur holati. Keng tarqalgan qiymatlar: `New`, `Contacted`, `Qualified`. O'tkazib yuborilsa `New` ga standart o'rnatiladi.
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  Leadning telefon raqami.
+</ParamField>
+
+<ParamField body="source" type="string">
+  Ushbu leadni qanday topganingiz. Namuna qiymatlari: `website`, `referral`, `social`.
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  Leadning quvur taxtasi ustunidagi joylashuvi (tartibi). Standart `1`.
+</ParamField>
+
+### Namuna so'rov
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-lead" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "role": "6525994184e9ddd798534535",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+### Muvaffaqiyatli javob
+
+```json
+{
+  "message": "Lead created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  Tasdiqlash satri: `"Lead created successfully"`.
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  Yaratilgan lead obyektlari massivi.
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  Yangi yaratilgan leadning noyob ID si. Keyingi API chaqiruvlarida leadga murojaat qilishingiz kerak bo'lsa, buni saqlang.
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  Leadning to'liq ismi (firstName + lastName).
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  Saqlangan lead quvur holati.
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  A'zoga tayinlangan rol nomi — `"client"` bo'ladi.
+</ResponseField>
+
+<Tip>
+  Bitta API chaqiruvida bir nechta lead yaratish uchun massivga bir nechta lead obyektini uzatishingiz mumkin. Har bir obyekt o'zining noyob elektron pochta manzili bilan barcha zarur maydonlarni o'z ichiga olishi shart.
+</Tip>

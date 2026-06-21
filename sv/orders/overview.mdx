@@ -1,0 +1,91 @@
+---
+title: "Beställningsöversikt: hantera klientarbete i AgencyHandy"
+sidebarTitle: "Översikt"
+description: "Förstå hur beställningar fungerar i AgencyHandy — statusar, roller, beställningsuppgifter, manuella beställningar och tillägg för opublicerade tjänster."
+---
+
+Beställningar är den operativa ryggraden i AgencyHandy. En beställning representerar en klients förfrågan om en tjänst eller produkt, och den fungerar som den centrala arbetsytan där ditt team spårar framsteg, hanterar uppgifter, utbyter återkoppling och levererar resultat. Oavsett om en klient lägger en beställning via din publicerade tjänstkatalog eller om ditt team skapar en manuellt, följer varje beställning samma strukturerade livscykel som håller din byrå organiserad och dina klienter informerade.
+
+## Vad en beställning innehåller
+
+Varje beställning visar viktig information på ett ögonblick och ger teammedlemmar ett enda ställe att samordna arbetet:
+
+| Fält | Beskrivning |
+|---|---|
+| **Order ID** | Automatiskt genererad unik identifierare för varje beställning |
+| **Client** | Den klient som beställningen tillhör |
+| **Service** | Tjänsten som levereras |
+| **Project Manager (PM)** | Teammedlemmen ansvarig för leveransen (valfritt) |
+| **Budget** | Överenskommet pris för beställningen |
+| **Kick-off Date** | När arbetet börjar |
+| **Due Date** | Deadline för beställningens slutförande |
+| **Order Brief** | Klientinstruktioner, anteckningar och bifogade referensfiler |
+| **Tasks** | Diskreta arbetsuppgifter tilldelade till teammedlemmar |
+| **Discussions** | Trådade konversationer mellan byråpersonal och klienter |
+
+## Beställningsstatusar
+
+Varje beställning rör sig genom en fast uppsättning statusar. Du kan inte lägga till eller byta namn på dessa statusar.
+
+<Note>
+Endast superadministratörer, administratörer och projektledare kan ändra en beställnings status.
+</Note>
+
+| Status | Vad det betyder |
+|---|---|
+| **Pending** | Beställningen har skapats och väntar på att arbetet ska börja |
+| **Ongoing** | Aktivt arbete pågår |
+| **In Review** | Leveranser har lämnats in och väntar på klient- eller intern granskning |
+| **Complete** | Beställningen har levererats fullständigt och accepterats |
+| **Cancelled** | Beställningen har avbrutits och är inte längre aktiv |
+
+## Rollbaserad åtkomst
+
+Olika roller i AgencyHandy har olika möjligheter inom beställningar:
+
+| Roll | Kan skapa beställningar | Kan redigera beställningar | Kan ta bort beställningar | Kan ändra status | Kan lägga till uppgifter | Kan lägga till teammedlemmar |
+|---|---|---|---|---|---|---|
+| **Superadministratör** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Administratör** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Projektledare (PM)** | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ |
+| **Anställd** | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| **Klient** | ❌ | ❌ | ❌ | ❌ | ✅ (endast förfrågan) | ❌ |
+
+<Tip>
+Klienter kan skicka återkoppling och delta i diskussioner om beställningar. Anställda tilldelade till en beställning kan visa och arbeta med uppgifter men kan inte hantera beställningen i sig.
+</Tip>
+
+## Vad du kan göra med beställningar
+
+AgencyHandy ger dig en komplett verktygslåda för att hantera beställningar under hela deras livscykel:
+
+- **Skapa beställningar** för klienter — antingen från publicerade tjänster eller manuellt för tjänster som fortfarande är under utveckling
+- **Acceptera och avvisa** klientinlämnade beställningar, med möjlighet att ange en anledning vid avvisning
+- **Visa beställningsuppgifter** inklusive framsteg, tilldelade teammedlemmar, start- och slutdatum, budget och brief
+- **Sortera, filtrera och söka** bland alla beställningar efter ID, status, klientnamn eller andra kriterier
+- **Lägga till uppgifter** direkt inom en beställning för att spåra och tilldela diskreta arbetsenheter
+- **Starta diskussioner** för att kommunicera med klienter och teammedlemmar i rätt sammanhang
+
+## Manuella beställningar för opublicerade tjänster
+
+Du är inte begränsad till att skapa beställningar enbart för tjänster du har publicerat offentligt. Superadministratörer och administratörer kan skapa manuella beställningar för opublicerade tjänster — användbart när en tjänst fortfarande är under utveckling, tillfälligt otillgänglig, eller erbjuds till en specifik klient före dess officiella lansering.
+
+När du öppnar beställningsskapandeformuläret visar rullgardinsmenyn **Service** både publicerade och opublicerade tjänster, så du kan välja det som gäller. Alla andra beställningsfält och arbetsflöden fungerar på samma sätt som en standardbeställning.
+
+## Tillägg i manuella beställningar
+
+När du bygger en manuell beställning kan du inkludera **tilläggstjänster** för att låta klienter få anpassade paket utöver kärnstjänsten. Tillägg måste skapas i förväg och länkas till relevant tjänst i avsnittet **Forms** innan de visas som ett alternativ i beställningsformuläret.
+
+<Note>
+Urvalet av tillägg visas bara i det manuella beställningsformuläret om minst ett tillägg har kopplats till den valda tjänsten. Om du inte ser det, verifiera att ditt tillägg är korrekt länkat i tjänstekonfigurationen.
+</Note>
+
+När en tjänst med länkade tillägg är vald kan du inkludera dessa tillägg innan du slutför och skickar in beställningen.
+
+## Aviseringar
+
+AgencyHandy meddelar automatiskt rätt personer när beställningar fortskrider:
+
+- När en beställning skapas av en PM, administratör eller superadministratör får alla superadministratörer i ditt företag åtkomst och klienten får en skapadeavisering.
+- När en teammedlem läggs till en beställning får den medlemmen en avisering.
+- När uppgifter skapas inom en beställning får klienten en avisering.

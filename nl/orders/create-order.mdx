@@ -1,0 +1,143 @@
+---
+title: "Orders aanmaken, bewerken en verwijderen in AgencyHandy"
+sidebarTitle: "Order aanmaken"
+description: "Stapsgewijze handleiding voor het aanmaken, bewerken en verwijderen van orders in AgencyHandy — inclusief rolereisen, formuliervelden en statusovergangen."
+---
+
+Het aanmaken van een order in AgencyHandy geeft je een gestructureerde werkruimte voor het leveren van een dienst aan een klant. Je vult de belangrijkste gegevens vooraf in — klant, dienst, prijs, datums en een projectbriefing — en alles wat daarna volgt, van taken tot discussies, komt voort uit dat ene record. Deze pagina legt uit hoe je een order vanaf nul aanmaakt, deze achteraf bijwerkt, de status wijzigt en de order verwijdert wanneer deze niet meer nodig is.
+
+## Vereisten
+
+- Je moet ingelogd zijn bij AgencyHandy.
+- Je moet de rol **Super Admin**, **Admin** of **Projectmanager** hebben om orders aan te maken of te bewerken.
+- Alleen **Super Admins** en **Admins** kunnen orders verwijderen.
+
+## Een nieuwe order aanmaken
+
+<Steps>
+  <Step title="Navigeer naar Orders">
+    Klik in de linker zijbalk van je AgencyHandy-dashboard op **Orders**.
+  </Step>
+
+  <Step title="Open het aanmaakformulier">
+    Klik op **+ Nieuwe order aanmaken** rechtsboven. Er verschijnt een formulier.
+  </Step>
+
+  <Step title="Vul de ordergegevens in">
+    Vul de velden in het formulier in:
+
+    | Veld | Verplicht | Opmerkingen |
+    |---|---|---|
+    | **Klant** | ✅ | Selecteer uit je bestaande klantenlijst |
+    | **Dienst** | ✅ | Bevat zowel gepubliceerde als niet-gepubliceerde diensten |
+    | **Projectmanager** | ❌ | Optioneel; wijs een PM aan om de levering te beheren |
+    | **Aantal** | ✅ | Aantal te bestellen eenheden |
+    | **Prijs** | ✅ | Overeengekomen budget voor de order |
+    | **Startdatum** | ✅ | Wanneer het werk begint |
+    | **Deadline** | ✅ | Uiterste leveringsdatum |
+    | **Orderbriefing** | ❌ | Instructies, vereisten of referentienotities voor je team |
+    | **Bijlagen** | ❌ | Ondersteunende bestanden die relevant zijn voor de order |
+
+    <Tip>
+      Als de geselecteerde dienst gekoppelde add-ons heeft, verschijnt er een sectie **Add-on** in het formulier. Voeg eventuele relevante add-ons toe voordat je het formulier indient.
+    </Tip>
+  </Step>
+
+  <Step title="Controleer je invoer">
+    Controleer alle velden op juistheid — met name de klant, dienst, prijs en deadline.
+  </Step>
+
+  <Step title="Dien de order in">
+    Klik op **Aanmaken** om de order te voltooien. Je ontvangt een bevestigingsbericht zodra de order succesvol is aangemaakt.
+  </Step>
+</Steps>
+
+### Wat er na het aanmaken van een order gebeurt
+
+- Alle Super Admins in je bedrijf krijgen automatisch toegang tot de nieuwe order.
+- De klant ontvangt een melding dat hun order is aangemaakt.
+- De order verschijnt in de **Orders**-lijst met de status **In behandeling**.
+
+## Een order bewerken of bijwerken
+
+Je kunt een order op elk moment bijwerken om gegevens te corrigeren, de prijs aan te passen, de deadline te wijzigen of tegemoet te komen aan verzoeken van de klant.
+
+<Note>
+Je moet **Super Admin**, **Admin** of **Projectmanager** zijn om een order te bewerken.
+</Note>
+
+<Steps>
+  <Step title="Open de orderlijst">
+    Navigeer naar **Orders** in de linker zijbalk.
+  </Step>
+
+  <Step title="Selecteer de te bewerken order">
+    Zoek de order die je wilt bijwerken en vink het selectievakje ernaast aan.
+  </Step>
+
+  <Step title="Activeer de bewerkknop">
+    Er verschijnt een knop **Bewerken** rechtsboven. Klik erop om de orderdetails in bewerkingsmodus te openen.
+  </Step>
+
+  <Step title="Pas de benodigde velden aan">
+    Werk alle velden bij die gewijzigd moeten worden — klantgegevens, dienst, prijs, datums, briefing of toegewezen PM.
+  </Step>
+
+  <Step title="Sla je wijzigingen op">
+    Klik op **Bijwerken** om op te slaan. Een bevestigingsbericht bevestigt dat de update geslaagd is.
+  </Step>
+</Steps>
+
+## De status van een order wijzigen
+
+De orderstatus geeft aan waar een stuk werk zich bevindt in je leveringspijplijn. AgencyHandy kent vijf vaste statussen — je kunt deze niet toevoegen of hernoemen.
+
+| Status | Betekenis |
+|---|---|
+| **In behandeling** | Aangemaakt, nog niet gestart |
+| **Lopend** | Actief in uitvoering |
+| **Ter beoordeling** | Ingediend voor beoordeling; wacht op goedkeuring |
+| **Voltooid** | Geleverd en goedgekeurd |
+| **Geannuleerd** | Niet langer actief |
+
+<Note>
+Alleen **Super Admins**, **Admins** en **Projectmanagers** kunnen de status van een order wijzigen. Medewerkers en klanten kunnen de status niet wijzigen.
+</Note>
+
+Om de status bij te werken, open je de order en gebruik je de statuskeuzelijst bovenaan de orderdetailpagina. Selecteer de nieuwe status in het vervolgkeuzemenu en bevestig.
+
+## Een order verwijderen
+
+Het verwijderen van een order verwijdert deze permanent uit het systeem. Doe dit alleen wanneer een order echt verouderd is — bijvoorbeeld als deze per vergissing is aangemaakt of een duplicaat is.
+
+<Warning>
+Het verwijderen van een order is onomkeerbaar. Zodra je een order verwijdert, kan deze niet worden hersteld. Ga voorzichtig te werk.
+</Warning>
+
+<Note>
+Alleen **Super Admins** en **Admins** kunnen orders verwijderen.
+</Note>
+
+<Steps>
+  <Step title="Navigeer naar Orders">
+    Klik op **Orders** in de linker zijbalk.
+  </Step>
+
+  <Step title="Zoek de te verwijderen order">
+    Scroll of zoek naar de order die je uit de lijst wilt verwijderen.
+  </Step>
+
+  <Step title="Start de verwijdering">
+    Klik op het **prullenbakpictogram** bij de betreffende order.
+  </Step>
+
+  <Step title="Bevestig de verwijdering">
+    Er verschijnt een bevestigingsprompt. Bevestig om de order permanent te verwijderen.
+  </Step>
+</Steps>
+
+Na de verwijdering controleer je de resterende orders om te zorgen dat alles in orde is. Het verwijderde item verschijnt niet meer in een lijst of rapport.
+
+## Teamleden toevoegen aan een order
+
+Super Admins, Admins en PM's kunnen op elk moment medewerkers aan een order toevoegen. Wanneer een teamlid wordt toegevoegd, ontvangen ze een melding in de app. Toegewezen medewerkers krijgen inzicht in de order en de bijbehorende taken, maar kunnen de order zelf niet beheren (gegevens bewerken, status wijzigen of verwijderen).

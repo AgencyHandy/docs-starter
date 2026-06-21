@@ -1,0 +1,91 @@
+---
+title: "Aperçu des commandes : gérer le travail client dans AgencyHandy"
+sidebarTitle: "Aperçu"
+description: "Comprenez comment fonctionnent les commandes dans AgencyHandy — statuts, rôles, détails des commandes, commandes manuelles et modules complémentaires pour les services non publiés."
+---
+
+Les commandes sont la colonne vertébrale opérationnelle d'AgencyHandy. Une commande représente la demande d'un client pour un service ou un produit, et elle agit comme l'espace de travail central où votre équipe suit l'avancement, gère les tâches, échange des retours et livre les résultats. Que le client passe une commande via votre catalogue de services publié ou que votre équipe en crée une manuellement, chaque commande suit le même cycle de vie structuré qui garde votre agence organisée et vos clients informés.
+
+## Ce que contient une commande
+
+Chaque commande fait apparaître les informations clés en un coup d'œil et offre aux membres de l'équipe un seul endroit pour coordonner le travail :
+
+| Champ | Description |
+|---|---|
+| **Order ID** | Identifiant unique généré automatiquement pour chaque commande |
+| **Client** | Le client à qui appartient la commande |
+| **Service** | Le service livré |
+| **Project Manager (PM)** | Le membre de l'équipe responsable de la livraison (optionnel) |
+| **Budget** | Prix convenu pour la commande |
+| **Kick-off Date** | Date de début du travail |
+| **Due Date** | Date limite d'achèvement de la commande |
+| **Order Brief** | Instructions du client, notes et fichiers de référence joints |
+| **Tasks** | Éléments de travail distincts assignés aux membres de l'équipe |
+| **Discussions** | Conversations en fil entre le personnel de l'agence et les clients |
+
+## Statuts des commandes
+
+Chaque commande passe par un ensemble fixe de statuts. Vous ne pouvez pas ajouter ou renommer ces statuts.
+
+<Note>
+Seuls les Super Admins, les Admins et les chefs de projet peuvent modifier le statut d'une commande.
+</Note>
+
+| Statut | Ce que cela signifie |
+|---|---|
+| **Pending** | La commande a été créée et attend le début du travail |
+| **Ongoing** | Un travail actif est en cours |
+| **In Review** | Les livrables ont été soumis et attendent une révision du client ou interne |
+| **Complete** | La commande a été entièrement livrée et acceptée |
+| **Cancelled** | La commande a été annulée et n'est plus active |
+
+## Accès basé sur les rôles
+
+Différents rôles dans AgencyHandy ont différentes capacités au sein des commandes :
+
+| Rôle | Peut créer des commandes | Peut modifier les commandes | Peut supprimer les commandes | Peut changer le statut | Peut ajouter des tâches | Peut ajouter des membres de l'équipe |
+|---|---|---|---|---|---|---|
+| **Super Admin** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Admin** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Chef de projet (PM)** | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ |
+| **Employé** | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| **Client** | ❌ | ❌ | ❌ | ❌ | ✅ (demande uniquement) | ❌ |
+
+<Tip>
+Les clients peuvent envoyer des retours et participer aux discussions sur les commandes. Les employés assignés à une commande peuvent voir et travailler sur les tâches mais ne peuvent pas gérer la commande elle-même.
+</Tip>
+
+## Ce que vous pouvez faire avec les commandes
+
+AgencyHandy vous offre une boîte à outils complète pour gérer les commandes tout au long de leur cycle de vie :
+
+- **Créer des commandes** pour les clients — soit à partir de services publiés, soit manuellement pour des services encore en développement
+- **Accepter et rejeter** les commandes soumises par les clients, avec la possibilité de fournir un motif lors du rejet
+- **Consulter les détails de la commande** y compris l'avancement, les membres de l'équipe assignés, les dates de lancement et d'échéance, le budget et le brief
+- **Trier, filtrer et rechercher** dans toutes les commandes par ID, statut, nom de client ou autres critères
+- **Ajouter des tâches** directement au sein d'une commande pour suivre et assigner des unités de travail distinctes
+- **Démarrer des discussions** pour communiquer avec les clients et les membres de l'équipe en contexte
+
+## Commandes manuelles pour les services non publiés
+
+Vous n'êtes pas limité à la création de commandes uniquement pour les services que vous avez publiés publiquement. Les Super Admins et les Admins peuvent créer des commandes manuelles pour des services non publiés — utile lorsqu'un service est encore en développement, temporairement indisponible ou proposé à un client spécifique avant son lancement officiel.
+
+Lorsque vous ouvrez le formulaire de création de commande, le menu déroulant **Service** affiche à la fois les services publiés et non publiés, vous permettant de sélectionner celui qui s'applique. Tous les autres champs et flux de travail de la commande se comportent de la même manière qu'une commande standard.
+
+## Modules complémentaires dans les commandes manuelles
+
+Lors de la création d'une commande manuelle, vous pouvez inclure des **services en module complémentaire** pour permettre aux clients de recevoir des forfaits personnalisés au-delà du service principal. Les modules complémentaires doivent être créés à l'avance et liés au service pertinent dans la section **Forms** avant d'apparaître comme option dans le formulaire de commande.
+
+<Note>
+La sélection des modules complémentaires n'apparaît dans le formulaire de commande manuelle que si au moins un module complémentaire a été connecté au service sélectionné. Si vous ne la voyez pas, vérifiez que votre module complémentaire est correctement lié dans la configuration du service.
+</Note>
+
+Une fois qu'un service avec des modules complémentaires liés est sélectionné, vous pouvez inclure ces modules complémentaires avant de finaliser et de soumettre la commande.
+
+## Notifications
+
+AgencyHandy notifie automatiquement les bonnes personnes à mesure que les commandes progressent :
+
+- Lorsqu'une commande est créée par un PM, un Admin ou un Super Admin, tous les Super Admins de votre entreprise y ont accès et le client reçoit une notification de création.
+- Lorsqu'un membre de l'équipe est ajouté à une commande, ce membre reçoit une notification.
+- Lorsque des tâches sont créées au sein d'une commande, le client reçoit une notification.

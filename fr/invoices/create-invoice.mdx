@@ -1,0 +1,235 @@
+---
+title: "Créer, envoyer et gérer les factures clients dans AgencyHandy"
+sidebarTitle: "Créer une facture"
+description: "Guide étape par étape pour créer une facture dans AgencyHandy — choisir un client, définir les montants, ajouter des notes, envoyer au client et configurer les rappels de paiement."
+---
+
+Créer une facture dans AgencyHandy est un processus simple qui relie directement votre facturation aux clients et aux commandes. Vous renseignez le client, liez la commande, définissez les montants, ajoutez d'éventuelles notes et envoyez — le tout depuis un seul formulaire. Une fois envoyée, vous pouvez suivre le statut du paiement, configurer des rappels automatisés et télécharger la facture au format PDF à tout moment.
+
+<Note>
+  Vous devez être **Super Admin**, **Admin** ou **PM** pour créer des factures. Au moins un client doit exister dans votre espace de travail avant de pouvoir générer une facture.
+</Note>
+
+## Paramètres du préfixe de facture
+
+Avant de commencer à créer des factures, envisagez de configurer votre préfixe de facture. Le préfixe apparaît avant chaque numéro de facture et aide à identifier les factures comme appartenant à votre agence.
+
+<Steps>
+  <Step title="Ouvrir les paramètres de facture">
+    Dans le tableau de bord des factures, cliquez sur le bouton **Settings** dans le coin supérieur droit.
+  </Step>
+  <Step title="Définir votre préfixe">
+    Accédez au champ **Invoice Prefix** et saisissez le préfixe souhaité (par exemple, `INV-` ou les initiales de votre agence).
+  </Step>
+  <Step title="Enregistrer">
+    Cliquez sur **Save** pour appliquer le préfixe à toutes les factures futures.
+  </Step>
+</Steps>
+
+## Créer une facture
+
+<Steps>
+  <Step title="Ouvrir le tableau de bord des factures">
+    Cliquez sur **Invoices** dans la barre latérale gauche pour ouvrir le tableau de bord des factures.
+  </Step>
+  <Step title="Démarrer une nouvelle facture">
+    Cliquez sur **+ Create Invoice**. Le formulaire de création de facture s'ouvrira.
+  </Step>
+  <Step title="Sélectionner le client">
+    Choisissez le nom du client dans la liste déroulante. C'est un champ obligatoire. Tous les ID de commande associés à ce client se rempliront automatiquement dans le champ suivant.
+
+    Pour créer une **facture directe** (non liée à une commande), vous pouvez laisser le champ ID de commande vide ou sélectionner **Independent Email** pour facturer n'importe quelle adresse e-mail en dehors de votre liste de clients.
+  </Step>
+  <Step title="Sélectionner l'ID de commande">
+    Sélectionnez l'ID de commande spécifique que vous facturez. Cela relie la facture à la commande correcte dans le système. Pour les factures directes, ignorez ce champ.
+  </Step>
+  <Step title="Saisir l'adresse de facturation">
+    Renseignez l'**Bill Payment Address** :
+    - Pays, État/Région et Ville
+    - Code postal
+    - Adresse (le cas échéant)
+
+    Cette adresse apparaît sur la facture imprimée pour la conformité et la clarté.
+  </Step>
+  <Step title="Définir les détails de la commande et financiers">
+    Sous **Order Details**, saisissez les éléments suivants :
+
+    | Champ | Description |
+    |-------|-------------|
+    | **Currency** | La devise dans laquelle vous souhaitez être payé |
+    | **Order ID – Amount** | La valeur monétaire associée à la commande |
+    | **Discount (%)** et **Discount Amount** | Appliquez toute remise applicable |
+    | **Paid Amount** | Tout montant déjà payé par le client |
+    | **Due Amount** | Le solde restant dû |
+    | **Total Amount** | Le montant total à payer pour la commande |
+
+    Pour les **factures directes**, cliquez sur **Add Item** pour ajouter manuellement des lignes. Saisissez le nom de l'article, la quantité et le prix. Vous pouvez ajouter plusieurs articles. Utilisez **+ Tax Rates** pour appliquer ou créer des taux de taxe (incluse ou exclue).
+  </Step>
+  <Step title="Ajouter une note (facultatif)">
+    Dans le champ **Note**, ajoutez tout contexte supplémentaire pour le client — par exemple, des instructions de paiement, des références de projet ou un message personnel.
+  </Step>
+  <Step title="Examiner le panneau de détails">
+    Le panneau **Details** sur la droite vous donne un résumé en direct de :
+
+    - Le statut de la facture (Draft par défaut)
+    - Le nom du client, le nom de l'entreprise et l'adresse
+    - L'adresse de facturation
+    - Le nom du service et l'ID de commande
+    - La date de création et la date d'échéance
+    - Le montant total
+
+    Examinez attentivement chaque élément avant de continuer.
+  </Step>
+  <Step title="Envoyer au client ou enregistrer en brouillon">
+    - Cliquez sur **Send to Client** pour envoyer la facture par e-mail immédiatement. Le statut passe automatiquement de **Draft** à **Open**.
+    - Cliquez sur **Save as Draft** si vous souhaitez la finaliser plus tard.
+  </Step>
+</Steps>
+
+<Note>
+  Le logo et l'adresse de l'agence sont ajoutés à la facture automatiquement par le système — vous n'avez pas besoin de les saisir manuellement sur chaque facture.
+</Note>
+
+## Transitions de statut des factures
+
+Une fois une facture créée, elle suit un flux de statuts défini. Seule l'agence peut faire passer une facture d'un statut à un autre.
+
+```
+Draft → Open (lorsqu'elle est envoyée au client)
+Open  → Paid           (paiement reçu)
+Open  → Void           (facture annulée)
+Open  → Uncollectable  (créance passée en pertes)
+```
+
+<Warning>
+  Les factures ne peuvent être **modifiées** que tant qu'elles sont au statut **Draft**. Une fois qu'une facture passe à Open, vous ne pouvez plus la modifier. Si vous devez apporter des changements, annulez la facture et créez-en une nouvelle.
+</Warning>
+
+## Modifier une facture
+
+Vous ne pouvez modifier une facture que tant qu'elle est au statut **Draft**.
+
+<Steps>
+  <Step title="Ouvrir la facture">
+    Dans le tableau de bord des factures, trouvez la facture en brouillon que vous souhaitez modifier. Cliquez dessus ou cochez la case située à côté.
+  </Step>
+  <Step title="Cliquer sur Edit">
+    Sélectionnez l'option **Edit** dans le menu d'actions. Le formulaire de facture s'ouvrira avec tous les détails existants pré-remplis.
+  </Step>
+  <Step title="Apporter vos modifications">
+    Mettez à jour n'importe quel champ — détails de facturation, descriptions de service, quantités, montants ou conditions de paiement.
+  </Step>
+  <Step title="Enregistrer">
+    Cliquez sur **Save** pour appliquer vos modifications.
+  </Step>
+</Steps>
+
+## Envoyer une facture à un client
+
+Si vous avez enregistré la facture en brouillon et souhaitez l'envoyer plus tard :
+
+<Steps>
+  <Step title="Trouver la facture">
+    Dans le tableau de bord des factures, repérez la facture en brouillon que vous souhaitez envoyer.
+  </Step>
+  <Step title="Cliquer sur Send Invoice">
+    Ouvrez la facture et cliquez sur le bouton **Send Invoice**. AgencyHandy délivre la facture à l'adresse e-mail enregistrée du client.
+  </Step>
+  <Step title="Confirmer l'envoi">
+    Recherchez le message de confirmation pour vérifier que la facture a bien été envoyée. Le statut de la facture passe à **Open**.
+  </Step>
+</Steps>
+
+<Note>
+  Si une facture est au statut **Draft** et que vous mettez à jour le nom du service, le nouveau nom sera reflété dans la facture. Une fois que le statut passe à Open, Paid, Uncollectable ou Void, le nom du service sur la facture est verrouillé et ne sera pas mis à jour.
+</Note>
+
+## Télécharger et imprimer une facture
+
+L'agence et le client peuvent tous deux télécharger une facture à tout moment.
+
+<Steps>
+  <Step title="Ouvrir la facture">
+    Accédez au tableau de bord des factures et sélectionnez la facture que vous souhaitez télécharger.
+  </Step>
+  <Step title="Accéder au téléchargement/impression">
+    Cliquez sur l'option **Download** ou **Print** dans le menu d'actions de la facture.
+  </Step>
+  <Step title="Choisir votre format">
+    Sélectionnez **PDF** pour le téléchargement ou choisissez les paramètres de votre imprimante pour une copie physique.
+  </Step>
+  <Step title="Enregistrer ou imprimer">
+    Enregistrez le fichier sur votre appareil ou envoyez-le à l'imprimante. Après l'impression, archivez la facture ou partagez-la avec les parties prenantes selon les besoins.
+  </Step>
+</Steps>
+
+## Configurer des rappels sur les factures
+
+La fonctionnalité de rappel de facture vous permet de notifier automatiquement les clients au sujet des factures à venir, dues ou en retard afin d'être payé à temps sans relance manuelle.
+
+<Note>
+  Les rappels ne fonctionnent que sur les factures qui ont un statut **Open** et une **date d'échéance** définie.
+</Note>
+
+<Steps>
+  <Step title="Ouvrir les paramètres de facture">
+    Cliquez sur le bouton **Settings** en haut à droite du tableau de bord des factures.
+  </Step>
+  <Step title="Accéder aux paramètres de rappel">
+    Faites défiler jusqu'au bas de la section **Template** dans le panneau de gauche, puis cliquez sur **Edit** pour ouvrir la fenêtre de configuration des rappels.
+  </Step>
+  <Step title="Choisir un type de rappel">
+    Sélectionnez l'une des options suivantes :
+
+    - **Sequenced Reminder** — crée une série de rappels à des intervalles que vous définissez
+    - **Don't Send Reminder** — désactive les rappels pour les factures sélectionnées
+  </Step>
+  <Step title="Configurer les détails du rappel">
+    Pour chaque rappel de la séquence :
+    - Choisissez le **modèle de rappel** (par exemple, « Upcoming Invoice Payment Reminder »)
+    - Définissez la **date de rappel** — par exemple, 3 jours avant ou après la date d'échéance
+    - Précisez s'il se déclenche **avant** ou **après** la date d'échéance
+  </Step>
+  <Step title="Ajouter d'autres rappels si nécessaire">
+    Cliquez sur **+ Add Another Reminder** pour construire une séquence de rappels complète. Cliquez sur le bouton **Delete** à côté de n'importe quel rappel pour le supprimer.
+  </Step>
+  <Step title="Appliquer aux factures actives (facultatif)">
+    Cochez la case pour **appliquer ces paramètres de rappel aux factures actuellement actives** si vous souhaitez que la nouvelle configuration couvre les factures déjà au statut Open.
+  </Step>
+  <Step title="Enregistrer">
+    Cliquez sur **Update** pour enregistrer et activer le calendrier de rappels.
+  </Step>
+</Steps>
+
+## Factures directes (sans ID de commande)
+
+Lorsque vous devez facturer rapidement un client sans créer d'abord une commande, utilisez le flux de travail des factures directes.
+
+<Steps>
+  <Step title="Démarrer une nouvelle facture">
+    Accédez à **Invoices → Create Invoice**.
+  </Step>
+  <Step title="Choisir le type de destinataire">
+    Sélectionnez **Individual** ou **Company** comme type de destinataire.
+  </Step>
+  <Step title="Sélectionner ou saisir le destinataire">
+    - Choisissez un **client existant** dans la liste déroulante, ou
+    - Sélectionnez **Independent Email** pour saisir n'importe quelle adresse e-mail — même une qui n'est pas enregistrée comme client
+  </Step>
+  <Step title="Laisser l'ID de commande vide">
+    Ignorez le champ ID de commande. AgencyHandy crée une facture autonome non liée à une commande.
+  </Step>
+  <Step title="Ajouter des articles, des taxes et des remises">
+    Cliquez sur **Add Item** pour ajouter des lignes avec des noms, des quantités et des prix. Appliquez des taux de taxe et des remises selon les besoins. Le total se met à jour automatiquement.
+  </Step>
+  <Step title="Définir l'adresse de facturation et les notes">
+    Saisissez l'adresse de facturation et ajoutez d'éventuelles notes pour le client.
+  </Step>
+  <Step title="Envoyer ou enregistrer">
+    Cliquez sur **Send Invoice** pour la délivrer immédiatement, ou sur **Save as Draft** pour l'examiner d'abord.
+  </Step>
+</Steps>
+
+<Tip>
+  Les factures directes sont parfaites pour les demandes urgentes, les appels de conseil ou tout travail que vous devez facturer en dehors du flux de travail normal des commandes. Le suivi des paiements pour les factures autonomes doit être géré manuellement.
+</Tip>

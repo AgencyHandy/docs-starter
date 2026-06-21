@@ -1,0 +1,196 @@
+---
+title: "Gestionarea webhook-urilor: Creare, testare și autentificare"
+sidebarTitle: "Webhooks"
+description: "Configurați webhook-uri în AgencyHandy pentru a trimite date despre evenimente în timp real către sisteme externe ori de câte ori comenzile, sarcinile, facturile sau alte entități se modifică."
+---
+
+Webhook-urile permit AgencyHandy să trimită date către sistemele dvs. externe în momentul în care ceva se schimbă — fără polling. Când un eveniment configurat se declanșează (de exemplu, o comandă este actualizată sau un tichet este creat), AgencyHandy trimite o solicitare HTTP POST cu un payload JSON la URL-ul endpoint-ului pe care îl specificați. Acest lucru facilitează sincronizarea instrumentelor externe precum CRM-uri, sisteme de facturare sau tablouri de bord personalizate cu spațiul dvs. de lucru AgencyHandy în timp real.
+
+<Note>
+  Spațiile de lucru cu planul Business Pro acceptă până la **30.000 de evenimente webhook** per perioadă de facturare. Verificați limitele planului dvs. înainte de a configura automatizări cu volum mare.
+</Note>
+
+## Evenimente acceptate
+
+Puteți abona un webhook la orice combinație de evenimente de mai jos:
+
+| Categorie | Evenimente |
+|---|---|
+| **Serviciu** | Creat, Actualizat, Șters |
+| **Comandă** | Creată, Actualizată, Ștearsă |
+| **Sarcină** | Creată, Atribuită, Finalizată, Actualizată |
+| **Factură** | Status modificat |
+| **Client / Utilizator** | Client nou adăugat, Client/utilizator șters |
+| **Propunere** | Trimisă, Primită, Acceptată, Respinsă |
+| **Tichet** | Creat, Atribuit, Status modificat |
+| **Plată** | Primită, Eșuată |
+| **Pachet de servicii** | Creat, Actualizat, Șters |
+
+## Creați un webhook
+
+<Steps>
+  <Step title="Navigați la Gestionarea webhook-urilor">
+    În bara laterală din stânga, accesați **Integrări → Gestionare Webhooks**.
+  </Step>
+
+  <Step title="Autentificați token-ul dvs.">
+    Faceți clic pe butonul **Management** pentru a vă autentifica token-ul webhook. Acest token este folosit pentru a semna payload-urile trimise, astfel încât să puteți verifica că provin din AgencyHandy.
+  </Step>
+
+  <Step title="Creați un webhook nou">
+    Faceți clic pe **Creați Webhook Nou** pentru a deschide formularul de configurare a webhook-ului.
+  </Step>
+
+  <Step title="Introduceți URL-ul endpoint-ului">
+    În câmpul **URL Endpoint**, introduceți URL-ul sistemului extern care ar trebui să primească datele webhook. Acesta trebuie să fie un endpoint **POST** accesibil public.
+  </Step>
+
+  <Step title="Selectați tipul de conținut">
+    Alegeți **JSON** ca tip de conținut. AgencyHandy trimite toate payload-urile webhook ca `application/json`.
+  </Step>
+
+  <Step title="Selectați evenimentele webhook">
+    Alegeți fiecare eveniment care ar trebui să declanșeze acest webhook. Puteți selecta evenimente din mai multe categorii — de exemplu, **Comandă: Creată** și **Factură: Status modificat** pot indica ambele același endpoint.
+  </Step>
+
+  <Step title="Activați webhook-ul">
+    Comutați butonul radio **Activ**. Când este activ, AgencyHandy livrează payload-uri pentru toate evenimentele selectate la endpoint-ul dvs. în timp real.
+  </Step>
+
+  <Step title="Salvați configurarea">
+    Examinați setările, apoi faceți clic pe **Salvare**. Webhook-ul apare în listă și începe să livreze evenimente imediat.
+  </Step>
+</Steps>
+
+## Testați un webhook
+
+După crearea unui webhook, trimiteți un payload de test pentru a confirma că endpoint-ul dvs. este accesibil și procesează datele corect.
+
+<Steps>
+  <Step title="Deschideți webhook-ul">
+    Din lista de Gestionare Webhooks, faceți clic pe webhook-ul pe care doriți să îl testați.
+  </Step>
+
+  <Step title="Faceți clic pe Eveniment de test">
+    Faceți clic pe butonul **Test Event** de pe pagina de detalii a webhook-ului.
+  </Step>
+
+  <Step title="Selectați un eveniment de test">
+    Alegeți un eveniment de exemplu din lista de evenimente configurate pe acest webhook (ex.: **Comandă: Creată**).
+  </Step>
+
+  <Step title="Trimiteți payload-ul de test">
+    Faceți clic pe **Trimite**. AgencyHandy postează un payload de exemplu la URL-ul endpoint-ului dvs.
+  </Step>
+
+  <Step title="Verificați rezultatul">
+    Verificați sistemul dvs. extern pentru a confirma că payload-ul de test a ajuns și a fost procesat conform așteptărilor. Înapoi în AgencyHandy, faceți clic pe webhook pentru a-i examina **istoricul** — puteți vedea solicitarea completă, răspunsul returnat de endpoint-ul dvs. și puteți re-livra orice eveniment trecut dacă este necesar.
+  </Step>
+</Steps>
+
+<Tip>
+  Utilizați un instrument precum [Webhook.site](https://webhook.site) sau [RequestBin](https://requestbin.com) ca endpoint temporar în timpul configurării pentru a inspecta forma exactă a payload-ului înainte de a conecta sistemul real.
+</Tip>
+
+## Autentificați payload-urile webhook
+
+Fiecare solicitare webhook trimisă de AgencyHandy include un header de semnătură pe care endpoint-ul dvs. îl poate utiliza pentru a verifica că payload-ul este autentic și nu a fost modificat.
+
+### Header-ul de semnătură
+
+```
+x-ah-sig: <signature>
+```
+
+AgencyHandy adaugă acest header la fiecare solicitare webhook. Extrageți valoarea din solicitările primite și transmiteți-o la endpoint-ul de verificare.
+
+### Verificați o semnătură webhook
+
+Trimiteți următoarea solicitare pentru a confirma că un payload este autentic:
+
+```
+POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature
+Content-Type: application/json
+```
+
+<ParamField body="webhookId" type="string" required>
+  ID-ul webhook-ului care a primit evenimentul. Găsiți-l pe pagina de detalii a webhook-ului din AgencyHandy.
+</ParamField>
+
+<ParamField body="signature" type="string" required>
+  Valoarea header-ului `x-ah-sig` din solicitarea webhook primită.
+</ParamField>
+
+<ParamField body="secret" type="string" required>
+  Secretul webhook afișat pe pagina de detalii a webhook-ului din AgencyHandy.
+</ParamField>
+
+<ParamField body="payload" type="object" required>
+  Corpul JSON brut primit din solicitarea webhook a AgencyHandy.
+</ParamField>
+
+<CodeGroup>
+
+```javascript JavaScript
+const url = 'https://api.agencyhandy.com/api/v1/webhooks/verify-signature';
+
+const postData = {
+  webhookId: 'your_webhook_id',
+  signature: 'your_signature',   // value of x-ah-sig header
+  secret: 'your_webhook_secret',
+  payload: {},                   // the parsed JSON body from AgencyHandy
+};
+
+const response = await fetch(url, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(postData),
+});
+
+const data = await response.json();
+console.log(data); // { "verification_status": "SUCCESS" }
+```
+
+```bash cURL
+curl -X POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature \
+  -H "Content-Type: application/json" \
+  -d '{
+    "webhookId": "your_webhook_id",
+    "signature": "your_signature",
+    "secret": "your_webhook_secret",
+    "payload": {}
+  }'
+```
+
+</CodeGroup>
+
+**Răspunsuri**
+
+<ResponseField name="verification_status" type="string">
+  `SUCCESS` când semnătura este validă. `FAILED` când verificarea eșuează (HTTP 403).
+</ResponseField>
+
+```json Success (200)
+{
+  "verification_status": "SUCCESS"
+}
+```
+
+```json Failure (403)
+{
+  "type": "PermissionError",
+  "status": 403,
+  "verification_status": "FAILED"
+}
+```
+
+<Warning>
+  Păstrați secretul webhook-ului confidențial. Rotiți-l periodic și actualizați logica de verificare imediat după rotire. Nu îl expuneți niciodată în codul din partea clientului sau în depozitele publice.
+</Warning>
+
+## Note importante
+
+- URL-ul endpoint-ului dvs. trebuie să fie un URL **HTTPS POST accesibil public**.
+- Dacă endpoint-ul dvs. este temporar indisponibil, verificați panoul de istorici al webhook-ului din AgencyHandy — puteți **re-livra** orice eveniment trecut direct de acolo.
+- Monitorizați regulat activitatea webhook-urilor pentru a detecta livrările eșuate sau tentativele de acces neautorizat.
+- Webhook-urile care eșuează în mod repetat pot fi suspendate de AgencyHandy — examinați jurnalele de livrare pentru a depista problemele din timp.

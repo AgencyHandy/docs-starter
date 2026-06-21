@@ -1,0 +1,114 @@
+---
+title: "API AgencyHandy: Autentificare și noțiuni de bază"
+sidebarTitle: "Noțiuni de bază"
+description: "Generați o cheie API, căutați ID-ul companiei dvs. și începeți să construiți integrări cu API-ul REST AgencyHandy folosind acest ghid rapid de configurare."
+---
+
+API-ul AgencyHandy vă permite să automatizați crearea de lead-uri, gestionarea clienților, actualizările comenzilor și multe altele din orice sistem extern sau script. Fiecare solicitare este autentificată cu o cheie API pe care o generați din setările spațiului dvs. de lucru. Acest ghid vă prezintă cum să obțineți acreditările și să efectuați primul apel API.
+
+<Note>
+  Trebuie să fiți **SuperAdmin** sau **Admin** în spațiul dvs. de lucru AgencyHandy pentru a genera o cheie API.
+</Note>
+
+## URL de bază
+
+Toate solicitările API sunt efectuate la:
+
+```
+https://api.agencyhandy.com
+```
+
+Înlocuiți `{{URL}}` cu acest URL de bază în toate solicitările de exemplu din documentația API.
+
+## Pasul 1: Generați o cheie API
+
+<Steps>
+  <Step title="Deschideți Configurarea spațiului de lucru">
+    Navigați la setările spațiului dvs. de lucru la:
+
+    ```
+    {{workspaceUrl}}/workspace-config?tab=api-key
+    ```
+
+    Aceasta deschide fila **Cheie API** în interiorul Configurării spațiului de lucru.
+  </Step>
+
+  <Step title="Generați și copiați cheia dvs. API">
+    Faceți clic pe **Generați** (sau **Regenerați** dacă există deja o cheie). Copiați cheia API și stocați-o în siguranță — tratați-o ca o parolă. AgencyHandy nu o va afișa din nou după ce părăsiți pagina.
+  </Step>
+</Steps>
+
+<Warning>
+  Regenerarea cheii API invalidează imediat cheia anterioară. Orice integrări existente care utilizează cheia veche vor înceta să funcționeze până când le actualizați cu noua cheie.
+</Warning>
+
+## Pasul 2: Recuperați ID-ul companiei dvs.
+
+Majoritatea endpoint-urilor API necesită un header `companyid` care identifică spațiul de lucru vizat de solicitare. Utilizați următorul endpoint pentru a obține ID-ul companiei dvs.
+
+### Endpoint
+
+```
+GET {{URL}}/accounts/companies
+```
+
+### Header-e
+
+| Header | Valoare |
+|---|---|
+| `x-api-key` | Cheia dvs. API |
+
+### Exemplu de solicitare
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/accounts/companies" \
+  --header "x-api-key: <YOUR_API_KEY>"
+```
+
+### Exemplu de răspuns
+
+```json
+{
+  "message": "Companies associated with API token.",
+  "companies": [
+    {
+      "_id": "6525994184e9ddd79853450e",
+      "name": "onethread123",
+      "logo": "",
+      "extraSmallLogo": "",
+      "largeLogo": ""
+    }
+  ]
+}
+```
+
+<Steps>
+  <Step title="Localizați ID-ul companiei dvs.">
+    În răspuns, găsiți câmpul `_id` din interiorul array-ului `companies`. Acesta este **ID-ul companiei** dvs.
+
+    ```javascript
+    const companyId = response.companies[0]._id;
+    // e.g. "6525994184e9ddd79853450e"
+    ```
+  </Step>
+
+  <Step title="Stocați ID-ul companiei">
+    Salvați ID-ul companiei pentru a-l utiliza în toate solicitările API ulterioare. Îl veți transmite ca header `companyid`:
+
+    | Header | Valoare |
+    |---|---|
+    | `x-api-key` | Cheia dvs. API |
+    | `companyid` | ID-ul companiei dvs. |
+  </Step>
+</Steps>
+
+## Rezumat autentificare
+
+Fiecare solicitare API autentificată necesită cel puțin:
+
+```
+x-api-key: <YOUR_API_KEY>
+companyid: <YOUR_COMPANY_ID>
+```
+
+Cu cheia API și ID-ul companiei la dispoziție, sunteți gata să utilizați restul API-ului AgencyHandy. Continuați cu unul din ghidurile de endpoint de mai jos.

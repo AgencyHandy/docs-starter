@@ -1,0 +1,70 @@
+---
+title: "连接 PayPal 以安全收取客户付款"
+sidebarTitle: "PayPal"
+description: "将您的 PayPal 账户与 AgencyHandy 关联，让客户通过 PayPal 这一受全球信赖的支付平台完成发票付款。"
+---
+
+AgencyHandy 的 PayPal 集成为您的客户提供了一种安全、熟悉的方式来支付发票，无需信用卡。PayPal 支持多种国际货币，对于拥有海外客户的机构尤为实用。
+
+<Note>
+  由于平台层面的货币和地区限制，PayPal **不能**用于追加销售。如需追加销售付款，请使用 Stripe。
+</Note>
+
+<Note>
+  只有 **超级管理员** 和 **管理员** 角色才能连接或管理 PayPal 集成。开始之前，您必须拥有一个有效的 PayPal 账户。
+</Note>
+
+## 连接 PayPal
+
+<Steps>
+  <Step title="打开 PayPal 集成设置">
+    登录 AgencyHandy，然后在左侧边栏中前往 **集成 → PayPal 集成**。
+  </Step>
+
+  <Step title="开始连接">
+    点击 **连接 PayPal**。您将被重定向到 PayPal 的登录页面。
+  </Step>
+
+  <Step title="授权 AgencyHandy">
+    登录您的 PayPal 账户并查看所请求的权限。点击 **允许**（或 **授权**）以授权 AgencyHandy 访问您的账户。
+  </Step>
+
+  <Step title="确认连接">
+    授权成功后，PayPal 会将您重定向回 AgencyHandy。集成卡片上会显示确认消息 — **PayPal 已连接**。客户现在可以使用 PayPal 支付发票。
+  </Step>
+</Steps>
+
+## 客户如何通过 PayPal 付款
+
+集成启用后，您发送的任何发票上都会出现 **使用 PayPal 付款** 按钮。客户点击该按钮，登录其 PayPal 账户（或根据所在地区以访客身份付款），然后完成支付。PayPal 确认付款后，AgencyHandy 会自动更新发票状态。
+
+## 支持的货币
+
+AgencyHandy 支持以下货币用于 PayPal 付款：
+
+| 地区 | 货币 |
+|---|---|
+| 美洲 | USD, CAD, BRL, MXN |
+| 欧洲 | EUR, GBP, CHF, NOK, SEK, DKK, PLN, CZK, HUF |
+| 亚太地区 | AUD, NZD, JPY, HKD, SGD, MYR, PHP, THB, TWD |
+| 中东 / 其他 | ILS, CNY |
+
+<Warning>
+  部分货币存在限制：
+  - **JPY** 及其他少数货币不支持小数金额 — 请避免发票总额出现小数。
+  - **BRL** 仅适用于巴西 PayPal 账户。若您的账户不在巴西，BRL 付款将自动转换为您的主要货币。
+  - 某些货币仅适用于本国账户。请确认您账户的持有货币与发票货币一致，以避免错误。
+</Warning>
+
+<Note>
+  发生货币转换时，PayPal 会收取其自身的转换费用和差价。这些费用不由 AgencyHandy 控制。
+</Note>
+
+## 测试集成
+
+在将 PayPal 用于实际客户发票之前，请进行快速测试：
+
+1. 在 AgencyHandy 中使用[支持的货币](#supported-currencies)创建一张测试发票。
+2. 将发票发送到您控制的第二个 PayPal 账户。
+3. 从第二个账户完成付款。
+4. 返回 AgencyHandy，确认发票状态已更新为 **已付款**，并确认资金已出现在您的 PayPal 账户中。

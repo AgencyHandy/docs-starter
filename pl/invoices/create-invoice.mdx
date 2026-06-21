@@ -1,0 +1,235 @@
+---
+title: "Tworzenie, wysyłanie i zarządzanie fakturami klientów w AgencyHandy"
+sidebarTitle: "Utwórz fakturę"
+description: "Przewodnik krok po kroku dotyczący tworzenia faktury w AgencyHandy — wybierz klienta, ustaw kwoty, dodaj notatki, wyślij do klienta i skonfiguruj przypomnienia o płatności."
+---
+
+Tworzenie faktury w AgencyHandy jest prostym procesem, który bezpośrednio łączy Twoje rozliczenia z klientami i zleceniami. Wypełniasz dane klienta, łączysz zlecenie, ustawiasz kwoty, dodajesz notatki i wysyłasz — wszystko z jednego formularza. Po wysłaniu możesz śledzić status płatności, ustawiać automatyczne przypomnienia i pobierać fakturę jako plik PDF w dowolnym momencie.
+
+<Note>
+  Musisz być **Super Adminem**, **Adminem** lub **PM**, aby tworzyć faktury. Przed wygenerowaniem faktury w Twoim obszarze roboczym musi istnieć co najmniej jeden klient.
+</Note>
+
+## Ustawienia prefiksu faktury
+
+Przed rozpoczęciem tworzenia faktur rozważ skonfigurowanie prefiksu faktury. Prefiks pojawia się przed każdym numerem faktury i pomaga identyfikować faktury jako należące do Twojej agencji.
+
+<Steps>
+  <Step title="Otwórz Ustawienia faktur">
+    W Panelu faktur kliknij przycisk **Ustawienia** w prawym górnym rogu.
+  </Step>
+  <Step title="Ustaw swój prefiks">
+    Przejdź do pola **Prefiks faktury** i wpisz żądany prefiks (na przykład `FV-` lub inicjały Twojej agencji).
+  </Step>
+  <Step title="Zapisz">
+    Kliknij **Zapisz**, aby zastosować prefiks do wszystkich przyszłych faktur.
+  </Step>
+</Steps>
+
+## Tworzenie faktury
+
+<Steps>
+  <Step title="Otwórz Panel faktur">
+    Kliknij **Faktury** na lewym pasku bocznym, aby otworzyć Panel faktur.
+  </Step>
+  <Step title="Rozpocznij nową fakturę">
+    Kliknij **+ Utwórz fakturę**. Otworzy się formularz tworzenia faktury.
+  </Step>
+  <Step title="Wybierz klienta">
+    Wybierz nazwę klienta z listy rozwijanej. To jest pole wymagane. Wszystkie ID zleceń powiązane z tym klientem automatycznie pojawią się w następnym polu.
+
+    Aby utworzyć **Fakturę bezpośrednią** (niepowiązaną ze zleceniem), możesz pozostawić pole ID zlecenia puste lub wybrać **Niezależny adres e-mail**, aby wystawić fakturę na dowolny adres e-mail spoza listy klientów.
+  </Step>
+  <Step title="Wybierz ID zlecenia">
+    Wybierz konkretne ID zlecenia, za które wystawiasz fakturę. Łączy to fakturę z odpowiednim zleceniem w systemie. W przypadku faktur bezpośrednich pomiń to pole.
+  </Step>
+  <Step title="Wprowadź adres do rozliczeń">
+    Wypełnij **Adres do rozliczeń**:
+    - Kraj, stan i miasto
+    - Kod pocztowy
+    - Adres ulicy (jeśli dotyczy)
+
+    Adres ten pojawia się na wydrukowanej fakturze dla celów zgodności i przejrzystości.
+  </Step>
+  <Step title="Ustaw szczegóły zlecenia i dane finansowe">
+    W sekcji **Szczegóły zlecenia** wprowadź następujące informacje:
+
+    | Pole | Opis |
+    |-------|-------------|
+    | **Waluta** | Waluta, w której chcesz otrzymać płatność |
+    | **ID zlecenia — Kwota** | Wartość pieniężna powiązana ze zleceniem |
+    | **Rabat (%)** i **Kwota rabatu** | Zastosuj wszelkie obowiązujące rabaty |
+    | **Zapłacona kwota** | Każda kwota już wpłacona przez klienta |
+    | **Kwota do zapłaty** | Pozostałe saldo |
+    | **Łączna kwota** | Pełna kwota do zapłaty za zlecenie |
+
+    W przypadku **Faktur bezpośrednich** kliknij **Dodaj pozycję**, aby ręcznie dodać pozycje. Wprowadź nazwę pozycji, ilość i cenę. Możesz dodać wiele pozycji. Użyj **+ Stawki podatkowe**, aby zastosować lub utworzyć stawki podatkowe (wliczone lub dodatkowe).
+  </Step>
+  <Step title="Dodaj notatkę (opcjonalnie)">
+    W polu **Notatka** dodaj dowolny dodatkowy kontekst dla klienta — na przykład instrukcje dotyczące płatności, referencje projektowe lub wiadomość osobistą.
+  </Step>
+  <Step title="Przejrzyj panel szczegółów">
+    Panel **Szczegóły** po prawej stronie daje Ci aktualne podsumowanie:
+
+    - Status faktury (domyślnie Szkic)
+    - Nazwa klienta, nazwa firmy i adres
+    - Adres do rozliczeń
+    - Nazwa usługi i ID zlecenia
+    - Data utworzenia i termin płatności
+    - Łączna kwota
+
+    Dokładnie przejrzyj wszystkie informacje przed kontynuowaniem.
+  </Step>
+  <Step title="Wyślij do klienta lub zapisz jako szkic">
+    - Kliknij **Wyślij do klienta**, aby natychmiast wysłać fakturę pocztą e-mail. Status automatycznie zmienia się z **Szkic** na **Otwarta**.
+    - Kliknij **Zapisz jako szkic**, jeśli chcesz sfinalizować ją później.
+  </Step>
+</Steps>
+
+<Note>
+  Logo i adres agencji są automatycznie dodawane do faktury przez system — nie musisz ich ręcznie wprowadzać na każdej fakturze.
+</Note>
+
+## Przejścia statusów faktur
+
+Po utworzeniu faktury podąża ona zdefiniowanym przepływem statusów. Tylko agencja może zmieniać status faktury.
+
+```
+Szkic → Otwarta (po wysłaniu do klienta)
+Otwarta  → Opłacona           (otrzymano płatność)
+Otwarta  → Anulowana          (faktura anulowana)
+Otwarta  → Nieściągalna       (dług odpisany)
+```
+
+<Warning>
+  Faktury można **edytować** tylko wtedy, gdy mają status **Szkic**. Po zmianie statusu faktury na Otwarta nie możesz jej edytować. Jeśli musisz wprowadzić zmiany, anuluj fakturę i utwórz nową.
+</Warning>
+
+## Edytowanie faktury
+
+Fakturę możesz edytować tylko wtedy, gdy ma status **Szkic**.
+
+<Steps>
+  <Step title="Otwórz fakturę">
+    W Panelu faktur znajdź fakturę w trybie szkicu, którą chcesz edytować. Kliknij ją lub zaznacz pole wyboru obok niej.
+  </Step>
+  <Step title="Kliknij Edytuj">
+    Wybierz opcję **Edytuj** z menu akcji. Formularz faktury otworzy się z wstępnie wypełnionymi wszystkimi istniejącymi szczegółami.
+  </Step>
+  <Step title="Wprowadź zmiany">
+    Zaktualizuj dowolne pola — dane do rozliczeń, opisy usług, ilości, kwoty lub warunki płatności.
+  </Step>
+  <Step title="Zapisz">
+    Kliknij **Zapisz**, aby zastosować zmiany.
+  </Step>
+</Steps>
+
+## Wysyłanie faktury do klienta
+
+Jeśli zapisałeś fakturę jako szkic i chcesz wysłać ją później:
+
+<Steps>
+  <Step title="Znajdź fakturę">
+    W Panelu faktur zlokalizuj fakturę w trybie szkicu, którą chcesz wysłać.
+  </Step>
+  <Step title="Kliknij Wyślij fakturę">
+    Otwórz fakturę i kliknij przycisk **Wyślij fakturę**. AgencyHandy dostarcza fakturę na adres e-mail klienta zapisany w systemie.
+  </Step>
+  <Step title="Potwierdź dostarczenie">
+    Sprawdź komunikat potwierdzający, aby zweryfikować, że faktura została wysłana pomyślnie. Status faktury zmienia się na **Otwarta**.
+  </Step>
+</Steps>
+
+<Note>
+  Jeśli faktura ma status **Szkic** i zaktualizujesz nazwę usługi, nowa nazwa zostanie odzwierciedlona w fakturze. Gdy status zmieni się na Otwarta, Opłacona, Nieściągalna lub Anulowana, nazwa usługi na fakturze jest zablokowana i nie będzie aktualizowana.
+</Note>
+
+## Pobieranie i drukowanie faktury
+
+Zarówno agencja, jak i klient mogą pobrać fakturę w dowolnym momencie.
+
+<Steps>
+  <Step title="Otwórz fakturę">
+    Przejdź do Panelu faktur i wybierz fakturę, którą chcesz pobrać.
+  </Step>
+  <Step title="Otwórz opcje pobierania/drukowania">
+    Kliknij opcję **Pobierz** lub **Drukuj** z menu akcji faktury.
+  </Step>
+  <Step title="Wybierz format">
+    Wybierz **PDF** do pobierania lub wybierz ustawienia drukarki dla kopii papierowej.
+  </Step>
+  <Step title="Zapisz lub wydrukuj">
+    Zapisz plik na swoim urządzeniu lub wyślij go do drukarki. Po wydrukowaniu zarchiwizuj fakturę lub udostępnij ją zainteresowanym stronom w razie potrzeby.
+  </Step>
+</Steps>
+
+## Ustawianie przypomnień dotyczących faktur
+
+Funkcja przypomnień o fakturze pozwala automatycznie powiadamiać klientów o nadchodzących, wymagalnych lub przeterminowanych fakturach, dzięki czemu otrzymujesz płatności na czas bez ręcznego śledzenia.
+
+<Note>
+  Przypomnienia działają tylko w przypadku faktur o statusie **Otwarta** z ustawionym **terminem płatności**.
+</Note>
+
+<Steps>
+  <Step title="Otwórz Ustawienia faktur">
+    Kliknij przycisk **Ustawienia** w prawym górnym rogu Panelu faktur.
+  </Step>
+  <Step title="Przejdź do ustawień przypomnień">
+    Przewiń do dolnej części sekcji **Szablon** w lewym panelu, a następnie kliknij **Edytuj**, aby otworzyć modal konfiguracji przypomnień.
+  </Step>
+  <Step title="Wybierz typ przypomnienia">
+    Wybierz jedną z następujących opcji:
+
+    - **Sekwencjonowane przypomnienie** — tworzy serię przypomnień w określonych przez Ciebie odstępach czasu
+    - **Nie wysyłaj przypomnień** — wyłącza przypomnienia dla wybranych faktur
+  </Step>
+  <Step title="Skonfiguruj szczegóły przypomnień">
+    Dla każdego przypomnienia w sekwencji:
+    - Wybierz **szablon przypomnienia** (na przykład „Przypomnienie o nadchodzącej płatności faktury”)
+    - Ustaw **datę przypomnienia** — na przykład 3 dni przed lub po terminie płatności
+    - Określ, czy ma być wyzwalane **przed** czy **po** terminie płatności
+  </Step>
+  <Step title="Dodaj więcej przypomnień w razie potrzeby">
+    Kliknij **+ Dodaj kolejne przypomnienie**, aby zbudować pełną sekwencję przypomnień. Kliknij przycisk **Usuń** obok dowolnego przypomnienia, aby je usunąć.
+  </Step>
+  <Step title="Zastosuj do aktywnych faktur (opcjonalnie)">
+    Zaznacz pole wyboru, aby **zastosować te ustawienia przypomnień do aktualnie aktywnych faktur**, jeśli chcesz, aby nowa konfiguracja obejmowała faktury już o statusie Otwarta.
+  </Step>
+  <Step title="Zapisz">
+    Kliknij **Aktualizuj**, aby zapisać i aktywować harmonogram przypomnień.
+  </Step>
+</Steps>
+
+## Faktury bezpośrednie (bez ID zlecenia)
+
+Gdy musisz szybko rozliczyć klienta bez wcześniejszego tworzenia zlecenia, skorzystaj z procesu Faktury bezpośredniej.
+
+<Steps>
+  <Step title="Rozpocznij nową fakturę">
+    Przejdź do **Faktury → Utwórz fakturę**.
+  </Step>
+  <Step title="Wybierz typ odbiorcy">
+    Wybierz **Osoba fizyczna** lub **Firma** jako typ odbiorcy.
+  </Step>
+  <Step title="Wybierz lub wprowadź odbiorcę">
+    - Wybierz **istniejącego klienta** z listy rozwijanej, lub
+    - Wybierz **Niezależny adres e-mail**, aby wpisać dowolny adres e-mail — nawet taki, który nie jest zarejestrowany jako klient
+  </Step>
+  <Step title="Pozostaw pole ID zlecenia puste">
+    Pomiń pole ID zlecenia. AgencyHandy tworzy samodzielną fakturę niepowiązaną z żadnym zleceniem.
+  </Step>
+  <Step title="Dodaj pozycje, podatki i rabaty">
+    Kliknij **Dodaj pozycję**, aby dodać pozycje z nazwami, ilościami i cenami. W razie potrzeby zastosuj stawki podatkowe i rabaty. Łączna kwota aktualizuje się automatycznie.
+  </Step>
+  <Step title="Ustaw adres do rozliczeń i notatki">
+    Wprowadź adres do rozliczeń i dodaj wszelkie notatki dla klienta.
+  </Step>
+  <Step title="Wyślij lub zapisz">
+    Kliknij **Wyślij fakturę**, aby dostarczyć ją natychmiast, lub **Zapisz jako szkic**, aby najpierw ją przejrzeć.
+  </Step>
+</Steps>
+
+<Tip>
+  Faktury bezpośrednie są idealne do pilnych zleceń, konsultacji telefonicznych lub wszelkich prac, które musisz rozliczyć poza normalnym procesem zleceń. Śledzenie płatności dla samodzielnych faktur musi być zarządzane ręcznie.
+</Tip>

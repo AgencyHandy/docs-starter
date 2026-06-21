@@ -1,0 +1,211 @@
+---
+title: "Správa leadů: Pipeline, e-mail a konverze na klienty"
+sidebarTitle: "Leady"
+description: "Spravujte svůj obchodní pipeline pomocí Kanban tabule — sledujte fáze leadů, filtrujte podle agenta nebo zdroje, odesílejte e-maily a konvertujte leady na klienty."
+---
+
+Sekce Leady v CRM systému AgencyHandy vám nabízí vizuální Kanban tabuli s přetahováním pro správu každého potenciálního klienta od prvního kontaktu až po podpis smlouvy. Každý lead žije na kartě, která prochází sedmi předdefinovanými fázemi pipeline, a vy můžete leady filtrovat, prohledávat, importovat, exportovat, zasílat jim e-maily a konvertovat je, aniž byste museli přecházet na jiný nástroj.
+
+## Fáze pipeline
+
+Každý nově vytvořený lead začíná ve fázi **Nový** a může postupovat vpřed, jak se váš vztah rozvíjí:
+
+| Fáze | Co znamená |
+|---|---|
+| **Nový** | Lead právě vstoupil do pipeline |
+| **Kontaktován** | Alespoň jednou jste se ozvali |
+| **Kvalifikován** | Lead splňuje vaše kritéria cílového klienta |
+| **V jednání** | Probíhají aktivní rozhovory |
+| **Nabídka odeslána** | Byla doručena formální nabídka |
+| **Vyjednávání** | Diskutují se podmínky |
+| **Klient** | Připraveno ke konverzi na klientský účet |
+
+<Note>
+  Přesunutí leadu do fáze **Klient** na tabuli jej automaticky nekonvertuje — stále je třeba kliknout na **Konvertovat na klienta** uvnitř karty leadu pro přesun na záložku Klienti.
+</Note>
+
+## Vytvoření leadu
+
+<Steps>
+  <Step title="Otevřete tabuli leadů">
+    V levém postranním panelu klikněte na **CRM** a vyberte záložku **Leady**. Kanban tabule se načte se všemi stávajícími fázemi pipeline.
+  </Step>
+  <Step title="Klikněte na Vytvořit lead">
+    Vyberte tlačítko **+ Vytvořit lead** v pravém horním rohu tabule. Otevře se formulář pro vytvoření.
+  </Step>
+  <Step title="Vyplňte údaje o leadu">
+    Vyplňte níže uvedená pole. **Jméno** a **E-mail** jsou povinné; vše ostatní je volitelné, ale doporučené pro lepší filtrování a reporting.
+
+    - **Křestní jméno / Příjmení** *(povinné)*
+    - **E-mail** *(povinné)*
+    - **Název společnosti**
+    - **Kategorie**
+    - **Stav** — nastavuje počáteční fázi na Kanban tabuli (výchozí je Nový)
+    - **Zdroj** — např. Facebook, webové stránky *(max. 50 znaků; text přesahující tento limit je zkrácen s tooltipem)*
+    - **Hodnota leadu** — odhadovaná hodnota obchodu
+    - **Telefonní číslo**
+    - **Webové stránky**
+    - **Přiřazený agent** — člen týmu zodpovědný za tento lead
+    - **Poslední interakce** — datum posledního kontaktu
+    - **Adresa** — Země, Stát, Město, PSČ
+    - **Přílohy** — soubory PDF, JPEG, PNG a textové soubory lze prohlížet přímo v modálním okně leadu; nepodporované formáty vyzvou ke stažení
+  </Step>
+  <Step title="Uložte lead">
+    Klikněte na **Vytvořit**. Karta leadu se zobrazí ve sloupci **Nový** na Kanban tabuli.
+  </Step>
+</Steps>
+
+<Tip>
+  Nahrajte PDF briefingy nebo dokumenty s nabídkami jako přílohy, aby je váš tým mohl zkontrolovat, aniž by opustil modální okno leadu.
+</Tip>
+
+## Sledování leadů na Kanban tabuli
+
+Jakmile jsou leady na tabuli, máte k dispozici několik způsobů, jak s nimi pracovat:
+
+- **Přetahování** — uchopte libovolnou kartu leadu a přetáhněte ji do jiného sloupce fáze, aby odrážela aktuální stav.
+- **Kliknutí na kartu** — otevře modální okno s detaily leadu, kde můžete upravit všechna pole, zobrazit poznámky, zkontrolovat protokol aktivity, odeslat e-mail nebo konvertovat na klienta.
+- **Tisk detailů leadu** — použijte tlačítko **Tisk** v pravém horním rohu modálního okna leadu pro vygenerování tisknutelného shrnutí.
+
+## Úprava leadu
+
+Otevřete libovolnou kartu leadu a klikněte na **Upravit** (nebo přímo aktualizujte kontaktní informace nebo pole poznámek zobrazená v modálním okně). Změny jsou uloženy okamžitě a zaznamenány v protokolu aktivity.
+
+<Note>
+  Pokud e-mailová adresa již existuje jak u klienta, tak u leadu, tento lead **nelze** konvertovat na klienta. Před pokusem o konverzi vyřešte duplicitu.
+</Note>
+
+## Konverze leadu na klienta
+
+<Steps>
+  <Step title="Otevřete kartu leadu">
+    Klikněte na lead, který chcete povýšit, na Kanban tabuli.
+  </Step>
+  <Step title="Klikněte na Konvertovat na klienta">
+    Vyberte tlačítko **Konvertovat na klienta** uvnitř modálního okna leadu.
+  </Step>
+  <Step title="Potvrďte">
+    Zobrazí se potvrzovací banner: *„Lead byl přesunut na záložku Klienti.“* Karta zmizí z Kanban tabule a všechny poznámky a historie leadu jsou zachovány v novém záznamu klienta.
+  </Step>
+</Steps>
+
+## Filtrování a vyhledávání leadů
+
+Pomocí panelu nástrojů nad Kanban tabulí upřesněte, co vidíte:
+
+<CardGroup cols={2}>
+  <Card title="Vyhledávací pole" icon="magnifying-glass">
+    Zadejte jméno nebo e-mail pro okamžité nalezení odpovídajících leadů ve všech fázích pipeline.
+  </Card>
+  <Card title="Přiřazený agent" icon="user">
+    Filtrujte tabuli tak, aby zobrazovala pouze leady přiřazené konkrétnímu členovi týmu.
+  </Card>
+  <Card title="Hodnota leadu" icon="dollar-sign">
+    Zúžte zobrazení podle odhadované velikosti obchodu pro prioritizaci hodnotných potenciálních klientů.
+  </Card>
+  <Card title="Datum poslední interakce" icon="calendar">
+    Identifikujte leady, se kterými jste nedávno nebyli v kontaktu a vyžadují následnou péči.
+  </Card>
+  <Card title="Zdroj" icon="signal">
+    Zobrazte pouze leady z konkrétního kanálu, například z webových stránek nebo Facebook.
+  </Card>
+</CardGroup>
+
+## Odesílání e-mailů leadům
+
+E-maily můžete sestavovat a odesílat přímo z Kanban tabule nebo z modálního okna leadu — není potřeba žádný externí e-mailový klient.
+
+| Pole | Podrobnosti |
+|---|---|
+| **Komu** | Předvyplněno e-mailovou adresou leadu |
+| **Předmět** | Povinné; maximálně 250 znaků |
+| **Tělo** | Editor formátovaného textu; maximálně 10 000 znaků |
+| **Přílohy** | Až 5 souborů; celkový limit velikosti 25 MB |
+
+## Poznámky
+
+Každý lead obsahuje vyhrazenou sekci **Poznámky** uvnitř modálního okna s detaily. Poznámky lze upravovat a mazat, přičemž každá poznámka zobrazuje jméno člena týmu, který ji napsal, spolu s časovým razítkem. Používejte poznámky pro zaznamenávání shrnutí hovorů, preferencí klientů nebo připomínek k následné péči, které může celý tým vidět.
+
+## Import leadů
+
+Načtěte stávající seznam potenciálních klientů do AgencyHandy hromadně pomocí souboru CSV nebo Excel.
+
+<Steps>
+  <Step title="Otevřete dialog pro import">
+    Na tabuli Leadů klikněte na tlačítko **Import** v pravém horním rohu.
+  </Step>
+  <Step title="Nahrajte soubor">
+    Přetáhněte nebo vyhledejte svůj soubor CSV nebo Excel. Soubor musí obsahovat alespoň sloupec **Jméno** a **E-mail**.
+  </Step>
+  <Step title="Mapujte sloupce">
+    Importér zobrazí mapovač sloupců. Přiřaďte každý sloupec v souboru k odpovídajícímu poli AgencyHandy. Volitelná mapovatelná pole zahrnují: Zdroj, Hodnota leadu, Telefonní číslo, Název společnosti a Adresa.
+  </Step>
+  <Step title="Potvrďte a importujte">
+    Zkontrolujte náhledovou tabulku pro ověření přesnosti dat, poté klikněte na **Potvrdit** a následně na **Uložit**. Vaše leady se okamžitě zobrazí na Kanban tabuli.
+  </Step>
+</Steps>
+
+<Warning>
+  Leady s e-mailovými adresami, které již existují na záložce Klienti, nebudou prostřednictvím importu konvertovány — tyto duplicity je třeba řešit ručně.
+</Warning>
+
+## Export leadů
+
+Exportujte data pipeline pro reportování, zálohy nebo integraci s jinými nástroji.
+
+<Steps>
+  <Step title="Klikněte na Export">
+    Vyberte tlačítko **Export** z panelu nástrojů Leadů.
+  </Step>
+  <Step title="Vyberte sloupce">
+    Zvolte **Všechny sloupce** pro export každého pole nebo vyberte **Vlastní sloupce** pro výběr pouze potřebných dat.
+  </Step>
+  <Step title="Vyberte formát a stáhněte">
+    Vyberte **CSV** nebo **XLSX** a klikněte na **Export**. Soubor se stáhne do vašeho zařízení.
+  </Step>
+</Steps>
+
+## Protokol aktivity
+
+Každá změna provedená u leadu je automaticky zaznamenána na záložce **Protokol aktivity** uvnitř modálního okna leadu.
+
+Protokol zachycuje:
+
+- **Uživatele** — který člen týmu provedl změnu
+- **Podrobnosti** — co se změnilo, například *„Stav změněn z ‚Nový' na ‚Kontaktován'“*
+- Nahrávání příloh, přidávání poznámek a úpravy polí
+
+Protokoly aktivity nelze upravovat ani mazat a jsou viditelné administrátorům a manažerům.
+
+## Automatická připomínání a úkoly
+
+AgencyHandy odesílá automatická oznámení, když je lead nečinný v jakékoli fázi déle než konfigurovatelný počet dní — například *„Navažte kontakt s [Jméno leadu].“* Klíčové akce, jako je odeslání nabídky, mohou také automaticky generovat úkoly ve správci úkolů, aby byl váš proces dodávky na správné cestě.
+
+## Webhooky pro události leadů
+
+AgencyHandy spouští webhookové události pro následující akce s leady, což vám umožňuje propojit externí CRM systémy, nástroje pro automatizaci nebo datové pipeline:
+
+<Accordion title="Lead.Created">
+  Spustí se při vytvoření nového leadu. Datová část zahrnuje: ID leadu, stav, zdroj, přiřazeného agenta a časová razítka.
+</Accordion>
+
+<Accordion title="Lead.Updated">
+  Spustí se při aktualizaci libovolného pole leadu. Datová část zahrnuje stejná pole plus shrnutí toho, co se změnilo.
+</Accordion>
+
+<Accordion title="Lead.Deleted">
+  Spustí se při smazání leadu ze systému. Datová část zahrnuje ID leadu a časové razítko smazání.
+</Accordion>
+
+<Tip>
+  Nakonfigurujte webhooky v části **Nastavení → Integrace → Webhooky** pro začátek příjmu událostí leadů v reálném čase ve vašich externích systémech.
+</Tip>
+
+## Reportingové metriky
+
+Sledujte stav svého pipeline pomocí vestavěných reportingových metrik:
+
+- Počet leadů v každé fázi
+- Míra konverze z leadu na klienta
+- Průměrná doba, kterou lead stráví v každé fázi
+- Nejúspěšnější agenti podle objemu konverzí

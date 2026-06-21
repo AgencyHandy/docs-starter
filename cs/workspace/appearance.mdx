@@ -1,0 +1,117 @@
+---
+title: "Přizpůsobení barevného schématu pracovního prostoru AgencyHandy"
+sidebarTitle: "Vzhled"
+description: "Aplikujte barvy své značky na postranní panel a rozhraní AgencyHandy — primární barva, pozadí, text a stavy při najetí myší — okamžitě viditelné pro všechny uživatele."
+---
+
+Nastavení Vzhledu vám dává plnou kontrolu nad tím, jak váš pracovní prostor AgencyHandy vypadá. Barevné schéma platformy můžete sladit s identitou značky vaší agentury přizpůsobením primární barvy, pozadí postranního panelu, barvy textu postranního panelu a barvy zvýraznění při najetí myší na položky navigace postranního panelu. Každá uložená změna se okamžitě projeví v celém pracovním prostoru pro všechny uživatele — bez nutnosti obnovení stránky.
+
+<Note>
+  Nastavení Vzhledu mohou přistupovat a upravovat pouze **Super administrátoři** a **Administrátoři**. Pokud tuto možnost pod **Konfigurací pracovního prostoru** nevidíte, požádejte svého Super administrátora o kontrolu vaší role.
+</Note>
+
+## Přístup k nastavení Vzhledu
+
+<Steps>
+  <Step title="Otevřete Konfiguraci pracovního prostoru">
+    V levém navigačním menu klikněte na **Konfigurace pracovního prostoru**.
+  </Step>
+  <Step title="Vyberte Vzhled">
+    Klikněte na **Vzhled** (někdy označovaný jako **Vizuální nastavení**) v podnabídce.
+  </Step>
+</Steps>
+
+---
+
+## Přizpůsobení každého vizuálního prvku
+
+### Primární barva
+
+Primární barva se aplikuje na tlačítka, aktivní odkazy, zvýrazněné stavy a klíčové prvky rozhraní napříč celou platformou.
+
+- Zvolte barvu, která odráží základní identitu vaší značky.
+- Toto je nejvýznamnější nastavení barvy, protože se zobrazuje všude v uživatelském rozhraní.
+
+### Barva pozadí postranního panelu
+
+Barva pozadí postranního panelu nastavuje základní odstín levého navigačního panelu.
+
+- Použijte barvu, která vytváří jasné vizuální oddělení mezi postranním panelem a hlavní oblastí obsahu.
+- Tmavá pozadí se světlým textem obecně dosahují nejlepší čitelnosti.
+
+### Barva textu postranního panelu
+
+Barva textu postranního panelu ovládá barvu popisků všech navigačních položek v levém menu.
+
+- Vždy volte barvu s výrazným kontrastem vůči barvě pozadí postranního panelu.
+- Nízký kontrast ztěžuje čtení odkazů a snižuje přístupnost.
+
+### Barva pozadí postranního panelu při najetí myší
+
+Tato barva se zobrazí jako zvýraznění pozadí, když uživatel přesune kurzor na položku navigace postranního panelu.
+
+- Signalizuje interaktivitu a pomáhá uživatelům rozpoznat, na kterou položku se chystají kliknout.
+- Zvolte barvu, která je viditelně odlišná od výchozího pozadí postranního panelu i od barvy aktivní položky.
+
+---
+
+## Aplikování zvolených barev
+
+<Steps>
+  <Step title="Otevřete výběr barvy pro každé pole">
+    Klikněte na barevný vzorek vedle kteréhokoli ze čtyř polí vzhledu — Primární barva, Pozadí postranního panelu, Barva textu postranního panelu nebo Barva pozadí při najetí myší — a otevřete výběr barvy.
+  </Step>
+  <Step title="Zadejte hexadecimální kód nebo vyberte barvu">
+    Zadejte přesný hexadecimální kód vaší značky (např. `#3B5BDB`) přímo do vstupního pole nebo použijte vizuální výběr k zvolení odstínu.
+  </Step>
+  <Step title="Zobrazte si náhled změn">
+    Před uložením zkontrolujte, jak aktualizované barvy vypadají v postranním panelu a v celém rozhraní.
+  </Step>
+  <Step title="Klikněte na Uložit změny">
+    Když jste spokojeni s výsledkem, klikněte na **Uložit změny**. Aktualizovaný vzhled se globálně a okamžitě aplikuje na všechny uživatele v pracovním prostoru.
+  </Step>
+</Steps>
+
+<Tip>
+  Uchovávejte hexadecimální kódy barev vaší značky na snadno dostupném místě (průvodce stylem značky nebo poznámkový soubor). Budete chtít opakovaně používat přesně stejné hodnoty — zejména pokud někdy budete muset resetovat a znovu nakonfigurovat nastavení vzhledu.
+</Tip>
+
+---
+
+## Obnovení výchozího motivu
+
+Pokud chcete odebrat veškerý vlastní branding a obnovit původní barevné schéma AgencyHandy, klikněte na tlačítko **Obnovit výchozí nastavení** na stránce Vzhledu.
+
+<Warning>
+  Obnovení výchozího nastavení trvale odstraní všechny vlastní změny barev. Tuto akci nelze vrátit zpět. Pokud chcete zachovat aktuální nastavení, před obnovením si poznamenejte své hexadecimální kódy.
+</Warning>
+
+---
+
+## Osvědčené postupy pro barevný kontrast
+
+Dobrý barevný kontrast není jen otázkou designu — přímo ovlivňuje čitelnost a přístupnost pro váš tým i klienty.
+
+<CardGroup cols={2}>
+  <Card title="Usilujte o kontrastní poměry WCAG AA" icon="eye">
+    Pro normální tělo textu používejte kontrastní poměr alespoň **4,5:1** mezi textem a pozadím. Pro velký text nebo ikony je přijatelný poměr **3:1**. K ověření použijte nástroj jako [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/).
+  </Card>
+  <Card title="Vyhněte se kombinacím s nízkým kontrastem" icon="triangle-exclamation">
+    Nekombinujte světle šedý text na bílém pozadí nebo žlutý text na bílém — tyto kombinace nesplňují standardy přístupnosti a při delších sezeních zatěžují oči.
+  </Card>
+  <Card title="Záměrně testujte stavy při najetí myší" icon="arrow-pointer">
+    Barvy při najetí myší by měly být viditelně odlišné od klidového i aktivního stavu. Pokud vypadají stejně, uživatelé ztrácejí důležitou vizuální zpětnou vazbu.
+  </Card>
+  <Card title="Udržujte konzistenci s vaší značkou" icon="paintbrush">
+    Používejte stejnou primární barvu zde jako na svých webových stránkách, návrzích a fakturách. Konzistentnost buduje rozpoznatelnost a profesionalitu napříč všemi kontaktními body s klienty.
+  </Card>
+</CardGroup>
+
+---
+
+## Důležité poznámky
+
+- **Okamžitý globální efekt:** Všechny uložené změny vzhledu se okamžitě aplikují v celém pracovním prostoru. Každý přihlášený uživatel uvidí aktualizaci při příští navigační akci.
+- **Jeden aktivní motiv:** Podpora více motivů není k dispozici — jedna sada barev se vztahuje na celý pracovní prostor pro všechny role.
+- **Omezení podle role:** Změny vzhledu mohou provádět pouze Super administrátoři a Administrátoři. Běžní členové týmu a klienti nemohou barvy upravovat.
+- **Obnovení je trvalé:** Tlačítko **Obnovit výchozí nastavení** nelze vrátit zpět, proto jej používejte pouze tehdy, když záměrně chcete odebrat všechny vlastní barvy.

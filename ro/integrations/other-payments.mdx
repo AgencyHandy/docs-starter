@@ -1,0 +1,149 @@
+---
+title: "Configurarea metodelor de plată prin transfer bancar, criptomonede și Wise"
+sidebarTitle: "Alte plăți"
+description: "Activați alternative de plată manuale — transfer bancar, criptomonede și Wise — astfel încât clienții care preferă metode non-card să vă poată plăti facturile."
+---
+
+AgencyHandy acceptă trei metode de plată manuale în plus față de Stripe și PayPal: **Transfer Bancar**, **Crypto** și **Wise**. Fiecare este proiectată pentru un tip specific de client sau flux de lucru. Toate trei vă cer să marcați manual o factură ca **Plătită** după ce primiți fondurile, deoarece AgencyHandy nu poate confirma automat transferurile efectuate în afara platformei.
+
+<Note>
+  Numai rolurile **SuperAdmin** și **Admin** pot activa sau configura aceste metode de plată.
+</Note>
+
+<Tabs>
+  <Tab title="Transfer Bancar">
+    ## Transfer Bancar
+
+    Metoda de transfer bancar vă permite să acceptați plăți manuale prin virament sau ACH de la clienți. Furnizați detaliile bancare printr-un editor rich-text, iar AgencyHandy le afișează clienților în timpul plății și în interiorul facturii.
+
+    ### Activați Transferul Bancar
+
+    <Steps>
+      <Step title="Deschideți setările de plată bancară">
+        În bara laterală din stânga, accesați **Integrări → Metodă de plată bancară**.
+      </Step>
+
+      <Step title="Completați instrucțiunile de transfer">
+        Utilizați editorul rich-text pentru a introduce detaliile bancare. Includeți toate câmpurile de care clienții dvs. au nevoie pentru a finaliza transferul:
+
+        - **Numele beneficiarului**
+        - **Numărul de cont**
+        - **Numele băncii**
+        - **Numărul de routing**
+        - **Tipul de cont** (ex.: Curent, Economii)
+        - **Adresa băncii**
+
+        Puteți adăuga și mențiuni, note sau un contact de asistență. Nu există limită de caractere, iar editorul acceptă formatare bold, subliniere, liste, linkuri și imagini.
+      </Step>
+
+      <Step title="Setați cerința de dovadă a plății (opțional)">
+        Activați **Captură de ecran a plății este obligatorie** dacă doriți ca clienții să încarce o captură de ecran înainte ca comanda lor să fie procesată.
+
+        - **Activat** — clienții trebuie să încarce o captură de ecran validă la plată. Nicio comandă nu este creată până când un fișier nu este încărcat.
+        - **Dezactivat** — clienții pot continua fără a încărca dovada. Comanda și factura sunt create imediat.
+      </Step>
+
+      <Step title="Salvați">
+        Faceți clic pe **Actualizare** pentru a salva configurarea. Faceți clic pe **Anulare** pentru a renunța la modificări.
+      </Step>
+    </Steps>
+
+    ### Experiența clientului
+
+    Când un client selectează Transferul Bancar la plată, acesta vede instrucțiunile dvs. personalizate de transfer. Dacă este necesară dovada, apare un prompt de încărcare a fișierului, iar comanda este reținută până când clientul încarcă o captură de ecran.
+
+    După ce primiți fondurile în contul dvs. bancar, deschideți factura în AgencyHandy și marcați-o manual ca **Plătită** pentru a elibera comanda.
+
+    <Tip>
+      Includeți un cod de referință unic în instrucțiunile dvs. (ex.: numărul facturii) pentru a putea asocia transferurile primite cu comenzile specifice fără confuzie.
+    </Tip>
+  </Tab>
+
+  <Tab title="Crypto">
+    ## Plată Crypto
+
+    Metoda de plată Crypto vă permite să acceptați criptomonede de la clienți printr-un transfer bazat pe portofel. Configurați detaliile portofelului și instrucțiunile o singură dată; clienții le văd la plată și în factură. În prezent, **USDC** este criptomoneda acceptată.
+
+    ### Activați plata Crypto
+
+    <Steps>
+      <Step title="Deschideți setările de plată Crypto">
+        În bara laterală din stânga, accesați **Integrări → Plată Crypto**. Se deschide un ecran de configurare a portofelului cu un editor rich-text.
+      </Step>
+
+      <Step title="Introduceți detaliile portofelului">
+        Completați următoarele câmpuri:
+
+        - **Tipul de criptomonedă** — în prezent este acceptat USDC.
+        - **Adresa portofelului** — adresa dvs. publică de portofel pentru primirea fondurilor.
+        - **Tipul de rețea** — ex.: ERC-20, TRC-20.
+        - **Instrucțiuni suplimentare** — memo, etichetă, sumă minimă, contact de asistență sau orice altă orientare pentru clienții dvs.
+      </Step>
+
+      <Step title="Setați cerința de dovadă a plății (opțional)">
+        Activați **Necesită dovadă de plată**:
+
+        - **Activat** — clienții trebuie să încarce un fișier (ex.: o captură de ecran a tranzacției) înainte ca comanda și factura să fie create.
+        - **Dezactivat** — o comandă și o factură sunt create imediat ce clientul selectează plata crypto, fără a necesita dovadă.
+      </Step>
+
+      <Step title="Salvați">
+        Faceți clic pe **Salvare** pentru a stoca configurarea. Puteți edita sau deconecta plata Crypto oricând de pe același ecran.
+      </Step>
+    </Steps>
+
+    ### Fluxul de plată al clientului
+
+    Când un client selectează Crypto la plată:
+
+    1. O **Comandă** (status: *În așteptare*) și o **Factură** (status: *Deschisă*) sunt create.
+    2. Clientului i se arată adresa dvs. de portofel și instrucțiunile.
+    3. Dacă este necesară dovada, apare un buton de încărcare a fișierului. Clientul trebuie să încarce captura de ecran a tranzacției înainte ca comanda să continue.
+    4. După ce transferul este finalizat și ați verificat fondurile on-chain, deschideți factura în AgencyHandy și marcați-o ca **Plătită**.
+    5. Când o factură este marcată **Plătită** și comanda este *În așteptare*, statusul comenzii se actualizează automat la *În curs*.
+
+    <Note>
+      Plata Crypto apare la plată doar dacă este activată în **Setări spațiu de lucru → Metode de plată** ȘI în setările relevante **Grup de servicii → Disponibilitate plată**. Dezactivarea sa în Setările spațiului de lucru o ascunde peste tot, indiferent de setările la nivel de serviciu.
+    </Note>
+
+    <Tip>
+      Dacă un serviciu nu acceptă USDC, opțiunea de plată Crypto este ascunsă automat pentru acel serviciu. Asigurați-vă că USDC este activat în setările serviciului dvs. dacă doriți ca clienții să plătească cu crypto.
+    </Tip>
+  </Tab>
+
+  <Tab title="Wise">
+    ## Plată Wise
+
+    Metoda de plată Wise le permite clienților să plătească printr-un link de plată Wise. Adăugați link-ul o singură dată în interiorul unei facturi, iar acesta este inclus automat în toate facturile viitoare de abonament. Wise este ideal pentru clienții internaționali care preferă transferuri de la bancă la bancă cu comisioane mai mici decât transferurile bancare tradiționale.
+
+    ### Adăugați Wise ca metodă de plată
+
+    <Steps>
+      <Step title="Deschideți modulul Facturi">
+        În bara laterală din stânga, faceți clic pe **Facturi**, apoi faceți clic pe **Creați factură**.
+      </Step>
+
+      <Step title="Adăugați link-ul dvs. Wise">
+        În modalul facturii, derulați la secțiunea **Metode de plată**. Faceți clic pe **Adăugați Wise ca metodă de plată**, apoi lipiți link-ul dvs. de plată Wise în câmpul de introducere.
+      </Step>
+
+      <Step title="Salvați factura">
+        Faceți clic pe **Salvare** sau continuați să finalizați factura. Link-ul dvs. de plată Wise este acum integrat și vizibil pentru client.
+      </Step>
+    </Steps>
+
+    ### Cum funcționează pentru clienți
+
+    Link-ul Wise apare ca un buton pe care se poate face clic pe factura clientului. Clientul deschide link-ul, finalizează transferul prin contul său Wise și vă trimite confirmarea. Deoarece AgencyHandy nu primește confirmarea automată de la Wise, trebuie să marcați manual factura ca **Plătită** după ce primiți fondurile.
+
+    <Warning>
+      Wise **nu poate** fi utilizat pentru plăți automate de upsell sau plăți de piață. Poate fi adăugat doar un singur link de plată Wise per factură. Verificați link-ul înainte de a-l trimite — un link incorect înseamnă că plata clientului ajunge la contul greșit.
+    </Warning>
+
+    ### Comportamentul platformei
+
+    - Odată ce un link Wise este adăugat, acesta apare automat pe toate facturile viitoare de **abonament** cu excepția cazului în care îl actualizați sau eliminați.
+    - AgencyHandy nu efectuează nicio conversie valutară automată. Clientul transferă în orice valută pentru care este configurat link-ul dvs. Wise.
+    - Sunteți responsabil pentru urmărirea plăților și marcarea facturilor ca Plătite după confirmarea primirii.
+  </Tab>
+</Tabs>

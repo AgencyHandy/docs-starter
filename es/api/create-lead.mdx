@@ -1,0 +1,201 @@
+---
+title: "API de AgencyHandy: crear un nuevo lead mediante programación"
+sidebarTitle: "Crear un lead"
+description: "Use la API de AgencyHandy para crear nuevos leads mediante programación enviando una solicitud POST al endpoint bulk-lead con los campos requeridos."
+---
+
+El endpoint Create Lead le permite añadir nuevos leads a su espacio de trabajo de AgencyHandy mediante programación desde cualquier sistema externo — un formulario web, un CRM, una plataforma de automatización de marketing o un script personalizado. Los leads creados a través de este endpoint aparecen en su pipeline de leads de inmediato, igual que si se hubieran añadido manualmente.
+
+<Note>
+  Antes de usar este endpoint, complete la guía [Getting Started](/es/api/getting-started) para obtener su clave de API y su Company ID. También necesita obtener su **Client Role ID**, que es obligatorio al crear un lead.
+</Note>
+
+## Requisitos previos
+
+- ✅ Clave de API generada desde **Workspace Config → API Key**
+- ✅ Company ID obtenido de `GET {{URL}}/accounts/companies`
+- ✅ Client Role ID obtenido (vea el Paso 1 a continuación)
+
+---
+
+## Paso 1: Obtener el Client Role ID
+
+Antes de crear un lead, necesita el Role ID del rol `client` en su empresa.
+
+### Endpoint
+
+```
+GET {{URL}}/roles?type=company
+```
+
+### Encabezados
+
+| Encabezado | Valor |
+|---|---|
+| `x-api-key` | Su clave de API |
+| `companyid` | Su Company ID |
+
+### Solicitud de ejemplo
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/roles?type=company" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>"
+```
+
+### Respuesta de ejemplo
+
+```json
+{
+  "roles": [
+    {
+      "_id": "6525994184e9ddd798534535",
+      "role": {
+        "_id": "6525994184e9ddd79853451e",
+        "responsibility": "",
+        "name": "client"
+      },
+      "company": "6525994184e9ddd79853450e",
+      "createdAt": "2023-10-10T18:34:41.567Z",
+      "updatedAt": "2024-10-01T07:28:48.340Z",
+      "__v": 0,
+      "type": "company"
+    }
+  ]
+}
+```
+
+Busque la entrada donde `roles[0].role.name === "client"` y extraiga el `_id` **externo** — es decir, `roles[0]._id`, **no** `roles[0].role._id`.
+
+```javascript
+const clientRoleId = roles.find(r => r.role.name === "client")._id;
+// e.g. "6525994184e9ddd798534535"
+```
+
+<Warning>
+  Use `roles[0]._id` (el ID de la asignación empresa-rol), **no** `roles[0].role._id` (el ID de la definición del rol). Usar el ID incorrecto hace que la solicitud de creación de lead falle.
+</Warning>
+
+---
+
+## Paso 2: Crear un nuevo lead
+
+### Endpoint
+
+```
+POST {{URL}}/members/bulk-lead
+```
+
+### Encabezados
+
+| Encabezado | Valor |
+|---|---|
+| `x-api-key` | Su clave de API |
+| `companyid` | Su Company ID |
+| `Content-Type` | `application/json` |
+
+### Cuerpo de la solicitud
+
+El cuerpo de la solicitud es un **array JSON** — puede crear uno o más leads en una sola llamada.
+
+<ParamField body="firstName" type="string" required>
+  El nombre del lead.
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  El apellido del lead.
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  La dirección de correo electrónico del lead. Debe ser única dentro de su espacio de trabajo.
+</ParamField>
+
+<ParamField body="role" type="string" required>
+  El Client Role ID obtenido en el Paso 1 (es decir, `roles[0]._id`).
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  Debe establecerse en `false` al crear un lead. Establézcalo en `true` solo al convertir un lead en un cliente completo.
+</ParamField>
+
+<ParamField body="status" type="string">
+  El estado del lead en el pipeline. Valores comunes: `New`, `Contacted`, `Qualified`. Por defecto es `New` si se omite.
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  El número de teléfono del lead.
+</ParamField>
+
+<ParamField body="source" type="string">
+  Cómo adquirió este lead. Valores de ejemplo: `website`, `referral`, `social`.
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  La posición (orden) del lead dentro de la columna del tablero del pipeline. Por defecto es `1`.
+</ParamField>
+
+### Solicitud de ejemplo
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-lead" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "role": "6525994184e9ddd798534535",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+### Respuesta de éxito
+
+```json
+{
+  "message": "Lead created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  Cadena de confirmación: `"Lead created successfully"`.
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  Array de objetos de lead creados.
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  El ID único del lead recién creado. Guárdelo si necesita hacer referencia al lead en llamadas posteriores a la API.
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  El nombre completo del lead (firstName + lastName).
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  El estado del lead en el pipeline tal como se almacenó.
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  El nombre del rol asignado al miembro — será `"client"`.
+</ResponseField>
+
+<Tip>
+  Puede pasar varios objetos de lead en el array para crear varios leads en una sola llamada a la API. Cada objeto debe incluir todos los campos requeridos con su propia dirección de correo electrónico única.
+</Tip>

@@ -1,0 +1,137 @@
+---
+title: "AgencyHandy API：以程式方式建立新客戶"
+sidebarTitle: "建立客戶"
+description: "透過向 bulk-client 端點傳送包含姓名、電子郵件及聯絡資訊的請求，以程式方式將新客戶新增至您的 AgencyHandy 工作區。"
+---
+
+建立客戶端點讓您能夠從外部系統直接將客戶新增至您的 AgencyHandy 工作區。與潛在客戶不同，客戶是已完全建檔的聯絡人，可以被指派至訂單、發票和專案。使用此端點從 CRM、入職表單或任何其他資料來源同步新客戶。
+
+<Note>
+  使用此端點前，請先完成[入門指南](/zh-Hant/api/getting-started)以取得您的 API 金鑰和公司 ID。與建立潛在客戶端點不同，建立客戶**不需要**單獨的角色 ID 查詢步驟。
+</Note>
+
+## 前置條件
+
+- ✅ 從 **Workspace Config → API Key** 產生的 API 金鑰
+- ✅ 從 `GET {{URL}}/accounts/companies` 取得的公司 ID
+
+---
+
+## 端點
+
+```
+POST {{URL}}/members/bulk-client
+```
+
+## 標頭
+
+| 標頭 | 值 |
+|---|---|
+| `x-api-key` | 您的 API 金鑰 |
+| `companyId` | 您的公司 ID |
+| `Content-Type` | `application/json` |
+
+## 請求主體
+
+請求主體為 **JSON 陣列**。您可以在單次請求中建立一個或多個客戶。
+
+<ParamField body="firstName" type="string" required>
+  客戶的名字。
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  客戶的姓氏。
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  客戶的電子郵件地址。在您的工作區內必須是唯一的。
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  全新客戶請設定為 `false`。將現有潛在客戶轉換為客戶時請設定為 `true`。
+</ParamField>
+
+<ParamField body="status" type="string">
+  客戶的狀態。常用值：`New`、`Active`。若省略則預設為 `New`。
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  客戶的電話號碼。
+</ParamField>
+
+<ParamField body="source" type="string">
+  您獲取此客戶的管道。範例值：`website`、`referral`、`social`。
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  客戶在看板欄位中的位置。預設為 `1`。
+</ParamField>
+
+## 範例請求
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-client" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyId: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+## 成功回應
+
+```json
+{
+  "message": "Client created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  成功時的確認字串。
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  已建立的客戶物件陣列。
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  新建立客戶的唯一 ID。透過 API 將客戶指派至訂單或發票時，請使用此 ID。
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  客戶的全名（firstName + lastName）。
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  已儲存的客戶狀態。
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  指派給成員的角色 — 將為 `"client"`。
+</ResponseField>
+
+<Note>
+  此端點的 `companyId` 標頭使用大寫 **I** 的 `Id` — `companyId` — 與某些使用全小寫 `companyid` 的其他端點不同。請使用上方所示的確切大小寫，以避免驗證錯誤。
+</Note>
+
+<Tip>
+  在陣列中傳遞多個客戶物件，以在單次 API 呼叫中批量建立客戶。每個物件必須擁有唯一的 `email` 地址。重複的電子郵件將導致該條目產生驗證錯誤。
+</Tip>

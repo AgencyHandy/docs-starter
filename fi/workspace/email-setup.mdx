@@ -1,0 +1,188 @@
+---
+title: "Lähtevän sähköpostin, SMTP:n ja sähköpostipohjien määrittäminen"
+sidebarTitle: "Sähköpostin asetukset"
+description: "Määritä mukautettu lähettäjän sähköpostiosoite, yhdistä SMTP-palvelin, lisää DKIM/SPF-tietueet toimitettavuuden varmistamiseksi ja mukauta sähköpostipohjia AgencyHandyssa."
+---
+
+AgencyHandyn sähköpostiasetuksilla voit korvata oletusarvoisen `noreply@agencyhandy.com`-lähettäjän omalla brändätyllä sähköpostiosoitteellasi, määrittää oman SMTP-palvelimen luotettavaa toimitusta varten ja mukauttaa pohjia, joita käytetään asiakasviestintään, laskuihin, tarjouksiin ja muihin tarkoituksiin. Näiden asetusten oikea konfigurointi varmistaa, että sähköpostisi päätyvät asiakkaiden postilaatikkoon — ei roskapostikansioon — ja että jokainen viesti heijastaa toimistosi identiteettiä.
+
+<Note>
+  Vain **pääylläpitäjät** ja **ylläpitäjät** voivat määrittää sähköpostiasetuksia. Siirry kohtaan **Työtilan asetukset → Sähköpostin asetukset** käyttääksesi näitä vaihtoehtoja.
+</Note>
+
+---
+
+## Yleiskatsaus sähköpostiasetusten osiin
+
+<CardGroup cols={2}>
+  <Card title="Mukautettu sähköpostiosoite" icon="envelope">
+    Aseta lähettäjän nimi ja sähköpostiosoite, jonka asiakkaat näkevät vastaanottaessaan viestejä työtilastasi.
+  </Card>
+  <Card title="DKIM- ja SPF-tietueet" icon="shield-check">
+    Lisää DNS-todennustietueet osoittaaksesi, että sähköpostisi ovat aitoja, ja estääksesi niiden merkitsemisen roskapostiksi.
+  </Card>
+  <Card title="SMTP-palvelin" icon="server">
+    Yhdistä oma postipalvelimesi (esim. Gmail, Outlook tai mukautettu verkkotunnuspalvelin) lähettääksesi kaikki lähtevät sähköpostit AgencyHandyn kautta.
+  </Card>
+  <Card title="Sähköpostipohjat" icon="file-lines">
+    Mukauta sisältöä, aiherivejä ja brändiä jokaista automaattista sähköpostia varten, jonka AgencyHandy lähettää asiakkaille.
+  </Card>
+</CardGroup>
+
+---
+
+## Osa 1: Mukautetun sähköpostiosoitteen määrittäminen
+
+Ennen kuin määrität lähettäjän sähköpostin, tarvitset rekisteröidyn verkkotunnuksen ja sähköpostin isännöinnin. Suosittuja palveluntarjoajia ovat Google Workspace, Microsoft 365, Zoho Mail ja Cloudflare Email Routing.
+
+<Steps>
+  <Step title="Rekisteröi verkkotunnus ja määritä sähköpostin isännöinti">
+    Jos et ole vielä tehnyt niin, rekisteröi verkkotunnus rekisteröijältä (esim. GoDaddy, Namecheap, Cloudflare) ja tilaa sähköpostin isännöintipalvelu. Varmista, että pystyt luomaan ja hallitsemaan sähköpostiosoitteita kyseisellä verkkotunnuksella (esim. `hello@youragency.com`).
+  </Step>
+  <Step title="Siirry sähköpostiasetusten sivulle AgencyHandyssa">
+    Kirjaudu sisään AgencyHandyyn. Siirry vasemman valikon kohtaan **Työtilan asetukset** ja napsauta sitten **Sähköpostin asetukset**.
+  </Step>
+  <Step title="Syötä lähettäjän nimi ja sähköposti">
+    Kirjoita **Lähettäjän nimi** -kenttään nimi, jonka asiakkaat näkevät lähettäjänä (esim. `AgencyHandy Support` tai toimistosi nimi). Kirjoita **Lähettäjän sähköposti** -kenttään mukautettu sähköpostiosoite (esim. `hello@youragency.com`). Napsauta **Tallenna**.
+  </Step>
+  <Step title="Vahvista sähköpostiosoitteesi">
+    AgencyHandy lähettää vahvistuslinkin syöttämääsi sähköpostiosoitteeseen. Avaa sähköpostilaatikkosi, etsi vahvistusviesti ja napsauta linkkiä vahvistaaksesi omistajuuden.
+  </Step>
+  <Step title="Määritä DKIM-, SPF- ja DMARC-DNS-tietueet">
+    Kun olet tallentanut lähettäjän sähköpostin, AgencyHandy tarjoaa sinulle lisättävät DNS-tietueet:
+
+    - **SPF-tietue** (TXT-tyyppi) — valtuuttaa AgencyHandyn lähettämään sähköposteja verkkotunnuksesi puolesta.
+    - **DKIM-tietueet** (3 CNAME-tietuetta) — lisäävät salakirjoitusallekirjoitukset lähteviin sähköposteihin, jotta vastaanottavat palvelimet voivat varmentaa aitouden.
+    - **DMARC-tietue** — määrittää, miten vastaanottavien palvelinten tulee käsitellä sähköpostit, jotka eivät läpäise todennustarkistuksia.
+
+    Lisää kaikki nämä tietueet verkkotunnuksesi DNS-asetuksiin rekisteröijäsi kautta. DKIM CNAME -tietueille varmista, että **välityspalvelimen tila on poistettu käytöstä**, jos käytät Cloudflareta.
+  </Step>
+  <Step title="Vahvista aktiivinen tila">
+    Palaa sähköpostiasetusten sivulle AgencyHandyssa. Kun kaikki DNS-tietueet ovat levinneet (tähän voi kulua 2 minuutista 2 tuntiin), sähköpostin tila päivittyy **Odottaa**-tilasta ja näyttää vihreän valintamerkin ✅. Mukautettu sähköpostisi on nyt aktiivinen.
+  </Step>
+</Steps>
+
+<Tip>
+  Käytä [MXToolbox](https://mxtoolbox.com/DKIM.aspx) tai [dmarcian's DKIM Validator](https://dmarcian.com/dkim-validator/) -palvelua varmistaaksesi, että DKIM-tietueesi on määritetty oikein. Päivitä sähköpostiasetusten sivu ajoittain odottaessasi levittymistä.
+</Tip>
+
+---
+
+## Osa 2: DKIM:n ja SPF:n määrittäminen (itsenäinen asennus)
+
+Jos sinun täytyy luoda tai uudelleen luoda DKIM- ja SPF-tietueet itsenäisesti, seuraa tätä polkua:
+
+**Työtilan asetukset → Sähköpostit → DKIM- ja SPF-asennus → Luo DKIM- ja SPF-tietueet.**
+
+Lisää sitten tietueet DNS-asetuksiisi:
+
+| Tietuetyyppi | DNS-tyyppi | Mitä määritetään                                                                                     |
+|--------------|------------|------------------------------------------------------------------------------------------------------|
+| SPF          | TXT        | Kopioi **Nimi** ja **Arvo** AgencyHandystä ja lisää uusi TXT-tietue DNS-asetuksiisi                  |
+| DKIM (×3)    | CNAME      | Kopioi jokainen **Nimi**- ja **Arvo**-pari; lisää 3 erillistä CNAME-tietuetta välityspalvelin pois käytöstä |
+
+<Note>
+  DKIM- ja SPF-tietueiden leviäminen voi kestää **2 minuutista 2 tuntiin**. Jos tila näyttää edelleen odottavana 2 tunnin jälkeen, varmista, että tietueet on syötetty ilman kirjoitusvirheitä eikä ristiriitaisia tietueita ole olemassa.
+</Note>
+
+---
+
+## Osa 3: SMTP:n määrittäminen
+
+SMTP (Simple Mail Transfer Protocol) mahdollistaa kaikkien AgencyHandyn lähtevien sähköpostien reitittämisen oman vahvistetun postipalvelimesi kautta, antaen sinulle enemmän hallintaa toimitettavuuden ja brändäyksen suhteen.
+
+<Note>
+  Voit käyttää joko **mukautettua verkkotunnuksen sähköpostia** tai **SMTP-sähköpostipalveluntarjoajaa** — ei molempia samanaikaisesti. Vaihtaminen niiden välillä on mahdollista milloin tahansa, mutta sinun täytyy syöttää sähköpostimäärityksesi uudelleen, kun vaihdat takaisin mukautettuun sähköpostiin.
+</Note>
+
+<Steps>
+  <Step title="Avaa SMTP-palvelimen asetukset">
+    Siirry kohtaan **Työtilan asetukset → Sähköpostin asetukset** ja napsauta sitten **SMTP-palvelin**.
+  </Step>
+  <Step title="Vaihda SMTP-palveluntarjoajaan (tarvittaessa)">
+    Jos sinulla on jo mukautettu sähköposti määritettynä, näyttöön tulee vahvistusikkuna, jossa kysytään, haluatko vaihtaa. Napsauta **Vaihda SMTP:hen** jatkaaksesi. Tämä poistaa olemassa olevan mukautetun sähköpostiasetuksen käytöstä.
+  </Step>
+  <Step title="Syötä SMTP-tunnistetietosi">
+    Täytä vaaditut kentät:
+
+    | Kenttä      | Esimerkkiarvo          | Huomioita                                          |
+    |-------------|------------------------|----------------------------------------------------|
+    | Isäntänimi  | `smtp.gmail.com`       | Sähköpostipalveluntarjoajasi SMTP-palvelimen osoite |
+    | Käyttäjänimi | `you@yourdomain.com`  | Koko sähköpostiosoitteesi                          |
+    | Salasana    | Sovellussalasana       | Käytä sovelluskohtaista salasanaa (katso alla)     |
+    | Portti      | `465` tai `587`        | 465 SSL:lle, 587 TLS:lle                           |
+    | Automaattinen TLS | Ota käyttöön/poista käytöstä | Valinnainen — ottaa käyttöön automaattisen TLS-päivityksen |
+
+    Napsauta **Tallenna**, kun olet valmis.
+  </Step>
+  <Step title="Luo sovellussalasana (Gmail-esimerkki)">
+    Jos käytät Gmailia kaksivaiheinen todennus käytössä (pakollinen sovellussalasanoille):
+
+    1. Siirry osoitteeseen [myaccount.google.com/security](https://myaccount.google.com/security) ja vahvista, että kaksivaiheinen vahvistus on aktiivinen.
+    2. Vieraile osoitteessa [myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords).
+    3. Napsauta **Valitse sovellus**, valitse **Sähköposti** (tai syötä mukautettu nimi), napsauta sitten **Valitse laite** ja valitse asennuksesi.
+    4. Napsauta **Luo** — Google luo 16 merkin sovellussalasanan.
+    5. Kopioi salasana ja liitä se AgencyHandyn SMTP-asetusten **Salasana**-kenttään.
+
+    <Warning>
+      Käytä **sovellussalasanaa**, ei tavallista Google-tilin salasanaasi. Tavallisen salasanan käyttäminen epäonnistuu, jos 2FA on käytössä, ja saattaa laukaista tietoturvavaroja.
+    </Warning>
+  </Step>
+  <Step title="Vahvista asennus">
+    Tallennuksen jälkeen AgencyHandy näyttää onnistumisviestin, joka vahvistaa _"SMTP on luotu onnistuneesti."_ Tallennettu isäntä, käyttäjänimi ja porttitiedot näkyvät SMTP-asetusten sivulla.
+  </Step>
+  <Step title="Testaa SMTP-yhteys">
+    Napsauta **Testaa**-painiketta ja syötä vastaanottajan sähköpostiosoite. AgencyHandy lähettää testisähköpostin kyseiseen osoitteeseen. Tarkista postilaatikosta vahvistusviesti: _"This is a confirmation that your email setup in Agency Handy is working properly."_
+  </Step>
+</Steps>
+
+<Tip>
+  Vain yksi SMTP-konfiguraatio voi olla aktiivinen työtilaa kohden kerrallaan. Kun SMTP on määritetty, kaikki AgencyHandyn lähtevät sähköpostit — laskut, tarjoukset, tehtäväilmoitukset — lähetetään SMTP-palvelimesi kautta.
+</Tip>
+
+---
+
+## Osa 4: Sähköpostipohjien mukauttaminen
+
+AgencyHandy sisältää valmiita pohjia jokaista lähettämäänsä automaattista sähköpostia varten. Voit mukauttaa jokaista niistä vastaamaan brändisi sävyä ja sisällyttämään asianmukaista dynaamista sisältöä.
+
+**Saatavilla olevat pohjat sisältävät:**
+- Asiakkaan rekisteröityminen
+- Tarjouksen lähettäminen
+- Tehtävän arviointi
+- Laskun lähettäminen
+- Lasku- ja tilausmuistutukset
+- Tukipyyntöilmoitukset
+
+<Steps>
+  <Step title="Avaa sähköpostipohjat">
+    Siirry kohtaan **Työtilan asetukset → Sähköpostit** ja valitse sitten **Sähköpostipohja** alavalikosta.
+  </Step>
+  <Step title="Valitse muokattava pohja">
+    Kaikkien saatavilla olevien pohjien täydellinen luettelo näytetään. Napsauta mitä tahansa pohjaa avataksesi sen asetussivun.
+  </Step>
+  <Step title="Mukauta pohjan kentät">
+    Päivitä tarvittaessa seuraavat:
+    - **Lähettäjän sähköposti:** Valitse, mikä määritetty sähköpostiosoite lähettää tämän pohjan.
+    - **Aihe:** Kirjoita selkeä, ytimekäs aiheriivi.
+    - **Sisältö:** Muokkaa viestin sisältöä vastaamaan toimistosi sävyä ja viestintää.
+    - **Dynaamiset muuttujat:** Lisää paikanvaraajia, kuten `{{client_name}}`, `{{company_name}}` tai `{{invoice_id}}` asiakaskohtaisten tietojen automaattiseen täyttöön.
+    - **Sosiaalisen median linkit:** Lisää linkkejä toimistosi sosiaalisen median profiileihin sitoutumisen kannustamiseksi.
+  </Step>
+  <Step title="Lähetä testisähköposti">
+    Napsauta **Lähetä testi** lähettääksesi pohjan esikatselun postilaatikkoosi. Tarkista muotoilu, sisältö ja että kaikki dynaamiset muuttujat täyttyvät oikein.
+  </Step>
+  <Step title="Tallenna muutokset">
+    Napsauta **Tallenna muutokset** ottaaksesi päivitetyn pohjan käyttöön. Uutta versiota käytetään kaikissa tulevissa automaattisissa sähköposteissa, jotka vastaavat kyseistä pohjatyyppiä.
+  </Step>
+</Steps>
+
+---
+
+## Tärkeitä huomioita
+
+- **SMTP ja mukautettu sähköposti ovat toisensa poissulkevia.** Vain yksi menetelmä voi olla aktiivinen kerrallaan työtilaa kohden.
+- **Syötä sähköposti uudelleen vaihdon yhteydessä.** Jos vaihdat SMTP:stä takaisin mukautettuun sähköpostiasetukseen, sinun täytyy syöttää mukautetun sähköpostin tunnistetiedot uudelleen.
+- **Virheelliset SMTP-tunnistetiedot estävät kaikki lähtevät sähköpostit.** Tarkista isäntänimi, portti, käyttäjänimi ja salasana, jos sähköpostit lakkaavat lähettymästä SMTP-muutoksen jälkeen.
+- **DKIM/SPF-levittyminen vie aikaa.** Odota enintään 2 tuntia ja päivitä sähköpostiasetusten sivu ennen kuin toteat virheen olemassaolon.
+- **Dynaamiset muuttujat ovat kirjainkokoherkkiä.** Käytä niitä täsmälleen pohjaeditorissa näytetyssä muodossa varmistaaksesi, että ne täyttyvät oikein.

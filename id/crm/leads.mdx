@@ -1,0 +1,211 @@
+---
+title: "Kelola Lead: Pipeline, Email, dan Konversi Klien"
+sidebarTitle: "Lead"
+description: "Kelola pipeline penjualan Anda dengan papan Kanban — lacak tahap lead, filter berdasarkan agen atau sumber, kirim email, dan konversikan lead menjadi klien."
+---
+
+Bagian Lead di CRM AgencyHandy memberi Anda papan Kanban visual dengan drag-and-drop untuk mengelola setiap prospek dari kontak pertama hingga menjadi klien. Setiap lead berada pada kartu yang bergerak melalui tujuh tahap pipeline yang telah ditentukan, dan Anda dapat memfilter, mencari, mengimpor, mengekspor, mengirim email, dan mengonversi lead tanpa perlu beralih ke alat lain.
+
+## Tahap Pipeline
+
+Setiap lead yang Anda buat dimulai di tahap **New** dan dapat dipindahkan ke depan seiring perkembangan hubungan Anda:
+
+| Tahap | Artinya |
+|---|---|
+| **New** | Lead baru masuk ke pipeline |
+| **Contacted** | Anda telah menghubungi setidaknya sekali |
+| **Qualified** | Lead memenuhi kriteria klien target Anda |
+| **Working** | Percakapan aktif sedang berlangsung |
+| **Proposal Sent** | Proposal resmi telah dikirim |
+| **Negotiation** | Syarat-syarat sedang dibahas |
+| **Client** | Siap dikonversi menjadi akun klien |
+
+<Note>
+  Memindahkan lead ke tahap **Client** di papan tidak secara otomatis mengonversinya — Anda masih perlu mengklik **Convert to Client** di dalam kartu lead untuk memindahkannya ke tab Klien.
+</Note>
+
+## Membuat Lead
+
+<Steps>
+  <Step title="Buka papan Lead">
+    Dari sidebar kiri, klik **CRM**, lalu pilih tab **Leads**. Papan Kanban dimuat dengan semua tahap pipeline yang ada.
+  </Step>
+  <Step title="Klik Create Lead">
+    Pilih tombol **+ Create Lead** di bagian kanan atas papan. Formulir pembuatan terbuka.
+  </Step>
+  <Step title="Isi detail lead">
+    Lengkapi kolom di bawah ini. **Name** dan **Email** bersifat wajib; yang lainnya opsional tetapi disarankan untuk pemfilteran dan pelaporan yang lebih baik.
+
+    - **First Name / Last Name** *(wajib)*
+    - **Email** *(wajib)*
+    - **Company Name**
+    - **Category**
+    - **Status** — menetapkan tahap Kanban awal (default ke New)
+    - **Source** — misalnya, Facebook, Website *(maks 50 karakter; teks di luar batas dipotong dengan tooltip)*
+    - **Lead Value** — estimasi nilai kesepakatan
+    - **Phone Number**
+    - **Website**
+    - **Assigned Agent** — anggota tim yang bertanggung jawab atas lead ini
+    - **Last Interaction** — tanggal kontak terbaru
+    - **Address** — Negara, Negara Bagian, Kota, Kode ZIP
+    - **Attachments** — PDF, JPEG, PNG, dan file teks dapat dipratinjau langsung di modal lead; format yang tidak didukung akan meminta unduhan
+  </Step>
+  <Step title="Simpan lead">
+    Klik **Create**. Kartu lead muncul di kolom **New** pada papan Kanban.
+  </Step>
+</Steps>
+
+<Tip>
+  Unggah brief PDF atau dokumen proposal sebagai lampiran agar tim Anda dapat meninjaunya tanpa meninggalkan modal lead.
+</Tip>
+
+## Melacak Lead di Papan Kanban
+
+Setelah lead ada di papan, Anda memiliki beberapa cara untuk mengelolanya:
+
+- **Seret dan lepas** — ambil kartu lead mana pun dan lepaskan ke kolom tahap yang berbeda untuk mencerminkan statusnya saat ini.
+- **Klik kartu** — membuka modal detail lead di mana Anda dapat mengedit semua kolom, melihat catatan, memeriksa log aktivitas, mengirim email, atau mengonversi menjadi klien.
+- **Cetak detail lead** — gunakan tombol **Print** di sudut kanan atas modal lead untuk membuat ringkasan yang dapat dicetak.
+
+## Mengedit Lead
+
+Buka kartu lead mana pun dan klik **Edit** (atau langsung perbarui kolom info kontak atau catatan yang ditampilkan di modal). Perubahan disimpan segera dan dicatat dalam log aktivitas.
+
+<Note>
+  Jika alamat email sudah ada sebagai klien dan lead, lead tersebut **tidak dapat** dikonversi menjadi klien. Selesaikan duplikat sebelum mencoba konversi.
+</Note>
+
+## Mengonversi Lead Menjadi Klien
+
+<Steps>
+  <Step title="Buka kartu lead">
+    Klik lead yang ingin Anda promosikan di papan Kanban.
+  </Step>
+  <Step title="Klik Convert to Client">
+    Pilih tombol **Convert to Client** di dalam modal lead.
+  </Step>
+  <Step title="Konfirmasi">
+    Banner konfirmasi muncul: *"Lead has moved to the Clients Tab."* Kartu menghilang dari papan Kanban, dan semua catatan dan riwayat lead disimpan dalam catatan klien baru.
+  </Step>
+</Steps>
+
+## Memfilter dan Mencari Lead
+
+Gunakan toolbar di atas papan Kanban untuk mempersempit tampilan Anda:
+
+<CardGroup cols={2}>
+  <Card title="Bilah Pencarian" icon="magnifying-glass">
+    Ketik nama atau email untuk langsung menemukan lead yang cocok di semua tahap pipeline.
+  </Card>
+  <Card title="Agen yang Ditugaskan" icon="user">
+    Filter papan untuk menampilkan hanya lead yang ditugaskan ke anggota tim tertentu.
+  </Card>
+  <Card title="Nilai Lead" icon="dollar-sign">
+    Persempit berdasarkan estimasi ukuran kesepakatan untuk memprioritaskan prospek bernilai tinggi.
+  </Card>
+  <Card title="Tanggal Interaksi Terakhir" icon="calendar">
+    Identifikasi lead yang belum ditangani baru-baru ini dan perlu tindak lanjut.
+  </Card>
+  <Card title="Sumber" icon="signal">
+    Tampilkan hanya lead dari saluran tertentu, seperti Website atau Facebook.
+  </Card>
+</CardGroup>
+
+## Mengirim Email ke Lead
+
+Anda dapat menyusun dan mengirim email langsung dari papan Kanban atau dari dalam modal lead — tanpa perlu klien email eksternal.
+
+| Kolom | Detail |
+|---|---|
+| **To** | Terisi otomatis dengan alamat email lead |
+| **Subject** | Wajib; maksimal 250 karakter |
+| **Body** | Editor teks kaya; maksimal 10.000 karakter |
+| **Attachments** | Hingga 5 file; batas total ukuran 25 MB |
+
+## Catatan
+
+Setiap lead menyertakan bagian **Notes** khusus di dalam modal detail. Catatan dapat diedit dan dihapus, dan setiap catatan menampilkan nama anggota tim yang menulisnya beserta stempel waktu. Gunakan catatan untuk mencatat ringkasan panggilan, preferensi klien, atau pengingat tindak lanjut yang dapat dilihat seluruh tim.
+
+## Mengimpor Lead
+
+Bawa daftar prospek yang ada ke AgencyHandy secara massal menggunakan file CSV atau Excel.
+
+<Steps>
+  <Step title="Buka dialog Import">
+    Di papan Leads, klik tombol **Import** di kanan atas.
+  </Step>
+  <Step title="Unggah file Anda">
+    Seret dan lepas atau telusuri file CSV atau Excel Anda. File harus mencakup setidaknya kolom **Name** dan **Email**.
+  </Step>
+  <Step title="Petakan kolom">
+    Importer menampilkan pemetaan kolom. Cocokkan setiap kolom dalam file Anda ke kolom AgencyHandy yang sesuai. Kolom yang dapat dipetakan secara opsional meliputi: Source, Lead Value, Phone Number, Company Name, dan Address.
+  </Step>
+  <Step title="Konfirmasi dan impor">
+    Tinjau tabel pratinjau untuk memverifikasi akurasi data, lalu klik **Confirm** diikuti dengan **Save**. Lead Anda muncul di papan Kanban segera.
+  </Step>
+</Steps>
+
+<Warning>
+  Lead dengan alamat email yang sudah ada di tab Klien Anda tidak akan dikonversi melalui impor — Anda harus menangani duplikat tersebut secara manual.
+</Warning>
+
+## Mengekspor Lead
+
+Ekspor data pipeline Anda untuk pelaporan, cadangan, atau integrasi dengan alat lain.
+
+<Steps>
+  <Step title="Klik Export">
+    Pilih tombol **Export** dari toolbar Leads.
+  </Step>
+  <Step title="Pilih kolom Anda">
+    Pilih **All Columns** untuk mengekspor setiap kolom, atau pilih **Custom Columns** untuk memilih hanya data yang Anda butuhkan.
+  </Step>
+  <Step title="Pilih format dan unduh">
+    Pilih **CSV** atau **XLSX**, lalu klik **Export**. File diunduh ke perangkat Anda.
+  </Step>
+</Steps>
+
+## Log Aktivitas
+
+Setiap perubahan yang dibuat pada lead dicatat secara otomatis di tab **Activity Log** di dalam modal lead.
+
+Log mencatat:
+
+- **Pengguna** — anggota tim mana yang membuat perubahan
+- **Detail** — apa yang berubah, misalnya *"Status changed from 'New' to 'Contacted'"*
+- Unggahan lampiran, penambahan catatan, dan pengeditan kolom
+
+Log aktivitas tidak dapat diedit atau dihapus dan dapat dilihat oleh admin dan manajer.
+
+## Pengingat dan Tugas Otomatis
+
+AgencyHandy mengirim notifikasi otomatis saat lead telah tidak aktif di tahap mana pun melebihi jumlah hari yang dapat dikonfigurasi — misalnya, *"Follow up with [Nama Lead]."* Tindakan utama seperti mengirim proposal juga dapat secara otomatis membuat tugas di manajer tugas untuk menjaga proses pengiriman tetap pada jalurnya.
+
+## Webhook untuk Kejadian Lead
+
+AgencyHandy menembakkan kejadian webhook untuk tindakan lead berikut, memungkinkan Anda menghubungkan CRM eksternal, alat otomasi, atau pipeline data:
+
+<Accordion title="Lead.Created">
+  Dipicu saat lead baru dibuat. Payload mencakup: ID lead, status, sumber, agen yang ditugaskan, dan stempel waktu.
+</Accordion>
+
+<Accordion title="Lead.Updated">
+  Dipicu saat kolom mana pun pada lead diperbarui. Payload mencakup kolom yang sama ditambah ringkasan perubahan yang terjadi.
+</Accordion>
+
+<Accordion title="Lead.Deleted">
+  Dipicu saat lead dihapus dari sistem. Payload mencakup ID lead dan stempel waktu penghapusan.
+</Accordion>
+
+<Tip>
+  Konfigurasi webhook di **Settings → Integrations → Webhooks** untuk mulai menerima kejadian lead secara real-time di sistem eksternal Anda.
+</Tip>
+
+## Metrik Pelaporan
+
+Lacak kesehatan pipeline Anda dengan metrik pelaporan bawaan:
+
+- Jumlah lead per tahap
+- Tingkat konversi dari lead ke klien
+- Waktu rata-rata lead berada di setiap tahap
+- Agen berkinerja terbaik berdasarkan volume konversi

@@ -1,0 +1,77 @@
+---
+title: "AgencyHandy'de Çevrimiçi Ödeme Kabul Etmek için Stripe'ı Bağlayın"
+sidebarTitle: "Stripe"
+description: "Platformdan çıkmadan müşterilerinize fatura göndermek ve güvenli çevrimiçi ödeme toplamak için Stripe hesabınızı AgencyHandy'ye bağlayın."
+---
+
+AgencyHandy'nin Stripe entegrasyonu, platform içinde gönderdiğiniz faturalar aracılığıyla müşterilerinizden doğrudan kart ödemesi almanızı sağlar. Bağlandıktan sonra müşterileriniz tanıdık Stripe tarafından barındırılan bir ödeme sayfası görür ve ödeme durumu otomatik olarak AgencyHandy ile senkronize olur — manuel mutabakat gerekmez.
+
+<Note>
+  Stripe entegrasyonunu yalnızca **Süper Yönetici** ve **Yönetici** rolleri bağlayabilir veya yönetebilir. Başlamadan önce uygun izinlere sahip doğrulanmış bir Stripe hesabına da sahip olmanız gerekir.
+</Note>
+
+## Stripe'ı bağlama
+
+<Steps>
+  <Step title="Stripe Entegrasyonu ayarlarını açın">
+    Sol kenar çubuğunda **Entegrasyonlar → Stripe Entegrasyonu**'na gidin.
+  </Step>
+
+  <Step title="Stripe'ta yetkilendirin">
+    **Stripe'ı Bağla**'ya tıklayın. Stripe'ın yetkilendirme ekranına yönlendirilirsiniz. Stripe hesabınıza giriş yapın ve AgencyHandy'ye erişim vermek için **İzin Ver**'e tıklayın. Onaylandıktan sonra Stripe sizi otomatik olarak AgencyHandy'ye geri yönlendirir.
+  </Step>
+
+  <Step title="Ödeme tercihlerini yapılandırın">
+    Yönlendirmeden sonra aşağıdaki seçenekleri yapılandırın:
+
+    - **Para birimi** — çalışma alanınız için varsayılan faturalandırma para birimini seçin.
+    - **Ödeme yöntemleri** — Stripe hesabınızın desteklediği kart türlerini (Visa, Mastercard vb.) etkinleştirin veya devre dışı bırakın.
+    - **Faturalandırma tercihleri** — isteğe bağlı olarak vergi oranı, fatura öneki veya varsayılan ödeme koşulları ve vade tarihleri belirleyin.
+  </Step>
+
+  <Step title="Kaydedin ve onaylayın">
+    **Kaydet**'e tıklayın. Entegrasyon etkin olduğunda bir onay başlığı görünür. Stripe artık çalışma alanınıza bağlıdır ve müşterileriniz faturaları çevrimiçi ödeyebilir.
+  </Step>
+</Steps>
+
+## Entegrasyonu test etme
+
+Canlı fatura göndermeden önce bağlantının doğru çalıştığını doğrulamak için hızlı bir uçtan uca test yapın.
+
+<Steps>
+  <Step title="Test faturası oluşturun">
+    AgencyHandy içinde taslak bir fatura oluşturun ve küçük bir tutar atayın.
+  </Step>
+  <Step title="Kendinize gönderin">
+    Faturayı kendi e-posta adresinize veya test konusunda yardımcı olabilecek bir ekip üyesine gönderin.
+  </Step>
+  <Step title="Test ödemesini tamamlayın">
+    Fatura bağlantısını açın ve Stripe hesabınız test modundaysa Stripe test kartı kullanarak (örn. `4242 4242 4242 4242`) veya canlı modda gerçek kartla ödeme yapın.
+  </Step>
+  <Step title="Durum güncellemesini doğrulayın">
+    AgencyHandy'ye geri dönün ve fatura durumunun **Ödendi** olarak değiştiğini onaylayın. Değişmişse entegrasyonunuz doğru çalışıyor demektir.
+  </Step>
+</Steps>
+
+## Stripe bağlantınızı yönetme
+
+Şunları yapmak için istediğiniz zaman **Entegrasyonlar → Stripe Entegrasyonu**'na dönün:
+
+- **Ödeme ayarlarını güncelleyin** — para birimini, ödeme yöntemlerini veya faturalandırma tercihlerini değiştirin.
+- **Bağlantı durumunu inceleyin** — Stripe'ın şu anda etkin olup olmadığını kontrol edin.
+- **Bağlantıyı kesin** — Stripe hesabının bağlantısını kesmek için **Bağlantıyı Kes**'e tıklayın. Yeniden bağlanana kadar ödeme tahsilatı hemen duraklar.
+- **Yeniden bağlanın** — entegrasyonu geri yüklemek için tekrar **Stripe'ı Bağla**'ya tıklayın ve yetkilendirmeyi yenileyin.
+
+<Warning>
+  Stripe'ın bağlantısını kesmek, beklemedeki tüm faturalar için ödeme tahsilatını duraklatır. Yeniden bağlanıp yeniden yetkilendirene kadar müşteriler çevrimiçi ödeme yapamaz.
+</Warning>
+
+## Ek notlar
+
+<Note>
+  AgencyHandy, ödeme kimlik bilgilerinizi asla depolamaz. Tüm ödeme verileri yalnızca Stripe'ın güvenli altyapısı tarafından işlenir.
+</Note>
+
+- **Çalışma alanı başına bir hesap** — her AgencyHandy çalışma alanına yalnızca tek bir Stripe hesabı bağlayabilirsiniz. Hesapları değiştirmek için önce mevcut hesabın bağlantısını kesin, ardından yeni hesapla yeniden bağlayın.
+- **Canlı fatura durumu** — Stripe'a bağlı tüm faturalar, doğrudan Stripe'tan alınan gerçek zamanlı durum güncellemelerini yansıtmaya devam eder.
+- **Para birimi** — ödeme hatalarını önlemek için AgencyHandy'de yapılandırılan para biriminin Stripe hesabınızda etkinleştirilen para birimiyle eşleştiğinden emin olun.

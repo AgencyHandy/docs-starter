@@ -1,0 +1,240 @@
+---
+title: "Oppgaveadministrasjon: Opprette og spore arbeid i bestillinger"
+sidebarTitle: "Oppgaver"
+description: "Opprett, rediger og administrer oppgaver inne i bestillinger — inkludert tidssporing, filfeedback, klientforespurte oppgaver og oppgavevisibilitet på tvers av bestillinger."
+---
+
+Oppgaver er arbeidsenheter som gjør en bestilling til et leverbart produkt. Hver oppgave befinner seg inne i en spesifikk bestilling, kan tildeles et teammedlem og sporer sin egen status, tidslinje, vedlegg og tilbakemeldingstråd. Denne siden forklarer hvordan du oppretter og administrerer oppgaver, hvordan klienter kan be om oppgaver, hvordan tidssporing og filfeedback fungerer, og hvordan du ser oppgaver på tvers av alle bestillinger på én gang.
+
+## Rollekrav
+
+| Handling | Hvem kan gjøre det |
+|---|---|
+| Opprette oppgaver | Super Admin, Admin, Prosjektleder |
+| Redigere oppgaver | Super Admin, Admin, Prosjektleder |
+| Slette oppgaver | Super Admin, Admin, Prosjektleder |
+| Se oppgaver til gjennomgang / ferdig | Super Admin, Admin, PM, Klient |
+| Sende og svare på tilbakemelding | Super Admin, Admin, PM |
+| Logge tid på oppgaver | Alle tildelte brukere (Super Admins og Admins kan logge på vegne av andre) |
+| Be om en oppgave (klient) | Klient |
+| Godkjenne / avvise forespurte oppgaver | Super Admin, Admin |
+
+<Note>
+Ansatte som er tildelt en bestilling kan se oppgaver som har statusen **Til gjennomgang** eller **Ferdig**. Oppgaver med statusen **Pågående** er ikke synlige for ansatte.
+</Note>
+
+## Opprett en oppgave
+
+<Steps>
+  <Step title="Åpne bestillingen">
+    Naviger til **Bestillinger** i venstre sidefelt og klikk på bestillingen der du vil legge til en oppgave.
+  </Step>
+
+  <Step title="Legg til en ny oppgave">
+    Inne i bestillingen, bla ned til **Oppgaver**-seksjonen og klikk på **+ Legg til ny oppgave**. Et oppgaveopprettingsskjema vil vises.
+  </Step>
+
+  <Step title="Fyll inn oppgavedetaljene">
+    Fyll ut de tilgjengelige feltene:
+
+    | Felt | Merknader |
+    |---|---|
+    | **Oppgavenavn** | En tydelig, kortfattet tittel for arbeidsposten |
+    | **Beskrivelse** | Detaljert kontekst, krav eller instruksjoner |
+    | **Ansvarlig** | Teammedlemmet som er ansvarlig for å fullføre oppgaven |
+    | **Etikett** | Kategorisk merkelapp for organisering av oppgaver (f.eks. Design, Tekst) |
+    | **Startdato** | Når arbeidet med oppgaven begynner |
+    | **Forfallsdato** | Når oppgaven må være fullført |
+    | **Klientgjennomgang påkrevd** | Avkrysningsboks som krever at klienten godkjenner oppgaven før den markeres som Ferdig — avhuket som standard |
+    | **Vedlegg** | Referansefiler eller støttemateriale |
+  </Step>
+
+  <Step title="Lagre oppgaven">
+    Klikk på **Lagre** for å opprette oppgaven. Klienten mottar et automatisk varsel om at en ny oppgave er lagt til i bestillingen.
+  </Step>
+</Steps>
+
+<Tip>
+Avkrysningsboksen **Klientgjennomgang påkrevd** er aktivert som standard på hver ny oppgave. Hvis en oppgave er rent intern og ikke trenger klientgodkjenning, kan du fjerne haken før du lagrer.
+</Tip>
+
+## Oppgavestatuser
+
+Oppgaver beveger seg gjennom følgende statuser:
+
+- **Pågående** — Oppgaven arbeides det med (ikke synlig for klienter eller ansatte)
+- **Til gjennomgang** — Oppgaven er sendt inn for gjennomgang; synlig for klienter
+- **Ferdig** — Oppgaven er godkjent og fullført
+
+<Note>
+Når en klient eller anmelder avviser en oppgave fra **Til gjennomgang**, går statusen automatisk tilbake til **Pågående**.
+</Note>
+
+## Oppgavemodal og aktivitetsside
+
+Å klikke på en oppgave åpner **Oppgavemodalens**, en fullstendig detaljvisning som fungerer som oppgavens aktivitetssenter. Herfra kan du se og administrere:
+
+- Gjeldende status, ansvarlig, startdato og forfallsdato
+- Oppgavebeskrivelse og eventuelle vedlagte filer
+- Alle tilbakemeldingstråder og svar
+- En fullstendig aktivitetslogg som viser hver oppdatering, kommentar og statusendring på oppgaven
+
+Alle som er en del av bestillingen — inkludert klienter, når klientgjennomgang er aktivert — kan få tilgang til oppgavemodalens for oppgaver de har synlighet på.
+
+## Rediger en oppgave
+
+For å oppdatere en oppgaves detaljer etter at den er opprettet, åpne oppgavemodalens og endre de relevante feltene (navn, beskrivelse, ansvarlig, datoer, etikett eller vedlegg). Lagre endringene for å anvende oppdateringen. Kun Super Admins, Admins og PM-er kan redigere oppgaver.
+
+## Slett en oppgave
+
+For å slette en oppgave, åpne den og bruk slettevalget i oppgavens handlingsmeny. Sletting er permanent — alle tilhørende tidslogger og filversjoner fjernes sammen med oppgaven.
+
+<Warning>
+Sletting av en oppgave fjerner også alle filversjoner og tilhørende tilbakemeldingskommentarer. Denne handlingen kan ikke angres.
+</Warning>
+
+## Tidssporing
+
+AgencyHandy inkluderer innebygd tidssporing slik at teamet ditt kan logge timer direkte mot oppgaver — uten eksternt verktøy.
+
+### Starte tidtakeren
+
+<Steps>
+  <Step title="Åpne oppgaven">
+    Gå til **Bestillinger → Oppgaver** og åpne oppgaven du vil spore tid på.
+  </Step>
+
+  <Step title="Start tidtakeren">
+    Klikk på **Start tidtaker**. Tidtakeren begynner å kjøre og viser oppgavenavnet, tid som har gått i sanntid og total tid logget.
+  </Step>
+
+  <Step title="Sett på pause eller stopp når du er ferdig">
+    Klikk på **Sett på pause** for å midlertidig stoppe sporingen, eller **Stopp tidtaker** for å fullføre posten. Når du stopper, vil du bekrefte dato, starttid, sluttid, total varighet og en valgfri merknad.
+  </Step>
+</Steps>
+
+<Note>
+Du kan kun ha én aktiv tidtaker kjørende om gangen. Å starte en ny tidtaker setter automatisk den eksisterende på pause.
+</Note>
+
+<Warning>
+Hvis en oppgave er markert som **Ferdig**, er tidtakeren deaktivert. Gjenåpne oppgaven for å aktivere tidslogging på nytt.
+</Warning>
+
+### Manuell tidsregistrering
+
+Hvis du trenger å logge tid i etterkant, klikk på **Manuell tidsregistrering** på oppgaven og fyll inn:
+
+- **Dato**
+- **Starttid og sluttid** (eller en **Varighet** i timer og minutter)
+- **Merknader** (valgfritt)
+
+Flere brukere kan logge tid mot samme oppgave samtidig. Super Admins og Admins kan opprette manuelle tidsregistreringer på vegne av enhver bruker.
+
+### Arbeidslogger
+
+Klikk på **Arbeidslogg**-knappen ved siden av tidtakeren for å se en fullstendig oversikt over alle tidsregistreringer på oppgaven, inkludert dato, start-/sluttider, total aktiv tid og eventuelle merknader. Admins og Super Admins kan slette enhver post; vanlige brukere kan kun slette sine egne.
+
+### Timelister
+
+Naviger til **Timelister** fra venstre sidefelt for en tverrsnittvisning av all logget tid. Du kan filtrere etter oppgavenavn, bestillings-ID, ansvarlig eller datoperiode (daglig, ukentlig, månedlig), og gruppere resultater etter teammedlem, tjenestenavn eller oppgavenavn. Du kan også starte en tidtaker eller legge til en manuell post direkte fra timeliste-visningen.
+
+## Filfeedback
+
+AgencyHandy's filfeedback-system lar deg og dine klienter legge igjen presise, visuelle kommentarer på leveranser — direkte inne i oppgaver. Det støtter bilder, PDF-er, videoer og live-nettsteder, med versjonskontroll og tråddede diskusjoner innebygd.
+
+### Laste opp en fil for gjennomgang
+
+Åpne oppgaven, klikk på **➕**-ikonet i **Vedlegg**-seksjonen, og last opp et bilde, PDF, video eller lim inn en live nettside-URL.
+
+### Legge igjen tilbakemelding etter filtype
+
+**Bilder og PDF-er**
+Åpne filen og bruk annotasjonsverktøylinjen (Pil, Linje, Rektangel, Uthevning) for å markere spesifikke områder. Velg et område, skriv inn kommentaren din, og velg om du vil dele den med teamet ditt, klienten, eller begge. Du kan også angre eller gjøre om annotasjoner og endre annotasjonsfarger.
+
+**Videoer**
+Åpne videoen og sett den på pause på det nøyaktige bildet der tilbakemeldingen din gjelder. Skriv inn kommentaren — videoen setter seg automatisk på pause mens du skriver. Tilbakemeldingen er tidsstemplet til det øyeblikket. Du kan fjerne tidsstempelet for å legge igjen en generell kommentar i stedet.
+
+**Live-nettsteder**
+Legg til nettsidens URL i oppgaven ved hjelp av **➕**-knappen, og installer AgencyHandy-nettleserutvidelsen. Åpne nettstedet i **Visningsmodus** (interaktiv) eller bytt til **Gjennomgangsmodus** for å ta et skjermbilde og annotere det med tegne-, tekst- eller figurverktøy.
+
+### Kommentarhandlinger
+
+Hver kommentar har en trepunkts-meny med alternativer for å:
+
+- Redigere kommentaren
+- Kopiere svaret
+- Slette kommentaren
+- Begrense synligheten til det interne teamet
+
+### Løse tilbakemelding
+
+Klikk på **✓**-knappen på en kommentar for å markere den som **Løst**. Løste kommentarer forblir synlige for referanse og kan gjenåpnes. Du mottar et varsel når en kommentar du la igjen løses av noen andre.
+
+### Filversjoner
+
+Klikk på **Last opp ny versjon** for å legge til en revidert fil. Tidligere versjoner og deres tilbakemelding bevares og er tilgjengelige fra versjonsrullegardinmenyen. Når du åpner en eldre versjon, varsler AgencyHandy deg om at en nyere versjon finnes.
+
+Du kan merke hver fil som **Trenger gjennomgang** eller **Godkjent** for å kommunisere gjennomgangsstatus med et blikk.
+
+<Note>
+Klienter kan kun legge igjen tilbakemelding på filer hvis avkrysningsboksen **Klientgjennomgang påkrevd** er aktivert på oppgaven. Filfeedback er kun tilgjengelig inne i oppgaver eller bestillinger — ikke i tjenestekatalogen eller profilbilder.
+</Note>
+
+## Klientforespurte oppgaver
+
+Klienter kan sende inn oppgaveforespørsler fra portalen sin, noe som gir dem en strukturert måte å fremme tilleggsbehov på uten å omgå godkjenningsprosessen din.
+
+### Klientarbeidsflyt
+
+<Steps>
+  <Step title="Gå til Forespørsler">
+    Klienten klikker på **Forespørsler** i sidefeltet i klientportalen — eller bruker knappen **+ Be om en oppgave** direkte inne i en bestilling.
+  </Step>
+
+  <Step title="Fyll ut forespørselsskjemaet">
+    Klienten oppgir:
+    - **Bestilling** (obligatorisk — forespørsler må være knyttet til en eksisterende bestilling)
+    - **Oppgavenavn** (obligatorisk)
+    - **Beskrivelse** (valgfritt)
+    - **Vedlegg** (valgfritt — opptil 1 GB; formater inkluderer PDF, DOCX, JPG, PNG, MP4, ZIP og mer)
+    - **Start- og sluttdatoer** (valgfritt)
+  </Step>
+
+  <Step title="Send inn forespørselen">
+    Klienten klikker på **Be om**. Oppgaven vises i portalen deres som **Venter** og byrået ditt mottar et varsel.
+  </Step>
+</Steps>
+
+### Byråarbeidsflyt
+
+<Steps>
+  <Step title="Se innkommende forespørsler">
+    Klikk på **Forespørsler** i sidefeltet i byråportalen. Alle ventende forespørsler vises i en listevisning. Du kan filtrere etter klient eller bestillings-ID, sortere alfabetisk eller etter utstedelsesdato, og bruke **Innstillinger** for å vise eller skjule kolonner.
+  </Step>
+
+  <Step title="Gjennomgå forespørselen">
+    Klikk på en forespørsel for å lese beskrivelsen og forhåndsvise eventuelle vedlegg før du tar en beslutning.
+  </Step>
+
+  <Step title="Godkjenn eller avvis">
+    Bruk handlingsknappene ved siden av hver forespørsel for å godkjenne eller avvise individuelt — eller bruk massehandlingene øverst til høyre for å godkjenne eller avvise alle forespørsler på én gang.
+
+    - **Godkjente** forespørsler blir aktive oppgaver i bestillingen og følger den normale oppgavearbeidsflyten.
+    - **Avviste** forespørsler forblir loggede med statusen **Avvist** og legges ikke til i bestillingen.
+  </Step>
+</Steps>
+
+<Note>
+Klienter kan ikke omgå godkjenningstrinnet. En forespørsel krever alltid byrå-handling før den blir en aktiv oppgave. Ventende forespørsler forblir synlige for både klienten og byrået inntil en beslutning er tatt.
+</Note>
+
+## Alle oppgaver-visning
+
+I tillegg til å administrere oppgaver inne i individuelle bestillinger, kan du se oppgaver på tvers av alle bestillinger fra én enkelt skjerm. Naviger til **Oppgaver** i venstre sidefelt for å få tilgang til **Alle oppgaver**-siden. Herfra kan du:
+
+- Se alle oppgaver du har synlighet på, uavhengig av hvilken bestilling den tilhører
+- Filtrere og sortere etter status, ansvarlig, forfallsdato eller bestilling
+- Raskt identifisere forsinkede eller risikoutsatte poster på tvers av hele arbeidsbelastningen din
+
+Denne tverrsnittsynligheten er spesielt nyttig for prosjektledere og Admins som trenger å balansere teamkapasitet og spore leveringshelse på byånivå.

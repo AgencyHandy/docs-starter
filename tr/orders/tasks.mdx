@@ -1,0 +1,240 @@
+---
+title: "Görev Yönetimi: Siparişlerde İş Oluşturma ve Takip Etme"
+sidebarTitle: "Görevler"
+description: "Siparişler içinde görev oluşturma, düzenleme ve yönetme — zaman takibi, dosya geri bildirimi, müşteri tarafından talep edilen görevler ve çapraz sipariş görev görünürlüğü dahil."
+---
+
+Görevler, bir siparişi teslim edilebilir bir ürüne dönüştüren iş birimleridir. Her görev belirli bir sipariş içinde yer alır, bir ekip üyesine atanabilir ve kendi durumunu, zaman çizelgesini, eklerini ve geri bildirim dizisini takip eder. Bu sayfa, görev oluşturma ve yönetimi, müşterilerin nasıl görev talep edebileceği, zaman takibi ve dosya geri bildiriminin nasıl çalıştığı ve tüm siparişlerdeki görevlerin tek seferde nasıl görüntüleneceği konularını açıklar.
+
+## Rol Gereksinimleri
+
+| Eylem | Kim Yapabilir |
+|---|---|
+| Görev oluşturma | Süper Yönetici, Yönetici, Proje Yöneticisi |
+| Görev düzenleme | Süper Yönetici, Yönetici, Proje Yöneticisi |
+| Görev silme | Süper Yönetici, Yönetici, Proje Yöneticisi |
+| İncelemede / tamamlanmış görevleri görüntüleme | Süper Yönetici, Yönetici, PM, Müşteri |
+| Geri bildirim gönderme ve yanıtlama | Süper Yönetici, Yönetici, PM |
+| Görevlerde zaman kaydetme | Tüm atanmış kullanıcılar (Süper Yöneticiler ve Yöneticiler başkaları adına kaydedebilir) |
+| Görev talep etme (müşteri) | Müşteri |
+| Talep edilen görevleri onaylama / reddetme | Süper Yönetici, Yönetici |
+
+<Note>
+Bir siparişe atanan çalışanlar **İncelemede** veya **Tamamlandı** durumundaki görevleri görebilir. **Devam Ediyor** durumundaki görevler çalışanlara görünmez.
+</Note>
+
+## Görev Oluştur
+
+<Steps>
+  <Step title="Siparişi açın">
+    Sol kenar çubuğunda **Siparişler**'e gidin ve görev eklemek istediğiniz siparişe tıklayın.
+  </Step>
+
+  <Step title="Yeni görev ekleyin">
+    Sipariş içinde **Görevler** bölümüne ilerleyin ve **+ Yeni Görev Ekle**'ye tıklayın. Bir görev oluşturma formu görünecektir.
+  </Step>
+
+  <Step title="Görev bilgilerini doldurun">
+    Mevcut alanları tamamlayın:
+
+    | Alan | Notlar |
+    |---|---|
+    | **Görev Adı** | İş öğesi için açık ve kısa bir başlık |
+    | **Açıklama** | Ayrıntılı bağlam, gereksinimler veya talimatlar |
+    | **Atanan Kişi** | Görevi tamamlamaktan sorumlu ekip üyesi |
+    | **Etiket** | Görevleri düzenlemek için kategorik etiket (ör. Tasarım, İçerik) |
+    | **Başlangıç Tarihi** | Görev üzerinde çalışmanın başladığı tarih |
+    | **Bitiş Tarihi** | Görevin tamamlanması gereken tarih |
+    | **Müşteri İncelemesi Gerekli** | Görev Tamamlandı olarak işaretlenmeden önce müşterinin onaylamasını gerektiren onay kutusu — varsayılan olarak işaretlidir |
+    | **Ekler** | Referans dosyalar veya destekleyici materyaller |
+  </Step>
+
+  <Step title="Görevi kaydedin">
+    Görevi oluşturmak için **Kaydet**'e tıklayın. Müşteri, siparişine yeni bir görev eklendiğine dair otomatik bir bildirim alır.
+  </Step>
+</Steps>
+
+<Tip>
+**Müşteri İncelemesi Gerekli** onay kutusu varsayılan olarak her yeni görevde etkindir. Bir görev tamamen dahili nitelikteyse ve müşteri onayı gerektirmiyorsa, kaydetmeden önce işareti kaldırabilirsiniz.
+</Tip>
+
+## Görev Durumları
+
+Görevler aşağıdaki durumlar arasında ilerler:
+
+- **Devam Ediyor** — Görev üzerinde çalışılıyor (müşterilere veya çalışanlara görünmez)
+- **İncelemede** — Görev inceleme için gönderildi; müşterilere görünür
+- **Tamamlandı** — Görev onaylandı ve tamamlandı
+
+<Note>
+Bir müşteri veya incelemeci **İncelemede** durumundaki bir görevi reddettiğinde, durum otomatik olarak **Devam Ediyor**'a geri döner.
+</Note>
+
+## Görev Modalı ve Aktivite Sayfası
+
+Herhangi bir göreve tıklamak, görevin aktivite merkezi olarak hizmet veren tam ayrıntı görünümü olan **Görev Modalı**'nı açar. Buradan şunları görüp yönetebilirsiniz:
+
+- Mevcut durum, atanan kişi, başlangıç tarihi ve bitiş tarihi
+- Görev açıklaması ve eklenmiş dosyalar
+- Tüm geri bildirim dizileri ve yanıtlar
+- Görevdeki her güncellemeyi, yorumu ve durum değişikliğini gösteren eksiksiz bir aktivite günlüğü
+
+Sipariş kapsamında yer alan herkes — müşteri incelemesi etkinleştirildiğinde müşteriler dahil — görünürlük sahibi oldukları görevler için görev modalına erişebilir.
+
+## Görev Düzenleme
+
+Oluşturulduktan sonra bir görevin ayrıntılarını güncellemek için görev modalını açın ve ilgili alanları değiştirin (ad, açıklama, atanan kişi, tarihler, etiket veya ekler). Güncellemeyi uygulamak için değişikliklerinizi kaydedin. Görevleri yalnızca Süper Yöneticiler, Yöneticiler ve PM'ler düzenleyebilir.
+
+## Görev Silme
+
+Bir görevi silmek için görevi açın ve görevin eylem menüsündeki silme seçeneğini kullanın. Silme işlemi kalıcıdır — ilgili tüm zaman kayıtları ve dosya sürümleri görevle birlikte kaldırılır.
+
+<Warning>
+Bir görevi silmek, tüm dosya sürümlerini ve bunlara bağlı geri bildirim yorumlarını da kaldırır. Bu işlem geri alınamaz.
+</Warning>
+
+## Zaman Takibi
+
+AgencyHandy, ekibinizin saatleri doğrudan görevlere karşı kaydetmesini sağlayan yerleşik zaman takibini içerir — harici bir araç gerekmez.
+
+### Zamanlayıcıyı Başlatma
+
+<Steps>
+  <Step title="Görevi açın">
+    **Siparişler → Görevler**'e gidin ve zaman takibi yapmak istediğiniz görevi açın.
+  </Step>
+
+  <Step title="Zamanlayıcıyı başlatın">
+    **Zamanlayıcıyı Başlat**'a tıklayın. Zamanlayıcı çalışmaya başlar ve görev adını, gerçek zamanlı geçen süreyi ve kaydedilen toplam süreyi gösterir.
+  </Step>
+
+  <Step title="Bittiğinde duraklatın veya durdurun">
+    Takibi geçici olarak durdurmak için **Zamanlayıcıyı Duraklat**'a, girişi sonlandırmak için **Zamanlayıcıyı Durdur**'a tıklayın. Durdurduğunuzda tarihi, başlangıç saatini, bitiş saatini, toplam süreyi ve isteğe bağlı bir notu onaylayacaksınız.
+  </Step>
+</Steps>
+
+<Note>
+Aynı anda yalnızca bir aktif zamanlayıcı çalıştırabilirsiniz. Yeni bir zamanlayıcı başlatmak, varsa mevcut olanı otomatik olarak duraklatır.
+</Note>
+
+<Warning>
+Bir görev **Tamamlandı** olarak işaretlenirse zamanlayıcı devre dışı kalır. Zaman kaydını yeniden etkinleştirmek için görevi yeniden açın.
+</Warning>
+
+### Manuel Zaman Girişi
+
+Zamanı geriye dönük olarak kaydetmeniz gerekiyorsa görev üzerinde **Manuel Zaman Girişi**'ne tıklayın ve şunları girin:
+
+- **Tarih**
+- **Başlangıç Saati ve Bitiş Saati** (veya saat ve dakika cinsinden **Süre**)
+- **Notlar** (isteğe bağlı)
+
+Birden fazla kullanıcı aynı anda aynı göreve zaman kaydedebilir. Süper Yöneticiler ve Yöneticiler herhangi bir kullanıcı adına manuel zaman girişi oluşturabilir.
+
+### İş Günlükleri
+
+Görevdeki tüm zaman girişlerinin — tarih, başlangıç/bitiş saatleri, toplam aktif süre ve notlar dahil — tam dökümünü görmek için zamanlayıcının yanındaki **İş Günlüğü** düğmesine tıklayın. Yöneticiler ve Süper Yöneticiler herhangi bir girişi silebilir; normal kullanıcılar yalnızca kendi girişlerini silebilir.
+
+### Zaman Çizelgeleri
+
+Kaydedilen tüm zamanların çapraz sipariş görünümüne erişmek için sol kenar çubuğundaki **Zaman Çizelgeleri**'ne gidin. Görev adı, sipariş kimliği, atanan kişi veya tarih aralığına (günlük, haftalık, aylık) göre filtreleyebilir ve sonuçları ekip üyesine, hizmet adına veya görev adına göre gruplayabilirsiniz. Ayrıca doğrudan Zaman Çizelgeleri görünümünden bir zamanlayıcı başlatabilir veya manuel giriş ekleyebilirsiniz.
+
+## Dosya Geri Bildirimi
+
+AgencyHandy'nin dosya geri bildirim sistemi, siz ve müşterilerinizin teslimatlar üzerinde — doğrudan görevlerin içinde — hassas ve görsel yorumlar bırakmasına olanak tanır. Sürüm kontrolü ve dizili tartışmalar yerleşik olarak sunulurken görseller, PDF'ler, videolar ve canlı web sitelerini destekler.
+
+### İnceleme İçin Dosya Yükleme
+
+Görevi açın, **Ekler** bölümündeki **➕** simgesine tıklayın ve bir görsel, PDF, video yükleyin ya da canlı bir web sitesi URL'si yapıştırın.
+
+### Dosya Türüne Göre Geri Bildirim Bırakma
+
+**Görseller ve PDF'ler**
+Dosyayı açın ve belirli alanları işaretlemek için açıklama araç çubuğunu (Ok, Çizgi, Dikdörtgen, Vurgu) kullanın. Bir bölge seçin, yorumunuzu yazın ve bunu ekibinizle, müşteriyle veya her ikisiyle paylaşmak isteyip istemediğinizi seçin. Açıklamaları geri alabilir veya yeniden uygulayabilir ve açıklama renklerini değiştirebilirsiniz.
+
+**Videolar**
+Videoyu açın ve geri bildiriminizin uygulandığı tam kareye gelin. Yorumunuzu yazın — video siz yazarken otomatik olarak duraklar. Geri bildirim o ana zaman damgasıyla eklenir. Genel bir yorum bırakmak için zaman damgasını kaldırabilirsiniz.
+
+**Canlı Web Siteleri**
+**➕** düğmesini kullanarak göreve site URL'sini ekleyin, ardından AgencyHandy tarayıcı uzantısını yükleyin. Siteyi **Görüntüleme Modunda** (etkileşimli) açın veya ekran görüntüsü almak ve çizim, metin ya da şekil araçlarıyla açıklama eklemek için **İnceleme Moduna** geçin.
+
+### Yorum Eylemleri
+
+Her yorumun şu seçenekleri içeren bir üç nokta menüsü vardır:
+
+- Yorumu düzenleme
+- Yanıtı kopyalama
+- Yorumu silme
+- Görünürlüğü yalnızca dahili ekiple kısıtlama
+
+### Geri Bildirimi Çözümleme
+
+Bir yorumu **Çözümlendi** olarak işaretlemek için üzerindeki **✓** düğmesine tıklayın. Çözümlenen yorumlar referans için görünür kalır ve yeniden açılabilir. Bıraktığınız bir yorum başkası tarafından çözümlendiğinde bildirim alırsınız.
+
+### Dosya Sürümleri
+
+Revize edilmiş bir dosya eklemek için **Yeni Sürüm Yükle**'ye tıklayın. Önceki sürümler ve bunlara ait geri bildirimler korunur ve sürüm açılır menüsünden erişilebilir. Eski bir sürüm açıldığında AgencyHandy, daha yeni bir sürüm olduğunu bildirir.
+
+Her dosyayı inceleme durumunu bir bakışta iletmek için **İnceleme Gerekiyor** veya **Onaylandı** olarak etiketleyebilirsiniz.
+
+<Note>
+Müşteriler yalnızca görevde **Müşteri İncelemesi Gerekli** onay kutusu etkinleştirilmişse dosyalara geri bildirim bırakabilir. Dosya geri bildirimi yalnızca görevler veya siparişler içinde kullanılabilir — hizmet kataloğunda veya profil görsellerinde kullanılamaz.
+</Note>
+
+## Müşteri Tarafından Talep Edilen Görevler
+
+Müşteriler, onay sürecinizi atlamadan ek ihtiyaçlarını yapılandırılmış bir şekilde iletmek için portallarından görev talebi gönderebilir.
+
+### Müşteri İş Akışı
+
+<Steps>
+  <Step title="Taleplere Erişim">
+    Müşteri, Müşteri Portalı kenar çubuğundaki **Talepler**'e tıklar — veya doğrudan bir siparişin içindeki **+ Görev Talep Et** düğmesini kullanır.
+  </Step>
+
+  <Step title="Talep formunu doldurun">
+    Müşteri şunları sağlar:
+    - **Sipariş** (zorunlu — talepler mevcut bir siparişe bağlı olmalıdır)
+    - **Görev Adı** (zorunlu)
+    - **Açıklama** (isteğe bağlı)
+    - **Ekler** (isteğe bağlı — 1 GB'a kadar; PDF, DOCX, JPG, PNG, MP4, ZIP ve daha fazlası dahil formatlar)
+    - **Başlangıç ve Bitiş Tarihleri** (isteğe bağlı)
+  </Step>
+
+  <Step title="Talebi gönderin">
+    Müşteri **Talep Et**'e tıklar. Görev portalında **Beklemede** olarak görünür ve ajansınız bir bildirim alır.
+  </Step>
+</Steps>
+
+### Ajans İş Akışı
+
+<Steps>
+  <Step title="Gelen talepleri görüntüleyin">
+    Ajans Portalı kenar çubuğunda **Talepler**'e tıklayın. Tüm bekleyen talepler bir liste görünümünde görünür. Müşteriye veya sipariş kimliğine göre filtreleyebilir, alfabetik veya tarihine göre sıralayabilir ve sütunları gösterip gizlemek için **Tercihler**'i kullanabilirsiniz.
+  </Step>
+
+  <Step title="Talebi inceleyin">
+    Karar vermeden önce açıklamayı okumak ve ekleri önizlemek için bir talebe tıklayın.
+  </Step>
+
+  <Step title="Onaylayın veya reddedin">
+    Her talebin yanındaki eylem düğmelerini kullanarak tek tek onaylayın veya reddedin — ya da tüm talepleri aynı anda onaylamak veya reddetmek için sağ üst köşedeki toplu eylemleri kullanın.
+
+    - **Onaylanan** talepler, siparişte aktif görevler haline gelir ve normal görev iş akışını izler.
+    - **Reddedilen** talepler **Reddedildi** durumuyla kaydedilir ve siparişe eklenmez.
+  </Step>
+</Steps>
+
+<Note>
+Müşteriler onay adımını atlayamaz. Bir talep, canlı bir göreve dönüşmeden önce her zaman ajans eylemi gerektirir. Bekleyen talepler bir karar verilene kadar hem müşteriye hem de ajansa görünür kalır.
+</Note>
+
+## Tüm Görevler Görünümü
+
+Tek tek siparişler içinde görevleri yönetmenin yanı sıra, tek bir ekrandan her siparişteki görevleri görüntüleyebilirsiniz. **Tüm Görevler** sayfasına erişmek için sol kenar çubuğundaki **Görevler**'e gidin. Buradan şunları yapabilirsiniz:
+
+- Hangi siparişe ait olduğundan bağımsız olarak görünürlük sahibi olduğunuz her görevi görme
+- Duruma, atanan kişiye, bitiş tarihine veya siparişe göre filtreleme ve sıralama
+- Tüm iş yükünüzdeki geciken veya riskli öğeleri hızlıca belirleme
+
+Bu çapraz sipariş görünürlüğü, özellikle ekip kapasitesini dengelemesi ve ajans düzeyinde teslimat sağlığını takip etmesi gereken Proje Yöneticileri ve Yöneticiler için son derece kullanışlıdır.

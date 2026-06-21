@@ -1,0 +1,149 @@
+---
+title: "Konfiguracja metod płatności: przelew bankowy, krypto i Wise"
+sidebarTitle: "Inne płatności"
+description: "Włącz alternatywne metody płatności ręcznych — przelew bankowy, kryptowaluty i Wise — aby klienci preferujący płatności bez karty mogli opłacać Twoje faktury."
+---
+
+AgencyHandy obsługuje trzy ręczne metody płatności oprócz Stripe i PayPal: **Przelew bankowy**, **Krypto** i **Wise**. Każda z nich jest przeznaczona dla określonego rodzaju klienta lub przepływu pracy. Wszystkie trzy wymagają ręcznego oznaczenia faktury jako **Opłacona** po otrzymaniu środków, ponieważ AgencyHandy nie może automatycznie potwierdzać przelewów realizowanych poza platformą.
+
+<Note>
+  Tylko role **SuperAdmin** i **Admin** mogą włączać lub konfigurować te metody płatności.
+</Note>
+
+<Tabs>
+  <Tab title="Bank Transfer">
+    ## Przelew bankowy
+
+    Metoda przelewu bankowego pozwala na przyjmowanie ręcznych płatności przelewem lub ACH od klientów. Dane bankowe wprowadzasz za pomocą edytora tekstu sformatowanego, a AgencyHandy wyświetla te instrukcje klientom podczas realizacji zamówienia oraz w fakturze.
+
+    ### Włącz przelew bankowy
+
+    <Steps>
+      <Step title="Otwórz ustawienia płatności bankowej">
+        Na lewym pasku bocznym przejdź do **Integracje → Bankowa metoda płatności**.
+      </Step>
+
+      <Step title="Wypełnij instrukcje przelewu">
+        Użyj edytora tekstu sformatowanego, aby wprowadzić swoje dane bankowe. Uwzględnij wszystkie pola, których klienci potrzebują do realizacji przelewu:
+
+        - **Imię i nazwisko odbiorcy**
+        - **Numer konta**
+        - **Nazwa banku**
+        - **Numer rozliczeniowy**
+        - **Typ konta** (np. bieżące, oszczędnościowe)
+        - **Adres banku**
+
+        Możesz również dodać notatki, uwagi lub dane kontaktowe do obsługi. Nie ma limitu znaków, a edytor obsługuje pogrubienie, podkreślenie, listy, linki i formatowanie obrazków.
+      </Step>
+
+      <Step title="Ustaw wymóg dowodu płatności (opcjonalnie)">
+        Włącz opcję **Wymagany zrzut ekranu płatności**, jeśli chcesz, aby klienci przesyłali zrzut ekranu przed przetworzeniem ich zamówienia.
+
+        - **Włączone** — klienci muszą przesłać prawidłowy zrzut ekranu podczas realizacji zamówienia. Żadne zamówienie nie zostanie utworzone do czasu przesłania pliku.
+        - **Wyłączone** — klienci mogą kontynuować bez przesyłania dowodu. Zamówienie i faktura są tworzone natychmiast.
+      </Step>
+
+      <Step title="Zapisz">
+        Kliknij **Aktualizuj**, aby zapisać konfigurację. Kliknij **Anuluj**, aby odrzucić zmiany.
+      </Step>
+    </Steps>
+
+    ### Doświadczenie klienta
+
+    Gdy klient wybiera przelew bankowy podczas realizacji zamówienia, widzi Twoje niestandardowe instrukcje przelewu. Jeśli wymagany jest dowód, pojawia się monit do przesłania pliku, a zamówienie jest wstrzymane do czasu przesłania zrzutu ekranu.
+
+    Po otrzymaniu środków na swoje konto bankowe otwórz fakturę w AgencyHandy i ręcznie oznacz ją jako **Opłacona**, aby zwolnić zamówienie.
+
+    <Tip>
+      Dołącz unikalny kod referencyjny do swoich instrukcji (np. numer faktury), aby móc dopasować przychodzące przelewy do konkretnych zamówień bez pomyłek.
+    </Tip>
+  </Tab>
+
+  <Tab title="Crypto">
+    ## Płatność kryptowalutą
+
+    Metoda płatności kryptowalutą pozwala na przyjmowanie kryptowaluty od klientów za pomocą przelewu opartego na portfelu. Konfigurujesz dane portfela i instrukcje raz; klienci widzą je podczas realizacji zamówienia i na fakturze. Obecnie obsługiwaną kryptowalutą jest **USDC**.
+
+    ### Włącz płatność kryptowalutą
+
+    <Steps>
+      <Step title="Otwórz ustawienia płatności kryptowalutą">
+        Na lewym pasku bocznym przejdź do **Integracje → Płatność kryptowalutą**. Otworzy się ekran konfiguracji portfela z edytorem tekstu sformatowanego.
+      </Step>
+
+      <Step title="Wprowadź dane portfela">
+        Wypełnij następujące pola:
+
+        - **Typ kryptowaluty** — obecnie obsługiwane jest USDC.
+        - **Adres portfela** — Twój publiczny adres portfela do otrzymywania środków.
+        - **Typ sieci** — np. ERC-20, TRC-20.
+        - **Dodatkowe instrukcje** — memo, tag, minimalna kwota, dane kontaktowe do obsługi lub inne wskazówki dla klientów.
+      </Step>
+
+      <Step title="Ustaw wymóg dowodu płatności (opcjonalnie)">
+        Włącz opcję **Wymagaj dowodu płatności**:
+
+        - **Włączone** — klienci muszą przesłać plik (np. zrzut ekranu transakcji) przed utworzeniem zamówienia i faktury.
+        - **Wyłączone** — zamówienie i faktura są tworzone natychmiast po wybraniu przez klienta płatności kryptowalutą, bez wymagania dowodu.
+      </Step>
+
+      <Step title="Zapisz">
+        Kliknij **Zapisz**, aby zachować konfigurację. Możesz edytować lub rozłączyć płatność kryptowalutą w dowolnym momencie z tego samego ekranu.
+      </Step>
+    </Steps>
+
+    ### Proces realizacji zamówienia przez klienta
+
+    Gdy klient wybiera krypto podczas realizacji zamówienia:
+
+    1. Tworzone jest **Zamówienie** (status: *Oczekujące*) i **Faktura** (status: *Otwarta*).
+    2. Klientowi wyświetlany jest adres portfela i instrukcje.
+    3. Jeśli wymagany jest dowód, pojawia się przycisk przesyłania pliku. Klient musi przesłać zrzut ekranu transakcji przed kontynuowaniem zamówienia.
+    4. Po zakończeniu przelewu i zweryfikowaniu środków w łańcuchu bloków otwórz fakturę w AgencyHandy i oznacz ją jako **Opłacona**.
+    5. Gdy faktura jest oznaczona jako **Opłacona**, a zamówienie jest *Oczekujące*, status zamówienia automatycznie aktualizuje się do *W toku*.
+
+    <Note>
+      Płatność kryptowalutą pojawia się podczas realizacji zamówienia tylko wtedy, gdy jest włączona w **Ustawienia przestrzeni roboczej → Metody płatności** ORAZ w odpowiednich ustawieniach **Grupa usług → Dostępność płatności**. Wyłączenie jej w ustawieniach przestrzeni roboczej ukrywa ją wszędzie, niezależnie od ustawień na poziomie usługi.
+    </Note>
+
+    <Tip>
+      Jeśli usługa nie obsługuje USDC, opcja płatności kryptowalutą jest automatycznie ukrywana dla tej usługi. Upewnij się, że USDC jest włączone w ustawieniach usługi, jeśli chcesz, aby klienci mogli płacić kryptowalutą.
+    </Tip>
+  </Tab>
+
+  <Tab title="Wise">
+    ## Płatność Wise
+
+    Metoda płatności Wise pozwala klientom płacić za pomocą linku płatniczego Wise. Dodajesz link raz wewnątrz faktury, a jest on automatycznie dołączany do wszystkich przyszłych faktur subskrypcyjnych. Wise jest idealny dla klientów międzynarodowych preferujących przelewy między bankami z niższymi opłatami niż tradycyjne przelewy bankowe.
+
+    ### Dodaj Wise jako metodę płatności
+
+    <Steps>
+      <Step title="Otwórz moduł faktur">
+        Na lewym pasku bocznym kliknij **Faktury**, a następnie kliknij **Utwórz fakturę**.
+      </Step>
+
+      <Step title="Dodaj swój link Wise">
+        Wewnątrz okna modalnego faktury przewiń do sekcji **Metody płatności**. Kliknij **Dodaj Wise jako metodę płatności**, a następnie wklej swój link płatniczy Wise w polu wprowadzania.
+      </Step>
+
+      <Step title="Zapisz fakturę">
+        Kliknij **Zapisz** lub kontynuuj finalizowanie faktury. Twój link płatniczy Wise jest teraz osadzony i widoczny dla klienta.
+      </Step>
+    </Steps>
+
+    ### Jak to działa dla klientów
+
+    Link Wise pojawia się jako klikalny przycisk na fakturze klienta. Klient otwiera link, realizuje przelew przez swoje konto Wise i wysyła Ci potwierdzenie. Ponieważ AgencyHandy nie otrzymuje automatycznego potwierdzenia od Wise, musisz ręcznie oznaczyć fakturę jako **Opłacona** po otrzymaniu środków.
+
+    <Warning>
+      Wise **nie może** być używany do automatycznych płatności za upselle lub płatności marketplace. Do każdej faktury można dodać tylko jeden link płatniczy Wise. Sprawdź link przed wysłaniem — nieprawidłowy link oznacza, że płatność klienta trafi na złe konto.
+    </Warning>
+
+    ### Zachowanie platformy
+
+    - Po dodaniu linku Wise pojawia się on automatycznie na wszystkich przyszłych fakturach **subskrypcyjnych**, chyba że zaktualizujesz go lub usuniesz.
+    - AgencyHandy nie wykonuje żadnej automatycznej konwersji walut. Klient przelewa środki w walucie, dla której skonfigurowany jest Twój link Wise.
+    - Jesteś odpowiedzialny za śledzenie płatności i oznaczanie faktur jako Opłacone po potwierdzeniu odbioru.
+  </Tab>
+</Tabs>

@@ -1,0 +1,205 @@
+---
+title: "API AgencyHandy: Atualizar uma Encomenda Existente com PUT"
+sidebarTitle: "Atualizar Encomenda"
+description: "Utilize a API do AgencyHandy para atualizar detalhes de encomendas, alterar o estado, reatribuir gestores de projeto e anexar ficheiros a uma encomenda existente via pedido PUT."
+---
+
+O endpoint Atualizar Encomenda permite-lhe modificar uma encomenda (projeto) existente no AgencyHandy — alterar o nome, estado, orçamento, prazo, gestores atribuídos e muito mais — tudo a partir de um sistema externo ou script de automação. O endpoint também suporta anexos de ficheiros, que são acrescentados à pasta do sistema da encomenda.
+
+<Note>
+  Antes de utilizar este endpoint, complete o guia de [Primeiros Passos](/pt/api/getting-started) para obter a sua chave de API e ID de Empresa.
+</Note>
+
+<Warning>
+  Este endpoint utiliza `Authorization: Bearer <token>` (o token de acesso de um membro com sessão iniciada) em vez do cabeçalho `x-api-key` apenas. Certifique-se de que o seu cliente está autenticado como **membro aprovado** da empresa alvo. Clientes não autorizados recebem um erro `403 PermissionError`.
+</Warning>
+
+## Pré-requisitos
+
+- ✅ Um **token Bearer** válido para um membro aprovado do workspace
+- ✅ **ID de Empresa** obtido a partir de `GET {{URL}}/accounts/companies`
+- ✅ O **ID da Encomenda** (ID do Projeto, `pid`) da encomenda que pretende atualizar
+
+---
+
+## Endpoint
+
+```
+PUT {{URL}}/orders?pid=<ORDER_ID>
+```
+
+**Content-Type:** `multipart/form-data` — utilize este mesmo quando não há ficheiros a anexar, para satisfazer o parser multipart do servidor.
+
+## Cabeçalhos
+
+| Cabeçalho | Obrigatório | Descrição |
+|---|---|---|
+| `Authorization` | Sim | `Bearer <ACCESS_TOKEN>` — o token de acesso do membro com sessão iniciada. |
+| `companyid` | Sim | Mongo ObjectId da empresa à qual a encomenda pertence. |
+| `clientid` | Opcional | ID de socket do cliente em tempo real. Quando fornecido, as notificações incluem-no. |
+
+## Parâmetros de consulta
+
+<ParamField query="pid" type="string" required>
+  O ID da Encomenda / Projeto a atualizar. Passe este como parâmetro de cadeia de consulta.
+</ParamField>
+
+## Campos do corpo do pedido
+
+<ParamField body="name" type="string">
+  Atualiza o título da encomenda. Mínimo de 2 caracteres.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Novo estado para a encomenda. Deve ser um de: `Pending`, `Ongoing`, `Review`, `Completed`, `Cancelled`.
+
+  **Transições permitidas:**
+  - `Review` só pode seguir `Ongoing` ou outro `Review`. Saltar de `Pending` diretamente para `Review` devolve um erro `400 ValidationError`.
+  - Encomendas já `Completed` ou `Cancelled` não podem ser atualizadas.
+  - Os clientes não podem cancelar uma encomenda que tenha avançado além de `Pending`.
+</ParamField>
+
+<ParamField body="budget" type="number">
+  Valor total do orçamento. Deve ser `≥ 0`. Utiliza a moeda existente da encomenda, a menos que `currency` também seja fornecida.
+</ParamField>
+
+<ParamField body="currency" type="string">
+  Código de moeda para o orçamento. Exemplos: `USD`, `CAD`, `EUR`.
+</ParamField>
+
+<ParamField body="quantity" type="number">
+  Número de unidades adquiridas para o pacote. Deve ser `≥ 1`.
+</ParamField>
+
+<ParamField body="deadline" type="string">
+  Data ISO 8601 para o prazo da encomenda. Exemplo: `"2025-12-31T00:00:00.000Z"`.
+</ParamField>
+
+<ParamField body="kickoffDate" type="string">
+  Data ISO 8601 para a data de início do projeto.
+</ParamField>
+
+<ParamField body="notes" type="string">
+  Notas internas visíveis para a sua equipa.
+</ParamField>
+
+<ParamField body="brief" type="string">
+  Briefing do cliente ou resumo do projeto.
+</ParamField>
+
+<ParamField body="assignedProjectManagers" type="array">
+  Lista completa dos IDs de membros gestores de projeto a atribuir a esta encomenda. Novos IDs são adicionados à equipa; IDs removidos são eliminados. Cada ID deve pertencer a um membro com função `projectManager` na mesma empresa.
+</ParamField>
+
+<ParamField body="markTasksAsDone" type="boolean">
+  **Obrigatório** quando `status` é `Completed` ou `Cancelled`. Quando `true`, todas as tarefas da encomenda são marcadas como concluídas após a mudança de estado. Quando `false`, as tarefas permanecem no estado atual.
+</ParamField>
+
+<ParamField body="rejectRequestedTasks" type="boolean">
+  Permitido apenas quando `status` é `Completed` ou `Cancelled`. Quando `true`, todas as tarefas pendentes solicitadas por clientes são rejeitadas após a atualização do estado.
+</ParamField>
+
+<ParamField body="repeatCount" type="number">
+  Necessário apenas para encomendas de **subscrição** ao alterar a frequência de recorrência. Use em conjunto com `repeatDuration`.
+</ParamField>
+
+<ParamField body="repeatDuration" type="string">
+  Necessário juntamente com `repeatCount` para encomendas de subscrição. Um de: `day`, `week`, `month`, `year`.
+</ParamField>
+
+<ParamField body="billingCycleCount" type="number">
+  Limite opcional de ciclos de faturação recorrentes. Predefinição para `0` (sem limite).
+</ParamField>
+
+<ParamField body="billingCycleEvent" type="string">
+  Como cada ciclo de faturação é tratado. Um de: `createOrderWithTask`, `noChange`.
+</ParamField>
+
+<ParamField body="files" type="file">
+  Zero ou mais anexos de ficheiros. Os ficheiros são acrescentados à pasta do sistema da encomenda; os ficheiros existentes nunca são substituídos. Utilize codificação `multipart/form-data` e anexe cada ficheiro sob o campo `files`.
+</ParamField>
+
+---
+
+## Exemplo de pedido
+
+<CodeGroup>
+
+```bash cURL (no files)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "currency=USD" \
+  --form "quantity=1" \
+  --form "assignedProjectManagers[]=PROJECT_MANAGER_ID" \
+  --form "notes=Scope finalized with client." \
+  --form "brief=Launch-ready design refresh."
+```
+
+```bash cURL (with file)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "repeatCount=3" \
+  --form "repeatDuration=month" \
+  --form "billingCycleEvent=createOrderWithTask" \
+  --form "files=@/path/to/creative-brief.pdf"
+```
+
+</CodeGroup>
+
+**Payload JSON equivalente** (converta para entradas de formulário multipart ao enviar ficheiros):
+
+```json
+{
+  "name": "Website Redesign",
+  "status": "Review",
+  "budget": 12000,
+  "currency": "USD",
+  "quantity": 1,
+  "assignedProjectManagers": ["{{PROJECT_MANAGER_ID}}"],
+  "repeatCount": 3,
+  "repeatDuration": "month",
+  "billingCycleEvent": "createOrderWithTask",
+  "notes": "Scope finalized with client.",
+  "brief": "Launch-ready design refresh."
+}
+```
+
+---
+
+## Respostas
+
+| Estado HTTP | Descrição |
+|---|---|
+| `200 OK` | Atualização bem-sucedida. |
+| `400 ValidationError` | ID de encomenda inválido, transição de estado bloqueada ou payload malformado. A resposta inclui `fieldName` quando relevante. |
+| `403 PermissionError` | O cliente não é um membro aprovado, não tem a função na empresa, a subscrição do workspace expirou, ou um cliente tentou um cancelamento proibido. |
+| `500 Internal Server Error` | Exceção não tratada — verifique os registos do servidor. |
+
+### Resposta de sucesso
+
+```json
+{
+  "message": "Project has been updated"
+}
+```
+
+---
+
+## Regras de negócio e efeitos secundários
+
+- **As transições de estado** são restritas. `Review` só pode seguir `Ongoing` ou outro `Review`. Tentar `Pending → Review` devolve `400 ValidationError`.
+- Mover um estado de `Pending` para `Ongoing`, `Review` ou `Completed` ativa a pasta de ficheiros da encomenda, tornando os ficheiros carregados acessíveis à equipa do projeto.
+- Definir `status` como `Completed` ou `Cancelled` **requer** que `markTasksAsDone` seja explicitamente definido como `true` ou `false`.
+- Mudanças de estado para `Review`, `Completed` ou `Cancelled` acionam automaticamente notificações ao cliente:
+  - **Review** — notifica o cliente de que a revisão é necessária.
+  - **Completed** — envia a notificação `orderCompletion` ao cliente.
+  - **Cancelled** — envia a notificação `orderCancellation` ao cliente.
+- Cada atualização bem-sucedida aciona um evento de webhook `ORDER.UPDATED` com o documento da encomenda atualizado e metadados de anexos, caso tenha um webhook ativo subscrito a esse evento.

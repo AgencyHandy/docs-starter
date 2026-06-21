@@ -1,0 +1,117 @@
+---
+title: "Anpassa färgscheman för ditt AgencyHandy-workspace"
+sidebarTitle: "Utseende"
+description: "Tillämpa dina varumärkesfärger på AgencyHandy-sidofältet och gränssnittet — primärfärg, bakgrund, text och hover-tillstånd — synliga omedelbart för alla användare."
+---
+
+Utseendeinställningarna ger dig full kontroll över hur ditt AgencyHandy-workspace ser ut. Du kan anpassa plattformens färgschema till din byrås varumärkesidentitet genom att anpassa primärfärgen, sidofältets bakgrund, sidofältets textfärg och hover-marksfärgen för sidofältets navigeringsobjekt. Varje ändring du sparar träder i kraft omedelbart i hela workspace:et för alla användare — ingen sidinläsning krävs.
+
+<Note>
+  Endast **superadministratörer** och **administratörer** kan komma åt och ändra utseendeinställningar. Om du inte ser det här alternativet under **Workspace Config** ber du din superadministratör att granska din roll.
+</Note>
+
+## Åtkomst till utseendeinställningar
+
+<Steps>
+  <Step title="Öppna Workspace Config">
+    I den vänstra navigeringsmenyn klickar du på **Workspace Config**.
+  </Step>
+  <Step title="Välj Utseende">
+    Klicka på **Appearance** (ibland märkt **Visual Settings**) i undermenyn.
+  </Step>
+</Steps>
+
+---
+
+## Anpassa varje visuellt element
+
+### Primärfärg
+
+Primärfärgen tillämpas på knappar, aktiva länkar, markerade tillstånd och viktiga gränssnittselement i hela plattformen.
+
+- Välj en färg som speglar din kärnvarumärkesidentitet.
+- Det här är den mest inflytelserika färginställningen eftersom den visas överallt i gränssnittet.
+
+### Sidofältets bakgrundsfärg
+
+Sidofältets bakgrund anger grundnyansen för den vänstra navigeringspanelen.
+
+- Använd en färg som skapar en tydlig visuell separation mellan sidofältet och huvudinnehållsområdet.
+- Mörka bakgrunder med ljus text fungerar generellt bäst för läsbarhet.
+
+### Sidofältets textfärg
+
+Sidofältets textfärg styr etikettfärgen för alla navigeringsobjekt i den vänstra menyn.
+
+- Välj alltid en färg som har stark kontrast mot din sidofälts bakgrundsfärg.
+- Dålig kontrast gör länkar svårare att läsa och minskar tillgängligheten.
+
+### Sidofältets hover-bakgrundsfärg
+
+Den här färgen visas som bakgrundsmarkering när en användare för muspekaren över ett navigeringsobjekt i sidofältet.
+
+- Den signalerar interaktivitet och hjälper användare att förstå vilket objekt de är på väg att klicka på.
+- Välj en färg som är märkbart annorlunda från både standardsidofältets bakgrund och den aktiva objektfärgen.
+
+---
+
+## Tillämpa dina färgval
+
+<Steps>
+  <Step title="Öppna färgväljaren för varje fält">
+    Klicka på färgrutan bredvid något av de fyra utseendefälten — Primärfärg, Sidofältets bakgrund, Sidofältets textfärg eller Sidofältets hover-bakgrundsfärg — för att öppna färgväljaren.
+  </Step>
+  <Step title="Ange en hexkod eller välj en färg">
+    Skriv in din varumärkes exakta hexkod (t.ex. `#3B5BDB`) direkt i inmatningsfältet, eller använd den visuella väljaren för att välja en nyans.
+  </Step>
+  <Step title="Förhandsgranska ändringarna">
+    Granska hur de uppdaterade färgerna ser ut i sidofältet och i hela gränssnittet innan du sparar.
+  </Step>
+  <Step title="Klicka på Spara ändringar">
+    När du är nöjd med resultatet klickar du på **Save Changes**. Det uppdaterade utseendet tillämpas globalt och omedelbart för alla användare i workspace:et.
+  </Step>
+</Steps>
+
+<Tip>
+  Spara en förteckning över ditt varumärkes hexfärgkoder på en lättillgänglig plats (en varumärkesstilguide eller en anteckningsfil). Du vill återanvända exakt samma värden konsekvent — särskilt om du någonsin behöver återställa och konfigurera om dina utseendeinställningar.
+</Tip>
+
+---
+
+## Återställa till standardtemat
+
+Om du vill ta bort all anpassad varumärkning och återställa det ursprungliga AgencyHandy-färgschemat klickar du på knappen **Reset Default Settings** på sidan Utseende.
+
+<Warning>
+  Återställning till standardinställningar tar permanent bort alla anpassade färgändringar. Den här åtgärden kan inte ångras. Om du vill bevara dina nuvarande inställningar noterar du dina hexkoder innan du återställer.
+</Warning>
+
+---
+
+## Bästa praxis för färgkontrast
+
+God färgkontrast är inte bara en designpreferens — den påverkar direkt läsbarheten och tillgängligheten för ditt team och dina kunder.
+
+<CardGroup cols={2}>
+  <Card title="Sikta på WCAG AA-kontrastförhållanden" icon="eye">
+    För normal brödtext, använd ett kontrastförhållande på minst **4,5:1** mellan text och bakgrund. För stor text eller ikoner är ett förhållande på **3:1** acceptabelt. Använd ett verktyg som [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/) för att verifiera.
+  </Card>
+  <Card title="Undvik kombinationer med låg kontrast" icon="triangle-exclamation">
+    Para inte ihop färger som ljusgrå text på vitt eller gul text på vitt — dessa uppfyller inte tillgänglighetsstandarder och anstränger ögonen under långa sessioner.
+  </Card>
+  <Card title="Testa hover-tillstånd medvetet" icon="arrow-pointer">
+    Hover-färger bör vara märkbart annorlunda från både vilotillståndet och det aktiva tillståndet. Om de ser likadana ut förlorar användarna viktig visuell återkoppling.
+  </Card>
+  <Card title="Håll dig konsekvent med ditt varumärke" icon="paintbrush">
+    Använd samma primärfärg här som på din webbplats, i offerter och på fakturor. Konsekvens bygger igenkänning och professionalism vid alla kundkontaktpunkter.
+  </Card>
+</CardGroup>
+
+---
+
+## Viktiga noteringar
+
+- **Omedelbar global effekt:** Alla sparade utseendeändringar tillämpas omedelbart i hela workspace:et. Varje inloggad användare ser uppdateringen vid sin nästa navigeringsåtgärd.
+- **Ett aktivt tema:** Det finns inget stöd för flera teman — en uppsättning färger gäller för hela workspace:et för alla roller.
+- **Rollbegränsning:** Endast superadministratörer och administratörer kan göra utseendeändringar. Vanliga teammedlemmar och kunder kan inte ändra färger.
+- **Återställning är permanent:** Knappen **Reset Default Settings** kan inte ångras, så använd den bara när du avsiktligt vill ta bort alla anpassade färger.

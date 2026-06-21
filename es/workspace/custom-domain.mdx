@@ -1,0 +1,126 @@
+---
+title: "Conecte un dominio personalizado a su espacio de trabajo de AgencyHandy"
+sidebarTitle: "Dominio personalizado"
+description: "Vincule su propio subdominio (por ejemplo, portal.suempresa.com) a AgencyHandy agregando un registro CNAME en su registrador de DNS, sin necesidad de programar."
+---
+
+De forma predeterminada, su espacio de trabajo de AgencyHandy es accesible en un subdominio bajo `agencyhandy.com`. Conectar un dominio personalizado le permite reemplazar esa URL predeterminada por su propia dirección con marca propia —por ejemplo, `portal.suagencia.com`— ofreciendo a los clientes una experiencia fluida y profesional que refuerza su marca desde la primera página a la que llegan.
+
+<Note>
+  Solo los **Super Admins** y los **Admins** pueden configurar un dominio personalizado. Además, debe ser propietario del dominio y tener acceso a sus ajustes de DNS en su registrador para completar esta configuración.
+</Note>
+
+---
+
+## Cómo funciona
+
+Cuando agrega un dominio personalizado en AgencyHandy, la plataforma le proporciona un **registro CNAME**. Usted agrega ese registro a los ajustes de DNS de su dominio en su registrador (GoDaddy, Namecheap, Cloudflare, etc.), y AgencyHandy verifica la conexión una vez que el DNS se ha propagado.
+
+---
+
+## Configuración paso a paso
+
+<Steps>
+  <Step title="Abra los ajustes de Custom Domain">
+    Inicie sesión en su cuenta de AgencyHandy. Diríjase a **Workspace Config** en la barra lateral izquierda y luego haga clic en **Custom Domain**.
+  </Step>
+  <Step title="Agregue su dominio personalizado">
+    Haga clic en el botón **+ Add Custom Domain**. En el campo de entrada que aparece, introduzca el subdominio que desea usar, por ejemplo, `portal.suagencia.com`.
+
+    <Warning>
+      **No** use `www` como su subdominio (es decir, evite `www.suagencia.com`). El prefijo `www` puede causar conflictos de configuración e impedir una verificación exitosa. Use un subdominio diferente como `portal`, `client`, `app` o `hub`.
+    </Warning>
+  </Step>
+  <Step title="Copie los detalles del registro CNAME">
+    Después de enviar su dominio, AgencyHandy muestra el registro DNS que debe agregar:
+
+    | Campo   | Valor                                          |
+    |---------|------------------------------------------------|
+    | **Type**  | CNAME                                        |
+    | **Name**  | Su subdominio (por ejemplo, `portal`)        |
+    | **Value** | El destino proporcionado por AgencyHandy     |
+
+    Copie estos valores con cuidado: los necesitará en el siguiente paso.
+  </Step>
+  <Step title="Agregue el registro CNAME en su registrador de DNS">
+    Inicie sesión en el panel de su registrador de dominios (por ejemplo, GoDaddy, Namecheap, Cloudflare). Diríjase a la sección de gestión de DNS de su dominio y agregue el registro CNAME usando el Type, Name y Value copiados de AgencyHandy.
+
+    Consulte la guía específica para Cloudflare a continuación.
+  </Step>
+  <Step title="Guarde el dominio en AgencyHandy">
+    Vuelva a AgencyHandy y haga clic en **Save Domain**. El estado mostrará inicialmente **Disconnected**: esto es lo esperado mientras el DNS se propaga.
+  </Step>
+  <Step title="Espere la propagación del DNS y verifique">
+    Los cambios de DNS pueden tardar desde unos minutos hasta **48 horas** en propagarse globalmente, según su registrador y los ajustes de TTL. Haga clic en **Refresh** periódicamente para comprobar el estado de la conexión.
+
+    Una vez que se complete la propagación, el estado cambia a **Connected** ✅.
+  </Step>
+</Steps>
+
+<Warning>
+  La propagación del DNS puede tardar hasta **48 horas**. Si su dominio sigue mostrando **Disconnected** después de 48 horas, verifique que el registro CNAME sea correcto y que no existan registros DNS en conflicto para el mismo subdominio.
+</Warning>
+
+---
+
+## Instrucciones específicas para Cloudflare
+
+Si su dominio se gestiona a través de Cloudflare, hay un ajuste crítico que debe configurar correctamente:
+
+<Steps>
+  <Step title="Inicie sesión en Cloudflare y seleccione su dominio">
+    Abra su [panel de Cloudflare](https://dash.cloudflare.com) y haga clic en el dominio que está conectando a AgencyHandy.
+  </Step>
+  <Step title="Diríjase a los ajustes de DNS">
+    Haga clic en la pestaña **DNS** en la navegación superior del panel de ajustes del dominio.
+  </Step>
+  <Step title="Agregue el registro CNAME">
+    Haga clic en **+ Add Record** y complete los campos:
+    - **Type:** CNAME
+    - **Name:** Su subdominio (por ejemplo, `portal`)
+    - **Target/Content:** El valor proporcionado por AgencyHandy
+    - **TTL:** Establézcalo en **2 minutes** (o la opción más baja disponible) durante la configuración inicial
+  </Step>
+  <Step title="Desactive el proxy de Cloudflare (crítico)">
+    En la columna **Proxy status**, asegúrese de que el interruptor esté establecido en **DNS only** (el icono de nube debe aparecer en gris, no en naranja).
+
+    <Warning>
+      Si el proxy de Cloudflare está **habilitado** (icono de nube naranja), el registro CNAME no se resolverá correctamente y AgencyHandy no podrá verificar su dominio. Debe establecerlo en **DNS Only** para que la conexión funcione.
+    </Warning>
+  </Step>
+  <Step title="Guarde el registro">
+    Revise todos los valores para verificar su exactitud y haga clic en **Save**.
+  </Step>
+</Steps>
+
+<Tip>
+  Use [dnschecker.org](https://dnschecker.org) para supervisar la propagación de su registro CNAME en distintas regiones globales. Busque marcas de verificación verdes en todas las regiones antes de esperar que AgencyHandy confirme la conexión.
+</Tip>
+
+---
+
+## Cómo supervisar el estado de su conexión
+
+Después de guardar, vuelva a **Workspace Config → Custom Domain** en AgencyHandy para hacer seguimiento del estado:
+
+| Estado           | Significado                                                          |
+|------------------|----------------------------------------------------------------------|
+| **Disconnected** | El registro DNS aún no se ha propagado o contiene un error           |
+| **Connected**    | El dominio está verificado y activo: los clientes pueden acceder a su espacio de trabajo a través de la URL personalizada |
+
+---
+
+## Cómo actualizar o eliminar un dominio personalizado
+
+- **Para actualizar su dominio:** elimine la entrada existente y agregue el nuevo dominio usando los mismos pasos de configuración anteriores.
+- **Para eliminar su dominio:** haga clic en el botón **Delete** junto a su dominio en el panel de Custom Domain y confirme la eliminación. Su espacio de trabajo volverá a la URL predeterminada de AgencyHandy. Puede volver a agregar cualquier dominio en cualquier momento.
+
+---
+
+## Notas importantes
+
+- **Use un subdominio, no un dominio raíz:** los dominios personalizados de AgencyHandy requieren un subdominio (por ejemplo, `portal.suagencia.com`), no un dominio raíz/apex (por ejemplo, `suagencia.com`).
+- **Evite `www`:** el subdominio `www` puede causar problemas durante la verificación. Use en su lugar un nombre de subdominio personalizado.
+- **Se requieren registros exactos:** introduzca el Type, Name y Value del CNAME exactamente como se muestran en AgencyHandy. Cualquier error tipográfico o carácter faltante impide la conexión.
+- **El proxy de Cloudflare debe estar desactivado:** establezca siempre los registros de Cloudflare en **DNS Only** para la verificación de dominios personalizados de AgencyHandy.
+- **Acceso solo para administradores:** solo los Super Admins y los Admins pueden agregar, modificar o eliminar los ajustes de dominio personalizado.

@@ -1,0 +1,201 @@
+---
+title: "AgencyHandy API: Програмчлалаар Шинэ Лид Үүсгэх"
+sidebarTitle: "Лид Үүсгэх"
+description: "AgencyHandy API ашиглан bulk-lead эцсийн цэгт шаардлагатай талбаруудтай POST хүсэлт илгээж програмчлалаар шинэ лид үүсгэнэ үү."
+---
+
+Лид Үүсгэх эцсийн цэг нь гадаад систем — вэб маягт, CRM, маркетингийн автоматчиллын платформ эсвэл захиалгат скрипт — ямар ч гаднаас AgencyHandy воркспейст програмчлалаар шинэ лид нэмэх боломж олгодог. Энэ эцсийн цэгээр үүсгэсэн лидүүд нь гараар нэмсэнтэй адилаар шууд лидийн дамжлагад гарч ирнэ.
+
+<Note>
+  Энэ эцсийн цэгийг ашиглахаасаа өмнө API түлхүүр болон Компанийн ID авахын тулд [Эхлэх нь](/mn/api/getting-started) гарын авлагыг дуусгана уу. Мөн лид үүсгэхэд шаардлагатай **Клиентийн Эрхийн ID**-г авах хэрэгтэй.
+</Note>
+
+## Урьдчилсан шаардлагууд
+
+- ✅ **Workspace Config → API Key** -аас үүсгэсэн API түлхүүр
+- ✅ `GET {{URL}}/accounts/companies` -аас авсан Компанийн ID
+- ✅ Авсан Клиентийн Эрхийн ID (доорх 1-р алхамыг үзнэ үү)
+
+---
+
+## 1-р алхам: Клиентийн Эрхийн ID авах
+
+Лид үүсгэхийн өмнө компани дахь `client` эрхийн Role ID авах шаардлагатай.
+
+### Эцсийн цэг
+
+```
+GET {{URL}}/roles?type=company
+```
+
+### Толгойнууд
+
+| Толгой | Утга |
+|---|---|
+| `x-api-key` | Таны API түлхүүр |
+| `companyid` | Таны Компанийн ID |
+
+### Жишээ хүсэлт
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/roles?type=company" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>"
+```
+
+### Жишээ хариулт
+
+```json
+{
+  "roles": [
+    {
+      "_id": "6525994184e9ddd798534535",
+      "role": {
+        "_id": "6525994184e9ddd79853451e",
+        "responsibility": "",
+        "name": "client"
+      },
+      "company": "6525994184e9ddd79853450e",
+      "createdAt": "2023-10-10T18:34:41.567Z",
+      "updatedAt": "2024-10-01T07:28:48.340Z",
+      "__v": 0,
+      "type": "company"
+    }
+  ]
+}
+```
+
+`roles[0].role.name === "client"` болох бичлэгийг олж **гадна** талын `_id` — өөрөөр хэлбэл `roles[0]._id`-г гаргаж ав. `roles[0].role._id` биш.
+
+```javascript
+const clientRoleId = roles.find(r => r.role.name === "client")._id;
+// e.g. "6525994184e9ddd798534535"
+```
+
+<Warning>
+  `roles[0]._id` (компани-эрхийн зурагдалтын ID) ашиглана уу, `roles[0].role._id` (эрхийн тодорхойлолтын ID) биш. Буруу ID ашиглах нь лид үүсгэх хүсэлтийг амжилтгүй болгодог.
+</Warning>
+
+---
+
+## 2-р алхам: Шинэ лид үүсгэх
+
+### Эцсийн цэг
+
+```
+POST {{URL}}/members/bulk-lead
+```
+
+### Толгойнууд
+
+| Толгой | Утга |
+|---|---|
+| `x-api-key` | Таны API түлхүүр |
+| `companyid` | Таны Компанийн ID |
+| `Content-Type` | `application/json` |
+
+### Хүсэлтийн биет
+
+Хүсэлтийн биет нь **JSON массив** — нэг дуудлагаар нэг буюу хэд хэдэн лид үүсгэж болно.
+
+<ParamField body="firstName" type="string" required>
+  Лидийн нэр.
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  Лидийн овог.
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  Лидийн имэйл хаяг. Воркспейс дотор өвөрмөц байх ёстой.
+</ParamField>
+
+<ParamField body="role" type="string" required>
+  1-р алхамд авсан Клиентийн Эрхийн ID (өөрөөр хэлбэл `roles[0]._id`).
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  Лид үүсгэхдээ `false` болгон тохируулах ёстой. Лидийг бүтэн клиент болгон хөрвүүлэхдээ л `true` болгоно.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Лидийн дамжлагын статус. Нийтлэг утгууд: `New`, `Contacted`, `Qualified`. Орхисон тохиолдолд `New` болж өгнө.
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  Лидийн утасны дугаар.
+</ParamField>
+
+<ParamField body="source" type="string">
+  Энэ лидийг хэрхэн олсон. Жишээ утгууд: `website`, `referral`, `social`.
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  Дамжлагын самбарын баганы доторх лидийн байршил (дараалал). `1` болж өгнө.
+</ParamField>
+
+### Жишээ хүсэлт
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-lead" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "role": "6525994184e9ddd798534535",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+### Амжилттай хариулт
+
+```json
+{
+  "message": "Lead created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  Баталгаажуулах мөр: `"Lead created successfully"`.
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  Үүсгэгдсэн лидийн объектуудын массив.
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  Шинээр үүсгэгдсэн лидийн өвөрмөц ID. Дараагийн API дуудлагуудад лидийг лавлах шаардлагатай бол энийг хадгална уу.
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  Лидийн бүтэн нэр (нэр + овог).
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  Хадгалагдсан лидийн дамжлагын статус.
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  Гишүүнд оноогдсон эрхийн нэр — `"client"` байна.
+</ResponseField>
+
+<Tip>
+  Нэг API дуудлагаар хэд хэдэн лид үүсгэхийн тулд массивт олон лидийн объект дамжуулж болно. Объект бүр өөрийн өвөрмөц имэйл хаягтай бүх шаардлагатай талбаруудыг агуулах ёстой.
+</Tip>

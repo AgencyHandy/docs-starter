@@ -1,0 +1,196 @@
+---
+title: "Webhook Yönetimi: Oluşturma, Test Etme ve Kimlik Doğrulama"
+sidebarTitle: "Webhooks"
+description: "Siparişler, görevler, faturalar veya diğer varlıklar değiştiğinde gerçek zamanlı etkinlik verilerini harici sistemlere iletmek için AgencyHandy'de webhook'lar kurun."
+---
+
+Webhook'lar, AgencyHandy'nin bir şey değişir değişmez verilerinizi harici sistemlere iletmesini sağlar — herhangi bir yoklama gerekmez. Yapılandırılmış bir olay tetiklendiğinde (örneğin bir sipariş güncellenir veya bir destek talebi oluşturulur), AgencyHandy belirttiğiniz uç nokta URL'sine JSON içerikli bir HTTP POST isteği gönderir. Bu, CRM'ler, faturalama sistemleri veya özel panolar gibi harici araçların AgencyHandy çalışma alanınızla gerçek zamanlı olarak senkronize tutulmasını kolaylaştırır.
+
+<Note>
+  Business Pro plan çalışma alanları, faturalama dönemi başına **30.000 webhook olayını** destekler. Yüksek hacimli otomasyonlar kurmadan önce plan sınırlarınızı kontrol edin.
+</Note>
+
+## Desteklenen olaylar
+
+Bir webhook'u aşağıdaki olayların herhangi bir kombinasyonuna abone edebilirsiniz:
+
+| Kategori | Olaylar |
+|---|---|
+| **Hizmet** | Oluşturuldu, Güncellendi, Silindi |
+| **Sipariş** | Oluşturuldu, Güncellendi, Silindi |
+| **Görev** | Oluşturuldu, Atandı, Tamamlandı, Güncellendi |
+| **Fatura** | Durum değişti |
+| **Müşteri / Kullanıcı** | Yeni müşteri eklendi, Müşteri/kullanıcı silindi |
+| **Teklif** | Gönderildi, Alındı, Kabul Edildi, Reddedildi |
+| **Destek Talebi** | Oluşturuldu, Atandı, Durum değişti |
+| **Ödeme** | Alındı, Başarısız oldu |
+| **Hizmet Paketi** | Oluşturuldu, Güncellendi, Silindi |
+
+## Webhook oluşturun
+
+<Steps>
+  <Step title="Webhook Yönetimi'ne gidin">
+    Sol kenar çubuğunda **Entegrasyonlar → Webhook Yönetimi** bölümüne gidin.
+  </Step>
+
+  <Step title="Token'ınızı doğrulayın">
+    Webhook token'ınızı doğrulamak için **Yönetim** düğmesine tıklayın. Bu token, giden içerikleri imzalamak için kullanılır; böylece bunların AgencyHandy'den geldiğini doğrulayabilirsiniz.
+  </Step>
+
+  <Step title="Yeni bir webhook oluşturun">
+    Webhook yapılandırma formunu açmak için **Yeni Webhook Oluştur**'a tıklayın.
+  </Step>
+
+  <Step title="Uç nokta URL'sini girin">
+    **Uç Nokta URL'si** alanına, webhook verilerini alması gereken harici sistemin URL'sini girin. Bu, herkese açık erişilebilir bir **POST** uç noktası olmalıdır.
+  </Step>
+
+  <Step title="İçerik türünü seçin">
+    İçerik türü olarak **JSON**'ı seçin. AgencyHandy tüm webhook içeriklerini `application/json` olarak gönderir.
+  </Step>
+
+  <Step title="Webhook olaylarını seçin">
+    Bu webhook'u tetiklemesi gereken her olayı seçin. Birden fazla kategoriden olay seçebilirsiniz — örneğin **Sipariş: Oluşturuldu** ve **Fatura: Durum değişti** aynı uç noktaya yönlendirilebilir.
+  </Step>
+
+  <Step title="Webhook'u etkinleştirin">
+    **Aktif** radyo düğmesini etkinleştirin. Etkin olduğunda AgencyHandy, seçilen tüm olaylar için içerikleri gerçek zamanlı olarak uç noktanıza iletir.
+  </Step>
+
+  <Step title="Yapılandırmayı kaydedin">
+    Ayarlarınızı gözden geçirin, ardından **Kaydet**'e tıklayın. Webhook listede görünür ve hemen olayları iletmeye başlar.
+  </Step>
+</Steps>
+
+## Webhook'u test edin
+
+Bir webhook oluşturduktan sonra, uç noktanızın erişilebilir olduğunu ve verileri doğru şekilde işlediğini doğrulamak için bir test içeriği gönderin.
+
+<Steps>
+  <Step title="Webhook'u açın">
+    Webhook Yönetimi listesinden test etmek istediğiniz webhook'a tıklayın.
+  </Step>
+
+  <Step title="Test Olayı'na tıklayın">
+    Webhook ayrıntı sayfasında **Test Olayı** düğmesine tıklayın.
+  </Step>
+
+  <Step title="Bir test olayı seçin">
+    Bu webhook'ta yapılandırılmış olaylar listesinden örnek bir olay seçin (ör. **Sipariş: Oluşturuldu**).
+  </Step>
+
+  <Step title="Test içeriğini gönderin">
+    **Gönder**'e tıklayın. AgencyHandy, uç nokta URL'nize örnek bir içerik gönderir.
+  </Step>
+
+  <Step title="Sonucu doğrulayın">
+    Test içeriğinin ulaştığını ve beklendiği gibi işlendiğini onaylamak için harici sisteminizi kontrol edin. AgencyHandy'de webhook'a tıklayarak **geçmişini** inceleyin — tam isteği, uç noktanızın döndürdüğü yanıtı görebilir ve gerekirse geçmişteki herhangi bir olayı yeniden iletebilirsiniz.
+  </Step>
+</Steps>
+
+<Tip>
+  Gerçek sisteminizi kurmadan önce tam içerik yapısını incelemek için geçici bir uç nokta olarak [Webhook.site](https://webhook.site) veya [RequestBin](https://requestbin.com) gibi bir araç kullanın.
+</Tip>
+
+## Webhook içeriklerini doğrulayın
+
+AgencyHandy'den gelen her webhook isteği, uç noktanızın içeriğin gerçek olduğunu ve üzerinde oynama yapılmadığını doğrulamak için kullanabileceği bir imza başlığı içerir.
+
+### İmza başlığı
+
+```
+x-ah-sig: <signature>
+```
+
+AgencyHandy bu başlığı her webhook isteğine ekler. Gelen isteklerden değeri çıkarın ve doğrulama uç noktasına iletin.
+
+### Webhook imzasını doğrulayın
+
+Bir içeriğin gerçek olduğunu doğrulamak için aşağıdaki isteği gönderin:
+
+```
+POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature
+Content-Type: application/json
+```
+
+<ParamField body="webhookId" type="string" required>
+  Olayı alan webhook'un kimliği. Bunu AgencyHandy'deki webhook ayrıntı sayfasında bulabilirsiniz.
+</ParamField>
+
+<ParamField body="signature" type="string" required>
+  Gelen webhook isteğindeki `x-ah-sig` başlığının değeri.
+</ParamField>
+
+<ParamField body="secret" type="string" required>
+  AgencyHandy'deki webhook ayrıntı sayfasında gösterilen webhook gizli anahtarı.
+</ParamField>
+
+<ParamField body="payload" type="object" required>
+  AgencyHandy'nin webhook isteğinden alınan ham JSON gövdesi.
+</ParamField>
+
+<CodeGroup>
+
+```javascript JavaScript
+const url = 'https://api.agencyhandy.com/api/v1/webhooks/verify-signature';
+
+const postData = {
+  webhookId: 'your_webhook_id',
+  signature: 'your_signature',   // value of x-ah-sig header
+  secret: 'your_webhook_secret',
+  payload: {},                   // the parsed JSON body from AgencyHandy
+};
+
+const response = await fetch(url, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(postData),
+});
+
+const data = await response.json();
+console.log(data); // { "verification_status": "SUCCESS" }
+```
+
+```bash cURL
+curl -X POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature \
+  -H "Content-Type: application/json" \
+  -d '{
+    "webhookId": "your_webhook_id",
+    "signature": "your_signature",
+    "secret": "your_webhook_secret",
+    "payload": {}
+  }'
+```
+
+</CodeGroup>
+
+**Yanıtlar**
+
+<ResponseField name="verification_status" type="string">
+  İmza geçerliyse `SUCCESS`. Doğrulama başarısız olursa `FAILED` (HTTP 403).
+</ResponseField>
+
+```json Success (200)
+{
+  "verification_status": "SUCCESS"
+}
+```
+
+```json Failure (403)
+{
+  "type": "PermissionError",
+  "status": 403,
+  "verification_status": "FAILED"
+}
+```
+
+<Warning>
+  Webhook gizli anahtarınızı gizli tutun. Periyodik olarak yenileyin ve yenilemeden hemen sonra doğrulama mantığınızı güncelleyin. İstemci tarafı kodda veya herkese açık depolarda asla açığa çıkarmayın.
+</Warning>
+
+## Önemli notlar
+
+- Uç nokta URL'niz herkese açık erişilebilir bir **HTTPS POST** URL'si olmalıdır.
+- Uç noktanız geçici olarak kullanılamıyorsa AgencyHandy'deki webhook geçmişi panelini kontrol edin — geçmişteki herhangi bir olayı doğrudan oradan **yeniden iletebilirsiniz**.
+- Başarısız iletileri veya yetkisiz erişim girişimlerini tespit etmek için webhook etkinliğini düzenli olarak izleyin.
+- Defalarca başarısız olan webhook'lar AgencyHandy tarafından duraklatılabilir — sorunları erken yakalamak için iletim günlüklerini inceleyin.

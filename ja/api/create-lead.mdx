@@ -1,0 +1,201 @@
+---
+title: "AgencyHandy API：新しいリードをプログラムで作成する"
+sidebarTitle: "リードを作成する"
+description: "AgencyHandy APIを使用して、一括リードエンドポイントに必須フィールドを含むPOSTリクエストを送信し、プログラムで新しいリードを作成します。"
+---
+
+リード作成エンドポイントを使用すると、外部のシステム（Webフォーム、CRM、マーケティングオートメーションプラットフォーム、またはカスタムスクリプト）からAgencyHandyワークスペースに新しいリードをプログラムで追加できます。このエンドポイントで作成されたリードは、手動で追加した場合と同様に、すぐにリードパイプラインに表示されます。
+
+<Note>
+  このエンドポイントを使用する前に、[入門ガイド](/ja/api/getting-started)を完了してAPIキーと会社IDを取得してください。また、リード作成時に必要な**クライアントロールID**の取得も必要です。
+</Note>
+
+## 前提条件
+
+- ✅ **ワークスペース設定 → APIキー**から生成されたAPIキー
+- ✅ `GET {{URL}}/accounts/companies`から取得した会社ID
+- ✅ クライアントロールIDの取得（以下のステップ1を参照）
+
+---
+
+## ステップ1：クライアントロールIDを取得する
+
+リードを作成する前に、会社内の`client`ロールのロールIDが必要です。
+
+### エンドポイント
+
+```
+GET {{URL}}/roles?type=company
+```
+
+### ヘッダー
+
+| ヘッダー | 値 |
+|---|---|
+| `x-api-key` | あなたのAPIキー |
+| `companyid` | あなたの会社ID |
+
+### リクエスト例
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/roles?type=company" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>"
+```
+
+### レスポンス例
+
+```json
+{
+  "roles": [
+    {
+      "_id": "6525994184e9ddd798534535",
+      "role": {
+        "_id": "6525994184e9ddd79853451e",
+        "responsibility": "",
+        "name": "client"
+      },
+      "company": "6525994184e9ddd79853450e",
+      "createdAt": "2023-10-10T18:34:41.567Z",
+      "updatedAt": "2024-10-01T07:28:48.340Z",
+      "__v": 0,
+      "type": "company"
+    }
+  ]
+}
+```
+
+`roles[0].role.name === "client"`のエントリを見つけ、**外側**の`_id` — つまり`roles[0]._id`を抽出します。`roles[0].role._id`**ではありません**。
+
+```javascript
+const clientRoleId = roles.find(r => r.role.name === "client")._id;
+// e.g. "6525994184e9ddd798534535"
+```
+
+<Warning>
+  `roles[0].role._id`（ロール定義ID）**ではなく**、`roles[0]._id`（会社-ロールマッピングID）を使用してください。間違ったIDを使用するとリード作成リクエストが失敗します。
+</Warning>
+
+---
+
+## ステップ2：新しいリードを作成する
+
+### エンドポイント
+
+```
+POST {{URL}}/members/bulk-lead
+```
+
+### ヘッダー
+
+| ヘッダー | 値 |
+|---|---|
+| `x-api-key` | あなたのAPIキー |
+| `companyid` | あなたの会社ID |
+| `Content-Type` | `application/json` |
+
+### リクエストボディ
+
+リクエストボディは**JSON配列**です — 1回の呼び出しで1つ以上のリードを作成できます。
+
+<ParamField body="firstName" type="string" required>
+  リードの名前。
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  リードの姓。
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  リードのメールアドレス。ワークスペース内で一意である必要があります。
+</ParamField>
+
+<ParamField body="role" type="string" required>
+  ステップ1で取得したクライアントロールID（つまり`roles[0]._id`）。
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  リードを作成する際は`false`に設定する必要があります。リードを正式なクライアントに変換する場合のみ`true`に設定します。
+</ParamField>
+
+<ParamField body="status" type="string">
+  リードのパイプラインステータス。一般的な値：`New`、`Contacted`、`Qualified`。省略した場合は`New`がデフォルト値となります。
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  リードの電話番号。
+</ParamField>
+
+<ParamField body="source" type="string">
+  このリードの獲得方法。値の例：`website`、`referral`、`social`。
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  パイプラインボードの列内でのリードの位置（順序）。デフォルトは`1`。
+</ParamField>
+
+### リクエスト例
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-lead" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "role": "6525994184e9ddd798534535",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+### 成功レスポンス
+
+```json
+{
+  "message": "Lead created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  確認文字列：`"Lead created successfully"`。
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  作成されたリードオブジェクトの配列。
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  新しく作成されたリードの一意ID。後続のAPI呼び出しでリードを参照する必要がある場合は保存してください。
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  リードのフルネーム（firstName + lastName）。
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  保存されたリードのパイプラインステータス。
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  メンバーに割り当てられたロール名 — `"client"`になります。
+</ResponseField>
+
+<Tip>
+  配列に複数のリードオブジェクトを渡すことで、1回のAPI呼び出しで複数のリードを作成できます。各オブジェクトには必須フィールドと固有のメールアドレスが必要です。
+</Tip>

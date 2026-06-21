@@ -1,0 +1,77 @@
+---
+title: "Yhdistä Stripe vastaanottaaksesi verkkomaksuja AgencyHandyssä"
+sidebarTitle: "Stripe"
+description: "Linkitä Stripe-tilisi AgencyHandyyn lähettääksesi laskuja ja kerätäksesi turvallisia verkkomaksuja asiakkailta poistumatta alustalta."
+---
+
+AgencyHandyn Stripe-integraatio antaa sinulle mahdollisuuden vastaanottaa kortinmaksuja suoraan asiakkailtasi alustalla lähettämiesi laskujen kautta. Yhdistämisen jälkeen asiakkaasi näkevät tutun Stripe-isännöidyn kassan ja maksutila synkronoituu takaisin AgencyHandyyn automaattisesti — manuaalista täsmäytystä ei tarvita.
+
+<Note>
+  Vain **pääkäyttäjä**- ja **ylläpitäjä**-roolit voivat yhdistää tai hallita Stripe-integraatiota. Sinulla on myös oltava vahvistettu Stripe-tili asianmukaisine oikeuksineen ennen aloittamista.
+</Note>
+
+## Stripen yhdistäminen
+
+<Steps>
+  <Step title="Avaa Stripe-integraation asetukset">
+    Siirry vasemmassa sivupalkissa kohtaan **Integraatiot → Stripe-integraatio**.
+  </Step>
+
+  <Step title="Valtuuta Stripessä">
+    Napsauta **Yhdistä Stripe**. Sinut ohjataan Stripen valtuutusnäyttöön. Kirjaudu Stripe-tilillesi ja napsauta **Salli** myöntääksesi AgencyHandylle pääsyn. Kun hyväksyntä on annettu, Stripe ohjaa sinut automaattisesti takaisin AgencyHandyyn.
+  </Step>
+
+  <Step title="Määritä maksutavoitteet">
+    Uudelleenohjauksen jälkeen määritä seuraavat vaihtoehdot:
+
+    - **Valuutta** — valitse työtilasi oletusvaluutta laskutusta varten.
+    - **Maksutavat** — ota käyttöön tai poista käytöstä korttioperaattorit (Visa, Mastercard, jne.) Stripe-tilisi tukemina.
+    - **Laskutusasetukset** — aseta valinnainen veroprosentti, laskun etuliite tai oletusset maksuehdot ja eräpäivät.
+  </Step>
+
+  <Step title="Tallenna ja vahvista">
+    Napsauta **Tallenna**. Vahvistusilmoitus tulee näkyviin, kun integraatio on aktiivinen. Stripe on nyt linkitetty työtilasi ja asiakkaasi voivat maksaa laskuja verkossa.
+  </Step>
+</Steps>
+
+## Integraation testaaminen
+
+Ennen live-laskujen lähettämistä suorita nopea end-to-end-testi varmistaaksesi, että yhteys toimii oikein.
+
+<Steps>
+  <Step title="Luo testilasku">
+    Luo luonnoslaskun AgencyHandyssä ja määritä sille pieni summa.
+  </Step>
+  <Step title="Lähetä itsellesi">
+    Lähetä lasku omaan sähköpostiosoitteeseesi tai tiimin jäsenelle, joka voi auttaa testissä.
+  </Step>
+  <Step title="Suorita testimaksu">
+    Avaa laskun linkki ja suorita maksu Stripen testikortilla (esim. `4242 4242 4242 4242`), jos Stripe-tilisi on testimoodissa, tai oikealla kortilla live-moodissa.
+  </Step>
+  <Step title="Tarkista tilan päivitys">
+    Palaa AgencyHandyyn ja vahvista, että laskun tila muuttui **Maksettu**-tilaan. Jos näin on, integraatiosi toimii oikein.
+  </Step>
+</Steps>
+
+## Stripe-yhteyden hallinta
+
+Palaa kohtaan **Integraatiot → Stripe-integraatio** milloin tahansa:
+
+- **Päivittämään maksuasetukset** — muuta valuuttaa, maksutapoja tai laskutusasetuksia.
+- **Tarkastelemaan yhteystilaa** — tarkista, onko Stripe tällä hetkellä aktiivinen.
+- **Katkaisemaan yhteyden** — napsauta **Katkaise yhteys** poistaaksesi Stripe-tilisi linkityksen. Maksujen kerääminen pysähtyy välittömästi, kunnes yhdistät uudelleen.
+- **Yhdistämään uudelleen** — napsauta **Yhdistä Stripe** uudelleen ja valtuuta integraatio uudelleen.
+
+<Warning>
+  Stripen yhteyden katkaiseminen keskeyttää maksujen keräämisen kaikista avoimista laskuista. Asiakkaat eivät pysty maksamaan verkossa ennen kuin yhdistät uudelleen ja valtuutat yhteyden uudelleen.
+</Warning>
+
+## Lisähuomioita
+
+<Note>
+  AgencyHandy ei koskaan tallenna maksutietojasi. Kaikki maksutiedot käsitellään yksinomaan Stripen turvallisessa infrastruktuurissa.
+</Note>
+
+- **Yksi tili per työtila** — voit yhdistää vain yhden Stripe-tilin jokaiseen AgencyHandy-työtilaan. Tilin vaihtamiseksi katkaise ensin nykyisen tilin yhteys ja yhdistä sitten uusi tili.
+- **Live-laskujen tila** — kaikkien Stripeen linkitettyjen laskujen tila päivittyy reaaliajassa suoraan Stripeltä saatujen tietojen perusteella.
+- **Valuutta** — varmista, että AgencyHandyssä määritetty valuutta vastaa Stripe-tililläsi käytössä olevaa valuuttaa maksuvirheitä välttääksesi.

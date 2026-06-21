@@ -1,0 +1,126 @@
+---
+title: "Alle oppgaver — Sentralisert oppgaveadministrasjon i AgencyHandy"
+sidebarTitle: "Alle oppgaver"
+description: "Bruk Alle oppgaver-siden for en sanntids, rollefiltrert visning av alle oppgaver på tvers av pågående og til-gjennomgang-bestillinger — med søk, filtre og sortering."
+---
+
+Alle oppgaver-siden i AgencyHandy gir deg en enkelt, sentralisert visning av alle oppgaver som tilhører aktive arbeidsflyter på tvers av byrået ditt. I stedet for å lete gjennom individuelle bestillinger, kan du se alle relevante oppgaver på ett sted, filtrere dem ned etter ansvarlig, prioritet eller dato, og gjøre redigeringer direkte fra listen. Synlighet er automatisk begrenset til rollen din — Super Admins ser alt, Ledere ser tildelte bestillinger og Ansatte ser kun sine egne oppgaver.
+
+## Tilgang til Alle oppgaver-siden
+
+1. Logg inn på AgencyHandy-kontoen din.
+2. Klikk på **Oppgaver** i venstre sidefelt.
+3. Velg **Alle oppgaver** for å åpne det sentraliserte oppgave-dashboardet.
+
+<Note>
+  Alle oppgaver-siden viser kun oppgaver fra bestillinger med statusen **Pågående** eller **Til gjennomgang**. Oppgaver knyttet til bestillinger i en annen tilstand (f.eks. Fullført, Venter) vises ikke her.
+</Note>
+
+## Oppgavesynlighet etter rolle
+
+Det du ser på Alle oppgaver-siden avhenger helt av rollen din.
+
+| Rolle | Hva de ser |
+|------|---------------|
+| **Super Admin / Admin** | Alle oppgaver på tvers av alle bestillinger, team og statuser |
+| **Prosjektleder (PM)** | Kun oppgaver fra bestillinger der de er tildelt som Leder |
+| **Ansatt / Tildelt** | Kun oppgaver som er direkte tildelt dem — selv om kolleger jobber med samme bestilling |
+
+<Tip>
+  Hvis en PM ikke finner en oppgave de forventer å se, bekreft at de er tildelt som Leder på den relevante bestillingen. PM-er ser ikke oppgaver med mindre de er den tildelte Lederen for den bestillingen.
+</Tip>
+
+## Når oppgaver vises på denne siden
+
+Oppgaver vises på Alle oppgaver-siden når disse betingelsene er oppfylt:
+
+<CardGroup cols={2}>
+  <Card title="Bestillinger som utløser oppgavesynlighet" icon="circle-check">
+    - Manuelle bestillinger (engangs- eller abonnement) opprettes
+    - Katalogbestillinger via Stripe eller manuelle betalingsmetoder legges inn
+    - Et forslag aksepteres av byrået
+  </Card>
+  <Card title="Bestillinger som holder oppgaver skjult" icon="eye-slash">
+    - Klientforespurte oppgaver byrået ikke har akseptert ennå
+    - Prøvebestillinger byrået ikke har akseptert ennå
+    - Bestillinger med ventende status som avventer manuell bankbetalingsbekreftelse
+  </Card>
+</CardGroup>
+
+## Søke, filtrere og sortere
+
+Alle oppgaver-siden inkluderer et fullt sett med kontroller for å hjelpe deg med å finne nøyaktig det du trenger.
+
+### Søk
+
+Bruk søkefeltet for å finne oppgaver etter navn, ansvarlig eller relatert bestilling. Resultatene oppdateres i sanntid mens du skriver.
+
+### Filtre
+
+Klikk på **Filter → + Legg til filter** for å åpne filterpanelet. Du kan kombinere flere filtre for presise resultater:
+
+| Filter | Hva det gjør |
+|--------|--------------|
+| **Bestillings-ID** | Vis oppgaver knyttet til et spesifikt bestillingsnummer |
+| **Ansvarlig** | Vis oppgaver tildelt et bestemt teammedlem |
+| **Status** | Filtrer etter oppgavefremgang: Venter, Pågående, Til gjennomgang, Ferdig, osv. |
+| **Prioritet** | Fokuser på Høy, Middels eller Lav prioritet-oppgaver |
+| **Etikett** | Avgrens etter oppgaveetiketter eller kategorier |
+| **Oppstartsdato** | Vis oppgaver som starter på eller etter en bestemt dato |
+| **Sluttdato** | Vis oppgaver som forfaller innen en bestemt dato |
+
+<Note>
+  Filtre er kun tilgjengelige på Alle oppgaver-siden. De bevares under nettleserøkten, men nullstilles ved sideoppdatering. Filtre påvirker kun visningen din og endrer ikke hva andre brukere ser.
+</Note>
+
+For å fjerne alle filtre, klikk på **Fjern filtre** for å gå tilbake til den fullstendige, ufiltrerte listen.
+
+### Sortering
+
+Sorter oppgavelisten etter:
+- **Forfallsdato** — fremhev oppgaver som nærmer seg eller allerede er forfalt
+- **Prioritet** — bring de mest kritiske oppgavene til toppen
+- **Opprettelsestidspunkt** — se nylig lagt til oppgaver først
+
+### Brødsmule-navigasjon
+
+Bruk brødsmulesporet øverst på siden for å beholde konteksten når du navigerer mellom underoppgaver, oppgavelister og overordnede bestillinger. Dette er spesielt nyttig når du går inn i en spesifikk oppgave og deretter trenger å gå tilbake til den bredere listen.
+
+## Redigere oppgaver
+
+Du kan endre oppgaver på Alle oppgaver-siden på to måter:
+
+<Tabs>
+  <Tab title="Inline-redigering">
+    Klikk direkte inn i et redigerbart felt innenfor oppgaveraden — som status, ansvarlig eller forfallsdato — og gjør endringen uten å forlate listevisningen. Dette er det raskeste alternativet for raske oppdateringer.
+  </Tab>
+  <Tab title="Modal-redigering">
+    Klikk på oppgavenavnet for å åpne den fullstendige oppgavedetalj-modalen. Herfra kan du oppdatere alle oppgaveegenskaper, legge til merknader, se underoppgaver og se den fullstendige oppgavehistorikken. Bruk dette for mer grundige redigeringer eller når du trenger kontekst.
+  </Tab>
+</Tabs>
+
+## Regler for sletting av oppgaver
+
+Oppgaver på Alle oppgaver-siden er direkte knyttet til de overordnede bestillingene.
+
+- Når en **bestilling slettes**, fjernes alle oppgaver knyttet til den bestillingen **automatisk og permanent** fra Alle oppgaver-siden.
+- Denne slettingen påvirker alle brukerroller — ingen vil kunne se disse oppgavene etter at bestillingen er slettet.
+- **Det finnes ingen gjenopprettingsalternativ** for oppgaver slettet gjennom bestillingssletting.
+
+<Warning>
+  Sletting av en bestilling fjerner permanent alle dens oppgaver. Sørg for at viktig oppgavehistorikk eller leveransepost er lagret et annet sted før du sletter en bestilling.
+</Warning>
+
+## Tilleggsmerknader
+
+<Accordion title="Sanntidsoppdateringer">
+  Endringer i bestillinger, oppgavetildelinger eller oppgavestatuser gjenspeiles i sanntid på Alle oppgaver-siden. Hvis en kollega oppdaterer en oppgave mens du har siden åpen, vil du se endringen uten å trenge å oppdatere siden.
+</Accordion>
+
+<Accordion title="Klientforespurte oppgaver">
+  Oppgaver sendt inn av klienter vises ikke på Alle oppgaver-siden før byrået eksplisitt aksepterer dem. Inntil de er akseptert, forblir disse oppgavene i ventende tilstand og er ikke synlige i den sentraliserte visningen.
+</Accordion>
+
+<Accordion title="Oppgaver og bestillingsstatus">
+  Oppgaver vises kun for bestillinger med statusen Pågående eller Til gjennomgang. Hvis en bestilling flyttes til Fullført eller settes på pause, vises ikke dens oppgaver her lenger. Naviger til den spesifikke bestillingen for å se oppgaver knyttet til bestillinger utenfor disse statusene.
+</Accordion>

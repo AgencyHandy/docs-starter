@@ -1,0 +1,149 @@
+---
+title: "Bankas pārskaitījuma, kriptovalūtas un Wise maksājumu metožu iestatīšana"
+sidebarTitle: "Citi maksājumi"
+description: "Iespējojiet manuālās maksājumu alternatīvas — bankas pārskaitījumu, kriptovalūtu un Wise — lai klienti, kas izvēlas bezkaršu metodes, varētu apmaksāt jūsu rēķinus."
+---
+
+AgencyHandy papildus Stripe un PayPal atbalsta trīs manuālās maksājumu metodes: **Bankas pārskaitījums**, **Kriptovalūta** un **Wise**. Katra ir paredzēta noteiktam klientu tipam vai darbplūsmai. Visas trīs prasa, lai jūs manuāli atzīmētu rēķinu kā **Paid** pēc līdzekļu saņemšanas, jo AgencyHandy nevar automātiski apstiprināt ārplatformas pārskaitījumus.
+
+<Note>
+  Tikai **SuperAdmin** un **Admin** lomas var iespējot vai konfigurēt šīs maksājumu metodes.
+</Note>
+
+<Tabs>
+  <Tab title="Bank Transfer">
+    ## Bankas pārskaitījums
+
+    Bankas pārskaitījuma metode ļauj pieņemt manuālus bankas vai ACH maksājumus no klientiem. Jūs norādāt savus bankas datus, izmantojot bagātīgā teksta redaktoru, un AgencyHandy parāda šīs instrukcijas klientiem norēķinu procesā un rēķinā.
+
+    ### Iespējot bankas pārskaitījumu
+
+    <Steps>
+      <Step title="Atveriet bankas maksājuma iestatījumus">
+        Kreisajā sānjoslā dodieties uz **Integrations → Bank Payment Method**.
+      </Step>
+
+      <Step title="Aizpildiet pārskaitījuma instrukcijas">
+        Izmantojiet bagātīgā teksta redaktoru, lai ievadītu savus bankas datus. Iekļaujiet visus laukus, kas klientiem nepieciešami, lai pabeigtu pārskaitījumu:
+
+        - **Saņēmēja vārds**
+        - **Konta numurs**
+        - **Bankas nosaukums**
+        - **Maršrutēšanas numurs**
+        - **Konta veids** (piemēram, Norēķinu, Uzkrājumu)
+        - **Bankas adrese**
+
+        Varat arī pievienot piezīmes vai atbalsta kontaktinformāciju. Rakstzīmju ierobežojuma nav, un redaktors atbalsta treknrakstu, pasvītrojumu, sarakstus, saites un attēlu formatējumu.
+      </Step>
+
+      <Step title="Iestatiet maksājuma apliecinājuma prasību (neobligāti)">
+        Aktivizējiet **Payment Screenshot is Required**, ja vēlaties, lai klienti augšupielādētu ekrānuzņēmumu pirms pasūtījuma apstrādes.
+
+        - **Iespējots** — klientiem pirms norēķina jāaugšupielādē derīgs ekrānuzņēmums. Pasūtījums netiek izveidots, kamēr fails nav augšupielādēts.
+        - **Atspējots** — klienti var turpināt bez apliecinājuma augšupielādes. Pasūtījums un rēķins tiek izveidoti nekavējoties.
+      </Step>
+
+      <Step title="Saglabāt">
+        Noklikšķiniet uz **Update**, lai saglabātu iestatījumu. Noklikšķiniet uz **Cancel**, lai atceltu izmaiņas.
+      </Step>
+    </Steps>
+
+    ### Klienta pieredze
+
+    Kad klients norēķinā izvēlas bankas pārskaitījumu, viņš redz jūsu pielāgotās pārskaitījuma instrukcijas. Ja apliecinājums ir obligāts, parādās faila augšupielādes uzvedne un pasūtījums tiek aizturēts, līdz klients augšupielādē ekrānuzņēmumu.
+
+    Pēc līdzekļu saņemšanas savā bankas kontā, atveriet rēķinu AgencyHandy un manuāli atzīmējiet to kā **Paid**, lai atbrīvotu pasūtījumu.
+
+    <Tip>
+      Instrukcijās iekļaujiet unikālu atsauces kodu (piemēram, rēķina numuru), lai bez apjukuma varētu saskaņot ienākošos pārskaitījumus ar konkrētiem pasūtījumiem.
+    </Tip>
+  </Tab>
+
+  <Tab title="Crypto">
+    ## Kriptovalūtas maksājums
+
+    Kriptovalūtas maksājuma metode ļauj pieņemt kriptovalūtu no klientiem, izmantojot maka pārskaitījumu. Jūs vienreiz konfigurējat sava maka datus un instrukcijas; klienti tos redz norēķinā un rēķinā. Pašlaik atbalstītā kriptovalūta ir **USDC**.
+
+    ### Iespējot kriptovalūtas maksājumu
+
+    <Steps>
+      <Step title="Atveriet kriptovalūtas maksājuma iestatījumus">
+        Kreisajā sānjoslā dodieties uz **Integrations → Crypto Payment**. Atveras maka iestatīšanas ekrāns ar bagātīgā teksta redaktoru.
+      </Step>
+
+      <Step title="Ievadiet sava maka datus">
+        Aizpildiet šādus laukus:
+
+        - **Kriptovalūtas veids** — pašlaik tiek atbalstīts USDC.
+        - **Maka adrese** — jūsu publiskā maka adrese līdzekļu saņemšanai.
+        - **Tīkla veids** — piemēram, ERC-20, TRC-20.
+        - **Papildu instrukcijas** — piezīme, atzīme, minimālā summa, atbalsta kontakts vai citi norādījumi klientiem.
+      </Step>
+
+      <Step title="Iestatiet maksājuma apliecinājuma prasību (neobligāti)">
+        Aktivizējiet **Require Proof of Payment**:
+
+        - **Iespējots** — klientiem pirms pasūtījuma un rēķina izveidošanas jāaugšupielādē fails (piemēram, darījuma ekrānuzņēmums).
+        - **Atspējots** — pasūtījums un rēķins tiek izveidoti uzreiz, tiklīdz klients izvēlas kriptovalūtas maksājumu, bez apliecinājuma prasības.
+      </Step>
+
+      <Step title="Saglabāt">
+        Noklikšķiniet uz **Save**, lai saglabātu iestatījumu. Kriptovalūtas maksājumu jebkurā laikā varat rediģēt vai atslēgt no tā paša ekrāna.
+      </Step>
+    </Steps>
+
+    ### Klienta norēķina plūsma
+
+    Kad klients norēķinā izvēlas kriptovalūtu:
+
+    1. Tiek izveidots **Pasūtījums** (statuss: *Pending*) un **Rēķins** (statuss: *Open*).
+    2. Klientam tiek parādīta jūsu maka adrese un instrukcijas.
+    3. Ja apliecinājums ir obligāts, parādās faila augšupielādes poga. Klientam pirms pasūtījuma turpināšanas jāaugšupielādē darījuma ekrānuzņēmums.
+    4. Pēc pārskaitījuma pabeigšanas un līdzekļu pārbaudes ķēdē atveriet rēķinu AgencyHandy un atzīmējiet to kā **Paid**.
+    5. Kad rēķins ir atzīmēts kā **Paid** un pasūtījums ir *Pending*, pasūtījuma statuss automātiski atjauninās uz *Ongoing*.
+
+    <Note>
+      Kriptovalūtas maksājums norēķinā parādās tikai tad, ja tas ir iespējots **Workspace Settings → Payment Methods** UN attiecīgā **Service Group → Payment Availability** iestatījumos. Tā atspējošana darbvietas iestatījumos to paslēpj visur, neatkarīgi no pakalpojuma līmeņa iestatījumiem.
+    </Note>
+
+    <Tip>
+      Ja pakalpojums neatbalsta USDC, kriptovalūtas maksājuma opcija tiek automātiski paslēpta attiecīgajam pakalpojumam. Pārliecinieties, ka USDC ir iespējots jūsu pakalpojuma iestatījumos, ja vēlaties, lai klienti maksātu ar kriptovalūtu.
+    </Tip>
+  </Tab>
+
+  <Tab title="Wise">
+    ## Wise maksājums
+
+    Wise maksājuma metode ļauj klientiem maksāt, izmantojot Wise maksājuma saiti. Jūs rēķinā vienreiz pievienojat saiti, un tā automātiski tiek iekļauta visos turpmākajos abonēšanas rēķinos. Wise ir ideāls starptautiskiem klientiem, kas dod priekšroku bankas pārskaitījumiem ar zemākām komisijām nekā tradicionālie bankas pārskaitījumi.
+
+    ### Pievienot Wise kā maksājuma metodi
+
+    <Steps>
+      <Step title="Atveriet rēķinu moduli">
+        Kreisajā sānjoslā noklikšķiniet uz **Invoices**, pēc tam noklikšķiniet uz **Create Invoice**.
+      </Step>
+
+      <Step title="Pievienojiet savu Wise saiti">
+        Rēķina modālajā logā ritiniet uz leju līdz sadaļai **Payment Methods**. Noklikšķiniet uz **Add Wise as a payment method**, pēc tam ielīmējiet savu Wise maksājuma saiti ievades laukā.
+      </Step>
+
+      <Step title="Saglabājiet rēķinu">
+        Noklikšķiniet uz **Save** vai turpiniet rēķina pabeigšanu. Jūsu Wise maksājuma saite tagad ir iegulta un redzama klientam.
+      </Step>
+    </Steps>
+
+    ### Kā tas darbojas klientiem
+
+    Wise saite klienta rēķinā parādās kā noklikšķināma poga. Klients atver saiti, pabeidz pārskaitījumu caur savu Wise kontu un nosūta jums apstiprinājumu. Tā kā AgencyHandy nesaņem automātisku apstiprinājumu no Wise, jums ir manuāli jāatzīmē rēķins kā **Paid** pēc līdzekļu saņemšanas.
+
+    <Warning>
+      Wise **nevar** izmantot automatizētiem papildpārdošanas vai tirgus maksājumiem. Vienam rēķinam var pievienot tikai vienu Wise maksājuma saiti. Pirms nosūtīšanas pārbaudiet saiti — nepareiza saite nozīmē, ka klienta maksājums nonāks nepareizā kontā.
+    </Warning>
+
+    ### Platformas uzvedība
+
+    - Kad Wise saite ir pievienota, tā automātiski parādās visos turpmākajos **abonēšanas** rēķinos, ja vien to neatjaunojat vai nenoņemat.
+    - AgencyHandy neveic nekādu automātisku valūtas konvertāciju. Klients pārskaita jebkurā valūtā, kurai ir konfigurēta jūsu Wise saite.
+    - Jūs esat atbildīgs par maksājumu izsekošanu un rēķinu atzīmēšanu kā Paid pēc saņemšanas apstiprināšanas.
+  </Tab>
+</Tabs>

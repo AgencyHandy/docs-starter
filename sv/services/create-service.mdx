@@ -1,0 +1,260 @@
+---
+title: "Hur du skapar en tjänst med paket, uppgifter och vanliga frågor"
+sidebarTitle: "Skapa tjänst"
+description: "Steg-för-steg-guide för att bygga en AgencyHandy-tjänst: välj faktureringstyp, konfigurera paket, ange standarduppgifter, lägg till vanliga frågor och publicera."
+---
+
+Att skapa en tjänst i AgencyHandy är det första steget mot att sälja din byrås erbjudanden via plattformen. En enda tjänst kan innehålla upp till fem prispaket, automatiserade standarduppgifter som aktiveras när en beställning läggs, vanliga frågor för att minska frågor inför köp, en portföljbilaga för sociala bevis och ett valfritt intakeformulär — allt konfigurerat på ett ställe innan du publicerar.
+
+<Note>
+  Du behöver rollen **superadministratör** eller **administratör** för att skapa tjänster. Övriga roller kräver uttryckliga tjänstebehörigheter för att komma åt det här avsnittet.
+</Note>
+
+<Steps>
+  <Step title="Välj tjänstetyp">
+    Öppna **Services** från vänster sidopanel och klicka på **+ Service** för att starta en ny annons.
+
+    Längst upp på sidan väljer du din faktureringsmodell:
+
+    - **One-Time Service** — klienten betalar en enda avgift och tar emot leveransen en gång. Bäst för projekt med tydlig omfattning: webbplatsbyggen, logotyppaket, granskningar osv.
+    - **Subscription Service** — fakturering upprepas automatiskt enligt det schema du definierar. Bäst för retainers, löpande innehåll, hanterade tjänster eller underhållsplaner.
+
+    <Warning>
+      Tjänstetypen är låst efter att du har sparat. Om du behöver en annan faktureringsmodell skapar du en ny tjänst.
+    </Warning>
+  </Step>
+
+  <Step title="Lägg till tjänsteuppgifter">
+    Expandera avsnittet **Service Details** och fyll i följande fält:
+
+    **Service Name** *(obligatoriskt)*
+    Det här är hur tjänsten visas för klienter överallt i plattformen — i katalogen, på fakturor och inne i beställningsarbetsytan. Gör det tydligt och beskrivande.
+
+    **Media Upload**
+    Ladda upp en eller flera förhandsgranskningsbilder för att representera tjänsten visuellt. Högkvalitativa bilder ökar klienternas förtroende och konverteringsfrekvenser.
+
+    **Service Description**
+    Skriv en grundlig förklaring av vad tjänsten inkluderar, vem den är för och vad klienter kan förvänta sig. Använd det här utrymmet för att differentiera ditt erbjudande.
+
+    **Tax Settings**
+    Välj om skatt är **inklusiv** (redan inbyggd i priset) eller **exklusiv** (läggs till ovanpå vid betalning).
+
+    **Currency**
+    Ange valutan för alla paket i den här tjänsten. Alla paket inom en enda tjänst delar samma valuta.
+
+    <Tip>
+      Ladda upp förhandsgranskningsbilder i 16:9-format för bästa presentation i klientportalen.
+    </Tip>
+  </Step>
+
+  <Step title="Skapa paket">
+    Expandera **Package Details** och klicka på **+ New Package** för att lägga till din första prisnivå. Du kan skapa upp till **5 paket** per tjänst.
+
+    För varje paket konfigurerar du följande:
+
+    **Package Name** *(obligatoriskt)*
+    Namnet som klienter ser, till exempel *Grundläggande*, *Standard* eller *Premium*.
+
+    **Package Icon** *(valfritt)*
+    Välj en inbyggd ikon eller ladda upp en anpassad. Uppladdade ikoner måste vara **32 × 32 pixlar**.
+
+    **Package Media** *(valfritt)*
+    Ladda upp en omslagsbild specifik för det här paketet. Godkända format: PNG, JPG, JPEG. Maximal filstorlek: **5 MB**. Max 1 fil per paket. Rekommenderat format: **16:9**.
+
+    **Package Brief** *(valfritt)*
+    En enrads sammanfattning av det här paketets leveranser. Maximalt **140 tecken**.
+
+    **What's Included** *(obligatoriskt)*
+    Lista de specifika leveranser som ingår i det här paketet. Du kan lägga till upp till **15 radposter** per paket. Varje punkt bör beskriva en konkret leverans (t.ex. *"5 blogginlägg per månad, upp till 1 000 ord vardera"*).
+
+    <Tip>
+      Efter att du har skapat flera paket, dra dem för att ändra ordning på hur de visas för klienter. Markera ett som **Most Popular** för att dra uppmärksamhet till din rekommenderade nivå.
+    </Tip>
+  </Step>
+
+  <Step title="Ange prissättning och leveransregler">
+    Inuti varje paket anger du de grundläggande prisfälten och eventuella valfria kontroller:
+
+    **Amount** *(obligatoriskt)*
+    Det pris en klient betalar för det här paketet.
+
+    **Delivery Time** *(obligatoriskt)*
+    Det uppskattade antalet dagar för att leverera tjänsten efter köpet.
+
+    **Valfria priskontroller:**
+
+    <Accordion title="Lägg till rabatt">
+      Tillämpa en procent- eller fastbeloppsreduktion på det här paketets pris. Det rabatterade priset visas för klienter tillsammans med det ursprungliga priset, vilket skapar en effektiv reklameffekt.
+    </Accordion>
+
+    <Accordion title="Lägg till provperiod (endast prenumeration)">
+      Erbjud en gratis eller reducerad provperiod innan den reguljära prenumerationsfaktureringen börjar. Det här alternativet är bara tillgängligt för prenumerationstyper av tjänster.
+    </Accordion>
+
+    <Accordion title="Lägg till kvantitetsgräns">
+      Begränsa antalet enheter en klient kan köpa i en enda betalningssession. Använd detta för paket med begränsad tillgänglighet eller tjänster med kapacitetsbegränsningar.
+    </Accordion>
+
+    <Accordion title="Lägg till fler prisuppgifter">
+      Bryt ned den totala kostnaden i enskilda radposter — visa till exempel *grundpris + installationsavgift + pris per enhet*. Varje nedbrytningsetikett stöder maximalt **20 tecken**.
+    </Accordion>
+
+    <Note>
+      Alla obligatoriska fält (Amount och Delivery Time) måste fyllas i för varje paket innan du kan publicera tjänsten.
+    </Note>
+  </Step>
+
+  <Step title="Lägg till standarduppgifter för automatisering">
+    Varje paket inkluderar ett avsnitt för **Default Tasks**. Uppgifter som definieras här genereras automatiskt inuti beställningsarbetsytan i det ögonblick en klient köper det här paketet — ingen manuell konfiguration behövs efter varje försäljning.
+
+    Klicka på **+ Add More** för att öppna uppgiftsskapandemodalen. För varje uppgift kan du konfigurera:
+
+    | Fält | Uppgifter |
+    |---|---|
+    | **Task Name** | Obligatoriskt; maximalt **160 tecken** |
+    | **Description** | Detaljerade instruktioner för den tilldelade |
+    | **Assignee** | Teammedlem ansvarig för att slutföra den här uppgiften |
+    | **Attachment** | Ladda upp referensfiler; godkända format: csv, odt, doc, docx, htm, html, pdf, ppt, pptx, txt, xls, xlsx, jpg, jpeg, png, gif, webp, svg, ai, mp4, mp3, wav, zip, rar; maximal filstorlek **1 GB** per fil |
+    | **Label** | Tagga uppgiften för filtrering och rapportering |
+    | **Status** | Inledande status när uppgiften skapas |
+    | **Client Review** | Aktivera om den här uppgiften kräver klientgodkännande innan den anses slutförd |
+
+    Lägg till så många uppgifter som behövs för att täcka leveransprocessen för det här paketet fullt ut. Konsekventa standarduppgifter säkerställer att varje beställning följer samma kvalitetskontrollerade arbetsflöde.
+
+    <Tip>
+      Mappa dina standarduppgifter till din interna SOP. Till exempel kan ett paket för *Hantering av sociala medier* automatiskt generera uppgifter som *Utkast till innehållskalender*, *Klientgodkännande*, *Schemalägg inlägg* och *Månadsrapport*.
+    </Tip>
+  </Step>
+
+  <Step title="Lägg till vanliga frågor och portfölj">
+    Expandera avsnittet **Additional Information** för att lägga till två valfria men effektfulla element:
+
+    **Portfolio Attachment**
+    Länka en portföljkategori till den här tjänsten så att klienter kan bläddra i relevanta exempel på ditt tidigare arbete direkt på tjänsteannonsen. Du kan ansluta en befintlig portföljkategori eller skapa en ny från den här skärmen.
+
+    **Frequently Asked Questions (FAQs)**
+    Klicka på **+ Add** för att infoga ett fråga-och-svar-par. Lägg till så många vanliga frågor som är relevanta — vanliga ämnen inkluderar:
+
+    - Originalitet och rättigheter för innehåll
+    - Revisions- och återkopplingsprocess
+    - Omfattningsgränser och vad som *inte* ingår
+    - Tidslinjer och kommunikationsfrekvens
+    - Betalnings- och återbetalningspolicyer
+
+    Välskrivna vanliga frågor minskar fram-och-tillbaka-kommunikation före köp och hjälper klienter att självklassificera sig.
+  </Step>
+
+  <Step title="Bifoga ett intakeformulär">
+    Ett intakeformulär samlar in den information du behöver från en klient innan arbetet börjar — till exempel varumärkesriktlinjer, inloggningsuppgifter, målgrupp eller projektmål.
+
+    - Klicka på **+ Create New Intake Form** för att bygga ett formulär från grunden, eller välj ett befintligt formulär från rullgardinsmenyn.
+    - Om den här tjänsten inte kräver ett intakeformulär klickar du på **Skip** för att hoppa över det här avsnittet.
+    - Klicka på **Update** för att spara ditt val av intakeformulär och fortsätta.
+
+    <Note>
+      Intakeformuläret är valfritt men rekommenderas starkt för tjänster som kräver klientspecifika indata innan leveransen kan påbörjas.
+    </Note>
+  </Step>
+
+  <Step title="Publicera tjänsten">
+    Längst ned i tjänsteredigeraren:
+
+    1. Växla **Publish this Service** till PÅ-läge.
+    2. Klicka på **Save** (eller **Update Service** om du redigerar en befintlig tjänst).
+
+    När den publicerats blir tjänsten omedelbart synlig för klienter i portalen. Om du lämnar växlaren avstängd sparas tjänsten som ett utkast och är bara synlig för ditt team.
+
+    <Tip>
+      Använd utkastläget för att förbereda en tjänst i förväg och publicera den vid lansering — användbart för säsongsbetonade kampanjer eller tillkännagivanden av nya erbjudanden.
+    </Tip>
+  </Step>
+</Steps>
+
+## Tilläggsinställningar
+
+Tillägg är valfria extrafunktioner som klienter kan välja vid betalning — till exempel *Expresslevering*, *Extra revisioner* eller en *Månadsrapport*. De låter dig merförsälja kompletterande tjänster utan att skapa helt nya annonser.
+
+### Skapa ett tillägg
+
+<Steps>
+  <Step title="Öppna Tillägg">
+    Gå till **Services** i sidopanelen, klicka på **nedåtpilen** bredvid rubriken Services och välj **Add-Ons**.
+  </Step>
+  <Step title="Skapa ett nytt tillägg">
+    Klicka på **+ Add New Add-on** och fyll i:
+
+    - **Add-on Name**
+    - **Description** — använd RTF-redigeraren för att tydligt förklara vad tillägget inkluderar
+    - **Pricing Type** — välj *One-Time* eller *Subscription*
+    - **Prisuppgifter:**
+      - *Engång:* ange belopp och valuta
+      - *Prenumeration:* ange faktureringsintervall (t.ex. var 1:e månad), en valfri gräns för faktureringscykler, prenumerationsavgift och valuta
+  </Step>
+  <Step title="Publicera och spara">
+    Växla **Publish** till PÅ och klicka sedan på **Create**. Endast publicerade tillägg är synliga när de kopplas till beställningsformulär.
+  </Step>
+</Steps>
+
+### Bifoga ett tillägg till ett beställningsformulär
+
+<Steps>
+  <Step title="Öppna beställningsformuläret">
+    Navigera till **Forms** och öppna relevant beställningsformulär.
+  </Step>
+  <Step title="Välj tjänsten">
+    Välj den tjänst du vill koppla tillägget till.
+  </Step>
+  <Step title="Lägg till tillägg">
+    Välj avsnittet **Add-ons** från den vänstra panelen och välj sedan de tillägg du vill associera med den här tjänsten.
+  </Step>
+  <Step title="Spara formuläret">
+    Klicka på **Save**. Klienter ser nu de valda tilläggen som valfria extrafunktioner vid betalning.
+  </Step>
+</Steps>
+
+<Note>
+  Tillägg måste använda samma valuta som den tjänst de är kopplade till. Om valutorna inte matchar visas inte tillägget i urvalslistan.
+</Note>
+
+### Faktureringsbeteende för prenumerationstillägg
+
+När faktureringscyklerna för en tjänst och ett prenumerationstillägg skiljer sig åt hanterar AgencyHandy överlappningen automatiskt:
+
+<Accordion title="Tillägget har fler cykler än tjänsten">
+  Både tjänsten och tillägget faktureras tillsammans under tjänstens löptid. Efter att tjänsten har avslutats fortsätter tillägget att faktureras ensamt för sina återstående cykler.
+
+  **Exempel:** Tjänsten körs i 4 cykler, tillägget körs i 5 cykler → faktureras tillsammans i 4 cykler, tillägget faktureras ensamt i ytterligare 1 cykel.
+</Accordion>
+
+<Accordion title="Tillägget har färre cykler än tjänsten">
+  Både tjänsten och tillägget faktureras tillsammans under tilläggtes löptid. Efter att tillägget har avslutats fortsätter tjänsten att faktureras ensamt för sina återstående cykler.
+
+  **Exempel:** Tjänsten körs i 5 cykler, tillägget körs i 3 cykler → faktureras tillsammans i 3 cykler, tjänsten faktureras ensamt i ytterligare 2 cykler.
+</Accordion>
+
+## Redigera en tjänst
+
+Efter att en tjänst har publicerats kan du uppdatera valfritt fält utan att avbryta befintliga beställningar.
+
+1. Gå till **Services** och hitta den tjänst du vill uppdatera.
+2. Klicka på **trepunktsmenyn** (⋮) på höger sida av tjänstraden.
+3. Välj **Edit**. Tjänsteredigeraren öppnas med alla befintliga inställningar ifyllda.
+4. Gör dina ändringar — uppdatera titel, beskrivning, prissättning, media, paket, uppgifter eller vanliga frågor.
+5. Klicka på **Update Service** för att spara.
+
+<Warning>
+  Ändringar av paketprissättning eller leveranstid träder i kraft för **nya beställningar**. Befintliga beställningar påverkas inte retroaktivt.
+</Warning>
+
+## Fältreferens
+
+| Fält | Gräns |
+|---|---|
+| Paket per tjänst | Upp till 5 |
+| Leveranser per paket (What's Included) | Upp till 15 |
+| Package Brief | 140 tecken |
+| Paketikonsstorlek | 32 × 32 px |
+| Paketets mediafilstorlek | 5 MB (PNG, JPG, JPEG) |
+| Uppgiftsnamn | 160 tecken |
+| Uppgiftsbilagans filstorlek | 1 GB per fil |
+| Prisuppdelningsetikett | 20 tecken |

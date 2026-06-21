@@ -1,0 +1,91 @@
+---
+title: "Panoramica Ordini: Gestione del Lavoro Cliente in AgencyHandy"
+sidebarTitle: "Panoramica"
+description: "Comprendi come funzionano gli ordini in AgencyHandy — stati, ruoli, dettagli degli ordini, ordini manuali e componenti aggiuntivi per servizi non pubblicati."
+---
+
+Gli ordini sono la spina dorsale operativa di AgencyHandy. Un ordine rappresenta la richiesta di un cliente per un servizio o prodotto, e funge da workspace centrale dove il tuo team monitora i progressi, gestisce i task, scambia feedback e consegna i risultati. Che un cliente effettui un ordine tramite il tuo catalogo di servizi pubblicati o che il tuo team ne crei uno manualmente, ogni ordine segue lo stesso ciclo di vita strutturato che mantiene la tua agenzia organizzata e i tuoi clienti informati.
+
+## Cosa Contiene un Ordine
+
+Ogni ordine mostra informazioni chiave a colpo d'occhio e offre ai membri del team un unico posto per coordinare il lavoro:
+
+| Campo | Descrizione |
+|---|---|
+| **ID Ordine** | Identificatore univoco generato automaticamente per ogni ordine |
+| **Cliente** | Il cliente a cui appartiene l'ordine |
+| **Servizio** | Il servizio che viene consegnato |
+| **Project Manager (PM)** | Il membro del team responsabile della consegna (opzionale) |
+| **Budget** | Prezzo concordato per l'ordine |
+| **Data di Inizio** | Quando inizia il lavoro |
+| **Data di Scadenza** | Termine per il completamento dell'ordine |
+| **Briefing dell'Ordine** | Istruzioni del cliente, note e file di riferimento allegati |
+| **Task** | Unità di lavoro discrete assegnate ai membri del team |
+| **Discussioni** | Conversazioni organizzate tra il personale dell'agenzia e i clienti |
+
+## Stati degli Ordini
+
+Ogni ordine percorre un insieme fisso di stati. Non puoi aggiungere o rinominare questi stati.
+
+<Note>
+Solo i Super Amministratori, gli Amministratori e i Project Manager possono modificare lo stato di un ordine.
+</Note>
+
+| Stato | Significato |
+|---|---|
+| **In Attesa** | L'ordine è stato creato e sta aspettando l'inizio del lavoro |
+| **In Corso** | Il lavoro attivo è in corso |
+| **In Revisione** | I deliverable sono stati inviati e sono in attesa di revisione da parte del cliente o interna |
+| **Completato** | L'ordine è stato consegnato completamente e accettato |
+| **Annullato** | L'ordine è stato annullato e non è più attivo |
+
+## Accesso Basato su Ruolo
+
+I diversi ruoli in AgencyHandy hanno capacità diverse all'interno degli ordini:
+
+| Ruolo | Può Creare Ordini | Può Modificare Ordini | Può Eliminare Ordini | Può Cambiare Stato | Può Aggiungere Task | Può Aggiungere Membri del Team |
+|---|---|---|---|---|---|---|
+| **Super Amministratore** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Amministratore** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Project Manager (PM)** | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ |
+| **Dipendente** | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| **Cliente** | ❌ | ❌ | ❌ | ❌ | ✅ (solo richiesta) | ❌ |
+
+<Tip>
+I clienti possono inviare feedback e partecipare alle discussioni sugli ordini. I dipendenti assegnati a un ordine possono visualizzare e lavorare sui task ma non possono gestire l'ordine stesso.
+</Tip>
+
+## Cosa Puoi Fare con gli Ordini
+
+AgencyHandy ti offre un toolkit completo per gestire gli ordini durante tutto il loro ciclo di vita:
+
+- **Crea ordini** per i clienti — sia da servizi pubblicati che manualmente per servizi ancora in sviluppo
+- **Accetta e rifiuta** gli ordini inviati dai clienti, con l'opzione di fornire un motivo al momento del rifiuto
+- **Visualizza i dettagli dell'ordine** inclusi avanzamento, membri del team assegnati, date di inizio e scadenza, budget e briefing
+- **Ordina, filtra e cerca** tra tutti gli ordini per ID, stato, nome del cliente o altri criteri
+- **Aggiungi task** direttamente all'interno di un ordine per monitorare e assegnare unità di lavoro discrete
+- **Avvia discussioni** per comunicare con clienti e membri del team nel contesto
+
+## Ordini Manuali per Servizi Non Pubblicati
+
+Non sei limitato a creare ordini solo per i servizi che hai pubblicato pubblicamente. I Super Amministratori e gli Amministratori possono creare ordini manuali per servizi non pubblicati — utile quando un servizio è ancora in sviluppo, temporaneamente non disponibile o viene offerto a un cliente specifico prima del suo lancio ufficiale.
+
+Quando apri il modulo di creazione ordine, il menu a tendina **Servizio** mostra sia i servizi pubblicati che quelli non pubblicati, in modo da poter selezionare quello appropriato. Tutti gli altri campi e workflow degli ordini si comportano allo stesso modo di un ordine standard.
+
+## Componenti Aggiuntivi negli Ordini Manuali
+
+Quando si costruisce un ordine manuale, puoi includere **servizi componenti aggiuntivi** per consentire ai clienti di ricevere pacchetti personalizzati al di là del servizio principale. I componenti aggiuntivi devono essere creati in anticipo e collegati al servizio pertinente nella sezione **Moduli** prima che appaiano come opzione nel modulo d'ordine.
+
+<Note>
+La selezione dei componenti aggiuntivi appare nel modulo d'ordine manuale solo se almeno un componente aggiuntivo è stato connesso al servizio selezionato. Se non lo vedi, verifica che il tuo componente aggiuntivo sia correttamente collegato nella configurazione del servizio.
+</Note>
+
+Una volta selezionato un servizio con componenti aggiuntivi collegati, puoi includere quei componenti aggiuntivi prima di finalizzare e inviare l'ordine.
+
+## Notifiche
+
+AgencyHandy notifica automaticamente le persone giuste man mano che gli ordini avanzano:
+
+- Quando un ordine viene creato da un PM, un Amministratore o un Super Amministratore, tutti i Super Amministratori della tua azienda ottengono l'accesso e il cliente riceve una notifica di creazione.
+- Quando un membro del team viene aggiunto a un ordine, quel membro riceve una notifica.
+- Quando vengono creati task all'interno di un ordine, il cliente riceve una notifica.

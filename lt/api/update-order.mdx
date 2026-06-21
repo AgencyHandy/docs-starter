@@ -1,0 +1,205 @@
+---
+title: "AgencyHandy API: esamo užsakymo atnaujinimas naudojant PUT"
+sidebarTitle: "Atnaujinti užsakymą"
+description: "Naudokite AgencyHandy API, kad per PUT užklausą atnaujintumėte užsakymo duomenis, pakeistumėte būseną, iš naujo priskirtumėte projektų vadovus ir pridėtumėte failus prie esamo užsakymo."
+---
+
+Užsakymo atnaujinimo (Update Order) galinis taškas leidžia modifikuoti esamą AgencyHandy užsakymą (projektą) — keisti jo pavadinimą, būseną, biudžetą, terminus, priskirtus vadovus ir kt. — iš išorinės sistemos ar automatizavimo scenarijaus. Galinis taškas taip pat palaiko failų priedus, kurie pridedami prie užsakymo sistemos aplanko.
+
+<Note>
+  Prieš naudodami šį galutinį tašką, užbaikite vadovą [Darbo pradžia](/lt/api/getting-started), kad gautumėte savo API raktą ir įmonės ID.
+</Note>
+
+<Warning>
+  Šiame galutiniame taške naudojamas `Authorization: Bearer <token>` (prisijungusio nario prieigos raktas), o ne vien `x-api-key` antraštė. Įsitikinkite, kad skambinantysis autentifikuotas kaip **patvirtintas narys** tikslinėje įmonėje. Neįgalioti skambinantieji gaus `403 PermissionError`.
+</Warning>
+
+## Išankstiniai reikalavimai
+
+- ✅ Galiojantis **Bearer raktas** patvirtintam darbo srities nariui
+- ✅ **Įmonės ID** gautas iš `GET {{URL}}/accounts/companies`
+- ✅ **Užsakymo ID** (projekto ID, `pid`) užsakymo, kurį norite atnaujinti
+
+---
+
+## Galinis taškas
+
+```
+PUT {{URL}}/orders?pid=<ORDER_ID>
+```
+
+**Content-Type:** `multipart/form-data` — naudokite tai net tada, kai failai nepridedami, kad patenkintumėte serverio multipart analizatorių.
+
+## Antraštės
+
+| Antraštė | Privaloma | Aprašas |
+|---|---|---|
+| `Authorization` | Taip | `Bearer <ACCESS_TOKEN>` — prisijungusio nario prieigos raktas. |
+| `companyid` | Taip | Mongo ObjectId įmonės, kuriai priklauso užsakymas. |
+| `clientid` | Neprivaloma | Realaus laiko kliento lizdo ID. Kai pateikiamas, pranešimai jį apima. |
+
+## Užklausos parametrai
+
+<ParamField query="pid" type="string" required>
+  Atnaujintino užsakymo / projekto ID. Perduokite kaip užklausos eilutės parametrą.
+</ParamField>
+
+## Užklausos turinio laukai
+
+<ParamField body="name" type="string">
+  Atnaujina užsakymo pavadinimą. Mažiausiai 2 simboliai.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Nauja užsakymo būsena. Turi būti viena iš: `Pending`, `Ongoing`, `Review`, `Completed`, `Cancelled`.
+
+  **Leidžiami perėjimai:**
+  - `Review` gali sekti tik po `Ongoing` arba kito `Review`. Peršokus iš `Pending` tiesiai į `Review` bus grąžinta `400 ValidationError`.
+  - Jau `Completed` arba `Cancelled` užsakymų atnaujinti negalima.
+  - Klientai negali atšaukti užsakymo, kuris pajudėjo toliau nei `Pending`.
+</ParamField>
+
+<ParamField body="budget" type="number">
+  Bendras biudžeto skaičius. Turi būti `≥ 0`. Naudoja esamo užsakymo valiutą, nebent taip pat pateikiamas `currency`.
+</ParamField>
+
+<ParamField body="currency" type="string">
+  Biudžeto valiutos kodas. Pavyzdžiai: `USD`, `CAD`, `EUR`.
+</ParamField>
+
+<ParamField body="quantity" type="number">
+  Paketo įsigytų vienetų skaičius. Turi būti `≥ 1`.
+</ParamField>
+
+<ParamField body="deadline" type="string">
+  ISO 8601 datos eilutė užsakymo termino datai. Pavyzdys: `"2025-12-31T00:00:00.000Z"`.
+</ParamField>
+
+<ParamField body="kickoffDate" type="string">
+  ISO 8601 datos eilutė projekto pradžios datai.
+</ParamField>
+
+<ParamField body="notes" type="string">
+  Vidinės pastabos, matomos jūsų komandai.
+</ParamField>
+
+<ParamField body="brief" type="string">
+  Kliento užduotis arba projekto santrauka.
+</ParamField>
+
+<ParamField body="assignedProjectManagers" type="array">
+  Visas projektų vadovų narių ID sąrašas, priskirtinas šiam užsakymui. Nauji ID pridedami prie komandos; pašalinti ID ištrinami. Kiekvienas ID turi priklausyti nariui, turinčiam `projectManager` vaidmenį toje pačioje įmonėje.
+</ParamField>
+
+<ParamField body="markTasksAsDone" type="boolean">
+  **Privaloma**, kai `status` yra `Completed` arba `Cancelled`. Kai `true`, visos užsakymo užduotys pažymimos kaip atliktos po būsenos pakeitimo. Kai `false`, užduotys išlieka dabartinėje būsenoje.
+</ParamField>
+
+<ParamField body="rejectRequestedTasks" type="boolean">
+  Leidžiama tik kai `status` yra `Completed` arba `Cancelled`. Kai `true`, visos išlaukiančios kliento prašytos užduotys atmetamos po būsenos atnaujinimo.
+</ParamField>
+
+<ParamField body="repeatCount" type="number">
+  Reikalinga tik **prenumeratos** užsakymams keičiant pasikartojimo dažnumą. Derinkite su `repeatDuration`.
+</ParamField>
+
+<ParamField body="repeatDuration" type="string">
+  Reikalinga kartu su `repeatCount` prenumeratos užsakymams. Viena iš: `day`, `week`, `month`, `year`.
+</ParamField>
+
+<ParamField body="billingCycleCount" type="number">
+  Neprivalomas pasikartojančių atsiskaitymo ciklų limitas. Numatytoji reikšmė `0` (be limito).
+</ParamField>
+
+<ParamField body="billingCycleEvent" type="string">
+  Kaip tvarkomas kiekvienas atsiskaitymo ciklas. Viena iš: `createOrderWithTask`, `noChange`.
+</ParamField>
+
+<ParamField body="files" type="file">
+  Nulis ar daugiau failų priedų. Failai pridedami prie užsakymo sistemos aplanko; esami failai niekada neperrašomi. Naudokite `multipart/form-data` kodavimą ir pridėkite kiekvieną failą po lauku `files`.
+</ParamField>
+
+---
+
+## Pavyzdinė užklausa
+
+<CodeGroup>
+
+```bash cURL (no files)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "currency=USD" \
+  --form "quantity=1" \
+  --form "assignedProjectManagers[]=PROJECT_MANAGER_ID" \
+  --form "notes=Scope finalized with client." \
+  --form "brief=Launch-ready design refresh."
+```
+
+```bash cURL (with file)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "repeatCount=3" \
+  --form "repeatDuration=month" \
+  --form "billingCycleEvent=createOrderWithTask" \
+  --form "files=@/path/to/creative-brief.pdf"
+```
+
+</CodeGroup>
+
+**Lygiavertis JSON turinys** (siųsdami failus konvertuokite į multipart formos įrašus):
+
+```json
+{
+  "name": "Website Redesign",
+  "status": "Review",
+  "budget": 12000,
+  "currency": "USD",
+  "quantity": 1,
+  "assignedProjectManagers": ["{{PROJECT_MANAGER_ID}}"],
+  "repeatCount": 3,
+  "repeatDuration": "month",
+  "billingCycleEvent": "createOrderWithTask",
+  "notes": "Scope finalized with client.",
+  "brief": "Launch-ready design refresh."
+}
+```
+
+---
+
+## Atsakymai
+
+| HTTP būsena | Aprašas |
+|---|---|
+| `200 OK` | Atnaujinimas sėkmingas. |
+| `400 ValidationError` | Neteisingas užsakymo ID, užblokuotas būsenos perėjimas arba netinkamai suformuotas turinys. Atsakyme pateikiamas `fieldName`, kai aktualu. |
+| `403 PermissionError` | Skambinantysis nėra patvirtintas narys, neturi įmonės vaidmens, darbo srities prenumerata pasibaigė arba klientas bandė atlikti draudžiamą atšaukimą. |
+| `500 Internal Server Error` | Neapdorota išimtis — patikrinkite serverio žurnalus. |
+
+### Sėkmingas atsakymas
+
+```json
+{
+  "message": "Project has been updated"
+}
+```
+
+---
+
+## Verslo taisyklės ir šalutiniai efektai
+
+- **Būsenos perėjimai** yra riboti. `Review` gali sekti tik po `Ongoing` arba kito `Review`. Bandant `Pending → Review` bus grąžinta `400 ValidationError`.
+- Perkeliant būseną iš `Pending` į `Ongoing`, `Review` arba `Completed` aktyvuojamas užsakymo failų aplankas, kad įkelti failai taptų prieinami projekto komandai.
+- Nustatant `status` į `Completed` arba `Cancelled` **privaloma** aiškiai nustatyti `markTasksAsDone` kaip `true` arba `false`.
+- Būsenos pakeitimai į `Review`, `Completed` arba `Cancelled` automatiškai suaktyvina klientų pranešimus:
+  - **Review** — praneša klientui, kad reikalinga peržiūra.
+  - **Completed** — klientui siunčiamas `orderCompletion` pranešimas.
+  - **Cancelled** — klientui siunčiamas `orderCancellation` pranešimas.
+- Kiekvienas sėkmingas atnaujinimas suaktyvina `ORDER.UPDATED` webhook įvykį su atnaujintu užsakymo dokumentu ir priedų metaduomenimis, jei turite aktyvų webhook, prenumeruojantį tą įvykį.

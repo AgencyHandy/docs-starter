@@ -1,0 +1,290 @@
+---
+title: "Kundenportale, Zugriffssteuerung und Steuersätze anpassen"
+sidebarTitle: "Portale"
+description: "Gestalten Sie Ihre Kunden-Anmelde- und Registrierungsseiten, steuern Sie die Seitenleisten-Sichtbarkeit nach Rolle und konfigurieren Sie Steuersätze für Rechnungen und Checkouts in AgencyHandy."
+---
+
+AgencyHandy gibt Ihnen umfassende Kontrolle darüber, was Ihre Kunden sehen und erleben — von der ersten Seite, auf der sie sich anmelden, bis zu den Bereichen der Plattform, die sie nach dem Einloggen aufrufen können. Diese Seite behandelt vier miteinander verbundene Konfigurationsbereiche: das **Anmeldeportal**, das **Registrierungsportal**, **Seitenleiste & Zugriffssteuerung** sowie **Steuersätze**. Zusammen ermöglichen diese Einstellungen eine professionelle, rollengerechte Erfahrung für jeden Benutzer in Ihrem Workspace.
+
+<Note>
+  Alle Einstellungen auf dieser Seite erfordern **Super-Admin**- oder **Admin**-Zugriff. Navigieren Sie in der linken Seitenleiste zu **Workspace-Konfiguration**, um auf jeden Bereich zuzugreifen.
+</Note>
+
+---
+
+<Tabs>
+  <Tab title="Sign-in Portal">
+    ## Anmeldeportal
+
+    Das Anmeldeportal ist die Anmeldeseite, die Ihre Kunden und Teammitglieder sehen, wenn sie auf Ihren AgencyHandy-Workspace zugreifen. Eine Anpassung stellt sicher, dass der erste Eindruck, den Kunden haben, vollständig zu Ihrer Marke passt — komplett mit den Bildern, Überschriften und Botschaften Ihrer Agentur.
+
+    ### Was Sie anpassen können
+
+    | Element         | Beschreibung                                                    | Limit                         |
+    |-----------------|-----------------------------------------------------------------|-------------------------------|
+    | **Überschrift** | Der Haupttitel, der oben auf der Anmeldeseite angezeigt wird   | Maximal 120 Zeichen           |
+    | **Bild**        | Ein Markenbild oder eine Illustration auf der Seite             | PNG, JPG, JPEG — max. 5 MB   |
+    | **Untertitel**  | Eine kurze Nachricht unterhalb der Anmeldefelder                | Maximal 300 Zeichen           |
+
+    ### Schritte zur Anpassung des Anmeldeportals
+
+    <Steps>
+      <Step title="Anmeldeportal-Einstellungen öffnen">
+        Gehen Sie in der linken Navigation zu **Workspace-Konfiguration** und wählen Sie dann **Anmeldeportal** aus dem Untermenü.
+      </Step>
+      <Step title="Benutzerdefinierte Überschrift eingeben">
+        Geben Sie Ihre gewünschte Überschrift in das Feld **Überschrift** ein. Halten Sie sie prägnant und relevant — zum Beispiel _„Willkommen zurück bei [Agenturname]“_ oder _„Ihr Kundenportal.“_ Die maximale Länge beträgt 120 Zeichen.
+      </Step>
+      <Step title="Markenbild hochladen">
+        Klicken Sie auf den Upload-Bereich oder ziehen Sie eine Bilddatei (PNG, JPG oder JPEG, maximal 5 MB) per Drag-and-Drop, um ein visuelles Element zur Anmeldeseite hinzuzufügen. Dieses Bild erscheint typischerweise neben dem Anmeldeformular.
+
+        <Tip>
+          Verwenden Sie ein hochwertiges Bild, das Ihre Agentur repräsentiert — ein Foto Ihres Teams, eine klare Markenillustration oder einen professionellen Hintergrund. Stellen Sie sicher, dass die Dateigröße unter 5 MB liegt, um Upload-Fehler zu vermeiden.
+        </Tip>
+      </Step>
+      <Step title="Untertitel hinzufügen">
+        Schreiben Sie im Feld **Untertitel** eine kurze Nachricht, die unterhalb der Anmeldefelder erscheint — zum Beispiel eine Willkommensnachricht, Supportkontakt oder ein kurzer Slogan. Maximal 300 Zeichen.
+      </Step>
+      <Step title="Vorschau ansehen und speichern">
+        Überprüfen Sie das Layout der Anmeldeseite in der Vorschau. Wenn Sie zufrieden sind, klicken Sie auf **Speichern** (oder **Aktualisieren**), um die Änderungen anzuwenden. Änderungen werden sofort wirksam.
+      </Step>
+    </Steps>
+
+    ### Auf Standardeinstellungen zurücksetzen
+
+    Klicken Sie auf der Anmeldeportal-Seite auf **Standardeinstellungen zurücksetzen**, um alle Anpassungen zu entfernen und die ursprüngliche AgencyHandy-Anmeldeseite wiederherzustellen.
+
+    <Warning>
+      Das Zurücksetzen auf die Standardeinstellungen ist unwiderruflich. Alle benutzerdefinierten Überschriften, Bilder und Untertitel werden dauerhaft entfernt. Klicken Sie auf **Abbrechen**, wenn Sie sich nicht sicher sind — nicht gespeicherte Änderungen werden verworfen und die aktuell gespeicherten Einstellungen bleiben erhalten.
+    </Warning>
+
+    ### Bewährte Praktiken
+
+    - Halten Sie die Überschrift kurz und einladend — Kunden sehen sie vor dem Einloggen, daher sollte sie beruhigend wirken.
+    - Verwenden Sie ein professionelles Bild, das Ihre Agentur repräsentiert. Vermeiden Sie generische Stockfotos, die sich von Ihrer Marke distanziert anfühlen.
+    - Testen Sie die Vorschau auf verschiedenen Bildschirmgrößen, bevor Sie speichern, um sicherzustellen, dass das Bild- und Textlayout korrekt aussieht.
+    - Wenn das Bild nicht hochgeladen werden kann, bestätigen Sie, dass es die Format- (PNG, JPG, JPEG) und Größenanforderungen (unter 5 MB) erfüllt.
+  </Tab>
+
+  <Tab title="Sign-up Portal">
+    ## Registrierungsportal
+
+    Das Registrierungsportal ist die Registrierungsseite, auf die neue Kunden gelangen, wenn sie ein Konto in Ihrem Workspace erstellen. Eine Anpassung schafft eine konsistente Markenerfahrung von der ersten Interaktion an, die ein potenzieller Kunde mit der Plattform Ihrer Agentur hat.
+
+    ### Was Sie anpassen können
+
+    | Element         | Beschreibung                                                          | Limit                         |
+    |-----------------|-----------------------------------------------------------------------|-------------------------------|
+    | **Überschrift** | Der Haupttitel, der oben auf der Registrierungsseite angezeigt wird  | Maximal 120 Zeichen           |
+    | **Bild**        | Ein Markenbild oder eine Illustration auf der Seite                   | PNG, JPG, JPEG — max. 5 MB   |
+    | **Untertitel**  | Eine kurze Nachricht unterhalb der Registrierungsfelder               | Maximal 300 Zeichen           |
+
+    ### Schritte zur Anpassung des Registrierungsportals
+
+    <Steps>
+      <Step title="Registrierungsportal-Einstellungen öffnen">
+        Gehen Sie in der linken Navigation zu **Workspace-Konfiguration** und wählen Sie dann **Registrierungsportal** aus dem Untermenü.
+      </Step>
+      <Step title="Benutzerdefinierte Überschrift eingeben">
+        Geben Sie eine Überschrift in das Feld **Überschrift** ein, die neue Kunden willkommen heißt. Zum Beispiel _„Starten Sie mit [Agenturname]“_ oder _„Erstellen Sie Ihr Kundenkonto.“_ Maximal 120 Zeichen.
+      </Step>
+      <Step title="Markenbild hochladen">
+        Klicken Sie auf den Upload-Bereich oder ziehen Sie eine Bilddatei (PNG, JPG oder JPEG, maximal 5 MB) per Drag-and-Drop. Dieses Bild wird auf der Registrierungsseite neben dem Registrierungsformular angezeigt.
+
+        <Tip>
+          Verwenden Sie auf den Bildern des Anmelde- und Registrierungsportals denselben visuellen Stil und dieselbe Farbpalette, um eine kohärente Erfahrung auf beiden Seiten zu schaffen.
+        </Tip>
+      </Step>
+      <Step title="Untertitel hinzufügen">
+        Schreiben Sie im Feld **Untertitel** eine kurze unterstützende Nachricht — zum Beispiel Anweisungen, was nach der Registrierung zu erwarten ist, oder ein kurzes Wertversprechen. Maximal 300 Zeichen.
+      </Step>
+      <Step title="Vorschau ansehen und speichern">
+        Überprüfen Sie die Registrierungsseite mit der Vorschauoption. Klicken Sie auf **Speichern** (oder **Aktualisieren**), um Änderungen sofort anzuwenden.
+      </Step>
+    </Steps>
+
+    ### Auf Standardeinstellungen zurücksetzen
+
+    Klicken Sie auf der Registrierungsportal-Seite auf **Standardeinstellungen zurücksetzen**, um alle Anpassungen zu entfernen und die ursprüngliche AgencyHandy-Registrierungsseite wiederherzustellen.
+
+    <Warning>
+      Diese Aktion kann nicht rückgängig gemacht werden. Alle benutzerdefinierten Überschriften-, Bild- und Untertitelkonfigurationen werden dauerhaft gelöscht.
+    </Warning>
+
+    ### Bewährte Praktiken
+
+    - Passen Sie den Ton der Registrierungsüberschrift an Ihren allgemeinen Kundenkommunikationsstil an — professionell, freundlich oder beides.
+    - Halten Sie den Untertitel fokussiert: Teilen Sie neuen Kunden mit, was nach der Registrierung passiert (z. B. _„Nach Ihrer Registrierung sendet unser Team Ihnen innerhalb von 24 Stunden eine Willkommens-E-Mail.“_).
+    - Testen Sie den Registrierungsablauf selbst nach dem Speichern von Änderungen, um zu bestätigen, dass die Seite wie erwartet aussieht und funktioniert.
+  </Tab>
+
+  <Tab title="Sidebar & Access">
+    ## Seitenleiste & Zugriffssteuerung
+
+    Die Einstellungen für Seitenleiste & Zugriff ermöglichen es Ihnen, genau zu steuern, was jede Benutzerrolle im linken Navigationsmenü sehen kann. Sie können Menüelemente umbenennen, um sie an die Terminologie Ihrer Agentur anzupassen, Standardsymbole durch benutzerdefinierte austauschen und die Sichtbarkeit jedes Menüabschnitts pro Rolle umschalten. Das Ergebnis ist eine übersichtliche, zweckgerichtete Benutzeroberfläche für jede Person, die sich anmeldet.
+
+    ### Konfigurierbare Rollen
+
+    - Kunde
+    - Super-Admin
+    - Admin
+    - Manager
+    - Bearbeiter
+    - Benutzerdefiniert (alle benutzerdefinierten Rollen, die Sie unter Rollen & Berechtigungen erstellt haben)
+
+    ### Schritte zur Anpassung von Seitenleisten-Menüelementen
+
+    <Steps>
+      <Step title="Seitenleiste & Zugriff-Einstellungen öffnen">
+        Gehen Sie zu **Workspace-Konfiguration** und wählen Sie dann **Seitenleiste & Zugriff** aus dem Einstellungsmenü.
+      </Step>
+      <Step title="Auf Anpassen klicken">
+        Klicken Sie oben im Bereich auf die Schaltfläche **Anpassen**. Die vollständige Liste der aktuellen Seitenleisten-Menüelemente erscheint unter der Kategorie **Haupt**.
+      </Step>
+      <Step title="Menüelement umbenennen">
+        Klicken Sie auf das Textfeld eines Menüelements und geben Sie die neue Bezeichnung ein. Benennen Sie zum Beispiel „Dashboard“ in „Übersicht“ oder „CRM“ in „Kontakte“ um. Klicken Sie auf **Speichern**, um den neuen Namen anzuwenden.
+      </Step>
+      <Step title="Menüsymbol ändern">
+        Klicken Sie auf das Symbol neben einem Menüelementnamen. Ein Popup öffnet sich mit einer Auswahl an Symbolen — wählen Sie eines aus der Bibliothek aus oder laden Sie ein benutzerdefiniertes Bild mit 32×32 px hoch, um Ihr eigenes Markensymbol zu verwenden. Klicken Sie auf **Speichern**, um es anzuwenden.
+      </Step>
+    </Steps>
+
+    ### Schritte zur Konfiguration der rollenbasierten Sichtbarkeit
+
+    <Steps>
+      <Step title="Auf Zugriff bearbeiten klicken">
+        Klicken Sie auf die Schaltfläche **Zugriff bearbeiten** (neben der Schaltfläche **Anpassen**). Sie sehen Registerkarten für jede verfügbare Rolle.
+      </Step>
+      <Step title="Rolle auswählen">
+        Klicken Sie auf die Registerkarte für die Rolle, die Sie konfigurieren möchten — zum Beispiel **Kunde**.
+      </Step>
+      <Step title="Sichtbarkeit von Menüelementen umschalten">
+        Verwenden Sie für jedes aufgeführte Menüelement den Umschalter, um es für die ausgewählte Rolle ein- oder auszublenden. Zum Beispiel könnten Sie **Rechnungen** und **Abonnements** vor Kunden verbergen, während sie für Admins und Manager sichtbar bleiben.
+      </Step>
+      <Step title="Änderungen speichern">
+        Klicken Sie auf **Speichern**. Die aktualisierten Sichtbarkeitseinstellungen werden sofort wirksam — Benutzer sehen die Änderungen bei der nächsten Seitennavigation oder nach erneutem Anmelden.
+      </Step>
+      <Step title="Bei Bedarf auf Standardeinstellungen zurücksetzen">
+        Klicken Sie auf der Registerkarte einer Rolle auf **Auf Standard zurücksetzen**, um die ursprünglichen Sichtbarkeitseinstellungen für diese Rolle wiederherzustellen.
+      </Step>
+    </Steps>
+
+    <Tip>
+      Eine saubere, minimale Seitenleiste verbessert die Kundenerfahrung. Wenn Kunden nur das sehen, was sie benötigen — wie **Dashboard**, **Aufträge** und **Nachrichten** — werden Verwirrung und unbeabsichtigter Zugriff auf interne Bereiche vermieden.
+    </Tip>
+
+    ### Beispiel-Rollenkonfigurationen
+
+    | Rolle        | Empfohlene sichtbare Bereiche                                        |
+    |--------------|----------------------------------------------------------------------|
+    | Kunde        | Dashboard, Aufträge, Nachrichten, Rechnungen (falls benötigt)        |
+    | Manager      | CRM, Projekte, Zeiterfassung, Aufgaben                               |
+    | Bearbeiter   | Dashboard, Aufgaben, Projekte, Nachrichten                           |
+    | Super-Admin  | Alle Bereiche (keine Einschränkungen)                                |
+
+    ### Wichtige Hinweise
+
+    - **Änderungen sind sofort wirksam:** Sichtbarkeitsaktualisierungen für Rollen werden sofort nach dem Aktualisieren oder erneutem Anmelden der Benutzer angezeigt.
+    - **Die berechtigtste Rolle gewinnt:** Wenn ein Benutzer mehrere Rollen innehat, hat die Rolle mit dem breitesten Zugriff Vorrang.
+    - **Benutzerdefinierte Symbole:** Laden Sie 32×32-px-Bilder hoch, um die Markensymbole Ihrer Agentur in der Seitenleiste zu verwenden.
+    - **Namenskonsistenz:** Verwenden Sie klare, konsistente Benennungskonventionen, die Ihr gesamtes Team versteht — vermeiden Sie Abkürzungen oder interne Fachbegriffe, die neue Teammitglieder nicht kennen.
+  </Tab>
+
+  <Tab title="Tax Rates">
+    ## Steuersätze
+
+    Die Funktion Steuersätze ermöglicht es Ihnen, Steuerkonfigurationen für Ihre Dienstleistungen, Abonnements und Rechnungen zu erstellen, zu verwalten und anzuwenden. Sie können mehrere Steuertypen einrichten — MwSt., GST, Umsatzsteuer und andere — mit landes- und staatsspezifischen Sätzen, Unterstützung für sowohl inklusive als auch exklusive Preismodelle und automatische Anwendung beim Checkout basierend auf dem Kundenstandort.
+
+    <Note>
+      Nur **Super-Admins** und **Admins** können Steuerkonfigurationen erstellen, bearbeiten oder löschen.
+    </Note>
+
+    ### Steuerkonzepte auf einen Blick
+
+    | Konzept         | Definition                                                                                                     |
+    |-----------------|----------------------------------------------------------------------------------------------------------------|
+    | **Exklusiv**    | Steuer wird beim Checkout oben auf den angegebenen Preis aufgeschlagen (z. B. 100 € + 10 % Steuer = 110 € gesamt) |
+    | **Inklusiv**    | Steuer ist bereits im angezeigten Preis enthalten (z. B. 110 € gesamt enthält bereits die Steuer)             |
+    | **Steuer-ID**   | Die Steueridentifikationsnummer Ihrer Agentur, die auf Rechnungen erscheint                                    |
+
+    ### Schritt 1: Steuersatz erstellen
+
+    <Steps>
+      <Step title="Steuersätze öffnen">
+        Gehen Sie zu **Workspace-Konfiguration** und klicken Sie dann auf die Registerkarte **Steuersätze**.
+      </Step>
+      <Step title="Auf + Neue Steuer klicken">
+        Klicken Sie auf die Schaltfläche **+ Neue Steuer**. Ein Formular erscheint.
+      </Step>
+      <Step title="Steuerdetails ausfüllen">
+        Füllen Sie die folgenden Felder aus:
+
+        - **Titel / Steuertyp** *(erforderlich)*: Geben Sie einen beschreibenden Namen ein, z. B. Standard-MwSt., Reduzierter GST oder US-Umsatzsteuer. Maximal 255 Zeichen.
+        - **Steuer-ID** *(optional)*: Die Steueridentifikationsnummer Ihrer Agentur. Maximal 20 Zeichen.
+        - **Heimatland**: Wählen Sie das primäre Land, für das diese Steuer gilt.
+        - **Allgemeiner Steuersatz für das Heimatland %** *(optional)*: Der Standardsatz für Ihr Heimatland.
+        - **Länderspezifische Sätze** *(optional)*: Fügen Sie länderbezogene Sätze mit optionalem Bundesland, PLZ und Prozentsatz hinzu. Dies ist nützlich für Agenturen, die Kunden in mehreren Steuergebieten bedienen.
+      </Step>
+      <Step title="Status festlegen">
+        Stellen Sie die Steuer auf **Aktiv**, um sie sofort für die Verwendung in Dienstleistungen und Rechnungen verfügbar zu machen. Stellen Sie sie auf **Inaktiv**, um die Konfiguration zu speichern, ohne sie noch auf neue Käufe anzuwenden.
+      </Step>
+      <Step title="Speichern">
+        Klicken Sie auf **Speichern**. Die Steuer erscheint in Ihrer Steuersatzliste und ist nun verfügbar, um sie mit Dienstleistungen zu verknüpfen.
+      </Step>
+    </Steps>
+
+    <Tip>
+      Sie können bis zu 4 Dezimalstellen bei Steuersatzprozentsätzen unterstützen. Ein Steuersatz von 0 % ist gültig — verwenden Sie ihn für nullbesteuerte Posten oder Compliance-Szenarien, bei denen Steuern aufgeführt werden müssen, aber null betragen.
+    </Tip>
+
+    ### Schritt 2: Steuern mit Dienstleistungen verknüpfen
+
+    <Steps>
+      <Step title="Dienstleistung zur Bearbeitung öffnen">
+        Navigieren Sie zu **Dienstleistungen** und erstellen Sie eine neue Dienstleistung oder bearbeiten Sie eine bestehende.
+      </Step>
+      <Step title="Zum Abschnitt Zusätzliche Informationen gehen">
+        Fahren Sie mit Schritt 3 (Zusätzliche Informationen) des Dienstleistungs-Einrichtungsassistenten fort.
+      </Step>
+      <Step title="Steuern zur Dienstleistung hinzufügen">
+        Klicken Sie auf **Steuer hinzufügen** und wählen Sie einen oder mehrere Steuertypen aus Ihrer konfigurierten Liste aus. Wählen Sie, ob Steuern für diese Dienstleistung als **inklusiv** oder **exklusiv** angewendet werden. Diese Einstellung gilt für alle verknüpften Steuern der Dienstleistung, einschließlich Einrichtungsgebühren und Add-ons.
+      </Step>
+    </Steps>
+
+    ### Schritt 3: Anwendung von Steuern
+
+    Steuern können **automatisch beim Checkout** oder **manuell auf Rechnungen** angewendet werden:
+
+    **Automatisch (Checkout)**
+    - Mit einer Dienstleistung verknüpfte Steuern werden automatisch basierend auf dem Abrechnungsstandort des Kunden berechnet.
+    - Der Kunde muss beim Checkout sein Land, Bundesland und PLZ angeben, damit standortbasierte Steuer angewendet wird.
+    - Für Stripe-India-Konten sind vollständige Standortinformationen (Land, Bundesland, PLZ) obligatorisch.
+
+    **Manuell (Rechnung)**
+    - Beim manuellen Erstellen einer Rechnung klicken Sie auf **Steuern hinzufügen**, um auszuwählen, welche Steuern angewendet werden sollen.
+    - Abrechnungsadressfelder werden automatisch ausgefüllt.
+    - **Nur exklusive Steuern** können auf manuelle Rechnungen angewendet werden — inklusive Steuern werden in diesem Ablauf nicht unterstützt.
+
+    ### Steueranzeige auf Rechnungen
+
+    Jede Rechnung, die eine Steuer enthält, zeigt die folgenden Details:
+
+    - **Steuername** — die von Ihnen eingegebene Bezeichnung (z. B. MwSt., GST)
+    - **Steuerprozentsatz** — der angewendete Satz (z. B. 15 %)
+    - **Steuerbetrag** — der berechnete Betrag
+
+    ### Verwaltung bestehender Steuersätze
+
+    - **Steuer bearbeiten:** Klicken Sie auf den Steuereintrag in der Liste, um Titel, Satz oder Länderregeln zu aktualisieren. Aktualisierungen gelten nur für zukünftige Rechnungen und Käufe.
+    - **Steuer löschen:** Gelöschte Steuern gelten nicht mehr für neue Käufe oder Abonnements, aber bestehende Rechnungen, die sie enthielten, sind nicht betroffen.
+    - **Steuer deaktivieren:** Stellen Sie eine Steuer auf **Inaktiv**, um zu verhindern, dass sie auf neue Käufe angewendet wird, ohne die Konfiguration zu löschen.
+
+    ### Wichtige Hinweise
+
+    - **Rabattgutscheine werden vor der Steuer angewendet:** Wenn ein Kunde einen Rabattgutschein verwendet, wird die Steuer auf den rabattierten Preis berechnet, nicht auf den ursprünglichen Preis.
+    - **Mehrere Steuern pro Dienstleistung:** Sie können mehr als eine Steuer mit einer einzelnen Dienstleistung verknüpfen (z. B. MwSt. + GST gleichzeitig).
+    - **Steuer gilt für Add-ons und Einrichtungsgebühren:** Wenn Ihre Dienstleistung eine Einrichtungsgebühr oder Add-ons hat, wird die Steuer auch auf diese Beträge angewendet.
+    - **Kundenstandort wird vorausgefüllt:** Wenn ein Kunde ein Abrechnungsland und -bundesland in seinem Profil gespeichert hat, werden diese Felder beim Checkout vorausgefüllt. Das Bearbeiten des Standorts beim Checkout aktualisiert jedoch das Kundenprofil **nicht**.
+    - **PLZ-basierte Bundesland-Erkennung:** Für US-Kunden kann das System das Bundesland automatisch aus der PLZ erkennen und die korrekte regionale Steuer anwenden, sofern konfiguriert.
+  </Tab>
+</Tabs>

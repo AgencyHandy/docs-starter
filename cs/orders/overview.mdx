@@ -1,0 +1,91 @@
+---
+title: "Přehled objednávek: Správa klientské práce v AgencyHandy"
+sidebarTitle: "Přehled"
+description: "Pochopte, jak fungují objednávky v AgencyHandy — stavy, role, detaily objednávek, ruční objednávky a doplňky pro nepublikované služby."
+---
+
+Objednávky jsou provozní páteří AgencyHandy. Objednávka představuje požadavek klienta na službu nebo produkt a funguje jako centrální pracovní prostor, kde váš tým sleduje pokrok, spravuje úkoly, vyměňuje zpětnou vazbu a dodává výsledky. Ať už klient zadá objednávku prostřednictvím vašeho publikovaného katalogu služeb nebo váš tým vytvoří objednávku ručně, každá objednávka sleduje stejný strukturovaný životní cyklus, který udržuje vaši agenturu organizovanou a klienty informovanými.
+
+## Co objednávka obsahuje
+
+Každá objednávka zobrazuje klíčové informace na první pohled a členům týmu poskytuje jedno místo pro koordinaci práce:
+
+| Pole | Popis |
+|---|---|
+| **ID objednávky** | Automaticky generovaný jedinečný identifikátor každé objednávky |
+| **Klient** | Klient, kterému objednávka patří |
+| **Služba** | Dodávaná služba |
+| **Projektový manažer (PM)** | Člen týmu zodpovědný za dodávku (volitelné) |
+| **Rozpočet** | Dohodnutá cena za objednávku |
+| **Datum zahájení** | Kdy začíná práce |
+| **Datum splatnosti** | Termín dokončení objednávky |
+| **Stručný popis objednávky** | Pokyny klienta, poznámky a přiložené referenční soubory |
+| **Úkoly** | Diskrétní pracovní položky přiřazené členům týmu |
+| **Diskuse** | Vlákna konverzací mezi pracovníky agentury a klienty |
+
+## Stavy objednávek
+
+Každá objednávka prochází pevnou sadou stavů. Tyto stavy nelze přidávat ani přejmenovávat.
+
+<Note>
+Stav objednávky mohou měnit pouze Super administrátoři, Administrátoři a Projektoví manažeři.
+</Note>
+
+| Stav | Co znamená |
+|---|---|
+| **Čeká na vyřízení** | Objednávka byla vytvořena a čeká na zahájení práce |
+| **Probíhá** | Aktivně probíhá práce |
+| **V kontrole** | Dodávky byly předloženy a čekají na kontrolu klientem nebo interní kontrolu |
+| **Dokončeno** | Objednávka byla plně doručena a přijata |
+| **Zrušeno** | Objednávka byla zrušena a již není aktivní |
+
+## Přístup podle rolí
+
+Různé role v AgencyHandy mají různé možnosti v rámci objednávek:
+
+| Role | Může vytvářet objednávky | Může upravovat objednávky | Může mazat objednávky | Může měnit stav | Může přidávat úkoly | Může přidávat členy týmu |
+|---|---|---|---|---|---|---|
+| **Super administrátor** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Administrátor** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Projektový manažer (PM)** | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ |
+| **Zaměstnanec** | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| **Klient** | ❌ | ❌ | ❌ | ❌ | ✅ (pouze žádost) | ❌ |
+
+<Tip>
+Klienti mohou zasílat zpětnou vazbu a účastnit se diskusí k objednávkám. Zaměstnanci přiřazení k objednávce mohou zobrazovat a pracovat na úkolech, ale nemohou spravovat samotnou objednávku.
+</Tip>
+
+## Co lze s objednávkami dělat
+
+AgencyHandy vám poskytuje kompletní sadu nástrojů pro správu objednávek po celý jejich životní cyklus:
+
+- **Vytváření objednávek** pro klienty — buď z publikovaných služeb nebo ručně pro služby stále ve vývoji
+- **Přijímání a odmítání** objednávek zadaných klienty, s možností uvedení důvodu při odmítnutí
+- **Zobrazení detailů objednávky** včetně pokroku, přiřazených členů týmu, dat zahájení a splatnosti, rozpočtu a stručného popisu
+- **Řazení, filtrování a vyhledávání** napříč všemi objednávkami podle ID, stavu, jména klienta nebo jiných kritérií
+- **Přidávání úkolů** přímo v rámci objednávky pro sledování a přiřazení diskrétních pracovních jednotek
+- **Zahájení diskusí** pro komunikaci s klienty a členy týmu v kontextu
+
+## Ruční objednávky pro nepublikované služby
+
+Nejste omezeni na vytváření objednávek pouze pro veřejně publikované služby. Super administrátoři a Administrátoři mohou vytvářet ruční objednávky pro nepublikované služby — užitečné, když je služba stále ve vývoji, dočasně nedostupná nebo je nabízena konkrétnímu klientovi před jejím oficiálním spuštěním.
+
+Když otevřete formulář pro vytvoření objednávky, rozbalovací nabídka **Služba** zobrazuje jak publikované, tak nepublikované služby, takže můžete vybrat příslušnou. Všechna ostatní pole objednávky a pracovní postupy se chovají stejně jako u standardní objednávky.
+
+## Doplňky v ručních objednávkách
+
+Při sestavování ruční objednávky můžete zahrnout **doplňkové služby**, aby klienti mohli přijímat přizpůsobené balíčky přesahující základní službu. Doplňky musí být vytvořeny předem a propojeny s příslušnou službou v sekci **Formuláře**, aby se zobrazily jako možnost v objednávkovém formuláři.
+
+<Note>
+Výběr doplňku se v ručním objednávkovém formuláři zobrazí pouze v případě, že byl alespoň jeden doplněk propojen s vybranou službou. Pokud ho nevidíte, ověřte, zda je váš doplněk správně propojen v konfiguraci služby.
+</Note>
+
+Jakmile je vybrána služba s propojenými doplňky, můžete tyto doplňky zahrnout před finalizací a odesláním objednávky.
+
+## Oznámení
+
+AgencyHandy automaticky informuje správné osoby, jak objednávky postupují:
+
+- Když je objednávka vytvořena PM, Administrátorem nebo Super administrátorem, všichni Super administrátoři ve vaší společnosti získají přístup a klient obdrží oznámení o vytvoření.
+- Když je člen týmu přidán k objednávce, daný člen obdrží oznámení.
+- Když jsou v rámci objednávky vytvořeny úkoly, klient obdrží oznámení.

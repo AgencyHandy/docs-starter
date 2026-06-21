@@ -1,0 +1,201 @@
+---
+title: "API AgencyHandy: programowe tworzenie nowego leada"
+sidebarTitle: "Utwórz leada"
+description: "Użyj API AgencyHandy, aby programowo tworzyć nowych leadów, wysyłając żądanie POST do punktu końcowego bulk-lead z wymaganymi polami."
+---
+
+Punkt końcowy tworzenia leada umożliwia programowe dodawanie nowych leadów do przestrzeni roboczej AgencyHandy z dowolnego zewnętrznego systemu — formularza internetowego, systemu CRM, platformy automatyzacji marketingu lub niestandardowego skryptu. Leady utworzone za pomocą tego punktu końcowego pojawiają się natychmiast w Twoim lejku sprzedażowym, tak jakby zostały dodane ręcznie.
+
+<Note>
+  Przed użyciem tego punktu końcowego ukończ przewodnik [Pierwsze kroki](/pl/api/getting-started), aby uzyskać klucz API i identyfikator firmy. Potrzebujesz również pobrać swój **identyfikator roli klienta**, który jest wymagany przy tworzeniu leada.
+</Note>
+
+## Wymagania wstępne
+
+- ✅ Klucz API wygenerowany z **Konfiguracja przestrzeni roboczej → Klucz API**
+- ✅ Identyfikator firmy pobrany z `GET {{URL}}/accounts/companies`
+- ✅ Identyfikator roli klienta pobrany (patrz Krok 1 poniżej)
+
+---
+
+## Krok 1: Pobierz identyfikator roli klienta
+
+Przed utworzeniem leada potrzebujesz identyfikatora roli `client` w swojej firmie.
+
+### Punkt końcowy
+
+```
+GET {{URL}}/roles?type=company
+```
+
+### Nagłówki
+
+| Nagłówek | Wartość |
+|---|---|
+| `x-api-key` | Twój klucz API |
+| `companyid` | Twój identyfikator firmy |
+
+### Przykładowe żądanie
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/roles?type=company" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>"
+```
+
+### Przykładowa odpowiedź
+
+```json
+{
+  "roles": [
+    {
+      "_id": "6525994184e9ddd798534535",
+      "role": {
+        "_id": "6525994184e9ddd79853451e",
+        "responsibility": "",
+        "name": "client"
+      },
+      "company": "6525994184e9ddd79853450e",
+      "createdAt": "2023-10-10T18:34:41.567Z",
+      "updatedAt": "2024-10-01T07:28:48.340Z",
+      "__v": 0,
+      "type": "company"
+    }
+  ]
+}
+```
+
+Znajdź wpis, gdzie `roles[0].role.name === "client"` i wyodrębnij **zewnętrzny** `_id` — to jest `roles[0]._id`, **nie** `roles[0].role._id`.
+
+```javascript
+const clientRoleId = roles.find(r => r.role.name === "client")._id;
+// e.g. "6525994184e9ddd798534535"
+```
+
+<Warning>
+  Użyj `roles[0]._id` (identyfikatora mapowania roli firmowej), **nie** `roles[0].role._id` (identyfikatora definicji roli). Użycie nieprawidłowego identyfikatora spowoduje niepowodzenie żądania utworzenia leada.
+</Warning>
+
+---
+
+## Krok 2: Utwórz nowego leada
+
+### Punkt końcowy
+
+```
+POST {{URL}}/members/bulk-lead
+```
+
+### Nagłówki
+
+| Nagłówek | Wartość |
+|---|---|
+| `x-api-key` | Twój klucz API |
+| `companyid` | Twój identyfikator firmy |
+| `Content-Type` | `application/json` |
+
+### Ciało żądania
+
+Ciało żądania jest **tablicą JSON** — możesz utworzyć jednego lub więcej leadów w jednym wywołaniu.
+
+<ParamField body="firstName" type="string" required>
+  Imię leada.
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  Nazwisko leada.
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  Adres e-mail leada. Musi być unikalny w obrębie Twojej przestrzeni roboczej.
+</ParamField>
+
+<ParamField body="role" type="string" required>
+  Identyfikator roli klienta pobrany w Kroku 1 (tj. `roles[0]._id`).
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  Musi być ustawione na `false` przy tworzeniu leada. Ustaw na `true` tylko przy konwersji leada na pełnego klienta.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Status leada w lejku sprzedażowym. Typowe wartości: `New`, `Contacted`, `Qualified`. Domyślnie `New`, jeśli pominięte.
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  Numer telefonu leada.
+</ParamField>
+
+<ParamField body="source" type="string">
+  Sposób pozyskania tego leada. Przykładowe wartości: `website`, `referral`, `social`.
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  Pozycja leada (kolejność) w kolumnie tablicy lejka. Domyślnie `1`.
+</ParamField>
+
+### Przykładowe żądanie
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-lead" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "role": "6525994184e9ddd798534535",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+### Odpowiedź sukcesu
+
+```json
+{
+  "message": "Lead created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  Ciąg potwierdzający: `"Lead created successfully"`.
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  Tablica utworzonych obiektów leadów.
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  Unikalny identyfikator nowo utworzonego leada. Zapisz go, jeśli chcesz odwoływać się do leada w kolejnych wywołaniach API.
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  Pełne imię i nazwisko leada (imię + nazwisko).
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  Status leada w lejku sprzedażowym, tak jak został zapisany.
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  Nazwa roli przypisanej do członka — będzie to `"client"`.
+</ResponseField>
+
+<Tip>
+  Możesz przekazać wiele obiektów leadów w tablicy, aby utworzyć kilku leadów w jednym wywołaniu API. Każdy obiekt musi zawierać wszystkie wymagane pola z własnym unikalnym adresem e-mail.
+</Tip>

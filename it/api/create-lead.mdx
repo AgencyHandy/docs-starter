@@ -1,0 +1,201 @@
+---
+title: "API AgencyHandy: Crea un Nuovo Lead in Modo Programmatico"
+sidebarTitle: "Create Lead"
+description: "Usa l'API AgencyHandy per creare nuovi lead in modo programmatico inviando una richiesta POST all'endpoint bulk-lead con i campi richiesti."
+---
+
+L'endpoint Crea Lead ti consente di aggiungere in modo programmatico nuovi lead al tuo workspace AgencyHandy da qualsiasi sistema esterno — un modulo web, un CRM, una piattaforma di marketing automation o uno script personalizzato. I lead creati tramite questo endpoint appaiono immediatamente nella tua pipeline di lead, come se fossero stati aggiunti manualmente.
+
+<Note>
+  Prima di utilizzare questo endpoint, completa la guida [Getting Started](/it/api/getting-started) per ottenere la tua chiave API e l'ID Azienda. Devi anche recuperare il tuo **ID Ruolo Cliente**, richiesto durante la creazione di un lead.
+</Note>
+
+## Prerequisiti
+
+- ✅ Chiave API generata da **Configurazione Workspace → Chiave API**
+- ✅ ID Azienda recuperato da `GET {{URL}}/accounts/companies`
+- ✅ ID Ruolo Cliente recuperato (vedi Passo 1 di seguito)
+
+---
+
+## Passo 1: Ottieni l'ID Ruolo Cliente
+
+Prima di creare un lead, hai bisogno dell'ID Ruolo per il ruolo `client` nella tua azienda.
+
+### Endpoint
+
+```
+GET {{URL}}/roles?type=company
+```
+
+### Header
+
+| Header | Valore |
+|---|---|
+| `x-api-key` | La tua chiave API |
+| `companyid` | Il tuo ID Azienda |
+
+### Richiesta di esempio
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/roles?type=company" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>"
+```
+
+### Risposta di esempio
+
+```json
+{
+  "roles": [
+    {
+      "_id": "6525994184e9ddd798534535",
+      "role": {
+        "_id": "6525994184e9ddd79853451e",
+        "responsibility": "",
+        "name": "client"
+      },
+      "company": "6525994184e9ddd79853450e",
+      "createdAt": "2023-10-10T18:34:41.567Z",
+      "updatedAt": "2024-10-01T07:28:48.340Z",
+      "__v": 0,
+      "type": "company"
+    }
+  ]
+}
+```
+
+Trova la voce in cui `roles[0].role.name === "client"` ed estrai l'`_id` **esterno** — ovvero `roles[0]._id`, **non** `roles[0].role._id`.
+
+```javascript
+const clientRoleId = roles.find(r => r.role.name === "client")._id;
+// e.g. "6525994184e9ddd798534535"
+```
+
+<Warning>
+  Usa `roles[0]._id` (l'ID di mappatura del ruolo aziendale), **non** `roles[0].role._id` (l'ID della definizione del ruolo). Usare l'ID sbagliato causa il fallimento della richiesta di creazione del lead.
+</Warning>
+
+---
+
+## Passo 2: Crea un nuovo lead
+
+### Endpoint
+
+```
+POST {{URL}}/members/bulk-lead
+```
+
+### Header
+
+| Header | Valore |
+|---|---|
+| `x-api-key` | La tua chiave API |
+| `companyid` | Il tuo ID Azienda |
+| `Content-Type` | `application/json` |
+
+### Corpo della richiesta
+
+Il corpo della richiesta è un **array JSON** — puoi creare uno o più lead in una singola chiamata.
+
+<ParamField body="firstName" type="string" required>
+  Il nome del lead.
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  Il cognome del lead.
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  L'indirizzo email del lead. Deve essere univoco all'interno del tuo workspace.
+</ParamField>
+
+<ParamField body="role" type="string" required>
+  L'ID Ruolo Cliente recuperato nel Passo 1 (ovvero `roles[0]._id`).
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  Deve essere impostato su `false` durante la creazione di un lead. Impostalo su `true` solo quando converti un lead in un cliente completo.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Lo stato della pipeline del lead. Valori comuni: `New`, `Contacted`, `Qualified`. Predefinito a `New` se omesso.
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  Il numero di telefono del lead.
+</ParamField>
+
+<ParamField body="source" type="string">
+  Come hai acquisito questo lead. Valori di esempio: `website`, `referral`, `social`.
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  La posizione (ordine) del lead all'interno della colonna della pipeline. Predefinito a `1`.
+</ParamField>
+
+### Richiesta di esempio
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-lead" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "role": "6525994184e9ddd798534535",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+### Risposta di successo
+
+```json
+{
+  "message": "Lead created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  Stringa di conferma: `"Lead created successfully"`.
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  Array degli oggetti lead creati.
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  L'ID univoco del lead appena creato. Salvalo se hai bisogno di fare riferimento al lead nelle successive chiamate API.
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  Il nome completo del lead (nome + cognome).
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  Lo stato della pipeline del lead come memorizzato.
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  Il nome del ruolo assegnato al membro — sarà `"client"`.
+</ResponseField>
+
+<Tip>
+  Puoi passare più oggetti lead nell'array per creare diversi lead in una singola chiamata API. Ogni oggetto deve includere tutti i campi obbligatori con il proprio indirizzo email univoco.
+</Tip>

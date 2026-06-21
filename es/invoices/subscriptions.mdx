@@ -1,0 +1,162 @@
+---
+title: "Facturación por suscripción y facturas recurrentes en AgencyHandy"
+sidebarTitle: "Suscripciones"
+description: "Cómo gestiona AgencyHandy la facturación recurrente por suscripción: facturas automatizadas, ciclos de facturación, métodos de pago, cancelaciones y enlaces de pago de Wise."
+---
+
+El sistema de facturación por suscripción de AgencyHandy le permite automatizar todo el flujo de trabajo de ingresos recurrentes. Cuando un cliente se suscribe a un servicio, la plataforma crea un Subscription ID, genera pedidos y emite facturas automáticamente en cada ciclo de facturación, ya sea diario, semanal, mensual o anual. Usted mantiene el control: puede ver los detalles de la suscripción, supervisar el historial de pagos, gestionar los pagos fallidos y cancelar suscripciones cuando sea necesario, todo desde dentro de AgencyHandy.
+
+## Cómo funciona la facturación por suscripción
+
+El ciclo de vida de la suscripción en AgencyHandy sigue seis etapas clave.
+
+<Steps>
+  <Step title="Cree un servicio basado en suscripción">
+    Vaya a **Services** y haga clic en **Create New Service**. Seleccione **Subscription** como tipo de servicio.
+
+    Defina:
+    - **Billing Cycle**: diario, semanal, mensual o anual
+    - **Renewal Behavior**: crear un nuevo pedido, actualizar un pedido existente o mantener sin cambios
+    - **Pricing & Payment Method**: PayPal, Stripe o manual
+
+    Haga clic en **Publish** para que el servicio esté disponible.
+  </Step>
+  <Step title="El cliente compra la suscripción">
+    El cliente selecciona el servicio de suscripción, procede al pago y elige un método de pago.
+
+    AgencyHandy automáticamente:
+    - Crea un **Subscription ID**
+    - Genera un **Order**
+    - Emite una **Invoice**
+
+    Para los pagos con **PayPal o Stripe**, la factura se marca como **Paid** al instante. Para el **Pago manual**, la factura permanece como **Open** hasta que la agencia confirme la recepción.
+  </Step>
+  <Step title="Facturación recurrente automatizada">
+    En cada fecha de renovación, AgencyHandy procesa el pago automáticamente (para PayPal/Stripe) y genera la siguiente factura.
+
+    Si el pago se realiza correctamente, la factura se marca como **Paid**. Si falla:
+    - La factura permanece como **Open**
+    - El cliente recibe una **Failed Payment Notification**
+    - La agencia recibe una alerta para reintentar o solicitar datos de pago actualizados
+  </Step>
+  <Step title="Gestione las suscripciones activas">
+    Vaya a **Subscription Management** en la barra lateral izquierda para ver todas las suscripciones activas e inactivas. Seleccione cualquier suscripción para ver sus detalles completos.
+  </Step>
+  <Step title="Gestione las cancelaciones">
+    Cuando cancela una suscripción, puede optar por:
+    - **Cancelar por completo**: detener toda la facturación y los pedidos futuros
+    - **Mantener el último pedido activo en curso**: permitir que el cliente siga recibiendo el servicio hasta la fecha límite del período actual
+
+    Para eliminar un servicio por completo, primero deben cancelarse todas las suscripciones activas de ese servicio.
+  </Step>
+  <Step title="Notificaciones">
+    El sistema envía automáticamente:
+    - **Recordatorios de renovación** antes de la próxima fecha de facturación
+    - **Confirmaciones de pago** después de los cobros exitosos
+    - **Alertas de pago fallido** tanto al cliente como a los administradores de la agencia
+  </Step>
+</Steps>
+
+## Página de detalles de la suscripción
+
+La página de detalles de la suscripción le ofrece una visión completa de cualquier suscripción individual, desde el servicio y el paquete hasta cada factura y cada entrada del registro de eventos.
+
+### Cómo acceder
+
+1. Vaya a **Subscriptions** en la barra lateral izquierda
+2. Haga clic en cualquier suscripción de la lista para abrir su página de detalles
+
+### Qué puede ver
+
+<Tabs>
+  <Tab title="Información de la suscripción">
+    - **Service Name** y **Package Name**
+    - **Client Name**
+    - **Billing Cycle** (por ejemplo, mensual, anual)
+    - **Kick Off Date** y **End Date**
+    - **Status** de la suscripción (Active o Inactive)
+  </Tab>
+  <Tab title="Detalles de pago">
+    - **Subscription Fee**
+    - **Total Number of Payments** realizados hasta la fecha
+    - **Payment Method** (Stripe, PayPal, Wise, banca manual, etc.)
+    - **Next Payment Date**
+  </Tab>
+  <Tab title="Historial de pedidos">
+    - **Order ID**
+    - **Status** (por ejemplo, Ongoing, Completed)
+    - **Kick Off Date** y **Due Date** de cada pedido
+  </Tab>
+  <Tab title="Historial de facturas">
+    - **Invoice ID**
+    - **Amount**
+    - **Status** (Open, Paid, etc.)
+    - **Payment Date** y **Due Date**
+  </Tab>
+  <Tab title="Registros de eventos">
+    Un rastro de auditoría cronológico de todas las actividades relacionadas con la suscripción: cambios de estado, eventos de pago, cancelaciones y más.
+  </Tab>
+</Tabs>
+
+<Note>
+  Una sola suscripción puede tener varios pedidos y facturas vinculados. Las facturas asociadas a suscripciones se actualizan dinámicamente cuando se reciben los pagos.
+</Note>
+
+## Compatibilidad con Wise para facturas de suscripción manuales
+
+Si recibe pagos internacionales, puede incrustar un **enlace de pago de Wise** directamente en las facturas de suscripción. Esto les da a los clientes una forma cómoda de pagar sin necesidad de configurar una transferencia bancaria manualmente.
+
+### Requisitos
+
+- Una cuenta activa de AgencyHandy
+- Una **cuenta de Wise** activa con un enlace de pago válido generado
+
+### Pasos para agregar un enlace de Wise a una factura
+
+<Steps>
+  <Step title="Abra la sección de facturas">
+    Haga clic en **Invoices** en la barra lateral izquierda, luego haga clic en **+ Create Invoice**.
+  </Step>
+  <Step title="Seleccione el cliente y el pedido">
+    Elija el cliente en el menú desplegable. Aparecerán todos los Order IDs relacionados. Seleccione el Order ID correspondiente e introduzca el importe y los elementos que se facturan.
+  </Step>
+  <Step title="Aplique descuentos e impuestos">
+    Agregue el porcentaje de descuento, el importe de descuento, el importe pagado, el importe adeudado y los datos de IVA/impuestos correspondientes. Incluya la dirección de facturación y las notas según sea necesario.
+  </Step>
+  <Step title="Agregue el enlace de pago de Wise">
+    En la sección **Payment Method**, seleccione **Wise** como opción de pago. Pegue su enlace de pago de Wise en el campo proporcionado.
+  </Step>
+  <Step title="Guarde la factura">
+    Haga clic en **Save** para finalizar la factura. El enlace de pago de Wise aparecerá en la factura para que el cliente pueda pagar directamente.
+  </Step>
+</Steps>
+
+<Tip>
+  Verifique siempre dos veces su enlace de pago de Wise y los totales de la factura antes de guardar. Asegúrese de que los detalles del pedido, los descuentos y la información fiscal sean correctos para evitar errores de facturación.
+</Tip>
+
+## Notas importantes sobre la facturación por suscripción
+
+<Accordion title="¿Quién puede cancelar suscripciones?">
+  Solo los **Super Admins** y **Admins** pueden cancelar suscripciones. Los clientes no pueden cancelar sus propias suscripciones: deben solicitar la cancelación a través de la agencia.
+</Accordion>
+
+<Accordion title="Los Subscription IDs son permanentes">
+  Una vez creada una suscripción, su Subscription ID no se puede editar. Esto garantiza un seguimiento coherente durante toda la vida de la suscripción.
+</Accordion>
+
+<Accordion title="Pagos fallidos y creación de pedidos">
+  Cuando un pago falla, la factura permanece como Open y se crea un nuevo pedido para el período fallido. El estado de la suscripción se mantiene como **Active** hasta que un administrador reintente manualmente el pago o cancele la suscripción.
+</Accordion>
+
+<Accordion title="Pedidos con pago manual">
+  Si un cliente paga fuera de Stripe o PayPal (por ejemplo, mediante transferencia bancaria), el administrador debe marcar manualmente la factura como **Paid** en AgencyHandy. El sistema no lo hace automáticamente para los pagos manuales.
+</Accordion>
+
+<Accordion title="Intentos de autopago no pagados">
+  Si un cliente inicia el proceso de pago de una suscripción pero no completa el pago, permanece en el sistema como un **Lead** hasta que se suscriba correctamente.
+</Accordion>
+
+<Accordion title="Fechas de vencimiento de las facturas">
+  Las fechas de vencimiento de las facturas de suscripción se establecen automáticamente según el ciclo de facturación que configuró (por ejemplo, las facturas mensuales vencen un mes después de la fecha de inicio).
+</Accordion>

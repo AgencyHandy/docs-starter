@@ -1,0 +1,69 @@
+---
+title: "Anslut Slack för att ta emot realtidsaviseringar från AgencyHandy"
+sidebarTitle: "Slack"
+description: "Länka din Slack-arbetsyta till AgencyHandy så att orderuppdateringar, uppgiftsändringar och ärendeaviseringar automatiskt publiceras i en Slack-kanal."
+---
+
+AgencyHandys Slack-integration håller ditt team informerat utan att någon behöver växla mellan appar. När integrationen väl är ansluten publicerar AgencyHandy automatiska aviseringar till den Slack-kanal du väljer när uppgifter, beställningar eller andra aktiviteter på arbetsytan förändras — så att ditt team alltid vet vad som händer i realtid.
+
+<Note>
+  Endast rollerna **SuperAdmin**, **Admin** och **Manager** (med integrationsbehörigheter) kan ansluta eller hantera Slack-integrationen. Du behöver administratörsrättigheter för Slack-arbetsytan för att auktorisera anslutningen.
+</Note>
+
+## Anslut Slack
+
+<Steps>
+  <Step title="Öppna Integrationer">
+    I den vänstra sidopanelen, klicka på **Integrationer**.
+  </Step>
+
+  <Step title="Hitta Slack-kortet">
+    Scrolla till **Slack**-kortet och klicka på **Anslut**.
+  </Step>
+
+  <Step title="Auktorisera AgencyHandy i Slack">
+    Ett Slack-auktoriseringsfönster öppnas. Om du inte redan är inloggad på din Slack-arbetsyta, logga in nu. Granska de behörigheter som AgencyHandy begär och klicka på **Tillåt** för att bevilja åtkomst.
+  </Step>
+
+  <Step title="Välj en aviseringskanal">
+    Efter auktoriseringen väljer du den Slack-kanal där du vill att AgencyHandys aviseringar ska visas. Välj en kanal från rullgardinsmenyn och klicka på **Spara** för att bekräfta.
+  </Step>
+
+  <Step title="Bekräfta inställningen">
+    Slack-kortet uppdateras och visar **Ansluten**. AgencyHandy börjar omedelbart publicera aviseringar till den valda kanalen.
+  </Step>
+</Steps>
+
+## Vilka aviseringar skickas till Slack
+
+AgencyHandy publicerar ett Slack-meddelande när någon av följande händelser inträffar:
+
+| Kategori | Händelser som utlöser en avisering |
+|---|---|
+| **Uppgifter** | Uppgift skapad, uppdaterad, tilldelad eller slutförd |
+| **Beställningar** | Beställning skapad eller status ändrad |
+| **Kommentarer** | Ny kommentar tillagd på en uppgift eller beställning |
+| **Bifogade filer** | Fil eller bilaga tillagd på en uppgift |
+| **Ärenden** | Ärende skapat, tilldelat eller status ändrad |
+
+Varje Slack-meddelande innehåller:
+
+- **Namn** på uppgiften, beställningen eller ärendet
+- **Statusändringen** eller åtgärden som utlöste meddelandet
+- En **länk** tillbaka till det relevanta objektet i AgencyHandy
+
+När en fil eller bilaga läggs till på en uppgift inkluderar Slack-meddelandet även en förhandsgranskning av den bifogade filen.
+
+<Tip>
+  Välj en dedikerad **#agency-handy-aviseringar**-kanal (eller liknande) för att hålla aviseringar organiserade och förhindra att de stör dina huvudsakliga teamkanaler.
+</Tip>
+
+## Koppla bort Slack
+
+För att stoppa aviseringar, återvänd till **Integrationer** och klicka på **Koppla bort** på Slack-kortet. Alla aviseringar stoppas omedelbart.
+
+## Viktiga noteringar
+
+- **En arbetsyta per anslutning** — du kan bara ansluta en enda Slack-arbetsyta till varje AgencyHandy-arbetsyta. För att byta till en annan Slack-arbetsyta kopplar du bort den nuvarande och ansluter på nytt.
+- **Kanalsynlighet** — aviseringar är synliga för alla i den valda Slack-kanalen. Se till att kanalen är lämplig för den detaljnivå som delas (t.ex. undvik att publicera känsliga klientorderdetaljer i en offentlig kanal).
+- **Omauktorisering** — om din Slack-token löper ut eller behörigheter ändras, återvänd till Integrationer och återanslut för att återställa aviseringar.

@@ -1,0 +1,143 @@
+---
+title: "Aufträge in AgencyHandy erstellen, bearbeiten und löschen"
+sidebarTitle: "Auftrag erstellen"
+description: "Schritt-für-Schritt-Anleitung zum Erstellen, Bearbeiten und Löschen von Aufträgen in AgencyHandy – einschließlich Rollenanforderungen, Formularfeldern und Statusübergängen."
+---
+
+Das Erstellen eines Auftrags in AgencyHandy bietet Ihnen einen strukturierten Arbeitsbereich für die Erbringung einer Dienstleistung an einen Kunden. Sie geben die wichtigsten Details vorab ein – Kunde, Dienstleistung, Preis, Termine und eine Projektbeschreibung – und alles weitere, von Aufgaben bis hin zu Diskussionen, ergibt sich aus diesem einzelnen Datensatz. Diese Seite führt Sie durch das Erstellen eines Auftrags von Grund auf, das nachträgliche Aktualisieren, das Ändern des Status und das Löschen, wenn er nicht mehr benötigt wird.
+
+## Voraussetzungen
+
+- Sie müssen bei AgencyHandy angemeldet sein.
+- Sie müssen die Rolle **Super Admin**, **Admin** oder **Projektmanager** innehaben, um Aufträge zu erstellen oder zu bearbeiten.
+- Nur **Super Admins** und **Admins** können Aufträge löschen.
+
+## Neuen Auftrag erstellen
+
+<Steps>
+  <Step title="Zu Aufträgen navigieren">
+    Klicken Sie in der linken Seitenleiste Ihres AgencyHandy-Dashboards auf **Aufträge**.
+  </Step>
+
+  <Step title="Erstellungsformular öffnen">
+    Klicken Sie oben rechts auf **+ Neuen Auftrag erstellen**. Ein Formular wird angezeigt.
+  </Step>
+
+  <Step title="Auftragsdetails ausfüllen">
+    Füllen Sie die Felder im Formular aus:
+
+    | Feld | Erforderlich | Hinweise |
+    |---|---|---|
+    | **Kunde** | ✅ | Aus Ihrer bestehenden Kundenliste auswählen |
+    | **Dienstleistung** | ✅ | Enthält sowohl veröffentlichte als auch unveröffentlichte Dienstleistungen |
+    | **Projektmanager** | ❌ | Optional; einen PM für die Umsetzung zuweisen |
+    | **Menge** | ✅ | Anzahl der bestellten Einheiten |
+    | **Preis** | ✅ | Vereinbartes Budget für den Auftrag |
+    | **Startdatum** | ✅ | Wann die Arbeit beginnt |
+    | **Fälligkeitsdatum** | ✅ | Abgabetermin |
+    | **Auftrags-Briefing** | ❌ | Anweisungen, Anforderungen oder Referenznotizen für Ihr Team |
+    | **Anhänge** | ❌ | Unterstützende Dateien zum Auftrag |
+
+    <Tip>
+      Wenn der ausgewählten Dienstleistung Add-Ons zugeordnet sind, wird im Formular ein Abschnitt **Add-On** angezeigt. Fügen Sie alle relevanten Add-Ons hinzu, bevor Sie das Formular absenden.
+    </Tip>
+  </Step>
+
+  <Step title="Eingaben überprüfen">
+    Überprüfen Sie alle Felder auf Richtigkeit – insbesondere Kunde, Dienstleistung, Preis und Fälligkeitsdatum.
+  </Step>
+
+  <Step title="Auftrag absenden">
+    Klicken Sie auf **Erstellen**, um den Auftrag abzuschließen. Nach erfolgreicher Erstellung erhalten Sie eine Bestätigungsmeldung.
+  </Step>
+</Steps>
+
+### Was nach dem Erstellen eines Auftrags passiert
+
+- Alle Super Admins in Ihrem Unternehmen erhalten automatisch Zugriff auf den neuen Auftrag.
+- Der Kunde erhält eine Benachrichtigung, dass sein Auftrag erstellt wurde.
+- Der Auftrag erscheint in der **Aufträge**-Liste mit dem Status **Ausstehend**.
+
+## Auftrag bearbeiten oder aktualisieren
+
+Sie können einen Auftrag jederzeit aktualisieren, um Details zu korrigieren, den Preis anzupassen, das Fälligkeitsdatum zu ändern oder Kundenanfragen zu berücksichtigen.
+
+<Note>
+Sie müssen **Super Admin**, **Admin** oder **Projektmanager** sein, um einen Auftrag zu bearbeiten.
+</Note>
+
+<Steps>
+  <Step title="Auftragsliste öffnen">
+    Navigieren Sie in der linken Seitenleiste zu **Aufträge**.
+  </Step>
+
+  <Step title="Zu bearbeitenden Auftrag auswählen">
+    Suchen Sie den Auftrag, den Sie aktualisieren möchten, und setzen Sie ein Häkchen in das Kontrollkästchen daneben.
+  </Step>
+
+  <Step title="Bearbeiten-Schaltfläche aktivieren">
+    Oben rechts erscheint eine **Bearbeiten**-Schaltfläche. Klicken Sie darauf, um die Auftragsdetails im Bearbeitungsmodus zu öffnen.
+  </Step>
+
+  <Step title="Erforderliche Felder ändern">
+    Aktualisieren Sie alle Felder, die geändert werden müssen – Kundendetails, Dienstleistung, Preis, Termine, Briefing oder zugewiesener PM.
+  </Step>
+
+  <Step title="Änderungen speichern">
+    Klicken Sie auf **Aktualisieren**, um zu speichern. Eine Bestätigungsmeldung bestätigt, dass die Aktualisierung erfolgreich war.
+  </Step>
+</Steps>
+
+## Auftragsstatus ändern
+
+Der Auftragsstatus zeigt an, wo sich ein Arbeitsvorgang in Ihrer Lieferpipeline befindet. AgencyHandy definiert fünf feste Status – Sie können diese nicht hinzufügen oder umbenennen.
+
+| Status | Bedeutung |
+|---|---|
+| **Ausstehend** | Erstellt, noch nicht begonnen |
+| **Laufend** | Wird aktiv bearbeitet |
+| **In Überprüfung** | Zur Überprüfung eingereicht; wartet auf Abnahme |
+| **Abgeschlossen** | Geliefert und abgenommen |
+| **Storniert** | Nicht mehr aktiv |
+
+<Note>
+Nur **Super Admins**, **Admins** und **Projektmanager** können den Status eines Auftrags ändern. Mitarbeiter und Kunden können den Status nicht ändern.
+</Note>
+
+Um den Status zu aktualisieren, öffnen Sie den Auftrag und verwenden Sie den Statuswähler oben auf der Auftragsdetailseite. Wählen Sie den neuen Status aus dem Dropdown-Menü und bestätigen Sie.
+
+## Auftrag löschen
+
+Das Löschen eines Auftrags entfernt ihn dauerhaft aus dem System. Verwenden Sie dies nur, wenn ein Auftrag wirklich obsolet ist – zum Beispiel, wenn er versehentlich erstellt wurde oder ein Duplikat ist.
+
+<Warning>
+Das Löschen eines Auftrags ist unwiderruflich. Einmal gelöscht, kann ein Auftrag nicht wiederhergestellt werden. Gehen Sie mit Bedacht vor.
+</Warning>
+
+<Note>
+Nur **Super Admins** und **Admins** können Aufträge löschen.
+</Note>
+
+<Steps>
+  <Step title="Zu Aufträgen navigieren">
+    Klicken Sie in der linken Seitenleiste auf **Aufträge**.
+  </Step>
+
+  <Step title="Zu löschenden Auftrag finden">
+    Scrollen oder suchen Sie nach dem Auftrag, den Sie aus der Liste entfernen möchten.
+  </Step>
+
+  <Step title="Löschvorgang einleiten">
+    Klicken Sie auf das **Papierkorb-Symbol** des betreffenden Auftrags.
+  </Step>
+
+  <Step title="Löschung bestätigen">
+    Eine Bestätigungsaufforderung wird angezeigt. Bestätigen Sie, um den Auftrag dauerhaft zu löschen.
+  </Step>
+</Steps>
+
+Nach dem Löschen überprüfen Sie Ihre verbleibenden Aufträge, um sicherzustellen, dass alles in Ordnung ist. Der gelöschte Eintrag erscheint nicht mehr in einer Liste oder einem Bericht.
+
+## Teammitglieder zu einem Auftrag hinzufügen
+
+Super Admins, Admins und PMs können Mitarbeiter jederzeit zu einem Auftrag hinzufügen. Wenn ein Teammitglied hinzugefügt wird, erhält es eine In-App-Benachrichtigung. Zugewiesene Mitarbeiter erhalten Einblick in den Auftrag und seine Aufgaben, können den Auftrag selbst jedoch nicht verwalten (Details bearbeiten, Status ändern oder löschen).

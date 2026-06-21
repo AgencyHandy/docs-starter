@@ -1,0 +1,123 @@
+---
+title: "Konfigurēt AgencyHandy Darbvietas Vispārējos Iestatījumus"
+sidebarTitle: "Vispārējie Iestatījumi"
+description: "Iestatiet darbvietas nosaukumu, augšupielādējiet logotipus, pievienojiet aģentūras adresi un atlasiet pareizo laika zonu, lai personalizētu savu AgencyHandy darbvietu."
+---
+
+Vispārējo Iestatījumu lapa ir pirmā vieta, ko apmeklēsiet pēc pieteikšanās AgencyHandy. Tā ļauj jums noteikt savas aģentūras identitāti platformā — no logotipa un darbvietas nosaukuma līdz fiziskajai adresei un laika zonai. Katras šeit veiktās izmaiņas tiek piemērotas globāli visai darbvietai visiem lietotājiem.
+
+<Note>
+  Tikai **Super Administratori** un **Administratori** var piekļūt un modificēt Darbvietas Konfigurācijas iestatījumus. Ja kreisajā navigācijā neredzat opciju **Workspace Config**, sazinieties ar savu Super Administratoru, lai pielāgotu lomas atļaujas.
+</Note>
+
+## Piekļūt Vispārējiem Iestatījumiem
+
+<Steps>
+  <Step title="Atveriet Workspace Config">
+    Piesakieties savā AgencyHandy kontā. Kreisajā navigācijas izvēlnē noklikšķiniet uz **Workspace Config**.
+  </Step>
+  <Step title="Atlasiet General Settings">
+    Noklikšķiniet uz **General Settings** no Workspace Config apakšizvēlnes. Vispārējo Iestatījumu panelis atveras labajā pusē.
+  </Step>
+</Steps>
+
+---
+
+## Darbvietas Logotipa Augšupielāde
+
+AgencyHandy atbalsta trīs atšķirīgus logotipu veidus, katrs tiek rādīts citā interfeisa daļā:
+
+| Logotipa veids    | Izmēri      | Kur parādās                                          |
+|-------------------|-------------|------------------------------------------------------|
+| Apaļš Logotips    | 32 × 32 px  | Profila apgabali un kompakti UI elementi             |
+| Favicon Logotips  | 16 × 16 px  | Pārlūkprogrammas cilnes ikona                        |
+| Taisnstūra Logotips | 142 × 36 px | Sānjoslas galvene (aizstāj apaļo logotipu, ja iestatīts) |
+
+**Atbalstītie formāti:** PNG, JPG, SVG
+
+<Steps>
+  <Step title="Noklikšķiniet uz Upload Logo">
+    Logotipa sadaļā noklikšķiniet uz pogas **Upload Logo** tam logotipa veidam, kuru vēlaties iestatīt.
+  </Step>
+  <Step title="Atlasiet attēla failu">
+    Pārlūkojiet attēlu savā ierīcē. Pārliecinieties, ka fails atbilst nepieciešamajiem izmēriem un ir atbalstītā formātā.
+  </Step>
+  <Step title="Apstipriniet augšupielādi">
+    Logotipa priekšskatījums atjauninās nekavējoties. Atkārtojiet katram logotipa veidam pēc nepieciešamības.
+  </Step>
+</Steps>
+
+<Tip>
+  Augšupielādējot **Taisnstūra Logotipu**, tas aizstās Apaļo Logotipu sānjoslā un automātiski paslēps blakus esošo darbvietas nosaukuma tekstu. Taisnstūra logotips kļūst arī par primāro logotipu, ko izmanto visos pārējos kontekstos, kur tiek rādīts logotips — pat ja ir augšupielādēts arī apaļais logotips.
+</Tip>
+
+---
+
+## Darbvietas Nosaukuma un Adreses Iestatīšana
+
+### Darbvietas Nosaukums
+
+Ievadiet savas aģentūras nosaukumu laukā **Workspace Name**. Šis nosaukums:
+
+- Tiek rādīts visā platformā identifikācijai.
+- Tiek izmantots noklusējuma AgencyHandy apakšdomēnā (piemēram, `yourname.agencyhandy.com`).
+
+<Warning>
+  Mainot darbvietas nosaukumu, jūsu noklusējuma apakšdomēns tiek atjaunināts nekavējoties. Ja esat kopīgojis noklusējuma apakšdomēna saiti ar klientiem, viņiem būs nepieciešams atjauninātais URL. Apsveriet pielāgota domēna iestatīšanu [šeit](/lv/workspace/custom-domain), lai izvairītos no šīs problēmas.
+</Warning>
+
+### Darbvietas Adrese
+
+Ievadiet savas aģentūras pilno fizisko adresi laukā **Workspace Address**. Šī adrese tiek izmantota oficiālai pārstāvībai rēķinos un klientiem redzamos dokumentos, tāpēc pārliecinieties, ka tā ir precīza un aktuāla.
+
+---
+
+## Laika Zonas Atlase
+
+<Steps>
+  <Step title="Atveriet Time Zone nolaižamo sarakstu">
+    Ritiniet uz lauku **Time Zone** un noklikšķiniet uz nolaižamā saraksta, lai izvērstu laika zonu sarakstu.
+  </Step>
+  <Step title="Izvēlieties savu laika zonu">
+    Atlasiet laika zonu, kas atbilst jūsu aģentūras primārajai darbības vietai. Visi uzdevumu termiņi, plānotie paziņojumi, kalendāra notikumi un laika zīmogi visā darbvietā ir balstīti uz šo iestatījumu.
+  </Step>
+</Steps>
+
+<Warning>
+  Nepareizs laika zonas iestatījums izraisa plānošanas kļūdas uzdevumiem, sanāksmēm un rēķinu apmaksas termiņiem. Pārbaudiet šo iestatījumu pirms komandas vai klientu uzaicināšanas.
+</Warning>
+
+---
+
+## Izmaiņu Saglabāšana
+
+Pēc lauku aizpildīšanas vai atjaunināšanas noklikšķiniet uz **Save Changes** Vispārējo Iestatījumu paneļa apakšā. Visi atjauninājumi tiek piemēroti globāli un ir nekavējoties redzami katram darbvietas lietotājam.
+
+---
+
+## Bīstamā Zona: Darbvietas Dzēšana
+
+Vispārējo Iestatījumu paneļa apakšā atrodas sadaļa **Danger Zone**, kurā ir poga **Delete Workspace**.
+
+<Warning>
+  Darbvietas dzēšana ir **neatgriezeniska un pastāvīga**. Visi dati — tostarp klienti, pasūtījumi, rēķini, projekti un konfigurācijas — tiks neatgriezeniski dzēsti. Nav atjaunošanas iespējas. Turpiniet tikai tad, ja esat absolūti pārliecināts.
+</Warning>
+
+---
+
+## Labākā Prakse
+
+<CardGroup cols={2}>
+  <Card title="Pārbaudiet logotipa izmērus" icon="image">
+    Augšupielādējiet logotipus precīzos ieteicamajos pikseļu izmēros, lai novērstu stiepšanos, apgriešanu vai izplūdušu attēlojumu platformā.
+  </Card>
+  <Card title="Uzturiet aktuālu zīmolu" icon="paintbrush">
+    Atjauniniet logotipu un adresi ikreiz, kad jūsu aģentūra pārveido zīmolu vai maina atrašanās vietu, lai visi dokumenti un klientiem redzamās lapas būtu precīzas.
+  </Card>
+  <Card title="Vispirms iestatiet laika zonu" icon="clock">
+    Konfigurējiet laika zonu pirms pakalpojumu izveides, uzdevumu vai jebkā cita plānošanas, lai visi laika zīmogi no paša sākuma būtu pareizi saskaņoti.
+  </Card>
+  <Card title="Ierobežojiet administratora piekļuvi" icon="shield">
+    Piešķiriet Super Administratora vai Administratora lomas tikai tiem darbiniekiem, kuriem patiešām nepieciešams modificēt darbvietas konfigurācijas, lai novērstu nejaušas izmaiņas.
+  </Card>
+</CardGroup>

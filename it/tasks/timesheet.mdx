@@ -1,0 +1,172 @@
+---
+title: "Monitoraggio del Tempo e Gestione dei Fogli Presenze in AgencyHandy"
+sidebarTitle: "Foglio Presenze"
+description: "Registra il tempo con un timer live o inserimento manuale, filtra i registri di lavoro per attività, membro o servizio, ed esporta i dati del foglio presenze come CSV o XLSX in AgencyHandy."
+---
+
+La funzionalità Foglio Presenze in AgencyHandy ti offre un pannello centrale per monitorare ogni ora che il tuo team trascorre sulle attività. Puoi avviare un timer live su qualsiasi attività, registrare il tempo a posteriori con un inserimento manuale, e quindi analizzare i dati per intervallo di date, membro del team o servizio. Quando devi reportare sulla produttività o fatturare per il tempo, puoi esportare tutto in CSV o XLSX in pochi clic. È lo strumento essenziale per mantenere il tuo team responsabile e la tua fatturazione basata sul tempo accurata.
+
+## Chi Può Usare le Funzionalità del Foglio Presenze
+
+| Funzionalità | Super Admin | Admin | PM | Dipendente |
+|---------|:-----------:|:-----:|:--:|:--------:|
+| Visualizza i propri registri di tempo | ✅ | ✅ | ✅ | ✅ |
+| Registra il tempo per altri | ✅ | ✅ | ✅ | ❌ |
+| Modifica le voci di tempo | ✅ | ✅ | ✅ | ❌ |
+| Esporta i dati del foglio presenze | ✅ | ✅ | ✅ | ❌ |
+
+<Note>
+  Le attività devono esistere prima che il tempo possa essere monitorato su di esse. Assicurati che le attività siano create all'interno degli ordini prima di tentare di registrare il tempo.
+</Note>
+
+## Visualizzazione del Foglio Presenze
+
+<Steps>
+  <Step title="Apri il Foglio Presenze">
+    Clicca su **Foglio Presenze** nella barra laterale sinistra principale. Vedrai una tabella che elenca tutti i registri di tempo per il tuo team.
+
+    Ogni riga mostra la data, il membro del team, il nome dell'attività, il servizio, il tempo registrato e le note allegate alla voce.
+  </Step>
+</Steps>
+
+## Aggiunta di una Voce di Tempo
+
+Hai due opzioni per registrare il tempo: un timer live per il lavoro in corso, o un inserimento manuale per il tempo già completato.
+
+<Tabs>
+  <Tab title="Avvia un Timer">
+    <Steps>
+      <Step title="Seleziona un'attività">
+        Nella visualizzazione Foglio Presenze, trova o seleziona l'attività su cui stai per lavorare.
+      </Step>
+      <Step title="Clicca su Avvia Timer">
+        Clicca su **Avvia Timer** per iniziare a monitorare il tempo in tempo reale. Il timer scorre fino a quando non lo interrompi.
+      </Step>
+      <Step title="Interrompi quando hai finito">
+        Clicca su **Interrompi** quando hai finito il lavoro. AgencyHandy registra automaticamente il tempo trascorso sull'attività selezionata.
+      </Step>
+    </Steps>
+
+    <Tip>
+      Usa il timer per il lavoro in corso per garantire un monitoraggio preciso. Arrotondare manualmente o stimare il tempo a posteriori è meno accurato che lasciare scorrere il timer.
+    </Tip>
+  </Tab>
+  <Tab title="Inserimento Manuale">
+    <Steps>
+      <Step title="Clicca su + Aggiungi Voce">
+        Nel pannello Foglio Presenze, clicca su **+ Aggiungi Voce**. Apparirà un modulo.
+      </Step>
+      <Step title="Compila i dettagli della voce">
+        - **Attività** — seleziona l'attività a cui si riferisce questo tempo
+        - **Membro del Team** — assegna il tempo alla persona corretta (gli Admin e i Manager possono registrare per conto di altri)
+        - **Tempo Impiegato** — inserisci ore e minuti
+        - **Note** — aggiungi qualsiasi contesto su cosa è stato lavorato
+      </Step>
+      <Step title="Salva">
+        Clicca su **Salva** per registrare la voce. Apparirà immediatamente nella tabella del foglio presenze.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Filtro per Intervallo di Date
+
+Usa i filtri data per concentrarti su un periodo di tempo specifico.
+
+<Steps>
+  <Step title="Apri i filtri data">
+    Clicca sui controlli del filtro data in alto a destra nel pannello Foglio Presenze.
+  </Step>
+  <Step title="Seleziona un intervallo">
+    Scegli tra gli intervalli preimpostati:
+    - **Giornaliero** — solo i registri di oggi
+    - **Settimanale** — la settimana corrente
+    - **Mensile** — il mese corrente
+
+    Per progetti più lunghi o reportistica storica, seleziona un intervallo di date **Personalizzato** inserendo una data di inizio e di fine.
+  </Step>
+  <Step title="Applica">
+    Clicca su **Applica** per aggiornare la tabella con i registri del periodo selezionato.
+  </Step>
+</Steps>
+
+<Tip>
+  Filtra prima di esportare per generare report mirati. L'esportazione del foglio presenze completo non filtrato può produrre file molto grandi per le agenzie attive.
+</Tip>
+
+## Raggruppamento delle Voci
+
+Il raggruppamento riorganizza il modo in cui sono organizzate le righe del foglio presenze senza rimuovere alcun dato. Ti aiuta a leggere e analizzare i registri più rapidamente.
+
+<Steps>
+  <Step title="Apri il menu a tendina Raggruppa per">
+    Clicca sul menu a tendina **Raggruppa per** nella parte superiore del pannello Foglio Presenze.
+  </Step>
+  <Step title="Seleziona un raggruppamento">
+    Scegli tra le seguenti opzioni:
+
+    | Opzione Raggruppa per | Cosa Mostra |
+    |----------------|---------------|
+    | **Nome Attività** | Tutte le voci di tempo raggruppate per ogni attività |
+    | **Membro del Team** | Tutte le voci raggruppate per ogni persona |
+    | **Servizio → Nome Attività** | Voci raggruppate per servizio, poi suddivise per attività all'interno di ogni servizio |
+  </Step>
+</Steps>
+
+<Note>
+  Il raggruppamento è solo una modifica visiva — non influisce sui dati sottostanti né su ciò che viene esportato. Le esportazioni includono sempre tutte le righe visibili.
+</Note>
+
+## Visualizzazione dei Dettagli delle Attività dal Foglio Presenze
+
+<Steps>
+  <Step title="Clicca sul nome di un'attività">
+    Nella tabella del foglio presenze, clicca su qualsiasi **Nome Attività**. AgencyHandy ti porta alla pagina di dettaglio completa di quell'attività.
+  </Step>
+  <Step title="Esamina il contesto dell'attività">
+    Nella pagina di dettaglio dell'attività, troverai la cronologia completa del registro di tempo, le note allegate, gli assegnatari, lo stato e altre informazioni a livello di attività. Usa questa visualizzazione per esaminare le voci o verificare quale lavoro è stato svolto.
+  </Step>
+</Steps>
+
+## Esportazione dei Dati del Foglio Presenze
+
+Esporta il tuo foglio presenze per la gestione delle paghe, i report di fatturazione ai clienti o gli strumenti di gestione dei progetti esterni.
+
+<Steps>
+  <Step title="Applica prima i filtri (consigliato)">
+    Usa il filtro per intervallo di date per restringere l'esportazione al periodo di cui hai bisogno. Questo mantiene il file mirato e gestibile.
+  </Step>
+  <Step title="Clicca su Esporta">
+    Clicca sul pulsante **Esporta** in cima al pannello Foglio Presenze.
+  </Step>
+  <Step title="Scegli un formato">
+    Seleziona:
+    - **CSV** — per strumenti di foglio di calcolo come Excel, Google Sheets o pipeline di dati
+    - **XLSX** — per cartelle di lavoro in formato Excel con la formattazione delle colonne preservata
+  </Step>
+  <Step title="Scarica il file">
+    Il file viene scaricato automaticamente sul tuo dispositivo. Ogni esportazione include tutte le colonne visibili: data, membro del team, nome attività, servizio, tempo registrato e note.
+  </Step>
+</Steps>
+
+<Warning>
+  Se l'esportazione non avvia un download, il **blocco pop-up** del tuo browser potrebbe impedire il download del file. Disabilita il blocco pop-up per AgencyHandy e riprova.
+</Warning>
+
+## Note Aggiuntive
+
+<Accordion title="Timer vs. inserimento manuale">
+  Il timer è ideale per il lavoro attivo in tempo reale. Gli inserimenti manuali sono ideali quando hai dimenticato di avviare il timer o devi registrare il tempo retroattivamente. Entrambi i metodi producono voci di registro identiche nella tabella del foglio presenze.
+</Accordion>
+
+<Accordion title="Raggruppamento vs. filtro">
+  I filtri **riducono** le righe mostrate nella tabella. Il raggruppamento **riorganizza** le righe già visibili. Puoi applicare entrambi contemporaneamente — filtra per un intervallo di date, poi raggruppa per membro del team per vedere i totali di ogni persona per quel periodo.
+</Accordion>
+
+<Accordion title="Le esportazioni includono tutte le colonne visibili">
+  Ogni esportazione cattura lo stato attuale della tabella visibile: data, utente, attività, servizio, tempo e note. Se hai applicato un'impostazione di raggruppamento, l'esportazione riflette anche la struttura del raggruppamento.
+</Accordion>
+
+<Accordion title="Intervalli personalizzati per i dati storici">
+  Per progetti a lungo termine o revisioni trimestrali, usa l'opzione di intervallo di date personalizzato per estrarre dati storici del foglio presenze oltre le finestre giornaliere/settimanali/mensili preimpostate.
+</Accordion>

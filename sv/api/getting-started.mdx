@@ -1,0 +1,114 @@
+---
+title: "AgencyHandy API: Autentisering och kom igång"
+sidebarTitle: "Kom igång"
+description: "Generera en API-nyckel, hämta ditt företags-ID och börja bygga integrationer mot AgencyHandy REST API med den här snabbstartsguiden."
+---
+
+AgencyHandy API låter dig automatisera skapandet av leads, klienthantering, orderuppdateringar och mer från vilket externt system eller skript som helst. Varje begäran autentiseras med en API-nyckel som du genererar från dina arbetsyteinställningar. Den här guiden visar dig hur du skaffar dina inloggningsuppgifter och gör ditt första API-anrop.
+
+<Note>
+  Du måste vara **SuperAdmin** eller **Admin** på din AgencyHandy-arbetsyta för att generera en API-nyckel.
+</Note>
+
+## Bas-URL
+
+Alla API-begäranden görs till:
+
+```
+https://api.agencyhandy.com
+```
+
+Ersätt `{{URL}}` med denna bas-URL i alla exempelbegäranden i API-dokumentationen.
+
+## Steg 1: Generera en API-nyckel
+
+<Steps>
+  <Step title="Öppna arbetsytekonfiguration">
+    Navigera till dina arbetsyteinställningar på:
+
+    ```
+    {{workspaceUrl}}/workspace-config?tab=api-key
+    ```
+
+    Detta öppnar fliken **API-nyckel** i Arbetsytekonfiguration.
+  </Step>
+
+  <Step title="Generera och kopiera din API-nyckel">
+    Klicka på **Generera** (eller **Regenerera** om en nyckel redan finns). Kopiera API-nyckeln och förvara den säkert — behandla den som ett lösenord. AgencyHandy visar den inte igen efter att du lämnat sidan.
+  </Step>
+</Steps>
+
+<Warning>
+  Om du regenererar din API-nyckel ogiltigförklaras den tidigare nyckeln omedelbart. Alla befintliga integrationer som använder den gamla nyckeln slutar fungera tills du uppdaterar dem med den nya nyckeln.
+</Warning>
+
+## Steg 2: Hämta ditt företags-ID
+
+De flesta API-endpoints kräver ett `companyid`-huvud som identifierar vilken arbetsyta begäran riktar sig mot. Använd följande endpoint för att hämta ditt företags-ID.
+
+### Endpoint
+
+```
+GET {{URL}}/accounts/companies
+```
+
+### Huvuden
+
+| Huvud | Värde |
+|---|---|
+| `x-api-key` | Din API-nyckel |
+
+### Exempelbegäran
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/accounts/companies" \
+  --header "x-api-key: <YOUR_API_KEY>"
+```
+
+### Exempelsvar
+
+```json
+{
+  "message": "Companies associated with API token.",
+  "companies": [
+    {
+      "_id": "6525994184e9ddd79853450e",
+      "name": "onethread123",
+      "logo": "",
+      "extraSmallLogo": "",
+      "largeLogo": ""
+    }
+  ]
+}
+```
+
+<Steps>
+  <Step title="Hitta ditt företags-ID">
+    I svaret, hitta fältet `_id` inuti `companies`-arrayen. Det här är ditt **företags-ID**.
+
+    ```javascript
+    const companyId = response.companies[0]._id;
+    // e.g. "6525994184e9ddd79853450e"
+    ```
+  </Step>
+
+  <Step title="Spara företags-ID:t">
+    Spara företags-ID:t för användning i alla efterföljande API-begäranden. Du skickar det som `companyid`-huvudet:
+
+    | Huvud | Värde |
+    |---|---|
+    | `x-api-key` | Din API-nyckel |
+    | `companyid` | Ditt företags-ID |
+  </Step>
+</Steps>
+
+## Sammanfattning av autentisering
+
+Varje autentiserad API-begäran kräver som minimum:
+
+```
+x-api-key: <YOUR_API_KEY>
+companyid: <YOUR_COMPANY_ID>
+```
+
+Med din API-nyckel och ditt företags-ID är du redo att använda resten av AgencyHandy API. Fortsätt till någon av endpoint-guiderna nedan.

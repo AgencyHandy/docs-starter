@@ -1,0 +1,123 @@
+---
+title: "Konfigurera allmänna inställningar för ditt AgencyHandy-workspace"
+sidebarTitle: "Allmänna inställningar"
+description: "Ange ditt workspace-namn, ladda upp logotyper, lägg till din byråadress och välj rätt tidszon för att anpassa ditt AgencyHandy-workspace."
+---
+
+Sidan Allmänna inställningar är den första platsen du besöker efter att du loggat in på AgencyHandy. Här etablerar du din byrås identitet på plattformen — från din logotyp och ditt workspace-namn till din fysiska adress och tidszon. Alla ändringar du gör här tillämpas globalt i workspace:et för alla användare.
+
+<Note>
+  Endast **superadministratörer** och **administratörer** kan komma åt och ändra inställningar för workspace-konfiguration. Om du inte ser alternativet **Workspace Config** i vänster navigering kontaktar du din superadministratör för att justera dina rollbehörigheter.
+</Note>
+
+## Åtkomst till allmänna inställningar
+
+<Steps>
+  <Step title="Öppna Workspace Config">
+    Logga in på ditt AgencyHandy-konto. I den vänstra navigeringsmenyn klickar du på **Workspace Config**.
+  </Step>
+  <Step title="Välj Allmänna inställningar">
+    Klicka på **General Settings** i undermenyn för Workspace Config. Panelen Allmänna inställningar öppnas till höger.
+  </Step>
+</Steps>
+
+---
+
+## Ladda upp din workspace-logotyp
+
+AgencyHandy stöder tre distinkta logotyptyper, var och en visas i en annan del av gränssnittet:
+
+| Logotyptyp        | Mått        | Var den visas                                          |
+|-------------------|-------------|--------------------------------------------------------|
+| Cirkellogotyp     | 32 × 32 px  | Profilområden och kompakta UI-element                  |
+| Favikon-logotyp   | 16 × 16 px  | Webbläsarfliksikon                                     |
+| Rektangellogotyp  | 142 × 36 px | Sidofältshuvud (ersätter cirkellogotypen när den är inställd) |
+
+**Format som stöds:** PNG, JPG, SVG
+
+<Steps>
+  <Step title="Klicka på Ladda upp logotyp">
+    Under logotypavsnittet klickar du på knappen **Upload Logo** för den logotyptyp du vill ange.
+  </Step>
+  <Step title="Välj din bildfil">
+    Bläddra till bilden på din enhet. Se till att filen matchar de obligatoriska måtten och är i ett format som stöds.
+  </Step>
+  <Step title="Bekräfta uppladdningen">
+    Logotypförhandsvisningen uppdateras omedelbart. Upprepa för varje logotyptyp efter behov.
+  </Step>
+</Steps>
+
+<Tip>
+  Att ladda upp en **rektangellogotyp** ersätter cirkellogotypen i sidofältet och döljer automatiskt workspace-namntexten bredvid den. Rektangellogotypen blir också den primära logotypen som används i alla andra sammanhang där en logotyp visas — även om en cirkellogotyp också är uppladdad.
+</Tip>
+
+---
+
+## Ange ditt workspace-namn och din adress
+
+### Workspace-namn
+
+Ange din byrås namn i fältet **Workspace Name**. Det här namnet:
+
+- Visas i hela plattformen för identifiering.
+- Används i standard-underdomänen för AgencyHandy (t.ex. `dittnamn.agencyhandy.com`).
+
+<Warning>
+  Att ändra ditt workspace-namn uppdaterar din standardunderdomän omedelbart. Om du delar standardunderdomänlänken med kunder behöver de den uppdaterade URL:en. Överväg att konfigurera en [egen domän](/sv/workspace/custom-domain) för att undvika det här problemet.
+</Warning>
+
+### Workspace-adress
+
+Ange din byrås fullständiga fysiska adress i fältet **Workspace Address**. Den här adressen används för officiell representation på fakturor och kundinriktade dokument, så se till att den är korrekt och aktuell.
+
+---
+
+## Välja din tidszon
+
+<Steps>
+  <Step title="Öppna rullgardinsmenyn Tidszon">
+    Scrolla till fältet **Time Zone** och klicka på rullgardinsmenyn för att expandera tidszonslistan.
+  </Step>
+  <Step title="Välj din tidszon">
+    Välj den tidszon som matchar din byrås primära verksamhetsort. Alla uppgiftsdeadlines, schemalagda aviseringar, kalenderhändelser och tidsstämplar i workspace:et baseras på den här inställningen.
+  </Step>
+</Steps>
+
+<Warning>
+  En felaktig tidzonsinställning orsakar schemaläggningsfel för uppgifter, möten och fakturans förfallodatum. Dubbelkontrollera den här inställningen innan du bjuder in ditt team eller dina kunder.
+</Warning>
+
+---
+
+## Spara dina ändringar
+
+Efter att du har fyllt i eller uppdaterat några fält klickar du på **Save Changes** längst ned på panelen Allmänna inställningar. Alla uppdateringar tillämpas globalt och är omedelbart synliga för varje användare i workspace:et.
+
+---
+
+## Farlig zon: Ta bort ditt workspace
+
+Längst ned på panelen Allmänna inställningar finns det ett avsnitt med **Farlig zon** som innehåller knappen **Delete Workspace**.
+
+<Warning>
+  Att ta bort ditt workspace är **permanent och oåterkalleligt**. All data — inklusive kunder, beställningar, fakturor, projekt och konfigurationer — raderas permanent. Det finns inget återställningsalternativ. Fortsätt bara om du är absolut säker.
+</Warning>
+
+---
+
+## Bästa praxis
+
+<CardGroup cols={2}>
+  <Card title="Verifiera logotypdimensioner" icon="image">
+    Ladda upp logotyper med de exakt rekommenderade pixeldimensionerna för att förhindra utsträckning, beskärning eller suddig visning i hela plattformen.
+  </Card>
+  <Card title="Håll varumärket aktuellt" icon="paintbrush">
+    Uppdatera din logotyp och adress när din byrå byter varumärke eller byter plats för att hålla alla dokument och kundinriktade sidor korrekta.
+  </Card>
+  <Card title="Ange tidszon först" icon="clock">
+    Konfigurera din tidszon innan du skapar tjänster, uppgifter eller schemalägger något för att säkerställa att alla tidsstämplar är korrekta från start.
+  </Card>
+  <Card title="Begränsa adminåtkomst" icon="shield">
+    Bevilja endast rollerna Superadministratör eller Administratör till personal som verkligen behöver ändra workspace-konfigurationer, för att förhindra oavsiktliga ändringar.
+  </Card>
+</CardGroup>

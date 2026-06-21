@@ -1,0 +1,91 @@
+---
+title: "Auftragsübersicht: Kundenarbeit in AgencyHandy verwalten"
+sidebarTitle: "Übersicht"
+description: "Verstehen Sie, wie Aufträge in AgencyHandy funktionieren — Status, Rollen, Auftragsdetails, manuelle Aufträge und Add-ons für unveröffentlichte Dienstleistungen."
+---
+
+Aufträge sind das operative Rückgrat von AgencyHandy. Ein Auftrag repräsentiert die Anfrage eines Kunden für eine Dienstleistung oder ein Produkt und dient als zentraler Workspace, in dem Ihr Team den Fortschritt verfolgt, Aufgaben verwaltet, Feedback austauscht und Ergebnisse liefert. Unabhängig davon, ob ein Kunde eine Bestellung über Ihren veröffentlichten Dienstleistungskatalog aufgibt oder Ihr Team einen manuell erstellt, folgt jeder Auftrag demselben strukturierten Lebenszyklus, der Ihre Agentur organisiert und Ihre Kunden informiert hält.
+
+## Was ein Auftrag enthält
+
+Jeder Auftrag zeigt auf einen Blick wichtige Informationen und bietet Teammitgliedern einen einzigen Ort zur Koordination der Arbeit:
+
+| Feld | Beschreibung |
+|---|---|
+| **Auftrags-ID** | Automatisch generierter eindeutiger Bezeichner für jeden Auftrag |
+| **Kunde** | Der Kunde, zu dem der Auftrag gehört |
+| **Dienstleistung** | Die zu liefernde Dienstleistung |
+| **Projektmanager (PM)** | Das für die Lieferung verantwortliche Teammitglied (optional) |
+| **Budget** | Vereinbarter Preis für den Auftrag |
+| **Startdatum** | Wenn die Arbeit beginnt |
+| **Fälligkeitsdatum** | Frist für die Auftragserfüllung |
+| **Auftragsbeschreibung** | Kundenanweisungen, Notizen und angehängte Referenzdateien |
+| **Aufgaben** | Diskrete Arbeitsposten, die Teammitgliedern zugewiesen werden |
+| **Diskussionen** | Themengebundene Gespräche zwischen Agenturbelegschaft und Kunden |
+
+## Auftragsstatus
+
+Jeder Auftrag durchläuft eine feste Reihe von Status. Sie können diese Status nicht hinzufügen oder umbenennen.
+
+<Note>
+Nur Super-Admins, Admins und Projektmanager können den Status eines Auftrags ändern.
+</Note>
+
+| Status | Bedeutung |
+|---|---|
+| **Ausstehend** | Der Auftrag wurde erstellt und wartet auf den Beginn der Arbeit |
+| **In Bearbeitung** | Aktive Arbeit ist im Gange |
+| **In Überprüfung** | Lieferungen wurden eingereicht und warten auf die Überprüfung durch den Kunden oder intern |
+| **Abgeschlossen** | Der Auftrag wurde vollständig geliefert und akzeptiert |
+| **Storniert** | Der Auftrag wurde storniert und ist nicht mehr aktiv |
+
+## Rollenbasierter Zugriff
+
+Verschiedene Rollen in AgencyHandy haben unterschiedliche Befugnisse innerhalb von Aufträgen:
+
+| Rolle | Kann Aufträge erstellen | Kann Aufträge bearbeiten | Kann Aufträge löschen | Kann Status ändern | Kann Aufgaben hinzufügen | Kann Teammitglieder hinzufügen |
+|---|---|---|---|---|---|---|
+| **Super-Admin** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Admin** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Projektmanager (PM)** | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ |
+| **Mitarbeiter** | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| **Kunde** | ❌ | ❌ | ❌ | ❌ | ✅ (nur Anfrage) | ❌ |
+
+<Tip>
+Kunden können Feedback senden und an Diskussionen zu Aufträgen teilnehmen. Einem Auftrag zugewiesene Mitarbeiter können Aufgaben einsehen und daran arbeiten, den Auftrag selbst jedoch nicht verwalten.
+</Tip>
+
+## Was Sie mit Aufträgen tun können
+
+AgencyHandy gibt Ihnen ein vollständiges Werkzeugset zur Verwaltung von Aufträgen während ihres gesamten Lebenszyklus:
+
+- **Aufträge erstellen** für Kunden — entweder aus veröffentlichten Dienstleistungen oder manuell für noch in Entwicklung befindliche Dienstleistungen
+- **Aufträge akzeptieren und ablehnen**, die von Kunden eingereicht wurden, mit der Möglichkeit, bei Ablehnung einen Grund anzugeben
+- **Auftragsdetails einsehen**, einschließlich Fortschritt, zugewiesener Teammitglieder, Start- und Fälligkeitsdaten, Budget und Beschreibung
+- **Sortieren, filtern und suchen** über alle Aufträge hinweg nach ID, Status, Kundenname oder anderen Kriterien
+- **Aufgaben hinzufügen** direkt innerhalb eines Auftrags, um diskrete Arbeitseinheiten zu verfolgen und zuzuweisen
+- **Diskussionen starten**, um mit Kunden und Teammitgliedern im Kontext zu kommunizieren
+
+## Manuelle Aufträge für unveröffentlichte Dienstleistungen
+
+Sie sind nicht darauf beschränkt, Aufträge nur für Dienstleistungen zu erstellen, die Sie öffentlich veröffentlicht haben. Super-Admins und Admins können manuelle Aufträge für unveröffentlichte Dienstleistungen erstellen — nützlich, wenn eine Dienstleistung noch in der Entwicklung ist, vorübergehend nicht verfügbar ist oder einem bestimmten Kunden vor ihrem offiziellen Start angeboten wird.
+
+Wenn Sie das Auftragserstellungsformular öffnen, zeigt das Dropdown-Menü **Dienstleistung** sowohl veröffentlichte als auch unveröffentlichte Dienstleistungen, sodass Sie die passende auswählen können. Alle anderen Auftragsfelder und Workflows verhalten sich genauso wie bei einem Standardauftrag.
+
+## Add-ons in manuellen Aufträgen
+
+Beim Erstellen eines manuellen Auftrags können Sie **Add-on-Dienstleistungen** einschließen, damit Kunden angepasste Pakete über die Kerndienstleistung hinaus erhalten können. Add-ons müssen im Voraus erstellt und mit der relevanten Dienstleistung im Bereich **Formulare** verknüpft werden, bevor sie als Option im Bestellformular erscheinen.
+
+<Note>
+Die Add-on-Auswahl erscheint im manuellen Bestellformular nur, wenn mindestens ein Add-on mit der ausgewählten Dienstleistung verbunden wurde. Wenn Sie es nicht sehen, überprüfen Sie, ob Ihr Add-on in der Dienstleistungskonfiguration korrekt verknüpft ist.
+</Note>
+
+Sobald eine Dienstleistung mit verknüpften Add-ons ausgewählt ist, können Sie diese Add-ons einschließen, bevor Sie den Auftrag abschließen und einreichen.
+
+## Benachrichtigungen
+
+AgencyHandy benachrichtigt automatisch die richtigen Personen, wenn Aufträge voranschreiten:
+
+- Wenn ein Auftrag von einem PM, Admin oder Super-Admin erstellt wird, erhalten alle Super-Admins in Ihrem Unternehmen Zugriff und der Kunde erhält eine Erstellungsbenachrichtigung.
+- Wenn ein Teammitglied zu einem Auftrag hinzugefügt wird, erhält dieses Mitglied eine Benachrichtigung.
+- Wenn Aufgaben innerhalb eines Auftrags erstellt werden, erhält der Kunde eine Benachrichtigung.

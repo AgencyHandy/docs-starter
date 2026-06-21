@@ -1,0 +1,188 @@
+---
+title: "Chiquvchi elektron pochta, SMTP va elektron pochta shablonlarini sozlash"
+sidebarTitle: "Elektron pochta sozlamalari"
+description: "AgencyHandy'da maxsus jo'natuvchi elektron pochta manzilini sozlang, SMTP serverini ulang, yetkazib berish uchun DKIM/SPF yozuvlarini qo'shing va elektron pochta shablonlarini sozlang."
+---
+
+AgencyHandy'ning elektron pochta sozlamalari standart `noreply@agencyhandy.com` jo'natuvchisini o'zingizning brendlangan elektron pochta manzilingiz bilan almashtirishga, ishonchli yetkazib berish uchun maxsus SMTP serverini sozlashga, hamda mijozlarga bildirishnomalar, hisob-fakturalar, takliflar va boshqalar uchun ishlatiladigan shablonlarni moslashtirishga imkon beradi. Buni to'g'ri sozlash elektron xatlaringiz mijozlarning spam papkasiga emas, kiruvchi qutisiga tushishini ta'minlaydi — va har bir xabar agentligingiz brendini aks ettiradi.
+
+<Note>
+  Faqat **Super Adminlar** va **Adminlar** elektron pochta sozlamalarini konfiguratsiya qila oladi. Ushbu opsiyalarga kirish uchun **Ishchi fazo konfiguratsiyasi → Elektron pochta sozlamalari** bo'limiga o'ting.
+</Note>
+
+---
+
+## Elektron pochta sozlash komponentlariga umumiy ko'rinish
+
+<CardGroup cols={2}>
+  <Card title="Maxsus elektron pochta manzili" icon="envelope">
+    Ishchi fazongizdan xabar olganlarida mijozlar ko'radigan jo'natuvchi nomi va elektron pochta manzilini belgilang.
+  </Card>
+  <Card title="DKIM va SPF yozuvlari" icon="shield-check">
+    Elektron xatlaringiz haqiqiy ekanligini isbotlash va ularning spam sifatida belgilanishini oldini olish uchun DNS autentifikatsiya yozuvlarini qo'shing.
+  </Card>
+  <Card title="SMTP serveri" icon="server">
+    AgencyHandy'dan barcha chiquvchi elektron xatlarni yuborish uchun o'zingizning pochta serveringizni (masalan, Gmail, Outlook yoki maxsus domen serveri) ulang.
+  </Card>
+  <Card title="Elektron pochta shablonlari" icon="file-lines">
+    AgencyHandy mijozlarga yuboradigan har bir avtomatlashtirilgan elektron xat uchun kontent, mavzu satrlari va brendlashni moslang.
+  </Card>
+</CardGroup>
+
+---
+
+## 1-qism: Maxsus elektron pochta manzilini sozlash
+
+Jo'natuvchi elektron pochtangizni sozlashdan oldin, elektron pochta hosting bilan ro'yxatdan o'tgan domenga ega bo'lishingiz kerak. Mashhur provayderlarga Google Workspace, Microsoft 365, Zoho Mail va Cloudflare Email Routing kiradi.
+
+<Steps>
+  <Step title="Domen ro'yxatdan o'tkazing va elektron pochta hostingini sozlang">
+    Agar hali qilmagan bo'lsangiz, registrator orqali domen ro'yxatdan o'tkazing (masalan, GoDaddy, Namecheap, Cloudflare) va elektron pochta hosting provayderiga yozilib oling. Ushbu domenda elektron pochta manzillarini yaratish va boshqarish imkoniyatiga ega ekanligingizga ishonch hosil qiling (masalan, `hello@youragency.com`).
+  </Step>
+  <Step title="AgencyHandy'da elektron pochta sozlamalariga o'ting">
+    AgencyHandy'ga kiring. Chap navigatsiyada **Ishchi fazo konfiguratsiyasi** bo'limiga o'ting, so'ng **Elektron pochta sozlamalari** tugmasini bosing.
+  </Step>
+  <Step title="Jo'natuvchi nomi va elektron pochtani kiriting">
+    **Jo'natuvchi nomi** maydoniga mijozlar jo'natuvchi sifatida ko'radigan nomni yozing (masalan, `AgencyHandy Support` yoki agentligingiz nomi). **Jo'natuvchi elektron pochta** maydoniga maxsus elektron pochta manzilini kiriting (masalan, `hello@youragency.com`). **Saqlash** tugmasini bosing.
+  </Step>
+  <Step title="Elektron pochta manzilingizni tasdiqlang">
+    AgencyHandy siz kiritgan elektron pochta manziliga tasdiqlash havolasini yuboradi. Elektron pochta qutingizni oching, tasdiqlash xabarini toping va egaliklaringizni tasdiqlash uchun havolani bosing.
+  </Step>
+  <Step title="DKIM, SPF va DMARC DNS yozuvlarini sozlang">
+    Jo'natuvchi elektron pochtangizni saqlashdan so'ng, AgencyHandy qo'shishingiz kerak bo'lgan DNS yozuvlarini taqdim etadi:
+
+    - **SPF yozuvi** (TXT turi) — AgencyHandy'ga domeningiz nomidan elektron xat yuborishga vakolat beradi.
+    - **DKIM yozuvlari** (3 ta CNAME yozuvi) — qabul qiluvchi serverlar autentlikni tekshira olishi uchun chiquvchi elektron xatlarga kriptografik imzolar qo'shadi.
+    - **DMARC yozuvi** — autentifikatsiya tekshiruvlaridan o'ta olmagan elektron xatlarni qabul qiluvchi serverlar qanday ko'rib chiqishi kerakligini belgilaydi.
+
+    Ushbu yozuvlarning barchasini registratordagi domeningizning DNS sozlamalariga qo'shing. DKIM CNAME yozuvlari uchun, agar Cloudflare ishlatsangiz, **Proksi holati o'chirilgan** ekanligiga ishonch hosil qiling.
+  </Step>
+  <Step title="Faol holatini tasdiqlang">
+    AgencyHandy'da Elektron pochta sozlamalari sahifasiga qayting. Barcha DNS yozuvlari tarqalganidan so'ng (bu 2 daqiqadan 2 soatgacha davom etishi mumkin), elektron pochta holati **Kutilmoqda** dan yashil belgi ✅ ko'rsatishga o'zgaradi. Maxsus elektron pochtangiz endi faol.
+  </Step>
+</Steps>
+
+<Tip>
+  DKIM yozuvlaringiz to'g'ri sozlanganligini tekshirish uchun [MXToolbox](https://mxtoolbox.com/DKIM.aspx) yoki [dmarcian's DKIM Validator](https://dmarcian.com/dkim-validator/) dan foydalaning. Tarqalishni kutayotgan paytda Elektron pochta sozlamalari sahifasini vaqti-vaqti bilan yangilang.
+</Tip>
+
+---
+
+## 2-qism: DKIM va SPF ni sozlash (mustaqil sozlash)
+
+Agar DKIM va SPF yozuvlarini mustaqil ravishda yaratish yoki qayta yaratish kerak bo'lsa, ushbu yo'lni bajaring:
+
+**Ishchi fazo konfiguratsiyasi → Elektron pochta → DKIM va SPF sozlamalari → DKIM va SPF yozuvlarini yaratish.**
+
+Keyin yozuvlarni DNS ga qo'shing:
+
+| Yozuv turi | DNS turi | Nima sozlash kerak                                                                              |
+|------------|----------|-------------------------------------------------------------------------------------------------|
+| SPF        | TXT      | AgencyHandy'dan **Nom** va **Qiymat** ni nusxalang va DNS da yangi TXT yozuvini qo'shing        |
+| DKIM (×3)  | CNAME    | Har bir **Nom** va **Qiymat** juftligini nusxalang; proksi o'chirilgan holda 3 ta CNAME yozuvi qo'shing |
+
+<Note>
+  DKIM va SPF yozuvlari tarqalishi uchun **2 daqiqadan 2 soatgacha** vaqt ketishi mumkin. Agar 2 soatdan keyin ham holat kutilmoqda ko'rsatsa, yozuvlar xatosiz kiritilganligini va ziddiyatli yozuvlar yo'qligini tekshiring.
+</Note>
+
+---
+
+## 3-qism: SMTP ni sozlash
+
+SMTP (Simple Mail Transfer Protocol) barcha chiquvchi AgencyHandy elektron xatlarini o'zingizning tasdiqlangan pochta serveringiz orqali yo'naltirishga imkon beradi, bu esa yetkazib berish va brendlash ustidan ko'proq nazorat beradi.
+
+<Note>
+  Siz **Maxsus domen elektron pochtasi** yoki **SMTP elektron pochta provayderi** dan birini ishlata olasiz — ikkalasini bir vaqtda emas. Ular o'rtasida istalgan vaqtda almashtirish mumkin, lekin maxsus elektron pochtaga qaytganingizda elektron pochta konfiguratsiyangizni qayta kiritishingiz kerak bo'ladi.
+</Note>
+
+<Steps>
+  <Step title="SMTP server sozlamalarini oching">
+    **Ishchi fazo konfiguratsiyasi → Elektron pochta sozlamalari** bo'limiga o'ting, so'ng **SMTP serveri** tugmasini bosing.
+  </Step>
+  <Step title="SMTP provayderiga o'ting (agar kerak bo'lsa)">
+    Agar siz allaqachon maxsus elektron pochta sozlagan bo'lsangiz, o'tishni xohlaysizmi deb so'raydigan tasdiqlash oynasi paydo bo'ladi. Davom etish uchun **SMTP ga o'tish** tugmasini bosing. Bu mavjud maxsus elektron pochta sozlamasini o'chiradi.
+  </Step>
+  <Step title="SMTP ma'lumotlaringizni kiriting">
+    Kerakli maydonlarni to'ldiring:
+
+    | Maydon        | Misol qiymat           | Izohlar                                         |
+    |---------------|------------------------|-------------------------------------------------|
+    | Host nomi     | `smtp.gmail.com`       | Elektron pochta provayderingizning SMTP server manzili |
+    | Foydalanuvchi nomi | `you@yourdomain.com` | To'liq elektron pochta manzilingiz            |
+    | Parol         | Ilova paroli           | Ilovaga xos paroldan foydalaning (quyida ko'ring) |
+    | Port          | `465` yoki `587`       | SSL uchun 465, TLS uchun 587                    |
+    | Auto TLS      | Yoqish/o'chirish       | Ixtiyoriy — avtomatik TLS yangilashni yoqadi    |
+
+    Tugatgach **Saqlash** tugmasini bosing.
+  </Step>
+  <Step title="Ilova parolini yarating (Gmail misoli)">
+    Agar 2 faktorli autentifikatsiya yoqilgan Gmail ishlatsangiz (ilova parollari uchun talab):
+
+    1. [myaccount.google.com/security](https://myaccount.google.com/security) saytiga o'ting va 2 bosqichli tekshirish faol ekanligini tasdiqlang.
+    2. [myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords) saytiga kiring.
+    3. **Ilovani tanlash** tugmasini bosing, **Pochta** ni tanlang (yoki maxsus nom kiriting), so'ng **Qurilmani tanlash** tugmasini bosing va sozlashingizni tanlang.
+    4. **Yaratish** tugmasini bosing — Google 16 belgili ilova parolini yaratadi.
+    5. Parolni nusxalang va AgencyHandy'ning SMTP sozlamalaridagi **Parol** maydoniga joylashtiring.
+
+    <Warning>
+      Oddiy Google hisob parolingizni emas, **ilova parolini** ishlating. Agar 2FA yoqilgan bo'lsa, oddiy parolingizdan foydalanish muvaffaqiyatsiz bo'ladi va xavfsizlik ogohlantirishlarini keltirib chiqarishi mumkin.
+    </Warning>
+  </Step>
+  <Step title="Sozlashni tasdiqlang">
+    Saqlashdan so'ng, AgencyHandy _"SMTP muvaffaqiyatli yaratildi."_ degan tasdiqlash xabarini ko'rsatadi. Saqlangan host, foydalanuvchi nomi va port ma'lumotlari SMTP sozlamalari sahifasida ko'rinadi.
+  </Step>
+  <Step title="SMTP ulanishini sinab ko'ring">
+    **Sinash** tugmasini bosing va qabul qiluvchi elektron pochta manzilini kiriting. AgencyHandy ushbu manzilga sinov elektron xatini yuboradi. Tasdiqlash xabari uchun kiruvchi qutini tekshiring: _"Bu Agency Handy dagi elektron pochta sozlamangizdagi ishlab turganligining tasdiqidir."_
+  </Step>
+</Steps>
+
+<Tip>
+  Bir vaqtda bitta ishchi fazoda faqat bitta SMTP konfiguratsiyasi faol bo'lishi mumkin. SMTP sozlanganidan so'ng, AgencyHandy'dan barcha chiquvchi elektron xatlar — hisob-fakturalar, takliflar, vazifa bildirnomalari — SMTP serveringiz orqali yuboriladi.
+</Tip>
+
+---
+
+## 4-qism: Elektron pochta shablonlarini moslash
+
+AgencyHandy yuboradigan har bir avtomatlashtirilgan elektron xat uchun oldindan tayyorlangan shablonlar mavjud. Har birini brendingiz ohangi bilan mos kelishi va tegishli dinamik kontent o'z ichiga olishi uchun moslashtirishingiz mumkin.
+
+**Mavjud shablonlar quyidagilarni o'z ichiga oladi:**
+- Mijoz ro'yxatdan o'tishi
+- Taklif yuborish
+- Vazifani ko'rib chiqish
+- Hisob-faktura yuborish
+- Hisob-faktura va obuna eslatmalari
+- Tiket yaratish bildirnomalari
+
+<Steps>
+  <Step title="Elektron pochta shablonlarini oching">
+    **Ishchi fazo konfiguratsiyasi → Elektron pochta** bo'limiga o'ting, so'ng pastki menyudan **Elektron pochta shabloni** ni tanlang.
+  </Step>
+  <Step title="Tahrirlash uchun shablon tanlang">
+    Mavjud shablonlarning to'liq ro'yxati ko'rsatiladi. Konfiguratsiya sahifasini ochish uchun istalgan shablonni bosing.
+  </Step>
+  <Step title="Shablon maydonlarini moslang">
+    Kerak bo'lganda quyidagilarni yangilang:
+    - **Jo'natuvchi elektron pochta:** Bu shablonni qaysi sozlangan elektron pochta manzili yuborishini tanlang.
+    - **Mavzu:** Aniq, qisqa mavzu satri yozing.
+    - **Matn:** Agentligingiz ohangi va xabariga mos kontent tahrir qiling.
+    - **Dinamik o'zgaruvchilar:** Mijozga xos ma'lumotlarni avtomatik to'ldirish uchun `{{client_name}}`, `{{company_name}}` yoki `{{invoice_id}}` kabi to'ldiruvchi o'rinbosarlarni kiriting.
+    - **Ijtimoiy media havolalari:** Ishtirok etishni rag'batlantirish uchun agentligingizning ijtimoiy profillariga havolalar qo'shing.
+  </Step>
+  <Step title="Sinov elektron xatini yuboring">
+    Shablonning ko'rinishini kiruvchi qutingizga yuborish uchun **Sinov yuborish** tugmasini bosing. Formatlash, kontent va barcha dinamik o'zgaruvchilar to'g'ri to'ldirilganligini tekshiring.
+  </Step>
+  <Step title="O'zgarishlaringizni saqlang">
+    Yangilangan shablonni qo'llash uchun **O'zgarishlarni saqlash** tugmasini bosing. Yangi versiya ushbu shablon turiga mos bo'lgan barcha keyingi avtomatlashtirilgan elektron xatlar uchun ishlatiladi.
+  </Step>
+</Steps>
+
+---
+
+## Muhim eslatmalar
+
+- **SMTP va maxsus elektron pochta bir-birini istisno qiladi.** Bir vaqtda ishchi fazoda faqat bitta usul faol bo'lishi mumkin.
+- **Almashtirishda elektron pochtani qayta kiriting.** Agar SMTP dan maxsus elektron pochta sozlamasiga o'tishsangiz, maxsus elektron pochta ma'lumotlaringizni qayta kiritishingiz kerak.
+- **Noto'g'ri SMTP ma'lumotlari barcha chiquvchi elektron xatlarni bloklaydi.** Agar SMTP o'zgarishidan keyin elektron xatlar yuborilmasa, host nomi, port, foydalanuvchi nomi va parolni ikki marta tekshiring.
+- **DKIM/SPF tarqalishi vaqt oladi.** Xato borligini xulosalashdan oldin 2 soatgacha kuting va Elektron pochta sozlamalari sahifasini yangilang.
+- **Dinamik o'zgaruvchilar katta-kichik harfga sezgir.** Ular to'g'ri to'ldirilishini ta'minlash uchun ularni shablon muharririda ko'rsatilganidek aynan ishlating.

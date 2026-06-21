@@ -1,0 +1,70 @@
+---
+title: "PayPal für sichere Zahlungsabwicklung mit Kunden verbinden"
+sidebarTitle: "PayPal"
+description: "Verknüpfen Sie Ihr PayPal-Konto mit AgencyHandy und ermöglichen Sie Kunden, Rechnungen über die vertrauenswürdige, weltweit anerkannte Zahlungsplattform von PayPal zu bezahlen."
+---
+
+Die PayPal-Integration von AgencyHandy bietet Ihren Kunden eine sichere und vertraute Möglichkeit, Rechnungen ohne Kreditkarte zu bezahlen. PayPal unterstützt eine breite Palette internationaler Währungen, was es besonders nützlich für Agenturen mit Kunden außerhalb ihres Heimatlandes macht.
+
+<Note>
+  PayPal **kann nicht** für Upsells verwendet werden, da die Plattform währungs- und regionsbezogene Einschränkungen hat. Verwenden Sie für Upsell-Zahlungen stattdessen Stripe.
+</Note>
+
+<Note>
+  Nur **SuperAdmin**- und **Admin**-Rollen können die PayPal-Integration verbinden oder verwalten. Sie benötigen ein aktives PayPal-Konto, bevor Sie beginnen.
+</Note>
+
+## PayPal verbinden
+
+<Steps>
+  <Step title="PayPal-Integrationseinstellungen öffnen">
+    Melden Sie sich bei AgencyHandy an und navigieren Sie in der linken Seitenleiste zu **Integrationen → PayPal Integration**.
+  </Step>
+
+  <Step title="Verbindung starten">
+    Klicken Sie auf **PayPal verbinden**. Sie werden zur PayPal-Anmeldeseite weitergeleitet.
+  </Step>
+
+  <Step title="AgencyHandy autorisieren">
+    Melden Sie sich bei Ihrem PayPal-Konto an und überprüfen Sie die angeforderten Berechtigungen. Klicken Sie auf **Zulassen** (oder **Erteilen**), um AgencyHandy den Zugriff auf Ihr Konto zu gestatten.
+  </Step>
+
+  <Step title="Verbindung bestätigen">
+    Nach erfolgreicher Autorisierung leitet PayPal Sie zurück zu AgencyHandy. Eine Bestätigungsmeldung — **PayPal verbunden** — erscheint auf der Integrationskarte. Kunden können nun Rechnungen über PayPal bezahlen.
+  </Step>
+</Steps>
+
+## So bezahlen Kunden per PayPal
+
+Sobald die Integration aktiv ist, erscheint auf jeder von Ihnen gesendeten Rechnung eine Schaltfläche **Mit PayPal bezahlen**. Ihr Kunde klickt auf die Schaltfläche, meldet sich bei seinem PayPal-Konto an (oder zahlt als Gast, je nach Region), und schließt die Zahlung ab. AgencyHandy aktualisiert den Rechnungsstatus automatisch, wenn die Zahlung von PayPal bestätigt wird.
+
+## Unterstützte Währungen
+
+AgencyHandy unterstützt die folgenden Währungen für PayPal-Zahlungen:
+
+| Region | Währungen |
+|---|---|
+| Amerika | USD, CAD, BRL, MXN |
+| Europa | EUR, GBP, CHF, NOK, SEK, DKK, PLN, CZK, HUF |
+| Asien-Pazifik | AUD, NZD, JPY, HKD, SGD, MYR, PHP, THB, TWD |
+| Naher Osten / Sonstige | ILS, CNY |
+
+<Warning>
+  Einige Währungen unterliegen Einschränkungen:
+  - **JPY** und einige andere unterstützen keine Dezimalbeträge — vermeiden Sie Rechnungsbeträge mit Nachkommastellen.
+  - **BRL** ist nur für brasilianische PayPal-Konten verfügbar. Wenn Ihr Konto nicht in Brasilien ansässig ist, werden BRL-Zahlungen automatisch in Ihre Hauptwährung umgerechnet.
+  - Bestimmte Währungen sind nur für Konten im jeweiligen Land verfügbar. Stellen Sie sicher, dass die Kontowährung Ihres Kontos mit der Rechnungswährung übereinstimmt, um Fehler zu vermeiden.
+</Warning>
+
+<Note>
+  PayPal erhebt eigene Umrechnungsgebühren und Aufschläge bei Währungsumrechnungen. Diese werden nicht von AgencyHandy kontrolliert.
+</Note>
+
+## Integration testen
+
+Bevor Sie PayPal für echte Kundenrechnungen verwenden, führen Sie einen kurzen Test durch:
+
+1. Erstellen Sie eine Testrechnung in AgencyHandy mit einer [unterstützten Währung](#unterstutzte-wahrungen).
+2. Senden Sie die Rechnung an ein sekundäres PayPal-Konto, das Sie kontrollieren.
+3. Schließen Sie die Zahlung vom sekundären Konto ab.
+4. Kehren Sie zu AgencyHandy zurück und bestätigen Sie, dass der Rechnungsstatus auf **Bezahlt** aktualisiert wurde und die Mittel in Ihrem PayPal-Konto erscheinen.

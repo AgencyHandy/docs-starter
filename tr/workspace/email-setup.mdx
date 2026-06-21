@@ -1,0 +1,188 @@
+---
+title: "Giden E-posta, SMTP ve E-posta Şablonlarını Yapılandırma"
+sidebarTitle: "E-posta Kurulumu"
+description: "AgencyHandy'de özel bir gönderici e-posta adresi yapılandırın, SMTP sunucusu bağlayın, teslim edilebilirlik için DKIM/SPF kayıtları ekleyin ve e-posta şablonlarını özelleştirin."
+---
+
+AgencyHandy'nin e-posta kurulumu; varsayılan `noreply@agencyhandy.com` göndericisini kendi markalı e-posta adresinizle değiştirmenizi, güvenilir teslimat için özel bir SMTP sunucusu yapılandırmanızı ve müşteri bildirimleri, faturalar, teklifler ve daha fazlası için kullanılan şablonları özelleştirmenizi sağlar. Bu kurulumu doğru şekilde yapmak, e-postalarınızın müşterilerin gelen kutusuna ulaşmasını — spam klasörüne değil — ve her mesajın ajansınızın kimliğini yansıtmasını sağlar.
+
+<Note>
+  Yalnızca **Süper Yöneticiler** ve **Yöneticiler** e-posta ayarlarını yapılandırabilir. Bu seçeneklere erişmek için **Çalışma Alanı Yapılandırması → E-posta Kurulumu** bölümüne gidin.
+</Note>
+
+---
+
+## E-posta Kurulum Bileşenlerine Genel Bakış
+
+<CardGroup cols={2}>
+  <Card title="Özel E-posta Adresi" icon="envelope">
+    Müşterilerin çalışma alanınızdan mesaj aldıklarında gördükleri gönderici adını ve e-posta adresini ayarlayın.
+  </Card>
+  <Card title="DKIM ve SPF Kayıtları" icon="shield-check">
+    E-postalarınızın meşru olduğunu kanıtlamak ve spam olarak işaretlenmelerini önlemek için DNS kimlik doğrulama kayıtları ekleyin.
+  </Card>
+  <Card title="SMTP Sunucusu" icon="server">
+    AgencyHandy'den giden tüm e-postaları göndermek için kendi posta sunucunuzu (ör. Gmail, Outlook veya özel alan adı sunucusu) bağlayın.
+  </Card>
+  <Card title="E-posta Şablonları" icon="file-lines">
+    AgencyHandy'nin müşterilere gönderdiği her otomatik e-postanın içeriğini, konu satırlarını ve markalamasını özelleştirin.
+  </Card>
+</CardGroup>
+
+---
+
+## Bölüm 1: Özel E-posta Adresi Kurulumu
+
+Gönderici e-postanızı yapılandırmadan önce, e-posta barındırma hizmetine sahip kayıtlı bir alan adına ihtiyacınız var. Popüler sağlayıcılar arasında Google Workspace, Microsoft 365, Zoho Mail ve Cloudflare Email Routing bulunur.
+
+<Steps>
+  <Step title="Bir alan adı kaydedin ve e-posta barındırma hizmetini kurun">
+    Henüz yapmadıysanız, bir kayıt şirketinde (ör. GoDaddy, Namecheap, Cloudflare) alan adı kaydettirin ve bir e-posta barındırma sağlayıcısına kaydolun. O alan adında e-posta adresleri oluşturup yönetebildiğinizden emin olun (ör. `hello@youragency.com`).
+  </Step>
+  <Step title="AgencyHandy'de E-posta Kurulumu bölümüne gidin">
+    AgencyHandy'e giriş yapın. Sol gezinti menüsünde **Çalışma Alanı Yapılandırması**'na gidin, ardından **E-posta Kurulumu**'na tıklayın.
+  </Step>
+  <Step title="Gönderici adınızı ve e-postanızı girin">
+    **Gönderici Adı** alanına müşterilerin gönderici olarak göreceği adı yazın (ör. `AgencyHandy Destek` veya ajansınızın adı). **Gönderici E-posta** alanına özel e-posta adresini girin (ör. `hello@youragency.com`). **Kaydet**'e tıklayın.
+  </Step>
+  <Step title="E-posta adresinizi doğrulayın">
+    AgencyHandy, girdiğiniz e-posta adresine bir doğrulama bağlantısı gönderir. E-posta gelen kutunuzu açın, doğrulama mesajını bulun ve sahipliği onaylamak için bağlantıya tıklayın.
+  </Step>
+  <Step title="DKIM, SPF ve DMARC DNS kayıtlarını yapılandırın">
+    Gönderici e-postanızı kaydettikten sonra AgencyHandy, eklemeniz gereken DNS kayıtlarını size sağlar:
+
+    - **SPF kaydı** (TXT türü) — AgencyHandy'nin alan adınız adına e-posta göndermesine yetki verir.
+    - **DKIM kayıtları** (3 CNAME kaydı) — giden e-postalara şifreleme imzaları ekler; böylece alıcı sunucular özgünlüğü doğrulayabilir.
+    - **DMARC kaydı** — alıcı sunucuların kimlik doğrulama denetimlerini geçemeyen e-postaları nasıl işleyeceğini tanımlar.
+
+    Tüm bu kayıtları, kayıt şirketinizdeki alan adınızın DNS ayarlarına ekleyin. DKIM CNAME kayıtları için Cloudflare kullanıyorsanız **Proxy Durumunun devre dışı** olduğundan emin olun.
+  </Step>
+  <Step title="Aktif durumu onaylayın">
+    AgencyHandy'de E-posta Kurulumu sayfasına geri dönün. Tüm DNS kayıtları yayıldıktan sonra (bu 2 dakika ile 2 saat arasında sürebilir), e-posta durumu **Beklemede**'den yeşil onay işareti ✅ gösterecek şekilde güncellenir. Özel e-postanız artık aktif.
+  </Step>
+</Steps>
+
+<Tip>
+  DKIM kayıtlarınızın doğru yapılandırıldığını doğrulamak için [MXToolbox](https://mxtoolbox.com/DKIM.aspx) veya [dmarcian's DKIM Validator](https://dmarcian.com/dkim-validator/) kullanın. Yayılma süresini beklerken E-posta Kurulumu sayfasını periyodik olarak yenileyin.
+</Tip>
+
+---
+
+## Bölüm 2: DKIM ve SPF Yapılandırması (Bağımsız Kurulum)
+
+DKIM ve SPF kayıtlarını bağımsız olarak oluşturmanız veya yeniden oluşturmanız gerekiyorsa şu yolu izleyin:
+
+**Çalışma Alanı Yapılandırması → E-postalar → DKIM ve SPF Kurulumu → DKIM ve SPF kayıtları oluştur.**
+
+Ardından kayıtları DNS'inize ekleyin:
+
+| Kayıt Türü | DNS Türü | Yapılandırılacak                                                                                           |
+|-------------|----------|---------------------------------------------------------------------------------------------|
+| SPF         | TXT      | AgencyHandy'deki **Ad** ve **Değer**'i kopyalayın ve DNS'inizde yeni bir TXT kaydı ekleyin       |
+| DKIM (×3)   | CNAME    | Her **Ad** ve **Değer** çiftini kopyalayın; proxy devre dışı bırakılmış şekilde 3 ayrı CNAME kaydı ekleyin     |
+
+<Note>
+  DKIM ve SPF kayıtlarının yayılması **2 dakika ile 2 saat** arasında sürebilir. 2 saat sonra durum hâlâ beklemede görünüyorsa, kayıtların yazım hatası olmadan girildiğini ve çakışan kayıtların bulunmadığını doğrulayın.
+</Note>
+
+---
+
+## Bölüm 3: SMTP Kurulumu
+
+SMTP (Basit Posta Aktarım Protokolü), giden tüm AgencyHandy e-postalarını kendi doğrulanmış posta sunucunuz üzerinden yönlendirmenizi sağlayarak teslim edilebilirlik ve markalama üzerinde daha fazla kontrol sahibi olmanıza imkân tanır.
+
+<Note>
+  **Özel Alan Adı E-postası** veya **SMTP E-posta Sağlayıcısı**'ndan yalnızca birini kullanabilirsiniz — ikisini aynı anda kullanamazsınız. Aralarında geçiş yapmak her zaman mümkündür, ancak özel e-postaya geri dönerken e-posta yapılandırmanızı yeniden girmeniz gerekecektir.
+</Note>
+
+<Steps>
+  <Step title="SMTP Sunucusu ayarlarını açın">
+    **Çalışma Alanı Yapılandırması → E-posta Kurulumu**'na gidin, ardından **SMTP Sunucusu**'na tıklayın.
+  </Step>
+  <Step title="SMTP Sağlayıcısına geçin (gerekirse)">
+    Halihazırda yapılandırılmış bir özel e-postanız varsa, geçiş yapmak isteyip istemediğinizi soran bir onay açılır penceresi görünür. Devam etmek için **SMTP'ye Geç**'e tıklayın. Bu işlem mevcut özel e-posta kurulumunu devre dışı bırakır.
+  </Step>
+  <Step title="SMTP kimlik bilgilerinizi girin">
+    Gerekli alanları doldurun:
+
+    | Alan       | Örnek Değer          | Notlar                                     |
+    |-------------|------------------------|-------------------------------------------|
+    | Ana Bilgisayar Adı   | `smtp.gmail.com`       | E-posta sağlayıcınızın SMTP sunucu adresi |
+    | Kullanıcı Adı   | `you@yourdomain.com`   | Tam e-posta adresiniz                   |
+    | Şifre    | Uygulama şifresi           | Uygulamaya özel şifre kullanın (aşağıya bakın)  |
+    | Port        | `465` veya `587`         | SSL için 465, TLS için 587                  |
+    | Otomatik TLS    | Aç/Kapat          | İsteğe bağlı — otomatik TLS yükseltmeyi etkinleştirir  |
+
+    Tamamlandığında **Kaydet**'e tıklayın.
+  </Step>
+  <Step title="Uygulama şifresi oluşturun (Gmail örneği)">
+    2 Faktörlü Kimlik Doğrulama etkin olan Gmail kullanıyorsanız (uygulama şifreleri için gereklidir):
+
+    1. [myaccount.google.com/security](https://myaccount.google.com/security) adresine gidin ve 2 Adımlı Doğrulamanın etkin olduğunu onaylayın.
+    2. [myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords) adresini ziyaret edin.
+    3. **Uygulama seç**'e tıklayın, **Posta**'yı seçin (veya özel bir ad girin), ardından **Cihaz seç**'e tıklayın ve kurulumunuzu seçin.
+    4. **Oluştur**'a tıklayın — Google 16 karakterlik bir uygulama şifresi oluşturur.
+    5. Şifreyi kopyalayın ve AgencyHandy'nin SMTP ayarlarındaki **Şifre** alanına yapıştırın.
+
+    <Warning>
+      Normal Google hesap şifrenizi değil, **uygulama şifresini** kullanın. 2FA etkinken normal şifrenizi kullanmak başarısız olur ve güvenlik uyarılarını tetikleyebilir.
+    </Warning>
+  </Step>
+  <Step title="Kurulumu onaylayın">
+    Kaydettikten sonra AgencyHandy, _"SMTP başarıyla oluşturuldu."_ ifadesini onaylayan bir başarı mesajı görüntüler. Kaydedilen ana bilgisayar, kullanıcı adı ve port bilgileri SMTP ayarları sayfasında görünür.
+  </Step>
+  <Step title="SMTP bağlantısını test edin">
+    **Test** düğmesine tıklayın ve bir alıcı e-posta adresi girin. AgencyHandy, o adrese bir test e-postası gönderir. Onay mesajı için gelen kutusunu kontrol edin: _"Bu, Agency Handy'deki e-posta kurulumunuzun düzgün çalıştığını doğrulayan bir onaydır."_
+  </Step>
+</Steps>
+
+<Tip>
+  Çalışma alanı başına aynı anda yalnızca bir SMTP yapılandırması aktif olabilir. SMTP yapılandırıldıktan sonra AgencyHandy'den giden tüm e-postalar — faturalar, teklifler, görev bildirimleri — SMTP sunucunuz üzerinden gönderilecektir.
+</Tip>
+
+---
+
+## Bölüm 4: E-posta Şablonlarını Özelleştirme
+
+AgencyHandy, gönderdiği her otomatik e-posta için önceden hazırlanmış şablonlar içerir. Marka tonunuzla eşleşmesi ve ilgili dinamik içerikleri barındırması için her birini özelleştirebilirsiniz.
+
+**Mevcut şablonlar şunlardır:**
+- Müşteri Kaydı
+- Teklif Gönder
+- Görev İncelemesi
+- Fatura Gönder
+- Fatura ve Abonelik Hatırlatmaları
+- Destek Talebi Oluşturma Bildirimleri
+
+<Steps>
+  <Step title="E-posta Şablonlarını açın">
+    **Çalışma Alanı Yapılandırması → E-postalar**'a gidin, ardından alt menüden **E-posta Şablonu**'nu seçin.
+  </Step>
+  <Step title="Düzenlenecek şablonu seçin">
+    Mevcut şablonların tam listesi görüntülenir. Yapılandırma sayfasını açmak için herhangi bir şablona tıklayın.
+  </Step>
+  <Step title="Şablon alanlarını özelleştirin">
+    Gerektiği şekilde aşağıdakileri güncelleyin:
+    - **Gönderici E-posta:** Bu şablonu hangi yapılandırılmış e-posta adresinin göndereceğini seçin.
+    - **Konu:** Açık ve öz bir konu satırı yazın.
+    - **Gövde:** Mesaj içeriğini ajansınızın tonu ve iletisine uygun şekilde düzenleyin.
+    - **Dinamik Değişkenler:** Müşteriye özgü verileri otomatik doldurmak için `{{client_name}}`, `{{company_name}}` veya `{{invoice_id}}` gibi yer tutucular ekleyin.
+    - **Sosyal Medya Bağlantıları:** Etkileşimi teşvik etmek için ajansınızın sosyal medya profillerine bağlantılar ekleyin.
+  </Step>
+  <Step title="Test e-postası gönderin">
+    Şablonun önizlemesini gelen kutunuza göndermek için **Test Gönder**'e tıklayın. Biçimlendirmeyi, içeriği ve tüm dinamik değişkenlerin doğru şekilde çözümlendiğini doğrulayın.
+  </Step>
+  <Step title="Değişikliklerinizi kaydedin">
+    Güncellenmiş şablonu uygulamak için **Değişiklikleri Kaydet**'e tıklayın. Yeni sürüm, o şablon türüyle eşleşen gelecekteki tüm otomatik e-postalar için kullanılacaktır.
+  </Step>
+</Steps>
+
+---
+
+## Önemli Notlar
+
+- **SMTP ve özel e-posta birbirini dışlar.** Çalışma alanı başına aynı anda yalnızca bir yöntem aktif olabilir.
+- **Geçişte e-postayı yeniden girin.** SMTP'den özel e-posta kurulumuna geri dönerseniz, özel e-posta kimlik bilgilerinizi yeniden girmeniz gerekir.
+- **Yanlış SMTP kimlik bilgileri giden tüm e-postaları engeller.** SMTP değişikliğinden sonra e-postalar gönderilmeyi durdurarsa ana bilgisayar adını, portu, kullanıcı adını ve şifreyi iki kez kontrol edin.
+- **DKIM/SPF yayılması zaman alır.** Bir hata olduğu sonucuna varmadan önce 2 saate kadar bekleyin ve E-posta Kurulumu sayfasını yenileyin.
+- **Dinamik değişkenler büyük/küçük harfe duyarlıdır.** Doğru doldurmalarını sağlamak için şablon düzenleyicide gösterildiği şekliyle kullanın.

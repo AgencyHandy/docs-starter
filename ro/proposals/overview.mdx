@@ -1,0 +1,217 @@
+---
+title: "Creați și Trimiteți Propuneri Clienților în AgencyHandy"
+sidebarTitle: "Propuneri"
+description: "Construiți, personalizați și trimiteți propuneri profesionale în AgencyHandy — acoperind prețurile serviciilor, pachetele, acceptarea de către client și crearea automată de comenzi."
+---
+
+Funcția Propuneri din AgencyHandy vă oferă un flux de lucru profesional, de la capăt la capăt, pentru a transforma solicitările în proiecte active. Puteți construi propuneri detaliate cu servicii, pachete, suplimente, taxe și termeni legali — apoi le puteți trimite clienților sau leadurilor direct din platformă. Odată ce un client acceptă, AgencyHandy poate crea automat o comandă și o factură, eliminând schimburile manuale care încetinesc tranzacțiile.
+
+<Note>
+  Doar **Super Adminii** și **Adminii** pot crea și trimite propuneri. Managerii de Proiect (PM) pot vizualiza propunerile, dar nu le pot trimite.
+</Note>
+
+## Tabloul de Bord al Propunerilor
+
+Pentru a deschide Tabloul de Bord al Propunerilor, faceți clic pe **Proposals** în bara laterală din stânga. Tabloul de bord listează toate propunerile dvs. trimise și primite și arată:
+
+- **Status** — Ciornă, Trimisă, Acceptată sau În Așteptare
+- **Data creării**, **data trimiterii** și **data expirării**
+- **Starea vizualizării** — dacă clientul a deschis propunerea
+- Meniu de acțiuni pentru **editarea**, **trimiterea**, **partajarea** sau **ștergerea** fiecărei propuneri
+
+Puteți căuta propuneri după ID și filtra sau sorta lista pentru a găsi rapid ceea ce aveți nevoie.
+
+## Crearea unei Propuneri
+
+Faceți clic pe **Create Proposal** pentru a deschide constructorul de propuneri. Acesta este organizat în trei secțiuni: **Overview**, **Terms & Conditions** și **Setup**.
+
+### Overview
+
+Secțiunea Overview este locul unde construiți conținutul și prețurile propunerii.
+
+#### Informații despre Propunere și Client
+
+Completați următoarele câmpuri în partea de sus a propunerii:
+
+- **Proposal Name** și **Proposal ID**
+- **Client sau Lead** — suportă mai multe adrese de email; marcați una ca Primară
+- **Company Name** și **Address** (țară, stat, oraș, cod poștal, detalii suplimentare)
+- **Assignee**, **Send Date** și **Expiry Date**
+
+#### Blocuri de Conținut
+
+Fiecare bloc de conținut utilizează un editor integrat astfel încât să puteți adapta narațiunea pentru fiecare client:
+
+- **Introduction** — stabiliți contextul și cadrul pentru colaborare
+- **About Us** — evidențiați expertiza agenției dvs.
+- **What You Get** — definiți clar scopul și livrabilele
+- **Guarantee** — prezentați orice asigurări sau angajamente
+
+#### Oferte — Servicii, Pachete, Suplimente și Taxe
+
+Secțiunea Oferte este locul unde configurați prețurile.
+
+<Accordion title="Services">
+  Adăugați unul sau mai multe servicii la propunere. Pentru fiecare serviciu, puteți:
+
+  - Selecta un **pricing type**: Unic sau Abonament
+  - Alege **moneda serviciului** (diferite servicii pot utiliza monede diferite în aceeași propunere)
+</Accordion>
+
+<Accordion title="Packages">
+  În cadrul fiecărui serviciu, adăugați pachete existente sau creați altele noi din mers. Pentru fiecare pachet, definiți:
+
+  - Numele pachetului
+  - Cantitatea și prețul per unitate
+  - Suma totală
+
+  Puteți elimina pachete oricând înainte de trimitere.
+</Accordion>
+
+<Accordion title="Add-ons">
+  Atașați suplimente opționale la orice serviciu. Suplimentele apar ca extra-uri pe care clienții le pot vedea alături de prețul serviciului principal. Puteți crea suplimente noi direct din constructorul de propuneri fără a părăsi formularul.
+</Accordion>
+
+<Accordion title="Items">
+  Adăugați elemente personalizate unice cu o cantitate și un preț per unitate definite. Elementele sunt utile pentru costuri ad-hoc precum tarifele de configurare sau livrabilele punctuale.
+</Accordion>
+
+<Accordion title="Tax Rates">
+  Aplicați cote de taxe existente sau creați altele noi direct din propunere. Selectați dacă fiecare taxă este **Exclusive** (adăugată peste preț) sau **Inclusive** (deja inclusă). Taxele sunt calculate per serviciu.
+</Accordion>
+
+### Terms & Conditions
+
+Utilizați secțiunea Terms & Conditions pentru a adăuga limbaj juridic specific propunerii. Includeți politici de anulare, termeni de rambursare, drepturi de utilizare și orice alte condiții relevante pentru colaborare. Această secțiune ajută la asigurarea că ambele părți înțeleg obligațiile înainte de acceptare.
+
+### Setup
+
+Secțiunea Setup controlează ce se întâmplă după trimiterea propunerii.
+
+<CardGroup cols={2}>
+  <Card title="Acțiune după acceptare" icon="bolt">
+    Alegeți ce face AgencyHandy când propunerea este acceptată: **Do Nothing** sau **Create Order & Invoice** automat.
+  </Card>
+  <Card title="Mementouri" icon="bell">
+    Configurați notificări de memento pentru a stimula clienții care nu au răspuns până la data de expirare.
+  </Card>
+  <Card title="Protecție prin Parolă" icon="lock">
+    Adăugați o parolă la linkul public al propunerii astfel încât doar destinatarul intenționat să o poată vizualiza.
+  </Card>
+  <Card title="Comentarii" icon="message">
+    Permiteți clienților să lase comentarii în vizualizarea publică a propunerii pentru o discuție mai ușoară.
+  </Card>
+</CardGroup>
+
+## Trimiterea unei Propuneri
+
+În orice moment în timpul creării, puteți salva propunerea ca **Ciornă** sau o puteți **Previzualiza**. Când este gata, faceți clic pe **Send** pentru a o livra clientului sau leadului.
+
+După trimitere:
+
+- Un link public este generat automat
+- Starea propunerii se actualizează din **Draft** în **Sent**
+- AgencyHandy urmărește dacă clientul a vizualizat propunerea
+
+Din meniul de acțiuni al propunerii puteți de asemenea retrimite, descărca, partaja linkul public, vizualiza comentariile sau șterge propunerea.
+
+## Trimiterea unei Propuneri cu un Pachet Specific
+
+Dacă doriți să trimiteți rapid o propunere legată direct de un pachet de serviciu specific, utilizați formularul de comandă rapidă **Create Proposal**:
+
+<Steps>
+  <Step title="Deschideți secțiunea Propuneri">
+    Navigați la **Proposals** în bara laterală din stânga și faceți clic pe **+ Create Proposal**.
+  </Step>
+  <Step title="Completați formularul de propunere">
+    Introduceți **numele clientului** și selectați **serviciul**. Dacă serviciul are mai multe pachete, ele vor apărea automat — selectați-l pe cel potrivit.
+
+    Opțional, alocați un **Manager** propunerii.
+  </Step>
+  <Step title="Adăugați detaliile comenzii">
+    Scrieți un **Order Brief** (obligatoriu) care descrie ce va primi clientul. Atașați orice fișiere de suport de până la 1 GB.
+  </Step>
+  <Step title="Setați prețurile și termenii">
+    Confirmați **tipul de prețuri** (unic sau abonament), setați **durata**, **cantitatea**, **bugetul** și **moneda**. Adăugați orice **Termeni și Condiții** relevanți pentru propunere.
+  </Step>
+  <Step title="Creați și trimiteți">
+    Faceți clic pe **Create** pentru a finaliza și trimite propunerea clientului. Propunerea va apărea atât în lista dvs. Sent, cât și în secțiunea Received a clientului.
+  </Step>
+</Steps>
+
+<Note>
+  Verificați de două ori prețurile și durata completate automat înainte de a face clic pe Create. Odată trimisă, clientul poate accepta, respinge sau descărca propunerea din secțiunea sa Received.
+</Note>
+
+## Ciclul de Viață al Stărilor Propunerii
+
+| Status | Semnificație |
+|--------|--------------|
+| **Draft** | Propunerea a fost creată, dar nu a fost trimisă încă. |
+| **Sent** | Propunerea a fost livrată clientului sau leadului. |
+| **Pending** | Clientul a revizuit și a retrimis propunerea pentru discuție. |
+| **Accepted** | Oricare dintre părți a acceptat formal termenii propunerii. O comandă este creată automat dacă a fost configurată. |
+| **Rejected** | Oricare dintre părți a respins propunerea. Expeditorul primește o notificare cu motivul. |
+
+## Acceptarea unei Propuneri
+
+Fie agenția, fie clientul poate accepta o propunere primită. Când are loc acceptarea, AgencyHandy creează automat o comandă (dacă este configurat în Setup).
+
+<Steps>
+  <Step title="Mergeți la propunerile Received">
+    Faceți clic pe **Proposals** în bara laterală, apoi selectați tab-ul **Received**.
+  </Step>
+  <Step title="Deschideți propunerea">
+    Selectați propunerea pe care doriți să o acceptați din listă și revizuiți detaliile acesteia.
+  </Step>
+  <Step title="Faceți clic pe Accept">
+    Faceți clic pe butonul **Accept** pentru a accepta formal propunerea. Starea se actualizează imediat și ambele părți sunt notificate.
+  </Step>
+</Steps>
+
+<Note>
+  Dacă agenția este cea care acceptă, Super Adminii și Adminii primesc notificări. Dacă clientul acceptă, AgencyHandy notifică utilizatorii Super Admin și Admin ai agenției.
+</Note>
+
+## Respingerea unei Propuneri
+
+Dacă termenii, prețurile sau scopul propus nu corespund cerințelor dvs., puteți respinge propunerea și furniza un motiv.
+
+<Steps>
+  <Step title="Mergeți la propunerile Received">
+    Navigați la **Proposals → Received**.
+  </Step>
+  <Step title="Selectați și revizuiți propunerea">
+    Alegeți propunerea pe care doriți să o respingeți și revizuiți detaliile acesteia.
+  </Step>
+  <Step title="Faceți clic pe Reject">
+    Faceți clic pe **Reject** și confirmați decizia. Expeditorul propunerii primește o notificare împreună cu motivul furnizat.
+  </Step>
+</Steps>
+
+<Warning>
+  Propunerile respinse **nu pot fi retrimise**. Ambele părți trebuie să creeze o propunere nouă pentru a reporni negocierile.
+</Warning>
+
+## Vizualizarea Publică a Propunerii
+
+Când trimiteți o propunere, clienții primesc un link către o vizualizare publică unde pot:
+
+- Revizui toate serviciile, prețurile, pachetele și taxele
+- Accepta sau respinge propunerea
+- Lăsa comentarii (dacă comentariile sunt activate)
+- Accesa propunerea în siguranță cu o parolă (dacă protecția prin parolă este activată)
+
+## Note Suplimentare
+
+<Accordion title="Mai multe emailuri și leaduri">
+  Puteți adăuga mai multe adrese de email la o singură propunere și marca una ca contact Primar. Propunerile funcționează atât cu clienți înregistrați, cât și cu leaduri neînregistrate.
+</Accordion>
+
+<Accordion title="Comenzi și facturi generate automat">
+  Când configurați secțiunea Setup pentru „Create Order & Invoice“ la acceptare, AgencyHandy generează automat comanda și factura legate în momentul în care o propunere este acceptată — nu sunt necesari pași manuali.
+</Accordion>
+
+<Accordion title="Urmărirea activității propunerii">
+  Fiecare propunere include un traseu complet de activitate. Puteți vedea când propunerea a fost creată, trimisă, vizualizată, acceptată sau respinsă, totul din interiorul AgencyHandy.
+</Accordion>

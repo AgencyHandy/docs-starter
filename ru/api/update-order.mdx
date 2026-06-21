@@ -1,0 +1,205 @@
+---
+title: "API AgencyHandy: обновление существующего заказа через PUT"
+sidebarTitle: "Обновление заказа"
+description: "Используйте API AgencyHandy для обновления данных заказа, изменения статуса, переназначения менеджеров проекта и прикрепления файлов к существующему заказу через PUT-запрос."
+---
+
+Конечная точка «Обновление заказа» позволяет изменять существующий заказ (проект) в AgencyHandy — изменять его название, статус, бюджет, сроки, назначенных менеджеров и многое другое — из внешней системы или скрипта автоматизации. Конечная точка также поддерживает вложения файлов, которые добавляются в системную папку заказа.
+
+<Note>
+  Перед использованием этой конечной точки выполните руководство [Начало работы](/ru/api/getting-started) для получения API-ключа и идентификатора компании.
+</Note>
+
+<Warning>
+  Эта конечная точка использует `Authorization: Bearer <token>` (токен доступа вошедшего участника) вместо заголовка `x-api-key`. Убедитесь, что вызывающий объект аутентифицирован как **утверждённый участник** целевой компании. Неавторизованные вызывающие объекты получат ошибку `403 PermissionError`.
+</Warning>
+
+## Предварительные требования
+
+- ✅ Действительный **Bearer-токен** для утверждённого участника рабочего пространства
+- ✅ **Идентификатор компании**, полученный из `GET {{URL}}/accounts/companies`
+- ✅ **Идентификатор заказа** (идентификатор проекта, `pid`) заказа, который вы хотите обновить
+
+---
+
+## Конечная точка
+
+```
+PUT {{URL}}/orders?pid=<ORDER_ID>
+```
+
+**Content-Type:** `multipart/form-data` — используйте это даже при отсутствии прикреплённых файлов, чтобы удовлетворить требования парсера multipart на сервере.
+
+## Заголовки
+
+| Заголовок | Обязателен | Описание |
+|---|---|---|
+| `Authorization` | Да | `Bearer <ACCESS_TOKEN>` — токен доступа вошедшего участника. |
+| `companyid` | Да | Mongo ObjectId компании, которой принадлежит заказ. |
+| `clientid` | Необязательно | Идентификатор клиентского сокета в реальном времени. При указании уведомления включают его. |
+
+## Параметры запроса
+
+<ParamField query="pid" type="string" required>
+  Идентификатор заказа / проекта для обновления. Передаётся как параметр строки запроса.
+</ParamField>
+
+## Поля тела запроса
+
+<ParamField body="name" type="string">
+  Обновляет название заказа. Минимум 2 символа.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Новый статус заказа. Должен быть одним из: `Pending`, `Ongoing`, `Review`, `Completed`, `Cancelled`.
+
+  **Допустимые переходы:**
+  - `Review` может следовать только за `Ongoing` или другим `Review`. Переход из `Pending` напрямую в `Review` возвращает ошибку `400 ValidationError`.
+  - Заказы со статусом `Completed` или `Cancelled` не могут быть обновлены.
+  - Клиенты не могут отменить заказ, вышедший из статуса `Pending`.
+</ParamField>
+
+<ParamField body="budget" type="number">
+  Общая сумма бюджета. Должна быть `≥ 0`. Использует существующую валюту заказа, если только `currency` не указан дополнительно.
+</ParamField>
+
+<ParamField body="currency" type="string">
+  Код валюты для бюджета. Примеры: `USD`, `CAD`, `EUR`.
+</ParamField>
+
+<ParamField body="quantity" type="number">
+  Количество единиц, приобретённых для пакета. Должно быть `≥ 1`.
+</ParamField>
+
+<ParamField body="deadline" type="string">
+  Строка даты в формате ISO 8601 для срока выполнения заказа. Пример: `"2025-12-31T00:00:00.000Z"`.
+</ParamField>
+
+<ParamField body="kickoffDate" type="string">
+  Строка даты в формате ISO 8601 для даты начала проекта.
+</ParamField>
+
+<ParamField body="notes" type="string">
+  Внутренние заметки, видимые вашей команде.
+</ParamField>
+
+<ParamField body="brief" type="string">
+  Бриф клиента или краткое описание проекта.
+</ParamField>
+
+<ParamField body="assignedProjectManagers" type="array">
+  Полный список идентификаторов участников-менеджеров проекта для назначения на этот заказ. Новые идентификаторы добавляются в команду; удалённые идентификаторы исключаются. Каждый идентификатор должен принадлежать участнику с ролью `projectManager` в той же компании.
+</ParamField>
+
+<ParamField body="markTasksAsDone" type="boolean">
+  **Обязателен**, когда `status` равен `Completed` или `Cancelled`. При `true` все задачи в заказе помечаются как выполненные после изменения статуса. При `false` задачи остаются в текущем состоянии.
+</ParamField>
+
+<ParamField body="rejectRequestedTasks" type="boolean">
+  Допускается только при `status` равном `Completed` или `Cancelled`. При `true` все ожидающие задачи, запрошенные клиентом, отклоняются после обновления статуса.
+</ParamField>
+
+<ParamField body="repeatCount" type="number">
+  Требуется только для заказов по **подписке** при изменении частоты повторения. Используйте вместе с `repeatDuration`.
+</ParamField>
+
+<ParamField body="repeatDuration" type="string">
+  Требуется вместе с `repeatCount` для заказов по подписке. Одно из: `day`, `week`, `month`, `year`.
+</ParamField>
+
+<ParamField body="billingCycleCount" type="number">
+  Необязательное ограничение на количество циклов выставления счетов. По умолчанию `0` (без ограничений).
+</ParamField>
+
+<ParamField body="billingCycleEvent" type="string">
+  Порядок обработки каждого цикла выставления счетов. Одно из: `createOrderWithTask`, `noChange`.
+</ParamField>
+
+<ParamField body="files" type="file">
+  Ноль или более вложений файлов. Файлы добавляются в системную папку заказа; существующие файлы никогда не перезаписываются. Используйте кодировку `multipart/form-data` и прикрепляйте каждый файл в поле `files`.
+</ParamField>
+
+---
+
+## Пример запроса
+
+<CodeGroup>
+
+```bash cURL (no files)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "currency=USD" \
+  --form "quantity=1" \
+  --form "assignedProjectManagers[]=PROJECT_MANAGER_ID" \
+  --form "notes=Scope finalized with client." \
+  --form "brief=Launch-ready design refresh."
+```
+
+```bash cURL (with file)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "repeatCount=3" \
+  --form "repeatDuration=month" \
+  --form "billingCycleEvent=createOrderWithTask" \
+  --form "files=@/path/to/creative-brief.pdf"
+```
+
+</CodeGroup>
+
+**Эквивалентные данные в формате JSON** (преобразуйте в записи multipart form при отправке файлов):
+
+```json
+{
+  "name": "Website Redesign",
+  "status": "Review",
+  "budget": 12000,
+  "currency": "USD",
+  "quantity": 1,
+  "assignedProjectManagers": ["{{PROJECT_MANAGER_ID}}"],
+  "repeatCount": 3,
+  "repeatDuration": "month",
+  "billingCycleEvent": "createOrderWithTask",
+  "notes": "Scope finalized with client.",
+  "brief": "Launch-ready design refresh."
+}
+```
+
+---
+
+## Ответы
+
+| HTTP-статус | Описание |
+|---|---|
+| `200 OK` | Обновление выполнено успешно. |
+| `400 ValidationError` | Неверный идентификатор заказа, недопустимый переход статуса или некорректные данные запроса. Ответ содержит `fieldName` при наличии. |
+| `403 PermissionError` | Вызывающий объект не является утверждённым участником, не имеет роли в компании, подписка рабочего пространства истекла, или клиент попытался выполнить запрещённую отмену. |
+| `500 Internal Server Error` | Необработанное исключение — проверьте журналы сервера. |
+
+### Успешный ответ
+
+```json
+{
+  "message": "Project has been updated"
+}
+```
+
+---
+
+## Бизнес-правила и побочные эффекты
+
+- **Переходы статусов** ограничены. `Review` может следовать только за `Ongoing` или другим `Review`. Попытка перехода `Pending → Review` возвращает ошибку `400 ValidationError`.
+- Переход статуса из `Pending` в `Ongoing`, `Review` или `Completed` активирует папку файлов заказа, делая загруженные файлы доступными для команды проекта.
+- Установка `status` в `Completed` или `Cancelled` **требует** явного указания `markTasksAsDone` со значением `true` или `false`.
+- Изменения статуса на `Review`, `Completed` или `Cancelled` автоматически инициируют уведомления для клиента:
+  - **Review** — уведомляет клиента о необходимости проверки.
+  - **Completed** — отправляет уведомление `orderCompletion` клиенту.
+  - **Cancelled** — отправляет уведомление `orderCancellation` клиенту.
+- Каждое успешное обновление инициирует событие вебхука `ORDER.UPDATED` с обновлённым документом заказа и метаданными вложений, если у вас настроен активный вебхук, подписанный на это событие.

@@ -1,0 +1,137 @@
+---
+title: "API AgencyHandy: Creați un client nou în mod programatic"
+sidebarTitle: "Creare Client"
+description: "Adăugați programatic clienți noi în spațiul dvs. de lucru AgencyHandy postând la endpoint-ul bulk-client cu numele, e-mailul și detaliile de contact."
+---
+
+Endpoint-ul Creare Client vă permite să adăugați clienți direct în spațiul dvs. de lucru AgencyHandy dintr-un sistem extern. Spre deosebire de lead-uri, clienții sunt contacte complet integrate care pot fi atribuite comenzilor, facturilor și proiectelor. Utilizați acest endpoint pentru a sincroniza clienții noi dintr-un CRM, un formular de integrare sau orice altă sursă de date.
+
+<Note>
+  Înainte de a utiliza acest endpoint, parcurgeți ghidul [Noțiuni de bază](/ro/api/getting-started) pentru a obține cheia API și ID-ul companiei. Spre deosebire de endpoint-ul Creare Lead, crearea unui client **nu** necesită un pas separat de căutare a ID-ului rolului.
+</Note>
+
+## Cerințe preliminare
+
+- ✅ Cheie API generată din **Configurare spațiu de lucru → Cheie API**
+- ✅ ID companie recuperat din `GET {{URL}}/accounts/companies`
+
+---
+
+## Endpoint
+
+```
+POST {{URL}}/members/bulk-client
+```
+
+## Header-e
+
+| Header | Valoare |
+|---|---|
+| `x-api-key` | Cheia dvs. API |
+| `companyId` | ID-ul companiei dvs. |
+| `Content-Type` | `application/json` |
+
+## Corpul solicitării
+
+Corpul solicitării este un **array JSON**. Puteți crea unul sau mai mulți clienți într-o singură solicitare.
+
+<ParamField body="firstName" type="string" required>
+  Prenumele clientului.
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  Numele de familie al clientului.
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  Adresa de e-mail a clientului. Trebuie să fie unică în spațiul dvs. de lucru.
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  Setați la `false` pentru un client complet nou. Setați la `true` la conversia unui lead existent într-un client.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Statusul clientului. Valori comune: `New`, `Active`. Implicit `New` dacă este omis.
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  Numărul de telefon al clientului.
+</ParamField>
+
+<ParamField body="source" type="string">
+  Cum ați achiziționat acest client. Exemple: `website`, `referral`, `social`.
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  Poziția clientului în coloana panoului. Implicit `1`.
+</ParamField>
+
+## Exemplu de solicitare
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-client" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyId: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+## Răspuns de succes
+
+```json
+{
+  "message": "Client created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  Șir de confirmare la succes.
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  Array de obiecte client create.
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  ID-ul unic al clientului creat recent. Utilizați acest ID la atribuirea clientului comenzilor sau facturilor prin API.
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  Numele complet al clientului (firstName + lastName).
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  Statusul clientului așa cum este stocat.
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  Rolul atribuit membrului — va fi `"client"`.
+</ResponseField>
+
+<Note>
+  Header-ul `companyId` pentru acest endpoint utilizează un **I** majuscul în `Id` — `companyId` — spre deosebire de alte endpoint-uri care utilizează `companyid` (totul cu litere mici). Utilizați scrierea exactă prezentată mai sus pentru a evita erorile de autentificare.
+</Note>
+
+<Tip>
+  Transmiteți mai multe obiecte client în array pentru a crea în bloc clienți într-un singur apel API. Fiecare obiect trebuie să aibă o adresă `email` unică. E-mailurile duplicate vor cauza o eroare de validare pentru acea intrare.
+</Tip>

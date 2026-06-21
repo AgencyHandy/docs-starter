@@ -1,0 +1,114 @@
+---
+title: "AgencyHandy API: প্রমাণীকরণ এবং শুরু করা"
+sidebarTitle: "শুরু করা"
+description: "একটি API কী তৈরি করুন, আপনার Company ID খুঁজুন এবং এই দ্রুত সেটআপ গাইড দিয়ে AgencyHandy REST API-এর বিরুদ্ধে ইন্টিগ্রেশন তৈরি শুরু করুন।"
+---
+
+AgencyHandy API আপনাকে যেকোনো বাহ্যিক সিস্টেম বা স্ক্রিপ্ট থেকে লিড তৈরি, ক্লায়েন্ট ব্যবস্থাপনা, অর্ডার আপডেট এবং আরও অনেক কিছু স্বয়ংক্রিয় করতে দেয়। প্রতিটি অনুরোধ একটি API কী দিয়ে প্রমাণীকৃত হয় যা আপনি আপনার ওয়ার্কস্পেস সেটিংস থেকে তৈরি করেন। এই গাইড আপনাকে আপনার ক্রেডেনশিয়াল পাওয়া এবং প্রথম API কল করার মধ্য দিয়ে নিয়ে যায়।
+
+<Note>
+  API কী তৈরি করতে আপনাকে আপনার AgencyHandy ওয়ার্কস্পেসে **SuperAdmin** বা **Admin** হতে হবে।
+</Note>
+
+## বেস URL
+
+সমস্ত API অনুরোধ করা হয়:
+
+```
+https://api.agencyhandy.com
+```
+
+API ডকুমেন্টেশন জুড়ে সমস্ত উদাহরণ অনুরোধে `{{URL}}`-কে এই বেস URL দিয়ে প্রতিস্থাপন করুন।
+
+## ধাপ ১: একটি API কী তৈরি করুন
+
+<Steps>
+  <Step title="Workspace Configuration খুলুন">
+    এই ঠিকানায় আপনার ওয়ার্কস্পেস সেটিংসে নেভিগেট করুন:
+
+    ```
+    {{workspaceUrl}}/workspace-config?tab=api-key
+    ```
+
+    এটি Workspace Configuration-এর ভেতরে **API Key** ট্যাব খোলে।
+  </Step>
+
+  <Step title="আপনার API কী তৈরি এবং কপি করুন">
+    **Generate** ক্লিক করুন (বা যদি ইতিমধ্যে একটি কী থাকে তাহলে **Regenerate**)। API কীটি কপি করুন এবং নিরাপদে সংরক্ষণ করুন — এটি পাসওয়ার্ডের মতো আচরণ করুন। পেজ ছেড়ে যাওয়ার পরে AgencyHandy এটি আর প্রদর্শন করবে না।
+  </Step>
+</Steps>
+
+<Warning>
+  আপনার API কী পুনরায় তৈরি করলে পূর্ববর্তী কীটি অবিলম্বে অকার্যকর হয়ে যায়। পুরানো কী ব্যবহার করা যেকোনো বিদ্যমান ইন্টিগ্রেশন নতুন কী দিয়ে আপডেট না করা পর্যন্ত কাজ করা বন্ধ করে দেবে।
+</Warning>
+
+## ধাপ ২: আপনার Company ID পুনরুদ্ধার করুন
+
+বেশিরভাগ API এন্ডপয়েন্টে একটি `companyid` হেডার প্রয়োজন যা নির্দেশ করে অনুরোধটি কোন ওয়ার্কস্পেসকে লক্ষ্য করে। আপনার Company ID আনতে নিম্নলিখিত এন্ডপয়েন্ট ব্যবহার করুন।
+
+### এন্ডপয়েন্ট
+
+```
+GET {{URL}}/accounts/companies
+```
+
+### হেডার
+
+| হেডার | মান |
+|---|---|
+| `x-api-key` | আপনার API কী |
+
+### উদাহরণ অনুরোধ
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/accounts/companies" \
+  --header "x-api-key: <YOUR_API_KEY>"
+```
+
+### উদাহরণ প্রতিক্রিয়া
+
+```json
+{
+  "message": "Companies associated with API token.",
+  "companies": [
+    {
+      "_id": "6525994184e9ddd79853450e",
+      "name": "onethread123",
+      "logo": "",
+      "extraSmallLogo": "",
+      "largeLogo": ""
+    }
+  ]
+}
+```
+
+<Steps>
+  <Step title="আপনার Company ID খুঁজুন">
+    প্রতিক্রিয়ায়, `companies` অ্যারের ভেতরে `_id` ফিল্ড খুঁজুন। এটি আপনার **Company ID**।
+
+    ```javascript
+    const companyId = response.companies[0]._id;
+    // e.g. "6525994184e9ddd79853450e"
+    ```
+  </Step>
+
+  <Step title="Company ID সংরক্ষণ করুন">
+    পরবর্তী সমস্ত API অনুরোধে ব্যবহারের জন্য Company ID সংরক্ষণ করুন। আপনি এটি `companyid` হেডার হিসেবে পাস করবেন:
+
+    | হেডার | মান |
+    |---|---|
+    | `x-api-key` | আপনার API কী |
+    | `companyid` | আপনার Company ID |
+  </Step>
+</Steps>
+
+## প্রমাণীকরণ সারসংক্ষেপ
+
+প্রতিটি প্রমাণীকৃত API অনুরোধে ন্যূনতম প্রয়োজন:
+
+```
+x-api-key: <YOUR_API_KEY>
+companyid: <YOUR_COMPANY_ID>
+```
+
+আপনার API কী এবং Company ID হাতে নিয়ে, আপনি AgencyHandy API-এর বাকি অংশ ব্যবহার করতে প্রস্তুত। নীচের এন্ডপয়েন্ট গাইডগুলির একটিতে এগিয়ে যান।

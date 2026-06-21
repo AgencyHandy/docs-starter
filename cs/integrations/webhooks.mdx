@@ -1,0 +1,196 @@
+---
+title: "Správa webhooků: vytváření, testování a ověřování"
+sidebarTitle: "Webhooky"
+description: "Nastavte webhooky v AgencyHandy pro odesílání dat o událostech v reálném čase do externích systémů při každé změně objednávek, úkolů, faktur nebo jiných entit."
+---
+
+Webhooky umožňují AgencyHandy okamžitě odesílat data do vašich externích systémů, jakmile dojde ke změně — bez nutnosti opakovaného dotazování. Když nastane nakonfigurovaná událost (například je aktualizována objednávka nebo vytvořen tiket), AgencyHandy odešle HTTP POST požadavek s JSON datovým obsahem na vámi zadanou adresu URL endpointu. To usnadňuje synchronizaci externích nástrojů, jako jsou CRM systémy, fakturační systémy nebo vlastní dashboardy, s vaším workspace AgencyHandy v reálném čase.
+
+<Note>
+  Workspaces s plánem Business Pro podporují až **30 000 webhook událostí** za fakturační období. Před nastavením automatizací s vysokým objemem zkontrolujte limity svého plánu.
+</Note>
+
+## Podporované události
+
+Webhook lze přihlásit k odběru libovolné kombinace následujících událostí:
+
+| Kategorie | Události |
+|---|---|
+| **Služba** | Vytvořena, aktualizována, smazána |
+| **Objednávka** | Vytvořena, aktualizována, smazána |
+| **Úkol** | Vytvořen, přiřazen, dokončen, aktualizován |
+| **Faktura** | Změněn stav |
+| **Klient / Uživatel** | Přidán nový klient, klient/uživatel smazán |
+| **Návrh** | Odeslán, přijat, schválen, zamítnut |
+| **Tiket** | Vytvořen, přiřazen, změněn stav |
+| **Platba** | Přijata, neúspěšná |
+| **Servisní balíček** | Vytvořen, aktualizován, smazán |
+
+## Vytvoření webhooku
+
+<Steps>
+  <Step title="Přejděte na Správu webhooků">
+    V levém postranním panelu přejděte na **Integrace → Správa webhooků**.
+  </Step>
+
+  <Step title="Ověřte svůj token">
+    Kliknutím na tlačítko **Správa** ověřte svůj webhook token. Tento token slouží k podpisu odchozích datových obsahů, abyste mohli ověřit, že pocházejí z AgencyHandy.
+  </Step>
+
+  <Step title="Vytvořte nový webhook">
+    Kliknutím na **Vytvořit nový webhook** otevřete formulář konfigurace webhooku.
+  </Step>
+
+  <Step title="Zadejte adresu URL endpointu">
+    Do pole **Adresa URL endpointu** zadejte URL externího systému, který má přijímat data webhooku. Musí se jednat o veřejně přístupný **POST** endpoint.
+  </Step>
+
+  <Step title="Vyberte typ obsahu">
+    Jako typ obsahu zvolte **JSON**. AgencyHandy odesílá všechny datové obsahy webhooků jako `application/json`.
+  </Step>
+
+  <Step title="Vyberte události webhooku">
+    Vyberte každou událost, která má spustit tento webhook. Můžete vybrat události z více kategorií — například **Objednávka: Vytvořena** a **Faktura: Změněn stav** mohou obě směřovat na stejný endpoint.
+  </Step>
+
+  <Step title="Aktivujte webhook">
+    Zapněte přepínač **Aktivní**. Když je webhook aktivní, AgencyHandy doručuje datové obsahy pro všechny vybrané události na váš endpoint v reálném čase.
+  </Step>
+
+  <Step title="Uložte konfiguraci">
+    Zkontrolujte nastavení a klikněte na **Uložit**. Webhook se zobrazí v seznamu a okamžitě začne doručovat události.
+  </Step>
+</Steps>
+
+## Testování webhooku
+
+Po vytvoření webhooku odešlete testovací datový obsah, abyste ověřili, že je váš endpoint dostupný a správně zpracovává data.
+
+<Steps>
+  <Step title="Otevřete webhook">
+    Ze seznamu Správa webhooků klikněte na webhook, který chcete testovat.
+  </Step>
+
+  <Step title="Klikněte na Testovat událost">
+    Na stránce detailu webhooku klikněte na tlačítko **Testovat událost**.
+  </Step>
+
+  <Step title="Vyberte testovací událost">
+    Ze seznamu událostí nakonfigurovaných na tomto webhooku vyberte ukázkovou událost (např. **Objednávka: Vytvořena**).
+  </Step>
+
+  <Step title="Odešlete testovací datový obsah">
+    Klikněte na **Odeslat**. AgencyHandy odešle ukázkový datový obsah na adresu URL vašeho endpointu.
+  </Step>
+
+  <Step title="Ověřte výsledek">
+    Zkontrolujte, zda testovací datový obsah dorazil do vašeho externího systému a byl zpracován podle očekávání. Zpět v AgencyHandy klikněte do webhooku a zkontrolujte jeho **historii** — můžete zobrazit celý požadavek, odpověď vrácenou vaším endpointem a v případě potřeby znovu doručit jakoukoli minulou událost.
+  </Step>
+</Steps>
+
+<Tip>
+  Během nastavení použijte nástroj jako [Webhook.site](https://webhook.site) nebo [RequestBin](https://requestbin.com) jako dočasný endpoint k prozkoumání přesné struktury datového obsahu, než zapojíte skutečný systém.
+</Tip>
+
+## Ověřování datových obsahů webhooků
+
+Každý odchozí požadavek webhooku z AgencyHandy obsahuje hlavičku podpisu, kterou může váš endpoint použít k ověření, že datový obsah je pravý a nebyl pozměněn.
+
+### Hlavička podpisu
+
+```
+x-ah-sig: <signature>
+```
+
+AgencyHandy přidává tuto hlavičku ke každému požadavku webhooku. Extrahujte hodnotu z příchozích požadavků a předejte ji ověřovacímu endpointu.
+
+### Ověření podpisu webhooku
+
+Odešlete následující požadavek k potvrzení pravosti datového obsahu:
+
+```
+POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature
+Content-Type: application/json
+```
+
+<ParamField body="webhookId" type="string" required>
+  ID webhooku, který přijal událost. Najdete jej na stránce detailu webhooku v AgencyHandy.
+</ParamField>
+
+<ParamField body="signature" type="string" required>
+  Hodnota hlavičky `x-ah-sig` z příchozího požadavku webhooku.
+</ParamField>
+
+<ParamField body="secret" type="string" required>
+  Tajný klíč webhooku zobrazený na stránce detailu webhooku v AgencyHandy.
+</ParamField>
+
+<ParamField body="payload" type="object" required>
+  Nezpracované tělo JSON přijaté z požadavku webhooku AgencyHandy.
+</ParamField>
+
+<CodeGroup>
+
+```javascript JavaScript
+const url = 'https://api.agencyhandy.com/api/v1/webhooks/verify-signature';
+
+const postData = {
+  webhookId: 'your_webhook_id',
+  signature: 'your_signature',   // value of x-ah-sig header
+  secret: 'your_webhook_secret',
+  payload: {},                   // the parsed JSON body from AgencyHandy
+};
+
+const response = await fetch(url, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(postData),
+});
+
+const data = await response.json();
+console.log(data); // { "verification_status": "SUCCESS" }
+```
+
+```bash cURL
+curl -X POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature \
+  -H "Content-Type: application/json" \
+  -d '{
+    "webhookId": "your_webhook_id",
+    "signature": "your_signature",
+    "secret": "your_webhook_secret",
+    "payload": {}
+  }'
+```
+
+</CodeGroup>
+
+**Odpovědi**
+
+<ResponseField name="verification_status" type="string">
+  `SUCCESS` pokud je podpis platný. `FAILED` pokud ověření selže (HTTP 403).
+</ResponseField>
+
+```json Success (200)
+{
+  "verification_status": "SUCCESS"
+}
+```
+
+```json Failure (403)
+{
+  "type": "PermissionError",
+  "status": 403,
+  "verification_status": "FAILED"
+}
+```
+
+<Warning>
+  Udržujte tajný klíč webhooku v důvěrnosti. Pravidelně jej obměňujte a ihned po obměně aktualizujte svou ověřovací logiku. Nikdy jej nezveřejňujte v klientském kódu ani ve veřejných repozitářích.
+</Warning>
+
+## Důležité poznámky
+
+- Adresa URL vašeho endpointu musí být **veřejně přístupná HTTPS POST** URL.
+- Pokud je váš endpoint dočasně nedostupný, zkontrolujte panel historie webhooku v AgencyHandy — jakoukoli minulou událost můžete přímo odtud **znovu doručit**.
+- Pravidelně monitorujte aktivitu webhooků, abyste odhalili neúspěšná doručení nebo pokusy o neoprávněný přístup.
+- Webhooky, které opakovaně selhávají, mohou být AgencyHandy pozastaveny — sledujte protokoly doručení, abyste problémy zachytili včas.

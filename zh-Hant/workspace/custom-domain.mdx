@@ -1,0 +1,126 @@
+---
+title: "將自訂網域連結至您的 AgencyHandy 工作區"
+sidebarTitle: "自訂網域"
+description: "透過在您的 DNS 服務商新增 CNAME 記錄，將您自己的子網域（例如 portal.yourcompany.com）連結至 AgencyHandy——無需任何程式碼。"
+---
+
+預設情況下，您的 AgencyHandy 工作區可透過 `agencyhandy.com` 下的子網域存取。連結自訂網域讓您可以將該預設 URL 替換為您自己的品牌網址——例如 `portal.youragency.com`——為客戶提供無縫、專業的體驗，從他們登陸的第一個頁面起就強化您的品牌形象。
+
+<Note>
+  只有**超級管理員**和**管理員**才能設定自訂網域。您還必須擁有該網域並能在您的服務商處存取其 DNS 設定，才能完成此設置。
+</Note>
+
+---
+
+## 運作方式
+
+當您在 AgencyHandy 中新增自訂網域時，平台會提供一筆 **CNAME 記錄**。您將該記錄新增至您在服務商（GoDaddy、Namecheap、Cloudflare 等）的網域 DNS 設定中，DNS 傳播完成後，AgencyHandy 即可驗證連線。
+
+---
+
+## 逐步設定
+
+<Steps>
+  <Step title="開啟自訂網域設定">
+    登入您的 AgencyHandy 帳戶。在左側邊欄導覽至**工作區設定**，然後點擊**自訂網域**。
+  </Step>
+  <Step title="新增您的自訂網域">
+    點擊 **+ 新增自訂網域**按鈕。在出現的輸入欄位中，輸入您要使用的子網域——例如 `portal.youragency.com`。
+
+    <Warning>
+      **請勿**使用 `www` 作為您的子網域（即避免使用 `www.youragency.com`）。`www` 前綴可能導致設定衝突，並阻止成功驗證。請改用其他子網域名稱，例如 `portal`、`client`、`app` 或 `hub`。
+    </Warning>
+  </Step>
+  <Step title="複製 CNAME 記錄詳細資訊">
+    提交網域後，AgencyHandy 會顯示您需要新增的 DNS 記錄：
+
+    | 欄位 | 值 |
+    |---------|------------------------------------------------|
+    | **類型** | CNAME |
+    | **名稱** | 您的子網域（例如：`portal`） |
+    | **值** | AgencyHandy 提供的目標 |
+
+    請仔細複製這些值——下一步您將需要用到它們。
+  </Step>
+  <Step title="在您的 DNS 服務商新增 CNAME 記錄">
+    登入您的網域服務商管理介面（例如 GoDaddy、Namecheap、Cloudflare）。導覽至您網域的 DNS 管理區段，並使用從 AgencyHandy 複製的類型、名稱和值新增 CNAME 記錄。
+
+    如需 Cloudflare 的特定指引，請參閱下方說明。
+  </Step>
+  <Step title="在 AgencyHandy 中儲存網域">
+    返回 AgencyHandy 並點擊**儲存網域**。狀態最初會顯示為**未連線**——這是 DNS 傳播期間的正常現象。
+  </Step>
+  <Step title="等待 DNS 傳播並驗證">
+    DNS 變更可能需要幾分鐘到**最多 48 小時**才能在全球傳播，具體取決於您的服務商和 TTL 設定。定期點擊**重新整理**以查看連線狀態。
+
+    傳播完成後，狀態將變更為**已連線** ✅。
+  </Step>
+</Steps>
+
+<Warning>
+  DNS 傳播最多可能需要 **48 小時**。如果您的網域在 48 小時後仍顯示**未連線**，請仔細確認 CNAME 記錄是否正確，以及是否存在同一子網域的衝突 DNS 記錄。
+</Warning>
+
+---
+
+## Cloudflare 特定說明
+
+如果您的網域是透過 Cloudflare 管理的，有一個關鍵設定必須正確設定：
+
+<Steps>
+  <Step title="登入 Cloudflare 並選擇您的網域">
+    開啟您的 [Cloudflare 管理介面](https://dash.cloudflare.com)，點擊您要連結至 AgencyHandy 的網域。
+  </Step>
+  <Step title="導覽至 DNS 設定">
+    在網域設定面板的頂部導覽中點擊 **DNS** 分頁。
+  </Step>
+  <Step title="新增 CNAME 記錄">
+    點擊 **+ 新增記錄**並填寫各欄位：
+    - **類型：** CNAME
+    - **名稱：** 您的子網域（例如：`portal`）
+    - **目標/內容：** AgencyHandy 提供的值
+    - **TTL：** 在初始設定期間設為 **2 分鐘**（或可用的最低選項）
+  </Step>
+  <Step title="停用 Cloudflare 代理（關鍵步驟）">
+    在**代理狀態**欄中，確保切換開關設定為**僅 DNS**（雲朵圖示應顯示為灰色，而非橘色）。
+
+    <Warning>
+      如果 Cloudflare 代理**已啟用**（橘色雲朵圖示），CNAME 記錄將無法正確解析，AgencyHandy 也無法驗證您的網域。您必須將其設定為**僅 DNS** 才能使連線生效。
+    </Warning>
+  </Step>
+  <Step title="儲存記錄">
+    確認所有值的準確性，然後點擊**儲存**。
+  </Step>
+</Steps>
+
+<Tip>
+  使用 [dnschecker.org](https://dnschecker.org) 監控您的 CNAME 記錄在不同全球區域的傳播情況。在期望 AgencyHandy 確認連線之前，請先確認所有區域都出現綠色核取標記。
+</Tip>
+
+---
+
+## 監控您的連線狀態
+
+儲存後，返回 AgencyHandy 的**工作區設定 → 自訂網域**以追蹤狀態：
+
+| 狀態 | 含義 |
+|------------------|----------------------------------------------------------------------|
+| **未連線** | DNS 記錄尚未傳播或包含錯誤 |
+| **已連線** | 網域已驗證並啟用——客戶可透過自訂 URL 存取您的工作區 |
+
+---
+
+## 更新或移除自訂網域
+
+- **更新網域：** 刪除現有條目，並使用上述相同的設定步驟新增新網域。
+- **刪除網域：** 點擊自訂網域面板中您網域旁的**刪除**按鈕，並確認刪除。您的工作區將恢復至預設的 AgencyHandy URL。您隨時可以重新新增任何網域。
+
+---
+
+## 重要注意事項
+
+- **請使用子網域，而非根網域：** AgencyHandy 自訂網域需要子網域（例如：`portal.youragency.com`），而非根/頂點網域（例如：`youragency.com`）。
+- **避免使用 `www`：** `www` 子網域在驗證過程中可能會造成問題。請改用自訂子網域名稱。
+- **記錄必須完全正確：** 請完全按照 AgencyHandy 中顯示的方式輸入 CNAME 類型、名稱和值。任何錯字或缺少字元都會阻止連線。
+- **Cloudflare 代理必須關閉：** 對於 AgencyHandy 自訂網域驗證，請務必將 Cloudflare 記錄設定為**僅 DNS**。
+- **僅限管理員存取：** 只有超級管理員和管理員才能新增、修改或刪除自訂網域設定。

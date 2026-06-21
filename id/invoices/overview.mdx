@@ -1,0 +1,100 @@
+---
+title: "Ikhtisar Manajemen Invoice untuk Agensi AgencyHandy"
+sidebarTitle: "Invoice"
+description: "Jelajahi sistem invoicing AgencyHandy — penagihan, pelacakan pembayaran, invoice berulang, status, invoice langsung, dan ekspor catatan keuangan."
+---
+
+Fitur invoice AgencyHandy memberi agensi Anda sistem manajemen penagihan dan pembayaran yang lengkap di dalam platform yang sama yang Anda gunakan untuk mengelola klien, order, dan proyek. Anda dapat membuat invoice profesional, mengirimnya ke klien melalui email, melacak status pembayaran secara real-time, mengotomatiskan penagihan berulang untuk layanan berlangganan, dan mengekspor catatan keuangan Anda kapan pun diperlukan. Setiap invoice secara otomatis terhubung dengan logo dan alamat agensi Anda, menjaga komunikasi Anda selalu konsisten dengan merek.
+
+## Siapa yang Dapat Membuat Invoice
+
+Hanya pengguna dengan peran berikut yang dapat membuat dan mengelola invoice:
+
+- **Super Admin**
+- **Admin**
+- **Project Manager (PM)**
+
+Klien dapat melihat dan mengunduh invoice tetapi tidak dapat membuat atau mengeditnya.
+
+## Dasbor Invoice
+
+Untuk membuka Dasbor Invoice, klik **Invoices** di bilah sisi kiri. Dari sini Anda dapat:
+
+- Membuat, mengedit, dan menghapus invoice
+- Mencari invoice berdasarkan **nama klien**, **ID order**, atau **nama layanan**
+- Memfilter dan mengurutkan daftar invoice
+- Melihat status invoice sekilas
+- Mengakses pengaturan invoice termasuk konfigurasi awalan
+
+## Fungsi Invoice
+
+<CardGroup cols={2}>
+  <Card title="Penagihan & Invoicing" icon="file-invoice-dollar">
+    Buat dan kirim invoice profesional untuk layanan atau produk apa pun yang Anda berikan kepada klien, dengan kendali penuh atas jumlah, diskon, dan tanggal jatuh tempo.
+  </Card>
+  <Card title="Pelacakan Pembayaran" icon="chart-line">
+    Pantau apakah invoice telah dilihat, dibayar, atau jatuh tempo. Sistem secara otomatis mencatat tanggal pembayaran dan tanggal pembatalan saat perubahan status terjadi.
+  </Card>
+  <Card title="Penagihan Berulang" icon="rotate">
+    Otomatiskan pembuatan invoice untuk layanan berbasis langganan. AgencyHandy menghasilkan dan mengirimkan invoice berulang pada setiap siklus penagihan tanpa intervensi manual.
+  </Card>
+  <Card title="Integrasi Proyek" icon="diagram-project">
+    Hubungkan invoice langsung ke order dan layanan sehingga penagihan selalu terkait dengan pekerjaan yang mendasarinya. Item yang dapat ditagih dapat ditambahkan secara akurat ke setiap invoice.
+  </Card>
+</CardGroup>
+
+## Status Invoice
+
+Setiap invoice melewati siklus hidup yang ditentukan. Memahami status ini membantu Anda mengelola piutang secara efektif.
+
+| Status | Deskripsi |
+|--------|-------------|
+| **Draft** | Invoice telah dibuat tetapi belum difinalisasi. Anda dapat mengedit bagian mana pun. Setelah siap, finalisasi dengan mengubah status ke Open. Invoice draft yang tidak terkait dengan langganan dapat dihapus. |
+| **Open / Unpaid** | Invoice telah difinalisasi dan menunggu pembayaran. Agensi mengirim ini ke klien, yang dapat melihat dan membayarnya. Anda dapat mengubah invoice Open menjadi Paid, Void, atau Uncollectable. |
+| **Paid** | Invoice telah dibayar. Sistem mencatat tanggal pembayaran secara otomatis saat Anda menandai invoice sebagai Paid. |
+| **Void** | Invoice telah dibatalkan. Sistem mencatat tanggal pembatalan secara otomatis. |
+| **Uncollectable** | Klien kemungkinan tidak akan membayar. Perlakukan ini sebagai piutang tak tertagih dalam proses akuntansi Anda. |
+
+<Note>
+  Ketika Anda mengirim invoice ke klien menggunakan tombol **Send to Client**, status secara otomatis berubah dari **Draft** menjadi **Open**. Hanya agensi yang dapat mengubah status dari Open ke Paid, Void, atau Uncollectable.
+</Note>
+
+## Invoice Langsung (Tanpa ID Order)
+
+AgencyHandy mendukung **Invoice Langsung** — invoice yang tidak terhubung dengan order yang ada. Ini berguna untuk penagihan satu kali, pembayaran ad-hoc, atau menagih kontak yang belum terdaftar sebagai klien dalam sistem Anda.
+
+Kemampuan utama Invoice Langsung:
+
+- Kirim invoice tanpa memilih ID Order
+- Invoice klien mana pun yang sudah ada atau gunakan **Independent Email** untuk mengirim ke alamat email mana pun
+- Tambahkan item, pajak, dan diskon secara manual
+- Kirim segera atau simpan sebagai draft
+
+<Tip>
+  Gunakan Invoice Langsung ketika Anda perlu menagih klien dengan cepat untuk pekerjaan yang tidak memiliki order resmi di AgencyHandy, seperti proyek mendesak, panggilan konsultasi, atau pekerjaan di luar lingkup.
+</Tip>
+
+## Mengekspor Invoice
+
+Anda dapat mengekspor daftar invoice untuk digunakan dalam alat akuntansi eksternal atau untuk penyimpanan catatan. Ekspor mencakup semua kolom yang terlihat: ID invoice, nama klien, layanan, jumlah, status, dan tanggal. Akses opsi ekspor dari Dasbor Invoice.
+
+## Pengaturan Invoice
+
+Konfigurasikan pengaturan invoice global dari tombol **Settings** di sudut kanan atas Dasbor Invoice. Ini mencakup:
+
+- **Awalan invoice** — sesuaikan awalan yang muncul sebelum setiap nomor invoice
+- **Template pengingat** — siapkan pengingat pembayaran otomatis untuk invoice yang terbuka
+
+## Fitur Terkait
+
+<CardGroup cols={3}>
+  <Card title="Buat Invoice" icon="plus" href="/id/invoices/create-invoice">
+    Panduan langkah demi langkah untuk membuat, mengisi, dan mengirim invoice.
+  </Card>
+  <Card title="Langganan" icon="rotate" href="/id/invoices/subscriptions">
+    Cara kerja penagihan berulang dan cara mengelola invoice langganan.
+  </Card>
+  <Card title="Tiket Dukungan" icon="ticket" href="/id/tickets/support-tickets">
+    Tangani pertanyaan penagihan klien melalui sistem tiket dukungan.
+  </Card>
+</CardGroup>

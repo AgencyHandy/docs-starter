@@ -1,0 +1,196 @@
+---
+title: "Webhook-Verwaltung: Erstellen, Testen und Authentifizieren"
+sidebarTitle: "Webhooks"
+description: "Richten Sie Webhooks in AgencyHandy ein, um Echtzeit-Ereignisdaten an externe Systeme zu senden, wenn sich Bestellungen, Aufgaben, Rechnungen oder andere Entitäten ändern."
+---
+
+Webhooks ermöglichen es AgencyHandy, Daten sofort an Ihre externen Systeme zu übertragen, wenn sich etwas ändert — ohne Polling. Wenn ein konfiguriertes Ereignis ausgelöst wird (beispielsweise wird eine Bestellung aktualisiert oder ein Ticket erstellt), sendet AgencyHandy eine HTTP-POST-Anfrage mit einer JSON-Nutzlast an die von Ihnen angegebene Endpunkt-URL. Dies erleichtert es, externe Tools wie CRMs, Abrechnungssysteme oder benutzerdefinierte Dashboards in Echtzeit mit Ihrem AgencyHandy-Workspace zu synchronisieren.
+
+<Note>
+  Workspaces mit dem Business Pro-Plan unterstützen bis zu **30.000 Webhook-Ereignisse** pro Abrechnungszeitraum. Überprüfen Sie Ihre Planlimits, bevor Sie Hochvolumen-Automatisierungen einrichten.
+</Note>
+
+## Unterstützte Ereignisse
+
+Sie können einen Webhook für jede Kombination der folgenden Ereignisse abonnieren:
+
+| Kategorie | Ereignisse |
+|---|---|
+| **Service** | Erstellt, Aktualisiert, Gelöscht |
+| **Bestellung** | Erstellt, Aktualisiert, Gelöscht |
+| **Aufgabe** | Erstellt, Zugewiesen, Abgeschlossen, Aktualisiert |
+| **Rechnung** | Status geändert |
+| **Kunde / Benutzer** | Neuer Kunde hinzugefügt, Kunde/Benutzer gelöscht |
+| **Angebot** | Gesendet, Empfangen, Akzeptiert, Abgelehnt |
+| **Ticket** | Erstellt, Zugewiesen, Status geändert |
+| **Zahlung** | Empfangen, Fehlgeschlagen |
+| **Service-Paket** | Erstellt, Aktualisiert, Gelöscht |
+
+## Einen Webhook erstellen
+
+<Steps>
+  <Step title="Zu Webhook-Verwaltung navigieren">
+    Navigieren Sie in der linken Seitenleiste zu **Integrationen → Webhooks Management**.
+  </Step>
+
+  <Step title="Token authentifizieren">
+    Klicken Sie auf die Schaltfläche **Management**, um Ihr Webhook-Token zu authentifizieren. Dieses Token wird verwendet, um ausgehende Nutzlasten zu signieren, sodass Sie verifizieren können, dass sie von AgencyHandy stammen.
+  </Step>
+
+  <Step title="Neuen Webhook erstellen">
+    Klicken Sie auf **Neuen Webhook erstellen**, um das Webhook-Konfigurationsformular zu öffnen.
+  </Step>
+
+  <Step title="Endpunkt-URL eingeben">
+    Geben Sie im Feld **Endpunkt-URL** die URL des externen Systems ein, das die Webhook-Daten empfangen soll. Dies muss ein öffentlich zugänglicher **POST**-Endpunkt sein.
+  </Step>
+
+  <Step title="Inhaltstyp auswählen">
+    Wählen Sie **JSON** als Inhaltstyp. AgencyHandy sendet alle Webhook-Nutzlasten als `application/json`.
+  </Step>
+
+  <Step title="Webhook-Ereignisse auswählen">
+    Wählen Sie jedes Ereignis aus, das diesen Webhook auslösen soll. Sie können Ereignisse aus mehreren Kategorien auswählen — zum Beispiel können **Bestellung: Erstellt** und **Rechnung: Status geändert** beide auf denselben Endpunkt verweisen.
+  </Step>
+
+  <Step title="Webhook aktivieren">
+    Schalten Sie den **Aktiv**-Radiobutton um. Wenn aktiv, liefert AgencyHandy Nutzlasten für alle ausgewählten Ereignisse in Echtzeit an Ihren Endpunkt.
+  </Step>
+
+  <Step title="Konfiguration speichern">
+    Überprüfen Sie Ihre Einstellungen und klicken Sie auf **Speichern**. Der Webhook erscheint in der Liste und beginnt sofort mit der Ereignislieferung.
+  </Step>
+</Steps>
+
+## Einen Webhook testen
+
+Senden Sie nach der Erstellung eines Webhooks eine Test-Nutzlast, um zu bestätigen, dass Ihr Endpunkt erreichbar ist und Daten korrekt verarbeitet.
+
+<Steps>
+  <Step title="Webhook öffnen">
+    Klicken Sie in der Webhooks-Verwaltungsliste auf den Webhook, den Sie testen möchten.
+  </Step>
+
+  <Step title="Auf Testereignis klicken">
+    Klicken Sie auf der Webhook-Detailseite auf die Schaltfläche **Testereignis**.
+  </Step>
+
+  <Step title="Testereignis auswählen">
+    Wählen Sie ein Beispielereignis aus der Liste der für diesen Webhook konfigurierten Ereignisse aus (z. B. **Bestellung: Erstellt**).
+  </Step>
+
+  <Step title="Test-Nutzlast senden">
+    Klicken Sie auf **Senden**. AgencyHandy sendet eine Beispiel-Nutzlast an Ihre Endpunkt-URL.
+  </Step>
+
+  <Step title="Ergebnis überprüfen">
+    Überprüfen Sie Ihr externes System, um zu bestätigen, dass die Test-Nutzlast angekommen ist und wie erwartet verarbeitet wurde. Klicken Sie in AgencyHandy in den Webhook, um dessen **Verlauf** einzusehen — Sie können die vollständige Anfrage, die Antwort Ihres Endpunkts sehen und jedes vergangene Ereignis bei Bedarf erneut zustellen.
+  </Step>
+</Steps>
+
+<Tip>
+  Verwenden Sie ein Tool wie [Webhook.site](https://webhook.site) oder [RequestBin](https://requestbin.com) als temporären Endpunkt während der Einrichtung, um die genaue Nutzlaststruktur zu überprüfen, bevor Sie Ihr echtes System anschließen.
+</Tip>
+
+## Webhook-Nutzlasten authentifizieren
+
+Jede ausgehende Webhook-Anfrage von AgencyHandy enthält einen Signatur-Header, den Ihr Endpunkt verwenden kann, um zu verifizieren, dass die Nutzlast authentisch ist und nicht manipuliert wurde.
+
+### Signatur-Header
+
+```
+x-ah-sig: <signature>
+```
+
+AgencyHandy fügt diesen Header zu jeder Webhook-Anfrage hinzu. Extrahieren Sie den Wert aus eingehenden Anfragen und übergeben Sie ihn an den Verifizierungsendpunkt.
+
+### Eine Webhook-Signatur verifizieren
+
+Senden Sie die folgende Anfrage, um zu bestätigen, dass eine Nutzlast authentisch ist:
+
+```
+POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature
+Content-Type: application/json
+```
+
+<ParamField body="webhookId" type="string" required>
+  Die ID des Webhooks, der das Ereignis empfangen hat. Diese finden Sie auf der Webhook-Detailseite in AgencyHandy.
+</ParamField>
+
+<ParamField body="signature" type="string" required>
+  Der Wert des `x-ah-sig`-Headers aus der eingehenden Webhook-Anfrage.
+</ParamField>
+
+<ParamField body="secret" type="string" required>
+  Das Webhook-Geheimnis, das auf der Webhook-Detailseite in AgencyHandy angezeigt wird.
+</ParamField>
+
+<ParamField body="payload" type="object" required>
+  Der rohe JSON-Body, der von der Webhook-Anfrage von AgencyHandy empfangen wurde.
+</ParamField>
+
+<CodeGroup>
+
+```javascript JavaScript
+const url = 'https://api.agencyhandy.com/api/v1/webhooks/verify-signature';
+
+const postData = {
+  webhookId: 'your_webhook_id',
+  signature: 'your_signature',   // value of x-ah-sig header
+  secret: 'your_webhook_secret',
+  payload: {},                   // the parsed JSON body from AgencyHandy
+};
+
+const response = await fetch(url, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(postData),
+});
+
+const data = await response.json();
+console.log(data); // { "verification_status": "SUCCESS" }
+```
+
+```bash cURL
+curl -X POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature \
+  -H "Content-Type: application/json" \
+  -d '{
+    "webhookId": "your_webhook_id",
+    "signature": "your_signature",
+    "secret": "your_webhook_secret",
+    "payload": {}
+  }'
+```
+
+</CodeGroup>
+
+**Antworten**
+
+<ResponseField name="verification_status" type="string">
+  `SUCCESS` wenn die Signatur gültig ist. `FAILED` wenn die Verifizierung fehlschlägt (HTTP 403).
+</ResponseField>
+
+```json Success (200)
+{
+  "verification_status": "SUCCESS"
+}
+```
+
+```json Failure (403)
+{
+  "type": "PermissionError",
+  "status": 403,
+  "verification_status": "FAILED"
+}
+```
+
+<Warning>
+  Halten Sie Ihr Webhook-Geheimnis vertraulich. Rotieren Sie es regelmäßig und aktualisieren Sie Ihre Verifizierungslogik unmittelbar nach der Rotation. Geben Sie es niemals in clientseitigem Code oder öffentlichen Repositories preis.
+</Warning>
+
+## Wichtige Hinweise
+
+- Ihre Endpunkt-URL muss eine **öffentlich zugängliche HTTPS-POST**-URL sein.
+- Wenn Ihr Endpunkt vorübergehend nicht verfügbar ist, überprüfen Sie das Verlaufspanel des Webhooks in AgencyHandy — Sie können jedes vergangene Ereignis direkt von dort aus **erneut zustellen**.
+- Überwachen Sie regelmäßig die Webhook-Aktivität, um fehlgeschlagene Zustellungen oder unbefugte Zugriffsversuche zu erkennen.
+- Webhooks, die wiederholt fehlschlagen, können von AgencyHandy pausiert werden — überprüfen Sie die Zustellprotokolle, um Probleme frühzeitig zu erkennen.

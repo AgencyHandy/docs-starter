@@ -1,0 +1,218 @@
+---
+title: "Gestión de clientes: perfiles, importación y configuración"
+sidebarTitle: "Clientes"
+description: "Cree e importe perfiles de clientes en AgencyHandy, realice seguimiento de pedidos y facturas, administre el acceso al portal y organice a los clientes con categorías."
+---
+
+La sección Clients del CRM de AgencyHandy es su centro centralizado para cada organización o persona que ha superado la etapa de prospecto. Aquí puede crear perfiles de clientes manualmente o de forma masiva, mantener los datos de contacto actualizados, realizar seguimiento de pedidos y facturas recientes, segmentar a los clientes en categorías personalizadas y supervisar el acceso al portal, todo desde una sola vista de lista.
+
+<Note>
+  Necesita un rol de **Super Admin** o **Admin** para crear, editar, importar o configurar perfiles de clientes. Los managers pueden ver los detalles de los clientes y los registros de actividad.
+</Note>
+
+## Crear un perfil de cliente
+
+Cuando incorpora un nuevo cliente, AgencyHandy crea una cuenta de portal para él y envía una invitación de inicio de sesión segura.
+
+<Steps>
+  <Step title="Vaya a Clients">
+    Inicie sesión en su cuenta de AgencyHandy, luego haga clic en **CRM** en la barra lateral izquierda y seleccione la pestaña **Clients**.
+  </Step>
+  <Step title="Abra el formulario de creación">
+    Haga clic en **+ Create Client** en la esquina superior derecha. Se abre un formulario.
+  </Step>
+  <Step title="Ingrese la información del cliente">
+    Complete los detalles del cliente:
+
+    - **First Name / Last Name** *(obligatorio)*
+    - **Email** *(obligatorio — se usa para enviar la invitación al portal)*
+    - **Company Name**
+    - **Phone Number**
+    - **Country, State, City, Zip Code**
+    - **Category**: asigne una categoría de configuración existente si corresponde
+  </Step>
+  <Step title="Guarde el perfil">
+    Haga clic en **Create**. El perfil se agrega a su lista de clientes de inmediato.
+  </Step>
+</Steps>
+
+<Note>
+  Después de crear el perfil, el cliente recibe un correo que contiene una URL de inicio de sesión segura. Al hacer clic en esa URL se activa su cuenta de portal y le permite iniciar sesión por primera vez.
+</Note>
+
+## Importar clientes desde CSV
+
+Si está migrando desde otra plataforma o tiene una hoja de cálculo de clientes existentes, puede importarlos todos a la vez.
+
+<Steps>
+  <Step title="Haga clic en Import">
+    En la lista de clientes, haga clic en el botón **Import** en la parte superior derecha.
+  </Step>
+  <Step title="Suba su archivo CSV">
+    Arrastre y suelte su archivo en el área de carga, o haga clic para buscarlo y seleccionarlo. AgencyHandy acepta archivos CSV que contengan los siguientes campos:
+
+    - Client Name *(obligatorio)*
+    - Email *(obligatorio)*
+    - Company Name
+    - Country
+    - State
+    - City
+    - Zip Code
+  </Step>
+  <Step title="Asigne sus columnas">
+    AgencyHandy detecta automáticamente los nombres de columna que coinciden con los nombres de sus campos. Para cualquier columna no coincidente, use los menús desplegables para asignarla manualmente a los campos correctos del sistema.
+  </Step>
+  <Step title="Previsualice y confirme">
+    Revise la tabla de vista previa para detectar cualquier problema de formato antes de guardar los datos.
+  </Step>
+  <Step title="Finalice la importación">
+    Haga clic en **Save**. Aparece un mensaje de confirmación una vez que todos los registros se importan correctamente.
+  </Step>
+</Steps>
+
+<Tip>
+  Si los encabezados de columna de su hoja de cálculo coinciden exactamente con los nombres de campo de AgencyHandy (por ejemplo, "email", "company name"), el asignador se completa automáticamente, sin necesidad de coincidencia manual.
+</Tip>
+
+## Exportar clientes
+
+Realice una copia de seguridad de su base de datos de clientes o compártala con las partes interesadas exportándola a CSV o Excel.
+
+<Steps>
+  <Step title="Haga clic en Export">
+    En la lista de clientes, haga clic en el botón **Export** en la parte superior derecha.
+  </Step>
+  <Step title="Personalice su exportación">
+    Elija qué columnas incluir: seleccione **All Columns** para una exportación completa, o elija campos específicos como nombre, datos de contacto, empresa o dirección.
+  </Step>
+  <Step title="Elija un formato">
+    Seleccione **CSV** o **XLSX** según el uso que pretenda darle.
+  </Step>
+  <Step title="Descargue el archivo">
+    Haga clic en **Export**. El archivo se genera y se descarga en su dispositivo. Almacénelo de forma segura para proteger los datos de los clientes.
+  </Step>
+</Steps>
+
+## Editar un perfil de cliente
+
+<Steps>
+  <Step title="Seleccione el cliente">
+    En la lista de clientes, haga clic en la casilla de verificación junto al cliente que desea actualizar, o haga clic directamente en su nombre para abrir su perfil.
+  </Step>
+  <Step title="Entre en el modo de edición">
+    Haga clic en el botón **Edit** en la esquina superior derecha del perfil del cliente. Aparece un formulario de edición.
+  </Step>
+  <Step title="Actualice la información">
+    Modifique cualquier campo: nombre, correo, teléfono, dirección, empresa o categoría.
+  </Step>
+  <Step title="Guarde sus cambios">
+    Haga clic en **Update**. Un mensaje de confirmación confirma que el perfil se ha guardado correctamente.
+  </Step>
+</Steps>
+
+## Buscar, ordenar y filtrar
+
+La lista de clientes le ofrece varias herramientas para encontrar rápidamente al cliente adecuado:
+
+<CardGroup cols={2}>
+  <Card title="Buscar por nombre" icon="magnifying-glass">
+    Escriba el nombre de un cliente en la barra de búsqueda para filtrar la lista al instante.
+  </Card>
+  <Card title="Filtrar por empresa" icon="building">
+    Acote la lista a los clientes asociados con una empresa específica.
+  </Card>
+  <Card title="Filtrar por correo" icon="envelope">
+    Localice a un cliente cuando conoce su dirección de correo pero no su nombre.
+  </Card>
+  <Card title="Filtrar por estado" icon="circle-check">
+    Muestre solo clientes activos, inactivos o invitados.
+  </Card>
+  <Card title="Ordenar alfabéticamente" icon="arrow-down-a-z">
+    Ordene la lista completa de clientes de la A a la Z o de la Z a la A por nombre para una referencia rápida.
+  </Card>
+  <Card title="Filtrar por categoría" icon="tag">
+    Muestre solo los clientes asignados a una categoría de configuración específica.
+  </Card>
+</CardGroup>
+
+## Seguimiento de la actividad del cliente
+
+Dentro de cada perfil de cliente encontrará pestañas que le dan una imagen en vivo de la interacción de ese cliente con su agencia:
+
+<Accordion title="Pedidos recientes">
+  Vea un historial de todos los pedidos realizados por el cliente, incluyendo el nombre del servicio, el paquete, el estado y la fecha. Esto le da una instantánea rápida de su historial de compras sin salir del CRM.
+</Accordion>
+
+<Accordion title="Tickets recientes">
+  Vea todos los tickets de soporte o de servicio enviados por el cliente. Use esta vista para priorizar las respuestas y asegurarse de que ninguna solicitud quede sin atender.
+</Accordion>
+
+<Accordion title="Facturas recientes">
+  Acceda a un registro de todas las facturas generadas para el cliente, incluido el estado de pago. Esto le ayuda a supervisar los saldos pendientes y el historial de facturas en un solo lugar.
+</Accordion>
+
+## Configuración de clientes (categorías)
+
+La configuración de clientes le permite crear categorías codificadas por colores para segmentar su lista de clientes; por ejemplo, *Alta prioridad*, *Retainer* u *En espera*. Las categorías aparecen como opciones de filtro en la lista de clientes para que pueda mostrar al instante el grupo correcto.
+
+<Steps>
+  <Step title="Abra la configuración">
+    En la sección Clients, haga clic en el botón **Configuration**.
+  </Step>
+  <Step title="Cree una nueva categoría">
+    Haga clic en **+ Create Category**.
+  </Step>
+  <Step title="Ingrese los detalles de la categoría">
+    - **Category Name**: una etiqueta única y descriptiva (por ejemplo, *Clientes empresariales*)
+    - **Short Description**: una nota breve que explica el propósito de la categoría
+    - **Color**: elija un color distintivo para un reconocimiento visual rápido
+  </Step>
+  <Step title="Guarde la categoría">
+    Haga clic en **Create**. La categoría ya está disponible para asignarla al editar perfiles de clientes.
+  </Step>
+  <Step title="Asigne clientes a la categoría">
+    Abra cualquier perfil de cliente, haga clic en **Edit**, seleccione el campo **Category** y elija la categoría relevante. Haga clic en **Update** para guardar.
+  </Step>
+</Steps>
+
+<Tip>
+  Use convenciones de color consistentes en todas las categorías —por ejemplo, rojo para clientes de alta urgencia y verde para cuentas totalmente incorporadas— para que la lista sea fácil de escanear de un vistazo.
+</Tip>
+
+## Registro de actividad del cliente
+
+El registro de actividad registra cada evento de inicio y cierre de sesión de la cuenta de portal de un cliente, lo que le brinda un rastro de auditoría claro de su interacción.
+
+**Para ver el registro:**
+
+1. Vaya a **Clients** y abra el perfil de un cliente específico.
+2. Haga clic en la pestaña **Activity Log** en la barra de navegación superior del perfil.
+3. Revise la lista cronológica de eventos de autenticación.
+
+**Lo que muestra el registro:**
+
+- Fecha y marca de tiempo exactas de cada **inicio de sesión**
+- Fecha y marca de tiempo exactas de cada **cierre de sesión**
+- Un historial continuo de todos los eventos de autenticación
+
+El registro se actualiza en tiempo real y no se puede editar ni eliminar. Los clientes no tienen acceso a su propio registro de actividad: es solo para visibilidad administrativa y de cumplimiento.
+
+<Note>
+  En esta etapa, el registro de actividad captura solo eventos de autenticación (inicio y cierre de sesión). Las acciones realizadas dentro del portal —como ver pedidos— aún no se registran aquí.
+</Note>
+
+## Enviar un correo a un cliente
+
+Puede enviar un correo a cualquier cliente directamente desde su perfil sin salir de AgencyHandy. Abra el perfil del cliente y use la opción **Email** para redactar su mensaje. El campo **To** se completa previamente con la dirección de correo del cliente.
+
+## Suplantación de cliente
+
+Los admins pueden suplantar una cuenta de cliente para ver exactamente lo que ve el cliente en su portal, lo cual resulta útil para solucionar problemas de acceso o guiar a un cliente a través de un proceso durante una llamada de soporte. Busque la opción **Impersonate** dentro del perfil del cliente.
+
+<Warning>
+  Use la suplantación solo con fines de soporte. Cualquier acción realizada durante la suplantación de un cliente se ejecuta en su nombre y se reflejará en su cuenta.
+</Warning>
+
+## Cuentas de empresa (B2B)
+
+Si trabaja con empresas en lugar de personas, puede establecer un **Company Name** en cualquier perfil de cliente para agrupar contactos bajo la misma organización. La lista de clientes se puede filtrar por empresa, lo que facilita ver juntos todos los contactos de una cuenta determinada.

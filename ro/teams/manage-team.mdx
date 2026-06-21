@@ -1,0 +1,132 @@
+---
+title: "Gestionează Membrii Echipei și Rolurile Agenției în AgencyHandy"
+sidebarTitle: "Gestionare Echipă"
+description: "Invită membri ai echipei prin email, atribuie roluri și permisiuni, schimbă roluri pentru membrii existenți și elimină utilizatori din spațiul de lucru al agenției în AgencyHandy."
+---
+
+Funcția Teams (Echipe) a AgencyHandy îți oferă o modalitate sigură și organizată de a construi și gestiona forța de muncă a agenției tale. Inviți membrii prin email, le atribui un rol care controlează ce pot vedea și face, și aceștia primesc un link de autentificare securizat pentru a finaliza procesul de înrolare. Pe măsură ce echipa ta evoluează, poți actualiza rolurile în orice moment sau elimina membri pentru a menține accesul strict și relevant.
+
+## Accesarea Tabloului de Bord al Echipei
+
+Apasă **Teams** în bara laterală stângă pentru a deschide Tabloul de Bord al Echipei. Aici vezi o listă a tuturor membrilor actuali ai echipei împreună cu rolurile lor atribuite. Din această vizualizare poți invita membri noi, actualiza roluri și elimina persoane din spațiul de lucru.
+
+## Roluri în AgencyHandy
+
+AgencyHandy are cinci roluri implicite, fiecare cu niveluri de permisiuni prestabilite. Când inviți un membru al echipei, îi atribui unul dintre aceste roluri. Poți schimba rolul unui membru în orice moment după ce s-a alăturat.
+
+| Rol | Capacități Tipice |
+|------|---------------------|
+| **Super Admin** | Acces complet la tot — toate setările, toate datele, toate acțiunile de gestionare a echipei |
+| **Admin** | Acces extins, inclusiv facturi, propuneri, comenzi, gestionarea echipei și setări |
+| **Project Manager (PM)** | Gestionează comenzile atribuite lor, vizualizează sarcinile pentru comenzile lor, poate invita membri ai echipei |
+| **Employee** | Limitat la sarcinile atribuite direct lor; fără acces la secțiunile financiare sau administrative |
+
+<Note>
+  Doar **Super Adminii** și **Adminii** pot schimba roluri sau șterge membri ai echipei. PM-urile pot invita membri noi, dar nu pot schimba sau elimina pe cei existenți.
+</Note>
+
+## Invitarea unui Membru al Echipei
+
+<Steps>
+  <Step title="Deschide Tabloul de Bord al Echipei">
+    Apasă **Teams** în bara laterală stângă.
+  </Step>
+  <Step title="Apasă + Create Team">
+    Apasă butonul **+ Create Team**. Va apărea un formular de invitație.
+  </Step>
+  <Step title="Introdu adresa de email">
+    Tastează adresa de email a persoanei pe care vrei să o inviți. Acesta este un câmp obligatoriu.
+  </Step>
+  <Step title="Atribuie un rol">
+    Selectează rolul corespunzător din lista derulantă. Alege cu atenție — acesta determină la ce are acces noul membru de la prima autentificare.
+  </Step>
+  <Step title="Trimite invitația">
+    Apasă **Invite**. AgencyHandy trimite persoanei invitate un email cu:
+    - Un **URL de autentificare securizat** la spațiul de lucru al agenției tale
+    - O **parolă generată automat** de folosit la prima autentificare
+  </Step>
+  <Step title="Membrul finalizează procesul de înrolare">
+    Membrul invitat al echipei urmează linkul din emailul său, se autentifică cu credențialele furnizate și finalizează procesul de înrolare. Odată ce se autentifică, este adăugat la spațiul tău de lucru și poate începe să colaboreze imediat.
+  </Step>
+</Steps>
+
+<Tip>
+  Cere noului membru al echipei să-și schimbe parola generată automat cu una sigură după prima autentificare.
+</Tip>
+
+## Setarea Rolurilor pentru Membrii Echipei
+
+Poți atribui sau actualiza roluri în două moduri: în timpul invitației sau după ce membrul s-a alăturat deja.
+
+<Tabs>
+  <Tab title="În Timpul Invitației">
+    Când completezi formularul de invitație, selectează rolul din lista derulantă înainte de a apăsa **Invite**. Rolul intră în vigoare imediat ce membrul se autentifică pentru prima dată.
+  </Tab>
+  <Tab title="Pentru Membrii Existenți">
+    1. Mergi la **Teams** în bara laterală stângă pentru a deschide Tabloul de Bord al Echipei.
+    2. Găsește membrul echipei al cărui rol vrei să-l schimbi.
+    3. Apasă butonul **săgeată în jos** din dreapta numelui său.
+    4. Va apărea o listă cu numele rolurilor implicite. Selectează noul rol.
+    5. Rolul se actualizează imediat — nu este necesar niciun pas de salvare.
+  </Tab>
+</Tabs>
+
+<Warning>
+  Doar **Super Adminii** și **Adminii** pot schimba rolul unui membru existent al echipei.
+</Warning>
+
+## Rezumatul Permisiunilor pe Rol
+
+Folosește acest tabel ca referință rapidă atunci când decizi ce rol să atribui.
+
+| Funcție | Super Admin | Admin | PM | Employee |
+|---------|:-----------:|:-----:|:--:|:--------:|
+| Creare & trimitere propuneri | ✅ | ✅ | ❌ | ❌ |
+| Creare & gestionare facturi | ✅ | ✅ | ✅ | ❌ |
+| Gestionare toate comenzile | ✅ | ✅ | Doar atribuite | ❌ |
+| Vizualizare toate sarcinile | ✅ | ✅ | Doar comenzile atribuite | Doar sarcinile atribuite |
+| Invitare membri echipă | ✅ | ✅ | ✅ | ❌ |
+| Schimbare roluri / eliminare membri | ✅ | ✅ | ❌ | ❌ |
+| Acces setări facturi & agenție | ✅ | ✅ | ❌ | ❌ |
+| Anulare abonamente | ✅ | ✅ | ❌ | ❌ |
+| Export date foi de pontaj | ✅ | ✅ | ✅ | ❌ |
+
+## Eliminarea unui Membru al Echipei
+
+Când cineva pleacă din agenția ta sau nu mai are nevoie de acces, elimină-l din spațiul de lucru pentru a-ți proteja datele.
+
+<Steps>
+  <Step title="Deschide Tabloul de Bord al Echipei">
+    Navighează la **Teams** în bara laterală stângă.
+  </Step>
+  <Step title="Selectează membrul de eliminat">
+    Bifează căsuța de lângă membrul echipei pe care vrei să-l elimini. Butonul **Delete** va deveni activ.
+  </Step>
+  <Step title="Apasă Delete">
+    Apasă butonul **Delete**. Va apărea un modal de confirmare.
+  </Step>
+  <Step title="Confirmă eliminarea">
+    Confirmă decizia. AgencyHandy revocă imediat accesul membrului la spațiul de lucru și la toate resursele asociate.
+  </Step>
+  <Step title="Finalizează predările">
+    După eliminare, reatribuie orice sarcini sau comenzi deschise de care era responsabil membrul și actualizează documentația relevantă și permisiunile de acces în consecință.
+  </Step>
+</Steps>
+
+<Warning>
+  Eliminarea unui membru al echipei **nu poate fi anulată**. Accesul acestuia este revocat permanent. Dacă trebuie să oferi aceeași persoană acces din nou în viitor, trebuie să trimiți o nouă invitație.
+</Warning>
+
+## Note Suplimentare
+
+<Accordion title="Înrolare securizată prin email">
+  Fiecare invitație este livrată printr-un URL de autentificare securizat. Persoana invitată folosește acest URL împreună cu o parolă generată automat pentru a accesa platforma pentru prima dată. Aceasta asigură că doar persoana vizată obține acces.
+</Accordion>
+
+<Accordion title="Schimbările de rol intră în vigoare imediat">
+  Când actualizezi rolul unui membru al echipei, modificarea se aplică instantaneu. Nu există niciun pas de așteptare sau confirmare — noile permisiuni ale membrului sunt active la următoarea încărcare a paginii.
+</Accordion>
+
+<Accordion title="Membrii echipei și vizibilitatea sarcinilor">
+  Un angajat poate vedea doar sarcinile care îi sunt atribuite direct. Un PM poate vedea doar sarcinile din comenzile unde este atribuit ca Manager. Super Adminii și Adminii văd totul. Ține cont de acest lucru când atribui roluri pentru a evita confuzia legată de sarcinile sau comenzile lipsă.
+</Accordion>

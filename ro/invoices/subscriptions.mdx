@@ -1,0 +1,162 @@
+---
+title: "Facturare prin Abonament și Facturi Recurente în AgencyHandy"
+sidebarTitle: "Abonamente"
+description: "Cum gestionează AgencyHandy facturarea recurentă prin abonament — facturi automate, cicluri de facturare, metode de plată, anulări și linkuri de plată Wise."
+---
+
+Sistemul de facturare prin abonament al AgencyHandy îți permite să automatizezi întregul flux de venituri recurente. Când un client se abonează la un serviciu, platforma creează un ID de Abonament, generează comenzi și emite facturi automat la fiecare ciclu de facturare — fie zilnic, săptămânal, lunar sau anual. Tu rămâi în control: poți vizualiza detaliile abonamentului, monitoriza istoricul plăților, gestiona plățile eșuate și anula abonamentele când este necesar, totul din cadrul AgencyHandy.
+
+## Cum Funcționează Facturarea prin Abonament
+
+Ciclul de viață al abonamentului în AgencyHandy urmează șase etape cheie.
+
+<Steps>
+  <Step title="Creează un serviciu bazat pe abonament">
+    Navighează la **Services** și apasă **Create New Service**. Selectează **Subscription** ca tip de serviciu.
+
+    Definește:
+    - **Billing Cycle** — Zilnic, Săptămânal, Lunar sau Anual
+    - **Renewal Behavior** — Create New Order, Update Existing Order sau Keep Unchanged
+    - **Pricing & Payment Method** — PayPal, Stripe sau Manual
+
+    Apasă **Publish** pentru a face serviciul disponibil.
+  </Step>
+  <Step title="Clientul achiziționează abonamentul">
+    Clientul selectează serviciul de abonament, continuă la checkout și alege o metodă de plată.
+
+    AgencyHandy creează automat:
+    - Un **ID de Abonament**
+    - O **Comandă**
+    - O **Factură**
+
+    Pentru plățile prin **PayPal sau Stripe**, factura este marcată **Paid** imediat. Pentru **Plata Manuală**, factura rămâne **Open** până când agenția confirmă primirea.
+  </Step>
+  <Step title="Facturare recurentă automată">
+    La fiecare dată de reînnoire, AgencyHandy procesează automat plata (pentru PayPal/Stripe) și generează următoarea factură.
+
+    Dacă plata reușește, factura este marcată **Paid**. Dacă eșuează:
+    - Factura rămâne **Open**
+    - Clientul primește o **Notificare de Plată Eșuată**
+    - Agenția primește o alertă pentru a reîncerca sau a solicita detalii de plată actualizate
+  </Step>
+  <Step title="Gestionează abonamentele active">
+    Navighează la **Subscription Management** în bara laterală stângă pentru a vizualiza toate abonamentele active și inactive. Selectează orice abonament pentru a-i vedea detaliile complete.
+  </Step>
+  <Step title="Gestionează anulările">
+    Când anulezi un abonament, poți alege să:
+    - **Anulezi complet** — oprești toate viitoarele facturări și comenzi
+    - **Păstrezi ultima comandă activă în curs** — lași clientul să continue să primească serviciul până la termenul limită al perioadei curente
+
+    Pentru a șterge complet un serviciu, toate abonamentele active pe acel serviciu trebuie anulate mai întâi.
+  </Step>
+  <Step title="Notificări">
+    Sistemul trimite automat:
+    - **Memento-uri de Reînnoire** înainte de data de facturare următoare
+    - **Confirmări de Plată** după taxele reușite
+    - **Alerte de Plată Eșuată** atât clientului, cât și adminilor agenției
+  </Step>
+</Steps>
+
+## Pagina de Detalii ale Abonamentului
+
+Pagina de Detalii ale Abonamentului îți oferă o imagine completă a oricărui abonament individual — de la serviciu și pachet până la fiecare factură și intrare din jurnalul de evenimente.
+
+### Cum să Accesezi
+
+1. Mergi la **Subscriptions** în bara laterală stângă
+2. Apasă pe orice abonament din listă pentru a deschide pagina sa de detalii
+
+### Ce Poți Vedea
+
+<Tabs>
+  <Tab title="Informații Abonament">
+    - **Numele Serviciului** și **Numele Pachetului**
+    - **Numele Clientului**
+    - **Ciclul de Facturare** (ex. Lunar, Anual)
+    - **Data de Început** și **Data de Sfârșit**
+    - **Starea** Abonamentului (Activ sau Inactiv)
+  </Tab>
+  <Tab title="Detalii Plată">
+    - **Taxa de Abonament**
+    - **Numărul Total de Plăți** efectuate până în prezent
+    - **Metoda de Plată** (Stripe, PayPal, Wise, Transfer Bancar Manual, etc.)
+    - **Data Următoarei Plăți**
+  </Tab>
+  <Tab title="Istoricul Comenzilor">
+    - **ID Comandă**
+    - **Stare** (ex. Ongoing, Completed)
+    - **Data de Început** și **Data Scadenței** pentru fiecare comandă
+  </Tab>
+  <Tab title="Istoricul Facturilor">
+    - **ID Factură**
+    - **Sumă**
+    - **Stare** (Open, Paid, etc.)
+    - **Data Plății** și **Data Scadenței**
+  </Tab>
+  <Tab title="Jurnale de Evenimente">
+    Un audit cronologic al tuturor activităților legate de abonament — schimbări de stare, evenimente de plată, anulări și altele.
+  </Tab>
+</Tabs>
+
+<Note>
+  Un singur abonament poate avea mai multe comenzi și facturi asociate. Facturile legate de abonamente se actualizează dinamic când sunt primite plățile.
+</Note>
+
+## Suport Wise pentru Facturi de Abonament cu Plată Manuală
+
+Dacă colectezi plăți internaționale, poți încorpora un **link de plată Wise** direct în facturile de abonament. Aceasta oferă clienților o modalitate convenabilă de a plăti fără a fi nevoie să configureze manual un transfer bancar.
+
+### Cerințe
+
+- Un cont AgencyHandy activ
+- Un cont **Wise** activ cu un link de plată valid generat
+
+### Pași pentru Adăugarea unui Link Wise la o Factură
+
+<Steps>
+  <Step title="Deschide secțiunea Facturi">
+    Apasă **Invoices** în bara laterală stângă, apoi apasă **+ Create Invoice**.
+  </Step>
+  <Step title="Selectează clientul și comanda">
+    Alege clientul din lista derulantă. Toate ID-urile de Comandă aferente vor apărea. Selectează ID-ul relevant al Comenzii și introdu suma și orice articole care sunt facturate.
+  </Step>
+  <Step title="Aplică reduceri și taxe">
+    Adaugă orice procent de reducere, sumă de reducere, sumă plătită, sumă datorată și detalii TVA/taxă aplicabile. Include adresa de facturare și notele după caz.
+  </Step>
+  <Step title="Adaugă linkul de plată Wise">
+    În secțiunea **Payment Method**, selectează **Wise** ca opțiune de plată. Lipește linkul tău de plată Wise în câmpul furnizat.
+  </Step>
+  <Step title="Salvează factura">
+    Apasă **Save** pentru a finaliza factura. Linkul de plată Wise va apărea în factură astfel încât clientul să poată plăti direct.
+  </Step>
+</Steps>
+
+<Tip>
+  Verifică întotdeauna linkul tău de plată Wise și totalurile facturii înainte de a salva. Verifică dacă detaliile comenzii, reducerile și informațiile despre taxe sunt corecte pentru a evita erorile de facturare.
+</Tip>
+
+## Note Importante despre Facturarea prin Abonament
+
+<Accordion title="Cine poate anula abonamentele?">
+  Doar **Super Adminii** și **Adminii** pot anula abonamentele. Clienții nu pot anula propriile abonamente — trebuie să solicite anularea prin agenție.
+</Accordion>
+
+<Accordion title="ID-urile de abonament sunt permanente">
+  Odată creat un abonament, ID-ul său de Abonament nu poate fi editat. Aceasta asigură urmărirea consecventă pe toată durata de viață a abonamentului.
+</Accordion>
+
+<Accordion title="Plăți eșuate și crearea comenzilor">
+  Când o plată eșuează, factura rămâne Open și se creează o nouă comandă pentru perioada eșuată. Starea abonamentului rămâne **Activ** până când un admin reîncarcă manual plata sau anulează abonamentul.
+</Accordion>
+
+<Accordion title="Comenzi cu plată manuală">
+  Dacă un client plătește în afara Stripe sau PayPal (ex. prin transfer bancar), adminul trebuie să marcheze manual factura ca **Paid** în AgencyHandy. Sistemul nu face acest lucru automat pentru plățile manuale.
+</Accordion>
+
+<Accordion title="Tentative de checkout propriu neplătite">
+  Dacă un client începe un checkout de abonament, dar nu finalizează plata, acesta rămâne în sistem ca **Lead** până când se abonează cu succes.
+</Accordion>
+
+<Accordion title="Datele scadenței facturilor">
+  Datele scadenței pentru facturile de abonament sunt setate automat pe baza ciclului de facturare configurat (ex. facturile lunare sunt scadente la o lună după data de început).
+</Accordion>

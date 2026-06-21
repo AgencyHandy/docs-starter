@@ -1,0 +1,143 @@
+---
+title: "Como Criar, Editar e Excluir Pedidos no AgencyHandy"
+sidebarTitle: "Criar Pedido"
+description: "Guia passo a passo para criar, editar e excluir pedidos no AgencyHandy — incluindo requisitos de função, campos do formulário e transições de status."
+---
+
+Criar um pedido no AgencyHandy oferece um espaço de trabalho estruturado para a entrega de um serviço a um cliente. Você preenche os principais detalhes antecipadamente — cliente, serviço, precificação, datas e um briefing do projeto — e todo o restante, desde tarefas até discussões, flui a partir desse único registro. Esta página orienta você na criação de um pedido do zero, na atualização posterior, na alteração de seu status e na exclusão quando ele não for mais necessário.
+
+## Requisitos
+
+- Você deve estar conectado ao AgencyHandy.
+- Você deve ter a função de **Super Admin**, **Admin** ou **Gerente de Projetos** para criar ou editar pedidos.
+- Somente **Super Admins** e **Admins** podem excluir pedidos.
+
+## Criar um Novo Pedido
+
+<Steps>
+  <Step title="Navegar até Pedidos">
+    Na barra lateral esquerda do seu painel do AgencyHandy, clique em **Pedidos**.
+  </Step>
+
+  <Step title="Abrir o formulário de criação">
+    Clique em **+ Criar Novo Pedido** no canto superior direito. Um formulário será exibido.
+  </Step>
+
+  <Step title="Preencher os detalhes do pedido">
+    Preencha os campos do formulário:
+
+    | Campo | Obrigatório | Observações |
+    |---|---|---|
+    | **Cliente** | ✅ | Selecione da sua lista de clientes existentes |
+    | **Serviço** | ✅ | Inclui serviços publicados e não publicados |
+    | **Gerente de Projetos** | ❌ | Opcional; atribua um GP para gerenciar a entrega |
+    | **Quantidade** | ✅ | Número de unidades solicitadas |
+    | **Preço** | ✅ | Orçamento acordado para o pedido |
+    | **Data de Início** | ✅ | Quando o trabalho começa |
+    | **Data de Entrega** | ✅ | Prazo de entrega |
+    | **Briefing do Pedido** | ❌ | Instruções, requisitos ou notas de referência para sua equipe |
+    | **Anexos** | ❌ | Arquivos de suporte relevantes ao pedido |
+
+    <Tip>
+      Se o serviço selecionado tiver complementos vinculados a ele, uma seção de **Complementos** aparecerá no formulário. Inclua os complementos relevantes antes de enviar.
+    </Tip>
+  </Step>
+
+  <Step title="Revisar as informações">
+    Verifique todos os campos com atenção — especialmente o cliente, o serviço, o preço e a data de entrega.
+  </Step>
+
+  <Step title="Enviar o pedido">
+    Clique em **Criar** para finalizar o pedido. Você receberá uma mensagem de confirmação assim que ele for criado com sucesso.
+  </Step>
+</Steps>
+
+### O Que Acontece Após a Criação de um Pedido
+
+- Todos os Super Admins da sua empresa obtêm acesso automático ao novo pedido.
+- O cliente recebe uma notificação de que seu pedido foi criado.
+- O pedido aparece na lista de **Pedidos** com o status **Pendente**.
+
+## Editar ou Atualizar um Pedido
+
+Você pode atualizar um pedido a qualquer momento para corrigir detalhes, ajustar preços, alterar a data de entrega ou atender às solicitações do cliente.
+
+<Note>
+Você deve ser um **Super Admin**, **Admin** ou **Gerente de Projetos** para editar um pedido.
+</Note>
+
+<Steps>
+  <Step title="Abrir a lista de Pedidos">
+    Navegue até **Pedidos** na barra lateral esquerda.
+  </Step>
+
+  <Step title="Selecionar o pedido a editar">
+    Localize o pedido que deseja atualizar e marque a caixa de seleção ao lado dele.
+  </Step>
+
+  <Step title="Ativar o botão de edição">
+    Um botão **Editar** aparecerá no canto superior direito. Clique nele para abrir os detalhes do pedido no modo de edição.
+  </Step>
+
+  <Step title="Modificar os campos necessários">
+    Atualize qualquer campo que precise ser alterado — detalhes do cliente, serviço, precificação, datas, briefing ou GP atribuído.
+  </Step>
+
+  <Step title="Salvar as alterações">
+    Clique em **Atualizar** para salvar. Uma mensagem de confirmação indicará que a atualização foi bem-sucedida.
+  </Step>
+</Steps>
+
+## Alterar o Status de um Pedido
+
+O status do pedido reflete em que etapa do pipeline de entrega um trabalho se encontra. O AgencyHandy define cinco status fixos — você não pode adicionar ou renomear nenhum deles.
+
+| Status | Significado |
+|---|---|
+| **Pendente** | Criado, ainda não iniciado |
+| **Em Andamento** | Sendo ativamente trabalhado |
+| **Em Revisão** | Enviado para revisão; aguardando aprovação |
+| **Concluído** | Entregue e aceito |
+| **Cancelado** | Não está mais ativo |
+
+<Note>
+Somente **Super Admins**, **Admins** e **Gerentes de Projetos** podem alterar o status de um pedido. Funcionários e clientes não podem alterar o status.
+</Note>
+
+Para atualizar o status, abra o pedido e use o seletor de status no topo da página de detalhes do pedido. Selecione o novo status no menu suspenso e confirme.
+
+## Excluir um Pedido
+
+Excluir um pedido o remove permanentemente do sistema. Use esta opção somente quando um pedido for realmente obsoleto — por exemplo, se foi criado por engano ou é uma duplicata.
+
+<Warning>
+A exclusão de pedidos é irreversível. Depois que um pedido é excluído, ele não pode ser recuperado. Proceda com cautela.
+</Warning>
+
+<Note>
+Somente **Super Admins** e **Admins** podem excluir pedidos.
+</Note>
+
+<Steps>
+  <Step title="Navegar até Pedidos">
+    Clique em **Pedidos** na barra lateral esquerda.
+  </Step>
+
+  <Step title="Encontrar o pedido a excluir">
+    Role ou pesquise o pedido que deseja remover da lista.
+  </Step>
+
+  <Step title="Iniciar a exclusão">
+    Clique no **ícone de lixeira** associado ao pedido.
+  </Step>
+
+  <Step title="Confirmar a exclusão">
+    Um prompt de confirmação será exibido. Confirme para excluir permanentemente o pedido.
+  </Step>
+</Steps>
+
+Após a exclusão, revise seus pedidos restantes para garantir que tudo esteja em ordem. O registro excluído não aparecerá mais em nenhuma lista ou relatório.
+
+## Adicionando Membros da Equipe a um Pedido
+
+Super Admins, Admins e GPs podem adicionar funcionários a um pedido a qualquer momento. Quando um membro da equipe é adicionado, ele recebe uma notificação no aplicativo. Os funcionários atribuídos obtêm visibilidade do pedido e de suas tarefas, mas não podem gerenciar o pedido em si (editar detalhes, alterar status ou excluí-lo).

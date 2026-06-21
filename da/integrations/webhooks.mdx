@@ -1,0 +1,196 @@
+---
+title: "Webhook-administration: Opret, test og godkend"
+sidebarTitle: "Webhooks"
+description: "Opsæt webhooks i AgencyHandy for at sende realtidshændelsesdata til eksterne systemer, når ordrer, opgaver, fakturaer eller andre entiteter ændres."
+---
+
+Webhooks lader AgencyHandy sende data til dine eksterne systemer i det øjeblik, noget ændres — ingen polling krævet. Når en konfigureret hændelse udløses (f.eks. en ordre opdateres eller en supportticket oprettes), sender AgencyHandy en HTTP POST-anmodning med en JSON-nyttelast til den endpoint-URL, du angiver. Dette gør det nemt at holde eksterne værktøjer som CRM-systemer, faktureringssystemer eller brugerdefinerede dashboards synkroniseret med dit AgencyHandy-workspace i realtid.
+
+<Note>
+  Workspaces på Business Pro-planen understøtter op til **30.000 webhook-hændelser** pr. faktureringsperiode. Tjek dine planbegrænsninger, inden du opsætter automatiseringer med høj volumen.
+</Note>
+
+## Understøttede hændelser
+
+Du kan abonnere en webhook på enhver kombination af følgende hændelser:
+
+| Kategori | Hændelser |
+|---|---|
+| **Tjeneste** | Oprettet, Opdateret, Slettet |
+| **Ordre** | Oprettet, Opdateret, Slettet |
+| **Opgave** | Oprettet, Tildelt, Fuldført, Opdateret |
+| **Faktura** | Status ændret |
+| **Klient / Bruger** | Ny klient tilføjet, Klient/bruger slettet |
+| **Tilbud** | Sendt, Modtaget, Accepteret, Afvist |
+| **Supportticket** | Oprettet, Tildelt, Status ændret |
+| **Betaling** | Modtaget, Fejlet |
+| **Servicepakke** | Oprettet, Opdateret, Slettet |
+
+## Opret en webhook
+
+<Steps>
+  <Step title="Naviger til Webhook-administration">
+    Gå til **Integrationer → Webhooks Management** i den venstre sidebjælke.
+  </Step>
+
+  <Step title="Godkend dit token">
+    Klik på knappen **Management** for at godkende dit webhook-token. Dette token bruges til at signere udgående nyttelaster, så du kan verificere, at de stammer fra AgencyHandy.
+  </Step>
+
+  <Step title="Opret en ny webhook">
+    Klik på **Create New Webhook** for at åbne webhook-konfigurationsformularen.
+  </Step>
+
+  <Step title="Indtast endpoint-URL'en">
+    I feltet **Endpoint URL** skal du indtaste URL'en på det eksterne system, der skal modtage webhook-dataene. Dette skal være et offentligt tilgængeligt **POST**-endpoint.
+  </Step>
+
+  <Step title="Vælg indholdstypen">
+    Vælg **JSON** som indholdstype. AgencyHandy sender alle webhook-nyttelaster som `application/json`.
+  </Step>
+
+  <Step title="Vælg webhook-hændelser">
+    Vælg alle hændelser, der skal udløse denne webhook. Du kan vælge hændelser fra flere kategorier — f.eks. kan **Ordre: Oprettet** og **Faktura: Status ændret** begge pege på det samme endpoint.
+  </Step>
+
+  <Step title="Aktiver webhook'en">
+    Slå **Active**-radioknappen til. Når den er aktiv, leverer AgencyHandy nyttelaster for alle valgte hændelser til dit endpoint i realtid.
+  </Step>
+
+  <Step title="Gem konfigurationen">
+    Gennemgå dine indstillinger, og klik derefter på **Save**. Webhook'en vises på listen og begynder straks at levere hændelser.
+  </Step>
+</Steps>
+
+## Test en webhook
+
+Når du har oprettet en webhook, skal du sende en testnyttelast for at bekræfte, at dit endpoint er tilgængeligt og behandler data korrekt.
+
+<Steps>
+  <Step title="Åbn webhook'en">
+    Klik på den webhook, du vil teste, fra listen i Webhooks Management.
+  </Step>
+
+  <Step title="Klik på Test Event">
+    Klik på knappen **Test Event** på webhook-detailsiden.
+  </Step>
+
+  <Step title="Vælg en testhændelse">
+    Vælg en eksempelhændelse fra listen over hændelser konfigureret på denne webhook (f.eks. **Ordre: Oprettet**).
+  </Step>
+
+  <Step title="Send testnyttelasten">
+    Klik på **Send**. AgencyHandy sender en eksempelnyttelast til din endpoint-URL.
+  </Step>
+
+  <Step title="Verificer resultatet">
+    Tjek dit eksterne system for at bekræfte, at testnyttelasten ankom og blev behandlet som forventet. Tilbage i AgencyHandy kan du klikke på webhook'en for at gennemgå dens **historik** — du kan se den fulde anmodning, det svar dit endpoint returnerede, og gensende enhver tidligere hændelse efter behov.
+  </Step>
+</Steps>
+
+<Tip>
+  Brug et værktøj som [Webhook.site](https://webhook.site) eller [RequestBin](https://requestbin.com) som et midlertidigt endpoint under opsætningen for at undersøge den præcise nyttelaststruktur, inden du tilslutter dit rigtige system.
+</Tip>
+
+## Godkend webhook-nyttelaster
+
+Alle udgående webhook-anmodninger fra AgencyHandy inkluderer et signaturobjekt-header, som dit endpoint kan bruge til at verificere, at nyttelasten er ægte og ikke er blevet manipuleret.
+
+### Signatur-header
+
+```
+x-ah-sig: <signature>
+```
+
+AgencyHandy tilføjer denne header til alle webhook-anmodninger. Udpak værdien fra indgående anmodninger og send den til verifikationsendpointet.
+
+### Verificer en webhook-signatur
+
+Send følgende anmodning for at bekræfte, at en nyttelast er autentisk:
+
+```
+POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature
+Content-Type: application/json
+```
+
+<ParamField body="webhookId" type="string" required>
+  ID'et på den webhook, der modtog hændelsen. Find det på webhook-detailsiden i AgencyHandy.
+</ParamField>
+
+<ParamField body="signature" type="string" required>
+  Værdien af `x-ah-sig`-headeren fra den indgående webhook-anmodning.
+</ParamField>
+
+<ParamField body="secret" type="string" required>
+  Webhook-hemmeligheden vist på webhook-detailsiden i AgencyHandy.
+</ParamField>
+
+<ParamField body="payload" type="object" required>
+  Den rå JSON-krop modtaget fra AgencyHandys webhook-anmodning.
+</ParamField>
+
+<CodeGroup>
+
+```javascript JavaScript
+const url = 'https://api.agencyhandy.com/api/v1/webhooks/verify-signature';
+
+const postData = {
+  webhookId: 'your_webhook_id',
+  signature: 'your_signature',   // value of x-ah-sig header
+  secret: 'your_webhook_secret',
+  payload: {},                   // the parsed JSON body from AgencyHandy
+};
+
+const response = await fetch(url, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(postData),
+});
+
+const data = await response.json();
+console.log(data); // { "verification_status": "SUCCESS" }
+```
+
+```bash cURL
+curl -X POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature \
+  -H "Content-Type: application/json" \
+  -d '{
+    "webhookId": "your_webhook_id",
+    "signature": "your_signature",
+    "secret": "your_webhook_secret",
+    "payload": {}
+  }'
+```
+
+</CodeGroup>
+
+**Svar**
+
+<ResponseField name="verification_status" type="string">
+  `SUCCESS` når signaturen er gyldig. `FAILED` når verifikation mislykkes (HTTP 403).
+</ResponseField>
+
+```json Success (200)
+{
+  "verification_status": "SUCCESS"
+}
+```
+
+```json Failure (403)
+{
+  "type": "PermissionError",
+  "status": 403,
+  "verification_status": "FAILED"
+}
+```
+
+<Warning>
+  Hold din webhook-hemmelighed fortrolig. Roter den jævnligt og opdater din verifikationslogik umiddelbart efter rotation. Udsæt den aldrig i klientsidet kode eller offentlige repositorier.
+</Warning>
+
+## Vigtige bemærkninger
+
+- Din endpoint-URL skal være en **offentligt tilgængelig HTTPS POST**-URL.
+- Hvis dit endpoint midlertidigt er utilgængeligt, kan du tjekke webhook'ens historiepanel i AgencyHandy — du kan **gensende** enhver tidligere hændelse direkte derfra.
+- Overvåg jævnligt webhook-aktivitet for at opdage fejlslagne leveringer eller uautoriserede adgangsforsøg.
+- Webhooks der fejler gentagne gange kan blive sat på pause af AgencyHandy — gennemgå leveringslogge for at fange problemer tidligt.

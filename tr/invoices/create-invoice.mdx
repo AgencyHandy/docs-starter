@@ -1,0 +1,235 @@
+---
+title: "AgencyHandy'de Müşteri Faturası Oluşturma, Gönderme ve Yönetme"
+sidebarTitle: "Fatura Oluştur"
+description: "AgencyHandy'de fatura oluşturmak için adım adım kılavuz — müşteri seçme, tutarları belirleme, not ekleme, müşteriye gönderme ve ödeme hatırlatıcılarını yapılandırma."
+---
+
+AgencyHandy'de fatura oluşturmak, faturalandırmanızı doğrudan müşterilere ve siparişlere bağlayan basit bir süreçtir. Müşteriyi doldurur, siparişi ilişkilendirir, tutarları belirler, notlar ekler ve tek bir formdan gönderirsiniz. Gönderildikten sonra ödeme durumunu takip edebilir, otomatik hatırlatıcılar ayarlayabilir ve faturayı istediğiniz zaman PDF olarak indirebilirsiniz.
+
+<Note>
+  Fatura oluşturmak için **Süper Yönetici**, **Yönetici** veya **PM** olmanız gerekir. Fatura oluşturmadan önce çalışma alanınızda en az bir müşterinin bulunması gerekir.
+</Note>
+
+## Fatura Öneki Ayarları
+
+Fatura oluşturmaya başlamadan önce fatura önekini yapılandırmayı düşünün. Önek, her fatura numarasının önünde görünür ve faturaların ajansınıza ait olduğunu belirtmeye yardımcı olur.
+
+<Steps>
+  <Step title="Fatura Ayarlarını Açın">
+    Fatura Dashboard'unda sağ üst köşedeki **Ayarlar** düğmesine tıklayın.
+  </Step>
+  <Step title="Önekinizi belirleyin">
+    **Fatura Öneki** alanına gidin ve istediğiniz öneki girin (örneğin, `INV-` veya ajansınızın baş harfleri).
+  </Step>
+  <Step title="Kaydedin">
+    Öneki gelecekteki tüm faturalara uygulamak için **Kaydet**'e tıklayın.
+  </Step>
+</Steps>
+
+## Fatura Oluşturma
+
+<Steps>
+  <Step title="Fatura Dashboard'unu Açın">
+    Fatura Dashboard'unu açmak için sol kenar çubuğunda **Faturalar**'a tıklayın.
+  </Step>
+  <Step title="Yeni bir fatura başlatın">
+    **+ Fatura Oluştur**'a tıklayın. Fatura oluşturma formu açılacaktır.
+  </Step>
+  <Step title="Müşteriyi seçin">
+    Açılır listeden müşterinin adını seçin. Bu zorunlu bir alandır. O müşteriyle ilişkili tüm Sipariş Kimlikleri, bir sonraki alanda otomatik olarak dolacaktır.
+
+    **Doğrudan Fatura** (bir siparişe bağlı olmayan) oluşturmak için Sipariş Kimliği alanını boş bırakabilir veya müşteri listenizin dışındaki herhangi bir e-posta adresine fatura göndermek için **Bağımsız E-posta**'yı seçebilirsiniz.
+  </Step>
+  <Step title="Sipariş Kimliğini seçin">
+    Faturalandırdığınız sipariş için belirli Sipariş Kimliğini seçin. Bu, faturayı sistemdeki doğru siparişle ilişkilendirir. Doğrudan faturalar için bu alanı atlayın.
+  </Step>
+  <Step title="Faturalama adresini girin">
+    **Fatura Ödeme Adresi**'ni doldurun:
+    - Ülke, Eyalet ve Şehir
+    - Posta kodu
+    - Sokak adresi (varsa)
+
+    Bu adres, uyumluluk ve netlik için basılı faturada görünür.
+  </Step>
+  <Step title="Sipariş ve finansal bilgileri ayarlayın">
+    **Sipariş Ayrıntıları** altında şunları girin:
+
+    | Alan | Açıklama |
+    |-------|-------------|
+    | **Para Birimi** | Ödeme almak istediğiniz para birimi |
+    | **Sipariş Kimliği – Tutar** | Siparişle ilişkili parasal değer |
+    | **İndirim (%)** ve **İndirim Tutarı** | Uygulanabilir indirimleri uygulayın |
+    | **Ödenen Tutar** | Müşterinin halihazırda ödediği miktar |
+    | **Kalan Tutar** | Ödenmemiş bakiye |
+    | **Toplam Tutar** | Sipariş için ödenecek tam tutar |
+
+    **Doğrudan Faturalar** için satır kalemleri manuel olarak eklemek üzere **Kalem Ekle**'ye tıklayın. Kalem adını, miktarı ve fiyatı girin. Birden fazla kalem ekleyebilirsiniz. Vergi oranları uygulamak veya oluşturmak için **+ Vergi Oranları**'nı kullanın (dahil veya hariç).
+  </Step>
+  <Step title="Not ekleyin (isteğe bağlı)">
+    **Not** alanına müşteri için ek bağlam ekleyin — örneğin ödeme talimatları, proje referansları veya kişisel bir mesaj.
+  </Step>
+  <Step title="Ayrıntılar panelini inceleyin">
+    Sağ taraftaki **Ayrıntılar** paneli size şunların canlı özetini sunar:
+
+    - Fatura durumu (varsayılan olarak Taslak)
+    - Müşteri adı, şirket adı ve adresi
+    - Fatura ödeme adresi
+    - Hizmet adı ve Sipariş Kimliği
+    - Oluşturulma tarihi ve son ödeme tarihi
+    - Toplam tutar
+
+    Devam etmeden önce her şeyi dikkatlice inceleyin.
+  </Step>
+  <Step title="Müşteriye gönderin veya taslak olarak kaydedin">
+    - Faturayı hemen e-posta ile göndermek için **Müşteriye Gönder**'e tıklayın. Durum otomatik olarak **Taslak**'tan **Açık**'a değişir.
+    - Daha sonra tamamlamak istiyorsanız **Taslak Olarak Kaydet**'e tıklayın.
+  </Step>
+</Steps>
+
+<Note>
+  Ajans logosu ve adresi, sistem tarafından faturaya otomatik olarak eklenir — her faturada bunları manuel olarak girmeniz gerekmez.
+</Note>
+
+## Fatura Durum Geçişleri
+
+Bir fatura oluşturulduktan sonra belirlenmiş bir durum akışını izler. Yalnızca ajans, faturayı durumlar arasında taşıyabilir.
+
+```
+Taslak → Açık (müşteriye gönderildiğinde)
+Açık   → Ödendi           (ödeme alındı)
+Açık   → Geçersiz         (fatura iptal edildi)
+Açık   → Tahsil Edilemez  (borç silindi)
+```
+
+<Warning>
+  Faturalar yalnızca **Taslak** durumundayken **düzenlenebilir**. Bir fatura Açık durumuna geçtiğinde düzenleyemezsiniz. Değişiklik yapmanız gerekiyorsa faturayı geçersiz kılın ve yeni bir tane oluşturun.
+</Warning>
+
+## Fatura Düzenleme
+
+Bir faturayı yalnızca **Taslak** durumundayken düzenleyebilirsiniz.
+
+<Steps>
+  <Step title="Faturayı açın">
+    Fatura Dashboard'unda düzenlemek istediğiniz taslak faturayı bulun. Üzerine tıklayın veya yanındaki onay kutusunu işaretleyin.
+  </Step>
+  <Step title="Düzenle'ye tıklayın">
+    Eylem menüsünden **Düzenle** seçeneğini seçin. Fatura formu tüm mevcut bilgilerle önceden doldurulmuş şekilde açılacaktır.
+  </Step>
+  <Step title="Değişikliklerinizi yapın">
+    Herhangi bir alanı güncelleyin — fatura bilgileri, hizmet açıklamaları, miktarlar, tutarlar veya ödeme koşulları.
+  </Step>
+  <Step title="Kaydedin">
+    Değişikliklerinizi uygulamak için **Kaydet**'e tıklayın.
+  </Step>
+</Steps>
+
+## Müşteriye Fatura Gönderme
+
+Faturayı taslak olarak kaydettiyseniz ve daha sonra göndermek istiyorsanız:
+
+<Steps>
+  <Step title="Faturayı bulun">
+    Fatura Dashboard'unda göndermek istediğiniz taslak faturayı bulun.
+  </Step>
+  <Step title="Fatura Gönder'e tıklayın">
+    Faturayı açın ve **Fatura Gönder** düğmesine tıklayın. AgencyHandy, faturayı kayıtlı müşteri e-posta adresine iletir.
+  </Step>
+  <Step title="Teslimi onaylayın">
+    Faturanın başarıyla gönderildiğini doğrulamak için onay mesajını kontrol edin. Fatura durumu **Açık** olarak güncellenir.
+  </Step>
+</Steps>
+
+<Note>
+  Bir fatura **Taslak** durumundayken hizmet adını güncellerseniz yeni ad faturaya yansıtılacaktır. Durum Açık, Ödendi, Tahsil Edilemez veya Geçersiz'e değiştiğinde, faturadaki hizmet adı kilitlenir ve güncellenmez.
+</Note>
+
+## Fatura İndirme ve Yazdırma
+
+Hem ajans hem de müşteri herhangi bir zamanda fatura indirebilir.
+
+<Steps>
+  <Step title="Faturayı açın">
+    Fatura Dashboard'una gidin ve indirmek istediğiniz faturayı seçin.
+  </Step>
+  <Step title="İndirme/yazdırma seçeneğine erişin">
+    Fatura eylem menüsünden **İndir** veya **Yazdır** seçeneğine tıklayın.
+  </Step>
+  <Step title="Formatınızı seçin">
+    İndirmek için **PDF** seçin veya fiziksel kopya için yazıcı ayarlarınızı seçin.
+  </Step>
+  <Step title="Kaydedin veya yazdırın">
+    Dosyayı cihazınıza kaydedin veya yazıcıya gönderin. Yazdırdıktan sonra faturayı arşivleyin veya gerektiğinde paydaşlarla paylaşın.
+  </Step>
+</Steps>
+
+## Faturalara Hatırlatıcı Ayarlama
+
+Fatura Hatırlatıcı özelliği, müşterileri yaklaşan, vadesi gelen veya vadesi geçmiş faturalar hakkında otomatik olarak bilgilendirerek manuel takip gerekmeden zamanında ödeme almanızı sağlar.
+
+<Note>
+  Hatırlatıcılar yalnızca **Açık** durumunda olan ve belirlenmiş bir **son ödeme tarihi** bulunan faturalar için çalışır.
+</Note>
+
+<Steps>
+  <Step title="Fatura Ayarlarını Açın">
+    Fatura Dashboard'unun sağ üst köşesindeki **Ayarlar** düğmesine tıklayın.
+  </Step>
+  <Step title="Hatırlatıcı ayarlarına gidin">
+    Sol paneldeki **Şablon** bölümünün en altına kaydırın, ardından hatırlatıcı yapılandırma modalini açmak için **Düzenle**'ye tıklayın.
+  </Step>
+  <Step title="Bir hatırlatıcı türü seçin">
+    Aşağıdakilerden birini seçin:
+
+    - **Sıralı Hatırlatıcı** — tanımladığınız aralıklarla bir dizi hatırlatıcı oluşturur
+    - **Hatırlatıcı Gönderme** — seçilen faturalar için hatırlatıcıları devre dışı bırakır
+  </Step>
+  <Step title="Hatırlatıcı ayrıntılarını yapılandırın">
+    Dizideki her hatırlatıcı için:
+    - **Hatırlatıcı şablonunu** seçin (örneğin, "Yaklaşan Fatura Ödeme Hatırlatıcısı")
+    - **Hatırlatıcı tarihini** belirleyin — örneğin son ödeme tarihinden 3 gün önce veya sonra
+    - Son ödeme tarihinden **önce** veya **sonra** tetiklenip tetiklenmeyeceğini belirtin
+  </Step>
+  <Step title="Gerekirse daha fazla hatırlatıcı ekleyin">
+    Tam bir hatırlatıcı dizisi oluşturmak için **+ Başka Hatırlatıcı Ekle**'ye tıklayın. Herhangi bir hatırlatıcıyı kaldırmak için yanındaki **Sil** düğmesine tıklayın.
+  </Step>
+  <Step title="Aktif faturalara uygulayın (isteğe bağlı)">
+    Yeni yapılandırmanın Açık durumundaki mevcut faturaları da kapsamasını istiyorsanız **bu hatırlatıcı ayarlarını şu anda aktif olan faturalara uygula** onay kutusunu işaretleyin.
+  </Step>
+  <Step title="Kaydedin">
+    Hatırlatıcı programını kaydetmek ve etkinleştirmek için **Güncelle**'ye tıklayın.
+  </Step>
+</Steps>
+
+## Doğrudan Faturalar (Sipariş Kimliği Olmadan)
+
+Önce bir sipariş oluşturmadan bir müşteriye hızlı fatura kesmeniz gerektiğinde Doğrudan Fatura iş akışını kullanın.
+
+<Steps>
+  <Step title="Yeni bir fatura başlatın">
+    **Faturalar → Fatura Oluştur**'a gidin.
+  </Step>
+  <Step title="Alıcı türünü seçin">
+    Alıcı türü olarak **Bireysel** veya **Şirket**'i seçin.
+  </Step>
+  <Step title="Alıcıyı seçin veya girin">
+    - Açılır menüden **mevcut bir müşteriyi** seçin, veya
+    - Müşteri olarak kayıtlı olmayan herhangi bir e-posta adresini yazmak için **Bağımsız E-posta**'yı seçin
+  </Step>
+  <Step title="Sipariş Kimliği alanını boş bırakın">
+    Sipariş Kimliği alanını atlayın. AgencyHandy, herhangi bir siparişe bağlı olmayan bağımsız bir fatura oluşturur.
+  </Step>
+  <Step title="Kalemler, vergiler ve indirimler ekleyin">
+    Ad, miktar ve fiyatlarla satır kalemleri eklemek için **Kalem Ekle**'ye tıklayın. Gerektiğinde vergi oranları ve indirimler uygulayın. Toplam otomatik olarak güncellenir.
+  </Step>
+  <Step title="Fatura adresini ve notları belirleyin">
+    Fatura ödeme adresini girin ve müşteri için notlar ekleyin.
+  </Step>
+  <Step title="Gönderin veya kaydedin">
+    Hemen iletmek için **Fatura Gönder**'e, önce gözden geçirmek için **Taslak Olarak Kaydet**'e tıklayın.
+  </Step>
+</Steps>
+
+<Tip>
+  Doğrudan Faturalar, acil talepler, danışmanlık görüşmeleri veya normal sipariş iş akışı dışında faturalandırmanız gereken herhangi bir iş için idealdir. Bağımsız faturalar için ödeme takibi manuel olarak yönetilmelidir.
+</Tip>

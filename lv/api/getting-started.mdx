@@ -1,0 +1,114 @@
+---
+title: "AgencyHandy API: autentifikācija un darba sākšana"
+sidebarTitle: "Darba sākšana"
+description: "Ģenerējiet API atslēgu, uzziniet savu uzņēmuma ID un sāciet veidot integrācijas ar AgencyHandy REST API, izmantojot šo ātro iestatīšanas rokasgrāmatu."
+---
+
+AgencyHandy API ļauj automatizēt potenciālo klientu (lead) izveidi, klientu pārvaldību, pasūtījumu atjauninājumus un daudz ko citu no jebkuras ārējas sistēmas vai skripta. Katrs pieprasījums tiek autentificēts ar API atslēgu, ko ģenerējat no darbvietas iestatījumiem. Šī rokasgrāmata palīdzēs jums iegūt akreditācijas datus un veikt pirmo API izsaukumu.
+
+<Note>
+  Lai ģenerētu API atslēgu, jums jābūt **SuperAdmin** vai **Admin** savā AgencyHandy darbvietā.
+</Note>
+
+## Bāzes URL
+
+Visi API pieprasījumi tiek veikti uz:
+
+```
+https://api.agencyhandy.com
+```
+
+Aizstājiet `{{URL}}` ar šo bāzes URL visos API dokumentācijas piemēru pieprasījumos.
+
+## 1. darbība: ģenerēt API atslēgu
+
+<Steps>
+  <Step title="Atveriet darbvietas konfigurāciju">
+    Dodieties uz saviem darbvietas iestatījumiem:
+
+    ```
+    {{workspaceUrl}}/workspace-config?tab=api-key
+    ```
+
+    Tas atver cilni **API Key** darbvietas konfigurācijā.
+  </Step>
+
+  <Step title="Ģenerējiet un nokopējiet API atslēgu">
+    Noklikšķiniet uz **Generate** (vai **Regenerate**, ja atslēga jau pastāv). Nokopējiet API atslēgu un glabājiet to drošā vietā — izturieties pret to kā pret paroli. AgencyHandy to vairs nerādīs pēc lapas atstāšanas.
+  </Step>
+</Steps>
+
+<Warning>
+  API atslēgas reģenerēšana nekavējoties padara iepriekšējo atslēgu nederīgu. Esošās integrācijas, kas izmanto veco atslēgu, pārstās darboties, līdz tās atjaunināsiet ar jauno atslēgu.
+</Warning>
+
+## 2. darbība: iegūt uzņēmuma ID
+
+Lielākajai daļai API galapunktu ir nepieciešama `companyid` galvene, kas identificē, kura darbvieta ir pieprasījuma mērķis. Izmantojiet šādu galapunktu, lai iegūtu savu uzņēmuma ID.
+
+### Galapunkts
+
+```
+GET {{URL}}/accounts/companies
+```
+
+### Galvenes
+
+| Galvene | Vērtība |
+|---|---|
+| `x-api-key` | Jūsu API atslēga |
+
+### Piemēra pieprasījums
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/accounts/companies" \
+  --header "x-api-key: <YOUR_API_KEY>"
+```
+
+### Piemēra atbilde
+
+```json
+{
+  "message": "Companies associated with API token.",
+  "companies": [
+    {
+      "_id": "6525994184e9ddd79853450e",
+      "name": "onethread123",
+      "logo": "",
+      "extraSmallLogo": "",
+      "largeLogo": ""
+    }
+  ]
+}
+```
+
+<Steps>
+  <Step title="Atrodiet savu uzņēmuma ID">
+    Atbildē atrodiet lauku `_id` masīvā `companies`. Tas ir jūsu **uzņēmuma ID**.
+
+    ```javascript
+    const companyId = response.companies[0]._id;
+    // e.g. "6525994184e9ddd79853450e"
+    ```
+  </Step>
+
+  <Step title="Saglabājiet uzņēmuma ID">
+    Saglabājiet uzņēmuma ID izmantošanai visos turpmākajos API pieprasījumos. Jūs to nodosiet kā `companyid` galveni:
+
+    | Galvene | Vērtība |
+    |---|---|
+    | `x-api-key` | Jūsu API atslēga |
+    | `companyid` | Jūsu uzņēmuma ID |
+  </Step>
+</Steps>
+
+## Autentifikācijas kopsavilkums
+
+Katram autentificētam API pieprasījumam nepieciešams vismaz:
+
+```
+x-api-key: <YOUR_API_KEY>
+companyid: <YOUR_COMPANY_ID>
+```
+
+Ar API atslēgu un uzņēmuma ID rokās esat gatavs izmantot pārējo AgencyHandy API. Turpiniet ar kādu no tālāk norādītajām galapunktu rokasgrāmatām.

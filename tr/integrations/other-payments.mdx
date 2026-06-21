@@ -1,0 +1,149 @@
+---
+title: "Banka Transferi, Kripto ve Wise Ödeme Yöntemleri Kurulumu"
+sidebarTitle: "Diğer Ödemeler"
+description: "Kart dışı yöntemleri tercih eden müşterilerin faturalarınızı ödeyebilmesi için banka havalesi, kripto para ve Wise gibi manuel ödeme alternatiflerini etkinleştirin."
+---
+
+AgencyHandy, Stripe ve PayPal'a ek olarak üç manuel ödeme yöntemini destekler: **Banka Transferi**, **Kripto** ve **Wise**. Her biri belirli bir müşteri türü veya iş akışı için tasarlanmıştır. AgencyHandy platform dışı transferleri otomatik olarak onaylayamadığından, fonları aldıktan sonra bir faturayı manuel olarak **Ödendi** olarak işaretlemeniz gerekir.
+
+<Note>
+  Yalnızca **SuperAdmin** ve **Admin** rolleri bu ödeme yöntemlerini etkinleştirebilir veya yapılandırabilir.
+</Note>
+
+<Tabs>
+  <Tab title="Bank Transfer">
+    ## Banka Transferi
+
+    Banka Transferi yöntemi, müşterilerden manuel havale veya ACH ödemeleri kabul etmenizi sağlar. Banka bilgilerinizi zengin metin düzenleyicisi aracılığıyla sağlarsınız; AgencyHandy bu talimatları ödeme sırasında ve fatura içinde müşterilere gösterir.
+
+    ### Banka Transferini Etkinleştirin
+
+    <Steps>
+      <Step title="Banka Ödeme ayarlarını açın">
+        Sol kenar çubuğunda **Entegrasyonlar → Banka Ödeme Yöntemi** bölümüne gidin.
+      </Step>
+
+      <Step title="Transfer talimatlarınızı doldurun">
+        Banka bilgilerinizi girmek için zengin metin düzenleyicisini kullanın. Müşterilerinizin transferi tamamlamak için ihtiyaç duyduğu tüm alanları ekleyin:
+
+        - **Alıcı Adı**
+        - **Hesap Numarası**
+        - **Banka Adı**
+        - **Routing Numarası**
+        - **Hesap Türü** (ör. Çek, Tasarruf)
+        - **Banka Adresi**
+
+        Ayrıca notlar, açıklamalar veya destek iletişim bilgisi ekleyebilirsiniz. Karakter sınırı yoktur ve düzenleyici kalın, altı çizili, listeler, bağlantılar ve görsel biçimlendirmeyi destekler.
+      </Step>
+
+      <Step title="Ödeme kanıtı gereksinimini ayarlayın (isteğe bağlı)">
+        Müşterilerin siparişleri işleme alınmadan önce bir ekran görüntüsü yüklemesini istiyorsanız **Ödeme Ekran Görüntüsü Zorunludur** seçeneğini etkinleştirin.
+
+        - **Etkin** — müşteriler ödeme sırasında geçerli bir ekran görüntüsü yüklemek zorundadır. Bir dosya yüklenene kadar sipariş oluşturulmaz.
+        - **Devre dışı** — müşteriler kanıt yüklemeden devam edebilir. Sipariş ve fatura hemen oluşturulur.
+      </Step>
+
+      <Step title="Kaydedin">
+        Kurulumunuzu kaydetmek için **Güncelle**'ye tıklayın. Değişiklikleri iptal etmek için **İptal**'e tıklayın.
+      </Step>
+    </Steps>
+
+    ### Müşteri deneyimi
+
+    Bir müşteri ödeme sırasında Banka Transferi'ni seçtiğinde, özel transfer talimatlarınızı görür. Kanıt zorunluysa bir dosya yükleme istemi görünür ve müşteri ekran görüntüsü yükleyene kadar sipariş bekletilir.
+
+    Fonları banka hesabınıza aldıktan sonra AgencyHandy'deki faturayı açın ve siparişi serbest bırakmak için manuel olarak **Ödendi** olarak işaretleyin.
+
+    <Tip>
+      Talimatlarınıza benzersiz bir referans kodu ekleyin (ör. fatura numarası) — bu sayede gelen transferleri karışıklık yaşamadan belirli siparişlerle eşleştirebilirsiniz.
+    </Tip>
+  </Tab>
+
+  <Tab title="Crypto">
+    ## Kripto Ödeme
+
+    Kripto Ödeme yöntemi, cüzdan tabanlı bir transfer kullanarak müşterilerden kripto para kabul etmenizi sağlar. Cüzdan bilgilerinizi ve talimatlarınızı bir kez yapılandırırsınız; müşteriler bunları ödeme sırasında ve faturada görür. Şu anda desteklenen kripto para birimi **USDC**'dir.
+
+    ### Kripto Ödemeyi Etkinleştirin
+
+    <Steps>
+      <Step title="Kripto Ödeme ayarlarını açın">
+        Sol kenar çubuğunda **Entegrasyonlar → Kripto Ödeme** bölümüne gidin. Zengin metin düzenleyicili bir cüzdan kurulum ekranı açılır.
+      </Step>
+
+      <Step title="Cüzdan bilgilerinizi girin">
+        Aşağıdaki alanları doldurun:
+
+        - **Kripto Para Türü** — şu anda USDC desteklenmektedir.
+        - **Cüzdan Adresi** — fonları almak için genel cüzdan adresiniz.
+        - **Ağ Türü** — ör. ERC-20, TRC-20.
+        - **Ek Talimatlar** — not, etiket, minimum tutar, destek iletişim bilgisi veya müşterileriniz için herhangi bir rehberlik.
+      </Step>
+
+      <Step title="Ödeme kanıtı gereksinimini ayarlayın (isteğe bağlı)">
+        **Ödeme Kanıtı Zorunlu** seçeneğini etkinleştirin veya devre dışı bırakın:
+
+        - **Etkin** — sipariş ve fatura oluşturulmadan önce müşteriler bir dosya yüklemek zorundadır (ör. işlem ekran görüntüsü).
+        - **Devre dışı** — müşteri kripto ödemeyi seçer seçmez, kanıt gerekmeksizin bir sipariş ve fatura oluşturulur.
+      </Step>
+
+      <Step title="Kaydedin">
+        Kurulumunuzu kaydetmek için **Kaydet**'e tıklayın. Kripto Ödemeyi istediğiniz zaman aynı ekrandan düzenleyebilir veya bağlantısını kesebilirsiniz.
+      </Step>
+    </Steps>
+
+    ### Müşteri ödeme akışı
+
+    Bir müşteri ödeme sırasında Kripto'yu seçtiğinde:
+
+    1. Bir **Sipariş** (durum: *Beklemede*) ve bir **Fatura** (durum: *Açık*) oluşturulur.
+    2. Müşteriye cüzdan adresiniz ve talimatlarınız gösterilir.
+    3. Kanıt zorunluysa bir dosya yükleme düğmesi görünür. Sipariş ilerlemeden önce müşteri işlem ekran görüntüsünü yüklemek zorundadır.
+    4. Transfer tamamlandıktan ve fonları zincir üzerinde doğruladıktan sonra AgencyHandy'deki faturayı açın ve **Ödendi** olarak işaretleyin.
+    5. Bir fatura **Ödendi** olarak işaretlendiğinde ve sipariş *Beklemede* durumundaysa, sipariş durumu otomatik olarak *Devam Ediyor* olarak güncellenir.
+
+    <Note>
+      Kripto Ödeme, yalnızca **Çalışma Alanı Ayarları → Ödeme Yöntemleri** bölümünde VE ilgili **Hizmet Grubu → Ödeme Kullanılabilirliği** ayarlarında etkinleştirilmişse ödeme sırasında görünür. Çalışma Alanı Ayarları'ndan devre dışı bırakmak, hizmet düzeyindeki ayarlardan bağımsız olarak her yerde gizler.
+    </Note>
+
+    <Tip>
+      Bir hizmet USDC'yi desteklemiyorsa, Kripto ödeme seçeneği o hizmet için otomatik olarak gizlenir. Müşterilerin kripto ile ödeme yapmasını istiyorsanız hizmet ayarlarınızda USDC'nin etkin olduğundan emin olun.
+    </Tip>
+  </Tab>
+
+  <Tab title="Wise">
+    ## Wise Ödeme
+
+    Wise Ödeme yöntemi, müşterilerin bir Wise ödeme bağlantısı aracılığıyla ödeme yapmasını sağlar. Bağlantıyı fatura içine bir kez eklersiniz ve gelecekteki tüm abonelik faturalarına otomatik olarak dahil edilir. Wise, geleneksel havalelere kıyasla daha düşük ücretlerle bankadan bankaya transfer yapmayı tercih eden uluslararası müşteriler için idealdir.
+
+    ### Wise'ı ödeme yöntemi olarak ekleyin
+
+    <Steps>
+      <Step title="Fatura modülünü açın">
+        Sol kenar çubuğunda **Faturalar**'a tıklayın, ardından **Fatura Oluştur**'a tıklayın.
+      </Step>
+
+      <Step title="Wise bağlantınızı ekleyin">
+        Fatura modalı içinde **Ödeme Yöntemleri** bölümüne gidin. **Wise'ı ödeme yöntemi olarak ekle**'ye tıklayın, ardından Wise ödeme bağlantınızı giriş alanına yapıştırın.
+      </Step>
+
+      <Step title="Faturayı kaydedin">
+        **Kaydet**'e tıklayın veya faturayı tamamlamaya devam edin. Wise ödeme bağlantınız artık gömülüdür ve müşteri tarafından görülebilir.
+      </Step>
+    </Steps>
+
+    ### Müşteriler için nasıl çalışır
+
+    Wise bağlantısı, müşterinin faturasında tıklanabilir bir düğme olarak görünür. Müşteri bağlantıyı açar, Wise hesabı üzerinden transferi tamamlar ve size onay gönderir. AgencyHandy, Wise'tan otomatik onay almadığından, fonları aldıktan sonra faturayı manuel olarak **Ödendi** olarak işaretlemeniz gerekir.
+
+    <Warning>
+      Wise, otomatik ek satış veya pazar yeri ödemeleri için **kullanılamaz**. Fatura başına yalnızca bir Wise ödeme bağlantısı eklenebilir. Göndermeden önce bağlantıyı iki kez kontrol edin — yanlış bir bağlantı, müşterinin ödemesinin yanlış hesaba gitmesine neden olur.
+    </Warning>
+
+    ### Platform davranışı
+
+    - Bir Wise bağlantısı eklendikten sonra, siz güncelleyene veya kaldırana kadar gelecekteki tüm **abonelik** faturalarında otomatik olarak görünür.
+    - AgencyHandy otomatik para birimi dönüşümü yapmaz. Müşteri, Wise bağlantınızın yapılandırıldığı para biriminde transfer yapar.
+    - Ödemeleri takip etmek ve alındığını onayladıktan sonra faturaları Ödendi olarak işaretlemek sizin sorumluluğunuzdadır.
+  </Tab>
+</Tabs>

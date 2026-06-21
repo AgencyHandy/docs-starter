@@ -1,0 +1,218 @@
+---
+title: "Kundenverwaltung: Profile, Import und Konfiguration"
+sidebarTitle: "Kunden"
+description: "Erstellen und importieren Sie Kundenprofile in AgencyHandy, verfolgen Sie Aufträge und Rechnungen, verwalten Sie den Portal-Zugriff und organisieren Sie Kunden mit Kategorien."
+---
+
+Der Kunden-Bereich des CRM von AgencyHandy ist Ihre zentrale Anlaufstelle für jede Organisation oder Einzelperson, die die Interessentenphase hinter sich gelassen hat. Hier können Sie Kundenprofile manuell oder in großen Mengen erstellen, Kontaktdaten aktuell halten, aktuelle Aufträge und Rechnungen verfolgen, Kunden in benutzerdefinierte Kategorien segmentieren und den Portal-Zugriff überwachen — alles aus einer Listenansicht heraus.
+
+<Note>
+  Sie benötigen die Rolle **Super-Admin** oder **Admin**, um Kundenprofile zu erstellen, zu bearbeiten, zu importieren oder zu konfigurieren. Manager können Kundendetails und Aktivitätsprotokolle einsehen.
+</Note>
+
+## Kundenprofil erstellen
+
+Wenn Sie einen neuen Kunden anlegen, erstellt AgencyHandy für diesen ein Portal-Konto und sendet eine sichere Anmeldungseinladung.
+
+<Steps>
+  <Step title="Zu Kunden navigieren">
+    Melden Sie sich in Ihrem AgencyHandy-Konto an, klicken Sie dann in der linken Seitenleiste auf **CRM** und wählen Sie die Registerkarte **Kunden**.
+  </Step>
+  <Step title="Erstellungsformular öffnen">
+    Klicken Sie oben rechts auf **+ Kunden erstellen**. Ein Formular öffnet sich.
+  </Step>
+  <Step title="Kundeninformationen eingeben">
+    Füllen Sie die Kundendaten aus:
+
+    - **Vorname / Nachname** *(obligatorisch)*
+    - **E-Mail** *(obligatorisch — wird zum Senden der Portal-Einladung verwendet)*
+    - **Unternehmensname**
+    - **Telefonnummer**
+    - **Land, Bundesland, Stadt, PLZ**
+    - **Kategorie** — weisen Sie eine bestehende Konfigurationskategorie zu, falls zutreffend
+  </Step>
+  <Step title="Profil speichern">
+    Klicken Sie auf **Erstellen**. Das Profil wird sofort zu Ihrer Kundenliste hinzugefügt.
+  </Step>
+</Steps>
+
+<Note>
+  Nach der Profilerstellung erhält der Kunde eine E-Mail mit einer sicheren Anmelde-URL. Ein Klick auf diese URL aktiviert sein Portal-Konto und ermöglicht ihm die erstmalige Anmeldung.
+</Note>
+
+## Kunden aus CSV importieren
+
+Wenn Sie von einer anderen Plattform migrieren oder eine Tabelle mit bestehenden Kunden haben, können Sie diese alle auf einmal importieren.
+
+<Steps>
+  <Step title="Auf Importieren klicken">
+    Klicken Sie in der Kundenliste oben rechts auf die Schaltfläche **Importieren**.
+  </Step>
+  <Step title="CSV-Datei hochladen">
+    Ziehen Sie Ihre Datei per Drag-and-Drop auf den Upload-Bereich oder klicken Sie, um sie zu suchen und auszuwählen. AgencyHandy akzeptiert CSV-Dateien mit den folgenden Feldern:
+
+    - Kundenname *(erforderlich)*
+    - E-Mail *(erforderlich)*
+    - Unternehmensname
+    - Land
+    - Bundesland
+    - Stadt
+    - PLZ
+  </Step>
+  <Step title="Spalten zuordnen">
+    AgencyHandy erkennt automatisch Spaltennamen, die mit seinen Feldnamen übereinstimmen. Verwenden Sie für nicht übereinstimmende Spalten die Dropdown-Menüs, um sie manuell den richtigen Systemfeldern zuzuordnen.
+  </Step>
+  <Step title="Vorschau ansehen und bestätigen">
+    Überprüfen Sie die Vorschautabelle, um Formatierungsprobleme zu erkennen, bevor die Daten gespeichert werden.
+  </Step>
+  <Step title="Import abschließen">
+    Klicken Sie auf **Speichern**. Eine Bestätigungsmeldung erscheint, sobald alle Datensätze erfolgreich importiert wurden.
+  </Step>
+</Steps>
+
+<Tip>
+  Wenn Ihre Tabellenspaltennamen genau mit den Feldnamen von AgencyHandy übereinstimmen (z. B. „email“, „company name“), wird der Mapper automatisch ausgefüllt — keine manuelle Zuordnung erforderlich.
+</Tip>
+
+## Kunden exportieren
+
+Sichern Sie Ihre Kundendatenbank oder teilen Sie sie mit Stakeholdern, indem Sie sie als CSV oder Excel exportieren.
+
+<Steps>
+  <Step title="Auf Exportieren klicken">
+    Klicken Sie in der Kundenliste oben rechts auf die Schaltfläche **Exportieren**.
+  </Step>
+  <Step title="Export anpassen">
+    Wählen Sie, welche Spalten enthalten sein sollen — wählen Sie **Alle Spalten** für einen vollständigen Export oder wählen Sie bestimmte Felder wie Name, Kontaktdaten, Unternehmen oder Adresse aus.
+  </Step>
+  <Step title="Format auswählen">
+    Wählen Sie **CSV** oder **XLSX** je nach Verwendungszweck.
+  </Step>
+  <Step title="Datei herunterladen">
+    Klicken Sie auf **Exportieren**. Die Datei wird generiert und auf Ihr Gerät heruntergeladen. Speichern Sie sie sicher, um Kundendaten zu schützen.
+  </Step>
+</Steps>
+
+## Kundenprofil bearbeiten
+
+<Steps>
+  <Step title="Kunden auswählen">
+    Klicken Sie in der Kundenliste auf das Kontrollkästchen neben dem Kunden, den Sie aktualisieren möchten, oder klicken Sie direkt auf seinen Namen, um sein Profil zu öffnen.
+  </Step>
+  <Step title="Bearbeitungsmodus aufrufen">
+    Klicken Sie oben rechts im Kundenprofil auf die Schaltfläche **Bearbeiten**. Ein Bearbeitungsformular erscheint.
+  </Step>
+  <Step title="Informationen aktualisieren">
+    Ändern Sie beliebige Felder — Name, E-Mail, Telefon, Adresse, Unternehmen oder Kategorie.
+  </Step>
+  <Step title="Änderungen speichern">
+    Klicken Sie auf **Aktualisieren**. Eine Bestätigungsmeldung bestätigt, dass das Profil erfolgreich gespeichert wurde.
+  </Step>
+</Steps>
+
+## Suchen, Sortieren und Filtern
+
+Die Kundenliste bietet Ihnen mehrere Werkzeuge, um den richtigen Kunden schnell zu finden:
+
+<CardGroup cols={2}>
+  <Card title="Nach Name suchen" icon="magnifying-glass">
+    Geben Sie den Namen eines Kunden in die Suchleiste ein, um die Liste sofort zu filtern.
+  </Card>
+  <Card title="Nach Unternehmen filtern" icon="building">
+    Grenzen Sie die Liste auf Kunden ein, die mit einem bestimmten Unternehmen verbunden sind.
+  </Card>
+  <Card title="Nach E-Mail filtern" icon="envelope">
+    Finden Sie einen Kunden, wenn Sie seine E-Mail-Adresse kennen, aber nicht seinen Namen.
+  </Card>
+  <Card title="Nach Status filtern" icon="circle-check">
+    Zeigen Sie nur aktive, inaktive oder eingeladene Kunden an.
+  </Card>
+  <Card title="Alphabetisch sortieren" icon="arrow-down-a-z">
+    Sortieren Sie die vollständige Kundenliste A–Z oder Z–A nach Namen zur schnellen Übersicht.
+  </Card>
+  <Card title="Nach Kategorie filtern" icon="tag">
+    Zeigen Sie nur Kunden an, die einer bestimmten Konfigurationskategorie zugewiesen sind.
+  </Card>
+</CardGroup>
+
+## Kundenaktivität verfolgen
+
+Im Kundenprofil finden Sie Registerkarten, die Ihnen ein aktuelles Bild der Interaktion dieses Kunden mit Ihrer Agentur geben:
+
+<Accordion title="Aktuelle Aufträge">
+  Zeigen Sie einen Verlauf aller vom Kunden platzierten Aufträge an, einschließlich Dienstleistungsname, Paket, Status und Datum. Dies gibt Ihnen einen schnellen Überblick über dessen Kaufhistorie, ohne das CRM verlassen zu müssen.
+</Accordion>
+
+<Accordion title="Aktuelle Tickets">
+  Sehen Sie alle Support- oder Servicetickets, die der Kunde eingereicht hat. Verwenden Sie diese Ansicht, um Antworten zu priorisieren und sicherzustellen, dass keine Anfrage unbeachtet bleibt.
+</Accordion>
+
+<Accordion title="Aktuelle Rechnungen">
+  Rufen Sie ein Protokoll aller für den Kunden erstellten Rechnungen ab, einschließlich des Zahlungsstatus. Dies hilft Ihnen, ausstehende Salden und den Rechnungsverlauf an einem Ort zu überwachen.
+</Accordion>
+
+## Kundenkonfiguration (Kategorien)
+
+Die Kundenkonfiguration ermöglicht es Ihnen, farbcodierte Kategorien zu erstellen, um Ihre Kundenliste zu segmentieren — zum Beispiel *Hohe Priorität*, *Retainer* oder *In der Warteschleife*. Kategorien erscheinen als Filteroptionen in der Kundenliste, sodass Sie sofort die richtige Gruppe aufrufen können.
+
+<Steps>
+  <Step title="Konfiguration öffnen">
+    Klicken Sie im Kunden-Bereich auf die Schaltfläche **Konfiguration**.
+  </Step>
+  <Step title="Neue Kategorie erstellen">
+    Klicken Sie auf **+ Kategorie erstellen**.
+  </Step>
+  <Step title="Kategoriedetails eingeben">
+    - **Kategoriename** — eine eindeutige, beschreibende Bezeichnung (z. B. *Unternehmenskunden*)
+    - **Kurzbeschreibung** — eine kurze Notiz, die den Zweck der Kategorie erklärt
+    - **Farbe** — wählen Sie eine unverwechselbare Farbe für schnelle visuelle Erkennung
+  </Step>
+  <Step title="Kategorie speichern">
+    Klicken Sie auf **Erstellen**. Die Kategorie steht nun zur Zuweisung beim Bearbeiten von Kundenprofilen zur Verfügung.
+  </Step>
+  <Step title="Kunden der Kategorie zuweisen">
+    Öffnen Sie ein beliebiges Kundenprofil, klicken Sie auf **Bearbeiten**, wählen Sie das Feld **Kategorie** und wählen Sie die entsprechende Kategorie. Klicken Sie auf **Aktualisieren**, um zu speichern.
+  </Step>
+</Steps>
+
+<Tip>
+  Verwenden Sie konsistente Farbkonventionen für Kategorien — zum Beispiel Rot für dringende Kunden und Grün für vollständig eingebundene Konten — um die Liste auf einen Blick erfassbar zu machen.
+</Tip>
+
+## Kundenaktivitätsprotokoll
+
+Das Aktivitätsprotokoll zeichnet jedes Anmelde- und Abmeldeereignis für das Portal-Konto eines Kunden auf und bietet Ihnen einen klaren Prüfpfad seiner Interaktion.
+
+**So rufen Sie das Protokoll auf:**
+
+1. Gehen Sie zu **Kunden** und öffnen Sie das Profil eines bestimmten Kunden.
+2. Klicken Sie in der oberen Navigationsleiste des Profils auf die Registerkarte **Aktivitätsprotokoll**.
+3. Überprüfen Sie die chronologische Liste der Authentifizierungsereignisse.
+
+**Was das Protokoll zeigt:**
+
+- Genaues Datum und Zeitstempel jeder **Anmeldung**
+- Genaues Datum und Zeitstempel jeder **Abmeldung**
+- Ein laufender Verlauf aller Authentifizierungsereignisse
+
+Das Protokoll wird in Echtzeit aktualisiert und kann nicht bearbeitet oder gelöscht werden. Kunden haben keinen Zugriff auf ihr eigenes Aktivitätsprotokoll — es dient nur der administrativen und Compliance-Übersicht.
+
+<Note>
+  Derzeit erfasst das Aktivitätsprotokoll nur Authentifizierungsereignisse (Anmeldung und Abmeldung). Im Portal durchgeführte Aktionen — wie das Anzeigen von Aufträgen — werden hier noch nicht protokolliert.
+</Note>
+
+## Kunden per E-Mail kontaktieren
+
+Sie können eine E-Mail an jeden Kunden direkt aus seinem Profil senden, ohne AgencyHandy zu verlassen. Öffnen Sie das Kundenprofil und verwenden Sie die Option **E-Mail**, um Ihre Nachricht zu verfassen. Das Feld **An** ist mit der E-Mail-Adresse des Kunden vorausgefüllt.
+
+## Kundenimpersonation
+
+Admins können ein Kundenkonto imitieren, um genau zu sehen, was der Kunde in seinem Portal sieht — nützlich für die Fehlerbehebung bei Zugriffsproblemen oder um einem Kunden während eines Support-Anrufs durch einen Prozess zu führen. Suchen Sie nach der Option **Imitieren** im Kundenprofil.
+
+<Warning>
+  Verwenden Sie die Impersonation nur für Supportzwecke. Alle während der Impersonation eines Kunden durchgeführten Aktionen werden in seinem Namen ausgeführt und in seinem Konto erfasst.
+</Warning>
+
+## Unternehmenskonten (B2B)
+
+Wenn Sie mit Unternehmen statt Einzelpersonen arbeiten, können Sie in einem Kundenprofil einen **Unternehmensnamen** festlegen, um Kontakte unter derselben Organisation zu gruppieren. Die Kundenliste kann nach Unternehmen gefiltert werden, sodass alle Kontakte eines bestimmten Kontos leicht gemeinsam angezeigt werden können.

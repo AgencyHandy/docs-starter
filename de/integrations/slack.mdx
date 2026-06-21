@@ -1,0 +1,69 @@
+---
+title: "Slack verbinden, um Echtzeit-Benachrichtigungen von AgencyHandy zu erhalten"
+sidebarTitle: "Slack"
+description: "Verknüpfen Sie Ihren Slack-Workspace mit AgencyHandy, damit Bestellaktualisierungen, Aufgabenänderungen und Ticket-Benachrichtigungen automatisch in einem Slack-Kanal gepostet werden."
+---
+
+Die Slack-Integration von AgencyHandy hält Ihr Team auf dem Laufenden, ohne dass jemand zwischen Apps wechseln muss. Nach der Verbindung sendet AgencyHandy automatische Benachrichtigungen an den Slack-Kanal Ihrer Wahl, wann immer sich Aufgaben, Bestellungen oder andere Workspace-Aktivitäten ändern — damit Ihr Team immer in Echtzeit informiert ist.
+
+<Note>
+  Nur **SuperAdmin**-, **Admin**- und **Manager**-Rollen (mit Integrationsberechtigungen) können die Slack-Integration verbinden oder verwalten. Sie benötigen Slack-Workspace-Administratorrechte, um die Verbindung zu autorisieren.
+</Note>
+
+## Slack verbinden
+
+<Steps>
+  <Step title="Integrationen öffnen">
+    Klicken Sie in der linken Seitenleiste auf **Integrationen**.
+  </Step>
+
+  <Step title="Slack-Karte finden">
+    Scrollen Sie zur **Slack**-Karte und klicken Sie auf **Verbinden**.
+  </Step>
+
+  <Step title="AgencyHandy in Slack autorisieren">
+    Ein Slack-Autorisierungsfenster öffnet sich. Falls Sie noch nicht in Ihrem Slack-Workspace angemeldet sind, melden Sie sich jetzt an. Überprüfen Sie die von AgencyHandy angeforderten Berechtigungen und klicken Sie auf **Zulassen**, um den Zugriff zu erteilen.
+  </Step>
+
+  <Step title="Benachrichtigungskanal auswählen">
+    Wählen Sie nach der Autorisierung den Slack-Kanal aus, in dem AgencyHandy-Benachrichtigungen erscheinen sollen. Wählen Sie einen Kanal aus dem Dropdown-Menü und klicken Sie auf **Speichern**, um die Auswahl zu bestätigen.
+  </Step>
+
+  <Step title="Einrichtung bestätigen">
+    Die Slack-Karte aktualisiert sich und zeigt **Verbunden** an. AgencyHandy beginnt sofort damit, Benachrichtigungen in den ausgewählten Kanal zu posten.
+  </Step>
+</Steps>
+
+## Welche Benachrichtigungen werden an Slack gesendet
+
+AgencyHandy sendet eine Slack-Nachricht, wenn eines der folgenden Ereignisse eintritt:
+
+| Kategorie | Ereignisse, die eine Benachrichtigung auslösen |
+|---|---|
+| **Aufgaben** | Aufgabe erstellt, aktualisiert, zugewiesen oder abgeschlossen |
+| **Bestellungen** | Bestellung erstellt oder Status geändert |
+| **Kommentare** | Neuer Kommentar zu einer Aufgabe oder Bestellung hinzugefügt |
+| **Dateianhänge** | Datei oder Anhang zu einer Aufgabe hinzugefügt |
+| **Tickets** | Ticket erstellt, zugewiesen oder Status geändert |
+
+Jede Slack-Nachricht enthält:
+
+- Den **Namen** der Aufgabe, Bestellung oder des Tickets
+- Die **Statusänderung** oder Aktion, die die Nachricht ausgelöst hat
+- Einen **Link** zum entsprechenden Element in AgencyHandy
+
+Wenn eine Datei oder ein Anhang zu einer Aufgabe hinzugefügt wird, enthält die Slack-Nachricht auch eine Vorschau des Anhangs.
+
+<Tip>
+  Wählen Sie einen dedizierten **#agency-handy-alerts**-Kanal (oder ähnlich), um Benachrichtigungen organisiert zu halten und zu verhindern, dass sie Ihre Haupt-Team-Kanäle unübersichtlich machen.
+</Tip>
+
+## Slack trennen
+
+Um Benachrichtigungen zu stoppen, kehren Sie zu **Integrationen** zurück und klicken Sie auf der Slack-Karte auf **Trennen**. Alle Benachrichtigungen werden sofort eingestellt.
+
+## Wichtige Hinweise
+
+- **Ein Workspace pro Verbindung** — Sie können nur einen einzigen Slack-Workspace mit jedem AgencyHandy-Workspace verbinden. Um zu einem anderen Slack-Workspace zu wechseln, trennen Sie den aktuellen und verbinden Sie sich erneut.
+- **Kanalsichtbarkeit** — Benachrichtigungen sind für alle im ausgewählten Slack-Kanal sichtbar. Stellen Sie sicher, dass der Kanal für den Detailgrad der geteilten Informationen geeignet ist (z. B. vermeiden Sie das Posten von kundensensiblen Bestelldetails in einem öffentlichen Kanal).
+- **Erneute Autorisierung** — Wenn Ihr Slack-Token abläuft oder Berechtigungen sich ändern, kehren Sie zu Integrationen zurück und verbinden Sie sich erneut, um Benachrichtigungen wiederherzustellen.

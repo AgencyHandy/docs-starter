@@ -1,0 +1,172 @@
+---
+title: "Tijdregistratie en urenstaten beheren in AgencyHandy"
+sidebarTitle: "Urenstaat"
+description: "Registreer tijd met een live timer of handmatige invoer, filter werklogboeken op taak, lid of dienst, en exporteer urenstatengegevens als CSV of XLSX in AgencyHandy."
+---
+
+De urenstatenmodule in AgencyHandy geeft je een centraal paneel voor het bijhouden van elk uur dat je team aan taken besteedt. Je kunt een live timer starten voor elke taak, tijd achteraf registreren met een handmatige invoer, en vervolgens de gegevens segmenteren op datumbereik, teamlid of dienst. Wanneer je productiviteit wilt rapporteren of tijd wilt factureren, kun je alles in een paar klikken exporteren naar CSV of XLSX. Het is het essentiële hulpmiddel voor het verantwoordelijk houden van je team en het nauwkeurig bijhouden van je tijdgebaseerde facturering.
+
+## Wie de urenstatenmodule kan gebruiken
+
+| Functie | Super Admin | Admin | PM | Medewerker |
+|---------|:-----------:|:-----:|:--:|:--------:|
+| Eigen tijdregistraties bekijken | ✅ | ✅ | ✅ | ✅ |
+| Tijd registreren voor anderen | ✅ | ✅ | ✅ | ❌ |
+| Tijdinvoer bewerken | ✅ | ✅ | ✅ | ❌ |
+| Urenstatengegevens exporteren | ✅ | ✅ | ✅ | ❌ |
+
+<Note>
+  Taken moeten bestaan voordat er tijd op kan worden geregistreerd. Zorg ervoor dat taken zijn aangemaakt binnen orders voordat je probeert tijd te registreren.
+</Note>
+
+## De urenstaat bekijken
+
+<Steps>
+  <Step title="Open de urenstaat">
+    Klik op **Urenstaat** in de linker hoofdzijbalk. Je ziet een tabel met alle tijdregistraties van je team.
+
+    Elke rij toont de datum, het teamlid, de taaknaam, de dienst, de geregistreerde tijd en eventuele notities bij de invoer.
+  </Step>
+</Steps>
+
+## Een tijdinvoer toevoegen
+
+Je hebt twee opties voor het registreren van tijd: een live timer voor werk in uitvoering, of een handmatige invoer voor al voltooid werk.
+
+<Tabs>
+  <Tab title="Timer starten">
+    <Steps>
+      <Step title="Selecteer een taak">
+        Zoek of selecteer in de urenstatenweergave de taak waaraan je gaat werken.
+      </Step>
+      <Step title="Klik op Timer starten">
+        Klik op **Timer starten** om tijd in realtime bij te houden. De timer loopt totdat je hem stopt.
+      </Step>
+      <Step title="Stop wanneer klaar">
+        Klik op **Stoppen** wanneer je het werk hebt voltooid. AgencyHandy registreert automatisch de verstreken tijd voor de geselecteerde taak.
+      </Step>
+    </Steps>
+
+    <Tip>
+      Gebruik de timer voor lopend werk om nauwkeurige registratie te garanderen. Tijd handmatig afronden of achteraf schatten is minder nauwkeurig dan de timer laten lopen.
+    </Tip>
+  </Tab>
+  <Tab title="Handmatige invoer">
+    <Steps>
+      <Step title="Klik op + Invoer toevoegen">
+        Klik in het urenstatenvenster op **+ Invoer toevoegen**. Er verschijnt een formulier.
+      </Step>
+      <Step title="Vul de invoergegevens in">
+        - **Taak** — selecteer de taak waarop deze tijd van toepassing is
+        - **Teamlid** — wijs de tijd toe aan de juiste persoon (Admins en Managers kunnen registreren namens anderen)
+        - **Bestede tijd** — voer de uren en minuten in
+        - **Notities** — voeg context toe over wat er is uitgevoerd
+      </Step>
+      <Step title="Opslaan">
+        Klik op **Opslaan** om de invoer te registreren. Deze verschijnt onmiddellijk in de urenstattabel.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Filteren op datumbereik
+
+Gebruik de datumfilters om je te concentreren op een specifieke periode.
+
+<Steps>
+  <Step title="Open datumfilters">
+    Klik op de datumfilterbesturing rechtsboven in het urenstatenvenster.
+  </Step>
+  <Step title="Selecteer een bereik">
+    Kies uit vooraf ingestelde bereiken:
+    - **Dagelijks** — alleen de logboeken van vandaag
+    - **Wekelijks** — de huidige week
+    - **Maandelijks** — de huidige maand
+
+    Selecteer voor langlopende projecten of historische rapportage een **Aangepast** datumbereik door een start- en einddatum in te voeren.
+  </Step>
+  <Step title="Toepassen">
+    Klik op **Toepassen** om de tabel bij te werken met logboeken uit de geselecteerde periode.
+  </Step>
+</Steps>
+
+<Tip>
+  Filter voor het exporteren om gerichte rapporten te genereren. Het exporteren van de volledige ongefilterde urenstaat kan zeer grote bestanden opleveren voor actieve bureaus.
+</Tip>
+
+## Invoer groeperen
+
+Groeperen herorganiseert hoe de urenstatenrijen zijn geordend zonder gegevens te verwijderen. Het helpt je de logboeken sneller te lezen en te analyseren.
+
+<Steps>
+  <Step title="Open het vervolgkeuzemenu Groeperen op">
+    Klik op het vervolgkeuzemenu **Groeperen op** bovenaan het urenstatenvenster.
+  </Step>
+  <Step title="Selecteer een groepering">
+    Kies uit de volgende opties:
+
+    | Groepeeroptie | Wat het toont |
+    |----------------|---------------|
+    | **Taaknaam** | Alle tijdinvoer gegroepeerd onder elke taak |
+    | **Teamlid** | Alle invoer gegroepeerd onder elke persoon |
+    | **Dienst → Taaknaam** | Invoer gegroepeerd op dienst, vervolgens uitgesplitst op taak binnen elke dienst |
+  </Step>
+</Steps>
+
+<Note>
+  Groeperen is een puur visuele wijziging — het heeft geen invloed op de onderliggende gegevens of wat er wordt geëxporteerd. Exports bevatten altijd alle zichtbare rijen.
+</Note>
+
+## Taakdetails bekijken vanuit de urenstaat
+
+<Steps>
+  <Step title="Klik op een taaknaam">
+    Klik in de urenstattabel op een **Taaknaam**. AgencyHandy navigeert je naar de volledige detailpagina van die taak.
+  </Step>
+  <Step title="Bekijk de taakcontext">
+    Op de taakdetailpagina vind je de volledige tijdregistratiegeschiedenis, bijgevoegde notities, toegewezenen, status en andere taakinformatie. Gebruik deze weergave om invoer te onderzoeken of te verifiëren welk werk er is uitgevoerd.
+  </Step>
+</Steps>
+
+## Urenstatengegevens exporteren
+
+Exporteer je urenstaat voor salarisadministratie, klanturenrapporten of externe projectmanagementtools.
+
+<Steps>
+  <Step title="Pas eerst filters toe (aanbevolen)">
+    Gebruik het datumbereikfilter om de export te beperken tot de periode die je nodig hebt. Dit houdt het bestand gefocust en beheersbaar.
+  </Step>
+  <Step title="Klik op Exporteren">
+    Klik op de knop **Exporteren** bovenaan het urenstatenvenster.
+  </Step>
+  <Step title="Kies een formaat">
+    Selecteer:
+    - **CSV** — voor spreadsheetprogramma's zoals Excel, Google Sheets of datapijplijnen
+    - **XLSX** — voor Excel-opmaakwerkboeken met behoud van kolomopmaak
+  </Step>
+  <Step title="Download het bestand">
+    Het bestand wordt automatisch naar je apparaat gedownload. Elke export bevat alle zichtbare kolommen: datum, teamlid, taaknaam, dienst, geregistreerde tijd en notities.
+  </Step>
+</Steps>
+
+<Warning>
+  Als de export geen download activeert, kan de **pop-upblokkering** van je browser verhinderen dat het bestand wordt gedownload. Schakel pop-upblokkering uit voor AgencyHandy en probeer het opnieuw.
+</Warning>
+
+## Aanvullende opmerkingen
+
+<Accordion title="Timer versus handmatige invoer">
+  De timer is het beste voor actief, realtime werk. Handmatige invoer is het beste wanneer je bent vergeten de timer te starten of tijd achteraf wilt registreren. Beide methoden produceren identieke logboekitems in de urenstattabel.
+</Accordion>
+
+<Accordion title="Groeperen versus filteren">
+  Filters **verminderen** welke rijen in de tabel worden weergegeven. Groeperen **herorganiseert** de rijen die al zichtbaar zijn. Je kunt beide tegelijkertijd toepassen — filter op een datumbereik en groepeer vervolgens op teamlid om de totalen van elke persoon voor die periode te zien.
+</Accordion>
+
+<Accordion title="Exports bevatten alle zichtbare kolommen">
+  Elke export legt de huidige staat van de zichtbare tabel vast: datum, gebruiker, taak, dienst, tijd en notities. Als je een groepeerinstelling hebt toegepast, weerspiegelt de export ook de groeperingsstructuur.
+</Accordion>
+
+<Accordion title="Aangepaste bereiken voor historische gegevens">
+  Gebruik voor langlopende projecten of kwartaalbeoordelingen de aangepaste datumbereikoptie om historische urenstatengegevens op te halen die verder gaan dan de vooraf ingestelde dagelijkse/wekelijkse/maandelijkse vensters.
+</Accordion>

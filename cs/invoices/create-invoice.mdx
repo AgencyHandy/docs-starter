@@ -1,0 +1,235 @@
+---
+title: "Vytváření, odesílání a správa klientských faktur v AgencyHandy"
+sidebarTitle: "Vytvořit fakturu"
+description: "Podrobný průvodce vytvořením faktury v AgencyHandy — vyberte klienta, nastavte částky, přidejte poznámky, odešlete klientovi a nakonfigurujte připomínky plateb."
+---
+
+Vytvoření faktury v AgencyHandy je přímočarý proces, který váže vaše vyúčtování přímo ke klientům a zakázkám. Vyplníte klienta, propojíte zakázku, nastavíte částky, přidáte případné poznámky a odešlete — vše z jediného formuláře. Po odeslání můžete sledovat stav platby, nastavit automatické připomínky a kdykoli stáhnout fakturu jako PDF.
+
+<Note>
+  K vytváření faktur musíte být **Super Admin**, **Admin** nebo **PM**. Než budete moci vygenerovat fakturu, musí ve vašem pracovním prostoru existovat alespoň jeden klient.
+</Note>
+
+## Nastavení předpony faktury
+
+Než začnete vytvářet faktury, zvažte konfiguraci předpony faktury. Předpona se zobrazuje před každým číslem faktury a pomáhá identifikovat faktury jako patřící vaší agentuře.
+
+<Steps>
+  <Step title="Otevřete nastavení faktur">
+    V Dashboardu faktur klikněte na tlačítko **Nastavení** v pravém horním rohu.
+  </Step>
+  <Step title="Nastavte svou předponu">
+    Přejděte na pole **Předpona faktury** a zadejte požadovanou předponu (například `FAK-` nebo iniciály vaší agentury).
+  </Step>
+  <Step title="Uložte">
+    Klikněte na **Uložit** pro použití předpony u všech budoucích faktur.
+  </Step>
+</Steps>
+
+## Vytvoření faktury
+
+<Steps>
+  <Step title="Otevřete Dashboard faktur">
+    Klikněte na **Faktury** v levém postranním panelu a otevřete Dashboard faktur.
+  </Step>
+  <Step title="Zahajte novou fakturu">
+    Klikněte na **+ Vytvořit fakturu**. Otevře se formulář pro vytvoření faktury.
+  </Step>
+  <Step title="Vyberte klienta">
+    Z rozevíracího seznamu vyberte jméno klienta. Toto je povinné pole. Všechna ID zakázek přidružených k danému klientovi se automaticky načtou do dalšího pole.
+
+    Chcete-li vytvořit **přímou fakturu** (nepropojenu se zakázkou), můžete ponechat pole ID zakázky prázdné nebo vybrat **Nezávislý e-mail** pro fakturaci na jakoukoli e-mailovou adresu mimo váš seznam klientů.
+  </Step>
+  <Step title="Vyberte ID zakázky">
+    Vyberte konkrétní ID zakázky, za které fakturujete. Tím propojíte fakturu se správnou zakázkou v systému. Pro přímé faktury toto pole přeskočte.
+  </Step>
+  <Step title="Zadejte fakturační adresu">
+    Vyplňte **Adresu pro platbu**:
+    - Země, kraj/stát a město
+    - PSČ
+    - Ulice a číslo popisné (je-li relevantní)
+
+    Tato adresa se zobrazuje na vytištěné faktuře pro zajištění souladu s předpisy a přehlednosti.
+  </Step>
+  <Step title="Nastavte podrobnosti zakázky a finanční údaje">
+    V části **Podrobnosti zakázky** zadejte následující:
+
+    | Pole | Popis |
+    |-------|-------------|
+    | **Měna** | Měna, ve které chcete být placeni |
+    | **ID zakázky – Částka** | Peněžní hodnota přidružená k zakázce |
+    | **Sleva (%)** a **Výše slevy** | Použijte případné slevy |
+    | **Zaplacená částka** | Jakákoli částka, kterou klient již zaplatil |
+    | **Dlužná částka** | Zbývající nevyrovnaný zůstatek |
+    | **Celková částka** | Celková splatná částka za zakázku |
+
+    Pro **přímé faktury** klikněte na **Přidat položku** a ručně přidejte řádkové položky. Zadejte název položky, množství a cenu. Můžete přidat více položek. Pomocí **+ Sazby daně** aplikujte nebo vytvořte daňové sazby (inkluzivní nebo exkluzivní).
+  </Step>
+  <Step title="Přidejte poznámku (volitelné)">
+    Do pole **Poznámka** přidejte jakýkoli doplňující kontext pro klienta — například platební instrukce, reference projektu nebo osobní zprávu.
+  </Step>
+  <Step title="Zkontrolujte panel s podrobnostmi">
+    Panel **Podrobnosti** na pravé straně vám poskytuje živý přehled:
+
+    - Stav faktury (ve výchozím nastavení Koncept)
+    - Jméno klienta, název společnosti a adresa
+    - Adresa pro platbu
+    - Název služby a ID zakázky
+    - Datum vytvoření a datum splatnosti
+    - Celková částka
+
+    Před pokračováním vše pečlivě zkontrolujte.
+  </Step>
+  <Step title="Odešlete klientovi nebo uložte jako koncept">
+    - Klikněte na **Odeslat klientovi** pro okamžité odeslání faktury e-mailem. Stav se automaticky změní z **Koncept** na **Otevřeno**.
+    - Klikněte na **Uložit jako koncept**, pokud jej chcete finalizovat později.
+  </Step>
+</Steps>
+
+<Note>
+  Logo a adresa agentury jsou na fakturu přidány automaticky systémem — nemusíte je ručně zadávat na každé faktuře.
+</Note>
+
+## Přechody stavů faktury
+
+Po vytvoření faktury se řídí definovaným tokem stavů. Pouze agentura může přesouvat faktury mezi stavy.
+
+```
+Koncept → Otevřeno  (odesláno klientovi)
+Otevřeno → Zaplaceno     (platba přijata)
+Otevřeno → Zrušeno      (faktura stornována)
+Otevřeno → Nedobytné    (pohledávka odepsána)
+```
+
+<Warning>
+  Faktury lze **upravovat** pouze ve stavu **Koncept**. Jakmile je faktura přesunuta do stavu Otevřeno, nelze ji upravit. Pokud potřebujete provést změny, fakturu zrušte a vytvořte novou.
+</Warning>
+
+## Úprava faktury
+
+Fakturu lze upravovat pouze tehdy, je-li ve stavu **Koncept**.
+
+<Steps>
+  <Step title="Otevřete fakturu">
+    V Dashboardu faktur najděte koncept faktury, který chcete upravit. Klikněte na něj nebo zaškrtněte políčko vedle něj.
+  </Step>
+  <Step title="Klikněte na Upravit">
+    Z akčního menu vyberte možnost **Upravit**. Formulář faktury se otevře se všemi stávajícími podrobnostmi předvyplněnými.
+  </Step>
+  <Step title="Proveďte změny">
+    Aktualizujte libovolná pole — fakturační údaje, popisy služeb, množství, částky nebo platební podmínky.
+  </Step>
+  <Step title="Uložte">
+    Klikněte na **Uložit** pro uplatnění změn.
+  </Step>
+</Steps>
+
+## Odeslání faktury klientovi
+
+Pokud jste fakturu uložili jako koncept a chcete ji odeslat později:
+
+<Steps>
+  <Step title="Najděte fakturu">
+    V Dashboardu faktur vyhledejte koncept faktury, který chcete odeslat.
+  </Step>
+  <Step title="Klikněte na Odeslat fakturu">
+    Otevřete fakturu a klikněte na tlačítko **Odeslat fakturu**. AgencyHandy doručí fakturu na e-mailovou adresu klienta v záznamu.
+  </Step>
+  <Step title="Potvrďte doručení">
+    Zkontrolujte potvrzovací zprávu a ověřte, že faktura byla úspěšně odeslána. Stav faktury se aktualizuje na **Otevřeno**.
+  </Step>
+</Steps>
+
+<Note>
+  Pokud je faktura ve stavu **Koncept** a aktualizujete název služby, nový název se projeví ve faktuře. Jakmile se stav změní na Otevřeno, Zaplaceno, Nedobytné nebo Zrušeno, název služby na faktuře se uzamkne a nebude se aktualizovat.
+</Note>
+
+## Stahování a tisk faktury
+
+Fakturu může kdykoli stáhnout jak agentura, tak klient.
+
+<Steps>
+  <Step title="Otevřete fakturu">
+    Přejděte na Dashboard faktur a vyberte fakturu, kterou chcete stáhnout.
+  </Step>
+  <Step title="Přistupte ke stažení/tisku">
+    Klikněte na možnost **Stáhnout** nebo **Tisk** z akčního menu faktury.
+  </Step>
+  <Step title="Zvolte formát">
+    Pro stažení vyberte **PDF** nebo zvolte nastavení tiskárny pro fyzickou kopii.
+  </Step>
+  <Step title="Uložte nebo vytiskněte">
+    Uložte soubor do svého zařízení nebo odešlete na tiskárnu. Po vytištění fakturu archivujte nebo sdílejte se zainteresovanými stranami dle potřeby.
+  </Step>
+</Steps>
+
+## Nastavení připomínek pro faktury
+
+Funkce připomínek faktur umožňuje automaticky upozorňovat klienty na nadcházející, splatné nebo po splatnosti faktur, abyste byli placeni včas bez manuálního sledování.
+
+<Note>
+  Připomínky fungují pouze pro faktury se stavem **Otevřeno** a nastaveným **datem splatnosti**.
+</Note>
+
+<Steps>
+  <Step title="Otevřete nastavení faktur">
+    Klikněte na tlačítko **Nastavení** v pravém horním rohu Dashboardu faktur.
+  </Step>
+  <Step title="Přejděte na nastavení připomínek">
+    Přejděte na konec sekce **Šablona** v levém panelu a klikněte na **Upravit** pro otevření modálního okna konfigurace připomínek.
+  </Step>
+  <Step title="Zvolte typ připomínky">
+    Vyberte jednu z následujících možností:
+
+    - **Sekvenční připomínka** — vytvoří sérii připomínek v intervalech, které definujete
+    - **Neposílat připomínku** — zakáže připomínky pro vybrané faktury
+  </Step>
+  <Step title="Nakonfigurujte podrobnosti připomínky">
+    Pro každou připomínku v sekvenci:
+    - Zvolte **šablonu připomínky** (například „Připomínka nadcházející platby faktury“)
+    - Nastavte **datum připomínky** — například 3 dny před nebo po datu splatnosti
+    - Určete, zda se spustí **před** nebo **po** datu splatnosti
+  </Step>
+  <Step title="V případě potřeby přidejte další připomínky">
+    Klikněte na **+ Přidat další připomínku** pro sestavení celé sekvence připomínek. Kliknutím na tlačítko **Smazat** vedle připomínky ji odstraníte.
+  </Step>
+  <Step title="Použijte na aktivní faktury (volitelné)">
+    Zaškrtněte políčko pro **použití těchto nastavení připomínek na aktuálně aktivní faktury**, pokud chcete, aby nová konfigurace pokryla faktury, které jsou již ve stavu Otevřeno.
+  </Step>
+  <Step title="Uložte">
+    Klikněte na **Aktualizovat** pro uložení a aktivaci harmonogramu připomínek.
+  </Step>
+</Steps>
+
+## Přímé faktury (bez ID zakázky)
+
+Pokud potřebujete rychle fakturovat klientovi bez předchozího vytvoření zakázky, použijte pracovní postup přímé faktury.
+
+<Steps>
+  <Step title="Zahajte novou fakturu">
+    Přejděte na **Faktury → Vytvořit fakturu**.
+  </Step>
+  <Step title="Zvolte typ příjemce">
+    Jako typ příjemce vyberte **Fyzická osoba** nebo **Společnost**.
+  </Step>
+  <Step title="Vyberte nebo zadejte příjemce">
+    - Z rozevíracího seznamu vyberte **stávajícího klienta**, nebo
+    - Vyberte **Nezávislý e-mail** pro zadání jakékoli e-mailové adresy — i takové, která není registrována jako klient
+  </Step>
+  <Step title="Ponechte pole ID zakázky prázdné">
+    Přeskočte pole ID zakázky. AgencyHandy vytvoří samostatnou fakturu nepropojenu s žádnou zakázkou.
+  </Step>
+  <Step title="Přidejte položky, daně a slevy">
+    Klikněte na **Přidat položku** pro přidání řádkových položek s názvy, množstvími a cenami. Dle potřeby použijte daňové sazby a slevy. Celková částka se aktualizuje automaticky.
+  </Step>
+  <Step title="Nastavte fakturační adresu a poznámky">
+    Zadejte adresu pro platbu a přidejte případné poznámky pro klienta.
+  </Step>
+  <Step title="Odešlete nebo uložte">
+    Klikněte na **Odeslat fakturu** pro okamžité doručení nebo na **Uložit jako koncept** pro předchozí kontrolu.
+  </Step>
+</Steps>
+
+<Tip>
+  Přímé faktury jsou ideální pro spěchající požadavky, konzultační hovory nebo jakoukoli práci, kterou potřebujete fakturovat mimo normální pracovní postup zakázek. Sledování plateb pro samostatné faktury musí být spravováno ručně.
+</Tip>

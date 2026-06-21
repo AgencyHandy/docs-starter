@@ -1,0 +1,143 @@
+---
+title: "Cara Membuat, Mengedit, dan Menghapus Order di AgencyHandy"
+sidebarTitle: "Buat Order"
+description: "Panduan langkah demi langkah untuk membuat, mengedit, dan menghapus order di AgencyHandy — termasuk persyaratan peran, kolom formulir, dan transisi status."
+---
+
+Membuat order di AgencyHandy memberi Anda ruang kerja terstruktur untuk mengantarkan layanan kepada klien. Anda mengisi detail utama di awal — klien, layanan, harga, tanggal, dan ringkasan proyek — dan segalanya, mulai dari tugas hingga diskusi, mengalir dari satu catatan tersebut. Halaman ini memandu Anda melalui proses membuat order dari awal, memperbaruinya setelah dibuat, mengubah statusnya, dan menghapusnya saat tidak lagi diperlukan.
+
+## Persyaratan
+
+- Anda harus masuk ke AgencyHandy.
+- Anda harus memiliki peran **Super Admin**, **Admin**, atau **Project Manager** untuk membuat atau mengedit order.
+- Hanya **Super Admin** dan **Admin** yang dapat menghapus order.
+
+## Membuat Order Baru
+
+<Steps>
+  <Step title="Navigasi ke Order">
+    Di bilah sisi kiri dasbor AgencyHandy Anda, klik **Orders**.
+  </Step>
+
+  <Step title="Buka formulir pembuatan">
+    Klik **+ Create New Order** di sudut kanan atas. Sebuah formulir akan muncul.
+  </Step>
+
+  <Step title="Isi detail order">
+    Lengkapi kolom-kolom dalam formulir:
+
+    | Kolom | Wajib | Catatan |
+    |---|---|---|
+    | **Client** | ✅ | Pilih dari daftar klien Anda yang ada |
+    | **Service** | ✅ | Mencakup layanan yang sudah dipublikasikan maupun yang belum |
+    | **Project Manager** | ❌ | Opsional; tetapkan PM untuk mengelola pengiriman |
+    | **Quantity** | ✅ | Jumlah unit yang dipesan |
+    | **Price** | ✅ | Anggaran yang disepakati untuk order |
+    | **Kick-off Date** | ✅ | Kapan pekerjaan dimulai |
+    | **Due Date** | ✅ | Batas waktu pengiriman |
+    | **Order Brief** | ❌ | Instruksi, persyaratan, atau catatan referensi untuk tim Anda |
+    | **Attachments** | ❌ | File pendukung yang relevan dengan order |
+
+    <Tip>
+      Jika layanan yang dipilih memiliki add-on yang terhubung, bagian **Add-On** akan muncul dalam formulir. Sertakan add-on yang relevan sebelum mengirimkan.
+    </Tip>
+  </Step>
+
+  <Step title="Tinjau entri Anda">
+    Periksa kembali semua kolom untuk memastikan keakuratannya — terutama klien, layanan, harga, dan tanggal jatuh tempo.
+  </Step>
+
+  <Step title="Kirim order">
+    Klik **Create** untuk menyelesaikan order. Anda akan menerima pesan konfirmasi setelah order berhasil dibuat.
+  </Step>
+</Steps>
+
+### Yang Terjadi Setelah Anda Membuat Order
+
+- Semua Super Admin di perusahaan Anda secara otomatis mendapatkan akses ke order baru.
+- Klien menerima notifikasi bahwa order mereka telah dibuat.
+- Order muncul dalam daftar **Orders** dengan status **Pending**.
+
+## Mengedit atau Memperbarui Order
+
+Anda dapat memperbarui order kapan saja untuk memperbaiki detail, menyesuaikan harga, mengubah tanggal jatuh tempo, atau mengakomodasi permintaan klien.
+
+<Note>
+Anda harus menjadi **Super Admin**, **Admin**, atau **Project Manager** untuk mengedit order.
+</Note>
+
+<Steps>
+  <Step title="Buka daftar Order">
+    Navigasi ke **Orders** di bilah sisi kiri.
+  </Step>
+
+  <Step title="Pilih order yang akan diedit">
+    Temukan order yang ingin Anda perbarui dan centang kotak di sebelahnya.
+  </Step>
+
+  <Step title="Aktifkan tombol edit">
+    Tombol **Edit** akan muncul di sudut kanan atas. Klik untuk membuka detail order dalam mode edit.
+  </Step>
+
+  <Step title="Ubah kolom yang diperlukan">
+    Perbarui kolom apa pun yang perlu diubah — detail klien, layanan, harga, tanggal, ringkasan, atau PM yang ditugaskan.
+  </Step>
+
+  <Step title="Simpan perubahan Anda">
+    Klik **Update** untuk menyimpan. Pesan konfirmasi akan mengonfirmasi bahwa pembaruan berhasil.
+  </Step>
+</Steps>
+
+## Mengubah Status Order
+
+Status order mencerminkan posisi suatu pekerjaan dalam jalur pengiriman Anda. AgencyHandy mendefinisikan lima status tetap — Anda tidak dapat menambahkan atau mengubah namanya.
+
+| Status | Arti |
+|---|---|
+| **Pending** | Dibuat, belum dimulai |
+| **Ongoing** | Sedang aktif dikerjakan |
+| **In Review** | Dikirimkan untuk ditinjau; menunggu penerimaan |
+| **Complete** | Telah dikirimkan dan diterima |
+| **Cancelled** | Tidak lagi aktif |
+
+<Note>
+Hanya **Super Admin**, **Admin**, dan **Project Manager** yang dapat mengubah status order. Karyawan dan klien tidak dapat mengubah status.
+</Note>
+
+Untuk memperbarui status, buka order dan gunakan pemilih status di bagian atas halaman detail order. Pilih status baru dari menu tarik-turun dan konfirmasi.
+
+## Menghapus Order
+
+Menghapus order akan menghapusnya secara permanen dari sistem. Gunakan ini hanya ketika order benar-benar sudah tidak diperlukan — misalnya, jika dibuat karena kesalahan atau merupakan duplikat.
+
+<Warning>
+Penghapusan order tidak dapat diurungkan. Setelah Anda menghapus order, order tersebut tidak dapat dipulihkan. Lanjutkan dengan hati-hati.
+</Warning>
+
+<Note>
+Hanya **Super Admin** dan **Admin** yang dapat menghapus order.
+</Note>
+
+<Steps>
+  <Step title="Navigasi ke Order">
+    Klik **Orders** di bilah sisi kiri.
+  </Step>
+
+  <Step title="Temukan order yang akan dihapus">
+    Gulir atau cari order yang ingin Anda hapus dari daftar.
+  </Step>
+
+  <Step title="Mulai penghapusan">
+    Klik **ikon tempat sampah** yang terkait dengan order tersebut.
+  </Step>
+
+  <Step title="Konfirmasi penghapusan">
+    Sebuah prompt konfirmasi akan muncul. Konfirmasi untuk menghapus order secara permanen.
+  </Step>
+</Steps>
+
+Setelah penghapusan, tinjau order Anda yang tersisa untuk memastikan semuanya dalam kondisi baik. Entri yang dihapus tidak akan muncul lagi di daftar atau laporan mana pun.
+
+## Menambahkan Anggota Tim ke Order
+
+Super Admin, Admin, dan PM dapat menambahkan karyawan ke order kapan saja. Ketika anggota tim ditambahkan, mereka menerima notifikasi dalam aplikasi. Karyawan yang ditugaskan mendapatkan visibilitas ke dalam order dan tugasnya, tetapi mereka tidak dapat mengelola order itu sendiri (mengedit detail, mengubah status, atau menghapusnya).

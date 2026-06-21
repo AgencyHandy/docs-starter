@@ -1,0 +1,123 @@
+---
+title: "Määritä AgencyHandy-työtilasi yleiset asetukset"
+sidebarTitle: "Yleiset asetukset"
+description: "Aseta työtilasi nimi, lataa logot, lisää toimistosi osoite ja valitse oikea aikavyöhyke AgencyHandy-työtilasi personointiin."
+---
+
+Yleiset asetukset -sivu on ensimmäinen paikka, jossa vierailet kirjauduttuasi AgencyHandyyn. Sen avulla voit luoda toimistosi identiteetin alustalle — logostasi ja työtilan nimestäsi fyysiseen osoitteeseesi ja aikavyöhykkeeseen. Jokainen täällä tekemäsi muutos vaikuttaa globaalisti kaikille työtilan käyttäjille.
+
+<Note>
+  Vain **pääjärjestelmänvalvojat** ja **järjestelmänvalvojat** voivat käyttää ja muokata työtilan konfiguraation asetuksia. Jos et näe **Workspace Config** -vaihtoehtoa vasemmassa navigoinnissa, ota yhteyttä pääjärjestelmänvalvojaasi rooliisi liittyvien käyttöoikeuksien säätämiseksi.
+</Note>
+
+## Yleisten asetusten käyttö
+
+<Steps>
+  <Step title="Avaa Workspace Config">
+    Kirjaudu AgencyHandy-tiliisi. Klikkaa vasemman navigointivalikon **Workspace Config** -kohtaa.
+  </Step>
+  <Step title="Valitse Yleiset asetukset">
+    Klikkaa **General Settings** Workspace Config -alivalikosta. Yleiset asetukset -paneeli avautuu oikealle.
+  </Step>
+</Steps>
+
+---
+
+## Työtilan logon lataaminen
+
+AgencyHandy tukee kolmea erillistä logo-tyyppiä, joista jokainen näkyy käyttöliittymän eri osassa:
+
+| Logotyyppi | Mitat | Missä näkyy |
+|---|---|---|
+| Ympyrälogo | 32 × 32 px | Profiilialueet ja kompaktit käyttöliittymäelementit |
+| Favicon-logo | 16 × 16 px | Selaimen välilehden kuvake |
+| Suorakulmiologo | 142 × 36 px | Sivupalkin otsikko (korvaa ympyrälogon, kun asetettu) |
+
+**Tuetut muodot:** PNG, JPG, SVG
+
+<Steps>
+  <Step title="Klikkaa Upload Logo">
+    Logo-osion alla klikkaa **Upload Logo** -painiketta haluamallesi logotyypille.
+  </Step>
+  <Step title="Valitse kuvatiedosto">
+    Selaa laitteellasi olevaan kuvaan. Varmista, että tiedosto vastaa vaadittuja mittoja ja on tuettu muodossa.
+  </Step>
+  <Step title="Vahvista lataus">
+    Logon esikatselu päivittyy välittömästi. Toista jokaisen logotyypin kohdalla tarpeen mukaan.
+  </Step>
+</Steps>
+
+<Tip>
+  **Suorakulmiologon** lataaminen korvaa ympyrälogon sivupalkissa ja piilottaa automaattisesti sen vieressä olevan työtilan nimitekstin. Suorakulmiologo muuttuu myös ensisijaiseksi logoksi, jota käytetään kaikissa muissa yhteyksissä, joissa logo näytetään — vaikka ympyrälogo olisi myös ladattu.
+</Tip>
+
+---
+
+## Työtilan nimen ja osoitteen asettaminen
+
+### Työtilan nimi
+
+Syötä toimistosi nimi **Workspace Name** -kenttään. Tämä nimi:
+
+- Näkyy kaikkialla alustalla tunnistamista varten.
+- Käytetään oletusarvoisessa AgencyHandy-aliverkkotunnuksessa (esim. `yourname.agencyhandy.com`).
+
+<Warning>
+  Työtilan nimen muuttaminen päivittää oletusaliverkkotunnuksesi välittömästi. Jos jaat oletusaliverkkotunnuksen linkin asiakkaille, he tarvitsevat päivitetyn URL-osoitteen. Harkitse [mukautetun verkkotunnuksen](/fi/workspace/custom-domain) asettamista tämän ongelman välttämiseksi.
+</Warning>
+
+### Työtilan osoite
+
+Syötä toimistosi täydellinen fyysinen osoite **Workspace Address** -kenttään. Tätä osoitetta käytetään viralliseen edustukseen laskuissa ja asiakkaalle näkyvissä asiakirjoissa, joten varmista, että se on täsmällinen ja ajantasainen.
+
+---
+
+## Aikavyöhykkeen valitseminen
+
+<Steps>
+  <Step title="Avaa Time Zone -pudotusvalikko">
+    Vieritä **Time Zone** -kenttään ja klikkaa pudotusvalikkoa laajentaaksesi aikavyöhykeluetteloa.
+  </Step>
+  <Step title="Valitse aikavyöhykkeesi">
+    Valitse aikavyöhyke, joka vastaa toimistosi ensisijaista toimintapaikkaa. Kaikki tehtävien määräajat, ajoitetut ilmoitukset, kalenteritapahtumat ja työtilan aikaleimaleimat perustuvat tähän asetukseen.
+  </Step>
+</Steps>
+
+<Warning>
+  Virheellinen aikavyöhykeasetus aiheuttaa ajoitusvirheitä tehtäville, kokouksille ja laskujen eräpäiville. Tarkista tämä asetus ennen tiimin tai asiakkaiden kutsumista.
+</Warning>
+
+---
+
+## Muutosten tallentaminen
+
+Täytettyäsi tai päivitettyäsi kenttiä, klikkaa **Save Changes** yleiset asetukset -paneelin alareunassa. Kaikki päivitykset otetaan käyttöön globaalisti ja ovat välittömästi kaikkien työtilan käyttäjien nähtävissä.
+
+---
+
+## Vaaravyöhyke: Työtilan poistaminen
+
+Yleiset asetukset -paneelin alareunassa on **Vaaravyöhyke** -osio, joka sisältää **Delete Workspace** -painikkeen.
+
+<Warning>
+  Työtilan poistaminen on **pysyvää ja peruuttamatonta**. Kaikki tiedot — mukaan lukien asiakkaat, tilaukset, laskut, projektit ja konfiguraatiot — poistetaan pysyvästi. Palautusmahdollisuutta ei ole. Jatka vain, jos olet täysin varma.
+</Warning>
+
+---
+
+## Parhaat käytännöt
+
+<CardGroup cols={2}>
+  <Card title="Tarkista logon mitat" icon="image">
+    Lataa logot tarkasti suositeltujen pikselimittojen mukaisina, jotta vältät venymisen, rajauksen tai epäselvän näyttämisen alustalla.
+  </Card>
+  <Card title="Pidä brändi ajantasaisena" icon="paintbrush">
+    Päivitä logosi ja osoitteesi aina, kun toimistosi tekee uudelleenbrändin tai vaihtaa sijaintia, jotta kaikki asiakirjat ja asiakkaalle näkyvät sivut pysyvät täsmällisinä.
+  </Card>
+  <Card title="Aseta aikavyöhyke ensin" icon="clock">
+    Määritä aikavyöhykkeesi ennen palveluiden luomista, tehtäviä tai minkään ajoittamista varmistaaksesi, että kaikki aikaleimaleimat ovat alusta alkaen oikein kohdistettuja.
+  </Card>
+  <Card title="Rajoita järjestelmänvalvojan pääsyä" icon="shield">
+    Myönnä pääjärjestelmänvalvojan tai järjestelmänvalvojan rooleja vain henkilöstölle, joka todella tarvitsee työtilan konfiguraatioiden muokkaamista, jotta vältetään vahingolliset muutokset.
+  </Card>
+</CardGroup>

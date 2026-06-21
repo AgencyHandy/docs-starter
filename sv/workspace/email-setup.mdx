@@ -1,0 +1,188 @@
+---
+title: "Konfigurera utgående e-post, SMTP och e-postmallar"
+sidebarTitle: "E-postinställningar"
+description: "Konfigurera en anpassad avsändaradress, anslut en SMTP-server, lägg till DKIM/SPF-poster för leveransbarhet och anpassa e-postmallar i AgencyHandy."
+---
+
+AgencyHandy's e-postinställningar låter dig ersätta standardavsändaren `noreply@agencyhandy.com` med din egen varumärkesanpassade e-postadress, konfigurera en dedikerad SMTP-server för tillförlitlig leverans och anpassa mallarna som används för klientaviseringar, fakturor, offerter med mera. Att konfigurera detta korrekt säkerställer att dina e-postmeddelanden når klienternas inkorg — inte skräppostmappen — och att varje meddelande speglar din byrås identitet.
+
+<Note>
+  Endast **superadministratörer** och **administratörer** kan konfigurera e-postinställningar. Gå till **Workspace Config → Email Setup** för att komma åt dessa alternativ.
+</Note>
+
+---
+
+## Översikt över e-postinställningarnas komponenter
+
+<CardGroup cols={2}>
+  <Card title="Anpassad e-postadress" icon="envelope">
+    Ange det avsändarnamn och den e-postadress som klienter ser när de får meddelanden från din arbetsyta.
+  </Card>
+  <Card title="DKIM- och SPF-poster" icon="shield-check">
+    Lägg till DNS-autentiseringsposter för att bevisa att dina e-postmeddelanden är legitima och förhindra att de flaggas som skräppost.
+  </Card>
+  <Card title="SMTP-server" icon="server">
+    Anslut din egen e-postserver (t.ex. Gmail, Outlook eller en anpassad domänserver) för att skicka alla utgående e-postmeddelanden från AgencyHandy.
+  </Card>
+  <Card title="E-postmallar" icon="file-lines">
+    Anpassa innehåll, ämnesrader och varumärkesprofilering för varje automatiserat e-postmeddelande som AgencyHandy skickar till klienter.
+  </Card>
+</CardGroup>
+
+---
+
+## Del 1: Konfigurera en anpassad e-postadress
+
+Innan du konfigurerar din avsändaradress behöver du en registrerad domän med e-postvärd. Populära leverantörer inkluderar Google Workspace, Microsoft 365, Zoho Mail och Cloudflare Email Routing.
+
+<Steps>
+  <Step title="Registrera en domän och konfigurera e-postvärd">
+    Om du inte redan har gjort det, registrera en domän hos en registrar (t.ex. GoDaddy, Namecheap, Cloudflare) och registrera dig hos en e-postvärdleverantör. Se till att du kan skapa och hantera e-postadresser på den domänen (t.ex. `hello@youragency.com`).
+  </Step>
+  <Step title="Gå till Email Setup i AgencyHandy">
+    Logga in på AgencyHandy. Gå till **Workspace Config** i vänsternavigeringen och klicka sedan på **Email Setup**.
+  </Step>
+  <Step title="Ange ditt avsändarnamn och din e-postadress">
+    I fältet **Sender Name** skriver du det namn som klienter ser som avsändare (t.ex. `AgencyHandy Support` eller din byrås namn). I fältet **Sender Email** anger du den anpassade e-postadressen (t.ex. `hello@youragency.com`). Klicka på **Save**.
+  </Step>
+  <Step title="Verifiera din e-postadress">
+    AgencyHandy skickar en verifieringslänk till den e-postadress du angav. Öppna din inkorg, hitta verifieringsmeddelandet och klicka på länken för att bekräfta ägarskapet.
+  </Step>
+  <Step title="Konfigurera DKIM-, SPF- och DMARC-DNS-poster">
+    Efter att du sparat din avsändaradress tillhandahåller AgencyHandy de DNS-poster du behöver lägga till:
+
+    - **SPF-post** (TXT-typ) — auktoriserar AgencyHandy att skicka e-post på uppdrag av din domän.
+    - **DKIM-poster** (3 CNAME-poster) — lägger till kryptografiska signaturer på utgående e-post så att mottagande servrar kan verifiera äktheten.
+    - **DMARC-post** — definierar hur mottagande servrar ska hantera e-post som misslyckas med autentiseringskontroller.
+
+    Lägg till alla dessa poster i din domäns DNS-inställningar hos din registrar. För DKIM CNAME-poster, se till att **Proxy Status är inaktiverat** om du använder Cloudflare.
+  </Step>
+  <Step title="Bekräfta aktiv status">
+    Återgå till sidan Email Setup i AgencyHandy. När alla DNS-poster har propagerats (detta kan ta mellan 2 minuter och 2 timmar), uppdateras e-poststatusen från **Pending** till att visa en grön bockmarkering ✅. Din anpassade e-postadress är nu aktiv.
+  </Step>
+</Steps>
+
+<Tip>
+  Använd [MXToolbox](https://mxtoolbox.com/DKIM.aspx) eller [dmarcian's DKIM Validator](https://dmarcian.com/dkim-validator/) för att verifiera att dina DKIM-poster är korrekt konfigurerade. Uppdatera sidan Email Setup med jämna mellanrum medan du väntar på propagering.
+</Tip>
+
+---
+
+## Del 2: Konfigurera DKIM och SPF (fristående inställning)
+
+Om du behöver generera eller regenerera DKIM- och SPF-poster separat följer du den här vägen:
+
+**Workspace Config → Emails → DKIM & SPF Setup → Generate DKIM and SPF records.**
+
+Lägg sedan till posterna i din DNS:
+
+| Posttyp     | DNS-typ  | Vad som ska konfigureras                                                                               |
+|-------------|----------|--------------------------------------------------------------------------------------------------------|
+| SPF         | TXT      | Kopiera **Name** och **Value** från AgencyHandy och lägg till en ny TXT-post i din DNS                |
+| DKIM (×3)   | CNAME    | Kopiera varje **Name**- och **Value**-par; lägg till 3 separata CNAME-poster med proxy inaktiverat    |
+
+<Note>
+  DKIM- och SPF-poster kan ta allt från **2 minuter till 2 timmar** att propagera. Om statusen fortfarande visar väntande efter 2 timmar, kontrollera att posterna angavs utan stavfel och att inga motstridiga poster finns.
+</Note>
+
+---
+
+## Del 3: Konfigurera SMTP
+
+SMTP (Simple Mail Transfer Protocol) låter dig dirigera alla utgående AgencyHandy-e-postmeddelanden via din egen verifierade e-postserver, vilket ger dig mer kontroll över leveransbarhet och varumärkesprofilering.
+
+<Note>
+  Du kan använda antingen en **anpassad domänadress** eller en **SMTP-e-postleverantör** — inte båda samtidigt. Det går att byta mellan dem när som helst, men du måste ange dina e-postkonfigurationsuppgifter igen om du byter tillbaka till en anpassad e-postadress.
+</Note>
+
+<Steps>
+  <Step title="Öppna SMTP-serverinställningarna">
+    Gå till **Workspace Config → Email Setup** och klicka sedan på **SMTP Server**.
+  </Step>
+  <Step title="Byt till SMTP-leverantör (vid behov)">
+    Om du redan har en anpassad e-postadress konfigurerad visas en bekräftelsepopup som frågar om du vill byta. Klicka på **Switch to SMTP** för att fortsätta. Detta inaktiverar den befintliga anpassade e-postkonfigurationen.
+  </Step>
+  <Step title="Ange dina SMTP-uppgifter">
+    Fyll i de obligatoriska fälten:
+
+    | Fält        | Exempelvärde           | Anteckningar                                        |
+    |-------------|------------------------|-----------------------------------------------------|
+    | Host Name   | `smtp.gmail.com`       | Din e-postleverantörs SMTP-serveradress             |
+    | User Name   | `you@yourdomain.com`   | Din fullständiga e-postadress                       |
+    | Password    | Applösenord            | Använd ett appspecifikt lösenord (se nedan)         |
+    | Port        | `465` eller `587`      | 465 för SSL, 587 för TLS                            |
+    | Auto TLS    | Aktivera/inaktivera    | Valfritt — aktiverar automatisk TLS-uppgradering    |
+
+    Klicka på **Save** när du är klar.
+  </Step>
+  <Step title="Generera ett applösenord (Gmail-exempel)">
+    Om du använder Gmail med tvåfaktorsautentisering aktiverad (krävs för applösenord):
+
+    1. Gå till [myaccount.google.com/security](https://myaccount.google.com/security) och bekräfta att tvåstegsverifiering är aktiv.
+    2. Besök [myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords).
+    3. Klicka på **Select app**, välj **Mail** (eller ange ett anpassat namn), klicka sedan på **Select device** och välj din konfiguration.
+    4. Klicka på **Create** — Google genererar ett 16-teckens applösenord.
+    5. Kopiera lösenordet och klistra in det i fältet **Password** i AgencyHandy's SMTP-inställningar.
+
+    <Warning>
+      Använd **applösenordet**, inte ditt vanliga Google-kontolösenord. Att använda ditt vanliga lösenord misslyckas om tvåfaktorsautentisering är aktiverad och kan utlösa säkerhetsvarningar.
+    </Warning>
+  </Step>
+  <Step title="Bekräfta konfigurationen">
+    Efter att ha sparat visar AgencyHandy ett meddelande som bekräftar _"SMTP is created successfully."_ Dina sparade uppgifter för värd, användarnamn och port visas på SMTP-inställningssidan.
+  </Step>
+  <Step title="Testa SMTP-anslutningen">
+    Klicka på knappen **Test** och ange en mottagares e-postadress. AgencyHandy skickar ett testmeddelande till den adressen. Kontrollera inkorgen för bekräftelsemeddelandet: _"This is a confirmation that your email setup in Agency Handy is working properly."_
+  </Step>
+</Steps>
+
+<Tip>
+  Endast en SMTP-konfiguration kan vara aktiv per arbetsyta åt gången. När SMTP är konfigurerat skickas alla utgående e-postmeddelanden från AgencyHandy — fakturor, offerter, uppgiftsaviseringar — via din SMTP-server.
+</Tip>
+
+---
+
+## Del 4: Anpassa e-postmallar
+
+AgencyHandy innehåller förbyggda mallar för varje automatiserat e-postmeddelande det skickar. Du kan anpassa var och en för att matcha din varumärkeston och inkludera relevant dynamiskt innehåll.
+
+**Tillgängliga mallar inkluderar:**
+- Klientregistrering
+- Skicka offert
+- Uppgiftsgranskning
+- Skicka faktura
+- Faktura- och prenumerationspåminnelser
+- Aviseringar om ärendeskapande
+
+<Steps>
+  <Step title="Öppna e-postmallar">
+    Gå till **Workspace Config → Emails** och välj sedan **Email Template** från undermenyn.
+  </Step>
+  <Step title="Välj en mall att redigera">
+    Den fullständiga listan över tillgängliga mallar visas. Klicka på valfri mall för att öppna dess konfigurationssida.
+  </Step>
+  <Step title="Anpassa mallfälten">
+    Uppdatera följande efter behov:
+    - **Sender Email:** Välj vilken konfigurerad e-postadress som skickar den här mallen.
+    - **Subject:** Skriv en tydlig och koncis ämnesrad.
+    - **Body:** Redigera meddelandeinnehållet så att det matchar din byrås ton och budskap.
+    - **Dynamic Variables:** Infoga platshållare som `{{client_name}}`, `{{company_name}}` eller `{{invoice_id}}` för att automatiskt fylla i klientspecifik data.
+    - **Social Media Links:** Lägg till länkar till din byrås sociala profiler för att uppmuntra engagemang.
+  </Step>
+  <Step title="Skicka ett testmeddelande">
+    Klicka på **Send Test** för att skicka en förhandsvisning av mallen till din inkorg. Verifiera formatering, innehåll och att alla dynamiska variabler löses korrekt.
+  </Step>
+  <Step title="Spara dina ändringar">
+    Klicka på **Save Changes** för att tillämpa den uppdaterade mallen. Den nya versionen används för alla framtida automatiserade e-postmeddelanden som matchar den malltypen.
+  </Step>
+</Steps>
+
+---
+
+## Viktiga anteckningar
+
+- **SMTP och anpassad e-post utesluter varandra.** Endast en metod kan vara aktiv åt gången per arbetsyta.
+- **Ange e-post igen vid byte.** Om du byter från SMTP tillbaka till en anpassad e-postkonfiguration måste du ange dina anpassade e-postuppgifter igen.
+- **Felaktiga SMTP-uppgifter blockerar alla utgående e-postmeddelanden.** Dubbelkolla värdnamn, port, användarnamn och lösenord om e-postmeddelanden slutar skickas efter en SMTP-ändring.
+- **DKIM/SPF-propagering tar tid.** Vänta upp till 2 timmar och uppdatera sidan Email Setup innan du drar slutsatsen att det finns ett fel.
+- **Dynamiska variabler är skiftlägeskänsliga.** Använd dem exakt som de visas i mallredigeraren för att säkerställa att de fylls i korrekt.

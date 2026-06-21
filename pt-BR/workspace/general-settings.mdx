@@ -1,0 +1,123 @@
+---
+title: "Configure as Configurações Gerais do Seu Workspace AgencyHandy"
+sidebarTitle: "Configurações Gerais"
+description: "Defina o nome do workspace, faça upload de logotipos, adicione o endereço da sua agência e selecione o fuso horário correto para personalizar seu workspace AgencyHandy."
+---
+
+A página de Configurações Gerais é o primeiro lugar que você visitará após fazer login no AgencyHandy. Ela permite que você estabeleça a identidade da sua agência na plataforma — do logotipo e nome do workspace ao endereço físico e fuso horário. Cada alteração feita aqui se aplica globalmente a todo o workspace para todos os usuários.
+
+<Note>
+  Apenas **Super Admins** e **Admins** podem acessar e modificar as configurações do Workspace Config. Se você não vir a opção **Workspace Config** na navegação esquerda, entre em contato com seu Super Admin para ajustar suas permissões de função.
+</Note>
+
+## Acessando as Configurações Gerais
+
+<Steps>
+  <Step title="Abra o Workspace Config">
+    Faça login na sua conta AgencyHandy. No menu de navegação esquerdo, clique em **Workspace Config**.
+  </Step>
+  <Step title="Selecione Configurações Gerais">
+    Clique em **General Settings** no submenu do Workspace Config. O painel de Configurações Gerais é aberto à direita.
+  </Step>
+</Steps>
+
+---
+
+## Fazendo Upload do Logotipo do Workspace
+
+O AgencyHandy suporta três tipos distintos de logotipo, cada um exibido em uma parte diferente da interface:
+
+| Tipo de Logotipo     | Dimensões    | Onde Aparece                                       |
+|----------------------|-------------|-----------------------------------------------------|
+| Logotipo Circular    | 32 × 32 px  | Áreas de perfil e elementos compactos de interface  |
+| Logotipo Favicon     | 16 × 16 px  | Ícone na aba do navegador                           |
+| Logotipo Retangular  | 142 × 36 px | Cabeçalho da barra lateral (substitui o circular quando definido) |
+
+**Formatos suportados:** PNG, JPG, SVG
+
+<Steps>
+  <Step title="Clique em Upload Logo">
+    Na seção de logotipo, clique no botão **Upload Logo** para o tipo de logotipo que deseja configurar.
+  </Step>
+  <Step title="Selecione o arquivo de imagem">
+    Localize a imagem no seu dispositivo. Certifique-se de que o arquivo corresponda às dimensões exigidas e esteja em um formato suportado.
+  </Step>
+  <Step title="Confirme o upload">
+    A pré-visualização do logotipo é atualizada imediatamente. Repita para cada tipo de logotipo conforme necessário.
+  </Step>
+</Steps>
+
+<Tip>
+  Fazer upload de um **Logotipo Retangular** substituirá o Logotipo Circular na barra lateral e ocultará automaticamente o texto do nome do workspace ao lado dele. O logotipo retangular também se torna o logotipo principal usado em todos os outros contextos onde um logotipo é exibido — mesmo que um logotipo circular também esteja carregado.
+</Tip>
+
+---
+
+## Definindo o Nome e Endereço do Workspace
+
+### Nome do Workspace
+
+Insira o nome da sua agência no campo **Workspace Name**. Este nome:
+
+- Aparece em toda a plataforma para identificação.
+- É usado no subdomínio padrão do AgencyHandy (ex.: `seunome.agencyhandy.com`).
+
+<Warning>
+  Alterar o nome do workspace atualiza seu subdomínio padrão imediatamente. Se você compartilhou o link do subdomínio padrão com clientes, eles precisarão da URL atualizada. Considere configurar um [domínio personalizado](/pt-BR/workspace/custom-domain) para evitar esse problema.
+</Warning>
+
+### Endereço do Workspace
+
+Insira o endereço físico completo da sua agência no campo **Workspace Address**. Este endereço é usado para representação oficial em faturas e documentos voltados ao cliente, portanto certifique-se de que seja preciso e atual.
+
+---
+
+## Selecionando Seu Fuso Horário
+
+<Steps>
+  <Step title="Abra o menu suspenso de Fuso Horário">
+    Role até o campo **Time Zone** e clique no menu suspenso para expandir a lista de fusos horários.
+  </Step>
+  <Step title="Escolha seu fuso horário">
+    Selecione o fuso horário que corresponde à localização principal de operação da sua agência. Todos os prazos de tarefas, notificações agendadas, eventos de calendário e carimbos de data/hora em todo o workspace são baseados nesta configuração.
+  </Step>
+</Steps>
+
+<Warning>
+  Uma configuração incorreta de fuso horário causa erros de agendamento para tarefas, reuniões e datas de vencimento de faturas. Verifique esta configuração antes de convidar sua equipe ou clientes.
+</Warning>
+
+---
+
+## Salvando Suas Alterações
+
+Após preencher ou atualizar qualquer campo, clique em **Save Changes** na parte inferior do painel de Configurações Gerais. Todas as atualizações são aplicadas globalmente e ficam imediatamente visíveis para todos os usuários no workspace.
+
+---
+
+## Zona de Perigo: Excluindo Seu Workspace
+
+Na parte inferior do painel de Configurações Gerais, há uma seção **Danger Zone** contendo o botão **Delete Workspace**.
+
+<Warning>
+  Excluir seu workspace é **permanente e irreversível**. Todos os dados — incluindo clientes, pedidos, faturas, projetos e configurações — serão apagados permanentemente. Não há opção de recuperação. Prossiga apenas se tiver absoluta certeza.
+</Warning>
+
+---
+
+## Boas Práticas
+
+<CardGroup cols={2}>
+  <Card title="Verifique as dimensões do logotipo" icon="image">
+    Faça upload de logotipos nas dimensões exatas de pixels recomendadas para evitar distorção, corte ou exibição borrada em toda a plataforma.
+  </Card>
+  <Card title="Mantenha a identidade visual atualizada" icon="paintbrush">
+    Atualize seu logotipo e endereço sempre que sua agência reformular a marca ou mudar de local para manter todos os documentos e páginas voltadas ao cliente precisos.
+  </Card>
+  <Card title="Configure o fuso horário primeiro" icon="clock">
+    Configure seu fuso horário antes de criar serviços, tarefas ou agendar qualquer coisa para garantir que todos os carimbos de data/hora estejam alinhados corretamente desde o início.
+  </Card>
+  <Card title="Limite o acesso de administradores" icon="shield">
+    Conceda funções de Super Admin ou Admin apenas ao pessoal que realmente precisa modificar as configurações do workspace, para evitar alterações acidentais.
+  </Card>
+</CardGroup>

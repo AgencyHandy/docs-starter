@@ -1,0 +1,201 @@
+---
+title: "AgencyHandy API: Luo uusi liidi ohjelmallisesti"
+sidebarTitle: "Luo liidi"
+description: "Käytä AgencyHandy API:a uusien liidien luomiseen ohjelmallisesti lähettämällä POST-pyyntö bulk-lead-päätepisteelle tarvittavilla kentillä."
+---
+
+Luo liidi -päätepiste antaa sinun lisätä uusia liidejä AgencyHandy-työtilaan ohjelmallisesti mistä tahansa ulkoisesta järjestelmästä — verkkolomakkeesta, CRM-järjestelmästä, markkinoinnin automaatioalustasta tai mukautetusta skriptistä. Tämän päätepisteen kautta luodut liidit näkyvät liidiputkessasi välittömästi, aivan kuin ne olisi lisätty manuaalisesti.
+
+<Note>
+  Ennen tämän päätepisteen käyttämistä, suorita [Aloittaminen](/fi/api/getting-started) -opas API-avaimen ja yritystunnuksen hankkimiseksi. Tarvitset myös **Client Role ID:n**, jota tarvitaan liidin luomisessa.
+</Note>
+
+## Edellytykset
+
+- ✅ API-avain luotu kohdasta **Workspace Config → API Key**
+- ✅ Yritystunnus haettu kohteesta `GET {{URL}}/accounts/companies`
+- ✅ Client Role ID haettu (katso alla oleva Vaihe 1)
+
+---
+
+## Vaihe 1: Hae Client Role ID
+
+Ennen liidin luomista tarvitset yrityksesi `client`-roolin Role ID:n.
+
+### Päätepiste
+
+```
+GET {{URL}}/roles?type=company
+```
+
+### Otsikot
+
+| Otsikko | Arvo |
+|---|---|
+| `x-api-key` | API-avaimesi |
+| `companyid` | Yritystunnuksesi |
+
+### Esimerkkipyyntö
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/roles?type=company" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>"
+```
+
+### Esimerkkivastaus
+
+```json
+{
+  "roles": [
+    {
+      "_id": "6525994184e9ddd798534535",
+      "role": {
+        "_id": "6525994184e9ddd79853451e",
+        "responsibility": "",
+        "name": "client"
+      },
+      "company": "6525994184e9ddd79853450e",
+      "createdAt": "2023-10-10T18:34:41.567Z",
+      "updatedAt": "2024-10-01T07:28:48.340Z",
+      "__v": 0,
+      "type": "company"
+    }
+  ]
+}
+```
+
+Etsi merkintä, jossa `roles[0].role.name === "client"`, ja pura **ulompi** `_id` — eli `roles[0]._id`, **ei** `roles[0].role._id`.
+
+```javascript
+const clientRoleId = roles.find(r => r.role.name === "client")._id;
+// e.g. "6525994184e9ddd798534535"
+```
+
+<Warning>
+  Käytä `roles[0]._id`:tä (yritysroolin kartoitustunnus), **ei** `roles[0].role._id`:tä (roolimäärityksen tunnus). Väärän tunnuksen käyttäminen aiheuttaa liidin luontipyynnön epäonnistumisen.
+</Warning>
+
+---
+
+## Vaihe 2: Luo uusi liidi
+
+### Päätepiste
+
+```
+POST {{URL}}/members/bulk-lead
+```
+
+### Otsikot
+
+| Otsikko | Arvo |
+|---|---|
+| `x-api-key` | API-avaimesi |
+| `companyid` | Yritystunnuksesi |
+| `Content-Type` | `application/json` |
+
+### Pyynnön runko
+
+Pyynnön runko on **JSON-taulukko** — voit luoda yhden tai useamman liidin yhdellä kutsulla.
+
+<ParamField body="firstName" type="string" required>
+  Liidin etunimi.
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  Liidin sukunimi.
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  Liidin sähköpostiosoite. On oltava yksilöllinen työtilasi sisällä.
+</ParamField>
+
+<ParamField body="role" type="string" required>
+  Vaiheessa 1 haettu Client Role ID (eli `roles[0]._id`).
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  On asetettava `false`-arvoon liidin luomisen yhteydessä. Aseta `true`-arvoon vain, kun muunnat liidin täydeksi asiakkaaksi.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Liidin putkistatus. Yleiset arvot: `New`, `Contacted`, `Qualified`. Oletus on `New`, jos jätetään pois.
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  Liidin puhelinnumero.
+</ParamField>
+
+<ParamField body="source" type="string">
+  Miten hankit tämän liidin. Esimerkkiarvot: `website`, `referral`, `social`.
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  Liidin sijainti (järjestys) putkitaulun sarakkeessa. Oletus on `1`.
+</ParamField>
+
+### Esimerkkipyyntö
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-lead" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "role": "6525994184e9ddd798534535",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+### Onnistumisvastaus
+
+```json
+{
+  "message": "Lead created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  Vahvistusmerkkijono: `"Lead created successfully"`.
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  Luotujen liidiobjektien taulukko.
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  Äskettäin luodun liidin yksilöllinen tunnus. Tallenna tämä, jos sinun on viitattava liidiin myöhemmissä API-kutsuissa.
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  Liidin koko nimi (etunimi + sukunimi).
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  Liidin putkistatus tallennettuna.
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  Jäsenelle osoitettu roolin nimi — on `"client"`.
+</ResponseField>
+
+<Tip>
+  Voit välittää useita liidiobjekteja taulukossa luodaksesi useita liidejä yhdellä API-kutsulla. Jokaisella objektilla on oltava kaikki pakolliset kentät sekä oma yksilöllinen sähköpostiosoite.
+</Tip>

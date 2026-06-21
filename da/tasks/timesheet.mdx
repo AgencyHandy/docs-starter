@@ -1,0 +1,172 @@
+---
+title: "Tidsregistrering og timeseddelstyring i AgencyHandy"
+sidebarTitle: "Timeseddel"
+description: "Registrer tid med en live-timer eller manuel post, filtrer arbejdslogge efter opgave, medlem eller ydelse, og eksporter timeseddeldata som CSV eller XLSX i AgencyHandy."
+---
+
+Timeseddel-funktionen i AgencyHandy giver dig et centralt panel til at spore alle de timer, dit team bruger på opgaver. Du kan starte en live-timer på enhver opgave, registrere tid efterfølgende med en manuel post og derefter analysere dataene efter datointerval, teammedlem eller ydelse. Når du skal rapportere om produktivitet eller fakturere for tid, kan du eksportere alt til CSV eller XLSX med et par klik. Det er det essentielle værktøj til at holde dit team ansvarligt og din tidsbaserede fakturering nøjagtig.
+
+## Hvem kan bruge timeseddelfunktioner
+
+| Funktion | Super Admin | Admin | PM | Medarbejder |
+|---------|:-----------:|:-----:|:--:|:--------:|
+| Se egne tidsregistreringer | ✅ | ✅ | ✅ | ✅ |
+| Registrer tid for andre | ✅ | ✅ | ✅ | ❌ |
+| Rediger tidsposter | ✅ | ✅ | ✅ | ❌ |
+| Eksporter timeseddeldata | ✅ | ✅ | ✅ | ❌ |
+
+<Note>
+  Opgaver skal eksistere, inden der kan registreres tid mod dem. Sørg for, at opgaver er oprettet inden for ordrer, inden du forsøger at registrere tid.
+</Note>
+
+## Visning af timesedlen
+
+<Steps>
+  <Step title="Åbn timesedlen">
+    Klik på **Timeseddel** i det primære venstre sidepanel. Du ser en tabel med alle tidsregistreringer for dit team.
+
+    Hver række viser datoen, teammedlemmet, opgavenavnet, ydelsen, registreret tid og eventuelle bemærkninger knyttet til posten.
+  </Step>
+</Steps>
+
+## Tilføjelse af en tidspost
+
+Du har to muligheder for at registrere tid: en live-timer til igangværende arbejde eller en manuel post for tid, du allerede har gennemført.
+
+<Tabs>
+  <Tab title="Start en timer">
+    <Steps>
+      <Step title="Vælg en opgave">
+        Find eller vælg den opgave, du er ved at arbejde på, i timeseddelvisningen.
+      </Step>
+      <Step title="Klik på Start timer">
+        Klik på **Start timer** for at begynde at spore tid i realtid. Timeren kører, indtil du stopper den.
+      </Step>
+      <Step title="Stop, når du er færdig">
+        Klik på **Stop**, når du afslutter arbejdet. AgencyHandy registrerer automatisk den forløbne tid mod den valgte opgave.
+      </Step>
+    </Steps>
+
+    <Tip>
+      Brug timeren til igangværende arbejde for at sikre præcis sporing. Manuel afrunding eller estimering af tid efterfølgende er mindre nøjagtig end at lade timeren køre.
+    </Tip>
+  </Tab>
+  <Tab title="Manuel post">
+    <Steps>
+      <Step title="Klik på + Tilføj post">
+        Klik på **+ Tilføj post** i timeseddelpanelet. En formular vises.
+      </Step>
+      <Step title="Udfyld postoplysningerne">
+        - **Opgave** — vælg den opgave, denne tid gælder for
+        - **Teammedlem** — tildel tiden til den korrekte person (Admins og Managers kan registrere for andre)
+        - **Brugt tid** — indtast timer og minutter
+        - **Bemærkninger** — tilføj kontekst om, hvad der blev arbejdet på
+      </Step>
+      <Step title="Gem">
+        Klik på **Gem** for at registrere posten. Den vises straks i timeseddeltabellen.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Filtrering efter datointerval
+
+Brug datofiltrene til at fokusere på en bestemt tidsperiode.
+
+<Steps>
+  <Step title="Åbn datofiltre">
+    Klik på datofilterkontrollen øverst til højre i timeseddelpanelet.
+  </Step>
+  <Step title="Vælg et interval">
+    Vælg fra forudindstillede intervaller:
+    - **Dagligt** — kun dagens registreringer
+    - **Ugentligt** — den aktuelle uge
+    - **Månedligt** — den aktuelle måned
+
+    For længere projekter eller historisk rapportering skal du vælge et **Brugerdefineret** datointerval ved at indtaste en start- og slutdato.
+  </Step>
+  <Step title="Anvend">
+    Klik på **Anvend** for at opdatere tabellen med registreringer fra den valgte periode.
+  </Step>
+</Steps>
+
+<Tip>
+  Filtrer inden du eksporterer for at generere fokuserede rapporter. Eksport af den fulde ufiltrerede timeseddel kan producere meget store filer for aktive bureauer.
+</Tip>
+
+## Gruppering af poster
+
+Gruppering omarrangerer, hvordan timeseddelrækkerne er organiseret, uden at fjerne nogen data. Det hjælper dig med at læse og analysere loggene hurtigere.
+
+<Steps>
+  <Step title="Åbn rullemenuen Gruppér efter">
+    Klik på rullemenuen **Gruppér efter** nær toppen af timeseddelpanelet.
+  </Step>
+  <Step title="Vælg en gruppering">
+    Vælg fra følgende muligheder:
+
+    | Gruppér efter-indstilling | Hvad den viser |
+    |----------------|---------------|
+    | **Opgavenavn** | Alle tidsposter grupperet under hver opgave |
+    | **Teammedlem** | Alle poster grupperet under hver person |
+    | **Ydelse → Opgavenavn** | Poster grupperet efter ydelse, derefter opdelt efter opgave inden for hver ydelse |
+  </Step>
+</Steps>
+
+<Note>
+  Gruppering er en visuel ændring — den påvirker ikke de underliggende data eller hvad der eksporteres. Eksporter inkluderer altid alle synlige rækker.
+</Note>
+
+## Visning af opgavedetaljer fra timesedlen
+
+<Steps>
+  <Step title="Klik på et opgavenavn">
+    Klik i timeseddeltabellen på et **Opgavenavn**. AgencyHandy navigerer dig til den pågældende opgaves fulde detaljeside.
+  </Step>
+  <Step title="Gennemgå opgavekonteksten">
+    På opgavedetaljesiden finder du den komplette tidsregistreringshistorik, vedhæftede bemærkninger, ansvarlige, status og andre oplysninger på opgaveniveau. Brug denne visning til at undersøge poster eller verificere, hvad der blev arbejdet på.
+  </Step>
+</Steps>
+
+## Eksport af timeseddeldata
+
+Eksportér din timeseddel til lønningsliste, klientfaktureringsrapporter eller eksterne projektstyringsværktøjer.
+
+<Steps>
+  <Step title="Anvend filtre først (anbefalet)">
+    Brug datointervalfilteret til at indsnævre eksporten til den periode, du har brug for. Dette holder filen fokuseret og overskuelig.
+  </Step>
+  <Step title="Klik på Eksporter">
+    Klik på knappen **Eksporter** øverst i timeseddelpanelet.
+  </Step>
+  <Step title="Vælg et format">
+    Vælg enten:
+    - **CSV** — til regnearkværktøjer som Excel, Google Sheets eller datapipelines
+    - **XLSX** — til Excel-formaterede arbejdsbøger med bevaret kolonneformatering
+  </Step>
+  <Step title="Download filen">
+    Filen downloades automatisk til din enhed. Hver eksport inkluderer alle synlige kolonner: dato, teammedlem, opgavenavn, ydelse, registreret tid og bemærkninger.
+  </Step>
+</Steps>
+
+<Warning>
+  Hvis eksporten ikke udløser en download, kan din browsers **pop-up-blokering** forhindre filen i at downloade. Deaktiver pop-up-blokering for AgencyHandy og prøv igen.
+</Warning>
+
+## Yderligere bemærkninger
+
+<Accordion title="Timer vs. manuel post">
+  Timeren er bedst til aktivt, realtidsarbejde. Manuelle poster er bedst, når du glemte at starte timeren eller skal registrere tid med tilbagevirkende kraft. Begge metoder producerer identiske logposter i timeseddeltabellen.
+</Accordion>
+
+<Accordion title="Gruppering vs. filtrering">
+  Filtre **reducerer** hvilke rækker der vises i tabellen. Gruppering **reorganiserer** de rækker, der allerede er synlige. Du kan anvende begge på samme tid — filtrer til et datointerval og gruppér derefter efter teammedlem for at se hver persons totaler for den periode.
+</Accordion>
+
+<Accordion title="Eksporter inkluderer alle synlige kolonner">
+  Hver eksport fanger den aktuelle tilstand af den synlige tabel: dato, bruger, opgave, ydelse, tid og bemærkninger. Hvis du har anvendt en gruppér-efter-indstilling, afspejler eksporten også grupperingsstrukturen.
+</Accordion>
+
+<Accordion title="Brugerdefinerede intervaller for historiske data">
+  For langvarige projekter eller kvartalsvise gennemgange skal du bruge den brugerdefinerede datointervalindstilling til at hente historiske timeseddeldata ud over de forudindstillede daglige/ugentlige/månedlige vinduer.
+</Accordion>

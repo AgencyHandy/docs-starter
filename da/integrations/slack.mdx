@@ -1,0 +1,69 @@
+---
+title: "Tilslut Slack for at modtage AgencyHandy-advarsler i realtid"
+sidebarTitle: "Slack"
+description: "Forbind dit Slack-workspace til AgencyHandy, så ordreopdateringer, opgaveændringer og supportticket-advarsler automatisk sendes til en Slack-kanal."
+---
+
+AgencyHandys Slack-integration holder dit team opdateret uden at nogen behøver at skifte mellem apps. Når forbindelsen er oprettet, sender AgencyHandy automatiske notifikationer til den Slack-kanal, du vælger, hver gang opgaver, ordrer eller andre workspace-aktiviteter ændres — så dit team altid ved, hvad der sker i realtid.
+
+<Note>
+  Kun **SuperAdmin**-, **Admin**- og **Manager**-roller (med integrationstilladelser) kan tilslutte eller administrere Slack-integrationen. Du skal have administratorrettigheder til Slack-workspace for at autorisere forbindelsen.
+</Note>
+
+## Tilslut Slack
+
+<Steps>
+  <Step title="Åbn Integrationer">
+    Klik på **Integrationer** i den venstre sidebjælke.
+  </Step>
+
+  <Step title="Find Slack-kortet">
+    Rul til **Slack**-kortet, og klik på **Connect**.
+  </Step>
+
+  <Step title="Autoriser AgencyHandy i Slack">
+    Et Slack-autorisationsvindue åbnes. Hvis du ikke allerede er logget ind på dit Slack-workspace, skal du logge ind nu. Gennemgå de tilladelser, AgencyHandy anmoder om, og klik på **Allow** for at give adgang.
+  </Step>
+
+  <Step title="Vælg en notifikationskanal">
+    Efter godkendelse skal du vælge den Slack-kanal, hvor du ønsker, at AgencyHandy-notifikationer skal vises. Vælg en kanal fra rullemenuen, og klik på **Save** for at bekræfte.
+  </Step>
+
+  <Step title="Bekræft opsætningen">
+    Slack-kortet opdateres til at vise **Connected**. AgencyHandy begynder straks at sende notifikationer til den valgte kanal.
+  </Step>
+</Steps>
+
+## Hvilke notifikationer sendes til Slack
+
+AgencyHandy sender en Slack-besked, hver gang et af følgende hændelser opstår:
+
+| Kategori | Hændelser der udløser en notifikation |
+|---|---|
+| **Opgaver** | Opgave oprettet, opdateret, tildelt eller fuldført |
+| **Ordrer** | Ordre oprettet eller status ændret |
+| **Kommentarer** | Ny kommentar tilføjet til en opgave eller ordre |
+| **Filvedhæftninger** | Fil eller vedhæftning tilføjet til en opgave |
+| **Supporttickets** | Supportticket oprettet, tildelt eller status ændret |
+
+Hver Slack-besked inkluderer:
+
+- **Navn** på opgaven, ordren eller supportticketten
+- **Statusændringen** eller handlingen der udløste beskeden
+- Et **link** tilbage til det relevante element i AgencyHandy
+
+Når en fil eller vedhæftning tilføjes til en opgave, inkluderer Slack-beskeden også en forhåndsvisning af vedhæftningen.
+
+<Tip>
+  Vælg en dedikeret **#agency-handy-alerts**-kanal (eller lignende) for at holde notifikationer organiserede og forhindre dem i at fylde dine primære teamkanaler.
+</Tip>
+
+## Frakobl Slack
+
+For at stoppe notifikationer skal du vende tilbage til **Integrationer** og klikke på **Disconnect** på Slack-kortet. Alle notifikationer stopper med det samme.
+
+## Vigtige bemærkninger
+
+- **Ét workspace pr. forbindelse** — du kan kun tilslutte et enkelt Slack-workspace til hvert AgencyHandy-workspace. For at skifte til et andet Slack-workspace skal du frakoble det nuværende og tilslutte igen.
+- **Kanalsynlighed** — notifikationer er synlige for alle i den valgte Slack-kanal. Sørg for, at kanalen er passende til det detaljeniveau, der deles (f.eks. undgå at sende klientfølsomme ordreoplysninger til en offentlig kanal).
+- **Genautorisation** — hvis dit Slack-token udløber eller tilladelser ændres, skal du vende tilbage til Integrationer og genoprette forbindelsen for at gendanne notifikationer.

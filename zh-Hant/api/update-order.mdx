@@ -1,0 +1,205 @@
+---
+title: "AgencyHandy API：使用 PUT 更新現有訂單"
+sidebarTitle: "更新訂單"
+description: "使用 AgencyHandy API 透過 PUT 請求更新訂單詳情、變更狀態、重新指派專案經理，以及為現有訂單附加檔案。"
+---
+
+更新訂單端點讓您能夠從外部系統或自動化腳本修改 AgencyHandy 中的現有訂單（專案） — 變更名稱、狀態、預算、時間線、指派的管理員等。此端點也支援檔案附件，這些附件將附加到訂單的系統資料夾。
+
+<Note>
+  使用此端點前，請先完成[入門指南](/zh-Hant/api/getting-started)以取得您的 API 金鑰和公司 ID。
+</Note>
+
+<Warning>
+  此端點使用 `Authorization: Bearer <token>`（已登入成員的存取權杖），而非僅使用 `x-api-key` 標頭。請確保您的呼叫者已驗證為目標公司的**已核准成員**。未授權的呼叫者將收到 `403 PermissionError`。
+</Warning>
+
+## 前置條件
+
+- ✅ 已核准工作區成員的有效 **Bearer 權杖**
+- ✅ 從 `GET {{URL}}/accounts/companies` 取得的**公司 ID**
+- ✅ 您要更新的訂單的**訂單 ID**（專案 ID，`pid`）
+
+---
+
+## 端點
+
+```
+PUT {{URL}}/orders?pid=<ORDER_ID>
+```
+
+**Content-Type：** `multipart/form-data` — 即使不附加檔案，也請使用此格式以滿足伺服器的 multipart 解析器要求。
+
+## 標頭
+
+| 標頭 | 必填 | 說明 |
+|---|---|---|
+| `Authorization` | 是 | `Bearer <ACCESS_TOKEN>` — 已登入成員的存取權杖。 |
+| `companyid` | 是 | 訂單所屬公司的 Mongo ObjectId。 |
+| `clientid` | 選填 | 即時客戶端 socket ID。提供時，通知將包含它。 |
+
+## 查詢參數
+
+<ParamField query="pid" type="string" required>
+  要更新的訂單 / 專案 ID。以查詢字串參數形式傳遞。
+</ParamField>
+
+## 請求主體欄位
+
+<ParamField body="name" type="string">
+  更新訂單標題。最少 2 個字元。
+</ParamField>
+
+<ParamField body="status" type="string">
+  訂單的新狀態。必須為以下之一：`Pending`、`Ongoing`、`Review`、`Completed`、`Cancelled`。
+
+  **允許的狀態轉換：**
+  - `Review` 只能在 `Ongoing` 或另一個 `Review` 之後。從 `Pending` 直接跳至 `Review` 將回傳 `400 ValidationError`。
+  - 已為 `Completed` 或 `Cancelled` 的訂單無法更新。
+  - 客戶無法取消已超過 `Pending` 狀態的訂單。
+</ParamField>
+
+<ParamField body="budget" type="number">
+  總預算數字。必須 `≥ 0`。除非同時提供 `currency`，否則使用訂單現有的貨幣。
+</ParamField>
+
+<ParamField body="currency" type="string">
+  預算的貨幣代碼。範例：`USD`、`CAD`、`EUR`。
+</ParamField>
+
+<ParamField body="quantity" type="number">
+  套件購買的單位數量。必須 `≥ 1`。
+</ParamField>
+
+<ParamField body="deadline" type="string">
+  訂單到期日的 ISO 8601 日期字串。範例：`"2025-12-31T00:00:00.000Z"`。
+</ParamField>
+
+<ParamField body="kickoffDate" type="string">
+  專案開始日期的 ISO 8601 日期字串。
+</ParamField>
+
+<ParamField body="notes" type="string">
+  供您團隊查看的內部備註。
+</ParamField>
+
+<ParamField body="brief" type="string">
+  客戶簡報或專案摘要。
+</ParamField>
+
+<ParamField body="assignedProjectManagers" type="array">
+  指派至此訂單的專案經理成員 ID 完整清單。新增的 ID 將加入團隊；移除的 ID 將被刪除。每個 ID 必須屬於同一公司內具有 `projectManager` 角色的成員。
+</ParamField>
+
+<ParamField body="markTasksAsDone" type="boolean">
+  當 `status` 為 `Completed` 或 `Cancelled` 時**必填**。為 `true` 時，狀態變更後訂單中的所有任務均標記為完成。為 `false` 時，任務保持其目前狀態。
+</ParamField>
+
+<ParamField body="rejectRequestedTasks" type="boolean">
+  僅在 `status` 為 `Completed` 或 `Cancelled` 時允許。為 `true` 時，狀態更新後所有未完成的客戶請求任務將被拒絕。
+</ParamField>
+
+<ParamField body="repeatCount" type="number">
+  僅在變更重複頻率時，**訂閱**訂單需要填寫。與 `repeatDuration` 搭配使用。
+</ParamField>
+
+<ParamField body="repeatDuration" type="string">
+  訂閱訂單時與 `repeatCount` 一起使用。以下之一：`day`、`week`、`month`、`year`。
+</ParamField>
+
+<ParamField body="billingCycleCount" type="number">
+  定期計費週期的選填上限。預設為 `0`（無限制）。
+</ParamField>
+
+<ParamField body="billingCycleEvent" type="string">
+  每個計費週期的處理方式。以下之一：`createOrderWithTask`、`noChange`。
+</ParamField>
+
+<ParamField body="files" type="file">
+  零個或多個檔案附件。檔案附加至訂單的系統資料夾；現有檔案不會被覆寫。使用 `multipart/form-data` 編碼，並在 `files` 欄位下附加每個檔案。
+</ParamField>
+
+---
+
+## 範例請求
+
+<CodeGroup>
+
+```bash cURL (no files)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "currency=USD" \
+  --form "quantity=1" \
+  --form "assignedProjectManagers[]=PROJECT_MANAGER_ID" \
+  --form "notes=Scope finalized with client." \
+  --form "brief=Launch-ready design refresh."
+```
+
+```bash cURL (with file)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "repeatCount=3" \
+  --form "repeatDuration=month" \
+  --form "billingCycleEvent=createOrderWithTask" \
+  --form "files=@/path/to/creative-brief.pdf"
+```
+
+</CodeGroup>
+
+**等效 JSON 內容**（傳送檔案時請轉換為 multipart 表單條目）：
+
+```json
+{
+  "name": "Website Redesign",
+  "status": "Review",
+  "budget": 12000,
+  "currency": "USD",
+  "quantity": 1,
+  "assignedProjectManagers": ["{{PROJECT_MANAGER_ID}}"],
+  "repeatCount": 3,
+  "repeatDuration": "month",
+  "billingCycleEvent": "createOrderWithTask",
+  "notes": "Scope finalized with client.",
+  "brief": "Launch-ready design refresh."
+}
+```
+
+---
+
+## 回應
+
+| HTTP 狀態 | 說明 |
+|---|---|
+| `200 OK` | 更新成功。 |
+| `400 ValidationError` | 無效的訂單 ID、被封鎖的狀態轉換或格式錯誤的內容。相關時回應包含 `fieldName`。 |
+| `403 PermissionError` | 呼叫者不是已核准成員、缺乏公司角色、工作區訂閱已過期，或客戶嘗試了被禁止的取消操作。 |
+| `500 Internal Server Error` | 未處理的例外 — 請查看伺服器日誌。 |
+
+### 成功回應
+
+```json
+{
+  "message": "Project has been updated"
+}
+```
+
+---
+
+## 業務規則與副作用
+
+- **狀態轉換**受到限制。`Review` 只能在 `Ongoing` 或另一個 `Review` 之後。嘗試 `Pending → Review` 將回傳 `400 ValidationError`。
+- 將狀態從 `Pending` 移至 `Ongoing`、`Review` 或 `Completed` 會啟動訂單的檔案資料夾，使上傳的檔案對專案團隊可存取。
+- 將 `status` 設定為 `Completed` 或 `Cancelled` **必須**明確地將 `markTasksAsDone` 設定為 `true` 或 `false`。
+- 狀態變更為 `Review`、`Completed` 或 `Cancelled` 會自動觸發客戶通知：
+  - **Review** — 通知客戶需要進行審查。
+  - **Completed** — 向客戶傳送 `orderCompletion` 通知。
+  - **Cancelled** — 向客戶傳送 `orderCancellation` 通知。
+- 每次成功的更新都會觸發一個帶有更新後訂單文件和附件元資料的 `ORDER.UPDATED` webhook 事件（如果您有已訂閱該事件的活躍 webhook）。

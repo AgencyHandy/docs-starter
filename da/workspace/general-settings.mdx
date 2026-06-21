@@ -1,0 +1,123 @@
+---
+title: "Konfigurer Generelle Indstillinger for Dit AgencyHandy Workspace"
+sidebarTitle: "Generelle indstillinger"
+description: "Angiv dit workspacenavn, upload logoer, tilføj din bureauadresse og vælg den korrekte tidszone for at tilpasse dit AgencyHandy-workspace."
+---
+
+Siden Generelle indstillinger er det første sted, du besøger, efter du har logget ind på AgencyHandy. Den lader dig etablere dit bureaus identitet på platformen — fra dit logo og workspacenavn til din fysiske adresse og tidszone. Alle ændringer, du foretager her, gælder globalt på tværs af workspacet for alle brugere.
+
+<Note>
+  Kun **Super Admins** og **Admins** kan tilgå og ændre Workspace Config-indstillinger. Hvis du ikke kan se indstillingen **Workspace Config** i den venstre navigation, skal du kontakte din Super Admin for at justere dine rolletilladelser.
+</Note>
+
+## Tilgang til Generelle Indstillinger
+
+<Steps>
+  <Step title="Åbn Workspace Config">
+    Log ind på din AgencyHandy-konto. Klik på **Workspace Config** i den venstre navigationsmenu.
+  </Step>
+  <Step title="Vælg Generelle indstillinger">
+    Klik på **General Settings** i undermenuen til Workspace Config. Panelet Generelle indstillinger åbnes til højre.
+  </Step>
+</Steps>
+
+---
+
+## Upload af Dit Workspace-logo
+
+AgencyHandy understøtter tre forskellige logotyper, som hver vises i en anden del af grænsefladen:
+
+| Logotype | Dimensioner | Hvor det vises |
+|------------------|-------------|--------------------------------------------------|
+| Cirkellogo | 32 × 32 px | Profilområder og kompakte UI-elementer |
+| Favicon-logo | 16 × 16 px | Browserens faneikon |
+| Rektangellogo | 142 × 36 px | Sidevægsoverskrift (erstatter cirkellogo, når det er angivet) |
+
+**Understøttede formater:** PNG, JPG, SVG
+
+<Steps>
+  <Step title="Klik på Upload Logo">
+    Under logoafsnittet klikker du på knappen **Upload Logo** for den logotype, du vil angive.
+  </Step>
+  <Step title="Vælg din billedfil">
+    Gennemse billedet på din enhed. Sørg for, at filen matcher de krævede dimensioner og er i et understøttet format.
+  </Step>
+  <Step title="Bekræft uploadet">
+    Logoforhåndsvisningen opdateres straks. Gentag for hver logotype efter behov.
+  </Step>
+</Steps>
+
+<Tip>
+  Upload af et **Rektangellogo** erstatter Cirkellogoet i sidevæggen og skjuler automatisk workspacenavnteksten ved siden af det. Rektangellogoen bliver også det primære logo, der bruges i alle andre sammenhænge, hvor et logo vises — selv hvis et cirkellogo også er uploadet.
+</Tip>
+
+---
+
+## Angivelse af Dit Workspacenavn og -adresse
+
+### Workspacenavn
+
+Indtast dit bureaus navn i feltet **Workspace Name**. Dette navn:
+
+- Vises overalt på platformen til identifikation.
+- Bruges i det standard AgencyHandy-subdomæne (f.eks. `ditbureaunavn.agencyhandy.com`).
+
+<Warning>
+  Ændring af dit workspacenavn opdaterer dit standard subdomæne øjeblikkeligt. Hvis du deler standard subdomænelinket med kunder, skal de bruge den opdaterede URL. Overvej at opsætte et [eget domæne](/da/workspace/custom-domain) for at undgå dette problem.
+</Warning>
+
+### Workspace-adresse
+
+Indtast dit bureaus fulde fysiske adresse i feltet **Workspace Address**. Denne adresse bruges til officiel repræsentation på fakturaer og kunderelaterede dokumenter, så sørg for, at den er nøjagtig og aktuel.
+
+---
+
+## Valg af Din Tidszone
+
+<Steps>
+  <Step title="Åbn Time Zone-rullemenuen">
+    Rul ned til feltet **Time Zone** og klik på rullemenuen for at udvide timezonelisten.
+  </Step>
+  <Step title="Vælg din tidszone">
+    Vælg den tidszone, der matcher dit bureaus primære driftssted. Alle opgavedeadlines, planlagte notifikationer, kalenderbegivenheder og tidsstempler på tværs af workspacet er baseret på denne indstilling.
+  </Step>
+</Steps>
+
+<Warning>
+  En forkert timezoneindstilling forårsager planlægningsfejl for opgaver, møder og fakturaforfaldsdatoer. Dobbelttjek denne indstilling, inden du inviterer dit team eller dine kunder.
+</Warning>
+
+---
+
+## Gem Dine Ændringer
+
+Efter at have udfyldt eller opdateret felter skal du klikke på **Save Changes** nederst i panelet Generelle indstillinger. Alle opdateringer anvendes globalt og er øjeblikkeligt synlige for alle brugere i workspacet.
+
+---
+
+## Farezonen: Sletning af Dit Workspace
+
+Nederst i panelet Generelle indstillinger er der et afsnit kaldet **Danger Zone**, der indeholder knappen **Delete Workspace**.
+
+<Warning>
+  Sletning af dit workspace er **permanent og irreversibel**. Alle data — herunder kunder, ordrer, fakturaer, projekter og konfigurationer — vil blive permanent slettet. Der er ingen gendannelsesmulighed. Fortsæt kun, hvis du er absolut sikker.
+</Warning>
+
+---
+
+## Bedste Praksisser
+
+<CardGroup cols={2}>
+  <Card title="Verificér logodimensioner" icon="image">
+    Upload logoer i de nøjagtige anbefalede pixeldimensioner for at forhindre strækning, beskæring eller sløret visning på tværs af platformen.
+  </Card>
+  <Card title="Hold branding opdateret" icon="paintbrush">
+    Opdater dit logo og din adresse, når dit bureau rebrandler eller skifter placering, for at holde alle dokumenter og kunderelaterede sider nøjagtige.
+  </Card>
+  <Card title="Angiv tidszone først" icon="clock">
+    Konfigurer din tidszone, inden du opretter services, opgaver eller planlægger noget, for at sikre, at alle tidsstempler er korrekt justeret fra starten.
+  </Card>
+  <Card title="Begræns administratoradgang" icon="shield">
+    Giv kun Super Admin- eller Admin-roller til personale, der reelt har brug for at ændre workspace-konfigurationer, for at forhindre utilsigtede ændringer.
+  </Card>
+</CardGroup>

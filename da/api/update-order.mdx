@@ -1,0 +1,205 @@
+---
+title: "AgencyHandy API: Opdater en eksisterende ordre med PUT"
+sidebarTitle: "Opdater ordre"
+description: "Brug AgencyHandy API til at opdatere ordredetaljer, ændre status, omtildele projektledere og vedhæfte filer til en eksisterende ordre via PUT-anmodning."
+---
+
+Opdater ordre-endpointet lader dig ændre en eksisterende ordre (projekt) i AgencyHandy — ændre dens navn, status, budget, tidslinje, tildelte ledere og meget mere — alt fra et eksternt system eller automatiseringsscript. Endpointet understøtter også filvedhæftninger, som tilføjes til ordrens systemmappe.
+
+<Note>
+  Inden du bruger dette endpoint, skal du fuldføre vejledningen [Kom godt i gang](/da/api/getting-started) for at hente din API-nøgle og dit Company ID.
+</Note>
+
+<Warning>
+  Dette endpoint bruger `Authorization: Bearer <token>` (et indlogget medlems adgangstoken) frem for blot `x-api-key`-headeren. Sørg for, at din kaldende part er godkendt som et **godkendt medlem** af målvirksomheden. Uautoriserede kaldende parter modtager en `403 PermissionError`.
+</Warning>
+
+## Forudsætninger
+
+- ✅ Et gyldigt **Bearer-token** for et godkendt workspace-medlem
+- ✅ **Company ID** hentet fra `GET {{URL}}/accounts/companies`
+- ✅ **Ordre-ID'et** (Projekt-ID, `pid`) for den ordre, du vil opdatere
+
+---
+
+## Endpoint
+
+```
+PUT {{URL}}/orders?pid=<ORDER_ID>
+```
+
+**Content-Type:** `multipart/form-data` — brug dette, selv når ingen filer er vedhæftet, for at tilfredsstille serverens multipart-parser.
+
+## Headers
+
+| Header | Påkrævet | Beskrivelse |
+|---|---|---|
+| `Authorization` | Ja | `Bearer <ACCESS_TOKEN>` — det indloggede medlems adgangstoken. |
+| `companyid` | Ja | Mongo ObjectId for det bureau, ordren tilhører. |
+| `clientid` | Valgfrit | Klientens realtids-socket-ID. Når det angives, inkluderes det i notifikationer. |
+
+## Forespørgselsparametre
+
+<ParamField query="pid" type="string" required>
+  Ordre/Projekt-ID'et der skal opdateres. Send dette som en forespørgselsstrengparameter.
+</ParamField>
+
+## Felter i anmodningskroppen
+
+<ParamField body="name" type="string">
+  Opdaterer ordretitlen. Minimum 2 tegn.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Ny status for ordren. Skal være én af: `Pending`, `Ongoing`, `Review`, `Completed`, `Cancelled`.
+
+  **Tilladte overgange:**
+  - `Review` kan kun følge `Ongoing` eller en anden `Review`. Hop fra `Pending` direkte til `Review` returnerer en `400 ValidationError`.
+  - Ordrer der allerede er `Completed` eller `Cancelled` kan ikke opdateres.
+  - Klienter kan ikke annullere en ordre, der er gået videre end `Pending`.
+</ParamField>
+
+<ParamField body="budget" type="number">
+  Samlet budgettal. Skal være `≥ 0`. Bruger ordrens eksisterende valuta, medmindre `currency` også angives.
+</ParamField>
+
+<ParamField body="currency" type="string">
+  Valutakode for budgettet. Eksempler: `USD`, `CAD`, `EUR`.
+</ParamField>
+
+<ParamField body="quantity" type="number">
+  Antal enheder købt for pakken. Skal være `≥ 1`.
+</ParamField>
+
+<ParamField body="deadline" type="string">
+  ISO 8601-datostreng for ordrens forfaldsdato. Eksempel: `"2025-12-31T00:00:00.000Z"`.
+</ParamField>
+
+<ParamField body="kickoffDate" type="string">
+  ISO 8601-datostreng for projektets startdato.
+</ParamField>
+
+<ParamField body="notes" type="string">
+  Interne noter synlige for dit team.
+</ParamField>
+
+<ParamField body="brief" type="string">
+  Klientens brief eller projektsammenfatning.
+</ParamField>
+
+<ParamField body="assignedProjectManagers" type="array">
+  Komplet liste over projektleder-medlem-ID'er, der skal tildeles til denne ordre. Nye ID'er tilføjes til teamet; fjernede ID'er slettes. Hvert ID skal tilhøre et medlem med en `projectManager`-rolle i det samme bureau.
+</ParamField>
+
+<ParamField body="markTasksAsDone" type="boolean">
+  **Påkrævet** når `status` er `Completed` eller `Cancelled`. Når `true`, markeres alle opgaver i ordren som udført efter statusændringen. Når `false` forbliver opgaverne i deres nuværende tilstand.
+</ParamField>
+
+<ParamField body="rejectRequestedTasks" type="boolean">
+  Kun tilladt når `status` er `Completed` eller `Cancelled`. Når `true`, afvises alle udestående klient-anmodede opgaver efter statusopdateringen.
+</ParamField>
+
+<ParamField body="repeatCount" type="number">
+  Kun påkrævet for **abonnements**ordrer ved ændring af gentagelsesfrekvens. Par med `repeatDuration`.
+</ParamField>
+
+<ParamField body="repeatDuration" type="string">
+  Påkrævet sammen med `repeatCount` for abonnementsordrer. Én af: `day`, `week`, `month`, `year`.
+</ParamField>
+
+<ParamField body="billingCycleCount" type="number">
+  Valgfri grænse for tilbagevendende faktureringscyklusser. Standardværdi er `0` (ingen grænse).
+</ParamField>
+
+<ParamField body="billingCycleEvent" type="string">
+  Hvordan hver faktureringscyklus håndteres. Én af: `createOrderWithTask`, `noChange`.
+</ParamField>
+
+<ParamField body="files" type="file">
+  Nul eller flere filvedhæftninger. Filer tilføjes til ordrens systemmappe; eksisterende filer overskrives aldrig. Brug `multipart/form-data`-kodning og vedhæft hver fil under `files`-feltet.
+</ParamField>
+
+---
+
+## Eksempelanmodning
+
+<CodeGroup>
+
+```bash cURL (no files)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "currency=USD" \
+  --form "quantity=1" \
+  --form "assignedProjectManagers[]=PROJECT_MANAGER_ID" \
+  --form "notes=Scope finalized with client." \
+  --form "brief=Launch-ready design refresh."
+```
+
+```bash cURL (with file)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "repeatCount=3" \
+  --form "repeatDuration=month" \
+  --form "billingCycleEvent=createOrderWithTask" \
+  --form "files=@/path/to/creative-brief.pdf"
+```
+
+</CodeGroup>
+
+**Tilsvarende JSON-nyttelast** (konverter til multipart form-poster ved afsendelse af filer):
+
+```json
+{
+  "name": "Website Redesign",
+  "status": "Review",
+  "budget": 12000,
+  "currency": "USD",
+  "quantity": 1,
+  "assignedProjectManagers": ["{{PROJECT_MANAGER_ID}}"],
+  "repeatCount": 3,
+  "repeatDuration": "month",
+  "billingCycleEvent": "createOrderWithTask",
+  "notes": "Scope finalized with client.",
+  "brief": "Launch-ready design refresh."
+}
+```
+
+---
+
+## Svar
+
+| HTTP-status | Beskrivelse |
+|---|---|
+| `200 OK` | Opdatering lykkedes. |
+| `400 ValidationError` | Ugyldigt ordre-ID, blokeret statusovergang eller forkert formateret nyttelast. Svaret inkluderer `fieldName`, når det er relevant. |
+| `403 PermissionError` | Den kaldende part er ikke et godkendt medlem, mangler bureaurollen, workspace-abonnementet er udløbet, eller en klient forsøgte en forbudt annullering. |
+| `500 Internal Server Error` | Uhåndteret undtagelse — tjek serverlogge. |
+
+### Succesfuldt svar
+
+```json
+{
+  "message": "Project has been updated"
+}
+```
+
+---
+
+## Forretningsregler og sideeffekter
+
+- **Statusovergange** er begrænsede. `Review` kan kun følge `Ongoing` eller en anden `Review`. Forsøg på `Pending → Review` returnerer `400 ValidationError`.
+- Flytning af en status fra `Pending` til `Ongoing`, `Review` eller `Completed` aktiverer ordrens filmappe, så uploadede filer bliver tilgængelige for projektteamet.
+- Indstilling af `status` til `Completed` eller `Cancelled` **kræver**, at `markTasksAsDone` eksplicit sættes til `true` eller `false`.
+- Statusændringer til `Review`, `Completed` eller `Cancelled` udløser automatisk klientnotifikationer:
+  - **Review** — notificerer klienten om, at gennemgang er nødvendig.
+  - **Completed** — sender `orderCompletion`-notifikationen til klienten.
+  - **Cancelled** — sender `orderCancellation`-notifikationen til klienten.
+- Hver vellykket opdatering udløser en `ORDER.UPDATED` webhook-hændelse med det opdaterede ordredokument og vedhæftningsmetadata, hvis du har en aktiv webhook abonneret på den hændelse.

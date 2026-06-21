@@ -1,0 +1,240 @@
+---
+title: "Uppgiftshantering: Skapa och spåra arbete i beställningar"
+sidebarTitle: "Uppgifter"
+description: "Skapa, redigera och hantera uppgifter i beställningar — inklusive tidsspårning, filåterkoppling, klientbeställda uppgifter och uppgiftsöversikt för alla beställningar."
+---
+
+Uppgifter är arbetsenheterna som omvandlar en beställning till ett leveransklar resultat. Varje uppgift finns i en specifik beställning, kan tilldelas en teammedlem och spårar sin egen status, tidslinje, bilagor och återkopplingstråd. Den här sidan förklarar hur du skapar och hanterar uppgifter, hur klienter kan begära uppgifter, hur tidsspårning och filåterkoppling fungerar, och hur du visar uppgifter för alla beställningar på en gång.
+
+## Rollkrav
+
+| Åtgärd | Vem kan göra det |
+|---|---|
+| Skapa uppgifter | Super Admin, Admin, Projektledare |
+| Redigera uppgifter | Super Admin, Admin, Projektledare |
+| Ta bort uppgifter | Super Admin, Admin, Projektledare |
+| Visa uppgifter under granskning / klara | Super Admin, Admin, PM, Klient |
+| Skicka och svara på återkoppling | Super Admin, Admin, PM |
+| Logga tid på uppgifter | Alla tilldelade användare (Super Admins och Admins kan logga för andras räkning) |
+| Begära en uppgift (klient) | Klient |
+| Godkänna / avvisa begärda uppgifter | Super Admin, Admin |
+
+<Note>
+Anställda som tilldelats en beställning kan se uppgifter med statusen **Under granskning** eller **Klar**. Uppgifter med statusen **Pågående** är inte synliga för anställda.
+</Note>
+
+## Skapa en uppgift
+
+<Steps>
+  <Step title="Öppna beställningen">
+    Navigera till **Beställningar** i den vänstra sidopanelen och klicka på beställningen där du vill lägga till en uppgift.
+  </Step>
+
+  <Step title="Lägg till en ny uppgift">
+    Inuti beställningen bläddrar du till avsnittet **Uppgifter** och klickar på **+ Lägg till ny uppgift**. Ett formulär för att skapa uppgifter visas.
+  </Step>
+
+  <Step title="Fyll i uppgiftsuppgifterna">
+    Fyll i de tillgängliga fälten:
+
+    | Fält | Anteckningar |
+    |---|---|
+    | **Uppgiftsnamn** | En tydlig, kortfattad titel för arbetsposten |
+    | **Beskrivning** | Detaljerat sammanhang, krav eller instruktioner |
+    | **Tilldelad** | Teammedlemmen som ansvarar för att slutföra uppgiften |
+    | **Etikett** | Kategorisk tagg för att organisera uppgifter (t.ex. Design, Text) |
+    | **Startdatum** | När arbetet med uppgiften påbörjas |
+    | **Förfallodatum** | När uppgiften måste vara slutförd |
+    | **Klientgranskning krävs** | Kryssruta som kräver att klienten godkänner uppgiften innan den markeras som Klar — markerad som standard |
+    | **Bilagor** | Referensfiler eller stödmaterial |
+  </Step>
+
+  <Step title="Spara uppgiften">
+    Klicka på **Spara** för att skapa uppgiften. Klienten får ett automatiskt meddelande om att en ny uppgift har lagts till i deras beställning.
+  </Step>
+</Steps>
+
+<Tip>
+Kryssrutan **Klientgranskning krävs** är aktiverad som standard för varje ny uppgift. Om en uppgift är rent intern och inte behöver klientgodkännande kan du avmarkera den innan du sparar.
+</Tip>
+
+## Uppgiftsstatusar
+
+Uppgifter rör sig genom följande statusar:
+
+- **Pågående** — Uppgiften arbetas på (inte synlig för klienter eller anställda)
+- **Under granskning** — Uppgiften har skickats in för granskning; synlig för klienter
+- **Klar** — Uppgiften har godkänts och slutförts
+
+<Note>
+När en klient eller granskare avvisar en uppgift från **Under granskning** återgår statusen automatiskt till **Pågående**.
+</Note>
+
+## Uppgiftsmodal och aktivitetssida
+
+Att klicka på en uppgift öppnar **Uppgiftsmodalen**, en detaljvy som fungerar som uppgiftens aktivitetsnav. Härifrån kan du se och hantera:
+
+- Aktuell status, tilldelad, startdatum och förfallodatum
+- Uppgiftsbeskrivning och eventuella bifogade filer
+- Alla återkopplingstrådar och svar
+- En komplett aktivitetslogg som visar varje uppdatering, kommentar och statusändring på uppgiften
+
+Alla som är del av beställningen — inklusive klienter när klientgranskning är aktiverad — kan komma åt uppgiftsmodalen för uppgifter de har insyn i.
+
+## Redigera en uppgift
+
+För att uppdatera en uppgifts uppgifter efter att den har skapats öppnar du uppgiftsmodalen och ändrar relevanta fält (namn, beskrivning, tilldelad, datum, etikett eller bilagor). Spara dina ändringar för att tillämpa uppdateringen. Endast Super Admins, Admins och PM:ar kan redigera uppgifter.
+
+## Ta bort en uppgift
+
+För att ta bort en uppgift öppnar du den och använder borttagningsalternativet i uppgiftens åtgärdsmeny. Borttagning är permanent — alla associerade tidsloggar och filversioner tas bort tillsammans med uppgiften.
+
+<Warning>
+Att ta bort en uppgift tar också bort alla filversioner och deras associerade återkopplingskommentarer. Denna åtgärd kan inte ångras.
+</Warning>
+
+## Tidsspårning
+
+AgencyHandy inkluderar inbyggd tidsspårning så att ditt team kan logga timmar direkt mot uppgifter — inget externt verktyg krävs.
+
+### Starta timern
+
+<Steps>
+  <Step title="Öppna uppgiften">
+    Gå till **Beställningar → Uppgifter** och öppna uppgiften du vill spåra tid på.
+  </Step>
+
+  <Step title="Starta timern">
+    Klicka på **Starta timer**. Timern börjar köra och visar uppgiftsnamnet, förfluten tid i realtid och total loggad tid.
+  </Step>
+
+  <Step title="Pausa eller stoppa när du är klar">
+    Klicka på **Pausa timer** för att tillfälligt stoppa spårningen, eller **Stoppa timer** för att slutföra posten. När du stoppar bekräftar du datum, starttid, sluttid, total varaktighet och en valfri anteckning.
+  </Step>
+</Steps>
+
+<Note>
+Du kan bara ha en aktiv timer igång åt gången. Att starta en ny timer pausar automatiskt en befintlig.
+</Note>
+
+<Warning>
+Om en uppgift markeras som **Klar** inaktiveras timern. Öppna uppgiften igen för att återaktivera tidloggning.
+</Warning>
+
+### Manuell tidsregistrering
+
+Om du behöver logga tid i efterhand klickar du på **Manuell tidsregistrering** på uppgiften och anger:
+
+- **Datum**
+- **Starttid och sluttid** (eller en **Varaktighet** i timmar och minuter)
+- **Anteckningar** (valfritt)
+
+Flera användare kan logga tid mot samma uppgift samtidigt. Super Admins och Admins kan skapa manuella tidsregistreringar för valfri användares räkning.
+
+### Arbetsloggar
+
+Klicka på knappen **Arbetslogg** bredvid timern för att se en fullständig uppdelning av alla tidsposter på uppgiften, inklusive datum, start-/sluttider, total aktiv tid och eventuella anteckningar. Admins och Super Admins kan ta bort vilken post som helst; vanliga användare kan bara ta bort sina egna.
+
+### Tidrapporter
+
+Navigera till **Tidrapporter** från den vänstra sidopanelen för en vy över all loggad tid för alla beställningar. Du kan filtrera efter uppgiftsnamn, beställnings-ID, tilldelad eller datumintervall (dagligen, veckovis, månadsvis) och gruppera resultat efter teammedlem, tjänstnamn eller uppgiftsnamn. Du kan också starta en timer eller lägga till en manuell post direkt från vyn Tidrapporter.
+
+## Filåterkoppling
+
+AgencyHandy:s filåterkopplingssystem låter dig och dina klienter lämna precisa, visuella kommentarer om leveranser — direkt inuti uppgifter. Det stöder bilder, PDF:er, videor och live-webbplatser, med versionskontroll och trådade diskussioner inbyggda.
+
+### Ladda upp en fil för granskning
+
+Öppna uppgiften, klicka på ikonen **➕** i avsnittet **Bilagor** och ladda upp en bild, PDF, video eller klistra in en live-webbplats-URL.
+
+### Lämna återkoppling efter filtyp
+
+**Bilder och PDF:er**
+Öppna filen och använd annoteringsfältet (Pil, Linje, Rektangel, Markera) för att markera specifika områden. Välj ett område, skriv din kommentar och välj om du vill dela den med ditt team, klienten eller båda. Du kan också ångra eller göra om annoteringar och ändra annoteringsfärger.
+
+**Videor**
+Öppna videon och pausa den vid den exakta bildrutan där din återkoppling gäller. Skriv din kommentar — videon pausas automatiskt medan du skriver. Återkopplingen tidsstämplas till det ögonblicket. Du kan ta bort tidsstämpeln för att lämna en allmän kommentar istället.
+
+**Live-webbplatser**
+Lägg till webbplatsens URL till uppgiften med knappen **➕**, installera sedan AgencyHandy-webbläsartillägget. Öppna webbplatsen i **Visningsläge** (interaktivt) eller växla till **Granskningsläge** för att ta en skärmdump och annotera den med rit-, text- eller formverktyg.
+
+### Kommentarsåtgärder
+
+Varje kommentar har en meny med tre punkter med alternativ för att:
+
+- Redigera kommentaren
+- Kopiera svaret
+- Ta bort kommentaren
+- Begränsa synlighet till det interna teamet
+
+### Lösa återkoppling
+
+Klicka på knappen **✓** på en kommentar för att markera den som **Löst**. Lösta kommentarer förblir synliga som referens och kan öppnas igen. Du får ett meddelande när en kommentar du lämnade löses av någon annan.
+
+### Filversioner
+
+Klicka på **Ladda upp ny version** för att lägga till en reviderad fil. Tidigare versioner och deras återkoppling bevaras och är tillgängliga från versionsmenyn. När du öppnar en äldre version meddelar AgencyHandy dig att en nyare version finns.
+
+Du kan märka varje fil som **Behöver granskning** eller **Godkänd** för att kommunicera granskningsstatus på ett ögonblick.
+
+<Note>
+Klienter kan bara lämna återkoppling på filer om kryssrutan **Klientgranskning krävs** är aktiverad på uppgiften. Filåterkoppling är tillgänglig endast inuti uppgifter eller beställningar — inte i tjänstkatalogen eller profilbilder.
+</Note>
+
+## Klientbeställda uppgifter
+
+Klienter kan skicka in uppgiftsbegäranden från sin portal, vilket ger dem ett strukturerat sätt att lyfta fram ytterligare behov utan att kringgå din godkännandeprocess.
+
+### Klientarbetsflöde
+
+<Steps>
+  <Step title="Åtkomst till begäranden">
+    Klienten klickar på **Begäranden** i sin Klientportal-sidopanel — eller använder knappen **+ Begär en uppgift** direkt inuti en beställning.
+  </Step>
+
+  <Step title="Fyll i begärandeformuläret">
+    Klienten anger:
+    - **Beställning** (obligatoriskt — begäranden måste vara kopplade till en befintlig beställning)
+    - **Uppgiftsnamn** (obligatoriskt)
+    - **Beskrivning** (valfritt)
+    - **Bilagor** (valfritt — upp till 1 GB; format inkluderar PDF, DOCX, JPG, PNG, MP4, ZIP och mer)
+    - **Start- och slutdatum** (valfritt)
+  </Step>
+
+  <Step title="Skicka in begäran">
+    Klienten klickar på **Begär**. Uppgiften visas i deras portal som **Väntande** och din byrå får ett meddelande.
+  </Step>
+</Steps>
+
+### Byråarbetsflöde
+
+<Steps>
+  <Step title="Visa inkommande begäranden">
+    Klicka på **Begäranden** i byråportalens sidopanel. Alla väntande begäranden visas i en listvy. Du kan filtrera efter klient eller beställnings-ID, sortera alfabetiskt eller efter utgivningsdatum och använda **Inställningar** för att visa eller dölja kolumner.
+  </Step>
+
+  <Step title="Granska begäran">
+    Klicka på en begäran för att läsa beskrivningen och förhandsgranska eventuella bilagor innan du fattar ett beslut.
+  </Step>
+
+  <Step title="Godkänn eller avvisa">
+    Använd åtgärdsknapparna bredvid varje begäran för att godkänna eller avvisa individuellt — eller använd massåtgärderna längst upp till höger för att godkänna eller avvisa alla begäranden på en gång.
+
+    - **Godkända** begäranden blir aktiva uppgifter i beställningen och följer det normala uppgiftsarbetsflödet.
+    - **Avvisade** begäranden förblir loggade med statusen **Avvisad** och läggs inte till i beställningen.
+  </Step>
+</Steps>
+
+<Note>
+Klienter kan inte kringgå godkännandesteget. En begäran kräver alltid byrååtgärd innan den blir en aktiv uppgift. Väntande begäranden förblir synliga för både klienten och byrån tills ett beslut fattas.
+</Note>
+
+## Vy för alla uppgifter
+
+Utöver att hantera uppgifter inuti enskilda beställningar kan du se uppgifter för alla beställningar från en enda skärm. Navigera till **Uppgifter** i den vänstra sidopanelen för att komma åt sidan **Alla uppgifter**. Härifrån kan du:
+
+- Se varje uppgift du har insyn i, oavsett vilken beställning den tillhör
+- Filtrera och sortera efter status, tilldelad, förfallodatum eller beställning
+- Snabbt identifiera försenade eller riskfyllda poster för hela din arbetsbelastning
+
+Denna övergripande synlighet är särskilt användbar för Projektledare och Admins som behöver balansera teamkapacitet och spåra leveranshälsa på byråns nivå.

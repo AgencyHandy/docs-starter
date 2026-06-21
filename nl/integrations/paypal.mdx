@@ -1,0 +1,70 @@
+---
+title: "Verbind PayPal voor Veilige Betalingsinning bij Klanten"
+sidebarTitle: "PayPal"
+description: "Koppel uw PayPal-account aan AgencyHandy en laat klanten facturen betalen via PayPal's vertrouwde, wereldwijd erkende betalingsplatform."
+---
+
+De PayPal-integratie van AgencyHandy biedt uw klanten een veilige, vertrouwde manier om facturen te betalen zonder creditcard. PayPal ondersteunt een breed scala aan internationale valuta, waardoor het bijzonder nuttig is voor bureaus met klanten buiten hun eigen land.
+
+<Note>
+  PayPal **kan niet** worden gebruikt voor upsells vanwege beperkingen op platform-niveau met betrekking tot valuta en regio's. Gebruik voor upsell-betalingen Stripe in plaats daarvan.
+</Note>
+
+<Note>
+  Alleen **SuperAdmin**- en **Admin**-rollen kunnen de PayPal-integratie verbinden of beheren. U moet een actief PayPal-account hebben voordat u begint.
+</Note>
+
+## PayPal verbinden
+
+<Steps>
+  <Step title="Open PayPal-integratie-instellingen">
+    Meld u aan bij AgencyHandy en ga naar **Integraties → PayPal-integratie** in de linker zijbalk.
+  </Step>
+
+  <Step title="Start de verbinding">
+    Klik op **Verbind PayPal**. U wordt doorgestuurd naar de inlogpagina van PayPal.
+  </Step>
+
+  <Step title="AgencyHandy autoriseren">
+    Meld u aan bij uw PayPal-account en bekijk de gevraagde machtigingen. Klik op **Toestaan** (of **Verlenen**) om AgencyHandy toegang te geven tot uw account.
+  </Step>
+
+  <Step title="Bevestig de verbinding">
+    Na succesvolle autorisatie stuurt PayPal u terug naar AgencyHandy. Een bevestigingsbericht — **PayPal verbonden** — verschijnt op de integratiekaart. Klanten kunnen nu facturen betalen via PayPal.
+  </Step>
+</Steps>
+
+## Hoe klanten betalen via PayPal
+
+Zodra de integratie actief is, verschijnt een knop **Betalen met PayPal** op elke factuur die u verstuurt. Uw klant klikt op de knop, meldt zich aan bij hun PayPal-account (of betaalt als gast, afhankelijk van hun regio) en voltooit de betaling. AgencyHandy werkt de factuurstatus automatisch bij wanneer de betaling door PayPal wordt bevestigd.
+
+## Ondersteunde valuta
+
+AgencyHandy ondersteunt de volgende valuta voor PayPal-betalingen:
+
+| Regio | Valuta |
+|---|---|
+| Amerika | USD, CAD, BRL, MXN |
+| Europa | EUR, GBP, CHF, NOK, SEK, DKK, PLN, CZK, HUF |
+| Azië-Pacific | AUD, NZD, JPY, HKD, SGD, MYR, PHP, THB, TWD |
+| Midden-Oosten / Overig | ILS, CNY |
+
+<Warning>
+  Sommige valuta hebben beperkingen:
+  - **JPY** en enkele anderen ondersteunen geen decimale bedragen — vermijd fractionele factuurtotalen.
+  - **BRL** is alleen beschikbaar voor Braziliaanse PayPal-accounts. Als uw account niet in Brazilië is gevestigd, worden BRL-betalingen automatisch omgezet naar uw primaire valuta.
+  - Bepaalde valuta zijn alleen beschikbaar voor accounts in het betreffende land. Controleer of de valuta van uw account overeenkomt met de valuta van uw factuur om fouten te voorkomen.
+</Warning>
+
+<Note>
+  PayPal rekent eigen conversiekosten en spreads wanneer er valutaconversie plaatsvindt. Dit wordt niet beheerd door AgencyHandy.
+</Note>
+
+## De integratie testen
+
+Voer een snelle test uit voordat u PayPal gebruikt voor echte klantfacturen:
+
+1. Maak een testfactuur aan in AgencyHandy met een [ondersteunde valuta](#ondersteunde-valuta).
+2. Stuur de factuur naar een secundair PayPal-account dat u beheert.
+3. Voltooi de betaling vanuit het secundaire account.
+4. Ga terug naar AgencyHandy en bevestig dat de factuurstatus is bijgewerkt naar **Betaald** en dat het bedrag zichtbaar is in uw PayPal-account.

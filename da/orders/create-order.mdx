@@ -1,0 +1,143 @@
+---
+title: "Sådan opretter, redigerer og sletter du ordrer i AgencyHandy"
+sidebarTitle: "Opret ordre"
+description: "Trin-for-trin vejledning til at oprette, redigere og slette ordrer i AgencyHandy — herunder rollekrav, formularfelter og statusovergange."
+---
+
+At oprette en ordre i AgencyHandy giver dig et struktureret arbejdsområde til at levere en ydelse til en klient. Du udfylder de vigtigste oplysninger på forhånd — klient, ydelse, prissætning, datoer og et projektbriefing — og alt andet, fra opgaver til diskussioner, udgår fra den ene post. Denne side guider dig igennem at oprette en ordre fra bunden, opdatere den efterfølgende, ændre dens status og slette den, når den ikke længere er nødvendig.
+
+## Krav
+
+- Du skal være logget ind på AgencyHandy.
+- Du skal have rollen **Super Admin**, **Admin** eller **Project Manager** for at oprette eller redigere ordrer.
+- Kun **Super Admins** og **Admins** kan slette ordrer.
+
+## Opret en ny ordre
+
+<Steps>
+  <Step title="Naviger til Ordrer">
+    Klik på **Ordrer** i venstre sidepanel på dit AgencyHandy-dashboard.
+  </Step>
+
+  <Step title="Åbn oprettelsesformularen">
+    Klik på **+ Opret ny ordre** i øverste højre hjørne. En formular vises.
+  </Step>
+
+  <Step title="Udfyld ordreoplysningerne">
+    Udfyld felterne i formularen:
+
+    | Felt | Påkrævet | Bemærkninger |
+    |---|---|---|
+    | **Klient** | ✅ | Vælg fra din eksisterende klientliste |
+    | **Ydelse** | ✅ | Inkluderer både publicerede og ikke-publicerede ydelser |
+    | **Project Manager** | ❌ | Valgfrit; tildel en PM til at styre leveringen |
+    | **Antal** | ✅ | Antal enheder der bestilles |
+    | **Pris** | ✅ | Aftalt budget for ordren |
+    | **Startdato** | ✅ | Hvornår arbejdet begynder |
+    | **Forfaldsdato** | ✅ | Leveringsfrist |
+    | **Ordrebriefing** | ❌ | Instruktioner, krav eller referencebemærkninger til dit team |
+    | **Vedhæftede filer** | ❌ | Understøttende filer relevant for ordren |
+
+    <Tip>
+      Hvis den valgte ydelse har tilknyttede tilføjelser, vises et **Tilføjelse**-afsnit i formularen. Inkluder eventuelle relevante tilføjelser inden du sender.
+    </Tip>
+  </Step>
+
+  <Step title="Gennemgå dine indtastninger">
+    Dobbelttjek alle felter for nøjagtighed — især klient, ydelse, pris og forfaldsdato.
+  </Step>
+
+  <Step title="Send ordren">
+    Klik på **Opret** for at afslutte ordren. Du modtager en bekræftelsesmeddelelse, når den er oprettet.
+  </Step>
+</Steps>
+
+### Hvad sker der, efter du opretter en ordre
+
+- Alle Super Admins i din virksomhed får automatisk adgang til den nye ordre.
+- Klienten modtager en notifikation om, at deres ordre er oprettet.
+- Ordren vises på **Ordre**-listen med statussen **Afventer**.
+
+## Rediger eller opdater en ordre
+
+Du kan opdatere en ordre når som helst for at korrigere oplysninger, justere prissætning, ændre forfaldsdatoen eller imødekomme klienters ønsker.
+
+<Note>
+Du skal være **Super Admin**, **Admin** eller **Project Manager** for at redigere en ordre.
+</Note>
+
+<Steps>
+  <Step title="Åbn ordrelisten">
+    Naviger til **Ordrer** i venstre sidepanel.
+  </Step>
+
+  <Step title="Vælg den ordre, der skal redigeres">
+    Find den ordre du vil opdatere, og sæt flueben i afkrydsningsfeltet ved siden af den.
+  </Step>
+
+  <Step title="Aktiver redigeringsknappen">
+    En **Rediger**-knap vises i øverste højre hjørne. Klik på den for at åbne ordreoplysningerne i redigeringstilstand.
+  </Step>
+
+  <Step title="Rediger de nødvendige felter">
+    Opdater de felter, der skal ændres — klientoplysninger, ydelse, prissætning, datoer, briefing eller tildelt PM.
+  </Step>
+
+  <Step title="Gem dine ændringer">
+    Klik på **Opdater** for at gemme. En bekræftelsesmeddelelse bekræfter, at opdateringen lykkedes.
+  </Step>
+</Steps>
+
+## Skift en ordres status
+
+Ordrestatus afspejler, hvor et stykke arbejde befinder sig i din leveringspipeline. AgencyHandy definerer fem faste statusser — du kan ikke tilføje eller omdøbe dem.
+
+| Status | Betydning |
+|---|---|
+| **Afventer** | Oprettet, ikke påbegyndt endnu |
+| **Igangværende** | Arbejdes aktivt på |
+| **Til gennemgang** | Indsendt til gennemgang; afventer godkendelse |
+| **Fuldført** | Leveret og godkendt |
+| **Annulleret** | Ikke længere aktiv |
+
+<Note>
+Kun **Super Admins**, **Admins** og **Project Managers** kan ændre en ordres status. Medarbejdere og klienter kan ikke ændre status.
+</Note>
+
+For at opdatere statussen skal du åbne ordren og bruge statusvælgeren øverst på ordredetaljesiden. Vælg den nye status fra rullemenuen og bekræft.
+
+## Slet en ordre
+
+Sletning af en ordre fjerner den permanent fra systemet. Brug dette kun, når en ordre virkelig er forældet — for eksempel hvis den blev oprettet ved en fejl eller er et duplikat.
+
+<Warning>
+Sletning af ordrer er uigenkaldelig. Når du sletter en ordre, kan den ikke gendannes. Vær forsigtig.
+</Warning>
+
+<Note>
+Kun **Super Admins** og **Admins** kan slette ordrer.
+</Note>
+
+<Steps>
+  <Step title="Naviger til Ordrer">
+    Klik på **Ordrer** i venstre sidepanel.
+  </Step>
+
+  <Step title="Find den ordre, der skal slettes">
+    Rul eller søg efter den ordre, du vil fjerne fra listen.
+  </Step>
+
+  <Step title="Start sletningen">
+    Klik på **papirkurv-ikonet** tilknyttet ordren.
+  </Step>
+
+  <Step title="Bekræft sletningen">
+    En bekræftelsesdialog vises. Bekræft for permanent at slette ordren.
+  </Step>
+</Steps>
+
+Efter sletning skal du gennemgå dine resterende ordrer for at sikre, at alt er i orden. Den slettede post vises ikke længere på nogen liste eller rapport.
+
+## Tilføjelse af teammedlemmer til en ordre
+
+Super Admins, Admins og PM'er kan til enhver tid tilføje medarbejdere til en ordre. Når et teammedlem tilføjes, modtager de en notifikation i appen. Tildelte medarbejdere får indsigt i ordren og dens opgaver, men de kan ikke administrere selve ordren (redigere oplysninger, ændre status eller slette den).

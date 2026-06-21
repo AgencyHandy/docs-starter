@@ -1,0 +1,290 @@
+---
+title: "Mijoz portallarini, kirish nazoratini va soliq stavkalarini sozlash"
+sidebarTitle: "Portallar"
+description: "AgencyHandy'da mijozlarning kirish va ro'yxatdan o'tish sahifalarini brendlang, yon panelning ko'rinishini rol bo'yicha boshqaring va hisob-fakturalar hamda to'lov uchun soliq stavkalarini sozlang."
+---
+
+AgencyHandy sizga mijozlaringiz ko'rgan va boshidan kechiradigan narsalar ustidan chuqur nazorat imkonini beradi — birinchi marta kirishda ochiladigan sahifadan tortib, kirganidan keyin qaysi bo'limlarda harakatlanishi mumkinligigacha. Ushbu sahifa to'rtta o'zaro bog'liq konfiguratsiya sohasini qamrab oladi: **Kirish portali**, **Ro'yxatdan o'tish portali**, **Yon panel va kirish nazorati** va **Soliq stavkalari**. Birgalikda ushbu sozlamalar ishchi fazodagi har bir foydalanuvchi uchun sayqallangan va rolga mos tajriba yaratishga imkon beradi.
+
+<Note>
+  Ushbu sahifadagi barcha sozlamalar **Super Admin** yoki **Admin** kirish huquqini talab qiladi. Har bir bo'limga kirish uchun chap yon paneldagi **Ishchi fazo konfiguratsiyasi** bo'limiga o'ting.
+</Note>
+
+---
+
+<Tabs>
+  <Tab title="Kirish portali">
+    ## Kirish portali
+
+    Kirish portali — bu mijozlar va jamoa a'zolari AgencyHandy ishchi fazongizga kirganlarida ko'radigan login sahifasi. Uni moslash mijozlarning birinchi taassurotlari to'liq brendga mos bo'lishini ta'minlaydi — agentligingizning tasvirlari, sarlavhasi va xabari bilan.
+
+    ### Nimalарni moslashtirishingiz mumkin
+
+    | Element      | Tavsif                                               | Chegara                   |
+    |--------------|------------------------------------------------------|---------------------------|
+    | **Sarlavha** | Login sahifasining yuqori qismida ko'rsatiladigan asosiy nom | Maksimal 120 belgi   |
+    | **Rasm**     | Sahifada ko'rsatiladigan brendlangan foto yoki illyustratsiya | PNG, JPG, JPEG — maks 5 MB |
+    | **Qo'shimcha matn** | Login maydonlari ostidagi qisqa xabar        | Maksimal 300 belgi        |
+
+    ### Kirish portalini moslash bosqichlari
+
+    <Steps>
+      <Step title="Kirish portali sozlamalarini oching">
+        Chap navigatsiyada **Ishchi fazo konfiguratsiyasi** bo'limiga o'ting, so'ng pastki menyudan **Kirish portali** ni tanlang.
+      </Step>
+      <Step title="Maxsus sarlavha kiriting">
+        **Sarlavha** maydoniga kerakli sarlavhangizni yozing. Qisqa va tegishli qiling — masalan, _"[Agentlik nomi]ga xush kelibsiz"_ yoki _"Mijoz portalingiz."_ Maksimal uzunlik 120 belgi.
+      </Step>
+      <Step title="Brendlangan rasm yuklang">
+        Kirish sahifasiga vizual element qo'shish uchun yuklash maydonini bosing yoki rasm faylini (PNG, JPG yoki JPEG, maksimal 5 MB) sudrab tashlang. Ushbu rasm odatda login formasi yonida ko'rinadi.
+
+        <Tip>
+          Agentligingizni ifodalovchi yuqori sifatli rasmdan foydalaning — jamoa fotosi, toza brendli illyustratsiya yoki professional fon. Yuklash xatolarini oldini olish uchun fayl hajmi 5 MB dan kam bo'lishiga ishonch hosil qiling.
+        </Tip>
+      </Step>
+      <Step title="Qo'shimcha matn qo'shing">
+        **Qo'shimcha matn** maydoniga login maydonlari ostida ko'rinadigan qisqa xabar yozing — masalan, xush kelibsiz xabari, qo'llab-quvvatlash kontakti yoki qisqa shior. 300 belgidan kam saqlang.
+      </Step>
+      <Step title="Ko'rib chiqing va saqlang">
+        Ko'rinish yordamida kirish sahifasi tartibini ko'rib chiqing. Qanoatlangach, o'zgarishlarni qo'llash uchun **Saqlash** (yoki **Yangilash**) tugmasini bosing. O'zgarishlar darhol kuchga kiradi.
+      </Step>
+    </Steps>
+
+    ### Standart sozlamalarni tiklash
+
+    Barcha moslashtirishlarni olib tashlash va asl AgencyHandy kirish sahifasini tiklash uchun Kirish portali sahifasidagi **Standart sozlamalarni tiklash** tugmasini bosing.
+
+    <Warning>
+      Standartlarga tiklash qaytarib bo'lmaydi. Barcha maxsus sarlavhalar, rasmlar va qo'shimcha matnlar doimiy ravishda o'chiriladi. Ishonchingiz bo'lmasa **Bekor qilish** tugmasini bosing — saqlanmagan o'zgarishlar tashlab ketiladi va joriy saqlangan sozlamalar saqlanib qoladi.
+    </Warning>
+
+    ### Eng yaxshi amaliyotlar
+
+    - Sarlavhani qisqa va xush kelibsizga o'xshash qiling — mijozlar kirishdan oldin ko'radi, shuning uchun uni ishontiruvchi qiling.
+    - Agentligingizni ifodalovchi professional rasmdan foydalaning. Brendingizdan uzilib qolgan umumiy stock fotodan qoching.
+    - Saqlashdan oldin turli ekran o'lchamlarida ko'rib chiqing, shunda rasm va matn tartibi to'g'ri ko'rinishiga ishonch hosil qiling.
+    - Agar rasm yuklanmasa, u format (PNG, JPG, JPEG) va hajm (5 MB dan kam) talablariga javob berishini tasdiqlang.
+  </Tab>
+
+  <Tab title="Ro'yxatdan o'tish portali">
+    ## Ro'yxatdan o'tish portali
+
+    Ro'yxatdan o'tish portali — bu yangi mijozlar ishchi fazongizda hisob yaratayotganda tushadigan ro'yxatdan o'tish sahifasi. Uni moslash potensial mijozning agentligingiz platformasi bilan birinchi muloqotidan boshlab izchil brendlangan tajriba yaratadi.
+
+    ### Nimalарni moslashtirishingiz mumkin
+
+    | Element      | Tavsif                                                  | Chegara                   |
+    |--------------|---------------------------------------------------------|---------------------------|
+    | **Sarlavha** | Ro'yxatdan o'tish sahifasining yuqori qismida ko'rsatiladigan asosiy nom | Maksimal 120 belgi |
+    | **Rasm**     | Sahifada ko'rsatiladigan brendlangan foto yoki illyustratsiya | PNG, JPG, JPEG — maks 5 MB |
+    | **Qo'shimcha matn** | Ro'yxatdan o'tish maydonlari ostidagi qisqa xabar  | Maksimal 300 belgi        |
+
+    ### Ro'yxatdan o'tish portalini moslash bosqichlari
+
+    <Steps>
+      <Step title="Ro'yxatdan o'tish portali sozlamalarini oching">
+        Chap navigatsiyada **Ishchi fazo konfiguratsiyasi** bo'limiga o'ting, so'ng pastki menyudan **Ro'yxatdan o'tish portali** ni tanlang.
+      </Step>
+      <Step title="Maxsus sarlavha kiriting">
+        Yangi mijozlarni kutib oladigan sarlavhani **Sarlavha** maydoniga yozing. Masalan, _"[Agentlik nomi] bilan boshlang"_ yoki _"Mijoz hisobingizni yarating."_ Maksimal 120 belgi.
+      </Step>
+      <Step title="Brendlangan rasm yuklang">
+        Yuklash maydonini bosing yoki rasm faylini (PNG, JPG yoki JPEG, maksimal 5 MB) sudrab tashlang. Ushbu rasm ro'yxatdan o'tish sahifasida ro'yxatdan o'tish formasi yonida ko'rsatiladi.
+
+        <Tip>
+          Ikki sahifada uyg'un tajriba yaratish uchun Kirish va Ro'yxatdan o'tish portal rasmlarida bir xil vizual uslub va rang palitrasidan foydalaning.
+        </Tip>
+      </Step>
+      <Step title="Qo'shimcha matn qo'shing">
+        **Qo'shimcha matn** maydoniga qisqa qo'llab-quvvatlovchi xabar yozing — masalan, ro'yxatdan o'tgandan keyin nima kutish kerakligi haqida ko'rsatmalar yoki qisqa qadriyat taklifi. Maksimal 300 belgi.
+      </Step>
+      <Step title="Ko'rib chiqing va saqlang">
+        Ko'rinish opsiyasidan foydalanib ro'yxatdan o'tish sahifasini ko'rib chiqing. O'zgarishlarni darhol qo'llash uchun **Saqlash** (yoki **Yangilash**) tugmasini bosing.
+      </Step>
+    </Steps>
+
+    ### Standart sozlamalarni tiklash
+
+    Barcha moslashtirishlarni olib tashlash va asl AgencyHandy ro'yxatdan o'tish sahifasini tiklash uchun Ro'yxatdan o'tish portali sahifasidagi **Standart sozlamalarni tiklash** tugmasini bosing.
+
+    <Warning>
+      Ushbu amal bekor qilinishi mumkin emas. Barcha maxsus sarlavha, rasm va qo'shimcha matn konfiguratsiyalari doimiy ravishda o'chiriladi.
+    </Warning>
+
+    ### Eng yaxshi amaliyotlar
+
+    - Ro'yxatdan o'tish sarlavhasining ohangini umumiy mijoz muloqot uslubingizga mos qiling — professional, do'stona yoki ikkisi ham.
+    - Qo'shimcha matnni maqsadga qaratilgan saqlang: yangi mijozlarga ro'yxatdan o'tgandan keyin nima bo'lishini ayting (masalan, _"Ro'yxatdan o'tganingizdan so'ng, jamoamiz 24 soat ichida sizga xush kelibsiz xatini yuboradi."_).
+    - O'zgarishlarni saqlashdan keyin sahifa kutilganidek ko'rinishi va ishlashini tasdiqlash uchun ro'yxatdan o'tish jarayonini o'zingiz sinab ko'ring.
+  </Tab>
+
+  <Tab title="Yon panel va kirish">
+    ## Yon panel va kirish nazorati
+
+    Yon panel va kirish sozlamalari har bir foydalanuvchi rolining chap navigatsiya menyusida nima ko'rishini aniq nazorat qilishga imkon beradi. Menyu elementlarini agentligingiz terminologiyasiga mos ravishda qayta nomlashingiz, standart ikonkalarni maxsus narsalarga almashtиrishingiz va har qanday menyu bo'limining ko'rinishini rol bo'yicha o'zgartиrishingiz mumkin. Natijada har bir kiriб чиқuvchi shaxs uchun tozaroq, maqsadga yo'naltirilgan interfeys yaratiladi.
+
+    ### Sozlashingiz mumkin bo'lgan rollar
+
+    - Mijoz
+    - Super Admin
+    - Admin
+    - Menejer
+    - Ijrochi
+    - Maxsus (Rollar va ruxsatlar bo'limida yaratgan maxsus rollaringiz)
+
+    ### Yon panel menyu elementlarini moslash bosqichlari
+
+    <Steps>
+      <Step title="Yon panel va kirish sozlamalarini oching">
+        **Ishchi fazo konfiguratsiyasi** bo'limiga o'ting, so'ng sozlamalar menyusidan **Yon panel va kirish** ni tanlang.
+      </Step>
+      <Step title="Moslash tugmasini bosing">
+        Panel yuqori qismidagi **Moslash** tugmasini bosing. Joriy yon panel menyu elementlarining to'liq ro'yxati **Asosiy** kategoriya ostida ko'rinadi.
+      </Step>
+      <Step title="Menyu elementini qayta nomlang">
+        Istalgan menyu elementining matn maydonini bosing va yangi yorliqni yozing. Masalan, "Boshqaruv paneli" ni "Ko'rinish" yoki "CRM" ni "Kontaktlar" ga o'zгartiring. Yangi nomni qo'llash uchun **Saqlash** tugmasini bosing.
+      </Step>
+      <Step title="Menyu ikonkasini o'zgartiring">
+        Menyu elementi nomi yonidagi ikonkani bosing. Ikonkalar to'plamini o'z ichiga olgan oyna ochiladi — kutubxonadan birini tanlang yoki o'zingizning brendlangan ikonkangizni ishlatish uchun 32×32 px o'lchamidagi maxsus rasm yuklang. Qo'llash uchun **Saqlash** tugmasini bosing.
+      </Step>
+    </Steps>
+
+    ### Rolga asoslangan ko'rinishni sozlash bosqichlari
+
+    <Steps>
+      <Step title="Kirishni tahrirlash tugmasini bosing">
+        **Kirishni tahrirlash** tugmasini bosing (**Moslash** tugmasi yonida). Har bir mavjud rol uchun yorliqlarni ko'rasiz.
+      </Step>
+      <Step title="Rol tanlang">
+        Konfiguratsiya qilmoqchi bo'lgan rol yorlig'ini bosing — masalan, **Mijoz**.
+      </Step>
+      <Step title="Menyu elementi ko'rinishini o'zgartiring">
+        Ro'yxatdagi har bir menyu elementi uchun uni tanlangan rol uchun ko'rsatish yoki yashirish uchun o'zgartgichdan foydalaning. Masalan, **Hisob-fakturalar** va **Obunalar** ni Mijozlardan yashirib, Adminlar va Menejerlarga ko'rinadigan holda saqlashingiz mumkin.
+      </Step>
+      <Step title="O'zgarishlaringizni saqlang">
+        **Saqlash** tugmasini bosing. Yangilangan ko'rinish sozlamalari darhol kuchga kiradi — foydalanuvchilar o'zgarishlarni keyingi sahifaga o'tganlarida yoki qayta kirganlaridan so'ng ko'rishadi.
+      </Step>
+      <Step title="Kerak bo'lsa standartlarga tiklang">
+        O'sha rol uchun asl ko'rinish sozlamalarini tiklash uchun istalgan rolning yorlig'ida **Standartga tiklash** tugmasini bosing.
+      </Step>
+    </Steps>
+
+    <Tip>
+      Toza, minimal yon panel mijoz tajribasini yaxshilaydi. Mijozlarga faqat ularga kerak bo'lganni ko'rsatish — masalan, **Boshqaruv paneli**, **Buyurtmalar** va **Xabarlar** — chalkashlikni kamaytiradi va ularning faqat ichki bo'limlar bilan tanishib qolishidan saqlaydi.
+    </Tip>
+
+    ### Rol konfiguratsiyasi namunalari
+
+    | Rol         | Tavsiya etilgan ko'rinadigan bo'limlar                    |
+    |-------------|-----------------------------------------------------------|
+    | Mijoz       | Boshqaruv paneli, Buyurtmalar, Xabarlar, Hisob-fakturalar (kerak bo'lsa) |
+    | Menejer     | CRM, Loyihalar, Ish jadvali, Vazifalar                    |
+    | Ijrochi     | Boshqaruv paneli, Vazifalar, Loyihalar, Xabarlar          |
+    | Super Admin | Barcha bo'limlar (cheklovlarsiz)                          |
+
+    ### Muhim eslatmalar
+
+    - **O'zgarishlar zudlik bilan:** Rol ko'rinishini yangilash foydalanuvchilar yangilashdan yoki qayta kirishdan keyin darhol aks etadi.
+    - **Eng yuqori ruxsatli rol ustun keladi:** Agar foydalanuvchi bir nechta rolga ega bo'lsa, eng keng kirishga ega rol ustun turadi.
+    - **Maxsus ikonkalar:** Yon paneldagi agentligingizning brendli vizuallariga mos 32×32 px rasmlar yuklang.
+    - **Nomlanish izchilligi:** Butun jamoangiz tushunadigan aniq, izchil nomlanish konventsiyalaridan foydalaning — yangi jamoa a'zolari tushunmaydigan qisqartmalar yoki ichki jargondan qoching.
+  </Tab>
+
+  <Tab title="Soliq stavkalari">
+    ## Soliq stavkalari
+
+    Soliq stavkalari funksiyasi xizmatlar, obunalar va hisob-fakturalarda soliq konfiguratsiyalarini yaratish, boshqarish va qo'llash imkonini beradi. QQS, GST, Savdo solig'i va boshqalar kabi bir nechta soliq turlarini — mamlakatga va shtatga xos stavkalar bilan, inkluziv va eksklyuziv narxlash modellari uchun qo'llab-quvvatlash bilan va mijozning joylashuviga qarab to'lovda avtomatik qo'llash bilan sozlashingiz mumkin.
+
+    <Note>
+      Faqat **Super Adminlar** va **Adminlar** soliq konfiguratsiyalarini yaratish, tahrirlash yoki o'chirish huquqiga ega.
+    </Note>
+
+    ### Bir qarashda soliq tushunchalari
+
+    | Tushuncha       | Ta'rif                                                                                              |
+    |-----------------|-----------------------------------------------------------------------------------------------------|
+    | **Eksklyuziv**  | Soliq to'lovda ko'rsatilgan narxga qo'shimcha qo'shiladi (masalan, $100 + 10% soliq = jami $110)   |
+    | **Inkluziv**    | Soliq mijozga ko'rsatilgan narxga allaqachon kiritilgan (masalan, jami $110 allaqachon soliqni o'z ichiga oladi) |
+    | **Soliq ID**    | Hisob-fakturalarda ko'rsatiladigan agentligingizning biznes soliq identifikatsiya raqami             |
+
+    ### 1-qadam: Soliq stavkasini yarating
+
+    <Steps>
+      <Step title="Soliq stavkalarini oching">
+        **Ishchi fazo konfiguratsiyasi** bo'limiga o'ting, so'ng **Soliq stavkalari** yorlig'ini bosing.
+      </Step>
+      <Step title="+ Yangi soliq tugmasini bosing">
+        **+ Yangi soliq** tugmasini bosing. Forma paydo bo'ladi.
+      </Step>
+      <Step title="Soliq ma'lumotlarini to'ldiring">
+        Quyidagi maydonlarni to'ldiring:
+
+        - **Sarlavha / Soliq turi** *(majburiy)*: Tavsifli nom kiriting, masalan, Standart QQS, Kamaytirilgan GST yoki AQSh Savdo solig'i. Maksimal 255 belgi.
+        - **Soliq ID** *(ixtiyoriy)*: Agentligingizning biznes soliq identifikatsiya raqami. Maksimal 20 belgi.
+        - **Asosiy mamlakat**: Ushbu soliq qo'llaniladigan asosiy mamlakatni tanlang.
+        - **Asosiy mamlakat umumiy soliq stavkasi %** *(ixtiyoriy)*: Asosiy mamlakatdagi standart stavka.
+        - **Mamlakatga xos stavkalar** *(ixtiyoriy)*: Ixtiyoriy shtat, pochta indeksi va foiz bilan har bir mamlakat uchun stavkalar qo'shing. Bu bir nechta soliq yurisdiktsiyalarida mijozlarga xizmat ko'rsatadigan agentliklar uchun foydali.
+      </Step>
+      <Step title="Holatini belgilang">
+        Soliqni xizmatlar va hisob-fakturalarda darhol ishlatish uchun **Faol** ga o'zgartiring. Konfiguratsiyani hali yangi xaridlarga qo'llamasdan saqlash uchun **Nofaol** ga o'rnating.
+      </Step>
+      <Step title="Saqlash">
+        **Saqlash** tugmasini bosing. Soliq Soliq stavkalari ro'yxatida paydo bo'ladi va endi xizmatlarga bog'lash uchun mavjud.
+      </Step>
+    </Steps>
+
+    <Tip>
+      Soliq stavkasi foizlarida 4 ta kasr o'rinni qo'llab-quvvatlashingiz mumkin. 0% soliq stavkasi to'g'ri — soliq ko'rsatilishi kerak, lekin nol bo'lishi kerak bo'lgan nol baholanadigan elementlar yoki muvofiqlashtirishlar uchun foydalaning.
+    </Tip>
+
+    ### 2-qadam: Soliqlarni xizmatlarga bog'lash
+
+    <Steps>
+      <Step title="Tahrirlash uchun xizmatni oching">
+        **Xizmatlar** bo'limiga o'ting va yangi xizmat yarating yoki mavjudini tahrirlang.
+      </Step>
+      <Step title="Qo'shimcha ma'lumot bo'limiga o'ting">
+        Xizmat sozlash sehrgarining 3-bosqichiga (Qo'shimcha ma'lumot) o'ting.
+      </Step>
+      <Step title="Xizmatga soliq qo'shing">
+        **Soliq qo'shish** tugmasini bosing va sozlangan ro'yxatingizdan bir yoki bir nechta soliq turini tanlang. Soliqlar ushbu xizmat uchun **inkluziv** yoki **eksklyuziv** qilib qo'llanishini tanlang. Ushbu sozlama xizmatdagi barcha bog'liq soliqlarga, shu jumladan o'rnatish to'lovlari va qo'shimchalarga ham qo'llanadi.
+      </Step>
+    </Steps>
+
+    ### 3-qadam: Soliqlar qanday qo'llanadi
+
+    Soliqlar **to'lovda avtomatik** yoki **hisob-fakturalarda qo'lda** qo'llanishi mumkin:
+
+    **Avtomatik (To'lov)**
+    - Xizmatga bog'liq soliqlar mijozning hisoblash joylashuviga qarab avtomatik hisoblanadi.
+    - Joylashuvga asoslangan soliq qo'llanishi uchun mijoz to'lovda mamlakat, shtat va pochta indeksini ko'rsatishi kerak.
+    - Stripe Hindiston hisoblarida to'liq joylashuv ma'lumotlari (mamlakat, shtat, pochta indeksi) majburiy.
+
+    **Qo'lda (Hisob-faktura)**
+    - Hisob-fakturani qo'lda yaratiyganda, qaysi soliqlarni qo'llashni tanlash uchun **Soliq qo'shish** tugmasini bosing.
+    - Hisoblash manzili maydonlari avtomatik to'ldiriladi.
+    - Qo'lda hisob-fakturalarga faqat **eksklyuziv soliqlar** qo'llanishi mumkin — inkluziv soliqlar bu oqimda qo'llab-quvvatlanmaydi.
+
+    ### Hisob-fakturada soliqni ko'rsatish
+
+    Soliq o'z ichiga olgan har bir hisob-fakturada quyidagi ma'lumotlar ko'rsatiladi:
+
+    - **Soliq nomi** — kiritgan yorliq (masalan, QQS, GST)
+    - **Soliq foizi** — qo'llaniladigan stavka (masalan, 15%)
+    - **Soliq miqdori** — hisoblab chiqarilgan to'liq miqdor
+
+    ### Mavjud soliq stavkalarini boshqarish
+
+    - **Soliqni tahrirlash:** Sarlavha, stavka yoki mamlakat qoidalarini yangilash uchun ro'yxatdagi soliq yozuvini bosing. Yangilanishlar faqat keyingi hisob-fakturalar va xaridlarga qo'llanadi.
+    - **Soliqni o'chirish:** O'chirilgan soliqlar yangi xaridlar yoki obunalarga qo'llanmaydi, lekin ularni o'z ichiga olgan mavjud hisob-fakturalarga ta'sir etmaydi.
+    - **Soliqni o'chirish (nofaol):** Konfiguratsiyani o'chirmasdan yangi xaridlarga qo'llanishini to'xtatish uchun soliqni **Nofaol** ga o'rnating.
+
+    ### Muhim eslatmalar
+
+    - **Kupon chegirmalari soliqdan oldin qo'llanadi:** Mijoz chegirma kuponi ishlatganda, soliq asl narxdan emas, chegirmali narxdan hisoblanadi.
+    - **Xizmat uchun bir nechta soliq:** Bitta xizmatga bir nechta soliq biriktirish mumkin (masalan, bir vaqtda QQS + GST).
+    - **Soliq qo'shimcha va o'rnatish to'lovlariga qo'llanadi:** Agar xizmatda o'rnatish to'lovi yoki qo'shimchalar bo'lsa, soliq ushbu miqdorlarga ham qo'llanadi.
+    - **Mijoz joylashuvi oldindan to'ldiriladi:** Agar mijozda profilida saqlangan hisoblash mamlakati va shtati bo'lsa, ushbu maydonlar to'lovda oldindan to'ldiriladi. Biroq, to'lov paytida joylashuvni tahrirlash mijoz profilini **yangilamaydi**.
+    - **Pochta indeksiga asoslangan shtat aniqlash:** AQSh mijozlari uchun tizim pochta indeksidan shtatni avtomatik aniqlashi va agar sozlangan bo'lsa, to'g'ri mintaqaviy soliqni qo'llashi mumkin.
+  </Tab>
+</Tabs>

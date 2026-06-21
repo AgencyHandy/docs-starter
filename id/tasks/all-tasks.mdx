@@ -1,0 +1,126 @@
+---
+title: "Semua Tugas — Manajemen Tugas Terpusat di AgencyHandy"
+sidebarTitle: "Semua Tugas"
+description: "Gunakan halaman Semua Tugas untuk tampilan real-time yang difilter berdasarkan peran dari setiap tugas di seluruh order yang sedang berjalan dan dalam tinjauan — dengan pencarian, filter, dan pengurutan."
+---
+
+Halaman Semua Tugas di AgencyHandy memberi Anda tampilan tunggal dan terpusat dari setiap tugas yang termasuk dalam alur kerja aktif di seluruh agensi Anda. Daripada mencari melalui order individual, Anda dapat melihat semua tugas yang relevan di satu tempat, memfilternya berdasarkan penanggung jawab, prioritas, atau tanggal, dan membuat edit langsung dari daftar. Visibilitas secara otomatis dibatasi sesuai peran Anda — Super Admin melihat segalanya, Manager melihat order yang ditugaskan kepada mereka, dan Employee hanya melihat tugas mereka sendiri.
+
+## Mengakses Halaman Semua Tugas
+
+1. Masuk ke akun AgencyHandy Anda.
+2. Klik **Tasks** di bilah sisi kiri.
+3. Pilih **All Tasks** untuk membuka dasbor tugas terpusat.
+
+<Note>
+  Halaman Semua Tugas hanya menampilkan tugas dari order yang berstatus **Ongoing** atau **In Review**. Tugas yang terkait dengan order dalam status lain (misalnya, Completed, Pending) tidak muncul di sini.
+</Note>
+
+## Visibilitas Tugas Berdasarkan Peran
+
+Apa yang Anda lihat di halaman Semua Tugas sepenuhnya bergantung pada peran Anda.
+
+| Peran | Yang Mereka Lihat |
+|------|---------------|
+| **Super Admin / Admin** | Semua tugas di setiap order, tim, dan status |
+| **Project Manager (PM)** | Hanya tugas dari order di mana mereka ditugaskan sebagai Manager |
+| **Employee / Penanggung Jawab** | Hanya tugas yang langsung ditugaskan kepada mereka — meskipun rekan satu tim bekerja pada order yang sama |
+
+<Tip>
+  Jika PM tidak dapat menemukan tugas yang mereka harapkan dilihat, konfirmasi bahwa mereka ditugaskan sebagai Manager pada order yang relevan. PM tidak melihat tugas kecuali mereka adalah Manager yang ditugaskan untuk order tersebut.
+</Tip>
+
+## Kapan Tugas Muncul di Halaman Ini
+
+Tugas muncul di halaman Semua Tugas ketika kondisi-kondisi ini terpenuhi:
+
+<CardGroup cols={2}>
+  <Card title="Order yang memicu visibilitas tugas" icon="circle-check">
+    - Order manual (sekali atau langganan) dibuat
+    - Order katalog melalui Stripe atau metode pembayaran manual ditempatkan
+    - Proposal diterima oleh agensi
+  </Card>
+  <Card title="Order yang menyembunyikan tugas" icon="eye-slash">
+    - Tugas yang diminta klien yang belum diterima agensi
+    - Order percobaan yang belum diterima agensi
+    - Order dengan status tertunda yang menunggu konfirmasi pembayaran bank manual
+  </Card>
+</CardGroup>
+
+## Pencarian, Filter, dan Pengurutan
+
+Halaman Semua Tugas menyertakan serangkaian kontrol lengkap untuk membantu Anda menemukan apa yang Anda butuhkan.
+
+### Pencarian
+
+Gunakan bilah pencarian untuk menemukan tugas berdasarkan nama, penanggung jawab, atau order terkait. Hasil diperbarui secara real-time saat Anda mengetik.
+
+### Filter
+
+Klik **Filter → + Add Filter** untuk membuka panel filter. Anda dapat menggabungkan beberapa filter untuk hasil yang tepat:
+
+| Filter | Fungsinya |
+|--------|--------------|
+| **Order ID** | Tampilkan tugas yang terhubung ke nomor order tertentu |
+| **Assignee** | Tampilkan tugas yang ditugaskan ke anggota tim tertentu |
+| **Status** | Filter berdasarkan kemajuan tugas: Pending, In Progress, Review, Done, dll. |
+| **Priority** | Fokus pada tugas dengan prioritas Tinggi, Sedang, atau Rendah |
+| **Label** | Persempit berdasarkan label atau kategori tugas |
+| **Kick Off Date** | Tampilkan tugas yang dimulai pada atau setelah tanggal tertentu |
+| **End Date** | Tampilkan tugas yang jatuh tempo pada tanggal tertentu |
+
+<Note>
+  Filter hanya tersedia di halaman Semua Tugas. Filter bertahan selama sesi browser Anda tetapi direset saat halaman diperbarui. Filter hanya memengaruhi tampilan Anda dan tidak mengubah apa yang dilihat pengguna lain.
+</Note>
+
+Untuk menghapus semua filter, klik **Clear Filters** untuk kembali ke daftar lengkap yang tidak difilter.
+
+### Pengurutan
+
+Urutkan daftar tugas berdasarkan:
+- **Tanggal jatuh tempo** — tampilkan tugas yang akan datang atau sudah melewati batas waktu
+- **Prioritas** — bawa tugas paling kritis ke atas
+- **Waktu pembuatan** — lihat tugas yang baru ditambahkan terlebih dahulu
+
+### Navigasi Breadcrumb
+
+Gunakan jejak breadcrumb di bagian atas halaman untuk mempertahankan konteks saat Anda menavigasi antara subtugas, daftar tugas, dan order induk. Ini sangat membantu saat mendalami tugas tertentu dan kemudian perlu kembali ke daftar yang lebih luas.
+
+## Mengedit Tugas
+
+Anda dapat memodifikasi tugas di halaman Semua Tugas dengan dua cara:
+
+<Tabs>
+  <Tab title="Pengeditan Langsung">
+    Klik langsung ke kolom yang dapat diedit dalam baris tugas — seperti status, penanggung jawab, atau tanggal jatuh tempo — dan buat perubahan Anda tanpa meninggalkan tampilan daftar. Ini adalah opsi tercepat untuk pembaruan cepat.
+  </Tab>
+  <Tab title="Pengeditan Modal">
+    Klik nama tugas untuk membuka modal detail tugas lengkap. Dari sini Anda dapat memperbarui semua properti tugas, menambahkan catatan, melihat subtugas, dan melihat riwayat tugas lengkap. Gunakan ini untuk pengeditan yang lebih menyeluruh atau ketika Anda membutuhkan konteks.
+  </Tab>
+</Tabs>
+
+## Aturan Penghapusan Tugas
+
+Tugas di halaman Semua Tugas terhubung langsung ke order induknya.
+
+- Ketika **order dihapus**, semua tugas yang terkait dengan order tersebut **secara otomatis dan permanen dihapus** dari halaman Semua Tugas.
+- Penghapusan ini memengaruhi semua peran pengguna — tidak ada yang dapat melihat tugas tersebut setelah order dihapus.
+- **Tidak ada opsi pemulihan** untuk tugas yang dihapus melalui penghapusan order.
+
+<Warning>
+  Menghapus order secara permanen menghapus semua tugasnya. Pastikan riwayat tugas penting atau catatan hasil kerja disimpan di tempat lain sebelum menghapus order.
+</Warning>
+
+## Catatan Tambahan
+
+<Accordion title="Pembaruan real-time">
+  Perubahan pada order, penugasan tugas, atau status tugas tercermin secara real-time di halaman Semua Tugas. Jika rekan satu tim memperbarui tugas saat Anda membuka halaman, Anda akan melihat perubahannya tanpa perlu memperbarui halaman.
+</Accordion>
+
+<Accordion title="Tugas yang diminta klien">
+  Tugas yang dikirimkan oleh klien tidak muncul di halaman Semua Tugas hingga agensi secara eksplisit menerimanya. Hingga diterima, tugas-tugas ini tetap dalam keadaan tertunda dan tidak terlihat dalam tampilan terpusat.
+</Accordion>
+
+<Accordion title="Tugas dan status order">
+  Tugas hanya muncul untuk order dalam status Ongoing atau In Review. Jika order berpindah ke Completed atau dijeda, tugasnya tidak lagi ditampilkan di sini. Navigasi ke order spesifik untuk melihat tugas yang terkait dengan order di luar status ini.
+</Accordion>

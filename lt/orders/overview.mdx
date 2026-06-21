@@ -1,0 +1,91 @@
+---
+title: "Užsakymų apžvalga: kliento darbo valdymas AgencyHandy"
+sidebarTitle: "Apžvalga"
+description: "Supraskite, kaip veikia užsakymai AgencyHandy — būsenos, vaidmenys, užsakymų detalės, rankiniai užsakymai ir priedai nepaskelbtoms paslaugoms."
+---
+
+Užsakymai yra AgencyHandy operatyvinė stuburas. Užsakymas atspindi kliento prašymą dėl paslaugos ar produkto ir veikia kaip centrinė darbo erdvė, kurioje jūsų komanda seka progresą, valdo užduotis, keičiasi grįžtamuoju ryšiu ir pateikia rezultatus. Nesvarbu, ar klientas pateikia užsakymą per jūsų paskelbtą paslaugų katalogą, ar jūsų komanda jį sukuria rankiniu būdu, kiekvienas užsakymas eina per tą patį struktūrizuotą gyvavimo ciklą, kuris laikyti jūsų agentūrą organizuotą, o klientus — informuotus.
+
+## Ką sudaro užsakymas
+
+Kiekvienas užsakymas iš karto pateikia pagrindinę informaciją ir suteikia komandos nariams vieną vietą koordinuoti darbą:
+
+| Laukas | Aprašymas |
+|---|---|
+| **Užsakymo ID** | Automatiškai sugeneruotas unikalus kiekvieno užsakymo identifikatorius |
+| **Klientas** | Klientas, kuriam priklauso užsakymas |
+| **Paslauga** | Pristatoma paslauga |
+| **Projektų vadovas (PV)** | Komandos narys, atsakingas už pristatymą (neprivaloma) |
+| **Biudžetas** | Sutarta užsakymo kaina |
+| **Pradžios data** | Kada prasideda darbas |
+| **Terminas** | Užsakymo užbaigimo terminas |
+| **Užsakymo trumpinys** | Kliento instrukcijos, pastabos ir pridėti nuorodų failai |
+| **Užduotys** | Diskretūs darbo elementai, priskirti komandos nariams |
+| **Diskusijos** | Siūliniai pokalbiai tarp agentūros darbuotojų ir klientų |
+
+## Užsakymų būsenos
+
+Kiekvienas užsakymas juda per fiksuotą būsenų rinkinį. Šių būsenų negalima pridėti ar pervardyti.
+
+<Note>
+Tik Super administratoriai, Administratoriai ir Projektų vadovai gali keisti užsakymo būseną.
+</Note>
+
+| Būsena | Reikšmė |
+|---|---|
+| **Laukiama** | Užsakymas sukurtas ir laukia darbo pradžios |
+| **Vykdoma** | Aktyviai vykdomas darbas |
+| **Peržiūrima** | Pristatinėjami elementai pateikti ir laukia kliento arba vidinio peržiūros |
+| **Baigta** | Užsakymas visiškai pristatytas ir priimtas |
+| **Atšaukta** | Užsakymas atšauktas ir nebegalioja |
+
+## Prieiga pagal vaidmenį
+
+Skirtingi AgencyHandy vaidmenys turi skirtingas galimybes užsakymuose:
+
+| Vaidmuo | Gali kurti užsakymus | Gali redaguoti užsakymus | Gali ištrinti užsakymus | Gali keisti būseną | Gali pridėti užduotis | Gali pridėti komandos narius |
+|---|---|---|---|---|---|---|
+| **Super administratorius** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Administratorius** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Projektų vadovas (PV)** | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ |
+| **Darbuotojas** | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| **Klientas** | ❌ | ❌ | ❌ | ❌ | ✅ (tik užklausa) | ❌ |
+
+<Tip>
+Klientai gali siųsti grįžtamąjį ryšį ir dalyvauti diskusijose apie užsakymus. Darbuotojai, priskirti prie užsakymo, gali peržiūrėti ir dirbti su užduotimis, tačiau negali valdyti paties užsakymo.
+</Tip>
+
+## Ką galite daryti su užsakymais
+
+AgencyHandy suteikia jums visą įrankių rinkinį užsakymams valdyti per visą jų gyvavimo ciklą:
+
+- **Kurti užsakymus** klientams — tiek iš paskelbtų paslaugų, tiek rankiniu būdu dar kuriamoms paslaugoms
+- **Priimti ir atmesti** klientų pateiktus užsakymus, su galimybe nurodyti priežastį atmetant
+- **Peržiūrėti užsakymo detales**, įskaitant progresą, priskirtus komandos narius, pradžios ir terminų datas, biudžetą ir trumpinį
+- **Rikiuoti, filtruoti ir ieškoti** visų užsakymų pagal ID, būseną, kliento vardą ar kitus kriterijus
+- **Pridėti užduotis** tiesiogiai užsakymo viduje, kad sektumėte ir priskirtumėte diskretus darbo vienetus
+- **Pradėti diskusijas**, kad bendrautumėte su klientais ir komandos nariais kontekste
+
+## Rankiniai užsakymai nepaskelbtoms paslaugoms
+
+Nereikia apsiriboti tik paskelbtų paslaugų užsakymų kūrimu. Super administratoriai ir Administratoriai gali kurti rankinius užsakymus nepaskelbtoms paslaugoms — tai naudinga, kai paslauga vis dar kuriama, laikinai nepasiekiama arba siūloma konkrečiam klientui prieš oficialų paleidimą.
+
+Atidarę užsakymo kūrimo formą, **Paslaugos** išskleidžiamajame meniu rodomi tiek paskelbtos, tiek nepaskelbtos paslaugos, todėl galite pasirinkti tą, kuri taikoma. Visi kiti užsakymo laukai ir darbo eigos veikia taip pat kaip standartinis užsakymas.
+
+## Priedai rankiniuose užsakymuose
+
+Kuriant rankinį užsakymą, galite įtraukti **priedo paslaugas**, kad klientai gautų pritaikytus paketus, viršijančius pagrindinę paslaugą. Priedai turi būti sukurti iš anksto ir susieti su atitinkama paslauga dalyje **Formos**, prieš pasirodant kaip parinktis užsakymo formoje.
+
+<Note>
+Priedo pasirinkimas rodomas rankinėje užsakymo formoje tik tada, jei bent vienas priedas yra susietas su pasirinkta paslauga. Jei jo nematote, patikrinkite, ar jūsų priedas tinkamai susietas paslaugos konfigūracijoje.
+</Note>
+
+Pasirinkus paslaugą su susietais priedais, galite įtraukti tuos priedus prieš užbaiginat ir pateikiant užsakymą.
+
+## Pranešimai
+
+AgencyHandy automatiškai praneša tinkamiems žmonėms, kai užsakymai juda pirmyn:
+
+- Kai užsakymą sukuria PV, Administratorius arba Super administratorius, visi jūsų įmonės Super administratoriai gauna prieigą, o klientas gauna sukūrimo pranešimą.
+- Kai komandos narys pridedamas prie užsakymo, tas narys gauna pranešimą.
+- Kai užsakymo viduje sukuriamos užduotys, klientas gauna pranešimą.

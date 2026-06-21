@@ -1,0 +1,117 @@
+---
+title: "Personalice los esquemas de color de su espacio de trabajo de AgencyHandy"
+sidebarTitle: "Apariencia"
+description: "Aplique los colores de su marca a la barra lateral y la interfaz de AgencyHandy —color primario, fondo, texto y estados de hover— visibles al instante para todos los usuarios."
+---
+
+Los ajustes de Apariencia le dan control total sobre el aspecto de su espacio de trabajo de AgencyHandy. Puede alinear el esquema de color de la plataforma con la identidad de marca de su agencia personalizando el color primario, el fondo de la barra lateral, el color del texto de la barra lateral y el color de resaltado al pasar el cursor sobre los elementos de navegación de la barra lateral. Cada cambio que guarde surte efecto de inmediato en todo el espacio de trabajo para todos los usuarios, sin necesidad de actualizar la página.
+
+<Note>
+  Solo los **Super Admins** y los **Admins** pueden acceder a los ajustes de Apariencia y modificarlos. Si no ve esta opción en **Workspace Config**, pídale a su Super Admin que revise su rol.
+</Note>
+
+## Cómo acceder a los ajustes de Apariencia
+
+<Steps>
+  <Step title="Abra Workspace Config">
+    En el menú de navegación izquierdo, haga clic en **Workspace Config**.
+  </Step>
+  <Step title="Seleccione Appearance">
+    Haga clic en **Appearance** (a veces etiquetado como **Visual Settings**) en el submenú.
+  </Step>
+</Steps>
+
+---
+
+## Cómo personalizar cada elemento visual
+
+### Color primario
+
+El color primario se aplica a botones, enlaces activos, estados resaltados y elementos clave de la interfaz en toda la plataforma.
+
+- Elija un color que refleje la identidad central de su marca.
+- Este es el ajuste de color más relevante porque aparece en toda la interfaz.
+
+### Color de fondo de la barra lateral
+
+El fondo de la barra lateral establece el tono base del panel de navegación izquierdo.
+
+- Use un color que cree una separación visual clara entre la barra lateral y el área de contenido principal.
+- Los fondos oscuros con texto claro generalmente funcionan mejor para la legibilidad.
+
+### Color del texto de la barra lateral
+
+El color del texto de la barra lateral controla el color de las etiquetas de todos los elementos de navegación del menú izquierdo.
+
+- Elija siempre un color que tenga un fuerte contraste con el color de fondo de su barra lateral.
+- Un contraste deficiente hace que los enlaces sean más difíciles de leer y reduce la accesibilidad.
+
+### Color de fondo de hover de la barra lateral
+
+Este color aparece como el resaltado de fondo cuando un usuario mueve el cursor sobre un elemento de navegación de la barra lateral.
+
+- Indica interactividad y ayuda a los usuarios a entender en qué elemento están a punto de hacer clic.
+- Elija un color que sea visiblemente distinto tanto del fondo predeterminado de la barra lateral como del color del elemento activo.
+
+---
+
+## Cómo aplicar sus elecciones de color
+
+<Steps>
+  <Step title="Abra el selector de color para cada campo">
+    Haga clic en la muestra de color junto a cualquiera de los cuatro campos de apariencia —Primary Color, Sidebar Background, Sidebar Text Color o Sidebar Hover Background Color— para abrir el selector de color.
+  </Step>
+  <Step title="Introduzca un código hexadecimal o elija un color">
+    Escriba el código hexadecimal exacto de su marca (por ejemplo, `#3B5BDB`) directamente en el campo de entrada, o use el selector visual para elegir un tono.
+  </Step>
+  <Step title="Previsualice los cambios">
+    Revise cómo se ven los colores actualizados en la barra lateral y en toda la interfaz antes de guardar.
+  </Step>
+  <Step title="Haga clic en Save Changes">
+    Cuando esté satisfecho con el resultado, haga clic en **Save Changes**. La apariencia actualizada se aplica de forma global e instantánea a todos los usuarios del espacio de trabajo.
+  </Step>
+</Steps>
+
+<Tip>
+  Conserve un registro de los códigos de color hexadecimales de su marca en un lugar accesible (una guía de estilo de marca o un archivo de notas). Querrá reutilizar exactamente los mismos valores de forma coherente, especialmente si alguna vez necesita restablecer y reconfigurar sus ajustes de apariencia.
+</Tip>
+
+---
+
+## Cómo restablecer el tema predeterminado
+
+Si desea eliminar toda la personalización de marca y restaurar el esquema de color original de AgencyHandy, haga clic en el botón **Reset Default Settings** en la página de Apariencia.
+
+<Warning>
+  Restablecer los valores predeterminados descarta de forma permanente todos los cambios de color personalizados. Esta acción no se puede deshacer. Si desea conservar sus ajustes actuales, anote sus códigos hexadecimales antes de restablecer.
+</Warning>
+
+---
+
+## Buenas prácticas de contraste de color
+
+Un buen contraste de color no es solo una preferencia de diseño: afecta directamente a la legibilidad y la accesibilidad para su equipo y sus clientes.
+
+<CardGroup cols={2}>
+  <Card title="Apunte a las relaciones de contraste WCAG AA" icon="eye">
+    Para el texto de cuerpo normal, use una relación de contraste de al menos **4.5:1** entre el texto y el fondo. Para texto grande o iconos, una relación de **3:1** es aceptable. Use una herramienta como [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/) para verificar.
+  </Card>
+  <Card title="Evite combinaciones de bajo contraste" icon="triangle-exclamation">
+    No combine colores como texto gris claro sobre blanco, o texto amarillo sobre blanco: estos no cumplen los estándares de accesibilidad y fatigan la vista en sesiones largas.
+  </Card>
+  <Card title="Pruebe los estados de hover de forma deliberada" icon="arrow-pointer">
+    Los colores de hover deben ser notablemente diferentes tanto del estado en reposo como del estado activo. Si se ven iguales, los usuarios pierden una retroalimentación visual importante.
+  </Card>
+  <Card title="Mantenga la coherencia con su marca" icon="paintbrush">
+    Use el mismo color primario aquí que en su sitio web, propuestas y facturas. La coherencia genera reconocimiento y profesionalismo en todos los puntos de contacto con el cliente.
+  </Card>
+</CardGroup>
+
+---
+
+## Notas importantes
+
+- **Efecto global instantáneo:** todos los cambios de apariencia guardados se aplican de inmediato en todo el espacio de trabajo. Cada usuario que haya iniciado sesión verá la actualización en su próxima acción de navegación.
+- **Un tema activo:** no hay soporte para múltiples temas: un solo conjunto de colores se aplica a todo el espacio de trabajo para todos los roles.
+- **Restricción de rol:** solo los Super Admins y los Admins pueden realizar cambios de apariencia. Los miembros del equipo y los clientes normales no pueden modificar los colores.
+- **El restablecimiento es permanente:** el botón **Reset Default Settings** no se puede deshacer, así que úselo solo cuando intencionadamente desee eliminar todos los colores personalizados.

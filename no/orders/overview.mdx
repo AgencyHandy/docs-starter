@@ -1,0 +1,91 @@
+---
+title: "Ordreoverikt: Administrere klientarbeid i AgencyHandy"
+sidebarTitle: "Oversikt"
+description: "Forstå hvordan ordre fungerer i AgencyHandy — statuser, roller, ordredetaljer, manuelle ordre og tillegg for upubliserte tjenester."
+---
+
+Ordre er det operative ryggraden i AgencyHandy. En ordre representerer en klients forespørsel om en tjeneste eller et produkt, og fungerer som det sentrale arbeidsområdet der teamet ditt sporer fremgang, administrerer oppgaver, utveksler tilbakemeldinger og leverer resultater. Enten en klient plasserer en ordre gjennom den publiserte tjenestekatalogen din eller teamet oppretter en manuelt, følger alle ordre den samme strukturerte livssyklusen som holder byrået organisert og klientene informert.
+
+## Hva en ordre inneholder
+
+Alle ordre viser nøkkelinformasjon på et øyeblikk og gir teammedlemmer ett sted for å koordinere arbeid:
+
+| Felt | Beskrivelse |
+|---|---|
+| **Ordre-ID** | Autogenerert unik identifikator for hver ordre |
+| **Klient** | Klienten som ordren tilhører |
+| **Tjeneste** | Tjenesten som leveres |
+| **Prosjektleder (PL)** | Teammedlemmet ansvarlig for levering (valgfritt) |
+| **Budsjett** | Avtalt pris for ordren |
+| **Oppstartsdato** | Når arbeidet begynner |
+| **Forfallsdato** | Frist for ordregjennomføring |
+| **Ordrebrifing** | Klientinstruksjoner, notater og vedlagte referansefiler |
+| **Oppgaver** | Diskrete arbeidsenheter tildelt teammedlemmer |
+| **Diskusjoner** | Trådede samtaler mellom byråansatte og klienter |
+
+## Ordrestatuser
+
+Alle ordre beveger seg gjennom et fast sett av statuser. Du kan ikke legge til eller gi nytt navn til disse statusene.
+
+<Note>
+Bare superadministratorer, administratorer og prosjektledere kan endre en ordres status.
+</Note>
+
+| Status | Hva det betyr |
+|---|---|
+| **Venter** | Ordren er opprettet og venter på at arbeidet skal begynne |
+| **Pågående** | Aktivt arbeid er i gang |
+| **Til gjennomgang** | Leveranser er levert inn og venter på klient- eller intern gjennomgang |
+| **Fullført** | Ordren er fullstendig levert og akseptert |
+| **Kansellert** | Ordren er kansellert og er ikke lenger aktiv |
+
+## Rollebasert tilgang
+
+Ulike roller i AgencyHandy har ulike muligheter innen ordre:
+
+| Rolle | Kan opprette ordre | Kan redigere ordre | Kan slette ordre | Kan endre status | Kan legge til oppgaver | Kan legge til teammedlemmer |
+|---|---|---|---|---|---|---|
+| **Superadministrator** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Administrator** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Prosjektleder (PL)** | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ |
+| **Ansatt** | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| **Klient** | ❌ | ❌ | ❌ | ❌ | ✅ (kun forespørsel) | ❌ |
+
+<Tip>
+Klienter kan sende tilbakemeldinger og delta i diskusjoner om ordre. Ansatte tildelt en ordre kan se og arbeide med oppgaver, men kan ikke administrere selve ordren.
+</Tip>
+
+## Hva du kan gjøre med ordre
+
+AgencyHandy gir deg et komplett verktøysett for å administrere ordre gjennom hele livssyklusen:
+
+- **Opprett ordre** for klienter — enten fra publiserte tjenester eller manuelt for tjenester under utvikling
+- **Aksepter og avvis** klientsending ordre, med mulighet til å oppgi en begrunnelse ved avvisning
+- **Se ordredetaljer** inkludert fremgang, tildelte teammedlemmer, oppstarts- og forfallsdatoer, budsjett og brifing
+- **Sorter, filtrer og søk** på tvers av alle ordre etter ID, status, klientnavn eller andre kriterier
+- **Legg til oppgaver** direkte i en ordre for å spore og tildele diskrete arbeidsenheter
+- **Start diskusjoner** for å kommunisere med klienter og teammedlemmer i kontekst
+
+## Manuelle ordre for upubliserte tjenester
+
+Du er ikke begrenset til å opprette ordre kun for tjenester du har publisert offentlig. Superadministratorer og administratorer kan opprette manuelle ordre for upubliserte tjenester — nyttig når en tjeneste fortsatt er under utvikling, midlertidig utilgjengelig eller tilbys til en bestemt klient før den offisielle lanseringen.
+
+Når du åpner skjemaet for ordreopprettelse, viser **Tjeneste**-rullegardinmenyen både publiserte og upubliserte tjenester, slik at du kan velge den som passer. Alle andre ordfelt og arbeidsflyter oppfører seg på samme måte som en standardordre.
+
+## Tillegg i manuelle ordre
+
+Når du bygger en manuell ordre, kan du inkludere **tilleggstjenester** for å la klienter motta tilpassede pakker utover kjernetjenesten. Tillegg må opprettes på forhånd og kobles til den relevante tjenesten i **Skjemaer**-seksjonen før de vises som et alternativ i ordreskjemaet.
+
+<Note>
+Tilleggsvalget vises bare i det manuelle ordreskjemaet hvis minst ett tillegg er koblet til den valgte tjenesten. Hvis du ikke ser det, kontroller at tillegget ditt er riktig koblet til i tjenestekonfigurasjonen.
+</Note>
+
+Når en tjeneste med koblede tillegg er valgt, kan du inkludere disse tilleggene før du ferdigstiller og sender inn ordren.
+
+## Varsler
+
+AgencyHandy varsler automatisk de rette personene etter hvert som ordre skrider frem:
+
+- Når en ordre opprettes av en prosjektleder, administrator eller superadministrator, får alle superadministratorer i selskapet tilgang og klienten mottar et opprettingsvarsle.
+- Når et teammedlem legges til en ordre, mottar det medlemmet et varsel.
+- Når oppgaver opprettes i en ordre, mottar klienten et varsel.

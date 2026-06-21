@@ -1,0 +1,172 @@
+---
+title: "Laiko sekimas ir tabelio valdymas AgencyHandy"
+sidebarTitle: "Tabelis"
+description: "Registruokite laiką naudodami gyvą laikmačio arba rankinį įvedimą, filtruokite darbo žurnalus pagal užduotį, narį ar paslaugą ir eksportuokite tabelio duomenis kaip CSV arba XLSX AgencyHandy."
+---
+
+Tabelio funkcija AgencyHandy suteikia jums centrinį skydelį, skirtą sekti kiekvieną valandą, kurią jūsų komanda praleidžia užduotyse. Galite paleisti gyvą laikmačio bet kurioje užduotyje, registruoti laiką vėliau naudojant rankinį įvedimą, o tada pjauti duomenis pagal datų intervalą, komandos narį ar paslaugą. Kai reikia atsiskaityti apie produktyvumą arba apmokestinti už laiką, galite viską eksportuoti į CSV arba XLSX keliais paspaudimais. Tai esminis įrankis, padedantis jūsų komandai būti atskaitingai ir tiksliai atsiskaityti už laiką.
+
+## Kas gali naudoti tabelio funkcijas
+
+| Funkcija | Super administratorius | Administratorius | PV | Darbuotojas |
+|---------|:-----------:|:-----:|:--:|:--------:|
+| Peržiūrėti savo laiko žurnalus | ✅ | ✅ | ✅ | ✅ |
+| Registruoti laiką kitų vardu | ✅ | ✅ | ✅ | ❌ |
+| Redaguoti laiko įrašus | ✅ | ✅ | ✅ | ❌ |
+| Eksportuoti tabelio duomenis | ✅ | ✅ | ✅ | ❌ |
+
+<Note>
+  Prieš pradedant sekti laiką, užduotys turi egzistuoti. Prieš bandydami registruoti laiką, įsitikinkite, kad užduotys sukurtos užsakymų viduje.
+</Note>
+
+## Tabelio peržiūra
+
+<Steps>
+  <Step title="Atidaryti tabelį">
+    Pagrindinėje kairiojoje šoninėje juostoje spustelėkite **Tabelis**. Pamatysite lentelę, kurioje pateikiami visi jūsų komandos laiko žurnalai.
+
+    Kiekvienoje eilutėje rodoma data, komandos narys, užduoties pavadinimas, paslauga, užregistruotas laikas ir visos prie įrašo pridėtos pastabos.
+  </Step>
+</Steps>
+
+## Laiko įrašo pridėjimas
+
+Turite dvi laiko registravimo galimybes: gyvas laikmatis darbui, kuris vyksta, arba rankinis įvedimas laikui, kurį jau baigėte.
+
+<Tabs>
+  <Tab title="Paleisti laikmačio">
+    <Steps>
+      <Step title="Pasirinkti užduotį">
+        Tabelio vaizde raskite arba pasirinkite užduotį, prie kurios tuoj eisite dirbti.
+      </Step>
+      <Step title="Spustelėti Paleisti laikmačio">
+        Spustelėkite **Paleisti laikmačio**, kad pradėtumėte sekti laiką realiuoju laiku. Laikmatis veikia tol, kol jį sustabdote.
+      </Step>
+      <Step title="Sustabdyti baigus">
+        Spustelėkite **Sustabdyti**, kai baigate darbą. AgencyHandy automatiškai registruoja praėjusį laiką prie pasirinktos užduoties.
+      </Step>
+    </Steps>
+
+    <Tip>
+      Vykstančiam darbui naudokite laikmačio, kad užtikrintumėte tikslų sekimą. Rankinis laiko apvalinimas ar įvertinimas po fakto yra mažiau tikslus nei laikmačio paleidimas.
+    </Tip>
+  </Tab>
+  <Tab title="Rankinis įvedimas">
+    <Steps>
+      <Step title="Spustelėti + Pridėti įrašą">
+        Tabelio skydelyje spustelėkite **+ Pridėti įrašą**. Pasirodys forma.
+      </Step>
+      <Step title="Užpildyti įrašo detales">
+        - **Užduotis** — pasirinkite užduotį, kuriai taikomas šis laikas
+        - **Komandos narys** — priskirkite laiką tinkamam asmeniui (Administratoriai ir Vadovai gali registruoti kitų vardu)
+        - **Praleistas laikas** — įveskite valandas ir minutes
+        - **Pastabos** — pridėkite bet kokį kontekstą apie tai, kas buvo dirbta
+      </Step>
+      <Step title="Išsaugoti">
+        Spustelėkite **Išsaugoti**, kad įrašas būtų užfiksuotas. Jis nedelsiant pasirodys tabelio lentelėje.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Filtravimas pagal datų intervalą
+
+Naudokite datos filtrus, kad sutelktumėte dėmesį į konkretų laikotarpį.
+
+<Steps>
+  <Step title="Atidaryti datos filtrus">
+    Tabelio skydelio viršutiniame dešiniajame kampe spustelėkite datos filtro valdiklius.
+  </Step>
+  <Step title="Pasirinkti intervalą">
+    Rinkitės iš iš anksto nustatytų intervalų:
+    - **Dienos** — tik šiandienos žurnalai
+    - **Savaitės** — dabartinė savaitė
+    - **Mėnesio** — dabartinis mėnuo
+
+    Ilgesniems projektams arba istorinėms ataskaitoms pasirinkite **Pasirinktinį** datų intervalą įvesdami pradžios ir pabaigos datą.
+  </Step>
+  <Step title="Taikyti">
+    Spustelėkite **Taikyti**, kad lentelė būtų atnaujinta pagal pasirinkto laikotarpio žurnalus.
+  </Step>
+</Steps>
+
+<Tip>
+  Prieš eksportuodami filtruokite, kad generuotumėte sutelktas ataskaitas. Viso neapdoroto tabelio eksportavimas gali sukurti labai didelius failus aktyvios agentūros atveju.
+</Tip>
+
+## Įrašų grupavimas
+
+Grupavimas pertvarko, kaip tabelio eilutės organizuojamos, nešalinant jokių duomenų. Tai padeda greičiau skaityti ir analizuoti žurnalus.
+
+<Steps>
+  <Step title="Atidaryti išskleidžiamąjį meniu Grupuoti pagal">
+    Tabelio skydelio viršuje spustelėkite išskleidžiamąjį meniu **Grupuoti pagal**.
+  </Step>
+  <Step title="Pasirinkti grupavimą">
+    Pasirinkite iš šių parinkčių:
+
+    | Grupavimo parinktis | Ką rodo |
+    |----------------|---------------|
+    | **Užduoties pavadinimas** | Visi laiko įrašai sugrupuoti po kiekviena užduotimi |
+    | **Komandos narys** | Visi įrašai sugrupuoti po kiekvienu asmeniu |
+    | **Paslauga → Užduoties pavadinimas** | Įrašai sugrupuoti pagal paslaugą, tada suskaidyti pagal užduotį kiekvienoje paslaugoje |
+  </Step>
+</Steps>
+
+<Note>
+  Grupavimas yra tik vizualinis pakeitimas — jis neveikia esminių duomenų ar to, kas eksportuojama. Eksportuose visada yra visos matomos eilutės.
+</Note>
+
+## Užduoties detalių peržiūra iš tabelio
+
+<Steps>
+  <Step title="Spustelėti užduoties pavadinimą">
+    Tabelio lentelėje spustelėkite bet kurį **Užduoties pavadinimą**. AgencyHandy nukreipia jus į tos užduoties išsamų detalių puslapį.
+  </Step>
+  <Step title="Peržiūrėti užduoties kontekstą">
+    Užduoties detalių puslapyje rasite visą laiko žurnalo istoriją, pridėtas pastabas, atsakingus asmenis, būseną ir kitą užduoties lygio informaciją. Naudokite šį vaizdą įrašams tirti arba patikrinti, koks darbas buvo atliktas.
+  </Step>
+</Steps>
+
+## Tabelio duomenų eksportavimas
+
+Eksportuokite savo tabelį darbo užmokesčiui, klientų atsiskaitymo ataskaitoms arba išoriniams projektų valdymo įrankiams.
+
+<Steps>
+  <Step title="Pirmiausia taikyti filtrus (rekomenduojama)">
+    Naudokite datos intervalo filtrą, kad susiaurintumėte eksportą iki jums reikalingo laikotarpio. Tai padeda failą išlaikyti sutelktą ir valdomą.
+  </Step>
+  <Step title="Spustelėti Eksportuoti">
+    Spustelėkite mygtuką **Eksportuoti** tabelio skydelio viršuje.
+  </Step>
+  <Step title="Pasirinkti formatą">
+    Pasirinkite:
+    - **CSV** — lentelių įrankiams kaip Excel, Google Sheets arba duomenų vamzdynams
+    - **XLSX** — Excel formato darbaknygėms su išlaikytais stulpelių formatais
+  </Step>
+  <Step title="Atsisiųsti failą">
+    Failas automatiškai atsisiunčiamas į jūsų įrenginį. Kiekviename eksporte yra visi matomi stulpeliai: data, komandos narys, užduoties pavadinimas, paslauga, užregistruotas laikas ir pastabos.
+  </Step>
+</Steps>
+
+<Warning>
+  Jei eksportas nesuaktyvina atsisiuntimo, jūsų naršyklės **iššokančių langų blokuotojas** gali neleisti failui atsisiųsti. Išjunkite iššokančių langų blokavimą AgencyHandy ir bandykite dar kartą.
+</Warning>
+
+## Papildomos pastabos
+
+<Accordion title="Laikmatis vs. rankinis įvedimas">
+  Laikmatis geriausiai tinka aktyviam, realiojo laiko darbui. Rankiniai įrašai geriausiai tinka, kai pamiršote paleisti laikmačio arba reikia registruoti laiką atgaline data. Abu metodai tabelio lentelėje sukuria identiškus žurnalo įrašus.
+</Accordion>
+
+<Accordion title="Grupavimas vs. filtravimas">
+  Filtrai **sumažina** lentelėje rodomų eilučių skaičių. Grupavimas **pertvarko** jau matomus eilutes. Abu galite taikyti vienu metu — filtruokite pagal datų intervalą, tada grupuokite pagal komandos narį, kad matytumėte kiekvieno asmens bendras sumas tam laikotarpiui.
+</Accordion>
+
+<Accordion title="Eksportuose yra visi matomi stulpeliai">
+  Kiekvienas eksportas fiksuoja dabartinę matomos lentelės būseną: data, naudotojas, užduotis, paslauga, laikas ir pastabos. Jei pritaikėte grupavimo nustatymą, eksportas taip pat atspindi grupavimo struktūrą.
+</Accordion>
+
+<Accordion title="Pasirinktiniai intervalai istoriniams duomenims">
+  Ilgalaikiams projektams ar ketvirčio peržiūroms naudokite pasirinktinio datų intervalo parinktį, kad gautumėte istorinius tabelio duomenis už iš anksto nustatytų dienos/savaitės/mėnesio langų ribų.
+</Accordion>

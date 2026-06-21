@@ -1,0 +1,137 @@
+---
+title: "AgencyHandy API：新しいクライアントをプログラムで作成する"
+sidebarTitle: "クライアントを作成する"
+description: "一括クライアントエンドポイントに名前、メール、連絡先情報をPOSTして、AgencyHandyワークスペースにプログラムで新しいクライアントを追加します。"
+---
+
+クライアント作成エンドポイントを使用すると、外部システムからAgencyHandyワークスペースにクライアントを直接追加できます。リードとは異なり、クライアントは注文、請求書、プロジェクトに割り当て可能な完全にオンボードされた連絡先です。CRM、オンボーディングフォーム、またはその他のデータソースから新しいクライアントを同期するためにこのエンドポイントを使用します。
+
+<Note>
+  このエンドポイントを使用する前に、[入門ガイド](/ja/api/getting-started)を完了してAPIキーと会社IDを取得してください。リード作成エンドポイントとは異なり、クライアントの作成には個別のロールIDの取得ステップは**必要ありません**。
+</Note>
+
+## 前提条件
+
+- ✅ **ワークスペース設定 → APIキー**から生成されたAPIキー
+- ✅ `GET {{URL}}/accounts/companies`から取得した会社ID
+
+---
+
+## エンドポイント
+
+```
+POST {{URL}}/members/bulk-client
+```
+
+## ヘッダー
+
+| ヘッダー | 値 |
+|---|---|
+| `x-api-key` | あなたのAPIキー |
+| `companyId` | あなたの会社ID |
+| `Content-Type` | `application/json` |
+
+## リクエストボディ
+
+リクエストボディは**JSON配列**です。1回のリクエストで1つ以上のクライアントを作成できます。
+
+<ParamField body="firstName" type="string" required>
+  クライアントの名前。
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  クライアントの姓。
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  クライアントのメールアドレス。ワークスペース内で一意である必要があります。
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  新規クライアントの場合は`false`に設定します。既存のリードをクライアントに変換する場合は`true`に設定します。
+</ParamField>
+
+<ParamField body="status" type="string">
+  クライアントのステータス。一般的な値：`New`、`Active`。省略した場合は`New`がデフォルト値となります。
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  クライアントの電話番号。
+</ParamField>
+
+<ParamField body="source" type="string">
+  このクライアントの獲得方法。値の例：`website`、`referral`、`social`。
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  ボードの列内でのクライアントの位置。デフォルトは`1`。
+</ParamField>
+
+## リクエスト例
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-client" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyId: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+## 成功レスポンス
+
+```json
+{
+  "message": "Client created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  成功時の確認文字列。
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  作成されたクライアントオブジェクトの配列。
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  新しく作成されたクライアントの一意ID。APIを通じてクライアントを注文や請求書に割り当てる際にこのIDを使用します。
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  クライアントのフルネーム（firstName + lastName）。
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  保存されたクライアントのステータス。
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  メンバーに割り当てられたロール — `"client"`になります。
+</ResponseField>
+
+<Note>
+  このエンドポイントの`companyId`ヘッダーでは、`Id`の**I**が大文字になっています — `companyId` — `companyid`（すべて小文字）を使用する他のエンドポイントとは異なります。認証エラーを避けるため、上記に示された正確な大文字・小文字の表記を使用してください。
+</Note>
+
+<Tip>
+  配列に複数のクライアントオブジェクトを渡すことで、1回のAPI呼び出しでクライアントを一括作成できます。各オブジェクトには一意の`email`アドレスが必要です。重複するメールアドレスはそのエントリに対してバリデーションエラーを引き起こします。
+</Tip>

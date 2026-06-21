@@ -1,0 +1,69 @@
+---
+title: "Pievienojiet Slack, lai saņemtu AgencyHandy brīdinājumus reāllaikā"
+sidebarTitle: "Slack"
+description: "Savienojiet savu Slack darbvietu ar AgencyHandy, lai pasūtījumu atjauninājumi, uzdevumu izmaiņas un atbalsta pieprasījumu brīdinājumi tiktu automātiski publicēti Slack kanālā."
+---
+
+AgencyHandy Slack integrācija tur jūsu komandu informētu, nepieprasot pārslēgties starp lietotnēm. Pēc savienošanas AgencyHandy automātiski publicē paziņojumus jūsu izvēlētajā Slack kanālā ikreiz, kad mainās uzdevumi, pasūtījumi vai citas darbvietas aktivitātes — tādējādi jūsu komanda vienmēr zina, kas notiek reāllaikā.
+
+<Note>
+  Tikai **SuperAdmin**, **Admin** un **Manager** lomas (ar integrācijas atļaujām) var pievienot vai pārvaldīt Slack integrāciju. Savienojuma autorizēšanai jums ir nepieciešamas Slack darbvietas administratora tiesības.
+</Note>
+
+## Pievienot Slack
+
+<Steps>
+  <Step title="Atveriet integrācijas">
+    Kreisajā sānjoslā noklikšķiniet uz **Integrations**.
+  </Step>
+
+  <Step title="Atrodiet Slack karti">
+    Ritiniet līdz **Slack** kartei un noklikšķiniet uz **Connect**.
+  </Step>
+
+  <Step title="Autorizēt AgencyHandy pakalpojumā Slack">
+    Atveras Slack autorizācijas logs. Ja neesat pierakstījies savā Slack darbvietā, izdariet to tagad. Izskatiet AgencyHandy pieprasītās atļaujas un noklikšķiniet uz **Allow**, lai piešķirtu piekļuvi.
+  </Step>
+
+  <Step title="Izvēlieties paziņojumu kanālu">
+    Pēc autorizācijas izvēlieties Slack kanālu, kurā vēlaties saņemt AgencyHandy paziņojumus. Atlasiet kanālu no nolaižamā saraksta un noklikšķiniet uz **Save**, lai apstiprinātu.
+  </Step>
+
+  <Step title="Apstipriniet iestatījumu">
+    Slack karte atjauninās, parādot **Connected**. AgencyHandy nekavējoties sāk publicēt paziņojumus izvēlētajā kanālā.
+  </Step>
+</Steps>
+
+## Kādi paziņojumi tiek nosūtīti uz Slack
+
+AgencyHandy publicē Slack ziņojumu, kad notiek kāds no šādiem notikumiem:
+
+| Kategorija | Notikumi, kas aktivizē paziņojumu |
+|---|---|
+| **Uzdevumi** | Uzdevums izveidots, atjaunināts, piešķirts vai pabeigts |
+| **Pasūtījumi** | Pasūtījums izveidots vai mainīts statuss |
+| **Komentāri** | Uzdevumam vai pasūtījumam pievienots jauns komentārs |
+| **Failu pielikumi** | Uzdevumam pievienots fails vai pielikums |
+| **Atbalsta pieprasījumi** | Atbalsta pieprasījums izveidots, piešķirts vai mainīts statuss |
+
+Katrs Slack ziņojums ietver:
+
+- Uzdevuma, pasūtījuma vai atbalsta pieprasījuma **nosaukumu**
+- **Statusa izmaiņas** vai darbību, kas aktivizēja ziņojumu
+- **Saiti** atpakaļ uz attiecīgo elementu AgencyHandy
+
+Kad uzdevumam tiek pievienots fails vai pielikums, Slack ziņojumā ir iekļauts arī tā priekšskatījums.
+
+<Tip>
+  Izvēlieties speciālu **#agency-handy-alerts** kanālu (vai līdzīgu), lai paziņojumi būtu sakārtoti un netraucētu jūsu galvenajiem komandas kanāliem.
+</Tip>
+
+## Atvienot Slack
+
+Lai apturētu paziņojumus, atgriezieties sadaļā **Integrations** un Slack kartē noklikšķiniet uz **Disconnect**. Visi paziņojumi nekavējoties apstājas.
+
+## Svarīgas piezīmes
+
+- **Viena darbvieta vienam savienojumam** — katrai AgencyHandy darbvietai var pievienot tikai vienu Slack darbvietu. Lai pārslēgtos uz citu Slack darbvietu, atvienojiet pašreizējo un pievienojiet jauno.
+- **Kanāla redzamība** — paziņojumi ir redzami visiem izvēlētajā Slack kanālā. Pārliecinieties, ka kanāls ir piemērots kopīgojamo datu detalizācijas līmenim (piemēram, izvairieties publicēt klientiem sensitīvus pasūtījumu datus publiskā kanālā).
+- **Atkārtota autorizācija** — ja jūsu Slack tokens beidzies vai atļaujas mainījušās, atgriezieties sadaļā Integrations un atkārtoti pievienojieties, lai atjaunotu paziņojumus.

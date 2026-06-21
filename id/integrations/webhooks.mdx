@@ -1,0 +1,196 @@
+---
+title: "Manajemen Webhook: Buat, Uji, dan Autentikasi"
+sidebarTitle: "Webhooks"
+description: "Atur webhook di AgencyHandy untuk mendorong data peristiwa secara real-time ke sistem eksternal setiap kali pesanan, tugas, tagihan, atau entitas lain berubah."
+---
+
+Webhook memungkinkan AgencyHandy mendorong data ke sistem eksternal Anda saat sesuatu berubah — tidak perlu polling. Ketika peristiwa yang dikonfigurasi terjadi (misalnya, pesanan diperbarui atau tiket dukungan dibuat), AgencyHandy mengirimkan permintaan HTTP POST dengan payload JSON ke URL endpoint yang Anda tentukan. Ini memudahkan sinkronisasi alat eksternal seperti CRM, sistem penagihan, atau dasbor kustom dengan workspace AgencyHandy Anda secara real-time.
+
+<Note>
+  Workspace paket Business Pro mendukung hingga **30.000 peristiwa webhook** per periode penagihan. Periksa batas paket Anda sebelum mengatur otomasi bervolume tinggi.
+</Note>
+
+## Peristiwa yang didukung
+
+Anda dapat berlangganan webhook untuk kombinasi peristiwa berikut:
+
+| Kategori | Peristiwa |
+|---|---|
+| **Layanan** | Dibuat, Diperbarui, Dihapus |
+| **Pesanan** | Dibuat, Diperbarui, Dihapus |
+| **Tugas** | Dibuat, Ditetapkan, Diselesaikan, Diperbarui |
+| **Tagihan** | Status berubah |
+| **Klien / Pengguna** | Klien baru ditambahkan, Klien/pengguna dihapus |
+| **Proposal** | Dikirim, Diterima, Disetujui, Ditolak |
+| **Tiket** | Dibuat, Ditetapkan, Status berubah |
+| **Pembayaran** | Diterima, Gagal |
+| **Paket Layanan** | Dibuat, Diperbarui, Dihapus |
+
+## Buat webhook
+
+<Steps>
+  <Step title="Navigasi ke Webhook Management">
+    Di bilah sisi kiri, pergi ke **Integrations → Webhooks Management**.
+  </Step>
+
+  <Step title="Autentikasi token Anda">
+    Klik tombol **Management** untuk mengautentikasi token webhook Anda. Token ini digunakan untuk menandatangani payload keluar sehingga Anda dapat memverifikasi bahwa payload tersebut berasal dari AgencyHandy.
+  </Step>
+
+  <Step title="Buat webhook baru">
+    Klik **Create New Webhook** untuk membuka formulir konfigurasi webhook.
+  </Step>
+
+  <Step title="Masukkan URL endpoint">
+    Di kolom **Endpoint URL**, masukkan URL sistem eksternal yang seharusnya menerima data webhook. URL ini harus berupa endpoint **POST** yang dapat diakses publik.
+  </Step>
+
+  <Step title="Pilih tipe konten">
+    Pilih **JSON** sebagai tipe konten. AgencyHandy mengirim semua payload webhook sebagai `application/json`.
+  </Step>
+
+  <Step title="Pilih peristiwa webhook">
+    Pilih setiap peristiwa yang harus memicu webhook ini. Anda dapat memilih peristiwa dari beberapa kategori — misalnya, **Order: Created** dan **Invoice: Status changed** keduanya dapat mengarah ke endpoint yang sama.
+  </Step>
+
+  <Step title="Aktifkan webhook">
+    Aktifkan tombol radio **Active**. Saat aktif, AgencyHandy mengirimkan payload untuk semua peristiwa yang dipilih ke endpoint Anda secara real-time.
+  </Step>
+
+  <Step title="Simpan konfigurasi">
+    Tinjau pengaturan Anda, lalu klik **Save**. Webhook muncul dalam daftar dan mulai mengirimkan peristiwa segera.
+  </Step>
+</Steps>
+
+## Uji webhook
+
+Setelah membuat webhook, kirimkan payload uji untuk mengonfirmasi bahwa endpoint Anda dapat dijangkau dan memproses data dengan benar.
+
+<Steps>
+  <Step title="Buka webhook">
+    Dari daftar Webhooks Management, klik webhook yang ingin Anda uji.
+  </Step>
+
+  <Step title="Klik Test Event">
+    Klik tombol **Test Event** di halaman detail webhook.
+  </Step>
+
+  <Step title="Pilih peristiwa uji">
+    Pilih peristiwa contoh dari daftar peristiwa yang dikonfigurasi pada webhook ini (misalnya, **Order: Created**).
+  </Step>
+
+  <Step title="Kirim payload uji">
+    Klik **Send**. AgencyHandy mengirimkan payload contoh ke URL endpoint Anda.
+  </Step>
+
+  <Step title="Verifikasi hasilnya">
+    Periksa sistem eksternal Anda untuk mengonfirmasi payload uji telah tiba dan diproses sebagaimana mestinya. Kembali di AgencyHandy, klik ke webhook untuk meninjau **riwayat** — Anda dapat melihat permintaan lengkap, respons yang dikembalikan endpoint Anda, dan mengirim ulang peristiwa masa lalu jika diperlukan.
+  </Step>
+</Steps>
+
+<Tip>
+  Gunakan alat seperti [Webhook.site](https://webhook.site) atau [RequestBin](https://requestbin.com) sebagai endpoint sementara selama pengaturan untuk memeriksa bentuk payload yang tepat sebelum menghubungkan sistem nyata Anda.
+</Tip>
+
+## Autentikasi payload webhook
+
+Setiap permintaan webhook keluar dari AgencyHandy menyertakan header tanda tangan yang dapat digunakan endpoint Anda untuk memverifikasi bahwa payload tersebut asli dan tidak dirusak.
+
+### Header tanda tangan
+
+```
+x-ah-sig: <signature>
+```
+
+AgencyHandy menambahkan header ini ke setiap permintaan webhook. Ekstrak nilai dari permintaan masuk dan teruskan ke endpoint verifikasi.
+
+### Verifikasi tanda tangan webhook
+
+Kirim permintaan berikut untuk mengonfirmasi bahwa payload adalah asli:
+
+```
+POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature
+Content-Type: application/json
+```
+
+<ParamField body="webhookId" type="string" required>
+  ID webhook yang menerima peristiwa. Temukan ini di halaman detail webhook di AgencyHandy.
+</ParamField>
+
+<ParamField body="signature" type="string" required>
+  Nilai header `x-ah-sig` dari permintaan webhook yang masuk.
+</ParamField>
+
+<ParamField body="secret" type="string" required>
+  Rahasia webhook yang ditampilkan di halaman detail webhook di AgencyHandy.
+</ParamField>
+
+<ParamField body="payload" type="object" required>
+  Isi JSON mentah yang diterima dari permintaan webhook AgencyHandy.
+</ParamField>
+
+<CodeGroup>
+
+```javascript JavaScript
+const url = 'https://api.agencyhandy.com/api/v1/webhooks/verify-signature';
+
+const postData = {
+  webhookId: 'your_webhook_id',
+  signature: 'your_signature',   // value of x-ah-sig header
+  secret: 'your_webhook_secret',
+  payload: {},                   // the parsed JSON body from AgencyHandy
+};
+
+const response = await fetch(url, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(postData),
+});
+
+const data = await response.json();
+console.log(data); // { "verification_status": "SUCCESS" }
+```
+
+```bash cURL
+curl -X POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature \
+  -H "Content-Type: application/json" \
+  -d '{
+    "webhookId": "your_webhook_id",
+    "signature": "your_signature",
+    "secret": "your_webhook_secret",
+    "payload": {}
+  }'
+```
+
+</CodeGroup>
+
+**Respons**
+
+<ResponseField name="verification_status" type="string">
+  `SUCCESS` ketika tanda tangan valid. `FAILED` ketika verifikasi gagal (HTTP 403).
+</ResponseField>
+
+```json Success (200)
+{
+  "verification_status": "SUCCESS"
+}
+```
+
+```json Failure (403)
+{
+  "type": "PermissionError",
+  "status": 403,
+  "verification_status": "FAILED"
+}
+```
+
+<Warning>
+  Jaga kerahasiaan rahasia webhook Anda. Rotasi secara berkala dan perbarui logika verifikasi Anda segera setelah rotasi. Jangan pernah mengeksposnya dalam kode sisi klien atau repositori publik.
+</Warning>
+
+## Catatan penting
+
+- URL endpoint Anda harus berupa URL POST HTTPS yang **dapat diakses publik**.
+- Jika endpoint Anda sementara tidak tersedia, periksa panel riwayat webhook di AgencyHandy — Anda dapat **mengirim ulang** peristiwa masa lalu langsung dari sana.
+- Pantau aktivitas webhook secara rutin untuk mendeteksi pengiriman yang gagal atau upaya akses tidak sah.
+- Webhook yang berulang kali gagal dapat dijeda oleh AgencyHandy — tinjau log pengiriman untuk mendeteksi masalah lebih awal.

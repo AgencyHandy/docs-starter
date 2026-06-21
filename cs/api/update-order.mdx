@@ -1,0 +1,205 @@
+---
+title: "AgencyHandy API: Aktualizace existující objednávky pomocí PUT"
+sidebarTitle: "Aktualizace objednávky"
+description: "Pomocí API AgencyHandy aktualizujte detaily objednávky, změňte stav, přeřaďte projektové manažery a připojte soubory k existující objednávce prostřednictvím PUT požadavku."
+---
+
+Endpoint pro aktualizaci objednávky umožňuje upravit existující objednávku (projekt) v AgencyHandy — změnit její název, stav, rozpočet, časový plán, přiřazené manažery a další — vše z externího systému nebo automatizačního skriptu. Endpoint také podporuje přílohy souborů, které jsou připojeny do systémové složky objednávky.
+
+<Note>
+  Před použitím tohoto endpointu dokončete průvodce [Začínáme](/cs/api/getting-started) a získejte svůj API klíč a ID společnosti.
+</Note>
+
+<Warning>
+  Tento endpoint používá `Authorization: Bearer <token>` (přístupový token přihlášeného člena) namísto pouhé hlavičky `x-api-key`. Ujistěte se, že volající je ověřen jako **schválený člen** cílové společnosti. Neoprávnění volající obdrží odpověď `403 PermissionError`.
+</Warning>
+
+## Předpoklady
+
+- ✅ Platný **Bearer token** pro schváleného člena workspace
+- ✅ **ID společnosti** získané z `GET {{URL}}/accounts/companies`
+- ✅ **ID objednávky** (ID projektu, `pid`) objednávky, kterou chcete aktualizovat
+
+---
+
+## Endpoint
+
+```
+PUT {{URL}}/orders?pid=<ORDER_ID>
+```
+
+**Content-Type:** `multipart/form-data` — použijte i tehdy, když nejsou připojeny žádné soubory, aby byl uspokojen multipart parser serveru.
+
+## Hlavičky
+
+| Hlavička | Povinné | Popis |
+|---|---|---|
+| `Authorization` | Ano | `Bearer <ACCESS_TOKEN>` — přístupový token přihlášeného člena. |
+| `companyid` | Ano | Mongo ObjectId společnosti, ke které objednávka patří. |
+| `clientid` | Volitelné | ID socketu klienta v reálném čase. Pokud je zadáno, oznámení jej budou obsahovat. |
+
+## Parametry dotazu
+
+<ParamField query="pid" type="string" required>
+  ID objednávky / projektu k aktualizaci. Předejte jako parametr řetězce dotazu.
+</ParamField>
+
+## Pole těla požadavku
+
+<ParamField body="name" type="string">
+  Aktualizuje název objednávky. Minimálně 2 znaky.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Nový stav objednávky. Musí být jedním z: `Pending`, `Ongoing`, `Review`, `Completed`, `Cancelled`.
+
+  **Povolené přechody:**
+  - `Review` může následovat pouze po `Ongoing` nebo dalším `Review`. Přechod přímo z `Pending` na `Review` vrátí chybu `400 ValidationError`.
+  - Objednávky ve stavu `Completed` nebo `Cancelled` nelze aktualizovat.
+  - Klienti nemohou zrušit objednávku, která postoupila za stav `Pending`.
+</ParamField>
+
+<ParamField body="budget" type="number">
+  Celková výše rozpočtu. Musí být `≥ 0`. Používá stávající měnu objednávky, pokud není zároveň zadána i `currency`.
+</ParamField>
+
+<ParamField body="currency" type="string">
+  Kód měny pro rozpočet. Příklady: `USD`, `CAD`, `EUR`.
+</ParamField>
+
+<ParamField body="quantity" type="number">
+  Počet zakoupených jednotek balíčku. Musí být `≥ 1`.
+</ParamField>
+
+<ParamField body="deadline" type="string">
+  Řetězec data ve formátu ISO 8601 pro datum splatnosti objednávky. Příklad: `"2025-12-31T00:00:00.000Z"`.
+</ParamField>
+
+<ParamField body="kickoffDate" type="string">
+  Řetězec data ve formátu ISO 8601 pro datum zahájení projektu.
+</ParamField>
+
+<ParamField body="notes" type="string">
+  Interní poznámky viditelné pro váš tým.
+</ParamField>
+
+<ParamField body="brief" type="string">
+  Briefing klienta nebo shrnutí projektu.
+</ParamField>
+
+<ParamField body="assignedProjectManagers" type="array">
+  Úplný seznam ID členů projektových manažerů přiřazených k této objednávce. Nová ID jsou přidána do týmu; odebraná ID jsou smazána. Každé ID musí patřit členovi s rolí `projectManager` ve stejné společnosti.
+</ParamField>
+
+<ParamField body="markTasksAsDone" type="boolean">
+  **Povinné** když je `status` `Completed` nebo `Cancelled`. Pokud je `true`, všechny úkoly v objednávce jsou po změně stavu označeny jako dokončené. Pokud je `false`, úkoly zůstanou ve svém aktuálním stavu.
+</ParamField>
+
+<ParamField body="rejectRequestedTasks" type="boolean">
+  Povoleno pouze když je `status` `Completed` nebo `Cancelled`. Pokud je `true`, všechny nevyřešené úkoly vyžádané klientem jsou po aktualizaci stavu zamítnuty.
+</ParamField>
+
+<ParamField body="repeatCount" type="number">
+  Vyžadováno pouze pro objednávky **předplatného** při změně frekvence opakování. Párujte s `repeatDuration`.
+</ParamField>
+
+<ParamField body="repeatDuration" type="string">
+  Vyžadováno spolu s `repeatCount` pro objednávky předplatného. Jedna z hodnot: `day`, `week`, `month`, `year`.
+</ParamField>
+
+<ParamField body="billingCycleCount" type="number">
+  Volitelný limit počtu fakturačních cyklů. Výchozí hodnota je `0` (bez limitu).
+</ParamField>
+
+<ParamField body="billingCycleEvent" type="string">
+  Způsob zpracování každého fakturačního cyklu. Jedna z hodnot: `createOrderWithTask`, `noChange`.
+</ParamField>
+
+<ParamField body="files" type="file">
+  Nula nebo více příloh souborů. Soubory jsou připojeny do systémové složky objednávky; stávající soubory nejsou nikdy přepsány. Použijte kódování `multipart/form-data` a každý soubor připojte pod pole `files`.
+</ParamField>
+
+---
+
+## Ukázkový požadavek
+
+<CodeGroup>
+
+```bash cURL (no files)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "currency=USD" \
+  --form "quantity=1" \
+  --form "assignedProjectManagers[]=PROJECT_MANAGER_ID" \
+  --form "notes=Scope finalized with client." \
+  --form "brief=Launch-ready design refresh."
+```
+
+```bash cURL (with file)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "repeatCount=3" \
+  --form "repeatDuration=month" \
+  --form "billingCycleEvent=createOrderWithTask" \
+  --form "files=@/path/to/creative-brief.pdf"
+```
+
+</CodeGroup>
+
+**Ekvivalentní JSON datový obsah** (převeďte na záznamy multipart formuláře při odesílání souborů):
+
+```json
+{
+  "name": "Website Redesign",
+  "status": "Review",
+  "budget": 12000,
+  "currency": "USD",
+  "quantity": 1,
+  "assignedProjectManagers": ["{{PROJECT_MANAGER_ID}}"],
+  "repeatCount": 3,
+  "repeatDuration": "month",
+  "billingCycleEvent": "createOrderWithTask",
+  "notes": "Scope finalized with client.",
+  "brief": "Launch-ready design refresh."
+}
+```
+
+---
+
+## Odpovědi
+
+| HTTP stav | Popis |
+|---|---|
+| `200 OK` | Aktualizace proběhla úspěšně. |
+| `400 ValidationError` | Neplatné ID objednávky, zakázaný přechod stavu nebo chybně formátovaný datový obsah. Odpověď obsahuje `fieldName`, pokud je relevantní. |
+| `403 PermissionError` | Volající není schváleným členem, nemá roli ve společnosti, předplatné workspace vypršelo nebo se klient pokusil o zakázané zrušení. |
+| `500 Internal Server Error` | Neošetřená výjimka — zkontrolujte protokoly serveru. |
+
+### Odpověď při úspěchu
+
+```json
+{
+  "message": "Project has been updated"
+}
+```
+
+---
+
+## Obchodní pravidla a vedlejší efekty
+
+- **Přechody stavů** jsou omezeny. `Review` může následovat pouze po `Ongoing` nebo dalším `Review`. Pokus o přechod `Pending → Review` vrátí chybu `400 ValidationError`.
+- Přechod stavu z `Pending` na `Ongoing`, `Review` nebo `Completed` aktivuje složku souborů objednávky, takže nahrané soubory budou přístupné projektovému týmu.
+- Nastavení `status` na `Completed` nebo `Cancelled` **vyžaduje** explicitní nastavení `markTasksAsDone` na `true` nebo `false`.
+- Změny stavu na `Review`, `Completed` nebo `Cancelled` automaticky spustí oznámení klientovi:
+  - **Review** — upozorní klienta, že je potřeba kontrola.
+  - **Completed** — odešle klientovi oznámení `orderCompletion`.
+  - **Cancelled** — odešle klientovi oznámení `orderCancellation`.
+- Každá úspěšná aktualizace spustí webhook událost `ORDER.UPDATED` s aktualizovaným dokumentem objednávky a metadaty příloh, pokud máte aktivní webhook přihlášený k odběru této události.

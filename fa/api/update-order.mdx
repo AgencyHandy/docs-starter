@@ -1,0 +1,205 @@
+---
+title: "API AgencyHandy: به‌روزرسانی سفارش موجود با PUT"
+sidebarTitle: "به‌روزرسانی سفارش"
+description: "از API AgencyHandy برای به‌روزرسانی جزئیات سفارش، تغییر وضعیت، واگذاری مجدد مدیران پروژه و پیوست فایل به سفارش موجود از طریق درخواست PUT استفاده کنید."
+---
+
+endpoint به‌روزرسانی سفارش به شما امکان می‌دهد یک سفارش (پروژه) موجود در AgencyHandy را تغییر دهید — نام، وضعیت، بودجه، جدول زمانی، مدیران اختصاص‌یافته و موارد دیگر — همه از یک سیستم خارجی یا اسکریپت اتوماسیون. این endpoint همچنین از پیوست فایل پشتیبانی می‌کند که به پوشه سیستم سفارش اضافه می‌شود.
+
+<Note>
+  پیش از استفاده از این endpoint، راهنمای [شروع به کار](/fa/api/getting-started) را تکمیل کنید تا API key و Company ID خود را دریافت کنید.
+</Note>
+
+<Warning>
+  این endpoint از `Authorization: Bearer <token>` (توکن دسترسی یک عضو وارد شده) به‌جای هدر `x-api-key` استفاده می‌کند. مطمئن شوید فراخواننده شما به‌عنوان یک **عضو تأییدشده** شرکت هدف احراز هویت شده است. فراخوانندگان غیرمجاز خطای `403 PermissionError` دریافت می‌کنند.
+</Warning>
+
+## پیش‌نیازها
+
+- ✅ یک **Bearer token** معتبر برای یک عضو تأییدشده فضای کاری
+- ✅ **Company ID** دریافت‌شده از `GET {{URL}}/accounts/companies`
+- ✅ **Order ID** (Project ID، `pid`) سفارشی که می‌خواهید به‌روز کنید
+
+---
+
+## Endpoint
+
+```
+PUT {{URL}}/orders?pid=<ORDER_ID>
+```
+
+**Content-Type:** `multipart/form-data` — حتی وقتی فایلی پیوست نمی‌شود، از این استفاده کنید تا پارسر multipart سرور راضی شود.
+
+## هدرها
+
+| هدر | الزامی | توضیحات |
+|---|---|---|
+| `Authorization` | بله | `Bearer <ACCESS_TOKEN>` — توکن دسترسی عضو وارد شده. |
+| `companyid` | بله | Mongo ObjectId شرکتی که سفارش به آن تعلق دارد. |
+| `clientid` | اختیاری | شناسه سوکت لحظه‌ای مشتری. در صورت ارائه، اعلان‌ها آن را شامل می‌شوند. |
+
+## پارامترهای کوئری
+
+<ParamField query="pid" type="string" required>
+  شناسه سفارش / پروژه برای به‌روزرسانی. این را به‌عنوان پارامتر کوئری استرینگ ارسال کنید.
+</ParamField>
+
+## فیلدهای بدنه درخواست
+
+<ParamField body="name" type="string">
+  عنوان سفارش را به‌روز می‌کند. حداقل ۲ کاراکتر.
+</ParamField>
+
+<ParamField body="status" type="string">
+  وضعیت جدید سفارش. باید یکی از موارد زیر باشد: `Pending`، `Ongoing`، `Review`، `Completed`، `Cancelled`.
+
+  **تغییرات مجاز:**
+  - `Review` تنها می‌تواند بعد از `Ongoing` یا `Review` دیگری باشد. پرش مستقیم از `Pending` به `Review` خطای `400 ValidationError` برمی‌گرداند.
+  - سفارش‌هایی که قبلاً `Completed` یا `Cancelled` شده‌اند قابل به‌روزرسانی نیستند.
+  - مشتریان نمی‌توانند سفارشی که از `Pending` عبور کرده را لغو کنند.
+</ParamField>
+
+<ParamField body="budget" type="number">
+  مقدار کل بودجه. باید `≥ 0` باشد. از ارز موجود سفارش استفاده می‌کند مگر اینکه `currency` نیز ارائه شود.
+</ParamField>
+
+<ParamField body="currency" type="string">
+  کد ارز برای بودجه. مثال‌ها: `USD`، `CAD`، `EUR`.
+</ParamField>
+
+<ParamField body="quantity" type="number">
+  تعداد واحدهای خریداری‌شده برای بسته. باید `≥ 1` باشد.
+</ParamField>
+
+<ParamField body="deadline" type="string">
+  رشته تاریخ ISO 8601 برای تاریخ مهلت سفارش. مثال: `"2025-12-31T00:00:00.000Z"`.
+</ParamField>
+
+<ParamField body="kickoffDate" type="string">
+  رشته تاریخ ISO 8601 برای تاریخ شروع پروژه.
+</ParamField>
+
+<ParamField body="notes" type="string">
+  یادداشت‌های داخلی قابل مشاهده برای تیم شما.
+</ParamField>
+
+<ParamField body="brief" type="string">
+  بریف مشتری یا خلاصه پروژه.
+</ParamField>
+
+<ParamField body="assignedProjectManagers" type="array">
+  فهرست کامل شناسه‌های عضو مدیر پروژه برای اختصاص به این سفارش. شناسه‌های جدید به تیم اضافه می‌شوند؛ شناسه‌های حذف‌شده پاک می‌شوند. هر شناسه باید متعلق به عضوی با نقش `projectManager` در همان شرکت باشد.
+</ParamField>
+
+<ParamField body="markTasksAsDone" type="boolean">
+  **الزامی** است وقتی `status` برابر `Completed` یا `Cancelled` باشد. وقتی `true` است، تمام وظایف سفارش پس از تغییر وضعیت انجام‌شده علامت‌گذاری می‌شوند. وقتی `false` است، وظایف در وضعیت فعلی خود باقی می‌مانند.
+</ParamField>
+
+<ParamField body="rejectRequestedTasks" type="boolean">
+  تنها وقتی `status` برابر `Completed` یا `Cancelled` باشد مجاز است. وقتی `true` است، تمام وظایف درخواست‌شده توسط مشتری که در انتظار هستند پس از به‌روزرسانی وضعیت رد می‌شوند.
+</ParamField>
+
+<ParamField body="repeatCount" type="number">
+  تنها برای سفارش‌های **اشتراکی** هنگام تغییر دوره تکرار الزامی است. همراه با `repeatDuration` استفاده کنید.
+</ParamField>
+
+<ParamField body="repeatDuration" type="string">
+  همراه با `repeatCount` برای سفارش‌های اشتراکی الزامی است. یکی از: `day`، `week`، `month`، `year`.
+</ParamField>
+
+<ParamField body="billingCycleCount" type="number">
+  محدودیت اختیاری بر تعداد دوره‌های صورت‌حساب تکرار. پیش‌فرض `0` (بدون محدودیت).
+</ParamField>
+
+<ParamField body="billingCycleEvent" type="string">
+  نحوه مدیریت هر دوره صورت‌حساب. یکی از: `createOrderWithTask`، `noChange`.
+</ParamField>
+
+<ParamField body="files" type="file">
+  صفر یا بیشتر پیوست فایل. فایل‌ها به پوشه سیستم سفارش اضافه می‌شوند؛ فایل‌های موجود هرگز بازنویسی نمی‌شوند. از رمزگذاری `multipart/form-data` استفاده کنید و هر فایل را زیر فیلد `files` پیوست کنید.
+</ParamField>
+
+---
+
+## درخواست نمونه
+
+<CodeGroup>
+
+```bash cURL (no files)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "currency=USD" \
+  --form "quantity=1" \
+  --form "assignedProjectManagers[]=PROJECT_MANAGER_ID" \
+  --form "notes=Scope finalized with client." \
+  --form "brief=Launch-ready design refresh."
+```
+
+```bash cURL (with file)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "repeatCount=3" \
+  --form "repeatDuration=month" \
+  --form "billingCycleEvent=createOrderWithTask" \
+  --form "files=@/path/to/creative-brief.pdf"
+```
+
+</CodeGroup>
+
+**معادل JSON payload** (هنگام ارسال فایل به ورودی‌های فرم multipart تبدیل کنید):
+
+```json
+{
+  "name": "Website Redesign",
+  "status": "Review",
+  "budget": 12000,
+  "currency": "USD",
+  "quantity": 1,
+  "assignedProjectManagers": ["{{PROJECT_MANAGER_ID}}"],
+  "repeatCount": 3,
+  "repeatDuration": "month",
+  "billingCycleEvent": "createOrderWithTask",
+  "notes": "Scope finalized with client.",
+  "brief": "Launch-ready design refresh."
+}
+```
+
+---
+
+## پاسخ‌ها
+
+| وضعیت HTTP | توضیحات |
+|---|---|
+| `200 OK` | به‌روزرسانی موفق. |
+| `400 ValidationError` | شناسه سفارش نامعتبر، تغییر وضعیت مسدود یا payload ناقص. پاسخ در صورت مرتبط بودن شامل `fieldName` می‌شود. |
+| `403 PermissionError` | فراخواننده عضو تأییدشده نیست، نقش شرکت را ندارد، اشتراک فضای کاری منقضی شده یا مشتری سعی کرده لغو غیرمجاز انجام دهد. |
+| `500 Internal Server Error` | استثنای مدیریت‌نشده — لاگ‌های سرور را بررسی کنید. |
+
+### پاسخ موفق
+
+```json
+{
+  "message": "Project has been updated"
+}
+```
+
+---
+
+## قوانین کسب‌وکار و عوارض جانبی
+
+- **تغییرات وضعیت** محدود است. `Review` تنها می‌تواند بعد از `Ongoing` یا `Review` دیگری باشد. تلاش برای `Pending → Review` خطای `400 ValidationError` برمی‌گرداند.
+- تغییر وضعیت از `Pending` به `Ongoing`، `Review` یا `Completed` پوشه فایل سفارش را فعال می‌کند تا فایل‌های آپلودشده برای تیم پروژه قابل دسترس باشند.
+- تنظیم `status` روی `Completed` یا `Cancelled` **الزام** می‌کند که `markTasksAsDone` به‌صراحت روی `true` یا `false` تنظیم شود.
+- تغییرات وضعیت به `Review`، `Completed` یا `Cancelled` به‌طور خودکار اعلان‌های مشتری را فعال می‌کنند:
+  - **Review** — به مشتری اطلاع می‌دهد که بررسی مورد نیاز است.
+  - **Completed** — اعلان `orderCompletion` را برای مشتری ارسال می‌کند.
+  - **Cancelled** — اعلان `orderCancellation` را برای مشتری ارسال می‌کند.
+- هر به‌روزرسانی موفق یک رویداد webhook `ORDER.UPDATED` با سند سفارش به‌روزشده و متادیتای پیوست ارسال می‌کند، در صورتی که یک webhook فعال مشترک به آن رویداد داشته باشید.

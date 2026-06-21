@@ -1,0 +1,137 @@
+---
+title: "AgencyHandy API: programmatiska jauna klienta izveide"
+sidebarTitle: "Izveidot klientu"
+description: "Programmatiskā veidā pievienojiet jaunus klientus savai AgencyHandy darbvietai, publicējot uz bulk-client galapunktu ar vārdu, e-pastu un kontaktinformāciju."
+---
+
+Klienta izveides galapunkts ļauj pievienot klientus tieši jūsu AgencyHandy darbvietai no ārējas sistēmas. Atšķirībā no potenciālajiem klientiem (leads), klienti ir pilnībā pievienoti kontakti, kurus var piešķirt pasūtījumiem, rēķiniem un projektiem. Izmantojiet šo galapunktu, lai sinhronizētu jaunus klientus no CRM, reģistrācijas veidlapas vai cita datu avota.
+
+<Note>
+  Pirms šī galapunkta izmantošanas izpildiet rokasgrāmatu [Darba sākšana](/lv/api/getting-started), lai iegūtu API atslēgu un uzņēmuma ID. Atšķirībā no potenciālā klienta izveides galapunkta, klienta izveidei **nav** nepieciešams atsevišķs lomas ID uzmeklēšanas solis.
+</Note>
+
+## Priekšnosacījumi
+
+- ✅ API atslēga ģenerēta no **Workspace Config → API Key**
+- ✅ Uzņēmuma ID iegūts no `GET {{URL}}/accounts/companies`
+
+---
+
+## Galapunkts
+
+```
+POST {{URL}}/members/bulk-client
+```
+
+## Galvenes
+
+| Galvene | Vērtība |
+|---|---|
+| `x-api-key` | Jūsu API atslēga |
+| `companyId` | Jūsu uzņēmuma ID |
+| `Content-Type` | `application/json` |
+
+## Pieprasījuma pamatteksts
+
+Pieprasījuma pamatteksts ir **JSON masīvs**. Vienā pieprasījumā varat izveidot vienu vai vairākus klientus.
+
+<ParamField body="firstName" type="string" required>
+  Klienta vārds.
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  Klienta uzvārds.
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  Klienta e-pasta adrese. Jābūt unikālai jūsu darbvietā.
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  Jaunam klientam iestatiet uz `false`. Iestatiet uz `true`, konvertējot esošu potenciālo klientu par klientu.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Klienta statuss. Izplatītas vērtības: `New`, `Active`. Noklusējums ir `New`, ja izlaists.
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  Klienta tālruņa numurs.
+</ParamField>
+
+<ParamField body="source" type="string">
+  Kā iegūts šis klients. Piemēra vērtības: `website`, `referral`, `social`.
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  Klienta pozīcija paneļa kolonnā. Noklusējums ir `1`.
+</ParamField>
+
+## Piemēra pieprasījums
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-client" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyId: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+## Veiksmīga atbilde
+
+```json
+{
+  "message": "Client created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  Apstiprinājuma virkne veiksmīgas darbības gadījumā.
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  Izveidoto klientu objektu masīvs.
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  Jaunizveidotā klienta unikālais ID. Izmantojiet šo ID, piešķirot klientu pasūtījumiem vai rēķiniem, izmantojot API.
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  Klienta pilnais vārds (vārds + uzvārds).
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  Saglabātais klienta statuss.
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  Dalībniekam piešķirtā loma — būs `"client"`.
+</ResponseField>
+
+<Note>
+  Šī galapunkta `companyId` galvenē tiek izmantots lielais burts **I** — `companyId` — atšķirībā no dažiem citiem galapunktiem, kas izmanto `companyid` (visi mazie burti). Izmantojiet precīzu lielo/mazo burtu rakstību, kas norādīta iepriekš, lai izvairītos no autentifikācijas kļūdām.
+</Note>
+
+<Tip>
+  Masīvā nododiet vairākus klientu objektus, lai vienā API izsaukumā lielapjoma veidā izveidotu klientus. Katram objektam jābūt unikālai `email` adresei. Dublētās e-pasta adreses izraisīs validācijas kļūdu attiecīgajam ierakstam.
+</Tip>

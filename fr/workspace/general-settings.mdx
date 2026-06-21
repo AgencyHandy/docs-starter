@@ -1,0 +1,123 @@
+---
+title: "Configurez les paramètres généraux de votre espace de travail AgencyHandy"
+sidebarTitle: "Paramètres généraux"
+description: "Définissez le nom de votre espace de travail, téléchargez vos logos, ajoutez l'adresse de votre agence et choisissez le bon fuseau horaire pour personnaliser votre espace de travail AgencyHandy."
+---
+
+La page des paramètres généraux est le premier endroit que vous visiterez après vous être connecté à AgencyHandy. Elle vous permet d'établir l'identité de votre agence sur la plateforme — de votre logo et du nom de votre espace de travail à votre adresse physique et votre fuseau horaire. Chaque modification effectuée ici s'applique globalement à l'ensemble de l'espace de travail pour tous les utilisateurs.
+
+<Note>
+  Seuls les **Super Admins** et les **Admins** peuvent accéder aux paramètres de Workspace Config et les modifier. Si vous ne voyez pas l'option **Workspace Config** dans la navigation gauche, contactez votre Super Admin pour ajuster les autorisations de votre rôle.
+</Note>
+
+## Accéder aux paramètres généraux
+
+<Steps>
+  <Step title="Ouvrez Workspace Config">
+    Connectez-vous à votre compte AgencyHandy. Dans le menu de navigation gauche, cliquez sur **Workspace Config**.
+  </Step>
+  <Step title="Sélectionnez General Settings">
+    Cliquez sur **General Settings** dans le sous-menu Workspace Config. Le panneau des paramètres généraux s'ouvre à droite.
+  </Step>
+</Steps>
+
+---
+
+## Télécharger le logo de votre espace de travail
+
+AgencyHandy prend en charge trois types de logos distincts, chacun affiché dans une partie différente de l'interface :
+
+| Type de logo     | Dimensions   | Où il apparaît                                  |
+|------------------|-------------|--------------------------------------------------|
+| Logo circulaire  | 32 × 32 px  | Zones de profil et éléments compacts de l'interface |
+| Logo favicon     | 16 × 16 px  | Icône de l'onglet du navigateur                  |
+| Logo rectangulaire | 142 × 36 px | En-tête de la barre latérale (remplace le logo circulaire lorsqu'il est défini) |
+
+**Formats pris en charge :** PNG, JPG, SVG
+
+<Steps>
+  <Step title="Cliquez sur Upload Logo">
+    Dans la section des logos, cliquez sur le bouton **Upload Logo** correspondant au type de logo que vous voulez définir.
+  </Step>
+  <Step title="Sélectionnez votre fichier image">
+    Parcourez l'image sur votre appareil. Assurez-vous que le fichier correspond aux dimensions requises et qu'il est dans un format pris en charge.
+  </Step>
+  <Step title="Confirmez le téléchargement">
+    L'aperçu du logo se met à jour immédiatement. Répétez l'opération pour chaque type de logo selon vos besoins.
+  </Step>
+</Steps>
+
+<Tip>
+  Le téléchargement d'un **logo rectangulaire** remplacera le logo circulaire dans la barre latérale et masquera automatiquement le texte du nom de l'espace de travail à côté. Le logo rectangulaire devient également le logo principal utilisé dans tous les autres contextes où un logo est affiché — même si un logo circulaire est aussi téléchargé.
+</Tip>
+
+---
+
+## Définir le nom et l'adresse de votre espace de travail
+
+### Nom de l'espace de travail
+
+Saisissez le nom de votre agence dans le champ **Workspace Name**. Ce nom :
+
+- Apparaît sur toute la plateforme à des fins d'identification.
+- Est utilisé dans le sous-domaine AgencyHandy par défaut (par ex. `yourname.agencyhandy.com`).
+
+<Warning>
+  Modifier le nom de votre espace de travail met à jour votre sous-domaine par défaut immédiatement. Si vous partagez le lien du sous-domaine par défaut avec vos clients, ils auront besoin de l'URL mise à jour. Envisagez de configurer un [domaine personnalisé](/fr/workspace/custom-domain) pour éviter ce problème.
+</Warning>
+
+### Adresse de l'espace de travail
+
+Saisissez l'adresse physique complète de votre agence dans le champ **Workspace Address**. Cette adresse est utilisée pour la représentation officielle sur les factures et les documents destinés aux clients, alors assurez-vous qu'elle est exacte et à jour.
+
+---
+
+## Sélectionner votre fuseau horaire
+
+<Steps>
+  <Step title="Ouvrez le menu déroulant Time Zone">
+    Faites défiler jusqu'au champ **Time Zone** et cliquez sur le menu déroulant pour développer la liste des fuseaux horaires.
+  </Step>
+  <Step title="Choisissez votre fuseau horaire">
+    Sélectionnez le fuseau horaire qui correspond au principal lieu d'exploitation de votre agence. Toutes les échéances de tâches, notifications planifiées, événements de calendrier et horodatages de l'espace de travail s'appuient sur ce paramètre.
+  </Step>
+</Steps>
+
+<Warning>
+  Un paramètre de fuseau horaire incorrect entraîne des erreurs de planification pour les tâches, les réunions et les dates d'échéance des factures. Vérifiez bien ce paramètre avant d'inviter votre équipe ou vos clients.
+</Warning>
+
+---
+
+## Enregistrer vos modifications
+
+Après avoir rempli ou mis à jour des champs, cliquez sur **Save Changes** au bas du panneau des paramètres généraux. Toutes les mises à jour sont appliquées globalement et sont immédiatement visibles par chaque utilisateur de l'espace de travail.
+
+---
+
+## Zone de danger : supprimer votre espace de travail
+
+Au bas du panneau des paramètres généraux se trouve une section **Danger Zone** contenant le bouton **Delete Workspace**.
+
+<Warning>
+  La suppression de votre espace de travail est **permanente et irréversible**. Toutes les données — y compris les clients, les commandes, les factures, les projets et les configurations — seront définitivement effacées. Il n'existe aucune option de récupération. Ne procédez que si vous en êtes absolument certain.
+</Warning>
+
+---
+
+## Bonnes pratiques
+
+<CardGroup cols={2}>
+  <Card title="Vérifiez les dimensions des logos" icon="image">
+    Téléchargez vos logos aux dimensions en pixels exactes recommandées pour éviter l'étirement, le recadrage ou un affichage flou sur la plateforme.
+  </Card>
+  <Card title="Maintenez votre image de marque à jour" icon="paintbrush">
+    Mettez à jour votre logo et votre adresse chaque fois que votre agence change d'identité ou de localisation pour que tous les documents et pages destinés aux clients restent exacts.
+  </Card>
+  <Card title="Définissez d'abord le fuseau horaire" icon="clock">
+    Configurez votre fuseau horaire avant de créer des services, des tâches ou de planifier quoi que ce soit pour garantir que tous les horodatages s'alignent correctement dès le départ.
+  </Card>
+  <Card title="Limitez l'accès administrateur" icon="shield">
+    N'attribuez les rôles Super Admin ou Admin qu'au personnel qui a réellement besoin de modifier les configurations de l'espace de travail, afin d'éviter les changements accidentels.
+  </Card>
+</CardGroup>

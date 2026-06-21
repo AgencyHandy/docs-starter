@@ -1,0 +1,137 @@
+---
+title: "AgencyHandy API: Programatik Olarak Yeni Müşteri Oluşturun"
+sidebarTitle: "Müşteri Oluştur"
+description: "Ad, e-posta ve iletişim bilgileriyle bulk-client uç noktasına gönderi yaparak AgencyHandy çalışma alanınıza programatik olarak yeni müşteriler ekleyin."
+---
+
+Müşteri Oluştur uç noktası, harici bir sistemden AgencyHandy çalışma alanınıza doğrudan müşteri eklemenizi sağlar. Lead'lerin aksine, müşteriler siparişlere, faturalara ve projelere atanabilen tam olarak kayıt altına alınmış kişilerdir. Yeni müşterileri bir CRM, kayıt formu veya başka herhangi bir veri kaynağından senkronize etmek için bu uç noktayı kullanın.
+
+<Note>
+  Bu uç noktayı kullanmadan önce API anahtarınızı ve Şirket Kimliğinizi edinmek için [Başlarken](/tr/api/getting-started) rehberini tamamlayın. Lead Oluştur uç noktasının aksine, müşteri oluştururken ayrı bir Rol Kimliği arama adımı **gerekmez**.
+</Note>
+
+## Ön koşullar
+
+- ✅ **Çalışma Alanı Yapılandırması → API Anahtarı** bölümünden oluşturulan API anahtarı
+- ✅ `GET {{URL}}/accounts/companies` ile alınan Şirket Kimliği
+
+---
+
+## Uç nokta
+
+```
+POST {{URL}}/members/bulk-client
+```
+
+## Başlıklar
+
+| Başlık | Değer |
+|---|---|
+| `x-api-key` | API anahtarınız |
+| `companyId` | Şirket Kimliğiniz |
+| `Content-Type` | `application/json` |
+
+## İstek gövdesi
+
+İstek gövdesi bir **JSON dizisidir**. Tek bir istekte bir veya daha fazla müşteri oluşturabilirsiniz.
+
+<ParamField body="firstName" type="string" required>
+  Müşterinin adı.
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  Müşterinin soyadı.
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  Müşterinin e-posta adresi. Çalışma alanınızda benzersiz olmalıdır.
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  Yepyeni bir müşteri için `false` olarak ayarlayın. Mevcut bir lead'i müşteriye dönüştürürken `true` olarak ayarlayın.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Müşterinin durumu. Yaygın değerler: `New`, `Active`. Belirtilmezse varsayılan olarak `New` kullanılır.
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  Müşterinin telefon numarası.
+</ParamField>
+
+<ParamField body="source" type="string">
+  Bu müşteriyi nasıl edindiğiniz. Örnek değerler: `website`, `referral`, `social`.
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  Müşterinin sütundaki konumu. Varsayılan olarak `1` kullanılır.
+</ParamField>
+
+## Örnek istek
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-client" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyId: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+## Başarı yanıtı
+
+```json
+{
+  "message": "Client created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  Başarı durumunda onay dizesi.
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  Oluşturulan müşteri nesnelerinin dizisi.
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  Yeni oluşturulan müşterinin benzersiz kimliği. API aracılığıyla müşteriyi siparişlere veya faturalara atarken bu kimliği kullanın.
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  Müşterinin tam adı (firstName + lastName).
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  Kaydedildiği şekliyle müşterinin durumu.
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  Üyeye atanan rol — `"client"` olacaktır.
+</ResponseField>
+
+<Note>
+  Bu uç nokta için `companyId` başlığı büyük **I** harfini kullanır — `companyId` — tümü küçük harf kullanan bazı diğer uç noktaların aksine (`companyid`). Kimlik doğrulama hatalarını önlemek için yukarıda gösterilen tam büyük/küçük harf kullanımını uygulayın.
+</Note>
+
+<Tip>
+  Tek bir API çağrısında toplu müşteri oluşturmak için diziye birden fazla müşteri nesnesi iletebilirsiniz. Her nesnenin benzersiz bir `email` adresi olmalıdır. Yinelenen e-postalar söz konusu giriş için doğrulama hatasına neden olur.
+</Tip>

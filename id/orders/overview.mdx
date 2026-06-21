@@ -1,0 +1,91 @@
+---
+title: "Ikhtisar Pesanan: Mengelola Pekerjaan Klien di AgencyHandy"
+sidebarTitle: "Ikhtisar"
+description: "Pahami cara kerja pesanan di AgencyHandy — status, peran, detail pesanan, pesanan manual, dan add-on untuk layanan yang belum diterbitkan."
+---
+
+Pesanan adalah tulang punggung operasional AgencyHandy. Sebuah pesanan mewakili permintaan klien untuk layanan atau produk, dan berfungsi sebagai workspace pusat di mana tim Anda melacak kemajuan, mengelola tugas, bertukar umpan balik, dan mengantarkan hasil. Baik klien menempatkan pesanan melalui katalog layanan yang Anda terbitkan atau tim Anda membuatnya secara manual, setiap pesanan mengikuti siklus hidup terstruktur yang sama yang membuat agensi Anda terorganisir dan klien Anda terinformasi.
+
+## Apa yang Terkandung dalam Pesanan
+
+Setiap pesanan menampilkan informasi kunci sekilas dan memberi anggota tim satu tempat untuk mengoordinasikan pekerjaan:
+
+| Kolom | Deskripsi |
+|---|---|
+| **Order ID** | Pengidentifikasi unik yang dibuat otomatis untuk setiap pesanan |
+| **Client** | Klien yang memiliki pesanan |
+| **Service** | Layanan yang sedang diantarkan |
+| **Project Manager (PM)** | Anggota tim yang bertanggung jawab atas pengiriman (opsional) |
+| **Budget** | Harga yang disepakati untuk pesanan |
+| **Kick-off Date** | Kapan pekerjaan dimulai |
+| **Due Date** | Tenggat waktu penyelesaian pesanan |
+| **Order Brief** | Instruksi klien, catatan, dan file referensi yang dilampirkan |
+| **Tasks** | Item pekerjaan diskrit yang ditugaskan kepada anggota tim |
+| **Discussions** | Percakapan berulir antara staf agensi dan klien |
+
+## Status Pesanan
+
+Setiap pesanan bergerak melalui serangkaian status tetap. Anda tidak dapat menambahkan atau mengganti nama status ini.
+
+<Note>
+Hanya Super Admin, Admin, dan Project Manager yang dapat mengubah status pesanan.
+</Note>
+
+| Status | Artinya |
+|---|---|
+| **Pending** | Pesanan telah dibuat dan menunggu pekerjaan dimulai |
+| **Ongoing** | Pekerjaan aktif sedang berlangsung |
+| **In Review** | Hasil yang dapat dikirimkan telah diserahkan dan menunggu tinjauan klien atau internal |
+| **Complete** | Pesanan telah sepenuhnya diantarkan dan diterima |
+| **Cancelled** | Pesanan telah dibatalkan dan tidak lagi aktif |
+
+## Akses Berbasis Peran
+
+Peran berbeda di AgencyHandy memiliki kemampuan berbeda dalam pesanan:
+
+| Peran | Dapat Membuat Pesanan | Dapat Mengedit Pesanan | Dapat Menghapus Pesanan | Dapat Mengubah Status | Dapat Menambah Tugas | Dapat Menambah Anggota Tim |
+|---|---|---|---|---|---|---|
+| **Super Admin** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Admin** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Project Manager (PM)** | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ |
+| **Employee** | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| **Client** | ❌ | ❌ | ❌ | ❌ | ✅ (hanya permintaan) | ❌ |
+
+<Tip>
+Klien dapat mengirim umpan balik dan berpartisipasi dalam diskusi tentang pesanan. Karyawan yang ditugaskan ke pesanan dapat melihat dan mengerjakan tugas tetapi tidak dapat mengelola pesanan itu sendiri.
+</Tip>
+
+## Yang Dapat Anda Lakukan dengan Pesanan
+
+AgencyHandy memberi Anda perangkat lengkap untuk mengelola pesanan sepanjang siklus hidupnya:
+
+- **Buat pesanan** untuk klien — baik dari layanan yang diterbitkan atau secara manual untuk layanan yang masih dalam pengembangan
+- **Terima dan tolak** pesanan yang diajukan klien, dengan opsi memberikan alasan saat menolak
+- **Lihat detail pesanan** termasuk kemajuan, anggota tim yang ditugaskan, tanggal kick-off dan jatuh tempo, anggaran, dan brief
+- **Urutkan, filter, dan cari** di semua pesanan berdasarkan ID, status, nama klien, atau kriteria lainnya
+- **Tambahkan tugas** langsung dalam pesanan untuk melacak dan menugaskan unit pekerjaan diskrit
+- **Mulai diskusi** untuk berkomunikasi dengan klien dan anggota tim dalam konteks
+
+## Pesanan Manual untuk Layanan yang Belum Diterbitkan
+
+Anda tidak terbatas pada pembuatan pesanan hanya untuk layanan yang telah Anda terbitkan secara publik. Super Admin dan Admin dapat membuat pesanan manual untuk layanan yang belum diterbitkan — berguna saat layanan masih dalam pengembangan, sementara tidak tersedia, atau ditawarkan kepada klien tertentu sebelum peluncuran resminya.
+
+Saat Anda membuka formulir pembuatan pesanan, dropdown **Service** menampilkan layanan yang diterbitkan dan yang belum diterbitkan, sehingga Anda dapat memilih yang berlaku. Semua kolom pesanan dan alur kerja lainnya berperilaku sama dengan pesanan standar.
+
+## Add-On dalam Pesanan Manual
+
+Saat membuat pesanan manual, Anda dapat menyertakan **layanan add-on** untuk memungkinkan klien menerima paket yang disesuaikan di luar layanan inti. Add-on harus dibuat terlebih dahulu dan dihubungkan ke layanan yang relevan di bagian **Forms** sebelum muncul sebagai opsi dalam formulir pesanan.
+
+<Note>
+Pilihan add-on hanya muncul dalam formulir pesanan manual jika setidaknya satu add-on telah dihubungkan ke layanan yang dipilih. Jika Anda tidak melihatnya, verifikasi bahwa add-on Anda terhubung dengan benar dalam konfigurasi layanan.
+</Note>
+
+Setelah layanan dengan add-on yang ditautkan dipilih, Anda dapat menyertakan add-on tersebut sebelum menyelesaikan dan mengirimkan pesanan.
+
+## Notifikasi
+
+AgencyHandy secara otomatis memberi tahu orang yang tepat saat pesanan bergerak maju:
+
+- Saat pesanan dibuat oleh PM, Admin, atau Super Admin, semua Super Admin di perusahaan Anda mendapat akses dan klien menerima notifikasi pembuatan.
+- Saat anggota tim ditambahkan ke pesanan, anggota tersebut menerima notifikasi.
+- Saat tugas dibuat dalam pesanan, klien menerima notifikasi.

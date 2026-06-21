@@ -1,0 +1,117 @@
+---
+title: "Dostosowanie schematów kolorów workspace AgencyHandy"
+sidebarTitle: "Wygląd"
+description: "Zastosuj kolory swojej marki do paska bocznego i interfejsu AgencyHandy — kolor główny, tło, tekst i stany najechania — widoczne natychmiast dla wszystkich użytkowników."
+---
+
+Ustawienia wyglądu dają Ci pełną kontrolę nad tym, jak wygląda Twój workspace AgencyHandy. Możesz dostosować schemat kolorów platformy do tożsamości marki swojej agencji, personalizując kolor główny, tło paska bocznego, kolor tekstu paska bocznego i kolor podświetlenia najechania dla elementów nawigacji paska bocznego. Każda zapisana zmiana wchodzi w życie natychmiast w całym workspace dla wszystkich użytkowników — bez konieczności odświeżania strony.
+
+<Note>
+  Tylko **Super Administratorzy** i **Administratorzy** mogą uzyskiwać dostęp do ustawień wyglądu i je modyfikować. Jeśli nie widzisz tej opcji w sekcji **Workspace Config**, poproś Super Administratora o przegląd Twojej roli.
+</Note>
+
+## Dostęp do ustawień wyglądu
+
+<Steps>
+  <Step title="Otwórz Workspace Config">
+    W lewym menu nawigacyjnym kliknij **Workspace Config**.
+  </Step>
+  <Step title="Wybierz Wygląd">
+    Kliknij **Appearance** (czasami oznaczony jako **Visual Settings**) z podmenu.
+  </Step>
+</Steps>
+
+---
+
+## Dostosowanie każdego elementu wizualnego
+
+### Kolor główny
+
+Kolor główny jest stosowany do przycisków, aktywnych linków, stanów podświetlenia i kluczowych elementów interfejsu w całej platformie.
+
+- Wybierz kolor odzwierciedlający podstawową tożsamość marki.
+- To najbardziej wpływowe ustawienie kolorów, ponieważ pojawia się wszędzie w interfejsie.
+
+### Kolor tła paska bocznego
+
+Tło paska bocznego ustawia bazowy odcień lewego panelu nawigacji.
+
+- Używaj koloru, który tworzy wyraźne wizualne oddzielenie między paskiem bocznym a głównym obszarem treści.
+- Ciemne tła z jasnym tekstem zazwyczaj sprawdzają się najlepiej pod względem czytelności.
+
+### Kolor tekstu paska bocznego
+
+Kolor tekstu paska bocznego kontroluje kolor etykiet wszystkich elementów nawigacji w lewym menu.
+
+- Zawsze wybieraj kolor o silnym kontraście w stosunku do koloru tła paska bocznego.
+- Słaby kontrast utrudnia odczytanie linków i zmniejsza dostępność.
+
+### Kolor tła najechania na pasku bocznym
+
+Ten kolor pojawia się jako podświetlenie tła, gdy użytkownik przesuwa kursor nad element nawigacji paska bocznego.
+
+- Sygnalizuje interaktywność i pomaga użytkownikom zrozumieć, który element zaraz klikną.
+- Wybierz kolor wyraźnie różniący się zarówno od domyślnego tła paska bocznego, jak i od koloru aktywnego elementu.
+
+---
+
+## Stosowanie wybranych kolorów
+
+<Steps>
+  <Step title="Otwórz próbnik kolorów dla każdego pola">
+    Kliknij próbkę koloru obok dowolnego z czterech pól wyglądu — Kolor główny, Tło paska bocznego, Kolor tekstu paska bocznego lub Kolor tła najechania na pasku bocznym — aby otworzyć próbnik kolorów.
+  </Step>
+  <Step title="Wpisz kod hex lub wybierz kolor">
+    Wpisz dokładny kod hex marki (np. `#3B5BDB`) bezpośrednio w polu wejściowym lub użyj wizualnego próbnika, aby wybrać odcień.
+  </Step>
+  <Step title="Podejrzyj zmiany">
+    Sprawdź, jak zaktualizowane kolory wyglądają na pasku bocznym i w całym interfejsie przed zapisaniem.
+  </Step>
+  <Step title="Kliknij Save Changes">
+    Gdy będziesz zadowolony z wyniku, kliknij **Save Changes**. Zaktualizowany wygląd jest stosowany globalnie i natychmiast dla wszystkich użytkowników w workspace.
+  </Step>
+</Steps>
+
+<Tip>
+  Zapisz kody hex kolorów swojej marki w łatwo dostępnym miejscu (przewodnik stylu marki lub plik z notatkami). Będziesz chciał konsekwentnie używać tych samych wartości — zwłaszcza jeśli kiedykolwiek będziesz musiał zresetować i ponownie skonfigurować ustawienia wyglądu.
+</Tip>
+
+---
+
+## Przywracanie domyślnego motywu
+
+Jeśli chcesz usunąć cały niestandardowy branding i przywrócić oryginalny schemat kolorów AgencyHandy, kliknij przycisk **Reset Default Settings** na stronie Wygląd.
+
+<Warning>
+  Przywrócenie ustawień domyślnych trwale usuwa wszystkie niestandardowe zmiany kolorów. Tej akcji nie można cofnąć. Jeśli chcesz zachować bieżące ustawienia, zanotuj kody hex przed resetowaniem.
+</Warning>
+
+---
+
+## Najlepsze praktyki dotyczące kontrastu kolorów
+
+Dobry kontrast kolorów to nie tylko kwestia preferencji projektowych — bezpośrednio wpływa na czytelność i dostępność dla Twojego zespołu i klientów.
+
+<CardGroup cols={2}>
+  <Card title="Dąż do współczynników kontrastu WCAG AA" icon="eye">
+    W przypadku zwykłego tekstu używaj współczynnika kontrastu co najmniej **4,5:1** między tekstem a tłem. W przypadku dużego tekstu lub ikon akceptowalny jest współczynnik **3:1**. Użyj narzędzia takiego jak [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/), aby to zweryfikować.
+  </Card>
+  <Card title="Unikaj kombinacji o niskim kontraście" icon="triangle-exclamation">
+    Nie łącz kolorów takich jak jasny szary tekst na białym tle lub żółty tekst na białym — nie spełniają one standardów dostępności i męczą oczy podczas długich sesji.
+  </Card>
+  <Card title="Testuj stany najechania celowo" icon="arrow-pointer">
+    Kolory najechania powinny być wyraźnie różne zarówno od stanu spoczynkowego, jak i aktywnego. Jeśli wyglądają tak samo, użytkownicy tracą ważną informację zwrotną wizualną.
+  </Card>
+  <Card title="Zachowaj spójność z marką" icon="paintbrush">
+    Używaj tego samego koloru głównego tutaj co na stronie internetowej, propozycjach i fakturach. Spójność buduje rozpoznawalność i profesjonalizm w każdym punkcie kontaktu z klientem.
+  </Card>
+</CardGroup>
+
+---
+
+## Ważne informacje
+
+- **Natychmiastowy efekt globalny:** Wszystkie zapisane zmiany wyglądu są stosowane natychmiast w całym workspace. Każdy zalogowany użytkownik widzi aktualizację przy następnej akcji nawigacji.
+- **Jeden aktywny motyw:** Nie ma obsługi wielu motywów — jeden zestaw kolorów dotyczy całego workspace dla wszystkich ról.
+- **Ograniczenie ról:** Tylko Super Administratorzy i Administratorzy mogą wprowadzać zmiany wyglądu. Zwykli członkowie zespołu i klienci nie mogą modyfikować kolorów.
+- **Reset jest trwały:** Przycisku **Reset Default Settings** nie można cofnąć, więc używaj go tylko wtedy, gdy celowo chcesz usunąć wszystkie niestandardowe kolory.

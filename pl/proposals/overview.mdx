@@ -1,0 +1,217 @@
+---
+title: "Tworzenie i wysyłanie ofert do klientów w AgencyHandy"
+sidebarTitle: "Oferty"
+description: "Twórz, dostosowuj i wysyłaj profesjonalne oferty w AgencyHandy — obejmujące ceny usług, pakiety, akceptację przez klienta i automatyczne tworzenie zamówień."
+---
+
+Funkcja Ofert w AgencyHandy zapewnia profesjonalny, kompleksowy przepływ pracy do przekształcania zapytań w aktywne projekty. Możesz tworzyć szczegółowe oferty z usługami, pakietami, dodatkami, podatkami i warunkami prawnymi — a następnie wysyłać je do klientów lub leadów bezpośrednio z platformy. Po zaakceptowaniu przez klienta AgencyHandy może automatycznie stworzyć zamówienie i fakturę, eliminując ręczną wymianę korespondencji, która spowalnia finalizowanie umów.
+
+<Note>
+  Tylko **Super Administratorzy** i **Administratorzy** mogą tworzyć i wysyłać oferty. Kierownicy projektów mogą przeglądać oferty, ale nie mogą ich wysyłać.
+</Note>
+
+## Panel ofert
+
+Aby otworzyć Panel ofert, kliknij **Oferty** w lewym pasku bocznym. Panel zawiera listę wszystkich wysłanych i otrzymanych ofert i pokazuje:
+
+- **Status** — Wersja robocza, Wysłana, Zaakceptowana lub Oczekująca
+- **Data utworzenia**, **data wysłania** i **data wygaśnięcia**
+- **Status wyświetlenia** — czy klient otworzył ofertę
+- Menu akcji umożliwiające **edycję**, **wysłanie**, **udostępnienie** lub **usunięcie** każdej oferty
+
+Możesz wyszukiwać oferty według ID oraz filtrować lub sortować listę, aby szybko znaleźć to, czego potrzebujesz.
+
+## Tworzenie oferty
+
+Kliknij **Utwórz ofertę**, aby otworzyć kreator ofert. Jest on podzielony na trzy sekcje: **Przegląd**, **Warunki i zasady** oraz **Konfiguracja**.
+
+### Przegląd
+
+Sekcja Przegląd służy do budowania treści i wyceny oferty.
+
+#### Informacje o ofercie i kliencie
+
+Wypełnij następujące pola na górze oferty:
+
+- **Nazwa oferty** i **ID oferty**
+- **Klient lub lead** — obsługuje wiele adresów e-mail; oznacz jeden jako Główny
+- **Nazwa firmy** i **Adres** (kraj, województwo/stan, miasto, kod pocztowy, dodatkowe dane)
+- **Wykonawca**, **Data wysłania** i **Data wygaśnięcia**
+
+#### Bloki treści
+
+Każdy blok treści używa wbudowanego edytora, dzięki czemu możesz dostosować narrację do każdego klienta:
+
+- **Wstęp** — ustaw kontekst i scenę dla współpracy
+- **O nas** — wyróżnij wiedzę i doświadczenie swojej agencji
+- **Co otrzymujesz** — jasno zdefiniuj zakres i produkty
+- **Gwarancja** — przedstaw wszelkie zapewnienia lub zobowiązania
+
+#### Oferty — usługi, pakiety, dodatki i podatki
+
+Sekcja Oferty służy do konfigurowania wyceny.
+
+<Accordion title="Usługi">
+  Dodaj jedną lub więcej usług do oferty. Dla każdej usługi możesz:
+
+  - Wybrać **typ cenowy**: Jednorazowy lub Subskrypcyjny
+  - Wybrać **walutę usługi** (różne usługi mogą używać różnych walut w tej samej ofercie)
+</Accordion>
+
+<Accordion title="Pakiety">
+  W ramach każdej usługi dodaj istniejące pakiety lub utwórz nowe na bieżąco. Dla każdego pakietu zdefiniuj:
+
+  - Nazwę pakietu
+  - Ilość i cenę za jednostkę
+  - Łączną kwotę
+
+  Możesz usuwać pakiety w dowolnym momencie przed wysłaniem.
+</Accordion>
+
+<Accordion title="Dodatki">
+  Dołącz opcjonalne dodatki do dowolnej usługi. Dodatki pojawiają się jako opcje, które klienci widzą obok podstawowej ceny usługi. Możesz tworzyć nowe dodatki bezpośrednio z kreatora ofert, nie opuszczając formularza.
+</Accordion>
+
+<Accordion title="Pozycje">
+  Dodaj jednorazowe niestandardowe pozycje z określoną ilością i ceną jednostkową. Pozycje są przydatne dla kosztów doraźnych, takich jak opłaty konfiguracyjne lub jednorazowe produkty.
+</Accordion>
+
+<Accordion title="Stawki podatkowe">
+  Zastosuj istniejące stawki podatkowe lub utwórz nowe bezpośrednio z oferty. Wybierz, czy każdy podatek jest **Doliczany** (dodawany do ceny) czy **Wliczony** (już zawarty). Podatki są obliczane dla każdej usługi osobno.
+</Accordion>
+
+### Warunki i zasady
+
+Użyj sekcji Warunki i zasady, aby dodać język prawny specyficzny dla oferty. Uwzględnij polityki anulowania, warunki zwrotów, prawa użytkowania i wszelkie inne warunki istotne dla współpracy. Ta sekcja pomaga zapewnić, że obie strony rozumieją swoje zobowiązania przed akceptacją.
+
+### Konfiguracja
+
+Sekcja Konfiguracja kontroluje to, co dzieje się po wysłaniu oferty.
+
+<CardGroup cols={2}>
+  <Card title="Akcja po akceptacji" icon="bolt">
+    Wybierz, co AgencyHandy robi po zaakceptowaniu oferty: **Nic nie rób** lub **Utwórz zamówienie i fakturę** automatycznie.
+  </Card>
+  <Card title="Przypomnienia" icon="bell">
+    Skonfiguruj powiadomienia przypominające, aby ponaglać klientów, którzy nie odpowiedzieli do daty wygaśnięcia.
+  </Card>
+  <Card title="Ochrona hasłem" icon="lock">
+    Dodaj hasło do publicznego linku oferty, aby tylko zamierzony odbiorca mógł ją wyświetlić.
+  </Card>
+  <Card title="Komentarze" icon="message">
+    Zezwól klientom na pozostawianie komentarzy w publicznym widoku oferty, aby ułatwić wymianę opinii.
+  </Card>
+</CardGroup>
+
+## Wysyłanie oferty
+
+W dowolnym momencie podczas tworzenia możesz zapisać ofertę jako **Wersję roboczą** lub **Wyświetlić podgląd**. Gdy jest gotowa, kliknij **Wyślij**, aby dostarczyć ją do klienta lub leada.
+
+Po wysłaniu:
+
+- Automatycznie generowany jest publiczny link
+- Status oferty zmienia się z **Wersji roboczej** na **Wysłana**
+- AgencyHandy śledzi, czy klient wyświetlił ofertę
+
+Z menu akcji oferty możesz również ponownie wysłać, pobrać, udostępnić publiczny link, wyświetlić komentarze lub usunąć ofertę.
+
+## Wysyłanie oferty z określonym pakietem
+
+Jeśli chcesz szybko wysłać ofertę powiązaną bezpośrednio z określonym pakietem usługi, użyj skróconego formularza **Utwórz ofertę**:
+
+<Steps>
+  <Step title="Otwórz sekcję Oferty">
+    Przejdź do **Ofert** w lewym pasku bocznym i kliknij **+ Utwórz ofertę**.
+  </Step>
+  <Step title="Wypełnij formularz oferty">
+    Wprowadź **imię i nazwisko klienta** i wybierz **usługę**. Jeśli usługa ma wiele pakietów, pojawią się automatycznie — wybierz odpowiedni.
+
+    Opcjonalnie przypisz **Menedżera** do oferty.
+  </Step>
+  <Step title="Dodaj szczegóły zamówienia">
+    Napisz **Opis zamówienia** (wymagany) opisujący, co klient otrzyma. Dołącz wszelkie pliki pomocnicze do 1 GB.
+  </Step>
+  <Step title="Ustaw ceny i warunki">
+    Potwierdź **typ cenowy** (jednorazowy lub subskrypcyjny), ustaw **czas trwania**, **ilość**, **budżet** i **walutę**. Dodaj wszelkie **Warunki i zasady** istotne dla oferty.
+  </Step>
+  <Step title="Utwórz i wyślij">
+    Kliknij **Utwórz**, aby sfinalizować i wysłać ofertę do klienta. Oferta pojawi się zarówno na Twojej liście Wysłanych, jak i w sekcji Otrzymanych klienta.
+  </Step>
+</Steps>
+
+<Note>
+  Sprawdź dokładnie automatycznie wypełnione ceny i czas trwania przed kliknięciem Utwórz. Po wysłaniu klient może zaakceptować, odrzucić lub pobrać ofertę z sekcji Otrzymanych.
+</Note>
+
+## Cykl życia statusu oferty
+
+| Status | Znaczenie |
+|--------|---------|
+| **Wersja robocza** | Oferta została utworzona, ale jeszcze nie wysłana. |
+| **Wysłana** | Oferta została dostarczona do klienta lub leada. |
+| **Oczekująca** | Klient zapoznał się z ofertą i odesłał ją do omówienia. |
+| **Zaakceptowana** | Jedna ze stron formalnie zaakceptowała warunki oferty. Zamówienie jest tworzone automatycznie, jeśli zostało skonfigurowane. |
+| **Odrzucona** | Jedna ze stron odrzuciła ofertę. Nadawca otrzymuje powiadomienie z podaniem przyczyny. |
+
+## Akceptowanie oferty
+
+Zarówno agencja, jak i klient mogą zaakceptować otrzymaną ofertę. Po akceptacji AgencyHandy automatycznie tworzy zamówienie (jeśli skonfigurowano w sekcji Konfiguracja).
+
+<Steps>
+  <Step title="Przejdź do Otrzymanych ofert">
+    Kliknij **Oferty** na pasku bocznym, a następnie wybierz zakładkę **Otrzymane**.
+  </Step>
+  <Step title="Otwórz ofertę">
+    Wybierz ofertę, którą chcesz zaakceptować z listy i przejrzyj jej szczegóły.
+  </Step>
+  <Step title="Kliknij Akceptuj">
+    Kliknij przycisk **Akceptuj**, aby formalnie zaakceptować ofertę. Status jest natychmiast aktualizowany, a obie strony są powiadamiane.
+  </Step>
+</Steps>
+
+<Note>
+  Jeśli to agencja akceptuje, Super Administratorzy i Administratorzy otrzymują powiadomienia. Jeśli klient akceptuje, AgencyHandy powiadamia użytkowników z rolami Super Administratora i Administratora w agencji.
+</Note>
+
+## Odrzucanie oferty
+
+Jeśli proponowane warunki, ceny lub zakres nie spełniają Twoich wymagań, możesz odrzucić ofertę i podać powód.
+
+<Steps>
+  <Step title="Przejdź do Otrzymanych ofert">
+    Przejdź do **Oferty → Otrzymane**.
+  </Step>
+  <Step title="Wybierz i przejrzyj ofertę">
+    Wybierz ofertę, którą chcesz odrzucić i przejrzyj jej szczegóły.
+  </Step>
+  <Step title="Kliknij Odrzuć">
+    Kliknij **Odrzuć** i potwierdź swoją decyzję. Nadawca oferty otrzymuje powiadomienie wraz z podanym przez Ciebie powodem.
+  </Step>
+</Steps>
+
+<Warning>
+  Odrzuconych ofert **nie można ponownie wysłać**. Obie strony muszą stworzyć nową ofertę, aby wznowić negocjacje.
+</Warning>
+
+## Publiczny widok oferty
+
+Gdy wysyłasz ofertę, klienci otrzymują link do publicznego widoku, gdzie mogą:
+
+- Przejrzeć wszystkie usługi, ceny, pakiety i podatki
+- Zaakceptować lub odrzucić ofertę
+- Zostawiać komentarze (jeśli komentarze są włączone)
+- Uzyskać bezpieczny dostęp do oferty za pomocą hasła (jeśli włączona jest ochrona hasłem)
+
+## Dodatkowe informacje
+
+<Accordion title="Wiele adresów e-mail i leadów">
+  Możesz dodać wiele adresów e-mail do jednej oferty i oznaczyć jeden jako kontakt Główny. Oferty działają zarówno z zarejestrowanymi klientami, jak i niezarejestrowanymi leadami.
+</Accordion>
+
+<Accordion title="Automatycznie generowane zamówienia i faktury">
+  Gdy skonfigurujesz sekcję Konfiguracja na „Utwórz zamówienie i fakturę” po akceptacji, AgencyHandy automatycznie generuje powiązane zamówienie i fakturę w momencie zaakceptowania oferty — bez żadnych ręcznych kroków.
+</Accordion>
+
+<Accordion title="Śledzenie aktywności oferty">
+  Każda oferta zawiera pełną historię aktywności. Możesz zobaczyć, kiedy oferta została utworzona, wysłana, wyświetlona, zaakceptowana lub odrzucona — wszystko z poziomu AgencyHandy.
+</Accordion>

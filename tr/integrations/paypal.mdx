@@ -1,0 +1,70 @@
+---
+title: "Güvenli Müşteri Ödeme Tahsilatı İçin PayPal'ı Bağlayın"
+sidebarTitle: "PayPal"
+description: "PayPal hesabınızı AgencyHandy'ye bağlayın ve müşterilerinizin faturaları PayPal'ın güvenilir, dünya genelinde tanınan ödeme platformu üzerinden ödemesine izin verin."
+---
+
+AgencyHandy'nin PayPal entegrasyonu, müşterilerinize kredi kartı olmaksızın faturaları güvenli ve tanıdık bir şekilde ödeme imkanı sunar. PayPal, geniş bir uluslararası para birimi yelpazesini desteklediğinden, kendi ülkeleri dışında müşterileri olan ajanslar için özellikle kullanışlıdır.
+
+<Note>
+  PayPal, platform düzeyindeki para birimi ve bölgesel kısıtlamalar nedeniyle ek satışlarda (upsell) **kullanılamaz**. Ek satış ödemeleri için bunun yerine Stripe kullanın.
+</Note>
+
+<Note>
+  Yalnızca **SuperAdmin** ve **Admin** rolleri PayPal entegrasyonunu bağlayabilir veya yönetebilir. Başlamadan önce aktif bir PayPal hesabınızın olması gerekmektedir.
+</Note>
+
+## PayPal'ı Bağlayın
+
+<Steps>
+  <Step title="PayPal Entegrasyon ayarlarını açın">
+    AgencyHandy'ye giriş yapın, ardından sol kenar çubuğunda **Entegrasyonlar → PayPal Entegrasyonu** bölümüne gidin.
+  </Step>
+
+  <Step title="Bağlantıyı başlatın">
+    **PayPal'ı Bağla** düğmesine tıklayın. PayPal'ın giriş sayfasına yönlendirilirsiniz.
+  </Step>
+
+  <Step title="AgencyHandy'ye yetki verin">
+    PayPal hesabınıza giriş yapın ve istenen izinleri inceleyin. AgencyHandy'nin hesabınıza erişmesine izin vermek için **İzin Ver** (veya **Onayla**) düğmesine tıklayın.
+  </Step>
+
+  <Step title="Bağlantıyı onaylayın">
+    Başarılı yetkilendirmenin ardından PayPal sizi AgencyHandy'ye geri yönlendirir. Entegrasyon kartında **PayPal Bağlandı** onay mesajı görünür. Müşteriler artık faturaları PayPal üzerinden ödeyebilir.
+  </Step>
+</Steps>
+
+## Müşteriler PayPal ile nasıl ödeme yapar
+
+Entegrasyon etkinleştirildikten sonra, gönderdiğiniz herhangi bir faturada **PayPal ile Öde** düğmesi görünür. Müşteriniz düğmeye tıklar, PayPal hesabına giriş yapar (veya bulunduğu bölgeye bağlı olarak misafir olarak ödeme yapar) ve ödemeyi tamamlar. AgencyHandy, PayPal tarafından ödeme onaylandığında fatura durumunu otomatik olarak günceller.
+
+## Desteklenen para birimleri
+
+AgencyHandy, PayPal ödemeleri için aşağıdaki para birimlerini destekler:
+
+| Bölge | Para Birimleri |
+|---|---|
+| Amerika | USD, CAD, BRL, MXN |
+| Avrupa | EUR, GBP, CHF, NOK, SEK, DKK, PLN, CZK, HUF |
+| Asya-Pasifik | AUD, NZD, JPY, HKD, SGD, MYR, PHP, THB, TWD |
+| Orta Doğu / Diğer | ILS, CNY |
+
+<Warning>
+  Bazı para birimlerinin kısıtlamaları bulunmaktadır:
+  - **JPY** ve birkaç diğer para birimi ondalıklı tutarları desteklemez — kesirli fatura toplamlarından kaçının.
+  - **BRL** yalnızca Brezilya merkezli PayPal hesapları için kullanılabilir. Hesabınız Brezilya'da değilse, BRL ödemeleri otomatik olarak birincil para biriminize dönüştürülür.
+  - Belirli para birimleri yalnızca ülke içi hesaplar için kullanılabilir. Hata oluşmasını önlemek için hesabınızın tutma para biriminin fatura para biriminizle eşleştiğini doğrulayın.
+</Warning>
+
+<Note>
+  PayPal, para birimi dönüşümü gerçekleştiğinde kendi dönüşüm ücretlerini ve marjlarını uygular. Bunlar AgencyHandy tarafından kontrol edilmez.
+</Note>
+
+## Entegrasyonu test edin
+
+PayPal'ı gerçek müşteri faturaları için kullanmadan önce hızlı bir test yapın:
+
+1. AgencyHandy'de [desteklenen bir para birimi](#desteklenen-para-birimleri) kullanarak bir test faturası oluşturun.
+2. Faturayı kontrol ettiğiniz ikincil bir PayPal hesabına gönderin.
+3. İkincil hesaptan ödemeyi tamamlayın.
+4. AgencyHandy'ye dönün ve fatura durumunun **Ödendi** olarak güncellendiğini ve fonların PayPal hesabınızda göründüğünü doğrulayın.

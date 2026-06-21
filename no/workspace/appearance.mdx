@@ -1,0 +1,117 @@
+---
+title: "Tilpass fargevalg for AgencyHandy-arbeidsområdet ditt"
+sidebarTitle: "Utseende"
+description: "Bruk merkevarefarger på AgencyHandy-sidestolpen og grensesnittet — primærfarge, bakgrunn, tekst og hoveringstilstander — synlig umiddelbart for alle brukere."
+---
+
+Utseende-innstillingene gir deg full kontroll over hvordan AgencyHandy-arbeidsområdet ser ut. Du kan tilpasse plattformens fargevalg til byråets merkevareidentitet ved å tilpasse primærfargen, sidestolpens bakgrunn, sidestolpens tekstfarge og hover-høylysfargen for navigasjonselementer i sidestolpen. Alle endringer du lagrer trer i kraft umiddelbart på hele arbeidsområdet for alle brukere — ingen sideoppdatering nødvendig.
+
+<Note>
+  Bare **superadministratorer** og **administratorer** kan få tilgang til og endre utseende-innstillinger. Hvis du ikke ser dette alternativet under **Workspace Config**, be superadministratoren din om å gjennomgå rollen din.
+</Note>
+
+## Tilgang til utseende-innstillinger
+
+<Steps>
+  <Step title="Åpne arbeidsområdekonfigurasjon">
+    Fra venstrenavigasjonsmenyen klikker du på **Workspace Config**.
+  </Step>
+  <Step title="Velg Utseende">
+    Klikk på **Appearance** (noen ganger kalt **Visual Settings**) fra undermenyen.
+  </Step>
+</Steps>
+
+---
+
+## Tilpasse hvert visuelt element
+
+### Primærfarge
+
+Primærfargen brukes på knapper, aktive lenker, uthevede tilstander og viktige grensesnittelementer på hele plattformen.
+
+- Velg en farge som gjenspeiler den sentrale merkevareidentiteten din.
+- Dette er den mest innflytelsesrike fargeinnstillingen fordi den vises overalt i brukergrensesnittet.
+
+### Sidestolpens bakgrunnsfarge
+
+Sidestolpens bakgrunn angir grunnfargen på det venstre navigasjonspanelet.
+
+- Bruk en farge som skaper en tydelig visuell separasjon mellom sidestolpen og hovedinnholdsområdet.
+- Mørke bakgrunner med lys tekst fungerer generelt best for lesbarhet.
+
+### Sidestolpens tekstfarge
+
+Sidestolpens tekstfarge kontrollerer etikettfargen for alle navigasjonselementer i venstremenyen.
+
+- Velg alltid en farge som har sterk kontrast mot bakgrunnsfargen i sidestolpen.
+- Dårlig kontrast gjør lenker vanskeligere å lese og reduserer tilgjengeligheten.
+
+### Sidestolpens hover-bakgrunnsfarge
+
+Denne fargen vises som bakgrunnsmarkering når en bruker beveger markøren over et navigasjonselement i sidestolpen.
+
+- Den signaliserer interaktivitet og hjelper brukere å forstå hvilket element de er i ferd med å klikke på.
+- Velg en farge som er merkbart forskjellig fra både standard sidestolpebakgrunn og den aktive elementfargen.
+
+---
+
+## Bruke fargevalgene dine
+
+<Steps>
+  <Step title="Åpne fargevelgeren for hvert felt">
+    Klikk på fargeprøven ved siden av et av de fire utseende-feltene — Primærfarge, Sidestolpe-bakgrunn, Sidestolpe-tekstfarge eller Sidestolpe hover-bakgrunnsfarge — for å åpne fargevelgeren.
+  </Step>
+  <Step title="Skriv inn en heksdesimalkode eller velg en farge">
+    Skriv inn merkevarens nøyaktige heksdesimalkode (f.eks. `#3B5BDB`) direkte i inndatafeltet, eller bruk den visuelle velgeren for å velge en nyanse.
+  </Step>
+  <Step title="Forhåndsvis endringene">
+    Gjennomgå hvordan de oppdaterte fargene ser ut i sidestolpen og på tvers av grensesnittet før du lagrer.
+  </Step>
+  <Step title="Klikk Lagre endringer">
+    Når du er fornøyd med resultatet, klikker du **Save Changes**. Det oppdaterte utseendet brukes globalt og umiddelbart for alle brukere i arbeidsområdet.
+  </Step>
+</Steps>
+
+<Tip>
+  Hold oversikt over merkevarens heksdesimalkoder et tilgjengelig sted (en merkevaremanual eller notatfil). Du vil bruke nøyaktig de samme verdiene konsekvent — spesielt hvis du noen gang trenger å nullstille og rekonfigurere utseende-innstillingene.
+</Tip>
+
+---
+
+## Tilbakestille til standardtema
+
+Hvis du vil fjerne all egendefinert merkevarebygging og gjenopprette det opprinnelige AgencyHandy-fargevalget, klikker du på knappen **Reset Default Settings** på Utseende-siden.
+
+<Warning>
+  Tilbakestilling til standardinnstillinger forkaster permanent alle egendefinerte fargeendringer. Denne handlingen kan ikke angres. Hvis du vil bevare de gjeldende innstillingene, noter heksdesimalkodene dine før du tilbakestiller.
+</Warning>
+
+---
+
+## Beste praksis for fargekontrast
+
+God fargekontrast er ikke bare en designpreferanse — det påvirker direkte lesbarhet og tilgjengelighet for teamet ditt og kundene dine.
+
+<CardGroup cols={2}>
+  <Card title="Sikt mot WCAG AA-kontrastforhold" icon="eye">
+    For normal brødtekst, bruk et kontrastforhold på minst **4,5:1** mellom tekst og bakgrunn. For stor tekst eller ikoner er et forhold på **3:1** akseptabelt. Bruk et verktøy som [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/) for å verifisere.
+  </Card>
+  <Card title="Unngå lavkontrastkombinasjoner" icon="triangle-exclamation">
+    Ikke kombiner farger som lys grå tekst på hvit, eller gul tekst på hvit — disse tilfredsstiller ikke tilgjengelighetsstandarder og belaster øynene over lange arbeidsøkter.
+  </Card>
+  <Card title="Test hoveringstilstander bevisst" icon="arrow-pointer">
+    Hoveringsfarger bør være merkbart forskjellige fra både hviletilstanden og den aktive tilstanden. Hvis de ser like ut, mister brukere viktig visuell tilbakemelding.
+  </Card>
+  <Card title="Hold deg konsistent med merkevaren din" icon="paintbrush">
+    Bruk samme primærfarge her som på nettstedet ditt, tilbud og fakturaer. Konsistens bygger gjenkjennelse og profesjonalitet på tvers av alle klientkontaktpunkter.
+  </Card>
+</CardGroup>
+
+---
+
+## Viktige merknader
+
+- **Umiddelbar global effekt:** Alle lagrede utseendeendringer brukes umiddelbart på hele arbeidsområdet. Alle innloggede brukere ser oppdateringen ved neste navigasjonshandling.
+- **Én aktiv tema:** Det er ingen støtte for flere temaer — ett sett med farger gjelder for hele arbeidsområdet for alle roller.
+- **Rollebegrensning:** Bare superadministratorer og administratorer kan gjøre utseendeendringer. Vanlige teammedlemmer og kunder kan ikke endre farger.
+- **Tilbakestilling er permanent:** Knappen **Reset Default Settings** kan ikke angres, så bruk den bare når du bevisst vil fjerne alle egendefinerte farger.

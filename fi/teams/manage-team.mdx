@@ -1,0 +1,132 @@
+---
+title: "Toimiston tiimin jäsenten ja roolien hallinta AgencyHandyssa"
+sidebarTitle: "Hallinnoi tiimiä"
+description: "Kutsu tiimin jäseniä sähköpostitse, määritä roolit ja oikeudet, muuta olemassa olevien jäsenten rooleja ja poista käyttäjiä toimistosi työtilasta AgencyHandyssa."
+---
+
+AgencyHandyn Tiimit-ominaisuus antaa sinulle turvallisen ja organisoidun tavan rakentaa ja hallita toimistosi työvoimaa. Kutsut jäseniä sähköpostitse, määrität heille roolin, joka hallitsee mitä he voivat nähdä ja tehdä, ja he saavat turvallisen kirjautumislinkin onboarding-prosessin suorittamiseksi. Tiimisi kehittyessä voit päivittää rooleja milloin tahansa tai poistaa jäseniä pitääksesi pääsyn tiiviinä ja asianmukaisena.
+
+## Tiimin hallintapaneeliin pääsy
+
+Napsauta vasemmassa sivupalkissa **Tiimit** avataksesi tiimin hallintapaneelin. Täältä näet luettelon kaikista nykyisistä tiimin jäsenistä ja heidän määritetyistä rooleistaan. Tästä näkymästä voit kutsua uusia jäseniä, päivittää rooleja ja poistaa henkilöitä työtilasta.
+
+## Roolit AgencyHandyssa
+
+AgencyHandylla on viisi oletusroolia, joista jokaisella on ennalta asetetut käyttöoikeustasot. Kun kutsut tiimin jäsenen, määrität hänelle yhden näistä rooleista. Voit muuttaa jäsenen roolia milloin tahansa heidän liittymisensä jälkeen.
+
+| Rooli | Tyypilliset ominaisuudet |
+|------|---------------------|
+| **Super Admin** | Täysi pääsy kaikkeen — kaikki asetukset, kaikki tiedot, kaikki tiiminhallinta-toiminnot |
+| **Admin** | Laaja pääsy sisältäen laskut, tarjoukset, tilaukset, tiiminhallinta ja asetukset |
+| **Project Manager (PM)** | Hallinnoi hänelle määritettyjä tilauksia, tarkastelee omien tilauksiensa tehtäviä, voi kutsua tiimin jäseniä |
+| **Työntekijä** | Rajoitettu suoraan hänelle määritettyihin tehtäviin; ei pääsyä talous- tai hallinto-osioihin |
+
+<Note>
+  Vain **Super Adminit** ja **Adminit** voivat muuttaa rooleja tai poistaa tiimin jäseniä. Projektipäälliköt voivat kutsua uusia jäseniä, mutta eivät voi muuttaa tai poistaa olemassa olevia.
+</Note>
+
+## Tiimin jäsenen kutsuminen
+
+<Steps>
+  <Step title="Avaa tiimin hallintapaneeli">
+    Napsauta vasemmassa sivupalkissa **Tiimit**.
+  </Step>
+  <Step title="Napsauta + Luo tiimi">
+    Napsauta **+ Luo tiimi** -painiketta. Kutsumlomake avautuu.
+  </Step>
+  <Step title="Syötä sähköpostiosoite">
+    Kirjoita kutsuttavan henkilön sähköpostiosoite. Tämä on pakollinen kenttä.
+  </Step>
+  <Step title="Määritä rooli">
+    Valitse sopiva rooli pudotusvalikosta. Valitse huolellisesti — tämä määrää, mitä uusi jäsen voi käyttää ensimmäisestä kirjautumisestaan alkaen.
+  </Step>
+  <Step title="Lähetä kutsu">
+    Napsauta **Kutsu**. AgencyHandy lähettää kutsutulle henkilölle sähköpostin, jossa on:
+    - **Turvallinen kirjautumis-URL** toimistosi työtilaan
+    - **Tietokoneella luotu salasana** ensimmäistä kirjautumista varten
+  </Step>
+  <Step title="Jäsen suorittaa onboarding-prosessin">
+    Kutsuttu tiimin jäsen seuraa sähköpostissaan olevaa linkkiä, kirjautuu sisään annetuilla tunnistetiedoilla ja suorittaa onboarding-prosessin. Kun he kirjautuvat sisään, heidät lisätään toimistosi työtilaan ja he voivat aloittaa yhteistyön välittömästi.
+  </Step>
+</Steps>
+
+<Tip>
+  Pyydä uutta tiimin jäsentä vaihtamaan tietokoneella luotu salasanansa turvallisempaan ensimmäisen kirjautumisensa jälkeen.
+</Tip>
+
+## Tiimin jäsenten roolien asettaminen
+
+Voit määrittää tai päivittää rooleja kahdella tavalla: kutsumisen aikana tai sen jälkeen, kun jäsen on jo liittynyt.
+
+<Tabs>
+  <Tab title="Kutsumisen aikana">
+    Kun täytät kutsulomakkeen, valitse rooli pudotusvalikosta ennen **Kutsu**-painikkeen napsauttamista. Rooli tulee voimaan heti, kun jäsen kirjautuu sisään ensimmäistä kertaa.
+  </Tab>
+  <Tab title="Olemassa oleville jäsenille">
+    1. Siirry vasemman sivupalkin **Tiimit**-kohtaan avataksesi tiimin hallintapaneelin.
+    2. Etsi tiimin jäsen, jonka roolia haluat muuttaa.
+    3. Napsauta heidän nimensä oikealla olevaa **alanuoli**-painiketta.
+    4. Luettelo oletusroolien nimistä tulee näkyviin. Valitse uusi rooli.
+    5. Rooli päivittyy välittömästi — ei tarvita tallennus-vaihetta.
+  </Tab>
+</Tabs>
+
+<Warning>
+  Vain **Super Adminit** ja **Adminit** voivat muuttaa olemassa olevan tiimin jäsenen roolia.
+</Warning>
+
+## Roolioikeuksien yhteenveto
+
+Käytä tätä taulukkoa nopeana viitteenä päättäessäsi, mikä rooli määritetään.
+
+| Ominaisuus | Super Admin | Admin | PM | Työntekijä |
+|---------|:-----------:|:-----:|:--:|:--------:|
+| Luo ja lähetä tarjouksia | ✅ | ✅ | ❌ | ❌ |
+| Luo ja hallinnoi laskuja | ✅ | ✅ | ✅ | ❌ |
+| Hallinnoi kaikkia tilauksia | ✅ | ✅ | Vain määritetyt | ❌ |
+| Näytä kaikki tehtävät | ✅ | ✅ | Vain määritetyt tilaukset | Vain määritetyt tehtävät |
+| Kutsu tiimin jäseniä | ✅ | ✅ | ✅ | ❌ |
+| Muuta rooleja / poista jäseniä | ✅ | ✅ | ❌ | ❌ |
+| Käytä lasku- ja toimistoasetuksia | ✅ | ✅ | ❌ | ❌ |
+| Peruuta tilauksia | ✅ | ✅ | ❌ | ❌ |
+| Vie tuntikirjanpitotiedot | ✅ | ✅ | ✅ | ❌ |
+
+## Tiimin jäsenen poistaminen
+
+Kun joku lähtee toimistostasi tai ei enää tarvitse pääsyä, poista heidät työtilasta tietojesi suojaamiseksi.
+
+<Steps>
+  <Step title="Avaa tiimin hallintapaneeli">
+    Siirry vasemman sivupalkin **Tiimit**-kohtaan.
+  </Step>
+  <Step title="Valitse poistettava jäsen">
+    Valitse poistettavan tiimin jäsenen vieressä oleva valintaruutu. **Poista**-painike aktivoituu.
+  </Step>
+  <Step title="Napsauta Poista">
+    Napsauta **Poista**-painiketta. Vahvistusikkuna avautuu.
+  </Step>
+  <Step title="Vahvista poistaminen">
+    Vahvista päätöksesi. AgencyHandy peruuttaa välittömästi jäsenen pääsyn työtilaan ja kaikkiin liittyviin resursseihin.
+  </Step>
+  <Step title="Suorita siirtymistoimenpiteet">
+    Poistamisen jälkeen uudelleenmääritä kaikki avoimet tehtävät tai tilaukset, joista jäsen oli vastuussa, ja päivitä asiaankuuluvat dokumentaatiot ja käyttöoikeudet vastaavasti.
+  </Step>
+</Steps>
+
+<Warning>
+  Tiimin jäsenen poistamista **ei voi peruuttaa**. Heidän pääsynsä peruutetaan pysyvästi. Jos sinun on annettava samalle henkilölle pääsy uudelleen tulevaisuudessa, sinun on lähetettävä uusi kutsu.
+</Warning>
+
+## Lisähuomioita
+
+<Accordion title="Turvallinen onboarding sähköpostitse">
+  Jokainen kutsu toimitetaan turvallisen kirjautumis-URL:n kautta. Kutsuttu henkilö käyttää tätä URL:ia yhdessä tietokoneella luodun salasanan kanssa päästäkseen alustalle ensimmäistä kertaa. Tämä varmistaa, että vain tarkoitettu henkilö saa pääsyn.
+</Accordion>
+
+<Accordion title="Roolimuutokset tulevat voimaan välittömästi">
+  Kun päivität tiimin jäsenen roolin, muutos astuu voimaan välittömästi. Ei ole odottavaa tai vahvistusvaihetta — jäsenen uudet oikeudet ovat aktiivisia heidän seuraavalla sivunlatauksellaan.
+</Accordion>
+
+<Accordion title="Tiimin jäsenet ja tehtävien näkyvyys">
+  Työntekijä voi nähdä vain suoraan hänelle määritetyt tehtävät. Projektipäällikkö voi nähdä vain tehtävät tilauksissa, joissa heidät on määritetty hallitsijaksi. Super Adminit ja Adminit näkevät kaiken. Pidä tämä mielessä rooleja määrittäessäsi, jotta vältät hämmennyksen puuttuvista tehtävistä tai tilauksista.
+</Accordion>

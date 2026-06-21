@@ -1,0 +1,162 @@
+---
+title: "Tiket Dukungan — Tangani Pertanyaan Klien di AgencyHandy"
+sidebarTitle: "Tiket Dukungan"
+description: "Buat, edit, dan kelola tiket dukungan di AgencyHandy untuk melacak pertanyaan klien, menetapkan prioritas, menetapkan status, dan menyimpan riwayat interaksi secara lengkap."
+---
+
+Fitur Tiket AgencyHandy memberi agensi Anda cara terstruktur untuk menangani pertanyaan, masalah, dan permintaan klien. Alih-alih membiarkan pertanyaan hilang di email atau utas obrolan, setiap permintaan dukungan tersimpan dalam tiket dengan subjek, prioritas, penugasan, dan status — semuanya dapat dicari dan dilacak dari satu dashboard. Baik tim maupun klien Anda dapat membuat tiket, dan riwayat lengkap setiap tiket tersimpan sehingga tidak ada yang terlewat.
+
+## Mengakses Dashboard Tiket
+
+Klik **Tickets** di bilah sisi kiri untuk membuka Dashboard Tiket. Dari sini Anda dapat:
+
+- Membuat, mengedit, dan menghapus tiket
+- Mencari tiket berdasarkan **subjek**, **nama klien**, atau **ID Pesanan**
+- Melihat status dan prioritas tiket secara sekilas
+- Memantau semua tiket terbuka, ditunda, dan ditutup di seluruh agensi
+
+## Fungsi Tiket
+
+<CardGroup cols={3}>
+  <Card title="Manajemen Permintaan Dukungan" icon="headset">
+    Klien dan anggota tim agensi dapat mengajukan pertanyaan, masalah, atau permintaan melalui sistem tiket. Setiap pengajuan dicatat dan dilacak.
+  </Card>
+  <Card title="Pelacakan Penyelesaian Masalah" icon="circle-check">
+    Tugaskan tiket ke anggota tim, tetapkan prioritas, dan perbarui status seiring perkembangan pekerjaan menuju penyelesaian. Semua orang tetap mendapat informasi terbaru.
+  </Card>
+  <Card title="Riwayat Komunikasi" icon="clock-rotate-left">
+    Setiap tiket menyimpan riwayat lengkap tindakan, pembaruan, dan interaksi. Tinjau komunikasi sebelumnya kapan saja untuk konteks atau keperluan audit.
+  </Card>
+</CardGroup>
+
+## Membuat Tiket
+
+Baik anggota tim agensi maupun klien dapat membuat tiket. Proses pembuatannya sama untuk keduanya.
+
+**Siapa yang dapat membuat tiket:** Super Admin, Admin, PM, dan Klien.
+
+<Steps>
+  <Step title="Buka Dashboard Tiket">
+    Klik **Tickets** di bilah sisi kiri.
+  </Step>
+  <Step title="Klik + Create Ticket">
+    Klik tombol **+ Create Ticket**. Sebuah formulir akan muncul.
+  </Step>
+  <Step title="Pilih klien">
+    Pilih nama klien dari daftar dropdown. Ini menghubungkan tiket ke profil klien yang tepat.
+  </Step>
+  <Step title="Tautkan ke pesanan (opsional)">
+    Masukkan **ID Pesanan** untuk mengaitkan tiket dengan pesanan tertentu. Ini berguna untuk masalah terkait penagihan atau proyek. Anda juga dapat membuat tiket tanpa ID Pesanan untuk pertanyaan umum.
+  </Step>
+  <Step title="Isi detail tiket">
+    Lengkapi kolom-kolom berikut:
+
+    | Kolom | Keterangan |
+    |-------|-------------|
+    | **Subject** | Judul singkat dan deskriptif untuk tiket |
+    | **Description** | Penjelasan terperinci tentang masalah atau permintaan |
+    | **Assignee Name** | Anggota tim yang bertanggung jawab menyelesaikan tiket ini |
+    | **Priority** | Tingkat urgensi: Highest, High, Normal, Low, atau Lowest |
+    | **Issued Date** | Tanggal tiket dibuat (dicatat secara otomatis) |
+    | **Status** | Status saat ini: Open, Hold, atau Close |
+  </Step>
+  <Step title="Klik Create">
+    Klik **Create** untuk menyimpan tiket. Tiket akan langsung muncul di Dashboard Tiket.
+  </Step>
+</Steps>
+
+## Status Tiket
+
+Tiket melewati tiga status seiring perkembangan pekerjaan:
+
+| Status | Arti |
+|--------|---------|
+| **Open** | Tiket telah diajukan dan sedang aktif dikerjakan |
+| **Hold** | Pekerjaan pada tiket sementara dijeda, biasanya menunggu informasi lebih lanjut |
+| **Close** | Masalah telah diselesaikan dan tiket diarsipkan sebagai referensi |
+
+<Tip>
+  Gunakan status **Hold** saat Anda menunggu respons klien atau ketergantungan eksternal. Ini menjaga tiket tetap terlihat tanpa memenuhi antrean aktif.
+</Tip>
+
+## Mengedit Tiket
+
+Anggota tim agensi dapat memperbarui detail tiket kapan saja untuk mencerminkan informasi baru, perubahan prioritas, atau pembaruan penyelesaian.
+
+**Siapa yang dapat mengedit tiket:** Super Admin, Admin, dan PM. Klien dapat membuat tiket tetapi tidak dapat mengeditnya.
+
+<Note>
+  Hanya tiket yang dibuat dari **sisi agensi** yang dapat diedit. Tiket yang diajukan oleh klien tidak dapat dimodifikasi oleh klien setelah pengajuan.
+</Note>
+
+<Steps>
+  <Step title="Buka Dashboard Tiket">
+    Navigasi ke **Tickets** di bilah sisi kiri.
+  </Step>
+  <Step title="Pilih tiket yang akan diedit">
+    Centang kotak di sebelah tiket yang ingin Anda edit. Tombol **Edit Ticket** akan menjadi aktif.
+  </Step>
+  <Step title="Klik Edit Ticket">
+    Klik tombol **Edit Ticket**. Formulir tiket akan terbuka dengan semua detail yang sudah ada terisi otomatis.
+  </Step>
+  <Step title="Buat perubahan Anda">
+    Perbarui kolom mana pun yang perlu diubah — deskripsi, prioritas, penugasan, status, atau detail lainnya.
+  </Step>
+  <Step title="Simpan">
+    Klik **Save** untuk menerapkan perubahan Anda. Tiket segera diperbarui di dashboard.
+  </Step>
+  <Step title="Komunikasikan pembaruan">
+    Jika perubahan tersebut signifikan — seperti eskalasi prioritas atau pergantian penugasan — beri tahu anggota tim yang relevan agar mereka dapat merespons dengan tepat.
+  </Step>
+</Steps>
+
+## Menghapus Tiket
+
+Hapus tiket yang sudah usang atau tidak diperlukan untuk menjaga dashboard tetap bersih dan relevan.
+
+**Siapa yang dapat menghapus tiket:** Super Admin, Admin, dan PM.
+
+<Steps>
+  <Step title="Pilih tiket">
+    Di Dashboard Tiket, centang kotak di sebelah tiket yang ingin Anda hapus. Tombol **Delete** akan aktif.
+  </Step>
+  <Step title="Klik Delete">
+    Klik **Delete**. Jendela konfirmasi akan muncul.
+  </Step>
+  <Step title="Konfirmasi penghapusan">
+    Konfirmasikan keputusan Anda di jendela tersebut. Tiket dihapus secara permanen dari sistem.
+  </Step>
+  <Step title="Verifikasi penghapusan">
+    Periksa daftar tiket atau cari tiket berdasarkan subjek atau ID Pesanan untuk memastikan tiket tersebut sudah tidak ada.
+  </Step>
+</Steps>
+
+<Warning>
+  Menghapus tiket bersifat **permanen dan tidak dapat dibatalkan**. Sebelum menghapus, pastikan komunikasi penting atau catatan penyelesaian dari tiket telah didokumentasikan di tempat lain.
+</Warning>
+
+## Mencari dan Memfilter Tiket
+
+Gunakan bilah pencarian di bagian atas Dashboard Tiket untuk menemukan tiket dengan cepat. Anda dapat mencari berdasarkan:
+
+- **Subject** — judul tiket
+- **Nama klien** — semua tiket dari klien tertentu
+- **ID Pesanan** — semua tiket yang terkait dengan pesanan tertentu
+
+## Praktik Terbaik Menggunakan Tiket
+
+<Accordion title="Tetapkan tingkat prioritas secara konsisten">
+  Sepakati skala prioritas dengan tim Anda sebelum mulai membuat tiket. Jika "High" berarti berbeda bagi orang yang berbeda, alur kerja eskalasi akan kacau. Gunakan Highest hanya untuk masalah yang memblokir pengiriman kepada klien.
+</Accordion>
+
+<Accordion title="Tautkan tiket ke pesanan bila memungkinkan">
+  Menghubungkan tiket ke ID Pesanan memudahkan pelacakan masalah klien mana yang memengaruhi proyek mana. Ini juga membantu saat meninjau tiket sebelumnya untuk pesanan tertentu.
+</Accordion>
+
+<Accordion title="Tutup tiket segera setelah penyelesaian">
+  Setelah masalah diselesaikan, segera ubah status menjadi **Close**. Membiarkan tiket terbuka setelah penyelesaian akan membengkakkan antrean aktif Anda dan mempersulit identifikasi pekerjaan yang benar-benar sedang berlangsung.
+</Accordion>
+
+<Accordion title="Gunakan status Hold untuk periode menunggu">
+  Saat Anda menunggu respons dari klien atau pihak ketiga, atur tiket ke **Hold** daripada membiarkannya Open. Ini memberi tim Anda sinyal yang jelas bahwa tidak ada tindakan yang diperlukan sampai respons tiba.
+</Accordion>

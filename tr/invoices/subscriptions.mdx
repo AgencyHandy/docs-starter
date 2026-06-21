@@ -1,0 +1,162 @@
+---
+title: "AgencyHandy'de Abonelik Faturalandırması ve Yinelenen Faturalar"
+sidebarTitle: "Abonelikler"
+description: "AgencyHandy'nin yinelenen abonelik faturalandırmasını nasıl yönettiği — otomatik faturalar, fatura döngüleri, ödeme yöntemleri, iptaller ve Wise ödeme bağlantıları."
+---
+
+AgencyHandy'nin abonelik faturalandırma sistemi, tüm yinelenen gelir iş akışını otomatikleştirmenizi sağlar. Bir müşteri bir hizmetin aboneliğini aldığında platform bir Abonelik Kimliği oluşturur, siparişler oluşturur ve her fatura döngüsünde — ister günlük, ister haftalık, ister aylık ister yıllık olsun — faturaları otomatik olarak düzenler. Kontrolü elinizde tutarsınız: abonelik ayrıntılarını görüntüleyebilir, ödeme geçmişini izleyebilir, başarısız ödemeleri yönetebilir ve gerektiğinde abonelikleri iptal edebilirsiniz; hepsini AgencyHandy içinden yapabilirsiniz.
+
+## Abonelik Faturalandırması Nasıl Çalışır
+
+AgencyHandy'deki abonelik yaşam döngüsü altı temel aşamayı izler.
+
+<Steps>
+  <Step title="Abonelik tabanlı bir hizmet oluşturun">
+    **Hizmetler**'e gidin ve **Yeni Hizmet Oluştur**'a tıklayın. Hizmet türü olarak **Abonelik**'i seçin.
+
+    Şunları tanımlayın:
+    - **Fatura Döngüsü** — Günlük, Haftalık, Aylık veya Yıllık
+    - **Yenileme Davranışı** — Yeni Sipariş Oluştur, Mevcut Siparişi Güncelle veya Değiştirmeden Bırak
+    - **Fiyatlandırma ve Ödeme Yöntemi** — PayPal, Stripe veya Manuel
+
+    Hizmeti kullanıma sunmak için **Yayımla**'ya tıklayın.
+  </Step>
+  <Step title="Müşteri abonelik satın alır">
+    Müşteri abonelik hizmetini seçer, ödeme sayfasına geçer ve bir ödeme yöntemi seçer.
+
+    AgencyHandy otomatik olarak:
+    - Bir **Abonelik Kimliği** oluşturur
+    - Bir **Sipariş** oluşturur
+    - Bir **Fatura** düzenler
+
+    **PayPal veya Stripe** ödemelerinde fatura anında **Ödendi** olarak işaretlenir. **Manuel Ödeme** durumunda, ajans alındığını onaylayana kadar fatura **Açık** kalır.
+  </Step>
+  <Step title="Otomatik yinelenen faturalandırma">
+    Her yenileme tarihinde AgencyHandy ödemeyi otomatik olarak işler (PayPal/Stripe için) ve bir sonraki faturayı oluşturur.
+
+    Ödeme başarılı olursa fatura **Ödendi** olarak işaretlenir. Başarısız olursa:
+    - Fatura **Açık** kalır
+    - Müşteri **Başarısız Ödeme Bildirimi** alır
+    - Ajans, yeniden deneme veya güncel ödeme bilgileri isteme için bir uyarı alır
+  </Step>
+  <Step title="Aktif abonelikleri yönetin">
+    Tüm aktif ve aktif olmayan abonelikleri görüntülemek için sol kenar çubuğundaki **Abonelik Yönetimi**'ne gidin. Tam ayrıntılarını görmek için herhangi bir aboneliği seçin.
+  </Step>
+  <Step title="İptalleri yönetin">
+    Bir aboneliği iptal ettiğinizde şunları seçebilirsiniz:
+    - **Tamamen iptal etme** — tüm gelecek faturalandırma ve siparişleri durdurma
+    - **Son aktif siparişi çalışır durumda tutma** — müşterinin mevcut dönemin son tarihine kadar hizmeti almaya devam etmesine izin verme
+
+    Bir hizmeti tamamen silmek için, o hizmetteki tüm aktif aboneliklerin önce iptal edilmesi gerekir.
+  </Step>
+  <Step title="Bildirimler">
+    Sistem otomatik olarak şunları gönderir:
+    - Sonraki fatura tarihinden önce **Yenileme Hatırlatıcıları**
+    - Başarılı tahsilatlardan sonra **Ödeme Onayları**
+    - Hem müşteriye hem de ajans yöneticilerine **Başarısız Ödeme Uyarıları**
+  </Step>
+</Steps>
+
+## Abonelik Ayrıntıları Sayfası
+
+Abonelik Ayrıntıları sayfası, hizmetten ve paketten her faturaya ve olay günlüğü kaydına kadar herhangi bir bireysel aboneliğin tam görünümünü sunar.
+
+### Erişim Yöntemi
+
+1. Sol kenar çubuğunda **Abonelikler**'e gidin
+2. Ayrıntı sayfasını açmak için listeden herhangi bir aboneliğe tıklayın
+
+### Görebilecekleriniz
+
+<Tabs>
+  <Tab title="Abonelik Bilgisi">
+    - **Hizmet Adı** ve **Paket Adı**
+    - **Müşteri Adı**
+    - **Fatura Döngüsü** (ör. Aylık, Yıllık)
+    - **Başlangıç Tarihi** ve **Bitiş Tarihi**
+    - Abonelik **Durumu** (Aktif veya Aktif Değil)
+  </Tab>
+  <Tab title="Ödeme Ayrıntıları">
+    - **Abonelik Ücreti**
+    - Bugüne kadar yapılan **Toplam Ödeme Sayısı**
+    - **Ödeme Yöntemi** (Stripe, PayPal, Wise, Manuel Bankacılık vb.)
+    - **Sonraki Ödeme Tarihi**
+  </Tab>
+  <Tab title="Sipariş Geçmişi">
+    - **Sipariş Kimliği**
+    - **Durum** (ör. Devam Ediyor, Tamamlandı)
+    - Her sipariş için **Başlangıç Tarihi** ve **Bitiş Tarihi**
+  </Tab>
+  <Tab title="Fatura Geçmişi">
+    - **Fatura Kimliği**
+    - **Tutar**
+    - **Durum** (Açık, Ödendi vb.)
+    - **Ödeme Tarihi** ve **Son Ödeme Tarihi**
+  </Tab>
+  <Tab title="Olay Günlükleri">
+    Abonelikle ilgili tüm faaliyetlerin kronolojik denetim kaydı — durum değişiklikleri, ödeme olayları, iptaller ve daha fazlası.
+  </Tab>
+</Tabs>
+
+<Note>
+  Tek bir aboneliğin birden fazla bağlı siparişi ve faturası olabilir. Aboneliklere bağlı faturalar, ödemeler alındığında dinamik olarak güncellenir.
+</Note>
+
+## Manuel Abonelik Faturaları İçin Wise Desteği
+
+Uluslararası ödemeler topluyorsanız doğrudan abonelik faturalarına bir **Wise ödeme bağlantısı** ekleyebilirsiniz. Bu, müşterilere manuel olarak banka havalesi ayarlamak zorunda kalmadan ödeme yapmaları için uygun bir yol sağlar.
+
+### Gereksinimler
+
+- Aktif bir AgencyHandy hesabı
+- Oluşturulmuş geçerli bir ödeme bağlantısıyla aktif bir **Wise hesabı**
+
+### Faturaya Wise Bağlantısı Ekleme Adımları
+
+<Steps>
+  <Step title="Fatura bölümünü açın">
+    Sol kenar çubuğunda **Faturalar**'a tıklayın, ardından **+ Fatura Oluştur**'a tıklayın.
+  </Step>
+  <Step title="Müşteriyi ve siparişi seçin">
+    Açılır menüden müşteriyi seçin. İlgili tüm Sipariş Kimlikleri görünecektir. İlgili Sipariş Kimliğini seçin ve faturalandırılan tutarı ve kalemleri girin.
+  </Step>
+  <Step title="İndirimler ve vergiler uygulayın">
+    Uygulanabilir indirim yüzdesi, indirim tutarı, ödenen tutar, kalan tutar ve KDV/vergi ayrıntılarını ekleyin. Gerekirse fatura adresini ve notları ekleyin.
+  </Step>
+  <Step title="Wise ödeme bağlantısını ekleyin">
+    **Ödeme Yöntemi** bölümünde ödeme seçeneği olarak **Wise**'ı seçin. Wise ödeme bağlantınızı sağlanan alana yapıştırın.
+  </Step>
+  <Step title="Faturayı kaydedin">
+    Faturayı sonuçlandırmak için **Kaydet**'e tıklayın. Wise ödeme bağlantısı faturada görünecek ve müşteri doğrudan ödeme yapabilecektir.
+  </Step>
+</Steps>
+
+<Tip>
+  Kaydetmeden önce her zaman Wise ödeme bağlantınızı ve fatura toplamlarınızı kontrol edin. Faturalama hatalarını önlemek için sipariş ayrıntılarının, indirimlerin ve vergi bilgilerinin doğru olduğunu doğrulayın.
+</Tip>
+
+## Abonelik Faturalandırmasına İlişkin Önemli Notlar
+
+<Accordion title="Abonelikleri kimler iptal edebilir?">
+  Yalnızca **Süper Yöneticiler** ve **Yöneticiler** abonelikleri iptal edebilir. Müşteriler kendi aboneliklerini iptal edemez — iptal taleplerini ajans aracılığıyla iletmeleri gerekir.
+</Accordion>
+
+<Accordion title="Abonelik Kimlikleri kalıcıdır">
+  Bir abonelik oluşturulduktan sonra Abonelik Kimliği düzenlenemez. Bu, aboneliğin tüm ömrü boyunca tutarlı takip sağlar.
+</Accordion>
+
+<Accordion title="Başarısız ödemeler ve sipariş oluşturma">
+  Bir ödeme başarısız olduğunda fatura Açık kalır ve başarısız dönem için yeni bir sipariş oluşturulur. Bir yönetici ödemeyi manuel olarak yeniden denemeyene veya aboneliği iptal etmeyene kadar abonelik durumu **Aktif** kalır.
+</Accordion>
+
+<Accordion title="Manuel ödeme siparişleri">
+  Bir müşteri Stripe veya PayPal dışında ödeme yaparsa (ör. banka havalesi), yöneticinin faturayı AgencyHandy'de manuel olarak **Ödendi** olarak işaretlemesi gerekir. Sistem, manuel ödemeler için bunu otomatik olarak yapmaz.
+</Accordion>
+
+<Accordion title="Ödeme yapılmamış self-servis ödeme girişimleri">
+  Bir müşteri abonelik ödemesini başlatır ancak tamamlamazsa, başarıyla abone olana kadar sistemde **Potansiyel Müşteri** olarak kalır.
+</Accordion>
+
+<Accordion title="Fatura son ödeme tarihleri">
+  Abonelik faturaları için son ödeme tarihleri, yapılandırdığınız fatura döngüsüne göre otomatik olarak belirlenir (ör. aylık faturalar, başlangıç tarihinden bir ay sonra vadesi gelir).
+</Accordion>

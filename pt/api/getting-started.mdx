@@ -1,0 +1,114 @@
+---
+title: "API AgencyHandy: Autenticação e Primeiros Passos"
+sidebarTitle: "Primeiros Passos"
+description: "Gere uma chave de API, obtenha o seu ID de Empresa e comece a construir integrações com a API REST do AgencyHandy com este guia de configuração rápida."
+---
+
+A API do AgencyHandy permite-lhe automatizar a criação de leads, a gestão de clientes, as atualizações de encomendas e muito mais a partir de qualquer sistema externo ou script. Cada pedido é autenticado com uma chave de API que gera nas definições do seu workspace. Este guia orienta-o na obtenção das suas credenciais e na realização da sua primeira chamada à API.
+
+<Note>
+  Tem de ser **SuperAdmin** ou **Admin** no seu workspace AgencyHandy para gerar uma chave de API.
+</Note>
+
+## URL Base
+
+Todos os pedidos à API são feitos para:
+
+```
+https://api.agencyhandy.com
+```
+
+Substitua `{{URL}}` por este URL base em todos os pedidos de exemplo ao longo da documentação da API.
+
+## Passo 1: Gerar uma chave de API
+
+<Steps>
+  <Step title="Abrir a Configuração do Workspace">
+    Navegue para as definições do seu workspace em:
+
+    ```
+    {{workspaceUrl}}/workspace-config?tab=api-key
+    ```
+
+    Isto abre o separador **Chave de API** dentro da Configuração do Workspace.
+  </Step>
+
+  <Step title="Gerar e copiar a sua chave de API">
+    Clique em **Gerar** (ou **Regenerar** se já existir uma chave). Copie a chave de API e guarde-a em segurança — trate-a como uma palavra-passe. O AgencyHandy não a voltará a mostrar depois de sair da página.
+  </Step>
+</Steps>
+
+<Warning>
+  Regenerar a sua chave de API invalida imediatamente a chave anterior. Quaisquer integrações existentes que utilizem a chave antiga deixarão de funcionar até as atualizar com a nova chave.
+</Warning>
+
+## Passo 2: Obter o seu ID de Empresa
+
+A maioria dos endpoints da API requer um cabeçalho `companyid` que identifica qual workspace é o alvo do pedido. Utilize o seguinte endpoint para obter o seu ID de Empresa.
+
+### Endpoint
+
+```
+GET {{URL}}/accounts/companies
+```
+
+### Cabeçalhos
+
+| Cabeçalho | Valor |
+|---|---|
+| `x-api-key` | A sua chave de API |
+
+### Exemplo de pedido
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/accounts/companies" \
+  --header "x-api-key: <YOUR_API_KEY>"
+```
+
+### Exemplo de resposta
+
+```json
+{
+  "message": "Companies associated with API token.",
+  "companies": [
+    {
+      "_id": "6525994184e9ddd79853450e",
+      "name": "onethread123",
+      "logo": "",
+      "extraSmallLogo": "",
+      "largeLogo": ""
+    }
+  ]
+}
+```
+
+<Steps>
+  <Step title="Localizar o seu ID de Empresa">
+    Na resposta, encontre o campo `_id` dentro do array `companies`. Este é o seu **ID de Empresa**.
+
+    ```javascript
+    const companyId = response.companies[0]._id;
+    // e.g. "6525994184e9ddd79853450e"
+    ```
+  </Step>
+
+  <Step title="Guardar o ID de Empresa">
+    Guarde o ID de Empresa para utilizar em todos os pedidos de API subsequentes. Irá passá-lo como cabeçalho `companyid`:
+
+    | Cabeçalho | Valor |
+    |---|---|
+    | `x-api-key` | A sua chave de API |
+    | `companyid` | O seu ID de Empresa |
+  </Step>
+</Steps>
+
+## Resumo de autenticação
+
+Cada pedido autenticado à API requer, no mínimo:
+
+```
+x-api-key: <YOUR_API_KEY>
+companyid: <YOUR_COMPANY_ID>
+```
+
+Com a sua chave de API e ID de Empresa disponíveis, está pronto para utilizar o resto da API do AgencyHandy. Continue para um dos guias de endpoints abaixo.

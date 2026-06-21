@@ -1,0 +1,240 @@
+---
+title: "Správa úkolů: Vytváření a sledování práce v zakázkách"
+sidebarTitle: "Úkoly"
+description: "Vytvářejte, upravujte a spravujte úkoly v rámci zakázek — včetně sledování času, zpětné vazby k souborům, úkolů požadovaných klientem a přehledu úkolů napříč zakázkami."
+---
+
+Úkoly jsou pracovní jednotky, které přeměňují zakázku v dodávku. Každý úkol existuje v rámci konkrétní zakázky, může být přiřazen členovi týmu a sleduje vlastní stav, časový harmonogram, přílohy a vlákno zpětné vazby. Tato stránka vysvětluje, jak vytvářet a spravovat úkoly, jak mohou klienti žádat o úkoly, jak funguje sledování času a zpětná vazba k souborům a jak zobrazit úkoly napříč všemi zakázkami najednou.
+
+## Požadavky na role
+
+| Akce | Kdo ji může provést |
+|---|---|
+| Vytváření úkolů | Super Admin, Admin, Projektový manažer |
+| Úprava úkolů | Super Admin, Admin, Projektový manažer |
+| Mazání úkolů | Super Admin, Admin, Projektový manažer |
+| Zobrazení úkolů v revizi / dokončených | Super Admin, Admin, PM, Klient |
+| Odesílání a odpovídání na zpětnou vazbu | Super Admin, Admin, PM |
+| Zaznamenávání času u úkolů | Všichni přiřazení uživatelé (Super Admini a Admini mohou zaznamenávat jménem ostatních) |
+| Žádost o úkol (klient) | Klient |
+| Schválení / zamítnutí požadovaných úkolů | Super Admin, Admin |
+
+<Note>
+Zaměstnanci přiřazení k zakázce mohou vidět úkoly se stavem **V revizi** nebo **Dokončeno**. Úkoly ve stavu **Probíhající** nejsou pro zaměstnance viditelné.
+</Note>
+
+## Vytvoření úkolu
+
+<Steps>
+  <Step title="Otevřete zakázku">
+    Přejděte do sekce **Zakázky** v levém postranním panelu a klikněte na zakázku, ke které chcete přidat úkol.
+  </Step>
+
+  <Step title="Přidejte nový úkol">
+    V rámci zakázky přejděte na sekci **Úkoly** a klikněte na **+ Přidat nový úkol**. Zobrazí se formulář pro vytvoření úkolu.
+  </Step>
+
+  <Step title="Vyplňte podrobnosti úkolu">
+    Vyplňte dostupná pole:
+
+    | Pole | Poznámky |
+    |---|---|
+    | **Název úkolu** | Jasný a stručný název pracovní položky |
+    | **Popis** | Podrobný kontext, požadavky nebo pokyny |
+    | **Přiřazená osoba** | Člen týmu odpovědný za splnění úkolu |
+    | **Štítek** | Kategorizační tag pro uspořádání úkolů (např. Design, Copywriting) |
+    | **Datum zahájení** | Kdy práce na úkolu začíná |
+    | **Datum dokončení** | Kdy musí být úkol splněn |
+    | **Vyžadována klientská revize** | Zaškrtávací políčko, které vyžaduje schválení úkolu klientem před jeho označením jako Dokončeno — ve výchozím nastavení zaškrtnuto |
+    | **Přílohy** | Referenční soubory nebo podpůrné materiály |
+  </Step>
+
+  <Step title="Uložte úkol">
+    Klikněte na **Uložit** pro vytvoření úkolu. Klient automaticky obdrží oznámení o přidání nového úkolu do jeho zakázky.
+  </Step>
+</Steps>
+
+<Tip>
+Políčko **Vyžadována klientská revize** je ve výchozím nastavení zaškrtnuto u každého nového úkolu. Pokud je úkol čistě interní a nepotřebuje souhlas klienta, můžete jej před uložením odškrtnout.
+</Tip>
+
+## Stavy úkolů
+
+Úkoly procházejí následujícími stavy:
+
+- **Probíhající** — Na úkolu se pracuje (není viditelný pro klienty ani zaměstnance)
+- **V revizi** — Úkol byl odeslán ke kontrole; viditelný pro klienty
+- **Dokončeno** — Úkol byl schválen a splněn
+
+<Note>
+Když klient nebo recenzent zamítne úkol ze stavu **V revizi**, jeho stav se automaticky vrátí na **Probíhající**.
+</Note>
+
+## Modální okno úkolu a stránka aktivity
+
+Kliknutím na libovolný úkol se otevře **Modální okno úkolu** — podrobné zobrazení, které slouží jako centrum aktivit úkolu. Odtud můžete vidět a spravovat:
+
+- Aktuální stav, přiřazenou osobu, datum zahájení a datum dokončení
+- Popis úkolu a přiložené soubory
+- Všechna vlákna zpětné vazby a odpovědi
+- Kompletní protokol aktivit zachycující každou aktualizaci, komentář a změnu stavu úkolu
+
+K modálnímu oknu úkolu mají přístup všichni, kdo jsou součástí zakázky — včetně klientů, je-li povolena klientská revize — pro úkoly, které vidí.
+
+## Úprava úkolu
+
+Chcete-li aktualizovat podrobnosti úkolu po jeho vytvoření, otevřete modální okno úkolu a upravte příslušná pole (název, popis, přiřazenou osobu, termíny, štítek nebo přílohy). Uložte změny pro jejich použití. Úkoly mohou upravovat pouze Super Admini, Admini a PM.
+
+## Smazání úkolu
+
+Chcete-li smazat úkol, otevřete jej a použijte možnost smazání v akčním menu úkolu. Smazání je trvalé — spolu s úkolem jsou odstraněny všechny přidružené záznamy o čase a verze souborů.
+
+<Warning>
+Smazáním úkolu se odstraní také všechny verze souborů a jejich přidružené komentáře zpětné vazby. Tuto akci nelze vrátit zpět.
+</Warning>
+
+## Sledování času
+
+AgencyHandy obsahuje vestavěné sledování času, takže váš tým může zaznamenávat hodiny přímo k úkolům — bez potřeby externího nástroje.
+
+### Spuštění časovače
+
+<Steps>
+  <Step title="Otevřete úkol">
+    Přejděte na **Zakázky → Úkoly** a otevřete úkol, u kterého chcete sledovat čas.
+  </Step>
+
+  <Step title="Spusťte časovač">
+    Klikněte na **Spustit časovač**. Časovač začne běžet a zobrazuje název úkolu, aktuální uplynulý čas a celkový zaznamenaný čas.
+  </Step>
+
+  <Step title="Pozastavte nebo zastavte po dokončení">
+    Klikněte na **Pozastavit časovač** pro dočasné přerušení sledování, nebo na **Zastavit časovač** pro finalizaci záznamu. Po zastavení potvrdíte datum, čas zahájení, čas ukončení, celkovou dobu trvání a volitelnou poznámku.
+  </Step>
+</Steps>
+
+<Note>
+V daný okamžik může běžet pouze jeden aktivní časovač. Spuštění nového časovače automaticky pozastaví jakýkoli existující.
+</Note>
+
+<Warning>
+Pokud je úkol označen jako **Dokončeno**, časovač je deaktivován. Znovuotevřete úkol pro opětovné povolení záznamu času.
+</Warning>
+
+### Ruční zadání času
+
+Pokud potřebujete zaznamenat čas zpětně, klikněte na **Ruční zadání času** u úkolu a zadejte:
+
+- **Datum**
+- **Čas zahájení a čas ukončení** (nebo **Dobu trvání** v hodinách a minutách)
+- **Poznámky** (volitelné)
+
+Více uživatelů může zaznamenávat čas u stejného úkolu současně. Super Admini a Admini mohou vytvářet ruční záznamy času jménem libovolného uživatele.
+
+### Pracovní záznamy
+
+Klikněte na tlačítko **Pracovní záznam** vedle časovače a zobrazte úplný přehled všech časových záznamů u úkolu, včetně data, časů zahájení/ukončení, celkového aktivního času a poznámek. Admini a Super Admini mohou mazat libovolný záznam; běžní uživatelé mohou mazat pouze své vlastní záznamy.
+
+### Výkazy práce
+
+V levém postranním panelu přejděte na **Výkazy práce** a zobrazte přehled veškerého zaznamenaného času napříč zakázkami. Můžete filtrovat podle názvu úkolu, ID zakázky, přiřazené osoby nebo časového období (denně, týdně, měsíčně) a výsledky seskupovat podle člena týmu, názvu služby nebo názvu úkolu. Z pohledu Výkazů práce lze také spustit časovač nebo přidat ruční záznam.
+
+## Zpětná vazba k souborům
+
+Systém zpětné vazby k souborům v AgencyHandy umožňuje vám i vašim klientům zanechávat přesné vizuální komentáře k dodávkám — přímo v rámci úkolů. Podporuje obrázky, PDF, videa a živé webové stránky s vestavěnou správou verzí a vláknovou diskusí.
+
+### Nahrání souboru ke kontrole
+
+Otevřete úkol, klikněte na ikonu **➕** v sekci **Přílohy** a nahrajte obrázek, PDF, video nebo vložte URL živé webové stránky.
+
+### Zanechání zpětné vazby podle typu souboru
+
+**Obrázky a PDF**
+Otevřete soubor a použijte panel nástrojů pro anotace (Šipka, Čára, Obdélník, Zvýraznění) k označení konkrétních oblastí. Vyberte oblast, napište komentář a zvolte, zda jej chcete sdílet se svým týmem, klientem nebo oběma. Anotace můžete také vracet zpět nebo opakovat a měnit jejich barvy.
+
+**Videa**
+Otevřete video a pozastavte je na přesném snímku, ke kterému se vaše zpětná vazba vztahuje. Napište svůj komentář — video se při psaní automaticky pozastaví. Zpětná vazba je opatřena časovým razítkem daného okamžiku. Časové razítko můžete odebrat a zanechat tak obecný komentář.
+
+**Živé webové stránky**
+Přidejte URL stránky k úkolu pomocí tlačítka **➕**, poté nainstalujte rozšíření AgencyHandy pro prohlížeč. Otevřete stránku v **Režimu prohlížení** (interaktivní) nebo přepněte do **Režimu revize** pro pořízení snímku obrazovky a jeho anotaci pomocí nástrojů pro kreslení, text nebo tvary.
+
+### Akce s komentáři
+
+Každý komentář má nabídku se třemi tečkami s možnostmi:
+
+- Upravit komentář
+- Kopírovat odpověď
+- Smazat komentář
+- Omezit viditelnost pouze na interní tým
+
+### Řešení zpětné vazby
+
+Kliknutím na tlačítko **✓** u komentáře jej označte jako **Vyřešeno**. Vyřešené komentáře zůstávají viditelné pro referenci a lze je znovu otevřít. Obdržíte oznámení, když někdo jiný vyřeší komentář, který jste zanechali.
+
+### Verze souborů
+
+Klikněte na **Nahrát novou verzi** pro přidání revidovaného souboru. Předchozí verze a jejich zpětná vazba jsou zachovány a přístupné z rozevíracího seznamu verzí. Při otevření starší verze vás AgencyHandy upozorní, že existuje novější verze.
+
+Každý soubor lze označit jako **Vyžaduje revizi** nebo **Schváleno**, aby byl stav revize patrný na první pohled.
+
+<Note>
+Klienti mohou zanechávat zpětnou vazbu k souborům pouze tehdy, je-li u úkolu povoleno políčko **Vyžadována klientská revize**. Zpětná vazba k souborům je dostupná pouze v rámci úkolů nebo zakázek — ne v katalogu služeb ani v profilových obrázcích.
+</Note>
+
+## Úkoly požadované klientem
+
+Klienti mohou odesílat požadavky na úkoly ze svého portálu, což jim poskytuje strukturovaný způsob, jak vyjádřit další potřeby bez obcházení vašeho schvalovacího procesu.
+
+### Postup klienta
+
+<Steps>
+  <Step title="Přístup k požadavkům">
+    Klient klikne na **Požadavky** v postranním panelu svého Klientského portálu — nebo použije tlačítko **+ Požádat o úkol** přímo v rámci zakázky.
+  </Step>
+
+  <Step title="Vyplnění formuláře požadavku">
+    Klient poskytne:
+    - **Zakázku** (povinné — požadavky musí být vázány na existující zakázku)
+    - **Název úkolu** (povinné)
+    - **Popis** (volitelné)
+    - **Přílohy** (volitelné — až 1 GB; formáty zahrnují PDF, DOCX, JPG, PNG, MP4, ZIP a další)
+    - **Datum zahájení a ukončení** (volitelné)
+  </Step>
+
+  <Step title="Odeslání požadavku">
+    Klient klikne na **Požádat**. Úkol se zobrazí v jeho portálu jako **Čekající** a vaše agentura obdrží oznámení.
+  </Step>
+</Steps>
+
+### Postup agentury
+
+<Steps>
+  <Step title="Zobrazení příchozích požadavků">
+    Klikněte na **Požadavky** v postranním panelu Portálu agentury. Všechny čekající požadavky se zobrazí v seznamu. Můžete filtrovat podle klienta nebo ID zakázky, řadit abecedně nebo podle data vydání a pomocí **Předvoleb** zobrazit nebo skrýt sloupce.
+  </Step>
+
+  <Step title="Kontrola požadavku">
+    Klikněte na požadavek a před rozhodnutím si přečtěte popis a zobrazte náhled příloh.
+  </Step>
+
+  <Step title="Schválení nebo zamítnutí">
+    Použijte akční tlačítka u každého požadavku ke schválení nebo zamítnutí jednotlivě — nebo použijte hromadné akce v pravém horním rohu ke schválení nebo zamítnutí všech požadavků najednou.
+
+    - **Schválené** požadavky se stanou aktivními úkoly v zakázce a budou sledovat normální pracovní postup úkolů.
+    - **Zamítnuté** požadavky zůstanou zaznamenány se stavem **Zamítnuto** a nebudou přidány do zakázky.
+  </Step>
+</Steps>
+
+<Note>
+Klienti nemohou obejít krok schválení. Požadavek vždy vyžaduje akci agentury, než se stane živým úkolem. Čekající požadavky zůstávají viditelné jak klientovi, tak agentuře, dokud není přijato rozhodnutí.
+</Note>
+
+## Pohled Všechny úkoly
+
+Kromě správy úkolů v rámci jednotlivých zakázek můžete zobrazit úkoly ze všech zakázek na jediné obrazovce. Přejděte na **Úkoly** v levém postranním panelu a otevřete stránku **Všechny úkoly**. Odtud můžete:
+
+- Zobrazit každý úkol, ke kterému máte přístup, bez ohledu na to, ke které zakázce patří
+- Filtrovat a řadit podle stavu, přiřazené osoby, data dokončení nebo zakázky
+- Rychle identifikovat opožděné nebo ohrožené položky v celé vaší pracovní zátěži
+
+Tato viditelnost napříč zakázkami je obzvláště užitečná pro projektové manažery a Adminy, kteří potřebují vyvažovat kapacitu týmu a sledovat stav realizace na úrovni agentury.

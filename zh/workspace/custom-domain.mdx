@@ -1,0 +1,126 @@
+---
+title: "为您的 AgencyHandy 工作区连接自定义域名"
+sidebarTitle: "自定义域名"
+description: "通过在 DNS 注册商处添加 CNAME 记录，将您自己的子域名（例如 portal.yourcompany.com）链接到 AgencyHandy——无需编写任何代码。"
+---
+
+默认情况下，您的 AgencyHandy 工作区可通过 `agencyhandy.com` 下的子域名访问。连接自定义域名后，您可以用自己的品牌地址替换该默认 URL——例如 `portal.youragency.com`——为客户提供无缝、专业的体验，从他们访问的第一个页面起就强化您的品牌形象。
+
+<Note>
+  只有**超级管理员**和**管理员**才能配置自定义域名。您还必须拥有该域名，并能在注册商处访问其 DNS 设置，才能完成此设置。
+</Note>
+
+---
+
+## 工作原理
+
+在 AgencyHandy 中添加自定义域名时，平台将为您提供一条 **CNAME 记录**。您需要将该记录添加到注册商（GoDaddy、Namecheap、Cloudflare 等）处域名的 DNS 设置中，DNS 传播完成后，AgencyHandy 将验证连接。
+
+---
+
+## 分步设置
+
+<Steps>
+  <Step title="打开自定义域名设置">
+    登录您的 AgencyHandy 账户。在左侧边栏中导航至 **工作区配置**，然后点击 **自定义域名**。
+  </Step>
+  <Step title="添加您的自定义域名">
+    点击 **+ 添加自定义域名** 按钮。在出现的输入字段中，输入您要使用的子域名——例如 `portal.youragency.com`。
+
+    <Warning>
+      **不要**使用 `www` 作为子域名（即避免使用 `www.youragency.com`）。`www` 前缀可能导致配置冲突，并阻止成功验证。请使用其他子域名，例如 `portal`、`client`、`app` 或 `hub`。
+    </Warning>
+  </Step>
+  <Step title="复制 CNAME 记录详情">
+    提交域名后，AgencyHandy 将显示您需要添加的 DNS 记录：
+
+    | 字段 | 值 |
+    |---|---|
+    | **类型** | CNAME |
+    | **名称** | 您的子域名（例如 `portal`） |
+    | **值** | AgencyHandy 提供的目标地址 |
+
+    请仔细复制这些值——下一步需要用到它们。
+  </Step>
+  <Step title="在 DNS 注册商处添加 CNAME 记录">
+    登录您的域名注册商控制台（例如 GoDaddy、Namecheap、Cloudflare）。导航至域名的 DNS 管理区块，使用从 AgencyHandy 复制的类型、名称和值添加 CNAME 记录。
+
+    有关 Cloudflare 的具体操作指南，请参见下方说明。
+  </Step>
+  <Step title="在 AgencyHandy 中保存域名">
+    返回 AgencyHandy 并点击 **保存域名**。状态最初将显示为**未连接**——这在 DNS 传播期间是正常现象。
+  </Step>
+  <Step title="等待 DNS 传播并验证">
+    DNS 更改在全球传播可能需要几分钟到 **最长 48 小时**，具体取决于您的注册商和 TTL 设置。定期点击 **刷新** 检查连接状态。
+
+    传播完成后，状态将变为**已连接** ✅。
+  </Step>
+</Steps>
+
+<Warning>
+  DNS 传播最长可能需要 **48 小时**。如果 48 小时后域名仍显示**未连接**，请仔细检查 CNAME 记录是否正确，以及同一子域名是否存在冲突的 DNS 记录。
+</Warning>
+
+---
+
+## Cloudflare 专项说明
+
+如果您的域名通过 Cloudflare 管理，有一项关键设置必须正确配置：
+
+<Steps>
+  <Step title="登录 Cloudflare 并选择您的域名">
+    打开您的 [Cloudflare 控制台](https://dash.cloudflare.com)，点击要连接到 AgencyHandy 的域名。
+  </Step>
+  <Step title="导航至 DNS 设置">
+    在域名设置面板的顶部导航中点击 **DNS** 标签。
+  </Step>
+  <Step title="添加 CNAME 记录">
+    点击 **+ 添加记录** 并填写以下字段：
+    - **类型：** CNAME
+    - **名称：** 您的子域名（例如 `portal`）
+    - **目标/内容：** AgencyHandy 提供的值
+    - **TTL：** 初始设置期间设为 **2 分钟**（或可选的最低值）
+  </Step>
+  <Step title="禁用 Cloudflare 代理（关键步骤）">
+    在 **代理状态** 列中，确保切换开关设置为**仅 DNS**（云图标应显示为灰色而非橙色）。
+
+    <Warning>
+      如果 Cloudflare 代理已**启用**（橙色云图标），CNAME 记录将无法正确解析，AgencyHandy 也无法验证您的域名。必须将其设置为**仅 DNS** 才能使连接正常工作。
+    </Warning>
+  </Step>
+  <Step title="保存记录">
+    检查所有值是否准确，然后点击 **保存**。
+  </Step>
+</Steps>
+
+<Tip>
+  使用 [dnschecker.org](https://dnschecker.org) 监控您的 CNAME 记录在全球不同区域的传播情况。在 AgencyHandy 确认连接之前，请确认所有区域都显示绿色勾选标记。
+</Tip>
+
+---
+
+## 监控连接状态
+
+保存后，返回 AgencyHandy 的 **工作区配置 → 自定义域名** 以跟踪状态：
+
+| 状态 | 含义 |
+|---|---|
+| **未连接** | DNS 记录尚未传播或包含错误 |
+| **已连接** | 域名已验证并处于活跃状态——客户可通过自定义 URL 访问您的工作区 |
+
+---
+
+## 更新或删除自定义域名
+
+- **更新域名：** 删除现有条目，并按照上述相同设置步骤添加新域名。
+- **删除域名：** 点击自定义域名面板中域名旁边的 **删除** 按钮并确认删除。您的工作区将恢复为默认的 AgencyHandy URL。您可以随时重新添加任何域名。
+
+---
+
+## 重要说明
+
+- **使用子域名，而非根域名：** AgencyHandy 自定义域名需要子域名（例如 `portal.youragency.com`），而非根域名/顶级域名（例如 `youragency.com`）。
+- **避免使用 `www`：** `www` 子域名在验证过程中可能引发问题。请使用自定义子域名名称。
+- **记录必须精确：** 按照 AgencyHandy 中显示的内容精确输入 CNAME 类型、名称和值。任何拼写错误或缺少字符都会阻止连接。
+- **必须关闭 Cloudflare 代理：** 对于 AgencyHandy 自定义域名验证，始终将 Cloudflare 记录设置为**仅 DNS**。
+- **仅限管理员访问：** 只有超级管理员和管理员可以添加、修改或删除自定义域名设置。

@@ -1,0 +1,205 @@
+---
+title: "API AgencyHandy : mettre à jour une commande existante avec PUT"
+sidebarTitle: "Mettre à jour une commande"
+description: "Utilisez l'API AgencyHandy pour mettre à jour les détails d'une commande, changer son statut, réassigner les chefs de projet et joindre des fichiers à une commande existante via une requête PUT."
+---
+
+Le point de terminaison Update Order vous permet de modifier une commande (projet) existante dans AgencyHandy — changer son nom, son statut, son budget, son calendrier, ses responsables assignés et plus encore — le tout depuis un système externe ou un script d'automatisation. Le point de terminaison prend également en charge les pièces jointes, qui sont ajoutées au dossier système de la commande.
+
+<Note>
+  Avant d'utiliser ce point de terminaison, suivez le guide [Getting Started](/fr/api/getting-started) pour obtenir votre clé API et votre Company ID.
+</Note>
+
+<Warning>
+  Ce point de terminaison utilise `Authorization: Bearer <token>` (le jeton d'accès d'un membre connecté) plutôt que le seul en-tête `x-api-key`. Assurez-vous que l'appelant est authentifié en tant que **membre approuvé** de l'entreprise cible. Les appelants non autorisés reçoivent une erreur `403 PermissionError`.
+</Warning>
+
+## Prérequis
+
+- ✅ Un **Bearer token** valide pour un membre approuvé de l'espace de travail
+- ✅ **Company ID** récupéré depuis `GET {{URL}}/accounts/companies`
+- ✅ L'**Order ID** (Project ID, `pid`) de la commande que vous souhaitez mettre à jour
+
+---
+
+## Point de terminaison
+
+```
+PUT {{URL}}/orders?pid=<ORDER_ID>
+```
+
+**Content-Type :** `multipart/form-data` — utilisez ce type même lorsqu'aucun fichier n'est joint, afin de satisfaire l'analyseur multipart du serveur.
+
+## En-têtes
+
+| En-tête | Requis | Description |
+|---|---|---|
+| `Authorization` | Oui | `Bearer <ACCESS_TOKEN>` — le jeton d'accès du membre connecté. |
+| `companyid` | Oui | ObjectId Mongo de l'entreprise à laquelle appartient la commande. |
+| `clientid` | Facultatif | ID de socket client en temps réel. Lorsqu'il est fourni, les notifications l'incluent. |
+
+## Paramètres de requête
+
+<ParamField query="pid" type="string" required>
+  L'Order / Project ID à mettre à jour. Transmettez-le en tant que paramètre de chaîne de requête.
+</ParamField>
+
+## Champs du corps de la requête
+
+<ParamField body="name" type="string">
+  Met à jour le titre de la commande. Minimum 2 caractères.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Nouveau statut de la commande. Doit être l'une des valeurs suivantes : `Pending`, `Ongoing`, `Review`, `Completed`, `Cancelled`.
+
+  **Transitions autorisées :**
+  - `Review` ne peut suivre que `Ongoing` ou un autre `Review`. Passer directement de `Pending` à `Review` renvoie une erreur `400 ValidationError`.
+  - Les commandes déjà `Completed` ou `Cancelled` ne peuvent pas être mises à jour.
+  - Les clients ne peuvent pas annuler une commande qui a dépassé le statut `Pending`.
+</ParamField>
+
+<ParamField body="budget" type="number">
+  Montant total du budget. Doit être `≥ 0`. Utilise la devise existante de la commande sauf si `currency` est également fourni.
+</ParamField>
+
+<ParamField body="currency" type="string">
+  Code de devise du budget. Exemples : `USD`, `CAD`, `EUR`.
+</ParamField>
+
+<ParamField body="quantity" type="number">
+  Nombre d'unités achetées pour le package. Doit être `≥ 1`.
+</ParamField>
+
+<ParamField body="deadline" type="string">
+  Chaîne de date ISO 8601 pour la date d'échéance de la commande. Exemple : `"2025-12-31T00:00:00.000Z"`.
+</ParamField>
+
+<ParamField body="kickoffDate" type="string">
+  Chaîne de date ISO 8601 pour la date de début du projet.
+</ParamField>
+
+<ParamField body="notes" type="string">
+  Notes internes visibles par votre équipe.
+</ParamField>
+
+<ParamField body="brief" type="string">
+  Brief client ou résumé du projet.
+</ParamField>
+
+<ParamField body="assignedProjectManagers" type="array">
+  Liste complète des ID des membres chefs de projet à assigner à cette commande. Les nouveaux ID sont ajoutés à l'équipe ; les ID retirés sont supprimés. Chaque ID doit appartenir à un membre ayant un rôle `projectManager` au sein de la même entreprise.
+</ParamField>
+
+<ParamField body="markTasksAsDone" type="boolean">
+  **Requis** lorsque `status` est `Completed` ou `Cancelled`. Lorsque la valeur est `true`, toutes les tâches de la commande sont marquées comme terminées après le changement de statut. Lorsque la valeur est `false`, les tâches conservent leur état actuel.
+</ParamField>
+
+<ParamField body="rejectRequestedTasks" type="boolean">
+  Autorisé uniquement lorsque `status` est `Completed` ou `Cancelled`. Lorsque la valeur est `true`, toutes les tâches en attente demandées par le client sont rejetées après la mise à jour du statut.
+</ParamField>
+
+<ParamField body="repeatCount" type="number">
+  Requis uniquement pour les commandes d'**abonnement** lors de la modification de la fréquence de récurrence. À associer à `repeatDuration`.
+</ParamField>
+
+<ParamField body="repeatDuration" type="string">
+  Requis conjointement avec `repeatCount` pour les commandes d'abonnement. L'une des valeurs : `day`, `week`, `month`, `year`.
+</ParamField>
+
+<ParamField body="billingCycleCount" type="number">
+  Limite facultative sur les cycles de facturation récurrents. Par défaut `0` (aucune limite).
+</ParamField>
+
+<ParamField body="billingCycleEvent" type="string">
+  Comment chaque cycle de facturation est traité. L'une des valeurs : `createOrderWithTask`, `noChange`.
+</ParamField>
+
+<ParamField body="files" type="file">
+  Zéro ou plusieurs pièces jointes. Les fichiers sont ajoutés au dossier système de la commande ; les fichiers existants ne sont jamais écrasés. Utilisez l'encodage `multipart/form-data` et joignez chaque fichier sous le champ `files`.
+</ParamField>
+
+---
+
+## Exemple de requête
+
+<CodeGroup>
+
+```bash cURL (no files)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "currency=USD" \
+  --form "quantity=1" \
+  --form "assignedProjectManagers[]=PROJECT_MANAGER_ID" \
+  --form "notes=Scope finalized with client." \
+  --form "brief=Launch-ready design refresh."
+```
+
+```bash cURL (with file)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "repeatCount=3" \
+  --form "repeatDuration=month" \
+  --form "billingCycleEvent=createOrderWithTask" \
+  --form "files=@/path/to/creative-brief.pdf"
+```
+
+</CodeGroup>
+
+**Charge utile JSON équivalente** (à convertir en entrées de formulaire multipart lors de l'envoi de fichiers) :
+
+```json
+{
+  "name": "Website Redesign",
+  "status": "Review",
+  "budget": 12000,
+  "currency": "USD",
+  "quantity": 1,
+  "assignedProjectManagers": ["{{PROJECT_MANAGER_ID}}"],
+  "repeatCount": 3,
+  "repeatDuration": "month",
+  "billingCycleEvent": "createOrderWithTask",
+  "notes": "Scope finalized with client.",
+  "brief": "Launch-ready design refresh."
+}
+```
+
+---
+
+## Réponses
+
+| Statut HTTP | Description |
+|---|---|
+| `200 OK` | La mise à jour a réussi. |
+| `400 ValidationError` | ID de commande invalide, transition de statut bloquée ou charge utile mal formée. La réponse inclut `fieldName` le cas échéant. |
+| `403 PermissionError` | L'appelant n'est pas un membre approuvé, n'a pas le rôle dans l'entreprise, l'abonnement de l'espace de travail a expiré, ou un client a tenté une annulation interdite. |
+| `500 Internal Server Error` | Exception non gérée — consultez les journaux du serveur. |
+
+### Réponse de succès
+
+```json
+{
+  "message": "Project has been updated"
+}
+```
+
+---
+
+## Règles métier et effets de bord
+
+- Les **transitions de statut** sont restreintes. `Review` ne peut suivre que `Ongoing` ou un autre `Review`. Tenter `Pending → Review` renvoie une erreur `400 ValidationError`.
+- Faire passer un statut de `Pending` à `Ongoing`, `Review` ou `Completed` active le dossier de fichiers de la commande, de sorte que les fichiers téléversés deviennent accessibles à l'équipe projet.
+- Définir `status` sur `Completed` ou `Cancelled` **nécessite** que `markTasksAsDone` soit explicitement défini sur `true` ou `false`.
+- Les changements de statut vers `Review`, `Completed` ou `Cancelled` déclenchent automatiquement des notifications client :
+  - **Review** — informe le client qu'une révision est nécessaire.
+  - **Completed** — envoie la notification `orderCompletion` au client.
+  - **Cancelled** — envoie la notification `orderCancellation` au client.
+- Chaque mise à jour réussie déclenche un événement de webhook `ORDER.UPDATED` avec le document de commande mis à jour et les métadonnées des pièces jointes, si vous avez un webhook actif abonné à cet événement.

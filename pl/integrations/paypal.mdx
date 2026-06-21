@@ -1,0 +1,70 @@
+---
+title: "Połącz PayPal, aby bezpiecznie pobierać płatności od klientów"
+sidebarTitle: "PayPal"
+description: "Połącz swoje konto PayPal z AgencyHandy i pozwól klientom opłacać faktury za pośrednictwem zaufanej, globalnie uznawanej platformy płatniczej PayPal."
+---
+
+Integracja PayPal w AgencyHandy daje Twoim klientom bezpieczny i znajomy sposób opłacania faktur bez konieczności posiadania karty kredytowej. PayPal obsługuje szeroki zakres walut międzynarodowych, co sprawia, że jest szczególnie przydatny dla agencji posiadających klientów spoza swojego kraju.
+
+<Note>
+  PayPal **nie może** być używany do upselli ze względu na ograniczenia walutowe i regionalne na poziomie platformy. Do płatności za upselle użyj Stripe.
+</Note>
+
+<Note>
+  Tylko role **SuperAdmin** i **Admin** mogą łączyć integrację PayPal lub nią zarządzać. Przed rozpoczęciem musisz posiadać aktywne konto PayPal.
+</Note>
+
+## Połącz PayPal
+
+<Steps>
+  <Step title="Otwórz ustawienia integracji PayPal">
+    Zaloguj się do AgencyHandy, a następnie przejdź do **Integracje → Integracja PayPal** na lewym pasku bocznym.
+  </Step>
+
+  <Step title="Rozpocznij połączenie">
+    Kliknij **Połącz PayPal**. Zostaniesz przekierowany na stronę logowania PayPal.
+  </Step>
+
+  <Step title="Autoryzuj AgencyHandy">
+    Zaloguj się na swoje konto PayPal i przejrzyj żądane uprawnienia. Kliknij **Zezwól** (lub **Przyznaj**), aby autoryzować AgencyHandy do dostępu do Twojego konta.
+  </Step>
+
+  <Step title="Potwierdź połączenie">
+    Po pomyślnej autoryzacji PayPal przekieruje Cię z powrotem do AgencyHandy. Na karcie integracji pojawi się komunikat potwierdzający — **PayPal połączony**. Klienci mogą teraz opłacać faktury za pomocą PayPal.
+  </Step>
+</Steps>
+
+## Jak klienci płacą przez PayPal
+
+Gdy integracja jest aktywna, na każdej wysłanej fakturze pojawia się przycisk **Zapłać przez PayPal**. Klient klika przycisk, loguje się na swoje konto PayPal (lub płaci jako gość, w zależności od regionu) i realizuje płatność. AgencyHandy automatycznie aktualizuje status faktury po potwierdzeniu płatności przez PayPal.
+
+## Obsługiwane waluty
+
+AgencyHandy obsługuje następujące waluty dla płatności PayPal:
+
+| Region | Waluty |
+|---|---|
+| Ameryki | USD, CAD, BRL, MXN |
+| Europa | EUR, GBP, CHF, NOK, SEK, DKK, PLN, CZK, HUF |
+| Azja-Pacyfik | AUD, NZD, JPY, HKD, SGD, MYR, PHP, THB, TWD |
+| Bliski Wschód / Inne | ILS, CNY |
+
+<Warning>
+  Niektóre waluty mają ograniczenia:
+  - **JPY** i kilka innych nie obsługuje kwot dziesiętnych — unikaj ułamkowych sum faktur.
+  - **BRL** jest dostępne tylko dla brazylijskich kont PayPal. Jeśli Twoje konto nie jest zarejestrowane w Brazylii, płatności w BRL są automatycznie przeliczane na Twoją główną walutę.
+  - Niektóre waluty są dostępne wyłącznie dla kont krajowych. Upewnij się, że waluta rozliczeniowa Twojego konta jest zgodna z walutą faktury, aby uniknąć błędów.
+</Warning>
+
+<Note>
+  PayPal nalicza własne opłaty konwersyjne i spready w przypadku przewalutowania. AgencyHandy nie ma na nie wpływu.
+</Note>
+
+## Przetestuj integrację
+
+Przed użyciem PayPal do rzeczywistych faktur klientów przeprowadź szybki test:
+
+1. Utwórz testową fakturę w AgencyHandy, używając [obsługiwanej waluty](#obsługiwane-waluty).
+2. Wyślij fakturę na drugorzędne konto PayPal, które kontrolujesz.
+3. Zrealizuj płatność z drugorzędnego konta.
+4. Wróć do AgencyHandy i potwierdź, że status faktury zmienił się na **Opłacona** oraz że środki pojawiły się na Twoim koncie PayPal.

@@ -1,0 +1,205 @@
+---
+title: "AgencyHandy API: Oppdater en eksisterende bestilling med PUT"
+sidebarTitle: "Oppdater bestilling"
+description: "Bruk AgencyHandy API til å oppdatere bestillingsdetaljer, endre status, tilordne prosjektledere på nytt og legge til filer i en eksisterende bestilling via PUT-forespørsel."
+---
+
+Oppdater bestilling-endepunktet lar deg endre en eksisterende bestilling (prosjekt) i AgencyHandy — endre navn, status, budsjett, tidslinje, tilordnede prosjektledere og mer — alt fra et eksternt system eller automatiseringsskript. Endepunktet støtter også filvedlegg, som legges til i bestillingens systemmappe.
+
+<Note>
+  Før du bruker dette endepunktet, fullfør guiden [Kom i gang](/no/api/getting-started) for å hente API-nøkkelen og bedrifts-ID-en din.
+</Note>
+
+<Warning>
+  Dette endepunktet bruker `Authorization: Bearer <token>` (et innlogget medlems tilgangstoken) i stedet for bare `x-api-key`-overskriften. Sørg for at kalleren er autentisert som et **godkjent medlem** av målbedriften. Uautoriserte kallere mottar en `403 PermissionError`.
+</Warning>
+
+## Forutsetninger
+
+- ✅ Et gyldig **Bearer-token** for et godkjent arbeidsområdemedlem
+- ✅ **Bedrifts-ID** hentet fra `GET {{URL}}/accounts/companies`
+- ✅ **Bestillings-ID-en** (Prosjekt-ID, `pid`) til bestillingen du vil oppdatere
+
+---
+
+## Endepunkt
+
+```
+PUT {{URL}}/orders?pid=<ORDER_ID>
+```
+
+**Content-Type:** `multipart/form-data` — bruk dette selv når ingen filer er vedlagt for å tilfredsstille serverens multipart-parser.
+
+## Overskrifter
+
+| Overskrift | Påkrevd | Beskrivelse |
+|---|---|---|
+| `Authorization` | Ja | `Bearer <ACCESS_TOKEN>` — det innloggede medlemmets tilgangstoken. |
+| `companyid` | Ja | Mongo ObjectId for bedriften bestillingen tilhører. |
+| `clientid` | Valgfritt | Sanntids klient-socket-ID. Når angitt, inkluderes den i varsler. |
+
+## Spørringsparametere
+
+<ParamField query="pid" type="string" required>
+  Bestillings-/Prosjekt-ID-en som skal oppdateres. Send denne som en spørringsstrengparameter.
+</ParamField>
+
+## Forespørselskroppsfelt
+
+<ParamField body="name" type="string">
+  Oppdaterer bestillingstittel. Minimum 2 tegn.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Ny status for bestillingen. Må være én av: `Pending`, `Ongoing`, `Review`, `Completed`, `Cancelled`.
+
+  **Tillatte overganger:**
+  - `Review` kan bare følge `Ongoing` eller en annen `Review`. Å hoppe fra `Pending` direkte til `Review` returnerer en `400 ValidationError`.
+  - Bestillinger som allerede er `Completed` eller `Cancelled` kan ikke oppdateres.
+  - Klienter kan ikke avbryte en bestilling som har gått forbi `Pending`.
+</ParamField>
+
+<ParamField body="budget" type="number">
+  Totalt budsjettbeløp. Må være `≥ 0`. Bruker bestillingens eksisterende valuta med mindre `currency` også er oppgitt.
+</ParamField>
+
+<ParamField body="currency" type="string">
+  Valutakode for budsjettet. Eksempler: `USD`, `CAD`, `EUR`.
+</ParamField>
+
+<ParamField body="quantity" type="number">
+  Antall enheter kjøpt for pakken. Må være `≥ 1`.
+</ParamField>
+
+<ParamField body="deadline" type="string">
+  ISO 8601-datostreng for bestillingens forfallsdato. Eksempel: `"2025-12-31T00:00:00.000Z"`.
+</ParamField>
+
+<ParamField body="kickoffDate" type="string">
+  ISO 8601-datostreng for prosjektets startdato.
+</ParamField>
+
+<ParamField body="notes" type="string">
+  Interne notater synlige for teamet ditt.
+</ParamField>
+
+<ParamField body="brief" type="string">
+  Klientbriefing eller prosjektsammendrag.
+</ParamField>
+
+<ParamField body="assignedProjectManagers" type="array">
+  Komplett liste over prosjektleder-medlem-ID-er som skal tilordnes denne bestillingen. Nye ID-er legges til i teamet; fjernede ID-er slettes. Hver ID må tilhøre et medlem med en `projectManager`-rolle i samme bedrift.
+</ParamField>
+
+<ParamField body="markTasksAsDone" type="boolean">
+  **Påkrevd** når `status` er `Completed` eller `Cancelled`. Når `true`, markeres alle oppgaver i bestillingen som fullført etter statusendringen. Når `false`, forblir oppgaver i sin nåværende tilstand.
+</ParamField>
+
+<ParamField body="rejectRequestedTasks" type="boolean">
+  Tillatt bare når `status` er `Completed` eller `Cancelled`. Når `true`, avvises alle utestående klientforespurte oppgaver etter statusoppdateringen.
+</ParamField>
+
+<ParamField body="repeatCount" type="number">
+  Påkrevd bare for **abonnements**-bestillinger når gjentakelsesfrekvensen endres. Par med `repeatDuration`.
+</ParamField>
+
+<ParamField body="repeatDuration" type="string">
+  Påkrevd sammen med `repeatCount` for abonnementsbestillinger. Én av: `day`, `week`, `month`, `year`.
+</ParamField>
+
+<ParamField body="billingCycleCount" type="number">
+  Valgfri grense for gjentakende faktureringssykluser. Standardverdi er `0` (ingen grense).
+</ParamField>
+
+<ParamField body="billingCycleEvent" type="string">
+  Hvordan hver faktureringssyklus håndteres. Én av: `createOrderWithTask`, `noChange`.
+</ParamField>
+
+<ParamField body="files" type="file">
+  Null eller flere filvedlegg. Filer legges til i bestillingens systemmappe; eksisterende filer overskrives aldri. Bruk `multipart/form-data`-koding og legg ved hver fil under `files`-feltet.
+</ParamField>
+
+---
+
+## Eksempelforespørsel
+
+<CodeGroup>
+
+```bash cURL (no files)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "currency=USD" \
+  --form "quantity=1" \
+  --form "assignedProjectManagers[]=PROJECT_MANAGER_ID" \
+  --form "notes=Scope finalized with client." \
+  --form "brief=Launch-ready design refresh."
+```
+
+```bash cURL (with file)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "repeatCount=3" \
+  --form "repeatDuration=month" \
+  --form "billingCycleEvent=createOrderWithTask" \
+  --form "files=@/path/to/creative-brief.pdf"
+```
+
+</CodeGroup>
+
+**Tilsvarende JSON-nyttelast** (konverter til multipart-skjemaobjekter når du sender filer):
+
+```json
+{
+  "name": "Website Redesign",
+  "status": "Review",
+  "budget": 12000,
+  "currency": "USD",
+  "quantity": 1,
+  "assignedProjectManagers": ["{{PROJECT_MANAGER_ID}}"],
+  "repeatCount": 3,
+  "repeatDuration": "month",
+  "billingCycleEvent": "createOrderWithTask",
+  "notes": "Scope finalized with client.",
+  "brief": "Launch-ready design refresh."
+}
+```
+
+---
+
+## Svar
+
+| HTTP-status | Beskrivelse |
+|---|---|
+| `200 OK` | Oppdatering fullført. |
+| `400 ValidationError` | Ugyldig bestillings-ID, blokkert statusovergang eller feilformatert nyttelast. Svaret inkluderer `fieldName` når relevant. |
+| `403 PermissionError` | Kalleren er ikke et godkjent medlem, mangler bedriftsrollen, arbeidsområdeabonnementet har utløpt, eller en klient forsøkte en forbudt avbrytelse. |
+| `500 Internal Server Error` | Uhåndtert unntak — sjekk serverlogger. |
+
+### Vellykket svar
+
+```json
+{
+  "message": "Project has been updated"
+}
+```
+
+---
+
+## Forretningsregler og bivirkninger
+
+- **Statusoverganger** er begrenset. `Review` kan bare følge `Ongoing` eller en annen `Review`. Forsøk på `Pending → Review` returnerer `400 ValidationError`.
+- Å flytte en status fra `Pending` til `Ongoing`, `Review` eller `Completed` aktiverer bestillingens filmappe slik at opplastede filer blir tilgjengelige for prosjektteamet.
+- Å sette `status` til `Completed` eller `Cancelled` **krever** at `markTasksAsDone` eksplisitt settes til `true` eller `false`.
+- Statusendringer til `Review`, `Completed` eller `Cancelled` utløser automatisk klientvarsler:
+  - **Review** — varsler klienten om at gjennomgang er nødvendig.
+  - **Completed** — sender `orderCompletion`-varselet til klienten.
+  - **Cancelled** — sender `orderCancellation`-varselet til klienten.
+- Hver vellykket oppdatering utløser en `ORDER.UPDATED` webhook-hendelse med det oppdaterte bestillingsdokumentet og vedleggsmetadata, hvis du har en aktiv webhook abonnert på den hendelsen.

@@ -1,0 +1,162 @@
+---
+title: "Tichete de suport — Gestionați solicitările clienților în AgencyHandy"
+sidebarTitle: "Tichete de suport"
+description: "Creați, editați și gestionați tichete de suport în AgencyHandy pentru a urmări solicitările clienților, a seta priorități, a atribui statusuri și a păstra un istoric complet al interacțiunilor."
+---
+
+Funcția de Tichete din AgencyHandy oferă agenției dvs. o modalitate structurată de a gestiona solicitările, problemele și cererile clienților. În loc să lăsați întrebările să se piardă în e-mailuri sau fire de conversație, fiecare cerere de suport este stocată într-un tichet cu un subiect, o prioritate, un responsabil și un status — toate putând fi căutate și urmărite dintr-un singur dashboard. Atât echipa dvs., cât și clienții pot crea tichete, iar istoricul complet al fiecărui tichet este păstrat astfel încât nimic să nu rămână nerezolvat.
+
+## Accesarea Dashboard-ului de Tichete
+
+Faceți clic pe **Tichete** în bara laterală stângă pentru a deschide Dashboard-ul de Tichete. De aici puteți:
+
+- Crea, edita și șterge tichete
+- Căuta tichete după **subiect**, **numele clientului** sau **ID-ul comenzii**
+- Vizualiza statusul și prioritatea tichetelor dintr-o privire
+- Monitoriza toate tichetele deschise, în așteptare și închise ale agenției
+
+## Ce fac tichetele
+
+<CardGroup cols={3}>
+  <Card title="Gestionarea cererilor de suport" icon="headset">
+    Clienții și membrii echipei agenției pot trimite întrebări, probleme sau cereri prin sistemul de tichete. Fiecare trimitere este înregistrată și urmărită.
+  </Card>
+  <Card title="Urmărirea rezolvării problemelor" icon="circle-check">
+    Atribuiți tichete membrilor echipei, setați priorități și actualizați statusurile pe măsură ce lucrările progresează spre rezolvare. Toți rămân informați.
+  </Card>
+  <Card title="Istoricul comunicărilor" icon="clock-rotate-left">
+    Fiecare tichet păstrează un istoric complet al acțiunilor, actualizărilor și interacțiunilor. Revizuiți comunicările anterioare oricând, în scop de context sau audit.
+  </Card>
+</CardGroup>
+
+## Crearea unui tichet
+
+Atât membrii echipei agenției, cât și clienții pot crea tichete. Procesul de creare este același pentru ambele categorii.
+
+**Cine poate crea tichete:** Super Admin, Admin, PM și Client.
+
+<Steps>
+  <Step title="Deschideți Dashboard-ul de Tichete">
+    Faceți clic pe **Tichete** în bara laterală stângă.
+  </Step>
+  <Step title="Faceți clic pe + Creare Tichet">
+    Faceți clic pe butonul **+ Creare Tichet**. Va apărea un formular.
+  </Step>
+  <Step title="Selectați clientul">
+    Alegeți numele clientului din lista derulantă. Aceasta leagă tichetul de profilul corect al clientului.
+  </Step>
+  <Step title="Asociați o comandă (opțional)">
+    Introduceți **ID-ul comenzii** pentru a asocia tichetul cu o comandă specifică. Acest lucru este util pentru probleme de facturare sau legate de proiecte. Puteți crea, de asemenea, un tichet fără un ID de comandă pentru solicitări generale.
+  </Step>
+  <Step title="Completați detaliile tichetului">
+    Completați următoarele câmpuri:
+
+    | Câmp | Descriere |
+    |-------|-------------|
+    | **Subiect** | Un titlu scurt și descriptiv pentru tichet |
+    | **Descriere** | O explicație detaliată a problemei sau solicitării |
+    | **Numele responsabilului** | Membrul echipei responsabil de rezolvarea acestui tichet |
+    | **Prioritate** | Nivelul de urgență: Maximă, Ridicată, Normală, Scăzută sau Minimă |
+    | **Data emiterii** | Data la care a fost creat tichetul (înregistrată automat) |
+    | **Status** | Starea curentă: Deschis, În așteptare sau Închis |
+  </Step>
+  <Step title="Faceți clic pe Creare">
+    Faceți clic pe **Creare** pentru a salva tichetul. Acesta va apărea imediat în Dashboard-ul de Tichete.
+  </Step>
+</Steps>
+
+## Statusurile tichetelor
+
+Tichetele parcurg trei statusuri pe măsură ce lucrările progresează:
+
+| Status | Semnificație |
+|--------|---------|
+| **Deschis** | Tichetul a fost trimis și se lucrează activ la el |
+| **În așteptare** | Lucrările la tichet sunt temporar întrerupte, de obicei în așteptarea unor informații suplimentare |
+| **Închis** | Problema a fost rezolvată și tichetul este arhivat pentru referință |
+
+<Tip>
+  Folosiți statusul **În așteptare** când așteptați un răspuns de la client sau o dependență externă. Astfel tichetul rămâne vizibil fără a aglomera coada activă.
+</Tip>
+
+## Editarea unui tichet
+
+Membrii echipei agenției pot actualiza detaliile tichetului oricând pentru a reflecta informații noi, modificări de prioritate sau actualizări de rezolvare.
+
+**Cine poate edita tichete:** Super Admin, Admin și PM. Clienții pot crea tichete, dar nu le pot edita.
+
+<Note>
+  Doar tichetele create din **partea agenției** pot fi editate. Tichetele trimise de clienți nu pot fi modificate de client după trimitere.
+</Note>
+
+<Steps>
+  <Step title="Deschideți Dashboard-ul de Tichete">
+    Navigați la **Tichete** în bara laterală stângă.
+  </Step>
+  <Step title="Selectați tichetul de editat">
+    Bifați caseta de selectare de lângă tichetul pe care doriți să îl editați. Butonul **Editare Tichet** va deveni activ.
+  </Step>
+  <Step title="Faceți clic pe Editare Tichet">
+    Faceți clic pe butonul **Editare Tichet**. Formularul tichetului se va deschide cu toate detaliile existente completate în prealabil.
+  </Step>
+  <Step title="Efectuați modificările">
+    Actualizați orice câmpuri care necesită schimbări — descrierea, prioritatea, responsabilul, statusul sau alte detalii.
+  </Step>
+  <Step title="Salvați">
+    Faceți clic pe **Salvare** pentru a aplica modificările. Tichetul este actualizat imediat în dashboard.
+  </Step>
+  <Step title="Comunicați actualizările">
+    Dacă modificarea este semnificativă — cum ar fi o escaladare a priorității sau schimbarea responsabilului — notificați membrii relevanți ai echipei pentru ca aceștia să poată răspunde corespunzător.
+  </Step>
+</Steps>
+
+## Ștergerea unui tichet
+
+Eliminați tichetele depășite sau inutile pentru a menține dashboard-ul curat și relevant.
+
+**Cine poate șterge tichete:** Super Admin, Admin și PM.
+
+<Steps>
+  <Step title="Selectați tichetul">
+    În Dashboard-ul de Tichete, bifați caseta de selectare de lângă tichetul pe care doriți să îl ștergeți. Butonul **Ștergere** va deveni activ.
+  </Step>
+  <Step title="Faceți clic pe Ștergere">
+    Faceți clic pe **Ștergere**. Va apărea un modal de confirmare.
+  </Step>
+  <Step title="Confirmați ștergerea">
+    Confirmați decizia în modal. Tichetul este eliminat definitiv din sistem.
+  </Step>
+  <Step title="Verificați eliminarea">
+    Verificați lista de tichete sau căutați tichetul după subiect sau ID de comandă pentru a confirma că nu mai există.
+  </Step>
+</Steps>
+
+<Warning>
+  Ștergerea unui tichet este **permanentă și nu poate fi anulată**. Înainte de ștergere, asigurați-vă că orice comunicări importante sau note de rezolvare din tichet au fost documentate în altă parte.
+</Warning>
+
+## Căutarea și filtrarea tichetelor
+
+Folosiți bara de căutare din partea de sus a Dashboard-ului de Tichete pentru a găsi rapid tichete. Puteți căuta după:
+
+- **Subiect** — titlul tichetului
+- **Numele clientului** — toate tichetele de la un anumit client
+- **ID-ul comenzii** — toate tichetele legate de o comandă specifică
+
+## Bune practici pentru utilizarea tichetelor
+
+<Accordion title="Setați niveluri de prioritate în mod consecvent">
+  Conveniți asupra unei scale de priorități cu echipa dvs. înainte de a începe să creați tichete. Dacă „Ridicată“ înseamnă lucruri diferite pentru persoane diferite, fluxurile de escaladare se dezintegrează. Folosiți Maximă doar pentru problemele care blochează livrabilele pentru clienți.
+</Accordion>
+
+<Accordion title="Asociați tichetele cu comenzile ori de câte ori este posibil">
+  Conectarea unui tichet la un ID de comandă face mult mai ușoară urmărirea problemei unui client care afectează un proiect specific. Acest lucru ajută și la revizuirea tichetelor anterioare pentru o comandă specifică.
+</Accordion>
+
+<Accordion title="Închideți tichetele prompt după rezolvare">
+  Odată ce o problemă este rezolvată, schimbați imediat statusul în **Închis**. Lăsarea tichetelor deschise după rezolvare umflă coada activă și face mai dificilă identificarea lucrărilor cu adevărat în desfășurare.
+</Accordion>
+
+<Accordion title="Folosiți statusul În așteptare pentru perioadele de așteptare">
+  Când așteptați un răspuns de la un client sau o terță parte, setați tichetul în **În așteptare** mai degrabă decât să îl lăsați Deschis. Aceasta oferă echipei dvs. un semnal clar că nu este necesară nicio acțiune până când nu sosește un răspuns.
+</Accordion>

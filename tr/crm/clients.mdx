@@ -1,0 +1,218 @@
+---
+title: "Müşteri Yönetimi: Profiller, İçe Aktarma ve Yapılandırma"
+sidebarTitle: "Müşteriler"
+description: "AgencyHandy'de müşteri profilleri oluşturun ve içe aktarın, siparişleri ve faturaları takip edin, portal erişimini yönetin ve müşterileri kategorilerle düzenleyin."
+---
+
+AgencyHandy'nin CRM'indeki Müşteriler bölümü, potansiyel müşteri aşamasını geçmiş her kuruluş veya birey için merkezi merkezinizdir. Müşteri profillerini manuel olarak veya toplu olarak oluşturabilir, iletişim bilgilerini güncel tutabilir, son siparişleri ve faturaları takip edebilir, müşterileri özel kategorilere göre ayırabilir ve portal erişimini izleyebilirsiniz — hepsi tek bir liste görünümünden.
+
+<Note>
+  Müşteri profilleri oluşturmak, düzenlemek, içe aktarmak veya yapılandırmak için **Süper Yönetici** veya **Yönetici** rolüne ihtiyacınız var. Müdürler müşteri ayrıntılarını ve etkinlik günlüklerini görüntüleyebilir.
+</Note>
+
+## Müşteri Profili Oluşturma
+
+Yeni bir müşteri eklediğinizde AgencyHandy onlar için bir portal hesabı oluşturur ve güvenli bir giriş daveti gönderir.
+
+<Steps>
+  <Step title="Müşteriler'e gidin">
+    AgencyHandy hesabınıza giriş yapın, ardından sol kenar çubuğunda **CRM**'ye tıklayın ve **Müşteriler** sekmesini seçin.
+  </Step>
+  <Step title="Oluşturma formunu açın">
+    Sağ üst köşedeki **+ Müşteri Oluştur**'a tıklayın. Bir form açılır.
+  </Step>
+  <Step title="Müşteri bilgilerini girin">
+    Müşterinin ayrıntılarını doldurun:
+
+    - **Ad / Soyad** *(zorunlu)*
+    - **E-posta** *(zorunlu — portal davetini göndermek için kullanılır)*
+    - **Şirket Adı**
+    - **Telefon Numarası**
+    - **Ülke, Eyalet, Şehir, Posta Kodu**
+    - **Kategori** — varsa mevcut bir yapılandırma kategorisi atayın
+  </Step>
+  <Step title="Profili kaydedin">
+    **Oluştur**'a tıklayın. Profil hemen müşteri listenize eklenir.
+  </Step>
+</Steps>
+
+<Note>
+  Profili oluşturduktan sonra müşteri, güvenli bir giriş URL'si içeren bir e-posta alır. Bu URL'ye tıklamak portal hesabını etkinleştirir ve ilk kez giriş yapmalarını sağlar.
+</Note>
+
+## CSV'den Müşteri İçe Aktarma
+
+Başka bir platformdan taşınıyorsanız veya mevcut müşterilerin bulunduğu bir elektronik tablonuz varsa, hepsini bir kerede içe aktarabilirsiniz.
+
+<Steps>
+  <Step title="İçe Aktar'a tıklayın">
+    Müşteriler listesinden sağ üst köşedeki **İçe Aktar** düğmesine tıklayın.
+  </Step>
+  <Step title="CSV dosyanızı yükleyin">
+    Dosyanızı yükleme alanına sürükleyip bırakın veya göz atmak için tıklayın. AgencyHandy, aşağıdaki alanları içeren CSV dosyalarını kabul eder:
+
+    - Müşteri Adı *(zorunlu)*
+    - E-posta *(zorunlu)*
+    - Şirket Adı
+    - Ülke
+    - Eyalet
+    - Şehir
+    - Posta Kodu
+  </Step>
+  <Step title="Sütunlarınızı eşleştirin">
+    AgencyHandy, kendi alan adlarıyla eşleşen sütun adlarını otomatik olarak algılar. Eşleşmeyen sütunlar için, bunları doğru sistem alanlarıyla manuel olarak eşleştirmek üzere açılır menüleri kullanın.
+  </Step>
+  <Step title="Önizleyin ve onaylayın">
+    Veriler kaydedilmeden önce olası biçimlendirme sorunlarını yakalamak için önizleme tablosunu inceleyin.
+  </Step>
+  <Step title="İçe aktarmayı tamamlayın">
+    **Kaydet**'e tıklayın. Tüm kayıtlar başarıyla içe aktarıldıktan sonra bir onay mesajı görünür.
+  </Step>
+</Steps>
+
+<Tip>
+  Elektronik tablo sütun başlıklarınız AgencyHandy'nin alan adlarıyla tam olarak eşleşiyorsa (ör. "email", "company name"), eşleyici otomatik olarak doldurulur — manuel eşleştirme gerekmez.
+</Tip>
+
+## Müşterileri Dışa Aktarma
+
+CSV veya Excel formatına dışa aktararak müşteri veritabanınızı yedekleyin veya paydaşlarla paylaşın.
+
+<Steps>
+  <Step title="Dışa Aktar'a tıklayın">
+    Müşteriler listesinden sağ üst köşedeki **Dışa Aktar** düğmesine tıklayın.
+  </Step>
+  <Step title="Dışa aktarmanızı özelleştirin">
+    Hangi sütunların dahil edileceğini seçin — tam dışa aktarma için **Tüm Sütunlar**'ı seçin ya da ad, iletişim bilgileri, şirket veya adres gibi belirli alanları seçin.
+  </Step>
+  <Step title="Bir biçim seçin">
+    Kullanım amacınıza göre **CSV** veya **XLSX** seçin.
+  </Step>
+  <Step title="Dosyayı indirin">
+    **Dışa Aktar**'a tıklayın. Dosya oluşturulur ve cihazınıza indirilir. Müşteri verilerini korumak için güvenli bir şekilde saklayın.
+  </Step>
+</Steps>
+
+## Müşteri Profili Düzenleme
+
+<Steps>
+  <Step title="Müşteriyi seçin">
+    Müşteriler listesinde güncellemek istediğiniz müşterinin yanındaki onay kutusuna tıklayın veya profilini açmak için doğrudan adına tıklayın.
+  </Step>
+  <Step title="Düzenleme moduna girin">
+    Müşteri profilinin sağ üst köşesindeki **Düzenle** düğmesine tıklayın. Bir düzenleme formu görünür.
+  </Step>
+  <Step title="Bilgileri güncelleyin">
+    Herhangi bir alanı değiştirin — ad, e-posta, telefon, adres, şirket veya kategori.
+  </Step>
+  <Step title="Değişikliklerinizi kaydedin">
+    **Güncelle**'ye tıklayın. Profilin başarıyla kaydedildiğini bir onay mesajı doğrular.
+  </Step>
+</Steps>
+
+## Arama, Sıralama ve Filtreleme
+
+Müşteriler listesi, doğru müşteriyi hızlıca bulmak için çeşitli araçlar sunar:
+
+<CardGroup cols={2}>
+  <Card title="Ada Göre Ara" icon="magnifying-glass">
+    Listeyi anında filtrelemek için arama çubuğuna bir müşterinin adını yazın.
+  </Card>
+  <Card title="Şirkete Göre Filtrele" icon="building">
+    Listeyi belirli bir şirketle ilişkili müşterilerle daraltın.
+  </Card>
+  <Card title="E-postaya Göre Filtrele" icon="envelope">
+    Adını değil, e-posta adresini bildiğinizde bir müşteriyi bulun.
+  </Card>
+  <Card title="Duruma Göre Filtrele" icon="circle-check">
+    Yalnızca aktif, pasif veya davet edilmiş müşterileri gösterin.
+  </Card>
+  <Card title="Alfabetik Sırala" icon="arrow-down-a-z">
+    Hızlı başvuru için müşteri listesinin tamamını A–Z veya Z–A şeklinde ada göre sıralayın.
+  </Card>
+  <Card title="Kategoriye Göre Filtrele" icon="tag">
+    Yalnızca belirli bir yapılandırma kategorisine atanmış müşterileri gösterin.
+  </Card>
+</CardGroup>
+
+## Müşteri Etkinliğini Takip Etme
+
+Her müşteri profilinin içinde, o müşterinin ajansınızla etkileşiminin canlı bir resmini veren sekmeler bulacaksınız:
+
+<Accordion title="Son Siparişler">
+  Müşteri tarafından verilen tüm siparişlerin geçmişini — hizmet adı, paket, durum ve tarih dahil — görüntüleyin. Bu, CRM'den ayrılmadan satın alma geçmişlerinin hızlı bir anlık görüntüsünü sağlar.
+</Accordion>
+
+<Accordion title="Son Destek Talepleri">
+  Müşteri tarafından gönderilen tüm destek veya hizmet taleplerini görün. Yanıtları önceliklendirmek ve hiçbir isteğin gözden kaçmamasını sağlamak için bu görünümü kullanın.
+</Accordion>
+
+<Accordion title="Son Faturalar">
+  Ödeme durumu dahil müşteri için oluşturulan tüm faturaların günlüğüne erişin. Bu, bekleyen bakiyeleri ve fatura geçmişini tek bir yerde izlemenize yardımcı olur.
+</Accordion>
+
+## Müşteri Yapılandırması (Kategoriler)
+
+Müşteri Yapılandırması, müşteri listenizi segmentlere ayırmak için renkli kategoriler oluşturmanızı sağlar — örneğin *Yüksek Öncelikli*, *Sürekli Müşteri* veya *Beklemede*. Kategoriler, müşteri listesinde filtre seçenekleri olarak görünür, böylece doğru grubu anında bulabilirsiniz.
+
+<Steps>
+  <Step title="Yapılandırma'yı açın">
+    Müşteriler bölümünden **Yapılandırma** düğmesine tıklayın.
+  </Step>
+  <Step title="Yeni bir kategori oluşturun">
+    **+ Kategori Oluştur**'a tıklayın.
+  </Step>
+  <Step title="Kategori ayrıntılarını girin">
+    - **Kategori Adı** — benzersiz, açıklayıcı bir etiket (ör. *Kurumsal Müşteriler*)
+    - **Kısa Açıklama** — kategorinin amacını açıklayan kısa bir not
+    - **Renk** — hızlı görsel tanıma için belirgin bir renk seçin
+  </Step>
+  <Step title="Kategoriyi kaydedin">
+    **Oluştur**'a tıklayın. Kategori artık müşteri profillerini düzenlerken atanmak üzere kullanılabilir.
+  </Step>
+  <Step title="Müşterileri kategoriye atayın">
+    Herhangi bir müşteri profilini açın, **Düzenle**'ye tıklayın, **Kategori** alanını seçin ve ilgili kategoriyi seçin. Kaydetmek için **Güncelle**'ye tıklayın.
+  </Step>
+</Steps>
+
+<Tip>
+  Kategoriler genelinde tutarlı renk kuralları kullanın — örneğin yüksek öncelikli müşteriler için kırmızı ve tamamen entegre edilmiş hesaplar için yeşil — liste tek bakışta taranabilir olsun.
+</Tip>
+
+## Müşteri Etkinlik Günlüğü
+
+Etkinlik Günlüğü, bir müşterinin portal hesabına yapılan her giriş ve çıkış olayını kaydederek etkileşimlerinin net bir denetim izini sağlar.
+
+**Günlüğü görüntülemek için:**
+
+1. **Müşteriler**'e gidin ve belirli bir müşterinin profilini açın.
+2. Profilin üst gezinti çubuğundaki **Etkinlik Günlüğü** sekmesine tıklayın.
+3. Kimlik doğrulama olaylarının kronolojik listesini inceleyin.
+
+**Günlüğün gösterdikleri:**
+
+- Her **girişin** tam tarih ve zaman damgası
+- Her **çıkışın** tam tarih ve zaman damgası
+- Tüm kimlik doğrulama olaylarının devam eden geçmişi
+
+Günlük gerçek zamanlı olarak güncellenir ve düzenlenemez veya silinemez. Müşterilerin kendi etkinlik günlüklerine erişimi yoktur — yalnızca yönetimsel ve uyumluluk görünürlüğü içindir.
+
+<Note>
+  Bu aşamada etkinlik günlüğü yalnızca kimlik doğrulama olaylarını (giriş ve çıkış) yakalar. Portal içinde gerçekleştirilen eylemler — siparişleri görüntüleme gibi — henüz burada günlüğe kaydedilmemektedir.
+</Note>
+
+## Müşteriye E-posta Gönderme
+
+AgencyHandy'yi terk etmeden doğrudan herhangi bir müşterinin profilinden e-posta gönderebilirsiniz. Müşterinin profilini açın ve mesajınızı oluşturmak için **E-posta** seçeneğini kullanın. **Kime** alanı müşterinin e-posta adresiyle önceden doldurulmuştur.
+
+## Müşteri Kimliğine Bürünme
+
+Yöneticiler, bir müşteri hesabına bürünerek müşterinin portalında tam olarak ne gördüğünü görebilir — erişim sorunlarını gidermek veya destek araması sırasında bir müşteriyi bir süreç boyunca yönlendirmek için kullanışlıdır. Müşterinin profilinin içindeki **Kimliğe Bürün** seçeneğine bakın.
+
+<Warning>
+  Kimliğe bürünmeyi yalnızca destek amaçlı kullanın. Bir müşteri olarak kimliğe bürünürken gerçekleştirilen tüm eylemler onların adına yapılır ve hesaplarına yansır.
+</Warning>
+
+## Şirket Hesapları (B2B)
+
+Bireylerden ziyade işletmelerle çalışıyorsanız, kişileri aynı kuruluş altında gruplandırmak için herhangi bir müşteri profilinde **Şirket Adı** ayarlayabilirsiniz. Müşteriler listesi şirkete göre filtrelenebilir, böylece belirli bir hesaptaki tüm kişileri bir arada görüntülemek kolaylaşır.

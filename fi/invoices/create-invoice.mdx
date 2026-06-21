@@ -1,0 +1,235 @@
+---
+title: "Asiakkaiden laskujen luominen, lähettäminen ja hallinta AgencyHandyssa"
+sidebarTitle: "Luo lasku"
+description: "Vaiheittainen opas laskun luomiseen AgencyHandyssa — valitse asiakas, aseta summat, lisää muistiinpanot, lähetä asiakkaalle ja määritä maksumuistutukset."
+---
+
+Laskun luominen AgencyHandyssa on suoraviivainen prosessi, joka sitoo laskutuksesi suoraan asiakkaisiin ja tilauksiin. Täytät asiakkaan, linkität tilauksen, asetat summat, lisäät muistiinpanot ja lähetät — kaikki yhdestä lomakkeesta. Lähettämisen jälkeen voit seurata maksutilannetta, asettaa automaattisia muistutuksia ja ladata laskun PDF-muodossa milloin tahansa.
+
+<Note>
+  Sinun on oltava **Super Admin**, **Admin** tai **PM** luodaksesi laskuja. Työtilassasi on oltava vähintään yksi asiakas ennen kuin voit luoda laskun.
+</Note>
+
+## Laskun etuliitteen asetukset
+
+Ennen kuin aloitat laskujen luomisen, harkitse laskun etuliitteen määrittämistä. Etuliite näkyy jokaisen laskun numeron edessä ja auttaa tunnistamaan laskut toimistollesi kuuluviksi.
+
+<Steps>
+  <Step title="Avaa laskuasetukset">
+    Napsauta laskujen hallintapaneelissa oikeassa yläkulmassa olevaa **Asetukset**-painiketta.
+  </Step>
+  <Step title="Aseta etuliite">
+    Siirry **Laskun etuliite** -kenttään ja syötä haluamasi etuliite (esimerkiksi `LASKU-` tai toimistosi nimikirjaimet).
+  </Step>
+  <Step title="Tallenna">
+    Napsauta **Tallenna** ottaaksesi etuliitteen käyttöön kaikissa tulevissa laskuissa.
+  </Step>
+</Steps>
+
+## Laskun luominen
+
+<Steps>
+  <Step title="Avaa laskujen hallintapaneeli">
+    Napsauta vasemmassa sivupalkissa **Laskut** avataksesi laskujen hallintapaneelin.
+  </Step>
+  <Step title="Aloita uusi lasku">
+    Napsauta **+ Luo lasku**. Laskun luomislomake avautuu.
+  </Step>
+  <Step title="Valitse asiakas">
+    Valitse asiakkaan nimi pudotusvalikosta. Tämä on pakollinen kenttä. Kaikki kyseiseen asiakkaaseen liittyvät tilausten tunnukset täyttyvät automaattisesti seuraavaan kenttään.
+
+    Luodaksesi **suoran laskun** (ei linkitetty tilaukseen), voit jättää tilauksen tunnus -kentän tyhjäksi tai valita **Itsenäinen sähköposti** laskuttaaksesi mitä tahansa sähköpostiosoitetta asiakasluettelosi ulkopuolelta.
+  </Step>
+  <Step title="Valitse tilauksen tunnus">
+    Valitse tietty tilauksen tunnus, jolle laskutat. Tämä linkittää laskun oikeaan tilaukseen järjestelmässä. Suorien laskujen osalta ohita tämä kenttä.
+  </Step>
+  <Step title="Syötä laskutusosoite">
+    Täytä **Laskutusosoite**:
+    - Maa, osavaltio ja kaupunki
+    - Postinumero
+    - Katuosoite (jos sovellettavissa)
+
+    Tämä osoite näkyy tulostetussa laskussa vaatimustenmukaisuuden ja selkeyden vuoksi.
+  </Step>
+  <Step title="Aseta tilaus- ja taloustiedot">
+    Syötä **Tilauksen tiedot** -kohdassa seuraavat tiedot:
+
+    | Kenttä | Kuvaus |
+    |-------|-------------|
+    | **Valuutta** | Valuutta, jossa haluat tulla maksetuksi |
+    | **Tilauksen tunnus – Summa** | Tilaukseen liittyvä rahamäärä |
+    | **Alennus (%)** ja **Alennussumma** | Sovella sovellettavia alennuksia |
+    | **Maksettu summa** | Mahdollinen asiakkaan jo maksama summa |
+    | **Eräsumma** | Jäljellä oleva saldo |
+    | **Kokonaissumma** | Tilauksen koko maksettava summa |
+
+    **Suorille laskuille** napsauta **Lisää kohde** lisätäksesi rivikohteita manuaalisesti. Syötä kohteen nimi, määrä ja hinta. Voit lisätä useita kohteita. Käytä **+ Veroprosentit** -kohtaa soveltaaksesi tai luodaksesi veroprosentteja (sisältävä tai ulossulkeva).
+  </Step>
+  <Step title="Lisää muistiinpano (valinnainen)">
+    Lisää **Muistiinpano**-kenttään lisäkonteksti asiakkaalle — esimerkiksi maksujärjestelyt, projektiviitteet tai henkilökohtainen viesti.
+  </Step>
+  <Step title="Tarkista tietopaneeli">
+    Oikeanpuoleinen **Tiedot**-paneeli antaa sinulle reaaliaikaisen yhteenvedon:
+
+    - Laskun tilasta (oletuksena Luonnos)
+    - Asiakkaan nimestä, yrityksen nimestä ja osoitteesta
+    - Laskutusosoitteesta
+    - Palvelun nimestä ja tilauksen tunnuksesta
+    - Luontipäivästä ja eräpäivästä
+    - Kokonaissummasta
+
+    Tarkista kaikki huolellisesti ennen etenemistä.
+  </Step>
+  <Step title="Lähetä asiakkaalle tai tallenna luonnoksena">
+    - Napsauta **Lähetä asiakkaalle** lähettääksesi laskun sähköpostitse välittömästi. Tila muuttuu automaattisesti **Luonnoksesta** **Avoimeksi**.
+    - Napsauta **Tallenna luonnoksena**, jos haluat viimeistellä sen myöhemmin.
+  </Step>
+</Steps>
+
+<Note>
+  Toimiston logo ja osoite lisätään laskuun automaattisesti järjestelmän toimesta — sinun ei tarvitse syöttää niitä manuaalisesti jokaiselle laskulle.
+</Note>
+
+## Laskun tilasiirtymät
+
+Kun lasku on luotu, se noudattaa määriteltyä tilakiertoa. Vain toimisto voi siirtää laskun tilojen välillä.
+
+```
+Luonnos → Avoin (kun lähetetty asiakkaalle)
+Avoin  → Maksettu          (maksu vastaanotettu)
+Avoin  → Mitätöity         (lasku peruutettu)
+Avoin  → Perimiskelvoton   (velka poistettu)
+```
+
+<Warning>
+  Laskuja voidaan **muokata** vain, kun ne ovat **Luonnos**-tilassa. Kun lasku on siirretty Avoimeksi, sitä ei voi muokata. Jos sinun on tehtävä muutoksia, mitätöi lasku ja luo uusi.
+</Warning>
+
+## Laskun muokkaaminen
+
+Voit muokata laskua vain, kun se on **Luonnos**-tilassa.
+
+<Steps>
+  <Step title="Avaa lasku">
+    Etsi laskujen hallintapaneelista luonnoslasküu, jota haluat muokata. Napsauta sitä tai valitse sen vieressä oleva valintaruutu.
+  </Step>
+  <Step title="Napsauta Muokkaa">
+    Valitse toimintovalikosta **Muokkaa**-vaihtoehto. Laskun lomake avautuu kaikkine olemassa olevine tietoineen esitäytettynä.
+  </Step>
+  <Step title="Tee muutokset">
+    Päivitä mitä tahansa kenttiä — laskutustiedot, palvelukuvaukset, määrät, summat tai maksuehdot.
+  </Step>
+  <Step title="Tallenna">
+    Napsauta **Tallenna** ottaaksesi muutokset käyttöön.
+  </Step>
+</Steps>
+
+## Laskun lähettäminen asiakkaalle
+
+Jos tallensit laskun luonnoksena ja haluat lähettää sen myöhemmin:
+
+<Steps>
+  <Step title="Etsi lasku">
+    Etsi laskujen hallintapaneelista luonnoslaskü, jonka haluat lähettää.
+  </Step>
+  <Step title="Napsauta Lähetä lasku">
+    Avaa lasku ja napsauta **Lähetä lasku** -painiketta. AgencyHandy toimittaa laskun asiakkaan tiedostossa olevaan sähköpostiosoitteeseen.
+  </Step>
+  <Step title="Vahvista toimitus">
+    Tarkista vahvistusviesti varmistaaksesi, että lasku lähetettiin onnistuneesti. Laskun tila päivittyy **Avoimeksi**.
+  </Step>
+</Steps>
+
+<Note>
+  Jos lasku on **Luonnos**-tilassa ja päivität palvelun nimen, uusi nimi näkyy laskussa. Kun tila muuttuu Avoimeksi, Maksetuksi, Perimiskelvottomaksi tai Mitätöidyksi, laskun palvelun nimi lukitaan eikä se päivity.
+</Note>
+
+## Laskun lataaminen ja tulostaminen
+
+Sekä toimisto että asiakas voivat ladata laskun milloin tahansa.
+
+<Steps>
+  <Step title="Avaa lasku">
+    Siirry laskujen hallintapaneeliin ja valitse lasku, jonka haluat ladata.
+  </Step>
+  <Step title="Käytä lataus/tulostus-toimintoa">
+    Napsauta **Lataa**- tai **Tulosta**-vaihtoehtoa laskun toimintovalikosta.
+  </Step>
+  <Step title="Valitse formaatti">
+    Valitse **PDF** latausta varten tai valitse tulostusasetukset fyysistä kopiota varten.
+  </Step>
+  <Step title="Tallenna tai tulosta">
+    Tallenna tiedosto laitteellesi tai lähetä se tulostimelle. Tulostamisen jälkeen arkistoi lasku tai jaa se sidosryhmille tarpeen mukaan.
+  </Step>
+</Steps>
+
+## Muistutusten asettaminen laskuille
+
+Laskumuistutusominaisuuden avulla voit automaattisesti ilmoittaa asiakkaille tulevista, erääntyneistä tai myöhässä olevista laskuista, jotta saat maksun ajallaan ilman manuaalista seurantaa.
+
+<Note>
+  Muistutukset toimivat vain laskuissa, joilla on **Avoin**-tila ja asetettu **eräpäivä**.
+</Note>
+
+<Steps>
+  <Step title="Avaa laskuasetukset">
+    Napsauta laskujen hallintapaneelin oikeassa yläkulmassa olevaa **Asetukset**-painiketta.
+  </Step>
+  <Step title="Siirry muistutusasetuksiin">
+    Selaa vasemman paneelin **Malli**-osion alaosaan ja napsauta **Muokkaa** avataksesi muistutuksen määritysikkunan.
+  </Step>
+  <Step title="Valitse muistutustyyppi">
+    Valitse jokin seuraavista:
+
+    - **Jaksotettu muistutus** — luo sarjan muistutuksia määrittämilläsi väleillä
+    - **Älä lähetä muistutusta** — poistaa muistutukset käytöstä valituille laskuille
+  </Step>
+  <Step title="Määritä muistutuksen tiedot">
+    Jokaiselle muistutukselle sarjassa:
+    - Valitse **muistutusmalli** (esimerkiksi "Tuleva laskumaksumuistutus")
+    - Aseta **muistutuspäivä** — esimerkiksi 3 päivää ennen tai jälkeen eräpäivän
+    - Määritä, aktivoituuko se **ennen** vai **jälkeen** eräpäivän
+  </Step>
+  <Step title="Lisää lisää muistutuksia tarvittaessa">
+    Napsauta **+ Lisää toinen muistutus** rakentaaksesi täydellisen muistutussarjan. Napsauta minkä tahansa muistutuksen vieressä olevaa **Poista**-painiketta poistaaksesi sen.
+  </Step>
+  <Step title="Sovella aktiivisiin laskuihin (valinnainen)">
+    Valitse valintaruutu **soveltaaksesi nämä muistutusasetukset tällä hetkellä aktiivisiin laskuihin**, jos haluat uuden määrityksen kattavan jo Avoin-tilassa olevat laskut.
+  </Step>
+  <Step title="Tallenna">
+    Napsauta **Päivitä** tallentaaksesi ja aktivoidaksesi muistutusaikataulun.
+  </Step>
+</Steps>
+
+## Suorat laskut (ilman tilauksen tunnusta)
+
+Kun sinun on laskutettava asiakasta nopeasti luomatta ensin tilausta, käytä suoran laskun työnkulkua.
+
+<Steps>
+  <Step title="Aloita uusi lasku">
+    Siirry kohtaan **Laskut → Luo lasku**.
+  </Step>
+  <Step title="Valitse vastaanottajan tyyppi">
+    Valitse vastaanottajan tyypiksi **Yksityishenkilö** tai **Yritys**.
+  </Step>
+  <Step title="Valitse tai syötä vastaanottaja">
+    - Valitse **olemassa oleva asiakas** pudotusvalikosta tai
+    - Valitse **Itsenäinen sähköposti** kirjoittaaksesi minkä tahansa sähköpostiosoitteen — jopa sellaisen, jota ei ole rekisteröity asiakkaaksi
+  </Step>
+  <Step title="Jätä tilauksen tunnus tyhjäksi">
+    Ohita tilauksen tunnus -kenttä. AgencyHandy luo itsenäisen laskun, jota ei ole linkitetty mihinkään tilaukseen.
+  </Step>
+  <Step title="Lisää kohteet, verot ja alennukset">
+    Napsauta **Lisää kohde** lisätäksesi rivikohteita nimineen, määrineen ja hintoineen. Sovella veroprosentteja ja alennuksia tarpeen mukaan. Kokonaissumma päivittyy automaattisesti.
+  </Step>
+  <Step title="Aseta laskutusosoite ja muistiinpanot">
+    Syötä laskutusosoite ja lisää asiakkaalle muistiinpanoja.
+  </Step>
+  <Step title="Lähetä tai tallenna">
+    Napsauta **Lähetä lasku** toimittaaksesi sen välittömästi tai **Tallenna luonnoksena** tarkistaaksesi sen ensin.
+  </Step>
+</Steps>
+
+<Tip>
+  Suorat laskut sopivat täydellisesti kiireellisiin pyyntöihin, konsultointipuheluihin tai mihin tahansa työhön, josta sinun on laskutettava normaalin tilaustyönkulun ulkopuolella. Itsenäisten laskujen maksuseuranta on hallittava manuaalisesti.
+</Tip>

@@ -1,0 +1,188 @@
+---
+title: "Ausgehende E-Mails, SMTP und E-Mail-Vorlagen konfigurieren"
+sidebarTitle: "E-Mail-Einrichtung"
+description: "Konfigurieren Sie eine benutzerdefinierte Absender-E-Mail-Adresse, verbinden Sie einen SMTP-Server, fügen Sie DKIM/SPF-Einträge für die Zustellbarkeit hinzu und passen Sie E-Mail-Vorlagen in AgencyHandy an."
+---
+
+Die E-Mail-Einrichtung von AgencyHandy ermöglicht es Ihnen, die Standard-Absenderadresse `noreply@agencyhandy.com` durch Ihre eigene Marken-E-Mail-Adresse zu ersetzen, einen dedizierten SMTP-Server für zuverlässige Zustellung zu konfigurieren und die Vorlagen für Kundenbenachrichtigungen, Rechnungen, Angebote und mehr anzupassen. Eine korrekte Einrichtung stellt sicher, dass Ihre E-Mails den Posteingang Ihrer Kunden erreichen — nicht den Spam-Ordner — und dass jede Nachricht die Identität Ihrer Agentur widerspiegelt.
+
+<Note>
+  Nur **Super-Admins** und **Admins** können E-Mail-Einstellungen konfigurieren. Navigieren Sie zu **Workspace-Konfiguration → E-Mail-Einrichtung**, um auf diese Optionen zuzugreifen.
+</Note>
+
+---
+
+## Übersicht der E-Mail-Einrichtungskomponenten
+
+<CardGroup cols={2}>
+  <Card title="Benutzerdefinierte E-Mail-Adresse" icon="envelope">
+    Legen Sie den Absendernamen und die E-Mail-Adresse fest, die Kunden sehen, wenn sie Nachrichten aus Ihrem Workspace erhalten.
+  </Card>
+  <Card title="DKIM & SPF-Einträge" icon="shield-check">
+    Fügen Sie DNS-Authentifizierungseinträge hinzu, um nachzuweisen, dass Ihre E-Mails legitim sind, und verhindern Sie, dass sie als Spam markiert werden.
+  </Card>
+  <Card title="SMTP-Server" icon="server">
+    Verbinden Sie Ihren eigenen Mailserver (z. B. Gmail, Outlook oder einen benutzerdefinierten Domain-Server), um alle ausgehenden E-Mails über AgencyHandy zu versenden.
+  </Card>
+  <Card title="E-Mail-Vorlagen" icon="file-lines">
+    Passen Sie Inhalt, Betreffzeilen und Branding für jede automatisierte E-Mail an, die AgencyHandy an Kunden sendet.
+  </Card>
+</CardGroup>
+
+---
+
+## Teil 1: Benutzerdefinierte E-Mail-Adresse einrichten
+
+Bevor Sie Ihre Absender-E-Mail konfigurieren, benötigen Sie eine registrierte Domain mit E-Mail-Hosting. Bekannte Anbieter sind Google Workspace, Microsoft 365, Zoho Mail und Cloudflare Email Routing.
+
+<Steps>
+  <Step title="Domain registrieren und E-Mail-Hosting einrichten">
+    Falls noch nicht geschehen, registrieren Sie eine Domain bei einem Registrar (z. B. GoDaddy, Namecheap, Cloudflare) und melden Sie sich bei einem E-Mail-Hosting-Anbieter an. Stellen Sie sicher, dass Sie E-Mail-Adressen auf dieser Domain erstellen und verwalten können (z. B. `hello@youragency.com`).
+  </Step>
+  <Step title="Zur E-Mail-Einrichtung in AgencyHandy navigieren">
+    Melden Sie sich bei AgencyHandy an. Gehen Sie in der linken Navigation zu **Workspace-Konfiguration** und klicken Sie dann auf **E-Mail-Einrichtung**.
+  </Step>
+  <Step title="Absendernamen und E-Mail eingeben">
+    Geben Sie im Feld **Absendername** den Namen ein, den Kunden als Absender sehen (z. B. `AgencyHandy Support` oder der Name Ihrer Agentur). Geben Sie im Feld **Absender-E-Mail** die benutzerdefinierte E-Mail-Adresse ein (z. B. `hello@youragency.com`). Klicken Sie auf **Speichern**.
+  </Step>
+  <Step title="E-Mail-Adresse verifizieren">
+    AgencyHandy sendet einen Verifizierungslink an die von Ihnen eingegebene E-Mail-Adresse. Öffnen Sie Ihren E-Mail-Posteingang, finden Sie die Verifizierungsnachricht und klicken Sie auf den Link, um das Eigentum zu bestätigen.
+  </Step>
+  <Step title="DKIM-, SPF- und DMARC-DNS-Einträge konfigurieren">
+    Nach dem Speichern Ihrer Absender-E-Mail stellt AgencyHandy Ihnen die erforderlichen DNS-Einträge zur Verfügung:
+
+    - **SPF-Eintrag** (TXT-Typ) — autorisiert AgencyHandy, E-Mails im Namen Ihrer Domain zu senden.
+    - **DKIM-Einträge** (3 CNAME-Einträge) — fügen ausgehenden E-Mails kryptografische Signaturen hinzu, damit empfangende Server die Authentizität prüfen können.
+    - **DMARC-Eintrag** — legt fest, wie empfangende Server mit E-Mails umgehen sollen, die Authentifizierungsprüfungen nicht bestehen.
+
+    Fügen Sie alle diese Einträge zu den DNS-Einstellungen Ihrer Domain bei Ihrem Registrar hinzu. Stellen Sie bei DKIM-CNAME-Einträgen sicher, dass der **Proxy-Status deaktiviert** ist, wenn Sie Cloudflare verwenden.
+  </Step>
+  <Step title="Aktiven Status bestätigen">
+    Kehren Sie zur Seite E-Mail-Einrichtung in AgencyHandy zurück. Sobald alle DNS-Einträge propagiert wurden (dies kann zwischen 2 Minuten und 2 Stunden dauern), aktualisiert sich der E-Mail-Status von **Ausstehend** auf ein grünes Häkchen ✅. Ihre benutzerdefinierte E-Mail ist jetzt aktiv.
+  </Step>
+</Steps>
+
+<Tip>
+  Verwenden Sie [MXToolbox](https://mxtoolbox.com/DKIM.aspx) oder den [DKIM-Validator von dmarcian](https://dmarcian.com/dkim-validator/), um zu überprüfen, ob Ihre DKIM-Einträge korrekt konfiguriert sind. Aktualisieren Sie die Seite E-Mail-Einrichtung periodisch, während Sie auf die Propagierung warten.
+</Tip>
+
+---
+
+## Teil 2: DKIM & SPF konfigurieren (eigenständige Einrichtung)
+
+Wenn Sie DKIM- und SPF-Einträge unabhängig erstellen oder neu generieren müssen, folgen Sie diesem Pfad:
+
+**Workspace-Konfiguration → E-Mails → DKIM & SPF-Einrichtung → DKIM- und SPF-Einträge generieren.**
+
+Fügen Sie dann die Einträge zu Ihrem DNS hinzu:
+
+| Eintragstyp | DNS-Typ | Was zu konfigurieren ist                                                                                    |
+|-------------|---------|-------------------------------------------------------------------------------------------------------------|
+| SPF         | TXT     | Kopieren Sie den **Namen** und den **Wert** aus AgencyHandy und fügen Sie einen neuen TXT-Eintrag in Ihrem DNS hinzu |
+| DKIM (×3)   | CNAME   | Kopieren Sie jedes **Name-** und **Wert-**Paar; fügen Sie 3 separate CNAME-Einträge mit deaktiviertem Proxy hinzu |
+
+<Note>
+  DKIM- und SPF-Einträge können zwischen **2 Minuten und 2 Stunden** für die Propagierung benötigen. Wenn der Status nach 2 Stunden noch als ausstehend angezeigt wird, überprüfen Sie, ob die Einträge ohne Tippfehler eingegeben wurden und ob keine widersprüchlichen Einträge vorhanden sind.
+</Note>
+
+---
+
+## Teil 3: SMTP einrichten
+
+SMTP (Simple Mail Transfer Protocol) ermöglicht es Ihnen, alle ausgehenden AgencyHandy-E-Mails über Ihren eigenen verifizierten Mailserver zu leiten und gibt Ihnen mehr Kontrolle über Zustellbarkeit und Branding.
+
+<Note>
+  Sie können entweder eine **benutzerdefinierte Domain-E-Mail** oder einen **SMTP-E-Mail-Anbieter** verwenden — nicht beide gleichzeitig. Ein Wechsel zwischen beiden ist jederzeit möglich, aber Sie müssen Ihre E-Mail-Konfiguration erneut eingeben, wenn Sie wieder zu einer benutzerdefinierten E-Mail wechseln.
+</Note>
+
+<Steps>
+  <Step title="SMTP-Server-Einstellungen öffnen">
+    Gehen Sie zu **Workspace-Konfiguration → E-Mail-Einrichtung** und klicken Sie dann auf **SMTP-Server**.
+  </Step>
+  <Step title="Zum SMTP-Anbieter wechseln (falls erforderlich)">
+    Wenn Sie bereits eine benutzerdefinierte E-Mail konfiguriert haben, erscheint ein Bestätigungs-Popup, das fragt, ob Sie wechseln möchten. Klicken Sie auf **Zu SMTP wechseln**, um fortzufahren. Dadurch wird die vorhandene benutzerdefinierte E-Mail-Einrichtung deaktiviert.
+  </Step>
+  <Step title="SMTP-Zugangsdaten eingeben">
+    Füllen Sie die erforderlichen Felder aus:
+
+    | Feld        | Beispielwert           | Hinweise                                          |
+    |-------------|------------------------|---------------------------------------------------|
+    | Hostname    | `smtp.gmail.com`       | SMTP-Serveradresse Ihres E-Mail-Anbieters         |
+    | Benutzername | `you@yourdomain.com`  | Ihre vollständige E-Mail-Adresse                  |
+    | Passwort    | App-Passwort           | Verwenden Sie ein app-spezifisches Passwort (siehe unten) |
+    | Port        | `465` oder `587`       | 465 für SSL, 587 für TLS                          |
+    | Auto-TLS    | Ein-/Ausschalten       | Optional — aktiviert automatisches TLS-Upgrade    |
+
+    Klicken Sie auf **Speichern**, wenn Sie fertig sind.
+  </Step>
+  <Step title="App-Passwort generieren (Gmail-Beispiel)">
+    Wenn Sie Gmail mit aktivierter Zwei-Faktor-Authentifizierung verwenden (erforderlich für App-Passwörter):
+
+    1. Gehen Sie zu [myaccount.google.com/security](https://myaccount.google.com/security) und bestätigen Sie, dass die zweistufige Verifizierung aktiv ist.
+    2. Besuchen Sie [myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords).
+    3. Klicken Sie auf **App auswählen**, wählen Sie **Mail** (oder geben Sie einen benutzerdefinierten Namen ein), dann klicken Sie auf **Gerät auswählen** und wählen Sie Ihre Einrichtung.
+    4. Klicken Sie auf **Erstellen** — Google generiert ein 16-stelliges App-Passwort.
+    5. Kopieren Sie das Passwort und fügen Sie es in das Feld **Passwort** in AgencyHandys SMTP-Einstellungen ein.
+
+    <Warning>
+      Verwenden Sie das **App-Passwort**, nicht Ihr reguläres Google-Konto-Passwort. Die Verwendung Ihres regulären Passworts schlägt fehl, wenn die zweistufige Verifizierung aktiviert ist, und kann Sicherheitswarnungen auslösen.
+    </Warning>
+  </Step>
+  <Step title="Einrichtung bestätigen">
+    Nach dem Speichern zeigt AgencyHandy eine Erfolgsmeldung an, die bestätigt: _„SMTP wurde erfolgreich erstellt.“_ Ihre gespeicherten Host-, Benutzernamen- und Port-Details erscheinen auf der SMTP-Einstellungsseite.
+  </Step>
+  <Step title="SMTP-Verbindung testen">
+    Klicken Sie auf die Schaltfläche **Testen** und geben Sie eine Empfänger-E-Mail-Adresse ein. AgencyHandy sendet eine Test-E-Mail an diese Adresse. Überprüfen Sie den Posteingang auf die Bestätigungsnachricht: _„Dies ist eine Bestätigung, dass Ihre E-Mail-Einrichtung in Agency Handy korrekt funktioniert.“_
+  </Step>
+</Steps>
+
+<Tip>
+  Pro Workspace kann jeweils nur eine SMTP-Konfiguration aktiv sein. Sobald SMTP konfiguriert ist, werden alle ausgehenden E-Mails von AgencyHandy — Rechnungen, Angebote, Aufgabenbenachrichtigungen — über Ihren SMTP-Server gesendet.
+</Tip>
+
+---
+
+## Teil 4: E-Mail-Vorlagen anpassen
+
+AgencyHandy enthält vorgefertigte Vorlagen für jede automatisierte E-Mail, die es versendet. Sie können jede Vorlage anpassen, um sie an den Ton Ihrer Marke anzupassen und relevante dynamische Inhalte einzufügen.
+
+**Verfügbare Vorlagen umfassen:**
+- Kunden-Registrierung
+- Angebot senden
+- Aufgabenüberprüfung
+- Rechnung senden
+- Rechnungs- & Abonnement-Erinnerungen
+- Benachrichtigungen zur Ticket-Erstellung
+
+<Steps>
+  <Step title="E-Mail-Vorlagen öffnen">
+    Gehen Sie zu **Workspace-Konfiguration → E-Mails** und wählen Sie dann **E-Mail-Vorlage** aus dem Untermenü.
+  </Step>
+  <Step title="Vorlage zum Bearbeiten auswählen">
+    Die vollständige Liste der verfügbaren Vorlagen wird angezeigt. Klicken Sie auf eine Vorlage, um deren Konfigurationsseite zu öffnen.
+  </Step>
+  <Step title="Vorlagenfelder anpassen">
+    Aktualisieren Sie nach Bedarf folgende Felder:
+    - **Absender-E-Mail:** Wählen Sie, welche konfigurierte E-Mail-Adresse diese Vorlage versendet.
+    - **Betreff:** Schreiben Sie eine klare, prägnante Betreffzeile.
+    - **Inhalt:** Bearbeiten Sie den Nachrichteninhalt, um ihn an den Ton und die Botschaft Ihrer Agentur anzupassen.
+    - **Dynamische Variablen:** Fügen Sie Platzhalter wie `{{client_name}}`, `{{company_name}}` oder `{{invoice_id}}` ein, um kundenbezogene Daten automatisch zu befüllen.
+    - **Social-Media-Links:** Fügen Sie Links zu den Social-Media-Profilen Ihrer Agentur hinzu, um die Interaktion zu fördern.
+  </Step>
+  <Step title="Test-E-Mail senden">
+    Klicken Sie auf **Test senden**, um eine Vorschau der Vorlage an Ihren Posteingang zu senden. Überprüfen Sie die Formatierung, den Inhalt und ob alle dynamischen Variablen korrekt aufgelöst werden.
+  </Step>
+  <Step title="Änderungen speichern">
+    Klicken Sie auf **Änderungen speichern**, um die aktualisierte Vorlage anzuwenden. Die neue Version wird für alle zukünftigen automatisierten E-Mails dieses Vorlagentyps verwendet.
+  </Step>
+</Steps>
+
+---
+
+## Wichtige Hinweise
+
+- **SMTP und benutzerdefinierte E-Mail schließen sich gegenseitig aus.** Pro Workspace kann jeweils nur eine Methode aktiv sein.
+- **E-Mail beim Wechsel erneut eingeben.** Wenn Sie von SMTP zurück zu einer benutzerdefinierten E-Mail-Einrichtung wechseln, müssen Sie Ihre benutzerdefinierten E-Mail-Zugangsdaten erneut eingeben.
+- **Falsche SMTP-Zugangsdaten blockieren alle ausgehenden E-Mails.** Überprüfen Sie Ihren Hostnamen, Port, Benutzernamen und Ihr Passwort, wenn E-Mails nach einer SMTP-Änderung nicht mehr gesendet werden.
+- **DKIM/SPF-Propagierung braucht Zeit.** Warten Sie bis zu 2 Stunden und aktualisieren Sie die E-Mail-Einrichtungsseite, bevor Sie auf einen Fehler schließen.
+- **Dynamische Variablen sind Groß-/Kleinschreibung-sensitiv.** Verwenden Sie sie genau so, wie im Vorlageneditor gezeigt, um sicherzustellen, dass sie korrekt befüllt werden.

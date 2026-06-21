@@ -1,0 +1,91 @@
+---
+title: "Visão Geral de Pedidos: Gerenciando o Trabalho do Cliente no AgencyHandy"
+sidebarTitle: "Visão Geral"
+description: "Entenda como os pedidos funcionam no AgencyHandy — status, funções, detalhes do pedido, pedidos manuais e complementos para serviços não publicados."
+---
+
+Os pedidos são a espinha dorsal operacional do AgencyHandy. Um pedido representa a solicitação de um cliente por um serviço ou produto, e funciona como o workspace central onde sua equipe acompanha o progresso, gerencia tarefas, troca feedbacks e entrega resultados. Seja um pedido feito pelo cliente pelo catálogo de serviços publicado, seja criado manualmente pela sua equipe, todo pedido segue o mesmo ciclo de vida estruturado que mantém sua agência organizada e seus clientes informados.
+
+## O Que um Pedido Contém
+
+Cada pedido exibe informações-chave à primeira vista e oferece aos membros da equipe um único lugar para coordenar o trabalho:
+
+| Campo | Descrição |
+|---|---|
+| **ID do Pedido** | Identificador único gerado automaticamente para cada pedido |
+| **Cliente** | O cliente ao qual o pedido pertence |
+| **Serviço** | O serviço sendo entregue |
+| **Gerente de Projeto (GP)** | O membro da equipe responsável pela entrega (opcional) |
+| **Orçamento** | Preço acordado para o pedido |
+| **Data de Início** | Quando o trabalho começa |
+| **Data de Entrega** | Prazo para a conclusão do pedido |
+| **Resumo do Pedido** | Instruções do cliente, notas e arquivos de referência anexados |
+| **Tarefas** | Itens de trabalho individuais atribuídos a membros da equipe |
+| **Discussões** | Conversas encadeadas entre a equipe da agência e os clientes |
+
+## Status dos Pedidos
+
+Cada pedido percorre um conjunto fixo de status. Você não pode adicionar ou renomear esses status.
+
+<Note>
+Somente Super Admins, Admins e Gerentes de Projeto podem alterar o status de um pedido.
+</Note>
+
+| Status | O Que Significa |
+|---|---|
+| **Pendente** | O pedido foi criado e aguarda o início do trabalho |
+| **Em Andamento** | O trabalho ativo está em progresso |
+| **Em Revisão** | As entregas foram submetidas e aguardam revisão do cliente ou interna |
+| **Concluído** | O pedido foi totalmente entregue e aceito |
+| **Cancelado** | O pedido foi cancelado e não está mais ativo |
+
+## Acesso por Função
+
+Diferentes funções no AgencyHandy têm diferentes capacidades dentro dos pedidos:
+
+| Função | Pode Criar Pedidos | Pode Editar Pedidos | Pode Excluir Pedidos | Pode Alterar Status | Pode Adicionar Tarefas | Pode Adicionar Membros da Equipe |
+|---|---|---|---|---|---|---|
+| **Super Admin** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Admin** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Gerente de Projeto (GP)** | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ |
+| **Colaborador** | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| **Cliente** | ❌ | ❌ | ❌ | ❌ | ✅ (somente solicitação) | ❌ |
+
+<Tip>
+Os clientes podem enviar feedback e participar das discussões sobre os pedidos. Os colaboradores atribuídos a um pedido podem visualizar e trabalhar nas tarefas, mas não podem gerenciar o pedido em si.
+</Tip>
+
+## O Que Você Pode Fazer com os Pedidos
+
+O AgencyHandy oferece um conjunto completo de ferramentas para gerenciar pedidos ao longo do ciclo de vida:
+
+- **Criar pedidos** para clientes — a partir de serviços publicados ou manualmente para serviços ainda em desenvolvimento
+- **Aceitar e rejeitar** pedidos enviados por clientes, com a opção de fornecer um motivo ao rejeitar
+- **Visualizar detalhes do pedido** incluindo progresso, membros da equipe atribuídos, datas de início e de entrega, orçamento e resumo
+- **Ordenar, filtrar e pesquisar** em todos os pedidos por ID, status, nome do cliente ou outros critérios
+- **Adicionar tarefas** diretamente em um pedido para rastrear e atribuir unidades discretas de trabalho
+- **Iniciar discussões** para comunicar com clientes e membros da equipe no contexto
+
+## Pedidos Manuais para Serviços Não Publicados
+
+Você não está limitado a criar pedidos apenas para serviços publicados publicamente. Super Admins e Admins podem criar pedidos manuais para serviços não publicados — útil quando um serviço ainda está em desenvolvimento, temporariamente indisponível ou está sendo oferecido a um cliente específico antes do lançamento oficial.
+
+Ao abrir o formulário de criação de pedido, o menu suspenso **Serviço** exibe tanto os serviços publicados quanto os não publicados, para que você possa selecionar o que for aplicável. Todos os outros campos e fluxos de trabalho do pedido funcionam da mesma forma que um pedido padrão.
+
+## Complementos em Pedidos Manuais
+
+Ao criar um pedido manual, você pode incluir **serviços complementares** para que os clientes recebam pacotes personalizados além do serviço principal. Os complementos devem ser criados previamente e vinculados ao serviço relevante na seção **Formulários** antes de aparecerem como opção no formulário de pedido.
+
+<Note>
+A seleção de complementos só aparece no formulário de pedido manual se pelo menos um complemento tiver sido conectado ao serviço selecionado. Se você não o vir, verifique se o seu complemento está corretamente vinculado na configuração do serviço.
+</Note>
+
+Uma vez que um serviço com complementos vinculados seja selecionado, você pode incluir esses complementos antes de finalizar e submeter o pedido.
+
+## Notificações
+
+O AgencyHandy notifica automaticamente as pessoas certas conforme os pedidos avançam:
+
+- Quando um pedido é criado por um GP, Admin ou Super Admin, todos os Super Admins da empresa ganham acesso e o cliente recebe uma notificação de criação.
+- Quando um membro da equipe é adicionado a um pedido, esse membro recebe uma notificação.
+- Quando tarefas são criadas dentro de um pedido, o cliente recebe uma notificação.

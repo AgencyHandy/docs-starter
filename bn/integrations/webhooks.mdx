@@ -1,0 +1,196 @@
+---
+title: "Webhook ব্যবস্থাপনা: তৈরি, পরীক্ষা এবং প্রমাণীকরণ"
+sidebarTitle: "Webhooks"
+description: "AgencyHandy-এ webhook সেট আপ করুন যাতে অর্ডার, টাস্ক, ইনভয়েস বা অন্যান্য সত্তা পরিবর্তিত হলে বাহ্যিক সিস্টেমে রিয়েল-টাইম ইভেন্ট ডেটা পুশ হয়।"
+---
+
+Webhook AgencyHandy-কে কোনো পোলিং ছাড়াই মুহূর্তেই আপনার বাহ্যিক সিস্টেমে ডেটা পুশ করতে দেয়। যখন একটি কনফিগার করা ইভেন্ট ফায়ার হয় (উদাহরণস্বরূপ, একটি অর্ডার আপডেট হয় বা একটি টিকেট তৈরি হয়), AgencyHandy আপনার নির্দিষ্ট এন্ডপয়েন্ট URL-এ JSON পেলোড সহ একটি HTTP POST অনুরোধ পাঠায়। এটি CRM, বিলিং সিস্টেম, বা কাস্টম ড্যাশবোর্ডের মতো বাহ্যিক টুলগুলিকে রিয়েল টাইমে আপনার AgencyHandy ওয়ার্কস্পেসের সাথে সিঙ্ক্রোনাইজড রাখা সহজ করে।
+
+<Note>
+  Business Pro প্ল্যান ওয়ার্কস্পেস প্রতি বিলিং পিরিয়ডে সর্বোচ্চ **৩০,০০০ webhook ইভেন্ট** সমর্থন করে। উচ্চ-ভলিউম অটোমেশন সেট আপ করার আগে আপনার প্ল্যানের সীমা পরীক্ষা করুন।
+</Note>
+
+## সমর্থিত ইভেন্টসমূহ
+
+আপনি নিম্নলিখিত ইভেন্টগুলির যেকোনো সমন্বয়ে একটি webhook সাবস্ক্রাইব করতে পারেন:
+
+| বিভাগ | ইভেন্টসমূহ |
+|---|---|
+| **সার্ভিস** | তৈরি, আপডেট, মুছে ফেলা |
+| **অর্ডার** | তৈরি, আপডেট, মুছে ফেলা |
+| **টাস্ক** | তৈরি, বরাদ্দ, সম্পন্ন, আপডেট |
+| **ইনভয়েস** | স্ট্যাটাস পরিবর্তন |
+| **ক্লায়েন্ট / ব্যবহারকারী** | নতুন ক্লায়েন্ট যোগ, ক্লায়েন্ট/ব্যবহারকারী মুছে ফেলা |
+| **প্রপোজাল** | পাঠানো, প্রাপ্ত, গৃহীত, প্রত্যাখ্যাত |
+| **টিকেট** | তৈরি, বরাদ্দ, স্ট্যাটাস পরিবর্তন |
+| **পেমেন্ট** | প্রাপ্ত, ব্যর্থ |
+| **সার্ভিস প্যাকেজ** | তৈরি, আপডেট, মুছে ফেলা |
+
+## একটি webhook তৈরি করুন
+
+<Steps>
+  <Step title="Webhook Management-এ নেভিগেট করুন">
+    বাম সাইডবারে **Integrations → Webhooks Management**-এ যান।
+  </Step>
+
+  <Step title="আপনার টোকেন প্রমাণীকরণ করুন">
+    আপনার webhook টোকেন প্রমাণীকরণ করতে **Management** বোতামে ক্লিক করুন। এই টোকেনটি বহির্গামী পেলোড সাইন করতে ব্যবহৃত হয় যাতে আপনি যাচাই করতে পারেন যে সেগুলি AgencyHandy থেকে উৎপন্ন হয়েছে।
+  </Step>
+
+  <Step title="একটি নতুন webhook তৈরি করুন">
+    webhook কনফিগারেশন ফর্ম খুলতে **Create New Webhook** ক্লিক করুন।
+  </Step>
+
+  <Step title="এন্ডপয়েন্ট URL প্রবেশ করুন">
+    **Endpoint URL** ফিল্ডে, সেই বাহ্যিক সিস্টেমের URL প্রবেশ করুন যেটি webhook ডেটা গ্রহণ করবে। এটি একটি সর্বজনীনভাবে অ্যাক্সেসযোগ্য **POST** এন্ডপয়েন্ট হতে হবে।
+  </Step>
+
+  <Step title="কন্টেন্ট টাইপ নির্বাচন করুন">
+    কন্টেন্ট টাইপ হিসেবে **JSON** বেছে নিন। AgencyHandy সমস্ত webhook পেলোড `application/json` হিসেবে পাঠায়।
+  </Step>
+
+  <Step title="webhook ইভেন্ট নির্বাচন করুন">
+    এই webhook ট্রিগার করা উচিত এমন প্রতিটি ইভেন্ট বেছে নিন। আপনি একাধিক বিভাগ থেকে ইভেন্ট নির্বাচন করতে পারেন — উদাহরণস্বরূপ, **Order: Created** এবং **Invoice: Status changed** উভয়ই একই এন্ডপয়েন্টে নির্দেশ করতে পারে।
+  </Step>
+
+  <Step title="webhook সক্রিয় করুন">
+    **Active** রেডিও বোতাম টগল করুন। সক্রিয় থাকলে, AgencyHandy রিয়েল টাইমে আপনার এন্ডপয়েন্টে সমস্ত নির্বাচিত ইভেন্টের পেলোড সরবরাহ করে।
+  </Step>
+
+  <Step title="কনফিগারেশন সংরক্ষণ করুন">
+    আপনার সেটিংস পর্যালোচনা করুন, তারপর **Save** ক্লিক করুন। webhook তালিকায় প্রদর্শিত হয় এবং অবিলম্বে ইভেন্ট সরবরাহ শুরু করে।
+  </Step>
+</Steps>
+
+## একটি webhook পরীক্ষা করুন
+
+একটি webhook তৈরির পরে, আপনার এন্ডপয়েন্ট অ্যাক্সেসযোগ্য এবং সঠিকভাবে ডেটা প্রসেস করছে কিনা নিশ্চিত করতে একটি পরীক্ষামূলক পেলোড পাঠান।
+
+<Steps>
+  <Step title="webhook খুলুন">
+    Webhooks Management তালিকা থেকে, যে webhook পরীক্ষা করতে চান সেটিতে ক্লিক করুন।
+  </Step>
+
+  <Step title="Test Event ক্লিক করুন">
+    webhook বিবরণ পেজে **Test Event** বোতামে ক্লিক করুন।
+  </Step>
+
+  <Step title="একটি পরীক্ষামূলক ইভেন্ট নির্বাচন করুন">
+    এই webhook-এ কনফিগার করা ইভেন্টের তালিকা থেকে একটি নমুনা ইভেন্ট বেছে নিন (যেমন, **Order: Created**)।
+  </Step>
+
+  <Step title="পরীক্ষামূলক পেলোড পাঠান">
+    **Send** ক্লিক করুন। AgencyHandy আপনার এন্ডপয়েন্ট URL-এ একটি নমুনা পেলোড পোস্ট করে।
+  </Step>
+
+  <Step title="ফলাফল যাচাই করুন">
+    পরীক্ষামূলক পেলোড পৌঁছেছে এবং প্রত্যাশা অনুযায়ী প্রসেস হয়েছে কিনা নিশ্চিত করতে আপনার বাহ্যিক সিস্টেম পরীক্ষা করুন। AgencyHandy-তে ফিরে, webhook-এ ক্লিক করে এর **হিস্ট্রি** পর্যালোচনা করুন — আপনি সম্পূর্ণ অনুরোধ, আপনার এন্ডপয়েন্ট যে প্রতিক্রিয়া ফেরত দিয়েছে তা দেখতে পাবেন, এবং প্রয়োজনে যেকোনো অতীত ইভেন্ট পুনরায় সরবরাহ করতে পারবেন।
+  </Step>
+</Steps>
+
+<Tip>
+  আপনার প্রকৃত সিস্টেম সংযুক্ত করার আগে সঠিক পেলোড আকৃতি পরীক্ষা করতে সেটআপের সময় একটি অস্থায়ী এন্ডপয়েন্ট হিসেবে [Webhook.site](https://webhook.site) বা [RequestBin](https://requestbin.com)-এর মতো টুল ব্যবহার করুন।
+</Tip>
+
+## webhook পেলোড প্রমাণীকরণ করুন
+
+AgencyHandy থেকে প্রতিটি বহির্গামী webhook অনুরোধে একটি সিগনেচার হেডার অন্তর্ভুক্ত থাকে যা আপনার এন্ডপয়েন্ট পেলোডটি আসল এবং টেম্পার হয়নি তা যাচাই করতে ব্যবহার করতে পারে।
+
+### সিগনেচার হেডার
+
+```
+x-ah-sig: <signature>
+```
+
+AgencyHandy প্রতিটি webhook অনুরোধে এই হেডার যোগ করে। আসা অনুরোধগুলি থেকে মান বের করুন এবং যাচাইকরণ এন্ডপয়েন্টে পাস করুন।
+
+### একটি webhook সিগনেচার যাচাই করুন
+
+একটি পেলোড খাঁটি কিনা নিশ্চিত করতে নিম্নলিখিত অনুরোধ পাঠান:
+
+```
+POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature
+Content-Type: application/json
+```
+
+<ParamField body="webhookId" type="string" required>
+  ইভেন্ট গ্রহণকারী webhook-এর ID। AgencyHandy-এ webhook বিবরণ পেজে এটি খুঁজুন।
+</ParamField>
+
+<ParamField body="signature" type="string" required>
+  আসা webhook অনুরোধ থেকে `x-ah-sig` হেডারের মান।
+</ParamField>
+
+<ParamField body="secret" type="string" required>
+  AgencyHandy-এ webhook বিবরণ পেজে দেখানো webhook সিক্রেট।
+</ParamField>
+
+<ParamField body="payload" type="object" required>
+  AgencyHandy-এর webhook অনুরোধ থেকে প্রাপ্ত raw JSON বডি।
+</ParamField>
+
+<CodeGroup>
+
+```javascript JavaScript
+const url = 'https://api.agencyhandy.com/api/v1/webhooks/verify-signature';
+
+const postData = {
+  webhookId: 'your_webhook_id',
+  signature: 'your_signature',   // value of x-ah-sig header
+  secret: 'your_webhook_secret',
+  payload: {},                   // the parsed JSON body from AgencyHandy
+};
+
+const response = await fetch(url, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(postData),
+});
+
+const data = await response.json();
+console.log(data); // { "verification_status": "SUCCESS" }
+```
+
+```bash cURL
+curl -X POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature \
+  -H "Content-Type: application/json" \
+  -d '{
+    "webhookId": "your_webhook_id",
+    "signature": "your_signature",
+    "secret": "your_webhook_secret",
+    "payload": {}
+  }'
+```
+
+</CodeGroup>
+
+**প্রতিক্রিয়াসমূহ**
+
+<ResponseField name="verification_status" type="string">
+  সিগনেচার বৈধ হলে `SUCCESS`। যাচাইকরণ ব্যর্থ হলে `FAILED` (HTTP 403)।
+</ResponseField>
+
+```json Success (200)
+{
+  "verification_status": "SUCCESS"
+}
+```
+
+```json Failure (403)
+{
+  "type": "PermissionError",
+  "status": 403,
+  "verification_status": "FAILED"
+}
+```
+
+<Warning>
+  আপনার webhook সিক্রেট গোপনীয় রাখুন। এটি পর্যায়ক্রমে রোটেট করুন এবং রোটেশনের পরে অবিলম্বে আপনার যাচাইকরণ লজিক আপডেট করুন। এটি কখনই ক্লায়েন্ট-সাইড কোড বা পাবলিক রিপোজিটরিতে প্রকাশ করবেন না।
+</Warning>
+
+## গুরুত্বপূর্ণ নোটসমূহ
+
+- আপনার এন্ডপয়েন্ট URL অবশ্যই একটি **সর্বজনীনভাবে অ্যাক্সেসযোগ্য HTTPS POST** URL হতে হবে।
+- আপনার এন্ডপয়েন্ট সাময়িকভাবে অনুপলব্ধ থাকলে, AgencyHandy-এ webhook-এর হিস্ট্রি প্যানেল পরীক্ষা করুন — আপনি সেখান থেকে সরাসরি যেকোনো অতীত ইভেন্ট **পুনরায় সরবরাহ** করতে পারবেন।
+- ব্যর্থ ডেলিভারি বা অননুমোদিত অ্যাক্সেস প্রচেষ্টা সনাক্ত করতে নিয়মিত webhook কার্যক্রম পর্যবেক্ষণ করুন।
+- বারবার ব্যর্থ webhook AgencyHandy দ্বারা বিরতি দেওয়া হতে পারে — সমস্যা আগে ধরতে ডেলিভারি লগ পর্যালোচনা করুন।

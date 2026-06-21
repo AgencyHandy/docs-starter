@@ -1,0 +1,77 @@
+---
+title: "连接 Stripe 以在 AgencyHandy 中接受在线支付"
+sidebarTitle: "Stripe"
+description: "将您的 Stripe 账户与 AgencyHandy 关联，通过平台内发送的发票向客户收取安全的在线支付。"
+---
+
+AgencyHandy 的 Stripe 集成让您可以通过平台内发送的发票直接接受客户的银行卡支付。连接后，您的客户将看到熟悉的 Stripe 托管结账页面，支付状态会自动同步回 AgencyHandy——无需手动对账。
+
+<Note>
+  只有 **SuperAdmin** 和 **Admin** 角色才能连接或管理 Stripe 集成。在开始之前，您还必须拥有一个具有相应权限的已验证 Stripe 账户。
+</Note>
+
+## 连接 Stripe
+
+<Steps>
+  <Step title="打开 Stripe 集成设置">
+    在左侧边栏中，导航至**集成 → Stripe 集成**。
+  </Step>
+
+  <Step title="在 Stripe 上授权">
+    点击**连接 Stripe**，您将被重定向到 Stripe 的授权页面。登录您的 Stripe 账户，点击**允许**以授予 AgencyHandy 访问权限。批准后，Stripe 将自动将您重定向回 AgencyHandy。
+  </Step>
+
+  <Step title="配置支付偏好">
+    重定向后，配置以下选项：
+
+    - **货币** — 为您的工作区选择默认账单货币。
+    - **支付方式** — 根据您的 Stripe 账户支持情况，启用或禁用银行卡类型（Visa、Mastercard 等）。
+    - **账单偏好** — 可选择设置税率、发票前缀或默认付款条款和到期日。
+  </Step>
+
+  <Step title="保存并确认">
+    点击**保存**，集成激活后将出现确认提示横幅。Stripe 现已与您的工作区关联，您的客户可以在线支付发票。
+  </Step>
+</Steps>
+
+## 测试集成
+
+在发送正式发票之前，进行快速的端到端测试以确认连接正常运行。
+
+<Steps>
+  <Step title="创建测试发票">
+    在 AgencyHandy 中创建一张草稿发票，设置一个小金额。
+  </Step>
+  <Step title="发送给自己">
+    将发票发送到您自己的电子邮件地址或可以协助测试的团队成员。
+  </Step>
+  <Step title="完成测试支付">
+    打开发票链接，如果您的 Stripe 账户处于测试模式，使用 Stripe 测试卡（例如 `4242 4242 4242 4242`）完成支付；正式模式下使用真实银行卡。
+  </Step>
+  <Step title="验证状态更新">
+    返回 AgencyHandy，确认发票状态已更改为**已支付**。如果已更改，说明您的集成运行正常。
+  </Step>
+</Steps>
+
+## 管理您的 Stripe 连接
+
+随时返回**集成 → Stripe 集成**以：
+
+- **更新支付设置** — 更改货币、支付方式或账单偏好。
+- **查看连接状态** — 检查 Stripe 当前是否处于活跃状态。
+- **断开连接** — 点击**断开连接**以取消关联您的 Stripe 账户，支付收款将立即暂停，直到您重新连接。
+- **重新连接** — 再次点击**连接 Stripe**并重新授权以恢复集成。
+
+<Warning>
+  断开 Stripe 连接将暂停所有未结发票的支付收款。在您重新连接并重新授权之前，客户将无法在线支付。
+</Warning>
+
+## 附加说明
+
+<Note>
+  AgencyHandy 从不存储您的支付凭证。所有支付数据均由 Stripe 的安全基础设施独家处理。
+</Note>
+
+- **每个工作区一个账户** — 每个 AgencyHandy 工作区只能连接一个 Stripe 账户。如需切换账户，请先断开当前账户，然后使用新账户重新连接。
+- **实时发票状态** — 所有与 Stripe 关联的发票将持续反映直接从 Stripe 接收的实时状态更新。
+- **货币** — 确保 AgencyHandy 中配置的货币与您 Stripe 账户中启用的货币一致，以避免支付错误。

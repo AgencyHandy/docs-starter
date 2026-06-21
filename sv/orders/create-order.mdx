@@ -1,0 +1,143 @@
+---
+title: "Hur du skapar, redigerar och tar bort beställningar i AgencyHandy"
+sidebarTitle: "Skapa beställning"
+description: "Steg-för-steg-guide för att skapa, redigera och ta bort beställningar i AgencyHandy — inklusive rollkrav, formulärfält och statusövergångar."
+---
+
+Att skapa en beställning i AgencyHandy ger dig en strukturerad arbetsyta för att leverera en tjänst till en klient. Du fyller i de viktigaste uppgifterna i förväg — klient, tjänst, prissättning, datum och en projektbeskrivning — och allt annat, från uppgifter till diskussioner, flödar från den enda posten. Den här sidan guidar dig genom att skapa en beställning från grunden, uppdatera den i efterhand, ändra dess status och ta bort den när den inte längre behövs.
+
+## Krav
+
+- Du måste vara inloggad i AgencyHandy.
+- Du måste ha rollen **Super Admin**, **Admin** eller **Projektledare** för att skapa eller redigera beställningar.
+- Endast **Super Admins** och **Admins** kan ta bort beställningar.
+
+## Skapa en ny beställning
+
+<Steps>
+  <Step title="Navigera till Beställningar">
+    I den vänstra sidopanelen i din AgencyHandy-instrumentpanel klickar du på **Beställningar**.
+  </Step>
+
+  <Step title="Öppna skapandeformuläret">
+    Klicka på **+ Skapa ny beställning** i det övre högra hörnet. Ett formulär visas.
+  </Step>
+
+  <Step title="Fyll i beställningsuppgifterna">
+    Fyll i fälten i formuläret:
+
+    | Fält | Obligatoriskt | Anteckningar |
+    |---|---|---|
+    | **Klient** | ✅ | Välj från din befintliga klientlista |
+    | **Tjänst** | ✅ | Inkluderar både publicerade och opublicerade tjänster |
+    | **Projektledare** | ❌ | Valfritt; tilldela en PM för att äga leveransen |
+    | **Kvantitet** | ✅ | Antal enheter som beställs |
+    | **Pris** | ✅ | Överenskommet budget för beställningen |
+    | **Startdatum** | ✅ | När arbetet påbörjas |
+    | **Förfallodatum** | ✅ | Leveransdeadline |
+    | **Beställningsbeskrivning** | ❌ | Instruktioner, krav eller referensanteckningar för ditt team |
+    | **Bilagor** | ❌ | Stödfiler relevanta för beställningen |
+
+    <Tip>
+      Om den valda tjänsten har tillägg kopplade till sig visas ett **Tillägg**-avsnitt i formuläret. Inkludera relevanta tillägg innan du skickar in.
+    </Tip>
+  </Step>
+
+  <Step title="Granska dina uppgifter">
+    Dubbelkontrollera alla fält för noggrannhet — särskilt klienten, tjänsten, priset och förfallodatumet.
+  </Step>
+
+  <Step title="Skicka in beställningen">
+    Klicka på **Skapa** för att slutföra beställningen. Du får ett bekräftelsemeddelande när den har skapats.
+  </Step>
+</Steps>
+
+### Vad händer efter att du skapar en beställning
+
+- Alla Super Admins i ditt företag får automatiskt tillgång till den nya beställningen.
+- Klienten får ett meddelande om att deras beställning har skapats.
+- Beställningen visas i listan **Beställningar** med statusen **Väntande**.
+
+## Redigera eller uppdatera en beställning
+
+Du kan uppdatera en beställning när som helst för att korrigera uppgifter, justera prissättning, ändra förfallodatum eller tillgodose klientönskemål.
+
+<Note>
+Du måste vara **Super Admin**, **Admin** eller **Projektledare** för att redigera en beställning.
+</Note>
+
+<Steps>
+  <Step title="Öppna beställningslistan">
+    Navigera till **Beställningar** i den vänstra sidopanelen.
+  </Step>
+
+  <Step title="Välj beställningen att redigera">
+    Hitta beställningen du vill uppdatera och markera kryssrutan bredvid den.
+  </Step>
+
+  <Step title="Aktivera redigeringsknappen">
+    En **Redigera**-knapp visas i det övre högra hörnet. Klicka på den för att öppna beställningsuppgifterna i redigeringsläge.
+  </Step>
+
+  <Step title="Ändra de nödvändiga fälten">
+    Uppdatera de fält som behöver ändras — klientuppgifter, tjänst, prissättning, datum, beskrivning eller tilldelad PM.
+  </Step>
+
+  <Step title="Spara dina ändringar">
+    Klicka på **Uppdatera** för att spara. Ett bekräftelsemeddelande bekräftar att uppdateringen lyckades.
+  </Step>
+</Steps>
+
+## Ändra en beställnings status
+
+Beställningsstatus speglar var ett arbete befinner sig i din leveranspipeline. AgencyHandy definierar fem fasta statusar — du kan inte lägga till eller byta namn på dem.
+
+| Status | Betydelse |
+|---|---|
+| **Väntande** | Skapad, inte påbörjad ännu |
+| **Pågående** | Aktivt under arbete |
+| **Under granskning** | Inlämnad för granskning; inväntar godkännande |
+| **Slutförd** | Levererad och godkänd |
+| **Avbruten** | Inte längre aktiv |
+
+<Note>
+Endast **Super Admins**, **Admins** och **Projektledare** kan ändra en beställnings status. Anställda och klienter kan inte ändra status.
+</Note>
+
+För att uppdatera statusen öppnar du beställningen och använder statusväljaren längst upp på beställningsdetaljsidan. Välj den nya statusen från rullgardinsmenyn och bekräfta.
+
+## Ta bort en beställning
+
+Att ta bort en beställning tar permanent bort den från systemet. Använd detta endast när en beställning verkligen är föråldrad — till exempel om den skapades av misstag eller är ett duplikat.
+
+<Warning>
+Borttagning av beställningar är oåterkalleligt. När du tar bort en beställning kan den inte återställas. Fortsätt med försiktighet.
+</Warning>
+
+<Note>
+Endast **Super Admins** och **Admins** kan ta bort beställningar.
+</Note>
+
+<Steps>
+  <Step title="Navigera till Beställningar">
+    Klicka på **Beställningar** i den vänstra sidopanelen.
+  </Step>
+
+  <Step title="Hitta beställningen att ta bort">
+    Bläddra eller sök efter beställningen du vill ta bort från listan.
+  </Step>
+
+  <Step title="Initiera borttagning">
+    Klicka på **papperskorgikonen** kopplad till beställningen.
+  </Step>
+
+  <Step title="Bekräfta borttagning">
+    En bekräftelseprompt visas. Bekräfta för att permanent ta bort beställningen.
+  </Step>
+</Steps>
+
+Efter borttagningen kan du granska dina återstående beställningar för att säkerställa att allt är i ordning. Den borttagna posten visas inte längre i någon lista eller rapport.
+
+## Lägga till teammedlemmar i en beställning
+
+Super Admins, Admins och PM:ar kan lägga till anställda i en beställning när som helst. När en teammedlem läggs till får de ett meddelande i appen. Tilldelade anställda får insyn i beställningen och dess uppgifter, men de kan inte hantera beställningen själva (redigera uppgifter, ändra status eller ta bort den).

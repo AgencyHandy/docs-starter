@@ -1,0 +1,260 @@
+---
+title: "Jak vytvořit službu s balíčky, úkoly a FAQ"
+sidebarTitle: "Vytvořit službu"
+description: "Podrobný průvodce budováním služby AgencyHandy: vyberte typ fakturace, konfigurujte balíčky, nastavte výchozí úkoly, přidejte FAQ a publikujte."
+---
+
+Vytvoření služby v AgencyHandy je prvním krokem k prodeji nabídek vaší agentury prostřednictvím platformy. Jedna služba může obsahovat až pět cenových balíčků, automatizované výchozí úkoly, které se spustí při zadání objednávky, FAQ pro snížení dotazů před prodejem, připojení portfolia pro sociální důkaz a volitelný vstupní formulář — vše nakonfigurované na jednom místě před publikováním.
+
+<Note>
+  Pro vytváření služeb potřebujete roli **Super administrátora** nebo **Administrátora**. Ostatní role vyžadují explicitní oprávnění ke službám pro přístup do této sekce.
+</Note>
+
+<Steps>
+  <Step title="Vyberte typ služby">
+    Otevřete **Služby** v levém postranním panelu a klikněte na **+ Služba** pro spuštění nového výpisu.
+
+    V horní části stránky vyberte fakturační model:
+
+    - **Jednorázová služba** — klient zaplatí jednorázový poplatek a dodávku obdrží jednou. Nejlepší pro projekty s jasným rozsahem: tvorba webu, balíčky log, audity atd.
+    - **Předplatná služba** — fakturace se automaticky opakuje podle vámi definovaného harmonogramu. Nejlepší pro paušální smlouvy, průběžný obsah, spravované služby nebo plány údržby.
+
+    <Warning>
+      Typ služby je po uložení uzamčen. Pokud potřebujete jiný fakturační model, vytvořte novou službu.
+    </Warning>
+  </Step>
+
+  <Step title="Přidejte detaily služby">
+    Rozbalte sekci **Detaily služby** a vyplňte následující pole:
+
+    **Název služby** *(povinné)*
+    Takto se služba zobrazuje klientům všude v platformě — v katalogu, na fakturách a uvnitř pracovního prostoru objednávky. Buďte jasní a popisní.
+
+    **Nahrání médií**
+    Nahrajte jeden nebo více náhledových obrázků pro vizuální reprezentaci služby. Kvalitní obrázky zvyšují důvěru klientů a míru konverze.
+
+    **Popis služby**
+    Napište důkladné vysvětlení toho, co služba zahrnuje, pro koho je určena a co mohou klienti očekávat. Využijte tento prostor pro odlišení vaší nabídky.
+
+    **Nastavení daní**
+    Vyberte, zda je daň **v ceně** (již zahrnutá v ceně) nebo **k ceně** (přičtená při pokladně).
+
+    **Měna**
+    Nastavte měnu pro všechny balíčky v této službě. Všechny balíčky v rámci jedné služby sdílejí stejnou měnu.
+
+    <Tip>
+      Nahrajte náhledové obrázky v poměru 16:9 pro nejlepší prezentaci v klientském portálu.
+    </Tip>
+  </Step>
+
+  <Step title="Vytvořte balíčky">
+    Rozbalte **Detaily balíčku** a klikněte na **+ Nový balíček** pro přidání první cenové úrovně. Můžete vytvořit až **5 balíčků** na službu.
+
+    Pro každý balíček nakonfigurujte následující:
+
+    **Název balíčku** *(povinné)*
+    Název, který klienti vidí, například *Základní*, *Standardní* nebo *Prémiový*.
+
+    **Ikona balíčku** *(volitelné)*
+    Vyberte vestavěnou ikonu nebo nahrajte vlastní. Nahrané ikony musí být **32 × 32 pixelů**.
+
+    **Médium balíčku** *(volitelné)*
+    Nahrajte obrázek obálky specifický pro tento balíček. Přijímané formáty: PNG, JPG, JPEG. Maximální velikost souboru: **5 MB**. Maximum 1 soubor na balíček. Doporučený poměr: **16:9**.
+
+    **Stručný popis balíčku** *(volitelné)*
+    Jednořádkové shrnutí dodávek tohoto balíčku. Maximálně **140 znaků**.
+
+    **Co je zahrnuto** *(povinné)*
+    Uveďte konkrétní dodávky zahrnuté v tomto balíčku. Můžete přidat až **15 řádkových položek** na balíček. Každý bod by měl popisovat jednu konkrétní dodávku (např. *„5 blogových příspěvků měsíčně, každý až 1 000 slov“*).
+
+    <Tip>
+      Po vytvoření více balíčků je přetáhněte pro změnu pořadí, ve kterém se zobrazují klientům. Jeden označte jako **Nejoblíbenější** pro upoutání pozornosti na doporučenou úroveň.
+    </Tip>
+  </Step>
+
+  <Step title="Nastavte ceny a pravidla dodání">
+    Uvnitř každého balíčku nastavte základní cenová pole a volitelné ovládací prvky:
+
+    **Částka** *(povinné)*
+    Cena, kterou klient zaplatí za tento balíček.
+
+    **Doba dodání** *(povinné)*
+    Odhadovaný počet dní pro dodání služby po nákupu.
+
+    **Volitelné cenové ovládací prvky:**
+
+    <Accordion title="Přidat slevu">
+      Uplatněte procentuální nebo pevnou slevu na cenu tohoto balíčku. Zlevněná cena se zobrazuje klientům vedle původní ceny, čímž vytváří efektivní propagační efekt.
+    </Accordion>
+
+    <Accordion title="Přidat zkušební období (pouze předplatné)">
+      Nabídněte bezplatné nebo zvýhodněné zkušební období před zahájením pravidelné fakturace předplatného. Tato možnost je dostupná pouze pro předplatné typy služeb.
+    </Accordion>
+
+    <Accordion title="Přidat limit množství">
+      Omezte počet kusů, které si klient může zakoupit v jedné relaci pokladny. Použijte pro balíčky s omezenou dostupností nebo služby s kapacitními omezeními.
+    </Accordion>
+
+    <Accordion title="Přidat další cenové detaily">
+      Rozeberte celkové náklady na jednotlivé řádkové položky — například zobrazením *základní cena + poplatek za nastavení + cena za jednotku*. Každý popis rozpisu podporuje maximálně **20 znaků**.
+    </Accordion>
+
+    <Note>
+      Před publikováním služby musí být vyplněna všechna povinná pole (Částka a Doba dodání) pro každý balíček.
+    </Note>
+  </Step>
+
+  <Step title="Přidejte výchozí úkoly pro automatizaci">
+    Každý balíček obsahuje sekci **Výchozí úkoly**. Úkoly definované zde se automaticky generují uvnitř pracovního prostoru objednávky v okamžiku, kdy klient zakoupí tento balíček — není třeba ručního nastavení po každém prodeji.
+
+    Kliknutím na **+ Přidat další** otevřete modální okno pro vytvoření úkolu. Pro každý úkol můžete nakonfigurovat:
+
+    | Pole | Podrobnosti |
+    |---|---|
+    | **Název úkolu** | Povinné; maximálně **160 znaků** |
+    | **Popis** | Podrobné pokyny pro přiřazeného pracovníka |
+    | **Přiřazený pracovník** | Člen týmu zodpovědný za splnění tohoto úkolu |
+    | **Příloha** | Nahrajte referenční soubory; přijímané formáty: csv, odt, doc, docx, htm, html, pdf, ppt, pptx, txt, xls, xlsx, jpg, jpeg, png, gif, webp, svg, ai, mp4, mp3, wav, zip, rar; maximální velikost souboru **1 GB** na soubor |
+    | **Štítek** | Označte úkol pro filtrování a reporting |
+    | **Stav** | Počáteční stav při vytvoření úkolu |
+    | **Kontrola klientem** | Zapněte, pokud tento úkol vyžaduje schválení klientem před jeho považováním za dokončený |
+
+    Přidejte tolik úkolů, kolik je potřeba pro úplné pokrytí procesu dodávky tohoto balíčku. Konzistentní výchozí úkoly zajistí, že každá objednávka bude sledovat stejný pracovní postup s kontrolou kvality.
+
+    <Tip>
+      Namapujte výchozí úkoly na svůj interní SOP. Například balíček *Správa sociálních médií* může automaticky generovat úkoly jako *Návrh redakčního kalendáře*, *Schválení klientem*, *Naplánování příspěvků* a *Měsíční zpráva*.
+    </Tip>
+  </Step>
+
+  <Step title="Přidejte FAQ a portfolio">
+    Rozbalte sekci **Doplňující informace** pro přidání dvou volitelných, ale vysoce přínosných prvků:
+
+    **Připojení portfolia**
+    Propojte kategorii portfolia s touto službou, aby klienti mohli procházet relevantní ukázky vaší předchozí práce přímo na výpisu služby. Můžete připojit existující kategorii portfolia nebo vytvořit novou z této obrazovky.
+
+    **Nejčastější otázky (FAQ)**
+    Kliknutím na **+ Přidat** vložte pár otázka-odpověď. Přidejte tolik FAQ, kolik je relevantních — mezi běžná témata patří:
+
+    - Originalita obsahu a práva
+    - Proces revizí a zpětné vazby
+    - Hranice rozsahu a co *není* zahrnuto
+    - Harmonogramy a komunikační kadence
+    - Platební a refundační zásady
+
+    Dobře napsané FAQ snižují výměnu zpráv před nákupem a pomáhají klientům se sami kvalifikovat.
+  </Step>
+
+  <Step title="Připojte vstupní formulář">
+    Vstupní formulář shromažďuje informace, které potřebujete od klienta před zahájením práce — například pokyny ke značce, přihlašovací údaje, cílovou skupinu nebo cíle projektu.
+
+    - Kliknutím na **+ Vytvořit nový vstupní formulář** sestavte formulář od začátku nebo vyberte existující formulář z rozbalovací nabídky.
+    - Pokud tato služba vstupní formulář nevyžaduje, klikněte na **Přeskočit** pro obejití této sekce.
+    - Klikněte na **Aktualizovat** pro uložení výběru vstupního formuláře a pokračování.
+
+    <Note>
+      Vstupní formulář je volitelný, ale důrazně doporučený pro služby, které před zahájením dodávky vyžadují vstupy specifické pro klienta.
+    </Note>
+  </Step>
+
+  <Step title="Publikujte službu">
+    Ve spodní části editoru služby:
+
+    1. Přepněte **Publikovat tuto službu** do polohy ZAPNUTO.
+    2. Klikněte na **Uložit** (nebo **Aktualizovat službu**, pokud upravujete existující službu).
+
+    Po publikování je služba okamžitě viditelná pro klienty v portálu. Pokud přepínač ponecháte vypnutý, služba je uložena jako koncept a viditelná pouze vašemu týmu.
+
+    <Tip>
+      Použijte režim konceptu pro přípravu služby předem a její publikování při spuštění — užitečné pro sezónní akce nebo oznámení nové nabídky.
+    </Tip>
+  </Step>
+</Steps>
+
+## Nastavení doplňků
+
+Doplňky jsou volitelné extras, které si klienti mohou vybrat při pokladně — například *Expresní dodání*, *Extra revize* nebo *Měsíční zpráva*. Umožňují vám upsellovat komplementární služby bez nutnosti vytváření zcela nových výpisů.
+
+### Vytvoření doplňku
+
+<Steps>
+  <Step title="Otevřete Doplňky">
+    Přejděte do **Služby** v postranním panelu, klikněte na tlačítko **šipky dolů** vedle záhlaví Služby a vyberte **Doplňky**.
+  </Step>
+  <Step title="Vytvořte nový doplněk">
+    Klikněte na **+ Přidat nový doplněk** a vyplňte:
+
+    - **Název doplňku**
+    - **Popis** — pomocí editoru formátovaného textu jasně vysvětlete, co doplněk zahrnuje
+    - **Typ ceny** — vyberte *Jednorázový* nebo *Předplatné*
+    - **Cenové detaily:**
+      - *Jednorázový:* zadejte částku a měnu
+      - *Předplatné:* nastavte fakturační interval (např. každý 1 měsíc), volitelný limit fakturačních cyklů, poplatek za předplatné a měnu
+  </Step>
+  <Step title="Publikujte a uložte">
+    Přepněte **Publikovat** na ZAPNUTO a klikněte na **Vytvořit**. Při připojování k objednávkovým formulářům jsou viditelné pouze publikované doplňky.
+  </Step>
+</Steps>
+
+### Připojení doplňku k objednávkovému formuláři
+
+<Steps>
+  <Step title="Otevřete objednávkový formulář">
+    Přejděte na **Formuláře** a otevřete příslušný objednávkový formulář.
+  </Step>
+  <Step title="Vyberte službu">
+    Zvolte službu, ke které chcete doplněk připojit.
+  </Step>
+  <Step title="Přidejte doplňky">
+    Z levého panelu vyberte sekci **Doplňky** a zvolte doplňky, které chcete přidružit k této službě.
+  </Step>
+  <Step title="Uložte formulář">
+    Klikněte na **Uložit**. Klienti nyní uvidí vybrané doplňky jako volitelné extras při pokladně.
+  </Step>
+</Steps>
+
+<Note>
+  Doplňky musí používat stejnou měnu jako služba, ke které jsou připojeny. Pokud se měny neshodují, doplněk se v seznamu výběru neobjeví.
+</Note>
+
+### Chování fakturace předplatného doplňku
+
+Když se fakturační cykly služby a předplatného doplňku liší, AgencyHandy zvládne překryv automaticky:
+
+<Accordion title="Doplněk má více cyklů než služba">
+  Služba i doplněk jsou fakturovány společně po dobu trvání služby. Po skončení služby pokračuje doplněk v samostatné fakturaci po zbývající cykly.
+
+  **Příklad:** Služba běží 4 cykly, doplněk běží 5 cyklů → fakturováno společně po 4 cykly, doplněk fakturován samostatně po 1 další cyklus.
+</Accordion>
+
+<Accordion title="Doplněk má méně cyklů než služba">
+  Služba i doplněk jsou fakturovány společně po dobu trvání doplňku. Po skončení doplňku pokračuje služba v samostatné fakturaci po zbývající cykly.
+
+  **Příklad:** Služba běží 5 cyklů, doplněk běží 3 cykly → fakturováno společně po 3 cykly, služba fakturována samostatně po 2 další cykly.
+</Accordion>
+
+## Úprava služby
+
+Po publikování služby můžete aktualizovat libovolné pole bez přerušení stávajících objednávek.
+
+1. Přejděte do **Služby** a najděte službu, kterou chcete aktualizovat.
+2. Klikněte na **nabídku se třemi tečkami** (⋮) na pravé straně řádku služby.
+3. Vyberte **Upravit**. Editor služby se otevře se všemi stávajícími nastaveními.
+4. Proveďte změny — aktualizujte název, popis, ceny, média, balíčky, úkoly nebo FAQ.
+5. Klikněte na **Aktualizovat službu** pro uložení.
+
+<Warning>
+  Změny cen balíčků nebo doby dodání se projeví pouze pro **nové objednávky**. Stávající objednávky nejsou zpětně ovlivněny.
+</Warning>
+
+## Přehled polí
+
+| Pole | Limit |
+|---|---|
+| Balíčky na službu | Až 5 |
+| Dodávky na balíček (Co je zahrnuto) | Až 15 |
+| Stručný popis balíčku | 140 znaků |
+| Velikost ikony balíčku | 32 × 32 px |
+| Velikost souboru média balíčku | 5 MB (PNG, JPG, JPEG) |
+| Název úkolu | 160 znaků |
+| Velikost souboru přílohy úkolu | 1 GB na soubor |
+| Popis rozpisu ceny | 20 znaků |

@@ -1,0 +1,123 @@
+---
+title: "Configurar as Definições Gerais do Seu Workspace AgencyHandy"
+sidebarTitle: "Definições Gerais"
+description: "Defina o nome do workspace, carregue logótipos, adicione o endereço da sua agência e selecione o fuso horário correto para personalizar o seu workspace AgencyHandy."
+---
+
+A página de Definições Gerais é o primeiro lugar que visitará após iniciar sessão no AgencyHandy. Permite-lhe estabelecer a identidade da sua agência na plataforma — desde o logótipo e nome do workspace até ao endereço físico e fuso horário. Todas as alterações que efetuar aqui aplicam-se globalmente em todo o workspace para todos os utilizadores.
+
+<Note>
+  Apenas **Super Admins** e **Admins** podem aceder e modificar as definições de Configuração do Workspace. Se não vir a opção **Workspace Config** na navegação esquerda, contacte o seu Super Admin para ajustar as suas permissões de função.
+</Note>
+
+## Aceder às Definições Gerais
+
+<Steps>
+  <Step title="Abrir a Configuração do Workspace">
+    Inicie sessão na sua conta AgencyHandy. No menu de navegação esquerdo, clique em **Workspace Config**.
+  </Step>
+  <Step title="Selecionar Definições Gerais">
+    Clique em **General Settings** no submenu da Configuração do Workspace. O painel de Definições Gerais abre à direita.
+  </Step>
+</Steps>
+
+---
+
+## Carregar o Logótipo do Workspace
+
+O AgencyHandy suporta três tipos de logótipo distintos, cada um apresentado numa parte diferente da interface:
+
+| Tipo de Logótipo    | Dimensões    | Onde Aparece                                    |
+|---------------------|-------------|--------------------------------------------------|
+| Logótipo Circular   | 32 × 32 px  | Áreas de perfil e elementos de interface compactos |
+| Logótipo Favicon    | 16 × 16 px  | Ícone do separador do browser                   |
+| Logótipo Retangular | 142 × 36 px | Cabeçalho da barra lateral (substitui o logótipo circular quando definido) |
+
+**Formatos suportados:** PNG, JPG, SVG
+
+<Steps>
+  <Step title="Clique em Carregar Logótipo">
+    Na secção de logótipo, clique no botão **Upload Logo** para o tipo de logótipo que pretende definir.
+  </Step>
+  <Step title="Selecione o ficheiro de imagem">
+    Procure a imagem no seu dispositivo. Certifique-se de que o ficheiro corresponde às dimensões recomendadas e está num formato suportado.
+  </Step>
+  <Step title="Confirme o carregamento">
+    A pré-visualização do logótipo atualiza imediatamente. Repita para cada tipo de logótipo conforme necessário.
+  </Step>
+</Steps>
+
+<Tip>
+  Carregar um **Logótipo Retangular** substituirá o Logótipo Circular na barra lateral e ocultará automaticamente o texto do nome do workspace ao lado. O logótipo retangular torna-se também o logótipo principal utilizado em todos os outros contextos onde um logótipo é apresentado — mesmo que um logótipo circular também esteja carregado.
+</Tip>
+
+---
+
+## Definir o Nome e Endereço do Workspace
+
+### Nome do Workspace
+
+Introduza o nome da sua agência no campo **Workspace Name**. Este nome:
+
+- Aparece em toda a plataforma para identificação.
+- É utilizado no subdomínio padrão do AgencyHandy (p. ex., `seunome.agencyhandy.com`).
+
+<Warning>
+  Alterar o nome do workspace atualiza imediatamente o seu subdomínio padrão. Se partilhar a ligação do subdomínio padrão com clientes, eles precisarão do URL atualizado. Considere configurar um [domínio personalizado](/pt/workspace/custom-domain) para evitar este problema.
+</Warning>
+
+### Endereço do Workspace
+
+Introduza o endereço físico completo da sua agência no campo **Workspace Address**. Este endereço é utilizado para representação oficial em faturas e documentos voltados para clientes, pelo que deve garantir que está correto e atualizado.
+
+---
+
+## Selecionar o Seu Fuso Horário
+
+<Steps>
+  <Step title="Abrir o menu pendente de Fuso Horário">
+    Desloque-se para o campo **Time Zone** e clique no menu pendente para expandir a lista de fusos horários.
+  </Step>
+  <Step title="Escolher o seu fuso horário">
+    Selecione o fuso horário que corresponde à localização de operação principal da sua agência. Todos os prazos de tarefas, notificações agendadas, eventos de calendário e carimbos de data/hora em todo o workspace baseiam-se nesta definição.
+  </Step>
+</Steps>
+
+<Warning>
+  Uma definição de fuso horário incorreta causa erros de agendamento para tarefas, reuniões e datas de vencimento de faturas. Verifique cuidadosamente esta definição antes de convidar a sua equipa ou clientes.
+</Warning>
+
+---
+
+## Guardar as Suas Alterações
+
+Depois de preencher ou atualizar quaisquer campos, clique em **Save Changes** na parte inferior do painel de Definições Gerais. Todas as atualizações são aplicadas globalmente e ficam imediatamente visíveis para todos os utilizadores no workspace.
+
+---
+
+## Zona de Perigo: Eliminar o Seu Workspace
+
+Na parte inferior do painel de Definições Gerais, existe uma secção **Danger Zone** que contém o botão **Delete Workspace**.
+
+<Warning>
+  Eliminar o seu workspace é **permanente e irreversível**. Todos os dados — incluindo clientes, encomendas, faturas, projetos e configurações — serão eliminados permanentemente. Não existe opção de recuperação. Só prossiga se tiver absoluta certeza.
+</Warning>
+
+---
+
+## Melhores Práticas
+
+<CardGroup cols={2}>
+  <Card title="Verificar as dimensões do logótipo" icon="image">
+    Carregue logótipos nas dimensões de píxeis exatas recomendadas para evitar distorção, corte ou apresentação desfocada em toda a plataforma.
+  </Card>
+  <Card title="Manter a marca atualizada" icon="paintbrush">
+    Atualize o seu logótipo e endereço sempre que a sua agência mudar de marca ou de localização para manter todos os documentos e páginas voltadas para clientes precisos.
+  </Card>
+  <Card title="Definir o fuso horário primeiro" icon="clock">
+    Configure o seu fuso horário antes de criar serviços, tarefas ou agendar qualquer coisa para garantir que todos os carimbos de data/hora se alinham corretamente desde o início.
+  </Card>
+  <Card title="Limitar o acesso de administrador" icon="shield">
+    Atribua funções de Super Admin ou Admin apenas ao pessoal que genuinamente precisa de modificar as configurações do workspace, para evitar alterações acidentais.
+  </Card>
+</CardGroup>

@@ -1,0 +1,162 @@
+---
+title: "Abonnementsfacturering en terugkerende facturen in AgencyHandy"
+sidebarTitle: "Abonnementen"
+description: "Hoe AgencyHandy terugkerende abonnementsfacturering afhandelt — geautomatiseerde facturen, factureringscycli, betaalmethoden, annuleringen en Wise-betalingslinks."
+---
+
+Het abonnementsfactureringssysteem van AgencyHandy laat je de gehele terugkerende omzetwerkstroom automatiseren. Wanneer een klant zich abonneert op een dienst, maakt het platform een Abonnements-ID aan, genereert orders en stuurt bij elke factureringscyclus automatisch facturen — of dat nu dagelijks, wekelijks, maandelijks of jaarlijks is. Jij blijft in controle: je kunt abonnementsdetails bekijken, betalingsgeschiedenis volgen, mislukte betalingen afhandelen en abonnementen annuleren wanneer nodig, allemaal vanuit AgencyHandy.
+
+## Hoe abonnementsfacturering werkt
+
+De abonnementslevenscyclus in AgencyHandy volgt zes belangrijke fasen.
+
+<Steps>
+  <Step title="Maak een abonnementsdienst aan">
+    Navigeer naar **Diensten** en klik op **Nieuwe dienst aanmaken**. Selecteer **Abonnement** als diensttype.
+
+    Definieer:
+    - **Factureringscyclus** — Dagelijks, Wekelijks, Maandelijks of Jaarlijks
+    - **Verlengingsgedrag** — Nieuwe order aanmaken, Bestaande order bijwerken of Ongewijzigd laten
+    - **Prijs & Betaalmethode** — PayPal, Stripe of Handmatig
+
+    Klik op **Publiceren** om de dienst beschikbaar te stellen.
+  </Step>
+  <Step title="Klant koopt het abonnement">
+    De klant selecteert de abonnementsdienst, gaat naar de kassa en kiest een betaalmethode.
+
+    AgencyHandy:
+    - Maakt automatisch een **Abonnements-ID** aan
+    - Genereert een **Order**
+    - Stuurt een **Factuur**
+
+    Voor **PayPal of Stripe**-betalingen wordt de factuur onmiddellijk als **Betaald** gemarkeerd. Voor **Handmatige betaling** blijft de factuur **Open** totdat het bureau de ontvangst bevestigt.
+  </Step>
+  <Step title="Geautomatiseerde terugkerende facturering">
+    Op elke verlengingsdatum verwerkt AgencyHandy de betaling automatisch (voor PayPal/Stripe) en genereert de volgende factuur.
+
+    Als de betaling slaagt, wordt de factuur als **Betaald** gemarkeerd. Als deze mislukt:
+    - Blijft de factuur **Open**
+    - Ontvangt de klant een **Melding van mislukte betaling**
+    - Ontvangt het bureau een melding om opnieuw te proberen of bijgewerkte betalingsgegevens op te vragen
+  </Step>
+  <Step title="Beheer actieve abonnementen">
+    Navigeer naar **Abonnementsbeheer** in de linker zijbalk om alle actieve en inactieve abonnementen te bekijken. Selecteer een abonnement om de volledige details te zien.
+  </Step>
+  <Step title="Afhandeling van annuleringen">
+    Wanneer je een abonnement annuleert, kun je kiezen voor:
+    - **Volledig annuleren** — stop alle toekomstige facturering en orders
+    - **De laatste actieve order laten doorlopen** — laat de klant de dienst ontvangen tot de deadline van de huidige periode
+
+    Om een dienst volledig te verwijderen, moeten alle actieve abonnementen op die dienst eerst worden geannuleerd.
+  </Step>
+  <Step title="Meldingen">
+    Het systeem stuurt automatisch:
+    - **Verlengingsherinneringen** vóór de volgende factuurdatum
+    - **Betalingsbevestigingen** na succesvolle afschrijvingen
+    - **Meldingen van mislukte betalingen** aan zowel de klant als bureauadmins
+  </Step>
+</Steps>
+
+## Pagina abonnementsdetails
+
+De pagina Abonnementsdetails geeft je een volledig beeld van elk individueel abonnement — van de dienst en het pakket tot elke factuur en elke vermelding in het gebeurtenislogboek.
+
+### Hoe te openen
+
+1. Ga naar **Abonnementen** in de linker zijbalk
+2. Klik op een abonnement in de lijst om de detailpagina te openen
+
+### Wat je kunt zien
+
+<Tabs>
+  <Tab title="Abonnementsinfo">
+    - **Dienstnaam** en **Pakketnaam**
+    - **Klantnaam**
+    - **Factureringscyclus** (bijv. Maandelijks, Jaarlijks)
+    - **Startdatum** en **Einddatum**
+    - **Status** van het abonnement (Actief of Inactief)
+  </Tab>
+  <Tab title="Betalingsdetails">
+    - **Abonnementskosten**
+    - **Totaal aantal betalingen** tot nu toe
+    - **Betaalmethode** (Stripe, PayPal, Wise, Handmatig bankieren, enz.)
+    - **Volgende betaaldatum**
+  </Tab>
+  <Tab title="Ordergeschiedenis">
+    - **Order-ID**
+    - **Status** (bijv. Lopend, Voltooid)
+    - **Startdatum** en **Deadline** voor elke order
+  </Tab>
+  <Tab title="Factuurgeschiedenis">
+    - **Factuur-ID**
+    - **Bedrag**
+    - **Status** (Open, Betaald, enz.)
+    - **Betaaldatum** en **Vervaldatum**
+  </Tab>
+  <Tab title="Gebeurtenislogboeken">
+    Een chronologisch auditspoor van alle activiteiten met betrekking tot het abonnement — statuswijzigingen, betalingsgebeurtenissen, annuleringen en meer.
+  </Tab>
+</Tabs>
+
+<Note>
+  Een enkel abonnement kan meerdere gekoppelde orders en facturen hebben. Facturen die aan abonnementen zijn gekoppeld, worden dynamisch bijgewerkt wanneer betalingen worden ontvangen.
+</Note>
+
+## Wise-ondersteuning voor handmatige abonnementsfacturen
+
+Als je internationale betalingen incasseert, kun je een **Wise-betalingslink** rechtstreeks in abonnementsfacturen insluiten. Dit geeft klanten een handige manier om te betalen zonder handmatig een bankoverschrijving in te stellen.
+
+### Vereisten
+
+- Een actief AgencyHandy-account
+- Een actief **Wise-account** met een gegenereerde geldige betalingslink
+
+### Stappen om een Wise-link aan een factuur toe te voegen
+
+<Steps>
+  <Step title="Open de factuursectie">
+    Klik op **Facturen** in de linker zijbalk en klik vervolgens op **+ Factuur aanmaken**.
+  </Step>
+  <Step title="Selecteer de klant en order">
+    Kies de klant uit de vervolgkeuzelijst. Alle gerelateerde order-ID's verschijnen. Selecteer het relevante order-ID en voer het bedrag en eventuele te factureren items in.
+  </Step>
+  <Step title="Pas kortingen en belastingen toe">
+    Voeg eventuele kortingspercentages, kortingsbedragen, betaalde bedragen, verschuldigde bedragen en btw/belastinggegevens toe. Voeg indien nodig een factuuradres en notities toe.
+  </Step>
+  <Step title="Voeg de Wise-betalingslink toe">
+    Selecteer in de sectie **Betaalmethode** de optie **Wise** als betaalmethode. Plak je Wise-betalingslink in het daarvoor bestemde veld.
+  </Step>
+  <Step title="Sla de factuur op">
+    Klik op **Opslaan** om de factuur af te ronden. De Wise-betalingslink verschijnt in de factuur zodat de klant direct kan betalen.
+  </Step>
+</Steps>
+
+<Tip>
+  Controleer altijd je Wise-betalingslink en factuurtotalen voordat je opslaat. Verifieer dat de orderdetails, kortingen en belastinginformatie correct zijn om factuurfouten te voorkomen.
+</Tip>
+
+## Belangrijke opmerkingen over abonnementsfacturering
+
+<Accordion title="Wie kan abonnementen annuleren?">
+  Alleen **Super Admins** en **Admins** kunnen abonnementen annuleren. Klanten kunnen hun eigen abonnementen niet annuleren — ze moeten annulering aanvragen via het bureau.
+</Accordion>
+
+<Accordion title="Abonnements-ID's zijn permanent">
+  Zodra een abonnement is aangemaakt, kan het Abonnements-ID niet meer worden bewerkt. Dit zorgt voor consistente registratie gedurende de gehele looptijd van het abonnement.
+</Accordion>
+
+<Accordion title="Mislukte betalingen en het aanmaken van orders">
+  Wanneer een betaling mislukt, blijft de factuur Open en wordt er een nieuwe order aangemaakt voor de mislukte periode. De abonnementsstatus blijft **Actief** totdat een admin de betaling handmatig opnieuw probeert of het abonnement annuleert.
+</Accordion>
+
+<Accordion title="Orders met handmatige betaling">
+  Als een klant buiten Stripe of PayPal betaalt (bijv. via bankoverschrijving), moet de admin de factuur handmatig als **Betaald** markeren in AgencyHandy. Het systeem doet dit niet automatisch voor handmatige betalingen.
+</Accordion>
+
+<Accordion title="Onbetaalde zelfreguleringspoging">
+  Als een klant een abonnementsbetaling start maar de betaling niet voltooit, blijven ze in het systeem als **Lead** totdat ze succesvol subscriben.
+</Accordion>
+
+<Accordion title="Vervaldatums van facturen">
+  Vervaldatums voor abonnementsfacturen worden automatisch ingesteld op basis van de door jou geconfigureerde factureringscyclus (bijv. maandelijkse facturen zijn één maand na de startdatum verschuldigd).
+</Accordion>

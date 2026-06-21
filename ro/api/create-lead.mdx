@@ -1,0 +1,201 @@
+---
+title: "API AgencyHandy: Creați un lead nou în mod programatic"
+sidebarTitle: "Creare Lead"
+description: "Utilizați API-ul AgencyHandy pentru a crea programatic lead-uri noi, trimițând o solicitare POST la endpoint-ul bulk-lead cu câmpurile obligatorii."
+---
+
+Endpoint-ul Creare Lead vă permite să adăugați programatic lead-uri noi în spațiul dvs. de lucru AgencyHandy din orice sistem extern — un formular web, un CRM, o platformă de automatizare marketing sau un script personalizat. Lead-urile create prin acest endpoint apar imediat în pipeline-ul dvs. de lead-uri, exact ca și cum ar fi fost adăugate manual.
+
+<Note>
+  Înainte de a utiliza acest endpoint, parcurgeți ghidul [Noțiuni de bază](/ro/api/getting-started) pentru a obține cheia API și ID-ul companiei. De asemenea, trebuie să obțineți **ID-ul rolului de client**, care este necesar la crearea unui lead.
+</Note>
+
+## Cerințe preliminare
+
+- ✅ Cheie API generată din **Configurare spațiu de lucru → Cheie API**
+- ✅ ID companie recuperat din `GET {{URL}}/accounts/companies`
+- ✅ ID rol client recuperat (consultați Pasul 1 de mai jos)
+
+---
+
+## Pasul 1: Obțineți ID-ul rolului de client
+
+Înainte de a crea un lead, aveți nevoie de ID-ul rolului pentru rolul `client` din compania dvs.
+
+### Endpoint
+
+```
+GET {{URL}}/roles?type=company
+```
+
+### Header-e
+
+| Header | Valoare |
+|---|---|
+| `x-api-key` | Cheia dvs. API |
+| `companyid` | ID-ul companiei dvs. |
+
+### Exemplu de solicitare
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/roles?type=company" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>"
+```
+
+### Exemplu de răspuns
+
+```json
+{
+  "roles": [
+    {
+      "_id": "6525994184e9ddd798534535",
+      "role": {
+        "_id": "6525994184e9ddd79853451e",
+        "responsibility": "",
+        "name": "client"
+      },
+      "company": "6525994184e9ddd79853450e",
+      "createdAt": "2023-10-10T18:34:41.567Z",
+      "updatedAt": "2024-10-01T07:28:48.340Z",
+      "__v": 0,
+      "type": "company"
+    }
+  ]
+}
+```
+
+Găsiți intrarea unde `roles[0].role.name === "client"` și extrageți `_id`-ul **exterior** — adică `roles[0]._id`, **nu** `roles[0].role._id`.
+
+```javascript
+const clientRoleId = roles.find(r => r.role.name === "client")._id;
+// e.g. "6525994184e9ddd798534535"
+```
+
+<Warning>
+  Utilizați `roles[0]._id` (ID-ul de mapare companie-rol), **nu** `roles[0].role._id` (ID-ul definiției rolului). Utilizarea ID-ului greșit face ca solicitarea de creare a lead-ului să eșueze.
+</Warning>
+
+---
+
+## Pasul 2: Creați un lead nou
+
+### Endpoint
+
+```
+POST {{URL}}/members/bulk-lead
+```
+
+### Header-e
+
+| Header | Valoare |
+|---|---|
+| `x-api-key` | Cheia dvs. API |
+| `companyid` | ID-ul companiei dvs. |
+| `Content-Type` | `application/json` |
+
+### Corpul solicitării
+
+Corpul solicitării este un **array JSON** — puteți crea unul sau mai multe lead-uri într-un singur apel.
+
+<ParamField body="firstName" type="string" required>
+  Prenumele lead-ului.
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  Numele de familie al lead-ului.
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  Adresa de e-mail a lead-ului. Trebuie să fie unică în spațiul dvs. de lucru.
+</ParamField>
+
+<ParamField body="role" type="string" required>
+  ID-ul rolului de client recuperat în Pasul 1 (adică `roles[0]._id`).
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  Trebuie setat la `false` la crearea unui lead. Setați la `true` numai la conversia unui lead într-un client complet.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Statusul lead-ului în pipeline. Valori comune: `New`, `Contacted`, `Qualified`. Implicit `New` dacă este omis.
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  Numărul de telefon al lead-ului.
+</ParamField>
+
+<ParamField body="source" type="string">
+  Cum ați achiziționat acest lead. Exemple: `website`, `referral`, `social`.
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  Poziția lead-ului (ordinea) în coloana panoului de pipeline. Implicit `1`.
+</ParamField>
+
+### Exemplu de solicitare
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-lead" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "role": "6525994184e9ddd798534535",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+### Răspuns de succes
+
+```json
+{
+  "message": "Lead created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  Șir de confirmare: `"Lead created successfully"`.
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  Array de obiecte lead create.
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  ID-ul unic al lead-ului creat recent. Stocați-l dacă trebuie să faceți referire la lead în apeluri API ulterioare.
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  Numele complet al lead-ului (firstName + lastName).
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  Statusul pipeline-ului al lead-ului așa cum este stocat.
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  Numele rolului atribuit membrului — va fi `"client"`.
+</ResponseField>
+
+<Tip>
+  Puteți transmite mai multe obiecte lead în array pentru a crea mai multe lead-uri într-un singur apel API. Fiecare obiect trebuie să includă toate câmpurile obligatorii cu propria adresă de e-mail unică.
+</Tip>

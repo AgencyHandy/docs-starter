@@ -1,0 +1,240 @@
+---
+title: "Zarządzanie zadaniami: tworzenie i śledzenie pracy w zleceniach"
+sidebarTitle: "Zadania"
+description: "Twórz, edytuj i zarządzaj zadaniami w zleceniach — w tym śledzenie czasu, opinie dotyczące plików, zadania zlecone przez klientów i widoczność zadań między zleceniami."
+---
+
+Zadania to jednostki pracy, które przekształcają zlecenie w konkretny rezultat. Każde zadanie istnieje w ramach określonego zlecenia, może być przypisane do członka zespołu i śledzi własny status, harmonogram, załączniki oraz wątek opinii. Ta strona wyjaśnia, jak tworzyć zadania i nimi zarządzać, jak klienci mogą zlecać zadania, jak działa śledzenie czasu i opinie dotyczące plików oraz jak przeglądać zadania ze wszystkich zleceń naraz.
+
+## Wymagania dotyczące ról
+
+| Czynność | Kto może to zrobić |
+|---|---|
+| Tworzenie zadań | Super Admin, Admin, Project Manager |
+| Edytowanie zadań | Super Admin, Admin, Project Manager |
+| Usuwanie zadań | Super Admin, Admin, Project Manager |
+| Wyświetlanie zadań w przeglądzie / zakończonych | Super Admin, Admin, PM, Klient |
+| Wysyłanie i odpowiadanie na opinie | Super Admin, Admin, PM |
+| Rejestrowanie czasu w zadaniach | Wszyscy przypisani użytkownicy (Super Adminowie i Adminowie mogą rejestrować w imieniu innych) |
+| Zlecanie zadania (klient) | Klient |
+| Zatwierdzanie / odrzucanie zleconych zadań | Super Admin, Admin |
+
+<Note>
+Pracownicy przypisani do zlecenia mogą zobaczyć zadania o statusie **W przeglądzie** lub **Zakończone**. Zadania o statusie **W toku** nie są widoczne dla pracowników.
+</Note>
+
+## Utwórz zadanie
+
+<Steps>
+  <Step title="Otwórz zlecenie">
+    Przejdź do **Zleceń** na lewym pasku bocznym i kliknij zlecenie, do którego chcesz dodać zadanie.
+  </Step>
+
+  <Step title="Dodaj nowe zadanie">
+    W zleceniu przewiń do sekcji **Zadania** i kliknij **+ Dodaj nowe zadanie**. Pojawi się formularz tworzenia zadania.
+  </Step>
+
+  <Step title="Wypełnij szczegóły zadania">
+    Uzupełnij dostępne pola:
+
+    | Pole | Uwagi |
+    |---|---|
+    | **Nazwa zadania** | Jasny, zwięzły tytuł elementu pracy |
+    | **Opis** | Szczegółowy kontekst, wymagania lub instrukcje |
+    | **Osoba odpowiedzialna** | Członek zespołu odpowiedzialny za wykonanie zadania |
+    | **Etykieta** | Znacznik kategorii do organizowania zadań (np. Design, Treści) |
+    | **Data rozpoczęcia** | Kiedy rozpoczyna się praca nad zadaniem |
+    | **Termin wykonania** | Kiedy zadanie musi być zakończone |
+    | **Wymagany przegląd klienta** | Pole wyboru wymagające zatwierdzenia zadania przez klienta przed oznaczeniem go jako Zakończone — domyślnie zaznaczone |
+    | **Załączniki** | Pliki referencyjne lub materiały pomocnicze |
+  </Step>
+
+  <Step title="Zapisz zadanie">
+    Kliknij **Zapisz**, aby utworzyć zadanie. Klient automatycznie otrzymuje powiadomienie o dodaniu nowego zadania do jego zlecenia.
+  </Step>
+</Steps>
+
+<Tip>
+Pole wyboru **Wymagany przegląd klienta** jest domyślnie włączone dla każdego nowego zadania. Jeśli zadanie jest czysto wewnętrzne i nie wymaga zatwierdzenia przez klienta, możesz je odznaczyć przed zapisaniem.
+</Tip>
+
+## Statusy zadań
+
+Zadania przechodzą przez następujące statusy:
+
+- **W toku** — zadanie jest realizowane (niewidoczne dla klientów ani pracowników)
+- **W przeglądzie** — zadanie zostało przesłane do przeglądu; widoczne dla klientów
+- **Zakończone** — zadanie zostało zatwierdzone i ukończone
+
+<Note>
+Gdy klient lub recenzent odrzuci zadanie z poziomu **W przeglądzie**, jego status automatycznie wraca do **W toku**.
+</Note>
+
+## Okno dialogowe zadania i strona aktywności
+
+Kliknięcie dowolnego zadania otwiera **Okno dialogowe zadania** — szczegółowy widok służący jako centrum aktywności zadania. Stąd możesz zobaczyć i zarządzać:
+
+- Aktualnym statusem, osobą odpowiedzialną, datą rozpoczęcia i terminem wykonania
+- Opisem zadania i wszelkimi załączonymi plikami
+- Wszystkimi wątkami opinii i odpowiedziami
+- Kompletnym dziennikiem aktywności pokazującym każdą aktualizację, komentarz i zmianę statusu zadania
+
+Każdy, kto jest częścią zlecenia — w tym klienci, gdy przegląd klienta jest włączony — może uzyskać dostęp do okna dialogowego zadania dla zadań, które są dla niego widoczne.
+
+## Edytuj zadanie
+
+Aby zaktualizować szczegóły zadania po jego utworzeniu, otwórz okno dialogowe zadania i zmodyfikuj odpowiednie pola (nazwa, opis, osoba odpowiedzialna, daty, etykieta lub załączniki). Zapisz zmiany, aby zastosować aktualizację. Tylko Super Adminowie, Adminowie i PM-owie mogą edytować zadania.
+
+## Usuń zadanie
+
+Aby usunąć zadanie, otwórz je i użyj opcji usuwania w menu akcji zadania. Usunięcie jest trwałe — wszystkie powiązane dzienniki czasu i wersje plików są usuwane wraz z zadaniem.
+
+<Warning>
+Usunięcie zadania powoduje również usunięcie wszystkich wersji plików i powiązanych z nimi komentarzy opinii. Tej czynności nie można cofnąć.
+</Warning>
+
+## Śledzenie czasu
+
+AgencyHandy zawiera wbudowane śledzenie czasu, dzięki czemu Twój zespół może rejestrować godziny bezpośrednio w zadaniach — bez potrzeby korzystania z zewnętrznego narzędzia.
+
+### Uruchamianie timera
+
+<Steps>
+  <Step title="Otwórz zadanie">
+    Przejdź do **Zlecenia → Zadania** i otwórz zadanie, dla którego chcesz śledzić czas.
+  </Step>
+
+  <Step title="Uruchom timer">
+    Kliknij **Uruchom timer**. Timer zaczyna działać i wyświetla nazwę zadania, bieżący czas oraz łączny zarejestrowany czas.
+  </Step>
+
+  <Step title="Wstrzymaj lub zatrzymaj po zakończeniu">
+    Kliknij **Wstrzymaj timer**, aby tymczasowo zatrzymać śledzenie, lub **Zatrzymaj timer**, aby sfinalizować wpis. Po zatrzymaniu potwierdzisz datę, godzinę rozpoczęcia, godzinę zakończenia, łączny czas trwania i opcjonalną notatkę.
+  </Step>
+</Steps>
+
+<Note>
+Możesz mieć tylko jeden aktywny timer w danym momencie. Uruchomienie nowego timera automatycznie wstrzymuje istniejący.
+</Note>
+
+<Warning>
+Jeśli zadanie jest oznaczone jako **Zakończone**, timer jest wyłączony. Otwórz ponownie zadanie, aby ponownie włączyć rejestrowanie czasu.
+</Warning>
+
+### Ręczne wprowadzanie czasu
+
+Jeśli musisz zarejestrować czas wstecz, kliknij **Ręczne wprowadzanie czasu** w zadaniu i wprowadź:
+
+- **Datę**
+- **Godzinę rozpoczęcia i zakończenia** (lub **Czas trwania** w godzinach i minutach)
+- **Notatki** (opcjonalnie)
+
+Wielu użytkowników może jednocześnie rejestrować czas dla tego samego zadania. Super Adminowie i Adminowie mogą tworzyć ręczne wpisy czasu w imieniu dowolnego użytkownika.
+
+### Dzienniki pracy
+
+Kliknij przycisk **Dziennik pracy** obok timera, aby zobaczyć pełne zestawienie wszystkich wpisów czasu dla zadania, w tym datę, godziny rozpoczęcia/zakończenia, łączny aktywny czas i wszelkie notatki. Adminowie i Super Adminowie mogą usuwać dowolny wpis; zwykli użytkownicy mogą usuwać tylko własne wpisy.
+
+### Karty pracy
+
+Przejdź do **Kart pracy** na lewym pasku bocznym, aby uzyskać widok zbiorczy wszystkich zarejestrowanych czasów w różnych zleceniach. Możesz filtrować według nazwy zadania, ID zlecenia, osoby odpowiedzialnej lub zakresu dat (dziennie, tygodniowo, miesięcznie) oraz grupować wyniki według członka zespołu, nazwy usługi lub nazwy zadania. Możesz również uruchomić timer lub dodać ręczny wpis bezpośrednio z widoku Kart pracy.
+
+## Opinie dotyczące plików
+
+System opinii dotyczących plików w AgencyHandy pozwala Tobie i Twoim klientom zostawiać precyzyjne, wizualne komentarze dotyczące wyników pracy — bezpośrednio w zadaniach. Obsługuje obrazy, pliki PDF, wideo i aktywne strony internetowe, z wbudowaną kontrolą wersji i wątkowymi dyskusjami.
+
+### Przesyłanie pliku do przeglądu
+
+Otwórz zadanie, kliknij ikonę **➕** w sekcji **Załączniki** i prześlij obraz, PDF, wideo lub wklej adres URL aktywnej strony internetowej.
+
+### Zostawianie opinii według typu pliku
+
+**Obrazy i pliki PDF**
+Otwórz plik i użyj paska narzędzi adnotacji (Strzałka, Linia, Prostokąt, Podkreślenie), aby oznaczyć konkretne obszary. Zaznacz region, wpisz komentarz i wybierz, czy chcesz go udostępnić swojemu zespołowi, klientowi czy obu stronom. Możesz również cofać lub ponawiać adnotacje oraz zmieniać ich kolory.
+
+**Wideo**
+Otwórz wideo i zatrzymaj je w dokładnej klatce, do której odnosi się Twoja opinia. Wpisz komentarz — wideo automatycznie zatrzymuje się podczas pisania. Opinia jest oznaczona sygnaturą czasową w tym momencie. Możesz usunąć sygnaturę czasową, aby zamiast tego zostawić ogólny komentarz.
+
+**Aktywne strony internetowe**
+Dodaj adres URL strony do zadania za pomocą przycisku **➕**, a następnie zainstaluj rozszerzenie przeglądarki AgencyHandy. Otwórz stronę w **Trybie podglądu** (interaktywny) lub przełącz się na **Tryb recenzji**, aby zrobić zrzut ekranu i adnotować go narzędziami rysowania, tekstu lub kształtów.
+
+### Czynności dotyczące komentarzy
+
+Każdy komentarz ma menu z trzema kropkami z opcjami:
+
+- Edycja komentarza
+- Kopiowanie odpowiedzi
+- Usunięcie komentarza
+- Ograniczenie widoczności tylko do wewnętrznego zespołu
+
+### Rozwiązywanie opinii
+
+Kliknij przycisk **✓** w komentarzu, aby oznaczyć go jako **Rozwiązany**. Rozwiązane komentarze pozostają widoczne w celach referencyjnych i można je ponownie otworzyć. Otrzymujesz powiadomienie, gdy komentarz, który zostawiłeś, zostanie rozwiązany przez kogoś innego.
+
+### Wersje plików
+
+Kliknij **Prześlij nową wersję**, aby dodać poprawiony plik. Poprzednie wersje i ich opinie są zachowane i dostępne z listy rozwijanej wersji. Podczas otwierania starszej wersji AgencyHandy informuje Cię, że istnieje nowsza wersja.
+
+Możesz oznaczać każdy plik jako **Wymaga przeglądu** lub **Zatwierdzone**, aby na pierwszy rzut oka komunikować status przeglądu.
+
+<Note>
+Klienci mogą zostawiać opinie dotyczące plików tylko wtedy, gdy pole wyboru **Wymagany przegląd klienta** jest włączone w zadaniu. Opinie dotyczące plików są dostępne tylko w zadaniach lub zleceniach — nie w katalogu usług ani obrazach profilu.
+</Note>
+
+## Zadania zlecone przez klientów
+
+Klienci mogą składać zlecenia zadań ze swojego portalu, dając im ustrukturyzowany sposób zgłaszania dodatkowych potrzeb bez pomijania procesu zatwierdzania.
+
+### Proces po stronie klienta
+
+<Steps>
+  <Step title="Dostęp do Zleceń">
+    Klient klika **Zlecenia** na pasku bocznym Portalu Klienta — lub używa przycisku **+ Zleć zadanie** bezpośrednio w zleceniu.
+  </Step>
+
+  <Step title="Wypełnij formularz zlecenia">
+    Klient podaje:
+    - **Zlecenie** (obowiązkowe — zlecenia zadań muszą być powiązane z istniejącym zleceniem)
+    - **Nazwa zadania** (obowiązkowe)
+    - **Opis** (opcjonalnie)
+    - **Załączniki** (opcjonalnie — do 1 GB; formaty obejmują PDF, DOCX, JPG, PNG, MP4, ZIP i inne)
+    - **Daty rozpoczęcia i zakończenia** (opcjonalnie)
+  </Step>
+
+  <Step title="Prześlij zlecenie">
+    Klient klika **Zleć**. Zadanie pojawia się w jego portalu jako **Oczekujące**, a Twoja agencja otrzymuje powiadomienie.
+  </Step>
+</Steps>
+
+### Proces po stronie agencji
+
+<Steps>
+  <Step title="Wyświetl przychodzące zlecenia">
+    Kliknij **Zlecenia** na pasku bocznym Portalu Agencji. Wszystkie oczekujące zlecenia pojawiają się w widoku listy. Możesz filtrować według klienta lub ID zlecenia, sortować alfabetycznie lub według daty zgłoszenia, oraz używać **Preferencji** do pokazywania lub ukrywania kolumn.
+  </Step>
+
+  <Step title="Przejrzyj zlecenie">
+    Kliknij zlecenie, aby przeczytać opis i wyświetlić podgląd załączników przed podjęciem decyzji.
+  </Step>
+
+  <Step title="Zatwierdź lub odrzuć">
+    Użyj przycisków akcji obok każdego zlecenia, aby zatwierdzić lub odrzucić je indywidualnie — lub użyj zbiorczych akcji w prawym górnym rogu, aby zatwierdzić lub odrzucić wszystkie zlecenia naraz.
+
+    - **Zatwierdzone** zlecenia stają się aktywnymi zadaniami w zleceniu i podążają normalnym procesem pracy z zadaniami.
+    - **Odrzucone** zlecenia pozostają zarejestrowane ze statusem **Odrzucone** i nie są dodawane do zlecenia.
+  </Step>
+</Steps>
+
+<Note>
+Klienci nie mogą pominąć etapu zatwierdzania. Zlecenie zawsze wymaga działania agencji, zanim stanie się aktywnym zadaniem. Oczekujące zlecenia pozostają widoczne zarówno dla klienta, jak i agencji do momentu podjęcia decyzji.
+</Note>
+
+## Widok wszystkich zadań
+
+Poza zarządzaniem zadaniami w poszczególnych zleceniach możesz przeglądać zadania ze wszystkich zleceń na jednym ekranie. Przejdź do **Zadań** na lewym pasku bocznym, aby uzyskać dostęp do strony **Wszystkie zadania**. Stąd możesz:
+
+- Zobaczyć każde zadanie, które jest dla Ciebie widoczne, niezależnie od tego, do którego zlecenia należy
+- Filtrować i sortować według statusu, osoby odpowiedzialnej, terminu wykonania lub zlecenia
+- Szybko identyfikować opóźnione lub zagrożone elementy w całym obciążeniu pracą
+
+Ten zbiorczy widok jest szczególnie przydatny dla Project Managerów i Adminów, którzy muszą równoważyć pojemność zespołu i śledzić kondycję realizacji na poziomie agencji.

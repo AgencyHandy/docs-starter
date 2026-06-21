@@ -1,0 +1,69 @@
+---
+title: "Prijunkite Slack ir gaukite AgencyHandy pranešimus realiuoju laiku"
+sidebarTitle: "Slack"
+description: "Susiekite savo Slack darbo sritį su AgencyHandy, kad užsakymų atnaujinimai, užduočių pakeitimai ir bilietų įspėjimai būtų automatiškai skelbiami Slack kanale."
+---
+
+AgencyHandy integracija su Slack leidžia jūsų komandai nuolat žinoti, kas vyksta, nereikalaujant persijunginėti tarp programų. Kai tik bus prisijungta, AgencyHandy automatiškai skelbs pranešimus jūsų pasirinktame Slack kanale kiekvieną kartą, kai pasikeičia užduotys, užsakymai ar kita darbo srities veikla — taigi jūsų komanda visada žino, kas vyksta realiuoju laiku.
+
+<Note>
+  Tik **SuperAdmin**, **Admin** ir **Manager** vaidmenys (turintys integracijos teises) gali prijungti arba valdyti Slack integraciją. Norint įgalioti ryšį, reikalingos Slack darbo srities administratoriaus teisės.
+</Note>
+
+## Prijungti Slack
+
+<Steps>
+  <Step title="Atidarykite Integrations">
+    Kairiajame šoninėje juostoje spustelėkite **Integrations**.
+  </Step>
+
+  <Step title="Raskite Slack kortelę">
+    Slinkite į **Slack** kortelę ir spustelėkite **Connect**.
+  </Step>
+
+  <Step title="Suteikite prieigą AgencyHandy Slack aplinkoje">
+    Atsidaro Slack įgaliojimo langas. Jei dar neprisijungėte prie savo Slack darbo srities, prisijunkite dabar. Peržiūrėkite AgencyHandy prašomas teises ir spustelėkite **Allow**, kad suteiktumėte prieigą.
+  </Step>
+
+  <Step title="Pasirinkite pranešimų kanalą">
+    Po įgaliojimo pasirinkite Slack kanalą, kuriame norite matyti AgencyHandy pranešimus. Išskleidžiamajame sąraše pasirinkite kanalą ir spustelėkite **Save**, kad patvirtintumėte.
+  </Step>
+
+  <Step title="Patvirtinkite sąranką">
+    Slack kortelė atsinaujins ir parodys **Connected**. AgencyHandy iš karto pradės skelbti pranešimus pasirinktame kanale.
+  </Step>
+</Steps>
+
+## Kokie pranešimai siunčiami į Slack
+
+AgencyHandy skelbia Slack pranešimą kiekvieną kartą, kai įvyksta bet kuris iš šių įvykių:
+
+| Kategorija | Pranešimą sukeliantys įvykiai |
+|---|---|
+| **Užduotys** | Užduotis sukurta, atnaujinta, priskirta arba užbaigta |
+| **Užsakymai** | Užsakymas sukurtas arba pakeista būsena |
+| **Komentarai** | Prie užduoties arba užsakymo pridėtas naujas komentaras |
+| **Failų priedai** | Prie užduoties pridėtas failas arba priedas |
+| **Bilietai** | Bilietas sukurtas, priskirtas arba pakeista būsena |
+
+Kiekviename Slack pranešime yra:
+
+- Užduoties, užsakymo arba bilieto **pavadinimas**
+- **Būsenos pakeitimas** arba veiksmas, sukėlęs pranešimą
+- **Nuoroda** į atitinkamą elementą AgencyHandy
+
+Kai prie užduoties pridedamas failas arba priedas, Slack pranešime taip pat pateikiama to priedo peržiūra.
+
+<Tip>
+  Pasirinkite specialų **#agency-handy-alerts** kanalą (arba panašų), kad pranešimai būtų tvarkingai organizuoti ir neužgrioztų pagrindinių komandos kanalų.
+</Tip>
+
+## Atjungti Slack
+
+Norėdami sustabdyti pranešimus, grįžkite į **Integrations** ir Slack kortelėje spustelėkite **Disconnect**. Visi pranešimai iš karto sustos.
+
+## Svarbios pastabos
+
+- **Viena darbo sritis vienam ryšiui** — kiekvienai AgencyHandy darbo sričiai galima prijungti tik vieną Slack darbo sritį. Norėdami pereiti prie kitos Slack darbo srities, atjunkite dabartinę ir vėl prisijunkite.
+- **Kanalo matomumas** — pranešimai matomi visiems pasirinktame Slack kanale esantiems nariams. Įsitikinkite, kad kanalas tinka dalijamo informacijos detalumo lygiui (pvz., venkite skelbti konfidencialius klientų užsakymų duomenis viešame kanale).
+- **Pakartotinis įgaliojimas** — jei jūsų Slack prieigos raktas pasibaigia arba pasikeičia teisės, grįžkite į Integrations ir vėl prisijunkite, kad atkurtumėte pranešimus.

@@ -1,0 +1,149 @@
+---
+title: "Configuração de Métodos de Pagamento: Transferência Bancária, Cripto e Wise"
+sidebarTitle: "Outros Pagamentos"
+description: "Ative alternativas de pagamento manual — transferência bancária, criptomoeda e Wise — para que os clientes que preferem métodos sem cartão possam pagar as suas faturas."
+---
+
+O AgencyHandy suporta três métodos de pagamento manual além do Stripe e do PayPal: **Transferência Bancária**, **Cripto** e **Wise**. Cada um é concebido para um tipo específico de cliente ou fluxo de trabalho. Os três requerem que marque manualmente uma fatura como **Paga** após receber os fundos, uma vez que o AgencyHandy não pode confirmar automaticamente transferências realizadas fora da plataforma.
+
+<Note>
+  Apenas as funções **SuperAdmin** e **Admin** podem ativar ou configurar estes métodos de pagamento.
+</Note>
+
+<Tabs>
+  <Tab title="Bank Transfer">
+    ## Transferência Bancária
+
+    O método de Transferência Bancária permite-lhe aceitar pagamentos manuais por wire ou ACH dos clientes. Fornece os seus dados bancários através de um editor de texto enriquecido, e o AgencyHandy exibe essas instruções aos clientes durante o checkout e na fatura.
+
+    ### Ativar Transferência Bancária
+
+    <Steps>
+      <Step title="Abrir as definições de Pagamento Bancário">
+        Na barra lateral esquerda, aceda a **Integrações → Método de Pagamento Bancário**.
+      </Step>
+
+      <Step title="Preencher as instruções de transferência">
+        Utilize o editor de texto enriquecido para introduzir os seus dados bancários. Inclua todos os campos de que os clientes precisam para concluir a transferência:
+
+        - **Nome do Beneficiário**
+        - **Número de Conta**
+        - **Nome do Banco**
+        - **Número de Roteamento**
+        - **Tipo de Conta** (ex.: Corrente, Poupança)
+        - **Morada do Banco**
+
+        Também pode adicionar memorandos, notas ou um contacto de suporte. Não há limite de caracteres, e o editor suporta negrito, sublinhado, listas, hiperligações e formatação de imagens.
+      </Step>
+
+      <Step title="Definir o requisito de comprovativo de pagamento (opcional)">
+        Ative **Captura de Ecrã do Pagamento é Obrigatória** se pretender que os clientes façam o upload de uma captura de ecrã antes de a sua encomenda ser processada.
+
+        - **Ativado** — os clientes devem carregar uma captura de ecrã válida no checkout. Nenhuma encomenda é criada até que um ficheiro seja carregado.
+        - **Desativado** — os clientes podem prosseguir sem carregar um comprovativo. A encomenda e a fatura são criadas imediatamente.
+      </Step>
+
+      <Step title="Guardar">
+        Clique em **Atualizar** para guardar a configuração. Clique em **Cancelar** para descartar as alterações.
+      </Step>
+    </Steps>
+
+    ### Experiência do cliente
+
+    Quando um cliente seleciona Transferência Bancária no checkout, vê as suas instruções de transferência personalizadas. Se for necessário comprovativo, aparece um pedido de upload de ficheiro e a encomenda fica em espera até que carregue uma captura de ecrã.
+
+    Depois de receber os fundos na sua conta bancária, abra a fatura no AgencyHandy e marque-a manualmente como **Paga** para libertar a encomenda.
+
+    <Tip>
+      Inclua um código de referência único nas suas instruções (ex.: o número da fatura) para poder associar as transferências recebidas a encomendas específicas sem confusão.
+    </Tip>
+  </Tab>
+
+  <Tab title="Crypto">
+    ## Pagamento em Cripto
+
+    O método de Pagamento em Cripto permite-lhe aceitar criptomoeda dos clientes através de uma transferência por carteira. Configure os seus dados de carteira e instruções uma única vez; os clientes veem-nos no checkout e na fatura. Atualmente, o **USDC** é a criptomoeda suportada.
+
+    ### Ativar Pagamento em Cripto
+
+    <Steps>
+      <Step title="Abrir as definições de Pagamento em Cripto">
+        Na barra lateral esquerda, aceda a **Integrações → Pagamento em Cripto**. Abre-se um ecrã de configuração de carteira com um editor de texto enriquecido.
+      </Step>
+
+      <Step title="Introduzir os dados da carteira">
+        Preencha os seguintes campos:
+
+        - **Tipo de Criptomoeda** — atualmente o USDC é suportado.
+        - **Endereço da Carteira** — o seu endereço público de carteira para receção de fundos.
+        - **Tipo de Rede** — ex.: ERC-20, TRC-20.
+        - **Instruções Adicionais** — memorando, etiqueta, valor mínimo, contacto de suporte ou qualquer outra orientação para os seus clientes.
+      </Step>
+
+      <Step title="Definir o requisito de comprovativo de pagamento (opcional)">
+        Ative **Exigir Comprovativo de Pagamento**:
+
+        - **Ativado** — os clientes devem carregar um ficheiro (ex.: uma captura de ecrã da transação) antes de a encomenda e a fatura serem criadas.
+        - **Desativado** — uma encomenda e uma fatura são criadas assim que o cliente seleciona o pagamento em cripto, sem exigir comprovativo.
+      </Step>
+
+      <Step title="Guardar">
+        Clique em **Guardar** para armazenar a sua configuração. Pode editar ou desligar o Pagamento em Cripto em qualquer altura no mesmo ecrã.
+      </Step>
+    </Steps>
+
+    ### Fluxo de checkout do cliente
+
+    Quando um cliente seleciona Cripto no checkout:
+
+    1. É criada uma **Encomenda** (estado: *Pendente*) e uma **Fatura** (estado: *Em Aberto*).
+    2. O cliente vê o seu endereço de carteira e as instruções.
+    3. Se for necessário comprovativo, aparece um botão de upload de ficheiro. O cliente deve carregar a captura de ecrã da transação antes de a encomenda prosseguir.
+    4. Após a conclusão da transferência e verificação dos fundos on-chain, abra a fatura no AgencyHandy e marque-a como **Paga**.
+    5. Quando uma fatura é marcada como **Paga** e a encomenda está *Pendente*, o estado da encomenda atualiza automaticamente para *Em Curso*.
+
+    <Note>
+      O Pagamento em Cripto só aparece no checkout se estiver ativado em **Definições do Workspace → Métodos de Pagamento** E nas definições de **Grupo de Serviços → Disponibilidade de Pagamento** relevantes. Desativá-lo nas Definições do Workspace oculta-o em todo o lado, independentemente das definições ao nível do serviço.
+    </Note>
+
+    <Tip>
+      Se um serviço não suportar USDC, a opção de pagamento em Cripto é automaticamente ocultada para esse serviço. Certifique-se de que o USDC está ativado nas definições do serviço se pretender que os clientes paguem com cripto.
+    </Tip>
+  </Tab>
+
+  <Tab title="Wise">
+    ## Pagamento via Wise
+
+    O método de Pagamento via Wise permite que os clientes paguem através de um link de pagamento Wise. Adiciona o link uma vez dentro de uma fatura, e este é incluído automaticamente em todas as faturas de subscrição futuras. O Wise é ideal para clientes internacionais que preferem transferências bancárias com taxas mais baixas do que as transferências wire tradicionais.
+
+    ### Adicionar o Wise como método de pagamento
+
+    <Steps>
+      <Step title="Abrir o módulo de Faturas">
+        Na barra lateral esquerda, clique em **Faturas** e depois em **Criar Fatura**.
+      </Step>
+
+      <Step title="Adicionar o seu link Wise">
+        Dentro do modal da fatura, desloque-se até à secção **Métodos de Pagamento**. Clique em **Adicionar Wise como método de pagamento** e cole o seu link de pagamento Wise no campo de entrada.
+      </Step>
+
+      <Step title="Guardar a fatura">
+        Clique em **Guardar** ou continue para finalizar a fatura. O seu link de pagamento Wise fica agora incorporado e visível para o cliente.
+      </Step>
+    </Steps>
+
+    ### Como funciona para os clientes
+
+    O link Wise aparece como um botão clicável na fatura do cliente. O cliente abre o link, conclui a transferência através da sua conta Wise e envia-lhe a confirmação. Como o AgencyHandy não recebe confirmação automática do Wise, deve marcar manualmente a fatura como **Paga** após receber os fundos.
+
+    <Warning>
+      O Wise **não pode** ser utilizado para pagamentos automáticos de upsell ou marketplace. Apenas um link de pagamento Wise pode ser adicionado por fatura. Verifique o link antes de enviar — um link incorreto significa que o pagamento do cliente vai para a conta errada.
+    </Warning>
+
+    ### Comportamento da plataforma
+
+    - Uma vez adicionado um link Wise, este aparece automaticamente em todas as faturas de **subscrição** futuras, a menos que o atualize ou remova.
+    - O AgencyHandy não realiza qualquer conversão automática de moeda. O cliente transfere na moeda para a qual o seu link Wise está configurado.
+    - É da sua responsabilidade acompanhar os pagamentos e marcar as faturas como Pagas após confirmar a receção.
+  </Tab>
+</Tabs>

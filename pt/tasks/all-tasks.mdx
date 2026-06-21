@@ -1,0 +1,126 @@
+---
+title: "Todas as Tarefas — Gestão Centralizada de Tarefas no AgencyHandy"
+sidebarTitle: "Todas as Tarefas"
+description: "Use a página Todas as Tarefas para uma vista em tempo real e filtrada por função de cada tarefa em encomendas em curso e em revisão — com pesquisa, filtros e ordenação."
+---
+
+A página Todas as Tarefas no AgencyHandy oferece-lhe uma vista única e centralizada de cada tarefa pertencente aos fluxos de trabalho ativos da sua agência. Em vez de procurar em encomendas individuais, pode ver todas as tarefas relevantes num só lugar, filtrá-las por responsável, prioridade ou data, e fazer edições diretamente a partir da lista. A visibilidade é automaticamente limitada à sua função — Super Admins veem tudo, Gestores de Projeto veem as suas encomendas atribuídas, e Colaboradores veem apenas as suas próprias tarefas.
+
+## Aceder à Página Todas as Tarefas
+
+1. Inicie sessão na sua conta AgencyHandy.
+2. Clique em **Tasks** na barra lateral esquerda.
+3. Selecione **All Tasks** para abrir o painel centralizado de tarefas.
+
+<Note>
+  A página Todas as Tarefas apenas apresenta tarefas de encomendas com estado **Ongoing** ou **In Review**. As tarefas associadas a encomendas noutro estado (ex.: Completed, Pending) não aparecem aqui.
+</Note>
+
+## Visibilidade de Tarefas por Função
+
+O que vê na página Todas as Tarefas depende inteiramente da sua função.
+
+| Função | O Que Vê |
+|------|---------------|
+| **Super Admin / Admin** | Todas as tarefas em todas as encomendas, equipas e estados |
+| **Gestor de Projeto (GP)** | Apenas tarefas de encomendas onde está atribuído como Gestor |
+| **Colaborador / Responsável** | Apenas tarefas diretamente atribuídas — mesmo que colegas de equipa estejam a trabalhar na mesma encomenda |
+
+<Tip>
+  Se um Gestor de Projeto não conseguir encontrar uma tarefa que espera ver, confirme que está atribuído como Gestor na encomenda relevante. Os Gestores de Projeto não veem tarefas a menos que sejam o Gestor atribuído dessa encomenda.
+</Tip>
+
+## Quando as Tarefas Aparecem Nesta Página
+
+As tarefas aparecem na página Todas as Tarefas quando estas condições são cumpridas:
+
+<CardGroup cols={2}>
+  <Card title="Encomendas que ativam a visibilidade de tarefas" icon="circle-check">
+    - Encomendas manuais (únicas ou por subscrição) são criadas
+    - Encomendas do catálogo via Stripe ou métodos de pagamento manual são efetuadas
+    - Uma proposta é aceite pela agência
+  </Card>
+  <Card title="Encomendas que mantêm as tarefas ocultas" icon="eye-slash">
+    - Tarefas solicitadas por clientes que a agência ainda não aceitou
+    - Encomendas de teste que a agência ainda não aceitou
+    - Encomendas com estado pendente a aguardar confirmação de pagamento bancário manual
+  </Card>
+</CardGroup>
+
+## Pesquisar, Filtrar e Ordenar
+
+A página Todas as Tarefas inclui um conjunto completo de controlos para o ajudar a encontrar exatamente o que precisa.
+
+### Pesquisa
+
+Use a barra de pesquisa para localizar tarefas por nome, responsável ou encomenda relacionada. Os resultados atualizam em tempo real à medida que escreve.
+
+### Filtros
+
+Clique em **Filter → + Add Filter** para abrir o painel de filtros. Pode combinar vários filtros para resultados precisos:
+
+| Filtro | O Que Faz |
+|--------|--------------|
+| **Order ID** | Mostrar tarefas associadas a um número de encomenda específico |
+| **Assignee** | Mostrar tarefas atribuídas a um membro específico da equipa |
+| **Status** | Filtrar por progresso da tarefa: Pending, In Progress, Review, Done, etc. |
+| **Priority** | Focar em tarefas de prioridade Alta, Média ou Baixa |
+| **Label** | Restringir por etiquetas ou categorias de tarefas |
+| **Kick Off Date** | Mostrar tarefas com início em ou após uma data específica |
+| **End Date** | Mostrar tarefas com prazo até uma data específica |
+
+<Note>
+  Os filtros estão disponíveis apenas na página Todas as Tarefas. Persistem durante a sessão do navegador mas repõem-se ao atualizar a página. Os filtros afetam apenas a sua vista e não alteram o que outros utilizadores veem.
+</Note>
+
+Para limpar todos os filtros, clique em **Clear Filters** para regressar à lista completa sem filtros.
+
+### Ordenação
+
+Ordene a lista de tarefas por:
+- **Data de entrega** — destacar tarefas que se aproximam ou que já estão em atraso
+- **Prioridade** — trazer as tarefas mais críticas para o topo
+- **Data de criação** — ver primeiro as tarefas adicionadas mais recentemente
+
+### Navegação por Trilho de Navegação
+
+Use o trilho de navegação no topo da página para manter o contexto ao navegar entre subtarefas, listas de tarefas e encomendas superiores. Isto é especialmente útil ao aprofundar uma tarefa específica e depois precisar de regressar à lista mais abrangente.
+
+## Editar Tarefas
+
+Pode modificar tarefas na página Todas as Tarefas de duas formas:
+
+<Tabs>
+  <Tab title="Edição Inline">
+    Clique diretamente num campo editável dentro da linha da tarefa — como o estado, responsável ou data de entrega — e faça a alteração sem sair da vista de lista. Esta é a opção mais rápida para atualizações rápidas.
+  </Tab>
+  <Tab title="Edição em Modal">
+    Clique no nome da tarefa para abrir o modal completo de detalhes. A partir daqui pode atualizar todas as propriedades da tarefa, adicionar notas, ver subtarefas e consultar o histórico completo da tarefa. Use esta opção para edições mais detalhadas ou quando precisa de contexto.
+  </Tab>
+</Tabs>
+
+## Regras de Eliminação de Tarefas
+
+As tarefas na página Todas as Tarefas estão diretamente associadas às suas encomendas superiores.
+
+- Quando uma **encomenda é eliminada**, todas as tarefas associadas a essa encomenda são **removidas automática e permanentemente** da página Todas as Tarefas.
+- Esta eliminação afeta todas as funções de utilizador — ninguém poderá ver essas tarefas após a encomenda ser eliminada.
+- **Não existe opção de recuperação** para tarefas eliminadas através da eliminação de encomendas.
+
+<Warning>
+  Eliminar uma encomenda remove permanentemente todas as suas tarefas. Certifique-se de que qualquer histórico de tarefas importante ou registos de entregas estão guardados noutro local antes de eliminar uma encomenda.
+</Warning>
+
+## Notas Adicionais
+
+<Accordion title="Atualizações em tempo real">
+  As alterações a encomendas, atribuições de tarefas ou estados de tarefas refletem-se em tempo real na página Todas as Tarefas. Se um colega de equipa atualizar uma tarefa enquanto tem a página aberta, verá a alteração sem precisar de atualizar.
+</Accordion>
+
+<Accordion title="Tarefas solicitadas por clientes">
+  As tarefas submetidas por clientes não aparecem na página Todas as Tarefas até que a agência as aceite explicitamente. Até serem aceites, estas tarefas permanecem num estado pendente e não são visíveis na vista centralizada.
+</Accordion>
+
+<Accordion title="Tarefas e estado das encomendas">
+  As tarefas apenas aparecem para encomendas com estado Ongoing ou In Review. Se uma encomenda passar para Completed ou for pausada, as suas tarefas deixam de aparecer aqui. Navegue para a encomenda específica para ver tarefas associadas a encomendas fora destes estados.
+</Accordion>

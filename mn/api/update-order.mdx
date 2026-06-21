@@ -1,0 +1,205 @@
+---
+title: "AgencyHandy API: PUT-ээр Одоо Байгаа Захиалгыг Шинэчлэх"
+sidebarTitle: "Захиалга Шинэчлэх"
+description: "AgencyHandy API ашиглан захиалгын дэлгэрэнгүй мэдээллийг шинэчлэх, статус солих, төслийн менежерийг дахин оноох болон PUT хүсэлтээр одоо байгаа захиалганд файл хавсаргана уу."
+---
+
+Захиалга Шинэчлэх эцсийн цэг нь AgencyHandy дахь одоо байгаа захиалга (төсөл)-ыг — нэр, статус, төсөв, хугацаа, оноогдсон менежерүүд болон бусад зүйлийг — гадаад систем эсвэл автоматчиллын скриптээс өөрчлөх боломж олгодог. Эцсийн цэг нь мөн файл хавсралтыг дэмждэг бөгөөд тэдгээрийг захиалгын системийн хавтаст нэмдэг.
+
+<Note>
+  Энэ эцсийн цэгийг ашиглахаасаа өмнө API түлхүүр болон Компанийн ID авахын тулд [Эхлэх нь](/mn/api/getting-started) гарын авлагыг дуусгана уу.
+</Note>
+
+<Warning>
+  Энэ эцсийн цэг нь зөвхөн `x-api-key` толгойн оронд `Authorization: Bearer <token>` (нэвтэрсэн гишүүний хандалтын токен) ашиглана. Дуудагч нь зорилтот компанийн **зөвшөөрөгдсөн гишүүн** болж баталгаажуулагдсан байх ёстой. Зөвшөөрөлгүй дуудагчид `403 PermissionError` хариулт хүлээн авна.
+</Warning>
+
+## Урьдчилсан шаардлагууд
+
+- ✅ Зөвшөөрөгдсөн воркспейсийн гишүүний хүчинтэй **Bearer токен**
+- ✅ `GET {{URL}}/accounts/companies` -аас авсан **Компанийн ID**
+- ✅ Шинэчлэхийг хүсэж буй захиалгын **Захиалгын ID** (Төслийн ID, `pid`)
+
+---
+
+## Эцсийн цэг
+
+```
+PUT {{URL}}/orders?pid=<ORDER_ID>
+```
+
+**Content-Type:** `multipart/form-data` — файл хавсаргаагүй ч серверийн multipart задлагчийг хангахын тулд үүнийг ашиглана уу.
+
+## Толгойнууд
+
+| Толгой | Шаардлагатай эсэх | Тайлбар |
+|---|---|---|
+| `Authorization` | Тийм | `Bearer <ACCESS_TOKEN>` — нэвтэрсэн гишүүний хандалтын токен. |
+| `companyid` | Тийм | Захиалга харьяалагдах компанийн Mongo ObjectId. |
+| `clientid` | Заавал биш | Бодит цагийн клиентийн сокет ID. Хангасан тохиолдолд мэдэгдэлд оруулагдана. |
+
+## Асуулгын параметрүүд
+
+<ParamField query="pid" type="string" required>
+  Шинэчлэх Захиалга / Төслийн ID. Үүнийг асуулгын мөрний параметр хэлбэрээр дамжуулна уу.
+</ParamField>
+
+## Хүсэлтийн биетийн талбарууд
+
+<ParamField body="name" type="string">
+  Захиалгын гарчгийг шинэчилнэ. Хамгийн багадаа 2 тэмдэгт.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Захиалгын шинэ статус. Дараах утгуудын нэг байх ёстой: `Pending`, `Ongoing`, `Review`, `Completed`, `Cancelled`.
+
+  **Зөвшөөрөгдөх шилжилтүүд:**
+  - `Review` нь зөвхөн `Ongoing` эсвэл өөр `Review`-ийн дараа байж болно. `Pending`-ээс шууд `Review` рүү шилжих нь `400 ValidationError` буцаана.
+  - `Completed` эсвэл `Cancelled` болсон захиалгыг шинэчлэх боломжгүй.
+  - Клиентүүд `Pending` дээрээс давсан захиалгыг цуцлах боломжгүй.
+</ParamField>
+
+<ParamField body="budget" type="number">
+  Нийт төсвийн тоо. `≥ 0` байх ёстой. `currency` мөн хангагдаагүй бол захиалгын одоогийн валютыг ашиглана.
+</ParamField>
+
+<ParamField body="currency" type="string">
+  Төсвийн валютын код. Жишээнүүд: `USD`, `CAD`, `EUR`.
+</ParamField>
+
+<ParamField body="quantity" type="number">
+  Багцанд худалдаж авсан нэгжийн тоо. `≥ 1` байх ёстой.
+</ParamField>
+
+<ParamField body="deadline" type="string">
+  Захиалгын дуусгах хугацааны ISO 8601 огноо мөр. Жишээ: `"2025-12-31T00:00:00.000Z"`.
+</ParamField>
+
+<ParamField body="kickoffDate" type="string">
+  Төслийн эхлэх огнооны ISO 8601 огноо мөр.
+</ParamField>
+
+<ParamField body="notes" type="string">
+  Багт харагдах дотоод тэмдэглэлүүд.
+</ParamField>
+
+<ParamField body="brief" type="string">
+  Клиентийн товч эсвэл төслийн хураангуй.
+</ParamField>
+
+<ParamField body="assignedProjectManagers" type="array">
+  Энэ захиалганд оноох төслийн менежерийн гишүүний ID-уудын бүтэн жагсаалт. Шинэ ID-уудыг багт нэмнэ; устгагдсан ID-уудыг хална. ID бүр нь ижил компани дотор `projectManager` эрхтэй гишүүнд харьяалагдах ёстой.
+</ParamField>
+
+<ParamField body="markTasksAsDone" type="boolean">
+  `status` нь `Completed` эсвэл `Cancelled` үед **Шаардлагатай**. `true` үед статус өөрчлөгдсөний дараа захиалгын бүх даалгаврыг дуусгасан гэж тэмдэглэнэ. `false` үед даалгаврууд одоогийн статустаа хэвээр үлдэнэ.
+</ParamField>
+
+<ParamField body="rejectRequestedTasks" type="boolean">
+  Зөвхөн `status` нь `Completed` эсвэл `Cancelled` үед зөвшөөрөгдөнө. `true` үед статус шинэчлэгдсэний дараа клиентийн хүссэн бүх хүлээгдэж буй даалгаврыг татгалзана.
+</ParamField>
+
+<ParamField body="repeatCount" type="number">
+  Зөвхөн давтамжийг өөрчлөх үед **захиалга** захиалгад шаардлагатай. `repeatDuration`-тай хамт ашиглана уу.
+</ParamField>
+
+<ParamField body="repeatDuration" type="string">
+  Захиалга захиалгад `repeatCount`-тай хамт шаардлагатай. Дараах утгуудын нэг: `day`, `week`, `month`, `year`.
+</ParamField>
+
+<ParamField body="billingCycleCount" type="number">
+  Давтагдах тооцооны циклийн заавал биш хязгаар. `0` болж өгнө (хязгааргүй).
+</ParamField>
+
+<ParamField body="billingCycleEvent" type="string">
+  Тооцооны цикл бүрийг хэрхэн боловсруулах. Дараах утгуудын нэг: `createOrderWithTask`, `noChange`.
+</ParamField>
+
+<ParamField body="files" type="file">
+  Тэг буюу хэд хэдэн файл хавсралт. Файлуудыг захиалгын системийн хавтаст нэмэгдэнэ; одоо байгаа файлуудыг хэзээ ч дарж бичдэггүй. `multipart/form-data` кодчиллыг ашиглаж, `files` талбарт файл бүрийг хавсаргана уу.
+</ParamField>
+
+---
+
+## Жишээ хүсэлт
+
+<CodeGroup>
+
+```bash cURL (no files)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "currency=USD" \
+  --form "quantity=1" \
+  --form "assignedProjectManagers[]=PROJECT_MANAGER_ID" \
+  --form "notes=Scope finalized with client." \
+  --form "brief=Launch-ready design refresh."
+```
+
+```bash cURL (with file)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "repeatCount=3" \
+  --form "repeatDuration=month" \
+  --form "billingCycleEvent=createOrderWithTask" \
+  --form "files=@/path/to/creative-brief.pdf"
+```
+
+</CodeGroup>
+
+**Эквивалент JSON ачаалал** (файл илгээхдээ multipart маягтын бичлэг болгон хөрвүүлнэ үү):
+
+```json
+{
+  "name": "Website Redesign",
+  "status": "Review",
+  "budget": 12000,
+  "currency": "USD",
+  "quantity": 1,
+  "assignedProjectManagers": ["{{PROJECT_MANAGER_ID}}"],
+  "repeatCount": 3,
+  "repeatDuration": "month",
+  "billingCycleEvent": "createOrderWithTask",
+  "notes": "Scope finalized with client.",
+  "brief": "Launch-ready design refresh."
+}
+```
+
+---
+
+## Хариулт
+
+| HTTP Статус | Тайлбар |
+|---|---|
+| `200 OK` | Шинэчлэлт амжилттай болсон. |
+| `400 ValidationError` | Буруу захиалгын ID, хориглогдсон статусын шилжилт эсвэл буруу ачаалал. Холбогдох тохиолдолд хариулт `fieldName`-г агуулна. |
+| `403 PermissionError` | Дуудагч зөвшөөрөгдсөн гишүүн биш, компанийн эрхгүй, воркспейсийн захиалга дуусгавар болсон, эсвэл клиент хориглогдсон цуцлалтыг оролдсон. |
+| `500 Internal Server Error` | Боловсруулагдаагүй алдаа — серверийн бүртгэлийг шалгана уу. |
+
+### Амжилттай хариулт
+
+```json
+{
+  "message": "Project has been updated"
+}
+```
+
+---
+
+## Бизнесийн дүрмүүд болон гаж нөлөөлүүд
+
+- **Статусын шилжилтүүд** нь хязгаарлагдсан. `Review` нь зөвхөн `Ongoing` эсвэл өөр `Review`-ийн дараа байж болно. `Pending → Review` оролдох нь `400 ValidationError` буцаана.
+- `Pending`-ээс `Ongoing`, `Review` эсвэл `Completed` рүү статус шилжүүлэх нь захиалгын файлын хавтасыг идэвхжүүлж, байршуулсан файлууд төслийн багт хандах боломжтой болно.
+- `status`-ийг `Completed` эсвэл `Cancelled` болгоход `markTasksAsDone`-ийг `true` эсвэл `false` гэж тодорхой тохируулах **шаардлагатай**.
+- `Review`, `Completed` эсвэл `Cancelled` рүү статус өөрчлөгдөх нь автоматаар клиентийн мэдэгдлийг өдөөнө:
+  - **Review** — хянагдах шаардлагатай гэдгийг клиентэд мэдэгдэнэ.
+  - **Completed** — клиентэд `orderCompletion` мэдэгдэл илгээнэ.
+  - **Cancelled** — клиентэд `orderCancellation` мэдэгдэл илгээнэ.
+- Амжилттай шинэчлэлт бүр нь тухайн үйл явдалд бүртгэлтэй идэвхтэй webhook байвал шинэчлэгдсэн захиалгын баримт бичиг болон хавсралтын мета өгөгдлийг агуулсан `ORDER.UPDATED` webhook үйл явдлыг өдөөнө.

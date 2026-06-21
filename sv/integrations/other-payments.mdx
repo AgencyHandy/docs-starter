@@ -1,0 +1,149 @@
+---
+title: "Konfiguration av banköverföring, krypto och Wise som betalningsmetoder"
+sidebarTitle: "Andra betalningar"
+description: "Aktivera manuella betalningsalternativ — banköverföring, kryptovaluta och Wise — så att klienter som föredrar kortfria metoder kan betala dina fakturor."
+---
+
+AgencyHandy stöder tre manuella betalningsmetoder utöver Stripe och PayPal: **Banköverföring**, **Krypto** och **Wise**. Var och en är utformad för en specifik typ av klient eller arbetsflöde. Alla tre kräver att du manuellt markerar en faktura som **Betald** efter att du har tagit emot pengarna, eftersom AgencyHandy inte automatiskt kan bekräfta överföringar utanför plattformen.
+
+<Note>
+  Endast rollerna **SuperAdmin** och **Admin** kan aktivera eller konfigurera dessa betalningsmetoder.
+</Note>
+
+<Tabs>
+  <Tab title="Bank Transfer">
+    ## Banköverföring
+
+    Metoden Bankoverföring låter dig ta emot manuella bank- eller ACH-betalningar från klienter. Du anger dina bankuppgifter via en redigerare med formatering, och AgencyHandy visar dessa instruktioner för klienter vid utcheckning och i fakturan.
+
+    ### Aktivera bankoverföring
+
+    <Steps>
+      <Step title="Öppna inställningar för bankbetalning">
+        I den vänstra sidopanelen, gå till **Integrationer → Bankbetalningsmetod**.
+      </Step>
+
+      <Step title="Fyll i dina överföringsinstruktioner">
+        Använd redigeraren för att ange dina bankuppgifter. Inkludera alla fält som dina klienter behöver för att slutföra överföringen:
+
+        - **Mottagarens namn**
+        - **Kontonummer**
+        - **Banknamn**
+        - **Clearingnummer**
+        - **Kontotyp** (t.ex. Privatkonto, Sparkonto)
+        - **Bankadress**
+
+        Du kan också lägga till minnesanteckningar, noteringar eller en supportkontakt. Det finns ingen teckengräns, och redigeraren stöder fet stil, understrykning, listor, länkar och bildformatering.
+      </Step>
+
+      <Step title="Ange krav på betalningsbevis (valfritt)">
+        Aktivera **Skärmbild av betalning krävs** om du vill att klienter ska ladda upp en skärmbild innan deras beställning behandlas.
+
+        - **Aktiverat** — klienter måste ladda upp en giltig skärmbild vid utcheckning. Ingen beställning skapas förrän en fil har laddats upp.
+        - **Inaktiverat** — klienter kan gå vidare utan att ladda upp bevis. Beställningen och fakturan skapas omedelbart.
+      </Step>
+
+      <Step title="Spara">
+        Klicka på **Uppdatera** för att spara dina inställningar. Klicka på **Avbryt** för att ignorera ändringar.
+      </Step>
+    </Steps>
+
+    ### Klientupplevelse
+
+    När en klient väljer Bankoverföring vid utcheckning ser de dina anpassade överföringsinstruktioner. Om betalningsbevis krävs visas en uppmaning om filuppladdning och beställningen hålls kvar tills de laddar upp en skärmbild.
+
+    När du har tagit emot pengarna på ditt bankkonto öppnar du fakturan i AgencyHandy och markerar den manuellt som **Betald** för att frigöra beställningen.
+
+    <Tip>
+      Inkludera en unik referenskod i dina instruktioner (t.ex. fakturanumret) så att du kan matcha inkommande överföringar med specifika beställningar utan förvirring.
+    </Tip>
+  </Tab>
+
+  <Tab title="Crypto">
+    ## Kryptobetalning
+
+    Metoden Kryptobetalning låter dig ta emot kryptovaluta från klienter via en plånboksbaserad överföring. Du konfigurerar dina plånboksuppgifter och instruktioner en gång; klienter ser dem vid utcheckning och i fakturan. För närvarande är **USDC** den kryptovaluta som stöds.
+
+    ### Aktivera kryptobetalning
+
+    <Steps>
+      <Step title="Öppna inställningar för kryptobetalning">
+        I den vänstra sidopanelen, gå till **Integrationer → Kryptobetalning**. En skärm för plånbokskonfiguration öppnas med en redigerare.
+      </Step>
+
+      <Step title="Ange dina plånboksuppgifter">
+        Fyll i följande fält:
+
+        - **Kryptovalutatyp** — för närvarande stöds USDC.
+        - **Plånboksadress** — din offentliga plånboksadress för att ta emot pengar.
+        - **Nätverkstyp** — t.ex. ERC-20, TRC-20.
+        - **Ytterligare instruktioner** — memo, tagg, minimibelopp, supportkontakt eller annan vägledning för dina klienter.
+      </Step>
+
+      <Step title="Ange krav på betalningsbevis (valfritt)">
+        Aktivera **Kräv betalningsbevis**:
+
+        - **Aktiverat** — klienter måste ladda upp en fil (t.ex. en transaktionsskärmbild) innan beställningen och fakturan skapas.
+        - **Inaktiverat** — en beställning och faktura skapas så snart klienten väljer kryptobetalning, utan att bevis krävs.
+      </Step>
+
+      <Step title="Spara">
+        Klicka på **Spara** för att lagra dina inställningar. Du kan redigera eller koppla bort kryptobetalning när som helst från samma skärm.
+      </Step>
+    </Steps>
+
+    ### Klientens utcheckningsflöde
+
+    När en klient väljer Krypto vid utcheckning:
+
+    1. En **Beställning** (status: *Väntande*) och en **Faktura** (status: *Öppen*) skapas.
+    2. Klienten visas din plånboksadress och instruktioner.
+    3. Om betalningsbevis krävs visas en filuppladdningsknapp. Klienten måste ladda upp sin transaktionsskärmbild innan beställningen kan fortsätta.
+    4. När överföringen är klar och du har verifierat pengarna på kedjan öppnar du fakturan i AgencyHandy och markerar den som **Betald**.
+    5. När en faktura markeras som **Betald** och beställningen är *Väntande* uppdateras beställningens status automatiskt till *Pågående*.
+
+    <Note>
+      Kryptobetalning visas bara vid utcheckning om det är aktiverat i **Arbetsyteinställningar → Betalningsmetoder** OCH i de relevanta **Tjänstegrupp → Betalningtillgänglighet**-inställningarna. Om du inaktiverar det i Arbetsyteinställningar döljs det överallt, oavsett inställningar på tjänstnivå.
+    </Note>
+
+    <Tip>
+      Om en tjänst inte stöder USDC döljs kryptobetalningsalternativet automatiskt för den tjänsten. Se till att USDC är aktiverat i dina tjänstinställningar om du vill att klienter ska kunna betala med krypto.
+    </Tip>
+  </Tab>
+
+  <Tab title="Wise">
+    ## Wise-betalning
+
+    Metoden Wise-betalning låter klienter betala via en Wise-betalningslänk. Du lägger till länken en gång i en faktura, och den inkluderas automatiskt i alla framtida prenumerationsfakturor. Wise är idealiskt för internationella klienter som föredrar bank-till-bank-överföringar med lägre avgifter än traditionella banköverföringar.
+
+    ### Lägg till Wise som betalningsmetod
+
+    <Steps>
+      <Step title="Öppna fakturamodulen">
+        I den vänstra sidopanelen, klicka på **Fakturor** och sedan på **Skapa faktura**.
+      </Step>
+
+      <Step title="Lägg till din Wise-länk">
+        I fakturamodalen, scrolla till avsnittet **Betalningsmetoder**. Klicka på **Lägg till Wise som betalningsmetod** och klistra sedan in din Wise-betalningslänk i inmatningsfältet.
+      </Step>
+
+      <Step title="Spara fakturan">
+        Klicka på **Spara** eller fortsätt för att slutföra fakturan. Din Wise-betalningslänk är nu inbäddad och synlig för klienten.
+      </Step>
+    </Steps>
+
+    ### Hur det fungerar för klienter
+
+    Wise-länken visas som en klickbar knapp på klientens faktura. Klienten öppnar länken, slutför överföringen via sitt Wise-konto och skickar dig en bekräftelse. Eftersom AgencyHandy inte tar emot automatisk bekräftelse från Wise måste du manuellt markera fakturan som **Betald** när du har tagit emot pengarna.
+
+    <Warning>
+      Wise **kan inte** användas för automatiserade merförsäljnings- eller marknadsplatsbetalningar. Endast en Wise-betalningslänk kan läggas till per faktura. Kontrollera länken noga innan du skickar — en felaktig länk innebär att klientens betalning hamnar på fel konto.
+    </Warning>
+
+    ### Plattformsbeteende
+
+    - När en Wise-länk har lagts till visas den automatiskt på alla framtida **prenumerations**fakturor såvida du inte uppdaterar eller tar bort den.
+    - AgencyHandy utför ingen automatisk valutakonvertering. Klienten överför i den valuta som din Wise-länk är konfigurerad för.
+    - Du ansvarar för att spåra betalningar och markera fakturor som Betalda efter att du bekräftat mottagandet.
+  </Tab>
+</Tabs>

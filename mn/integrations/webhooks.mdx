@@ -1,0 +1,196 @@
+---
+title: "Webhook Удирдлага: Үүсгэх, Туршиж Үзэх болон Баталгаажуулах"
+sidebarTitle: "Webhooks"
+description: "AgencyHandy-д webhook тохируулж, захиалга, даалгавар, нэхэмжлэл эсвэл бусад объектууд өөрчлөгдөх бүрт бодит цагийн үйл явдлын өгөгдлийг гадаад системүүдэд түлхэх боломжтой."
+---
+
+Webhook нь AgencyHandy-д ямар нэг өөрчлөлт гарсан даруй гадаад системүүд рүү өгөгдөл дамжуулах боломж олгодог — лавлалт хийх шаардлагагүй. Тохируулсан үйл явдал идэвхжих үед (жишээ нь, захиалга шинэчлэгдсэн эсвэл тасалбар үүсгэгдсэн) AgencyHandy нь таны зааж өгсөн эцсийн цэгийн URL-д JSON ачааллын хамт HTTP POST хүсэлт илгээдэг. Энэ нь CRM, тооцооны систем эсвэл захиалгат хяналтын самбар зэрэг гадаад хэрэгслүүдийг бодит цагт AgencyHandy воркспейстэй синхрончилоход хялбар болгодог.
+
+<Note>
+  Business Pro тарифын воркспейсүүд тооцооны хугацаанд хамгийн ихдээ **30,000 webhook үйл явдал** боловсруулах боломжтой. Их хэмжээний автоматчиллыг тохиолдлоосоо өмнө тарифын хязгаараа шалгаарай.
+</Note>
+
+## Дэмжигдэх үйл явдлууд
+
+Webhook-ийг дараах үйл явдлуудын аль ч хослолд бүртгэж болно:
+
+| Ангилал | Үйл явдлууд |
+|---|---|
+| **Үйлчилгээ** | Үүсгэгдсэн, Шинэчлэгдсэн, Устгагдсан |
+| **Захиалга** | Үүсгэгдсэн, Шинэчлэгдсэн, Устгагдсан |
+| **Даалгавар** | Үүсгэгдсэн, Хуваарилагдсан, Гүйцэтгэгдсэн, Шинэчлэгдсэн |
+| **Нэхэмжлэл** | Статус өөрчлөгдсөн |
+| **Клиент / Хэрэглэгч** | Шинэ клиент нэмэгдсэн, Клиент/хэрэглэгч устгагдсан |
+| **Санал** | Илгээгдсэн, Хүлээн авсан, Зөвшөөрсөн, Татгалзсан |
+| **Тасалбар** | Үүсгэгдсэн, Хуваарилагдсан, Статус өөрчлөгдсөн |
+| **Төлбөр** | Хүлээн авсан, Амжилтгүй болсон |
+| **Үйлчилгээний багц** | Үүсгэгдсэн, Шинэчлэгдсэн, Устгагдсан |
+
+## Webhook үүсгэх
+
+<Steps>
+  <Step title="Webhook Удирдлага руу очих">
+    Зүүн талын цэснээс **Integrations → Webhooks Management** руу оч.
+  </Step>
+
+  <Step title="Токеноо баталгаажуулах">
+    Webhook токеноо баталгаажуулахын тулд **Management** товч дарна уу. Энэ токен нь гарч буй ачааллыг AgencyHandy-аас ирсэн гэдгийг баталгаажуулахын тулд гарын үсэглэхэд ашиглагддаг.
+  </Step>
+
+  <Step title="Шинэ webhook үүсгэх">
+    Webhook тохируулах маягтыг нээхийн тулд **Create New Webhook** дарна уу.
+  </Step>
+
+  <Step title="Эцсийн цэгийн URL оруулах">
+    **Endpoint URL** талбарт webhook өгөгдлийг хүлээн авах гадаад системийн URL оруулна уу. Энэ нь нийтэд хандах боломжтой **POST** эцсийн цэг байх ёстой.
+  </Step>
+
+  <Step title="Контентийн төрлийг сонгох">
+    Контентийн төрлийг **JSON** болгон сонгоно уу. AgencyHandy бүх webhook ачааллыг `application/json` хэлбэрээр илгээдэг.
+  </Step>
+
+  <Step title="Webhook үйл явдлуудыг сонгох">
+    Энэ webhook-ийг идэвхжүүлэх ёстой үйл явдал бүрийг сонгоно уу. Олон ангиллаас үйл явдлуудыг сонгох боломжтой — жишээ нь, **Order: Created** болон **Invoice: Status changed** хоёулаа нэг эцсийн цэг рүү чиглэж болно.
+  </Step>
+
+  <Step title="Webhook-ийг идэвхжүүлэх">
+    **Active** радио товчийг тохируулна уу. Идэвхтэй үед AgencyHandy нь сонгосон бүх үйл явдлын ачааллыг бодит цагт таны эцсийн цэг рүү хүргэнэ.
+  </Step>
+
+  <Step title="Тохиргоог хадгалах">
+    Тохиргоогоо хянаад **Save** дарна уу. Webhook жагсаалтад гарч ирэх бөгөөд шууд үйл явдлуудыг хүргэж эхэлнэ.
+  </Step>
+</Steps>
+
+## Webhook туршиж үзэх
+
+Webhook үүсгэсний дараа эцсийн цэг хүрч болохуйц, өгөгдлийг зөв боловсруулж байгаа эсэхийг баталгаажуулахын тулд туршилтын ачаалал илгээнэ үү.
+
+<Steps>
+  <Step title="Webhook нээх">
+    Webhooks Management жагсаалтаас туршихыг хүссэн webhook дарна уу.
+  </Step>
+
+  <Step title="Test Event дарах">
+    Webhook дэлгэрэнгүй хуудасны **Test Event** товч дарна уу.
+  </Step>
+
+  <Step title="Туршилтын үйл явдал сонгох">
+    Энэ webhook-д тохируулсан үйл явдлуудын жагсаалтаас жишээ үйл явдал сонгоно уу (жишээ нь, **Order: Created**).
+  </Step>
+
+  <Step title="Туршилтын ачааллыг илгээх">
+    **Send** дарна уу. AgencyHandy таны эцсийн цэгийн URL-д жишээ ачаалал илгээнэ.
+  </Step>
+
+  <Step title="Үр дүнг шалгах">
+    Туршилтын ачаалал ирж, хүлээгдэж буйгаар боловсруулагдсан эсэхийг гадаад системд шалгана уу. AgencyHandy-д буцаж, webhook дотор **history**-г (түүх) харна уу — бүтэн хүсэлт, эцсийн цэгийн буцаасан хариу харж, хэрэв шаардлагатай бол өнгөрсөн үйл явдлыг дахин илгээж болно.
+  </Step>
+</Steps>
+
+<Tip>
+  Бодит системийг холихоосоо өмнө яг ачааллын хэлбэрийг хянах зорилгоор тохиргооны явцад түр эцсийн цэг болгон [Webhook.site](https://webhook.site) эсвэл [RequestBin](https://requestbin.com) зэрэг хэрэгслийг ашиглана уу.
+</Tip>
+
+## Webhook ачааллыг баталгаажуулах
+
+AgencyHandy-ийн гарч буй webhook хүсэлт бүр ачаалал жинхэнэ бөгөөд өөрчлөгдөөгүйг баталгаажуулахад эцсийн цэгийн ашиглаж болох гарын үсгийн толгой агуулдаг.
+
+### Гарын үсгийн толгой
+
+```
+x-ah-sig: <signature>
+```
+
+AgencyHandy энэ толгойг webhook хүсэлт бүрд нэмдэг. Ирж буй хүсэлтүүдээс утгыг гаргаж аваад баталгаажуулах эцсийн цэгт дамжуулна уу.
+
+### Webhook гарын үсгийг баталгаажуулах
+
+Ачаалал жинхэнэ эсэхийг баталгаажуулахын тулд дараах хүсэлт илгээнэ үү:
+
+```
+POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature
+Content-Type: application/json
+```
+
+<ParamField body="webhookId" type="string" required>
+  Үйл явдал хүлээн авсан webhook-ийн ID. Үүнийг AgencyHandy-ийн webhook дэлгэрэнгүй хуудаснаас олно уу.
+</ParamField>
+
+<ParamField body="signature" type="string" required>
+  Ирж буй webhook хүсэлтийн `x-ah-sig` толгойн утга.
+</ParamField>
+
+<ParamField body="secret" type="string" required>
+  AgencyHandy-ийн webhook дэлгэрэнгүй хуудасны webhook нууц.
+</ParamField>
+
+<ParamField body="payload" type="object" required>
+  AgencyHandy-ийн webhook хүсэлтээс хүлээн авсан цэвэр JSON биет.
+</ParamField>
+
+<CodeGroup>
+
+```javascript JavaScript
+const url = 'https://api.agencyhandy.com/api/v1/webhooks/verify-signature';
+
+const postData = {
+  webhookId: 'your_webhook_id',
+  signature: 'your_signature',   // value of x-ah-sig header
+  secret: 'your_webhook_secret',
+  payload: {},                   // the parsed JSON body from AgencyHandy
+};
+
+const response = await fetch(url, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(postData),
+});
+
+const data = await response.json();
+console.log(data); // { "verification_status": "SUCCESS" }
+```
+
+```bash cURL
+curl -X POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature \
+  -H "Content-Type: application/json" \
+  -d '{
+    "webhookId": "your_webhook_id",
+    "signature": "your_signature",
+    "secret": "your_webhook_secret",
+    "payload": {}
+  }'
+```
+
+</CodeGroup>
+
+**Хариулт**
+
+<ResponseField name="verification_status" type="string">
+  Гарын үсэг хүчинтэй үед `SUCCESS`. Баталгаажуулалт амжилтгүй болоход `FAILED` (HTTP 403).
+</ResponseField>
+
+```json Success (200)
+{
+  "verification_status": "SUCCESS"
+}
+```
+
+```json Failure (403)
+{
+  "type": "PermissionError",
+  "status": 403,
+  "verification_status": "FAILED"
+}
+```
+
+<Warning>
+  Webhook нуутаа нууцалж байгаарай. Үе үе эргүүлж, эргүүлсний дараа баталгаажуулалтын логикоо шууд шинэчлэнэ үү. Клиентийн кодонд эсвэл нийтийн репозиторид ил болгохгүй байгаарай.
+</Warning>
+
+## Чухал тэмдэглэлүүд
+
+- Таны эцсийн цэгийн URL нь **нийтэд хандах боломжтой HTTPS POST** URL байх ёстой.
+- Хэрэв эцсийн цэг түр боломжгүй болсон бол AgencyHandy-ийн webhook-ийн түүхийн самбарыг шалгаарай — тэндээс өнгөрсөн үйл явдлыг шууд **дахин илгээж** болно.
+- Амжилтгүй хүргэлт эсвэл зөвшөөрөлгүй хандалтын оролдлогыг илрүүлэхийн тулд webhook үйл ажиллагааг тогтмол хянаарай.
+- Давтан амжилтгүй болсон webhook-ийг AgencyHandy зогсоож болно — асуудлыг эрт илрүүлэхийн тулд хүргэлтийн бүртгэлийг хянаарай.

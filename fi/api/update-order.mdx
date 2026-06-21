@@ -1,0 +1,205 @@
+---
+title: "AgencyHandy API: Päivitä olemassa oleva tilaus PUT-pyynnöllä"
+sidebarTitle: "Päivitä tilaus"
+description: "Käytä AgencyHandy API:a tilauksen tietojen päivittämiseen, tilan muuttamiseen, projektipäälliköiden uudelleenmäärittämiseen ja tiedostojen liittämiseen olemassa olevaan tilaukseen PUT-pyynnön kautta."
+---
+
+Päivitä tilaus -päätepiste antaa sinun muokata olemassa olevaa tilausta (projektia) AgencyHandyssa — muuttaa sen nimeä, tilaa, budjettia, aikataulua, osoitettuja päälliköitä ja paljon muuta — kaikki ulkoisesta järjestelmästä tai automaatioskriptistä. Päätepiste tukee myös tiedostoliitteitä, jotka lisätään tilauksen järjestelmäkansioon.
+
+<Note>
+  Ennen tämän päätepisteen käyttämistä, suorita [Aloittaminen](/fi/api/getting-started) -opas API-avaimen ja yritystunnuksen hankkimiseksi.
+</Note>
+
+<Warning>
+  Tämä päätepiste käyttää `Authorization: Bearer <token>` -otsikkoa (kirjautuneen jäsenen käyttöoikeustunnus) pelkän `x-api-key`-otsikon sijaan. Varmista, että kutsujasi on todennettu kohdeyhtiön **hyväksyttynä jäsenenä**. Luvattomat kutsujat saavat `403 PermissionError` -virheen.
+</Warning>
+
+## Edellytykset
+
+- ✅ Voimassa oleva **Bearer-tunnus** hyväksytylle työtilan jäsenelle
+- ✅ **Yritystunnus** haettu kohteesta `GET {{URL}}/accounts/companies`
+- ✅ Päivitettävän tilauksen **tilauksen tunnus** (Project ID, `pid`)
+
+---
+
+## Päätepiste
+
+```
+PUT {{URL}}/orders?pid=<ORDER_ID>
+```
+
+**Content-Type:** `multipart/form-data` — käytä tätä myös silloin, kun tiedostoja ei liitetä, jotta palvelimen multipart-jäsennin on tyytyväinen.
+
+## Otsikot
+
+| Otsikko | Pakollinen | Kuvaus |
+|---|---|---|
+| `Authorization` | Kyllä | `Bearer <ACCESS_TOKEN>` — kirjautuneen jäsenen käyttöoikeustunnus. |
+| `companyid` | Kyllä | Tilauksen omistavan yrityksen Mongo ObjectId. |
+| `clientid` | Valinnainen | Reaaliaikainen asiakkaan socket-tunnus. Kun annettu, ilmoitukset sisältävät sen. |
+
+## Kyselyparametrit
+
+<ParamField query="pid" type="string" required>
+  Päivitettävän tilauksen / projektin tunnus. Välitä tämä kyselymerkkijono-parametrina.
+</ParamField>
+
+## Pyynnön rungon kentät
+
+<ParamField body="name" type="string">
+  Päivittää tilauksen otsikon. Vähintään 2 merkkiä.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Tilauksen uusi tila. On oltava yksi seuraavista: `Pending`, `Ongoing`, `Review`, `Completed`, `Cancelled`.
+
+  **Sallitut siirtymät:**
+  - `Review` voi seurata vain `Ongoing`- tai toista `Review`-tilaa. Hyppääminen `Pending`-tilasta suoraan `Review`-tilaan palauttaa `400 ValidationError` -virheen.
+  - Tilauksia, jotka ovat jo `Completed`- tai `Cancelled`-tilassa, ei voida päivittää.
+  - Asiakkaat eivät voi peruuttaa tilausta, joka on edennyt `Pending`-tilan ohi.
+</ParamField>
+
+<ParamField body="budget" type="number">
+  Kokonaisbudjettiluku. On oltava `≥ 0`. Käyttää tilauksen olemassa olevaa valuuttaa, ellei `currency` ole myös annettu.
+</ParamField>
+
+<ParamField body="currency" type="string">
+  Budjetin valuuttakoodi. Esimerkit: `USD`, `CAD`, `EUR`.
+</ParamField>
+
+<ParamField body="quantity" type="number">
+  Paketista ostettujen yksiköiden määrä. On oltava `≥ 1`.
+</ParamField>
+
+<ParamField body="deadline" type="string">
+  ISO 8601 -päivämäärämerkkijono tilauksen eräpäivälle. Esimerkki: `"2025-12-31T00:00:00.000Z"`.
+</ParamField>
+
+<ParamField body="kickoffDate" type="string">
+  ISO 8601 -päivämäärämerkkijono projektin alkamispäivälle.
+</ParamField>
+
+<ParamField body="notes" type="string">
+  Tiimillesi näkyvät sisäiset muistiinpanot.
+</ParamField>
+
+<ParamField body="brief" type="string">
+  Asiakkaan toimeksianto tai projektin yhteenveto.
+</ParamField>
+
+<ParamField body="assignedProjectManagers" type="array">
+  Täydellinen luettelo tähän tilaukseen osoitettavien projektipäälliköiden jäsentunnuksista. Uudet tunnukset lisätään tiimiin; poistetut tunnukset poistetaan. Jokaisen tunnuksen on kuuluttava jäsenelle, jolla on `projectManager`-rooli samassa yrityksessä.
+</ParamField>
+
+<ParamField body="markTasksAsDone" type="boolean">
+  **Pakollinen**, kun `status` on `Completed` tai `Cancelled`. Kun `true`, kaikki tilauksen tehtävät merkitään tehdyiksi tilamuutoksen jälkeen. Kun `false`, tehtävät pysyvät nykyisessä tilassaan.
+</ParamField>
+
+<ParamField body="rejectRequestedTasks" type="boolean">
+  Sallittu vain, kun `status` on `Completed` tai `Cancelled`. Kun `true`, kaikki avoimet asiakkaan pyytämät tehtävät hylätään tilapäivityksen jälkeen.
+</ParamField>
+
+<ParamField body="repeatCount" type="number">
+  Vaaditaan vain **tilaus**-tilauksia varten, kun muutetaan toistuvuustiheyttä. Käytä yhdessä `repeatDuration`-kentän kanssa.
+</ParamField>
+
+<ParamField body="repeatDuration" type="string">
+  Vaaditaan yhdessä `repeatCount`-kentän kanssa tilaustilauksille. Yksi seuraavista: `day`, `week`, `month`, `year`.
+</ParamField>
+
+<ParamField body="billingCycleCount" type="number">
+  Valinnainen raja toistuvien laskutusjaksojen määrälle. Oletus on `0` (ei rajaa).
+</ParamField>
+
+<ParamField body="billingCycleEvent" type="string">
+  Kuinka kukin laskutusjakso käsitellään. Yksi seuraavista: `createOrderWithTask`, `noChange`.
+</ParamField>
+
+<ParamField body="files" type="file">
+  Nolla tai useampia tiedostoliitteitä. Tiedostot lisätään tilauksen järjestelmäkansioon; olemassa olevia tiedostoja ei koskaan ylikirjoiteta. Käytä `multipart/form-data`-koodausta ja liitä jokainen tiedosto `files`-kenttään.
+</ParamField>
+
+---
+
+## Esimerkkipyyntö
+
+<CodeGroup>
+
+```bash cURL (no files)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "currency=USD" \
+  --form "quantity=1" \
+  --form "assignedProjectManagers[]=PROJECT_MANAGER_ID" \
+  --form "notes=Scope finalized with client." \
+  --form "brief=Launch-ready design refresh."
+```
+
+```bash cURL (with file)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "repeatCount=3" \
+  --form "repeatDuration=month" \
+  --form "billingCycleEvent=createOrderWithTask" \
+  --form "files=@/path/to/creative-brief.pdf"
+```
+
+</CodeGroup>
+
+**Vastaava JSON-hyötykuorma** (muunna multipart-lomake-merkinnöiksi tiedostoja lähetettäessä):
+
+```json
+{
+  "name": "Website Redesign",
+  "status": "Review",
+  "budget": 12000,
+  "currency": "USD",
+  "quantity": 1,
+  "assignedProjectManagers": ["{{PROJECT_MANAGER_ID}}"],
+  "repeatCount": 3,
+  "repeatDuration": "month",
+  "billingCycleEvent": "createOrderWithTask",
+  "notes": "Scope finalized with client.",
+  "brief": "Launch-ready design refresh."
+}
+```
+
+---
+
+## Vastaukset
+
+| HTTP-tila | Kuvaus |
+|---|---|
+| `200 OK` | Päivitys onnistui. |
+| `400 ValidationError` | Virheellinen tilauksen tunnus, estetty tilasiirtymä tai virheellinen hyötykuorma. Vastaus sisältää `fieldName`-kentän tarvittaessa. |
+| `403 PermissionError` | Kutsuja ei ole hyväksytty jäsen, puuttuu yritysrooli, työtilan tilaus on vanhentunut, tai asiakas yritti kiellettyä peruutusta. |
+| `500 Internal Server Error` | Käsittelemätön poikkeus — tarkista palvelinlokit. |
+
+### Onnistumisvastaus
+
+```json
+{
+  "message": "Project has been updated"
+}
+```
+
+---
+
+## Liiketoimintasäännöt ja sivuvaikutukset
+
+- **Tilasiirtymät** ovat rajoitettuja. `Review` voi seurata vain `Ongoing`- tai toista `Review`-tilaa. `Pending → Review` -yritys palauttaa `400 ValidationError` -virheen.
+- Tilan siirtäminen `Pending`-tilasta `Ongoing`-, `Review`- tai `Completed`-tilaan aktivoi tilauksen tiedostokansion, jolloin ladatut tiedostot tulevat projektitiimin saataville.
+- `status`-arvon asettaminen `Completed`- tai `Cancelled`-tilaan **edellyttää**, että `markTasksAsDone` on nimenomaisesti asetettu arvoon `true` tai `false`.
+- Tilamuutokset `Review`-, `Completed`- tai `Cancelled`-tiloihin käynnistävät automaattisesti asiakasil moitukset:
+  - **Review** — ilmoittaa asiakkaalle, että tarkistus tarvitaan.
+  - **Completed** — lähettää `orderCompletion`-ilmoituksen asiakkaalle.
+  - **Cancelled** — lähettää `orderCancellation`-ilmoituksen asiakkaalle.
+- Jokainen onnistunut päivitys käynnistää `ORDER.UPDATED` webhook-tapahtuman päivitetyllä tilausdokumentilla ja liitemetadatalla, jos sinulla on kyseiseen tapahtumaan tilattu aktiivinen webhook.

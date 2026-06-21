@@ -1,0 +1,149 @@
+---
+title: "Bank o'tkazmasi, Kripto va Wise to'lov usullarini sozlash"
+sidebarTitle: "Boshqa to'lovlar"
+description: "Karta to'lovlarini afzal ko'rmaydigan mijozlar uchun bank o'tkazmasi, kriptovalyuta va Wise kabi qo'lda amalga oshiriladigan to'lov usullarini yoqing."
+---
+
+AgencyHandy Stripe va PayPal dan tashqari uchta qo'lda amalga oshiriladigan to'lov usulini qo'llab-quvvatlaydi: **Bank Transfer**, **Crypto** va **Wise**. Har biri ma'lum bir turdagi mijoz yoki ish oqimi uchun mo'ljallangan. Uchala usul ham mablag'larni olgandan so'ng hisob-fakturani **Paid** deb qo'lda belgilashni talab qiladi, chunki AgencyHandy platforma tashqarisidagi o'tkazmalarni avtomatik tasdiqlashga qodir emas.
+
+<Note>
+  Ushbu to'lov usullarini faqat **SuperAdmin** va **Admin** rollari yoqishi yoki sozlashi mumkin.
+</Note>
+
+<Tabs>
+  <Tab title="Bank Transfer">
+    ## Bank o'tkazmasi
+
+    Bank o'tkazmasi usuli mijozlardan qo'lda amalga oshiriladigan wire yoki ACH to'lovlarini qabul qilish imkonini beradi. Siz boy matn muharriri orqali bank rekvizitlaringizni kiritasiz, AgencyHandy esa ushbu ma'lumotlarni checkout jarayonida va hisob-faktura ichida mijozlarga ko'rsatadi.
+
+    ### Bank o'tkazmasini yoqish
+
+    <Steps>
+      <Step title="Bank to'lov sozlamalarini oching">
+        Chap panelda **Integrations → Bank Payment Method** ga o'ting.
+      </Step>
+
+      <Step title="O'tkazma ko'rsatmalarini kiriting">
+        O'tkazma uchun zarur bo'lgan barcha maydonlarni kiritish uchun boy matn muharriridan foydalaning:
+
+        - **Oluvchining ismi**
+        - **Hisob raqami**
+        - **Bank nomi**
+        - **Routing raqami**
+        - **Hisob turi** (masalan, Joriy hisob, Jamg'arma hisob)
+        - **Bank manzili**
+
+        Shuningdek, eslatmalar, izohlar yoki qo'llab-quvvatlash aloqa ma'lumotlarini qo'shishingiz mumkin. Belgi chegarasi yo'q, muharrir qalin, tagiga chizish, ro'yxatlar, havolalar va rasm formatlashni qo'llab-quvvatlaydi.
+      </Step>
+
+      <Step title="To'lov isbotini talab qilishni o'rnating (ixtiyoriy)">
+        Agar buyurtma qayta ishlanishidan oldin mijozlardan skrinshotni yuklashlarini istasangiz, **Payment Screenshot is Required** tugmasini yoqing.
+
+        - **Yoqilgan** — mijozlar checkout jarayonida haqiqiy skrinshotni yuklashlari shart. Fayl yuklanmaguncha buyurtma yaratilmaydi.
+        - **O'chirilgan** — mijozlar isbotni yuklamasdan davom etishi mumkin. Buyurtma va hisob-faktura darhol yaratiladi.
+      </Step>
+
+      <Step title="Saqlang">
+        Sozlamalaringizni saqlash uchun **Update** tugmasini bosing. O'zgarishlarni bekor qilish uchun **Cancel** tugmasini bosing.
+      </Step>
+    </Steps>
+
+    ### Mijoz tajribasi
+
+    Mijoz checkout jarayonida Bank o'tkazmasini tanlaganida, u sizning maxsus o'tkazma ko'rsatmalaringizni ko'radi. Agar isbotni yuklash talab qilinsa, fayl yuklash so'rovi paydo bo'ladi va mijoz skrinshotni yuklagunicha buyurtma ushlab turiladi.
+
+    Bank hisobingizga mablag'lar kelgandan so'ng, AgencyHandy-da hisob-fakturani oching va buyurtmani chiqarish uchun uni qo'lda **Paid** deb belgilang.
+
+    <Tip>
+      Ko'rsatmalaringizga noyob havola kodi (masalan, hisob-faktura raqami) kiritib qo'ying, shunda kelayotgan o'tkazmalarni chalkashtirib yubormay aniq buyurtmalarga moslashtira olasiz.
+    </Tip>
+  </Tab>
+
+  <Tab title="Crypto">
+    ## Kripto to'lov
+
+    Kripto to'lov usuli mijozlardan hamyon orqali kriptovalyuta o'tkazmalarini qabul qilish imkonini beradi. Siz hamyon ma'lumotlari va ko'rsatmalarini bir marta sozlaysiz; mijozlar ularni checkout jarayonida va hisob-fakturada ko'radi. Hozirda **USDC** qo'llab-quvvatlanadigan kriptovalyutadir.
+
+    ### Kripto to'lovni yoqish
+
+    <Steps>
+      <Step title="Kripto to'lov sozlamalarini oching">
+        Chap panelda **Integrations → Crypto Payment** ga o'ting. Boy matn muharriri bilan hamyon sozlash ekrani ochiladi.
+      </Step>
+
+      <Step title="Hamyon ma'lumotlarini kiriting">
+        Quyidagi maydonlarni to'ldiring:
+
+        - **Kriptovalyuta turi** — hozirda USDC qo'llab-quvvatlanadi.
+        - **Hamyon manzili** — mablag'larni qabul qilish uchun ommaviy hamyon manzilingiz.
+        - **Tarmoq turi** — masalan, ERC-20, TRC-20.
+        - **Qo'shimcha ko'rsatmalar** — memo, tag, minimal miqdor, qo'llab-quvvatlash aloqasi yoki mijozlaringiz uchun boshqa yo'riqnomalar.
+      </Step>
+
+      <Step title="To'lov isbotini talab qilishni o'rnating (ixtiyoriy)">
+        **Require Proof of Payment** tugmasini yoqing:
+
+        - **Yoqilgan** — buyurtma va hisob-faktura yaratilishidan oldin mijozlar fayl (masalan, tranzaksiya skrinshotini) yuklashlari shart.
+        - **O'chirilgan** — mijoz kripto to'lovni tanlagandan so'ng, isbotni talab qilmasdan darhol buyurtma va hisob-faktura yaratiladi.
+      </Step>
+
+      <Step title="Saqlang">
+        Sozlamalaringizni saqlash uchun **Save** tugmasini bosing. Kripto to'lovni istalgan vaqt xuddi shu ekrandan tahrirlashingiz yoki o'chirishingiz mumkin.
+      </Step>
+    </Steps>
+
+    ### Mijozning checkout jarayoni
+
+    Mijoz checkout jarayonida Kriptoni tanlaganida:
+
+    1. **Buyurtma** (holati: *Pending*) va **Hisob-faktura** (holati: *Open*) yaratiladi.
+    2. Mijozga hamyon manzilingiz va ko'rsatmalaringiz ko'rsatiladi.
+    3. Agar isbotni yuklash talab qilinsa, fayl yuklash tugmasi paydo bo'ladi. Buyurtma davom etishi uchun mijoz tranzaksiya skrinshotini yuklashi shart.
+    4. O'tkazma yakunlangandan va mablag'larni zanjirda tasdiqlaganingizdan so'ng, AgencyHandy-da hisob-fakturani oching va uni **Paid** deb belgilang.
+    5. Hisob-faktura **Paid** deb belgilanganda va buyurtma *Pending* holatida bo'lsa, buyurtma holati avtomatik ravishda *Ongoing* ga yangilanadi.
+
+    <Note>
+      Kripto to'lov faqat **Workspace Settings → Payment Methods** da ham va tegishli **Service Group → Payment Availability** sozlamalarida ham yoqilgan bo'lsagina checkout jarayonida ko'rinadi. Workspace sozlamalarida o'chirilsa, xizmat darajasidagi sozlamalardan qat'i nazar, u hamma joyda yashiriladi.
+    </Note>
+
+    <Tip>
+      Agar xizmat USDC ni qo'llab-quvvatlamasa, Kripto to'lov opsiyasi o'sha xizmat uchun avtomatik ravishda yashiriladi. Mijozlaringiz kripto bilan to'lashini istasangiz, xizmat sozlamalaringizda USDC yoqilganligiga ishonch hosil qiling.
+    </Tip>
+  </Tab>
+
+  <Tab title="Wise">
+    ## Wise to'lov
+
+    Wise to'lov usuli mijozlarga Wise to'lov havolasi orqali to'lash imkonini beradi. Havolani hisob-faktura ichiga bir marta qo'shsangiz, u barcha keyingi obuna hisob-fakturalariga avtomatik ravishda kiritiladi. Wise an'anaviy wire o'tkazmalariga qaraganda past to'lovlar bilan bank-bank o'tkazmalarini afzal ko'radigan xalqaro mijozlar uchun ideal echimdir.
+
+    ### Wise-ni to'lov usuli sifatida qo'shish
+
+    <Steps>
+      <Step title="Hisob-faktura modulini oching">
+        Chap panelda **Invoices** tugmasini bosing, so'ng **Create Invoice** tugmasini bosing.
+      </Step>
+
+      <Step title="Wise havolangizni qo'shing">
+        Hisob-faktura modalida **Payment Methods** bo'limiga pastga aylantiring. **Add Wise as a payment method** tugmasini bosing, so'ng Wise to'lov havolangizni kiritish maydoniga joylashtiring.
+      </Step>
+
+      <Step title="Hisob-fakturani saqlang">
+        Hisob-fakturani yakunlash uchun **Save** tugmasini bosing yoki davom eting. Wise to'lov havolangiz endi mijozga ko'rinadigan tarzda joylashtirildi.
+      </Step>
+    </Steps>
+
+    ### Mijozlar uchun qanday ishlaydi
+
+    Wise havolasi mijozning hisob-fakturasida bosiladigan tugma sifatida ko'rinadi. Mijoz havolani ochadi, Wise hisobi orqali o'tkazmani amalga oshiradi va sizga tasdiqlash yuboradi. AgencyHandy Wise-dan avtomatik tasdiqlash olmaydi, shuning uchun mablag'larni olgandan so'ng hisob-fakturani qo'lda **Paid** deb belgilashingiz kerak.
+
+    <Warning>
+      Wise avtomatlashtirilgan upsell yoki marketplace to'lovlari uchun **ishlatib bo'lmaydi**. Har bir hisob-fakturaga faqat bitta Wise to'lov havolasi qo'shilishi mumkin. Yuborishdan oldin havolani ikki marta tekshiring — noto'g'ri havola mijozning to'lovi noto'g'ri hisobga tushishiga olib keladi.
+    </Warning>
+
+    ### Platforma xatti-harakati
+
+    - Wise havolasi qo'shilgandan so'ng, uni yangilamasangiz yoki o'chirmasangiz, u barcha keyingi **obuna** hisob-fakturalarida avtomatik ravishda ko'rinadi.
+    - AgencyHandy hech qanday avtomatik valyuta konvertatsiyasini amalga oshirmaydi. Mijoz Wise havolangiz sozlangan valyutada o'tkazma qiladi.
+    - To'lovlarni kuzatish va tushumni tasdiqlashdan keyin hisob-fakturalarni Paid deb belgilash sizning mas'uliyatingizdir.
+  </Tab>
+</Tabs>

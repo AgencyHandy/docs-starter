@@ -1,0 +1,240 @@
+---
+title: "Gestion des tâches : créer et suivre le travail dans les commandes"
+sidebarTitle: "Tâches"
+description: "Créez, modifiez et gérez les tâches au sein des commandes — y compris le suivi du temps, les retours sur fichiers, les tâches demandées par les clients et la visibilité des tâches inter-commandes."
+---
+
+Les tâches sont les unités de travail qui transforment une commande en livrable. Chaque tâche réside dans une commande spécifique, peut être assignée à un membre de l'équipe et suit son propre statut, sa chronologie, ses pièces jointes et son fil de retours. Cette page explique comment créer et gérer des tâches, comment les clients peuvent demander des tâches, comment fonctionnent le suivi du temps et les retours sur fichiers, et comment afficher les tâches de toutes les commandes en une seule fois.
+
+## Rôles requis
+
+| Action | Qui peut le faire |
+|---|---|
+| Créer des tâches | Super Admin, Admin, Project Manager |
+| Modifier des tâches | Super Admin, Admin, Project Manager |
+| Supprimer des tâches | Super Admin, Admin, Project Manager |
+| Voir les tâches en révision / terminées | Super Admin, Admin, PM, Client |
+| Envoyer et répondre aux retours | Super Admin, Admin, PM |
+| Enregistrer du temps sur les tâches | Tous les utilisateurs assignés (les Super Admins et Admins peuvent enregistrer au nom d'autres) |
+| Demander une tâche (client) | Client |
+| Approuver / rejeter les tâches demandées | Super Admin, Admin |
+
+<Note>
+Les employés assignés à une commande peuvent voir les tâches au statut **In Review** ou **Done**. Les tâches **In Progress** ne sont pas visibles par les employés.
+</Note>
+
+## Créer une tâche
+
+<Steps>
+  <Step title="Ouvrir la commande">
+    Accédez à **Orders** dans la barre latérale gauche et cliquez sur la commande dans laquelle vous souhaitez ajouter une tâche.
+  </Step>
+
+  <Step title="Ajouter une nouvelle tâche">
+    Dans la commande, faites défiler jusqu'à la section **Tasks** et cliquez sur **+ Add New Task**. Un formulaire de création de tâche apparaîtra.
+  </Step>
+
+  <Step title="Renseigner les détails de la tâche">
+    Complétez les champs disponibles :
+
+    | Champ | Remarques |
+    |---|---|
+    | **Task Name** | Un titre clair et concis pour l'élément de travail |
+    | **Description** | Contexte détaillé, exigences ou instructions |
+    | **Assignee** | Le membre de l'équipe responsable de l'achèvement de la tâche |
+    | **Label** | Étiquette de catégorie pour organiser les tâches (par exemple, Design, Copy) |
+    | **Start Date** | Date de début des travaux sur la tâche |
+    | **Due Date** | Date à laquelle la tâche doit être terminée |
+    | **Client Review Required** | Case à cocher qui exige que le client approuve la tâche avant qu'elle ne soit marquée comme Done — cochée par défaut |
+    | **Attachments** | Fichiers de référence ou supports |
+  </Step>
+
+  <Step title="Enregistrer la tâche">
+    Cliquez sur **Save** pour créer la tâche. Le client reçoit une notification automatique l'informant qu'une nouvelle tâche a été ajoutée à sa commande.
+  </Step>
+</Steps>
+
+<Tip>
+La case **Client Review Required** est activée par défaut sur chaque nouvelle tâche. Si une tâche est purement interne et ne nécessite pas l'approbation du client, vous pouvez la décocher avant d'enregistrer.
+</Tip>
+
+## Statuts des tâches
+
+Les tâches passent par les statuts suivants :
+
+- **In Progress** — La tâche est en cours de réalisation (non visible par les clients ni les employés)
+- **In Review** — La tâche a été soumise pour révision ; visible par les clients
+- **Done** — La tâche a été approuvée et achevée
+
+<Note>
+Lorsqu'un client ou un réviseur rejette une tâche depuis **In Review**, son statut revient automatiquement à **In Progress**.
+</Note>
+
+## Fenêtre de tâche et page d'activité
+
+Cliquer sur n'importe quelle tâche ouvre la **Task Modal**, une vue détaillée complète qui sert de centre d'activité de la tâche. À partir de là, vous pouvez consulter et gérer :
+
+- Le statut actuel, l'assigné, la date de début et la date d'échéance
+- La description de la tâche et tous les fichiers joints
+- Tous les fils de retours et les réponses
+- Un journal d'activité complet montrant chaque mise à jour, commentaire et changement de statut sur la tâche
+
+Toute personne faisant partie de la commande — y compris les clients, lorsque la révision client est activée — peut accéder à la fenêtre de tâche pour les tâches sur lesquelles elle a une visibilité.
+
+## Modifier une tâche
+
+Pour mettre à jour les détails d'une tâche après sa création, ouvrez la fenêtre de tâche et modifiez les champs concernés (nom, description, assigné, dates, label ou pièces jointes). Enregistrez vos modifications pour appliquer la mise à jour. Seuls les Super Admins, Admins et PM peuvent modifier les tâches.
+
+## Supprimer une tâche
+
+Pour supprimer une tâche, ouvrez-la et utilisez l'option de suppression dans le menu d'actions de la tâche. La suppression est définitive — tous les enregistrements de temps et versions de fichiers associés sont supprimés avec la tâche.
+
+<Warning>
+Supprimer une tâche supprime également toutes les versions de fichiers et leurs commentaires de retour associés. Cette action ne peut pas être annulée.
+</Warning>
+
+## Suivi du temps
+
+AgencyHandy inclut un suivi du temps intégré afin que votre équipe puisse enregistrer ses heures directement sur les tâches — aucun outil externe requis.
+
+### Démarrer le minuteur
+
+<Steps>
+  <Step title="Ouvrir la tâche">
+    Accédez à **Orders → Tasks** et ouvrez la tâche sur laquelle vous souhaitez suivre le temps.
+  </Step>
+
+  <Step title="Démarrer le minuteur">
+    Cliquez sur **Start Timer**. Le minuteur démarre et affiche le nom de la tâche, le temps écoulé en temps réel et le temps total enregistré.
+  </Step>
+
+  <Step title="Mettre en pause ou arrêter une fois terminé">
+    Cliquez sur **Pause Timer** pour interrompre temporairement le suivi, ou sur **Stop Timer** pour finaliser l'enregistrement. Lorsque vous arrêtez, vous confirmerez la date, l'heure de début, l'heure de fin, la durée totale et une note facultative.
+  </Step>
+</Steps>
+
+<Note>
+Vous ne pouvez avoir qu'un seul minuteur actif à la fois. Démarrer un nouveau minuteur met automatiquement en pause tout minuteur existant.
+</Note>
+
+<Warning>
+Si une tâche est marquée **Done**, le minuteur est désactivé. Rouvrez la tâche pour réactiver l'enregistrement du temps.
+</Warning>
+
+### Saisie manuelle du temps
+
+Si vous devez enregistrer du temps rétroactivement, cliquez sur **Manual Time Entry** sur la tâche et saisissez :
+
+- **Date**
+- **Heure de début et heure de fin** (ou une **durée** en heures et minutes)
+- **Notes** (facultatif)
+
+Plusieurs utilisateurs peuvent enregistrer du temps sur la même tâche simultanément. Les Super Admins et Admins peuvent créer des saisies manuelles de temps au nom de n'importe quel utilisateur.
+
+### Journaux de travail
+
+Cliquez sur le bouton **Work Log** à côté du minuteur pour voir une ventilation complète de toutes les saisies de temps sur la tâche, y compris la date, les heures de début/fin, le temps actif total et toutes les notes. Les Admins et Super Admins peuvent supprimer n'importe quelle saisie ; les utilisateurs ordinaires ne peuvent supprimer que les leurs.
+
+### Feuilles de temps
+
+Accédez à **Timesheets** depuis la barre latérale gauche pour une vue inter-commandes de tout le temps enregistré. Vous pouvez filtrer par nom de tâche, ID de commande, assigné ou plage de dates (quotidienne, hebdomadaire, mensuelle), et regrouper les résultats par membre de l'équipe, nom de service ou nom de tâche. Vous pouvez également démarrer un minuteur ou ajouter une saisie manuelle directement depuis la vue Timesheets.
+
+## Retours sur fichiers
+
+Le système de retours sur fichiers d'AgencyHandy vous permet, à vous et à vos clients, de laisser des commentaires précis et visuels sur les livrables — directement à l'intérieur des tâches. Il prend en charge les images, les PDF, les vidéos et les sites web en direct, avec un contrôle de version et des discussions en fil intégrés.
+
+### Téléverser un fichier pour révision
+
+Ouvrez la tâche, cliquez sur l'icône **➕** dans la section **Attachments** et téléversez une image, un PDF, une vidéo ou collez l'URL d'un site web en direct.
+
+### Laisser des retours selon le type de fichier
+
+**Images et PDF**
+Ouvrez le fichier et utilisez la barre d'outils d'annotation (Flèche, Ligne, Rectangle, Surlignage) pour annoter des zones spécifiques. Sélectionnez une région, saisissez votre commentaire et choisissez de le partager avec votre équipe, le client ou les deux. Vous pouvez également annuler ou rétablir les annotations et changer leurs couleurs.
+
+**Vidéos**
+Ouvrez la vidéo et mettez-la en pause à l'image exacte à laquelle votre retour s'applique. Saisissez votre commentaire — la vidéo se met automatiquement en pause pendant que vous tapez. Le retour est horodaté à ce moment précis. Vous pouvez supprimer l'horodatage pour laisser un commentaire général à la place.
+
+**Sites web en direct**
+Ajoutez l'URL du site à la tâche à l'aide du bouton **➕**, puis installez l'extension de navigateur AgencyHandy. Ouvrez le site en **View Mode** (interactif) ou passez en **Review Mode** pour prendre une capture d'écran et l'annoter avec des outils de dessin, de texte ou de forme.
+
+### Actions sur les commentaires
+
+Chaque commentaire dispose d'un menu à trois points avec des options pour :
+
+- Modifier le commentaire
+- Copier la réponse
+- Supprimer le commentaire
+- Restreindre la visibilité à l'équipe interne uniquement
+
+### Résoudre les retours
+
+Cliquez sur le bouton **✓** d'un commentaire pour le marquer comme **Resolved**. Les commentaires résolus restent visibles à titre de référence et peuvent être rouverts. Vous recevez une notification lorsqu'un commentaire que vous avez laissé est résolu par quelqu'un d'autre.
+
+### Versions de fichiers
+
+Cliquez sur **Upload New Version** pour ajouter un fichier révisé. Les versions précédentes et leurs retours sont conservés et accessibles depuis le menu déroulant des versions. Lorsque vous ouvrez une version plus ancienne, AgencyHandy vous informe qu'une version plus récente existe.
+
+Vous pouvez étiqueter chaque fichier comme **Needs Review** ou **Approved** pour communiquer le statut de révision en un coup d'œil.
+
+<Note>
+Les clients ne peuvent laisser des retours sur les fichiers que si la case **Client Review Required** est activée sur la tâche. Les retours sur fichiers ne sont disponibles qu'au sein des tâches ou des commandes — pas dans le catalogue de services ni les images de profil.
+</Note>
+
+## Tâches demandées par les clients
+
+Les clients peuvent soumettre des demandes de tâches depuis leur portail, ce qui leur donne un moyen structuré de faire remonter des besoins supplémentaires sans contourner votre processus d'approbation.
+
+### Flux de travail du client
+
+<Steps>
+  <Step title="Accéder aux Requests">
+    Le client clique sur **Requests** dans la barre latérale de son Portail Client — ou utilise le bouton **+ Request a Task** directement à l'intérieur d'une commande.
+  </Step>
+
+  <Step title="Remplir le formulaire de demande">
+    Le client fournit :
+    - **Order** (obligatoire — les demandes doivent être liées à une commande existante)
+    - **Task Name** (obligatoire)
+    - **Description** (facultatif)
+    - **Attachments** (facultatif — jusqu'à 1 Go ; les formats incluent PDF, DOCX, JPG, PNG, MP4, ZIP, et plus)
+    - **Dates de début et de fin** (facultatif)
+  </Step>
+
+  <Step title="Soumettre la demande">
+    Le client clique sur **Request**. La tâche apparaît dans son portail avec le statut **Pending** et votre agence reçoit une notification.
+  </Step>
+</Steps>
+
+### Flux de travail de l'agence
+
+<Steps>
+  <Step title="Consulter les demandes entrantes">
+    Cliquez sur **Requests** dans la barre latérale du Portail Agence. Toutes les demandes en attente apparaissent dans une vue en liste. Vous pouvez filtrer par client ou ID de commande, trier par ordre alphabétique ou par date d'émission, et utiliser **Preferences** pour afficher ou masquer des colonnes.
+  </Step>
+
+  <Step title="Examiner la demande">
+    Cliquez sur une demande pour lire la description et prévisualiser les pièces jointes avant de prendre une décision.
+  </Step>
+
+  <Step title="Approuver ou rejeter">
+    Utilisez les boutons d'action à côté de chaque demande pour approuver ou rejeter individuellement — ou utilisez les actions groupées en haut à droite pour approuver ou rejeter toutes les demandes en une seule fois.
+
+    - Les demandes **approuvées** deviennent des tâches actives dans la commande et suivent le flux de travail normal des tâches.
+    - Les demandes **rejetées** restent enregistrées avec un statut **Rejected** et ne sont pas ajoutées à la commande.
+  </Step>
+</Steps>
+
+<Note>
+Les clients ne peuvent pas contourner l'étape d'approbation. Une demande nécessite toujours une action de l'agence avant de devenir une tâche active. Les demandes en attente restent visibles à la fois par le client et par l'agence jusqu'à ce qu'une décision soit prise.
+</Note>
+
+## Vue All Tasks
+
+Au-delà de la gestion des tâches au sein des commandes individuelles, vous pouvez afficher les tâches de toutes les commandes depuis un seul écran. Accédez à **Tasks** dans la barre latérale gauche pour ouvrir la page **All Tasks**. À partir de là, vous pouvez :
+
+- Voir chaque tâche sur laquelle vous avez une visibilité, quelle que soit la commande à laquelle elle appartient
+- Filtrer et trier par statut, assigné, date d'échéance ou commande
+- Identifier rapidement les éléments en retard ou à risque dans l'ensemble de votre charge de travail
+
+Cette visibilité inter-commandes est particulièrement utile pour les Project Managers et les Admins qui doivent équilibrer la capacité de l'équipe et suivre la santé de la livraison au niveau de l'agence.

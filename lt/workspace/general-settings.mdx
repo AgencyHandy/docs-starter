@@ -1,0 +1,123 @@
+---
+title: "Konfigūruokite savo AgencyHandy darbo erdvės bendruosius nustatymus"
+sidebarTitle: "Bendrieji nustatymai"
+description: "Nustatykite darbo erdvės pavadinimą, įkelkite logotipus, pridėkite agentūros adresą ir pasirinkite teisingą laiko juostą, kad suasmenintumėte savo AgencyHandy darbo erdvę."
+---
+
+Bendrųjų nustatymų puslapis yra pirmoji vieta, kurią apsilankysite prisijungę prie AgencyHandy. Jis leidžia nustatyti agentūros tapatybę platformoje — nuo logotipo ir darbo erdvės pavadinimo iki fizinio adreso ir laiko juostos. Kiekvienas čia atliktas pakeitimas taikomas globaliai visoje darbo erdvėje visiems vartotojams.
+
+<Note>
+  Tik **Super administratoriai** ir **Administratoriai** gali pasiekti ir keisti darbo erdvės konfigūracijos nustatymus. Jei nematote parinkties **Workspace Config** kairinėje navigacijoje, susisiekite su Super administratoriumi, kad pakoreguotų jūsų vaidmens leidimus.
+</Note>
+
+## Bendrųjų nustatymų pasiekimas
+
+<Steps>
+  <Step title="Atidarykite darbo erdvės konfigūraciją">
+    Prisijunkite prie savo AgencyHandy paskyros. Kairinėje navigacijos meniu spustelėkite **Workspace Config**.
+  </Step>
+  <Step title="Pasirinkite bendruosius nustatymus">
+    Iš darbo erdvės konfigūracijos submeniu spustelėkite **General Settings**. Dešinėje atsidaro bendrųjų nustatymų skydelis.
+  </Step>
+</Steps>
+
+---
+
+## Darbo erdvės logotipo įkėlimas
+
+AgencyHandy palaiko tris skirtingus logotipų tipus, kiekvienas rodomas skirtingoje sąsajos dalyje:
+
+| Logotipo tipas    | Matmenys     | Kur rodomas                                               |
+|-------------------|-------------|-----------------------------------------------------------|
+| Apvalus logotipas | 32 × 32 px  | Profilio sritys ir kompaktiški UI elementai               |
+| Favicon logotipas | 16 × 16 px  | Naršyklės skirtuko piktograma                             |
+| Stačiakampis logotipas | 142 × 36 px | Šoninės juostos antraštė (pakeičia apvalų logotipą, kai nustatytas) |
+
+**Palaikomi formatai:** PNG, JPG, SVG
+
+<Steps>
+  <Step title="Spustelėkite „Upload Logo“">
+    Logotipo sekcijoje spustelėkite mygtuką **Upload Logo** norimo nustatyti logotipo tipui.
+  </Step>
+  <Step title="Pasirinkite vaizdo failą">
+    Raskite vaizdą savo įrenginyje. Įsitikinkite, kad failas atitinka reikalingus matmenis ir yra palaikomo formato.
+  </Step>
+  <Step title="Patvirtinkite įkėlimą">
+    Logotipo peržiūra atnaujinama iš karto. Kartokite kiekvienam logotipo tipui pagal poreikį.
+  </Step>
+</Steps>
+
+<Tip>
+  Įkėlus **Stačiakampį logotipą**, šoninėje juostoje jis pakeis Apvalų logotipą ir automatiškai paslėps šalia esantį darbo erdvės pavadinimo tekstą. Stačiakampis logotipas taip pat tampa pagrindiniu logotipu, naudojamu visose kitose kontekstuose, kuriuose rodomas logotipas — net jei taip pat įkeltas apvalus logotipas.
+</Tip>
+
+---
+
+## Darbo erdvės pavadinimo ir adreso nustatymas
+
+### Darbo erdvės pavadinimas
+
+Lauke **Workspace Name** įveskite savo agentūros pavadinimą. Šis pavadinimas:
+
+- Rodomas visoje platformoje identifikavimui.
+- Naudojamas numatytajame AgencyHandy subdomenoje (pvz., `yourname.agencyhandy.com`).
+
+<Warning>
+  Darbo erdvės pavadinimo keitimas iš karto atnaujina jūsų numatytąjį subdomeną. Jei dalinote numatytojo subdomeno nuorodą su klientais, jiems reikės atnaujinto URL. Apsvarstykite [individualaus domeno](/lt/workspace/custom-domain) nustatymą, kad išvengtumėte šios problemos.
+</Warning>
+
+### Darbo erdvės adresas
+
+Lauke **Workspace Address** įveskite visą fizinį agentūros adresą. Šis adresas naudojamas oficialiam atstovavimui sąskaitose faktūrose ir su klientais susijusiuose dokumentuose, todėl įsitikinkite, kad jis yra tikslus ir aktualus.
+
+---
+
+## Laiko juostos pasirinkimas
+
+<Steps>
+  <Step title="Atidarykite laiko juostos išskleidžiamąjį sąrašą">
+    Slinkite iki lauko **Time Zone** ir spustelėkite išskleidžiamąjį sąrašą, kad išplėstumėte laiko juostų sąrašą.
+  </Step>
+  <Step title="Pasirinkite savo laiko juostą">
+    Pasirinkite laiko juostą, atitinkančią pagrindinę jūsų agentūros veiklos vietą. Visos užduočių datos, suplanuoti pranešimai, kalendoriaus įvykiai ir laiko žymos visoje darbo erdvėje pagrįstos šiuo nustatymu.
+  </Step>
+</Steps>
+
+<Warning>
+  Neteisingas laiko juostos nustatymas sukelia planavimo klaidas užduotims, susitikimams ir sąskaitų faktūrų mokėjimo terminams. Patikrinkite šį nustatymą prieš kviesdami savo komandą ar klientus.
+</Warning>
+
+---
+
+## Pakeitimų išsaugojimas
+
+Užpildžius ar atnaujinus bet kuriuos laukus, spustelėkite **Save Changes** bendrųjų nustatymų skydelio apačioje. Visi atnaujinimai taikomi globaliai ir iš karto matomi kiekvienam darbo erdvės vartotojui.
+
+---
+
+## Pavojaus zona: darbo erdvės ištrynimas
+
+Bendrųjų nustatymų skydelio apačioje yra sekcija **Danger Zone** su mygtuku **Delete Workspace**.
+
+<Warning>
+  Darbo erdvės ištrynimas yra **nuolatinis ir neatšaukiamas**. Visi duomenys — įskaitant klientus, užsakymus, sąskaitas faktūras, projektus ir konfigūracijas — bus visam laikui ištrinti. Atkūrimo galimybės nėra. Tęskite tik tuo atveju, jei esate visiškai tikri.
+</Warning>
+
+---
+
+## Geroji praktika
+
+<CardGroup cols={2}>
+  <Card title="Patikrinkite logotipo matmenis" icon="image">
+    Įkelkite logotipus tiksliai rekomenduojamų pikselių matmenimis, kad išvengtumėte tempimo, apkarpymo ar neaiškaus rodinio visoje platformoje.
+  </Card>
+  <Card title="Atnaujinkite prekės ženklą laiku" icon="paintbrush">
+    Atnaujinkite logotipą ir adresą, kai agentūra atnaujina prekės ženklą ar keičia vietą, kad visi dokumentai ir su klientais susiję puslapiai būtų tikslūs.
+  </Card>
+  <Card title="Pirmiausia nustatykite laiko juostą" icon="clock">
+    Sukonfigūruokite laiko juostą prieš kurdami paslaugas, užduotis ar planuodami bet ką, kad nuo pat pradžių visos laiko žymos būtų teisingai suderintos.
+  </Card>
+  <Card title="Ribokite administratoriaus prieigą" icon="shield">
+    Suteikite Super administratoriaus ar administratoriaus vaidmenis tik tiems darbuotojams, kuriems iš tikrųjų reikia keisti darbo erdvės konfigūracijas, kad išvengtumėte atsitiktinių pakeitimų.
+  </Card>
+</CardGroup>

@@ -1,0 +1,91 @@
+---
+title: "Prezentare Generală Comenzi: Gestionarea Lucrărilor pentru Clienți în AgencyHandy"
+sidebarTitle: "Prezentare Generală"
+description: "Înțelegeți cum funcționează comenzile în AgencyHandy — stări, roluri, detalii ale comenzilor, comenzi manuale și suplimente pentru servicii nepublicate."
+---
+
+Comenzile reprezintă coloana vertebrală operațională a AgencyHandy. O comandă reprezintă solicitarea unui client pentru un serviciu sau produs și acționează ca spațiu de lucru central unde echipa dvs. urmărește progresul, gestionează sarcinile, schimbă feedback și livrează rezultate. Indiferent dacă un client plasează o comandă prin catalogul dvs. publicat de servicii sau echipa dvs. creează una manual, fiecare comandă urmează același ciclu de viață structurat care menține agenția dvs. organizată și clienții informați.
+
+## Ce Conține o Comandă
+
+Fiecare comandă afișează informații cheie la prima vedere și oferă membrilor echipei un singur loc pentru a coordona lucrul:
+
+| Câmp | Descriere |
+|---|---|
+| **Order ID** | Identificator unic generat automat pentru fiecare comandă |
+| **Client** | Clientul căruia îi aparține comanda |
+| **Service** | Serviciul livrat |
+| **Project Manager (PM)** | Membrul echipei responsabil pentru livrare (opțional) |
+| **Budget** | Prețul convenit pentru comandă |
+| **Kick-off Date** | Când începe lucrul |
+| **Due Date** | Termenul limită pentru finalizarea comenzii |
+| **Order Brief** | Instrucțiunile clientului, notele și fișierele de referință atașate |
+| **Tasks** | Elemente de lucru discrete alocate membrilor echipei |
+| **Discussions** | Conversații cu fire între personalul agenției și clienți |
+
+## Stările Comenzilor
+
+Fiecare comandă parcurge un set fix de stări. Nu puteți adăuga sau redenumi aceste stări.
+
+<Note>
+Doar Super Adminii, Adminii și Managerii de Proiect pot schimba starea unei comenzi.
+</Note>
+
+| Stare | Ce Înseamnă |
+|---|---|
+| **Pending** | Comanda a fost creată și așteaptă să înceapă lucrul |
+| **Ongoing** | Lucrul activ este în desfășurare |
+| **In Review** | Livrabilele au fost depuse și așteaptă revizuirea clientului sau internă |
+| **Complete** | Comanda a fost complet livrată și acceptată |
+| **Cancelled** | Comanda a fost anulată și nu mai este activă |
+
+## Acces Bazat pe Rol
+
+Diferitele roluri din AgencyHandy au capabilități diferite în cadrul comenzilor:
+
+| Rol | Poate Crea Comenzi | Poate Edita Comenzi | Poate Șterge Comenzi | Poate Schimba Starea | Poate Adăuga Sarcini | Poate Adăuga Membri ai Echipei |
+|---|---|---|---|---|---|---|
+| **Super Admin** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Admin** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Project Manager (PM)** | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ |
+| **Employee** | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| **Client** | ❌ | ❌ | ❌ | ❌ | ✅ (doar solicitare) | ❌ |
+
+<Tip>
+Clienții pot trimite feedback și pot participa la discuții despre comenzi. Angajații alocați la o comandă pot vizualiza și lucra la sarcini, dar nu pot gestiona comanda în sine.
+</Tip>
+
+## Ce Puteți Face cu Comenzile
+
+AgencyHandy vă oferă un set complet de instrumente pentru gestionarea comenzilor pe tot parcursul ciclului lor de viață:
+
+- **Creați comenzi** pentru clienți — fie din servicii publicate, fie manual pentru servicii încă în dezvoltare
+- **Acceptați și respingeți** comenzile depuse de clienți, cu opțiunea de a furniza un motiv la respingere
+- **Vizualizați detaliile comenzii** inclusiv progresul, membrii echipei alocați, datele de kick-off și termenele limită, bugetul și brief-ul
+- **Sortați, filtrați și căutați** în toate comenzile după ID, stare, numele clientului sau alte criterii
+- **Adăugați sarcini** direct în cadrul unei comenzi pentru a urmări și aloca unități discrete de lucru
+- **Inițiați discuții** pentru a comunica cu clienții și membrii echipei în context
+
+## Comenzi Manuale pentru Servicii Nepublicate
+
+Nu sunteți limitat la crearea de comenzi doar pentru serviciile pe care le-ați publicat public. Super Adminii și Adminii pot crea comenzi manuale pentru servicii nepublicate — util când un serviciu este încă în dezvoltare, temporar indisponibil sau oferit unui client specific înainte de lansarea sa oficială.
+
+Când deschideți formularul de creare a comenzii, meniul derulant **Service** afișează atât serviciile publicate, cât și cele nepublicate, astfel încât puteți selecta oricare este aplicabil. Toate celelalte câmpuri și fluxuri de lucru ale comenzii se comportă la fel ca o comandă standard.
+
+## Suplimente în Comenzile Manuale
+
+La construirea unei comenzi manuale, puteți include **servicii suplimentare** pentru a permite clienților să primească pachete personalizate dincolo de serviciul principal. Suplimentele trebuie create în avans și legate de serviciul relevant în secțiunea **Forms** înainte de a apărea ca opțiune în formularul de comandă.
+
+<Note>
+Selecția suplimentului apare în formularul de comandă manuală doar dacă cel puțin un supliment a fost conectat la serviciul selectat. Dacă nu îl vedeți, verificați că suplimentul dvs. este corect legat în configurația serviciului.
+</Note>
+
+Odată ce este selectat un serviciu cu suplimente legate, puteți include acele suplimente înainte de finalizarea și depunerea comenzii.
+
+## Notificări
+
+AgencyHandy notifică automat persoanele potrivite pe măsură ce comenzile avansează:
+
+- Când o comandă este creată de un PM, Admin sau Super Admin, toți Super Adminii din compania dvs. obțin acces și clientul primește o notificare de creare.
+- Când un membru al echipei este adăugat la o comandă, acel membru primește o notificare.
+- Când sarcinile sunt create în cadrul unei comenzi, clientul primește o notificare.

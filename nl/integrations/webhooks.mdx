@@ -1,0 +1,196 @@
+---
+title: "Webhookbeheer: Aanmaken, Testen en Authenticeren"
+sidebarTitle: "Webhooks"
+description: "Stel webhooks in AgencyHandy in om real-time gebeurtenisgegevens naar externe systemen te sturen wanneer bestellingen, taken, facturen of andere entiteiten wijzigen."
+---
+
+Met webhooks kan AgencyHandy gegevens naar uw externe systemen sturen op het moment dat er iets wijzigt — geen polling vereist. Wanneer een geconfigureerde gebeurtenis plaatsvindt (bijvoorbeeld een bestelling wordt bijgewerkt of een ticket wordt aangemaakt), stuurt AgencyHandy een HTTP POST-verzoek met een JSON-payload naar de eindpunt-URL die u opgeeft. Dit maakt het eenvoudig om externe tools zoals CRM's, factureringssystemen of aangepaste dashboards gesynchroniseerd te houden met uw AgencyHandy-werkruimte in real time.
+
+<Note>
+  Business Pro-plan werkruimtes ondersteunen tot **30.000 webhookgebeurtenissen** per factureringsperiode. Controleer uw planbeperkingen voordat u automatiseringen met hoog volume instelt.
+</Note>
+
+## Ondersteunde gebeurtenissen
+
+U kunt een webhook abonneren op elke combinatie van de volgende gebeurtenissen:
+
+| Categorie | Gebeurtenissen |
+|---|---|
+| **Dienst** | Aangemaakt, Bijgewerkt, Verwijderd |
+| **Bestelling** | Aangemaakt, Bijgewerkt, Verwijderd |
+| **Taak** | Aangemaakt, Toegewezen, Voltooid, Bijgewerkt |
+| **Factuur** | Status gewijzigd |
+| **Klant / Gebruiker** | Nieuwe klant toegevoegd, Klant/gebruiker verwijderd |
+| **Voorstel** | Verstuurd, Ontvangen, Geaccepteerd, Afgewezen |
+| **Ticket** | Aangemaakt, Toegewezen, Status gewijzigd |
+| **Betaling** | Ontvangen, Mislukt |
+| **Servicepakket** | Aangemaakt, Bijgewerkt, Verwijderd |
+
+## Een webhook aanmaken
+
+<Steps>
+  <Step title="Navigeer naar Webhookbeheer">
+    Ga in de linker zijbalk naar **Integraties → Webhookbeheer**.
+  </Step>
+
+  <Step title="Authenticeer uw token">
+    Klik op de knop **Beheer** om uw webhooktoken te authenticeren. Dit token wordt gebruikt om uitgaande payloads te ondertekenen zodat u kunt verifiëren dat ze afkomstig zijn van AgencyHandy.
+  </Step>
+
+  <Step title="Maak een nieuwe webhook aan">
+    Klik op **Nieuwe webhook aanmaken** om het webhookconfiguratie­formulier te openen.
+  </Step>
+
+  <Step title="Voer de eindpunt-URL in">
+    Voer in het veld **Eindpunt-URL** de URL in van het externe systeem dat de webhookgegevens moet ontvangen. Dit moet een openbaar toegankelijk **POST**-eindpunt zijn.
+  </Step>
+
+  <Step title="Selecteer het inhoudstype">
+    Kies **JSON** als inhoudstype. AgencyHandy verstuurt alle webhookpayloads als `application/json`.
+  </Step>
+
+  <Step title="Selecteer webhookgebeurtenissen">
+    Kies elke gebeurtenis die deze webhook moet activeren. U kunt gebeurtenissen uit meerdere categorieën selecteren — zo kunnen bijvoorbeeld **Bestelling: Aangemaakt** en **Factuur: Status gewijzigd** beide naar hetzelfde eindpunt verwijzen.
+  </Step>
+
+  <Step title="Activeer de webhook">
+    Schakel de radioknop **Actief** in. Wanneer actief, levert AgencyHandy payloads voor alle geselecteerde gebeurtenissen in real time aan uw eindpunt.
+  </Step>
+
+  <Step title="Sla de configuratie op">
+    Bekijk uw instellingen en klik op **Opslaan**. De webhook verschijnt in de lijst en begint onmiddellijk met het leveren van gebeurtenissen.
+  </Step>
+</Steps>
+
+## Een webhook testen
+
+Stuur na het aanmaken van een webhook een testpayload om te bevestigen dat uw eindpunt bereikbaar is en gegevens correct verwerkt.
+
+<Steps>
+  <Step title="Open de webhook">
+    Klik in de lijst Webhookbeheer op de webhook die u wilt testen.
+  </Step>
+
+  <Step title="Klik op Testgebeurtenis">
+    Klik op de knop **Testgebeurtenis** op de detailpagina van de webhook.
+  </Step>
+
+  <Step title="Selecteer een testgebeurtenis">
+    Kies een voorbeeldgebeurtenis uit de lijst met gebeurtenissen die op deze webhook zijn geconfigureerd (bijv. **Bestelling: Aangemaakt**).
+  </Step>
+
+  <Step title="Stuur de testpayload">
+    Klik op **Verzenden**. AgencyHandy plaatst een voorbeeldpayload naar uw eindpunt-URL.
+  </Step>
+
+  <Step title="Verifieer het resultaat">
+    Controleer uw externe systeem om te bevestigen dat de testpayload is aangekomen en correct is verwerkt. Klik in AgencyHandy op de webhook om de **geschiedenis** te bekijken — u kunt het volledige verzoek, het antwoord van uw eindpunt en eventuele eerdere gebeurtenissen opnieuw bezorgen.
+  </Step>
+</Steps>
+
+<Tip>
+  Gebruik een tool zoals [Webhook.site](https://webhook.site) of [RequestBin](https://requestbin.com) als tijdelijk eindpunt tijdens de instelling om de exacte payload-structuur te inspecteren voordat u uw echte systeem aansluit.
+</Tip>
+
+## Webhookpayloads authenticeren
+
+Elk uitgaand webhookverzoek van AgencyHandy bevat een handtekeningheader die uw eindpunt kan gebruiken om te verifiëren dat de payload authentiek is en niet is gemanipuleerd.
+
+### Handtekeningheader
+
+```
+x-ah-sig: <signature>
+```
+
+AgencyHandy voegt deze header toe aan elk webhookverzoek. Extraheer de waarde uit inkomende verzoeken en geef deze door aan het verificatie-eindpunt.
+
+### Een webhookhandtekening verifiëren
+
+Stuur het volgende verzoek om te bevestigen dat een payload authentiek is:
+
+```
+POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature
+Content-Type: application/json
+```
+
+<ParamField body="webhookId" type="string" required>
+  Het ID van de webhook die de gebeurtenis heeft ontvangen. Dit is te vinden op de detailpagina van de webhook in AgencyHandy.
+</ParamField>
+
+<ParamField body="signature" type="string" required>
+  De waarde van de `x-ah-sig`-header uit het inkomende webhookverzoek.
+</ParamField>
+
+<ParamField body="secret" type="string" required>
+  Het webhookgeheim dat wordt weergegeven op de detailpagina van de webhook in AgencyHandy.
+</ParamField>
+
+<ParamField body="payload" type="object" required>
+  De onbewerkte JSON-body ontvangen van het webhookverzoek van AgencyHandy.
+</ParamField>
+
+<CodeGroup>
+
+```javascript JavaScript
+const url = 'https://api.agencyhandy.com/api/v1/webhooks/verify-signature';
+
+const postData = {
+  webhookId: 'your_webhook_id',
+  signature: 'your_signature',   // value of x-ah-sig header
+  secret: 'your_webhook_secret',
+  payload: {},                   // the parsed JSON body from AgencyHandy
+};
+
+const response = await fetch(url, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(postData),
+});
+
+const data = await response.json();
+console.log(data); // { "verification_status": "SUCCESS" }
+```
+
+```bash cURL
+curl -X POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature \
+  -H "Content-Type: application/json" \
+  -d '{
+    "webhookId": "your_webhook_id",
+    "signature": "your_signature",
+    "secret": "your_webhook_secret",
+    "payload": {}
+  }'
+```
+
+</CodeGroup>
+
+**Antwoorden**
+
+<ResponseField name="verification_status" type="string">
+  `SUCCESS` wanneer de handtekening geldig is. `FAILED` wanneer verificatie mislukt (HTTP 403).
+</ResponseField>
+
+```json Success (200)
+{
+  "verification_status": "SUCCESS"
+}
+```
+
+```json Failure (403)
+{
+  "type": "PermissionError",
+  "status": 403,
+  "verification_status": "FAILED"
+}
+```
+
+<Warning>
+  Houd uw webhookgeheim vertrouwelijk. Roteer het periodiek en werk uw verificatielogica onmiddellijk bij na rotatie. Stel het nooit bloot in client-side code of openbare repositories.
+</Warning>
+
+## Belangrijke opmerkingen
+
+- Uw eindpunt-URL moet een **openbaar toegankelijke HTTPS POST**-URL zijn.
+- Als uw eindpunt tijdelijk niet beschikbaar is, controleer dan het geschiedenispaneel van de webhook in AgencyHandy — u kunt elke eerdere gebeurtenis direct van daaruit **opnieuw bezorgen**.
+- Bewaak regelmatig webhookactiviteit om mislukte bezorgingen of ongeautoriseerde toegangspogingen te detecteren.
+- Webhooks die herhaaldelijk mislukken kunnen door AgencyHandy worden gepauzeerd — bekijk bezorgingslogs om problemen vroegtijdig te ondervangen.

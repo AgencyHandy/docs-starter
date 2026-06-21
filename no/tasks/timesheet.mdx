@@ -1,0 +1,172 @@
+---
+title: "Tidssporing og timelist-administrasjon i AgencyHandy"
+sidebarTitle: "Timeliste"
+description: "Logg tid med en live tidtaker eller manuell registrering, filtrer arbeidslogger etter oppgave, medlem eller tjeneste, og eksporter timelist-data som CSV eller XLSX i AgencyHandy."
+---
+
+Timelist-funksjonen i AgencyHandy gir deg et sentralt panel for å spore alle timer teamet ditt bruker på oppgaver. Du kan starte en live tidtaker på en oppgave, logge tid i etterkant med en manuell registrering, og deretter analysere dataene etter datoperiode, teammedlem eller tjeneste. Når du trenger å rapportere om produktivitet eller fakturere for tid, kan du eksportere alt til CSV eller XLSX med noen få klikk. Det er det essensielle verktøyet for å holde teamet ditt ansvarlig og tidsbasert fakturering nøyaktig.
+
+## Hvem kan bruke timelist-funksjoner
+
+| Funksjon | Super Admin | Admin | PM | Ansatt |
+|---------|:-----------:|:-----:|:--:|:--------:|
+| Se egne tidslogger | ✅ | ✅ | ✅ | ✅ |
+| Logge tid for andre | ✅ | ✅ | ✅ | ❌ |
+| Redigere tidsregistreringer | ✅ | ✅ | ✅ | ❌ |
+| Eksportere timelist-data | ✅ | ✅ | ✅ | ❌ |
+
+<Note>
+  Oppgaver må eksistere før tid kan spores mot dem. Sørg for at oppgaver er opprettet innen bestillinger før du forsøker å logge tid.
+</Note>
+
+## Se timelisten
+
+<Steps>
+  <Step title="Åpne timelisten">
+    Klikk på **Timeliste** i det venstre hovedsidefeltet. Du vil se en tabell som viser alle tidslogger for teamet ditt.
+
+    Hver rad viser dato, teammedlem, oppgavenavn, tjeneste, logget tid og eventuelle merknader knyttet til posten.
+  </Step>
+</Steps>
+
+## Legge til en tidsregistrering
+
+Du har to alternativer for å logge tid: en live tidtaker for pågående arbeid, eller en manuell registrering for tid du allerede har fullført.
+
+<Tabs>
+  <Tab title="Start en tidtaker">
+    <Steps>
+      <Step title="Velg en oppgave">
+        I timeliste-visningen, finn eller velg oppgaven du er i ferd med å jobbe med.
+      </Step>
+      <Step title="Klikk Start tidtaker">
+        Klikk på **Start tidtaker** for å begynne å spore tid i sanntid. Tidtakeren kjører til du stopper den.
+      </Step>
+      <Step title="Stopp når du er ferdig">
+        Klikk på **Stopp** når du er ferdig med arbeidet. AgencyHandy logger automatisk den forløpte tiden mot den valgte oppgaven.
+      </Step>
+    </Steps>
+
+    <Tip>
+      Bruk tidtakeren for pågående arbeid for å sikre presis sporing. Å runde opp eller estimere tid manuelt i etterkant er mindre nøyaktig enn å la tidtakeren gå.
+    </Tip>
+  </Tab>
+  <Tab title="Manuell registrering">
+    <Steps>
+      <Step title="Klikk + Legg til registrering">
+        Klikk på **+ Legg til registrering** i timeliste-panelet. Et skjema vil vises.
+      </Step>
+      <Step title="Fyll inn registreringsdetaljene">
+        - **Oppgave** — velg oppgaven denne tiden gjelder for
+        - **Teammedlem** — tildel tiden til rett person (Admins og Ledere kan logge for andre)
+        - **Tid brukt** — fyll inn timer og minutter
+        - **Merknader** — legg til eventuell kontekst om hva som ble jobbet med
+      </Step>
+      <Step title="Lagre">
+        Klikk på **Lagre** for å registrere posten. Den vil vises i timeliste-tabellen umiddelbart.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Filtrere etter datoperiode
+
+Bruk datofiltrene for å fokusere på en bestemt tidsperiode.
+
+<Steps>
+  <Step title="Åpne datofiltre">
+    Klikk på datofilter-kontrollene øverst til høyre i timeliste-panelet.
+  </Step>
+  <Step title="Velg et område">
+    Velg fra forhåndsinnstilte perioder:
+    - **Daglig** — kun dagens logger
+    - **Ukentlig** — inneværende uke
+    - **Månedlig** — inneværende måned
+
+    For lengre prosjekter eller historisk rapportering, velg et **Egendefinert** datoperiode ved å fylle inn en start- og sluttdato.
+  </Step>
+  <Step title="Bruk">
+    Klikk på **Bruk** for å oppdatere tabellen med logger fra den valgte perioden.
+  </Step>
+</Steps>
+
+<Tip>
+  Filtrer før eksport for å generere fokuserte rapporter. Eksport av den fullstendige ufiltrerte timelisten kan produsere svært store filer for aktive byråer.
+</Tip>
+
+## Gruppere poster
+
+Gruppering omorganiserer hvordan timelist-radene er organisert uten å fjerne noen data. Det hjelper deg med å lese og analysere loggene raskere.
+
+<Steps>
+  <Step title="Åpne Grupper etter-rullegardinmenyen">
+    Klikk på **Grupper etter**-rullegardinmenyen nær toppen av timeliste-panelet.
+  </Step>
+  <Step title="Velg en gruppering">
+    Velg fra følgende alternativer:
+
+    | Grupper etter-alternativ | Hva det viser |
+    |----------------|---------------|
+    | **Oppgavenavn** | Alle tidsregistreringer gruppert under hver oppgave |
+    | **Teammedlem** | Alle registreringer gruppert under hver person |
+    | **Tjeneste → Oppgavenavn** | Registreringer gruppert etter tjeneste, deretter brutt ned etter oppgave innenfor hver tjeneste |
+  </Step>
+</Steps>
+
+<Note>
+  Gruppering er en visuell-kun endring — den påvirker ikke de underliggende dataene eller hva som eksporteres. Eksporter inkluderer alltid alle synlige rader.
+</Note>
+
+## Se oppgavedetaljer fra timelisten
+
+<Steps>
+  <Step title="Klikk på et oppgavenavn">
+    Klikk på et **oppgavenavn** i timeliste-tabellen. AgencyHandy navigerer deg til den oppgavens fullstendige detaljside.
+  </Step>
+  <Step title="Gjennomgå oppgavekonteksten">
+    På oppgavedetaljsiden finner du den fullstendige tidslogghistorikken, vedlagte merknader, ansvarlige, status og annen oppgavenivå-informasjon. Bruk denne visningen til å undersøke registreringer eller verifisere hvilket arbeid som ble utført.
+  </Step>
+</Steps>
+
+## Eksportere timelist-data
+
+Eksporter timelisten for lønn, klientfaktureringsrapporter eller eksterne prosjektadministrasjonsverktøy.
+
+<Steps>
+  <Step title="Bruk filtre først (anbefalt)">
+    Bruk datoperiodfilter for å begrense eksporten til den nødvendige perioden. Dette holder filen fokusert og håndterbar.
+  </Step>
+  <Step title="Klikk Eksporter">
+    Klikk på **Eksporter**-knappen øverst i timeliste-panelet.
+  </Step>
+  <Step title="Velg et format">
+    Velg enten:
+    - **CSV** — for regnearkverktøy som Excel, Google Sheets eller datapipeliner
+    - **XLSX** — for Excel-formaterte arbeidsbøker med kolonneformatering bevart
+  </Step>
+  <Step title="Last ned filen">
+    Filen lastes ned til enheten din automatisk. Hver eksport inkluderer alle synlige kolonner: dato, teammedlem, oppgavenavn, tjeneste, logget tid og merknader.
+  </Step>
+</Steps>
+
+<Warning>
+  Hvis eksporten ikke utløser en nedlasting, kan nettleserens **popup-blokkering** hindre filen i å laste ned. Deaktiver popup-blokkering for AgencyHandy og prøv igjen.
+</Warning>
+
+## Tilleggsmerknader
+
+<Accordion title="Tidtaker kontra manuell registrering">
+  Tidtakeren er best for aktivt, sanntidsarbeid. Manuelle registreringer er best når du glemte å starte tidtakeren eller trenger å registrere tid i etterkant. Begge metoder produserer identiske loggposter i timeliste-tabellen.
+</Accordion>
+
+<Accordion title="Gruppering kontra filtrering">
+  Filtre **reduserer** hvilke rader som vises i tabellen. Gruppering **omorganiserer** radene som allerede er synlige. Du kan bruke begge samtidig — filtrer til en datoperiode, og grupper deretter etter teammedlem for å se hvert persons totaler for den perioden.
+</Accordion>
+
+<Accordion title="Eksporter inkluderer alle synlige kolonner">
+  Hver eksport fanger den nåværende tilstanden til den synlige tabellen: dato, bruker, oppgave, tjeneste, tid og merknader. Hvis du har brukt en grupper-etter-innstilling, gjenspeiler eksporten grupperingsstrukturen også.
+</Accordion>
+
+<Accordion title="Egendefinerte perioder for historiske data">
+  For langvarige prosjekter eller kvartalsvise gjennomganger, bruk det egendefinerte datoperiodealternativet for å hente historiske timelist-data utover de forhåndsinnstilte daglige/ukentlige/månedlige vinduene.
+</Accordion>

@@ -1,0 +1,172 @@
+---
+title: "Ajanseuranta ja tuntikirjanpidon hallinta AgencyHandyssa"
+sidebarTitle: "Tuntikirjanpito"
+description: "Kirjaa aikaa live-ajastimella tai manuaalisella merkinnällä, suodata työlokeja tehtävän, jäsenen tai palvelun mukaan, ja vie tuntikirjanpitotiedot CSV- tai XLSX-muodossa AgencyHandyssa."
+---
+
+AgencyHandyn Tuntikirjanpito-ominaisuus antaa sinulle keskitetyn paneelin jokaisen tunnin seurantaan, jonka tiimisi käyttää tehtäviin. Voit käynnistää live-ajastimen mille tahansa tehtävälle, kirjata ajan jälkikäteen manuaalisella merkinnällä, ja sitten viipaloidä ja pilkkoa tiedot päivämäärävälin, tiimin jäsenen tai palvelun mukaan. Kun sinun on raportoitava tuottavuudesta tai laskutettava ajasta, voit viedä kaiken CSV- tai XLSX-muodossa muutamalla napsautuksella. Se on olennainen työkalu tiimisi vastuullisuuden pitämiseen ja aikaperusteisen laskutuksesi tarkkuuden varmistamiseen.
+
+## Kuka voi käyttää tuntikirjanpidon ominaisuuksia
+
+| Ominaisuus | Super Admin | Admin | PM | Työntekijä |
+|---------|:-----------:|:-----:|:--:|:--------:|
+| Katso omia työlokeja | ✅ | ✅ | ✅ | ✅ |
+| Kirjaa aikaa muiden puolesta | ✅ | ✅ | ✅ | ❌ |
+| Muokkaa ajankirjauksia | ✅ | ✅ | ✅ | ❌ |
+| Vie tuntikirjanpitotiedot | ✅ | ✅ | ✅ | ❌ |
+
+<Note>
+  Tehtävien on oltava olemassa ennen kuin aikaa voidaan seurata niitä vastaan. Varmista, että tehtävät on luotu tilausten sisällä ennen ajan kirjaamisen yrittämistä.
+</Note>
+
+## Tuntikirjanpidon tarkastelu
+
+<Steps>
+  <Step title="Avaa tuntikirjanpito">
+    Napsauta päävasemmassa sivupalkissa **Tuntikirjanpito**. Näet taulukon, jossa luetellaan kaikki tiimisi työlokimerkinnät.
+
+    Jokainen rivi näyttää päivämäärän, tiimin jäsenen, tehtävän nimen, palvelun, kirjatun ajan ja merkintään liitetyt muistiinpanot.
+  </Step>
+</Steps>
+
+## Ajankirjauksen lisääminen
+
+Sinulla on kaksi vaihtoehtoa ajan kirjaamiseen: live-ajastin käynnissä olevalle työlle tai manuaalinen merkintä jo suoritetulle ajalle.
+
+<Tabs>
+  <Tab title="Käynnistä ajastin">
+    <Steps>
+      <Step title="Valitse tehtävä">
+        Etsi tai valitse Tuntikirjanpito-näkymässä tehtävä, jonka parissa olet aloittamassa työskentelyä.
+      </Step>
+      <Step title="Napsauta Käynnistä ajastin">
+        Napsauta **Käynnistä ajastin** aloittaaksesi ajan seurannan reaaliajassa. Ajastin käy kunnes pysäytät sen.
+      </Step>
+      <Step title="Pysäytä kun valmis">
+        Napsauta **Pysäytä**, kun olet valmis työn kanssa. AgencyHandy kirjaa automaattisesti kuluneen ajan valittua tehtävää vastaan.
+      </Step>
+    </Steps>
+
+    <Tip>
+      Käytä ajastinta käynnissä olevaan työhön varmistaaksesi tarkan seurannan. Ajan pyöristäminen tai arvioiminen jälkikäteen on vähemmän tarkkaa kuin ajastimen käyminen.
+    </Tip>
+  </Tab>
+  <Tab title="Manuaalinen merkintä">
+    <Steps>
+      <Step title="Napsauta + Lisää merkintä">
+        Napsauta Tuntikirjanpito-paneelissa **+ Lisää merkintä**. Lomake avautuu.
+      </Step>
+      <Step title="Täytä merkinnän tiedot">
+        - **Tehtävä** — valitse tehtävä, johon tämä aika liittyy
+        - **Tiimin jäsen** — määritä aika oikealle henkilölle (Adminit ja Projektipäälliköt voivat kirjata muiden puolesta)
+        - **Käytetty aika** — syötä tunnit ja minuutit
+        - **Muistiinpanot** — lisää konteksti siitä, mitä työstettiin
+      </Step>
+      <Step title="Tallenna">
+        Napsauta **Tallenna** tallentaaksesi merkinnän. Se näkyy tuntikirjanpitotaulukossa välittömästi.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Suodattaminen päivämäärävälin mukaan
+
+Käytä päivämääräsuodattimia keskittyäksesi tiettyyn ajanjaksoon.
+
+<Steps>
+  <Step title="Avaa päivämääräsuodattimet">
+    Napsauta Tuntikirjanpito-paneelin oikeassa yläkulmassa olevia päivämääräsuodatinhallintatoimintoja.
+  </Step>
+  <Step title="Valitse väli">
+    Valitse esiasetetuista väleistä:
+    - **Päivittäinen** — vain tämän päivän lokimerkinnät
+    - **Viikoittainen** — kuluva viikko
+    - **Kuukausittainen** — kuluva kuukausi
+
+    Pidemmille projekteille tai historialliselle raportoinnille valitse **Mukautettu** päivämääräväli syöttämällä aloitus- ja päättymispäivämäärä.
+  </Step>
+  <Step title="Käytä">
+    Napsauta **Käytä** päivittääksesi taulukon valitun ajanjakson lokimerkinnöillä.
+  </Step>
+</Steps>
+
+<Tip>
+  Suodata ennen vientiä tuottaaksesi kohdennettuja raportteja. Koko suodattamattoman tuntikirjanpidon vienti voi tuottaa erittäin suuria tiedostoja aktiivisille toimistoille.
+</Tip>
+
+## Merkintöjen ryhmittely
+
+Ryhmittely järjestää uudelleen tuntikirjanpitorivien organisoinnin poistamatta mitään tietoja. Se auttaa sinua lukemaan ja analysoimaan lokimerkintöjä nopeammin.
+
+<Steps>
+  <Step title="Avaa Ryhmittele-pudotusvalikko">
+    Napsauta **Ryhmittele**-pudotusvalikkoa Tuntikirjanpito-paneelin yläosassa.
+  </Step>
+  <Step title="Valitse ryhmittely">
+    Valitse seuraavista vaihtoehdoista:
+
+    | Ryhmittelyvaihtoehto | Mitä se näyttää |
+    |----------------|---------------|
+    | **Tehtävän nimi** | Kaikki ajankirjaukset ryhmiteltynä kunkin tehtävän alle |
+    | **Tiimin jäsen** | Kaikki merkinnät ryhmiteltynä kunkin henkilön alle |
+    | **Palvelu → Tehtävän nimi** | Merkinnät ryhmiteltynä palvelun mukaan, sitten eriteltynä tehtävän mukaan kunkin palvelun sisällä |
+  </Step>
+</Steps>
+
+<Note>
+  Ryhmittely on vain visuaalinen muutos — se ei vaikuta taustalla oleviin tietoihin tai siihen, mitä viedään. Viennit sisältävät aina kaikki näkyvät rivit.
+</Note>
+
+## Tehtävän tietojen tarkastelu tuntikirjanpidosta
+
+<Steps>
+  <Step title="Napsauta tehtävän nimeä">
+    Napsauta tuntikirjanpitotaulukossa mitä tahansa **Tehtävän nimeä**. AgencyHandy siirtää sinut kyseisen tehtävän täydelliselle tietosivulle.
+  </Step>
+  <Step title="Tarkastele tehtävän kontekstia">
+    Tehtävän tietosivulla löydät täydellisen aikalokihistorian, liitetyt muistiinpanot, vastuuhenkilöt, tilan ja muut tehtävätason tiedot. Käytä tätä näkymää merkintöjen tutkimiseen tai tehdyn työn varmistamiseen.
+  </Step>
+</Steps>
+
+## Tuntikirjanpitotietojen vienti
+
+Vie tuntikirjanpitosi palkanmaksua, asiakkaiden laskutusraportteja tai ulkoisia projektinhallintavälineitä varten.
+
+<Steps>
+  <Step title="Käytä suodattimia ensin (suositeltu)">
+    Käytä päivämäärävälisuodatinta rajoittaaksesi viennin tarvitsemaasi ajanjaksoon. Tämä pitää tiedoston kohdennettuna ja hallittavana.
+  </Step>
+  <Step title="Napsauta Vie">
+    Napsauta Tuntikirjanpito-paneelin yläosassa olevaa **Vie**-painiketta.
+  </Step>
+  <Step title="Valitse formaatti">
+    Valitse jompikumpi:
+    - **CSV** — taulukkolaskentavälineille kuten Excel, Google Sheets tai dataputkille
+    - **XLSX** — Excel-muotoisille työkirjoille, joissa sarakemuotoilu on säilytetty
+  </Step>
+  <Step title="Lataa tiedosto">
+    Tiedosto latautuu laitteellesi automaattisesti. Jokainen vienti sisältää kaikki näkyvät sarakkeet: päivämäärän, tiimin jäsenen, tehtävän nimen, palvelun, kirjatun ajan ja muistiinpanot.
+  </Step>
+</Steps>
+
+<Warning>
+  Jos vienti ei käynnistä latausta, selaimesi **ponnahdusikkunoiden esto** saattaa estää tiedoston lataamisen. Poista ponnahdusikkunoiden esto käytöstä AgencyHandylle ja yritä uudelleen.
+</Warning>
+
+## Lisähuomioita
+
+<Accordion title="Ajastin vs. manuaalinen merkintä">
+  Ajastin sopii parhaiten aktiiviseen, reaaliaikaiseen työhön. Manuaaliset merkinnät sopivat parhaiten, kun unohdit käynnistää ajastimen tai sinun on kirjattava aika jälkikäteen. Molemmat menetelmät tuottavat identtiset lokimerkinnät tuntikirjanpitotaulukossa.
+</Accordion>
+
+<Accordion title="Ryhmittely vs. suodattaminen">
+  Suodattimet **vähentävät** taulukossa näytettäviä rivejä. Ryhmittely **järjestää uudelleen** jo näkyvät rivit. Voit käyttää molempia samanaikaisesti — suodata päivämäärävälille, sitten ryhmittele tiimin jäsenen mukaan nähdäksesi kunkin henkilön kokonaismäärät kyseiseltä ajanjaksolta.
+</Accordion>
+
+<Accordion title="Viennit sisältävät kaikki näkyvät sarakkeet">
+  Jokainen vienti kaappaa näkyvän taulukon nykyisen tilan: päivämäärä, käyttäjä, tehtävä, palvelu, aika ja muistiinpanot. Jos olet käyttänyt ryhmittelyasetusta, vienti heijastaa myös ryhmittelyrakennetta.
+</Accordion>
+
+<Accordion title="Mukautetut välit historiallisille tiedoille">
+  Pitkäkestoisille projekteille tai neljännesvuosikatsauksille käytä mukautettua päivämäärävälivaihtoehtoa vetääksesi historiallisia tuntikirjanpitotietoja esiasetettujen päivittäisten/viikoittaisten/kuukausittaisten ikkunoiden ulkopuolelta.
+</Accordion>

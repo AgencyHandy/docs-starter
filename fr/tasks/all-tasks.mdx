@@ -1,0 +1,126 @@
+---
+title: "All Tasks — Gestion centralisée des tâches dans AgencyHandy"
+sidebarTitle: "All Tasks"
+description: "Utilisez la page All Tasks pour une vue en temps réel, filtrée par rôle, de chaque tâche des commandes en cours et en révision — avec recherche, filtres et tri."
+---
+
+La page All Tasks d'AgencyHandy vous offre une vue unique et centralisée de chaque tâche appartenant aux flux de travail actifs de votre agence. Plutôt que de chercher au travers des commandes individuelles, vous pouvez voir toutes les tâches pertinentes au même endroit, les filtrer par assigné, priorité ou date, et effectuer des modifications directement depuis la liste. La visibilité est automatiquement délimitée par votre rôle — les Super Admins voient tout, les Managers voient les commandes qui leur sont assignées, et les Employees ne voient que leurs propres tâches.
+
+## Accéder à la page All Tasks
+
+1. Connectez-vous à votre compte AgencyHandy.
+2. Cliquez sur **Tasks** dans la barre latérale gauche.
+3. Sélectionnez **All Tasks** pour ouvrir le tableau de bord centralisé des tâches.
+
+<Note>
+  La page All Tasks n'affiche que les tâches des commandes au statut **Ongoing** ou **In Review**. Les tâches rattachées à des commandes dans tout autre état (par exemple, Completed, Pending) n'y apparaissent pas.
+</Note>
+
+## Visibilité des tâches par rôle
+
+Ce que vous voyez sur la page All Tasks dépend entièrement de votre rôle.
+
+| Rôle | Ce qu'ils voient |
+|------|---------------|
+| **Super Admin / Admin** | Toutes les tâches de chaque commande, équipe et statut |
+| **Project Manager (PM)** | Uniquement les tâches des commandes où ils sont assignés comme Manager |
+| **Employee / Assignee** | Uniquement les tâches qui leur sont directement assignées — même si des collègues travaillent sur la même commande |
+
+<Tip>
+  Si un PM ne trouve pas une tâche qu'il s'attend à voir, vérifiez qu'il est bien assigné comme Manager sur la commande concernée. Les PM ne voient pas les tâches à moins d'être le Manager assigné de cette commande.
+</Tip>
+
+## Quand les tâches apparaissent sur cette page
+
+Les tâches apparaissent sur la page All Tasks lorsque ces conditions sont remplies :
+
+<CardGroup cols={2}>
+  <Card title="Commandes qui déclenchent la visibilité des tâches" icon="circle-check">
+    - Des commandes manuelles (ponctuelles ou par abonnement) sont créées
+    - Des commandes du catalogue via Stripe ou des modes de paiement manuels sont passées
+    - Une proposition est acceptée par l'agence
+  </Card>
+  <Card title="Commandes qui gardent les tâches masquées" icon="eye-slash">
+    - Tâches demandées par les clients que l'agence n'a pas encore acceptées
+    - Commandes d'essai que l'agence n'a pas encore acceptées
+    - Commandes au statut en attente, en attente de confirmation de paiement bancaire manuel
+  </Card>
+</CardGroup>
+
+## Recherche, filtrage et tri
+
+La page All Tasks inclut un ensemble complet de contrôles pour vous aider à trouver exactement ce dont vous avez besoin.
+
+### Recherche
+
+Utilisez la barre de recherche pour localiser des tâches par nom, assigné ou commande associée. Les résultats se mettent à jour en temps réel à mesure que vous tapez.
+
+### Filtres
+
+Cliquez sur **Filter → + Add Filter** pour ouvrir le panneau de filtres. Vous pouvez combiner plusieurs filtres pour des résultats précis :
+
+| Filtre | Ce qu'il fait |
+|--------|--------------|
+| **Order ID** | Affiche les tâches liées à un numéro de commande spécifique |
+| **Assignee** | Affiche les tâches assignées à un membre particulier de l'équipe |
+| **Status** | Filtre par avancement de la tâche : Pending, In Progress, Review, Done, etc. |
+| **Priority** | Se concentre sur les tâches de priorité Haute, Moyenne ou Basse |
+| **Label** | Restreint par labels ou catégories de tâches |
+| **Kick Off Date** | Affiche les tâches commençant à partir d'une date spécifique |
+| **End Date** | Affiche les tâches dues à une date spécifique |
+
+<Note>
+  Les filtres ne sont disponibles que sur la page All Tasks. Ils persistent pendant votre session de navigateur mais se réinitialisent au rafraîchissement de la page. Les filtres n'affectent que votre vue et ne modifient pas ce que voient les autres utilisateurs.
+</Note>
+
+Pour effacer tous les filtres, cliquez sur **Clear Filters** pour revenir à la liste complète et non filtrée.
+
+### Tri
+
+Triez la liste des tâches par :
+- **Date d'échéance** — faites remonter les tâches à venir ou déjà en retard
+- **Priorité** — placez les tâches les plus critiques en haut
+- **Heure de création** — voyez d'abord les tâches récemment ajoutées
+
+### Navigation par fil d'Ariane
+
+Utilisez le fil d'Ariane en haut de la page pour conserver le contexte lorsque vous naviguez entre les sous-tâches, les listes de tâches et les commandes parentes. Cela est particulièrement utile lorsque vous explorez une tâche spécifique puis que vous devez revenir à la liste plus large.
+
+## Modifier des tâches
+
+Vous pouvez modifier des tâches sur la page All Tasks de deux manières :
+
+<Tabs>
+  <Tab title="Édition en ligne">
+    Cliquez directement dans un champ modifiable au sein de la ligne de tâche — comme le statut, l'assigné ou la date d'échéance — et effectuez votre modification sans quitter la vue en liste. C'est l'option la plus rapide pour des mises à jour ponctuelles.
+  </Tab>
+  <Tab title="Édition par fenêtre modale">
+    Cliquez sur le nom de la tâche pour ouvrir la fenêtre de détail complète de la tâche. À partir de là, vous pouvez mettre à jour toutes les propriétés de la tâche, ajouter des notes, consulter les sous-tâches et voir l'historique complet de la tâche. Utilisez cette option pour des modifications plus approfondies ou lorsque vous avez besoin de contexte.
+  </Tab>
+</Tabs>
+
+## Règles de suppression des tâches
+
+Les tâches de la page All Tasks sont directement rattachées à leurs commandes parentes.
+
+- Lorsqu'une **commande est supprimée**, toutes les tâches associées à cette commande sont **automatiquement et définitivement retirées** de la page All Tasks.
+- Cette suppression affecte tous les rôles d'utilisateur — personne ne pourra voir ces tâches après la suppression de la commande.
+- **Il n'y a aucune option de récupération** pour les tâches supprimées via la suppression d'une commande.
+
+<Warning>
+  Supprimer une commande retire définitivement toutes ses tâches. Assurez-vous que tout historique de tâche important ou tout registre de livrable est sauvegardé ailleurs avant de supprimer une commande.
+</Warning>
+
+## Remarques supplémentaires
+
+<Accordion title="Mises à jour en temps réel">
+  Les modifications apportées aux commandes, aux affectations de tâches ou aux statuts des tâches se reflètent en temps réel sur la page All Tasks. Si un collègue met à jour une tâche pendant que vous avez la page ouverte, vous verrez le changement sans avoir besoin de rafraîchir.
+</Accordion>
+
+<Accordion title="Tâches demandées par les clients">
+  Les tâches soumises par les clients n'apparaissent pas sur la page All Tasks tant que l'agence ne les a pas explicitement acceptées. Jusqu'à leur acceptation, ces tâches restent en attente et ne sont pas visibles dans la vue centralisée.
+</Accordion>
+
+<Accordion title="Tâches et statut des commandes">
+  Les tâches n'apparaissent que pour les commandes au statut Ongoing ou In Review. Si une commande passe à Completed ou est mise en pause, ses tâches ne sont plus affichées ici. Accédez à la commande spécifique pour voir les tâches rattachées à des commandes en dehors de ces statuts.
+</Accordion>

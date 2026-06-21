@@ -1,0 +1,172 @@
+---
+title: "Urmărirea Timpului și Gestionarea Foilor de Pontaj în AgencyHandy"
+sidebarTitle: "Foaie de Pontaj"
+description: "Înregistrează timpul cu un cronometru live sau introducere manuală, filtrează jurnalele de lucru după sarcină, membru sau serviciu și exportă datele foilor de pontaj ca CSV sau XLSX în AgencyHandy."
+---
+
+Funcția Foaie de Pontaj din AgencyHandy îți oferă un panou central pentru urmărirea fiecărei ore pe care echipa ta o petrece pe sarcini. Poți porni un cronometru live pe orice sarcină, înregistra timpul post-factum cu o introducere manuală și apoi analiza datele după intervalul de date, membrul echipei sau serviciu. Când trebuie să raportezi despre productivitate sau să facturezi pentru timp, poți exporta totul în CSV sau XLSX în câteva clicuri. Este instrumentul esențial pentru a menține echipa responsabilă și facturarea bazată pe timp precisă.
+
+## Cine Poate Folosi Funcțiile Foii de Pontaj
+
+| Funcție | Super Admin | Admin | PM | Employee |
+|---------|:-----------:|:-----:|:--:|:--------:|
+| Vizualizare jurnale proprii de timp | ✅ | ✅ | ✅ | ✅ |
+| Înregistrare timp pentru alții | ✅ | ✅ | ✅ | ❌ |
+| Editare înregistrări de timp | ✅ | ✅ | ✅ | ❌ |
+| Export date foi de pontaj | ✅ | ✅ | ✅ | ❌ |
+
+<Note>
+  Sarcinile trebuie să existe înainte ca timpul să poată fi urmărit pe ele. Asigură-te că sarcinile sunt create în comenzi înainte de a încerca să înregistrezi timp.
+</Note>
+
+## Vizualizarea Foii de Pontaj
+
+<Steps>
+  <Step title="Deschide Foaia de Pontaj">
+    Apasă **Timesheet** în bara laterală principală stângă. Vei vedea un tabel cu toate jurnalele de timp pentru echipa ta.
+
+    Fiecare rând arată data, membrul echipei, numele sarcinii, serviciul, timpul înregistrat și orice note atașate înregistrării.
+  </Step>
+</Steps>
+
+## Adăugarea unei Înregistrări de Timp
+
+Ai două opțiuni pentru înregistrarea timpului: un cronometru live pentru lucrările în curs sau o introducere manuală pentru timpul deja finalizat.
+
+<Tabs>
+  <Tab title="Pornește un Cronometru">
+    <Steps>
+      <Step title="Selectează o sarcină">
+        În vizualizarea Foii de Pontaj, găsește sau selectează sarcina la care urmează să lucrezi.
+      </Step>
+      <Step title="Apasă Start Timer">
+        Apasă **Start Timer** pentru a începe urmărirea timpului în timp real. Cronometrul rulează până îl oprești.
+      </Step>
+      <Step title="Oprește când ai terminat">
+        Apasă **Stop** când termini lucrul. AgencyHandy înregistrează automat timpul scurs față de sarcina selectată.
+      </Step>
+    </Steps>
+
+    <Tip>
+      Folosește cronometrul pentru lucrul în curs pentru a asigura urmărirea precisă. Rotunjirea manuală sau estimarea timpului post-factum este mai puțin precisă decât lăsarea cronometrului să ruleze.
+    </Tip>
+  </Tab>
+  <Tab title="Introducere Manuală">
+    <Steps>
+      <Step title="Apasă + Add Entry">
+        În panoul Foii de Pontaj, apasă **+ Add Entry**. Va apărea un formular.
+      </Step>
+      <Step title="Completează detaliile înregistrării">
+        - **Task** — selectează sarcina căreia îi se aplică acest timp
+        - **Team Member** — atribuie timpul persoanei corecte (Adminii și Managerii pot înregistra pentru alții)
+        - **Time Spent** — introdu orele și minutele
+        - **Notes** — adaugă orice context despre ce s-a lucrat
+      </Step>
+      <Step title="Salvează">
+        Apasă **Save** pentru a înregistra intrarea. Va apărea imediat în tabelul foii de pontaj.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Filtrarea după Intervalul de Date
+
+Folosește filtrele de date pentru a te concentra pe o perioadă specifică de timp.
+
+<Steps>
+  <Step title="Deschide filtrele de dată">
+    Apasă controalele filtrului de date din partea dreaptă sus a panoului Foii de Pontaj.
+  </Step>
+  <Step title="Selectează un interval">
+    Alege din intervalele prestabilite:
+    - **Daily** — doar jurnalele de astăzi
+    - **Weekly** — săptămâna curentă
+    - **Monthly** — luna curentă
+
+    Pentru proiecte mai lungi sau raportări istorice, selectează un interval de date **Custom** introducând o dată de început și de sfârșit.
+  </Step>
+  <Step title="Aplică">
+    Apasă **Apply** pentru a actualiza tabelul cu jurnalele din perioada selectată.
+  </Step>
+</Steps>
+
+<Tip>
+  Filtrează înainte de a exporta pentru a genera rapoarte concentrate. Exportul foii de pontaj complete nefiltrată poate produce fișiere foarte mari pentru agențiile active.
+</Tip>
+
+## Gruparea Înregistrărilor
+
+Gruparea rearanjează modul în care sunt organizate rândurile foii de pontaj fără a elimina niciun dat. Te ajută să citești și să analizezi jurnalele mai rapid.
+
+<Steps>
+  <Step title="Deschide lista derulantă Group By">
+    Apasă lista derulantă **Group By** din apropierea părții de sus a panoului Foii de Pontaj.
+  </Step>
+  <Step title="Selectează o grupare">
+    Alege din următoarele opțiuni:
+
+    | Opțiune Group By | Ce Arată |
+    |----------------|---------------|
+    | **Task Name** | Toate înregistrările de timp grupate sub fiecare sarcină |
+    | **Team Member** | Toate înregistrările grupate sub fiecare persoană |
+    | **Service → Task Name** | Înregistrările grupate după serviciu, apoi defalcate după sarcină în cadrul fiecărui serviciu |
+  </Step>
+</Steps>
+
+<Note>
+  Gruparea este o modificare vizuală — nu afectează datele de bază sau ceea ce se exportă. Exporturile includ întotdeauna toate rândurile vizibile.
+</Note>
+
+## Vizualizarea Detaliilor Sarcinii din Foaia de Pontaj
+
+<Steps>
+  <Step title="Apasă un nume de sarcină">
+    În tabelul foii de pontaj, apasă pe orice **Nume de Sarcină**. AgencyHandy te navighează la pagina de detalii complete ale acelei sarcini.
+  </Step>
+  <Step title="Revizuiește contextul sarcinii">
+    Pe pagina de detalii a sarcinii, vei găsi istoricul complet al jurnalului de timp, notele atașate, persoanele atribuite, starea și alte informații la nivel de sarcină. Folosește această vizualizare pentru a investiga înregistrările sau a verifica ce lucrare a fost efectuată.
+  </Step>
+</Steps>
+
+## Exportarea Datelor Foii de Pontaj
+
+Exportă foaia de pontaj pentru salarizare, rapoarte de facturare a clienților sau instrumente externe de gestionare a proiectelor.
+
+<Steps>
+  <Step title="Aplică filtrele mai întâi (recomandat)">
+    Folosește filtrul intervalului de date pentru a restrânge exportul la perioada de care ai nevoie. Aceasta menține fișierul concentrat și ușor de gestionat.
+  </Step>
+  <Step title="Apasă Export">
+    Apasă butonul **Export** din partea de sus a panoului Foii de Pontaj.
+  </Step>
+  <Step title="Alege un format">
+    Selectează oricare dintre:
+    - **CSV** — pentru instrumente de calcul tabelar precum Excel, Google Sheets sau pipeline-uri de date
+    - **XLSX** — pentru registre de lucru formatate Excel cu formatarea coloanelor păstrată
+  </Step>
+  <Step title="Descarcă fișierul">
+    Fișierul se descarcă automat pe dispozitivul tău. Fiecare export include toate coloanele vizibile: data, membrul echipei, numele sarcinii, serviciul, timpul înregistrat și notele.
+  </Step>
+</Steps>
+
+<Warning>
+  Dacă exportul nu declanșează o descărcare, **blocatorul de ferestre pop-up** al browserului tău poate împiedica descărcarea fișierului. Dezactivează blocarea ferestrelor pop-up pentru AgencyHandy și încearcă din nou.
+</Warning>
+
+## Note Suplimentare
+
+<Accordion title="Cronometru vs. introducere manuală">
+  Cronometrul este cel mai bun pentru lucrul activ, în timp real. Înregistrările manuale sunt cele mai bune când ai uitat să pornești cronometrul sau trebuie să înregistrezi timp retroactiv. Ambele metode produc înregistrări identice în tabelul foii de pontaj.
+</Accordion>
+
+<Accordion title="Grupare vs. filtrare">
+  Filtrele **reduc** rândurile afișate în tabel. Gruparea **reorganizează** rândurile deja vizibile. Poți aplica ambele simultan — filtrează la un interval de date, apoi grupează după membrul echipei pentru a vedea totalurile fiecărei persoane pentru acea perioadă.
+</Accordion>
+
+<Accordion title="Exporturile includ toate coloanele vizibile">
+  Fiecare export captează starea curentă a tabelului vizibil: dată, utilizator, sarcină, serviciu, timp și note. Dacă ai aplicat o setare de grupare, exportul reflectă și structura de grupare.
+</Accordion>
+
+<Accordion title="Intervale personalizate pentru date istorice">
+  Pentru proiecte de lungă durată sau revizuiri trimestriale, folosește opțiunea intervalului de date personalizat pentru a extrage date istorice ale foii de pontaj dincolo de ferestrele prestabilite zilnice/săptămânale/lunare.
+</Accordion>

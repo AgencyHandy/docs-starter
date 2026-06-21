@@ -1,0 +1,162 @@
+---
+title: "Podpora — Správa zákaznických dotazů v AgencyHandy"
+sidebarTitle: "Tikety podpory"
+description: "Vytvářejte, upravujte a spravujte tikety podpory v AgencyHandy pro sledování klientských dotazů, nastavování priorit, přiřazování stavů a uchování kompletní historie interakcí."
+---
+
+Funkce tiketů v AgencyHandy poskytuje vaší agentuře strukturovaný způsob, jak zpracovávat dotazy, problémy a požadavky klientů. Místo toho, aby se otázky ztrácely v e-mailech nebo chatových vláknech, každý požadavek na podporu je uložen v tiketu s předmětem, prioritou, přiřazenou osobou a stavem — vše prohledatelné a sledovatelné z jednoho dashboardu. Tikety mohou vytvářet jak váš tým, tak vaši klienti, a úplná historie každého tiketu je zachována, takže nic neupadne v zapomnění.
+
+## Přístup k dashboardu tiketů
+
+Kliknutím na **Tikety** v levém postranním panelu otevřete dashboard tiketů. Odtud můžete:
+
+- Vytvářet, upravovat a mazat tikety
+- Vyhledávat tikety podle **předmětu**, **jména klienta** nebo **ID objednávky**
+- Přehledně zobrazovat stav a prioritu tiketů
+- Sledovat všechny otevřené, pozastavené a uzavřené tikety v rámci agentury
+
+## K čemu slouží tikety
+
+<CardGroup cols={3}>
+  <Card title="Správa požadavků na podporu" icon="headset">
+    Klienti i členové týmu agentury mohou prostřednictvím systému tiketů zasílat dotazy, hlásit problémy nebo zadávat požadavky. Každé podání je zaznamenáno a sledováno.
+  </Card>
+  <Card title="Sledování řešení problémů" icon="circle-check">
+    Přiřazujte tikety členům týmu, nastavujte priority a aktualizujte stavy v průběhu práce směřující k vyřešení. Všichni zůstávají informováni.
+  </Card>
+  <Card title="Historie komunikace" icon="clock-rotate-left">
+    Každý tiket uchovává kompletní historii akcí, aktualizací a interakcí. Minulou komunikaci lze kdykoli přezkoumat pro kontext nebo účely auditu.
+  </Card>
+</CardGroup>
+
+## Vytvoření tiketu
+
+Tikety mohou vytvářet jak členové týmu agentury, tak klienti. Postup vytváření je pro obě strany stejný.
+
+**Kdo může vytvářet tikety:** Super Admin, Admin, PM a Klient.
+
+<Steps>
+  <Step title="Otevřete dashboard tiketů">
+    Klikněte na **Tikety** v levém postranním panelu.
+  </Step>
+  <Step title="Klikněte na + Vytvořit tiket">
+    Klikněte na tlačítko **+ Vytvořit tiket**. Zobrazí se formulář.
+  </Step>
+  <Step title="Vyberte klienta">
+    Vyberte jméno klienta z rozevíracího seznamu. Tím se tiket propojí se správným profilem klienta.
+  </Step>
+  <Step title="Propojte s objednávkou (volitelné)">
+    Zadejte **ID objednávky** pro přiřazení tiketu ke konkrétní objednávce. To je užitečné pro problémy týkající se fakturace nebo projektu. Tiket pro obecné dotazy lze vytvořit i bez ID objednávky.
+  </Step>
+  <Step title="Vyplňte podrobnosti tiketu">
+    Vyplňte následující pole:
+
+    | Pole | Popis |
+    |-------|-------------|
+    | **Předmět** | Stručný, popisný název tiketu |
+    | **Popis** | Podrobné vysvětlení problému nebo požadavku |
+    | **Přiřazená osoba** | Člen týmu zodpovědný za vyřešení tiketu |
+    | **Priorita** | Úroveň naléhavosti: Nejvyšší, Vysoká, Normální, Nízká nebo Nejnižší |
+    | **Datum vzniku** | Datum vytvoření tiketu (zaznamenáno automaticky) |
+    | **Stav** | Aktuální stav: Otevřený, Pozastavený nebo Uzavřený |
+  </Step>
+  <Step title="Klikněte na Vytvořit">
+    Klikněte na **Vytvořit** pro uložení tiketu. Okamžitě se zobrazí v dashboardu tiketů.
+  </Step>
+</Steps>
+
+## Stavy tiketů
+
+Tikety procházejí třemi stavy v průběhu práce:
+
+| Stav | Význam |
+|--------|---------|
+| **Otevřený** | Tiket byl odeslán a aktivně se na něm pracuje |
+| **Pozastavený** | Práce na tiketu je dočasně přerušena, obvykle v čekání na více informací |
+| **Uzavřený** | Problém byl vyřešen a tiket je archivován pro potřeby reference |
+
+<Tip>
+  Použijte stav **Pozastavený**, když čekáte na odpověď klienta nebo na splnění externí závislosti. Tiket tak zůstane viditelný, aniž by zanášel aktivní frontu.
+</Tip>
+
+## Úprava tiketu
+
+Členové týmu agentury mohou kdykoli aktualizovat podrobnosti tiketu, aby odrážely nové informace, změny priority nebo aktualizace řešení.
+
+**Kdo může upravovat tikety:** Super Admin, Admin a PM. Klienti mohou tikety vytvářet, ale nemohou je upravovat.
+
+<Note>
+  Upravovat lze pouze tikety vytvořené ze **strany agentury**. Tikety odeslané klienty nelze po odeslání klientem změnit.
+</Note>
+
+<Steps>
+  <Step title="Otevřete dashboard tiketů">
+    Přejděte na **Tikety** v levém postranním panelu.
+  </Step>
+  <Step title="Vyberte tiket k úpravě">
+    Zaškrtněte políčko vedle tiketu, který chcete upravit. Tlačítko **Upravit tiket** se aktivuje.
+  </Step>
+  <Step title="Klikněte na Upravit tiket">
+    Klikněte na tlačítko **Upravit tiket**. Formulář tiketu se otevře s předvyplněnými stávajícími údaji.
+  </Step>
+  <Step title="Proveďte změny">
+    Aktualizujte libovolná pole, která je třeba změnit — popis, prioritu, přiřazenou osobu, stav nebo jiné podrobnosti.
+  </Step>
+  <Step title="Uložte">
+    Kliknutím na **Uložit** aplikujte změny. Tiket je v dashboardu okamžitě aktualizován.
+  </Step>
+  <Step title="Sdělte aktualizace">
+    Pokud je změna významná — například eskalace priority nebo změna přiřazené osoby — informujte příslušné členy týmu, aby mohli odpovídajícím způsobem reagovat.
+  </Step>
+</Steps>
+
+## Smazání tiketu
+
+Odstraňte zastaralé nebo nepotřebné tikety, aby dashboard zůstal přehledný a relevantní.
+
+**Kdo může mazat tikety:** Super Admin, Admin a PM.
+
+<Steps>
+  <Step title="Vyberte tiket">
+    V dashboardu tiketů zaškrtněte políčko vedle tiketu, který chcete smazat. Tlačítko **Smazat** se aktivuje.
+  </Step>
+  <Step title="Klikněte na Smazat">
+    Klikněte na **Smazat**. Zobrazí se potvrzovací okno.
+  </Step>
+  <Step title="Potvrďte smazání">
+    Potvrďte své rozhodnutí v okně. Tiket je trvale odstraněn ze systému.
+  </Step>
+  <Step title="Ověřte odstranění">
+    Zkontrolujte seznam tiketů nebo vyhledejte tiket podle předmětu nebo ID objednávky a potvrďte, že již neexistuje.
+  </Step>
+</Steps>
+
+<Warning>
+  Smazání tiketu je **trvalé a nelze jej vrátit zpět**. Před smazáním se ujistěte, že veškerá důležitá komunikace nebo poznámky k řešení z tiketu jsou zdokumentovány jinde.
+</Warning>
+
+## Vyhledávání a filtrování tiketů
+
+Pomocí vyhledávacího pole v horní části dashboardu tiketů můžete rychle najít tikety. Vyhledávat lze podle:
+
+- **Předmětu** — názvu tiketu
+- **Jména klienta** — všechny tikety od konkrétního klienta
+- **ID objednávky** — všechny tikety propojené s konkrétní objednávkou
+
+## Doporučené postupy pro práci s tikety
+
+<Accordion title="Nastavujte úrovně priorit konzistentně">
+  Dohodněte se s týmem na stupnici priorit ještě před začátkem vytváření tiketů. Pokud „Vysoká“ priorita znamená pro různé lidi různé věci, eskalační postupy se rozpadají. Úroveň Nejvyšší používejte pouze pro problémy, které blokují dodávky klientům.
+</Accordion>
+
+<Accordion title="Propojujte tikety s objednávkami, kdykoli je to možné">
+  Propojení tiketu s ID objednávky výrazně usnadňuje sledování toho, který problém klienta se týká kterého projektu. Pomáhá to také při přezkoumávání minulých tiketů pro konkrétní objednávku.
+</Accordion>
+
+<Accordion title="Uzavírejte tikety ihned po vyřešení">
+  Jakmile je problém vyřešen, okamžitě změňte stav na **Uzavřený**. Ponechávání tiketů otevřených po vyřešení nafukuje aktivní frontu a ztěžuje identifikaci skutečné rozpracované práce.
+</Accordion>
+
+<Accordion title="Používejte stav Pozastavený při čekání">
+  Když čekáte na klienta nebo třetí stranu, nastavte tiket na **Pozastavený** místo toho, aby zůstal Otevřený. To dává vašemu týmu jasný signál, že není potřeba žádná akce, dokud nedorazí odpověď.
+</Accordion>

@@ -1,0 +1,126 @@
+---
+title: "Visos užduotys — centralizuotas užduočių valdymas AgencyHandy"
+sidebarTitle: "Visos užduotys"
+description: "Naudokite puslapį Visos užduotys realiojo laiko, pagal vaidmenį filtruotam kiekvienos užduoties vaizdui visuose vykdomuose ir peržiūroje esančiuose užsakymuose — su paieška, filtrais ir rūšiavimu."
+---
+
+Puslapyje Visos užduotys AgencyHandy pateikiamas vienas centralizuotas vaizdas kiekvienos užduoties, priklausančios aktyvioms darbo eigoms visoje jūsų agentūroje. Vietoje to, kad ieškotumėte atskiruose užsakymuose, galite matyti visas aktualias užduotis vienoje vietoje, filtruoti jas pagal atsakingą asmenį, prioritetą ar datą ir atlikti pakeitimus tiesiogiai iš sąrašo. Matomumas automatiškai apribotas pagal jūsų vaidmenį — Super administratoriai mato viską, Vadovai mato savo priskirtus užsakymus, o Darbuotojai mato tik savo užduotis.
+
+## Prieiga prie puslapio Visos užduotys
+
+1. Prisijunkite prie AgencyHandy paskyros.
+2. Kairiajame šoninėje juostoje spustelėkite **Užduotys**.
+3. Pasirinkite **Visos užduotys**, kad atidarytumėte centralizuotą užduočių informacijos suvestinę.
+
+<Note>
+  Puslapyje Visos užduotys rodomos tik tos užduotys iš užsakymų, kurių būsena yra **Vykdoma** arba **Peržiūroje**. Užduotys, susietos su užsakymais bet kokia kita būsena (pvz., Baigta, Laukiama), čia nerodomas.
+</Note>
+
+## Užduočių matomumas pagal vaidmenį
+
+Tai, ką matote puslapyje Visos užduotys, visiškai priklauso nuo jūsų vaidmens.
+
+| Vaidmuo | Ką jie mato |
+|------|---------------|
+| **Super administratorius / Administratorius** | Visos užduotys visuose užsakymuose, komandose ir būsenose |
+| **Projektų vadovas (PV)** | Tik užduotys iš užsakymų, kuriuose jie paskirti kaip Vadovas |
+| **Darbuotojas / Atsakingas** | Tik jiems tiesiogiai priskirtos užduotys — net jei kolegos dirba prie to paties užsakymo |
+
+<Tip>
+  Jei projektų vadovas negali rasti užduoties, kurią tikisi matyti, patikrinkite, ar jis paskirtas kaip Vadovas prie atitinkamo užsakymo. Projektų vadovai nemato užduočių, nebent yra paskirtas vadovu tam užsakymui.
+</Tip>
+
+## Kada užduotys rodomas šiame puslapyje
+
+Užduotys atsiranda puslapyje Visos užduotys, kai įvykdytos šios sąlygos:
+
+<CardGroup cols={2}>
+  <Card title="Užsakymai, suaktyvinantys užduočių matomumą" icon="circle-check">
+    - Sukuriami rankiniai užsakymai (vienkartiniai arba prenumeratos)
+    - Pateikiami katalogo užsakymai per Stripe arba rankinius mokėjimo metodus
+    - Agentūra priima pasiūlymą
+  </Card>
+  <Card title="Užsakymai, kuriuose užduotys lieka paslėptos" icon="eye-slash">
+    - Kliento prašomos užduotys, kurių agentūra dar nepriėmė
+    - Bandomieji užsakymai, kurių agentūra dar nepriėmė
+    - Užsakymai laukiančios būsenos, laukiantys rankinio banko mokėjimo patvirtinimo
+  </Card>
+</CardGroup>
+
+## Paieška, filtravimas ir rūšiavimas
+
+Puslapyje Visos užduotys yra visas valdiklių rinkinys, padedantis tiksliai rasti tai, ko ieškote.
+
+### Paieška
+
+Naudokite paieškos juostą, kad rastumėte užduotis pagal pavadinimą, atsakingą asmenį ar susijusį užsakymą. Rezultatai atnaujinami realiuoju laiku, kai rašote.
+
+### Filtrai
+
+Spustelėkite **Filtras → + Pridėti filtrą**, kad atidarytumėte filtrų skydelį. Galite derinti kelis filtrus tiksliems rezultatams:
+
+| Filtras | Ką daro |
+|--------|--------------|
+| **Užsakymo ID** | Rodo užduotis, susietas su konkrečiu užsakymo numeriu |
+| **Atsakingas** | Rodo užduotis, priskirtas konkrečiam komandos nariui |
+| **Būsena** | Filtruoja pagal užduoties pažangą: Laukiama, Vykdoma, Peržiūroje, Atlikta ir kt. |
+| **Prioritetas** | Sutelkia dėmesį į aukšto, vidutinio ar žemo prioriteto užduotis |
+| **Žyma** | Susiaurina pagal užduočių žymas ar kategorijas |
+| **Pradžios data** | Rodo užduotis pradedamas nuo ar po konkrečios datos |
+| **Pabaigos data** | Rodo užduotis, kurių terminas iki konkrečios datos |
+
+<Note>
+  Filtrai pasiekiami tik puslapyje Visos užduotys. Jie išlieka jūsų naršyklės sesijos metu, tačiau atsiunčiant puslapį iš naujo atstatomi. Filtrai veikia tik jūsų vaizdą ir nekeičia to, ką mato kiti naudotojai.
+</Note>
+
+Norėdami išvalyti visus filtrus, spustelėkite **Išvalyti filtrus**, kad grįžtumėte į visą, nefiltrų sąrašą.
+
+### Rūšiavimas
+
+Rūšiuokite užduočių sąrašą pagal:
+- **Terminą** — pamatyti artėjančias arba jau vėluojančias užduotis
+- **Prioritetą** — svarbiausias užduotis perkelti į viršų
+- **Sukūrimo laiką** — pirmiausia matyti neseniai pridėtas užduotis
+
+### Naršymo seka
+
+Naudokite naršymo seką puslapio viršuje, kad išlaikytumėte kontekstą naršant tarp užduočių, užduočių sąrašų ir pagrindinių užsakymų. Tai ypač naudinga, kai įeinate į konkrečią užduotį ir vėliau reikia grįžti į platesnį sąrašą.
+
+## Užduočių redagavimas
+
+Puslapyje Visos užduotys galite keisti užduotis dviem būdais:
+
+<Tabs>
+  <Tab title="Eilutinis redagavimas">
+    Spustelėkite tiesiogiai į redaguojamą lauką užduoties eilutėje — pvz., būseną, atsakingą asmenį ar terminą — ir atlikite pakeitimą nepalikdami sąrašo vaizdo. Tai greičiausia parinktis greitiems atnaujinimams.
+  </Tab>
+  <Tab title="Modalo redagavimas">
+    Spustelėkite užduoties pavadinimą, kad atidarytumėte išsamų užduoties detalių modalą. Iš čia galite atnaujinti visas užduoties savybes, pridėti pastabų, peržiūrėti užduoties istoriją ir matyti visą užduoties žurnalą. Naudokite tai išsamesniam redagavimui arba kai jums reikia konteksto.
+  </Tab>
+</Tabs>
+
+## Užduočių trynimo taisyklės
+
+Puslapio Visos užduotys užduotys yra tiesiogiai susijusios su jų pagrindiniais užsakymais.
+
+- Kai **užsakymas ištrinamas**, visos su tuo užsakymu susijusios užduotys **automatiškai ir visam laikui pašalinamos** iš puslapio Visos užduotys.
+- Šis ištrynimas veikia visus naudotojų vaidmenis — niekas negalės matyti tų užduočių po užsakymo ištrynimo.
+- **Nėra atkūrimo parinkties** užduotims, ištrintoms per užsakymo ištrynimą.
+
+<Warning>
+  Ištrynus užsakymą, visam laikui pašalinamos visos jo užduotys. Prieš ištrindami užsakymą, įsitikinkite, kad bet kuri svarbi užduočių istorija ar pristatymų įrašai yra išsaugoti kitur.
+</Warning>
+
+## Papildomos pastabos
+
+<Accordion title="Realiojo laiko atnaujinimai">
+  Užsakymų, užduočių priskyrimų ar užduočių būsenų pakeitimai atspindimi realiuoju laiku puslapyje Visos užduotys. Jei kolega atnaujina užduotį, kol turite atidarytą puslapį, pamatysite pakeitimą neatnaujindami puslapio.
+</Accordion>
+
+<Accordion title="Kliento prašomos užduotys">
+  Klientų pateiktos užduotys nepasirodo puslapyje Visos užduotys, kol agentūra jų aiškiai nepriima. Kol jos nepriimtos, šios užduotys lieka laukiančios būsenos ir nematomos centralizuotame vaizde.
+</Accordion>
+
+<Accordion title="Užduotys ir užsakymo būsena">
+  Užduotys rodomos tik vykdomų arba peržiūroje esančių užsakymų atveju. Jei užsakymas perkeliamas į Baigta arba pristabdomas, jo užduotys čia neberodomas. Norėdami peržiūrėti užduotis, susietas su užsakymais, esančiais už šių būsenų ribų, pereikite prie konkretaus užsakymo.
+</Accordion>

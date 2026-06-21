@@ -1,0 +1,70 @@
+---
+title: "Připojte PayPal pro bezpečný výběr plateb od klientů"
+sidebarTitle: "PayPal"
+description: "Propojte svůj účet PayPal s AgencyHandy a umožněte klientům platit faktury prostřednictvím důvěryhodné a celosvětově uznávané platební platformy PayPal."
+---
+
+Integrace PayPal v AgencyHandy poskytuje vašim klientům bezpečný a známý způsob placení faktur bez potřeby kreditní karty. PayPal podporuje širokou škálu mezinárodních měn, což je zvláště užitečné pro agentury s klienty mimo jejich domovskou zemi.
+
+<Note>
+  PayPal **nelze** použít pro upselly kvůli omezením platformy v oblasti měn a regionů. Pro upsell platby použijte místo toho Stripe.
+</Note>
+
+<Note>
+  Integraci PayPal může připojit nebo spravovat pouze role **SuperAdmin** a **Admin**. Před zahájením musíte mít aktivní účet PayPal.
+</Note>
+
+## Připojení PayPal
+
+<Steps>
+  <Step title="Otevřete nastavení integrace PayPal">
+    Přihlaste se do AgencyHandy a v levém postranním panelu přejděte na **Integrace → Integrace PayPal**.
+  </Step>
+
+  <Step title="Zahajte připojení">
+    Klikněte na **Připojit PayPal**. Budete přesměrováni na přihlašovací stránku PayPal.
+  </Step>
+
+  <Step title="Autorizujte AgencyHandy">
+    Přihlaste se ke svému účtu PayPal a zkontrolujte požadovaná oprávnění. Klikněte na **Povolit** (nebo **Udělit**) a autorizujte AgencyHandy k přístupu k vašemu účtu.
+  </Step>
+
+  <Step title="Potvrďte připojení">
+    Po úspěšné autorizaci vás PayPal přesměruje zpět do AgencyHandy. Na kartě integrace se zobrazí potvrzovací zpráva — **PayPal připojen**. Klienti nyní mohou platit faktury prostřednictvím PayPal.
+  </Step>
+</Steps>
+
+## Jak klienti platí přes PayPal
+
+Jakmile je integrace aktivní, zobrazí se na každé odeslané faktuře tlačítko **Zaplatit přes PayPal**. Klient klikne na tlačítko, přihlásí se ke svému účtu PayPal (nebo zaplatí jako host v závislosti na svém regionu) a dokončí platbu. AgencyHandy automaticky aktualizuje stav faktury, jakmile PayPal platbu potvrdí.
+
+## Podporované měny
+
+AgencyHandy podporuje pro platby PayPal následující měny:
+
+| Region | Měny |
+|---|---|
+| Amerika | USD, CAD, BRL, MXN |
+| Evropa | EUR, GBP, CHF, NOK, SEK, DKK, PLN, CZK, HUF |
+| Asie-Pacifik | AUD, NZD, JPY, HKD, SGD, MYR, PHP, THB, TWD |
+| Střední východ / Ostatní | ILS, CNY |
+
+<Warning>
+  Některé měny mají omezení:
+  - **JPY** a několik dalších nepodporuje desetinné částky — vyhněte se zlomkovým součtům faktur.
+  - **BRL** je dostupná pouze pro brazilské účty PayPal. Pokud váš účet není registrován v Brazílii, platby v BRL jsou automaticky převedeny na vaši primární měnu.
+  - Určité měny jsou dostupné pouze pro účty v příslušné zemi. Ověřte, zda měna vašeho účtu odpovídá měně faktury, abyste předešli chybám.
+</Warning>
+
+<Note>
+  PayPal účtuje vlastní poplatky za konverzi a kurzy při převodu měn. Tyto poplatky nejsou kontrolovány AgencyHandy.
+</Note>
+
+## Otestujte integraci
+
+Před použitím PayPal pro skutečné faktury klientů proveďte rychlý test:
+
+1. Vytvořte testovací fakturu v AgencyHandy v [podporované měně](#podporované-měny).
+2. Odešlete fakturu na vedlejší účet PayPal, který ovládáte.
+3. Dokončete platbu z vedlejšího účtu.
+4. Vraťte se do AgencyHandy a ověřte, že se stav faktury aktualizoval na **Zaplaceno** a že se prostředky zobrazují ve vašem účtu PayPal.

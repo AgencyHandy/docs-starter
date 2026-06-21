@@ -1,0 +1,205 @@
+---
+title: "AgencyHandy API: PUT ile Mevcut Siparişi Güncelleyin"
+sidebarTitle: "Siparişi Güncelle"
+description: "AgencyHandy API'sini kullanarak PUT isteği aracılığıyla mevcut bir siparişin ayrıntılarını güncelleyin, durumunu değiştirin, proje yöneticilerini yeniden atayın ve dosya ekleyin."
+---
+
+Siparişi Güncelle uç noktası, AgencyHandy'deki mevcut bir siparişi (projeyi) harici bir sistem veya otomasyon komut dosyasından değiştirmenizi sağlar — adını, durumunu, bütçesini, zaman çizelgesini, atanan yöneticileri ve daha fazlasını güncelleyebilirsiniz. Uç nokta ayrıca dosya eklerini de destekler; eklenen dosyalar siparişin sistem klasörüne eklenir.
+
+<Note>
+  Bu uç noktayı kullanmadan önce API anahtarınızı ve Şirket Kimliğinizi edinmek için [Başlarken](/tr/api/getting-started) rehberini tamamlayın.
+</Note>
+
+<Warning>
+  Bu uç nokta yalnızca `x-api-key` başlığı yerine `Authorization: Bearer <token>` (giriş yapmış bir üyenin erişim token'ı) kullanır. Çağrı yapanın hedef şirketin **onaylı bir üyesi** olarak kimliği doğrulanmış olduğundan emin olun. Yetkisiz çağrı yapanlar `403 PermissionError` alır.
+</Warning>
+
+## Ön koşullar
+
+- ✅ Onaylı bir çalışma alanı üyesi için geçerli **Bearer token**
+- ✅ `GET {{URL}}/accounts/companies` ile alınan **Şirket Kimliği**
+- ✅ Güncellemek istediğiniz siparişin **Sipariş Kimliği** (Proje Kimliği, `pid`)
+
+---
+
+## Uç nokta
+
+```
+PUT {{URL}}/orders?pid=<ORDER_ID>
+```
+
+**Content-Type:** `multipart/form-data` — dosya eklenmese bile sunucunun çok parçalı ayrıştırıcısını karşılamak için bunu kullanın.
+
+## Başlıklar
+
+| Başlık | Zorunlu | Açıklama |
+|---|---|---|
+| `Authorization` | Evet | `Bearer <ACCESS_TOKEN>` — giriş yapmış üyenin erişim token'ı. |
+| `companyid` | Evet | Siparişin ait olduğu şirketin Mongo ObjectId'si. |
+| `clientid` | İsteğe bağlı | Gerçek zamanlı istemci soket kimliği. Sağlandığında bildirimler bunu içerir. |
+
+## Sorgu parametreleri
+
+<ParamField query="pid" type="string" required>
+  Güncellenecek Sipariş / Proje Kimliği. Bunu sorgu dizesi parametresi olarak iletin.
+</ParamField>
+
+## İstek gövdesi alanları
+
+<ParamField body="name" type="string">
+  Sipariş başlığını günceller. En az 2 karakter olmalıdır.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Sipariş için yeni durum. Şunlardan biri olmalıdır: `Pending`, `Ongoing`, `Review`, `Completed`, `Cancelled`.
+
+  **İzin verilen geçişler:**
+  - `Review` yalnızca `Ongoing` veya başka bir `Review` durumunun ardından gelebilir. `Pending` durumundan doğrudan `Review` durumuna geçiş yapmak `400 ValidationError` döndürür.
+  - `Completed` veya `Cancelled` durumundaki siparişler güncellenemez.
+  - Müşteriler, `Pending` aşamasını geçmiş bir siparişi iptal edemez.
+</ParamField>
+
+<ParamField body="budget" type="number">
+  Toplam bütçe rakamı. `≥ 0` olmalıdır. `currency` de sağlanmadığı sürece siparişin mevcut para birimini kullanır.
+</ParamField>
+
+<ParamField body="currency" type="string">
+  Bütçe için para birimi kodu. Örnekler: `USD`, `CAD`, `EUR`.
+</ParamField>
+
+<ParamField body="quantity" type="number">
+  Paket için satın alınan birim sayısı. `≥ 1` olmalıdır.
+</ParamField>
+
+<ParamField body="deadline" type="string">
+  Siparişin son tarihi için ISO 8601 tarih dizesi. Örnek: `"2025-12-31T00:00:00.000Z"`.
+</ParamField>
+
+<ParamField body="kickoffDate" type="string">
+  Projenin başlangıç tarihi için ISO 8601 tarih dizesi.
+</ParamField>
+
+<ParamField body="notes" type="string">
+  Ekibinize görünen dahili notlar.
+</ParamField>
+
+<ParamField body="brief" type="string">
+  Müşteri brifing'i veya proje özeti.
+</ParamField>
+
+<ParamField body="assignedProjectManagers" type="array">
+  Bu siparişe atanacak proje yöneticisi üye kimliklerinin tam listesi. Yeni kimlikler ekibe eklenir; kaldırılan kimlikler silinir. Her kimlik, aynı şirket içinde `projectManager` rolüne sahip bir üyeye ait olmalıdır.
+</ParamField>
+
+<ParamField body="markTasksAsDone" type="boolean">
+  `status` `Completed` veya `Cancelled` olduğunda **zorunludur**. `true` olduğunda, durum değişikliğinin ardından siparişteki tüm görevler tamamlandı olarak işaretlenir. `false` olduğunda görevler mevcut durumlarında kalır.
+</ParamField>
+
+<ParamField body="rejectRequestedTasks" type="boolean">
+  Yalnızca `status` `Completed` veya `Cancelled` olduğunda kullanılabilir. `true` olduğunda, durum güncellemesinin ardından bekleyen tüm müşteri talep edilen görevler reddedilir.
+</ParamField>
+
+<ParamField body="repeatCount" type="number">
+  Yalnızca tekrarlama sıklığı değiştirilirken **abonelik** siparişleri için zorunludur. `repeatDuration` ile birlikte kullanın.
+</ParamField>
+
+<ParamField body="repeatDuration" type="string">
+  Abonelik siparişleri için `repeatCount` ile birlikte zorunludur. Şunlardan biri: `day`, `week`, `month`, `year`.
+</ParamField>
+
+<ParamField body="billingCycleCount" type="number">
+  Tekrarlayan faturalama döngüsü sayısı için isteğe bağlı sınır. Varsayılan olarak `0` (sınır yok) kullanılır.
+</ParamField>
+
+<ParamField body="billingCycleEvent" type="string">
+  Her faturalama döngüsünün nasıl işleneceği. Şunlardan biri: `createOrderWithTask`, `noChange`.
+</ParamField>
+
+<ParamField body="files" type="file">
+  Sıfır veya daha fazla dosya eki. Dosyalar siparişin sistem klasörüne eklenir; mevcut dosyaların üzerine hiçbir zaman yazılmaz. `multipart/form-data` kodlamasını kullanın ve her dosyayı `files` alanı altında ekleyin.
+</ParamField>
+
+---
+
+## Örnek istek
+
+<CodeGroup>
+
+```bash cURL (no files)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "currency=USD" \
+  --form "quantity=1" \
+  --form "assignedProjectManagers[]=PROJECT_MANAGER_ID" \
+  --form "notes=Scope finalized with client." \
+  --form "brief=Launch-ready design refresh."
+```
+
+```bash cURL (with file)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "repeatCount=3" \
+  --form "repeatDuration=month" \
+  --form "billingCycleEvent=createOrderWithTask" \
+  --form "files=@/path/to/creative-brief.pdf"
+```
+
+</CodeGroup>
+
+**Eşdeğer JSON içeriği** (dosya gönderirken çok parçalı form girişlerine dönüştürün):
+
+```json
+{
+  "name": "Website Redesign",
+  "status": "Review",
+  "budget": 12000,
+  "currency": "USD",
+  "quantity": 1,
+  "assignedProjectManagers": ["{{PROJECT_MANAGER_ID}}"],
+  "repeatCount": 3,
+  "repeatDuration": "month",
+  "billingCycleEvent": "createOrderWithTask",
+  "notes": "Scope finalized with client.",
+  "brief": "Launch-ready design refresh."
+}
+```
+
+---
+
+## Yanıtlar
+
+| HTTP Durumu | Açıklama |
+|---|---|
+| `200 OK` | Güncelleme başarılı. |
+| `400 ValidationError` | Geçersiz sipariş kimliği, engellenmiş durum geçişi veya hatalı biçimlendirilmiş içerik. Yanıt, ilgili olduğunda `fieldName` içerir. |
+| `403 PermissionError` | Çağrı yapan onaylı bir üye değil, şirket rolü eksik, çalışma alanı aboneliği süresi dolmuş veya bir müşteri yasak iptal işlemi denedi. |
+| `500 Internal Server Error` | İşlenmeyen istisna — sunucu günlüklerini kontrol edin. |
+
+### Başarı yanıtı
+
+```json
+{
+  "message": "Project has been updated"
+}
+```
+
+---
+
+## İş kuralları ve yan etkiler
+
+- **Durum geçişleri** kısıtlıdır. `Review` yalnızca `Ongoing` veya başka bir `Review` durumunun ardından gelebilir. `Pending → Review` geçişi denenirse `400 ValidationError` döndürür.
+- Durumu `Pending`'den `Ongoing`, `Review` veya `Completed`'a taşımak, yüklenen dosyaların proje ekibine erişilebilir hale gelmesi için siparişin dosya klasörünü etkinleştirir.
+- `status` değerini `Completed` veya `Cancelled` olarak ayarlamak, `markTasksAsDone` değerinin açıkça `true` veya `false` olarak ayarlanmasını **gerektirir**.
+- `Review`, `Completed` veya `Cancelled` durumuna geçişler otomatik olarak müşteri bildirimlerini tetikler:
+  - **Review** — müşteriye inceleme gerektiği bildirilir.
+  - **Completed** — müşteriye `orderCompletion` bildirimi gönderilir.
+  - **Cancelled** — müşteriye `orderCancellation` bildirimi gönderilir.
+- Her başarılı güncelleme, bu olaya abone aktif bir webhook'unuz varsa güncellenmiş sipariş belgesi ve ek meta verileriyle birlikte `ORDER.UPDATED` webhook olayını tetikler.

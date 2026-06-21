@@ -1,0 +1,196 @@
+---
+title: "Webhook管理：作成、テスト、認証"
+sidebarTitle: "Webhooks"
+description: "AgencyHandyでWebhookを設定して、注文、タスク、請求書、その他のエンティティが変更されるたびにリアルタイムのイベントデータを外部システムに送信しましょう。"
+---
+
+Webhookにより、AgencyHandyは変更が発生した瞬間に外部システムへデータをプッシュできます — ポーリングは不要です。設定されたイベントが発生すると（例えば、注文が更新されたりチケットが作成されたりしたとき）、AgencyHandyは指定したエンドポイントURLにJSONペイロードを含むHTTP POSTリクエストを送信します。これにより、CRM、請求システム、カスタムダッシュボードなどの外部ツールをAgencyHandyワークスペースとリアルタイムで同期させることが容易になります。
+
+<Note>
+  Business Proプランのワークスペースでは、請求期間あたり最大**30,000件のWebhookイベント**がサポートされます。大量自動化を設定する前にプランの制限をご確認ください。
+</Note>
+
+## サポートされるイベント
+
+以下のイベントの任意の組み合わせをWebhookに登録できます：
+
+| カテゴリ | イベント |
+|---|---|
+| **サービス** | 作成、更新、削除 |
+| **注文** | 作成、更新、削除 |
+| **タスク** | 作成、割り当て、完了、更新 |
+| **請求書** | ステータス変更 |
+| **クライアント / ユーザー** | 新しいクライアントの追加、クライアント/ユーザーの削除 |
+| **提案書** | 送信、受信、承認、却下 |
+| **チケット** | 作成、割り当て、ステータス変更 |
+| **支払い** | 受信、失敗 |
+| **サービスパッケージ** | 作成、更新、削除 |
+
+## Webhookを作成する
+
+<Steps>
+  <Step title="Webhook管理に移動する">
+    左サイドバーで**インテグレーション → Webhook管理**に移動します。
+  </Step>
+
+  <Step title="トークンを認証する">
+    **管理**ボタンをクリックして、WebhookトークンをAuthenticate します。このトークンは送信ペイロードに署名するために使用され、AgencyHandyから発信されたものであることを確認できます。
+  </Step>
+
+  <Step title="新しいWebhookを作成する">
+    **新しいWebhookを作成**をクリックして、Webhook設定フォームを開きます。
+  </Step>
+
+  <Step title="エンドポイントURLを入力する">
+    **エンドポイントURL**フィールドに、Webhookデータを受信する外部システムのURLを入力します。これは公開アクセス可能な**POST**エンドポイントである必要があります。
+  </Step>
+
+  <Step title="コンテンツタイプを選択する">
+    コンテンツタイプとして**JSON**を選択します。AgencyHandyはすべてのWebhookペイロードを`application/json`として送信します。
+  </Step>
+
+  <Step title="Webhookイベントを選択する">
+    このWebhookをトリガーするすべてのイベントを選択します。複数のカテゴリからイベントを選択できます — 例えば、**注文：作成**と**請求書：ステータス変更**の両方を同じエンドポイントに向けることができます。
+  </Step>
+
+  <Step title="Webhookを有効にする">
+    **アクティブ**ラジオボタンをトグルします。アクティブな場合、AgencyHandyはすべての選択されたイベントのペイロードをリアルタイムでエンドポイントに配信します。
+  </Step>
+
+  <Step title="設定を保存する">
+    設定を確認し、**保存**をクリックします。Webhookがリストに表示され、すぐにイベントの配信を開始します。
+  </Step>
+</Steps>
+
+## Webhookをテストする
+
+Webhookを作成したら、テストペイロードを送信して、エンドポイントが到達可能でデータを正しく処理していることを確認します。
+
+<Steps>
+  <Step title="Webhookを開く">
+    Webhook管理リストで、テストしたいWebhookをクリックします。
+  </Step>
+
+  <Step title="テストイベントをクリックする">
+    Webhook詳細ページで**テストイベント**ボタンをクリックします。
+  </Step>
+
+  <Step title="テストイベントを選択する">
+    このWebhookに設定されているイベントのリストからサンプルイベントを選択します（例：**注文：作成**）。
+  </Step>
+
+  <Step title="テストペイロードを送信する">
+    **送信**をクリックします。AgencyHandyがエンドポイントURLにサンプルペイロードを送信します。
+  </Step>
+
+  <Step title="結果を確認する">
+    外部システムを確認して、テストペイロードが到着し、期待通りに処理されたことを確認します。AgencyHandyに戻り、Webhookをクリックして**履歴**を確認します — 完全なリクエスト、エンドポイントが返したレスポンスを確認でき、必要に応じて過去のイベントを再配信することもできます。
+  </Step>
+</Steps>
+
+<Tip>
+  設定中に[Webhook.site](https://webhook.site)や[RequestBin](https://requestbin.com)などのツールを一時的なエンドポイントとして使用して、実際のシステムを接続する前に正確なペイロードの形状を確認しましょう。
+</Tip>
+
+## Webhookペイロードを認証する
+
+AgencyHandyからの送信Webhookリクエストにはすべて、エンドポイントがペイロードの真正性を検証し、改ざんされていないことを確認するために使用できる署名ヘッダーが含まれています。
+
+### 署名ヘッダー
+
+```
+x-ah-sig: <signature>
+```
+
+AgencyHandyはすべてのWebhookリクエストにこのヘッダーを追加します。受信リクエストから値を抽出し、検証エンドポイントに渡します。
+
+### Webhook署名を検証する
+
+以下のリクエストを送信してペイロードの真正性を確認します：
+
+```
+POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature
+Content-Type: application/json
+```
+
+<ParamField body="webhookId" type="string" required>
+  イベントを受信したWebhookのID。AgencyHandyのWebhook詳細ページで確認できます。
+</ParamField>
+
+<ParamField body="signature" type="string" required>
+  受信したWebhookリクエストの`x-ah-sig`ヘッダーの値。
+</ParamField>
+
+<ParamField body="secret" type="string" required>
+  AgencyHandyのWebhook詳細ページに表示されるWebhookシークレット。
+</ParamField>
+
+<ParamField body="payload" type="object" required>
+  AgencyHandyのWebhookリクエストから受信した生のJSONボディ。
+</ParamField>
+
+<CodeGroup>
+
+```javascript JavaScript
+const url = 'https://api.agencyhandy.com/api/v1/webhooks/verify-signature';
+
+const postData = {
+  webhookId: 'your_webhook_id',
+  signature: 'your_signature',   // value of x-ah-sig header
+  secret: 'your_webhook_secret',
+  payload: {},                   // the parsed JSON body from AgencyHandy
+};
+
+const response = await fetch(url, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(postData),
+});
+
+const data = await response.json();
+console.log(data); // { "verification_status": "SUCCESS" }
+```
+
+```bash cURL
+curl -X POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature \
+  -H "Content-Type: application/json" \
+  -d '{
+    "webhookId": "your_webhook_id",
+    "signature": "your_signature",
+    "secret": "your_webhook_secret",
+    "payload": {}
+  }'
+```
+
+</CodeGroup>
+
+**レスポンス**
+
+<ResponseField name="verification_status" type="string">
+  署名が有効な場合は`SUCCESS`。検証に失敗した場合は`FAILED`（HTTP 403）。
+</ResponseField>
+
+```json Success (200)
+{
+  "verification_status": "SUCCESS"
+}
+```
+
+```json Failure (403)
+{
+  "type": "PermissionError",
+  "status": 403,
+  "verification_status": "FAILED"
+}
+```
+
+<Warning>
+  Webhookシークレットは機密情報として扱ってください。定期的にローテーションし、ローテーション後はすぐに検証ロジックを更新してください。クライアントサイドのコードや公開リポジトリには絶対に公開しないでください。
+</Warning>
+
+## 重要な注意事項
+
+- エンドポイントURLは**公開アクセス可能なHTTPS POST** URLである必要があります。
+- エンドポイントが一時的に利用できない場合は、AgencyHandyのWebhook履歴パネルを確認してください — そこから直接任意の過去のイベントを**再配信**できます。
+- 失敗した配信や不正アクセスの試みを検出するために、Webhookアクティビティを定期的に監視してください。
+- 繰り返し失敗するWebhookはAgencyHandyによって一時停止される場合があります — 早期に問題を発見するために配信ログを確認してください。

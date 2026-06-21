@@ -1,0 +1,196 @@
+---
+title: "Webhook boshqaruvi: Yaratish, Sinash va Tasdiqlash"
+sidebarTitle: "Webhooks"
+description: "AgencyHandy-da webhooklarni sozlang va buyurtmalar, vazifalar, hisob-fakturalar yoki boshqa obyektlar o'zgarganda tashqi tizimlarga real vaqtda hodisa ma'lumotlarini yuboring."
+---
+
+Webhooklar AgencyHandy-ga biror narsa o'zgarganda tashqi tizimlaringizga ma'lumot yuborish imkonini beradi — so'rov yuborish talab qilinmaydi. Sozlangan hodisa yonida (masalan, buyurtma yangilanganda yoki tiket yaratilganda), AgencyHandy siz ko'rsatgan endpoint URL manziliga JSON yuklamali HTTP POST so'rovini yuboradi. Bu CRM-lar, hisob-kitob tizimlari yoki maxsus boshqaruv panellari kabi tashqi vositalarni real vaqtda AgencyHandy ish muhitingiz bilan sinxronlashni osonlashtiradi.
+
+<Note>
+  Business Pro tarifidagi ish muhitlari har bir hisob-kitob davrida **30,000 ta webhook hodisasini** qo'llab-quvvatlaydi. Yuqori hajmli avtomatlashtirishlarni sozlashdan oldin tarif chegaralaringizni tekshiring.
+</Note>
+
+## Qo'llab-quvvatlanadigan hodisalar
+
+Webhookni quyidagi hodisalarning istalgan kombinatsiyasiga obuna qilishingiz mumkin:
+
+| Kategoriya | Hodisalar |
+|---|---|
+| **Xizmat** | Yaratildi, Yangilandi, O'chirildi |
+| **Buyurtma** | Yaratildi, Yangilandi, O'chirildi |
+| **Vazifa** | Yaratildi, Tayinlandi, Bajarildi, Yangilandi |
+| **Hisob-faktura** | Holati o'zgardi |
+| **Mijoz / Foydalanuvchi** | Yangi mijoz qo'shildi, Mijoz/foydalanuvchi o'chirildi |
+| **Taklif** | Yuborildi, Olindi, Qabul qilindi, Rad etildi |
+| **Tiket** | Yaratildi, Tayinlandi, Holati o'zgardi |
+| **To'lov** | Olindi, Muvaffaqiyatsiz |
+| **Xizmat paketi** | Yaratildi, Yangilandi, O'chirildi |
+
+## Webhook yaratish
+
+<Steps>
+  <Step title="Webhook boshqaruviga o'ting">
+    Chap panelda **Integrations → Webhooks Management** ga o'ting.
+  </Step>
+
+  <Step title="Tokeningizni tasdiqlang">
+    Webhook tokeningizni tasdiqlash uchun **Management** tugmasini bosing. Ushbu token chiquvchi yuklamalarni imzolash uchun ishlatiladi, shunda ularning AgencyHandy-dan kelganligini tekshirish mumkin.
+  </Step>
+
+  <Step title="Yangi webhook yarating">
+    Webhook sozlash formasini ochish uchun **Create New Webhook** tugmasini bosing.
+  </Step>
+
+  <Step title="Endpoint URL manzilini kiriting">
+    **Endpoint URL** maydoniga webhook ma'lumotlarini qabul qilishi kerak bo'lgan tashqi tizimning URL manzilini kiriting. Bu ommaviy kirish mumkin bo'lgan **POST** endpoint bo'lishi shart.
+  </Step>
+
+  <Step title="Kontent turini tanlang">
+    Kontent turi sifatida **JSON** ni tanlang. AgencyHandy barcha webhook yuklamalarini `application/json` formatida yuboradi.
+  </Step>
+
+  <Step title="Webhook hodisalarini tanlang">
+    Ushbu webhookni ishga tushirishi kerak bo'lgan har bir hodisani tanlang. Bir nechta kategoriyadan hodisalar tanlanishi mumkin — masalan, **Order: Created** va **Invoice: Status changed** bir xil endpointga yo'naltirilishi mumkin.
+  </Step>
+
+  <Step title="Webhookni faollashtiring">
+    **Active** radio tugmasini yoqing. Faol bo'lganda, AgencyHandy tanlangan barcha hodisalar uchun yuklamalarni real vaqtda endpointingizga yetkazadi.
+  </Step>
+
+  <Step title="Sozlamani saqlang">
+    Sozlamalaringizni ko'rib chiqing, so'ng **Save** tugmasini bosing. Webhook ro'yxatda paydo bo'ladi va darhol hodisalarni yetkazishni boshlaydi.
+  </Step>
+</Steps>
+
+## Webhookni sinash
+
+Webhook yaratgandan so'ng, endpointingiz qo'l yetadigan va ma'lumotlarni to'g'ri qayta ishlaydigan ekanligini tasdiqlash uchun sinov yuklamasini yuboring.
+
+<Steps>
+  <Step title="Webhookni oching">
+    Webhooks Management ro'yxatidan sinab ko'rmoqchi bo'lgan webhookni bosing.
+  </Step>
+
+  <Step title="Test Event tugmasini bosing">
+    Webhook tafsilot sahifasidagi **Test Event** tugmasini bosing.
+  </Step>
+
+  <Step title="Sinov hodisasini tanlang">
+    Ushbu webhookda sozlangan hodisalar ro'yxatidan namuna hodisasini tanlang (masalan, **Order: Created**).
+  </Step>
+
+  <Step title="Sinov yuklamasini yuboring">
+    **Send** tugmasini bosing. AgencyHandy endpoint URL manzilingizga namuna yuklamasini yuboradi.
+  </Step>
+
+  <Step title="Natijani tekshiring">
+    Sinov yuklamasi kelganini va kutilganidek qayta ishlanganini tasdiqlash uchun tashqi tizimingizni tekshiring. AgencyHandy-ga qaytib, webhook **tarixi** ni ko'rish uchun webhook ichiga kiring — to'liq so'rov, endpointingiz qaytargan javob ko'rinadi va kerak bo'lsa o'tgan hodisalarni qayta yetkazish mumkin.
+  </Step>
+</Steps>
+
+<Tip>
+  Haqiqiy tizimingizni ulashdan oldin aniq yuklamasini tekshirish uchun sozlash jarayonida vaqtinchalik endpoint sifatida [Webhook.site](https://webhook.site) yoki [RequestBin](https://requestbin.com) kabi vositadan foydalaning.
+</Tip>
+
+## Webhook yuklamalarini tasdiqlash
+
+AgencyHandy-dan chiqayotgan har bir webhook so'rovi endpointingiz yuklamasining haqiqiyligini va buzilmaganligini tekshirish uchun foydalanishi mumkin bo'lgan imzo sarlavhasini o'z ichiga oladi.
+
+### Imzo sarlavhasi
+
+```
+x-ah-sig: <signature>
+```
+
+AgencyHandy ushbu sarlavhani har bir webhook so'roviga qo'shadi. Kiruvchi so'rovlardan qiymatni ajratib oling va tasdiqlash endpointiga uzating.
+
+### Webhook imzosini tasdiqlash
+
+Yuklamasining haqiqiyligini tasdiqlash uchun quyidagi so'rovni yuboring:
+
+```
+POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature
+Content-Type: application/json
+```
+
+<ParamField body="webhookId" type="string" required>
+  Hodisani qabul qilgan webhookning ID si. Buni AgencyHandy-dagi webhook tafsilot sahifasida toping.
+</ParamField>
+
+<ParamField body="signature" type="string" required>
+  Kiruvchi webhook so'rovidan `x-ah-sig` sarlavhasining qiymati.
+</ParamField>
+
+<ParamField body="secret" type="string" required>
+  AgencyHandy-dagi webhook tafsilot sahifasida ko'rsatilgan webhook siri.
+</ParamField>
+
+<ParamField body="payload" type="object" required>
+  AgencyHandy-ning webhook so'rovidan qabul qilingan xom JSON tanasi.
+</ParamField>
+
+<CodeGroup>
+
+```javascript JavaScript
+const url = 'https://api.agencyhandy.com/api/v1/webhooks/verify-signature';
+
+const postData = {
+  webhookId: 'your_webhook_id',
+  signature: 'your_signature',   // value of x-ah-sig header
+  secret: 'your_webhook_secret',
+  payload: {},                   // the parsed JSON body from AgencyHandy
+};
+
+const response = await fetch(url, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(postData),
+});
+
+const data = await response.json();
+console.log(data); // { "verification_status": "SUCCESS" }
+```
+
+```bash cURL
+curl -X POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature \
+  -H "Content-Type: application/json" \
+  -d '{
+    "webhookId": "your_webhook_id",
+    "signature": "your_signature",
+    "secret": "your_webhook_secret",
+    "payload": {}
+  }'
+```
+
+</CodeGroup>
+
+**Javoblar**
+
+<ResponseField name="verification_status" type="string">
+  Imzo to'g'ri bo'lsa `SUCCESS`. Tasdiqlash muvaffaqiyatsiz bo'lsa `FAILED` (HTTP 403).
+</ResponseField>
+
+```json Success (200)
+{
+  "verification_status": "SUCCESS"
+}
+```
+
+```json Failure (403)
+{
+  "type": "PermissionError",
+  "status": 403,
+  "verification_status": "FAILED"
+}
+```
+
+<Warning>
+  Webhook siringizni maxfiy saqlang. Uni davriy ravishda yangilab turing va rotatsiyadan so'ng darhol tasdiqlash mantig'ingizni yangilang. Uni mijoz tomonidagi kodda yoki ommaviy repozitoriyalarda hech qachon oshkor etmang.
+</Warning>
+
+## Muhim eslatmalar
+
+- Endpoint URL manzilingiz **ommaviy kirish mumkin bo'lgan HTTPS POST** URL bo'lishi shart.
+- Agar endpointingiz vaqtincha mavjud bo'lmasa, AgencyHandy-dagi webhook tarixi paneliga qarang — o'tgan hodisalarni to'g'ridan-to'g'ri u yerdan **qayta yetkazish** mumkin.
+- Muvaffaqiyatsiz yetkazmalarni yoki ruxsatsiz kirish urinishlarini aniqlash uchun webhook faolligini muntazam kuzatib boring.
+- Qayta-qayta muvaffaqiyatsiz bo'lgan webhooklar AgencyHandy tomonidan to'xtatib qo'yilishi mumkin — muammolarni erta aniqlash uchun yetkazma jurnallarini ko'rib chiqing.

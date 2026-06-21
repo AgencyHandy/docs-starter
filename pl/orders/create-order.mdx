@@ -1,0 +1,143 @@
+---
+title: "Jak tworzyć, edytować i usuwać zlecenia w AgencyHandy"
+sidebarTitle: "Utwórz zlecenie"
+description: "Przewodnik krok po kroku dotyczący tworzenia, edytowania i usuwania zleceń w AgencyHandy — w tym wymagania dotyczące ról, pola formularza i zmiany statusów."
+---
+
+Tworzenie zlecenia w AgencyHandy daje Ci ustrukturyzowane środowisko pracy do realizacji usługi dla klienta. Wypełniasz kluczowe szczegóły z góry — klient, usługa, ceny, daty i opis projektu — a wszystko inne, od zadań po dyskusje, wynika z tego jednego rekordu. Ta strona przeprowadzi Cię przez tworzenie zlecenia od podstaw, aktualizowanie go po fakcie, zmianę jego statusu oraz usuwanie, gdy nie jest już potrzebne.
+
+## Wymagania
+
+- Musisz być zalogowany do AgencyHandy.
+- Musisz posiadać rolę **Super Admina**, **Admina** lub **Project Managera**, aby tworzyć lub edytować zlecenia.
+- Tylko **Super Adminowie** i **Adminowie** mogą usuwać zlecenia.
+
+## Utwórz nowe zlecenie
+
+<Steps>
+  <Step title="Przejdź do Zleceń">
+    Na lewym pasku bocznym panelu AgencyHandy kliknij **Zlecenia**.
+  </Step>
+
+  <Step title="Otwórz formularz tworzenia">
+    Kliknij **+ Utwórz nowe zlecenie** w prawym górnym rogu. Pojawi się formularz.
+  </Step>
+
+  <Step title="Wypełnij szczegóły zlecenia">
+    Uzupełnij pola w formularzu:
+
+    | Pole | Wymagane | Uwagi |
+    |---|---|---|
+    | **Klient** | ✅ | Wybierz z istniejącej listy klientów |
+    | **Usługa** | ✅ | Obejmuje zarówno opublikowane, jak i nieopublikowane usługi |
+    | **Project Manager** | ❌ | Opcjonalne; przypisz PM do nadzorowania realizacji |
+    | **Ilość** | ✅ | Liczba zamawianych jednostek |
+    | **Cena** | ✅ | Uzgodniony budżet zlecenia |
+    | **Data rozpoczęcia** | ✅ | Kiedy rozpoczyna się praca |
+    | **Termin wykonania** | ✅ | Termin dostawy |
+    | **Opis zlecenia** | ❌ | Instrukcje, wymagania lub uwagi referencyjne dla Twojego zespołu |
+    | **Załączniki** | ❌ | Pliki pomocnicze związane ze zleceniem |
+
+    <Tip>
+      Jeśli wybrana usługa ma powiązane dodatki, w formularzu pojawi się sekcja **Dodatki**. Uwzględnij odpowiednie dodatki przed przesłaniem.
+    </Tip>
+  </Step>
+
+  <Step title="Sprawdź swoje wpisy">
+    Dokładnie sprawdź wszystkie pola pod kątem poprawności — szczególnie klienta, usługę, cenę i termin wykonania.
+  </Step>
+
+  <Step title="Prześlij zlecenie">
+    Kliknij **Utwórz**, aby sfinalizować zlecenie. Po pomyślnym utworzeniu otrzymasz komunikat potwierdzający.
+  </Step>
+</Steps>
+
+### Co się dzieje po utworzeniu zlecenia
+
+- Wszyscy Super Adminowie w Twojej firmie automatycznie uzyskują dostęp do nowego zlecenia.
+- Klient otrzymuje powiadomienie o utworzeniu jego zlecenia.
+- Zlecenie pojawia się na liście **Zleceń** ze statusem **Oczekujące**.
+
+## Edytuj lub zaktualizuj zlecenie
+
+Możesz zaktualizować zlecenie w dowolnym momencie, aby poprawić szczegóły, dostosować ceny, zmienić termin wykonania lub uwzględnić prośby klienta.
+
+<Note>
+Musisz być **Super Adminem**, **Adminem** lub **Project Managerem**, aby edytować zlecenie.
+</Note>
+
+<Steps>
+  <Step title="Otwórz listę Zleceń">
+    Przejdź do **Zleceń** na lewym pasku bocznym.
+  </Step>
+
+  <Step title="Wybierz zlecenie do edycji">
+    Znajdź zlecenie, które chcesz zaktualizować, i zaznacz pole wyboru obok niego.
+  </Step>
+
+  <Step title="Aktywuj przycisk edycji">
+    W prawym górnym rogu pojawi się przycisk **Edytuj**. Kliknij go, aby otworzyć szczegóły zlecenia w trybie edycji.
+  </Step>
+
+  <Step title="Zmodyfikuj niezbędne pola">
+    Zaktualizuj pola, które wymagają zmiany — dane klienta, usługę, ceny, daty, opis lub przypisanego PM.
+  </Step>
+
+  <Step title="Zapisz zmiany">
+    Kliknij **Aktualizuj**, aby zapisać. Komunikat potwierdzający potwierdzi pomyślne wykonanie aktualizacji.
+  </Step>
+</Steps>
+
+## Zmień status zlecenia
+
+Status zlecenia odzwierciedla etap pracy w Twoim procesie realizacji. AgencyHandy definiuje pięć stałych statusów — nie możesz ich dodawać ani zmieniać nazw.
+
+| Status | Znaczenie |
+|---|---|
+| **Oczekujące** | Utworzone, jeszcze nie rozpoczęte |
+| **W toku** | Aktywnie realizowane |
+| **W przeglądzie** | Przesłane do przeglądu; oczekuje na akceptację |
+| **Zakończone** | Dostarczone i zaakceptowane |
+| **Anulowane** | Nieaktywne |
+
+<Note>
+Tylko **Super Adminowie**, **Adminowie** i **Project Managerowie** mogą zmieniać status zlecenia. Pracownicy i klienci nie mogą zmieniać statusu.
+</Note>
+
+Aby zaktualizować status, otwórz zlecenie i użyj selektora statusu na górze strony szczegółów zlecenia. Wybierz nowy status z listy rozwijanej i potwierdź.
+
+## Usuń zlecenie
+
+Usunięcie zlecenia trwale usuwa je z systemu. Stosuj tę opcję tylko wtedy, gdy zlecenie jest naprawdę nieaktualne — na przykład jeśli zostało utworzone przez pomyłkę lub jest duplikatem.
+
+<Warning>
+Usunięcie zlecenia jest nieodwracalne. Po usunięciu zlecenia nie można go odzyskać. Postępuj ostrożnie.
+</Warning>
+
+<Note>
+Tylko **Super Adminowie** i **Adminowie** mogą usuwać zlecenia.
+</Note>
+
+<Steps>
+  <Step title="Przejdź do Zleceń">
+    Kliknij **Zlecenia** na lewym pasku bocznym.
+  </Step>
+
+  <Step title="Znajdź zlecenie do usunięcia">
+    Przewiń lub wyszukaj zlecenie, które chcesz usunąć z listy.
+  </Step>
+
+  <Step title="Zainicjuj usunięcie">
+    Kliknij **ikonę kosza na śmieci** powiązaną ze zleceniem.
+  </Step>
+
+  <Step title="Potwierdź usunięcie">
+    Pojawi się monit potwierdzający. Potwierdź, aby trwale usunąć zlecenie.
+  </Step>
+</Steps>
+
+Po usunięciu przejrzyj pozostałe zlecenia, aby upewnić się, że wszystko jest w porządku. Usunięty wpis nie będzie już pojawiał się na żadnej liście ani w raporcie.
+
+## Dodawanie członków zespołu do zlecenia
+
+Super Adminowie, Adminowie i PM-owie mogą w dowolnym momencie dodawać pracowników do zlecenia. Gdy członek zespołu zostanie dodany, otrzymuje powiadomienie w aplikacji. Przypisani pracownicy uzyskują wgląd w zlecenie i jego zadania, ale nie mogą zarządzać samym zleceniem (edytować szczegółów, zmieniać statusu ani go usuwać).

@@ -1,0 +1,117 @@
+---
+title: "AgencyHandy Ishchi Maydoni Rang Sxemalarini Moslang"
+sidebarTitle: "Ko'rinish"
+description: "Brend ranglaringizni AgencyHandy paneli va interfeysiga qo'llang — asosiy rang, fon, matn va kursorni ushlab turish holatlari — barcha foydalanuvchilarga darhol ko'rinadi."
+---
+
+Ko'rinish sozlamalari AgencyHandy ishchi maydoningizning qanday ko'rinishini to'liq nazorat qilish imkonini beradi. Siz asosiy rang, panel fonini, panel matn rangini va panel navigatsiya elementlari uchun kursorni ushlab turish ajratma rangini moslashtirish orqali platformaning rang sxemasini agentligingizning brend shaxsiyatiga muvofiqlashtira olasiz. Siz saqlagan har qanday o'zgarish barcha foydalanuvchilar uchun butun ishchi maydon bo'ylab darhol kuchga kiradi — sahifani yangilash talab qilinmaydi.
+
+<Note>
+  Faqat **Super Adminlar** va **Adminlar** Ko'rinish sozlamalariga kirish va ularni o'zgartirish imkoniyatiga ega. Agar **Ishchi Maydon Konfiguratsiyasi** ostida bu opsiyani ko'rmasangiz, rolingizni ko'rib chiqishni Super Adminingizdan so'rang.
+</Note>
+
+## Ko'rinish Sozlamalariga Kirish
+
+<Steps>
+  <Step title="Ishchi Maydon Konfiguratsiyasini oching">
+    Chap navigatsiya menyusidan **Ishchi Maydon Konfiguratsiyasi** tugmasini bosing.
+  </Step>
+  <Step title="Ko'rinishni tanlang">
+    Pastki menyudan **Ko'rinish** (ba'zan **Vizual Sozlamalar** deb ham ataladi) tugmasini bosing.
+  </Step>
+</Steps>
+
+---
+
+## Har Bir Vizual Elementni Moslash
+
+### Asosiy Rang
+
+Asosiy rang platforma bo'ylab tugmalar, faol havolalar, ajratilgan holatlar va asosiy interfeys elementlariga qo'llaniladi.
+
+- Asosiy brend shaxsiyatini aks ettiruvchi rangni tanlang.
+- Bu eng ta'sirchan rang sozlamasi, chunki u interfeysning har joyida ko'rinadi.
+
+### Panel Fon Rangi
+
+Panel fon rangi chap navigatsiya panelining asosiy ko'langgasini belgilaydi.
+
+- Panel va asosiy kontent maydoni o'rtasida aniq vizual ajratmani yarataydigan rangni ishlating.
+- O'qilish uchun qoʻngʻir fonlar odatda yaxshi ishlaydi.
+
+### Panel Matn Rangi
+
+Panel matn rangi chap menyudagi barcha navigatsiya elementlari uchun yorliq rangini nazorat qiladi.
+
+- Har doim panel fon rangi bilan kuchli kontrast yaratuvchi rangni tanlang.
+- Zaif kontrast havolalarni o'qishni qiyinlashtiradi va foydalanish imkoniyatini kamaytiradi.
+
+### Panel Kursorni Ushlab Turish Fon Rangi
+
+Bu rang foydalanuvchi kursorini panel navigatsiya elementi ustiga olib borganda fon ajratmasi sifatida ko'rinadi.
+
+- U interaktivlikni bildiradi va foydalanuvchilarga qaysi elementni bosmoqchi ekanliklarini tushunishga yordam beradi.
+- Standart panel fonidan ham, faol element rangidan ham ko'zga tashlanadigan darajada farq qiladigan rangni tanlang.
+
+---
+
+## Rang Tanlovlaringizni Qo'llash
+
+<Steps>
+  <Step title="Har bir maydon uchun rang tanlagichni oching">
+    To'rtta ko'rinish maydoni — Asosiy Rang, Panel Foni, Panel Matn Rangi yoki Panel Kursorni Ushlab Turish Fon Rangi — yonidagi rang namunasini bosib rang tanlagichni oching.
+  </Step>
+  <Step title="Hex kodi kiriting yoki rang tanlang">
+    Brendingizning aniq hex kodini (masalan, `#3B5BDB`) to'g'ridan-to'g'ri kiritish maydoniga kiriting yoki ko'rinish tanlash orqali ko'lanka tanlang.
+  </Step>
+  <Step title="O'zgarishlarni ko'rib chiqing">
+    Saqlashdan oldin yangilangan ranglar panel va interfeysda qanday ko'rinishini ko'rib chiqing.
+  </Step>
+  <Step title="O'zgarishlarni Saqlash tugmasini bosing">
+    Natijadan mamnun bo'lganingizda, **O'zgarishlarni Saqlash** tugmasini bosing. Yangilangan ko'rinish ishchi maydonidagi barcha foydalanuvchilarga global va darhol qo'llaniladi.
+  </Step>
+</Steps>
+
+<Tip>
+  Brendingizning hex rang kodlarini qulay joyda saqlang (brend uslub qo'llanmasi yoki eslatmalar fayli). Ayniqsa ko'rinish sozlamalarini tiklash va qayta sozlash kerak bo'lganda — bir xil qiymatlarni doimiy ravishda qayta ishlatishni xohlaysiz.
+</Tip>
+
+---
+
+## Standart Mavzuni Tiklash
+
+Barcha maxsus brendlashni olib tashlash va asl AgencyHandy rang sxemasini tiklash uchun Ko'rinish sahifasidagi **Standart Sozlamalarni Tiklash** tugmasini bosing.
+
+<Warning>
+  Standartlarni tiklash barcha maxsus rang o'zgarishlarini doimiy ravishda o'chirib tashlaydi. Bu amalni bekor qilib bo'lmaydi. Joriy sozlamalaringizni saqlamoqchi bo'lsangiz, tiklashdan oldin hex kodlaringizni yozib oling.
+</Warning>
+
+---
+
+## Rang Kontrasti Bo'yicha Eng Yaxshi Amaliyotlar
+
+Yaxshi rang kontrasti faqat dizayn afzalligi emas — bu jamoa va mijozlaringiz uchun o'qilish imkoniyati va foydalanish qulayligiga bevosita ta'sir qiladi.
+
+<CardGroup cols={2}>
+  <Card title="WCAG AA kontrast nisbatlariga intiling" icon="eye">
+    Oddiy asosiy matn uchun matn va fon o'rtasida kamida **4.5:1** kontrast nisbatidan foydalaning. Katta matn yoki belgilar uchun **3:1** nisbati maqbul. Tekshirish uchun [WebAIM Kontrast Tekshiruvchi](https://webaim.org/resources/contrastchecker/) kabi vosita ishlating.
+  </Card>
+  <Card title="Past kontrastli kombinatsiyalardan saqlaning" icon="triangle-exclamation">
+    Oq fonda och kulrang matn yoki oq fonda sariq matn kabi ranglarni birlashtirmang — ular foydalanish imkoniyati standartlaridan o'tmaydi va uzoq seanslar davomida ko'zni toliqtiradi.
+  </Card>
+  <Card title="Kursorni ushlab turish holatlarini ataylab tekshiring" icon="arrow-pointer">
+    Kursorni ushlab turish ranglari ham tinch holatdan, ham faol holat rangidan ko'zga tashlanadigan darajada farq qilishi kerak. Agar ular bir xil ko'rinsa, foydalanuvchilar muhim vizual qayta aloqani yo'qotadi.
+  </Card>
+  <Card title="Brendingiz bilan izchil bo'ling" icon="paintbrush">
+    Bu yerda veb-saytingiz, takliflar va hisob-fakturalaringizdagi bilan bir xil asosiy rangni ishlating. Izchillik barcha mijoz aloqa nuqtalari bo'ylab tan olish va professionallikni mustahkamlaydi.
+  </Card>
+</CardGroup>
+
+---
+
+## Muhim Eslatmalar
+
+- **Darhol global ta'sir:** Barcha saqlangan ko'rinish o'zgarishlari butun ishchi maydon bo'ylab darhol qo'llaniladi. Kirgan har bir foydalanuvchi keyingi navigatsiya harakatida yangilanishni ko'radi.
+- **Bitta faol mavzu:** Ko'p mavzu qo'llab-quvvatlanmaydi — barcha rollar uchun butun ishchi maydoniga bitta rang to'plami qo'llaniladi.
+- **Rol cheklovi:** Faqat Super Adminlar va Adminlar ko'rinish o'zgarishlarini amalga oshira oladi. Oddiy jamoa a'zolari va mijozlar ranglarni o'zgartira olmaydi.
+- **Tiklash doimiydir:** **Standart Sozlamalarni Tiklash** tugmasini bekor qilib bo'lmaydi, shuning uchun faqat barcha maxsus ranglarni ataylab olib tashlamoqchi bo'lganingizda ishlating.

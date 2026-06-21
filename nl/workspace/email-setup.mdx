@@ -1,0 +1,188 @@
+---
+title: "Uitgaande e-mail, SMTP en e-mailsjablonen instellen"
+sidebarTitle: "E-mailinstellingen"
+description: "Configureer een aangepast afzenderadres, koppel een SMTP-server, voeg DKIM/SPF-records toe voor betere bezorgbaarheid en pas e-mailsjablonen aan in AgencyHandy."
+---
+
+Met de e-mailinstellingen van AgencyHandy kun je het standaard `noreply@agencyhandy.com`-afzenderadres vervangen door je eigen bedrijfse-mailadres, een eigen SMTP-server configureren voor betrouwbare bezorging en de sjablonen aanpassen die worden gebruikt voor klantmeldingen, facturen, offertes en meer. Een correcte instelling zorgt ervoor dat je e-mails in de inbox van klanten belanden — niet in de spammap — en dat elk bericht de huisstijl van jouw bureau weerspiegelt.
+
+<Note>
+  Alleen **Superbeheerders** en **Beheerders** kunnen e-mailinstellingen configureren. Ga naar **Werkruimteconfiguratie → E-mailinstellingen** om deze opties te openen.
+</Note>
+
+---
+
+## Overzicht van e-mailinstelcomponenten
+
+<CardGroup cols={2}>
+  <Card title="Aangepast e-mailadres" icon="envelope">
+    Stel de naam en het e-mailadres van de afzender in die klanten zien wanneer ze berichten ontvangen vanuit jouw werkruimte.
+  </Card>
+  <Card title="DKIM- en SPF-records" icon="shield-check">
+    Voeg DNS-authenticatierecords toe om te bewijzen dat je e-mails legitiem zijn en te voorkomen dat ze als spam worden gemarkeerd.
+  </Card>
+  <Card title="SMTP-server" icon="server">
+    Koppel je eigen mailserver (bijv. Gmail, Outlook of een server met eigen domein) om alle uitgaande e-mails vanuit AgencyHandy te verzenden.
+  </Card>
+  <Card title="E-mailsjablonen" icon="file-lines">
+    Pas de inhoud, onderwerpregels en huisstijl aan voor elke automatische e-mail die AgencyHandy naar klanten verstuurt.
+  </Card>
+</CardGroup>
+
+---
+
+## Deel 1: Een aangepast e-mailadres instellen
+
+Voordat je je afzenderadres configureert, heb je een geregistreerd domein met e-mailhosting nodig. Populaire aanbieders zijn Google Workspace, Microsoft 365, Zoho Mail en Cloudflare Email Routing.
+
+<Steps>
+  <Step title="Registreer een domein en stel e-mailhosting in">
+    Als je dat nog niet hebt gedaan, registreer dan een domein bij een registrar (bijv. GoDaddy, Namecheap, Cloudflare) en meld je aan bij een e-mailhostingprovider. Zorg ervoor dat je e-mailadressen op dat domein kunt aanmaken en beheren (bijv. `hello@jouwbureau.nl`).
+  </Step>
+  <Step title="Ga naar E-mailinstellingen in AgencyHandy">
+    Log in op AgencyHandy. Ga naar **Werkruimteconfiguratie** in de linkernavigatie en klik op **E-mailinstellingen**.
+  </Step>
+  <Step title="Voer je afzendernaam en e-mailadres in">
+    Typ in het veld **Afzendernaam** de naam die klanten als afzender zien (bijv. `AgencyHandy Support` of de naam van je bureau). Voer in het veld **Afzender-e-mail** het aangepaste e-mailadres in (bijv. `hello@jouwbureau.nl`). Klik op **Opslaan**.
+  </Step>
+  <Step title="Verifieer je e-mailadres">
+    AgencyHandy stuurt een verificatielink naar het ingevoerde e-mailadres. Open je inbox, zoek het verificatiebericht en klik op de link om het eigendom te bevestigen.
+  </Step>
+  <Step title="Configureer DKIM-, SPF- en DMARC-DNS-records">
+    Na het opslaan van je afzender-e-mail geeft AgencyHandy de DNS-records die je moet toevoegen:
+
+    - **SPF-record** (TXT-type) — machtigt AgencyHandy om e-mails namens jouw domein te verzenden.
+    - **DKIM-records** (3 CNAME-records) — voegen cryptografische handtekeningen toe aan uitgaande e-mails zodat ontvangende servers de authenticiteit kunnen verifiëren.
+    - **DMARC-record** — bepaalt hoe ontvangende servers moeten omgaan met e-mails die de authenticatiecontroles niet doorstaan.
+
+    Voeg al deze records toe aan de DNS-instellingen van je domein bij je registrar. Zorg er bij DKIM CNAME-records voor dat de **proxystatus uitgeschakeld** is als je Cloudflare gebruikt.
+  </Step>
+  <Step title="Bevestig de actieve status">
+    Ga terug naar de pagina E-mailinstellingen in AgencyHandy. Zodra alle DNS-records zijn doorgegeven (dit kan 2 minuten tot 2 uur duren), wordt de e-mailstatus bijgewerkt van **In behandeling** naar een groen vinkje ✅. Je aangepaste e-mailadres is nu actief.
+  </Step>
+</Steps>
+
+<Tip>
+  Gebruik [MXToolbox](https://mxtoolbox.com/DKIM.aspx) of [dmarcian's DKIM Validator](https://dmarcian.com/dkim-validator/) om te controleren of je DKIM-records correct zijn geconfigureerd. Vernieuw de pagina E-mailinstellingen periodiek terwijl je wacht op doorgifte.
+</Tip>
+
+---
+
+## Deel 2: DKIM en SPF configureren (zelfstandige instelling)
+
+Als je DKIM- en SPF-records onafhankelijk wilt genereren of opnieuw wilt genereren, volg dan dit pad:
+
+**Werkruimteconfiguratie → E-mails → DKIM- en SPF-instelling → DKIM- en SPF-records genereren.**
+
+Voeg de records vervolgens toe aan je DNS:
+
+| Recordtype  | DNS-type | Wat te configureren                                                                                 |
+|-------------|----------|-----------------------------------------------------------------------------------------------------|
+| SPF         | TXT      | Kopieer de **Naam** en **Waarde** uit AgencyHandy en voeg een nieuw TXT-record toe in je DNS        |
+| DKIM (×3)   | CNAME    | Kopieer elk **Naam**- en **Waarde**-paar; voeg 3 aparte CNAME-records toe met proxy uitgeschakeld   |
+
+<Note>
+  DKIM- en SPF-records kunnen **2 minuten tot 2 uur** nodig hebben om door te geven. Als de status na 2 uur nog steeds als in behandeling wordt weergegeven, controleer dan of de records zonder typefouten zijn ingevoerd en of er geen conflicterende records bestaan.
+</Note>
+
+---
+
+## Deel 3: SMTP instellen
+
+SMTP (Simple Mail Transfer Protocol) laat je alle uitgaande e-mails van AgencyHandy via je eigen geverifieerde mailserver sturen, waardoor je meer controle hebt over bezorgbaarheid en huisstijl.
+
+<Note>
+  Je kunt kiezen voor een **Aangepast domein-e-mailadres** of een **SMTP-e-mailprovider** — niet beide tegelijk. Wisselen tussen beide is op elk moment mogelijk, maar je moet je e-mailconfiguratie opnieuw invoeren wanneer je terugschakelt naar een aangepast e-mailadres.
+</Note>
+
+<Steps>
+  <Step title="Open de SMTP-serverinstellingen">
+    Ga naar **Werkruimteconfiguratie → E-mailinstellingen** en klik op **SMTP-server**.
+  </Step>
+  <Step title="Schakel over naar SMTP-provider (indien nodig)">
+    Als je al een aangepast e-mailadres hebt geconfigureerd, verschijnt er een bevestigingspop-up met de vraag of je wilt overschakelen. Klik op **Overschakelen naar SMTP** om door te gaan. Dit schakelt de bestaande configuratie van het aangepaste e-mailadres uit.
+  </Step>
+  <Step title="Voer je SMTP-inloggegevens in">
+    Vul de vereiste velden in:
+
+    | Veld          | Voorbeeldwaarde        | Opmerkingen                                          |
+    |---------------|------------------------|------------------------------------------------------|
+    | Hostnaam      | `smtp.gmail.com`       | Het SMTP-serveradres van je e-mailprovider           |
+    | Gebruikersnaam| `jij@jouwdomein.nl`    | Je volledige e-mailadres                             |
+    | Wachtwoord    | App-wachtwoord         | Gebruik een app-specifiek wachtwoord (zie hieronder) |
+    | Poort         | `465` of `587`         | 465 voor SSL, 587 voor TLS                           |
+    | Auto TLS      | Aan/uit schakelen      | Optioneel — maakt automatische TLS-upgrade mogelijk  |
+
+    Klik op **Opslaan** als je klaar bent.
+  </Step>
+  <Step title="Genereer een app-wachtwoord (Gmail-voorbeeld)">
+    Als je Gmail gebruikt met tweefactorauthenticatie ingeschakeld (vereist voor app-wachtwoorden):
+
+    1. Ga naar [myaccount.google.com/security](https://myaccount.google.com/security) en bevestig dat verificatie in twee stappen actief is.
+    2. Bezoek [myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords).
+    3. Klik op **App selecteren**, kies **E-mail** (of voer een aangepaste naam in), klik vervolgens op **Apparaat selecteren** en kies je instelling.
+    4. Klik op **Genereren** — Google genereert een app-wachtwoord van 16 tekens.
+    5. Kopieer het wachtwoord en plak het in het veld **Wachtwoord** in de SMTP-instellingen van AgencyHandy.
+
+    <Warning>
+      Gebruik het **app-wachtwoord**, niet je gewone Google-accountwachtwoord. Het gebruik van je gewone wachtwoord mislukt als 2FA is ingeschakeld en kan beveiligingswaarschuwingen activeren.
+    </Warning>
+  </Step>
+  <Step title="Bevestig de instelling">
+    Na het opslaan toont AgencyHandy een succesbericht: _"SMTP is succesvol aangemaakt."_ Je opgeslagen host, gebruikersnaam en poortgegevens worden weergegeven op de SMTP-instellingspagina.
+  </Step>
+  <Step title="Test de SMTP-verbinding">
+    Klik op de knop **Testen** en voer een ontvanger-e-mailadres in. AgencyHandy stuurt een teste-mail naar dat adres. Controleer de inbox op het bevestigingsbericht: _"Dit is een bevestiging dat je e-mailinstellingen in Agency Handy correct werken."_
+  </Step>
+</Steps>
+
+<Tip>
+  Per werkruimte kan slechts één SMTP-configuratie tegelijk actief zijn. Zodra SMTP is geconfigureerd, worden alle uitgaande e-mails van AgencyHandy — facturen, offertes, taakmeldingen — via je SMTP-server verzonden.
+</Tip>
+
+---
+
+## Deel 4: E-mailsjablonen aanpassen
+
+AgencyHandy bevat kant-en-klare sjablonen voor elke automatische e-mail die het verstuurt. Je kunt elk sjabloon aanpassen aan de toon van je merk en relevante dynamische inhoud opnemen.
+
+**Beschikbare sjablonen zijn onder meer:**
+- Aanmelding klant
+- Offerte versturen
+- Taakbeoordeling
+- Factuur versturen
+- Herinneringen voor facturen en abonnementen
+- Meldingen bij het aanmaken van een supportticket
+
+<Steps>
+  <Step title="Open E-mailsjablonen">
+    Ga naar **Werkruimteconfiguratie → E-mails** en selecteer **E-mailsjabloon** in het submenu.
+  </Step>
+  <Step title="Selecteer een te bewerken sjabloon">
+    De volledige lijst met beschikbare sjablonen wordt weergegeven. Klik op een sjabloon om de configuratiepagina ervan te openen.
+  </Step>
+  <Step title="Pas de sjabloonvelden aan">
+    Werk het volgende bij waar nodig:
+    - **Afzender-e-mail:** Kies welk geconfigureerd e-mailadres dit sjabloon verzendt.
+    - **Onderwerp:** Schrijf een duidelijke, beknopte onderwerpregel.
+    - **Inhoud:** Bewerk de berichtinhoud om overeen te komen met de toon en boodschap van je bureau.
+    - **Dynamische variabelen:** Voeg tijdelijke aanduidingen in zoals `{{client_name}}`, `{{company_name}}` of `{{invoice_id}}` om automatisch klantspecifieke gegevens in te vullen.
+    - **Links naar sociale media:** Voeg links toe naar de sociale profielen van je bureau om betrokkenheid te stimuleren.
+  </Step>
+  <Step title="Stuur een teste-mail">
+    Klik op **Test versturen** om een voorbeeld van het sjabloon naar je inbox te sturen. Controleer de opmaak, inhoud en of alle dynamische variabelen correct worden ingevuld.
+  </Step>
+  <Step title="Sla je wijzigingen op">
+    Klik op **Wijzigingen opslaan** om het bijgewerkte sjabloon toe te passen. De nieuwe versie wordt gebruikt voor alle toekomstige automatische e-mails die overeenkomen met dat sjabloontype.
+  </Step>
+</Steps>
+
+---
+
+## Belangrijke opmerkingen
+
+- **SMTP en aangepast e-mailadres sluiten elkaar uit.** Per werkruimte kan slechts één methode tegelijk actief zijn.
+- **Voer e-mailadres opnieuw in bij wisseling.** Als je van SMTP terugschakelt naar een aangepast e-mailadres, moet je je aangepaste e-mailgegevens opnieuw invoeren.
+- **Onjuiste SMTP-inloggegevens blokkeren alle uitgaande e-mails.** Controleer je hostnaam, poort, gebruikersnaam en wachtwoord nogmaals als e-mails stoppen met verzenden na een SMTP-wijziging.
+- **DKIM/SPF-doorgifte kost tijd.** Wacht tot 2 uur en vernieuw de pagina E-mailinstellingen voordat je concludeert dat er een fout is.
+- **Dynamische variabelen zijn hoofdlettergevoelig.** Gebruik ze precies zoals weergegeven in de sjablooneditor om ervoor te zorgen dat ze correct worden ingevuld.

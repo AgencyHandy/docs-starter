@@ -1,0 +1,240 @@
+---
+title: "Taakbeheer: Werk aanmaken en bijhouden in orders"
+sidebarTitle: "Taken"
+description: "Taken aanmaken, bewerken en beheren binnen orders — inclusief tijdregistratie, bestandsfeedback, door klanten aangevraagde taken en taakzichtbaarheid over orders heen."
+---
+
+Taken zijn de werkeenheden die een order omzetten in een eindresultaat. Elke taak behoort tot een specifieke order, kan worden toegewezen aan een teamlid en heeft zijn eigen status, tijdlijn, bijlagen en feedbackthread. Deze pagina legt uit hoe je taken aanmaakt en beheert, hoe klanten taken kunnen aanvragen, hoe tijdregistratie en bestandsfeedback werken, en hoe je taken over alle orders heen kunt bekijken.
+
+## Rolevereisten
+
+| Actie | Wie kan dit uitvoeren |
+|---|---|
+| Taken aanmaken | Super Admin, Admin, Projectmanager |
+| Taken bewerken | Super Admin, Admin, Projectmanager |
+| Taken verwijderen | Super Admin, Admin, Projectmanager |
+| Taken in beoordeling / gereed bekijken | Super Admin, Admin, PM, Klant |
+| Feedback verzenden en beantwoorden | Super Admin, Admin, PM |
+| Tijd registreren op taken | Alle toegewezen gebruikers (Super Admins en Admins kunnen namens anderen registreren) |
+| Een taak aanvragen (klant) | Klant |
+| Aangevraagde taken goedkeuren / afwijzen | Super Admin, Admin |
+
+<Note>
+Medewerkers die aan een order zijn toegewezen, kunnen taken zien die de status **Ter beoordeling** of **Gereed** hebben. Taken met de status **In uitvoering** zijn niet zichtbaar voor medewerkers.
+</Note>
+
+## Een taak aanmaken
+
+<Steps>
+  <Step title="Open de order">
+    Navigeer naar **Orders** in de linker zijbalk en klik op de order waaraan je een taak wilt toevoegen.
+  </Step>
+
+  <Step title="Voeg een nieuwe taak toe">
+    Scroll binnen de order naar de sectie **Taken** en klik op **+ Nieuwe taak toevoegen**. Er verschijnt een taakformlier.
+  </Step>
+
+  <Step title="Vul de taakgegevens in">
+    Vul de beschikbare velden in:
+
+    | Veld | Opmerkingen |
+    |---|---|
+    | **Taaknaam** | Een duidelijke, beknopte titel voor het werkitem |
+    | **Omschrijving** | Gedetailleerde context, vereisten of instructies |
+    | **Toegewezene** | Het teamlid dat verantwoordelijk is voor het uitvoeren van de taak |
+    | **Label** | Categorisch label voor het organiseren van taken (bijv. Ontwerp, Tekst) |
+    | **Startdatum** | Wanneer het werk aan de taak begint |
+    | **Deadline** | Wanneer de taak voltooid moet zijn |
+    | **Klantbeoordeling vereist** | Selectievakje dat vereist dat de klant de taak goedkeurt voordat deze als Gereed wordt gemarkeerd — standaard ingeschakeld |
+    | **Bijlagen** | Referentiebestanden of ondersteunend materiaal |
+  </Step>
+
+  <Step title="Sla de taak op">
+    Klik op **Opslaan** om de taak aan te maken. De klant ontvangt automatisch een melding dat er een nieuwe taak aan hun order is toegevoegd.
+  </Step>
+</Steps>
+
+<Tip>
+Het selectievakje **Klantbeoordeling vereist** is standaard ingeschakeld voor elke nieuwe taak. Als een taak puur intern is en geen goedkeuring van de klant vereist, kun je dit uitvinken voordat je opslaat.
+</Tip>
+
+## Taakstatussen
+
+Taken doorlopen de volgende statussen:
+
+- **In uitvoering** — De taak wordt uitgevoerd (niet zichtbaar voor klanten of medewerkers)
+- **Ter beoordeling** — De taak is ingediend voor beoordeling; zichtbaar voor klanten
+- **Gereed** — De taak is goedgekeurd en voltooid
+
+<Note>
+Wanneer een klant of beoordelaar een taak vanuit **Ter beoordeling** afwijst, keert de status automatisch terug naar **In uitvoering**.
+</Note>
+
+## Taakmodal en activiteitenpagina
+
+Door op een taak te klikken, open je het **Taakmodal**, een gedetailleerde weergave die als activiteitenhub voor de taak dient. Vanuit hier kun je het volgende bekijken en beheren:
+
+- Huidige status, toegewezene, startdatum en deadline
+- Taakbeschrijving en eventuele bijgevoegde bestanden
+- Alle feedbackthreads en antwoorden
+- Een volledig activiteitenlogboek met elke update, opmerking en statuswijziging van de taak
+
+Iedereen die deel uitmaakt van de order — inclusief klanten wanneer klantbeoordeling is ingeschakeld — kan het taakmodal openen voor taken die zij kunnen inzien.
+
+## Een taak bewerken
+
+Om de gegevens van een taak bij te werken nadat deze is aangemaakt, open je het taakmodal en pas je de relevante velden aan (naam, omschrijving, toegewezene, datums, label of bijlagen). Sla je wijzigingen op om de update toe te passen. Alleen Super Admins, Admins en PM's kunnen taken bewerken.
+
+## Een taak verwijderen
+
+Om een taak te verwijderen, open je deze en gebruik je de verwijderoptie in het actiemenu van de taak. Verwijdering is permanent — alle bijbehorende tijdregistraties en bestandsversies worden samen met de taak verwijderd.
+
+<Warning>
+Het verwijderen van een taak verwijdert ook alle bestandsversies en de bijbehorende feedbackopmerkingen. Deze actie kan niet ongedaan worden gemaakt.
+</Warning>
+
+## Tijdregistratie
+
+AgencyHandy heeft ingebouwde tijdregistratie zodat je team uren rechtstreeks op taken kan registreren — zonder extern hulpmiddel.
+
+### De timer starten
+
+<Steps>
+  <Step title="Open de taak">
+    Ga naar **Orders → Taken** en open de taak waarop je tijd wilt registreren.
+  </Step>
+
+  <Step title="Start de timer">
+    Klik op **Timer starten**. De timer begint te lopen en toont de taaknaam, de verstreken tijd in realtime en de totaal geregistreerde tijd.
+  </Step>
+
+  <Step title="Pauzeer of stop wanneer klaar">
+    Klik op **Timer pauzeren** om de registratie tijdelijk te onderbreken, of op **Timer stoppen** om de invoer te voltooien. Wanneer je stopt, bevestig je de datum, starttijd, eindtijd, totale duur en een optionele notitie.
+  </Step>
+</Steps>
+
+<Note>
+Je kunt slechts één actieve timer tegelijk laten lopen. Het starten van een nieuwe timer pauzeert automatisch een eventueel lopende timer.
+</Note>
+
+<Warning>
+Als een taak als **Gereed** is gemarkeerd, is de timer uitgeschakeld. Heropent de taak om tijdregistratie opnieuw mogelijk te maken.
+</Warning>
+
+### Handmatige tijdinvoer
+
+Als je tijd achteraf wilt registreren, klik je op **Handmatige tijdinvoer** bij de taak en vul je het volgende in:
+
+- **Datum**
+- **Starttijd en eindtijd** (of een **Duur** in uren en minuten)
+- **Notities** (optioneel)
+
+Meerdere gebruikers kunnen tegelijk tijd op dezelfde taak registreren. Super Admins en Admins kunnen handmatige tijdinvoer namens elke gebruiker aanmaken.
+
+### Werklogboeken
+
+Klik op de knop **Werklogboek** naast de timer om een volledig overzicht te zien van alle tijdinvoer op de taak, inclusief datum, start-/eindtijden, totale actieve tijd en eventuele notities. Admins en Super Admins kunnen elke invoer verwijderen; gewone gebruikers kunnen alleen hun eigen invoer verwijderen.
+
+### Urenstaten
+
+Navigeer naar **Urenstaten** in de linker zijbalk voor een overzicht over alle orders heen van alle geregistreerde tijd. Je kunt filteren op taaknaam, order-ID, toegewezene of datumbereik (dagelijks, wekelijks, maandelijks), en resultaten groeperen op teamlid, dienstnaam of taaknaam. Je kunt ook een timer starten of een handmatige invoer toevoegen rechtstreeks vanuit de urenstatenweergave.
+
+## Bestandsfeedback
+
+Het bestandsfeedbacksysteem van AgencyHandy laat jou en je klanten nauwkeurige, visuele opmerkingen achterlaten op eindresultaten — rechtstreeks binnen taken. Het ondersteunt afbeeldingen, PDF's, video's en live websites, met versiebeheer en discussiethreads ingebouwd.
+
+### Een bestand uploaden voor beoordeling
+
+Open de taak, klik op het **➕**-pictogram in de sectie **Bijlagen** en upload een afbeelding, PDF, video of plak een live website-URL.
+
+### Feedback achterlaten per bestandstype
+
+**Afbeeldingen en PDF's**
+Open het bestand en gebruik de annotatiebalk (Pijl, Lijn, Rechthoek, Markering) om specifieke gebieden te annoteren. Selecteer een gebied, typ je opmerking en kies of je deze wilt delen met je team, de klant of beide. Je kunt annotaties ook ongedaan maken of opnieuw uitvoeren en annotatiekleuren wijzigen.
+
+**Video's**
+Open de video en pauzeer deze op het exacte frame waarop je feedback van toepassing is. Typ je opmerking — de video pauzeert automatisch terwijl je typt. De feedback krijgt een tijdstempel op dat moment. Je kunt het tijdstempel verwijderen om een algemene opmerking achter te laten.
+
+**Live websites**
+Voeg de site-URL aan de taak toe via de **➕**-knop en installeer vervolgens de AgencyHandy-browserextensie. Open de site in de **Weergavemodus** (interactief) of schakel over naar de **Beoordelingsmodus** om een schermafbeelding te maken en deze te annoteren met teken-, tekst- of vormprogramma's.
+
+### Opmerkingenacties
+
+Elke opmerking heeft een menu met drie punten met de volgende opties:
+
+- Opmerking bewerken
+- Antwoord kopiëren
+- Opmerking verwijderen
+- Zichtbaarheid beperken tot het interne team
+
+### Feedback oplossen
+
+Klik op de knop **✓** bij een opmerking om deze als **Opgelost** te markeren. Opgeloste opmerkingen blijven zichtbaar als referentie en kunnen opnieuw worden geopend. Je ontvangt een melding wanneer een opmerking die jij hebt achtergelaten door iemand anders is opgelost.
+
+### Bestandsversies
+
+Klik op **Nieuwe versie uploaden** om een herzien bestand toe te voegen. Eerdere versies en hun feedback worden bewaard en zijn toegankelijk via het versievervolgkeuzemenu. Wanneer je een oudere versie opent, meldt AgencyHandy je dat er een nieuwere versie beschikbaar is.
+
+Je kunt elk bestand labelen als **Beoordeeld nodig** of **Goedgekeurd** om de beoordelingsstatus in één oogopslag te communiceren.
+
+<Note>
+Klanten kunnen alleen feedback achterlaten op bestanden als het selectievakje **Klantbeoordeling vereist** op de taak is ingeschakeld. Bestandsfeedback is alleen beschikbaar binnen taken of orders — niet in de dienstencatalogus of profielafbeeldingen.
+</Note>
+
+## Door klanten aangevraagde taken
+
+Klanten kunnen taakaanvragen indienen vanuit hun portaal, zodat ze op een gestructureerde manier aanvullende behoeften kunnen aangeven zonder je goedkeuringsproces te omzeilen.
+
+### Werkstroom voor de klant
+
+<Steps>
+  <Step title="Toegang tot aanvragen">
+    De klant klikt op **Aanvragen** in de zijbalk van het Klantportaal — of gebruikt de knop **+ Taak aanvragen** rechtstreeks binnen een order.
+  </Step>
+
+  <Step title="Vul het aanvraagformulier in">
+    De klant verstrekt:
+    - **Order** (verplicht — aanvragen moeten gekoppeld zijn aan een bestaande order)
+    - **Taaknaam** (verplicht)
+    - **Omschrijving** (optioneel)
+    - **Bijlagen** (optioneel — tot 1 GB; formaten zijn onder meer PDF, DOCX, JPG, PNG, MP4, ZIP en meer)
+    - **Start- en einddatums** (optioneel)
+  </Step>
+
+  <Step title="Dien de aanvraag in">
+    De klant klikt op **Aanvragen**. De taak verschijnt in hun portaal als **In behandeling** en je bureau ontvangt een melding.
+  </Step>
+</Steps>
+
+### Werkstroom voor het bureau
+
+<Steps>
+  <Step title="Bekijk binnenkomende aanvragen">
+    Klik op **Aanvragen** in de zijbalk van het Bureauportaal. Alle openstaande aanvragen verschijnen in een lijstweergave. Je kunt filteren op klant of order-ID, sorteren op alfabetische volgorde of indieningsdatum, en **Voorkeuren** gebruiken om kolommen te tonen of verbergen.
+  </Step>
+
+  <Step title="Bekijk de aanvraag">
+    Klik op een aanvraag om de omschrijving te lezen en eventuele bijlagen te bekijken voordat je een beslissing neemt.
+  </Step>
+
+  <Step title="Goedkeuren of afwijzen">
+    Gebruik de actieknoppen naast elke aanvraag om afzonderlijk goed te keuren of af te wijzen — of gebruik de bulkacties rechtsboven om alle aanvragen tegelijk goed te keuren of af te wijzen.
+
+    - **Goedgekeurde** aanvragen worden actieve taken in de order en volgen de normale taakwerkstroom.
+    - **Afgewezen** aanvragen blijven geregistreerd met de status **Afgewezen** en worden niet aan de order toegevoegd.
+  </Step>
+</Steps>
+
+<Note>
+Klanten kunnen de goedkeuringsstap niet omzeilen. Een aanvraag vereist altijd actie van het bureau voordat het een actieve taak wordt. Openstaande aanvragen blijven zichtbaar voor zowel de klant als het bureau totdat er een beslissing is genomen.
+</Note>
+
+## Alle taken weergeven
+
+Naast het beheren van taken binnen individuele orders, kun je taken over alle orders heen bekijken vanuit één scherm. Navigeer naar **Taken** in de linker zijbalk om de pagina **Alle taken** te openen. Van hieruit kun je:
+
+- Elke taak zien waarop je zichtbaarheid hebt, ongeacht bij welke order deze hoort
+- Filteren en sorteren op status, toegewezene, deadline of order
+- Snel achterstallige of risicovolle items identificeren over je volledige werklast
+
+Deze zichtbaarheid over orders heen is vooral nuttig voor Projectmanagers en Admins die de capaciteit van het team moeten balanceren en de leveringsgezondheid op bureauniveau moeten bijhouden.

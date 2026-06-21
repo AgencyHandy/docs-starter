@@ -1,0 +1,172 @@
+---
+title: "Śledzenie czasu i zarządzanie kartami pracy w AgencyHandy"
+sidebarTitle: "Karta pracy"
+description: "Rejestruj czas za pomocą timera na żywo lub ręcznego wpisu, filtruj dzienniki pracy według zadania, członka lub usługi i eksportuj dane karty pracy jako CSV lub XLSX w AgencyHandy."
+---
+
+Funkcja Kart pracy w AgencyHandy daje Ci centralny panel do śledzenia każdej godziny, którą Twój zespół spędza na zadaniach. Możesz uruchomić timer na żywo dla dowolnego zadania, rejestrować czas po fakcie za pomocą ręcznego wpisu, a następnie analizować dane według zakresu dat, członka zespołu lub usługi. Gdy musisz sporządzić raport o produktywności lub rozliczyć czas, możesz wyeksportować wszystko do CSV lub XLSX w kilku kliknięciach. To niezbędne narzędzie do utrzymania odpowiedzialności zespołu i dokładności rozliczeń godzinowych.
+
+## Kto może korzystać z funkcji Kart pracy
+
+| Funkcja | Super Admin | Admin | PM | Pracownik |
+|---------|:-----------:|:-----:|:--:|:--------:|
+| Przeglądanie własnych dzienników czasu | ✅ | ✅ | ✅ | ✅ |
+| Rejestrowanie czasu za innych | ✅ | ✅ | ✅ | ❌ |
+| Edytowanie wpisów czasu | ✅ | ✅ | ✅ | ❌ |
+| Eksport danych karty pracy | ✅ | ✅ | ✅ | ❌ |
+
+<Note>
+  Przed śledzeniem czasu muszą istnieć zadania. Upewnij się, że zadania są tworzone w ramach zleceń przed próbą rejestrowania czasu.
+</Note>
+
+## Przeglądanie karty pracy
+
+<Steps>
+  <Step title="Otwórz Kartę pracy">
+    Kliknij **Karta pracy** na głównym lewym pasku bocznym. Zobaczysz tabelę zawierającą wszystkie dzienniki czasu Twojego zespołu.
+
+    Każdy wiersz pokazuje datę, członka zespołu, nazwę zadania, usługę, zarejestrowany czas i wszelkie notatki dołączone do wpisu.
+  </Step>
+</Steps>
+
+## Dodawanie wpisu czasu
+
+Masz dwie opcje rejestrowania czasu: timer na żywo dla pracy w toku lub ręczny wpis dla czasu, który już przepracowałeś.
+
+<Tabs>
+  <Tab title="Uruchom timer">
+    <Steps>
+      <Step title="Wybierz zadanie">
+        W widoku Karty pracy znajdź lub wybierz zadanie, nad którym zamierzasz pracować.
+      </Step>
+      <Step title="Kliknij Uruchom timer">
+        Kliknij **Uruchom timer**, aby rozpocząć śledzenie czasu w czasie rzeczywistym. Timer działa do momentu jego zatrzymania.
+      </Step>
+      <Step title="Zatrzymaj po zakończeniu">
+        Kliknij **Zatrzymaj**, gdy skończysz pracę. AgencyHandy automatycznie rejestruje upłynięty czas dla wybranego zadania.
+      </Step>
+    </Steps>
+
+    <Tip>
+      Używaj timera do bieżącej pracy, aby zapewnić precyzyjne śledzenie. Ręczne zaokrąglanie lub szacowanie czasu po fakcie jest mniej dokładne niż pozwolenie timerowi działać.
+    </Tip>
+  </Tab>
+  <Tab title="Ręczny wpis">
+    <Steps>
+      <Step title="Kliknij + Dodaj wpis">
+        W panelu Karty pracy kliknij **+ Dodaj wpis**. Pojawi się formularz.
+      </Step>
+      <Step title="Wypełnij szczegóły wpisu">
+        - **Zadanie** — wybierz zadanie, do którego odnosi się ten czas
+        - **Członek zespołu** — przypisz czas odpowiedniej osobie (Adminowie i Managerowie mogą rejestrować za innych)
+        - **Czas spędzony** — wprowadź godziny i minuty
+        - **Notatki** — dodaj kontekst dotyczący tego, nad czym pracowano
+      </Step>
+      <Step title="Zapisz">
+        Kliknij **Zapisz**, aby zarejestrować wpis. Pojawi się on natychmiast w tabeli kart pracy.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Filtrowanie według zakresu dat
+
+Użyj filtrów dat, aby skupić się na konkretnym okresie.
+
+<Steps>
+  <Step title="Otwórz filtry dat">
+    Kliknij kontrolki filtrów dat w prawym górnym rogu panelu Karty pracy.
+  </Step>
+  <Step title="Wybierz zakres">
+    Wybierz z predefiniowanych zakresów:
+    - **Dziennie** — tylko dzisiejsze dzienniki
+    - **Tygodniowo** — bieżący tydzień
+    - **Miesięcznie** — bieżący miesiąc
+
+    W przypadku dłuższych projektów lub raportowania historycznego wybierz **Niestandardowy** zakres dat, wprowadzając datę początkową i końcową.
+  </Step>
+  <Step title="Zastosuj">
+    Kliknij **Zastosuj**, aby zaktualizować tabelę z dziennikami z wybranego okresu.
+  </Step>
+</Steps>
+
+<Tip>
+  Filtruj przed eksportem, aby generować ukierunkowane raporty. Eksportowanie pełnej niefiltrowanej karty pracy może tworzyć bardzo duże pliki dla aktywnych agencji.
+</Tip>
+
+## Grupowanie wpisów
+
+Grupowanie zmienia sposób organizacji wierszy karty pracy bez usuwania żadnych danych. Pomaga szybciej czytać i analizować dzienniki.
+
+<Steps>
+  <Step title="Otwórz listę rozwijaną Grupuj według">
+    Kliknij listę rozwijaną **Grupuj według** w pobliżu góry panelu Karty pracy.
+  </Step>
+  <Step title="Wybierz grupowanie">
+    Wybierz jedną z następujących opcji:
+
+    | Opcja grupowania | Co pokazuje |
+    |----------------|---------------|
+    | **Nazwa zadania** | Wszystkie wpisy czasu zgrupowane pod każdym zadaniem |
+    | **Członek zespołu** | Wszystkie wpisy zgrupowane pod każdą osobą |
+    | **Usługa → Nazwa zadania** | Wpisy zgrupowane według usługi, następnie podzielone według zadania w ramach każdej usługi |
+  </Step>
+</Steps>
+
+<Note>
+  Grupowanie to zmiana wyłącznie wizualna — nie wpływa na dane bazowe ani na to, co jest eksportowane. Eksporty zawsze obejmują wszystkie widoczne wiersze.
+</Note>
+
+## Przeglądanie szczegółów zadania z Karty pracy
+
+<Steps>
+  <Step title="Kliknij nazwę zadania">
+    W tabeli kart pracy kliknij dowolną **Nazwę zadania**. AgencyHandy przeniesie Cię na stronę pełnych szczegółów tego zadania.
+  </Step>
+  <Step title="Przejrzyj kontekst zadania">
+    Na stronie szczegółów zadania znajdziesz kompletną historię dziennika czasu, dołączone notatki, osoby odpowiedzialne, status i inne informacje na poziomie zadania. Użyj tego widoku do badania wpisów lub weryfikacji wykonanej pracy.
+  </Step>
+</Steps>
+
+## Eksportowanie danych karty pracy
+
+Eksportuj swoją kartę pracy do celów rozliczeń płac, raportów rozliczeniowych dla klientów lub zewnętrznych narzędzi zarządzania projektami.
+
+<Steps>
+  <Step title="Najpierw zastosuj filtry (zalecane)">
+    Użyj filtra zakresu dat, aby zawęzić eksport do potrzebnego okresu. Dzięki temu plik pozostaje skupiony i łatwy w zarządzaniu.
+  </Step>
+  <Step title="Kliknij Eksportuj">
+    Kliknij przycisk **Eksportuj** u góry panelu Karty pracy.
+  </Step>
+  <Step title="Wybierz format">
+    Wybierz:
+    - **CSV** — dla narzędzi arkuszowych takich jak Excel, Google Sheets lub potoków danych
+    - **XLSX** — dla skoroszytów sformatowanych w programie Excel z zachowanym formatowaniem kolumn
+  </Step>
+  <Step title="Pobierz plik">
+    Plik zostanie automatycznie pobrany na Twoje urządzenie. Każdy eksport zawiera wszystkie widoczne kolumny: datę, członka zespołu, nazwę zadania, usługę, zarejestrowany czas i notatki.
+  </Step>
+</Steps>
+
+<Warning>
+  Jeśli eksport nie uruchomi pobierania, **blokada okienek wyskakujących** w Twojej przeglądarce może uniemożliwiać pobranie pliku. Wyłącz blokowanie okienek wyskakujących dla AgencyHandy i spróbuj ponownie.
+</Warning>
+
+## Dodatkowe uwagi
+
+<Accordion title="Timer vs. ręczny wpis">
+  Timer jest najlepszy do aktywnej pracy w czasie rzeczywistym. Ręczne wpisy są najlepsze, gdy zapomniałeś uruchomić timer lub musisz zarejestrować czas wstecz. Obie metody tworzą identyczne wpisy dziennika w tabeli kart pracy.
+</Accordion>
+
+<Accordion title="Grupowanie vs. filtrowanie">
+  Filtry **ograniczają** liczbę wierszy wyświetlanych w tabeli. Grupowanie **reorganizuje** wiersze, które są już widoczne. Możesz stosować oba jednocześnie — filtruj do zakresu dat, a następnie grupuj według członka zespołu, aby zobaczyć sumy każdej osoby za ten okres.
+</Accordion>
+
+<Accordion title="Eksporty obejmują wszystkie widoczne kolumny">
+  Każdy eksport przechwytuje aktualny stan widocznej tabeli: datę, użytkownika, zadanie, usługę, czas i notatki. Jeśli zastosowałeś ustawienie grupowania, eksport odzwierciedla strukturę grupowania.
+</Accordion>
+
+<Accordion title="Niestandardowe zakresy dla danych historycznych">
+  W przypadku długotrwałych projektów lub przeglądów kwartalnych użyj opcji niestandardowego zakresu dat, aby pobierać historyczne dane kart pracy wykraczające poza predefiniowane okna dzienne/tygodniowe/miesięczne.
+</Accordion>

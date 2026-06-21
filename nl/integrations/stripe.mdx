@@ -1,0 +1,77 @@
+---
+title: "Stripe koppelen om online betalingen te accepteren in AgencyHandy"
+sidebarTitle: "Stripe"
+description: "Koppel uw Stripe-account aan AgencyHandy om facturen te sturen en veilige online betalingen van klanten te innen zonder het platform te verlaten."
+---
+
+Met de Stripe-integratie van AgencyHandy kunt u kaartbetalingen rechtstreeks van uw klanten accepteren via facturen die u binnen het platform verstuurt. Eenmaal verbonden zien uw klanten een vertrouwde door Stripe gehoste checkout, en de betalingsstatus wordt automatisch teruggekoppeld naar AgencyHandy — geen handmatige afstemming nodig.
+
+<Note>
+  Alleen de rollen **SuperAdmin** en **Admin** kunnen de Stripe-integratie verbinden of beheren. U moet ook een geverifieerd Stripe-account hebben met de juiste rechten voordat u begint.
+</Note>
+
+## Stripe verbinden
+
+<Steps>
+  <Step title="Open de instellingen van de Stripe-integratie">
+    Navigeer in de linker zijbalk naar **Integraties → Stripe-integratie**.
+  </Step>
+
+  <Step title="Autoriseren via Stripe">
+    Klik op **Stripe verbinden**. U wordt doorgestuurd naar het autorisatiescherm van Stripe. Log in op uw Stripe-account en klik op **Toestaan** om AgencyHandy toegang te verlenen. Zodra goedgekeurd, stuurt Stripe u automatisch terug naar AgencyHandy.
+  </Step>
+
+  <Step title="Betalingsvoorkeuren configureren">
+    Configureer na de doorverwijzing de volgende opties:
+
+    - **Valuta** — kies de standaard factureringsvaluta voor uw workspace.
+    - **Betaalmethoden** — schakel kaarttypen (Visa, Mastercard, enz.) in of uit zoals ondersteund door uw Stripe-account.
+    - **Factureringsvoorkeuren** — stel optioneel een belastingtarief, factuurprefix of standaard betalingsvoorwaarden en vervaldatums in.
+  </Step>
+
+  <Step title="Opslaan en bevestigen">
+    Klik op **Opslaan**. Er verschijnt een bevestigingsbanner wanneer de integratie actief is. Stripe is nu gekoppeld aan uw workspace en uw klanten kunnen facturen online betalen.
+  </Step>
+</Steps>
+
+## De integratie testen
+
+Voer vóór het versturen van live facturen een snelle end-to-end test uit om te bevestigen dat de verbinding correct werkt.
+
+<Steps>
+  <Step title="Maak een testfactuur aan">
+    Maak een conceptfactuur aan in AgencyHandy en wijs er een klein bedrag aan toe.
+  </Step>
+  <Step title="Stuur naar uzelf">
+    Stuur de factuur naar uw eigen e-mailadres of naar een teamlid dat kan helpen met de test.
+  </Step>
+  <Step title="Voer een testbetaling uit">
+    Open de factuurlink en voltooi de betaling met een Stripe-testkaart (bijv. `4242 4242 4242 4242`) als uw Stripe-account in testmodus staat, of een echte kaart in livemodus.
+  </Step>
+  <Step title="Controleer de statusupdate">
+    Ga terug naar AgencyHandy en bevestig dat de factuurstatus is gewijzigd naar **Betaald**. Als dat het geval is, werkt uw integratie correct.
+  </Step>
+</Steps>
+
+## Uw Stripe-verbinding beheren
+
+Ga op elk moment terug naar **Integraties → Stripe-integratie** om:
+
+- **Betalingsinstellingen bij te werken** — valuta, betaalmethoden of factureringsvoorkeuren te wijzigen.
+- **Verbindingsstatus te controleren** — te controleren of Stripe momenteel actief is.
+- **Los te koppelen** — klik op **Loskoppelen** om uw Stripe-account te ontkoppelen. Het innen van betalingen wordt onmiddellijk gepauzeerd totdat u opnieuw verbinding maakt.
+- **Opnieuw te verbinden** — klik opnieuw op **Stripe verbinden** en autoriseer opnieuw om de integratie te herstellen.
+
+<Warning>
+  Het loskoppelen van Stripe pauzeert het innen van betalingen voor alle openstaande facturen. Klanten kunnen niet online betalen totdat u opnieuw verbinding maakt en opnieuw autoriseert.
+</Warning>
+
+## Aanvullende opmerkingen
+
+<Note>
+  AgencyHandy slaat uw betalingsgegevens nooit op. Alle betalingsgegevens worden uitsluitend verwerkt door de beveiligde infrastructuur van Stripe.
+</Note>
+
+- **Één account per workspace** — u kunt slechts één Stripe-account koppelen aan elke AgencyHandy-workspace. Om van account te wisselen, koppel het huidige eerst los en maak dan opnieuw verbinding met het nieuwe account.
+- **Live factuurstatus** — alle facturen gekoppeld aan Stripe blijven realtime statusupdates weerspiegelen die rechtstreeks van Stripe worden ontvangen.
+- **Valuta** — zorg ervoor dat de valuta die is geconfigureerd in AgencyHandy overeenkomt met de valuta die is ingeschakeld in uw Stripe-account om betalingsfouten te voorkomen.

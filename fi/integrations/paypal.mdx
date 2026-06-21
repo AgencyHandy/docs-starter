@@ -1,0 +1,70 @@
+---
+title: "Yhdistä PayPal turvalliseen asiakkaiden maksunkeräykseen"
+sidebarTitle: "PayPal"
+description: "Linkitä PayPal-tilisi AgencyHandyyn ja anna asiakkaiden maksaa laskuja PayPalin luotettavalla, maailmanlaajuisesti tunnetulla maksualustalla."
+---
+
+AgencyHandyn PayPal-integraatio tarjoaa asiakkaillesi turvallisen ja tutun tavan maksaa laskuja ilman luottokorttia. PayPal tukee laajaa valikoimaa kansainvälisiä valuuttoja, mikä tekee siitä erityisen hyödyllisen toimistoille, joilla on ulkomaisia asiakkaita.
+
+<Note>
+  PayPalia **ei** voida käyttää lisämyynteihin alustakohtaisten valuutta- ja aluerajoitusten vuoksi. Lisämyyntimaksuihin käytä Stripe-palvelua.
+</Note>
+
+<Note>
+  Ainoastaan **SuperAdmin**- ja **Admin**-roolit voivat yhdistää tai hallita PayPal-integraatiota. Sinulla on oltava aktiivinen PayPal-tili ennen aloittamista.
+</Note>
+
+## Yhdistä PayPal
+
+<Steps>
+  <Step title="Avaa PayPal-integraation asetukset">
+    Kirjaudu sisään AgencyHandyyn ja siirry vasemmassa sivupalkissa kohtaan **Integrations → PayPal Integration**.
+  </Step>
+
+  <Step title="Aloita yhteyden muodostaminen">
+    Napsauta **Connect PayPal**. Sinut ohjataan PayPalin kirjautumissivulle.
+  </Step>
+
+  <Step title="Valtuuta AgencyHandy">
+    Kirjaudu PayPal-tilillesi ja tarkista pyydetyt käyttöoikeudet. Napsauta **Allow** (tai **Grant**) valtuuttaaksesi AgencyHandyn käyttämään tiliäsi.
+  </Step>
+
+  <Step title="Vahvista yhteys">
+    Onnistuneen valtuutuksen jälkeen PayPal ohjaa sinut takaisin AgencyHandyyn. Integraatiokortissa näkyy vahvistusviesti — **PayPal Connected**. Asiakkaat voivat nyt maksaa laskuja PayPalilla.
+  </Step>
+</Steps>
+
+## Kuinka asiakkaat maksavat PayPalin kautta
+
+Kun integraatio on aktiivinen, lähettämälläsi laskulla näkyy **Pay with PayPal** -painike. Asiakkaasi napsauttaa painiketta, kirjautuu PayPal-tilillensä (tai maksaa vieraana alueesta riippuen) ja suorittaa maksun. AgencyHandy päivittää laskun tilan automaattisesti, kun PayPal vahvistaa maksun.
+
+## Tuetut valuutat
+
+AgencyHandy tukee seuraavia valuuttoja PayPal-maksuja varten:
+
+| Alue | Valuutat |
+|---|---|
+| Amerikat | USD, CAD, BRL, MXN |
+| Eurooppa | EUR, GBP, CHF, NOK, SEK, DKK, PLN, CZK, HUF |
+| Aasia–Tyynenmeri | AUD, NZD, JPY, HKD, SGD, MYR, PHP, THB, TWD |
+| Lähi-itä / Muut | ILS, CNY |
+
+<Warning>
+  Joillain valuutoilla on rajoituksia:
+  - **JPY** ja muutamat muut eivät tue desimaalimääriä — vältä laskujen desimaalisummia.
+  - **BRL** on käytettävissä ainoastaan brasilialaisille PayPal-tileille. Jos tilisi ei ole Brasiliassa, BRL-maksut muunnetaan automaattisesti ensisijaiseen valuuttaasi.
+  - Tietyt valuutat ovat käytettävissä vain kyseisen maan tileille. Varmista, että tilisi pidätysvara vastaa laskusi valuuttaa virheiden välttämiseksi.
+</Warning>
+
+<Note>
+  PayPal soveltaa omia muuntomaksujaan ja kate-eroja valuuttamuunnosten yhteydessä. AgencyHandy ei hallinnoi näitä.
+</Note>
+
+## Testaa integraatio
+
+Ennen kuin käytät PayPalia oikeiden asiakkaiden laskuihin, suorita nopea testi:
+
+1. Luo testilaskuja AgencyHandyyn käyttäen [tuettua valuuttaa](#tuetut-valuutat).
+2. Lähetä lasku hallitsemallesi toissijaiselle PayPal-tilille.
+3. Suorita maksu toissijaiselta tililtä.
+4. Palaa AgencyHandyyn ja vahvista, että laskun tila päivittyi tilaan **Paid** ja että varat näkyvät PayPal-tililläsi.

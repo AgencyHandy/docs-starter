@@ -1,0 +1,149 @@
+---
+title: "Instellen van Bankoverschrijving, Crypto en Wise Betaalmethoden"
+sidebarTitle: "Overige Betalingen"
+description: "Schakel handmatige betalingsalternatieven in — bankoverschrijving, cryptocurrency en Wise — zodat klanten die de voorkeur geven aan niet-kaartmethoden uw facturen kunnen betalen."
+---
+
+AgencyHandy ondersteunt drie handmatige betaalmethoden naast Stripe en PayPal: **Bankoverschrijving**, **Crypto** en **Wise**. Elke methode is ontworpen voor een specifiek type klant of workflow. Bij alle drie moet u een factuur handmatig als **Betaald** markeren nadat u het geld heeft ontvangen, omdat AgencyHandy off-platform overschrijvingen niet automatisch kan bevestigen.
+
+<Note>
+  Alleen **SuperAdmin**- en **Admin**-rollen kunnen deze betaalmethoden inschakelen of configureren.
+</Note>
+
+<Tabs>
+  <Tab title="Bank Transfer">
+    ## Bankoverschrijving
+
+    Met de methode Bankoverschrijving kunt u handmatige wire- of ACH-betalingen van klanten accepteren. U verstrekt uw bankgegevens via een rich-text editor en AgencyHandy toont deze instructies aan klanten tijdens het afrekenen en in de factuur.
+
+    ### Bankoverschrijving inschakelen
+
+    <Steps>
+      <Step title="Open instellingen voor Bankbetaling">
+        Ga in de linker zijbalk naar **Integraties → Bankbetaalmethode**.
+      </Step>
+
+      <Step title="Vul uw overschrijvingsinstructies in">
+        Gebruik de rich-text editor om uw bankgegevens in te voeren. Vermeld alle velden die uw klanten nodig hebben om de overschrijving te voltooien:
+
+        - **Naam ontvanger**
+        - **Rekeningnummer**
+        - **Banknaam**
+        - **Routeringsnummer**
+        - **Rekeningtype** (bijv. Betaalrekening, Spaarrekening)
+        - **Bankadres**
+
+        U kunt ook memo's, notities of een supportcontact toevoegen. Er is geen tekenlimiet en de editor ondersteunt vet, onderstreping, lijsten, koppelingen en afbeeldingsopmaak.
+      </Step>
+
+      <Step title="Vereiste betaalbewijs instellen (optioneel)">
+        Schakel **Betalingsschermafbeelding vereist** in als u wilt dat klanten een schermafbeelding uploaden voordat hun bestelling wordt verwerkt.
+
+        - **Ingeschakeld** — klanten moeten een geldige schermafbeelding uploaden bij het afrekenen. Er wordt geen bestelling aangemaakt totdat een bestand is geüpload.
+        - **Uitgeschakeld** — klanten kunnen verder zonder bewijs te uploaden. De bestelling en factuur worden onmiddellijk aangemaakt.
+      </Step>
+
+      <Step title="Opslaan">
+        Klik op **Bijwerken** om uw instellingen op te slaan. Klik op **Annuleren** om wijzigingen te verwerpen.
+      </Step>
+    </Steps>
+
+    ### Klantervaring
+
+    Wanneer een klant Bankoverschrijving kiest bij het afrekenen, zien ze uw aangepaste overschrijvingsinstructies. Als bewijs vereist is, verschijnt een prompt voor het uploaden van een bestand en wordt de bestelling vastgehouden totdat ze een schermafbeelding hebben geüpload.
+
+    Nadat u het geld op uw bankrekening heeft ontvangen, opent u de factuur in AgencyHandy en markeert u deze handmatig als **Betaald** om de bestelling vrij te geven.
+
+    <Tip>
+      Vermeld een unieke referentiecode in uw instructies (bijv. het factuurnummer) zodat u inkomende overschrijvingen zonder verwarring kunt koppelen aan specifieke bestellingen.
+    </Tip>
+  </Tab>
+
+  <Tab title="Crypto">
+    ## Cryptobetaling
+
+    Met de methode Cryptobetaling kunt u cryptocurrency van klanten accepteren via een op wallet gebaseerde overschrijving. U configureert uw walletgegevens en instructies eenmalig; klanten zien deze bij het afrekenen en in de factuur. Momenteel wordt **USDC** ondersteund als cryptocurrency.
+
+    ### Cryptobetaling inschakelen
+
+    <Steps>
+      <Step title="Open instellingen voor Cryptobetaling">
+        Ga in de linker zijbalk naar **Integraties → Cryptobetaling**. Een walletinstellingsscherm opent met een rich-text editor.
+      </Step>
+
+      <Step title="Voer uw walletgegevens in">
+        Vul de volgende velden in:
+
+        - **Cryptocurrency-type** — momenteel wordt USDC ondersteund.
+        - **Wallet-adres** — uw openbare wallet-adres voor het ontvangen van betalingen.
+        - **Netwerktype** — bijv. ERC-20, TRC-20.
+        - **Aanvullende instructies** — memo, tag, minimumbedrag, supportcontact of andere informatie voor uw klanten.
+      </Step>
+
+      <Step title="Vereiste betaalbewijs instellen (optioneel)">
+        Schakel **Betaalbewijs vereisen** in:
+
+        - **Ingeschakeld** — klanten moeten een bestand uploaden (bijv. een transactieschermafbeelding) voordat de bestelling en factuur worden aangemaakt.
+        - **Uitgeschakeld** — een bestelling en factuur worden aangemaakt zodra de klant voor cryptobetaling kiest, zonder bewijs te vereisen.
+      </Step>
+
+      <Step title="Opslaan">
+        Klik op **Opslaan** om uw instellingen te bewaren. U kunt Cryptobetaling op elk moment bewerken of verwijderen via hetzelfde scherm.
+      </Step>
+    </Steps>
+
+    ### Afrekenproces voor klanten
+
+    Wanneer een klant Crypto kiest bij het afrekenen:
+
+    1. Er wordt een **Bestelling** (status: *In behandeling*) en een **Factuur** (status: *Open*) aangemaakt.
+    2. De klant ziet uw wallet-adres en instructies.
+    3. Als bewijs vereist is, verschijnt een uploadknop voor bestanden. De klant moet hun transactieschermafbeelding uploaden voordat de bestelling wordt verwerkt.
+    4. Nadat de overschrijving is voltooid en u de betalingen on-chain heeft geverifieerd, opent u de factuur in AgencyHandy en markeert u deze als **Betaald**.
+    5. Wanneer een factuur als **Betaald** wordt gemarkeerd en de bestelling *In behandeling* is, wordt de bestelstatus automatisch bijgewerkt naar *Actief*.
+
+    <Note>
+      Cryptobetaling verschijnt alleen bij het afrekenen als dit is ingeschakeld in **Werkruimte-instellingen → Betaalmethoden** EN in de relevante **Servicegroep → Beschikbaarheid van betaling**-instellingen. Door het uit te schakelen in Werkruimte-instellingen wordt het overal verborgen, ongeacht instellingen op serviceniveau.
+    </Note>
+
+    <Tip>
+      Als een dienst USDC niet ondersteunt, wordt de Crypto-betalingsoptie automatisch verborgen voor die dienst. Zorg ervoor dat USDC is ingeschakeld in uw dienst-instellingen als u wilt dat klanten met crypto betalen.
+    </Tip>
+  </Tab>
+
+  <Tab title="Wise">
+    ## Wise-betaling
+
+    Met de methode Wise-betaling kunnen klanten betalen via een Wise-betalingslink. U voegt de link eenmalig toe binnen een factuur en deze wordt automatisch opgenomen in alle toekomstige abonnementsfacturen. Wise is ideaal voor internationale klanten die de voorkeur geven aan bank-naar-bank overschrijvingen met lagere kosten dan traditionele bankoverschrijvingen.
+
+    ### Wise als betaalmethode toevoegen
+
+    <Steps>
+      <Step title="Open de module Facturen">
+        Klik in de linker zijbalk op **Facturen** en vervolgens op **Factuur aanmaken**.
+      </Step>
+
+      <Step title="Voeg uw Wise-link toe">
+        Scroll in het factuurvenster naar de sectie **Betaalmethoden**. Klik op **Wise als betaalmethode toevoegen** en plak uw Wise-betalingslink in het invoerveld.
+      </Step>
+
+      <Step title="Sla de factuur op">
+        Klik op **Opslaan** of ga verder om de factuur te voltooien. Uw Wise-betalingslink is nu ingebed en zichtbaar voor de klant.
+      </Step>
+    </Steps>
+
+    ### Hoe het werkt voor klanten
+
+    De Wise-link verschijnt als een klikbare knop op de factuur van de klant. De klant opent de link, voltooit de overschrijving via hun Wise-account en stuurt u een bevestiging. Omdat AgencyHandy geen automatische bevestiging van Wise ontvangt, moet u de factuur handmatig als **Betaald** markeren nadat u het geld heeft ontvangen.
+
+    <Warning>
+      Wise **kan niet** worden gebruikt voor geautomatiseerde upsell- of marketplace-betalingen. Per factuur kan slechts één Wise-betalingslink worden toegevoegd. Controleer de link zorgvuldig voor het verzenden — een onjuiste link betekent dat de betaling van de klant naar het verkeerde account gaat.
+    </Warning>
+
+    ### Platformgedrag
+
+    - Zodra een Wise-link is toegevoegd, verschijnt deze automatisch op alle toekomstige **abonnements**facturen, tenzij u deze bijwerkt of verwijdert.
+    - AgencyHandy voert geen automatische valutaconversie uit. De klant maakt over in de valuta waarvoor uw Wise-link is geconfigureerd.
+    - U bent verantwoordelijk voor het bijhouden van betalingen en het als Betaald markeren van facturen na bevestiging van ontvangst.
+  </Tab>
+</Tabs>

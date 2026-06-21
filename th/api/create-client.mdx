@@ -1,0 +1,137 @@
+---
+title: "AgencyHandy API: สร้างลูกค้าใหม่แบบโปรแกรม"
+sidebarTitle: "Create Client"
+description: "เพิ่มลูกค้าใหม่เข้าสู่ AgencyHandy workspace ของคุณแบบโปรแกรมโดยส่งคำขอไปยัง endpoint bulk-client พร้อมชื่อ อีเมล และรายละเอียดการติดต่อ"
+---
+
+endpoint Create Client ให้คุณเพิ่มลูกค้าเข้าสู่ AgencyHandy workspace ของคุณโดยตรงจากระบบภายนอก ต่างจาก lead ลูกค้าคือผู้ติดต่อที่ออนบอร์ดเต็มรูปแบบซึ่งสามารถมอบหมายให้กับออเดอร์ ใบแจ้งหนี้ และโปรเจกต์ได้ ใช้ endpoint นี้เพื่อซิงค์ลูกค้าใหม่จาก CRM แบบฟอร์มออนบอร์ดดิง หรือแหล่งข้อมูลอื่นๆ
+
+<Note>
+  ก่อนใช้ endpoint นี้ ให้ทำคู่มือ [Getting Started](/th/api/getting-started) ให้เสร็จสิ้นเพื่อรับ API key และ Company ID ของคุณ ต่างจาก endpoint Create Lead การสร้างลูกค้า **ไม่** จำเป็นต้องมีขั้นตอนค้นหา Role ID แยกต่างหาก
+</Note>
+
+## ข้อกำหนดเบื้องต้น
+
+- ✅ สร้าง API key จาก **Workspace Config → API Key**
+- ✅ ดึงข้อมูล Company ID จาก `GET {{URL}}/accounts/companies`
+
+---
+
+## Endpoint
+
+```
+POST {{URL}}/members/bulk-client
+```
+
+## Headers
+
+| Header | Value |
+|---|---|
+| `x-api-key` | API key ของคุณ |
+| `companyId` | Company ID ของคุณ |
+| `Content-Type` | `application/json` |
+
+## Request body
+
+request body เป็น **JSON array** คุณสามารถสร้างลูกค้าหนึ่งรายการหรือมากกว่าในคำขอเดียว
+
+<ParamField body="firstName" type="string" required>
+  ชื่อจริงของลูกค้า
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  นามสกุลของลูกค้า
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  ที่อยู่อีเมลของลูกค้า ต้องไม่ซ้ำกันภายใน workspace ของคุณ
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  ตั้งเป็น `false` สำหรับลูกค้าใหม่ทั้งหมด ตั้งเป็น `true` เมื่อแปลง lead ที่มีอยู่เป็นลูกค้า
+</ParamField>
+
+<ParamField body="status" type="string">
+  สถานะของลูกค้า ค่าทั่วไป: `New`, `Active` ค่าเริ่มต้นเป็น `New` หากไม่ระบุ
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  หมายเลขโทรศัพท์ของลูกค้า
+</ParamField>
+
+<ParamField body="source" type="string">
+  วิธีที่คุณได้รับลูกค้ารายนี้ ตัวอย่างค่า: `website`, `referral`, `social`
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  ตำแหน่งของลูกค้าภายในคอลัมน์บอร์ด ค่าเริ่มต้นเป็น `1`
+</ParamField>
+
+## ตัวอย่างคำขอ
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-client" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyId: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+## การตอบสนองเมื่อสำเร็จ
+
+```json
+{
+  "message": "Client created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  สตริงยืนยันเมื่อสำเร็จ
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  อาร์เรย์ของออบเจกต์ลูกค้าที่สร้างขึ้น
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  ID เฉพาะของลูกค้าที่สร้างใหม่ ใช้ ID นี้เมื่อมอบหมายลูกค้าให้กับออเดอร์หรือใบแจ้งหนี้ผ่าน API
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  ชื่อเต็มของลูกค้า (firstName + lastName)
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  สถานะของลูกค้าตามที่จัดเก็บ
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  บทบาทที่มอบหมายให้สมาชิก — จะเป็น `"client"`
+</ResponseField>
+
+<Note>
+  header `companyId` สำหรับ endpoint นี้ใช้ตัว **I** ตัวพิมพ์ใหญ่ใน `Id` — `companyId` — ต่างจาก endpoint อื่นๆ บางรายการที่ใช้ `companyid` (ตัวพิมพ์เล็กทั้งหมด) ใช้การพิมพ์ตัวพิมพ์ใหญ่-เล็กที่แสดงด้านบนเพื่อหลีกเลี่ยงข้อผิดพลาดในการยืนยันตัวตน
+</Note>
+
+<Tip>
+  ส่งออบเจกต์ลูกค้าหลายรายการในอาร์เรย์เพื่อสร้างลูกค้าหลายรายในการเรียก API ครั้งเดียว แต่ละออบเจกต์ต้องมีที่อยู่ `email` ที่ไม่ซ้ำกัน อีเมลที่ซ้ำกันจะทำให้เกิดข้อผิดพลาดการตรวจสอบสำหรับรายการนั้น
+</Tip>

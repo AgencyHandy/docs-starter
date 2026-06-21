@@ -1,0 +1,77 @@
+---
+title: "Propojte Stripe pro přijímání online plateb v AgencyHandy"
+sidebarTitle: "Stripe"
+description: "Propojte svůj účet Stripe s AgencyHandy pro odesílání faktur a bezpečný výběr online plateb od klientů bez opuštění platformy."
+---
+
+Integrace Stripe v AgencyHandy umožňuje přijímat platby kartou přímo od klientů prostřednictvím faktur zaslaných uvnitř platformy. Po propojení klienti vidí známou platební stránku hostovanou Stripe a stav platby se automaticky synchronizuje zpět do AgencyHandy — bez nutnosti ručního odsouhlasení.
+
+<Note>
+  Integraci Stripe mohou propojit nebo spravovat pouze role **SuperAdmin** a **Admin**. Před začátkem musíte mít také ověřený účet Stripe s příslušnými oprávněními.
+</Note>
+
+## Propojení Stripe
+
+<Steps>
+  <Step title="Otevřete nastavení Integrace Stripe">
+    V levém postranním panelu přejděte na **Integrace → Integrace Stripe**.
+  </Step>
+
+  <Step title="Autorizujte na Stripe">
+    Klikněte na **Propojit Stripe**. Budete přesměrováni na autorizační obrazovku Stripe. Přihlaste se ke svému účtu Stripe a kliknutím na **Povolit** udělte AgencyHandy přístup. Po schválení vás Stripe automaticky přesměruje zpět do AgencyHandy.
+  </Step>
+
+  <Step title="Nakonfigurujte platební předvolby">
+    Po přesměrování nakonfigurujte následující možnosti:
+
+    - **Měna** — zvolte výchozí fakturační měnu pro váš pracovní prostor.
+    - **Způsoby platby** — povolte nebo zakažte typy karet (Visa, Mastercard atd.) podle toho, co váš účet Stripe podporuje.
+    - **Fakturační předvolby** — volitelně nastavte sazbu daně, předponu faktury nebo výchozí platební podmínky a termíny splatnosti.
+  </Step>
+
+  <Step title="Uložte a potvrďte">
+    Klikněte na **Uložit**. Po aktivaci integrace se zobrazí potvrzovací banner. Stripe je nyní propojen s vaším pracovním prostorem a vaši klienti mohou platit faktury online.
+  </Step>
+</Steps>
+
+## Otestování integrace
+
+Před odesláním ostrých faktur spusťte rychlý end-to-end test a ověřte, že připojení funguje správně.
+
+<Steps>
+  <Step title="Vytvořte testovací fakturu">
+    Vytvořte v AgencyHandy konceptovou fakturu a přiřaďte jí malou částku.
+  </Step>
+  <Step title="Odešlete sami sobě">
+    Pošlete fakturu na svou vlastní e-mailovou adresu nebo členovi týmu, který vám může pomoci s testem.
+  </Step>
+  <Step title="Dokončete testovací platbu">
+    Otevřete odkaz na fakturu a dokončete platbu pomocí testovací karty Stripe (např. `4242 4242 4242 4242`), pokud je váš účet Stripe v testovacím režimu, nebo skutečnou kartou v ostrém režimu.
+  </Step>
+  <Step title="Ověřte aktualizaci stavu">
+    Vraťte se do AgencyHandy a potvrďte, že se stav faktury změnil na **Zaplaceno**. Pokud ano, vaše integrace funguje správně.
+  </Step>
+</Steps>
+
+## Správa připojení Stripe
+
+Kdykoli se vraťte na **Integrace → Integrace Stripe** a:
+
+- **Aktualizujte platební nastavení** — změňte měnu, způsoby platby nebo fakturační předvolby.
+- **Zkontrolujte stav připojení** — ověřte, zda je Stripe aktuálně aktivní.
+- **Odpojte** — klikněte na **Odpojit** pro zrušení propojení účtu Stripe. Výběr plateb se okamžitě pozastaví, dokud znovu nepropojíte.
+- **Znovu propojte** — klikněte znovu na **Propojit Stripe** a znovu autorizujte pro obnovení integrace.
+
+<Warning>
+  Odpojení Stripe pozastaví výběr plateb pro všechny nevyřízené faktury. Klienti nebudou moci platit online, dokud znovu nepropojíte a nezautorizujete.
+</Warning>
+
+## Další poznámky
+
+<Note>
+  AgencyHandy nikdy neuchovává vaše platební údaje. Veškerá platební data jsou zpracovávána výhradně bezpečnou infrastrukturou Stripe.
+</Note>
+
+- **Jeden účet na pracovní prostor** — ke každému pracovnímu prostoru AgencyHandy lze připojit pouze jeden účet Stripe. Chcete-li přepnout účty, nejprve odpojte stávající a poté se znovu připojte s novým účtem.
+- **Stav faktur v reálném čase** — všechny faktury propojené se Stripe nadále odrážejí aktualizace stavu v reálném čase přijímané přímo ze Stripe.
+- **Měna** — ujistěte se, že měna nakonfigurovaná v AgencyHandy odpovídá měně povolené ve vašem účtu Stripe, abyste se vyhnuli chybám při platbách.

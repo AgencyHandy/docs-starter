@@ -1,0 +1,235 @@
+---
+title: "Criar, Enviar e Gerir Faturas de Clientes no AgencyHandy"
+sidebarTitle: "Criar Fatura"
+description: "Guia passo a passo para criar uma fatura no AgencyHandy — escolha um cliente, defina valores, adicione notas, envie ao cliente e configure lembretes de pagamento."
+---
+
+Criar uma fatura no AgencyHandy é um processo simples que associa a sua faturação diretamente a clientes e encomendas. Preenche o cliente, associa a encomenda, define os valores, adiciona notas e envia — tudo a partir de um único formulário. Uma vez enviada, pode acompanhar o estado de pagamento, definir lembretes automáticos e descarregar a fatura em PDF a qualquer momento.
+
+<Note>
+  Tem de ser **Super Admin**, **Admin** ou **Gestor de Projeto** para criar faturas. Deve existir pelo menos um cliente no seu espaço de trabalho antes de poder gerar uma fatura.
+</Note>
+
+## Definições do Prefixo de Fatura
+
+Antes de começar a criar faturas, considere configurar o prefixo da fatura. O prefixo aparece antes de cada número de fatura e ajuda a identificar as faturas como pertencentes à sua agência.
+
+<Steps>
+  <Step title="Abrir as Definições de Faturas">
+    No Painel de Faturas, clique no botão **Settings** no canto superior direito.
+  </Step>
+  <Step title="Definir o seu prefixo">
+    Navegue até ao campo **Invoice Prefix** e introduza o prefixo que pretende (por exemplo, `INV-` ou as iniciais da sua agência).
+  </Step>
+  <Step title="Guardar">
+    Clique em **Save** para aplicar o prefixo a todas as faturas futuras.
+  </Step>
+</Steps>
+
+## Criar uma Fatura
+
+<Steps>
+  <Step title="Abrir o Painel de Faturas">
+    Clique em **Invoices** na barra lateral esquerda para abrir o Painel de Faturas.
+  </Step>
+  <Step title="Iniciar uma nova fatura">
+    Clique em **+ Create Invoice**. O formulário de criação de fatura abrirá.
+  </Step>
+  <Step title="Selecionar o cliente">
+    Escolha o nome do cliente na lista suspensa. Este é um campo obrigatório. Todos os IDs de encomenda associados a esse cliente serão preenchidos automaticamente no campo seguinte.
+
+    Para criar uma **Fatura Direta** (não associada a uma encomenda), pode deixar o campo ID de Encomenda vazio ou selecionar **Independent Email** para faturar qualquer endereço de email fora da sua lista de clientes.
+  </Step>
+  <Step title="Selecionar o ID de Encomenda">
+    Selecione o ID de encomenda específico para o qual está a faturar. Isto associa a fatura à encomenda correta no sistema. Para faturas diretas, ignore este campo.
+  </Step>
+  <Step title="Introduzir a morada de faturação">
+    Preencha o **Bill Payment Address**:
+    - País, Estado e Cidade
+    - Código postal
+    - Morada (se aplicável)
+
+    Esta morada aparece na fatura impressa para efeitos de conformidade e clareza.
+  </Step>
+  <Step title="Definir os detalhes da encomenda e financeiros">
+    Em **Order Details**, introduza o seguinte:
+
+    | Campo | Descrição |
+    |-------|-------------|
+    | **Currency** | A moeda em que pretende ser pago |
+    | **Order ID – Amount** | O valor monetário associado à encomenda |
+    | **Discount (%)** e **Discount Amount** | Aplique quaisquer descontos aplicáveis |
+    | **Paid Amount** | Qualquer valor já pago pelo cliente |
+    | **Due Amount** | O saldo em dívida restante |
+    | **Total Amount** | O valor total a pagar pela encomenda |
+
+    Para **Faturas Diretas**, clique em **Add Item** para adicionar itens de linha manualmente. Introduza o nome do item, quantidade e preço. Pode adicionar vários itens. Use **+ Tax Rates** para aplicar ou criar taxas de imposto (inclusivas ou exclusivas).
+  </Step>
+  <Step title="Adicionar uma nota (opcional)">
+    No campo **Note**, adicione qualquer contexto adicional para o cliente — por exemplo, instruções de pagamento, referências do projeto ou uma mensagem pessoal.
+  </Step>
+  <Step title="Rever o painel de detalhes">
+    O painel **Details** do lado direito apresenta um resumo em tempo real de:
+
+    - Estado da fatura (Rascunho por defeito)
+    - Nome do cliente, nome da empresa e morada
+    - Morada de faturação
+    - Nome do serviço e ID de encomenda
+    - Data de criação e data de vencimento
+    - Valor total
+
+    Reveja tudo cuidadosamente antes de prosseguir.
+  </Step>
+  <Step title="Enviar ao cliente ou guardar como rascunho">
+    - Clique em **Send to Client** para enviar a fatura por email imediatamente. O estado muda automaticamente de **Draft** para **Open**.
+    - Clique em **Save as Draft** se quiser finalizá-la mais tarde.
+  </Step>
+</Steps>
+
+<Note>
+  O logótipo e a morada da agência são adicionados automaticamente à fatura pelo sistema — não precisa de os introduzir manualmente em cada fatura.
+</Note>
+
+## Transições de Estado das Faturas
+
+Depois de criada, uma fatura segue um fluxo de estados definido. Apenas a agência pode mover uma fatura entre estados.
+
+```
+Draft → Open (quando enviada ao cliente)
+Open  → Paid           (pagamento recebido)
+Open  → Void           (fatura cancelada)
+Open  → Uncollectable  (dívida considerada incobrável)
+```
+
+<Warning>
+  As faturas só podem ser **editadas** enquanto estiverem no estado **Draft**. Uma vez que uma fatura seja movida para Open, não pode ser editada. Se precisar de fazer alterações, anule a fatura e crie uma nova.
+</Warning>
+
+## Editar uma Fatura
+
+Pode editar uma fatura apenas enquanto estiver no estado **Draft**.
+
+<Steps>
+  <Step title="Abrir a fatura">
+    No Painel de Faturas, localize a fatura em rascunho que pretende editar. Clique nela ou marque a caixa de seleção ao lado.
+  </Step>
+  <Step title="Clicar em Edit">
+    Selecione a opção **Edit** no menu de ações. O formulário da fatura abrirá com todos os detalhes existentes pré-preenchidos.
+  </Step>
+  <Step title="Fazer as suas alterações">
+    Atualize quaisquer campos — detalhes de faturação, descrições de serviços, quantidades, valores ou condições de pagamento.
+  </Step>
+  <Step title="Guardar">
+    Clique em **Save** para aplicar as suas alterações.
+  </Step>
+</Steps>
+
+## Enviar uma Fatura a um Cliente
+
+Se guardou a fatura como rascunho e pretende enviá-la mais tarde:
+
+<Steps>
+  <Step title="Localizar a fatura">
+    No Painel de Faturas, localize a fatura em rascunho que pretende enviar.
+  </Step>
+  <Step title="Clicar em Send Invoice">
+    Abra a fatura e clique no botão **Send Invoice**. O AgencyHandy entrega a fatura ao endereço de email do cliente registado.
+  </Step>
+  <Step title="Confirmar a entrega">
+    Verifique a mensagem de confirmação para garantir que a fatura foi enviada com sucesso. O estado da fatura atualiza para **Open**.
+  </Step>
+</Steps>
+
+<Note>
+  Se uma fatura estiver no estado **Draft** e atualizar o nome do serviço, o novo nome será refletido na fatura. Assim que o estado mude para Open, Paid, Uncollectable ou Void, o nome do serviço na fatura fica bloqueado e não será atualizado.
+</Note>
+
+## Descarregar e Imprimir uma Fatura
+
+Tanto a agência como o cliente podem descarregar uma fatura a qualquer momento.
+
+<Steps>
+  <Step title="Abrir a fatura">
+    Aceda ao Painel de Faturas e selecione a fatura que pretende descarregar.
+  </Step>
+  <Step title="Aceder ao descarregamento/impressão">
+    Clique na opção **Download** ou **Print** no menu de ações da fatura.
+  </Step>
+  <Step title="Escolher o formato">
+    Selecione **PDF** para descarregar ou escolha as definições de impressora para uma cópia física.
+  </Step>
+  <Step title="Guardar ou imprimir">
+    Guarde o ficheiro no seu dispositivo ou envie-o para a impressora. Após a impressão, arquive a fatura ou partilhe-a com as partes interessadas conforme necessário.
+  </Step>
+</Steps>
+
+## Definir Lembretes em Faturas
+
+A funcionalidade de Lembretes de Fatura permite-lhe notificar automaticamente os clientes sobre faturas próximas do vencimento, com vencimento ou em atraso, para que receba o pagamento a tempo sem necessidade de acompanhamento manual.
+
+<Note>
+  Os lembretes apenas funcionam em faturas com estado **Open** e com uma **data de vencimento** definida.
+</Note>
+
+<Steps>
+  <Step title="Abrir as Definições de Faturas">
+    Clique no botão **Settings** no canto superior direito do Painel de Faturas.
+  </Step>
+  <Step title="Navegar para as definições de Lembrete">
+    Desloque-se até ao fundo da secção **Template** no painel esquerdo e clique em **Edit** para abrir o modal de configuração de lembretes.
+  </Step>
+  <Step title="Escolher um tipo de lembrete">
+    Selecione uma das seguintes opções:
+
+    - **Sequenced Reminder** — cria uma série de lembretes em intervalos que define
+    - **Don't Send Reminder** — desativa os lembretes para as faturas selecionadas
+  </Step>
+  <Step title="Configurar os detalhes do lembrete">
+    Para cada lembrete na sequência:
+    - Escolha o **modelo de lembrete** (por exemplo, "Upcoming Invoice Payment Reminder")
+    - Defina a **data do lembrete** — por exemplo, 3 dias antes ou depois da data de vencimento
+    - Especifique se é acionado **antes** ou **depois** da data de vencimento
+  </Step>
+  <Step title="Adicionar mais lembretes se necessário">
+    Clique em **+ Add Another Reminder** para criar uma sequência completa de lembretes. Clique no botão **Delete** junto a qualquer lembrete para o remover.
+  </Step>
+  <Step title="Aplicar a faturas ativas (opcional)">
+    Marque a caixa de seleção para **aplicar estas definições de lembrete às faturas atualmente ativas** se quiser que a nova configuração abranja as faturas já no estado Open.
+  </Step>
+  <Step title="Guardar">
+    Clique em **Update** para guardar e ativar o calendário de lembretes.
+  </Step>
+</Steps>
+
+## Faturas Diretas (Sem ID de Encomenda)
+
+Quando precisa de faturar um cliente rapidamente sem criar primeiro uma encomenda, use o fluxo de Fatura Direta.
+
+<Steps>
+  <Step title="Iniciar uma nova fatura">
+    Aceda a **Invoices → Create Invoice**.
+  </Step>
+  <Step title="Escolher o tipo de destinatário">
+    Selecione **Individual** ou **Company** como tipo de destinatário.
+  </Step>
+  <Step title="Selecionar ou introduzir o destinatário">
+    - Escolha um **cliente existente** na lista suspensa, ou
+    - Selecione **Independent Email** para introduzir qualquer endereço de email — mesmo um que não esteja registado como cliente
+  </Step>
+  <Step title="Deixar o campo ID de Encomenda vazio">
+    Ignore o campo ID de Encomenda. O AgencyHandy cria uma fatura autónoma não associada a nenhuma encomenda.
+  </Step>
+  <Step title="Adicionar itens, impostos e descontos">
+    Clique em **Add Item** para adicionar itens de linha com nomes, quantidades e preços. Aplique taxas de imposto e descontos conforme necessário. O total atualiza automaticamente.
+  </Step>
+  <Step title="Definir morada de faturação e notas">
+    Introduza a morada de faturação e adicione quaisquer notas para o cliente.
+  </Step>
+  <Step title="Enviar ou guardar">
+    Clique em **Send Invoice** para entregar imediatamente, ou em **Save as Draft** para rever primeiro.
+  </Step>
+</Steps>
+
+<Tip>
+  As Faturas Diretas são ideais para pedidos urgentes, consultas ou qualquer trabalho que precise de faturar fora do fluxo normal de encomendas. O acompanhamento de pagamentos para faturas autónomas tem de ser gerido manualmente.
+</Tip>

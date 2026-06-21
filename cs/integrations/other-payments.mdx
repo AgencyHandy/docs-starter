@@ -1,0 +1,149 @@
+---
+title: "Nastavení platebních metod: bankovní převod, kryptoměny a Wise"
+sidebarTitle: "Ostatní platby"
+description: "Povolte alternativní manuální platební metody — bankovní převod, kryptoměny a Wise — aby klienti preferující nekaretní metody mohli platit vaše faktury."
+---
+
+AgencyHandy kromě Stripe a PayPal podporuje tři manuální platební metody: **Bankovní převod**, **Kryptoměny** a **Wise**. Každá je určena pro specifický typ klienta nebo pracovní postup. U všech tří musíte fakturu po přijetí prostředků ručně označit jako **Zaplaceno**, protože AgencyHandy nemůže automaticky potvrdit převody provedené mimo platformu.
+
+<Note>
+  Tyto platební metody může povolit nebo konfigurovat pouze role **SuperAdmin** a **Admin**.
+</Note>
+
+<Tabs>
+  <Tab title="Bankovní převod">
+    ## Bankovní převod
+
+    Metoda Bankovní převod umožňuje přijímat manuální platby převodem nebo ACH od klientů. Své bankovní údaje zadáte prostřednictvím editoru s formátováním textu a AgencyHandy je zobrazí klientům při placení a na faktuře.
+
+    ### Povolení bankovního převodu
+
+    <Steps>
+      <Step title="Otevřete nastavení bankovní platby">
+        V levém postranním panelu přejděte na **Integrace → Bankovní platební metoda**.
+      </Step>
+
+      <Step title="Vyplňte pokyny k převodu">
+        Pomocí editoru s formátováním textu zadejte své bankovní údaje. Uveďte všechna pole, která klienti potřebují k dokončení převodu:
+
+        - **Jméno příjemce**
+        - **Číslo účtu**
+        - **Název banky**
+        - **Směrový kód (Routing Number)**
+        - **Typ účtu** (např. běžný, spořicí)
+        - **Adresa banky**
+
+        Můžete také přidat poznámky, pokyny nebo kontakt na podporu. Není omezen počet znaků a editor podporuje tučné písmo, podtržení, seznamy, odkazy a formátování obrázků.
+      </Step>
+
+      <Step title="Nastavte požadavek na doklad o platbě (volitelné)">
+        Zapněte přepínač **Je vyžadován snímek obrazovky platby**, pokud chcete, aby klienti před zpracováním objednávky nahráli snímek obrazovky.
+
+        - **Zapnuto** — klienti musí před dokončením objednávky nahrát platný snímek obrazovky. Objednávka není vytvořena, dokud soubor nenahrají.
+        - **Vypnuto** — klienti mohou pokračovat bez nahrání dokladu. Objednávka a faktura jsou vytvořeny okamžitě.
+      </Step>
+
+      <Step title="Uložte">
+        Kliknutím na **Aktualizovat** uložte nastavení. Kliknutím na **Zrušit** změny zahodíte.
+      </Step>
+    </Steps>
+
+    ### Zkušenost klienta
+
+    Když klient vybere při placení Bankovní převod, zobrazí se mu vaše vlastní pokyny k převodu. Pokud je požadován doklad, zobrazí se výzva k nahrání souboru a objednávka je pozastavena, dokud klient nenahraje snímek obrazovky.
+
+    Poté, co obdržíte prostředky na svůj bankovní účet, otevřete fakturu v AgencyHandy a ručně ji označte jako **Zaplaceno**, čímž objednávku uvolníte.
+
+    <Tip>
+      Zahrňte do pokynů jedinečný referenční kód (např. číslo faktury), abyste mohli příchozí převody přiřadit ke konkrétním objednávkám bez záměny.
+    </Tip>
+  </Tab>
+
+  <Tab title="Kryptoměny">
+    ## Kryptoplatba
+
+    Metoda Kryptoplatba umožňuje přijímat kryptoměny od klientů prostřednictvím převodu peněženky. Údaje o peněžence a pokyny nastavíte jednou; klienti je vidí při placení a na faktuře. V současné době je podporovanou kryptoměnou **USDC**.
+
+    ### Povolení kryptoplatby
+
+    <Steps>
+      <Step title="Otevřete nastavení kryptoplatby">
+        V levém postranním panelu přejděte na **Integrace → Kryptoplatba**. Otevře se obrazovka nastavení peněženky s editorem s formátováním textu.
+      </Step>
+
+      <Step title="Zadejte údaje o peněžence">
+        Vyplňte následující pole:
+
+        - **Typ kryptoměny** — v současnosti je podporováno USDC.
+        - **Adresa peněženky** — vaše veřejná adresa peněženky pro příjem prostředků.
+        - **Typ sítě** — např. ERC-20, TRC-20.
+        - **Další pokyny** — memo, tag, minimální částka, kontakt na podporu nebo jakékoli jiné pokyny pro klienty.
+      </Step>
+
+      <Step title="Nastavte požadavek na doklad o platbě (volitelné)">
+        Zapněte přepínač **Vyžadovat doklad o platbě**:
+
+        - **Zapnuto** — klienti musí nahrát soubor (např. snímek obrazovky transakce) před vytvořením objednávky a faktury.
+        - **Vypnuto** — objednávka a faktura jsou vytvořeny ihned poté, co klient vybere kryptoplatbu, bez požadavku na doklad.
+      </Step>
+
+      <Step title="Uložte">
+        Kliknutím na **Uložit** uložte nastavení. Kryptoplatbu můžete kdykoli upravit nebo odpojit ze stejné obrazovky.
+      </Step>
+    </Steps>
+
+    ### Průběh platby pro klienta
+
+    Když klient při placení vybere kryptoměny:
+
+    1. Vytvoří se **Objednávka** (stav: *Čekající*) a **Faktura** (stav: *Otevřená*).
+    2. Klientovi se zobrazí adresa vaší peněženky a pokyny.
+    3. Pokud je požadován doklad, zobrazí se tlačítko pro nahrání souboru. Klient musí nahrát snímek obrazovky transakce, než objednávka pokračuje.
+    4. Po dokončení převodu a ověření prostředků on-chain otevřete fakturu v AgencyHandy a označte ji jako **Zaplaceno**.
+    5. Když je faktura označena jako **Zaplaceno** a objednávka je ve stavu *Čekající*, stav objednávky se automaticky aktualizuje na *Probíhající*.
+
+    <Note>
+      Kryptoplatba se při placení zobrazuje pouze tehdy, pokud je povolena v **Nastavení workspace → Platební metody** A v nastavení **Skupina služeb → Dostupnost plateb**. Deaktivací v Nastavení workspace ji skryjete všude, bez ohledu na nastavení na úrovni služby.
+    </Note>
+
+    <Tip>
+      Pokud služba nepodporuje USDC, možnost kryptoplatby je pro tuto službu automaticky skryta. Ujistěte se, že je USDC povoleno v nastavení vaší služby, pokud chcete, aby klienti mohli platit kryptoměnami.
+    </Tip>
+  </Tab>
+
+  <Tab title="Wise">
+    ## Platba přes Wise
+
+    Metoda Platba přes Wise umožňuje klientům platit prostřednictvím platebního odkazu Wise. Odkaz přidáte jednou do faktury a automaticky se zahrne do všech budoucích faktur předplatného. Wise je ideální pro mezinárodní klienty, kteří preferují bankovní převody s nižšími poplatky než tradiční drátové převody.
+
+    ### Přidání Wise jako platební metody
+
+    <Steps>
+      <Step title="Otevřete modul Faktury">
+        V levém postranním panelu klikněte na **Faktury** a poté na **Vytvořit fakturu**.
+      </Step>
+
+      <Step title="Přidejte odkaz Wise">
+        V modálním okně faktury přejděte dolů na sekci **Platební metody**. Klikněte na **Přidat Wise jako platební metodu** a vložte svůj platební odkaz Wise do vstupního pole.
+      </Step>
+
+      <Step title="Uložte fakturu">
+        Klikněte na **Uložit** nebo pokračujte k dokončení faktury. Váš platební odkaz Wise je nyní vložen a viditelný pro klienta.
+      </Step>
+    </Steps>
+
+    ### Jak to funguje pro klienty
+
+    Odkaz Wise se zobrazí jako klikatelné tlačítko na faktuře klienta. Klient otevře odkaz, dokončí převod přes svůj účet Wise a zašle vám potvrzení. Protože AgencyHandy nepřijímá automatické potvrzení od Wise, musíte fakturu po přijetí prostředků ručně označit jako **Zaplaceno**.
+
+    <Warning>
+      Wise **nelze** použít pro automatizované upsell nebo marketplace platby. Na jednu fakturu lze přidat pouze jeden platební odkaz Wise. Před odesláním odkaz zkontrolujte — nesprávný odkaz znamená, že platba klienta půjde na nesprávný účet.
+    </Warning>
+
+    ### Chování platformy
+
+    - Jakmile je odkaz Wise přidán, automaticky se zobrazuje na všech budoucích fakturách **předplatného**, dokud jej neaktualizujete nebo neodstraníte.
+    - AgencyHandy neprovádí žádnou automatickou konverzi měn. Klient převádí v měně, pro kterou je váš odkaz Wise nakonfigurován.
+    - Zodpovídáte za sledování plateb a označování faktur jako Zaplaceno po potvrzení přijetí.
+  </Tab>
+</Tabs>

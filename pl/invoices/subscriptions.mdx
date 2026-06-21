@@ -1,0 +1,162 @@
+---
+title: "Rozliczenia subskrypcji i faktury cykliczne w AgencyHandy"
+sidebarTitle: "Subskrypcje"
+description: "Jak AgencyHandy obsługuje cykliczne rozliczenia subskrypcji — automatyczne faktury, cykle rozliczeniowe, metody płatności, anulowania i linki płatności Wise."
+---
+
+System rozliczeń subskrypcji w AgencyHandy pozwala zautomatyzować cały proces cyklicznych przychodów. Gdy klient subskrybuje usługę, platforma tworzy ID subskrypcji, generuje zlecenia i automatycznie wystawia faktury w każdym cyklu rozliczeniowym — niezależnie od tego, czy jest to cykl dzienny, tygodniowy, miesięczny czy roczny. Zachowujesz kontrolę: możesz przeglądać szczegóły subskrypcji, monitorować historię płatności, obsługiwać nieudane płatności i anulować subskrypcje w razie potrzeby — wszystko z poziomu AgencyHandy.
+
+## Jak działa rozliczanie subskrypcji
+
+Cykl życia subskrypcji w AgencyHandy przebiega przez sześć kluczowych etapów.
+
+<Steps>
+  <Step title="Utwórz usługę opartą na subskrypcji">
+    Przejdź do **Usług** i kliknij **Utwórz nową usługę**. Wybierz **Subskrypcja** jako typ usługi.
+
+    Zdefiniuj:
+    - **Cykl rozliczeniowy** — dzienny, tygodniowy, miesięczny lub roczny
+    - **Zachowanie przy odnowieniu** — Utwórz nowe zlecenie, Zaktualizuj istniejące zlecenie lub Pozostaw bez zmian
+    - **Ceny i metoda płatności** — PayPal, Stripe lub Ręczna
+
+    Kliknij **Opublikuj**, aby udostępnić usługę.
+  </Step>
+  <Step title="Klient kupuje subskrypcję">
+    Klient wybiera usługę subskrypcji, przechodzi do kasy i wybiera metodę płatności.
+
+    AgencyHandy automatycznie:
+    - Tworzy **ID subskrypcji**
+    - Generuje **zlecenie**
+    - Wystawia **fakturę**
+
+    W przypadku płatności **PayPal lub Stripe** faktura jest natychmiast oznaczana jako **Opłacona**. W przypadku **Płatności ręcznej** faktura pozostaje **Otwarta** do momentu potwierdzenia jej otrzymania przez agencję.
+  </Step>
+  <Step title="Automatyczne cykliczne rozliczenie">
+    W każdą datę odnowienia AgencyHandy automatycznie przetwarza płatność (dla PayPal/Stripe) i generuje następną fakturę.
+
+    Jeśli płatność się powiedzie, faktura jest oznaczana jako **Opłacona**. Jeśli się nie powiedzie:
+    - Faktura pozostaje **Otwarta**
+    - Klient otrzymuje **Powiadomienie o nieudanej płatności**
+    - Agencja otrzymuje alert, aby ponowić próbę lub poprosić o zaktualizowane dane płatności
+  </Step>
+  <Step title="Zarządzaj aktywnymi subskrypcjami">
+    Przejdź do **Zarządzania subskrypcjami** na lewym pasku bocznym, aby przeglądać wszystkie aktywne i nieaktywne subskrypcje. Wybierz dowolną subskrypcję, aby zobaczyć jej pełne szczegóły.
+  </Step>
+  <Step title="Obsługuj anulowania">
+    Gdy anulujesz subskrypcję, możesz wybrać:
+    - **Całkowite anulowanie** — zatrzymaj wszystkie przyszłe rozliczenia i zlecenia
+    - **Pozostaw ostatnie aktywne zlecenie w toku** — pozwól klientowi kontynuować korzystanie z usługi do terminu bieżącego okresu
+
+    Aby całkowicie usunąć usługę, wszystkie aktywne subskrypcje tej usługi muszą być najpierw anulowane.
+  </Step>
+  <Step title="Powiadomienia">
+    System automatycznie wysyła:
+    - **Przypomnienia o odnowieniu** przed następną datą rozliczenia
+    - **Potwierdzenia płatności** po pomyślnym obciążeniu
+    - **Alerty o nieudanej płatności** do klienta i administratorów agencji
+  </Step>
+</Steps>
+
+## Strona szczegółów subskrypcji
+
+Strona szczegółów subskrypcji daje Ci pełny obraz dowolnej indywidualnej subskrypcji — od usługi i pakietu po każdą fakturę i wpis w dzienniku zdarzeń.
+
+### Jak uzyskać dostęp
+
+1. Przejdź do **Subskrypcji** na lewym pasku bocznym
+2. Kliknij dowolną subskrypcję z listy, aby otworzyć jej stronę szczegółów
+
+### Co możesz zobaczyć
+
+<Tabs>
+  <Tab title="Informacje o subskrypcji">
+    - **Nazwa usługi** i **Nazwa pakietu**
+    - **Nazwa klienta**
+    - **Cykl rozliczeniowy** (np. miesięczny, roczny)
+    - **Data rozpoczęcia** i **Data zakończenia**
+    - **Status** subskrypcji (Aktywna lub Nieaktywna)
+  </Tab>
+  <Tab title="Szczegóły płatności">
+    - **Opłata za subskrypcję**
+    - **Łączna liczba płatności** dokonanych do tej pory
+    - **Metoda płatności** (Stripe, PayPal, Wise, Przelew bankowy ręczny itp.)
+    - **Data następnej płatności**
+  </Tab>
+  <Tab title="Historia zleceń">
+    - **ID zlecenia**
+    - **Status** (np. W toku, Zakończone)
+    - **Data rozpoczęcia** i **Termin wykonania** dla każdego zlecenia
+  </Tab>
+  <Tab title="Historia faktur">
+    - **ID faktury**
+    - **Kwota**
+    - **Status** (Otwarta, Opłacona itp.)
+    - **Data płatności** i **Termin płatności**
+  </Tab>
+  <Tab title="Dzienniki zdarzeń">
+    Chronologiczny dziennik audytu wszystkich działań związanych z subskrypcją — zmiany statusu, zdarzenia płatności, anulowania i inne.
+  </Tab>
+</Tabs>
+
+<Note>
+  Jedna subskrypcja może mieć wiele powiązanych zleceń i faktur. Faktury powiązane z subskrypcjami aktualizują się dynamicznie po otrzymaniu płatności.
+</Note>
+
+## Obsługa Wise dla ręcznych faktur subskrypcji
+
+Jeśli pobierasz płatności międzynarodowe, możesz osadzić **link płatności Wise** bezpośrednio w fakturach subskrypcji. Daje to klientom wygodny sposób płatności bez konieczności ręcznego konfigurowania przelewu bankowego.
+
+### Wymagania
+
+- Aktywne konto AgencyHandy
+- Aktywne **konto Wise** z wygenerowanym prawidłowym linkiem płatności
+
+### Kroki dodawania linku Wise do faktury
+
+<Steps>
+  <Step title="Otwórz sekcję Faktury">
+    Kliknij **Faktury** na lewym pasku bocznym, a następnie kliknij **+ Utwórz fakturę**.
+  </Step>
+  <Step title="Wybierz klienta i zlecenie">
+    Wybierz klienta z listy rozwijanej. Pojawią się wszystkie powiązane ID zleceń. Wybierz odpowiednie ID zlecenia i wprowadź kwotę oraz wszelkie rozliczane pozycje.
+  </Step>
+  <Step title="Zastosuj rabaty i podatki">
+    Dodaj wszelkie obowiązujące procenty rabatu, kwoty rabatu, zapłacone kwoty, kwoty do zapłaty i szczegóły VAT/podatku. W razie potrzeby podaj adres do rozliczeń i notatki.
+  </Step>
+  <Step title="Dodaj link płatności Wise">
+    W sekcji **Metoda płatności** wybierz **Wise** jako opcję płatności. Wklej swój link płatności Wise w podane pole.
+  </Step>
+  <Step title="Zapisz fakturę">
+    Kliknij **Zapisz**, aby sfinalizować fakturę. Link płatności Wise pojawi się na fakturze, dzięki czemu klient może zapłacić bezpośrednio.
+  </Step>
+</Steps>
+
+<Tip>
+  Zawsze dokładnie sprawdzaj swój link płatności Wise i kwoty faktur przed zapisaniem. Zweryfikuj, czy szczegóły zlecenia, rabaty i informacje podatkowe są prawidłowe, aby uniknąć błędów rozliczeniowych.
+</Tip>
+
+## Ważne uwagi dotyczące rozliczeń subskrypcji
+
+<Accordion title="Kto może anulować subskrypcje?">
+  Tylko **Super Adminowie** i **Adminowie** mogą anulować subskrypcje. Klienci nie mogą anulować własnych subskrypcji — muszą poprosić o anulowanie za pośrednictwem agencji.
+</Accordion>
+
+<Accordion title="ID subskrypcji są trwałe">
+  Po utworzeniu subskrypcji jej ID subskrypcji nie można edytować. Zapewnia to spójne śledzenie przez cały czas trwania subskrypcji.
+</Accordion>
+
+<Accordion title="Nieudane płatności i tworzenie zleceń">
+  Gdy płatność się nie powiedzie, faktura pozostaje Otwarta i tworzone jest nowe zlecenie dla okresu z nieudaną płatnością. Status subskrypcji pozostaje **Aktywny** do momentu ręcznego ponowienia płatności przez administratora lub anulowania subskrypcji.
+</Accordion>
+
+<Accordion title="Zlecenia z ręczną płatnością">
+  Jeśli klient płaci poza Stripe lub PayPal (np. przelewem bankowym), administrator musi ręcznie oznaczyć fakturę jako **Opłaconą** w AgencyHandy. System nie robi tego automatycznie w przypadku ręcznych płatności.
+</Accordion>
+
+<Accordion title="Niezapłacone próby samodzielnej realizacji zamówienia">
+  Jeśli klient rozpocznie realizację zamówienia subskrypcji, ale nie ukończy płatności, pozostaje w systemie jako **Lead** do momentu pomyślnej subskrypcji.
+</Accordion>
+
+<Accordion title="Terminy płatności faktur">
+  Terminy płatności faktur subskrypcji są ustawiane automatycznie na podstawie skonfigurowanego cyklu rozliczeniowego (np. faktury miesięczne są należne miesiąc po dacie rozpoczęcia).
+</Accordion>

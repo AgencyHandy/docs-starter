@@ -1,0 +1,77 @@
+---
+title: "Collega Stripe per Accettare Pagamenti Online in AgencyHandy"
+sidebarTitle: "Stripe"
+description: "Collega il tuo account Stripe ad AgencyHandy per inviare fatture e raccogliere pagamenti online sicuri dai clienti senza uscire dalla piattaforma."
+---
+
+L'integrazione Stripe di AgencyHandy ti permette di accettare pagamenti con carta direttamente dai tuoi clienti tramite le fatture che invii all'interno della piattaforma. Una volta connesso, i tuoi clienti vedono un checkout ospitato da Stripe familiare, e lo stato del pagamento si sincronizza automaticamente con AgencyHandy — senza riconciliazione manuale.
+
+<Note>
+  Solo i ruoli **SuperAdmin** e **Admin** possono connettere o gestire l'integrazione Stripe. Devi anche avere un account Stripe verificato con le autorizzazioni appropriate prima di iniziare.
+</Note>
+
+## Connetti Stripe
+
+<Steps>
+  <Step title="Apri le impostazioni di Integrazione Stripe">
+    Nella barra laterale sinistra, naviga verso **Integrazioni → Integrazione Stripe**.
+  </Step>
+
+  <Step title="Autorizza su Stripe">
+    Clicca su **Connetti Stripe**. Vieni reindirizzato alla schermata di autorizzazione di Stripe. Accedi al tuo account Stripe e clicca su **Consenti** per concedere l'accesso ad AgencyHandy. Una volta approvato, Stripe ti reindirizza automaticamente ad AgencyHandy.
+  </Step>
+
+  <Step title="Configura le preferenze di pagamento">
+    Dopo il reindirizzamento, configura le seguenti opzioni:
+
+    - **Valuta** — scegli la valuta di fatturazione predefinita per il tuo workspace.
+    - **Metodi di pagamento** — abilita o disabilita i tipi di carta (Visa, Mastercard, ecc.) come supportato dal tuo account Stripe.
+    - **Preferenze di fatturazione** — facoltativamente imposta un'aliquota fiscale, un prefisso fattura o termini di pagamento e date di scadenza predefiniti.
+  </Step>
+
+  <Step title="Salva e conferma">
+    Clicca su **Salva**. Quando l'integrazione è attiva appare un banner di conferma. Stripe è ora collegato al tuo workspace e i tuoi clienti possono pagare le fatture online.
+  </Step>
+</Steps>
+
+## Testa l'integrazione
+
+Prima di inviare fatture reali, esegui un rapido test end-to-end per confermare che la connessione funzioni correttamente.
+
+<Steps>
+  <Step title="Crea una fattura di test">
+    Crea una bozza di fattura all'interno di AgencyHandy e assegnale un importo ridotto.
+  </Step>
+  <Step title="Inviala a te stesso">
+    Invia la fattura al tuo indirizzo email o a un membro del team che possa aiutarti con il test.
+  </Step>
+  <Step title="Completa un pagamento di test">
+    Apri il link della fattura e completa il pagamento utilizzando una carta di test Stripe (ad es., `4242 4242 4242 4242`) se il tuo account Stripe è in modalità test, oppure una carta reale in modalità live.
+  </Step>
+  <Step title="Verifica l'aggiornamento dello stato">
+    Torna su AgencyHandy e conferma che lo stato della fattura sia cambiato in **Pagata**. Se è così, la tua integrazione funziona correttamente.
+  </Step>
+</Steps>
+
+## Gestisci la tua connessione Stripe
+
+Torna su **Integrazioni → Integrazione Stripe** in qualsiasi momento per:
+
+- **Aggiornare le impostazioni di pagamento** — modifica valuta, metodi di pagamento o preferenze di fatturazione.
+- **Verificare lo stato della connessione** — controlla se Stripe è attualmente attivo.
+- **Disconnettere** — clicca su **Disconnetti** per scollegare il tuo account Stripe. La raccolta dei pagamenti si interrompe immediatamente fino alla riconnessione.
+- **Riconnettere** — clicca di nuovo su **Connetti Stripe** e riautorizza per ripristinare l'integrazione.
+
+<Warning>
+  La disconnessione di Stripe sospende la raccolta dei pagamenti per tutte le fatture in sospeso. I clienti non potranno pagare online fino a quando non ti riconnetterai e ri-autorizzerai.
+</Warning>
+
+## Note aggiuntive
+
+<Note>
+  AgencyHandy non archivia mai le tue credenziali di pagamento. Tutti i dati di pagamento sono gestiti esclusivamente dall'infrastruttura sicura di Stripe.
+</Note>
+
+- **Un account per workspace** — puoi connettere un solo account Stripe a ogni workspace di AgencyHandy. Per cambiare account, disconnetti prima quello corrente, quindi riconnetti con il nuovo account.
+- **Stato fattura in tempo reale** — tutte le fatture collegate a Stripe continuano a riflettere aggiornamenti di stato in tempo reale ricevuti direttamente da Stripe.
+- **Valuta** — assicurati che la valuta configurata in AgencyHandy corrisponda alla valuta abilitata nel tuo account Stripe per evitare errori di pagamento.

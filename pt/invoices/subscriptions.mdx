@@ -1,0 +1,162 @@
+---
+title: "Faturação por Subscrição e Faturas Recorrentes no AgencyHandy"
+sidebarTitle: "Subscrições"
+description: "Como o AgencyHandy gere a faturação recorrente por subscrição — faturas automáticas, ciclos de faturação, métodos de pagamento, cancelamentos e ligações de pagamento Wise."
+---
+
+O sistema de faturação por subscrição do AgencyHandy permite-lhe automatizar todo o fluxo de receitas recorrentes. Quando um cliente subscreve um serviço, a plataforma cria um ID de Subscrição, gera encomendas e emite faturas automaticamente em cada ciclo de faturação — seja diário, semanal, mensal ou anual. Mantém o controlo: pode ver os detalhes da subscrição, monitorizar o histórico de pagamentos, tratar pagamentos falhados e cancelar subscrições quando necessário, tudo dentro do AgencyHandy.
+
+## Como Funciona a Faturação por Subscrição
+
+O ciclo de vida da subscrição no AgencyHandy segue seis etapas principais.
+
+<Steps>
+  <Step title="Criar um serviço baseado em subscrição">
+    Navegue para **Services** e clique em **Create New Service**. Selecione **Subscription** como tipo de serviço.
+
+    Defina:
+    - **Billing Cycle** — Diário, Semanal, Mensal ou Anual
+    - **Renewal Behavior** — Criar Nova Encomenda, Atualizar Encomenda Existente ou Manter Inalterado
+    - **Pricing & Payment Method** — PayPal, Stripe ou Manual
+
+    Clique em **Publish** para disponibilizar o serviço.
+  </Step>
+  <Step title="O cliente adquire a subscrição">
+    O cliente seleciona o serviço de subscrição, avança para o checkout e escolhe um método de pagamento.
+
+    O AgencyHandy automaticamente:
+    - Cria um **ID de Subscrição**
+    - Gera uma **Encomenda**
+    - Emite uma **Fatura**
+
+    Para pagamentos via **PayPal ou Stripe**, a fatura é marcada como **Paid** instantaneamente. Para **Pagamento Manual**, a fatura permanece **Open** até a agência confirmar a receção.
+  </Step>
+  <Step title="Faturação recorrente automática">
+    Em cada data de renovação, o AgencyHandy processa o pagamento automaticamente (para PayPal/Stripe) e gera a próxima fatura.
+
+    Se o pagamento for bem-sucedido, a fatura é marcada como **Paid**. Se falhar:
+    - A fatura permanece **Open**
+    - O cliente recebe uma **Notificação de Pagamento Falhado**
+    - A agência recebe um alerta para repetir a tentativa ou solicitar dados de pagamento atualizados
+  </Step>
+  <Step title="Gerir subscrições ativas">
+    Navegue para **Subscription Management** na barra lateral esquerda para ver todas as subscrições ativas e inativas. Selecione qualquer subscrição para ver os seus detalhes completos.
+  </Step>
+  <Step title="Tratar cancelamentos">
+    Quando cancela uma subscrição, pode escolher:
+    - **Cancelar completamente** — interromper toda a faturação e encomendas futuras
+    - **Manter a última encomenda ativa em curso** — permitir que o cliente continue a receber o serviço até ao prazo do período atual
+
+    Para eliminar um serviço completamente, todas as subscrições ativas nesse serviço devem ser canceladas primeiro.
+  </Step>
+  <Step title="Notificações">
+    O sistema envia automaticamente:
+    - **Lembretes de Renovação** antes da próxima data de faturação
+    - **Confirmações de Pagamento** após cobranças bem-sucedidas
+    - **Alertas de Pagamento Falhado** tanto ao cliente como aos admins da agência
+  </Step>
+</Steps>
+
+## Página de Detalhes da Subscrição
+
+A página de Detalhes da Subscrição dá-lhe uma visão completa de qualquer subscrição individual — desde o serviço e pacote até cada fatura e entrada do registo de eventos.
+
+### Como Aceder
+
+1. Aceda a **Subscriptions** na barra lateral esquerda
+2. Clique em qualquer subscrição da lista para abrir a página de detalhes
+
+### O Que Pode Ver
+
+<Tabs>
+  <Tab title="Informação da Subscrição">
+    - **Nome do Serviço** e **Nome do Pacote**
+    - **Nome do Cliente**
+    - **Ciclo de Faturação** (ex.: Mensal, Anual)
+    - **Data de Início** e **Data de Fim**
+    - **Estado** da subscrição (Ativo ou Inativo)
+  </Tab>
+  <Tab title="Detalhes de Pagamento">
+    - **Taxa de Subscrição**
+    - **Número Total de Pagamentos** efetuados até à data
+    - **Método de Pagamento** (Stripe, PayPal, Wise, Transferência Bancária Manual, etc.)
+    - **Próxima Data de Pagamento**
+  </Tab>
+  <Tab title="Histórico de Encomendas">
+    - **ID de Encomenda**
+    - **Estado** (ex.: Em Curso, Concluído)
+    - **Data de Início** e **Data de Entrega** de cada encomenda
+  </Tab>
+  <Tab title="Histórico de Faturas">
+    - **ID de Fatura**
+    - **Valor**
+    - **Estado** (Open, Paid, etc.)
+    - **Data de Pagamento** e **Data de Vencimento**
+  </Tab>
+  <Tab title="Registos de Eventos">
+    Um registo cronológico de todas as atividades relacionadas com a subscrição — alterações de estado, eventos de pagamento, cancelamentos e muito mais.
+  </Tab>
+</Tabs>
+
+<Note>
+  Uma única subscrição pode ter múltiplas encomendas e faturas associadas. As faturas associadas a subscrições atualizam-se dinamicamente quando os pagamentos são recebidos.
+</Note>
+
+## Suporte Wise para Faturas de Subscrição Manual
+
+Se recebe pagamentos internacionais, pode incorporar uma **ligação de pagamento Wise** diretamente nas faturas de subscrição. Isto oferece aos clientes uma forma conveniente de pagar sem necessitarem de configurar uma transferência bancária manualmente.
+
+### Requisitos
+
+- Uma conta AgencyHandy ativa
+- Uma conta **Wise** ativa com uma ligação de pagamento válida gerada
+
+### Passos para Adicionar uma Ligação Wise a uma Fatura
+
+<Steps>
+  <Step title="Abrir a secção de Faturas">
+    Clique em **Invoices** na barra lateral esquerda e depois em **+ Create Invoice**.
+  </Step>
+  <Step title="Selecionar o cliente e a encomenda">
+    Escolha o cliente na lista suspensa. Todos os IDs de encomenda relacionados aparecerão. Selecione o ID de encomenda relevante e introduza o valor e quaisquer itens a faturar.
+  </Step>
+  <Step title="Aplicar descontos e impostos">
+    Adicione a percentagem de desconto aplicável, valor de desconto, valor pago, valor em dívida e detalhes de IVA/imposto. Inclua morada de faturação e notas conforme necessário.
+  </Step>
+  <Step title="Adicionar a ligação de pagamento Wise">
+    Na secção **Payment Method**, selecione **Wise** como opção de pagamento. Cole a sua ligação de pagamento Wise no campo fornecido.
+  </Step>
+  <Step title="Guardar a fatura">
+    Clique em **Save** para finalizar a fatura. A ligação de pagamento Wise aparecerá na fatura para que o cliente possa pagar diretamente.
+  </Step>
+</Steps>
+
+<Tip>
+  Verifique sempre a sua ligação de pagamento Wise e os totais da fatura antes de guardar. Confirme que os detalhes da encomenda, descontos e informações fiscais estão corretos para evitar erros de faturação.
+</Tip>
+
+## Notas Importantes sobre Faturação por Subscrição
+
+<Accordion title="Quem pode cancelar subscrições?">
+  Apenas **Super Admins** e **Admins** podem cancelar subscrições. Os clientes não podem cancelar as suas próprias subscrições — devem solicitar o cancelamento à agência.
+</Accordion>
+
+<Accordion title="Os IDs de Subscrição são permanentes">
+  Uma vez criada uma subscrição, o seu ID não pode ser editado. Isto garante um acompanhamento consistente ao longo de toda a vida da subscrição.
+</Accordion>
+
+<Accordion title="Pagamentos falhados e criação de encomendas">
+  Quando um pagamento falha, a fatura permanece Open e é criada uma nova encomenda para o período falhado. O estado da subscrição permanece **Active** até um admin repetir manualmente a tentativa de pagamento ou cancelar a subscrição.
+</Accordion>
+
+<Accordion title="Encomendas de pagamento manual">
+  Se um cliente pagar fora do Stripe ou PayPal (ex.: por transferência bancária), o admin deve marcar manualmente a fatura como **Paid** no AgencyHandy. O sistema não faz isto automaticamente para pagamentos manuais.
+</Accordion>
+
+<Accordion title="Tentativas de self-checkout não pagas">
+  Se um cliente iniciar um checkout de subscrição mas não concluir o pagamento, fica registado no sistema como **Lead** até subscrever com sucesso.
+</Accordion>
+
+<Accordion title="Datas de vencimento das faturas">
+  As datas de vencimento para faturas de subscrição são definidas automaticamente com base no ciclo de faturação que configurou (ex.: as faturas mensais vencem um mês após a data de início).
+</Accordion>

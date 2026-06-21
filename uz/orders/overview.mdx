@@ -1,0 +1,91 @@
+---
+title: "Buyurtmalarga umumiy ko'rinish: AgencyHandy'da Mijoz Ishini Boshqarish"
+sidebarTitle: "Umumiy ko'rinish"
+description: "AgencyHandy'da buyurtmalar qanday ishlashini tushuning — holatlar, rollar, buyurtma tafsilotlari, qo'lda buyurtmalar va nashr etilmagan xizmatlar uchun qo'shimchalar."
+---
+
+Buyurtmalar AgencyHandy'ning operatsion asosi hisoblanadi. Buyurtma xizmat yoki mahsulotga mijoz so'rovini ifodalaydi va u jamoangiz jarayonni kuzatadigan, vazifalarni boshqaradigan, fikr-mulohaza almashtiradigan va natijalar yetkazib beradigan markaziy ishchi fazo sifatida ishlaydi. Mijoz nashr etilgan xizmat katalogindan buyurtma bersinmi yoki jamoangiz qo'lda yaratasinmi, har bir buyurtma agentligingizni tashkil etgan va mijozlaringizni xabardor qiladigan bir xil tuzilgan hayot tsikliga amal qiladi.
+
+## Buyurtma nima o'z ichiga oladi
+
+Har bir buyurtma asosiy ma'lumotlarni bir qarashda ko'rsatadi va jamoa a'zolariga ishni muvofiqlashtirish uchun yagona joy beradi:
+
+| Maydon | Tavsif |
+|--------|--------|
+| **Buyurtma ID** | Har bir buyurtma uchun avtomatik yaratilgan noyob identifikator |
+| **Mijoz** | Buyurtma tegishli bo'lgan mijoz |
+| **Xizmat** | Yetkazib berilayotgan xizmat |
+| **Loyiha menejeri (PM)** | Yetkazib berish uchun mas'ul jamoa a'zosi (ixtiyoriy) |
+| **Byudjet** | Buyurtma uchun kelishilgan narx |
+| **Boshlanish sanasi** | Ish qachon boshlanadi |
+| **Muddat** | Buyurtmani yakunlash muddati |
+| **Buyurtma qisqachasi** | Mijoz ko'rsatmalari, eslatmalari va biriktirilgan havola fayllari |
+| **Vazifalar** | Jamoa a'zolariga tayinlangan alohida ish elementlari |
+| **Muhokamalar** | Agentlik xodimlari va mijozlar o'rtasidagi ipli suhbatlar |
+
+## Buyurtma holatlari
+
+Har bir buyurtma belgilangan holatlar to'plamidan o'tadi. Ushbu holatlarni qo'shib yoki qayta nomlash mumkin emas.
+
+<Note>
+Faqat Super Adminlar, Adminlar va Loyiha menejerlari buyurtma holatini o'zgartira oladi.
+</Note>
+
+| Holat | Ma'nosi |
+|-------|---------|
+| **Kutilmoqda** | Buyurtma yaratildi va ish boshlanishini kutmoqda |
+| **Davom etmoqda** | Faol ish jarayonda |
+| **Ko'rib chiqilmoqda** | Yetkazib beriladigan mahsulotlar yuborildi va mijoz yoki ichki ko'rib chiqishni kutmoqda |
+| **Yakunlandi** | Buyurtma to'liq yetkazib berildi va qabul qilindi |
+| **Bekor qilindi** | Buyurtma bekor qilindi va endi faol emas |
+
+## Rolga asoslangan kirish
+
+AgencyHandy'dagi turli rollar buyurtmalar ichida turli imkoniyatlarga ega:
+
+| Rol | Buyurtma yarata oladi | Buyurtma tahrirlay oladi | Buyurtma o'chira oladi | Holat o'zgartira oladi | Vazifa qo'sha oladi | Jamoa a'zosi qo'sha oladi |
+|-----|-----------------------|--------------------------|------------------------|------------------------|---------------------|---------------------------|
+| **Super Admin** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Admin** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Loyiha menejeri (PM)** | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ |
+| **Xodim** | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| **Mijoz** | ❌ | ❌ | ❌ | ❌ | ✅ (faqat so'rov) | ❌ |
+
+<Tip>
+Mijozlar fikr-mulohaza yuborishi va buyurtmalar bo'yicha muhokamada qatnashishi mumkin. Buyurtmaga tayinlangan xodimlar vazifalарni ko'rishi va ustida ishlashi mumkin, lekin buyurtmaning o'zini boshqara olmaydi.
+</Tip>
+
+## Buyurtmalar bilan nima qila olasiz
+
+AgencyHandy buyurtmalarni hayot tsikli davomida boshqarish uchun to'liq vositalar to'plamini taqdim etadi:
+
+- Mijozlar uchun **buyurtmalar yaratish** — nashr etilgan xizmatlardan yoki hali ishlab chiqilayotgan xizmatlar uchun qo'lda
+- Mijoz tomonidan yuborilgan buyurtmalarni **qabul qilish va rad etish**, rad etishda sabab ko'rsatish opsiyasi bilan
+- Jarayon, tayinlangan jamoa a'zolari, boshlanish va muddat sanalar, byudjet va qisqachani o'z ichiga olgan **buyurtma tafsilotlarini ko'rish**
+- Barcha buyurtmalar bo'yicha ID, holat, mijoz nomi yoki boshqa mezonlar bo'yicha **saralash, filtrlash va qidirish**
+- Alohida ish birliklarini kuzatish va tayinlash uchun buyurtma ichida to'g'ridan-to'g'ri **vazifalar qo'shish**
+- Mijozlar va jamoa a'zolari bilan kontekst doirasida muloqot qilish uchun **muhokamalar boshlash**
+
+## Nashr etilmagan xizmatlar uchun qo'lda buyurtmalar
+
+Siz faqat ommaga nashr etgan xizmatlaringiz uchun buyurtmalar yaratish bilan cheklanmaysiz. Super Adminlar va Adminlar nashr etilmagan xizmatlar uchun qo'lda buyurtmalar yarata oladi — bu xizmat hali ishlab chiqilayotganda, vaqtincha mavjud bo'lmagan paytda yoki rasmiy ishga tushishidan oldin ma'lum mijozga taklif etilayotganda foydali.
+
+Buyurtma yaratish formasini ochganingizda, **Xizmat** ochiladigan menyusi nashr etilgan va nashr etilmagan xizmatlarni ham ko'rsatadi, shuning uchun mos kelganini tanlashingiz mumkin. Boshqa barcha buyurtma maydonlari va ish jarayonlari standart buyurtma bilan bir xil tarzda ishlaydi.
+
+## Qo'lda buyurtmalardagi qo'shimchalar
+
+Qo'lda buyurtma qurаyotganda, mijozlar asosiy xizmatdan tashqari moslashtirilgan paketlar olishlari uchun **qo'shimcha xizmatlar** kiritishingiz mumkin. Qo'shimchalar oldindan yaratilgan va buyurtma formasida opsiya sifatida ko'rinishi uchun **Shakllar** bo'limida tegishli xizmatga bog'langan bo'lishi kerak.
+
+<Note>
+Qo'shimcha tanlovi faqat tanlangan xizmatga kamida bitta qo'shimcha ulangan bo'lsa, qo'lda buyurtma formasida ko'rinadi. Agar ko'rmasangiz, qo'shimchangiz xizmat konfiguratsiyasida to'g'ri bog'langanligini tekshiring.
+</Note>
+
+Bog'liq qo'shimchalarga ega xizmat tanlangandan so'ng, buyurtmani yakunlash va yuborishdan oldin ushbu qo'shimchalarni kiritishingiz mumkin.
+
+## Bildirishnomalar
+
+AgencyHandy buyurtmalar oldinga siljishi bilan to'g'ri odamlarni avtomatik xabardor qiladi:
+
+- PM, Admin yoki Super Admin buyurtma yarатganда, kompaniyangizdagi barcha Super Adminlar kirishga ega bo'ladi va mijoz yaratish bildirnomasini oladi.
+- Buyurtmaga jamoa a'zosi qo'shilganda, ushbu a'zo bildirishnoma oladi.
+- Buyurtma ichida vazifalar yaratilganda, mijoz bildirishnoma oladi.

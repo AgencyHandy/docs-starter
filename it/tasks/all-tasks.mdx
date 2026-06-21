@@ -1,0 +1,126 @@
+---
+title: "Tutte le Attività — Gestione Centralizzata delle Attività in AgencyHandy"
+sidebarTitle: "Tutte le Attività"
+description: "Usa la pagina Tutte le Attività per una visualizzazione in tempo reale, filtrata per ruolo, di ogni attività su tutti gli ordini in corso e in revisione — con ricerca, filtri e ordinamento."
+---
+
+La pagina Tutte le Attività in AgencyHandy ti offre una visualizzazione unica e centralizzata di ogni attività che appartiene ai flussi di lavoro attivi della tua agenzia. Invece di cercare tra i singoli ordini, puoi vedere tutte le attività pertinenti in un unico posto, filtrarle per assegnatario, priorità o data, e apportare modifiche direttamente dall'elenco. La visibilità è automaticamente limitata al tuo ruolo — i Super Admin vedono tutto, i Manager vedono i loro ordini assegnati, e i Dipendenti vedono solo le proprie attività.
+
+## Accesso alla Pagina Tutte le Attività
+
+1. Accedi al tuo account AgencyHandy.
+2. Clicca su **Attività** nella barra laterale sinistra.
+3. Seleziona **Tutte le Attività** per aprire il dashboard centralizzato delle attività.
+
+<Note>
+  La pagina Tutte le Attività mostra solo le attività degli ordini che sono in stato **In Corso** o **In Revisione**. Le attività collegate a ordini in qualsiasi altro stato (es. Completato, In Attesa) non appaiono qui.
+</Note>
+
+## Visibilità delle Attività per Ruolo
+
+Ciò che vedi sulla pagina Tutte le Attività dipende interamente dal tuo ruolo.
+
+| Ruolo | Cosa Vede |
+|------|---------------|
+| **Super Admin / Admin** | Tutte le attività su ogni ordine, team e stato |
+| **Project Manager (PM)** | Solo le attività degli ordini in cui sono assegnati come Manager |
+| **Dipendente / Assegnatario** | Solo le attività direttamente assegnate a loro — anche se i colleghi stanno lavorando sullo stesso ordine |
+
+<Tip>
+  Se un PM non riesce a trovare un'attività che si aspetta di vedere, conferma che sia assegnato come Manager sull'ordine pertinente. I PM non vedono le attività a meno che non siano il Manager assegnato per quell'ordine.
+</Tip>
+
+## Quando le Attività Appaiono in Questa Pagina
+
+Le attività appaiono sulla pagina Tutte le Attività quando queste condizioni sono soddisfatte:
+
+<CardGroup cols={2}>
+  <Card title="Ordini che attivano la visibilità delle attività" icon="circle-check">
+    - Vengono creati ordini manuali (una tantum o in abbonamento)
+    - Vengono effettuati ordini dal catalogo tramite Stripe o metodi di pagamento manuale
+    - Una proposta viene accettata dall'agenzia
+  </Card>
+  <Card title="Ordini che mantengono le attività nascoste" icon="eye-slash">
+    - Attività richieste dai clienti che l'agenzia non ha ancora accettato
+    - Ordini di prova che l'agenzia non ha ancora accettato
+    - Ordini con stato in attesa di conferma di pagamento bancario manuale
+  </Card>
+</CardGroup>
+
+## Ricerca, Filtri e Ordinamento
+
+La pagina Tutte le Attività include un set completo di controlli per aiutarti a trovare esattamente ciò di cui hai bisogno.
+
+### Ricerca
+
+Usa la barra di ricerca per trovare attività per nome, assegnatario o ordine correlato. I risultati si aggiornano in tempo reale mentre digiti.
+
+### Filtri
+
+Clicca su **Filtro → + Aggiungi Filtro** per aprire il pannello dei filtri. Puoi combinare più filtri per risultati precisi:
+
+| Filtro | Cosa Fa |
+|--------|--------------|
+| **ID Ordine** | Mostra le attività collegate a un numero d'ordine specifico |
+| **Assegnatario** | Mostra le attività assegnate a un determinato membro del team |
+| **Stato** | Filtra per avanzamento dell'attività: In Attesa, In Corso, In Revisione, Completata, ecc. |
+| **Priorità** | Concentrati sulle attività ad Alta, Media o Bassa priorità |
+| **Etichetta** | Restringi per etichette o categorie delle attività |
+| **Data di Inizio** | Mostra le attività che iniziano in data pari o successiva a una data specifica |
+| **Data di Fine** | Mostra le attività in scadenza entro una data specifica |
+
+<Note>
+  I filtri sono disponibili solo sulla pagina Tutte le Attività. Persistono durante la sessione del browser ma si azzerano all'aggiornamento della pagina. I filtri influenzano solo la tua visualizzazione e non cambiano ciò che vedono gli altri utenti.
+</Note>
+
+Per cancellare tutti i filtri, clicca su **Cancella Filtri** per tornare all'elenco completo non filtrato.
+
+### Ordinamento
+
+Ordina l'elenco delle attività per:
+- **Data di scadenza** — metti in evidenza le attività imminenti o già scadute
+- **Priorità** — porta le attività più critiche in cima
+- **Tempo di creazione** — visualizza prima le attività aggiunte di recente
+
+### Navigazione Breadcrumb
+
+Usa il percorso breadcrumb in cima alla pagina per mantenere il contesto mentre navighi tra sottoattività, elenchi di attività e ordini principali. Questo è particolarmente utile quando ci si addentra in un'attività specifica e poi si ha bisogno di tornare all'elenco più ampio.
+
+## Modifica delle Attività
+
+Puoi modificare le attività sulla pagina Tutte le Attività in due modi:
+
+<Tabs>
+  <Tab title="Modifica Inline">
+    Clicca direttamente in un campo modificabile all'interno della riga dell'attività — come lo stato, l'assegnatario o la data di scadenza — e apporta la modifica senza lasciare la visualizzazione elenco. Questa è l'opzione più rapida per aggiornamenti veloci.
+  </Tab>
+  <Tab title="Modifica tramite Finestra">
+    Clicca sul nome dell'attività per aprire il modal completo dei dettagli. Da qui puoi aggiornare tutte le proprietà dell'attività, aggiungere note, visualizzare le sottoattività e vedere la cronologia completa dell'attività. Usa questa opzione per modifiche più approfondite o quando hai bisogno di contesto.
+  </Tab>
+</Tabs>
+
+## Regole di Eliminazione delle Attività
+
+Le attività sulla pagina Tutte le Attività sono direttamente collegate ai loro ordini principali.
+
+- Quando un **ordine viene eliminato**, tutte le attività associate a quell'ordine vengono **automaticamente e definitivamente rimosse** dalla pagina Tutte le Attività.
+- Questa eliminazione riguarda tutti i ruoli utente — nessuno potrà vedere quelle attività dopo l'eliminazione dell'ordine.
+- **Non esiste alcuna opzione di recupero** per le attività eliminate tramite l'eliminazione dell'ordine.
+
+<Warning>
+  L'eliminazione di un ordine rimuove definitivamente tutte le sue attività. Assicurati che qualsiasi cronologia importante delle attività o record dei deliverable sia salvato altrove prima di eliminare un ordine.
+</Warning>
+
+## Note Aggiuntive
+
+<Accordion title="Aggiornamenti in tempo reale">
+  Le modifiche agli ordini, alle assegnazioni delle attività o agli stati delle attività si riflettono in tempo reale sulla pagina Tutte le Attività. Se un collega aggiorna un'attività mentre hai la pagina aperta, vedrai la modifica senza dover aggiornare la pagina.
+</Accordion>
+
+<Accordion title="Attività richieste dai clienti">
+  Le attività inviate dai clienti non appaiono sulla pagina Tutte le Attività fino a quando l'agenzia non le accetta esplicitamente. Fino all'accettazione, queste attività rimangono in sospeso e non sono visibili nella visualizzazione centralizzata.
+</Accordion>
+
+<Accordion title="Attività e stato dell'ordine">
+  Le attività appaiono solo per gli ordini in stato In Corso o In Revisione. Se un ordine passa a Completato o viene sospeso, le sue attività non vengono più mostrate qui. Vai all'ordine specifico per visualizzare le attività collegate a ordini al di fuori di questi stati.
+</Accordion>

@@ -1,0 +1,123 @@
+---
+title: "Konfigurer de generelle innstillingene for AgencyHandy-arbeidsområdet ditt"
+sidebarTitle: "Generelle innstillinger"
+description: "Angi arbeidsområdenavnet ditt, last opp logoer, legg til byråets adresse, og velg riktig tidssone for å tilpasse AgencyHandy-arbeidsområdet ditt."
+---
+
+Siden for generelle innstillinger er det første stedet du besøker etter å ha logget inn på AgencyHandy. Den lar deg etablere byråets identitet på plattformen — fra logo og arbeidsområdenavn til fysisk adresse og tidssone. Alle endringer du gjør her gjelder globalt på tvers av arbeidsområdet for alle brukere.
+
+<Note>
+  Bare **superadministratorer** og **administratorer** kan få tilgang til og endre innstillinger for arbeidsområdekonfigurasjon. Hvis du ikke ser alternativet **Workspace Config** i venstrenavigasjonen, kontakt superadministratoren din for å justere rolletillatelsene dine.
+</Note>
+
+## Tilgang til generelle innstillinger
+
+<Steps>
+  <Step title="Åpne arbeidsområdekonfigurasjon">
+    Logg inn på AgencyHandy-kontoen din. I venstrenavigasjonsmenyen klikker du på **Workspace Config**.
+  </Step>
+  <Step title="Velg Generelle innstillinger">
+    Klikk på **General Settings** fra undermenyen for arbeidsområdekonfigurasjon. Panelet for generelle innstillinger åpnes til høyre.
+  </Step>
+</Steps>
+
+---
+
+## Last opp arbeidsområdelogoen din
+
+AgencyHandy støtter tre distinkte logotyper, som vises på ulike steder i grensesnittet:
+
+| Logotype | Dimensjoner | Hvor den vises |
+|---|---|---|
+| Sirkellogo | 32 × 32 px | Profilområder og kompakte UI-elementer |
+| Favicon-logo | 16 × 16 px | Nettleserflaneikon |
+| Rektangellogo | 142 × 36 px | Sidestolpe-header (erstatter sirkellogoen når den er angitt) |
+
+**Støttede formater:** PNG, JPG, SVG
+
+<Steps>
+  <Step title="Klikk Last opp logo">
+    Under logoseksjonen klikker du på knappen **Upload Logo** for den logotypen du vil angi.
+  </Step>
+  <Step title="Velg bildefilen din">
+    Bla til bildet på enheten din. Sørg for at filen samsvarer med de nødvendige dimensjonene og er i et støttet format.
+  </Step>
+  <Step title="Bekreft opplastingen">
+    Logoforhåndsvisningen oppdateres umiddelbart. Gjenta for hver logotype etter behov.
+  </Step>
+</Steps>
+
+<Tip>
+  Å laste opp en **rektangellogo** vil erstatte sirkellogoen i sidestolpen og automatisk skjule arbeidsområdets navnetekst ved siden av den. Rektangellogoen blir også den primære logoen som brukes i alle andre sammenhenger der en logo vises — selv om en sirkellogo også er lastet opp.
+</Tip>
+
+---
+
+## Angi arbeidsområdenavn og adresse
+
+### Arbeidsområdenavn
+
+Skriv inn byråets navn i feltet **Workspace Name**. Dette navnet:
+
+- Vises på hele plattformen for identifikasjon.
+- Brukes i standard AgencyHandy-underdomene (f.eks. `dittnavnn.agencyhandy.com`).
+
+<Warning>
+  Å endre arbeidsområdenavnet oppdaterer standardunderdomenet umiddelbart. Hvis du deler standardunderdomenekoblingen med kunder, vil de trenge den oppdaterte URL-en. Vurder å sette opp et [egendefinert domene](/no/workspace/custom-domain) for å unngå dette problemet.
+</Warning>
+
+### Arbeidsområdeadresse
+
+Skriv inn byråets fullstendige fysiske adresse i feltet **Workspace Address**. Denne adressen brukes til offisiell representasjon på fakturaer og klientrettede dokumenter, så sørg for at den er nøyaktig og oppdatert.
+
+---
+
+## Velg tidssone
+
+<Steps>
+  <Step title="Åpne tidssone-nedtrekkslisten">
+    Rull ned til feltet **Time Zone** og klikk på nedtrekkslisten for å utvide tidssonelisten.
+  </Step>
+  <Step title="Velg tidssonen din">
+    Velg tidssonen som samsvarer med byråets primære driftsted. Alle oppgavefrister, planlagte varsler, kalenderhendelser og tidsstempler på tvers av arbeidsområdet er basert på denne innstillingen.
+  </Step>
+</Steps>
+
+<Warning>
+  En feil tidssoneinnstilling forårsaker planleggingsfeil for oppgaver, møter og fakturaforfallsdatoer. Dobbeltsjekk denne innstillingen før du inviterer teamet eller kundene dine.
+</Warning>
+
+---
+
+## Lagre endringene dine
+
+Etter å ha fylt inn eller oppdatert felt, klikker du på **Save Changes** nederst i panelet for generelle innstillinger. Alle oppdateringer brukes globalt og er umiddelbart synlige for alle brukere i arbeidsområdet.
+
+---
+
+## Faresone: Slette arbeidsområdet ditt
+
+Nederst i panelet for generelle innstillinger finnes det en seksjon kalt **Danger Zone** som inneholder knappen **Delete Workspace**.
+
+<Warning>
+  Å slette arbeidsområdet er **permanent og ugjenkallelig**. Alle data — inkludert kunder, ordre, fakturaer, prosjekter og konfigurasjoner — vil bli permanent slettet. Det finnes ingen gjenopprettingsmulighet. Fortsett bare hvis du er helt sikker.
+</Warning>
+
+---
+
+## Beste praksis
+
+<CardGroup cols={2}>
+  <Card title="Verifiser logodimensjoner" icon="image">
+    Last opp logoer med nøyaktig anbefalte pikselstørrelser for å forhindre strekking, beskjæring eller uskarp visning på tvers av plattformen.
+  </Card>
+  <Card title="Hold merkevarebyggingen oppdatert" icon="paintbrush">
+    Oppdater logoen og adressen når byrået rebrander eller bytter sted for å holde alle dokumenter og klientrettede sider nøyaktige.
+  </Card>
+  <Card title="Angi tidssone først" icon="clock">
+    Konfigurer tidssonen din før du oppretter tjenester, oppgaver eller planlegger noe for å sikre at alle tidsstempler er korrekte fra starten.
+  </Card>
+  <Card title="Begrens administratortilgang" icon="shield">
+    Gi bare superadministrator- eller administratorroller til personell som genuint trenger å endre arbeidsområdekonfigurasjoner, for å forhindre utilsiktede endringer.
+  </Card>
+</CardGroup>

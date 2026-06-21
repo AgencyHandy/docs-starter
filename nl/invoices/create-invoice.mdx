@@ -1,0 +1,235 @@
+---
+title: "Klantfacturen aanmaken, verzenden en beheren in AgencyHandy"
+sidebarTitle: "Factuur aanmaken"
+description: "Stapsgewijze handleiding voor het aanmaken van een factuur in AgencyHandy — kies een klant, stel bedragen in, voeg notities toe, stuur naar de klant en configureer betalingsherinneringen."
+---
+
+Het aanmaken van een factuur in AgencyHandy is een eenvoudig proces waarbij je facturering rechtstreeks koppelt aan klanten en orders. Je vult de klant in, koppelt de order, stelt bedragen in, voegt eventuele notities toe en stuurt — alles vanuit één formulier. Na verzending kun je de betaalstatus bijhouden, geautomatiseerde herinneringen instellen en de factuur op elk moment als PDF downloaden.
+
+<Note>
+  Je moet **Super Admin**, **Admin** of **PM** zijn om facturen aan te maken. Er moet minimaal één klant bestaan in je werkruimte voordat je een factuur kunt genereren.
+</Note>
+
+## Factuurprefixinstellingen
+
+Voordat je begint met het aanmaken van facturen, kun je overwegen je factuurprefix te configureren. Het prefix verschijnt voor elk factuurnummer en helpt facturen te identificeren als behorend tot je bureau.
+
+<Steps>
+  <Step title="Open factuurinstellingen">
+    Klik in het Factuurdashboard op de knop **Instellingen** rechtsboven.
+  </Step>
+  <Step title="Stel je prefix in">
+    Navigeer naar het veld **Factuurprefix** en voer het gewenste prefix in (bijvoorbeeld `FACT-` of de initialen van je bureau).
+  </Step>
+  <Step title="Opslaan">
+    Klik op **Opslaan** om het prefix toe te passen op alle toekomstige facturen.
+  </Step>
+</Steps>
+
+## Een factuur aanmaken
+
+<Steps>
+  <Step title="Open het Factuurdashboard">
+    Klik op **Facturen** in de linker zijbalk om het Factuurdashboard te openen.
+  </Step>
+  <Step title="Start een nieuwe factuur">
+    Klik op **+ Factuur aanmaken**. Het formulier voor het aanmaken van een factuur wordt geopend.
+  </Step>
+  <Step title="Selecteer de klant">
+    Kies de naam van de klant uit de vervolgkeuzelijst. Dit is een verplicht veld. Alle order-ID's die aan die klant zijn gekoppeld, worden automatisch ingevuld in het volgende veld.
+
+    Om een **Directe factuur** aan te maken (niet gekoppeld aan een order), kun je het veld Order-ID leeg laten of **Onafhankelijk e-mailadres** selecteren om elk e-mailadres buiten je klantenlijst te factureren.
+  </Step>
+  <Step title="Selecteer het order-ID">
+    Selecteer het specifieke order-ID waarvoor je factureert. Dit koppelt de factuur aan de juiste order in het systeem. Voor directe facturen sla je dit veld over.
+  </Step>
+  <Step title="Voer het factuuradres in">
+    Vul het **Factuurbetalingsadres** in:
+    - Land, provincie en stad
+    - Postcode
+    - Straatnaam (indien van toepassing)
+
+    Dit adres verschijnt op de afgedrukte factuur voor naleving en duidelijkheid.
+  </Step>
+  <Step title="Stel order- en financiële gegevens in">
+    Voer onder **Orderdetails** het volgende in:
+
+    | Veld | Omschrijving |
+    |-------|-------------|
+    | **Valuta** | De valuta waarin je betaald wilt worden |
+    | **Order-ID – Bedrag** | De geldwaarde die aan de order is gekoppeld |
+    | **Korting (%)** en **Kortingsbedrag** | Pas eventuele kortingen toe |
+    | **Betaald bedrag** | Een bedrag dat de klant al heeft betaald |
+    | **Verschuldigd bedrag** | Het resterende openstaande saldo |
+    | **Totaalbedrag** | Het volledige te betalen bedrag voor de order |
+
+    Voor **Directe facturen** klik je op **Item toevoegen** om regelitems handmatig toe te voegen. Voer de itemnaam, hoeveelheid en prijs in. Je kunt meerdere items toevoegen. Gebruik **+ Belastingtarieven** om belastingtarieven toe te passen of aan te maken (inclusief of exclusief).
+  </Step>
+  <Step title="Voeg een notitie toe (optioneel)">
+    Voeg in het veld **Notitie** aanvullende context toe voor de klant — bijvoorbeeld betalingsinstructies, projectreferenties of een persoonlijk bericht.
+  </Step>
+  <Step title="Bekijk het detailpaneel">
+    Het **Details**-paneel aan de rechterkant geeft je een live samenvatting van:
+
+    - Factuurstatus (standaard Concept)
+    - Klantnaam, bedrijfsnaam en adres
+    - Factuurbetalingsadres
+    - Dienstnaam en order-ID
+    - Aanmaakdatum en vervaldatum
+    - Totaalbedrag
+
+    Controleer alles zorgvuldig voordat je verdergaat.
+  </Step>
+  <Step title="Naar klant sturen of opslaan als concept">
+    - Klik op **Naar klant sturen** om de factuur onmiddellijk per e-mail te versturen. De status verandert automatisch van **Concept** naar **Open**.
+    - Klik op **Opslaan als concept** als je het later wilt afronden.
+  </Step>
+</Steps>
+
+<Note>
+  Het logo en adres van het bureau worden automatisch door het systeem aan de factuur toegevoegd — je hoeft deze niet handmatig op elke factuur in te voeren.
+</Note>
+
+## Factuurstatusovergangen
+
+Zodra een factuur is aangemaakt, volgt deze een gedefinieerde statusstroom. Alleen het bureau kan een factuur tussen statussen verplaatsen.
+
+```
+Concept → Open (wanneer naar klant gestuurd)
+Open  → Betaald       (betaling ontvangen)
+Open  → Nietig        (factuur geannuleerd)
+Open  → Oninbaar      (vordering afgeboekt)
+```
+
+<Warning>
+  Facturen kunnen alleen worden **bewerkt** wanneer ze de status **Concept** hebben. Zodra een factuur naar Open is verplaatst, kun je deze niet meer bewerken. Als je wijzigingen wilt aanbrengen, maak je de factuur nietig en maak je een nieuwe aan.
+</Warning>
+
+## Een factuur bewerken
+
+Je kunt een factuur alleen bewerken terwijl deze de status **Concept** heeft.
+
+<Steps>
+  <Step title="Open de factuur">
+    Zoek in het Factuurdashboard de conceptfactuur die je wilt bewerken. Klik erop of vink het selectievakje ernaast aan.
+  </Step>
+  <Step title="Klik op Bewerken">
+    Selecteer de optie **Bewerken** in het actiemenu. Het factuurformulier wordt geopend met alle bestaande gegevens vooraf ingevuld.
+  </Step>
+  <Step title="Breng je wijzigingen aan">
+    Werk velden bij — factuurgegevens, dienstomschrijvingen, hoeveelheden, bedragen of betalingsvoorwaarden.
+  </Step>
+  <Step title="Opslaan">
+    Klik op **Opslaan** om je wijzigingen toe te passen.
+  </Step>
+</Steps>
+
+## Een factuur naar een klant sturen
+
+Als je de factuur als concept hebt opgeslagen en deze later wilt verzenden:
+
+<Steps>
+  <Step title="Zoek de factuur">
+    Zoek in het Factuurdashboard de conceptfactuur die je wilt verzenden.
+  </Step>
+  <Step title="Klik op Factuur verzenden">
+    Open de factuur en klik op de knop **Factuur verzenden**. AgencyHandy bezorgt de factuur op het e-mailadres van de klant dat in het systeem staat.
+  </Step>
+  <Step title="Bevestig de bezorging">
+    Controleer het bevestigingsbericht om te verifiëren dat de factuur succesvol is verzonden. De factuurstatus wordt bijgewerkt naar **Open**.
+  </Step>
+</Steps>
+
+<Note>
+  Als een factuur de status **Concept** heeft en je de dienstnaam bijwerkt, wordt de nieuwe naam weerspiegeld in de factuur. Zodra de status verandert naar Open, Betaald, Oninbaar of Nietig, is de dienstnaam op de factuur vergrendeld en wordt deze niet meer bijgewerkt.
+</Note>
+
+## Een factuur downloaden en afdrukken
+
+Zowel het bureau als de klant kan een factuur op elk moment downloaden.
+
+<Steps>
+  <Step title="Open de factuur">
+    Ga naar het Factuurdashboard en selecteer de factuur die je wilt downloaden.
+  </Step>
+  <Step title="Toegang tot downloaden/afdrukken">
+    Klik op de optie **Downloaden** of **Afdrukken** in het factuuractiemenu.
+  </Step>
+  <Step title="Kies je formaat">
+    Selecteer **PDF** voor downloaden of kies je printerinstellingen voor een fysieke kopie.
+  </Step>
+  <Step title="Opslaan of afdrukken">
+    Sla het bestand op je apparaat op of stuur het naar de printer. Archiveer de factuur na het afdrukken of deel deze met belanghebbenden indien nodig.
+  </Step>
+</Steps>
+
+## Herinneringen instellen voor facturen
+
+Met de functie Factuurherinnering kun je klanten automatisch informeren over aankomende, verschuldigde of achterstallige facturen, zodat je op tijd wordt betaald zonder handmatige opvolging.
+
+<Note>
+  Herinneringen werken alleen voor facturen met de status **Open** en een ingestelde **vervaldatum**.
+</Note>
+
+<Steps>
+  <Step title="Open factuurinstellingen">
+    Klik op de knop **Instellingen** rechtsboven in het Factuurdashboard.
+  </Step>
+  <Step title="Navigeer naar herinneringsinstellingen">
+    Scroll naar de onderkant van de sectie **Sjabloon** in het linkerdeelvenster en klik op **Bewerken** om het configuratiemodal voor herinneringen te openen.
+  </Step>
+  <Step title="Kies een herinneringstype">
+    Selecteer een van de volgende opties:
+
+    - **Opeenvolgende herinnering** — maakt een reeks herinneringen aan op intervallen die je zelf bepaalt
+    - **Geen herinnering sturen** — schakelt herinneringen uit voor de geselecteerde facturen
+  </Step>
+  <Step title="Configureer herinneringsdetails">
+    Voor elke herinnering in de reeks:
+    - Kies het **herinneringssjabloon** (bijvoorbeeld "Herinnering aankomende factuurbetaling")
+    - Stel de **herinneringsdatum** in — bijvoorbeeld 3 dagen voor of na de vervaldatum
+    - Geef aan of het wordt geactiveerd **voor** of **na** de vervaldatum
+  </Step>
+  <Step title="Voeg meer herinneringen toe indien nodig">
+    Klik op **+ Nog een herinnering toevoegen** om een volledige herinneringsreeks op te bouwen. Klik op de knop **Verwijderen** naast een herinnering om deze te verwijderen.
+  </Step>
+  <Step title="Toepassen op actieve facturen (optioneel)">
+    Vink het selectievakje aan om **deze herinneringsinstellingen toe te passen op momenteel actieve facturen** als je wilt dat de nieuwe configuratie facturen dekt die al de status Open hebben.
+  </Step>
+  <Step title="Opslaan">
+    Klik op **Bijwerken** om het herinneringsschema op te slaan en te activeren.
+  </Step>
+</Steps>
+
+## Directe facturen (zonder order-ID)
+
+Wanneer je een klant snel wilt factureren zonder eerst een order aan te maken, gebruik je de werkstroom voor Directe facturen.
+
+<Steps>
+  <Step title="Start een nieuwe factuur">
+    Ga naar **Facturen → Factuur aanmaken**.
+  </Step>
+  <Step title="Kies het ontvangerstype">
+    Selecteer **Particulier** of **Bedrijf** als ontvangerstype.
+  </Step>
+  <Step title="Selecteer of voer de ontvanger in">
+    - Kies een **bestaande klant** uit de vervolgkeuzelijst, of
+    - Selecteer **Onafhankelijk e-mailadres** om een willekeurig e-mailadres in te voeren — ook een adres dat niet als klant is geregistreerd
+  </Step>
+  <Step title="Laat het order-ID leeg">
+    Sla het veld Order-ID over. AgencyHandy maakt een zelfstandige factuur aan die niet aan een order is gekoppeld.
+  </Step>
+  <Step title="Voeg items, belastingen en kortingen toe">
+    Klik op **Item toevoegen** om regelitems toe te voegen met namen, hoeveelheden en prijzen. Pas belastingtarieven en kortingen toe indien nodig. Het totaal wordt automatisch bijgewerkt.
+  </Step>
+  <Step title="Stel factuuradres en notities in">
+    Voer het factuurbetalingsadres in en voeg eventuele notities voor de klant toe.
+  </Step>
+  <Step title="Verzenden of opslaan">
+    Klik op **Factuur verzenden** om deze direct te bezorgen, of op **Opslaan als concept** om deze eerst te controleren.
+  </Step>
+</Steps>
+
+<Tip>
+  Directe facturen zijn perfect voor spoedverzoeken, adviesgesprekken of werk dat je buiten de normale orderworkstroom wilt factureren. Betalingsbeheer voor zelfstandige facturen moet handmatig worden bijgehouden.
+</Tip>

@@ -1,0 +1,100 @@
+---
+title: "Översikt över fakturahantering för AgencyHandy-byråer"
+sidebarTitle: "Fakturor"
+description: "Utforska AgencyHandy:s faktureringssystem — fakturering, betalningsspårning, återkommande fakturor, statusar, direktfakturor och export av ekonomiska poster."
+---
+
+AgencyHandy:s fakturafunktion ger din byrå ett komplett fakturerings- och betalningshanteringssystem inom samma plattform som du använder för att hantera klienter, beställningar och projekt. Du kan skapa professionella fakturor, skicka dem till klienter via e-post, spåra betalningsstatus i realtid, automatisera återkommande fakturering för prenumerationstjänster och exportera dina ekonomiska poster när du behöver dem. Varje faktura kopplas automatiskt till din byrås logotyp och adress, vilket håller din kommunikation konsekvent och varumärkesanpassad.
+
+## Vem kan skapa fakturor
+
+Endast användare med följande roller kan skapa och hantera fakturor:
+
+- **Super Admin**
+- **Admin**
+- **Projektledare (PM)**
+
+Klienter kan visa och ladda ned fakturor men kan inte skapa eller redigera dem.
+
+## Fakturainstrumentpanelen
+
+För att öppna fakturainstrumentpanelen klickar du på **Fakturor** i den vänstra sidopanelen. Härifrån kan du:
+
+- Skapa, redigera och ta bort fakturor
+- Söka fakturor efter **klientnamn**, **beställnings-ID** eller **tjänstnamn**
+- Filtrera och sortera fakturalistan
+- Se fakturastatus på ett ögonblick
+- Komma åt fakturainställningar inklusive prefixkonfiguration
+
+## Vad fakturor gör
+
+<CardGroup cols={2}>
+  <Card title="Fakturering" icon="file-invoice-dollar">
+    Skapa och skicka professionella fakturor för vilken tjänst eller produkt som helst som du levererar till klienter, med full kontroll över belopp, rabatter och förfallodatum.
+  </Card>
+  <Card title="Betalningsspårning" icon="chart-line">
+    Övervaka om fakturor har visats, betalats eller är förfallna. Systemet registrerar automatiskt betalningsdatum och annulleringsdatum när statusändringar sker.
+  </Card>
+  <Card title="Återkommande fakturering" icon="rotate">
+    Automatisera fakturageneration för prenumerationsbaserade tjänster. AgencyHandy genererar och levererar återkommande fakturor vid varje faktureringsperiod utan manuell inblandning.
+  </Card>
+  <Card title="Projektintegration" icon="diagram-project">
+    Koppla fakturor direkt till beställningar och tjänster så att faktureringen alltid är kopplad till det underliggande arbetet. Fakturerbara poster kan läggas till korrekt på varje faktura.
+  </Card>
+</CardGroup>
+
+## Fakturastatusar
+
+Varje faktura rör sig genom en definierad livscykel. Att förstå dessa statusar hjälper dig att hantera dina fordringar effektivt.
+
+| Status | Beskrivning |
+|--------|-------------|
+| **Utkast** | Fakturan har skapats men inte slutförts. Du kan redigera vilken del som helst av den. När den är klar, slutför den genom att ändra statusen till Öppen. Utkastfakturor som inte är kopplade till en prenumeration kan tas bort. |
+| **Öppen / Obetald** | Fakturan är slutförd och inväntar betalning. Byrån skickar denna till klienten, som kan visa och betala den. Du kan ändra en öppen faktura till Betald, Annullerad eller Indrivbar. |
+| **Betald** | Fakturan har betalats. Systemet registrerar betalningsdatumet automatiskt när du markerar en faktura som Betald. |
+| **Annullerad** | Fakturan har avbrutits. Systemet registrerar annulleringsdatumet automatiskt. |
+| **Indrivbar** | Klienten är osannolik att betala. Behandla detta som osäkra fordringar i din bokföringsprocess. |
+
+<Note>
+  När du skickar en faktura till en klient med knappen **Skicka till klient** ändras statusen automatiskt från **Utkast** till **Öppen**. Endast byrån kan ändra statusen från Öppen till Betald, Annullerad eller Indrivbar.
+</Note>
+
+## Direktfakturor (utan beställnings-ID)
+
+AgencyHandy stöder **Direktfakturor** — fakturor som inte är kopplade till någon befintlig beställning. Detta är användbart för engångsfakturering, ad hoc-betalningar eller fakturering av kontakter som ännu inte är registrerade som klienter i ditt system.
+
+Viktiga funktioner för direktfakturor:
+
+- Skicka fakturor utan att välja ett beställnings-ID
+- Fakturera vilken befintlig klient som helst eller använd **Oberoende e-post** för att skicka till valfri e-postadress
+- Lägg till poster, skatter och rabatter manuellt
+- Skicka omedelbart eller spara som utkast
+
+<Tip>
+  Använd direktfakturor när du snabbt behöver fakturera en klient för arbete som inte har en formell beställning i AgencyHandy, till exempel brådskande projekt, konsultsamtal eller arbete utanför scope.
+</Tip>
+
+## Exportera fakturor
+
+Du kan exportera din fakturalista för användning i externa bokföringsverktyg eller för arkivering. Exporten inkluderar alla synliga kolumner: faktura-ID, klientnamn, tjänst, belopp, status och datum. Öppna exportalternativet från fakturainstrumentpanelen.
+
+## Fakturainställningar
+
+Konfigurera globala fakturainställningar från knappen **Inställningar** i det övre högra hörnet av fakturainstrumentpanelen. Detta inkluderar:
+
+- **Fakturaprefix** — anpassa prefixet som visas före varje fakturanummer
+- **Påminnelsemallar** — konfigurera automatiska betalningspåminnelser för öppna fakturor
+
+## Relaterade funktioner
+
+<CardGroup cols={3}>
+  <Card title="Skapa en faktura" icon="plus" href="/sv/invoices/create-invoice">
+    Steg-för-steg-guide för att skapa, fylla i och skicka en faktura.
+  </Card>
+  <Card title="Prenumerationer" icon="rotate" href="/sv/invoices/subscriptions">
+    Hur återkommande fakturering fungerar och hur du hanterar prenumerationsfakturor.
+  </Card>
+  <Card title="Supportärenden" icon="ticket" href="/sv/tickets/support-tickets">
+    Hantera klientfakturafrågor via supportärendesystemet.
+  </Card>
+</CardGroup>

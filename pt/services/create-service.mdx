@@ -1,0 +1,260 @@
+---
+title: "Como Criar um Serviço com Pacotes, Tarefas e FAQs"
+sidebarTitle: "Criar Serviço"
+description: "Guia passo a passo para construir um serviço no AgencyHandy: escolha o tipo de faturação, configure pacotes, defina tarefas predefinidas, adicione FAQs e publique."
+---
+
+Criar um serviço no AgencyHandy é o primeiro passo para vender as ofertas da sua agência através da plataforma. Um único serviço pode conter até cinco pacotes de preços, tarefas predefinidas automatizadas que são ativadas quando uma encomenda é feita, FAQs para reduzir questões pré-venda, um anexo de portfólio para prova social e um formulário de intake opcional — tudo configurado num único lugar antes de publicar.
+
+<Note>
+  Precisa de uma função de **Super Admin** ou **Admin** para criar serviços. Outras funções requerem permissões explícitas de serviço para aceder a esta secção.
+</Note>
+
+<Steps>
+  <Step title="Escolher o tipo de serviço">
+    Abra **Serviços** na barra lateral esquerda e clique em **+ Serviço** para iniciar uma nova listagem.
+
+    No topo da página, selecione o seu modelo de faturação:
+
+    - **Serviço Único** — o cliente paga uma taxa única e recebe o entregável uma vez. Melhor para projetos com um âmbito claro: desenvolvimento de websites, pacotes de logótipo, auditorias, etc.
+    - **Serviço de Subscrição** — a faturação repete-se automaticamente no calendário que define. Melhor para retainers, conteúdo contínuo, serviços geridos ou planos de manutenção.
+
+    <Warning>
+      O tipo de serviço fica bloqueado após guardar. Se precisar de um modelo de faturação diferente, crie um novo serviço.
+    </Warning>
+  </Step>
+
+  <Step title="Adicionar detalhes do serviço">
+    Expanda a secção **Detalhes do Serviço** e preencha os seguintes campos:
+
+    **Nome do Serviço** *(obrigatório)*
+    É assim que o serviço aparece para os clientes em todo o lado na plataforma — no catálogo, nas faturas e dentro do workspace da encomenda. Torne-o claro e descritivo.
+
+    **Carregamento de Média**
+    Carregue uma ou mais imagens de pré-visualização para representar o serviço visualmente. Imagens de alta qualidade aumentam a confiança do cliente e as taxas de conversão.
+
+    **Descrição do Serviço**
+    Escreva uma explicação detalhada do que o serviço inclui, para quem é e o que os clientes podem esperar. Use este espaço para diferenciar a sua oferta.
+
+    **Definições de Imposto**
+    Escolha se o imposto é **inclusivo** (já incorporado no preço) ou **exclusivo** (adicionado por cima no checkout).
+
+    **Moeda**
+    Defina a moeda para todos os pacotes neste serviço. Todos os pacotes dentro de um único serviço partilham a mesma moeda.
+
+    <Tip>
+      Carregue imagens de pré-visualização num rácio de 16:9 para melhor apresentação no portal do cliente.
+    </Tip>
+  </Step>
+
+  <Step title="Criar pacotes">
+    Expanda **Detalhes do Pacote** e clique em **+ Novo Pacote** para adicionar o seu primeiro nível de preço. Pode criar até **5 pacotes** por serviço.
+
+    Para cada pacote, configure o seguinte:
+
+    **Nome do Pacote** *(obrigatório)*
+    O nome que os clientes veem, como *Básico*, *Standard* ou *Premium*.
+
+    **Ícone do Pacote** *(opcional)*
+    Selecione um ícone integrado ou carregue um personalizado. Os ícones carregados devem ter **32 × 32 pixels**.
+
+    **Média do Pacote** *(opcional)*
+    Carregue uma imagem de capa específica para este pacote. Formatos aceites: PNG, JPG, JPEG. Tamanho máximo do ficheiro: **5 MB**. Máximo 1 ficheiro por pacote. Rácio recomendado: **16:9**.
+
+    **Resumo do Pacote** *(opcional)*
+    Um resumo numa linha dos entregáveis deste pacote. Máximo **140 caracteres**.
+
+    **O Que Está Incluído** *(obrigatório)*
+    Liste os entregáveis específicos incluídos neste pacote. Pode adicionar até **15 itens** por pacote. Cada ponto deve descrever um entregável concreto (por exemplo, *"5 artigos de blogue por mês, até 1.000 palavras cada"*).
+
+    <Tip>
+      Após criar vários pacotes, arraste-os para reordenar como são apresentados aos clientes. Marque um como **Mais Popular** para chamar atenção para o seu nível recomendado.
+    </Tip>
+  </Step>
+
+  <Step title="Definir regras de preços e entrega">
+    Dentro de cada pacote, defina os campos de preços principais e quaisquer controlos opcionais:
+
+    **Valor** *(obrigatório)*
+    O preço que um cliente paga por este pacote.
+
+    **Prazo de Entrega** *(obrigatório)*
+    O número estimado de dias para entregar o serviço após a compra.
+
+    **Controlos de preços opcionais:**
+
+    <Accordion title="Adicionar Desconto">
+      Aplique uma redução em percentagem ou valor fixo ao preço deste pacote. O preço com desconto é apresentado aos clientes junto com o preço original, criando um efeito promocional eficaz.
+    </Accordion>
+
+    <Accordion title="Adicionar Período de Teste (apenas subscrição)">
+      Ofereça um teste gratuito ou a preço reduzido antes de a faturação regular da subscrição começar. Esta opção está disponível apenas em serviços do tipo subscrição.
+    </Accordion>
+
+    <Accordion title="Adicionar Limite de Quantidade">
+      Limite o número de unidades que um cliente pode comprar numa única sessão de checkout. Use isto para pacotes de disponibilidade limitada ou serviços com restrições de capacidade.
+    </Accordion>
+
+    <Accordion title="Adicionar Mais Detalhes de Preço">
+      Detalhe o custo total em itens individuais — por exemplo, mostrando *preço base + taxa de configuração + custo por unidade*. Cada rótulo de detalhe suporta um máximo de **20 caracteres**.
+    </Accordion>
+
+    <Note>
+      Todos os campos obrigatórios (Valor e Prazo de Entrega) devem ser preenchidos em cada pacote antes de poder publicar o serviço.
+    </Note>
+  </Step>
+
+  <Step title="Adicionar tarefas predefinidas para automação">
+    Cada pacote inclui uma secção de **Tarefas Predefinidas**. As tarefas definidas aqui são geradas automaticamente dentro do workspace da encomenda no momento em que um cliente compra este pacote — sem configuração manual necessária após cada venda.
+
+    Clique em **+ Adicionar Mais** para abrir o modal de criação de tarefa. Para cada tarefa, pode configurar:
+
+    | Campo | Detalhes |
+    |---|---|
+    | **Nome da Tarefa** | Obrigatório; máximo **160 caracteres** |
+    | **Descrição** | Instruções detalhadas para o assignee |
+    | **Assignee** | Membro da equipa responsável por completar esta tarefa |
+    | **Anexo** | Carregue ficheiros de referência; formatos aceites: csv, odt, doc, docx, htm, html, pdf, ppt, pptx, txt, xls, xlsx, jpg, jpeg, png, gif, webp, svg, ai, mp4, mp3, wav, zip, rar; tamanho máximo do ficheiro **1 GB** por ficheiro |
+    | **Etiqueta** | Marque a tarefa para filtragem e relatórios |
+    | **Estado** | Estado inicial quando a tarefa é criada |
+    | **Revisão do Cliente** | Ative se esta tarefa requer aprovação do cliente antes de ser considerada completa |
+
+    Adicione tantas tarefas quantas necessárias para cobrir completamente o processo de entrega deste pacote. Tarefas predefinidas consistentes garantem que cada encomenda segue o mesmo fluxo de trabalho com controlo de qualidade.
+
+    <Tip>
+      Mapeie as suas tarefas predefinidas para o seu SOP interno. Por exemplo, um pacote de *Gestão de Redes Sociais* pode gerar automaticamente tarefas como *Rascunho do Calendário de Conteúdo*, *Aprovação do Cliente*, *Agendar Publicações* e *Relatório Mensal*.
+    </Tip>
+  </Step>
+
+  <Step title="Adicionar FAQs e portfólio">
+    Expanda a secção **Informação Adicional** para adicionar dois elementos opcionais mas de grande impacto:
+
+    **Anexo de Portfólio**
+    Associe uma categoria de portfólio a este serviço para que os clientes possam navegar por amostras relevantes do seu trabalho anterior diretamente na listagem do serviço. Pode ligar uma categoria de portfólio existente ou criar uma nova a partir deste ecrã.
+
+    **Perguntas Frequentes (FAQs)**
+    Clique em **+ Adicionar** para inserir um par de pergunta e resposta. Adicione tantas FAQs quantas relevantes — os tópicos comuns incluem:
+
+    - Originalidade do conteúdo e direitos
+    - Processo de revisão e feedback
+    - Limites do âmbito e o que *não* está incluído
+    - Prazos e cadência de comunicação
+    - Políticas de pagamento e reembolso
+
+    FAQs bem escritas reduzem as trocas de mensagens antes da compra e ajudam os clientes a qualificar-se.
+  </Step>
+
+  <Step title="Associar um formulário de intake">
+    Um formulário de intake recolhe as informações de que precisa de um cliente antes de o trabalho começar — por exemplo, diretrizes de marca, credenciais de acesso, público-alvo ou objetivos do projeto.
+
+    - Clique em **+ Criar Novo Formulário de Intake** para construir um formulário de raiz, ou selecione um formulário existente no menu pendente.
+    - Se este serviço não requer um formulário de intake, clique em **Ignorar** para saltar esta secção.
+    - Clique em **Atualizar** para guardar a seleção do formulário de intake e continuar.
+
+    <Note>
+      O formulário de intake é opcional mas fortemente recomendado para serviços que requerem inputs específicos do cliente antes de a entrega poder começar.
+    </Note>
+  </Step>
+
+  <Step title="Publicar o serviço">
+    No fundo do editor de serviços:
+
+    1. Ative o interruptor **Publicar este Serviço** para a posição ATIVO.
+    2. Clique em **Guardar** (ou **Atualizar Serviço** se estiver a editar um serviço existente).
+
+    Após a publicação, o serviço torna-se imediatamente visível para os clientes no portal. Se deixar o interruptor desativado, o serviço é guardado como rascunho e apenas visível para a sua equipa.
+
+    <Tip>
+      Use o modo de rascunho para preparar um serviço com antecedência e publicá-lo na hora do lançamento — útil para promoções sazonais ou anúncios de novas ofertas.
+    </Tip>
+  </Step>
+</Steps>
+
+## Configuração de Add-On
+
+Os add-ons são extras opcionais que os clientes podem selecionar durante o checkout — por exemplo, *Entrega Urgente*, *Revisões Extra* ou um *Relatório Mensal*. Permitem-lhe fazer upsell de serviços complementares sem criar listagens completamente novas.
+
+### Criar um Add-On
+
+<Steps>
+  <Step title="Abrir Add-Ons">
+    Aceda a **Serviços** na barra lateral, clique no botão de **seta para baixo** junto ao cabeçalho de Serviços e selecione **Add-Ons**.
+  </Step>
+  <Step title="Criar um novo add-on">
+    Clique em **+ Adicionar Novo Add-on** e preencha:
+
+    - **Nome do Add-on**
+    - **Descrição** — use o editor de texto rico para explicar claramente o que o add-on inclui
+    - **Tipo de Preço** — escolha *Único* ou *Subscrição*
+    - **Detalhes de preços:**
+      - *Único:* introduza o valor e a moeda
+      - *Subscrição:* defina o intervalo de faturação (por exemplo, a cada 1 mês), um limite opcional de ciclo de faturação, a taxa de subscrição e a moeda
+  </Step>
+  <Step title="Publicar e guardar">
+    Ative **Publicar** e clique em **Criar**. Apenas os add-ons publicados são visíveis ao associá-los a formulários de encomenda.
+  </Step>
+</Steps>
+
+### Associar um Add-On a um Formulário de Encomenda
+
+<Steps>
+  <Step title="Abrir o formulário de encomenda">
+    Navegue até **Formulários** e abra o formulário de encomenda relevante.
+  </Step>
+  <Step title="Selecionar o serviço">
+    Escolha o serviço ao qual pretende associar o add-on.
+  </Step>
+  <Step title="Adicionar os add-ons">
+    Selecione a secção **Add-ons** no painel esquerdo e escolha os add-ons que pretende associar a este serviço.
+  </Step>
+  <Step title="Guardar o formulário">
+    Clique em **Guardar**. Os clientes verão agora os add-ons selecionados como extras opcionais durante o checkout.
+  </Step>
+</Steps>
+
+<Note>
+  Os add-ons devem usar a mesma moeda que o serviço ao qual estão associados. Se as moedas não corresponderem, o add-on não aparecerá na lista de seleção.
+</Note>
+
+### Comportamento de Faturação de Add-On de Subscrição
+
+Quando os ciclos de faturação de um serviço e de um add-on de subscrição diferem, o AgencyHandy gere a sobreposição automaticamente:
+
+<Accordion title="O add-on tem mais ciclos do que o serviço">
+  Tanto o serviço como o add-on são faturados juntos durante a duração do serviço. Após o serviço terminar, o add-on continua a ser faturado sozinho pelos seus ciclos restantes.
+
+  **Exemplo:** O serviço dura 4 ciclos, o add-on dura 5 ciclos → faturados juntos por 4 ciclos, add-on faturado sozinho por 1 ciclo adicional.
+</Accordion>
+
+<Accordion title="O add-on tem menos ciclos do que o serviço">
+  Tanto o serviço como o add-on são faturados juntos durante a duração do add-on. Após o add-on terminar, o serviço continua a ser faturado sozinho pelos seus ciclos restantes.
+
+  **Exemplo:** O serviço dura 5 ciclos, o add-on dura 3 ciclos → faturados juntos por 3 ciclos, serviço faturado sozinho por 2 ciclos adicionais.
+</Accordion>
+
+## Editar um Serviço
+
+Após um serviço ser publicado, pode atualizar qualquer campo sem interromper as encomendas existentes.
+
+1. Aceda a **Serviços** e encontre o serviço que pretende atualizar.
+2. Clique no **menu de três pontos** (⋮) no lado direito da linha do serviço.
+3. Selecione **Editar**. O editor de serviços abre com todas as definições existentes preenchidas.
+4. Faça as suas alterações — atualize o título, descrição, preços, média, pacotes, tarefas ou FAQs.
+5. Clique em **Atualizar Serviço** para guardar.
+
+<Warning>
+  As alterações ao preço do pacote ou ao prazo de entrega têm efeito apenas para **novas encomendas**. As encomendas existentes não são afetadas retroativamente.
+</Warning>
+
+## Referência de Campos
+
+| Campo | Limite |
+|---|---|
+| Pacotes por serviço | Até 5 |
+| Entregáveis por pacote (O Que Está Incluído) | Até 15 |
+| Resumo do Pacote | 140 caracteres |
+| Tamanho do ícone do pacote | 32 × 32 px |
+| Tamanho do ficheiro de média do pacote | 5 MB (PNG, JPG, JPEG) |
+| Nome da tarefa | 160 caracteres |
+| Tamanho do ficheiro de anexo da tarefa | 1 GB por ficheiro |
+| Rótulo de detalhe de preço | 20 caracteres |

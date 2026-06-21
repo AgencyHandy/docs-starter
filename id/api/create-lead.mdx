@@ -1,0 +1,201 @@
+---
+title: "AgencyHandy API: Buat Lead Baru Secara Terprogram"
+sidebarTitle: "Buat Lead"
+description: "Gunakan AgencyHandy API untuk membuat lead baru secara terprogram dengan mengirimkan permintaan POST ke endpoint bulk-lead beserta kolom yang diperlukan."
+---
+
+Endpoint Create Lead memungkinkan Anda menambahkan lead baru ke workspace AgencyHandy secara terprogram dari sistem eksternal mana pun — formulir web, CRM, platform otomasi pemasaran, atau skrip kustom. Lead yang dibuat melalui endpoint ini langsung muncul di pipeline lead Anda, sama seperti jika ditambahkan secara manual.
+
+<Note>
+  Sebelum menggunakan endpoint ini, selesaikan panduan [Memulai](/id/api/getting-started) untuk mendapatkan API key dan Company ID Anda. Anda juga perlu mengambil **Client Role ID**, yang diperlukan saat membuat lead.
+</Note>
+
+## Prasyarat
+
+- ✅ API key yang dibuat dari **Workspace Config → API Key**
+- ✅ Company ID yang diambil dari `GET {{URL}}/accounts/companies`
+- ✅ Client Role ID yang diambil (lihat Langkah 1 di bawah)
+
+---
+
+## Langkah 1: Dapatkan Client Role ID
+
+Sebelum membuat lead, Anda memerlukan Role ID untuk peran `client` di perusahaan Anda.
+
+### Endpoint
+
+```
+GET {{URL}}/roles?type=company
+```
+
+### Header
+
+| Header | Nilai |
+|---|---|
+| `x-api-key` | API key Anda |
+| `companyid` | Company ID Anda |
+
+### Contoh permintaan
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/roles?type=company" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>"
+```
+
+### Contoh respons
+
+```json
+{
+  "roles": [
+    {
+      "_id": "6525994184e9ddd798534535",
+      "role": {
+        "_id": "6525994184e9ddd79853451e",
+        "responsibility": "",
+        "name": "client"
+      },
+      "company": "6525994184e9ddd79853450e",
+      "createdAt": "2023-10-10T18:34:41.567Z",
+      "updatedAt": "2024-10-01T07:28:48.340Z",
+      "__v": 0,
+      "type": "company"
+    }
+  ]
+}
+```
+
+Temukan entri di mana `roles[0].role.name === "client"` dan ekstrak `_id` **terluar** — yaitu `roles[0]._id`, **bukan** `roles[0].role._id`.
+
+```javascript
+const clientRoleId = roles.find(r => r.role.name === "client")._id;
+// e.g. "6525994184e9ddd798534535"
+```
+
+<Warning>
+  Gunakan `roles[0]._id` (ID pemetaan company-role), **bukan** `roles[0].role._id` (ID definisi peran). Menggunakan ID yang salah menyebabkan permintaan pembuatan lead gagal.
+</Warning>
+
+---
+
+## Langkah 2: Buat lead baru
+
+### Endpoint
+
+```
+POST {{URL}}/members/bulk-lead
+```
+
+### Header
+
+| Header | Nilai |
+|---|---|
+| `x-api-key` | API key Anda |
+| `companyid` | Company ID Anda |
+| `Content-Type` | `application/json` |
+
+### Isi permintaan
+
+Isi permintaan adalah **array JSON** — Anda dapat membuat satu atau lebih lead dalam satu panggilan.
+
+<ParamField body="firstName" type="string" required>
+  Nama depan lead.
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  Nama belakang lead.
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  Alamat email lead. Harus unik dalam workspace Anda.
+</ParamField>
+
+<ParamField body="role" type="string" required>
+  Client Role ID yang diambil pada Langkah 1 (yaitu, `roles[0]._id`).
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  Harus diatur ke `false` saat membuat lead. Atur ke `true` hanya saat mengonversi lead menjadi klien penuh.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Status pipeline lead. Nilai umum: `New`, `Contacted`, `Qualified`. Default ke `New` jika dihilangkan.
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  Nomor telepon lead.
+</ParamField>
+
+<ParamField body="source" type="string">
+  Cara Anda mendapatkan lead ini. Contoh nilai: `website`, `referral`, `social`.
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  Posisi (urutan) lead dalam kolom papan pipeline. Default ke `1`.
+</ParamField>
+
+### Contoh permintaan
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-lead" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "role": "6525994184e9ddd798534535",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+### Respons sukses
+
+```json
+{
+  "message": "Lead created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  String konfirmasi: `"Lead created successfully"`.
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  Array objek lead yang telah dibuat.
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  ID unik dari lead yang baru dibuat. Simpan ini jika Anda perlu mereferensikan lead dalam panggilan API berikutnya.
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  Nama lengkap lead (firstName + lastName).
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  Status pipeline lead yang tersimpan.
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  Nama peran yang ditetapkan ke anggota — akan menjadi `"client"`.
+</ResponseField>
+
+<Tip>
+  Anda dapat meneruskan beberapa objek lead dalam array untuk membuat beberapa lead dalam satu panggilan API. Setiap objek harus menyertakan semua kolom yang diperlukan dengan alamat email uniknya sendiri.
+</Tip>

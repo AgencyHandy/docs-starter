@@ -1,0 +1,114 @@
+---
+title: "AgencyHandy API: Todentaminen ja aloittaminen"
+sidebarTitle: "Aloittaminen"
+description: "Luo API-avain, hae yritystunnuksesi ja aloita integraatioiden rakentaminen AgencyHandy REST API:a vastaan tämän pikaoppaan avulla."
+---
+
+AgencyHandy API:n avulla voit automatisoida liidien luomista, asiakashallintaa, tilausten päivityksiä ja paljon muuta mistä tahansa ulkoisesta järjestelmästä tai skriptistä. Jokainen pyyntö todennetaan API-avaimella, jonka luot työtilasi asetuksista. Tämä opas opastaa sinua tunnistetietojen hankkimisessa ja ensimmäisen API-kutsun tekemisessä.
+
+<Note>
+  Sinun on oltava AgencyHandy-työtilasi **SuperAdmin** tai **Admin** luodaksesi API-avaimen.
+</Note>
+
+## Perus-URL
+
+Kaikki API-pyynnöt tehdään osoitteeseen:
+
+```
+https://api.agencyhandy.com
+```
+
+Korvaa `{{URL}}` tällä perus-URL:lla kaikissa API-dokumentaation esimerkkipyynnöissä.
+
+## Vaihe 1: Luo API-avain
+
+<Steps>
+  <Step title="Avaa työtilan määritykset">
+    Siirry työtilasi asetuksiin osoitteessa:
+
+    ```
+    {{workspaceUrl}}/workspace-config?tab=api-key
+    ```
+
+    Tämä avaa **API Key** -välilehden työtilan määrityksessä.
+  </Step>
+
+  <Step title="Luo ja kopioi API-avaimesi">
+    Napsauta **Generate** (tai **Regenerate**, jos avain on jo olemassa). Kopioi API-avain ja säilytä se turvallisesti — käsittele sitä kuin salasanaa. AgencyHandy ei näytä sitä uudelleen sen jälkeen, kun poistut sivulta.
+  </Step>
+</Steps>
+
+<Warning>
+  API-avaimen uudelleenluominen mitätöi edellisen avaimen välittömästi. Kaikki vanhan avaimen käyttävät integraatiot lakkaavat toimimasta, kunnes päivität ne uudella avaimella.
+</Warning>
+
+## Vaihe 2: Hae yritystunnuksesi
+
+Useimmat API-päätepisteet vaativat `companyid`-otsikon, joka tunnistaa, minkä työtilan pyyntö kohdistuu. Käytä seuraavaa päätepistettä yritystunnuksesi hakemiseen.
+
+### Päätepiste
+
+```
+GET {{URL}}/accounts/companies
+```
+
+### Otsikot
+
+| Otsikko | Arvo |
+|---|---|
+| `x-api-key` | API-avaimesi |
+
+### Esimerkkipyyntö
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/accounts/companies" \
+  --header "x-api-key: <YOUR_API_KEY>"
+```
+
+### Esimerkkivastaus
+
+```json
+{
+  "message": "Companies associated with API token.",
+  "companies": [
+    {
+      "_id": "6525994184e9ddd79853450e",
+      "name": "onethread123",
+      "logo": "",
+      "extraSmallLogo": "",
+      "largeLogo": ""
+    }
+  ]
+}
+```
+
+<Steps>
+  <Step title="Paikanna yritystunnuksesi">
+    Vastauksessa etsi `_id`-kenttä `companies`-taulukon sisältä. Tämä on **yritystunnuksesi**.
+
+    ```javascript
+    const companyId = response.companies[0]._id;
+    // e.g. "6525994184e9ddd79853450e"
+    ```
+  </Step>
+
+  <Step title="Tallenna yritystunnus">
+    Tallenna yritystunnus käytettäväksi kaikissa myöhemmissä API-pyynnöissä. Välität sen `companyid`-otsikkona:
+
+    | Otsikko | Arvo |
+    |---|---|
+    | `x-api-key` | API-avaimesi |
+    | `companyid` | Yritystunnuksesi |
+  </Step>
+</Steps>
+
+## Todentamisen yhteenveto
+
+Jokainen todennettu API-pyyntö vaatii vähintään:
+
+```
+x-api-key: <YOUR_API_KEY>
+companyid: <YOUR_COMPANY_ID>
+```
+
+API-avaimen ja yritystunnuksen kanssa olet valmis käyttämään muuta AgencyHandy API:a. Jatka johonkin alla olevista päätepisteoppaista.

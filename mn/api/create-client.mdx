@@ -1,0 +1,137 @@
+---
+title: "AgencyHandy API: Програмчлалаар Шинэ Клиент Үүсгэх"
+sidebarTitle: "Клиент Үүсгэх"
+description: "Нэр, имэйл болон холбоо барих мэдээллийг bulk-client эцсийн цэгт илгээж AgencyHandy воркспейст програмчлалаар шинэ клиент нэмнэ үү."
+---
+
+Клиент Үүсгэх эцсийн цэг нь гадаад системээс AgencyHandy воркспейст клиентүүдийг шууд нэмэх боломж олгодог. Лидүүдээс ялгаатай нь клиентүүд нь захиалга, нэхэмжлэл болон төсөлд оноогдох боломжтой бүрэн нэвтрэлт хийгдсэн харилцагчид юм. CRM, нэвтрэлтийн маягт эсвэл бусад өгөгдлийн эх сурвалжаас шинэ клиентүүдийг синхрончилоход энэ эцсийн цэгийг ашиглана уу.
+
+<Note>
+  Энэ эцсийн цэгийг ашиглахаасаа өмнө API түлхүүр болон Компанийн ID авахын тулд [Эхлэх нь](/mn/api/getting-started) гарын авлагыг дуусгана уу. Лид Үүсгэх эцсийн цэгээс ялгаатай нь клиент үүсгэхэд тусдаа Эрхийн ID хайх алхам **шаарддаггүй**.
+</Note>
+
+## Урьдчилсан шаардлагууд
+
+- ✅ **Workspace Config → API Key** -аас үүсгэсэн API түлхүүр
+- ✅ `GET {{URL}}/accounts/companies` -аас авсан Компанийн ID
+
+---
+
+## Эцсийн цэг
+
+```
+POST {{URL}}/members/bulk-client
+```
+
+## Толгойнууд
+
+| Толгой | Утга |
+|---|---|
+| `x-api-key` | Таны API түлхүүр |
+| `companyId` | Таны Компанийн ID |
+| `Content-Type` | `application/json` |
+
+## Хүсэлтийн биет
+
+Хүсэлтийн биет нь **JSON массив**. Нэг хүсэлтээр нэг буюу хэд хэдэн клиент үүсгэж болно.
+
+<ParamField body="firstName" type="string" required>
+  Клиентийн нэр.
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  Клиентийн овог.
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  Клиентийн имэйл хаяг. Воркспейс дотор өвөрмөц байх ёстой.
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  Шинэ клиентэд `false` болгоно. Одоо байгаа лидийг клиент болгон хөрвүүлэхдээ `true` болгоно.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Клиентийн статус. Нийтлэг утгууд: `New`, `Active`. Орхисон тохиолдолд `New` болж өгнө.
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  Клиентийн утасны дугаар.
+</ParamField>
+
+<ParamField body="source" type="string">
+  Энэ клиентийг хэрхэн олсон. Жишээ утгууд: `website`, `referral`, `social`.
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  Самбарын баганы доторх клиентийн байршил. `1` болж өгнө.
+</ParamField>
+
+## Жишээ хүсэлт
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-client" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyId: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+## Амжилттай хариулт
+
+```json
+{
+  "message": "Client created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  Амжилттай болоход баталгаажуулах мөр.
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  Үүсгэгдсэн клиентийн объектуудын массив.
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  Шинээр үүсгэгдсэн клиентийн өвөрмөц ID. API-аар клиентийг захиалга эсвэл нэхэмжлэлд оноохдоо энэ ID-г ашиглана уу.
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  Клиентийн бүтэн нэр (нэр + овог).
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  Хадгалагдсан клиентийн статус.
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  Гишүүнд оноогдсон эрх — `"client"` байна.
+</ResponseField>
+
+<Note>
+  Энэ эцсийн цэгийн `companyId` толгойд `Id`-н том үсгийн **I** ашиглагддаг — `companyId` — зарим бусад эцсийн цэгүүдэд `companyid` (бүгд жижиг үсгээр) ашиглагддагаас ялгаатай. Баталгаажуулалтын алдаанаас зайлсхийхийн тулд дээр харуулсан яг кейсийг ашиглана уу.
+</Note>
+
+<Tip>
+  Нэг API дуудлагаар клиентүүдийг олноор үүсгэхийн тулд массивт олон клиентийн объект дамжуулна уу. Объект бүр өвөрмөц `email` хаягтай байх ёстой. Давхардсан имэйлүүд тухайн бичлэгт баталгаажуулалтын алдаа үүсгэнэ.
+</Tip>

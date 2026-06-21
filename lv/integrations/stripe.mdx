@@ -1,0 +1,77 @@
+---
+title: "Pievienojiet Stripe, lai pieņemtu tiešsaistes maksājumus AgencyHandy"
+sidebarTitle: "Stripe"
+description: "Saistiet savu Stripe kontu ar AgencyHandy, lai sūtītu rēķinus un iekasētu drošus tiešsaistes maksājumus no klientiem, neatstājot platformu."
+---
+
+AgencyHandy Stripe integrācija ļauj jums tieši no klientiem pieņemt karšu maksājumus, izmantojot rēķinus, ko sūtāt platformas iekšienē. Pēc savienošanas jūsu klienti redz pazīstamu Stripe mitinātu norēķinu logu, un maksājuma statuss automātiski tiek sinhronizēts atpakaļ ar AgencyHandy — nav nepieciešama manuāla saskaņošana.
+
+<Note>
+  Tikai **SuperAdmin** un **Admin** lomas var savienot vai pārvaldīt Stripe integrāciju. Pirms sākšanas jums ir jābūt arī verificētam Stripe kontam ar atbilstošām atļaujām.
+</Note>
+
+## Stripe savienošana
+
+<Steps>
+  <Step title="Atveriet Stripe integrācijas iestatījumus">
+    Kreisajā sānjoslā dodieties uz **Integrācijas → Stripe integrācija**.
+  </Step>
+
+  <Step title="Autorizēties Stripe">
+    Noklikšķiniet uz **Savienot Stripe**. Jūs tiksiet novirzīts uz Stripe autorizācijas ekrānu. Piesakieties savā Stripe kontā un noklikšķiniet uz **Atļaut**, lai piešķirtu AgencyHandy piekļuvi. Pēc apstiprināšanas Stripe automātiski novirza jūs atpakaļ uz AgencyHandy.
+  </Step>
+
+  <Step title="Konfigurējiet maksājuma preferences">
+    Pēc novirzīšanas konfigurējiet šādas opcijas:
+
+    - **Valūta** — izvēlieties noklusējuma norēķinu valūtu savai darbvietai.
+    - **Maksājuma metodes** — iespējojiet vai atspējojiet karšu veidus (Visa, Mastercard u.c.), kā atbalstīts jūsu Stripe kontā.
+    - **Norēķinu preferences** — pēc izvēles iestatiet nodokļu likmi, rēķina prefiksu vai noklusējuma maksājuma noteikumus un izpildes datumus.
+  </Step>
+
+  <Step title="Saglabājiet un apstipriniet">
+    Noklikšķiniet uz **Saglabāt**. Kad integrācija ir aktīva, parādās apstiprinājuma reklāmkarogs. Stripe tagad ir saistīts ar jūsu darbvietu un jūsu klienti var apmaksāt rēķinus tiešsaistē.
+  </Step>
+</Steps>
+
+## Integrācijas testēšana
+
+Pirms sūtāt faktiskus rēķinus, veiciet ātru pilnīgu pārbaudi, lai apstiprinātu, ka savienojums darbojas pareizi.
+
+<Steps>
+  <Step title="Izveidojiet testa rēķinu">
+    AgencyHandy iekšienē izveidojiet melnraksta rēķinu un piešķiriet tam nelielu summu.
+  </Step>
+  <Step title="Nosūtiet sev">
+    Nosūtiet rēķinu uz savu e-pasta adresi vai komandas loceklim, kurš var palīdzēt ar pārbaudi.
+  </Step>
+  <Step title="Veiciet testa maksājumu">
+    Atveriet rēķina saiti un veiciet maksājumu, izmantojot Stripe testa karti (piemēram, `4242 4242 4242 4242`), ja jūsu Stripe konts ir testa režīmā, vai reālu karti tiešajā režīmā.
+  </Step>
+  <Step title="Pārbaudiet statusa atjauninājumu">
+    Atgriezieties AgencyHandy un pārliecinieties, ka rēķina statuss mainījās uz **Apmaksāts**. Ja tā, jūsu integrācija darbojas pareizi.
+  </Step>
+</Steps>
+
+## Stripe savienojuma pārvaldība
+
+Jebkurā laikā atgriezieties pie **Integrācijas → Stripe integrācija**, lai:
+
+- **Atjauninātu maksājuma iestatījumus** — mainītu valūtu, maksājuma metodes vai norēķinu preferences.
+- **Pārskatītu savienojuma statusu** — pārbaudītu, vai Stripe pašlaik ir aktīvs.
+- **Atvienotu** — noklikšķiniet uz **Atvienot**, lai atsietu savu Stripe kontu. Maksājumu iekasēšana nekavējoties tiek apturēta, līdz atkārtoti izveidojat savienojumu.
+- **Atkārtoti savienotu** — noklikšķiniet uz **Savienot Stripe** vēlreiz un atkārtoti autorizējiet, lai atjaunotu integrāciju.
+
+<Warning>
+  Stripe atvienošana aptur maksājumu iekasēšanu visiem neatmaksātajiem rēķiniem. Klienti nevarēs maksāt tiešsaistē, līdz atkārtoti izveidosiet savienojumu un atkārtoti autorizēsieties.
+</Warning>
+
+## Papildu piezīmes
+
+<Note>
+  AgencyHandy nekad neglabā jūsu maksājuma akreditācijas datus. Visi maksājumu dati tiek apstrādāti tikai Stripe drošajā infrastruktūrā.
+</Note>
+
+- **Viens konts uz darbvietu** — katrai AgencyHandy darbvietai varat pievienot tikai vienu Stripe kontu. Lai mainītu kontus, vispirms atvienojiet pašreizējo, pēc tam atkārtoti savienojiet ar jauno kontu.
+- **Tiešraides rēķina statuss** — visi ar Stripe saistītie rēķini turpina atspoguļot reāllaika statusa atjauninājumus, kas saņemti tieši no Stripe.
+- **Valūta** — pārliecinieties, ka AgencyHandy konfigurētā valūta atbilst jūsu Stripe kontā iespējotajai valūtai, lai izvairītos no maksājumu kļūdām.

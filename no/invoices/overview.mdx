@@ -1,0 +1,100 @@
+---
+title: "Oversikt over fakturaadministrasjon for AgencyHandy-byråer"
+sidebarTitle: "Fakturaer"
+description: "Utforsk AgencyHandy's faktureringssystem — fakturering, betalingssporing, gjentakende fakturaer, statuser, direkte fakturaer og eksport av finansielle poster."
+---
+
+AgencyHandy's fakturafunksjon gir byrået ditt et komplett fakturerings- og betalingsadministrasjonssystem inne i den samme plattformen du bruker til å administrere klienter, bestillinger og prosjekter. Du kan opprette profesjonelle fakturaer, sende dem til klienter via e-post, spore betalingsstatus i sanntid, automatisere gjentakende fakturering for abonnementstjenester og eksportere finansielle poster når du trenger det. Hver faktura knyttes automatisk til byråets logo og adresse, slik at kommunikasjonen din alltid er konsistent med merkevaren.
+
+## Hvem kan opprette fakturaer
+
+Kun brukere med følgende roller kan opprette og administrere fakturaer:
+
+- **Super Admin**
+- **Admin**
+- **Prosjektleder (PM)**
+
+Klienter kan se og laste ned fakturaer, men kan ikke opprette eller redigere dem.
+
+## Faktura-dashboard
+
+For å åpne faktura-dashboardet, klikk på **Fakturaer** i venstre sidefelt. Herfra kan du:
+
+- Opprette, redigere og slette fakturaer
+- Søke etter fakturaer etter **klientnavn**, **bestillings-ID** eller **tjenestenavn**
+- Filtrere og sortere fakturalisten
+- Se fakturastatus med et blikk
+- Få tilgang til fakturainnstillinger inkludert prefikskonfigurasjon
+
+## Hva fakturaer gjør
+
+<CardGroup cols={2}>
+  <Card title="Fakturering og invoicing" icon="file-invoice-dollar">
+    Opprett og send profesjonelle fakturaer for alle tjenester eller produkter du leverer til klienter, med full kontroll over beløp, rabatter og forfallsdatoer.
+  </Card>
+  <Card title="Betalingssporing" icon="chart-line">
+    Overvåk om fakturaer er sett, betalt eller forfalt. Systemet registrerer automatisk betalte datoer og annulleringsdatoer når statusendringer skjer.
+  </Card>
+  <Card title="Gjentakende fakturering" icon="rotate">
+    Automatiser fakturagenerering for abonnementsbaserte tjenester. AgencyHandy genererer og leverer gjentakende fakturaer på hvert faktureringssyklus uten manuell inngripen.
+  </Card>
+  <Card title="Prosjektintegrasjon" icon="diagram-project">
+    Koble fakturaer direkte til bestillinger og tjenester slik at fakturering alltid er knyttet til det underliggende arbeidet. Fakturerbare poster kan legges til nøyaktig på hver faktura.
+  </Card>
+</CardGroup>
+
+## Fakturastatuser
+
+Hver faktura beveger seg gjennom en definert livssyklus. Å forstå disse statusene hjelper deg med å administrere fordringene dine effektivt.
+
+| Status | Beskrivelse |
+|--------|-------------|
+| **Utkast** | Fakturaen er opprettet, men ikke ferdigstilt. Du kan redigere alle deler av den. Når den er klar, ferdigstill den ved å endre statusen til Åpen. Utkastfakturaer som ikke er knyttet til et abonnement kan slettes. |
+| **Åpen / Ubetalt** | Fakturaen er ferdigstilt og venter på betaling. Byrået sender denne til klienten, som kan se og betale den. Du kan endre en åpen faktura til Betalt, Annullert eller Uinnkrevbar. |
+| **Betalt** | Fakturaen er betalt. Systemet registrerer den betalte datoen automatisk når du markerer en faktura som Betalt. |
+| **Annullert** | Fakturaen er kansellert. Systemet registrerer annulleringsdatoen automatisk. |
+| **Uinnkrevbar** | Klienten er usannsynlig å betale. Behandle dette som misligholdt gjeld i regnskapsprosessen din. |
+
+<Note>
+  Når du sender en faktura til en klient ved hjelp av knappen **Send til klient**, endres statusen automatisk fra **Utkast** til **Åpen**. Kun byrået kan endre statusen fra Åpen til Betalt, Annullert eller Uinnkrevbar.
+</Note>
+
+## Direkte fakturaer (uten bestillings-ID)
+
+AgencyHandy støtter **Direkte fakturaer** — fakturaer som ikke er knyttet til noen eksisterende bestilling. Dette er nyttig for engangs-fakturering, ad-hoc-betalinger eller fakturering av kontakter som ikke er registrert som klienter i systemet ditt.
+
+Nøkkelfunksjoner ved direkte fakturaer:
+
+- Send fakturaer uten å velge en bestillings-ID
+- Fakturer alle eksisterende klienter eller bruk **Uavhengig e-post** for å sende til en hvilken som helst e-postadresse
+- Legg til poster, skatter og rabatter manuelt
+- Send umiddelbart eller lagre som utkast
+
+<Tip>
+  Bruk direkte fakturaer når du raskt trenger å fakturere en klient for arbeid som ikke har en formell bestilling i AgencyHandy, for eksempel hasteprosjekter, konsulentkall eller arbeid utenfor scope.
+</Tip>
+
+## Eksportere fakturaer
+
+Du kan eksportere fakturalisten for bruk i eksterne regnskapsverktøy eller for arkivering. Eksporten inkluderer alle synlige kolonner: faktura-ID, klientnavn, tjeneste, beløp, status og datoer. Gå til eksportalternativet fra faktura-dashboardet.
+
+## Fakturainnstillinger
+
+Konfigurer globale fakturainnstillinger fra **Innstillinger**-knappen øverst til høyre i faktura-dashboardet. Dette inkluderer:
+
+- **Fakturaprefix** — tilpass prefikset som vises foran hvert fakturanummer
+- **Påminnelsesmaler** — sett opp automatiserte betalingspåminnelser for åpne fakturaer
+
+## Relaterte funksjoner
+
+<CardGroup cols={3}>
+  <Card title="Opprett en faktura" icon="plus" href="/no/invoices/create-invoice">
+    Trinn-for-trinn-veiledning for å opprette, fylle ut og sende en faktura.
+  </Card>
+  <Card title="Abonnementer" icon="rotate" href="/no/invoices/subscriptions">
+    Hvordan gjentakende fakturering fungerer og hvordan du administrerer abonnementsfakturaer.
+  </Card>
+  <Card title="Støttehenvendelser" icon="ticket" href="/no/tickets/support-tickets">
+    Håndter klientens faktureringsspørsmål gjennom støttehenvendelsessystemet.
+  </Card>
+</CardGroup>

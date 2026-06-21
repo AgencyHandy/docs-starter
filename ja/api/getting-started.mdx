@@ -1,0 +1,114 @@
+---
+title: "AgencyHandy API：認証と入門ガイド"
+sidebarTitle: "入門ガイド"
+description: "APIキーを生成し、会社IDを確認して、このクイックセットアップガイドでAgencyHandy REST APIを使ったインテグレーション構築を始めましょう。"
+---
+
+AgencyHandy APIを使用すると、外部のシステムやスクリプトからリードの作成、クライアント管理、注文の更新などを自動化できます。すべてのリクエストは、ワークスペース設定から生成するAPIキーで認証されます。このガイドでは、認証情報の取得から最初のAPI呼び出しまでの手順を説明します。
+
+<Note>
+  APIキーを生成するには、AgencyHandyワークスペースの**SuperAdmin**または**Admin**である必要があります。
+</Note>
+
+## ベースURL
+
+すべてのAPIリクエストは以下に対して行います：
+
+```
+https://api.agencyhandy.com
+```
+
+APIドキュメント全体のサンプルリクエストでは、`{{URL}}`をこのベースURLに置き換えてください。
+
+## ステップ1：APIキーを生成する
+
+<Steps>
+  <Step title="ワークスペース設定を開く">
+    以下のURLからワークスペース設定に移動します：
+
+    ```
+    {{workspaceUrl}}/workspace-config?tab=api-key
+    ```
+
+    これでワークスペース設定内の**APIキー**タブが開きます。
+  </Step>
+
+  <Step title="APIキーを生成してコピーする">
+    **生成**（またはキーが既に存在する場合は**再生成**）をクリックします。APIキーをコピーして安全に保管してください — パスワードと同様に扱ってください。ページを離れると、AgencyHandyは再度表示しません。
+  </Step>
+</Steps>
+
+<Warning>
+  APIキーを再生成すると、以前のキーは即座に無効になります。古いキーを使用している既存のインテグレーションは、新しいキーで更新するまで機能しなくなります。
+</Warning>
+
+## ステップ2：会社IDを取得する
+
+ほとんどのAPIエンドポイントでは、リクエストがどのワークスペースを対象としているかを識別する`companyid`ヘッダーが必要です。以下のエンドポイントを使用して会社IDを取得します。
+
+### エンドポイント
+
+```
+GET {{URL}}/accounts/companies
+```
+
+### ヘッダー
+
+| ヘッダー | 値 |
+|---|---|
+| `x-api-key` | あなたのAPIキー |
+
+### リクエスト例
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/accounts/companies" \
+  --header "x-api-key: <YOUR_API_KEY>"
+```
+
+### レスポンス例
+
+```json
+{
+  "message": "Companies associated with API token.",
+  "companies": [
+    {
+      "_id": "6525994184e9ddd79853450e",
+      "name": "onethread123",
+      "logo": "",
+      "extraSmallLogo": "",
+      "largeLogo": ""
+    }
+  ]
+}
+```
+
+<Steps>
+  <Step title="会社IDを確認する">
+    レスポンスの`companies`配列内の`_id`フィールドを見つけます。これがあなたの**会社ID**です。
+
+    ```javascript
+    const companyId = response.companies[0]._id;
+    // e.g. "6525994184e9ddd79853450e"
+    ```
+  </Step>
+
+  <Step title="会社IDを保存する">
+    会社IDをすべての後続APIリクエストで使用できるように保存します。`companyid`ヘッダーとして渡します：
+
+    | ヘッダー | 値 |
+    |---|---|
+    | `x-api-key` | あなたのAPIキー |
+    | `companyid` | あなたの会社ID |
+  </Step>
+</Steps>
+
+## 認証の概要
+
+すべての認証済みAPIリクエストには、最低限以下が必要です：
+
+```
+x-api-key: <YOUR_API_KEY>
+companyid: <YOUR_COMPANY_ID>
+```
+
+APIキーと会社IDが揃えば、AgencyHandy APIの残りの部分を使用する準備が整いました。以下のエンドポイントガイドのいずれかに進んでください。

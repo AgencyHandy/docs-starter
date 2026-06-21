@@ -1,0 +1,196 @@
+---
+title: "Tīmekļa āķu pārvaldība: izveide, testēšana un autentifikācija"
+sidebarTitle: "Webhooks"
+description: "Iestatiet tīmekļa āķus AgencyHandy, lai reāllaikā nosūtītu notikumu datus uz ārējām sistēmām, tiklīdz mainās pasūtījumi, uzdevumi, rēķini vai citi elementi."
+---
+
+Tīmekļa āķi (webhooks) ļauj AgencyHandy nekavējoties nosūtīt datus uz jūsu ārējām sistēmām, tiklīdz kaut kas mainās — aptaujāšana nav nepieciešama. Kad konfigurēts notikums tiek aktivizēts (piemēram, pasūtījums tiek atjaunināts vai atbalsta pieprasījums izveidots), AgencyHandy nosūta HTTP POST pieprasījumu ar JSON slodzi uz jūsu norādīto galapunkta URL. Tas ļauj ērti sinhronizēt ārējos rīkus, piemēram, CRM sistēmas, norēķinu sistēmas vai pielāgotas informācijas paneļus, ar jūsu AgencyHandy darbvietu reāllaikā.
+
+<Note>
+  Business Pro plāna darbvietas atbalsta līdz **30 000 tīmekļa āķu notikumiem** vienā norēķinu periodā. Pirms augstas intensitātes automatizāciju iestatīšanas pārbaudiet sava plāna ierobežojumus.
+</Note>
+
+## Atbalstītie notikumi
+
+Tīmekļa āķi var abonēt jebkuru šādu notikumu kombināciju:
+
+| Kategorija | Notikumi |
+|---|---|
+| **Pakalpojums** | Izveidots, atjaunināts, dzēsts |
+| **Pasūtījums** | Izveidots, atjaunināts, dzēsts |
+| **Uzdevums** | Izveidots, piešķirts, pabeigts, atjaunināts |
+| **Rēķins** | Statuss mainīts |
+| **Klients / Lietotājs** | Jauns klients pievienots, klients/lietotājs dzēsts |
+| **Priekšlikums** | Nosūtīts, saņemts, pieņemts, noraidīts |
+| **Atbalsta pieprasījums** | Izveidots, piešķirts, statuss mainīts |
+| **Maksājums** | Saņemts, neizdevies |
+| **Pakalpojuma pakotne** | Izveidota, atjaunināta, dzēsta |
+
+## Izveidot tīmekļa āķi
+
+<Steps>
+  <Step title="Dodieties uz tīmekļa āķu pārvaldību">
+    Kreisajā sānjoslā dodieties uz **Integrations → Webhooks Management**.
+  </Step>
+
+  <Step title="Autentificēt savu tokenu">
+    Noklikšķiniet uz pogas **Management**, lai autentificētu savu tīmekļa āķa tokenu. Šis tokens tiek izmantots, lai parakstītu izejošās slodzes, lai varētu pārbaudīt, ka tās nāk no AgencyHandy.
+  </Step>
+
+  <Step title="Izveidot jaunu tīmekļa āķi">
+    Noklikšķiniet uz **Create New Webhook**, lai atvērtu tīmekļa āķa konfigurācijas veidlapu.
+  </Step>
+
+  <Step title="Ievadiet galapunkta URL">
+    Laukā **Endpoint URL** ievadiet ārējās sistēmas URL, kurai jāsaņem tīmekļa āķa dati. Tam jābūt publiski pieejamam **POST** galapunktam.
+  </Step>
+
+  <Step title="Izvēlieties satura veidu">
+    Izvēlieties **JSON** kā satura veidu. AgencyHandy visas tīmekļa āķu slodzes nosūta kā `application/json`.
+  </Step>
+
+  <Step title="Atlasiet tīmekļa āķa notikumus">
+    Izvēlieties katru notikumu, kuram jāaktivizē šis tīmekļa āķis. Varat atlasīt notikumus no vairākām kategorijām — piemēram, **Order: Created** un **Invoice: Status changed** var norādīt uz vienu un to pašu galapunktu.
+  </Step>
+
+  <Step title="Aktivizēt tīmekļa āķi">
+    Pārslēdziet radio pogu **Active**. Kad aktīvs, AgencyHandy reāllaikā piegādā slodzes visiem atlasītajiem notikumiem uz jūsu galapunktu.
+  </Step>
+
+  <Step title="Saglabāt konfigurāciju">
+    Pārskatiet iestatījumus, pēc tam noklikšķiniet uz **Save**. Tīmekļa āķis parādās sarakstā un nekavējoties sāk piegādāt notikumus.
+  </Step>
+</Steps>
+
+## Testēt tīmekļa āķi
+
+Pēc tīmekļa āķa izveidošanas nosūtiet testa slodzi, lai apstiprinātu, ka jūsu galapunkts ir sasniedzams un datus apstrādā pareizi.
+
+<Steps>
+  <Step title="Atveriet tīmekļa āķi">
+    Tīmekļa āķu pārvaldības sarakstā noklikšķiniet uz tīmekļa āķa, kuru vēlaties testēt.
+  </Step>
+
+  <Step title="Noklikšķiniet uz Test Event">
+    Tīmekļa āķa detalizācijas lapā noklikšķiniet uz pogas **Test Event**.
+  </Step>
+
+  <Step title="Atlasiet testa notikumu">
+    Izvēlieties parauga notikumu no šim tīmekļa āķim konfigurēto notikumu saraksta (piemēram, **Order: Created**).
+  </Step>
+
+  <Step title="Nosūtiet testa slodzi">
+    Noklikšķiniet uz **Send**. AgencyHandy publicē parauga slodzi uz jūsu galapunkta URL.
+  </Step>
+
+  <Step title="Pārbaudiet rezultātu">
+    Pārbaudiet savu ārējo sistēmu, lai apstiprinātu, ka testa slodze pienāca un tika apstrādāta, kā paredzēts. Atpakaļ AgencyHandy noklikšķiniet uz tīmekļa āķa, lai pārskatītu tā **vēsturi** — varat redzēt pilnu pieprasījumu, jūsu galapunkta atgriezto atbildi, un atkārtoti piegādāt jebkuru pagātnes notikumu, ja nepieciešams.
+  </Step>
+</Steps>
+
+<Tip>
+  Izmantojiet rīku, piemēram, [Webhook.site](https://webhook.site) vai [RequestBin](https://requestbin.com), kā pagaidu galapunktu iestatīšanas laikā, lai pārbaudītu precīzo slodzes formu pirms reālās sistēmas pievienošanas.
+</Tip>
+
+## Autentificēt tīmekļa āķu slodzes
+
+Katrs izejošais tīmekļa āķa pieprasījums no AgencyHandy ietver paraksta galveni, ko jūsu galapunkts var izmantot, lai pārbaudītu, ka slodze ir autentiska un nav tikusi mainīta.
+
+### Paraksta galvene
+
+```
+x-ah-sig: <signature>
+```
+
+AgencyHandy pievieno šo galveni katram tīmekļa āķa pieprasījumam. Izvelciet vērtību no ienākošajiem pieprasījumiem un nododiet to verifikācijas galapunktam.
+
+### Pārbaudīt tīmekļa āķa parakstu
+
+Nosūtiet šādu pieprasījumu, lai apstiprinātu slodzes autentiskumu:
+
+```
+POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature
+Content-Type: application/json
+```
+
+<ParamField body="webhookId" type="string" required>
+  Tā tīmekļa āķa ID, kurš saņēma notikumu. Atrodiet to tīmekļa āķa detalizācijas lapā AgencyHandy.
+</ParamField>
+
+<ParamField body="signature" type="string" required>
+  `x-ah-sig` galvenes vērtība no ienākošā tīmekļa āķa pieprasījuma.
+</ParamField>
+
+<ParamField body="secret" type="string" required>
+  Tīmekļa āķa noslēpums, kas parādīts tīmekļa āķa detalizācijas lapā AgencyHandy.
+</ParamField>
+
+<ParamField body="payload" type="object" required>
+  Neapstrādāts JSON pamatteksts, saņemts no AgencyHandy tīmekļa āķa pieprasījuma.
+</ParamField>
+
+<CodeGroup>
+
+```javascript JavaScript
+const url = 'https://api.agencyhandy.com/api/v1/webhooks/verify-signature';
+
+const postData = {
+  webhookId: 'your_webhook_id',
+  signature: 'your_signature',   // value of x-ah-sig header
+  secret: 'your_webhook_secret',
+  payload: {},                   // the parsed JSON body from AgencyHandy
+};
+
+const response = await fetch(url, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(postData),
+});
+
+const data = await response.json();
+console.log(data); // { "verification_status": "SUCCESS" }
+```
+
+```bash cURL
+curl -X POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature \
+  -H "Content-Type: application/json" \
+  -d '{
+    "webhookId": "your_webhook_id",
+    "signature": "your_signature",
+    "secret": "your_webhook_secret",
+    "payload": {}
+  }'
+```
+
+</CodeGroup>
+
+**Atbildes**
+
+<ResponseField name="verification_status" type="string">
+  `SUCCESS` ja paraksts ir derīgs. `FAILED` ja verifikācija neizdodas (HTTP 403).
+</ResponseField>
+
+```json Success (200)
+{
+  "verification_status": "SUCCESS"
+}
+```
+
+```json Failure (403)
+{
+  "type": "PermissionError",
+  "status": 403,
+  "verification_status": "FAILED"
+}
+```
+
+<Warning>
+  Glabājiet sava tīmekļa āķa noslēpumu konfidenciāli. Regulāri mainiet to un nekavējoties atjauniniet savu verifikācijas loģiku pēc maiņas. Nekad neatklājiet to klienta puses kodā vai publiskās repozitorijās.
+</Warning>
+
+## Svarīgas piezīmes
+
+- Jūsu galapunkta URL ir jābūt **publiski pieejamam HTTPS POST** URL.
+- Ja jūsu galapunkts īslaicīgi nav pieejams, pārbaudiet tīmekļa āķa vēstures paneli AgencyHandy — no turienes varat tieši **atkārtoti piegādāt** jebkuru pagātnes notikumu.
+- Regulāri uzraugiet tīmekļa āķu darbību, lai atklātu neizdevušās piegādes vai nesankcionētas piekļuves mēģinājumus.
+- Tīmekļa āķi, kas atkārtoti neizdodas, var tikt apturēti no AgencyHandy puses — pārskatiet piegādes žurnālus, lai savlaicīgi atklātu problēmas.

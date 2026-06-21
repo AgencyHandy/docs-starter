@@ -1,0 +1,126 @@
+---
+title: "Conectează un Domeniu Personalizat la Spațiul de Lucru AgencyHandy"
+sidebarTitle: "Domeniu Personalizat"
+description: "Leagă propriul sub-domeniu (ex. portal.yourcompany.com) la AgencyHandy adăugând o înregistrare CNAME la registratorul tău DNS — fără cod necesar."
+---
+
+În mod implicit, spațiul tău de lucru AgencyHandy este accesibil la un sub-domeniu sub `agencyhandy.com`. Conectarea unui domeniu personalizat îți permite să înlocuiești acel URL implicit cu propria adresă de brand — de exemplu, `portal.youragency.com` — oferind clienților o experiență fluidă și profesională care îți consolidează brandul de la prima pagină pe care ajung.
+
+<Note>
+  Doar **Super Adminii** și **Adminii** pot configura un domeniu personalizat. Trebuie, de asemenea, să deții domeniul și să ai acces la setările sale DNS la registratorul tău pentru a finaliza această configurare.
+</Note>
+
+---
+
+## Cum Funcționează
+
+Când adaugi un domeniu personalizat în AgencyHandy, platforma îți furnizează o **înregistrare CNAME**. Adaugi acea înregistrare la setările DNS ale domeniului tău la registratorul tău (GoDaddy, Namecheap, Cloudflare etc.), iar AgencyHandy verifică conexiunea odată ce DNS s-a propagat.
+
+---
+
+## Configurare Pas cu Pas
+
+<Steps>
+  <Step title="Deschide setările Domeniu Personalizat">
+    Autentifică-te în contul tău AgencyHandy. Navighează la **Workspace Config** în bara laterală stângă, apoi apasă **Custom Domain**.
+  </Step>
+  <Step title="Adaugă domeniul personalizat">
+    Apasă butonul **+ Add Custom Domain**. În câmpul de introducere care apare, introdu sub-domeniul pe care dorești să îl folosești — de exemplu, `portal.youragency.com`.
+
+    <Warning>
+      **Nu** folosi `www` ca sub-domeniu (adică evită `www.youragency.com`). Prefixul `www` poate cauza conflicte de configurare și împiedică verificarea cu succes. Folosește un sub-domeniu diferit, cum ar fi `portal`, `client`, `app` sau `hub`.
+    </Warning>
+  </Step>
+  <Step title="Copiază detaliile înregistrării CNAME">
+    După trimiterea domeniului, AgencyHandy afișează înregistrarea DNS pe care trebuie să o adaugi:
+
+    | Câmp   | Valoare                                          |
+    |--------|------------------------------------------------|
+    | **Type**  | CNAME                                        |
+    | **Name**  | Sub-domeniul tău (ex. `portal`)              |
+    | **Value** | Ținta furnizată de AgencyHandy               |
+
+    Copiază aceste valori cu atenție — vei avea nevoie de ele la pasul următor.
+  </Step>
+  <Step title="Adaugă înregistrarea CNAME la registratorul tău DNS">
+    Autentifică-te în panoul de control al registratorului de domeniu (ex. GoDaddy, Namecheap, Cloudflare). Navighează la secțiunea de gestionare DNS pentru domeniul tău și adaugă înregistrarea CNAME folosind Type, Name și Value copiate din AgencyHandy.
+
+    Consultați ghidul specific registratorului de mai jos pentru Cloudflare.
+  </Step>
+  <Step title="Salvează domeniul în AgencyHandy">
+    Revino la AgencyHandy și apasă **Save Domain**. Statusul va arăta inițial **Disconnected** — acesta este comportamentul așteptat în timp ce DNS se propagă.
+  </Step>
+  <Step title="Așteaptă propagarea DNS și verifică">
+    Modificările DNS pot dura de la câteva minute la **până la 48 de ore** pentru a se propaga la nivel global, în funcție de registratorul tău și de setările TTL. Apasă **Refresh** periodic pentru a verifica statusul conexiunii.
+
+    Odată ce propagarea este completă, statusul se schimbă în **Connected** ✅.
+  </Step>
+</Steps>
+
+<Warning>
+  Propagarea DNS poate dura până la **48 de ore**. Dacă domeniul tău afișează în continuare **Disconnected** după 48 de ore, verifică din nou că înregistrarea CNAME este corectă și că nu există înregistrări DNS conflictuale pentru același sub-domeniu.
+</Warning>
+
+---
+
+## Instrucțiuni Specifice Cloudflare
+
+Dacă domeniul tău este gestionat prin Cloudflare, există o setare critică pe care trebuie să o configurezi corect:
+
+<Steps>
+  <Step title="Autentifică-te în Cloudflare și selectează domeniul">
+    Deschide [panoul de control Cloudflare](https://dash.cloudflare.com) și apasă pe domeniul pe care îl conectezi la AgencyHandy.
+  </Step>
+  <Step title="Navighează la setările DNS">
+    Apasă tab-ul **DNS** în navigarea de sus a panoului de setări al domeniului.
+  </Step>
+  <Step title="Adaugă înregistrarea CNAME">
+    Apasă **+ Add Record** și completează câmpurile:
+    - **Type:** CNAME
+    - **Name:** Sub-domeniul tău (ex. `portal`)
+    - **Target/Content:** Valoarea furnizată de AgencyHandy
+    - **TTL:** Setează la **2 minute** (sau cea mai mică opțiune disponibilă) în timpul configurării inițiale
+  </Step>
+  <Step title="Dezactivează proxy-ul Cloudflare (critic)">
+    În coloana **Proxy status**, asigură-te că butonul este setat pe **DNS only** (pictograma cloud ar trebui să apară gri, nu portocaliu).
+
+    <Warning>
+      Dacă proxy-ul Cloudflare este **activat** (pictogramă cloud portocaliu), înregistrarea CNAME nu va rezolva corect și AgencyHandy nu poate verifica domeniul tău. Trebuie să îl setezi pe **DNS Only** pentru ca conexiunea să funcționeze.
+    </Warning>
+  </Step>
+  <Step title="Salvează înregistrarea">
+    Verifică toate valorile pentru acuratețe și apasă **Save**.
+  </Step>
+</Steps>
+
+<Tip>
+  Folosește [dnschecker.org](https://dnschecker.org) pentru a monitoriza propagarea înregistrării CNAME în diferite regiuni globale. Caută bife verzi în toate regiunile înainte de a te aștepta ca AgencyHandy să confirme conexiunea.
+</Tip>
+
+---
+
+## Monitorizarea Statusului Conexiunii
+
+După salvare, revino la **Workspace Config → Custom Domain** în AgencyHandy pentru a urmări statusul:
+
+| Status           | Semnificație                                                              |
+|------------------|----------------------------------------------------------------------|
+| **Disconnected** | Înregistrarea DNS nu s-a propagat încă sau conține o eroare               |
+| **Connected**    | Domeniul este verificat și activ — clienții pot accesa spațiul tău de lucru prin URL-ul personalizat |
+
+---
+
+## Actualizarea sau Eliminarea unui Domeniu Personalizat
+
+- **Pentru a actualiza domeniul:** Șterge înregistrarea existentă și adaugă noul domeniu urmând aceiași pași de configurare de mai sus.
+- **Pentru a șterge domeniul:** Apasă butonul **Delete** de lângă domeniul tău în panoul Domeniu Personalizat și confirmă ștergerea. Spațiul tău de lucru va reveni la URL-ul implicit AgencyHandy. Poți readăuga orice domeniu în orice moment.
+
+---
+
+## Note Importante
+
+- **Folosește un sub-domeniu, nu un domeniu rădăcină:** Domeniile personalizate AgencyHandy necesită un sub-domeniu (ex. `portal.youragency.com`), nu un domeniu rădăcină/apex (ex. `youragency.com`).
+- **Evită `www`:** Sub-domeniul `www` poate cauza probleme în timpul verificării. Folosește în schimb un nume de sub-domeniu personalizat.
+- **Înregistrări exacte necesare:** Introdu Type, Name și Value pentru CNAME exact cum sunt afișate în AgencyHandy. Orice greșeală de tastare sau caracter lipsă împiedică conexiunea.
+- **Proxy-ul Cloudflare trebuie dezactivat:** Setează întotdeauna înregistrările Cloudflare pe **DNS Only** pentru verificarea domeniului personalizat AgencyHandy.
+- **Acces doar pentru admini:** Doar Super Adminii și Adminii pot adăuga, modifica sau șterge setările domeniului personalizat.

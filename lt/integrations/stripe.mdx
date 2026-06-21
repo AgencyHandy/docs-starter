@@ -1,0 +1,77 @@
+---
+title: "Stripe prijungimas internetiniams mokėjimams priimti AgencyHandy"
+sidebarTitle: "Stripe"
+description: "Susiekite savo Stripe paskyrą su AgencyHandy, kad galėtumėte siųsti sąskaitas faktūras ir saugiai rinkti internetinius mokėjimus iš klientų neišeidami iš platformos."
+---
+
+AgencyHandy Stripe integracija leidžia priimti kortelių mokėjimus tiesiogiai iš klientų per platformoje siunčiamas sąskaitas faktūras. Prijungus klientai mato pažįstamą Stripe atsiskaitymo formą, o mokėjimo būsena automatiškai sinchronizuojama su AgencyHandy — nereikia jokio rankinio suderinimo.
+
+<Note>
+  Tik **super administratoriaus** ir **administratoriaus** vaidmenys gali prijungti Stripe integraciją arba ją valdyti. Prieš pradedant taip pat turėsite turėti patvirtintą Stripe paskyrą su atitinkamomis teisėmis.
+</Note>
+
+## Stripe prijungimas
+
+<Steps>
+  <Step title="Atidarykite Stripe integracijos nustatymus">
+    Kairiajame šoniniame meniu eikite į **Integracijos → Stripe integracija**.
+  </Step>
+
+  <Step title="Autorizuokite Stripe">
+    Spustelėkite **Prijungti Stripe**. Esate nukreipiami į Stripe autorizacijos ekraną. Prisijunkite prie savo Stripe paskyros ir spustelėkite **Leisti**, kad suteiktumėte AgencyHandy prieigą. Patvirtinus Stripe automatiškai nukreipia jus atgal į AgencyHandy.
+  </Step>
+
+  <Step title="Sukonfigūruokite mokėjimo nuostatas">
+    Po nukreipimo sukonfigūruokite šias parinktis:
+
+    - **Valiuta** — pasirinkite numatytąją darbo erdvės atsiskaitymo valiutą.
+    - **Mokėjimo būdai** — įjunkite arba išjunkite kortelių tipus (Visa, Mastercard ir kt.), kaip palaikoma jūsų Stripe paskyros.
+    - **Atsiskaitymo nuostatos** — pasirinktinai nustatykite mokesčių tarifą, sąskaitos faktūros priešdėlį ar numatytąsias mokėjimo sąlygas ir mokėjimo terminus.
+  </Step>
+
+  <Step title="Išsaugokite ir patvirtinkite">
+    Spustelėkite **Išsaugoti**. Patvirtinimo juosta pasirodo, kai integracija aktyvi. Stripe dabar susieta su jūsų darbo erdve ir klientai gali mokėti sąskaitas faktūras internetu.
+  </Step>
+</Steps>
+
+## Integracijos testavimas
+
+Prieš siunčiant realias sąskaitas faktūras atlikite greitą visapusį testą, kad patvirtintumėte, jog ryšys veikia teisingai.
+
+<Steps>
+  <Step title="Sukurkite bandomąją sąskaitą faktūrą">
+    AgencyHandy sukurkite sąskaitos faktūros juodraštį ir priskirkite jam nedidelę sumą.
+  </Step>
+  <Step title="Siųskite sau">
+    Siųskite sąskaitą faktūrą savo el. pašto adresu arba komandos nariui, kuris gali padėti atlikti testą.
+  </Step>
+  <Step title="Atlikite bandomąjį mokėjimą">
+    Atidarykite sąskaitos faktūros nuorodą ir atlikite mokėjimą naudodami Stripe bandomąją kortelę (pvz., `4242 4242 4242 4242`), jei jūsų Stripe paskyra yra bandymo režimu, arba realią kortelę gyvame režimu.
+  </Step>
+  <Step title="Patikrinkite būsenos atnaujinimą">
+    Grįžkite į AgencyHandy ir patvirtinkite, kad sąskaitos faktūros būsena pasikeitė į **Apmokėta**. Jei taip, integracija veikia teisingai.
+  </Step>
+</Steps>
+
+## Stripe ryšio valdymas
+
+Bet kada grįžkite į **Integracijos → Stripe integracija**, kad:
+
+- **Atnaujintumėte mokėjimo nustatymus** — pakeistumėte valiutą, mokėjimo būdus ar atsiskaitymo nuostatas.
+- **Peržiūrėtumėte ryšio būseną** — patikrintumėte, ar Stripe šiuo metu aktyvus.
+- **Atjungtumėte** — spustelėkite **Atjungti**, kad atsiestumėte Stripe paskyrą. Mokėjimų rinkimas nedelsiant sustabdomas, kol iš naujo prijungsite.
+- **Iš naujo prijungtumėte** — spustelėkite **Prijungti Stripe** dar kartą ir iš naujo autorizuokite, kad atkurtumėte integraciją.
+
+<Warning>
+  Stripe atjungimas sustabdo mokėjimų rinkimą visoms neapmokėtoms sąskaitoms faktūroms. Klientai negalės mokėti internetu, kol iš naujo neprijungsite ir neautorizuosite.
+</Warning>
+
+## Papildomos pastabos
+
+<Note>
+  AgencyHandy niekada nesaugo jūsų mokėjimo duomenų. Visi mokėjimų duomenys tvarkomi išskirtinai Stripe saugios infrastruktūros.
+</Note>
+
+- **Viena paskyra vienai darbo erdvei** — galite prijungti tik vieną Stripe paskyrą prie kiekvienos AgencyHandy darbo erdvės. Norėdami perjungti paskyras, pirmiausia atjunkite esamą, tada iš naujo prijunkite su nauja paskyra.
+- **Aktyvios sąskaitos faktūros būsena** — visos Stripe susietos sąskaitos faktūros toliau atspindi realaus laiko būsenos atnaujinimus, gaunamus tiesiogiai iš Stripe.
+- **Valiuta** — įsitikinkite, kad AgencyHandy sukonfigūruota valiuta atitinka jūsų Stripe paskyroje įjungtą valiutą, kad išvengtumėte mokėjimų klaidų.

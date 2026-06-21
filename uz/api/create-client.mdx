@@ -1,0 +1,137 @@
+---
+title: "AgencyHandy API: Dasturlash orqali yangi mijoz yaratish"
+sidebarTitle: "Mijoz yaratish"
+description: "Ism, elektron pochta va aloqa ma'lumotlari bilan bulk-client endpointiga post so'rovi yuborib, AgencyHandy ish muhitingizga yangi mijozlarni dasturlash orqali qo'shing."
+---
+
+Mijoz yaratish endpointi tashqi tizimdan to'g'ridan-to'g'ri AgencyHandy ish muhitingizga mijozlar qo'shish imkonini beradi. Leadlardan farqli o'laroq, mijozlar buyurtmalar, hisob-fakturalar va loyihalarga tayinlanishi mumkin bo'lgan to'liq onboarding qilingan kontaktlardir. CRM, onboarding formasidan yoki boshqa istalgan ma'lumot manbai orqali yangi mijozlarni sinxronlash uchun ushbu endpointdan foydalaning.
+
+<Note>
+  Ushbu endpointdan foydalanishdan oldin, API kaliti va Kompaniya ID sini olish uchun [Boshlash](/uz/api/getting-started) qo'llanmasini bajaring. Lead yaratish endpointidan farqli o'laroq, mijoz yaratish alohida Rol ID si qidirish qadamini **talab qilmaydi**.
+</Note>
+
+## Oldindan talab qilinadigan shartlar
+
+- ✅ **Workspace Config → API Key** dan yaratilgan API kaliti
+- ✅ `GET {{URL}}/accounts/companies` dan olingan Kompaniya ID si
+
+---
+
+## Endpoint
+
+```
+POST {{URL}}/members/bulk-client
+```
+
+## Sarlavhalar
+
+| Sarlavha | Qiymat |
+|---|---|
+| `x-api-key` | Sizning API kalitingiz |
+| `companyId` | Sizning Kompaniya ID ingiz |
+| `Content-Type` | `application/json` |
+
+## So'rov tanasi
+
+So'rov tanasi **JSON massivi**. Bitta so'rovda bir yoki bir nechta mijoz yaratish mumkin.
+
+<ParamField body="firstName" type="string" required>
+  Mijozning ismi.
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  Mijozning familiyasi.
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  Mijozning elektron pochta manzili. Ish muhitingizda noyob bo'lishi kerak.
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  Yangi mijoz uchun `false` ga o'rnating. Mavjud leadni mijozga aylantirishda `true` ga o'rnating.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Mijozning holati. Keng tarqalgan qiymatlar: `New`, `Active`. O'tkazib yuborilsa `New` ga standart o'rnatiladi.
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  Mijozning telefon raqami.
+</ParamField>
+
+<ParamField body="source" type="string">
+  Ushbu mijozni qanday topganingiz. Namuna qiymatlari: `website`, `referral`, `social`.
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  Mijozning taxta ustunidagi joylashuvi. Standart `1`.
+</ParamField>
+
+## Namuna so'rov
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-client" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyId: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+## Muvaffaqiyatli javob
+
+```json
+{
+  "message": "Client created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  Muvaffaqiyat bo'lganda tasdiqlash satri.
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  Yaratilgan mijoz obyektlari massivi.
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  Yangi yaratilgan mijozning noyob ID si. API orqali buyurtmalar yoki hisob-fakturalarga mijozni tayinlashda ushbu ID dan foydalaning.
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  Mijozning to'liq ismi (firstName + lastName).
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  Saqlangan mijoz holati.
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  A'zoga tayinlangan rol — `"client"` bo'ladi.
+</ResponseField>
+
+<Note>
+  Ushbu endpoint uchun `companyId` sarlavhasi `Id` da katta **I** harfi ishlatadi — `companyId` — ba'zi boshqa endpointlar barcha kichik harfli `companyid` ishlatishidan farqli o'laroq. Autentifikatsiya xatolarini oldini olish uchun yuqorida ko'rsatilgan aniq yozuvdan foydalaning.
+</Note>
+
+<Tip>
+  Bitta API chaqiruvida bir nechta mijoz yaratish uchun massivga bir nechta mijoz obyektini uzating. Har bir obyektning noyob `email` manzili bo'lishi kerak. Takroriy elektron pochtalar o'sha yozuv uchun tekshiruv xatosiga olib keladi.
+</Tip>

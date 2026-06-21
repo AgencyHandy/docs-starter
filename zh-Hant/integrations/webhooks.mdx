@@ -1,0 +1,196 @@
+---
+title: "Webhook 管理：建立、測試與驗證"
+sidebarTitle: "Webhooks"
+description: "在 AgencyHandy 中設定 webhook，以便在訂單、任務、發票或其他實體變更時，將即時事件資料推送至外部系統。"
+---
+
+Webhook 讓 AgencyHandy 能在發生變更的瞬間將資料推送至您的外部系統 — 無需輪詢。當設定的事件觸發時（例如訂單已更新或工單已建立），AgencyHandy 會向您指定的端點 URL 發送帶有 JSON 內容的 HTTP POST 請求。這使外部工具（如 CRM、帳單系統或自訂儀表板）能夠與您的 AgencyHandy 工作區即時同步。
+
+<Note>
+  Business Pro 方案工作區每個計費週期支援最多 **30,000 個 webhook 事件**。在設定高流量自動化之前，請確認您的方案限制。
+</Note>
+
+## 支援的事件
+
+您可以為 webhook 訂閱以下任意組合的事件：
+
+| 類別 | 事件 |
+|---|---|
+| **服務** | 已建立、已更新、已刪除 |
+| **訂單** | 已建立、已更新、已刪除 |
+| **任務** | 已建立、已指派、已完成、已更新 |
+| **發票** | 狀態已變更 |
+| **客戶 / 使用者** | 新客戶已新增、客戶/使用者已刪除 |
+| **提案** | 已傳送、已收到、已接受、已拒絕 |
+| **工單** | 已建立、已指派、狀態已變更 |
+| **付款** | 已收到、已失敗 |
+| **服務套件** | 已建立、已更新、已刪除 |
+
+## 建立 webhook
+
+<Steps>
+  <Step title="前往 Webhook 管理">
+    在左側側邊欄，前往 **整合 → Webhooks Management**。
+  </Step>
+
+  <Step title="驗證您的權杖">
+    點擊 **Management** 按鈕以驗證您的 webhook 權杖。此權杖用於簽署傳出的內容，讓您可以驗證它們確實來自 AgencyHandy。
+  </Step>
+
+  <Step title="建立新的 webhook">
+    點擊 **Create New Webhook** 以開啟 webhook 設定表單。
+  </Step>
+
+  <Step title="輸入端點 URL">
+    在 **Endpoint URL** 欄位中，輸入應接收 webhook 資料的外部系統 URL。這必須是一個可公開存取的 **POST** 端點。
+  </Step>
+
+  <Step title="選擇內容類型">
+    選擇 **JSON** 作為內容類型。AgencyHandy 以 `application/json` 格式傳送所有 webhook 內容。
+  </Step>
+
+  <Step title="選擇 webhook 事件">
+    選擇所有應觸發此 webhook 的事件。您可以從多個類別中選擇事件 — 例如，**Order: Created** 和 **Invoice: Status changed** 可以同時指向同一個端點。
+  </Step>
+
+  <Step title="啟用 webhook">
+    切換 **Active** 選項按鈕。啟用後，AgencyHandy 將即時向您的端點傳送所有選定事件的內容。
+  </Step>
+
+  <Step title="儲存設定">
+    檢閱您的設定，然後點擊 **Save**。webhook 將出現在清單中並立即開始傳送事件。
+  </Step>
+</Steps>
+
+## 測試 webhook
+
+建立 webhook 後，傳送測試內容以確認您的端點可以存取且正確處理資料。
+
+<Steps>
+  <Step title="開啟 webhook">
+    從 Webhooks Management 清單中，點擊您要測試的 webhook。
+  </Step>
+
+  <Step title="點擊 Test Event">
+    點擊 webhook 詳細頁面上的 **Test Event** 按鈕。
+  </Step>
+
+  <Step title="選擇測試事件">
+    從此 webhook 上設定的事件清單中選擇一個範例事件（例如 **Order: Created**）。
+  </Step>
+
+  <Step title="傳送測試內容">
+    點擊 **Send**。AgencyHandy 將傳送一個範例內容至您的端點 URL。
+  </Step>
+
+  <Step title="驗證結果">
+    檢查您的外部系統，確認測試內容已送達並如預期處理。返回 AgencyHandy，點擊 webhook 以檢閱其**歷史記錄** — 您可以查看完整請求、端點回傳的回應，並在需要時重新傳送任何過去的事件。
+  </Step>
+</Steps>
+
+<Tip>
+  在設定過程中，使用 [Webhook.site](https://webhook.site) 或 [RequestBin](https://requestbin.com) 等工具作為臨時端點，以便在連接真實系統之前檢查確切的內容格式。
+</Tip>
+
+## 驗證 webhook 內容
+
+AgencyHandy 的每個傳出 webhook 請求都包含一個簽章標頭，您的端點可以使用它來驗證內容是真實的且未被篡改。
+
+### 簽章標頭
+
+```
+x-ah-sig: <signature>
+```
+
+AgencyHandy 在每個 webhook 請求中新增此標頭。從傳入請求中提取該值並將其傳遞至驗證端點。
+
+### 驗證 webhook 簽章
+
+傳送以下請求以確認內容的真實性：
+
+```
+POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature
+Content-Type: application/json
+```
+
+<ParamField body="webhookId" type="string" required>
+  接收事件的 webhook ID。在 AgencyHandy 的 webhook 詳細頁面上找到此 ID。
+</ParamField>
+
+<ParamField body="signature" type="string" required>
+  來自傳入 webhook 請求的 `x-ah-sig` 標頭值。
+</ParamField>
+
+<ParamField body="secret" type="string" required>
+  AgencyHandy webhook 詳細頁面上顯示的 webhook 密鑰。
+</ParamField>
+
+<ParamField body="payload" type="object" required>
+  從 AgencyHandy webhook 請求收到的原始 JSON 主體。
+</ParamField>
+
+<CodeGroup>
+
+```javascript JavaScript
+const url = 'https://api.agencyhandy.com/api/v1/webhooks/verify-signature';
+
+const postData = {
+  webhookId: 'your_webhook_id',
+  signature: 'your_signature',   // value of x-ah-sig header
+  secret: 'your_webhook_secret',
+  payload: {},                   // the parsed JSON body from AgencyHandy
+};
+
+const response = await fetch(url, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(postData),
+});
+
+const data = await response.json();
+console.log(data); // { "verification_status": "SUCCESS" }
+```
+
+```bash cURL
+curl -X POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature \
+  -H "Content-Type: application/json" \
+  -d '{
+    "webhookId": "your_webhook_id",
+    "signature": "your_signature",
+    "secret": "your_webhook_secret",
+    "payload": {}
+  }'
+```
+
+</CodeGroup>
+
+**回應**
+
+<ResponseField name="verification_status" type="string">
+  簽章有效時為 `SUCCESS`。驗證失敗時為 `FAILED`（HTTP 403）。
+</ResponseField>
+
+```json Success (200)
+{
+  "verification_status": "SUCCESS"
+}
+```
+
+```json Failure (403)
+{
+  "type": "PermissionError",
+  "status": 403,
+  "verification_status": "FAILED"
+}
+```
+
+<Warning>
+  請保持 webhook 密鑰的機密性。定期輪換密鑰，並在輪換後立即更新您的驗證邏輯。切勿在客戶端程式碼或公開儲存庫中暴露密鑰。
+</Warning>
+
+## 重要注意事項
+
+- 您的端點 URL 必須是**可公開存取的 HTTPS POST** URL。
+- 若您的端點暫時無法存取，請在 AgencyHandy 中查看 webhook 的歷史面板 — 您可以直接從那裡**重新傳送**任何過去的事件。
+- 定期監控 webhook 活動，以偵測傳送失敗或未授權的存取嘗試。
+- 多次失敗的 webhook 可能會被 AgencyHandy 暫停 — 請定期查看傳送記錄以及早發現問題。

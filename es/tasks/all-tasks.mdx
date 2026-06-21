@@ -1,0 +1,126 @@
+---
+title: "Todas las tareas: gestión centralizada de tareas en AgencyHandy"
+sidebarTitle: "Todas las tareas"
+description: "Use la página Todas las tareas para obtener una vista en tiempo real y filtrada por rol de cada tarea en los pedidos en curso y en revisión, con búsqueda, filtros y ordenación."
+---
+
+La página Todas las tareas de AgencyHandy le ofrece una vista única y centralizada de cada tarea que pertenece a los flujos de trabajo activos de su agencia. En lugar de buscar entre pedidos individuales, puede ver todas las tareas relevantes en un solo lugar, filtrarlas por asignado, prioridad o fecha, y realizar ediciones directamente desde la lista. La visibilidad se ajusta automáticamente a su rol: los Super Admins lo ven todo, los Managers ven sus pedidos asignados y los Employees ven solo sus propias tareas.
+
+## Acceder a la página Todas las tareas
+
+1. Inicie sesión en su cuenta de AgencyHandy.
+2. Haga clic en **Tasks** en la barra lateral izquierda.
+3. Seleccione **All Tasks** para abrir el panel centralizado de tareas.
+
+<Note>
+  La página Todas las tareas solo muestra las tareas de los pedidos que están en estado **Ongoing** o **In Review**. Las tareas vinculadas a pedidos en cualquier otro estado (por ejemplo, Completed, Pending) no aparecen aquí.
+</Note>
+
+## Visibilidad de tareas según el rol
+
+Lo que ve en la página Todas las tareas depende por completo de su rol.
+
+| Rol | Lo que ven |
+|------|---------------|
+| **Super Admin / Admin** | Todas las tareas de todos los pedidos, equipos y estados |
+| **Project Manager (PM)** | Solo las tareas de los pedidos en los que están asignados como Manager |
+| **Employee / Asignado** | Solo las tareas asignadas directamente a ellos, incluso si sus compañeros trabajan en el mismo pedido |
+
+<Tip>
+  Si un PM no encuentra una tarea que espera ver, confirme que esté asignado como Manager en el pedido correspondiente. Los PMs no ven las tareas a menos que sean el Manager asignado de ese pedido.
+</Tip>
+
+## Cuándo aparecen las tareas en esta página
+
+Las tareas aparecen en la página Todas las tareas cuando se cumplen estas condiciones:
+
+<CardGroup cols={2}>
+  <Card title="Pedidos que activan la visibilidad de tareas" icon="circle-check">
+    - Se crean pedidos manuales (puntuales o de suscripción)
+    - Se realizan pedidos de catálogo mediante Stripe o métodos de pago manual
+    - La agencia acepta una propuesta
+  </Card>
+  <Card title="Pedidos que mantienen las tareas ocultas" icon="eye-slash">
+    - Tareas solicitadas por el cliente que la agencia aún no ha aceptado
+    - Pedidos de prueba que la agencia aún no ha aceptado
+    - Pedidos con estado pendiente a la espera de la confirmación manual del pago bancario
+  </Card>
+</CardGroup>
+
+## Búsqueda, filtrado y ordenación
+
+La página Todas las tareas incluye un conjunto completo de controles para ayudarle a encontrar exactamente lo que necesita.
+
+### Búsqueda
+
+Use la barra de búsqueda para localizar tareas por nombre, asignado o pedido relacionado. Los resultados se actualizan en tiempo real a medida que escribe.
+
+### Filtros
+
+Haga clic en **Filter → + Add Filter** para abrir el panel de filtros. Puede combinar varios filtros para obtener resultados precisos:
+
+| Filtro | Qué hace |
+|--------|--------------|
+| **Order ID** | Muestra las tareas vinculadas a un número de pedido específico |
+| **Assignee** | Muestra las tareas asignadas a un miembro del equipo en particular |
+| **Status** | Filtra por progreso de la tarea: Pending, In Progress, Review, Done, etc. |
+| **Priority** | Enfoca en tareas de prioridad High, Medium o Low |
+| **Label** | Limita por etiquetas o categorías de tareas |
+| **Kick Off Date** | Muestra las tareas que comienzan en o después de una fecha específica |
+| **End Date** | Muestra las tareas que vencen en una fecha específica |
+
+<Note>
+  Los filtros solo están disponibles en la página Todas las tareas. Persisten durante su sesión del navegador, pero se restablecen al actualizar la página. Los filtros afectan únicamente a su vista y no cambian lo que ven otros usuarios.
+</Note>
+
+Para borrar todos los filtros, haga clic en **Clear Filters** para volver a la lista completa y sin filtrar.
+
+### Ordenación
+
+Ordene la lista de tareas por:
+- **Fecha de vencimiento**: destaca las tareas próximas o ya vencidas
+- **Prioridad**: lleva las tareas más críticas a la parte superior
+- **Hora de creación**: ve primero las tareas agregadas recientemente
+
+### Navegación con migas de pan
+
+Use el rastro de migas de pan en la parte superior de la página para mantener el contexto mientras navega entre subtareas, listas de tareas y pedidos principales. Esto resulta especialmente útil cuando profundiza en una tarea específica y luego necesita volver a la lista más amplia.
+
+## Editar tareas
+
+Puede modificar las tareas en la página Todas las tareas de dos formas:
+
+<Tabs>
+  <Tab title="Edición en línea">
+    Haga clic directamente en un campo editable dentro de la fila de la tarea (como el estado, el asignado o la fecha de vencimiento) y realice su cambio sin salir de la vista de lista. Esta es la opción más rápida para actualizaciones rápidas.
+  </Tab>
+  <Tab title="Edición en modal">
+    Haga clic en el nombre de la tarea para abrir el modal de detalle completo de la tarea. Desde aquí puede actualizar todas las propiedades de la tarea, agregar notas, ver subtareas y consultar el historial completo de la tarea. Use esta opción para ediciones más exhaustivas o cuando necesite contexto.
+  </Tab>
+</Tabs>
+
+## Reglas de eliminación de tareas
+
+Las tareas de la página Todas las tareas están vinculadas directamente a sus pedidos principales.
+
+- Cuando se **elimina un pedido**, todas las tareas asociadas a ese pedido se **eliminan automática y permanentemente** de la página Todas las tareas.
+- Esta eliminación afecta a todos los roles de usuario: nadie podrá ver esas tareas después de que se elimine el pedido.
+- **No hay opción de recuperación** para las tareas eliminadas mediante la eliminación de un pedido.
+
+<Warning>
+  Eliminar un pedido elimina permanentemente todas sus tareas. Asegúrese de guardar en otro lugar cualquier historial de tareas o registro de entregables importante antes de eliminar un pedido.
+</Warning>
+
+## Notas adicionales
+
+<Accordion title="Actualizaciones en tiempo real">
+  Los cambios en los pedidos, las asignaciones de tareas o los estados de las tareas se reflejan en tiempo real en la página Todas las tareas. Si un compañero actualiza una tarea mientras tiene la página abierta, verá el cambio sin necesidad de actualizar.
+</Accordion>
+
+<Accordion title="Tareas solicitadas por el cliente">
+  Las tareas enviadas por los clientes no aparecen en la página Todas las tareas hasta que la agencia las acepta explícitamente. Hasta que se aceptan, estas tareas permanecen en estado pendiente y no son visibles en la vista centralizada.
+</Accordion>
+
+<Accordion title="Tareas y estado del pedido">
+  Las tareas solo aparecen para los pedidos en estado Ongoing o In Review. Si un pedido pasa a Completed o se pausa, sus tareas dejan de mostrarse aquí. Vaya al pedido específico para ver las tareas vinculadas a pedidos fuera de estos estados.
+</Accordion>

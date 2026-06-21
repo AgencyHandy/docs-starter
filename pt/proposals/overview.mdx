@@ -1,0 +1,217 @@
+---
+title: "Criar e Enviar Propostas a Clientes no AgencyHandy"
+sidebarTitle: "Propostas"
+description: "Construa, personalize e envie propostas profissionais no AgencyHandy — cobrindo preços de serviços, pacotes, aceitação pelo cliente e criação automática de encomendas."
+---
+
+A funcionalidade de Propostas do AgencyHandy oferece-lhe um fluxo de trabalho profissional e completo para transformar consultas em projetos ativos. Pode construir propostas detalhadas com serviços, pacotes, add-ons, impostos e termos legais — e depois enviá-las a clientes ou leads diretamente da plataforma. Assim que um cliente aceita, o AgencyHandy pode criar automaticamente uma encomenda e uma fatura, eliminando as trocas manuais que atrasam os negócios.
+
+<Note>
+  Apenas **Super Admins** e **Admins** podem criar e enviar propostas. Os Gestores de Projeto (GPs) podem ver propostas mas não podem enviá-las.
+</Note>
+
+## Dashboard de Propostas
+
+Para abrir o Dashboard de Propostas, clique em **Propostas** na barra lateral esquerda. O dashboard lista todas as suas propostas enviadas e recebidas e mostra:
+
+- **Estado** — Rascunho, Enviada, Aceite ou Pendente
+- **Data de criação**, **data de envio** e **data de expiração**
+- **Estado de visualização** — se o cliente abriu a proposta
+- Menu de ações para **editar**, **enviar**, **partilhar** ou **eliminar** cada proposta
+
+Pode pesquisar propostas por ID e filtrar ou ordenar a lista para encontrar rapidamente o que precisa.
+
+## Criar uma Proposta
+
+Clique em **Criar Proposta** para abrir o construtor de propostas. Está organizado em três secções: **Visão Geral**, **Termos & Condições** e **Configuração**.
+
+### Visão Geral
+
+A secção de Visão Geral é onde constrói o conteúdo e os preços da proposta.
+
+#### Informações da Proposta e do Cliente
+
+Preencha os seguintes campos no topo da proposta:
+
+- **Nome da Proposta** e **ID da Proposta**
+- **Cliente ou Lead** — suporta múltiplos endereços de email; marque um como Principal
+- **Nome da Empresa** e **Endereço** (país, estado, cidade, código postal, detalhes adicionais)
+- **Assignee**, **Data de Envio** e **Data de Expiração**
+
+#### Blocos de Conteúdo
+
+Cada bloco de conteúdo usa um editor incorporado para personalizar a narrativa para cada cliente:
+
+- **Introdução** — estabeleça o contexto e enquadramento do envolvimento
+- **Sobre Nós** — destaque a expertise da sua agência
+- **O Que Recebe** — defina claramente o âmbito e os entregáveis
+- **Garantia** — detalhe quaisquer garantias ou compromissos
+
+#### Ofertas — Serviços, Pacotes, Add-ons & Impostos
+
+A secção de Ofertas é onde configura os preços.
+
+<Accordion title="Serviços">
+  Adicione um ou mais serviços à proposta. Para cada serviço, pode:
+
+  - Selecionar um **tipo de preço**: Único ou Subscrição
+  - Escolher a **moeda do serviço** (serviços diferentes podem usar moedas diferentes na mesma proposta)
+</Accordion>
+
+<Accordion title="Pacotes">
+  Dentro de cada serviço, adicione pacotes existentes ou crie novos no momento. Para cada pacote, defina:
+
+  - Nome do pacote
+  - Quantidade e preço por unidade
+  - Valor total
+
+  Pode remover pacotes a qualquer momento antes de enviar.
+</Accordion>
+
+<Accordion title="Add-ons">
+  Associe add-ons opcionais a qualquer serviço. Os add-ons aparecem como extras que os clientes podem ver junto ao preço do serviço principal. Pode criar novos add-ons diretamente no construtor de propostas sem sair do formulário.
+</Accordion>
+
+<Accordion title="Itens">
+  Adicione itens personalizados únicos com uma quantidade e preço unitário definidos. Os itens são úteis para custos ad-hoc como taxas de configuração ou entregáveis pontuais.
+</Accordion>
+
+<Accordion title="Taxas de Imposto">
+  Aplique taxas de imposto existentes ou crie novas diretamente na proposta. Selecione se cada imposto é **Exclusivo** (adicionado ao preço) ou **Inclusivo** (já incluído). Os impostos são calculados por serviço.
+</Accordion>
+
+### Termos & Condições
+
+Use a secção de Termos & Condições para adicionar linguagem legal específica da proposta. Inclua políticas de cancelamento, termos de reembolso, direitos de utilização e quaisquer outras condições relevantes para o envolvimento. Esta secção ajuda a garantir que ambas as partes entendem as suas obrigações antes da aceitação.
+
+### Configuração
+
+A secção de Configuração controla o que acontece após o envio da proposta.
+
+<CardGroup cols={2}>
+  <Card title="Ação Pós-aceitação" icon="bolt">
+    Escolha o que o AgencyHandy faz quando a proposta é aceite: **Não Fazer Nada**, ou **Criar Encomenda & Fatura** automaticamente.
+  </Card>
+  <Card title="Lembretes" icon="bell">
+    Configure notificações de lembrete para alertar clientes que não responderam antes da data de expiração.
+  </Card>
+  <Card title="Proteção por Palavra-passe" icon="lock">
+    Adicione uma palavra-passe ao link público da proposta para que apenas o destinatário pretendido a possa ver.
+  </Card>
+  <Card title="Comentários" icon="message">
+    Permita que os clientes deixem comentários na vista pública da proposta para facilitar a discussão.
+  </Card>
+</CardGroup>
+
+## Enviar uma Proposta
+
+Em qualquer momento durante a criação, pode guardar a proposta como **Rascunho** ou **Pré-visualizá-la**. Quando estiver pronta, clique em **Enviar** para a entregar ao cliente ou lead.
+
+Após o envio:
+
+- Um link público é gerado automaticamente
+- O estado da proposta atualiza de **Rascunho** para **Enviada**
+- O AgencyHandy acompanha se o cliente visualizou a proposta
+
+No menu de ações da proposta pode também reenviar, descarregar, partilhar o link público, ver comentários ou eliminar a proposta.
+
+## Enviar uma Proposta com um Pacote Específico
+
+Se pretender enviar uma proposta rápida diretamente associada a um pacote de serviço específico, use o formulário de atalho **Criar Proposta**:
+
+<Steps>
+  <Step title="Abrir a secção de Propostas">
+    Navegue até **Propostas** na barra lateral esquerda e clique em **+ Criar Proposta**.
+  </Step>
+  <Step title="Preencher o formulário de proposta">
+    Introduza o **nome do cliente** e selecione o **serviço**. Se o serviço tiver múltiplos pacotes, aparecerão automaticamente — selecione o adequado.
+
+    Opcionalmente, atribua um **Gestor** à proposta.
+  </Step>
+  <Step title="Adicionar detalhes da encomenda">
+    Escreva um **Resumo da Encomenda** (obrigatório) descrevendo o que o cliente receberá. Associe quaisquer ficheiros de suporte até 1 GB.
+  </Step>
+  <Step title="Definir preços e termos">
+    Confirme o **tipo de preço** (único ou subscrição), defina a **duração**, **quantidade**, **orçamento** e **moeda**. Adicione quaisquer **Termos e Condições** relevantes para a proposta.
+  </Step>
+  <Step title="Criar e enviar">
+    Clique em **Criar** para finalizar e enviar a proposta ao cliente. A proposta aparecerá tanto na sua lista de Enviados como na secção de Recebidos do cliente.
+  </Step>
+</Steps>
+
+<Note>
+  Verifique os preços e duração preenchidos automaticamente antes de clicar em Criar. Uma vez enviada, o cliente pode aceitar, rejeitar ou descarregar a proposta na sua secção de Recebidos.
+</Note>
+
+## Ciclo de Vida do Estado da Proposta
+
+| Estado | Significado |
+|--------|---------|
+| **Rascunho** | A proposta foi criada mas ainda não enviada. |
+| **Enviada** | A proposta foi entregue ao cliente ou lead. |
+| **Pendente** | O cliente reviu e devolveu a proposta para discussão. |
+| **Aceite** | Qualquer das partes aceitou formalmente os termos da proposta. Uma encomenda é criada automaticamente se configurado. |
+| **Rejeitada** | Qualquer das partes rejeitou a proposta. O remetente recebe uma notificação com o motivo. |
+
+## Aceitar uma Proposta
+
+Tanto a agência como o cliente podem aceitar uma proposta recebida. Quando a aceitação acontece, o AgencyHandy cria uma encomenda automaticamente (se configurado na Configuração).
+
+<Steps>
+  <Step title="Ir para propostas Recebidas">
+    Clique em **Propostas** na barra lateral e selecione o separador **Recebidas**.
+  </Step>
+  <Step title="Abrir a proposta">
+    Selecione a proposta que pretende aceitar da lista e reveja os seus detalhes.
+  </Step>
+  <Step title="Clicar em Aceitar">
+    Clique no botão **Aceitar** para aceitar formalmente a proposta. O estado atualiza imediatamente e ambas as partes são notificadas.
+  </Step>
+</Steps>
+
+<Note>
+  Se for a agência a aceitar, os Super Admins e Admins recebem notificações. Se for o cliente a aceitar, o AgencyHandy notifica os utilizadores Super Admin e Admin da agência.
+</Note>
+
+## Rejeitar uma Proposta
+
+Se os termos, preços ou âmbito propostos não corresponderem aos seus requisitos, pode rejeitar a proposta e fornecer um motivo.
+
+<Steps>
+  <Step title="Ir para propostas Recebidas">
+    Navegue até **Propostas → Recebidas**.
+  </Step>
+  <Step title="Selecionar e rever a proposta">
+    Escolha a proposta que pretende rejeitar e reveja os seus detalhes.
+  </Step>
+  <Step title="Clicar em Rejeitar">
+    Clique em **Rejeitar** e confirme a sua decisão. O remetente da proposta recebe uma notificação juntamente com o motivo que forneceu.
+  </Step>
+</Steps>
+
+<Warning>
+  As propostas rejeitadas **não podem ser reenvidas**. Ambas as partes devem criar uma nova proposta para reiniciar as negociações.
+</Warning>
+
+## Vista Pública da Proposta
+
+Quando envia uma proposta, os clientes recebem um link para uma vista pública onde podem:
+
+- Rever todos os serviços, preços, pacotes e impostos
+- Aceitar ou rejeitar a proposta
+- Deixar comentários (se os comentários estiverem ativados)
+- Aceder à proposta de forma segura com uma palavra-passe (se a proteção por palavra-passe estiver ativada)
+
+## Notas Adicionais
+
+<Accordion title="Múltiplos emails e leads">
+  Pode adicionar múltiplos endereços de email a uma única proposta e marcar um como contacto Principal. As propostas funcionam tanto com clientes registados como com leads não registados.
+</Accordion>
+
+<Accordion title="Encomendas e faturas geradas automaticamente">
+  Quando configura a secção de Configuração para "Criar Encomenda & Fatura" na aceitação, o AgencyHandy gera automaticamente a encomenda e a fatura associadas no momento em que uma proposta é aceite — sem passos manuais necessários.
+</Accordion>
+
+<Accordion title="Acompanhamento de atividade da proposta">
+  Cada proposta inclui um histórico de atividade completo. Pode ver quando a proposta foi criada, enviada, visualizada, aceite ou rejeitada, tudo dentro do AgencyHandy.
+</Accordion>

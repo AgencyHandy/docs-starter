@@ -1,0 +1,119 @@
+---
+title: "Logowanie do AgencyHandy: Dostęp do dashboardu agencji"
+sidebarTitle: "Logowanie"
+description: "Przewodnik krok po kroku dotyczący logowania do AgencyHandy przy użyciu danych uwierzytelniających lub Google SSO, utrzymywania sesji i resetowania hasła w przypadku jego zapomnienia."
+---
+
+Logowanie do AgencyHandy zapewnia natychmiastowy dostęp do workspace Twojej agencji — od oczekujących zamówień i komunikacji z klientami po zadania, faktury i zarządzanie zespołem. Każde logowanie jest powiązane z unikalną nazwą workspace, dzięki czemu AgencyHandy może przekierować Cię do właściwego konta, nawet jeśli wiele agencji używa tego samego adresu e-mail.
+
+<Note>
+  Przed zalogowaniem musisz posiadać zarejestrowane konto AgencyHandy. Jeśli jeszcze go nie masz, najpierw skorzystaj z przewodnika [Rejestracja](/pl/getting-started/sign-up).
+</Note>
+
+## Logowanie e-mailem i hasłem
+
+<Steps>
+  <Step title="Przejdź na stronę AgencyHandy">
+    Otwórz [agencyhandy.com](https://www.agencyhandy.com/) w przeglądarce, a następnie kliknij przycisk **Sign In** w górnej nawigacji.
+  </Step>
+
+  <Step title="Wpisz nazwę workspace">
+    Wpisz **nazwę workspace**, którą wybrałeś podczas rejestracji. To unikalny identyfikator Twojej agencji — tylko małe litery, cyfry i łączniki. Kliknij **Continue**, aby przejść do ekranu z danymi uwierzytelniającymi.
+
+    <Tip>
+      Nie pamiętasz nazwy workspace? Sprawdź e-mail potwierdzający, który otrzymałeś podczas rejestracji — zawiera odniesienie do Twojego adresu URL workspace.
+    </Tip>
+  </Step>
+
+  <Step title="Wpisz adres e-mail i hasło">
+    Podaj **adres e-mail** i **hasło** powiązane z Twoim kontem AgencyHandy.
+  </Step>
+
+  <Step title="Pozostań zalogowany (opcjonalnie)">
+    Zaznacz pole **Keep Log In**, jeśli chcesz, aby AgencyHandy zapamiętał Twoją sesję na tym urządzeniu. Po włączeniu tej opcji nie będziesz musiał ponownie wpisywać danych uwierzytelniających, dopóki ręcznie się nie wylogujesz.
+
+    <Warning>
+      Unikaj włączania opcji **Keep Log In** na współdzielonych lub publicznych komputerach. Każda osoba mająca dostęp do tego urządzenia będzie mogła otworzyć Twój workspace bez wpisywania hasła.
+    </Warning>
+  </Step>
+
+  <Step title="Kliknij Sign In">
+    Kliknij przycisk **Sign In**. AgencyHandy uwierzytelni Twoje dane i przeniesie Cię bezpośrednio do dashboardu agencji.
+  </Step>
+</Steps>
+
+## Logowanie przez Google (SSO)
+
+AgencyHandy obsługuje Single Sign-On (SSO) przez Google, dzięki czemu możesz całkowicie pominąć ręczne wpisywanie hasła.
+
+<Tabs>
+  <Tab title="Jak używać Google SSO">
+    <Steps>
+      <Step title="Przejdź na stronę logowania">
+        Przejdź do [agencyhandy.com](https://www.agencyhandy.com/) i kliknij **Sign In**.
+      </Step>
+      <Step title="Kliknij 'Continue with Google'">
+        Na ekranie logowania kliknij przycisk **Continue with Google** zamiast wpisywać nazwę workspace i hasło.
+      </Step>
+      <Step title="Wybierz konto Google">
+        Google poprosi Cię o wybranie konta, którego chcesz użyć. Wybierz konto, którego adres e-mail odpowiada Twojemu kontu AgencyHandy.
+      </Step>
+      <Step title="Przyznaj uprawnienia (jeśli wymagane)">
+        Podczas pierwszego logowania przez Google możesz zostać poproszony o przyznanie AgencyHandy dostępu do podstawowych informacji o profilu. Zaakceptuj uprawnienia, aby kontynuować.
+      </Step>
+      <Step title="Uzyskaj dostęp do dashboardu">
+        AgencyHandy weryfikuje Twoją tożsamość Google i automatycznie przekierowuje Cię do dashboardu agencji.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Jak działa łączenie kont">
+    Gdy logujesz się przez Google, AgencyHandy sprawdza, czy adres e-mail Google odpowiada istniejącemu kontu:
+
+    - **E-mail już istnieje** — AgencyHandy natychmiast loguje Cię na to konto.
+    - **E-mail nie istnieje** — AgencyHandy tworzy nowe konto przy użyciu danych Twojego profilu Google.
+
+    Po połączeniu Twój adres e-mail Google staje się podstawową tożsamością logowania dla tego workspace. Nadal możesz logować się adresem e-mail i hasłem, jeśli je ustawiłeś.
+
+    <Note>
+      Twoja sesja SSO działa jak standardowa sesja logowania. Możesz się wylogować w dowolnym momencie, a ponowne uwierzytelnienie przez Google jest natychmiastowe przy następnej wizycie.
+    </Note>
+  </Tab>
+  <Tab title="Ważne informacje">
+    - Używaj **tego samego adresu e-mail** co konto AgencyHandy podczas uwierzytelniania przez Google, aby zapewnić płynne logowanie.
+    - Jeśli cofniesz dostęp AgencyHandy w ustawieniach konta Google, logowanie przez Google SSO zostanie zablokowane. Użyj adresu e-mail i hasła, aby odzyskać dostęp.
+    - Uwierzytelnianie Google jest zgodne z własnymi protokołami bezpieczeństwa Google, w tym z uwierzytelnianiem dwuskładnikowym, jeśli je masz włączone na koncie Google.
+    - Logowanie oparte na haśle pozostaje dostępne jako alternatywa w każdej chwili.
+  </Tab>
+</Tabs>
+
+## Resetowanie hasła
+
+Jeśli zapomnisz hasła, możesz je zresetować bezpośrednio ze strony logowania bez konieczności kontaktu z działem wsparcia.
+
+<Steps>
+  <Step title="Kliknij 'Forgot Password'">
+    Na stronie logowania AgencyHandy kliknij link **Forgot Password** pod polem hasła.
+  </Step>
+  <Step title="Wpisz zarejestrowany adres e-mail">
+    Wpisz adres e-mail powiązany z Twoim kontem AgencyHandy i prześlij formularz. AgencyHandy wyśle e-mail z linkiem do resetowania hasła na ten adres.
+  </Step>
+  <Step title="Skopiuj kod weryfikacyjny">
+    Otwórz e-mail resetujący w skrzynce odbiorczej i skopiuj podany kod weryfikacyjny.
+  </Step>
+  <Step title="Wklej kod i kontynuuj">
+    Wróć na stronę resetowania AgencyHandy, wklej kod w pole weryfikacyjne i kliknij **Continue**.
+  </Step>
+  <Step title="Utwórz i potwierdź nowe hasło">
+    Wpisz nowe hasło w polu **New Password** i powtórz je w polu **Confirm Password**. Upewnij się, że nowe hasło spełnia te same wymagania co oryginalne:
+    - Co najmniej 8 znaków
+    - Co najmniej jedna wielka litera, jedna mała litera, jedna cyfra i jeden znak specjalny
+    - Brak spacji
+  </Step>
+  <Step title="Zaloguj się nowym hasłem">
+    Wróć na stronę logowania, wpisz nazwę workspace i adres e-mail, a następnie zaloguj się przy użyciu nowego hasła.
+  </Step>
+</Steps>
+
+<Note>
+  E-maile z resetowaniem hasła czasami trafiają do folderu spam lub wiadomości-śmieci. Jeśli nie widzisz e-maila w ciągu kilku minut, sprawdź tam, zanim poprosisz o kolejny.
+</Note>

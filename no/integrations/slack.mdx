@@ -1,0 +1,69 @@
+---
+title: "Koble Slack til for å motta sanntidsvarsler fra AgencyHandy"
+sidebarTitle: "Slack"
+description: "Koble Slack-arbeidsområdet ditt til AgencyHandy slik at bestillingsoppdateringer, oppgaveendringer og saksvarsler automatisk publiseres til en Slack-kanal."
+---
+
+AgencyHandys Slack-integrasjon holder teamet ditt oppdatert uten at noen trenger å bytte mellom apper. Når den er koblet til, publiserer AgencyHandy automatiske varsler til Slack-kanalen du velger, hver gang oppgaver, bestillinger eller andre aktiviteter i arbeidsområdet endres — slik at teamet alltid vet hva som skjer i sanntid.
+
+<Note>
+  Bare roller med **SuperAdmin**, **Admin** og **Manager** (med integrasjonstillatelser) kan koble til eller administrere Slack-integrasjonen. Du trenger administratorrettigheter for Slack-arbeidsområdet for å autorisere tilkoblingen.
+</Note>
+
+## Koble til Slack
+
+<Steps>
+  <Step title="Åpne Integrasjoner">
+    I venstre sidefelt klikker du på **Integrasjoner**.
+  </Step>
+
+  <Step title="Finn Slack-kortet">
+    Bla til **Slack**-kortet og klikk **Koble til**.
+  </Step>
+
+  <Step title="Autoriser AgencyHandy i Slack">
+    Et Slack-autorisasjonsvindu åpnes. Hvis du ikke allerede er logget inn på Slack-arbeidsområdet ditt, logger du inn nå. Gjennomgå tillatelsene AgencyHandy ber om, og klikk **Tillat** for å gi tilgang.
+  </Step>
+
+  <Step title="Velg en varslingskanal">
+    Etter autorisasjon velger du Slack-kanalen der du vil at AgencyHandy-varsler skal vises. Velg en kanal fra rullegardinmenyen og klikk **Lagre** for å bekrefte.
+  </Step>
+
+  <Step title="Bekreft oppsettet">
+    Slack-kortet oppdateres for å vise **Tilkoblet**. AgencyHandy begynner umiddelbart å publisere varsler til den valgte kanalen.
+  </Step>
+</Steps>
+
+## Hvilke varsler sendes til Slack
+
+AgencyHandy publiserer en Slack-melding hver gang noen av følgende hendelser inntreffer:
+
+| Kategori | Hendelser som utløser et varsel |
+|---|---|
+| **Oppgaver** | Oppgave opprettet, oppdatert, tildelt eller fullført |
+| **Bestillinger** | Bestilling opprettet eller status endret |
+| **Kommentarer** | Ny kommentar lagt til en oppgave eller bestilling |
+| **Filvedlegg** | Fil eller vedlegg lagt til en oppgave |
+| **Saker** | Sak opprettet, tildelt eller status endret |
+
+Hver Slack-melding inkluderer:
+
+- **Navnet** på oppgaven, bestillingen eller saken
+- **Statusendringen** eller handlingen som utløste meldingen
+- En **lenke** tilbake til det relevante elementet i AgencyHandy
+
+Når en fil eller et vedlegg legges til en oppgave, inkluderer Slack-meldingen også en forhåndsvisning av vedlegget.
+
+<Tip>
+  Velg en dedikert **#agency-handy-varsler**-kanal (eller lignende) for å holde varsler organisert og hindre at de roter til de viktigste teamkanalene dine.
+</Tip>
+
+## Koble fra Slack
+
+For å stoppe varsler, gå tilbake til **Integrasjoner** og klikk **Koble fra** på Slack-kortet. Alle varsler stoppes umiddelbart.
+
+## Viktige merknader
+
+- **Ett arbeidsområde per tilkobling** — du kan bare koble ett enkelt Slack-arbeidsområde til hvert AgencyHandy-arbeidsområde. For å bytte til et annet Slack-arbeidsområde, koble fra det nåværende og koble til på nytt.
+- **Kanalsynlighet** — varsler er synlige for alle i den valgte Slack-kanalen. Sørg for at kanalen er passende for detaljnivået som deles (f.eks. unngå å publisere klientsensitive bestillingsdetaljer til en offentlig kanal).
+- **Re-autorisasjon** — hvis Slack-tokenet ditt utløper eller tillatelsene endres, gå tilbake til Integrasjoner og koble til på nytt for å gjenopprette varsler.

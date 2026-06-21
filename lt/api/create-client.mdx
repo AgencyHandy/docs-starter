@@ -1,0 +1,137 @@
+---
+title: "AgencyHandy API: programinis naujo kliento kūrimas"
+sidebarTitle: "Sukurti klientą"
+description: "Programiškai pridėkite naujus klientus prie savo AgencyHandy darbo srities siųsdami užklausą į bulk-client galutinį tašką su vardu, el. paštu ir kontaktiniais duomenimis."
+---
+
+Kliento kūrimo (Create Client) galinis taškas leidžia tiesiogiai iš išorinės sistemos pridėti klientus prie jūsų AgencyHandy darbo srities. Skirtingai nuo potencialių klientų (leads), klientai yra pilnai įregistruoti kontaktai, kuriuos galima priskirti užsakymams, sąskaitoms faktūroms ir projektams. Naudokite šį galutinį tašką naujų klientų sinchronizavimui iš CRM, registracijos formos ar bet kurio kito duomenų šaltinio.
+
+<Note>
+  Prieš naudodami šį galutinį tašką, užbaikite vadovą [Darbo pradžia](/lt/api/getting-started), kad gautumėte savo API raktą ir įmonės ID. Skirtingai nuo potencialaus kliento kūrimo galutinio taško, kliento kūrimui **nereikalingas** atskiras vaidmens ID paieškos žingsnis.
+</Note>
+
+## Išankstiniai reikalavimai
+
+- ✅ API raktas sugeneruotas iš **Workspace Config → API Key**
+- ✅ Įmonės ID gautas iš `GET {{URL}}/accounts/companies`
+
+---
+
+## Galinis taškas
+
+```
+POST {{URL}}/members/bulk-client
+```
+
+## Antraštės
+
+| Antraštė | Reikšmė |
+|---|---|
+| `x-api-key` | Jūsų API raktas |
+| `companyId` | Jūsų įmonės ID |
+| `Content-Type` | `application/json` |
+
+## Užklausos turinys
+
+Užklausos turinys yra **JSON masyvas**. Viena užklausa galite sukurti vieną ar daugiau klientų.
+
+<ParamField body="firstName" type="string" required>
+  Kliento vardas.
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  Kliento pavardė.
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  Kliento el. pašto adresas. Turi būti unikalus jūsų darbo srityje.
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  Visiškai naujam klientui nustatykite `false`. Nustatykite `true` konvertuojant esamą potencialų klientą (lead) į klientą.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Kliento būsena. Dažnos reikšmės: `New`, `Active`. Jei praleista, numatytoji reikšmė yra `New`.
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  Kliento telefono numeris.
+</ParamField>
+
+<ParamField body="source" type="string">
+  Kaip gavote šį klientą. Pavyzdinės reikšmės: `website`, `referral`, `social`.
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  Kliento pozicija lentoje esančiame stulpelyje. Numatytoji reikšmė `1`.
+</ParamField>
+
+## Pavyzdinė užklausa
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-client" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyId: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+## Sėkmingas atsakymas
+
+```json
+{
+  "message": "Client created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  Patvirtinimo eilutė sėkmės atveju.
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  Sukurtų klientų objektų masyvas.
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  Naujai sukurto kliento unikalus ID. Naudokite šį ID priskirdami klientą užsakymams ar sąskaitoms faktūroms per API.
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  Kliento pilnas vardas (firstName + lastName).
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  Kliento būsena, kaip išsaugota.
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  Nariui priskirto vaidmens pavadinimas — bus `"client"`.
+</ResponseField>
+
+<Note>
+  Šio galutinio taško `companyId` antraštėje naudojama didžioji raidė **I** žodyje `Id` — `companyId` — skirtingai nuo kai kurių kitų galutinių taškų, kuriuose naudojama `companyid` (visos mažosios raidės). Naudokite tikslų aukščiau pateiktą rašybą, kad išvengtumėte autentifikavimo klaidų.
+</Note>
+
+<Tip>
+  Masyve perduokite kelis klientų objektus, kad vienu API kvietimu sukurtumėte klientus masiniu būdu. Kiekvienas objektas turi turėti unikalų `email` adresą. Pasikartojantys el. pašto adresai sukels to įrašo patikrinimo klaidą.
+</Tip>

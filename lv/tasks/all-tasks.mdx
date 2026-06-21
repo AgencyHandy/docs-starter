@@ -1,0 +1,126 @@
+---
+title: "Visi uzdevumi — centralizēta uzdevumu pārvaldība AgencyHandy"
+sidebarTitle: "Visi uzdevumi"
+description: "Izmantojiet lapu Visi uzdevumi, lai iegūtu reāllaika, pēc lomām filtrētu pārskatu par katru uzdevumu aktīvajos un pārskatāmajos pasūtījumos — ar meklēšanu, filtriem un kārtošanu."
+---
+
+AgencyHandy lapa Visi uzdevumi sniedz vienotu, centralizētu pārskatu par katru uzdevumu, kas pieder aktīvajām darbplūsmām jūsu aģentūrā. Tā vietā, lai pārmeklētu atsevišķus pasūtījumus, varat redzēt visus atbilstošos uzdevumus vienā vietā, filtrēt tos pēc izpildītāja, prioritātes vai datuma un veikt rediģēšanu tieši no saraksta. Redzamība tiek automātiski pielāgota jūsu lomai — Super administratori redz visu, Vadītāji redz viņiem piešķirtos pasūtījumus, bet Darbinieki redz tikai savus uzdevumus.
+
+## Piekļuve lapai Visi uzdevumi
+
+1. Piesakieties savā AgencyHandy kontā.
+2. Kreisajā sānjoslā noklikšķiniet uz **Uzdevumi**.
+3. Atlasiet **Visi uzdevumi**, lai atvērtu centralizēto uzdevumu paneli.
+
+<Note>
+  Lapa Visi uzdevumi parāda tikai uzdevumus no pasūtījumiem, kas atrodas statusā **Notiek** vai **Pārskatīšanā**. Uzdevumi, kas piesaistīti pasūtījumiem jebkurā citā stāvoklī (piemēram, Pabeigts, Gaida), šeit neparādās.
+</Note>
+
+## Uzdevumu redzamība pēc lomas
+
+Tas, ko redzat lapā Visi uzdevumi, pilnībā atkarīgs no jūsu lomas.
+
+| Loma | Ko viņi redz |
+|------|---------------|
+| **Super administrators / Administrators** | Visi uzdevumi visos pasūtījumos, komandās un statusi |
+| **Projektu vadītājs (PV)** | Tikai uzdevumi no pasūtījumiem, kuros viņi ir iecelti kā Vadītājs |
+| **Darbinieks / Izpildītājs** | Tikai tieši viņam piešķirtie uzdevumi — pat ja komandas biedri strādā pie tā paša pasūtījuma |
+
+<Tip>
+  Ja PV nevar atrast uzdevumu, ko sagaida redzēt, pārbaudiet, vai viņi ir iecelti kā Vadītājs attiecīgajā pasūtījumā. Projektu vadītāji neredz uzdevumus, ja viņi nav piešķirtais Vadītājs šim pasūtījumam.
+</Tip>
+
+## Kad uzdevumi parādās šajā lapā
+
+Uzdevumi parādās lapā Visi uzdevumi, kad ir izpildīti šie nosacījumi:
+
+<CardGroup cols={2}>
+  <Card title="Pasūtījumi, kas aktivizē uzdevumu redzamību" icon="circle-check">
+    - Tiek izveidoti manuāli pasūtījumi (vienreizēji vai abonēšanas)
+    - Tiek veikti kataloga pasūtījumi, izmantojot Stripe vai manuālās maksājumu metodes
+    - Aģentūra pieņem priekšlikumu
+  </Card>
+  <Card title="Pasūtījumi, kas uztur uzdevumus slēptus" icon="eye-slash">
+    - Klientu pieprasītie uzdevumi, ko aģentūra vēl nav pieņēmusi
+    - Izmēģinājuma pasūtījumi, ko aģentūra vēl nav pieņēmusi
+    - Pasūtījumi ar gaidošu statusu, kas gaida manuāla bankas maksājuma apstiprinājumu
+  </Card>
+</CardGroup>
+
+## Meklēšana, filtrēšana un kārtošana
+
+Lapa Visi uzdevumi ietver pilnu vadīklu komplektu, lai palīdzētu atrast tieši nepieciešamo.
+
+### Meklēšana
+
+Izmantojiet meklēšanas joslu, lai atrastu uzdevumus pēc nosaukuma, izpildītāja vai saistītā pasūtījuma. Rezultāti tiek atjaunināti reāllaikā, rakstot.
+
+### Filtri
+
+Noklikšķiniet uz **Filtrs → + Pievienot filtru**, lai atvērtu filtru paneli. Varat kombinēt vairākus filtrus precīziem rezultātiem:
+
+| Filtrs | Ko tas dara |
+|--------|--------------|
+| **Pasūtījuma ID** | Rāda uzdevumus, kas piesaistīti konkrētam pasūtījuma numuram |
+| **Izpildītājs** | Rāda uzdevumus, kas piešķirti konkrētam komandas dalībniekam |
+| **Statuss** | Filtrē pēc uzdevuma progresa: Gaida, Notiek, Pārskatīšanā, Pabeigts utt. |
+| **Prioritāte** | Koncentrējas uz Augstu, Vidēju vai Zemu prioritātes uzdevumiem |
+| **Etiķete** | Sašaurina pēc uzdevumu etiķetēm vai kategorijām |
+| **Sākuma datums** | Rāda uzdevumus, kas sākas noteiktā datumā vai pēc tā |
+| **Beigu datums** | Rāda uzdevumus, kas jāpabeidz noteiktā datumā |
+
+<Note>
+  Filtri ir pieejami tikai lapā Visi uzdevumi. Tie saglabājas pārlūka sesijas laikā, bet atiestatās pēc lapas atsvaidzināšanas. Filtri ietekmē tikai jūsu skatu un nemaina to, ko redz citi lietotāji.
+</Note>
+
+Lai notīrītu visus filtrus, noklikšķiniet uz **Notīrīt filtrus**, lai atgrieztos pie pilnā, nefiltretā saraksta.
+
+### Kārtošana
+
+Kārtojiet uzdevumu sarakstu pēc:
+- **Izpildes termiņa** — parādiet uzdevumus, kas tuvojas vai jau ir nokavēti
+- **Prioritātes** — novietojiet visatbilstošākos uzdevumus augšgalā
+- **Izveides laika** — vispirms skatiet nesen pievienotos uzdevumus
+
+### Navigācija ar drupata celiņu
+
+Izmantojiet drupata celiņu lapas augšdaļā, lai saglabātu kontekstu, pārvietojoties starp apakšuzdevumiem, uzdevumu sarakstiem un sākotnējiem pasūtījumiem. Tas ir īpaši noderīgi, ienirstot konkrētā uzdevumā un pēc tam vēloties atgriezties plašākajā sarakstā.
+
+## Uzdevumu rediģēšana
+
+Uzdevumus lapā Visi uzdevumi var modificēt divos veidos:
+
+<Tabs>
+  <Tab title="Rediģēšana tiešsaistē">
+    Noklikšķiniet tieši uz rediģējamā lauka uzdevuma rindā — piemēram, statusu, izpildītāju vai izpildes termiņu — un veiciet izmaiņas, neatstājot saraksta skatu. Tas ir ātrākais variants ātrai atjaunināšanai.
+  </Tab>
+  <Tab title="Rediģēšana modālī">
+    Noklikšķiniet uz uzdevuma nosaukuma, lai atvērtu pilnā uzdevuma detaļu modāli. No šejienes varat atjaunināt visus uzdevuma rekvizītus, pievienot piezīmes, skatīt apakšuzdevumus un redzēt pilnīgo uzdevuma vēsturi. Izmantojiet šo iespēju rūpīgākām labojumiem vai gadījumos, kad nepieciešams konteksts.
+  </Tab>
+</Tabs>
+
+## Uzdevumu dzēšanas noteikumi
+
+Lapas Visi uzdevumi uzdevumi ir tieši piesaistīti to sākotnējiem pasūtījumiem.
+
+- Kad **pasūtījums tiek dzēsts**, visi ar šo pasūtījumu saistītie uzdevumi tiek **automātiski un neatgriezeniski noņemti** no lapas Visi uzdevumi.
+- Šī dzēšana ietekmē visas lietotāju lomas — neviens nevarēs redzēt šos uzdevumus pēc pasūtījuma dzēšanas.
+- **Nav atjaunošanas iespējas** uzdevumiem, kas dzēsti pasūtījuma dzēšanas ceļā.
+
+<Warning>
+  Dzēšot pasūtījumu, tiek neatgriezeniski noņemti visi tā uzdevumi. Pārliecinieties, ka svarīga uzdevumu vēsture vai piegādājamo rezultātu ieraksti ir saglabāti citur, pirms dzēšat pasūtījumu.
+</Warning>
+
+## Papildu piezīmes
+
+<Accordion title="Reāllaika atjauninājumi">
+  Izmaiņas pasūtījumos, uzdevumu piešķīrumos vai uzdevumu statusi tiek atspoguļoti reāllaikā lapā Visi uzdevumi. Ja komandas biedrs atjaunina uzdevumu, kamēr jums ir atvērta lapa, izmaiņas redzēsit bez nepieciešamības atsvaidzināt.
+</Accordion>
+
+<Accordion title="Klientu pieprasītie uzdevumi">
+  Klientu iesniegtie uzdevumi neparādās lapā Visi uzdevumi, kamēr aģentūra tos nav skaidri pieņēmusi. Līdz pieņemšanai šie uzdevumi paliek gaidošā stāvoklī un nav redzami centralizētajā skatā.
+</Accordion>
+
+<Accordion title="Uzdevumi un pasūtījuma statuss">
+  Uzdevumi parādās tikai pasūtījumiem statusā Notiek vai Pārskatīšanā. Ja pasūtījums tiek pārvietots uz Pabeigts vai tiek apturēts, tā uzdevumi vairs netiek rādīti šeit. Pārejiet uz konkrēto pasūtījumu, lai apskatītu uzdevumus, kas piesaistīti pasūtījumiem ārpus šiem statusiem.
+</Accordion>

@@ -1,0 +1,196 @@
+---
+title: "การจัดการ Webhook: สร้าง ทดสอบ และยืนยันตัวตน"
+sidebarTitle: "Webhooks"
+description: "ตั้งค่า webhook ใน AgencyHandy เพื่อส่งข้อมูลเหตุการณ์แบบเรียลไทม์ไปยังระบบภายนอกทุกครั้งที่ออเดอร์ งาน ใบแจ้งหนี้ หรือเอนทิตีอื่นๆ เปลี่ยนแปลง"
+---
+
+Webhook ให้ AgencyHandy ส่งข้อมูลไปยังระบบภายนอกของคุณในทันทีที่มีการเปลี่ยนแปลง — ไม่ต้องการ polling เมื่อเหตุการณ์ที่กำหนดค่าไว้เกิดขึ้น (เช่น ออเดอร์ถูกอัปเดตหรือมีการสร้างตั๋ว) AgencyHandy จะส่งคำขอ HTTP POST พร้อม JSON payload ไปยัง endpoint URL ที่คุณระบุ ทำให้ง่ายต่อการซิงค์เครื่องมือภายนอก เช่น CRM ระบบเรียกเก็บเงิน หรือ dashboard ที่กำหนดเองกับ AgencyHandy workspace ของคุณในเวลาจริง
+
+<Note>
+  workspace ที่ใช้แผน Business Pro รองรับ **webhook events สูงสุด 30,000 รายการ** ต่อรอบการเรียกเก็บเงิน ตรวจสอบขีดจำกัดแผนของคุณก่อนตั้งค่าระบบอัตโนมัติที่มีปริมาณสูง
+</Note>
+
+## เหตุการณ์ที่รองรับ
+
+คุณสามารถสมัครรับ webhook สำหรับเหตุการณ์ใดก็ได้จากรายการต่อไปนี้:
+
+| หมวดหมู่ | เหตุการณ์ |
+|---|---|
+| **บริการ (Service)** | สร้าง อัปเดต ลบ |
+| **ออเดอร์ (Order)** | สร้าง อัปเดต ลบ |
+| **งาน (Task)** | สร้าง มอบหมาย เสร็จสิ้น อัปเดต |
+| **ใบแจ้งหนี้ (Invoice)** | สถานะเปลี่ยนแปลง |
+| **ลูกค้า / ผู้ใช้ (Client / User)** | เพิ่มลูกค้าใหม่ ลบลูกค้า/ผู้ใช้ |
+| **ใบเสนอราคา (Proposal)** | ส่ง รับ ยอมรับ ปฏิเสธ |
+| **ตั๋ว (Ticket)** | สร้าง มอบหมาย สถานะเปลี่ยนแปลง |
+| **การชำระเงิน (Payment)** | รับสำเร็จ ล้มเหลว |
+| **แพ็กเกจบริการ (Service Package)** | สร้าง อัปเดต ลบ |
+
+## สร้าง webhook
+
+<Steps>
+  <Step title="ไปที่ Webhook Management">
+    ในแถบด้านซ้าย ไปที่ **Integrations → Webhooks Management**
+  </Step>
+
+  <Step title="ยืนยันตัวตน token ของคุณ">
+    คลิกปุ่ม **Management** เพื่อยืนยันตัวตน webhook token ของคุณ token นี้ใช้ลงนาม payload ที่ส่งออกเพื่อให้คุณตรวจสอบได้ว่าข้อมูลมาจาก AgencyHandy จริง
+  </Step>
+
+  <Step title="สร้าง webhook ใหม่">
+    คลิก **Create New Webhook** เพื่อเปิดฟอร์มการกำหนดค่า webhook
+  </Step>
+
+  <Step title="กรอก endpoint URL">
+    ในช่อง **Endpoint URL** กรอก URL ของระบบภายนอกที่ควรรับข้อมูล webhook ต้องเป็น endpoint แบบ **POST** ที่เข้าถึงได้จากสาธารณะ
+  </Step>
+
+  <Step title="เลือกประเภทเนื้อหา">
+    เลือก **JSON** เป็นประเภทเนื้อหา AgencyHandy ส่ง webhook payload ทั้งหมดเป็น `application/json`
+  </Step>
+
+  <Step title="เลือกเหตุการณ์ webhook">
+    เลือกทุกเหตุการณ์ที่ควรทริกเกอร์ webhook นี้ คุณสามารถเลือกเหตุการณ์จากหลายหมวดหมู่ได้ — เช่น **Order: Created** และ **Invoice: Status changed** สามารถชี้ไปยัง endpoint เดียวกันได้
+  </Step>
+
+  <Step title="เปิดใช้งาน webhook">
+    สลับปุ่ม **Active** เมื่อเปิดใช้งาน AgencyHandy จะส่ง payload สำหรับเหตุการณ์ที่เลือกทั้งหมดไปยัง endpoint ของคุณในเวลาจริง
+  </Step>
+
+  <Step title="บันทึกการกำหนดค่า">
+    ตรวจสอบการตั้งค่าของคุณ จากนั้นคลิก **Save** webhook จะปรากฏในรายการและเริ่มส่งเหตุการณ์ทันที
+  </Step>
+</Steps>
+
+## ทดสอบ webhook
+
+หลังจากสร้าง webhook ให้ส่ง payload ทดสอบเพื่อยืนยันว่า endpoint ของคุณเข้าถึงได้และประมวลผลข้อมูลได้อย่างถูกต้อง
+
+<Steps>
+  <Step title="เปิด webhook">
+    จากรายการ Webhooks Management คลิก webhook ที่คุณต้องการทดสอบ
+  </Step>
+
+  <Step title="คลิก Test Event">
+    คลิกปุ่ม **Test Event** บนหน้ารายละเอียด webhook
+  </Step>
+
+  <Step title="เลือกเหตุการณ์ทดสอบ">
+    เลือกเหตุการณ์ตัวอย่างจากรายการเหตุการณ์ที่กำหนดค่าไว้ใน webhook นี้ (เช่น **Order: Created**)
+  </Step>
+
+  <Step title="ส่ง payload ทดสอบ">
+    คลิก **Send** AgencyHandy จะส่ง payload ตัวอย่างไปยัง endpoint URL ของคุณ
+  </Step>
+
+  <Step title="ตรวจสอบผลลัพธ์">
+    ตรวจสอบระบบภายนอกของคุณเพื่อยืนยันว่าได้รับ payload ทดสอบและประมวลผลตามที่คาดไว้ กลับมาที่ AgencyHandy คลิกเข้าไปใน webhook เพื่อดู **ประวัติ** — คุณสามารถดูคำขอเต็ม การตอบสนองที่ endpoint ของคุณส่งคืน และส่งเหตุการณ์ในอดีตใดๆ ซ้ำได้หากจำเป็น
+  </Step>
+</Steps>
+
+<Tip>
+  ใช้เครื่องมืออย่าง [Webhook.site](https://webhook.site) หรือ [RequestBin](https://requestbin.com) เป็น endpoint ชั่วคราวระหว่างการตั้งค่า เพื่อตรวจสอบรูปร่าง payload ที่แน่นอนก่อนเชื่อมต่อกับระบบจริงของคุณ
+</Tip>
+
+## ยืนยันตัวตน webhook payload
+
+ทุกคำขอ webhook ที่ออกจาก AgencyHandy จะมี header ลายเซ็นที่ endpoint ของคุณสามารถใช้ยืนยันว่า payload นั้นแท้จริงและไม่ได้ถูกแก้ไข
+
+### Signature header
+
+```
+x-ah-sig: <signature>
+```
+
+AgencyHandy เพิ่ม header นี้ในคำขอ webhook ทุกรายการ ดึงค่าจากคำขอที่เข้ามาและส่งไปยัง endpoint การตรวจสอบ
+
+### ตรวจสอบลายเซ็น webhook
+
+ส่งคำขอต่อไปนี้เพื่อยืนยันว่า payload นั้นถูกต้อง:
+
+```
+POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature
+Content-Type: application/json
+```
+
+<ParamField body="webhookId" type="string" required>
+  ID ของ webhook ที่ได้รับเหตุการณ์ ค้นหาได้ในหน้ารายละเอียด webhook ใน AgencyHandy
+</ParamField>
+
+<ParamField body="signature" type="string" required>
+  ค่าของ header `x-ah-sig` จากคำขอ webhook ที่เข้ามา
+</ParamField>
+
+<ParamField body="secret" type="string" required>
+  webhook secret ที่แสดงในหน้ารายละเอียด webhook ใน AgencyHandy
+</ParamField>
+
+<ParamField body="payload" type="object" required>
+  ข้อมูล JSON body ดิบที่ได้รับจากคำขอ webhook ของ AgencyHandy
+</ParamField>
+
+<CodeGroup>
+
+```javascript JavaScript
+const url = 'https://api.agencyhandy.com/api/v1/webhooks/verify-signature';
+
+const postData = {
+  webhookId: 'your_webhook_id',
+  signature: 'your_signature',   // value of x-ah-sig header
+  secret: 'your_webhook_secret',
+  payload: {},                   // the parsed JSON body from AgencyHandy
+};
+
+const response = await fetch(url, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(postData),
+});
+
+const data = await response.json();
+console.log(data); // { "verification_status": "SUCCESS" }
+```
+
+```bash cURL
+curl -X POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature \
+  -H "Content-Type: application/json" \
+  -d '{
+    "webhookId": "your_webhook_id",
+    "signature": "your_signature",
+    "secret": "your_webhook_secret",
+    "payload": {}
+  }'
+```
+
+</CodeGroup>
+
+**การตอบสนอง**
+
+<ResponseField name="verification_status" type="string">
+  `SUCCESS` เมื่อลายเซ็นถูกต้อง `FAILED` เมื่อการตรวจสอบล้มเหลว (HTTP 403)
+</ResponseField>
+
+```json Success (200)
+{
+  "verification_status": "SUCCESS"
+}
+```
+
+```json Failure (403)
+{
+  "type": "PermissionError",
+  "status": 403,
+  "verification_status": "FAILED"
+}
+```
+
+<Warning>
+  เก็บ webhook secret ของคุณไว้เป็นความลับ หมุนเวียนเปลี่ยนเป็นระยะและอัปเดตตรรกะการตรวจสอบของคุณทันทีหลังจากเปลี่ยน อย่าเปิดเผยใน code ฝั่ง client หรือ repository สาธารณะ
+</Warning>
+
+## หมายเหตุสำคัญ
+
+- endpoint URL ของคุณต้องเป็น URL แบบ **HTTPS POST ที่เข้าถึงได้จากสาธารณะ**
+- หาก endpoint ของคุณไม่พร้อมใช้งานชั่วคราว ให้ตรวจสอบแผงประวัติ webhook ใน AgencyHandy — คุณสามารถ **ส่งซ้ำ** เหตุการณ์ในอดีตใดๆ ได้โดยตรงจากที่นั่น
+- ตรวจสอบกิจกรรม webhook เป็นประจำเพื่อตรวจจับการส่งที่ล้มเหลวหรือความพยายามเข้าถึงโดยไม่ได้รับอนุญาต
+- Webhook ที่ล้มเหลวซ้ำๆ อาจถูก AgencyHandy หยุดชั่วคราว — ตรวจสอบบันทึกการส่งเพื่อตรวจพบปัญหาตั้งแต่เนิ่นๆ

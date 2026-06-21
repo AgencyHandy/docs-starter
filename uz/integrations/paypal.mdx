@@ -1,0 +1,70 @@
+---
+title: "Xavfsiz mijoz to'lovlarini qabul qilish uchun PayPal-ni ulang"
+sidebarTitle: "PayPal"
+description: "PayPal hisobingizni AgencyHandy bilan bog'lang va mijozlaringiz hisob-fakturalarni PayPal-ning ishonchli, xalqaro miqyosda tan olingan to'lov platformasi orqali to'lashiga imkon bering."
+---
+
+AgencyHandy-ning PayPal integratsiyasi mijozlaringizga kredit kartasiz hisob-fakturalarni xavfsiz va qulay tarzda to'lash imkonini beradi. PayPal keng doiradagi xalqaro valyutalarni qo'llab-quvvatlaydi, bu esa xorijiy mijozlar bilan ishlaydigan agentliklar uchun ayniqsa foydalidir.
+
+<Note>
+  PayPal platforma darajasidagi valyuta va mintaqaviy cheklovlar tufayli upsell to'lovlari uchun **ishlatib bo'lmaydi**. Upsell to'lovlari uchun Stripe-dan foydalaning.
+</Note>
+
+<Note>
+  PayPal integratsiyasini faqat **SuperAdmin** va **Admin** rollari ulashi yoki boshqarishi mumkin. Boshlashdan oldin faol PayPal hisobingiz bo'lishi shart.
+</Note>
+
+## PayPal-ni ulash
+
+<Steps>
+  <Step title="PayPal integratsiyasi sozlamalarini oching">
+    AgencyHandy-ga kiring, so'ng chap paneldagi **Integrations → PayPal Integration** bo'limiga o'ting.
+  </Step>
+
+  <Step title="Ulanishni boshlang">
+    **Connect PayPal** tugmasini bosing. PayPal kirish sahifasiga yo'naltirilasiz.
+  </Step>
+
+  <Step title="AgencyHandy-ga ruxsat bering">
+    PayPal hisobingizga kiring va so'ralgan ruxsatlarni ko'rib chiqing. AgencyHandy-ga hisobingizga kirish huquqini berish uchun **Allow** (yoki **Grant**) tugmasini bosing.
+  </Step>
+
+  <Step title="Ulanishni tasdiqlang">
+    Muvaffaqiyatli ruxsatdan so'ng, PayPal sizni AgencyHandy-ga qaytaradi. Integratsiya kartasida **PayPal Connected** tasdiqlash xabari ko'rinadi. Endi mijozlar hisob-fakturalarni PayPal orqali to'lashi mumkin.
+  </Step>
+</Steps>
+
+## Mijozlar PayPal orqali qanday to'laydi
+
+Integratsiya faollashtirilgandan so'ng, siz yuboradigan har qanday hisob-fakturada **Pay with PayPal** tugmasi paydo bo'ladi. Mijozingiz tugmani bosib, PayPal hisobiga kiradi (yoki mintaqasiga qarab mehmon sifatida to'laydi) va to'lovni yakunlaydi. PayPal to'lovni tasdiqlagandan so'ng AgencyHandy hisob-faktura holatini avtomatik ravishda yangilaydi.
+
+## Qo'llab-quvvatlanadigan valyutalar
+
+AgencyHandy PayPal to'lovlari uchun quyidagi valyutalarni qo'llab-quvvatlaydi:
+
+| Mintaqa | Valyutalar |
+|---|---|
+| Amerika | USD, CAD, BRL, MXN |
+| Evropa | EUR, GBP, CHF, NOK, SEK, DKK, PLN, CZK, HUF |
+| Osiyo-Tinch okeani | AUD, NZD, JPY, HKD, SGD, MYR, PHP, THB, TWD |
+| Yaqin Sharq / Boshqalar | ILS, CNY |
+
+<Warning>
+  Ba'zi valyutalar cheklovlarga ega:
+  - **JPY** va bir qancha boshqa valyutalar kasr miqdorlarni qo'llab-quvvatlamaydi — hisob-faktura summalarida kasr qismlardan saqlaning.
+  - **BRL** faqat Braziliyalik PayPal hisoblari uchun mavjud. Agar hisobingiz Braziliyada ro'yxatdan o'tmagan bo'lsa, BRL to'lovlari avtomatik ravishda asosiy valyutangizga aylantiriladi.
+  - Ayrim valyutalar faqat mamlakat ichidagi hisoblar uchun mavjud. Xatolarning oldini olish uchun hisobingizning asosiy valyutasi hisob-faktura valyutasiga mos kelishini tekshiring.
+</Warning>
+
+<Note>
+  PayPal valyuta konvertatsiyasi amalga oshganda o'zining konvertatsiya to'lovlari va marjalarini qo'llaydi. Bular AgencyHandy tomonidan boshqarilmaydi.
+</Note>
+
+## Integratsiyani sinab ko'ring
+
+Haqiqiy mijoz hisob-fakturalari uchun PayPal-dan foydalanishdan oldin, tezkor sinov o'tkazing:
+
+1. AgencyHandy-da [qo'llab-quvvatlanadigan valyuta](#supported-currencies) yordamida sinov hisob-fakturasini yarating.
+2. Hisob-fakturani o'zingiz nazorat qiladigan ikkinchi PayPal hisobiga yuboring.
+3. Ikkinchi hisobdan to'lovni yakunlang.
+4. AgencyHandy-ga qayting va hisob-faktura holati **Paid** ga yangilanganini hamda mablag'lar PayPal hisobingizda ko'rinishini tasdiqlang.

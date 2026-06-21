@@ -1,0 +1,137 @@
+---
+title: "AgencyHandy API：通过编程方式创建新客户"
+sidebarTitle: "创建客户"
+description: "通过向批量客户端点发布包含姓名、电子邮件和联系方式的请求，以编程方式向您的 AgencyHandy 工作区添加新客户。"
+---
+
+创建客户端点允许您从外部系统直接向 AgencyHandy 工作区添加客户。与潜在客户不同，客户是已完成入驻的联系人，可以被分配到订单、发票和项目中。使用此端点从 CRM、入驻表单或任何其他数据源同步新客户。
+
+<Note>
+  使用此端点之前，请完成[入门指南](/zh/api/getting-started)以获取您的 API 密钥和公司 ID。与创建潜在客户端点不同，创建客户**不**需要单独的角色 ID 查询步骤。
+</Note>
+
+## 前提条件
+
+- ✅ 从 **工作区配置 → API 密钥** 生成的 API 密钥
+- ✅ 从 `GET {{URL}}/accounts/companies` 获取的公司 ID
+
+---
+
+## 端点
+
+```
+POST {{URL}}/members/bulk-client
+```
+
+## 标头
+
+| 标头 | 值 |
+|---|---|
+| `x-api-key` | 您的 API 密钥 |
+| `companyId` | 您的公司 ID |
+| `Content-Type` | `application/json` |
+
+## 请求主体
+
+请求主体为 **JSON 数组**。您可以在一次请求中创建一个或多个客户。
+
+<ParamField body="firstName" type="string" required>
+  客户的名字。
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  客户的姓氏。
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  客户的电子邮件地址。在您的工作区内必须唯一。
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  对于全新客户，设置为 `false`。将现有潜在客户转换为客户时，设置为 `true`。
+</ParamField>
+
+<ParamField body="status" type="string">
+  客户的状态。常见值：`New`、`Active`。若省略，默认为 `New`。
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  客户的电话号码。
+</ParamField>
+
+<ParamField body="source" type="string">
+  获取此客户的来源。示例值：`website`、`referral`、`social`。
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  客户在看板列中的位置。默认为 `1`。
+</ParamField>
+
+## 示例请求
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-client" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyId: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+## 成功响应
+
+```json
+{
+  "message": "Client created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  成功时的确认字符串。
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  已创建的客户对象数组。
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  新创建客户的唯一 ID。通过 API 将客户分配到订单或发票时，请使用此 ID。
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  客户的全名（名字 + 姓氏）。
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  存储的客户状态。
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  分配给成员的角色 — 将为 `"client"`。
+</ResponseField>
+
+<Note>
+  此端点的 `companyId` 标头使用大写 **I** — `companyId` — 与其他使用 `companyid`（全小写）的端点不同。请使用上方所示的确切大小写以避免身份验证错误。
+</Note>
+
+<Tip>
+  在数组中传递多个客户对象，可以在一次 API 调用中批量创建客户。每个对象必须有唯一的 `email` 地址。重复的电子邮件将导致该条目出现验证错误。
+</Tip>

@@ -1,0 +1,77 @@
+---
+title: "Stripe verbinden, um Online-Zahlungen in AgencyHandy zu akzeptieren"
+sidebarTitle: "Stripe"
+description: "Verknüpfen Sie Ihr Stripe-Konto mit AgencyHandy, um Rechnungen zu versenden und sichere Online-Zahlungen von Kunden zu akzeptieren, ohne die Plattform zu verlassen."
+---
+
+Die Stripe-Integration von AgencyHandy ermöglicht es Ihnen, Kartenzahlungen direkt von Ihren Kunden über Rechnungen zu akzeptieren, die Sie innerhalb der Plattform versenden. Nach der Verbindung sehen Ihre Kunden eine vertraute von Stripe gehostete Kaufabwicklung, und der Zahlungsstatus synchronisiert sich automatisch mit AgencyHandy — kein manueller Abgleich erforderlich.
+
+<Note>
+  Nur **SuperAdmin**- und **Admin**-Rollen können die Stripe-Integration verbinden oder verwalten. Sie müssen außerdem über ein verifiziertes Stripe-Konto mit den entsprechenden Berechtigungen verfügen, bevor Sie beginnen.
+</Note>
+
+## Stripe verbinden
+
+<Steps>
+  <Step title="Stripe-Integrationseinstellungen öffnen">
+    Navigieren Sie in der linken Seitenleiste zu **Integrationen → Stripe-Integration**.
+  </Step>
+
+  <Step title="Bei Stripe autorisieren">
+    Klicken Sie auf **Stripe verbinden**. Sie werden zum Autorisierungsbildschirm von Stripe weitergeleitet. Melden Sie sich bei Ihrem Stripe-Konto an und klicken Sie auf **Zulassen**, um AgencyHandy Zugriff zu gewähren. Nach der Genehmigung leitet Stripe Sie automatisch zurück zu AgencyHandy weiter.
+  </Step>
+
+  <Step title="Zahlungseinstellungen konfigurieren">
+    Konfigurieren Sie nach der Weiterleitung die folgenden Optionen:
+
+    - **Währung** — wählen Sie die Standard-Abrechnungswährung für Ihren Workspace.
+    - **Zahlungsmethoden** — aktivieren oder deaktivieren Sie Kartentypen (Visa, Mastercard usw.), wie sie von Ihrem Stripe-Konto unterstützt werden.
+    - **Abrechnungseinstellungen** — legen Sie optional einen Steuersatz, ein Rechnungspräfix oder Standard-Zahlungsbedingungen und Fälligkeitsdaten fest.
+  </Step>
+
+  <Step title="Speichern und bestätigen">
+    Klicken Sie auf **Speichern**. Ein Bestätigungsbanner erscheint, wenn die Integration aktiv ist. Stripe ist jetzt mit Ihrem Workspace verknüpft und Ihre Kunden können Rechnungen online bezahlen.
+  </Step>
+</Steps>
+
+## Die Integration testen
+
+Führen Sie vor dem Versenden von Live-Rechnungen einen schnellen End-to-End-Test durch, um zu bestätigen, dass die Verbindung korrekt funktioniert.
+
+<Steps>
+  <Step title="Eine Testrechnung erstellen">
+    Erstellen Sie eine Entwurfsrechnung in AgencyHandy und weisen Sie ihr einen kleinen Betrag zu.
+  </Step>
+  <Step title="An sich selbst senden">
+    Senden Sie die Rechnung an Ihre eigene E-Mail-Adresse oder an ein Teammitglied, das beim Test helfen kann.
+  </Step>
+  <Step title="Eine Testzahlung abschließen">
+    Öffnen Sie den Rechnungslink und schließen Sie die Zahlung mit einer Stripe-Testkarte ab (z. B. `4242 4242 4242 4242`), wenn sich Ihr Stripe-Konto im Testmodus befindet, oder mit einer echten Karte im Live-Modus.
+  </Step>
+  <Step title="Die Statusaktualisierung überprüfen">
+    Kehren Sie zu AgencyHandy zurück und bestätigen Sie, dass sich der Rechnungsstatus auf **Bezahlt** geändert hat. Wenn ja, funktioniert Ihre Integration korrekt.
+  </Step>
+</Steps>
+
+## Ihre Stripe-Verbindung verwalten
+
+Kehren Sie jederzeit zu **Integrationen → Stripe-Integration** zurück, um:
+
+- **Zahlungseinstellungen zu aktualisieren** — Währung, Zahlungsmethoden oder Abrechnungseinstellungen zu ändern.
+- **Verbindungsstatus zu prüfen** — zu überprüfen, ob Stripe derzeit aktiv ist.
+- **Verbindung zu trennen** — klicken Sie auf **Trennen**, um die Verknüpfung mit Ihrem Stripe-Konto aufzuheben. Die Zahlungserfassung pausiert sofort, bis Sie die Verbindung wiederherstellen.
+- **Erneut zu verbinden** — klicken Sie erneut auf **Stripe verbinden** und autorisieren Sie erneut, um die Integration wiederherzustellen.
+
+<Warning>
+  Das Trennen von Stripe pausiert die Zahlungserfassung für alle ausstehenden Rechnungen. Kunden können nicht online bezahlen, bis Sie die Verbindung erneut herstellen und autorisieren.
+</Warning>
+
+## Zusätzliche Hinweise
+
+<Note>
+  AgencyHandy speichert niemals Ihre Zahlungsdaten. Alle Zahlungsdaten werden ausschließlich von der sicheren Infrastruktur von Stripe verarbeitet.
+</Note>
+
+- **Ein Konto pro Workspace** — Sie können nur ein einziges Stripe-Konto mit jedem AgencyHandy-Workspace verbinden. Um Konten zu wechseln, trennen Sie zunächst das aktuelle und stellen Sie dann die Verbindung mit dem neuen Konto her.
+- **Live-Rechnungsstatus** — alle mit Stripe verknüpften Rechnungen spiegeln weiterhin Echtzeit-Statusaktualisierungen wider, die direkt von Stripe empfangen werden.
+- **Währung** — stellen Sie sicher, dass die in AgencyHandy konfigurierte Währung mit der in Ihrem Stripe-Konto aktivierten Währung übereinstimmt, um Zahlungsfehler zu vermeiden.

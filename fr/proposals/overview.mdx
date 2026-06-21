@@ -1,0 +1,217 @@
+---
+title: "Créer et envoyer des propositions aux clients dans AgencyHandy"
+sidebarTitle: "Propositions"
+description: "Construisez, personnalisez et envoyez des propositions professionnelles dans AgencyHandy — couvrant la tarification des services, les forfaits, l'acceptation par le client et la création automatique de commandes."
+---
+
+La fonctionnalité Proposition d'AgencyHandy vous offre un flux de travail professionnel de bout en bout pour transformer les demandes en projets actifs. Vous pouvez construire des propositions détaillées avec des services, forfaits, modules complémentaires, taxes et conditions légales — puis les envoyer directement aux clients ou aux leads depuis la plateforme. Une fois qu'un client accepte, AgencyHandy peut automatiquement créer une commande et une facture, supprimant les allers-retours manuels qui ralentissent les affaires.
+
+<Note>
+  Seuls les **Super Admins** et les **Admins** peuvent créer et envoyer des propositions. Les chefs de projet (PM) peuvent consulter les propositions mais ne peuvent pas les envoyer.
+</Note>
+
+## Tableau de bord des propositions
+
+Pour ouvrir le tableau de bord des propositions, cliquez sur **Proposals** dans la barre latérale gauche. Le tableau de bord répertorie toutes vos propositions envoyées et reçues et affiche :
+
+- **Statut** — Draft, Sent, Accepted ou Pending
+- **Date de création**, **date d'envoi** et **date d'expiration**
+- **Statut de consultation** — si le client a ouvert la proposition
+- Un menu d'action pour **modifier**, **envoyer**, **partager** ou **supprimer** chaque proposition
+
+Vous pouvez rechercher les propositions par ID et filtrer ou trier la liste pour trouver rapidement ce dont vous avez besoin.
+
+## Créer une proposition
+
+Cliquez sur **Create Proposal** pour ouvrir le générateur de proposition. Il est organisé en trois sections : **Overview**, **Terms & Conditions** et **Setup**.
+
+### Overview
+
+La section Overview est l'endroit où vous construisez le contenu et la tarification de la proposition.
+
+#### Informations sur la proposition et le client
+
+Renseignez les champs suivants en haut de la proposition :
+
+- **Proposal Name** et **Proposal ID**
+- **Client ou Lead** — prend en charge plusieurs adresses e-mail ; marquez-en une comme Primary
+- **Company Name** et **Address** (pays, état, ville, code postal, détails supplémentaires)
+- **Assignee**, **Send Date** et **Expiry Date**
+
+#### Blocs de contenu
+
+Chaque bloc de contenu utilise un éditeur intégré pour vous permettre d'adapter le récit à chaque client :
+
+- **Introduction** — plantez le décor et le contexte de l'engagement
+- **About Us** — mettez en avant l'expertise de votre agence
+- **What You Get** — définissez clairement la portée et les livrables
+- **Guarantee** — décrivez toutes les assurances ou engagements
+
+#### Offres — services, forfaits, modules complémentaires et taxes
+
+La section Offres est l'endroit où vous configurez la tarification.
+
+<Accordion title="Services">
+  Ajoutez un ou plusieurs services à la proposition. Pour chaque service, vous pouvez :
+
+  - Sélectionner un **type de tarification** : ponctuel ou abonnement
+  - Choisir la **devise du service** (différents services peuvent utiliser différentes devises dans la même proposition)
+</Accordion>
+
+<Accordion title="Forfaits">
+  Au sein de chaque service, ajoutez des forfaits existants ou créez-en de nouveaux à la volée. Pour chaque forfait, définissez :
+
+  - Le nom du forfait
+  - La quantité et le prix par unité
+  - Le montant total
+
+  Vous pouvez supprimer des forfaits à tout moment avant l'envoi.
+</Accordion>
+
+<Accordion title="Modules complémentaires">
+  Attachez des modules complémentaires optionnels à n'importe quel service. Les modules complémentaires apparaissent comme des extras que les clients peuvent voir à côté du prix du service principal. Vous pouvez créer de nouveaux modules complémentaires directement depuis le générateur de proposition sans quitter le formulaire.
+</Accordion>
+
+<Accordion title="Articles">
+  Ajoutez des articles personnalisés ponctuels avec une quantité et un prix unitaire définis. Les articles sont utiles pour les coûts ponctuels comme les frais d'installation ou les livrables uniques.
+</Accordion>
+
+<Accordion title="Taux de taxe">
+  Appliquez des taux de taxe existants ou créez-en de nouveaux directement depuis la proposition. Sélectionnez si chaque taxe est **Exclusive** (ajoutée au prix) ou **Inclusive** (déjà incluse). Les taxes sont calculées par service.
+</Accordion>
+
+### Terms & Conditions
+
+Utilisez la section Terms & Conditions pour ajouter un langage juridique spécifique à la proposition. Incluez les politiques d'annulation, les conditions de remboursement, les droits d'utilisation et toute autre condition pertinente à l'engagement. Cette section aide à garantir que les deux parties comprennent leurs obligations avant l'acceptation.
+
+### Setup
+
+La section Setup contrôle ce qui se passe après l'envoi de la proposition.
+
+<CardGroup cols={2}>
+  <Card title="Action après acceptation" icon="bolt">
+    Choisissez ce qu'AgencyHandy fait lorsque la proposition est acceptée : **Do Nothing**, ou **Create Order & Invoice** automatiquement.
+  </Card>
+  <Card title="Rappels" icon="bell">
+    Configurez des notifications de rappel pour relancer les clients qui n'ont pas répondu avant la date d'expiration.
+  </Card>
+  <Card title="Protection par mot de passe" icon="lock">
+    Ajoutez un mot de passe au lien public de la proposition afin que seul le destinataire prévu puisse la consulter.
+  </Card>
+  <Card title="Commentaires" icon="message">
+    Autorisez les clients à laisser des commentaires sur la vue publique de la proposition pour faciliter les échanges.
+  </Card>
+</CardGroup>
+
+## Envoyer une proposition
+
+À tout moment pendant la création, vous pouvez enregistrer la proposition comme **Draft** ou la **Preview** (prévisualiser). Lorsqu'elle est prête, cliquez sur **Send** pour la livrer au client ou au lead.
+
+Après l'envoi :
+
+- Un lien public est généré automatiquement
+- Le statut de la proposition passe de **Draft** à **Sent**
+- AgencyHandy suit si le client a consulté la proposition
+
+Depuis le menu d'action de la proposition, vous pouvez également renvoyer, télécharger, partager le lien public, consulter les commentaires ou supprimer la proposition.
+
+## Envoyer une proposition avec un forfait spécifique
+
+Si vous souhaitez envoyer une proposition rapide directement liée à un forfait de service spécifique, utilisez le formulaire raccourci **Create Proposal** :
+
+<Steps>
+  <Step title="Ouvrez la section Propositions">
+    Accédez à **Proposals** dans la barre latérale gauche et cliquez sur **+ Create Proposal**.
+  </Step>
+  <Step title="Remplissez le formulaire de proposition">
+    Saisissez le **nom du client** et sélectionnez le **service**. Si le service comporte plusieurs forfaits, ils apparaîtront automatiquement — sélectionnez celui qui convient.
+
+    Optionnellement, attribuez un **Manager** à la proposition.
+  </Step>
+  <Step title="Ajoutez les détails de la commande">
+    Rédigez un **Order Brief** (requis) décrivant ce que le client recevra. Joignez tout fichier d'accompagnement jusqu'à 1 Go.
+  </Step>
+  <Step title="Définissez la tarification et les conditions">
+    Confirmez le **type de tarification** (ponctuel ou abonnement), définissez la **durée**, la **quantité**, le **budget** et la **devise**. Ajoutez toutes les **conditions générales** pertinentes à la proposition.
+  </Step>
+  <Step title="Créez et envoyez">
+    Cliquez sur **Create** pour finaliser et envoyer la proposition au client. La proposition apparaîtra à la fois dans votre liste Sent et dans la section Received du client.
+  </Step>
+</Steps>
+
+<Note>
+  Vérifiez bien la tarification et la durée préremplies avant de cliquer sur Create. Une fois envoyée, le client peut accepter, rejeter ou télécharger la proposition depuis sa section Received.
+</Note>
+
+## Cycle de vie du statut de la proposition
+
+| Statut | Signification |
+|--------|---------|
+| **Draft** | La proposition a été créée mais n'a pas encore été envoyée. |
+| **Sent** | La proposition a été livrée au client ou au lead. |
+| **Pending** | Le client a examiné et renvoyé la proposition pour discussion. |
+| **Accepted** | L'une des parties a formellement accepté les conditions de la proposition. Une commande est créée automatiquement si configuré. |
+| **Rejected** | L'une des parties a rejeté la proposition. L'expéditeur reçoit une notification avec le motif. |
+
+## Accepter une proposition
+
+L'agence ou le client peut accepter une proposition reçue. Lorsque l'acceptation a lieu, AgencyHandy crée une commande automatiquement (si configuré dans Setup).
+
+<Steps>
+  <Step title="Allez dans les propositions reçues">
+    Cliquez sur **Proposals** dans la barre latérale, puis sélectionnez l'onglet **Received**.
+  </Step>
+  <Step title="Ouvrez la proposition">
+    Sélectionnez la proposition que vous souhaitez accepter dans la liste et examinez ses détails.
+  </Step>
+  <Step title="Cliquez sur Accept">
+    Cliquez sur le bouton **Accept** pour accepter formellement la proposition. Le statut se met à jour immédiatement et les deux parties sont notifiées.
+  </Step>
+</Steps>
+
+<Note>
+  Si c'est l'agence qui accepte, les Super Admins et les Admins reçoivent des notifications. Si le client accepte, AgencyHandy notifie les Super Admins et les Admins de l'agence.
+</Note>
+
+## Rejeter une proposition
+
+Si les conditions, la tarification ou la portée proposées ne correspondent pas à vos exigences, vous pouvez rejeter la proposition et fournir un motif.
+
+<Steps>
+  <Step title="Allez dans les propositions reçues">
+    Accédez à **Proposals → Received**.
+  </Step>
+  <Step title="Sélectionnez et examinez la proposition">
+    Choisissez la proposition que vous souhaitez rejeter et examinez ses détails.
+  </Step>
+  <Step title="Cliquez sur Reject">
+    Cliquez sur **Reject** et confirmez votre décision. L'expéditeur de la proposition reçoit une notification ainsi que le motif que vous avez fourni.
+  </Step>
+</Steps>
+
+<Warning>
+  Les propositions rejetées **ne peuvent pas être renvoyées**. Les deux parties doivent créer une nouvelle proposition pour relancer les négociations.
+</Warning>
+
+## Vue publique de la proposition
+
+Lorsque vous envoyez une proposition, les clients reçoivent un lien vers une vue publique où ils peuvent :
+
+- Examiner tous les services, tarifs, forfaits et taxes
+- Accepter ou rejeter la proposition
+- Laisser des commentaires (si les commentaires sont activés)
+- Accéder à la proposition de manière sécurisée avec un mot de passe (si la protection par mot de passe est activée)
+
+## Remarques supplémentaires
+
+<Accordion title="Emails et leads multiples">
+  Vous pouvez ajouter plusieurs adresses e-mail à une seule proposition et en marquer une comme contact principal. Les propositions fonctionnent à la fois avec les clients enregistrés et les leads non enregistrés.
+</Accordion>
+
+<Accordion title="Commandes et factures générées automatiquement">
+  Lorsque vous configurez la section Setup sur « Create Order & Invoice » lors de l'acceptation, AgencyHandy génère automatiquement la commande et la facture liées dès qu'une proposition est acceptée — aucune étape manuelle requise.
+</Accordion>
+
+<Accordion title="Suivi de l'activité de la proposition">
+  Chaque proposition comprend une piste d'activité complète. Vous pouvez voir quand la proposition a été créée, envoyée, consultée, acceptée ou rejetée, le tout depuis AgencyHandy.
+</Accordion>

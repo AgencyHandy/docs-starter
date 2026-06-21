@@ -1,0 +1,260 @@
+---
+title: "Paketlar, Vazifalar va TSS bilan Xizmat Yaratish"
+sidebarTitle: "Xizmat yaratish"
+description: "AgencyHandy xizmatini qurish uchun bosqichma-bosqich qo'llanma: hisoblash turini tanlash, paketlarni sozlash, standart vazifalarni belgilash, TSS qo'shish va nashr qilish."
+---
+
+AgencyHandy'da xizmat yaratish — platforma orqali agentligingiz takliflarini sotishning birinchi qadami. Bitta xizmat beshtagacha narx paketini, buyurtma berilganda ishga tushadigan avtomatlashtirilgan standart vazifalarni, sotish oldi savollarini kamaytirish uchun TSS ni, ijtimoiy isbotli portfolio biriktirishni va ixtiyoriy qabul shaklini o'z ichiga olishi mumkin — barchasini nashr qilishdan oldin bir joyda sozlaysiz.
+
+<Note>
+  Xizmatlar yaratish uchun **Super Admin** yoki **Admin** roliga ega bo'lishingiz kerak. Boshqa rollar bu bo'limga kirish uchun aniq xizmat ruxsatlarini talab qiladi.
+</Note>
+
+<Steps>
+  <Step title="Xizmat turini tanlang">
+    Chap yon paneldan **Xizmatlar** ni oching va yangi ro'yxatni boshlash uchun **+ Xizmat** tugmasini bosing.
+
+    Sahifa yuqori qismida hisoblash modelingizni tanlang:
+
+    - **Bir martalik xizmat** — mijoz yagona to'lov to'laydi va yetkazib beriladigan mahsulotni bir marta oladi. Aniq miqyosi bo'lgan loyihalar uchun eng yaxshi: veb-sayt qurilish, logo paketlari, auditlar va boshqalar.
+    - **Obuna xizmati** — hisoblash siz belgilagan jadval bo'yicha avtomatik takrorlanadi. Retenerlar, doimiy kontent, boshqariladigan xizmatlar yoki texnik xizmat ko'rsatish rejalari uchun eng yaxshi.
+
+    <Warning>
+      Xizmat turi saqlanganidan so'ng qulflanadi. Agar boshqa hisoblash modeli kerak bo'lsa, yangi xizmat yarating.
+    </Warning>
+  </Step>
+
+  <Step title="Xizmat tafsilotlarini qo'shing">
+    **Xizmat tafsilotlari** bo'limini kengaytiring va quyidagi maydonlarni to'ldiring:
+
+    **Xizmat nomi** *(majburiy)*
+    Bu xizmatning platformaning hamma joyida mijozlarga ko'rinishi — katalogda, hisob-fakturalarda va buyurtma ishchi fazosida. Aniq va tavsifli qiling.
+
+    **Media yuklash**
+    Xizmatni vizual jihatdan ifodalash uchun bir yoki bir nechta ko'rinish rasmlarini yuklang. Yuqori sifatli rasmlar mijoz ishonchini va konvertatsiya stavkalarini oshiradi.
+
+    **Xizmat tavsifi**
+    Xizmat nima o'z ichiga olishi, kim uchun mo'ljallanganligini va mijozlar nimani kutishi mumkinligini to'liq tushuntirib yozing. Taklifingizni ajratib ko'rsatish uchun ushbu joydan foydalaning.
+
+    **Soliq sozlamalari**
+    Soliq **inkluziv** (narxga kiritilgan) yoki **eksklyuziv** (to'lovda ustiga qo'shilgan) ekanligini tanlang.
+
+    **Valyuta**
+    Ushbu xizmatdagi barcha paketlar uchun valyutani belgilang. Bitta xizmат ichidagi barcha paketlar bir xil valyutadan foydalanadi.
+
+    <Tip>
+      Mijoz portalida eng yaxshi ko'rinish uchun 16:9 nisbatda ko'rinish rasmlarini yuklang.
+    </Tip>
+  </Step>
+
+  <Step title="Paketlar yarating">
+    **Paket tafsilotlari** ni kengaytiring va birinchi narx darajasini qo'shish uchun **+ Yangi paket** tugmasini bosing. Xizmat boshiga **5 tagacha paket** yaratishingiz mumkin.
+
+    Har bir paket uchun quyidagilarni sozlang:
+
+    **Paket nomi** *(majburiy)*
+    Mijozlar ko'radigan nom, masalan *Asosiy*, *Standart* yoki *Premium*.
+
+    **Paket ikonkasi** *(ixtiyoriy)*
+    O'rnatilgan ikonkani tanlang yoki maxsus ikonka yuklang. Yuklangan ikonkalar **32 × 32 piksel** bo'lishi kerak.
+
+    **Paket media** *(ixtiyoriy)*
+    Ushbu paketga xos muqova rasmini yuklang. Qabul qilinadigan formatlar: PNG, JPG, JPEG. Maksimal fayl hajmi: **5 MB**. Paket boshiga maksimal 1 fayl. Tavsiya etilgan nisbat: **16:9**.
+
+    **Paket qisqachasi** *(ixtiyoriy)*
+    Ushbu paketning yetkazib beriladigan mahsulotlarining bir qatorli xulosasi. Maksimal **140 belgi**.
+
+    **Nima kiradi** *(majburiy)*
+    Ushbu paketga kiritilgan ma'lum yetkazib beriladigan mahsulotlarni ro'yxatlang. Paket boshiga **15 tagacha qator element** qo'shishingiz mumkin. Har bir nuqta bitta aniq yetkazib beriladigan mahsulotni tasvirlashi kerak (masalan, *"Oyiga 5 blog posti, har biri 1 000 so'zgacha"*).
+
+    <Tip>
+      Bir nechta paket yaratgandan so'ng, ularni mijozlarga qanday ko'rinishini qayta tartibga solish uchun sudrang. Tavsiya etilgan darajangizga e'tiborni jalb qilish uchun birini **Eng mashhur** deb belgilang.
+    </Tip>
+  </Step>
+
+  <Step title="Narxlash va yetkazib berish qoidalarini belgilang">
+    Har bir paket ichida asosiy narxlash maydonlarini va ixtiyoriy boshqaruvlarni belgilang:
+
+    **Miqdor** *(majburiy)*
+    Mijoz ushbu paket uchun to'laydigan narx.
+
+    **Yetkazib berish vaqti** *(majburiy)*
+    Xariddan so'ng xizmatni yetkazib berish uchun taxminiy kunlar soni.
+
+    **Ixtiyoriy narxlash boshqaruvlari:**
+
+    <Accordion title="Chegirma qo'shish">
+      Ushbu paket narxiga foiz yoki belgilangan miqdor kamaytirishni qo'llang. Chegirmali narx mijozlarga asl narx bilan birga ko'rsatiladi, bu esa samarali reklama effektini yaratadi.
+    </Accordion>
+
+    <Accordion title="Sinov davri qo'shish (faqat obuna)">
+      Oddiy obuna hisoblashi boshlanishidan oldin bepul yoki kamaytirilgan narxdagi sinovni taklif qiling. Ushbu opsiya faqat obuna turidagi xizmatlarda mavjud.
+    </Accordion>
+
+    <Accordion title="Miqdor chegarasini qo'shish">
+      Mijoz bitta to'lov seansida sotib olishi mumkin bo'lgan birliklar sonini cheklang. Cheklangan mavjud bo'lgan paketlar yoki sig'im cheklovlari bo'lgan xizmatlar uchun foydalaning.
+    </Accordion>
+
+    <Accordion title="Ko'proq narx tafsilotlarini qo'shish">
+      Umumiy xarajatni alohida qator elementlarga bo'ling — masalan, *asosiy narx + o'rnatish to'lovi + birlik xarajati* ni ko'rsatish. Har bir taqsimlash yorlig'i maksimal **20 belgi**ni qo'llab-quvvatlaydi.
+    </Accordion>
+
+    <Note>
+      Xizmatni nashr qilishdan oldin har bir paket uchun barcha majburiy maydonlar (Miqdor va Yetkazib berish vaqti) to'ldirilgan bo'lishi kerak.
+    </Note>
+  </Step>
+
+  <Step title="Avtomatlashtirishadigan standart vazifalar qo'shing">
+    Har bir paket **Standart vazifalar** bo'limini o'z ichiga oladi. Bu yerda belgilangan vazifalar — mijoz ushbu paketni xarid qilishi bilanoq buyurtma ishchi fazosida avtomatik yaratiladi — har bir sotuvdan keyin qo'lda sozlash talab qilinmaydi.
+
+    Vazifa yaratish modalini ochish uchun **+ Ko'proq qo'shing** tugmasini bosing. Har bir vazifa uchun siz quyidagilarni sozlashingiz mumkin:
+
+    | Maydon | Tafsilotlar |
+    |--------|-------------|
+    | **Vazifa nomi** | Majburiy; maksimal **160 belgi** |
+    | **Tavsif** | Ijrochi uchun batafsil ko'rsatmalar |
+    | **Ijrochi** | Ushbu vazifani bajarishga mas'ul jamoa a'zosi |
+    | **Ilova** | Havola fayllarini yuklang; qabul qilinadigan formatlar: csv, odt, doc, docx, htm, html, pdf, ppt, pptx, txt, xls, xlsx, jpg, jpeg, png, gif, webp, svg, ai, mp4, mp3, wav, zip, rar; fayl boshiga maksimal hajm **1 GB** |
+    | **Yorliq** | Filtrlash va hisobotlash uchun vazifani belgilang |
+    | **Holat** | Vazifa yaratilganda boshlang'ich holat |
+    | **Mijoz ko'rib chiqishi** | Ushbu vazifa tugallangan hisoblanishidan oldin mijozning tasdig'ini talab qilsa, yoqing |
+
+    Ushbu paket uchun yetkazib berish jarayonini to'liq qamrab olish uchun kerakcha ko'p vazifa qo'shing. Izchil standart vazifalar har bir buyurtma bir xil sifat nazorati qilinadigan ish jarayoniga amal qilishini ta'minlaydi.
+
+    <Tip>
+      Standart vazifalarni ichki SOPingizga moslashtiring. Masalan, *Ijtimoiy media boshqaruvi* paketi *Kontent taqvimi qoralamasi*, *Mijoz tasdig'i*, *Postlarni rejalashtirish* va *Oylik hisobot* kabi vazifalarni avtomatik yaratishi mumkin.
+    </Tip>
+  </Step>
+
+  <Step title="TSS va portfolio qo'shing">
+    Ikkita ixtiyoriy, lekin katta ta'sir ko'rsatadigan elementlar qo'shish uchun **Qo'shimcha ma'lumot** bo'limini kengaytiring:
+
+    **Portfolio biriktirish**
+    Xizmat ro'yxatida to'g'ridan-to'g'ri o'tgan ishlaringizning tegishli namunalarini ko'rib chiqishlarni o'z ichiga olishlari uchun xizmatga portfolio kategoriyasini bog'lang. Mavjud portfolio kategoriyasini ulashingiz yoki ushbu ekrandan yangi kategoriya yaratishingiz mumkin.
+
+    **Tez-tez so'raladigan savollar (TSS)**
+    Savol-javob juftini kiritish uchun **+ Qo'shish** tugmasini bosing. Kerak bo'lganda ko'p TSS qo'shing — umumiy mavzular quyidagilarni o'z ichiga oladi:
+
+    - Kontent originalligи va huquqlar
+    - Qayta ko'rib chiqish va fikr-mulohaza jarayoni
+    - Miqyos chegaralari va *nima kirmasligi*
+    - Muddatlar va muloqot chastotasi
+    - To'lov va qaytarish siyosatlari
+
+    Yaxshi yozilgan TSS xariddan oldin savollar almashishini kamaytiradi va mijozlarga o'z-o'zini sifatlashga yordam beradi.
+  </Step>
+
+  <Step title="Qabul shaklini biriktiring">
+    Qabul shakli ish boshlashdan oldin mijozdan kerakli ma'lumotlarni to'playdi — masalan, brend ko'rsatmalari, kirish ma'lumotlari, maqsadli auditoriya yoki loyiha maqsadlari.
+
+    - Noldan shakl qurish uchun **+ Yangi qabul shakli yarating** tugmasini bosing yoki ochiladigan menyudan mavjud shaklni tanlang.
+    - Agar ushbu xizmatga qabul shakli talab qilinmasa, ushbu bo'limni o'tkazib yuborish uchun **O'tkazib yuborish** tugmasini bosing.
+    - Qabul shakli tanlovingizni saqlash va davom etish uchun **Yangilash** tugmasini bosing.
+
+    <Note>
+      Qabul shakli ixtiyoriy, lekin yetkazib berish boshlanishidan oldin mijozga xos ma'lumotlarni talab qiladigan xizmatlar uchun kuchli tavsiya etiladi.
+    </Note>
+  </Step>
+
+  <Step title="Xizmatni nashr qiling">
+    Xizmat muharririning pastida:
+
+    1. **Ushbu xizmatni nashr qiling** tugmachasini YOQILGAN holatga o'zgartiring.
+    2. **Saqlash** tugmasini bosing (yoki mavjud xizmatni tahrirlaganda **Xizmatni yangilash**).
+
+    Nashr etilgandan so'ng, xizmat portalda mijozlarga darhol ko'rinadi. Agar tugmachani o'chirilgan holda qoldirsangiz, xizmat qoralama sifatida saqlanadi va faqat jamoangizga ko'rinadi.
+
+    <Tip>
+      Xizmatni oldindan tayyorlash va uni ishga tushirish vaqtida nashr qilish uchun qoralama rejimini ishlating — mavsumiy aktsiyalar yoki yangi taklif e'lonlari uchun foydali.
+    </Tip>
+  </Step>
+</Steps>
+
+## Qo'shimcha sozlash
+
+Qo'shimchalar — mijozlar to'lov paytida tanlashi mumkin bo'lgan ixtiyoriy qo'shimchalar — masalan, *Tezkor yetkazib berish*, *Qo'shimcha qayta ko'rib chiqishlar* yoki *Oylik hisobot*. Ular butunlay yangi ro'yxatlar yaratmasdan qo'shimcha xizmatlarni upsell qilish imkonini beradi.
+
+### Qo'shimcha yaratish
+
+<Steps>
+  <Step title="Qo'shimchalarni oching">
+    Yon paneldagi **Xizmatlar** bo'limiga o'ting, Xizmatlar sarlavhasi yonidagi **pastga o'q** tugmasini bosing va **Qo'shimchalar** ni tanlang.
+  </Step>
+  <Step title="Yangi qo'shimcha yarating">
+    **+ Yangi qo'shimcha qo'shish** tugmasini bosing va to'ldiring:
+
+    - **Qo'shimcha nomi**
+    - **Tavsif** — qo'shimcha nimani o'z ichiga olishini aniq tushuntirish uchun boy matn muharriridan foydalaning
+    - **Narxlash turi** — *Bir martalik* yoki *Obuna* ni tanlang
+    - **Narxlash tafsilotlari:**
+      - *Bir martalik:* miqdor va valyutani kiriting
+      - *Obuna:* hisoblash intervalini belgilang (masalan, har 1 oyda bir), ixtiyoriy hisoblash tsikli chegarasini, obuna to'lovi va valyutani kiriting
+  </Step>
+  <Step title="Nashr qiling va saqlang">
+    **Nashr qilish** ni YOQILGAN holatga o'zgartiring, so'ng **Yaratish** tugmasini bosing. Faqat nashr etilgan qo'shimchalar ularni buyurtma formalariga ulashda ko'rinadi.
+  </Step>
+</Steps>
+
+### Buyurtma formasiga qo'shimcha biriktirish
+
+<Steps>
+  <Step title="Buyurtma formasini oching">
+    **Shakllar** bo'limiga o'ting va tegishli buyurtma formasini oching.
+  </Step>
+  <Step title="Xizmatni tanlang">
+    Qo'shimchani biriktirmoqchi bo'lgan xizmatni tanlang.
+  </Step>
+  <Step title="Qo'shimchalarni qo'shing">
+    Chap paneldan **Qo'shimchalar** bo'limini tanlang, so'ng ushbu xizmat bilan bog'lash istagan qo'shimchalarni tanlang.
+  </Step>
+  <Step title="Formani saqlang">
+    **Saqlash** tugmasini bosing. Mijozlar endi to'lov paytida tanlangan qo'shimchalarni ixtiyoriy qo'shimchalar sifatida ko'rishadi.
+  </Step>
+</Steps>
+
+<Note>
+  Qo'shimchalar biriktirilgan xizmat bilan bir xil valyutadan foydalanishi kerak. Agar valyutalar mos kelmasa, qo'shimcha tanlov ro'yxatida ko'rinmaydi.
+</Note>
+
+### Obuna qo'shimcha hisoblash xatti-harakati
+
+Xizmat va obuna qo'shimchasining hisoblash tsikllari bir-biridan farq qilsa, AgencyHandy mos kelmaydigan qismini avtomatik hal qiladi:
+
+<Accordion title="Qo'shimcha xizmatga qaraganda ko'proq tsiklga ega">
+  Ham xizmat, ham qo'shimcha xizmat davomida birgalikda hisoblanadi. Xizmat tugagandan so'ng, qo'shimcha qolgan tsikllari uchun yolg'iz hisoblashni davom ettiradi.
+
+  **Misol:** Xizmat 4 tsikl ishlaydi, qo'shimcha 5 tsikl ishlaydi → 4 tsikl birgalikda hisoblanadi, qo'shimcha 1 qo'shimcha tsikl uchun yolg'iz hisoblanadi.
+</Accordion>
+
+<Accordion title="Qo'shimcha xizmatga qaraganda kamroq tsiklga ega">
+  Ham xizmat, ham qo'shimcha qo'shimcha davomida birgalikda hisoblanadi. Qo'shimcha tugagandan so'ng, xizmat qolgan tsikllari uchun yolg'iz hisoblashni davom ettiradi.
+
+  **Misol:** Xizmat 5 tsikl ishlaydi, qo'shimcha 3 tsikl ishlaydi → 3 tsikl birgalikda hisoblanadi, xizmat 2 qo'shimcha tsikl uchun yolg'iz hisoblanadi.
+</Accordion>
+
+## Xizmatni tahrirlash
+
+Xizmat nashr etilgandan so'ng, mavjud buyurtmalarga ta'sir qilmasdan istalgan maydonni yangilashingiz mumkin.
+
+1. **Xizmatlar** bo'limiga o'ting va yangilamoqchi bo'lgan xizmatni toping.
+2. Xizmat qatori o'ng tomonida **uch nuqtali menyu** (⋮) ni bosing.
+3. **Tahrirlash** ni tanlang. Xizmat muharriri barcha mavjud sozlamalar bilan ochiladi.
+4. O'zgarishlaringizni kiriting — sarlavha, tavsif, narxlash, media, paketlar, vazifalar yoki TSS ni yangilang.
+5. Saqlash uchun **Xizmatni yangilash** tugmasini bosing.
+
+<Warning>
+  Paket narxlash yoki yetkazib berish vaqtidagi o'zgarishlar faqat **yangi buyurtmalarga** kuchga kiradi. Mavjud buyurtmalarga retroaktiv ta'sir qilinmaydi.
+</Warning>
+
+## Maydon ma'lumotnomasi
+
+| Maydon | Chegara |
+|--------|---------|
+| Xizmat boshiga paketlar | 5 tagacha |
+| Paket boshiga yetkazib beriladigan mahsulotlar (Nima kiradi) | 15 tagacha |
+| Paket qisqachasi | 140 belgi |
+| Paket ikonkasi o'lchami | 32 × 32 px |
+| Paket media fayl hajmi | 5 MB (PNG, JPG, JPEG) |
+| Vazifa nomi | 160 belgi |
+| Vazifa ilovasi fayl hajmi | Fayl boshiga 1 GB |
+| Narx taqsimlash yorlig'i | 20 belgi |

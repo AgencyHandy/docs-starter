@@ -1,0 +1,123 @@
+---
+title: "Configure los ajustes generales de su espacio de trabajo de AgencyHandy"
+sidebarTitle: "Configuración general"
+description: "Establezca el nombre de su espacio de trabajo, suba logotipos, agregue la dirección de su agencia y seleccione la zona horaria correcta para personalizar su espacio de trabajo de AgencyHandy."
+---
+
+La página de Configuración general es el primer lugar que visitará después de iniciar sesión en AgencyHandy. Le permite establecer la identidad de su agencia en la plataforma, desde su logotipo y el nombre del espacio de trabajo hasta su dirección física y zona horaria. Cada cambio que realice aquí se aplica de forma global en todo el espacio de trabajo para todos los usuarios.
+
+<Note>
+  Solo los **Super Admins** y los **Admins** pueden acceder a los ajustes de Workspace Config y modificarlos. Si no ve la opción **Workspace Config** en la navegación izquierda, contacte con su Super Admin para ajustar los permisos de su rol.
+</Note>
+
+## Cómo acceder a la Configuración general
+
+<Steps>
+  <Step title="Abra Workspace Config">
+    Inicie sesión en su cuenta de AgencyHandy. En el menú de navegación izquierdo, haga clic en **Workspace Config**.
+  </Step>
+  <Step title="Seleccione Configuración general">
+    Haga clic en **General Settings** en el submenú de Workspace Config. El panel de Configuración general se abre a la derecha.
+  </Step>
+</Steps>
+
+---
+
+## Cómo subir el logotipo de su espacio de trabajo
+
+AgencyHandy admite tres tipos de logotipo distintos, cada uno mostrado en una parte diferente de la interfaz:
+
+| Tipo de logotipo  | Dimensiones  | Dónde aparece                                    |
+|------------------|-------------|--------------------------------------------------|
+| Logotipo circular | 32 × 32 px  | Áreas de perfil y elementos compactos de la UI   |
+| Logotipo de favicon | 16 × 16 px | Icono de la pestaña del navegador                |
+| Logotipo rectangular | 142 × 36 px | Encabezado de la barra lateral (reemplaza el logotipo circular cuando se establece) |
+
+**Formatos admitidos:** PNG, JPG, SVG
+
+<Steps>
+  <Step title="Haga clic en Upload Logo">
+    En la sección de logotipos, haga clic en el botón **Upload Logo** del tipo de logotipo que desee establecer.
+  </Step>
+  <Step title="Seleccione su archivo de imagen">
+    Busque la imagen en su dispositivo. Asegúrese de que el archivo coincida con las dimensiones requeridas y esté en un formato admitido.
+  </Step>
+  <Step title="Confirme la carga">
+    La vista previa del logotipo se actualiza de inmediato. Repita el proceso para cada tipo de logotipo según sea necesario.
+  </Step>
+</Steps>
+
+<Tip>
+  Subir un **logotipo rectangular** reemplazará el logotipo circular en la barra lateral y ocultará automáticamente el texto del nombre del espacio de trabajo junto a él. El logotipo rectangular también se convierte en el logotipo principal utilizado en todos los demás contextos donde se muestra un logotipo, incluso si también se ha subido un logotipo circular.
+</Tip>
+
+---
+
+## Cómo establecer el nombre y la dirección de su espacio de trabajo
+
+### Nombre del espacio de trabajo
+
+Introduzca el nombre de su agencia en el campo **Workspace Name**. Este nombre:
+
+- Aparece en toda la plataforma para fines de identificación.
+- Se utiliza en el subdominio predeterminado de AgencyHandy (por ejemplo, `yourname.agencyhandy.com`).
+
+<Warning>
+  Cambiar el nombre de su espacio de trabajo actualiza su subdominio predeterminado de inmediato. Si comparte el enlace del subdominio predeterminado con los clientes, necesitarán la URL actualizada. Considere configurar un [dominio personalizado](/es/workspace/custom-domain) para evitar este problema.
+</Warning>
+
+### Dirección del espacio de trabajo
+
+Introduzca la dirección física completa de su agencia en el campo **Workspace Address**. Esta dirección se utiliza para la representación oficial en las facturas y los documentos de cara al cliente, así que asegúrese de que sea precisa y esté actualizada.
+
+---
+
+## Cómo seleccionar su zona horaria
+
+<Steps>
+  <Step title="Abra el desplegable Time Zone">
+    Desplácese hasta el campo **Time Zone** y haga clic en el desplegable para expandir la lista de zonas horarias.
+  </Step>
+  <Step title="Elija su zona horaria">
+    Seleccione la zona horaria que coincida con la ubicación operativa principal de su agencia. Todos los plazos de tareas, las notificaciones programadas, los eventos del calendario y las marcas de tiempo en todo el espacio de trabajo se basan en este ajuste.
+  </Step>
+</Steps>
+
+<Warning>
+  Un ajuste de zona horaria incorrecto provoca errores de programación en tareas, reuniones y fechas de vencimiento de facturas. Verifique este ajuste antes de invitar a su equipo o a sus clientes.
+</Warning>
+
+---
+
+## Cómo guardar sus cambios
+
+Después de completar o actualizar cualquier campo, haga clic en **Save Changes** en la parte inferior del panel de Configuración general. Todas las actualizaciones se aplican de forma global y son inmediatamente visibles para todos los usuarios del espacio de trabajo.
+
+---
+
+## Zona de peligro: eliminar su espacio de trabajo
+
+En la parte inferior del panel de Configuración general, hay una sección **Danger Zone** que contiene el botón **Delete Workspace**.
+
+<Warning>
+  Eliminar su espacio de trabajo es **permanente e irreversible**. Todos los datos —incluidos clientes, pedidos, facturas, proyectos y configuraciones— se borrarán de forma permanente. No hay opción de recuperación. Continúe solo si está absolutamente seguro.
+</Warning>
+
+---
+
+## Buenas prácticas
+
+<CardGroup cols={2}>
+  <Card title="Verifique las dimensiones del logotipo" icon="image">
+    Suba los logotipos exactamente con las dimensiones en píxeles recomendadas para evitar el estiramiento, el recorte o la visualización borrosa en la plataforma.
+  </Card>
+  <Card title="Mantenga la marca actualizada" icon="paintbrush">
+    Actualice su logotipo y dirección siempre que su agencia cambie de marca o de ubicación para mantener precisos todos los documentos y las páginas de cara al cliente.
+  </Card>
+  <Card title="Establezca la zona horaria primero" icon="clock">
+    Configure su zona horaria antes de crear servicios, tareas o programar cualquier cosa para garantizar que todas las marcas de tiempo se alineen correctamente desde el inicio.
+  </Card>
+  <Card title="Limite el acceso de administrador" icon="shield">
+    Otorgue los roles de Super Admin o Admin solo al personal que realmente necesite modificar las configuraciones del espacio de trabajo, para evitar cambios accidentales.
+  </Card>
+</CardGroup>

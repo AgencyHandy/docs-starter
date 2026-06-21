@@ -1,0 +1,77 @@
+---
+title: "Ligar o Stripe para Aceitar Pagamentos Online no AgencyHandy"
+sidebarTitle: "Stripe"
+description: "Ligue a sua conta Stripe ao AgencyHandy para enviar faturas e cobrar pagamentos online seguros dos clientes sem sair da plataforma."
+---
+
+A integração Stripe do AgencyHandy permite-lhe aceitar pagamentos por cartão diretamente dos seus clientes através de faturas enviadas dentro da plataforma. Uma vez ligado, os seus clientes veem um checkout familiar alojado pela Stripe, e o estado do pagamento sincroniza de volta ao AgencyHandy automaticamente — sem necessidade de reconciliação manual.
+
+<Note>
+  Apenas as funções **SuperAdmin** e **Admin** podem ligar ou gerir a integração Stripe. Deve também ter uma conta Stripe verificada com as permissões adequadas antes de começar.
+</Note>
+
+## Ligar o Stripe
+
+<Steps>
+  <Step title="Abrir as definições de Integração Stripe">
+    Na barra lateral esquerda, navegue até **Integrações → Integração Stripe**.
+  </Step>
+
+  <Step title="Autorizar no Stripe">
+    Clique em **Ligar Stripe**. É redirecionado para o ecrã de autorização da Stripe. Inicie sessão na sua conta Stripe e clique em **Permitir** para conceder acesso ao AgencyHandy. Após aprovação, a Stripe redireciona-o de volta ao AgencyHandy automaticamente.
+  </Step>
+
+  <Step title="Configurar preferências de pagamento">
+    Após o redirecionamento, configure as seguintes opções:
+
+    - **Moeda** — escolha a moeda de faturação predefinida para o seu workspace.
+    - **Métodos de pagamento** — ative ou desative tipos de cartão (Visa, Mastercard, etc.) conforme suportado pela sua conta Stripe.
+    - **Preferências de faturação** — opcionalmente, defina uma taxa de imposto, prefixo de fatura ou condições de pagamento e datas de vencimento predefinidas.
+  </Step>
+
+  <Step title="Guardar e confirmar">
+    Clique em **Guardar**. Aparece um banner de confirmação quando a integração está ativa. A Stripe está agora ligada ao seu workspace e os seus clientes podem pagar faturas online.
+  </Step>
+</Steps>
+
+## Testar a integração
+
+Antes de enviar faturas reais, execute um teste rápido de ponta a ponta para confirmar que a ligação está a funcionar corretamente.
+
+<Steps>
+  <Step title="Criar uma fatura de teste">
+    Crie uma fatura de rascunho dentro do AgencyHandy e atribua-lhe um valor pequeno.
+  </Step>
+  <Step title="Enviar para si mesmo">
+    Envie a fatura para o seu próprio endereço de e-mail ou para um membro da equipa que possa ajudar com o teste.
+  </Step>
+  <Step title="Efetuar um pagamento de teste">
+    Abra o link da fatura e conclua o pagamento usando um cartão de teste Stripe (por ex., `4242 4242 4242 4242`) se a sua conta Stripe estiver em modo de teste, ou um cartão real em modo de produção.
+  </Step>
+  <Step title="Verificar a atualização do estado">
+    Regresse ao AgencyHandy e confirme que o estado da fatura mudou para **Paga**. Se assim for, a sua integração está a funcionar corretamente.
+  </Step>
+</Steps>
+
+## Gerir a sua ligação Stripe
+
+Regresse a **Integrações → Integração Stripe** em qualquer momento para:
+
+- **Atualizar definições de pagamento** — altere a moeda, métodos de pagamento ou preferências de faturação.
+- **Verificar o estado da ligação** — confirme se a Stripe está atualmente ativa.
+- **Desligar** — clique em **Desligar** para desvincular a sua conta Stripe. A cobrança de pagamentos pausa imediatamente até voltar a ligar.
+- **Reconectar** — clique novamente em **Ligar Stripe** e autorize novamente para restaurar a integração.
+
+<Warning>
+  Desligar a Stripe pausa a cobrança de pagamentos para todas as faturas pendentes. Os clientes não poderão pagar online até voltar a ligar e autorizar novamente.
+</Warning>
+
+## Notas adicionais
+
+<Note>
+  O AgencyHandy nunca armazena as suas credenciais de pagamento. Todos os dados de pagamento são geridos exclusivamente pela infraestrutura segura da Stripe.
+</Note>
+
+- **Uma conta por workspace** — só pode ligar uma única conta Stripe a cada workspace do AgencyHandy. Para mudar de conta, desconecte a atual primeiro e depois ligue a nova.
+- **Estado de fatura em tempo real** — todas as faturas ligadas à Stripe continuam a refletir atualizações de estado em tempo real recebidas diretamente da Stripe.
+- **Moeda** — certifique-se de que a moeda configurada no AgencyHandy corresponde à moeda ativada na sua conta Stripe para evitar erros de pagamento.

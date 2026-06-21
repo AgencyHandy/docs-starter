@@ -1,0 +1,162 @@
+---
+title: "Penagihan Langganan dan Invoice Berulang di AgencyHandy"
+sidebarTitle: "Langganan"
+description: "Cara AgencyHandy menangani penagihan langganan berulang — invoice otomatis, siklus penagihan, metode pembayaran, pembatalan, dan tautan pembayaran Wise."
+---
+
+Sistem penagihan langganan AgencyHandy memungkinkan Anda mengotomatiskan seluruh alur kerja pendapatan berulang. Ketika klien berlangganan layanan, platform membuat ID Langganan, menghasilkan order, dan menerbitkan invoice secara otomatis pada setiap siklus penagihan — baik itu harian, mingguan, bulanan, maupun tahunan. Anda tetap memiliki kendali: Anda dapat melihat detail langganan, memantau riwayat pembayaran, menangani pembayaran yang gagal, dan membatalkan langganan saat diperlukan, semuanya dari dalam AgencyHandy.
+
+## Cara Kerja Penagihan Langganan
+
+Siklus hidup langganan di AgencyHandy mengikuti enam tahap kunci.
+
+<Steps>
+  <Step title="Buat layanan berbasis langganan">
+    Navigasi ke **Services** dan klik **Create New Service**. Pilih **Subscription** sebagai jenis layanan.
+
+    Tentukan:
+    - **Billing Cycle** — Harian, Mingguan, Bulanan, atau Tahunan
+    - **Renewal Behavior** — Buat Order Baru, Perbarui Order yang Ada, atau Pertahankan Tidak Berubah
+    - **Pricing & Payment Method** — PayPal, Stripe, atau Manual
+
+    Klik **Publish** untuk membuat layanan tersedia.
+  </Step>
+  <Step title="Klien membeli langganan">
+    Klien memilih layanan langganan, melanjutkan ke pembayaran, dan memilih metode pembayaran.
+
+    AgencyHandy secara otomatis:
+    - Membuat **ID Langganan**
+    - Menghasilkan **Order**
+    - Menerbitkan **Invoice**
+
+    Untuk pembayaran **PayPal atau Stripe**, invoice langsung ditandai **Paid**. Untuk **Pembayaran Manual**, invoice tetap **Open** hingga agensi mengonfirmasi penerimaan.
+  </Step>
+  <Step title="Penagihan berulang otomatis">
+    Pada setiap tanggal pembaruan, AgencyHandy memproses pembayaran secara otomatis (untuk PayPal/Stripe) dan menghasilkan invoice berikutnya.
+
+    Jika pembayaran berhasil, invoice ditandai **Paid**. Jika gagal:
+    - Invoice tetap **Open**
+    - Klien menerima **Notifikasi Pembayaran Gagal**
+    - Agensi menerima peringatan untuk mencoba ulang atau meminta detail pembayaran yang diperbarui
+  </Step>
+  <Step title="Kelola langganan aktif">
+    Navigasi ke **Subscription Management** di bilah sisi kiri untuk melihat semua langganan aktif dan tidak aktif. Pilih langganan mana pun untuk melihat detail lengkapnya.
+  </Step>
+  <Step title="Tangani pembatalan">
+    Saat Anda membatalkan langganan, Anda dapat memilih untuk:
+    - **Batalkan sepenuhnya** — hentikan semua penagihan dan order di masa mendatang
+    - **Pertahankan order aktif terakhir berjalan** — biarkan klien terus menerima layanan hingga batas waktu periode saat ini
+
+    Untuk menghapus layanan sepenuhnya, semua langganan aktif pada layanan tersebut harus dibatalkan terlebih dahulu.
+  </Step>
+  <Step title="Notifikasi">
+    Sistem secara otomatis mengirimkan:
+    - **Pengingat Pembaruan** sebelum tanggal penagihan berikutnya
+    - **Konfirmasi Pembayaran** setelah tagihan berhasil
+    - **Peringatan Pembayaran Gagal** kepada klien dan admin agensi
+  </Step>
+</Steps>
+
+## Halaman Detail Langganan
+
+Halaman Detail Langganan memberi Anda gambaran lengkap tentang langganan individual mana pun — mulai dari layanan dan paket hingga setiap invoice dan entri log peristiwa.
+
+### Cara Mengakses
+
+1. Pergi ke **Subscriptions** di bilah sisi kiri
+2. Klik langganan mana pun dari daftar untuk membuka halaman detailnya
+
+### Yang Dapat Anda Lihat
+
+<Tabs>
+  <Tab title="Info Langganan">
+    - **Service Name** dan **Package Name**
+    - **Client Name**
+    - **Billing Cycle** (misalnya, Bulanan, Tahunan)
+    - **Kick Off Date** dan **End Date**
+    - **Status** Langganan (Aktif atau Tidak Aktif)
+  </Tab>
+  <Tab title="Detail Pembayaran">
+    - **Subscription Fee**
+    - **Total Number of Payments** yang telah dilakukan hingga saat ini
+    - **Payment Method** (Stripe, PayPal, Wise, Manual Banking, dll.)
+    - **Next Payment Date**
+  </Tab>
+  <Tab title="Riwayat Order">
+    - **Order ID**
+    - **Status** (misalnya, Ongoing, Completed)
+    - **Kick Off Date** dan **Due Date** untuk setiap order
+  </Tab>
+  <Tab title="Riwayat Invoice">
+    - **Invoice ID**
+    - **Amount**
+    - **Status** (Open, Paid, dll.)
+    - **Payment Date** dan **Due Date**
+  </Tab>
+  <Tab title="Log Peristiwa">
+    Jejak audit kronologis dari semua aktivitas yang terkait dengan langganan — perubahan status, peristiwa pembayaran, pembatalan, dan lainnya.
+  </Tab>
+</Tabs>
+
+<Note>
+  Satu langganan dapat memiliki beberapa order dan invoice yang terhubung. Invoice yang terkait dengan langganan diperbarui secara dinamis saat pembayaran diterima.
+</Note>
+
+## Dukungan Wise untuk Invoice Langganan Manual
+
+Jika Anda menerima pembayaran internasional, Anda dapat menyematkan **tautan pembayaran Wise** langsung ke dalam invoice langganan. Ini memberi klien cara yang mudah untuk membayar tanpa perlu menyiapkan transfer bank secara manual.
+
+### Persyaratan
+
+- Akun AgencyHandy yang aktif
+- Akun **Wise** yang aktif dengan tautan pembayaran yang valid yang telah dibuat
+
+### Langkah-langkah Menambahkan Tautan Wise ke Invoice
+
+<Steps>
+  <Step title="Buka bagian Invoice">
+    Klik **Invoices** di bilah sisi kiri, lalu klik **+ Create Invoice**.
+  </Step>
+  <Step title="Pilih klien dan order">
+    Pilih klien dari tarik-turun. Semua ID Order terkait akan muncul. Pilih ID Order yang relevan dan masukkan jumlah serta item yang ditagihkan.
+  </Step>
+  <Step title="Terapkan diskon dan pajak">
+    Tambahkan persentase diskon, jumlah diskon, jumlah yang telah dibayar, jumlah yang harus dibayar, dan detail PPN/pajak yang berlaku. Sertakan alamat penagihan dan catatan sesuai kebutuhan.
+  </Step>
+  <Step title="Tambahkan tautan pembayaran Wise">
+    Di bagian **Payment Method**, pilih **Wise** sebagai opsi pembayaran. Tempel tautan pembayaran Wise Anda ke kolom yang tersedia.
+  </Step>
+  <Step title="Simpan invoice">
+    Klik **Save** untuk menyelesaikan invoice. Tautan pembayaran Wise akan muncul dalam invoice sehingga klien dapat membayar langsung.
+  </Step>
+</Steps>
+
+<Tip>
+  Selalu periksa kembali tautan pembayaran Wise dan total invoice Anda sebelum menyimpan. Verifikasi bahwa detail order, diskon, dan informasi pajak sudah akurat untuk menghindari kesalahan penagihan.
+</Tip>
+
+## Catatan Penting tentang Penagihan Langganan
+
+<Accordion title="Siapa yang dapat membatalkan langganan?">
+  Hanya **Super Admin** dan **Admin** yang dapat membatalkan langganan. Klien tidak dapat membatalkan langganan mereka sendiri — mereka harus meminta pembatalan melalui agensi.
+</Accordion>
+
+<Accordion title="ID Langganan bersifat permanen">
+  Setelah langganan dibuat, ID Langganannya tidak dapat diedit. Ini memastikan pelacakan yang konsisten sepanjang masa hidup langganan.
+</Accordion>
+
+<Accordion title="Pembayaran gagal dan pembuatan order">
+  Ketika pembayaran gagal, invoice tetap Open dan order baru dibuat untuk periode yang gagal tersebut. Status langganan tetap **Active** hingga admin secara manual mencoba ulang pembayaran atau membatalkan langganan.
+</Accordion>
+
+<Accordion title="Order pembayaran manual">
+  Jika klien membayar di luar Stripe atau PayPal (misalnya, melalui transfer bank), admin harus menandai invoice secara manual sebagai **Paid** di AgencyHandy. Sistem tidak melakukan ini secara otomatis untuk pembayaran manual.
+</Accordion>
+
+<Accordion title="Percobaan checkout mandiri yang tidak dibayar">
+  Jika klien memulai proses pembayaran langganan tetapi tidak menyelesaikan pembayaran, mereka tetap berada dalam sistem sebagai **Lead** hingga berhasil berlangganan.
+</Accordion>
+
+<Accordion title="Tanggal jatuh tempo invoice">
+  Tanggal jatuh tempo untuk invoice langganan ditetapkan secara otomatis berdasarkan siklus penagihan yang Anda konfigurasikan (misalnya, invoice bulanan jatuh tempo satu bulan setelah tanggal kick-off).
+</Accordion>

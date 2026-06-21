@@ -1,0 +1,240 @@
+---
+title: "Aufgabenverwaltung: Arbeit in Aufträgen erstellen und verfolgen"
+sidebarTitle: "Aufgaben"
+description: "Aufgaben in Aufträgen erstellen, bearbeiten und verwalten – einschließlich Zeiterfassung, Datei-Feedback, kundenseitig angeforderter Aufgaben und auftragsübergreifender Aufgabenübersicht."
+---
+
+Aufgaben sind die Arbeitseinheiten, die einen Auftrag in ein Ergebnis verwandeln. Jede Aufgabe gehört zu einem bestimmten Auftrag, kann einem Teammitglied zugewiesen werden und verfolgt ihren eigenen Status, Zeitplan, Anhänge und Feedback-Thread. Diese Seite erklärt, wie Sie Aufgaben erstellen und verwalten, wie Kunden Aufgaben anfordern können, wie Zeiterfassung und Datei-Feedback funktionieren und wie Sie Aufgaben über alle Aufträge hinweg anzeigen können.
+
+## Rollenanforderungen
+
+| Aktion | Wer kann sie durchführen |
+|---|---|
+| Aufgaben erstellen | Super Admin, Admin, Projektmanager |
+| Aufgaben bearbeiten | Super Admin, Admin, Projektmanager |
+| Aufgaben löschen | Super Admin, Admin, Projektmanager |
+| Aufgaben in Überprüfung / Erledigt anzeigen | Super Admin, Admin, PM, Kunde |
+| Feedback senden und darauf antworten | Super Admin, Admin, PM |
+| Zeit für Aufgaben erfassen | Alle zugewiesenen Benutzer (Super Admins und Admins können im Namen anderer erfassen) |
+| Aufgabe anfordern (Kunde) | Kunde |
+| Angeforderte Aufgaben genehmigen / ablehnen | Super Admin, Admin |
+
+<Note>
+Mitarbeiter, die einem Auftrag zugewiesen sind, können Aufgaben sehen, die den Status **In Überprüfung** oder **Erledigt** haben. Aufgaben mit dem Status **In Bearbeitung** sind für Mitarbeiter nicht sichtbar.
+</Note>
+
+## Aufgabe erstellen
+
+<Steps>
+  <Step title="Auftrag öffnen">
+    Navigieren Sie in der linken Seitenleiste zu **Aufträge** und klicken Sie auf den Auftrag, zu dem Sie eine Aufgabe hinzufügen möchten.
+  </Step>
+
+  <Step title="Neue Aufgabe hinzufügen">
+    Scrollen Sie im Auftrag zum Abschnitt **Aufgaben** und klicken Sie auf **+ Neue Aufgabe hinzufügen**. Ein Aufgabenerstellungsformular wird angezeigt.
+  </Step>
+
+  <Step title="Aufgabendetails ausfüllen">
+    Füllen Sie die verfügbaren Felder aus:
+
+    | Feld | Hinweise |
+    |---|---|
+    | **Aufgabenname** | Ein klarer, prägnanter Titel für den Arbeitsvorgang |
+    | **Beschreibung** | Detaillierter Kontext, Anforderungen oder Anweisungen |
+    | **Verantwortlicher** | Das Teammitglied, das für die Erledigung der Aufgabe verantwortlich ist |
+    | **Bezeichnung** | Kategorisches Tag zur Organisation von Aufgaben (z. B. Design, Text) |
+    | **Startdatum** | Wann die Arbeit an der Aufgabe beginnt |
+    | **Fälligkeitsdatum** | Wann die Aufgabe abgeschlossen sein muss |
+    | **Kundenüberprüfung erforderlich** | Kontrollkästchen, das die Genehmigung des Kunden erfordert, bevor die Aufgabe als Erledigt markiert wird – standardmäßig aktiviert |
+    | **Anhänge** | Referenzdateien oder unterstützende Materialien |
+  </Step>
+
+  <Step title="Aufgabe speichern">
+    Klicken Sie auf **Speichern**, um die Aufgabe zu erstellen. Der Kunde erhält automatisch eine Benachrichtigung, dass seinem Auftrag eine neue Aufgabe hinzugefügt wurde.
+  </Step>
+</Steps>
+
+<Tip>
+Das Kontrollkästchen **Kundenüberprüfung erforderlich** ist bei jeder neuen Aufgabe standardmäßig aktiviert. Wenn eine Aufgabe rein intern ist und keine Kundengenehmigung benötigt, können Sie es vor dem Speichern deaktivieren.
+</Tip>
+
+## Aufgabenstatus
+
+Aufgaben durchlaufen die folgenden Status:
+
+- **In Bearbeitung** — Die Aufgabe wird bearbeitet (für Kunden oder Mitarbeiter nicht sichtbar)
+- **In Überprüfung** — Die Aufgabe wurde zur Überprüfung eingereicht; für Kunden sichtbar
+- **Erledigt** — Die Aufgabe wurde genehmigt und abgeschlossen
+
+<Note>
+Wenn ein Kunde oder Prüfer eine Aufgabe aus dem Status **In Überprüfung** ablehnt, wird der Status automatisch auf **In Bearbeitung** zurückgesetzt.
+</Note>
+
+## Aufgaben-Modal und Aktivitätsseite
+
+Durch Klicken auf eine Aufgabe öffnet sich das **Aufgaben-Modal**, eine Detailansicht, die als Aktivitätszentrum der Aufgabe dient. Von hier aus können Sie Folgendes einsehen und verwalten:
+
+- Aktuellen Status, Verantwortlichen, Startdatum und Fälligkeitsdatum
+- Aufgabenbeschreibung und alle angehängten Dateien
+- Alle Feedback-Threads und Antworten
+- Ein vollständiges Aktivitätsprotokoll mit jeder Aktualisierung, jedem Kommentar und jeder Statusänderung der Aufgabe
+
+Jeder, der Teil des Auftrags ist – einschließlich Kunden, wenn die Kundenüberprüfung aktiviert ist – kann das Aufgaben-Modal für Aufgaben öffnen, die für sie sichtbar sind.
+
+## Aufgabe bearbeiten
+
+Um die Details einer Aufgabe nach ihrer Erstellung zu aktualisieren, öffnen Sie das Aufgaben-Modal und ändern Sie die relevanten Felder (Name, Beschreibung, Verantwortlicher, Termine, Bezeichnung oder Anhänge). Speichern Sie Ihre Änderungen, um die Aktualisierung anzuwenden. Nur Super Admins, Admins und PMs können Aufgaben bearbeiten.
+
+## Aufgabe löschen
+
+Um eine Aufgabe zu löschen, öffnen Sie sie und verwenden Sie die Löschoption im Aktionsmenü der Aufgabe. Das Löschen ist dauerhaft – alle zugehörigen Zeitprotokolle und Dateiversionen werden zusammen mit der Aufgabe entfernt.
+
+<Warning>
+Das Löschen einer Aufgabe entfernt auch alle Dateiversionen und die damit verbundenen Feedback-Kommentare. Diese Aktion kann nicht rückgängig gemacht werden.
+</Warning>
+
+## Zeiterfassung
+
+AgencyHandy enthält eine integrierte Zeiterfassung, mit der Ihr Team Stunden direkt bei Aufgaben protokollieren kann – kein externes Tool erforderlich.
+
+### Timer starten
+
+<Steps>
+  <Step title="Aufgabe öffnen">
+    Gehen Sie zu **Aufträge → Aufgaben** und öffnen Sie die Aufgabe, für die Sie die Zeit erfassen möchten.
+  </Step>
+
+  <Step title="Timer starten">
+    Klicken Sie auf **Timer starten**. Der Timer beginnt zu laufen und zeigt den Aufgabennamen, die verstrichene Echtzeit und die gesamte protokollierte Zeit an.
+  </Step>
+
+  <Step title="Pausieren oder stoppen, wenn fertig">
+    Klicken Sie auf **Timer pausieren**, um die Erfassung vorübergehend anzuhalten, oder auf **Timer stoppen**, um den Eintrag abzuschließen. Beim Stoppen bestätigen Sie Datum, Startzeit, Endzeit, Gesamtdauer und eine optionale Notiz.
+  </Step>
+</Steps>
+
+<Note>
+Sie können immer nur einen aktiven Timer gleichzeitig laufen haben. Das Starten eines neuen Timers pausiert automatisch jeden bestehenden.
+</Note>
+
+<Warning>
+Wenn eine Aufgabe als **Erledigt** markiert ist, ist der Timer deaktiviert. Öffnen Sie die Aufgabe erneut, um die Zeiterfassung wieder zu aktivieren.
+</Warning>
+
+### Manuelle Zeiteingabe
+
+Wenn Sie Zeit rückwirkend protokollieren müssen, klicken Sie auf **Manuelle Zeiteingabe** bei der Aufgabe und geben Sie ein:
+
+- **Datum**
+- **Startzeit und Endzeit** (oder eine **Dauer** in Stunden und Minuten)
+- **Notizen** (optional)
+
+Mehrere Benutzer können gleichzeitig Zeit für dieselbe Aufgabe protokollieren. Super Admins und Admins können manuelle Zeiteinträge im Namen anderer Benutzer erstellen.
+
+### Arbeitsprotokolle
+
+Klicken Sie auf die Schaltfläche **Arbeitsprotokoll** neben dem Timer, um eine vollständige Aufschlüsselung aller Zeiteinträge für die Aufgabe zu sehen, einschließlich Datum, Start-/Endzeiten, gesamter aktiver Zeit und Notizen. Admins und Super Admins können jeden Eintrag löschen; normale Benutzer können nur ihre eigenen löschen.
+
+### Arbeitszeitnachweise
+
+Navigieren Sie in der linken Seitenleiste zu **Arbeitszeitnachweise**, um eine auftragsübergreifende Ansicht aller protokollierten Zeiten zu erhalten. Sie können nach Aufgabenname, Auftrags-ID, Verantwortlichem oder Datumsbereich (täglich, wöchentlich, monatlich) filtern und Ergebnisse nach Teammitglied, Dienstleistungsname oder Aufgabenname gruppieren. Sie können auch direkt aus der Arbeitszeitnachweise-Ansicht einen Timer starten oder einen manuellen Eintrag hinzufügen.
+
+## Datei-Feedback
+
+Das Datei-Feedback-System von AgencyHandy ermöglicht es Ihnen und Ihren Kunden, präzise, visuelle Kommentare zu Lieferobjekten direkt in Aufgaben zu hinterlassen. Es unterstützt Bilder, PDFs, Videos und Live-Websites mit integrierter Versionskontrolle und Thread-Diskussionen.
+
+### Datei zur Überprüfung hochladen
+
+Öffnen Sie die Aufgabe, klicken Sie auf das **➕**-Symbol im Abschnitt **Anhänge** und laden Sie ein Bild, ein PDF, ein Video hoch oder fügen Sie eine Live-Website-URL ein.
+
+### Feedback nach Dateityp hinterlassen
+
+**Bilder und PDFs**
+Öffnen Sie die Datei und verwenden Sie die Anmerkungswerkzeugleiste (Pfeil, Linie, Rechteck, Hervorhebung), um bestimmte Bereiche zu markieren. Wählen Sie einen Bereich aus, geben Sie Ihren Kommentar ein und wählen Sie, ob Sie ihn mit Ihrem Team, dem Kunden oder beiden teilen möchten. Sie können Anmerkungen auch rückgängig machen oder wiederholen und Anmerkungsfarben ändern.
+
+**Videos**
+Öffnen Sie das Video und halten Sie es an dem genauen Frame an, auf den sich Ihr Feedback bezieht. Geben Sie Ihren Kommentar ein – das Video pausiert automatisch, während Sie tippen. Das Feedback wird auf diesen Moment zeitgestempelt. Sie können den Zeitstempel entfernen, um stattdessen einen allgemeinen Kommentar zu hinterlassen.
+
+**Live-Websites**
+Fügen Sie die Website-URL mit der **➕**-Schaltfläche zur Aufgabe hinzu und installieren Sie dann die AgencyHandy-Browsererweiterung. Öffnen Sie die Website im **Ansichtsmodus** (interaktiv) oder wechseln Sie in den **Überprüfungsmodus**, um einen Screenshot zu erstellen und ihn mit Zeichen-, Text- oder Formwerkzeugen zu kommentieren.
+
+### Kommentaraktionen
+
+Jeder Kommentar hat ein Drei-Punkte-Menü mit Optionen zum:
+
+- Bearbeiten des Kommentars
+- Kopieren der Antwort
+- Löschen des Kommentars
+- Einschränken der Sichtbarkeit auf das interne Team
+
+### Feedback auflösen
+
+Klicken Sie auf die **✓**-Schaltfläche bei einem Kommentar, um ihn als **Aufgelöst** zu markieren. Aufgelöste Kommentare bleiben zur Referenz sichtbar und können wieder geöffnet werden. Sie erhalten eine Benachrichtigung, wenn ein von Ihnen hinterlassener Kommentar von jemand anderem aufgelöst wird.
+
+### Dateiversionen
+
+Klicken Sie auf **Neue Version hochladen**, um eine überarbeitete Datei hinzuzufügen. Frühere Versionen und ihr Feedback werden gespeichert und sind über das Versions-Dropdown zugänglich. Beim Öffnen einer älteren Version informiert AgencyHandy Sie, dass eine neuere Version vorhanden ist.
+
+Sie können jede Datei als **Überprüfung erforderlich** oder **Genehmigt** kennzeichnen, um den Überprüfungsstatus auf einen Blick zu kommunizieren.
+
+<Note>
+Kunden können nur dann Feedback zu Dateien hinterlassen, wenn das Kontrollkästchen **Kundenüberprüfung erforderlich** bei der Aufgabe aktiviert ist. Datei-Feedback ist nur innerhalb von Aufgaben oder Aufträgen verfügbar – nicht im Dienstleistungskatalog oder in Profilbildern.
+</Note>
+
+## Kundenseitig angeforderte Aufgaben
+
+Kunden können Aufgabenanforderungen über ihr Portal einreichen, was ihnen eine strukturierte Möglichkeit gibt, zusätzliche Bedürfnisse zu äußern, ohne Ihren Genehmigungsprozess zu umgehen.
+
+### Workflow des Kunden
+
+<Steps>
+  <Step title="Anforderungen aufrufen">
+    Der Kunde klickt in der Seitenleiste seines Kundenportals auf **Anforderungen** – oder verwendet die Schaltfläche **+ Aufgabe anfordern** direkt innerhalb eines Auftrags.
+  </Step>
+
+  <Step title="Anforderungsformular ausfüllen">
+    Der Kunde gibt folgendes an:
+    - **Auftrag** (Pflichtfeld – Anforderungen müssen mit einem bestehenden Auftrag verknüpft sein)
+    - **Aufgabenname** (Pflichtfeld)
+    - **Beschreibung** (optional)
+    - **Anhänge** (optional – bis zu 1 GB; Formate umfassen PDF, DOCX, JPG, PNG, MP4, ZIP und mehr)
+    - **Start- und Enddaten** (optional)
+  </Step>
+
+  <Step title="Anforderung einreichen">
+    Der Kunde klickt auf **Anforderung**. Die Aufgabe erscheint in seinem Portal als **Ausstehend** und Ihre Agentur erhält eine Benachrichtigung.
+  </Step>
+</Steps>
+
+### Workflow der Agentur
+
+<Steps>
+  <Step title="Eingehende Anforderungen anzeigen">
+    Klicken Sie in der Seitenleiste des Agenturportals auf **Anforderungen**. Alle ausstehenden Anforderungen erscheinen in einer Listenansicht. Sie können nach Kunde oder Auftrags-ID filtern, alphabetisch oder nach Ausgabedatum sortieren und mit **Einstellungen** Spalten ein- oder ausblenden.
+  </Step>
+
+  <Step title="Anforderung überprüfen">
+    Klicken Sie auf eine Anforderung, um die Beschreibung zu lesen und alle Anhänge in der Vorschau anzuzeigen, bevor Sie eine Entscheidung treffen.
+  </Step>
+
+  <Step title="Genehmigen oder ablehnen">
+    Verwenden Sie die Aktionsschaltflächen neben jeder Anforderung, um einzeln zu genehmigen oder abzulehnen – oder verwenden Sie die Massenaktionen oben rechts, um alle Anforderungen auf einmal zu genehmigen oder abzulehnen.
+
+    - **Genehmigte** Anforderungen werden zu aktiven Aufgaben im Auftrag und folgen dem normalen Aufgaben-Workflow.
+    - **Abgelehnte** Anforderungen bleiben mit dem Status **Abgelehnt** protokolliert und werden dem Auftrag nicht hinzugefügt.
+  </Step>
+</Steps>
+
+<Note>
+Kunden können den Genehmigungsschritt nicht umgehen. Eine Anforderung erfordert immer eine Agenturentscheidung, bevor sie zu einer aktiven Aufgabe wird. Ausstehende Anforderungen sind für Kunden und Agentur sichtbar, bis eine Entscheidung getroffen wird.
+</Note>
+
+## Alle Aufgaben anzeigen
+
+Neben der Verwaltung von Aufgaben in einzelnen Aufträgen können Sie Aufgaben über alle Aufträge hinweg auf einem einzigen Bildschirm anzeigen. Navigieren Sie in der linken Seitenleiste zu **Aufgaben**, um die Seite **Alle Aufgaben** aufzurufen. Von hier aus können Sie:
+
+- Alle Aufgaben anzeigen, auf die Sie Zugriff haben, unabhängig von dem Auftrag, zu dem sie gehören
+- Nach Status, Verantwortlichem, Fälligkeitsdatum oder Auftrag filtern und sortieren
+- Überfällige oder gefährdete Elemente in Ihrer gesamten Arbeitslast schnell identifizieren
+
+Diese auftragsübergreifende Übersicht ist besonders nützlich für Projektmanager und Admins, die die Teamkapazität ausbalancieren und den Lieferstatus auf Agenturebene verfolgen müssen.

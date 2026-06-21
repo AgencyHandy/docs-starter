@@ -1,0 +1,126 @@
+---
+title: "Barcha Vazifalar — AgencyHandy'da Markazlashtirilgan Vazifa Boshqaruvi"
+sidebarTitle: "Barcha Vazifalar"
+description: "Barcha vazifalar sahifasini davom etayotgan va ko'rib chiqilayotgan buyurtmalardagi har bir vazifaning real vaqtda, rolga ko'ra filtrlangan ko'rinishi uchun ishlating — qidiruv, filtrlar va saralash bilan."
+---
+
+AgencyHandy'dagi Barcha Vazifalar sahifasi agentligingiz bo'ylab faol ish oqimlariga tegishli barcha vazifalarning yagona, markazlashtirilgan ko'rinishini beradi. Alohida buyurtmalarda qidirish o'rniga, barcha tegishli vazifalarni bir joyda ko'rishingiz, tayinlangan, muhimlik darajasi yoki sana bo'yicha filtrlashingiz va to'g'ridan-to'g'ri ro'yxatdan tahrirlashingiz mumkin. Ko'rish imkoniyati rolingizga avtomatik ravishda belgilanadi — Super Adminlar hamma narsani ko'radi, Menejerlar tayinlangan buyurtmalarini ko'radi, Xodimlar esa faqat o'z vazifalarini ko'radi.
+
+## Barcha Vazifalar Sahifasiga Kirish
+
+1. AgencyHandy akkauntingizga kiring.
+2. Chap yon paneldagi **Vazifalar** tugmasini bosing.
+3. Markazlashtirilgan vazifa boshqaruv paneliga kirish uchun **Barcha Vazifalar** bo'limini tanlang.
+
+<Note>
+  Barcha Vazifalar sahifasi faqat **Davom etmoqda** yoki **Ko'rib chiqilmoqda** holatidagi buyurtmalardagi vazifalarni ko'rsatadi. Boshqa holatdagi buyurtmalarga (masalan, Yakunlandi, Kutilmoqda) bog'liq vazifalar bu yerda ko'rinmaydi.
+</Note>
+
+## Rolga Ko'ra Vazifalarni Ko'rish
+
+Barcha Vazifalar sahifasida nima ko'rishingiz rolingizga butunlay bog'liq.
+
+| Rol | Ko'radiganlar |
+|------|---------------|
+| **Super Admin / Admin** | Har bir buyurtma, jamoa va holat bo'yicha barcha vazifalar |
+| **Loyiha Menejeri (PM)** | Faqat Menejer sifatida tayinlangan buyurtmalardagi vazifalar |
+| **Xodim / Tayinlangan** | Faqat ularga to'g'ridan-to'g'ri tayinlangan vazifalar — bir xil buyurtmada hamkasblar ishlayotgan bo'lsa ham |
+
+<Tip>
+  Agar PM ko'rishi kerak deb o'ylagan vazifani topa olmasa, ular tegishli buyurtmada Menejer sifatida tayinlanganligini tasdiqlang. PMlar o'sha buyurtma uchun tayinlangan Menejer bo'lmasalar, vazifalarni ko'ra olmaydi.
+</Tip>
+
+## Vazifalar Bu Sahifada Qachon Ko'rinadi
+
+Quyidagi shartlar bajarilganda vazifalar Barcha Vazifalar sahifasida ko'rinadi:
+
+<CardGroup cols={2}>
+  <Card title="Vazifalarni ko'rinadigan qiladigan buyurtmalar" icon="circle-check">
+    - Qo'lda buyurtmalar (bir martalik yoki obuna) yaratildi
+    - Stripe yoki qo'lda to'lov usullari orqali katalog buyurtmalari berildi
+    - Taklif agentlik tomonidan qabul qilindi
+  </Card>
+  <Card title="Vazifalarni yashirin saqlagan buyurtmalar" icon="eye-slash">
+    - Agentlik hali qabul qilmagan mijoz tomonidan so'ralgan vazifalar
+    - Agentlik hali qabul qilmagan sinov buyurtmalari
+    - Qo'lda bank to'lovini tasdiqlashni kutayotgan kutilayotgan holatdagi buyurtmalar
+  </Card>
+</CardGroup>
+
+## Qidirish, Filtrlash va Saralash
+
+Barcha Vazifalar sahifasida kerak narsangizni topishga yordam beradigan to'liq boshqaruv to'plami mavjud.
+
+### Qidirish
+
+Vazifalarni nom, tayinlangan yoki tegishli buyurtma bo'yicha topish uchun qidiruv satridan foydalaning. Natijalar siz yozayotganingizda real vaqtda yangilanadi.
+
+### Filtrlar
+
+Filtr panelini ochish uchun **Filtr → + Filtr Qo'shish** tugmasini bosing. Aniq natijalar uchun bir nechta filtrlarni birlashtirishingiz mumkin:
+
+| Filtr | Nima Qiladi |
+|--------|--------------|
+| **Buyurtma ID** | Muayyan buyurtma raqamiga bog'liq vazifalarni ko'rsatish |
+| **Tayinlangan** | Muayyan jamoa a'zosiga tayinlangan vazifalarni ko'rsatish |
+| **Holat** | Vazifa jarayoni bo'yicha filtrlash: Kutilmoqda, Jarayonda, Ko'rib chiqilmoqda, Bajarildi va boshqalar |
+| **Muhimlik Darajasi** | Yuqori, O'rta yoki Past muhimlik darajasidagi vazifalarga e'tibor qaratish |
+| **Yorliq** | Vazifa yorliqlari yoki toifalari bo'yicha toraytirish |
+| **Boshlash Sanasi** | Muayyan sanada yoki undan keyin boshlanadigan vazifalarni ko'rsatish |
+| **Tugash Sanasi** | Muayyan sanagacha muddati bo'lgan vazifalarni ko'rsatish |
+
+<Note>
+  Filtrlar faqat Barcha Vazifalar sahifasida mavjud. Ular brauzer sessiyangiz davomida saqlanadi, lekin sahifani yangilashda tiklanaadi. Filtrlar faqat sizning ko'rinishingizga ta'sir qiladi va boshqa foydalanuvchilar ko'rishini o'zgartirmaydi.
+</Note>
+
+Barcha filtrlarni tozalash uchun to'liq, filtrsiz ro'yxatga qaytish uchun **Filtrlarni Tozalash** tugmasini bosing.
+
+### Saralash
+
+Vazifa ro'yxatini quyidagilar bo'yicha saralang:
+- **Muddat** — yaqin kelayotgan yoki allaqachon muddati o'tgan vazifalarni ko'rsatish
+- **Muhimlik darajasi** — eng muhim vazifalarni yuqoriga chiqarish
+- **Yaratilish vaqti** — yaqinda qo'shilgan vazifalarni birinchi ko'rsatish
+
+### Navigatsiya Zanjiri
+
+Kichik vazifalar, vazifalar ro'yxatlari va ota-buyurtmalar o'rtasida harakatlanayotganingizda kontekstni saqlash uchun sahifa yuqorisidagi navigatsiya zanjiridan foydalaning. Bu ayniqsa muayyan vazifaga kirib, keyin keng ro'yxatga qaytish kerak bo'lganda foydali.
+
+## Vazifalarni Tahrirlash
+
+Barcha Vazifalar sahifasida vazifalarni ikki usulda o'zgartirishingiz mumkin:
+
+<Tabs>
+  <Tab title="Inline Tahrirlash">
+    Vazifa qatoridagi tahrirlanadigan maydonga to'g'ridan-to'g'ri bosing — masalan, holat, tayinlangan yoki muddat — va ro'yxat ko'rinishidan chiqmasdan o'zgartirishingizni kiriting. Bu tezkor yangilanishlar uchun eng tez variant.
+  </Tab>
+  <Tab title="Modal Tahrirlash">
+    To'liq vazifa tafsiloti modalini ochish uchun vazifa nomini bosing. Bu yerdan barcha vazifa xususiyatlarini yangilash, izohlar qo'shish, kichik vazifalarni ko'rish va to'liq vazifa tarixini ko'rish mumkin. Buni chuqurroq tahrirlashlar yoki kontekst kerak bo'lganda ishlating.
+  </Tab>
+</Tabs>
+
+## Vazifalarni O'chirish Qoidalari
+
+Barcha Vazifalar sahifasidagi vazifalar to'g'ridan-to'g'ri ota-buyurtmalariga bog'liq.
+
+- **Buyurtma o'chirilganda**, o'sha buyurtmaga bog'liq barcha vazifalar Barcha Vazifalar sahifasidan **avtomatik va doimiy ravishda o'chiriladi**.
+- Bu o'chirish barcha foydalanuvchi rollariga ta'sir qiladi — buyurtma o'chirilgandan so'ng hech kim o'sha vazifalarni ko'ra olmaydi.
+- Buyurtmani o'chirish orqali o'chirilgan vazifalar uchun **qayta tiklash imkoniyati yo'q**.
+
+<Warning>
+  Buyurtmani o'chirish uning barcha vazifalarini doimiy ravishda olib tashlaydi. Buyurtmani o'chirishdan oldin har qanday muhim vazifa tarixi yoki yetkazib berish yozuvlari boshqa joyga saqlanganligiga ishonch hosil qiling.
+</Warning>
+
+## Qo'shimcha Izohlar
+
+<Accordion title="Real vaqtda yangilanishlar">
+  Buyurtmalar, vazifa tayinlamalari yoki vazifa holatlariga o'zgarishlar Barcha Vazifalar sahifasida real vaqtda aks etadi. Agar sahifa ochiq bo'lganda hamkasb vazifani yangilasa, yangilashni sahifani yangilamasdan ko'rasiz.
+</Accordion>
+
+<Accordion title="Mijoz tomonidan so'ralgan vazifalar">
+  Mijozlar tomonidan yuborilgan vazifalar agentlik ularni ochiqchasiga qabul qilguncha Barcha Vazifalar sahifasida ko'rinmaydi. Qabul qilinguncha, bu vazifalar kutilayotgan holatda qoladi va markazlashtirilgan ko'rinishda ko'rinmaydi.
+</Accordion>
+
+<Accordion title="Vazifalar va buyurtma holati">
+  Vazifalar faqat Davom etmoqda yoki Ko'rib chiqilmoqda holatidagi buyurtmalar uchun ko'rinadi. Agar buyurtma Yakunlandi holatiga o'tsa yoki to'xtatilsa, uning vazifalari bu yerda ko'rsatilmaydi. Ushbu holatlardan tashqaridagi buyurtmalarga bog'liq vazifalarni ko'rish uchun muayyan buyurtmaga o'ting.
+</Accordion>

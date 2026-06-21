@@ -1,0 +1,162 @@
+---
+title: "Abonnementsfakturering og gjentakende fakturaer i AgencyHandy"
+sidebarTitle: "Abonnementer"
+description: "Hvordan AgencyHandy håndterer gjentakende abonnementsfakturering — automatiserte fakturaer, faktureringssykluser, betalingsmetoder, kanselleringer og Wise-betalingslenker."
+---
+
+AgencyHandy's abonnementsfaktureringssystem lar deg automatisere hele arbeidsflyten for gjentakende inntekter. Når en klient abonnerer på en tjeneste, oppretter plattformen en abonnements-ID, genererer bestillinger og utsteder fakturaer automatisk på hvert faktureringssyklus — enten det er daglig, ukentlig, månedlig eller årlig. Du beholder kontrollen: du kan se abonnementsdetaljer, overvåke betalingshistorikk, håndtere mislykkede betalinger og kansellere abonnementer ved behov, alt fra innenfor AgencyHandy.
+
+## Hvordan abonnementsfakturering fungerer
+
+Abonnementslivssyklusen i AgencyHandy følger seks nøkkeltrinn.
+
+<Steps>
+  <Step title="Opprett en abonnementsbasert tjeneste">
+    Naviger til **Tjenester** og klikk på **Opprett ny tjeneste**. Velg **Abonnement** som tjenestetype.
+
+    Definer:
+    - **Faktureringssyklus** — Daglig, Ukentlig, Månedlig eller Årlig
+    - **Fornyelsesatferd** — Opprett ny bestilling, Oppdater eksisterende bestilling eller Hold uendret
+    - **Prising og betalingsmetode** — PayPal, Stripe eller Manuell
+
+    Klikk på **Publiser** for å gjøre tjenesten tilgjengelig.
+  </Step>
+  <Step title="Klienten kjøper abonnementet">
+    Klienten velger abonnementstjenesten, går til betaling og velger en betalingsmetode.
+
+    AgencyHandy oppretter automatisk:
+    - En **abonnements-ID**
+    - En **bestilling**
+    - En **faktura**
+
+    For **PayPal eller Stripe**-betalinger er fakturaen umiddelbart markert som **Betalt**. For **manuell betaling** forblir fakturaen **Åpen** til byrået bekrefter mottak.
+  </Step>
+  <Step title="Automatisert gjentakende fakturering">
+    På hver fornyelsesdato behandler AgencyHandy betalingen automatisk (for PayPal/Stripe) og genererer neste faktura.
+
+    Hvis betalingen lykkes, er fakturaen markert som **Betalt**. Hvis den mislykkes:
+    - Fakturaen forblir **Åpen**
+    - Klienten mottar et **varsel om mislykket betaling**
+    - Byrået mottar et varsel om å prøve på nytt eller be om oppdaterte betalingsdetaljer
+  </Step>
+  <Step title="Administrer aktive abonnementer">
+    Naviger til **Abonnementhåndtering** i venstre sidefelt for å se alle aktive og inaktive abonnementer. Velg et abonnement for å se alle detaljer.
+  </Step>
+  <Step title="Håndter kanselleringer">
+    Når du kansellerer et abonnement, kan du velge å:
+    - **Kansellere fullstendig** — stoppe all fremtidig fakturering og bestillinger
+    - **Beholde den siste aktive bestillingen kjørende** — la klienten fortsette å motta tjenesten gjennom den gjeldende periodens frist
+
+    For å slette en tjeneste fullstendig, må alle aktive abonnementer på den tjenesten kanselleres først.
+  </Step>
+  <Step title="Varsler">
+    Systemet sender automatisk:
+    - **Fornyelsesvarsler** før neste faktureringsdato
+    - **Betalingsbekreftelser** etter vellykkede belastninger
+    - **Varsler om mislykket betaling** til både klienten og byråadministratorer
+  </Step>
+</Steps>
+
+## Abonnementsdetaljsiden
+
+Abonnementsdetaljsiden gir deg et komplett bilde av ethvert enkelt abonnement — fra tjenesten og pakken ned til hver faktura og hendelsesloggpost.
+
+### Hvordan få tilgang
+
+1. Gå til **Abonnementer** i venstre sidefelt
+2. Klikk på et abonnement fra listen for å åpne detaljsiden
+
+### Hva du kan se
+
+<Tabs>
+  <Tab title="Abonnementsinformasjon">
+    - **Tjenestenavn** og **pakkenavn**
+    - **Klientnavn**
+    - **Faktureringssyklus** (f.eks. Månedlig, Årlig)
+    - **Oppstartsdato** og **sluttdato**
+    - Abonnements**status** (Aktiv eller Inaktiv)
+  </Tab>
+  <Tab title="Betalingsdetaljer">
+    - **Abonnementsgebyr**
+    - **Totalt antall betalinger** gjort til dato
+    - **Betalingsmetode** (Stripe, PayPal, Wise, Manuell bankoverføring, osv.)
+    - **Neste betalingsdato**
+  </Tab>
+  <Tab title="Bestillingshistorikk">
+    - **Bestillings-ID**
+    - **Status** (f.eks. Pågående, Fullført)
+    - **Oppstartsdato** og **forfallsdato** for hver bestilling
+  </Tab>
+  <Tab title="Fakturahistorikk">
+    - **Faktura-ID**
+    - **Beløp**
+    - **Status** (Åpen, Betalt, osv.)
+    - **Betalingsdato** og **forfallsdato**
+  </Tab>
+  <Tab title="Hendelseslogger">
+    En kronologisk revisjonsspor over alle aktiviteter knyttet til abonnementet — statusendringer, betalingshendelser, kanselleringer og mer.
+  </Tab>
+</Tabs>
+
+<Note>
+  Et enkelt abonnement kan ha flere tilknyttede bestillinger og fakturaer. Fakturaer knyttet til abonnementer oppdateres dynamisk når betalinger mottas.
+</Note>
+
+## Wise-støtte for manuelle abonnementsfakturaer
+
+Hvis du samler inn internasjonale betalinger, kan du legge inn en **Wise-betalingslenke** direkte i abonnementsfakturaer. Dette gir klienter en praktisk betalingsmåte uten å måtte sette opp en bankoverføring manuelt.
+
+### Krav
+
+- En aktiv AgencyHandy-konto
+- En aktiv **Wise-konto** med en gyldig betalingslenke generert
+
+### Trinn for å legge til en Wise-lenke til en faktura
+
+<Steps>
+  <Step title="Åpne fakturaseksjonen">
+    Klikk på **Fakturaer** i venstre sidefelt, og klikk deretter på **+ Opprett faktura**.
+  </Step>
+  <Step title="Velg klient og bestilling">
+    Velg klienten fra rullegardinmenyen. Alle relaterte bestillings-IDer vil vises. Velg den relevante bestillings-IDen og fyll inn beløpet og eventuelle poster som faktureres.
+  </Step>
+  <Step title="Bruk rabatter og skatter">
+    Legg til eventuelle gjeldende rabattprosent, rabattbeløp, betalt beløp, skyldig beløp og mva./skattedetaljer. Inkluder faktureringsadresse og merknader etter behov.
+  </Step>
+  <Step title="Legg til Wise-betalingslenken">
+    I **Betalingsmetode**-seksjonen, velg **Wise** som betalingsalternativ. Lim inn Wise-betalingslenken din i det angitte feltet.
+  </Step>
+  <Step title="Lagre fakturaen">
+    Klikk på **Lagre** for å fullføre fakturaen. Wise-betalingslenken vil vises i fakturaen slik at klienten kan betale direkte.
+  </Step>
+</Steps>
+
+<Tip>
+  Dobbeltsjekk alltid Wise-betalingslenken og fakturatotalene før du lagrer. Verifiser at bestillingsdetaljene, rabattene og skatteinformasjonen er nøyaktige for å unngå fakturafeil.
+</Tip>
+
+## Viktige merknader om abonnementsfakturering
+
+<Accordion title="Hvem kan kansellere abonnementer?">
+  Kun **Super Admins** og **Admins** kan kansellere abonnementer. Klienter kan ikke kansellere sine egne abonnementer — de må be om kansellering gjennom byrået.
+</Accordion>
+
+<Accordion title="Abonnements-IDer er permanente">
+  Når et abonnement er opprettet, kan ikke abonnements-IDen redigeres. Dette sikrer konsekvent sporing gjennom abonnementets levetid.
+</Accordion>
+
+<Accordion title="Mislykkede betalinger og bestillingsopprettelse">
+  Når en betaling mislykkes, forblir fakturaen Åpen og en ny bestilling opprettes for den mislykkede perioden. Abonnementsstatusen forblir **Aktiv** til en administrator manuelt prøver betalingen på nytt eller kansellerer abonnementet.
+</Accordion>
+
+<Accordion title="Manuelle betalingsbestillinger">
+  Hvis en klient betaler utenfor Stripe eller PayPal (f.eks. via bankoverføring), må administratoren manuelt markere fakturaen som **Betalt** i AgencyHandy. Systemet gjør ikke dette automatisk for manuelle betalinger.
+</Accordion>
+
+<Accordion title="Ubetalte selvbetjeningsforsøk">
+  Hvis en klient starter en abonnementsbetaling, men ikke fullfører betalingen, forblir de i systemet som en **lead** til de abonnerer.
+</Accordion>
+
+<Accordion title="Fakturaforfallsdatoer">
+  Forfallsdatoer for abonnementsfakturaer settes automatisk basert på faktureringssyklusen du konfigurerte (f.eks. er månedlige fakturaer forfalt én måned etter oppstartsdatoen).
+</Accordion>

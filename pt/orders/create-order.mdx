@@ -1,0 +1,143 @@
+---
+title: "Como Criar, Editar e Eliminar Encomendas no AgencyHandy"
+sidebarTitle: "Criar Encomenda"
+description: "Guia passo a passo para criar, editar e eliminar encomendas no AgencyHandy — incluindo requisitos de função, campos do formulário e transições de estado."
+---
+
+Criar uma encomenda no AgencyHandy dá-lhe um espaço de trabalho estruturado para prestar um serviço a um cliente. Preenche os detalhes principais logo no início — cliente, serviço, preço, datas e um resumo do projeto — e tudo o resto, desde tarefas a discussões, decorre desse único registo. Esta página explica como criar uma encomenda de raiz, atualizá-la posteriormente, alterar o seu estado e eliminá-la quando já não for necessária.
+
+## Requisitos
+
+- Tem de ter sessão iniciada no AgencyHandy.
+- Tem de ter a função de **Super Admin**, **Admin** ou **Gestor de Projeto** para criar ou editar encomendas.
+- Apenas **Super Admins** e **Admins** podem eliminar encomendas.
+
+## Criar uma Nova Encomenda
+
+<Steps>
+  <Step title="Navegar para Encomendas">
+    Na barra lateral esquerda do seu painel AgencyHandy, clique em **Orders**.
+  </Step>
+
+  <Step title="Abrir o formulário de criação">
+    Clique em **+ Create New Order** no canto superior direito. Será apresentado um formulário.
+  </Step>
+
+  <Step title="Preencher os detalhes da encomenda">
+    Complete os campos do formulário:
+
+    | Campo | Obrigatório | Notas |
+    |---|---|---|
+    | **Client** | ✅ | Selecione a partir da sua lista de clientes existentes |
+    | **Service** | ✅ | Inclui serviços publicados e não publicados |
+    | **Project Manager** | ❌ | Opcional; atribua um gestor de projeto responsável pela entrega |
+    | **Quantity** | ✅ | Número de unidades encomendadas |
+    | **Price** | ✅ | Orçamento acordado para a encomenda |
+    | **Kick-off Date** | ✅ | Quando o trabalho começa |
+    | **Due Date** | ✅ | Prazo de entrega |
+    | **Order Brief** | ❌ | Instruções, requisitos ou notas de referência para a sua equipa |
+    | **Attachments** | ❌ | Ficheiros de suporte relevantes para a encomenda |
+
+    <Tip>
+      Se o serviço selecionado tiver add-ons associados, aparecerá uma secção de **Add-On** no formulário. Inclua os add-ons relevantes antes de submeter.
+    </Tip>
+  </Step>
+
+  <Step title="Rever as entradas">
+    Verifique todos os campos quanto à exatidão — especialmente o cliente, serviço, preço e data de entrega.
+  </Step>
+
+  <Step title="Submeter a encomenda">
+    Clique em **Create** para finalizar a encomenda. Receberá uma mensagem de confirmação assim que for criada com sucesso.
+  </Step>
+</Steps>
+
+### O Que Acontece Após Criar uma Encomenda
+
+- Todos os Super Admins da sua empresa obtêm automaticamente acesso à nova encomenda.
+- O cliente recebe uma notificação de que a sua encomenda foi criada.
+- A encomenda aparece na lista de **Orders** com o estado **Pending**.
+
+## Editar ou Atualizar uma Encomenda
+
+Pode atualizar uma encomenda a qualquer momento para corrigir detalhes, ajustar preços, alterar a data de entrega ou acomodar pedidos do cliente.
+
+<Note>
+Tem de ser **Super Admin**, **Admin** ou **Gestor de Projeto** para editar uma encomenda.
+</Note>
+
+<Steps>
+  <Step title="Abrir a lista de Encomendas">
+    Navegue para **Orders** na barra lateral esquerda.
+  </Step>
+
+  <Step title="Selecionar a encomenda a editar">
+    Localize a encomenda que pretende atualizar e marque a caixa de seleção ao lado.
+  </Step>
+
+  <Step title="Ativar o botão de edição">
+    Aparecerá um botão **Edit** no canto superior direito. Clique nele para abrir os detalhes da encomenda em modo de edição.
+  </Step>
+
+  <Step title="Modificar os campos necessários">
+    Atualize os campos que precisam de alteração — detalhes do cliente, serviço, preços, datas, resumo ou gestor de projeto atribuído.
+  </Step>
+
+  <Step title="Guardar as alterações">
+    Clique em **Update** para guardar. Uma mensagem de confirmação confirmará que a atualização foi bem-sucedida.
+  </Step>
+</Steps>
+
+## Alterar o Estado de uma Encomenda
+
+O estado da encomenda reflete onde um trabalho se encontra no seu pipeline de entrega. O AgencyHandy define cinco estados fixos — não pode adicionar nem renomear.
+
+| Estado | Significado |
+|---|---|
+| **Pending** | Criada, ainda não iniciada |
+| **Ongoing** | A ser trabalhada ativamente |
+| **In Review** | Submetida para revisão; a aguardar aceitação |
+| **Complete** | Entregue e aceite |
+| **Cancelled** | Já não está ativa |
+
+<Note>
+Apenas **Super Admins**, **Admins** e **Gestores de Projeto** podem alterar o estado de uma encomenda. Colaboradores e clientes não podem alterar o estado.
+</Note>
+
+Para atualizar o estado, abra a encomenda e utilize o seletor de estado no topo da página de detalhes. Selecione o novo estado no menu suspenso e confirme.
+
+## Eliminar uma Encomenda
+
+Eliminar uma encomenda remove-a permanentemente do sistema. Utilize esta opção apenas quando uma encomenda for verdadeiramente obsoleta — por exemplo, se foi criada por engano ou é uma duplicação.
+
+<Warning>
+A eliminação de encomendas é irreversível. Depois de eliminar uma encomenda, não é possível recuperá-la. Proceda com cautela.
+</Warning>
+
+<Note>
+Apenas **Super Admins** e **Admins** podem eliminar encomendas.
+</Note>
+
+<Steps>
+  <Step title="Navegar para Encomendas">
+    Clique em **Orders** na barra lateral esquerda.
+  </Step>
+
+  <Step title="Localizar a encomenda a eliminar">
+    Percorra a lista ou pesquise a encomenda que pretende remover.
+  </Step>
+
+  <Step title="Iniciar a eliminação">
+    Clique no **ícone do caixote do lixo** associado à encomenda.
+  </Step>
+
+  <Step title="Confirmar a eliminação">
+    Aparecerá uma janela de confirmação. Confirme para eliminar permanentemente a encomenda.
+  </Step>
+</Steps>
+
+Após a eliminação, reveja as encomendas restantes para garantir que tudo está em ordem. O registo eliminado deixará de aparecer em qualquer lista ou relatório.
+
+## Adicionar Membros da Equipa a uma Encomenda
+
+Super Admins, Admins e gestores de projeto podem adicionar colaboradores a uma encomenda a qualquer momento. Quando um membro da equipa é adicionado, recebe uma notificação na aplicação. Os colaboradores atribuídos obtêm visibilidade sobre a encomenda e as suas tarefas, mas não podem gerir a encomenda em si (editar detalhes, alterar estado ou eliminá-la).

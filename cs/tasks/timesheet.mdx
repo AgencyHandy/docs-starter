@@ -1,0 +1,172 @@
+---
+title: "Sledování času a správa výkazů práce v AgencyHandy"
+sidebarTitle: "Výkaz práce"
+description: "Zaznamenávejte čas živým časovačem nebo ručním zadáním, filtrujte pracovní záznamy podle úkolu, člena nebo služby a exportujte data výkazů práce jako CSV nebo XLSX v AgencyHandy."
+---
+
+Funkce Výkaz práce v AgencyHandy vám poskytuje centrální panel pro sledování každé hodiny, kterou váš tým stráví na úkolech. Můžete spustit živý časovač u libovolného úkolu, zaznamenat čas zpětně ručním zadáním a poté data filtrovat a analyzovat podle časového rozsahu, člena týmu nebo služby. Když potřebujete reportovat produktivitu nebo fakturovat za čas, vše exportujete do CSV nebo XLSX několika kliknutími. Je to nezbytný nástroj pro zajištění zodpovědnosti vašeho týmu a přesnosti časového vyúčtování.
+
+## Kdo může používat funkce výkazů práce
+
+| Funkce | Super Admin | Admin | PM | Zaměstnanec |
+|---------|:-----------:|:-----:|:--:|:--------:|
+| Zobrazení vlastních časových záznamů | ✅ | ✅ | ✅ | ✅ |
+| Zaznamenání času za ostatní | ✅ | ✅ | ✅ | ❌ |
+| Úprava časových záznamů | ✅ | ✅ | ✅ | ❌ |
+| Export dat výkazů práce | ✅ | ✅ | ✅ | ❌ |
+
+<Note>
+  Úkoly musí existovat před zaznamenáváním času. Před pokusem o zaznamenání času se ujistěte, že jsou úkoly vytvořeny v rámci zakázek.
+</Note>
+
+## Zobrazení výkazu práce
+
+<Steps>
+  <Step title="Otevřete výkaz práce">
+    Klikněte na **Výkaz práce** v hlavním levém postranním panelu. Zobrazí se tabulka se všemi časovými záznamy vašeho týmu.
+
+    Každý řádek zobrazuje datum, člena týmu, název úkolu, službu, zaznamenaný čas a případné poznámky přiložené k záznamu.
+  </Step>
+</Steps>
+
+## Přidání časového záznamu
+
+Pro zaznamenání času máte dvě možnosti: živý časovač pro probíhající práci nebo ruční zadání pro čas, který jste již dokončili.
+
+<Tabs>
+  <Tab title="Spustit časovač">
+    <Steps>
+      <Step title="Vyberte úkol">
+        V pohledu Výkazu práce najděte nebo vyberte úkol, na kterém se chystáte pracovat.
+      </Step>
+      <Step title="Klikněte na Spustit časovač">
+        Klikněte na **Spustit časovač** pro zahájení sledování času v reálném čase. Časovač běží, dokud jej nezastavíte.
+      </Step>
+      <Step title="Zastavte po dokončení">
+        Po dokončení práce klikněte na **Zastavit**. AgencyHandy automaticky zaznamená uplynulý čas u vybraného úkolu.
+      </Step>
+    </Steps>
+
+    <Tip>
+      Při aktivní práci používejte časovač pro zajištění přesného sledování. Ruční zaokrouhlování nebo odhadování času zpětně je méně přesné než nechání časovače běžet.
+    </Tip>
+  </Tab>
+  <Tab title="Ruční zadání">
+    <Steps>
+      <Step title="Klikněte na + Přidat záznam">
+        V panelu Výkazu práce klikněte na **+ Přidat záznam**. Zobrazí se formulář.
+      </Step>
+      <Step title="Vyplňte podrobnosti záznamu">
+        - **Úkol** — vyberte úkol, ke kterému se tento čas vztahuje
+        - **Člen týmu** — přiřaďte čas správné osobě (Admini a Manažeři mohou zaznamenávat za ostatní)
+        - **Strávený čas** — zadejte hodiny a minuty
+        - **Poznámky** — přidejte kontext o tom, co bylo prováděno
+      </Step>
+      <Step title="Uložte">
+        Klikněte na **Uložit** pro zaznamenání záznamu. Okamžitě se zobrazí v tabulce výkazu práce.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Filtrování podle časového rozsahu
+
+Pomocí datových filtrů se zaměřte na konkrétní časové období.
+
+<Steps>
+  <Step title="Otevřete datové filtry">
+    Klikněte na ovládací prvky datového filtru v pravém horním rohu panelu Výkazu práce.
+  </Step>
+  <Step title="Vyberte rozsah">
+    Vyberte z přednastavených rozsahů:
+    - **Denně** — pouze dnešní záznamy
+    - **Týdně** — aktuální týden
+    - **Měsíčně** — aktuální měsíc
+
+    Pro delší projekty nebo historické reportování zvolte **Vlastní** časový rozsah zadáním počátečního a koncového data.
+  </Step>
+  <Step title="Použijte">
+    Klikněte na **Použít** pro aktualizaci tabulky se záznamy za vybrané období.
+  </Step>
+</Steps>
+
+<Tip>
+  Filtrujte před exportem pro generování zaměřených reportů. Export celého nefiltrovaného výkazu práce může pro aktivní agentury vytvořit velmi velké soubory.
+</Tip>
+
+## Seskupování záznamů
+
+Seskupování přeuspořádá způsob organizace řádků výkazu práce bez odebrání jakýchkoli dat. Pomáhá rychleji číst a analyzovat záznamy.
+
+<Steps>
+  <Step title="Otevřete rozevírací seznam Seskupit podle">
+    Klikněte na rozevírací seznam **Seskupit podle** v horní části panelu Výkazu práce.
+  </Step>
+  <Step title="Vyberte seskupení">
+    Vyberte z následujících možností:
+
+    | Možnost seskupení | Co zobrazuje |
+    |----------------|---------------|
+    | **Název úkolu** | Všechny časové záznamy seskupené pod každým úkolem |
+    | **Člen týmu** | Všechny záznamy seskupené pod každou osobou |
+    | **Služba → Název úkolu** | Záznamy seskupené podle služby, poté rozčleněné podle úkolu v rámci každé služby |
+  </Step>
+</Steps>
+
+<Note>
+  Seskupení je pouze vizuální změna — neovlivňuje podkladová data ani to, co se exportuje. Exporty vždy zahrnují všechny viditelné řádky.
+</Note>
+
+## Zobrazení podrobností úkolu z výkazu práce
+
+<Steps>
+  <Step title="Klikněte na název úkolu">
+    V tabulce výkazu práce klikněte na libovolný **Název úkolu**. AgencyHandy vás přesměruje na úplnou stránku s podrobnostmi daného úkolu.
+  </Step>
+  <Step title="Zkontrolujte kontext úkolu">
+    Na stránce s podrobnostmi úkolu najdete kompletní historii časových záznamů, přiložené poznámky, přiřazené osoby, stav a další informace na úrovni úkolu. Toto zobrazení použijte pro prošetření záznamů nebo ověření provedené práce.
+  </Step>
+</Steps>
+
+## Export dat výkazů práce
+
+Exportujte výkaz práce pro mzdy, reporty klientského vyúčtování nebo externí nástroje pro řízení projektů.
+
+<Steps>
+  <Step title="Nejprve použijte filtry (doporučeno)">
+    Pomocí filtru časového rozsahu omezte export na požadované období. Tím udržíte soubor přehledný a zvládnutelný.
+  </Step>
+  <Step title="Klikněte na Export">
+    Klikněte na tlačítko **Export** v horní části panelu Výkazu práce.
+  </Step>
+  <Step title="Zvolte formát">
+    Vyberte:
+    - **CSV** — pro tabulkové nástroje jako Excel, Google Sheets nebo datové pipeline
+    - **XLSX** — pro sešity formátované pro Excel se zachovaným formátováním sloupců
+  </Step>
+  <Step title="Stáhněte soubor">
+    Soubor se automaticky stáhne do vašeho zařízení. Každý export zahrnuje všechny viditelné sloupce: datum, člen týmu, název úkolu, služba, zaznamenaný čas a poznámky.
+  </Step>
+</Steps>
+
+<Warning>
+  Pokud export nespustí stahování, **blokování vyskakovacích oken** ve vašem prohlížeči může bránit stahování souboru. Zakažte blokování vyskakovacích oken pro AgencyHandy a zkuste to znovu.
+</Warning>
+
+## Doplňující poznámky
+
+<Accordion title="Časovač vs. ruční zadání">
+  Časovač je nejlepší pro aktivní práci v reálném čase. Ruční zadání je nejlepší, když jste zapomněli spustit časovač nebo potřebujete zaznamenat čas zpětně. Obě metody vytvářejí identické záznamy v tabulce výkazu práce.
+</Accordion>
+
+<Accordion title="Seskupování vs. filtrování">
+  Filtry **omezují** zobrazené řádky v tabulce. Seskupování **přeorganizuje** již viditelné řádky. Oboje lze aplikovat současně — filtrujte na časový rozsah, poté seskupte podle člena týmu pro zobrazení součtů každé osoby za dané období.
+</Accordion>
+
+<Accordion title="Exporty zahrnují všechny viditelné sloupce">
+  Každý export zachycuje aktuální stav viditelné tabulky: datum, uživatel, úkol, služba, čas a poznámky. Pokud jste použili nastavení seskupení, export tuto strukturu seskupení také odráží.
+</Accordion>
+
+<Accordion title="Vlastní rozsahy pro historická data">
+  Pro dlouhodobé projekty nebo čtvrtletní přehledy použijte vlastní možnost časového rozsahu k získání historických dat výkazu práce za přednastavená denní/týdenní/měsíční okna.
+</Accordion>

@@ -1,0 +1,126 @@
+---
+title: "เชื่อมต่อโดเมนเองกับเวิร์กสเปซ AgencyHandy ของคุณ"
+sidebarTitle: "โดเมนเอง"
+description: "เชื่อมโยง subdomain ของคุณเอง (เช่น portal.yourcompany.com) กับ AgencyHandy โดยการเพิ่ม CNAME record ที่ DNS registrar — ไม่ต้องเขียนโค้ด"
+---
+
+โดยค่าเริ่มต้น เวิร์กสเปซ AgencyHandy ของคุณสามารถเข้าถึงได้ที่ subdomain ภายใต้ `agencyhandy.com` การเชื่อมต่อโดเมนเองช่วยให้คุณแทนที่ URL เริ่มต้นนั้นด้วยที่อยู่แบรนด์ของคุณเอง — ตัวอย่างเช่น `portal.youragency.com` — มอบประสบการณ์ที่ราบรื่นและเป็นมืออาชีพให้ลูกค้าที่เสริมสร้างแบรนด์ของคุณตั้งแต่หน้าแรกที่พวกเขาเข้าชม
+
+<Note>
+  เฉพาะ **Super Admin** และ **Admin** เท่านั้นที่สามารถกำหนดค่าโดเมนเองได้ คุณต้องเป็นเจ้าของโดเมนและมีสิทธิ์เข้าถึงการตั้งค่า DNS ที่ registrar เพื่อทำการตั้งค่านี้ให้สมบูรณ์
+</Note>
+
+---
+
+## วิธีการทำงาน
+
+เมื่อคุณเพิ่มโดเมนเองใน AgencyHandy แพลตฟอร์มจะให้ **CNAME record** แก่คุณ คุณเพิ่ม record นั้นไปยังการตั้งค่า DNS ของโดเมนที่ registrar (GoDaddy, Namecheap, Cloudflare ฯลฯ) และ AgencyHandy จะยืนยันการเชื่อมต่อเมื่อ DNS แพร่กระจายแล้ว
+
+---
+
+## การตั้งค่าทีละขั้นตอน
+
+<Steps>
+  <Step title="เปิดการตั้งค่า Custom Domain">
+    ล็อกอินเข้าบัญชี AgencyHandy ของคุณ ไปที่ **Workspace Config** ในแถบด้านข้างซ้าย จากนั้นคลิก **Custom Domain**
+  </Step>
+  <Step title="เพิ่มโดเมนเองของคุณ">
+    คลิกปุ่ม **+ Add Custom Domain** ในฟิลด์ input ที่ปรากฏ กรอก subdomain ที่คุณต้องการใช้ — ตัวอย่างเช่น `portal.youragency.com`
+
+    <Warning>
+      **อย่า**ใช้ `www` เป็น subdomain ของคุณ (เช่น หลีกเลี่ยง `www.youragency.com`) คำนำหน้า `www` อาจทำให้เกิดข้อขัดแย้งในการกำหนดค่าและป้องกันการยืนยันที่สำเร็จ ใช้ subdomain อื่นเช่น `portal`, `client`, `app` หรือ `hub`
+    </Warning>
+  </Step>
+  <Step title="คัดลอกรายละเอียด CNAME record">
+    หลังจากส่งโดเมนของคุณ AgencyHandy จะแสดง DNS record ที่คุณต้องเพิ่ม:
+
+    | ฟิลด์ | ค่า |
+    |---|---|
+    | **Type** | CNAME |
+    | **Name** | Subdomain ของคุณ (เช่น `portal`) |
+    | **Value** | Target ที่ AgencyHandy ให้มา |
+
+    คัดลอกค่าเหล่านี้อย่างระมัดระวัง — คุณจะต้องใช้ในขั้นตอนถัดไป
+  </Step>
+  <Step title="เพิ่ม CNAME record ที่ DNS registrar ของคุณ">
+    ล็อกอินเข้า dashboard ของ domain registrar ของคุณ (เช่น GoDaddy, Namecheap, Cloudflare) ไปที่ส่วนจัดการ DNS สำหรับโดเมนของคุณและเพิ่ม CNAME record โดยใช้ Type, Name และ Value ที่คัดลอกจาก AgencyHandy
+
+    ดูคำแนะนำเฉพาะ registrar ด้านล่างสำหรับ Cloudflare
+  </Step>
+  <Step title="บันทึกโดเมนใน AgencyHandy">
+    กลับมาที่ AgencyHandy และคลิก **Save Domain** สถานะจะแสดงเป็น **Disconnected** ในตอนแรก — นี่เป็นเรื่องปกติขณะที่ DNS กำลังแพร่กระจาย
+  </Step>
+  <Step title="รอการแพร่กระจาย DNS และยืนยัน">
+    การเปลี่ยนแปลง DNS อาจใช้เวลาตั้งแต่ไม่กี่นาที ถึง **สูงสุด 48 ชั่วโมง** ในการแพร่กระจายทั่วโลก ขึ้นอยู่กับ registrar และการตั้งค่า TTL ของคุณ คลิก **Refresh** เป็นระยะเพื่อตรวจสอบสถานะการเชื่อมต่อ
+
+    เมื่อการแพร่กระจายเสร็จสมบูรณ์ สถานะจะเปลี่ยนเป็น **Connected** ✅
+  </Step>
+</Steps>
+
+<Warning>
+  การแพร่กระจาย DNS อาจใช้เวลา **สูงสุด 48 ชั่วโมง** หากโดเมนของคุณยังแสดง **Disconnected** หลังจาก 48 ชั่วโมง ตรวจสอบอีกครั้งว่า CNAME record ถูกต้องและไม่มี DNS records ที่ขัดแย้งกันสำหรับ subdomain เดียวกัน
+</Warning>
+
+---
+
+## คำแนะนำเฉพาะสำหรับ Cloudflare
+
+หากโดเมนของคุณจัดการผ่าน Cloudflare มีการตั้งค่าหนึ่งที่สำคัญที่คุณต้องกำหนดค่าให้ถูกต้อง:
+
+<Steps>
+  <Step title="ล็อกอินเข้า Cloudflare และเลือกโดเมนของคุณ">
+    เปิด [Cloudflare dashboard](https://dash.cloudflare.com) และคลิกโดเมนที่คุณกำลังเชื่อมต่อกับ AgencyHandy
+  </Step>
+  <Step title="ไปที่การตั้งค่า DNS">
+    คลิกแท็บ **DNS** ในการนำทางด้านบนของแผงการตั้งค่าโดเมน
+  </Step>
+  <Step title="เพิ่ม CNAME record">
+    คลิก **+ Add Record** และกรอกฟิลด์:
+    - **Type:** CNAME
+    - **Name:** Subdomain ของคุณ (เช่น `portal`)
+    - **Target/Content:** ค่าที่ AgencyHandy ให้มา
+    - **TTL:** ตั้งเป็น **2 minutes** (หรือตัวเลือกต่ำที่สุดที่มี) ระหว่างการตั้งค่าเริ่มต้น
+  </Step>
+  <Step title="ปิดใช้งาน Cloudflare proxy (สำคัญ)">
+    ในคอลัมน์ **Proxy status** ตรวจสอบให้แน่ใจว่า toggle ถูกตั้งเป็น **DNS only** (ไอคอนเมฆควรปรากฏเป็นสีเทา ไม่ใช่สีส้ม)
+
+    <Warning>
+      หาก Cloudflare proxy **เปิดใช้งาน** (ไอคอนเมฆสีส้ม) CNAME record จะไม่แก้ไขอย่างถูกต้องและ AgencyHandy ไม่สามารถยืนยันโดเมนของคุณได้ คุณต้องตั้งเป็น **DNS Only** เพื่อให้การเชื่อมต่อทำงาน
+    </Warning>
+  </Step>
+  <Step title="บันทึก record">
+    ตรวจสอบค่าทั้งหมดเพื่อความถูกต้องและคลิก **Save**
+  </Step>
+</Steps>
+
+<Tip>
+  ใช้ [dnschecker.org](https://dnschecker.org) เพื่อตรวจสอบการแพร่กระจายของ CNAME record ทั่วทุกภูมิภาคทั่วโลก มองหาเครื่องหมายถูกสีเขียวในทุกภูมิภาคก่อนที่จะคาดหวังให้ AgencyHandy ยืนยันการเชื่อมต่อ
+</Tip>
+
+---
+
+## การตรวจสอบสถานะการเชื่อมต่อของคุณ
+
+หลังจากบันทึก กลับไปที่ **Workspace Config → Custom Domain** ใน AgencyHandy เพื่อติดตามสถานะ:
+
+| สถานะ | ความหมาย |
+|---|---|
+| **Disconnected** | DNS record ยังไม่แพร่กระจายหรือมีข้อผิดพลาด |
+| **Connected** | โดเมนได้รับการยืนยันและใช้งานได้ — ลูกค้าสามารถเข้าถึงเวิร์กสเปซของคุณผ่าน URL ที่กำหนดเอง |
+
+---
+
+## การอัปเดตหรือลบโดเมนเอง
+
+- **หากต้องการอัปเดตโดเมน:** ลบรายการที่มีอยู่และเพิ่มโดเมนใหม่โดยใช้ขั้นตอนการตั้งค่าเดิมข้างต้น
+- **หากต้องการลบโดเมน:** คลิกปุ่ม **Delete** ถัดจากโดเมนของคุณในแผง Custom Domain และยืนยันการลบ เวิร์กสเปซของคุณจะกลับเป็น URL AgencyHandy เริ่มต้น คุณสามารถเพิ่มโดเมนใด ๆ ได้ตลอดเวลา
+
+---
+
+## หมายเหตุสำคัญ
+
+- **ใช้ subdomain ไม่ใช่ root domain:** โดเมนเองของ AgencyHandy ต้องการ subdomain (เช่น `portal.youragency.com`) ไม่ใช่ root/apex domain (เช่น `youragency.com`)
+- **หลีกเลี่ยง `www`:** subdomain `www` อาจทำให้เกิดปัญหาระหว่างการยืนยัน ใช้ชื่อ subdomain ที่กำหนดเองแทน
+- **ต้องใช้ records ที่แม่นยำ:** กรอก CNAME Type, Name และ Value ตามที่แสดงใน AgencyHandy อย่างแม่นยำ การพิมพ์ผิดหรืออักขระที่ขาดหายจะป้องกันการเชื่อมต่อ
+- **ต้องปิด Cloudflare proxy:** ตั้งค่า Cloudflare records เป็น **DNS Only** เสมอสำหรับการยืนยันโดเมนเองของ AgencyHandy
+- **การเข้าถึงเฉพาะผู้ดูแล:** เฉพาะ Super Admin และ Admin เท่านั้นที่สามารถเพิ่ม แก้ไข หรือลบการตั้งค่าโดเมนเองได้

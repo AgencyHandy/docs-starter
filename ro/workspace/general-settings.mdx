@@ -1,0 +1,123 @@
+---
+title: "Configurează Setările Generale ale Spațiului de Lucru AgencyHandy"
+sidebarTitle: "Setări Generale"
+description: "Setează numele spațiului de lucru, încarcă logo-uri, adaugă adresa agenției și selectează fusul orar corect pentru a personaliza spațiul de lucru AgencyHandy."
+---
+
+Pagina Setări Generale este primul loc pe care îl vei vizita după autentificarea în AgencyHandy. Îți permite să stabilești identitatea agenției tale pe platformă — de la logo și numele spațiului de lucru până la adresa fizică și fusul orar. Fiecare modificare efectuată aici se aplică la nivel global în spațiul de lucru pentru toți utilizatorii.
+
+<Note>
+  Doar **Super Adminii** și **Adminii** pot accesa și modifica setările de Configurare a Spațiului de Lucru. Dacă nu vezi opțiunea **Workspace Config** în navigarea stângă, contactează Super Admin-ul tău pentru a-ți ajusta permisiunile de rol.
+</Note>
+
+## Accesarea Setărilor Generale
+
+<Steps>
+  <Step title="Deschide Workspace Config">
+    Autentifică-te în contul tău AgencyHandy. În meniul de navigare din stânga, apasă **Workspace Config**.
+  </Step>
+  <Step title="Selectează Setări Generale">
+    Apasă **General Settings** din submeniul Workspace Config. Panoul Setări Generale se deschide în dreapta.
+  </Step>
+</Steps>
+
+---
+
+## Încărcarea Logo-ului Spațiului de Lucru
+
+AgencyHandy suportă trei tipuri distincte de logo, fiecare afișat într-o altă parte a interfeței:
+
+| Tip Logo        | Dimensiuni   | Unde Apare                                |
+|-----------------|-------------|------------------------------------------|
+| Logo Circular   | 32 × 32 px  | Zone de profil și elemente UI compacte    |
+| Logo Favicon    | 16 × 16 px  | Pictograma tab-ului browserului           |
+| Logo Dreptunghiular | 142 × 36 px | Antetul barei laterale (înlocuiește logo-ul circular când este setat) |
+
+**Formate acceptate:** PNG, JPG, SVG
+
+<Steps>
+  <Step title="Apasă Upload Logo">
+    În secțiunea de logo, apasă butonul **Upload Logo** pentru tipul de logo pe care dorești să îl setezi.
+  </Step>
+  <Step title="Selectează fișierul imagine">
+    Navighează la imagine pe dispozitivul tău. Asigură-te că fișierul corespunde dimensiunilor necesare și este într-un format acceptat.
+  </Step>
+  <Step title="Confirmă încărcarea">
+    Previzualizarea logo-ului se actualizează imediat. Repetă pentru fiecare tip de logo după necesitate.
+  </Step>
+</Steps>
+
+<Tip>
+  Încărcarea unui **Logo Dreptunghiular** va înlocui Logo-ul Circular din bara laterală și va ascunde automat textul cu numele spațiului de lucru de lângă acesta. Logo-ul dreptunghiular devine, de asemenea, logo-ul principal utilizat în toate celelalte contexte unde este afișat un logo — chiar dacă un logo circular este, de asemenea, încărcat.
+</Tip>
+
+---
+
+## Setarea Numelui și Adresei Spațiului de Lucru
+
+### Numele Spațiului de Lucru
+
+Introdu numele agenției tale în câmpul **Workspace Name**. Acest nume:
+
+- Apare pe tot parcursul platformei pentru identificare.
+- Este utilizat în sub-domeniul implicit AgencyHandy (ex. `yourname.agencyhandy.com`).
+
+<Warning>
+  Schimbarea numelui spațiului de lucru actualizează imediat sub-domeniul tău implicit. Dacă ai distribuit linkul sub-domeniului implicit clienților, aceștia vor avea nevoie de URL-ul actualizat. Ia în considerare configurarea unui [domeniu personalizat](/ro/workspace/custom-domain) pentru a evita această problemă.
+</Warning>
+
+### Adresa Spațiului de Lucru
+
+Introdu adresa fizică completă a agenției tale în câmpul **Workspace Address**. Această adresă este folosită pentru reprezentarea oficială pe facturi și documentele destinate clienților, deci asigură-te că este exactă și actualizată.
+
+---
+
+## Selectarea Fusului Orar
+
+<Steps>
+  <Step title="Deschide meniul derulant Time Zone">
+    Derulează până la câmpul **Time Zone** și apasă meniul derulant pentru a extinde lista de fusuri orare.
+  </Step>
+  <Step title="Alege fusul orar">
+    Selectează fusul orar care corespunde locației principale de operare a agenției tale. Toate termenele limită ale sarcinilor, notificările programate, evenimentele din calendar și marcajele temporale din spațiul de lucru se bazează pe această setare.
+  </Step>
+</Steps>
+
+<Warning>
+  O setare incorectă a fusului orar cauzează erori de programare pentru sarcini, întâlniri și datele scadente ale facturilor. Verifică această setare înainte de a invita echipa sau clienții.
+</Warning>
+
+---
+
+## Salvarea Modificărilor
+
+După completarea sau actualizarea oricăror câmpuri, apasă **Save Changes** în partea de jos a panoului Setări Generale. Toate actualizările sunt aplicate la nivel global și sunt imediat vizibile pentru fiecare utilizator din spațiul de lucru.
+
+---
+
+## Zona de Pericol: Ștergerea Spațiului de Lucru
+
+În partea de jos a panoului Setări Generale, există o secțiune **Danger Zone** care conține butonul **Delete Workspace**.
+
+<Warning>
+  Ștergerea spațiului de lucru este **permanentă și ireversibilă**. Toate datele — inclusiv clienții, comenzile, facturile, proiectele și configurațiile — vor fi șterse permanent. Nu există opțiune de recuperare. Continuă doar dacă ești absolut sigur.
+</Warning>
+
+---
+
+## Bune Practici
+
+<CardGroup cols={2}>
+  <Card title="Verifică dimensiunile logo-ului" icon="image">
+    Încarcă logo-urile la dimensiunile exacte recomandate în pixeli pentru a preveni întinderea, tăierea sau afișarea neclară pe platformă.
+  </Card>
+  <Card title="Menține brandul actualizat" icon="paintbrush">
+    Actualizează logo-ul și adresa ori de câte ori agenția ta se rebrandizează sau schimbă locația pentru a menține toate documentele și paginile destinate clienților exacte.
+  </Card>
+  <Card title="Setează mai întâi fusul orar" icon="clock">
+    Configurează fusul orar înainte de a crea servicii, sarcini sau de a programa orice, pentru a asigura alinierea corectă a tuturor marcajelor temporale de la început.
+  </Card>
+  <Card title="Limitează accesul admin" icon="shield">
+    Acordă rolurile de Super Admin sau Admin doar personalului care are cu adevărat nevoie să modifice configurațiile spațiului de lucru, pentru a preveni modificările accidentale.
+  </Card>
+</CardGroup>

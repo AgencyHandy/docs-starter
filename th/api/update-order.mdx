@@ -1,0 +1,205 @@
+---
+title: "AgencyHandy API: อัปเดตออเดอร์ที่มีอยู่ด้วย PUT"
+sidebarTitle: "Update Order"
+description: "ใช้ AgencyHandy API เพื่ออัปเดตรายละเอียดออเดอร์ เปลี่ยนสถานะ มอบหมาย project manager ใหม่ และแนบไฟล์เข้ากับออเดอร์ที่มีอยู่ผ่านคำขอ PUT"
+---
+
+endpoint Update Order ให้คุณแก้ไขออเดอร์ (โปรเจกต์) ที่มีอยู่ใน AgencyHandy ได้ — เปลี่ยนชื่อ สถานะ งบประมาณ ไทม์ไลน์ ผู้จัดการที่มอบหมาย และอื่นๆ — ทั้งหมดจากระบบภายนอกหรือสคริปต์อัตโนมัติ endpoint ยังรองรับไฟล์แนบซึ่งจะถูกเพิ่มไปยังโฟลเดอร์ระบบของออเดอร์
+
+<Note>
+  ก่อนใช้ endpoint นี้ ให้ทำคู่มือ [Getting Started](/th/api/getting-started) ให้เสร็จสิ้นเพื่อรับ API key และ Company ID ของคุณ
+</Note>
+
+<Warning>
+  endpoint นี้ใช้ `Authorization: Bearer <token>` (access token ของสมาชิกที่ลงชื่อเข้าใช้) แทนที่จะใช้เพียง header `x-api-key` ตรวจสอบให้แน่ใจว่าผู้เรียกได้รับการยืนยันตัวตนในฐานะ **สมาชิกที่ได้รับอนุมัติ** ของบริษัทเป้าหมาย ผู้เรียกที่ไม่ได้รับอนุญาตจะได้รับ `403 PermissionError`
+</Warning>
+
+## ข้อกำหนดเบื้องต้น
+
+- ✅ **Bearer token** ที่ถูกต้องสำหรับสมาชิก workspace ที่ได้รับอนุมัติ
+- ✅ **Company ID** ที่ดึงมาจาก `GET {{URL}}/accounts/companies`
+- ✅ **Order ID** (Project ID, `pid`) ของออเดอร์ที่คุณต้องการอัปเดต
+
+---
+
+## Endpoint
+
+```
+PUT {{URL}}/orders?pid=<ORDER_ID>
+```
+
+**Content-Type:** `multipart/form-data` — ใช้แม้ไม่มีการแนบไฟล์ เพื่อให้ตัวแยกวิเคราะห์ multipart ของเซิร์ฟเวอร์ทำงานได้
+
+## Headers
+
+| Header | จำเป็น | คำอธิบาย |
+|---|---|---|
+| `Authorization` | ใช่ | `Bearer <ACCESS_TOKEN>` — access token ของสมาชิกที่ลงชื่อเข้าใช้ |
+| `companyid` | ใช่ | Mongo ObjectId ของบริษัทที่ออเดอร์นั้นอยู่ |
+| `clientid` | ไม่บังคับ | Real-time client socket ID เมื่อระบุ การแจ้งเตือนจะรวม ID นี้ด้วย |
+
+## Query parameters
+
+<ParamField query="pid" type="string" required>
+  Order / Project ID ที่ต้องการอัปเดต ส่งเป็น query string parameter
+</ParamField>
+
+## ช่อง Request body
+
+<ParamField body="name" type="string">
+  อัปเดตชื่อออเดอร์ ขั้นต่ำ 2 อักขระ
+</ParamField>
+
+<ParamField body="status" type="string">
+  สถานะใหม่สำหรับออเดอร์ ต้องเป็นหนึ่งใน: `Pending`, `Ongoing`, `Review`, `Completed`, `Cancelled`
+
+  **การเปลี่ยนแปลงสถานะที่อนุญาต:**
+  - `Review` สามารถตามมาจาก `Ongoing` หรือ `Review` อีกรายการเท่านั้น การข้ามจาก `Pending` ไปยัง `Review` โดยตรงจะส่งคืน `400 ValidationError`
+  - ออเดอร์ที่อยู่ใน `Completed` หรือ `Cancelled` แล้วไม่สามารถอัปเดตได้
+  - ลูกค้าไม่สามารถยกเลิกออเดอร์ที่ผ่านสถานะ `Pending` ไปแล้ว
+</ParamField>
+
+<ParamField body="budget" type="number">
+  ตัวเลขงบประมาณรวม ต้องเป็น `≥ 0` ใช้สกุลเงินที่มีอยู่ของออเดอร์ เว้นแต่จะระบุ `currency` ด้วย
+</ParamField>
+
+<ParamField body="currency" type="string">
+  รหัสสกุลเงินสำหรับงบประมาณ ตัวอย่าง: `USD`, `CAD`, `EUR`
+</ParamField>
+
+<ParamField body="quantity" type="number">
+  จำนวนหน่วยที่ซื้อสำหรับแพ็กเกจ ต้องเป็น `≥ 1`
+</ParamField>
+
+<ParamField body="deadline" type="string">
+  สตริงวันที่ ISO 8601 สำหรับวันที่ครบกำหนดออเดอร์ ตัวอย่าง: `"2025-12-31T00:00:00.000Z"`
+</ParamField>
+
+<ParamField body="kickoffDate" type="string">
+  สตริงวันที่ ISO 8601 สำหรับวันเริ่มต้นโปรเจกต์
+</ParamField>
+
+<ParamField body="notes" type="string">
+  หมายเหตุภายในที่มองเห็นได้สำหรับทีมของคุณ
+</ParamField>
+
+<ParamField body="brief" type="string">
+  brief ของลูกค้าหรือสรุปโปรเจกต์
+</ParamField>
+
+<ParamField body="assignedProjectManagers" type="array">
+  รายการ ID สมาชิก project manager ทั้งหมดที่จะมอบหมายให้กับออเดอร์นี้ ID ใหม่จะถูกเพิ่มในทีม ID ที่ลบออกจะถูกลบ แต่ละ ID ต้องเป็นของสมาชิกที่มีบทบาท `projectManager` ภายในบริษัทเดียวกัน
+</ParamField>
+
+<ParamField body="markTasksAsDone" type="boolean">
+  **จำเป็น** เมื่อ `status` เป็น `Completed` หรือ `Cancelled` เมื่อเป็น `true` งานทั้งหมดในออเดอร์จะถูกทำเครื่องหมายว่าเสร็จสิ้นหลังจากเปลี่ยนสถานะ เมื่อเป็น `false` งานยังคงอยู่ในสถานะปัจจุบัน
+</ParamField>
+
+<ParamField body="rejectRequestedTasks" type="boolean">
+  อนุญาตเฉพาะเมื่อ `status` เป็น `Completed` หรือ `Cancelled` เมื่อเป็น `true` งานที่ลูกค้าร้องขอทั้งหมดที่ค้างอยู่จะถูกปฏิเสธหลังจากอัปเดตสถานะ
+</ParamField>
+
+<ParamField body="repeatCount" type="number">
+  จำเป็นเฉพาะสำหรับออเดอร์ **สมัครสมาชิก** เมื่อเปลี่ยนความถี่การเกิดซ้ำ จับคู่กับ `repeatDuration`
+</ParamField>
+
+<ParamField body="repeatDuration" type="string">
+  จำเป็นควบคู่กับ `repeatCount` สำหรับออเดอร์สมัครสมาชิก หนึ่งใน: `day`, `week`, `month`, `year`
+</ParamField>
+
+<ParamField body="billingCycleCount" type="number">
+  ขีดจำกัดทางเลือกสำหรับรอบการเรียกเก็บเงินที่เกิดซ้ำ ค่าเริ่มต้นเป็น `0` (ไม่มีขีดจำกัด)
+</ParamField>
+
+<ParamField body="billingCycleEvent" type="string">
+  วิธีจัดการรอบการเรียกเก็บเงินแต่ละรอบ หนึ่งใน: `createOrderWithTask`, `noChange`
+</ParamField>
+
+<ParamField body="files" type="file">
+  ไฟล์แนบศูนย์รายการหรือมากกว่า ไฟล์จะถูกเพิ่มไปยังโฟลเดอร์ระบบของออเดอร์ โดยไม่มีการเขียนทับไฟล์เดิม ใช้การเข้ารหัส `multipart/form-data` และแนบไฟล์แต่ละรายการในช่อง `files`
+</ParamField>
+
+---
+
+## ตัวอย่างคำขอ
+
+<CodeGroup>
+
+```bash cURL (no files)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "currency=USD" \
+  --form "quantity=1" \
+  --form "assignedProjectManagers[]=PROJECT_MANAGER_ID" \
+  --form "notes=Scope finalized with client." \
+  --form "brief=Launch-ready design refresh."
+```
+
+```bash cURL (with file)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "repeatCount=3" \
+  --form "repeatDuration=month" \
+  --form "billingCycleEvent=createOrderWithTask" \
+  --form "files=@/path/to/creative-brief.pdf"
+```
+
+</CodeGroup>
+
+**JSON payload ที่เทียบเท่า** (แปลงเป็น multipart form entries เมื่อส่งไฟล์):
+
+```json
+{
+  "name": "Website Redesign",
+  "status": "Review",
+  "budget": 12000,
+  "currency": "USD",
+  "quantity": 1,
+  "assignedProjectManagers": ["{{PROJECT_MANAGER_ID}}"],
+  "repeatCount": 3,
+  "repeatDuration": "month",
+  "billingCycleEvent": "createOrderWithTask",
+  "notes": "Scope finalized with client.",
+  "brief": "Launch-ready design refresh."
+}
+```
+
+---
+
+## การตอบสนอง
+
+| HTTP Status | คำอธิบาย |
+|---|---|
+| `200 OK` | อัปเดตสำเร็จ |
+| `400 ValidationError` | Order ID ไม่ถูกต้อง การเปลี่ยนสถานะที่ถูกบล็อก หรือ payload ที่มีรูปแบบไม่ถูกต้อง การตอบสนองรวม `fieldName` เมื่อเกี่ยวข้อง |
+| `403 PermissionError` | ผู้เรียกไม่ใช่สมาชิกที่ได้รับอนุมัติ ขาดบทบาท company การสมัครสมาชิก workspace หมดอายุ หรือลูกค้าพยายามยกเลิกที่ไม่ได้รับอนุญาต |
+| `500 Internal Server Error` | ข้อยกเว้นที่ไม่ได้รับการจัดการ — ตรวจสอบบันทึกเซิร์ฟเวอร์ |
+
+### การตอบสนองเมื่อสำเร็จ
+
+```json
+{
+  "message": "Project has been updated"
+}
+```
+
+---
+
+## กฎทางธุรกิจและผลข้างเคียง
+
+- **การเปลี่ยนแปลงสถานะ** มีข้อจำกัด `Review` สามารถตามมาจาก `Ongoing` หรือ `Review` อีกรายการเท่านั้น การพยายาม `Pending → Review` จะส่งคืน `400 ValidationError`
+- การย้ายสถานะจาก `Pending` ไปเป็น `Ongoing`, `Review` หรือ `Completed` จะเปิดใช้งานโฟลเดอร์ไฟล์ของออเดอร์ เพื่อให้ไฟล์ที่อัปโหลดสามารถเข้าถึงได้สำหรับทีมโปรเจกต์
+- การตั้ง `status` เป็น `Completed` หรือ `Cancelled` **จำเป็นต้อง** ตั้ง `markTasksAsDone` เป็น `true` หรือ `false` อย่างชัดเจน
+- การเปลี่ยนแปลงสถานะเป็น `Review`, `Completed` หรือ `Cancelled` จะทริกเกอร์การแจ้งเตือนลูกค้าโดยอัตโนมัติ:
+  - **Review** — แจ้งลูกค้าว่าต้องการการตรวจสอบ
+  - **Completed** — ส่งการแจ้งเตือน `orderCompletion` ให้ลูกค้า
+  - **Cancelled** — ส่งการแจ้งเตือน `orderCancellation` ให้ลูกค้า
+- ทุกการอัปเดตที่สำเร็จจะทริกเกอร์ webhook event `ORDER.UPDATED` พร้อมเอกสารออเดอร์ที่อัปเดตและ metadata ไฟล์แนบ หากคุณมี webhook ที่ใช้งานอยู่และสมัครรับเหตุการณ์นั้น

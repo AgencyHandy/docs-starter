@@ -1,0 +1,69 @@
+---
+title: "Conectați Slack pentru a primi alerte AgencyHandy în timp real"
+sidebarTitle: "Slack"
+description: "Conectați spațiul dvs. de lucru Slack la AgencyHandy astfel încât actualizările comenzilor, modificările sarcinilor și alertele de tichete să fie postate automat într-un canal Slack."
+---
+
+Integrarea Slack a AgencyHandy vă menține echipa la curent fără a necesita ca cineva să comute între aplicații. Odată conectat, AgencyHandy postează notificări automate în canalul Slack ales ori de câte ori sarcinile, comenzile sau alte activități din spațiul de lucru se schimbă — astfel echipa dvs. știe întotdeauna ce se întâmplă în timp real.
+
+<Note>
+  Numai rolurile **SuperAdmin**, **Admin** și **Manager** (cu permisiuni de integrare) pot conecta sau gestiona integrarea Slack. Aveți nevoie de drepturi de administrator ale spațiului de lucru Slack pentru a autoriza conexiunea.
+</Note>
+
+## Conectați Slack
+
+<Steps>
+  <Step title="Deschideți Integrările">
+    În bara laterală din stânga, faceți clic pe **Integrări**.
+  </Step>
+
+  <Step title="Găsiți cardul Slack">
+    Derulați la cardul **Slack** și faceți clic pe **Conectare**.
+  </Step>
+
+  <Step title="Autorizați AgencyHandy în Slack">
+    Se deschide o fereastră de autorizare Slack. Dacă nu sunteți deja conectat la spațiul dvs. de lucru Slack, conectați-vă acum. Examinați permisiunile pe care AgencyHandy le solicită și faceți clic pe **Allow** pentru a acorda accesul.
+  </Step>
+
+  <Step title="Selectați un canal de notificări">
+    După autorizare, alegeți canalul Slack unde doriți să apară notificările AgencyHandy. Selectați un canal din lista derulantă și faceți clic pe **Salvare** pentru a confirma.
+  </Step>
+
+  <Step title="Confirmați configurarea">
+    Cardul Slack se actualizează pentru a afișa **Conectat**. AgencyHandy începe imediat să posteze notificări în canalul selectat.
+  </Step>
+</Steps>
+
+## Ce notificări sunt trimise în Slack
+
+AgencyHandy postează un mesaj Slack ori de câte ori apare oricare dintre următoarele evenimente:
+
+| Categorie | Evenimente care declanșează o notificare |
+|---|---|
+| **Sarcini** | Sarcină creată, actualizată, atribuită sau finalizată |
+| **Comenzi** | Comandă creată sau status modificat |
+| **Comentarii** | Comentariu nou adăugat la o sarcină sau comandă |
+| **Atașamente de fișiere** | Fișier sau atașament adăugat la o sarcină |
+| **Tichete** | Tichet creat, atribuit sau status modificat |
+
+Fiecare mesaj Slack include:
+
+- **Numele** sarcinii, comenzii sau tichetului
+- **Modificarea de status** sau acțiunea care a declanșat mesajul
+- Un **link** înapoi la elementul relevant din AgencyHandy
+
+Când un fișier sau atașament este adăugat la o sarcină, mesajul Slack include și o previzualizare a acelui atașament.
+
+<Tip>
+  Alegeți un canal dedicat **#agency-handy-alerts** (sau similar) pentru a menține notificările organizate și a preveni aglomerarea canalelor principale ale echipei dvs.
+</Tip>
+
+## Deconectați Slack
+
+Pentru a opri notificările, reveniți la **Integrări** și faceți clic pe **Deconectare** pe cardul Slack. Toate notificările se opresc imediat.
+
+## Note importante
+
+- **Un singur spațiu de lucru per conexiune** — puteți conecta un singur spațiu de lucru Slack la fiecare spațiu de lucru AgencyHandy. Pentru a comuta la un spațiu de lucru Slack diferit, deconectați-l pe cel curent și reconectați-vă.
+- **Vizibilitatea canalului** — notificările sunt vizibile pentru toți cei din canalul Slack selectat. Asigurați-vă că canalul este adecvat pentru nivelul de detalii partajate (ex.: evitați postarea detaliilor sensibile ale comenzilor clienților într-un canal public).
+- **Re-autorizare** — dacă token-ul dvs. Slack expiră sau permisiunile se schimbă, reveniți la Integrări și reconectați-vă pentru a restaura notificările.

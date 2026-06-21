@@ -1,0 +1,91 @@
+---
+title: "Przegląd zamówień: zarządzanie pracą dla klientów w AgencyHandy"
+sidebarTitle: "Przegląd"
+description: "Dowiedz się, jak działają zamówienia w AgencyHandy — statusy, role, szczegóły zamówień, zamówienia ręczne i dodatki dla nieopublikowanych usług."
+---
+
+Zamówienia stanowią operacyjny fundament AgencyHandy. Zamówienie reprezentuje prośbę klienta o usługę lub produkt i działa jako centralne miejsce pracy, gdzie Twój zespół śledzi postępy, zarządza zadaniami, wymienia się informacjami zwrotnymi i dostarcza wyniki. Niezależnie od tego, czy klient składa zamówienie przez opublikowany katalog usług, czy Twój zespół tworzy je ręcznie, każde zamówienie podąża za tym samym ustrukturyzowanym cyklem życia, który utrzymuje porządek w agencji i informuje klientów.
+
+## Co zawiera zamówienie
+
+Każde zamówienie wyświetla kluczowe informacje na pierwszy rzut oka i daje członkom zespołu jedno miejsce do koordynowania pracy:
+
+| Pole | Opis |
+|---|---|
+| **ID zamówienia** | Automatycznie generowany unikalny identyfikator dla każdego zamówienia |
+| **Klient** | Klient, do którego należy zamówienie |
+| **Usługa** | Dostarczana usługa |
+| **Kierownik projektu (PM)** | Członek zespołu odpowiedzialny za realizację (opcjonalnie) |
+| **Budżet** | Uzgodniona cena za zamówienie |
+| **Data rozpoczęcia** | Kiedy zaczyna się praca |
+| **Termin** | Termin realizacji zamówienia |
+| **Opis zamówienia** | Instrukcje klienta, notatki i dołączone pliki referencyjne |
+| **Zadania** | Odrębne jednostki pracy przypisane do członków zespołu |
+| **Dyskusje** | Wielowątkowe rozmowy między pracownikami agencji a klientami |
+
+## Statusy zamówień
+
+Każde zamówienie przechodzi przez ustalony zestaw statusów. Nie można dodawać ani zmieniać nazw tych statusów.
+
+<Note>
+Tylko Super Administratorzy, Administratorzy i Kierownicy projektów mogą zmieniać status zamówienia.
+</Note>
+
+| Status | Co oznacza |
+|---|---|
+| **Oczekujące** | Zamówienie zostało utworzone i oczekuje na rozpoczęcie pracy |
+| **W trakcie** | Trwają aktywne prace |
+| **W recenzji** | Produkty zostały złożone i oczekują na recenzję klienta lub wewnętrzną |
+| **Ukończone** | Zamówienie zostało w pełni dostarczone i zaakceptowane |
+| **Anulowane** | Zamówienie zostało anulowane i nie jest już aktywne |
+
+## Dostęp oparty na rolach
+
+Różne role w AgencyHandy mają różne możliwości w ramach zamówień:
+
+| Rola | Może tworzyć zamówienia | Może edytować zamówienia | Może usuwać zamówienia | Może zmieniać status | Może dodawać zadania | Może dodawać członków zespołu |
+|---|---|---|---|---|---|---|
+| **Super Administrator** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Administrator** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Kierownik projektu (PM)** | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ |
+| **Pracownik** | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| **Klient** | ❌ | ❌ | ❌ | ❌ | ✅ (tylko prośba) | ❌ |
+
+<Tip>
+Klienci mogą wysyłać informacje zwrotne i uczestniczyć w dyskusjach na temat zamówień. Pracownicy przypisani do zamówienia mogą przeglądać zadania i nad nimi pracować, ale nie mogą zarządzać samym zamówieniem.
+</Tip>
+
+## Co możesz robić z zamówieniami
+
+AgencyHandy daje Ci pełen zestaw narzędzi do zarządzania zamówieniami przez cały ich cykl życia:
+
+- **Twórz zamówienia** dla klientów — zarówno z opublikowanych usług, jak i ręcznie dla usług jeszcze w fazie rozwoju
+- **Akceptuj i odrzucaj** zamówienia złożone przez klientów, z opcją podania powodu odrzucenia
+- **Wyświetlaj szczegóły zamówienia**, w tym postępy, przypisanych członków zespołu, daty rozpoczęcia i termin, budżet i opis
+- **Sortuj, filtruj i wyszukuj** we wszystkich zamówieniach według ID, statusu, nazwy klienta lub innych kryteriów
+- **Dodawaj zadania** bezpośrednio w zamówieniu, aby śledzić i przypisywać odrębne jednostki pracy
+- **Rozpoczynaj dyskusje**, aby komunikować się z klientami i członkami zespołu w kontekście
+
+## Ręczne zamówienia dla nieopublikowanych usług
+
+Nie jesteś ograniczony do tworzenia zamówień tylko dla usług, które opublikowałeś publicznie. Super Administratorzy i Administratorzy mogą tworzyć ręczne zamówienia dla nieopublikowanych usług — przydatne, gdy usługa jest jeszcze w fazie rozwoju, tymczasowo niedostępna lub oferowana konkretnemu klientowi przed oficjalnym uruchomieniem.
+
+Po otwarciu formularza tworzenia zamówienia lista rozwijana **Usługa** pokazuje zarówno opublikowane, jak i nieopublikowane usługi, dzięki czemu możesz wybrać odpowiednią. Wszystkie inne pola i przepływy pracy zamówień zachowują się tak samo jak w standardowym zamówieniu.
+
+## Dodatki w zamówieniach ręcznych
+
+Podczas tworzenia ręcznego zamówienia możesz uwzględnić **usługi-dodatki**, aby klienci mogli otrzymywać spersonalizowane pakiety wykraczające poza podstawową usługę. Dodatki muszą być wcześniej utworzone i powiązane z odpowiednią usługą w sekcji **Formularze**, zanim pojawią się jako opcja w formularzu zamówienia.
+
+<Note>
+Wybór dodatku pojawia się w formularzu ręcznego zamówienia tylko wtedy, gdy co najmniej jeden dodatek został połączony z wybraną usługą. Jeśli go nie widzisz, sprawdź, czy Twój dodatek jest prawidłowo powiązany w konfiguracji usługi.
+</Note>
+
+Po wybraniu usługi z powiązanymi dodatkami możesz uwzględnić te dodatki przed sfinalizowaniem i złożeniem zamówienia.
+
+## Powiadomienia
+
+AgencyHandy automatycznie powiadamia odpowiednie osoby w miarę postępu zamówień:
+
+- Gdy zamówienie jest tworzone przez PM, Administratora lub Super Administratora, wszyscy Super Administratorzy w Twojej firmie uzyskują dostęp, a klient otrzymuje powiadomienie o utworzeniu.
+- Gdy członek zespołu zostaje dodany do zamówienia, ten członek otrzymuje powiadomienie.
+- Gdy zadania są tworzone w ramach zamówienia, klient otrzymuje powiadomienie.

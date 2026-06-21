@@ -1,0 +1,143 @@
+---
+title: "Slik oppretter, redigerer og sletter du bestillinger i AgencyHandy"
+sidebarTitle: "Opprett bestilling"
+description: "Trinn-for-trinn-veiledning for å opprette, redigere og slette bestillinger i AgencyHandy — inkludert rollekrav, skjemafelt og statusoverganger."
+---
+
+Å opprette en bestilling i AgencyHandy gir deg et strukturert arbeidsområde for å levere en tjeneste til en klient. Du fyller inn nøkkeldetaljer på forhånd — klient, tjeneste, prising, datoer og et prosjektbriefing — og alt annet, fra oppgaver til diskusjoner, følger fra denne ene posten. Denne siden veileder deg gjennom å opprette en bestilling fra bunnen av, oppdatere den i etterkant, endre status og slette den når den ikke lenger er nødvendig.
+
+## Krav
+
+- Du må være innlogget i AgencyHandy.
+- Du må ha rollen **Super Admin**, **Admin** eller **Prosjektleder** for å opprette eller redigere bestillinger.
+- Kun **Super Admins** og **Admins** kan slette bestillinger.
+
+## Opprett en ny bestilling
+
+<Steps>
+  <Step title="Naviger til Bestillinger">
+    Klikk på **Bestillinger** i venstre sidefelt på AgencyHandy-dashboardet ditt.
+  </Step>
+
+  <Step title="Åpne opprettingsskjemaet">
+    Klikk på **+ Opprett ny bestilling** øverst til høyre. Et skjema vil vises.
+  </Step>
+
+  <Step title="Fyll inn bestillingsdetaljene">
+    Fyll ut feltene i skjemaet:
+
+    | Felt | Påkrevd | Merknader |
+    |---|---|---|
+    | **Klient** | ✅ | Velg fra din eksisterende klientliste |
+    | **Tjeneste** | ✅ | Inkluderer både publiserte og upubliserte tjenester |
+    | **Prosjektleder** | ❌ | Valgfritt; tildel en PM til å eie leveransen |
+    | **Antall** | ✅ | Antall enheter som bestilles |
+    | **Pris** | ✅ | Avtalt budsjett for bestillingen |
+    | **Oppstartsdato** | ✅ | Når arbeidet begynner |
+    | **Forfallsdato** | ✅ | Leveringsfrist |
+    | **Bestillingsbriefing** | ❌ | Instruksjoner, krav eller referansenotater for teamet ditt |
+    | **Vedlegg** | ❌ | Støttefiler som er relevante for bestillingen |
+
+    <Tip>
+      Hvis den valgte tjenesten har tillegg knyttet til seg, vil en **Tillegg**-seksjon vises i skjemaet. Ta med eventuelle relevante tillegg før du sender inn.
+    </Tip>
+  </Step>
+
+  <Step title="Gjennomgå oppføringene dine">
+    Dobbeltsjekk alle felt for nøyaktighet — særlig klient, tjeneste, pris og forfallsdato.
+  </Step>
+
+  <Step title="Send inn bestillingen">
+    Klikk på **Opprett** for å fullføre bestillingen. Du vil motta en bekreftelsesmelding når den er opprettet.
+  </Step>
+</Steps>
+
+### Hva skjer etter at du oppretter en bestilling
+
+- Alle Super Admins i selskapet ditt får automatisk tilgang til den nye bestillingen.
+- Klienten mottar et varsel om at bestillingen deres er opprettet.
+- Bestillingen vises i **Bestillinger**-listen med statusen **Venter**.
+
+## Rediger eller oppdater en bestilling
+
+Du kan oppdatere en bestilling når som helst for å korrigere detaljer, justere prising, endre forfallsdato eller imøtekomme klientforespørsler.
+
+<Note>
+Du må være **Super Admin**, **Admin** eller **Prosjektleder** for å redigere en bestilling.
+</Note>
+
+<Steps>
+  <Step title="Åpne bestillingslisten">
+    Naviger til **Bestillinger** i venstre sidefelt.
+  </Step>
+
+  <Step title="Velg bestillingen som skal redigeres">
+    Finn bestillingen du vil oppdatere og huk av i avkrysningsboksen ved siden av den.
+  </Step>
+
+  <Step title="Aktiver redigeringsknappen">
+    En **Rediger**-knapp vil vises øverst til høyre. Klikk på den for å åpne bestillingsdetaljene i redigeringsmodus.
+  </Step>
+
+  <Step title="Endre de nødvendige feltene">
+    Oppdater alle felt som trenger endring — klientdetaljer, tjeneste, prising, datoer, briefing eller tildelt PM.
+  </Step>
+
+  <Step title="Lagre endringene dine">
+    Klikk på **Oppdater** for å lagre. En bekreftelsesmelding vil bekrefte at oppdateringen var vellykket.
+  </Step>
+</Steps>
+
+## Endre statusen på en bestilling
+
+Bestillingsstatus gjenspeiler hvor en arbeidsoppgave befinner seg i leveringspipelinen din. AgencyHandy definerer fem faste statuser — du kan ikke legge til eller gi nytt navn til dem.
+
+| Status | Betydning |
+|---|---|
+| **Venter** | Opprettet, ikke startet ennå |
+| **Pågående** | Aktivt under arbeid |
+| **Til gjennomgang** | Innsendt for gjennomgang; avventer aksept |
+| **Fullført** | Levert og akseptert |
+| **Avbrutt** | Ikke lenger aktiv |
+
+<Note>
+Kun **Super Admins**, **Admins** og **Prosjektledere** kan endre statusen på en bestilling. Ansatte og klienter kan ikke endre status.
+</Note>
+
+For å oppdatere statusen, åpne bestillingen og bruk statusvelgeren øverst på bestillingsdetaljsiden. Velg den nye statusen fra rullegardinmenyen og bekreft.
+
+## Slett en bestilling
+
+Sletting av en bestilling fjerner den permanent fra systemet. Bruk dette kun når en bestilling virkelig er foreldet — for eksempel hvis den ble opprettet ved en feil eller er et duplikat.
+
+<Warning>
+Sletting av bestillinger er ugjenkallelig. Når du sletter en bestilling, kan den ikke gjenopprettes. Gå frem med forsiktighet.
+</Warning>
+
+<Note>
+Kun **Super Admins** og **Admins** kan slette bestillinger.
+</Note>
+
+<Steps>
+  <Step title="Naviger til Bestillinger">
+    Klikk på **Bestillinger** i venstre sidefelt.
+  </Step>
+
+  <Step title="Finn bestillingen som skal slettes">
+    Bla gjennom eller søk etter bestillingen du vil fjerne fra listen.
+  </Step>
+
+  <Step title="Igangsett sletting">
+    Klikk på **søppelbøtte-ikonet** knyttet til bestillingen.
+  </Step>
+
+  <Step title="Bekreft sletting">
+    En bekreftelsesdialog vil vises. Bekreft for å slette bestillingen permanent.
+  </Step>
+</Steps>
+
+Etter sletting, gjennomgå gjenværende bestillinger for å sikre at alt er i orden. Den slettede posten vil ikke lenger vises i noen liste eller rapport.
+
+## Legge til teammedlemmer i en bestilling
+
+Super Admins, Admins og PM-er kan legge til ansatte i en bestilling når som helst. Når et teammedlem legges til, mottar de et varsel i appen. Tildelte ansatte får innsyn i bestillingen og dens oppgaver, men de kan ikke administrere selve bestillingen (redigere detaljer, endre status eller slette den).

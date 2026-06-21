@@ -1,0 +1,205 @@
+---
+title: "AgencyHandy API: Perbarui Pesanan yang Ada dengan PUT"
+sidebarTitle: "Perbarui Pesanan"
+description: "Gunakan AgencyHandy API untuk memperbarui detail pesanan, mengubah status, menetapkan ulang manajer proyek, dan melampirkan file ke pesanan yang ada melalui permintaan PUT."
+---
+
+Endpoint Update Order memungkinkan Anda memodifikasi pesanan (proyek) yang ada di AgencyHandy — mengubah nama, status, anggaran, timeline, manajer yang ditetapkan, dan banyak lagi — semuanya dari sistem eksternal atau skrip otomasi. Endpoint ini juga mendukung lampiran file, yang ditambahkan ke folder sistem pesanan.
+
+<Note>
+  Sebelum menggunakan endpoint ini, selesaikan panduan [Memulai](/id/api/getting-started) untuk mendapatkan API key dan Company ID Anda.
+</Note>
+
+<Warning>
+  Endpoint ini menggunakan `Authorization: Bearer <token>` (token akses anggota yang masuk) dan bukan hanya header `x-api-key`. Pastikan pemanggil Anda diautentikasi sebagai **anggota yang disetujui** dari perusahaan target. Pemanggil yang tidak sah menerima `403 PermissionError`.
+</Warning>
+
+## Prasyarat
+
+- ✅ **Bearer token** yang valid untuk anggota workspace yang disetujui
+- ✅ **Company ID** yang diambil dari `GET {{URL}}/accounts/companies`
+- ✅ **Order ID** (Project ID, `pid`) dari pesanan yang ingin Anda perbarui
+
+---
+
+## Endpoint
+
+```
+PUT {{URL}}/orders?pid=<ORDER_ID>
+```
+
+**Content-Type:** `multipart/form-data` — gunakan ini bahkan ketika tidak ada file yang dilampirkan untuk memenuhi parser multipart server.
+
+## Header
+
+| Header | Diperlukan | Deskripsi |
+|---|---|---|
+| `Authorization` | Ya | `Bearer <ACCESS_TOKEN>` — token akses anggota yang masuk. |
+| `companyid` | Ya | Mongo ObjectId dari perusahaan yang pesanannya dimiliki. |
+| `clientid` | Opsional | ID socket klien real-time. Jika disediakan, notifikasi menyertakannya. |
+
+## Parameter kueri
+
+<ParamField query="pid" type="string" required>
+  Order / Project ID yang akan diperbarui. Teruskan ini sebagai parameter string kueri.
+</ParamField>
+
+## Kolom isi permintaan
+
+<ParamField body="name" type="string">
+  Memperbarui judul pesanan. Minimal 2 karakter.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Status baru untuk pesanan. Harus salah satu dari: `Pending`, `Ongoing`, `Review`, `Completed`, `Cancelled`.
+
+  **Transisi yang diizinkan:**
+  - `Review` hanya dapat mengikuti `Ongoing` atau `Review` lainnya. Melompat dari `Pending` langsung ke `Review` mengembalikan `400 ValidationError`.
+  - Pesanan yang sudah `Completed` atau `Cancelled` tidak dapat diperbarui.
+  - Klien tidak dapat membatalkan pesanan yang telah melewati `Pending`.
+</ParamField>
+
+<ParamField body="budget" type="number">
+  Angka total anggaran. Harus `≥ 0`. Menggunakan mata uang pesanan yang ada kecuali `currency` juga disediakan.
+</ParamField>
+
+<ParamField body="currency" type="string">
+  Kode mata uang untuk anggaran. Contoh: `USD`, `CAD`, `EUR`.
+</ParamField>
+
+<ParamField body="quantity" type="number">
+  Jumlah unit yang dibeli untuk paket. Harus `≥ 1`.
+</ParamField>
+
+<ParamField body="deadline" type="string">
+  String tanggal ISO 8601 untuk tanggal jatuh tempo pesanan. Contoh: `"2025-12-31T00:00:00.000Z"`.
+</ParamField>
+
+<ParamField body="kickoffDate" type="string">
+  String tanggal ISO 8601 untuk tanggal mulai proyek.
+</ParamField>
+
+<ParamField body="notes" type="string">
+  Catatan internal yang terlihat oleh tim Anda.
+</ParamField>
+
+<ParamField body="brief" type="string">
+  Brief klien atau ringkasan proyek.
+</ParamField>
+
+<ParamField body="assignedProjectManagers" type="array">
+  Daftar lengkap ID anggota manajer proyek yang akan ditetapkan ke pesanan ini. ID baru ditambahkan ke tim; ID yang dihapus dihilangkan. Setiap ID harus milik anggota dengan peran `projectManager` di perusahaan yang sama.
+</ParamField>
+
+<ParamField body="markTasksAsDone" type="boolean">
+  **Diperlukan** ketika `status` adalah `Completed` atau `Cancelled`. Jika `true`, semua tugas dalam pesanan ditandai selesai setelah perubahan status. Jika `false`, tugas tetap dalam kondisi saat ini.
+</ParamField>
+
+<ParamField body="rejectRequestedTasks" type="boolean">
+  Hanya diizinkan ketika `status` adalah `Completed` atau `Cancelled`. Jika `true`, semua tugas yang diminta klien yang belum selesai ditolak setelah pembaruan status.
+</ParamField>
+
+<ParamField body="repeatCount" type="number">
+  Hanya diperlukan untuk pesanan **langganan** saat mengubah frekuensi perulangan. Pasangkan dengan `repeatDuration`.
+</ParamField>
+
+<ParamField body="repeatDuration" type="string">
+  Diperlukan bersama `repeatCount` untuk pesanan langganan. Salah satu dari: `day`, `week`, `month`, `year`.
+</ParamField>
+
+<ParamField body="billingCycleCount" type="number">
+  Batas opsional pada siklus penagihan berulang. Default ke `0` (tanpa batas).
+</ParamField>
+
+<ParamField body="billingCycleEvent" type="string">
+  Cara setiap siklus penagihan ditangani. Salah satu dari: `createOrderWithTask`, `noChange`.
+</ParamField>
+
+<ParamField body="files" type="file">
+  Nol atau lebih lampiran file. File ditambahkan ke folder sistem pesanan; file yang ada tidak pernah ditimpa. Gunakan encoding `multipart/form-data` dan lampirkan setiap file di bawah kolom `files`.
+</ParamField>
+
+---
+
+## Contoh permintaan
+
+<CodeGroup>
+
+```bash cURL (no files)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "currency=USD" \
+  --form "quantity=1" \
+  --form "assignedProjectManagers[]=PROJECT_MANAGER_ID" \
+  --form "notes=Scope finalized with client." \
+  --form "brief=Launch-ready design refresh."
+```
+
+```bash cURL (with file)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "repeatCount=3" \
+  --form "repeatDuration=month" \
+  --form "billingCycleEvent=createOrderWithTask" \
+  --form "files=@/path/to/creative-brief.pdf"
+```
+
+</CodeGroup>
+
+**Payload JSON yang setara** (konversi ke entri formulir multipart saat mengirim file):
+
+```json
+{
+  "name": "Website Redesign",
+  "status": "Review",
+  "budget": 12000,
+  "currency": "USD",
+  "quantity": 1,
+  "assignedProjectManagers": ["{{PROJECT_MANAGER_ID}}"],
+  "repeatCount": 3,
+  "repeatDuration": "month",
+  "billingCycleEvent": "createOrderWithTask",
+  "notes": "Scope finalized with client.",
+  "brief": "Launch-ready design refresh."
+}
+```
+
+---
+
+## Respons
+
+| Status HTTP | Deskripsi |
+|---|---|
+| `200 OK` | Pembaruan berhasil. |
+| `400 ValidationError` | ID pesanan tidak valid, transisi status yang diblokir, atau payload yang salah bentuk. Respons menyertakan `fieldName` jika relevan. |
+| `403 PermissionError` | Pemanggil bukan anggota yang disetujui, tidak memiliki peran perusahaan, langganan workspace telah kedaluwarsa, atau klien mencoba pembatalan yang dilarang. |
+| `500 Internal Server Error` | Pengecualian yang tidak ditangani — periksa log server. |
+
+### Respons sukses
+
+```json
+{
+  "message": "Project has been updated"
+}
+```
+
+---
+
+## Aturan bisnis dan efek samping
+
+- **Transisi status** dibatasi. `Review` hanya dapat mengikuti `Ongoing` atau `Review` lainnya. Mencoba `Pending → Review` mengembalikan `400 ValidationError`.
+- Memindahkan status dari `Pending` ke `Ongoing`, `Review`, atau `Completed` mengaktifkan folder file pesanan sehingga file yang diunggah dapat diakses oleh tim proyek.
+- Menetapkan `status` ke `Completed` atau `Cancelled` **mengharuskan** `markTasksAsDone` diatur secara eksplisit ke `true` atau `false`.
+- Perubahan status ke `Review`, `Completed`, atau `Cancelled` secara otomatis memicu notifikasi klien:
+  - **Review** — memberi tahu klien bahwa tinjauan diperlukan.
+  - **Completed** — mengirimkan notifikasi `orderCompletion` ke klien.
+  - **Cancelled** — mengirimkan notifikasi `orderCancellation` ke klien.
+- Setiap pembaruan yang berhasil memicu peristiwa webhook `ORDER.UPDATED` dengan dokumen pesanan yang diperbarui dan metadata lampiran, jika Anda memiliki webhook aktif yang berlangganan peristiwa tersebut.

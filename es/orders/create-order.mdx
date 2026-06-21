@@ -1,0 +1,143 @@
+---
+title: "Cómo crear, editar y eliminar pedidos en AgencyHandy"
+sidebarTitle: "Crear pedido"
+description: "Guía paso a paso para crear, editar y eliminar pedidos en AgencyHandy, incluyendo requisitos de rol, campos del formulario y transiciones de estado."
+---
+
+Crear un pedido en AgencyHandy le ofrece un espacio de trabajo estructurado para entregar un servicio a un cliente. Completa los datos clave desde el inicio (cliente, servicio, precios, fechas y un resumen del proyecto) y todo lo demás, desde las tareas hasta las conversaciones, fluye a partir de ese único registro. Esta página le guía a través de la creación de un pedido desde cero, su actualización posterior, el cambio de su estado y su eliminación cuando ya no sea necesario.
+
+## Requisitos
+
+- Debe haber iniciado sesión en AgencyHandy.
+- Debe tener un rol de **Super Admin**, **Admin** o **Project Manager** para crear o editar pedidos.
+- Solo los **Super Admins** y **Admins** pueden eliminar pedidos.
+
+## Crear un nuevo pedido
+
+<Steps>
+  <Step title="Vaya a Pedidos">
+    En la barra lateral izquierda de su panel de AgencyHandy, haga clic en **Orders**.
+  </Step>
+
+  <Step title="Abra el formulario de creación">
+    Haga clic en **+ Create New Order** en la esquina superior derecha. Aparecerá un formulario.
+  </Step>
+
+  <Step title="Complete los detalles del pedido">
+    Complete los campos del formulario:
+
+    | Campo | Obligatorio | Notas |
+    |---|---|---|
+    | **Client** | ✅ | Seleccione de su lista de clientes existente |
+    | **Service** | ✅ | Incluye servicios publicados y no publicados |
+    | **Project Manager** | ❌ | Opcional; asigne un PM para que se encargue de la entrega |
+    | **Quantity** | ✅ | Número de unidades que se piden |
+    | **Price** | ✅ | Presupuesto acordado para el pedido |
+    | **Kick-off Date** | ✅ | Cuándo comienza el trabajo |
+    | **Due Date** | ✅ | Fecha límite de entrega |
+    | **Order Brief** | ❌ | Instrucciones, requisitos o notas de referencia para su equipo |
+    | **Attachments** | ❌ | Archivos de apoyo relevantes para el pedido |
+
+    <Tip>
+      Si el servicio seleccionado tiene complementos vinculados, aparecerá una sección de **Add-On** en el formulario. Incluya cualquier complemento relevante antes de enviar.
+    </Tip>
+  </Step>
+
+  <Step title="Revise sus entradas">
+    Verifique todos los campos para asegurar su exactitud, especialmente el cliente, el servicio, el precio y la fecha de entrega.
+  </Step>
+
+  <Step title="Envíe el pedido">
+    Haga clic en **Create** para finalizar el pedido. Recibirá un mensaje de confirmación una vez que se haya creado correctamente.
+  </Step>
+</Steps>
+
+### Qué sucede después de crear un pedido
+
+- Todos los Super Admins de su empresa obtienen acceso automáticamente al nuevo pedido.
+- El cliente recibe una notificación de que su pedido ha sido creado.
+- El pedido aparece en la lista de **Orders** con un estado de **Pending**.
+
+## Editar o actualizar un pedido
+
+Puede actualizar un pedido en cualquier momento para corregir detalles, ajustar precios, cambiar la fecha de entrega o atender solicitudes del cliente.
+
+<Note>
+Debe ser **Super Admin**, **Admin** o **Project Manager** para editar un pedido.
+</Note>
+
+<Steps>
+  <Step title="Abra la lista de Pedidos">
+    Vaya a **Orders** en la barra lateral izquierda.
+  </Step>
+
+  <Step title="Seleccione el pedido a editar">
+    Localice el pedido que desea actualizar y marque la casilla junto a él.
+  </Step>
+
+  <Step title="Active el botón de edición">
+    Aparecerá un botón **Edit** en la esquina superior derecha. Haga clic en él para abrir los detalles del pedido en modo de edición.
+  </Step>
+
+  <Step title="Modifique los campos necesarios">
+    Actualice cualquier campo que necesite cambiar: datos del cliente, servicio, precios, fechas, resumen o PM asignado.
+  </Step>
+
+  <Step title="Guarde sus cambios">
+    Haga clic en **Update** para guardar. Un mensaje de confirmación confirmará que la actualización se realizó correctamente.
+  </Step>
+</Steps>
+
+## Cambiar el estado de un pedido
+
+El estado del pedido refleja en qué punto se encuentra un trabajo dentro de su flujo de entrega. AgencyHandy define cinco estados fijos: no puede agregarlos ni renombrarlos.
+
+| Estado | Significado |
+|---|---|
+| **Pending** | Creado, aún no iniciado |
+| **Ongoing** | En proceso de trabajo activo |
+| **In Review** | Enviado para revisión; a la espera de aceptación |
+| **Complete** | Entregado y aceptado |
+| **Cancelled** | Ya no está activo |
+
+<Note>
+Solo los **Super Admins**, **Admins** y **Project Managers** pueden cambiar el estado de un pedido. Los empleados y clientes no pueden cambiar el estado.
+</Note>
+
+Para actualizar el estado, abra el pedido y use el selector de estado en la parte superior de la página de detalles del pedido. Seleccione el nuevo estado en el menú desplegable y confirme.
+
+## Eliminar un pedido
+
+Eliminar un pedido lo elimina permanentemente del sistema. Use esta opción solo cuando un pedido sea realmente obsoleto; por ejemplo, si se creó por error o es un duplicado.
+
+<Warning>
+La eliminación de un pedido es irreversible. Una vez que elimina un pedido, no se puede recuperar. Proceda con precaución.
+</Warning>
+
+<Note>
+Solo los **Super Admins** y **Admins** pueden eliminar pedidos.
+</Note>
+
+<Steps>
+  <Step title="Vaya a Pedidos">
+    Haga clic en **Orders** en la barra lateral izquierda.
+  </Step>
+
+  <Step title="Encuentre el pedido a eliminar">
+    Desplácese o busque el pedido que desea quitar de la lista.
+  </Step>
+
+  <Step title="Inicie la eliminación">
+    Haga clic en el **icono de papelera** asociado al pedido.
+  </Step>
+
+  <Step title="Confirme la eliminación">
+    Aparecerá una solicitud de confirmación. Confirme para eliminar el pedido de forma permanente.
+  </Step>
+</Steps>
+
+Después de la eliminación, revise sus pedidos restantes para asegurarse de que todo esté en orden. La entrada eliminada ya no aparecerá en ninguna lista ni informe.
+
+## Agregar miembros del equipo a un pedido
+
+Los Super Admins, Admins y PMs pueden agregar empleados a un pedido en cualquier momento. Cuando se agrega un miembro del equipo, este recibe una notificación dentro de la aplicación. Los empleados asignados obtienen visibilidad del pedido y sus tareas, pero no pueden gestionar el pedido en sí (editar detalles, cambiar el estado o eliminarlo).

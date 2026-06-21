@@ -1,0 +1,117 @@
+---
+title: "Personalizează Schemele de Culori ale Spațiului de Lucru AgencyHandy"
+sidebarTitle: "Aspect"
+description: "Aplică culorile brandului tău la bara laterală și interfața AgencyHandy — culoarea primară, fundalul, textul și stările de hover — vizibile instant pentru toți utilizatorii."
+---
+
+Setările de Aspect îți oferă control deplin asupra modului în care arată spațiul tău de lucru AgencyHandy. Poți alinia schema de culori a platformei cu identitatea de brand a agenției tale prin personalizarea culorii primare, a fundalului barei laterale, a culorii textului din bara laterală și a culorii de evidențiere la hover pentru elementele de navigare din bara laterală. Fiecare modificare salvată intră în vigoare imediat în întregul spațiu de lucru pentru toți utilizatorii — fără a fi necesară reîncărcarea paginii.
+
+<Note>
+  Doar **Super Adminii** și **Adminii** pot accesa și modifica setările de Aspect. Dacă nu vezi această opțiune sub **Workspace Config**, solicită Super Admin-ului tău să revizuiască rolul tău.
+</Note>
+
+## Accesarea Setărilor de Aspect
+
+<Steps>
+  <Step title="Deschide Workspace Config">
+    Din meniul de navigare din stânga, apasă **Workspace Config**.
+  </Step>
+  <Step title="Selectează Aspect">
+    Apasă **Appearance** (uneori etichetat **Visual Settings**) din submeniu.
+  </Step>
+</Steps>
+
+---
+
+## Personalizarea Fiecărui Element Vizual
+
+### Culoarea Primară
+
+Culoarea primară este aplicată butoanelor, linkurilor active, stărilor evidențiate și elementelor cheie ale interfeței din toată platforma.
+
+- Alege o culoare care reflectă identitatea de bază a brandului tău.
+- Aceasta este cea mai impactantă setare de culoare deoarece apare peste tot în interfață.
+
+### Culoarea de Fundal a Barei Laterale
+
+Fundalul barei laterale setează nuanța de bază a panoului de navigare din stânga.
+
+- Folosește o culoare care creează o separare vizuală clară între bara laterală și zona de conținut principal.
+- Fundalurile închise cu text deschis funcționează de obicei cel mai bine pentru lizibilitate.
+
+### Culoarea Textului Barei Laterale
+
+Culoarea textului barei laterale controlează culoarea etichetei pentru toate elementele de navigare din meniul din stânga.
+
+- Alege întotdeauna o culoare cu contrast puternic față de culoarea de fundal a barei laterale.
+- Contrastul slab face linkurile mai greu de citit și reduce accesibilitatea.
+
+### Culoarea de Fundal la Hover a Barei Laterale
+
+Această culoare apare ca evidențiere de fundal când un utilizator mișcă cursorul peste un element de navigare din bara laterală.
+
+- Semnalează interactivitatea și ajută utilizatorii să înțeleagă pe care element sunt pe cale să apese.
+- Alege o culoare vizibil distinctă atât față de fundalul implicit al barei laterale, cât și față de culoarea elementului activ.
+
+---
+
+## Aplicarea Alegerilor de Culoare
+
+<Steps>
+  <Step title="Deschide selectorul de culori pentru fiecare câmp">
+    Apasă pe mostra de culoare de lângă oricare dintre cele patru câmpuri de aspect — Culoarea Primară, Fundalul Barei Laterale, Culoarea Textului Barei Laterale sau Culoarea de Fundal la Hover a Barei Laterale — pentru a deschide selectorul de culori.
+  </Step>
+  <Step title="Introdu un cod hex sau selectează o culoare">
+    Tastează codul hex exact al brandului tău (ex. `#3B5BDB`) direct în câmpul de introducere sau folosește selectorul vizual pentru a alege o nuanță.
+  </Step>
+  <Step title="Previzualizează modificările">
+    Revizuiește cum arată culorile actualizate în bara laterală și în toată interfața înainte de a salva.
+  </Step>
+  <Step title="Apasă Save Changes">
+    Când ești mulțumit de rezultat, apasă **Save Changes**. Aspectul actualizat este aplicat global și instant tuturor utilizatorilor din spațiul de lucru.
+  </Step>
+</Steps>
+
+<Tip>
+  Păstrează o evidență a codurilor de culori hex ale brandului tău într-un loc accesibil (un ghid de stil al brandului sau un fișier de notițe). Vei dori să refolosești exact aceleași valori în mod constant — mai ales dacă trebuie să resetezi și să reconfigurezi setările de aspect.
+</Tip>
+
+---
+
+## Revenirea la Tema Implicită
+
+Dacă dorești să elimini toate personalizările de brand și să restabilești schema de culori originală AgencyHandy, apasă butonul **Reset Default Settings** de pe pagina de Aspect.
+
+<Warning>
+  Revenirea la implicite elimină permanent toate modificările de culoare personalizate. Această acțiune nu poate fi anulată. Dacă dorești să păstrezi setările curente, notează-ți codurile hex înainte de resetare.
+</Warning>
+
+---
+
+## Bune Practici de Contrast al Culorilor
+
+Contrastul bun al culorilor nu este doar o preferință de design — afectează direct lizibilitatea și accesibilitatea pentru echipa și clienții tăi.
+
+<CardGroup cols={2}>
+  <Card title="Vizează rapoarte de contrast WCAG AA" icon="eye">
+    Pentru textul obișnuit al corpului, folosește un raport de contrast de cel puțin **4.5:1** între text și fundal. Pentru text mare sau pictograme, un raport de **3:1** este acceptabil. Folosește un instrument precum [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/) pentru a verifica.
+  </Card>
+  <Card title="Evită combinațiile cu contrast scăzut" icon="triangle-exclamation">
+    Nu combina culori precum text gri deschis pe alb sau text galben pe alb — acestea nu îndeplinesc standardele de accesibilitate și obosesc ochii în sesiunile lungi.
+  </Card>
+  <Card title="Testează deliberat stările de hover" icon="arrow-pointer">
+    Culorile de hover ar trebui să fie vizibil diferite atât față de starea de repaus, cât și față de starea activă. Dacă arată la fel, utilizatorii pierd feedback-ul vizual important.
+  </Card>
+  <Card title="Rămâi consistent cu brandul tău" icon="paintbrush">
+    Folosește aceeași culoare primară aici ca pe site-ul tău, propuneri și facturi. Consecvența construiește recunoașterea și profesionalismul în toate punctele de contact cu clienții.
+  </Card>
+</CardGroup>
+
+---
+
+## Note Importante
+
+- **Efect global instant:** Toate modificările de aspect salvate sunt aplicate imediat în întregul spațiu de lucru. Fiecare utilizator autentificat vede actualizarea la următoarea acțiune de navigare.
+- **O temă activă:** Nu există suport pentru teme multiple — un set de culori se aplică întregului spațiu de lucru pentru toate rolurile.
+- **Restricție de rol:** Doar Super Adminii și Adminii pot efectua modificări de aspect. Membrii obișnuiți ai echipei și clienții nu pot modifica culorile.
+- **Resetarea este permanentă:** Butonul **Reset Default Settings** nu poate fi anulat, deci folosește-l doar când intenționezi să elimini toate culorile personalizate.

@@ -1,0 +1,172 @@
+---
+title: "Seguimiento de tiempo y gestión de la hoja de horas en AgencyHandy"
+sidebarTitle: "Hoja de horas"
+description: "Registre tiempo con un temporizador en vivo o una entrada manual, filtre los registros de trabajo por tarea, miembro o servicio, y exporte los datos de la hoja de horas como CSV o XLSX en AgencyHandy."
+---
+
+La función de hoja de horas de AgencyHandy le ofrece un panel central para hacer seguimiento de cada hora que su equipo dedica a las tareas. Puede iniciar un temporizador en vivo en cualquier tarea, registrar el tiempo después con una entrada manual, y luego analizar los datos por rango de fechas, miembro del equipo o servicio. Cuando necesite informar sobre la productividad o facturar por tiempo, puede exportar todo a CSV o XLSX con unos pocos clics. Es la herramienta esencial para mantener a su equipo responsable y su facturación por tiempo precisa.
+
+## Quién puede usar las funciones de la hoja de horas
+
+| Función | Super Admin | Admin | PM | Employee |
+|---------|:-----------:|:-----:|:--:|:--------:|
+| Ver los registros de tiempo propios | ✅ | ✅ | ✅ | ✅ |
+| Registrar tiempo para otros | ✅ | ✅ | ✅ | ❌ |
+| Editar entradas de tiempo | ✅ | ✅ | ✅ | ❌ |
+| Exportar datos de la hoja de horas | ✅ | ✅ | ✅ | ❌ |
+
+<Note>
+  Las tareas deben existir antes de poder registrar tiempo sobre ellas. Asegúrese de que las tareas estén creadas dentro de los pedidos antes de intentar registrar tiempo.
+</Note>
+
+## Ver la hoja de horas
+
+<Steps>
+  <Step title="Abra la hoja de horas">
+    Haga clic en **Timesheet** en la barra lateral izquierda principal. Verá una tabla que enumera todos los registros de tiempo de su equipo.
+
+    Cada fila muestra la fecha, el miembro del equipo, el nombre de la tarea, el servicio, el tiempo registrado y cualquier nota adjunta a la entrada.
+  </Step>
+</Steps>
+
+## Agregar una entrada de tiempo
+
+Tiene dos opciones para registrar tiempo: un temporizador en vivo para el trabajo en curso o una entrada manual para el tiempo que ya ha completado.
+
+<Tabs>
+  <Tab title="Iniciar un temporizador">
+    <Steps>
+      <Step title="Seleccione una tarea">
+        En la vista de la hoja de horas, busque o seleccione la tarea en la que está a punto de trabajar.
+      </Step>
+      <Step title="Haga clic en Start Timer">
+        Haga clic en **Start Timer** para empezar a registrar el tiempo en tiempo real. El temporizador funciona hasta que lo detiene.
+      </Step>
+      <Step title="Detenga al terminar">
+        Haga clic en **Stop** cuando termine el trabajo. AgencyHandy registra automáticamente el tiempo transcurrido en la tarea seleccionada.
+      </Step>
+    </Steps>
+
+    <Tip>
+      Use el temporizador para el trabajo en curso a fin de garantizar un seguimiento preciso. Redondear o estimar el tiempo manualmente después de los hechos es menos preciso que dejar que el temporizador corra.
+    </Tip>
+  </Tab>
+  <Tab title="Entrada manual">
+    <Steps>
+      <Step title="Haga clic en + Add Entry">
+        En el panel de la hoja de horas, haga clic en **+ Add Entry**. Aparecerá un formulario.
+      </Step>
+      <Step title="Complete los detalles de la entrada">
+        - **Task**: seleccione la tarea a la que aplica este tiempo
+        - **Team Member**: asigne el tiempo a la persona correcta (los Admins y Managers pueden registrar para otros)
+        - **Time Spent**: introduzca las horas y los minutos
+        - **Notes**: agregue cualquier contexto sobre el trabajo realizado
+      </Step>
+      <Step title="Guarde">
+        Haga clic en **Save** para registrar la entrada. Aparecerá en la tabla de la hoja de horas de inmediato.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Filtrar por rango de fechas
+
+Use los filtros de fecha para enfocarse en un período de tiempo específico.
+
+<Steps>
+  <Step title="Abra los filtros de fecha">
+    Haga clic en los controles de filtro de fecha en la parte superior derecha del panel de la hoja de horas.
+  </Step>
+  <Step title="Seleccione un rango">
+    Elija entre los rangos preestablecidos:
+    - **Daily**: solo los registros de hoy
+    - **Weekly**: la semana actual
+    - **Monthly**: el mes actual
+
+    Para proyectos más largos o informes históricos, seleccione un rango de fechas **Custom** introduciendo una fecha de inicio y una de fin.
+  </Step>
+  <Step title="Aplique">
+    Haga clic en **Apply** para actualizar la tabla con los registros del período seleccionado.
+  </Step>
+</Steps>
+
+<Tip>
+  Filtre antes de exportar para generar informes enfocados. Exportar la hoja de horas completa y sin filtrar puede producir archivos muy grandes para agencias activas.
+</Tip>
+
+## Agrupar entradas
+
+La agrupación reorganiza cómo se estructuran las filas de la hoja de horas sin eliminar ningún dato. Le ayuda a leer y analizar los registros más rápidamente.
+
+<Steps>
+  <Step title="Abra el menú desplegable Group By">
+    Haga clic en el menú desplegable **Group By** cerca de la parte superior del panel de la hoja de horas.
+  </Step>
+  <Step title="Seleccione una agrupación">
+    Elija entre las siguientes opciones:
+
+    | Opción de Group By | Qué muestra |
+    |----------------|---------------|
+    | **Task Name** | Todas las entradas de tiempo agrupadas bajo cada tarea |
+    | **Team Member** | Todas las entradas agrupadas bajo cada persona |
+    | **Service → Task Name** | Entradas agrupadas por servicio y luego desglosadas por tarea dentro de cada servicio |
+  </Step>
+</Steps>
+
+<Note>
+  La agrupación es un cambio solo visual: no afecta a los datos subyacentes ni a lo que se exporta. Las exportaciones siempre incluyen todas las filas visibles.
+</Note>
+
+## Ver los detalles de la tarea desde la hoja de horas
+
+<Steps>
+  <Step title="Haga clic en el nombre de una tarea">
+    En la tabla de la hoja de horas, haga clic en cualquier **Task Name**. AgencyHandy le lleva a la página de detalle completo de esa tarea.
+  </Step>
+  <Step title="Revise el contexto de la tarea">
+    En la página de detalle de la tarea, encontrará el historial completo de registros de tiempo, las notas adjuntas, los asignados, el estado y demás información a nivel de tarea. Use esta vista para investigar entradas o verificar qué trabajo se realizó.
+  </Step>
+</Steps>
+
+## Exportar datos de la hoja de horas
+
+Exporte su hoja de horas para nóminas, informes de facturación de clientes o herramientas externas de gestión de proyectos.
+
+<Steps>
+  <Step title="Aplique filtros primero (recomendado)">
+    Use el filtro de rango de fechas para limitar la exportación al período que necesita. Esto mantiene el archivo enfocado y manejable.
+  </Step>
+  <Step title="Haga clic en Export">
+    Haga clic en el botón **Export** en la parte superior del panel de la hoja de horas.
+  </Step>
+  <Step title="Elija un formato">
+    Seleccione una de las opciones:
+    - **CSV**: para herramientas de hojas de cálculo como Excel, Google Sheets o canalizaciones de datos
+    - **XLSX**: para libros de trabajo con formato de Excel que conservan el formato de las columnas
+  </Step>
+  <Step title="Descargue el archivo">
+    El archivo se descarga automáticamente en su dispositivo. Cada exportación incluye todas las columnas visibles: fecha, miembro del equipo, nombre de la tarea, servicio, tiempo registrado y notas.
+  </Step>
+</Steps>
+
+<Warning>
+  Si la exportación no inicia una descarga, es posible que el **bloqueador de ventanas emergentes** de su navegador esté impidiendo que el archivo se descargue. Desactive el bloqueo de ventanas emergentes para AgencyHandy e inténtelo de nuevo.
+</Warning>
+
+## Notas adicionales
+
+<Accordion title="Temporizador vs. entrada manual">
+  El temporizador es ideal para el trabajo activo en tiempo real. Las entradas manuales son mejores cuando olvidó iniciar el temporizador o necesita registrar el tiempo de forma retroactiva. Ambos métodos producen entradas de registro idénticas en la tabla de la hoja de horas.
+</Accordion>
+
+<Accordion title="Agrupación vs. filtrado">
+  Los filtros **reducen** qué filas se muestran en la tabla. La agrupación **reorganiza** las filas que ya están visibles. Puede aplicar ambos al mismo tiempo: filtre por un rango de fechas y luego agrupe por miembro del equipo para ver los totales de cada persona en ese período.
+</Accordion>
+
+<Accordion title="Las exportaciones incluyen todas las columnas visibles">
+  Cada exportación captura el estado actual de la tabla visible: fecha, usuario, tarea, servicio, tiempo y notas. Si ha aplicado una configuración de agrupación, la exportación también refleja la estructura de agrupación.
+</Accordion>
+
+<Accordion title="Rangos personalizados para datos históricos">
+  Para proyectos de larga duración o revisiones trimestrales, use la opción de rango de fechas personalizado para extraer datos históricos de la hoja de horas más allá de las ventanas preestablecidas diaria/semanal/mensual.
+</Accordion>

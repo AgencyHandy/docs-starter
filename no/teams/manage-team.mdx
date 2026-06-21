@@ -1,0 +1,132 @@
+---
+title: "Administrer teammedlemmer og roller i AgencyHandy"
+sidebarTitle: "Administrer team"
+description: "Inviter teammedlemmer via e-post, tildel roller og tillatelser, endre roller for eksisterende medlemmer og fjern brukere fra arbeidsområdet ditt i AgencyHandy."
+---
+
+AgencyHandy's teamfunksjon gir deg en sikker, organisert måte å bygge og administrere byråets arbeidsstyrke på. Du inviterer medlemmer via e-post, tildeler dem en rolle som styrer hva de kan se og gjøre, og de mottar en sikker innloggingslenke for å fullføre onboarding. Etter hvert som teamet ditt utvikler seg, kan du oppdatere roller når som helst eller fjerne medlemmer for å holde tilgangen oppdatert og relevant.
+
+## Tilgang til team-dashboardet
+
+Klikk på **Team** i venstre sidefelt for å åpne team-dashboardet. Her ser du en liste over alle nåværende teammedlemmer sammen med tildelte roller. Fra denne visningen kan du invitere nye medlemmer, oppdatere roller og fjerne personer fra arbeidsområdet.
+
+## Roller i AgencyHandy
+
+AgencyHandy har fem standardroller, hver med forhåndsinnstilte tillatelsesnivåer. Når du inviterer et teammedlem, tildeler du en av disse rollene. Du kan endre et medlems rolle når som helst etter at de har blitt med.
+
+| Rolle | Typiske funksjoner |
+|------|---------------------|
+| **Super Admin** | Full tilgang til alt — alle innstillinger, alle data, alle teamadministrasjonshandlinger |
+| **Admin** | Bred tilgang inkludert fakturaer, forslag, bestillinger, teamadministrasjon og innstillinger |
+| **Prosjektleder (PM)** | Administrerer bestillinger tildelt dem, ser oppgaver for bestillingene sine, kan invitere teammedlemmer |
+| **Ansatt** | Begrenset til oppgaver som er direkte tildelt dem; ingen tilgang til økonomi- eller administrasjonsseksjoner |
+
+<Note>
+  Kun **Super Admins** og **Admins** kan endre roller eller slette teammedlemmer. PM-er kan invitere nye medlemmer, men kan ikke endre eller fjerne eksisterende.
+</Note>
+
+## Invitere et teammedlem
+
+<Steps>
+  <Step title="Åpne team-dashboardet">
+    Klikk på **Team** i venstre sidefelt.
+  </Step>
+  <Step title="Klikk + Opprett team">
+    Klikk på knappen **+ Opprett team**. Et invitasjonsskjema vil vises.
+  </Step>
+  <Step title="Fyll inn e-postadressen">
+    Skriv inn e-postadressen til personen du vil invitere. Dette er obligatorisk.
+  </Step>
+  <Step title="Tildel en rolle">
+    Velg den passende rollen fra rullegardinmenyen. Velg nøye — dette avgjør hva det nye medlemmet kan få tilgang til fra første innlogging.
+  </Step>
+  <Step title="Send invitasjonen">
+    Klikk på **Inviter**. AgencyHandy sender den inviterte personen en e-post med:
+    - En **sikker innloggings-URL** til byråets arbeidsområde
+    - Et **automatisk generert passord** til bruk ved første innlogging
+  </Step>
+  <Step title="Medlemmet fullfører onboarding">
+    Det inviterte teammedlemmet følger lenken i e-posten, logger inn med de oppgitte legitimasjonene og fullfører onboarding-prosessen. Når de logger inn, legges de til i byråets arbeidsområde og kan begynne å samarbeide umiddelbart.
+  </Step>
+</Steps>
+
+<Tip>
+  Be det nye teammedlemmet om å endre det automatisk genererte passordet til noe sikkert etter første innlogging.
+</Tip>
+
+## Angi roller for teammedlemmer
+
+Du kan tildele eller oppdatere roller på to måter: under invitasjonen, eller etter at medlemmet allerede har blitt med.
+
+<Tabs>
+  <Tab title="Under invitasjon">
+    Når du fyller ut invitasjonsskjemaet, velg rollen fra rullegardinmenyen før du klikker på **Inviter**. Rollen trer i kraft så snart medlemmet logger inn for første gang.
+  </Tab>
+  <Tab title="For eksisterende medlemmer">
+    1. Gå til **Team** i venstre sidefelt for å åpne team-dashboardet.
+    2. Finn teammedlemmet hvis rolle du vil endre.
+    3. Klikk på **pil ned**-knappen til høyre for navnet deres.
+    4. En liste over standard rollenavn vil vises. Velg den nye rollen.
+    5. Rollen oppdateres umiddelbart — ingen lagretrinn er nødvendig.
+  </Tab>
+</Tabs>
+
+<Warning>
+  Kun **Super Admins** og **Admins** kan endre en eksisterende teammedlems rolle.
+</Warning>
+
+## Sammendrag av rolletillatelser
+
+Bruk denne tabellen som en rask referanse når du bestemmer hvilken rolle som skal tildeles.
+
+| Funksjon | Super Admin | Admin | PM | Ansatt |
+|---------|:-----------:|:-----:|:--:|:--------:|
+| Opprett og send forslag | ✅ | ✅ | ❌ | ❌ |
+| Opprett og administrer fakturaer | ✅ | ✅ | ✅ | ❌ |
+| Administrer alle bestillinger | ✅ | ✅ | Kun tildelte | ❌ |
+| Se alle oppgaver | ✅ | ✅ | Kun tildelte bestillinger | Kun tildelte oppgaver |
+| Inviter teammedlemmer | ✅ | ✅ | ✅ | ❌ |
+| Endre roller / fjerne medlemmer | ✅ | ✅ | ❌ | ❌ |
+| Tilgang til faktura- og byråinnstillinger | ✅ | ✅ | ❌ | ❌ |
+| Kansellere abonnementer | ✅ | ✅ | ❌ | ❌ |
+| Eksportere timelist-data | ✅ | ✅ | ✅ | ❌ |
+
+## Fjerne et teammedlem
+
+Når noen forlater byrået eller ikke lenger trenger tilgang, fjern dem fra arbeidsområdet for å beskytte dataene dine.
+
+<Steps>
+  <Step title="Åpne team-dashboardet">
+    Naviger til **Team** i venstre sidefelt.
+  </Step>
+  <Step title="Velg medlemmet som skal fjernes">
+    Huk av i avkrysningsboksen ved siden av teammedlemmet du vil fjerne. **Slett**-knappen vil bli aktiv.
+  </Step>
+  <Step title="Klikk Slett">
+    Klikk på **Slett**-knappen. En bekreftelsesdialog vil vises.
+  </Step>
+  <Step title="Bekreft fjerningen">
+    Bekreft beslutningen din. AgencyHandy tilbakekaller umiddelbart medlemmets tilgang til arbeidsområdet og alle tilknyttede ressurser.
+  </Step>
+  <Step title="Fullfør eventuelle overleveringer">
+    Etter fjerning, tildel på nytt alle åpne oppgaver eller bestillinger som medlemmet var ansvarlig for, og oppdater relevant dokumentasjon og tilgangstillatelser tilsvarende.
+  </Step>
+</Steps>
+
+<Warning>
+  Fjerning av et teammedlem **kan ikke angres**. Tilgangen tilbakekalles permanent. Hvis du trenger å gi samme person tilgang igjen i fremtiden, må du sende en ny invitasjon.
+</Warning>
+
+## Tilleggsmerknader
+
+<Accordion title="Sikker onboarding via e-post">
+  Hver invitasjon leveres gjennom en sikker innloggings-URL. Den inviterte personen bruker denne URL-en sammen med et automatisk generert passord for å få tilgang til plattformen for første gang. Dette sikrer at kun den tiltenkte personen får tilgang.
+</Accordion>
+
+<Accordion title="Rolleendringer trer i kraft umiddelbart">
+  Når du oppdaterer et teammedlems rolle, gjelder endringen øyeblikkelig. Det er ingen ventende eller bekreftelsestrin — medlemmets nye tillatelser er aktive ved neste sideinnlasting.
+</Accordion>
+
+<Accordion title="Teammedlemmer og oppgavesynlighet">
+  En ansatt kan kun se oppgaver som er direkte tildelt dem. En PM kan kun se oppgaver innenfor bestillinger der de er tildelt som Leder. Super Admins og Admins ser alt. Husk dette når du tildeler roller for å unngå forvirring om manglende oppgaver eller bestillinger.
+</Accordion>

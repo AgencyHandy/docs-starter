@@ -1,0 +1,240 @@
+---
+title: "Gestión de tareas: creación y seguimiento del trabajo en los pedidos"
+sidebarTitle: "Tareas"
+description: "Cree, edite y gestione tareas dentro de los pedidos, incluyendo seguimiento de tiempo, comentarios sobre archivos, tareas solicitadas por clientes y visibilidad de tareas entre pedidos."
+---
+
+Las tareas son las unidades de trabajo que convierten un pedido en un entregable. Cada tarea vive dentro de un pedido específico, puede asignarse a un miembro del equipo y realiza el seguimiento de su propio estado, cronograma, archivos adjuntos y hilo de comentarios. Esta página explica cómo crear y gestionar tareas, cómo los clientes pueden solicitar tareas, cómo funcionan el seguimiento de tiempo y los comentarios sobre archivos, y cómo ver las tareas de todos los pedidos a la vez.
+
+## Requisitos de rol
+
+| Acción | Quién puede hacerlo |
+|---|---|
+| Crear tareas | Super Admin, Admin, Project Manager |
+| Editar tareas | Super Admin, Admin, Project Manager |
+| Eliminar tareas | Super Admin, Admin, Project Manager |
+| Ver tareas en revisión / completadas | Super Admin, Admin, PM, Cliente |
+| Enviar y responder comentarios | Super Admin, Admin, PM |
+| Registrar tiempo en tareas | Todos los usuarios asignados (los Superadmins y Admins pueden registrar en nombre de otros) |
+| Solicitar una tarea (cliente) | Cliente |
+| Aprobar / rechazar tareas solicitadas | Super Admin, Admin |
+
+<Note>
+Los empleados asignados a un pedido pueden ver las tareas que están en estado **In Review** o **Done**. Las tareas en estado **In Progress** no son visibles para los empleados.
+</Note>
+
+## Crear una tarea
+
+<Steps>
+  <Step title="Abra el pedido">
+    Vaya a **Orders** en la barra lateral izquierda y haga clic en el pedido donde desea agregar una tarea.
+  </Step>
+
+  <Step title="Agregue una nueva tarea">
+    Dentro del pedido, desplácese hasta la sección **Tasks** y haga clic en **+ Add New Task**. Aparecerá un formulario de creación de tareas.
+  </Step>
+
+  <Step title="Complete los detalles de la tarea">
+    Complete los campos disponibles:
+
+    | Campo | Notas |
+    |---|---|
+    | **Task Name** | Un título claro y conciso para el elemento de trabajo |
+    | **Description** | Contexto detallado, requisitos o instrucciones |
+    | **Assignee** | El miembro del equipo responsable de completar la tarea |
+    | **Label** | Etiqueta de categoría para organizar las tareas (por ejemplo, Diseño, Texto) |
+    | **Start Date** | Cuándo comienza el trabajo de la tarea |
+    | **Due Date** | Cuándo debe completarse la tarea |
+    | **Client Review Required** | Casilla que requiere que el cliente apruebe la tarea antes de marcarla como Done; marcada por defecto |
+    | **Attachments** | Archivos de referencia o materiales de apoyo |
+  </Step>
+
+  <Step title="Guarde la tarea">
+    Haga clic en **Save** para crear la tarea. El cliente recibe una notificación automática de que se ha agregado una nueva tarea a su pedido.
+  </Step>
+</Steps>
+
+<Tip>
+La casilla **Client Review Required** está habilitada por defecto en cada tarea nueva. Si una tarea es puramente interna y no necesita la aprobación del cliente, puede desmarcarla antes de guardar.
+</Tip>
+
+## Estados de las tareas
+
+Las tareas pasan por los siguientes estados:
+
+- **In Progress**: la tarea está en proceso de trabajo (no es visible para clientes ni empleados)
+- **In Review**: la tarea se ha enviado para revisión; visible para los clientes
+- **Done**: la tarea ha sido aprobada y completada
+
+<Note>
+Cuando un cliente o revisor rechaza una tarea desde **In Review**, su estado vuelve automáticamente a **In Progress**.
+</Note>
+
+## Modal de tarea y página de actividad
+
+Al hacer clic en cualquier tarea se abre el **Task Modal**, una vista de detalle completo que sirve como el centro de actividad de la tarea. Desde aquí puede ver y gestionar:
+
+- El estado actual, el asignado, la fecha de inicio y la fecha de entrega
+- La descripción de la tarea y los archivos adjuntos
+- Todos los hilos de comentarios y respuestas
+- Un registro de actividad completo que muestra cada actualización, comentario y cambio de estado de la tarea
+
+Cualquier persona que forme parte del pedido (incluidos los clientes, cuando la revisión del cliente está habilitada) puede acceder al modal de tarea para las tareas que tiene visibles.
+
+## Editar una tarea
+
+Para actualizar los detalles de una tarea después de haberla creado, abra el modal de tarea y modifique los campos correspondientes (nombre, descripción, asignado, fechas, etiqueta o archivos adjuntos). Guarde sus cambios para aplicar la actualización. Solo los Super Admins, Admins y PMs pueden editar tareas.
+
+## Eliminar una tarea
+
+Para eliminar una tarea, ábrala y use la opción de eliminar en el menú de acciones de la tarea. La eliminación es permanente: todos los registros de tiempo y versiones de archivos asociados se eliminan junto con la tarea.
+
+<Warning>
+Eliminar una tarea también elimina todas las versiones de archivos y sus comentarios asociados. Esta acción no se puede deshacer.
+</Warning>
+
+## Seguimiento de tiempo
+
+AgencyHandy incluye un seguimiento de tiempo integrado para que su equipo pueda registrar las horas directamente en las tareas, sin necesidad de herramientas externas.
+
+### Iniciar el temporizador
+
+<Steps>
+  <Step title="Abra la tarea">
+    Vaya a **Orders → Tasks** y abra la tarea sobre la que desea registrar tiempo.
+  </Step>
+
+  <Step title="Inicie el temporizador">
+    Haga clic en **Start Timer**. El temporizador comienza a funcionar y muestra el nombre de la tarea, el tiempo transcurrido en tiempo real y el tiempo total registrado.
+  </Step>
+
+  <Step title="Pause o detenga al terminar">
+    Haga clic en **Pause Timer** para detener temporalmente el seguimiento, o en **Stop Timer** para finalizar la entrada. Al detenerlo, confirmará la fecha, la hora de inicio, la hora de fin, la duración total y una nota opcional.
+  </Step>
+</Steps>
+
+<Note>
+Solo puede tener un temporizador activo a la vez. Iniciar un nuevo temporizador pausa automáticamente cualquier otro existente.
+</Note>
+
+<Warning>
+Si una tarea está marcada como **Done**, el temporizador se deshabilita. Reabra la tarea para volver a habilitar el registro de tiempo.
+</Warning>
+
+### Entrada manual de tiempo
+
+Si necesita registrar tiempo de forma retroactiva, haga clic en **Manual Time Entry** en la tarea e introduzca:
+
+- **Date**
+- **Start Time** y **End Time** (o una **Duration** en horas y minutos)
+- **Notes** (opcional)
+
+Varios usuarios pueden registrar tiempo en la misma tarea simultáneamente. Los Superadmins y Admins pueden crear entradas manuales de tiempo en nombre de cualquier usuario.
+
+### Registros de trabajo
+
+Haga clic en el botón **Work Log** junto al temporizador para ver un desglose completo de todas las entradas de tiempo de la tarea, incluyendo la fecha, las horas de inicio/fin, el tiempo activo total y cualquier nota. Los Admins y Superadmins pueden eliminar cualquier entrada; los usuarios regulares solo pueden eliminar las suyas.
+
+### Hojas de horas
+
+Vaya a **Timesheets** desde la barra lateral izquierda para obtener una vista entre pedidos de todo el tiempo registrado. Puede filtrar por nombre de tarea, ID de pedido, asignado o rango de fechas (diario, semanal, mensual) y agrupar los resultados por miembro del equipo, nombre de servicio o nombre de tarea. También puede iniciar un temporizador o agregar una entrada manual directamente desde la vista de Timesheets.
+
+## Comentarios sobre archivos
+
+El sistema de comentarios sobre archivos de AgencyHandy le permite a usted y a sus clientes dejar comentarios precisos y visuales sobre los entregables, directamente dentro de las tareas. Admite imágenes, PDFs, videos y sitios web en vivo, con control de versiones y discusiones en hilos integrados.
+
+### Subir un archivo para revisión
+
+Abra la tarea, haga clic en el icono **➕** en la sección **Attachments** y suba una imagen, un PDF, un video o pegue una URL de un sitio web en vivo.
+
+### Dejar comentarios según el tipo de archivo
+
+**Imágenes y PDFs**
+Abra el archivo y use la barra de herramientas de anotación (Flecha, Línea, Rectángulo, Resaltar) para marcar áreas específicas. Seleccione una región, escriba su comentario y elija si compartirlo con su equipo, con el cliente o con ambos. También puede deshacer o rehacer anotaciones y cambiar los colores de las anotaciones.
+
+**Videos**
+Abra el video y páuselo en el fotograma exacto donde aplica su comentario. Escriba su comentario: el video se pausa automáticamente mientras escribe. El comentario se marca con la marca de tiempo de ese momento. Puede eliminar la marca de tiempo para dejar un comentario general en su lugar.
+
+**Sitios web en vivo**
+Agregue la URL del sitio a la tarea usando el botón **➕**, luego instale la extensión de navegador de AgencyHandy. Abra el sitio en **View Mode** (interactivo) o cambie a **Review Mode** para tomar una captura de pantalla y anotarla con herramientas de dibujo, texto o formas.
+
+### Acciones sobre los comentarios
+
+Cada comentario tiene un menú de tres puntos con opciones para:
+
+- Editar el comentario
+- Copiar la respuesta
+- Eliminar el comentario
+- Restringir la visibilidad solo al equipo interno
+
+### Resolver comentarios
+
+Haga clic en el botón **✓** de un comentario para marcarlo como **Resolved**. Los comentarios resueltos permanecen visibles para referencia y pueden reabrirse. Recibirá una notificación cuando un comentario que dejó sea resuelto por otra persona.
+
+### Versiones de archivos
+
+Haga clic en **Upload New Version** para agregar un archivo revisado. Las versiones anteriores y sus comentarios se conservan y son accesibles desde el menú desplegable de versiones. Al abrir una versión anterior, AgencyHandy le notifica que existe una versión más reciente.
+
+Puede etiquetar cada archivo como **Needs Review** o **Approved** para comunicar el estado de revisión de un vistazo.
+
+<Note>
+Los clientes solo pueden dejar comentarios sobre archivos si la casilla **Client Review Required** está habilitada en la tarea. Los comentarios sobre archivos están disponibles únicamente dentro de las tareas o los pedidos, no en el catálogo de servicios ni en las imágenes de perfil.
+</Note>
+
+## Tareas solicitadas por el cliente
+
+Los clientes pueden enviar solicitudes de tareas desde su portal, lo que les da una forma estructurada de plantear necesidades adicionales sin omitir su proceso de aprobación.
+
+### Flujo de trabajo del cliente
+
+<Steps>
+  <Step title="Acceda a las Solicitudes">
+    El cliente hace clic en **Requests** en la barra lateral de su Portal de Cliente, o usa el botón **+ Request a Task** directamente dentro de un pedido.
+  </Step>
+
+  <Step title="Complete el formulario de solicitud">
+    El cliente proporciona:
+    - **Order** (obligatorio: las solicitudes deben estar vinculadas a un pedido existente)
+    - **Task Name** (obligatorio)
+    - **Description** (opcional)
+    - **Attachments** (opcional: hasta 1 GB; los formatos incluyen PDF, DOCX, JPG, PNG, MP4, ZIP y más)
+    - **Start and End Dates** (opcional)
+  </Step>
+
+  <Step title="Envíe la solicitud">
+    El cliente hace clic en **Request**. La tarea aparece en su portal como **Pending** y su agencia recibe una notificación.
+  </Step>
+</Steps>
+
+### Flujo de trabajo de la agencia
+
+<Steps>
+  <Step title="Vea las solicitudes entrantes">
+    Haga clic en **Requests** en la barra lateral del Portal de Agencia. Todas las solicitudes pendientes aparecen en una vista de lista. Puede filtrar por cliente o ID de pedido, ordenar alfabéticamente o por fecha de emisión, y usar **Preferences** para mostrar u ocultar columnas.
+  </Step>
+
+  <Step title="Revise la solicitud">
+    Haga clic en una solicitud para leer la descripción y previsualizar cualquier archivo adjunto antes de tomar una decisión.
+  </Step>
+
+  <Step title="Apruebe o rechace">
+    Use los botones de acción junto a cada solicitud para aprobar o rechazar individualmente, o use las acciones masivas de la parte superior derecha para aprobar o rechazar todas las solicitudes a la vez.
+
+    - Las solicitudes **Approved** se convierten en tareas activas en el pedido y siguen el flujo de trabajo normal de tareas.
+    - Las solicitudes **Rejected** quedan registradas con un estado **Rejected** y no se agregan al pedido.
+  </Step>
+</Steps>
+
+<Note>
+Los clientes no pueden omitir el paso de aprobación. Una solicitud siempre requiere la acción de la agencia antes de convertirse en una tarea activa. Las solicitudes pendientes permanecen visibles tanto para el cliente como para la agencia hasta que se tome una decisión.
+</Note>
+
+## Vista de todas las tareas
+
+Más allá de gestionar las tareas dentro de pedidos individuales, puede ver las tareas de todos los pedidos desde una sola pantalla. Vaya a **Tasks** en la barra lateral izquierda para acceder a la página **All Tasks**. Desde aquí puede:
+
+- Ver cada tarea que tiene visible, independientemente del pedido al que pertenezca
+- Filtrar y ordenar por estado, asignado, fecha de entrega o pedido
+- Identificar rápidamente los elementos vencidos o en riesgo en toda su carga de trabajo
+
+Esta visibilidad entre pedidos resulta especialmente útil para los Project Managers y Admins que necesitan equilibrar la capacidad del equipo y hacer seguimiento del estado de las entregas a nivel de agencia.

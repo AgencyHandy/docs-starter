@@ -1,0 +1,70 @@
+---
+title: "Tilslut PayPal til sikker opkrævning af klientbetalinger"
+sidebarTitle: "PayPal"
+description: "Forbind din PayPal-konto til AgencyHandy, og lad klienter betale fakturaer via PayPals betroede, globalt anerkendte betalingsplatform."
+---
+
+AgencyHandys PayPal-integration giver dine klienter en sikker og velkendt måde at betale fakturaer på uden et kreditkort. PayPal understøtter en bred vifte af internationale valutaer, hvilket gør det særlig nyttigt for bureauer med klienter uden for hjemlandet.
+
+<Note>
+  PayPal **kan ikke** bruges til upsells på grund af platform-niveau valuta- og regionale begrænsninger. Brug Stripe til upsell-betalinger i stedet.
+</Note>
+
+<Note>
+  Kun **SuperAdmin**- og **Admin**-roller kan tilslutte eller administrere PayPal-integrationen. Du skal have en aktiv PayPal-konto, før du starter.
+</Note>
+
+## Tilslut PayPal
+
+<Steps>
+  <Step title="Åbn PayPal-integrationsindstillinger">
+    Log ind på AgencyHandy, og gå derefter til **Integrationer → PayPal Integration** i den venstre sidebjælke.
+  </Step>
+
+  <Step title="Start forbindelsen">
+    Klik på **Connect PayPal**. Du omdirigeres til PayPals loginside.
+  </Step>
+
+  <Step title="Autoriser AgencyHandy">
+    Log ind på din PayPal-konto, og gennemgå de anmodede tilladelser. Klik på **Allow** (eller **Grant**) for at autorisere AgencyHandy til at få adgang til din konto.
+  </Step>
+
+  <Step title="Bekræft forbindelsen">
+    Efter vellykket godkendelse omdirigerer PayPal dig tilbage til AgencyHandy. En bekræftelsesmeddelelse — **PayPal Connected** — vises på integrationskorttet. Klienter kan nu betale fakturaer via PayPal.
+  </Step>
+</Steps>
+
+## Sådan betaler klienter via PayPal
+
+Når integrationen er aktiv, vises en **Pay with PayPal**-knap på alle fakturaer, du sender. Din klient klikker på knappen, logger ind på sin PayPal-konto (eller betaler som gæst afhængigt af sin region) og gennemfører betalingen. AgencyHandy opdaterer fakturastatussen automatisk, når betalingen bekræftes af PayPal.
+
+## Understøttede valutaer
+
+AgencyHandy understøtter følgende valutaer til PayPal-betalinger:
+
+| Region | Valutaer |
+|---|---|
+| Amerika | USD, CAD, BRL, MXN |
+| Europa | EUR, GBP, CHF, NOK, SEK, DKK, PLN, CZK, HUF |
+| Asien-Stillehavsområdet | AUD, NZD, JPY, HKD, SGD, MYR, PHP, THB, TWD |
+| Mellemøsten / Andet | ILS, CNY |
+
+<Warning>
+  Nogle valutaer har begrænsninger:
+  - **JPY** og nogle andre understøtter ikke decimalbeløb — undgå fakturabeløb med decimaler.
+  - **BRL** er kun tilgængelig for brasilianske PayPal-konti. Hvis din konto ikke er baseret i Brasilien, konverteres BRL-betalinger automatisk til din primære valuta.
+  - Visse valutaer er kun tilgængelige for konti i det pågældende land. Bekræft, at din kontos valuta matcher din fakturavaluta for at undgå fejl.
+</Warning>
+
+<Note>
+  PayPal opkræver egne konverteringsgebyrer og -spreads, når der foretages valutakonvertering. Disse kontrolleres ikke af AgencyHandy.
+</Note>
+
+## Test integrationen
+
+Før du bruger PayPal til rigtige klientfakturaer, skal du køre en hurtig test:
+
+1. Opret en testfaktura i AgencyHandy med en [understøttet valuta](#supported-currencies).
+2. Send fakturaen til en sekundær PayPal-konto, du kontrollerer.
+3. Gennemfør betalingen fra den sekundære konto.
+4. Vend tilbage til AgencyHandy og bekræft, at fakturastatussen er opdateret til **Paid**, og at midlerne vises på din PayPal-konto.

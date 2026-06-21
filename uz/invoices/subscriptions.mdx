@@ -1,0 +1,162 @@
+---
+title: "AgencyHandy'da Obuna Hisoblash va Takroriy Hisob-Fakturalar"
+sidebarTitle: "Obunalar"
+description: "AgencyHandy'ning takroriy obuna hisoblashini qanday boshqarishi — avtomatlashtirilgan hisob-fakturalar, hisoblash davrlari, to'lov usullari, bekor qilishlar va Wise to'lov havolalari."
+---
+
+AgencyHandy'ning obuna hisoblash tizimi butun takroriy daromad ish oqimini avtomatlashtirishga imkon beradi. Mijoz xizmatga obuna bo'lganda, platforma Obuna IDsini yaratadi, buyurtmalar hosil qiladi va har bir hisoblash davrida avtomatik ravishda hisob-fakturalar chiqaradi — bu kunlik, haftalik, oylik yoki yillik bo'lishi mumkin. Siz nazoratni saqlab qolasiz: obuna tafsilotlarini ko'rish, to'lov tarixini kuzatish, muvaffaqiyatsiz to'lovlarni hal qilish va kerak bo'lganda obunalarni bekor qilish, hammasini AgencyHandy ichida amalga oshirish mumkin.
+
+## Obuna Hisoblash Qanday Ishlaydi
+
+AgencyHandy'dagi obuna hayot tsikli oltita asosiy bosqichga amal qiladi.
+
+<Steps>
+  <Step title="Obuna asosidagi xizmat yaratish">
+    **Xizmatlar** bo'limiga o'ting va **Yangi Xizmat Yaratish** tugmasini bosing. Xizmat turi sifatida **Obuna** ni tanlang.
+
+    Quyidagilarni aniqlang:
+    - **Hisoblash Davri** — Kunlik, Haftalik, Oylik yoki Yillik
+    - **Yangilash Xatti-Harakati** — Yangi Buyurtma Yaratish, Mavjud Buyurtmani Yangilash yoki O'zgarishsiz Qoldirish
+    - **Narxlash va To'lov Usuli** — PayPal, Stripe yoki Qo'lda
+
+    Xizmatni mavjud qilish uchun **Nashr qilish** tugmasini bosing.
+  </Step>
+  <Step title="Mijoz obunani sotib olishi">
+    Mijoz obuna xizmatini tanlaydi, to'lovga o'tadi va to'lov usulini tanlaydi.
+
+    AgencyHandy avtomatik ravishda:
+    - **Obuna IDsini** yaratadi
+    - **Buyurtma** hosil qiladi
+    - **Hisob-Faktura** chiqaradi
+
+    **PayPal yoki Stripe** to'lovlari uchun hisob-faktura darhol **To'langan** deb belgilanadi. **Qo'lda To'lov** uchun hisob-faktura agentlik qabul qilishini tasdiqlagunicha **Ochiq** bo'lib qoladi.
+  </Step>
+  <Step title="Avtomatlashtirilgan takroriy hisoblash">
+    Har bir yangilanish sanasida AgencyHandy to'lovni avtomatik qayta ishlaydi (PayPal/Stripe uchun) va keyingi hisob-fakturani hosil qiladi.
+
+    To'lov muvaffaqiyatli bo'lsa, hisob-faktura **To'langan** deb belgilanadi. Muvaffaqiyatsiz bo'lsa:
+    - Hisob-faktura **Ochiq** bo'lib qoladi
+    - Mijoz **Muvaffaqiyatsiz To'lov Bildirishnomasini** oladi
+    - Agentlik qayta urinish yoki yangilangan to'lov tafsilotlarini so'rash uchun ogohlantirish oladi
+  </Step>
+  <Step title="Faol obunalarni boshqarish">
+    Barcha faol va nofaol obunalarni ko'rish uchun chap yon paneldagi **Obuna Boshqaruvi** bo'limiga o'ting. To'liq tafsilotlarni ko'rish uchun istalgan obunani tanlang.
+  </Step>
+  <Step title="Bekor qilishlarni hal qilish">
+    Obunani bekor qilganda, quyidagilarni tanlashingiz mumkin:
+    - **To'liq bekor qilish** — kelajakdagi barcha hisoblash va buyurtmalarni to'xtatish
+    - **Oxirgi faol buyurtmani ishlashda davom ettirish** — mijozning joriy davr muddatigacha xizmat olishini davom ettirishga ruxsat berish
+
+    Xizmatni butunlay o'chirish uchun o'sha xizmatdagi barcha faol obunalar avval bekor qilinishi kerak.
+  </Step>
+  <Step title="Bildirishnomalar">
+    Tizim avtomatik ravishda quyidagilarni yuboradi:
+    - Keyingi hisoblash sanasidan oldin **Yangilanish Eslatmalari**
+    - Muvaffaqiyatli to'lovlardan keyin **To'lov Tasdiqlari**
+    - Mijoz va agentlik adminlariga **Muvaffaqiyatsiz To'lov Ogohlantirishlari**
+  </Step>
+</Steps>
+
+## Obuna Tafsilotlari Sahifasi
+
+Obuna Tafsilotlari sahifasi har bir individual obunaning to'liq rasmini beradi — xizmat va paketdan tortib har bir hisob-faktura va hodisa jurnali yozuvigacha.
+
+### Qanday Kirish
+
+1. Chap yon paneldagi **Obunalar** bo'limiga o'ting
+2. Tafsilot sahifasini ochish uchun ro'yxatdan istalgan obunani bosing
+
+### Nima Ko'rish Mumkin
+
+<Tabs>
+  <Tab title="Obuna Ma'lumotlari">
+    - **Xizmat Nomi** va **Paket Nomi**
+    - **Mijoz Nomi**
+    - **Hisoblash Davri** (masalan, Oylik, Yillik)
+    - **Boshlash Sanasi** va **Tugash Sanasi**
+    - Obuna **Holati** (Faol yoki Nofaol)
+  </Tab>
+  <Tab title="To'lov Tafsilotlari">
+    - **Obuna To'lovi**
+    - Hozirgacha amalga oshirilgan **Jami To'lovlar Soni**
+    - **To'lov Usuli** (Stripe, PayPal, Wise, Qo'lda Bank va boshqalar)
+    - **Keyingi To'lov Sanasi**
+  </Tab>
+  <Tab title="Buyurtma Tarixi">
+    - **Buyurtma ID**
+    - **Holat** (masalan, Davom etmoqda, Yakunlandi)
+    - Har bir buyurtma uchun **Boshlash Sanasi** va **Muddat**
+  </Tab>
+  <Tab title="Hisob-Faktura Tarixi">
+    - **Hisob-Faktura ID**
+    - **Summa**
+    - **Holat** (Ochiq, To'langan va boshqalar)
+    - **To'lov Sanasi** va **Muddat**
+  </Tab>
+  <Tab title="Hodisa Jurnallari">
+    Obuna bilan bog'liq barcha faoliyatlarning vaqt tartibidagi audit izi — holat o'zgarishlari, to'lov hodisalari, bekor qilishlar va boshqalar.
+  </Tab>
+</Tabs>
+
+<Note>
+  Bitta obunada bir nechta bog'liq buyurtmalar va hisob-fakturalar bo'lishi mumkin. Obunalarga bog'liq hisob-fakturalar to'lovlar qabul qilinganda dinamik ravishda yangilanadi.
+</Note>
+
+## Qo'lda Obuna Hisob-Fakturalari Uchun Wise Qo'llab-Quvvatlash
+
+Agar xalqaro to'lovlarni yig'sangiz, obuna hisob-fakturalariga to'g'ridan-to'g'ri **Wise to'lov havolasini** kirita olasiz. Bu mijozlarga qo'lda bank o'tkazmasini o'rnatmasdan to'lash uchun qulay usul beradi.
+
+### Talablar
+
+- Faol AgencyHandy akkaunti
+- Yaratilgan to'g'ri to'lov havolasi bilan faol **Wise akkaunti**
+
+### Hisob-Fakturaga Wise Havolasini Qo'shish Bosqichlari
+
+<Steps>
+  <Step title="Hisob-Faktura bo'limini ochish">
+    Chap yon paneldagi **Hisob-Fakturalar** tugmasini bosing, so'ngra **+ Hisob-Faktura Yaratish** tugmasini bosing.
+  </Step>
+  <Step title="Mijoz va buyurtmani tanlash">
+    Ochiladigan ro'yxatdan mijozni tanlang. Barcha tegishli Buyurtma IDlar ko'rinadi. Tegishli Buyurtma IDni tanlang va summani va hisob-faktura qilinadigan elementlarni kiriting.
+  </Step>
+  <Step title="Chegirmalar va soliqlarni qo'llash">
+    Tegishli chegirma foizi, chegirma summasi, to'langan summa, qoldiq summa va QQS/soliq tafsilotlarini qo'shing. Kerak bo'lganda hisoblash manzili va izohlarni kiriting.
+  </Step>
+  <Step title="Wise to'lov havolasini qo'shish">
+    **To'lov Usuli** bo'limida to'lov opsiyasi sifatida **Wise** ni tanlang. Wise to'lov havolangizni taqdim etilgan maydonga joylashtiring.
+  </Step>
+  <Step title="Hisob-fakturani saqlash">
+    Hisob-fakturani yakunlash uchun **Saqlash** tugmasini bosing. Wise to'lov havolasi mijoz to'g'ridan-to'g'ri to'lay olishi uchun hisob-fakturada ko'rinadi.
+  </Step>
+</Steps>
+
+<Tip>
+  Saqlashdan oldin Wise to'lov havolangizni va hisob-faktura jami summasini har doim ikki marta tekshiring. Hisoblash xatolarini oldini olish uchun buyurtma tafsilotlari, chegirmalar va soliq ma'lumotlari to'g'ri ekanligini tekshiring.
+</Tip>
+
+## Obuna Hisoblash Bo'yicha Muhim Izohlar
+
+<Accordion title="Kim obunalarni bekor qila oladi?">
+  Faqat **Super Adminlar** va **Adminlar** obunalarni bekor qila oladi. Mijozlar o'z obunalarini o'zlari bekor qila olmaydi — ular agentlik orqali bekor qilishni so'rashlari kerak.
+</Accordion>
+
+<Accordion title="Obuna IDlari doimiy">
+  Obuna yaratilgandan so'ng, uning Obuna IDsini tahrirlash mumkin emas. Bu obuna umri davomida izchil kuzatishni ta'minlaydi.
+</Accordion>
+
+<Accordion title="Muvaffaqiyatsiz to'lovlar va buyurtma yaratish">
+  To'lov muvaffaqiyatsiz bo'lganda, hisob-faktura Ochiq bo'lib qoladi va muvaffaqiyatsiz davr uchun yangi buyurtma yaratiladi. Obuna holati admin qo'lda to'lovni qayta urinmaguncha yoki obunani bekor qilmaguncha **Faol** bo'lib qoladi.
+</Accordion>
+
+<Accordion title="Qo'lda to'lov buyurtmalari">
+  Agar mijoz Stripe yoki PayPal tashqarisida to'lov qilsa (masalan, bank o'tkazmasi orqali), admin hisob-fakturani AgencyHandy'da **To'langan** deb qo'lda belgilashi kerak. Tizim qo'lda to'lovlar uchun buni avtomatik bajarmaydi.
+</Accordion>
+
+<Accordion title="To'lanmagan mustaqil to'lov urinishlari">
+  Agar mijoz obuna to'loviga o'tsa, lekin to'lovni yakunlamasa, ular muvaffaqiyatli obuna bo'lguncha tizimda **Potensial Mijoz** sifatida qoladi.
+</Accordion>
+
+<Accordion title="Hisob-faktura muddatlari">
+  Obuna hisob-fakturalari uchun muddatlar siz sozlagan hisoblash davriga asoslanib avtomatik o'rnatiladi (masalan, oylik hisob-fakturalar boshlash sanasidan bir oy keyin muddati tugaydi).
+</Accordion>

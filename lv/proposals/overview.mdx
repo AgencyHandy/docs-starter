@@ -1,0 +1,217 @@
+---
+title: "Piedāvājumu izveide un nosūtīšana klientiem AgencyHandy"
+sidebarTitle: "Piedāvājumi"
+description: "Veidojiet, pielāgojiet un sūtiet profesionālus piedāvājumus AgencyHandy — aptverot pakalpojumu cenas, paketes, klientu pieņemšanu un automātisko pasūtījuma izveidi."
+---
+
+AgencyHandy Piedāvājumu funkcija sniedz jums profesionālu, pilnīgu darbplūsmu, lai pārvērstu pieprasījumus aktīvos projektos. Varat veidot detalizētus piedāvājumus ar pakalpojumiem, paketēm, papildinājumiem, nodokļiem un juridiskajiem nosacījumiem — pēc tam nosūtīt tos klientiem vai potenciālajiem klientiem tieši no platformas. Kad klients pieņem, AgencyHandy var automātiski izveidot pasūtījumu un rēķinu, novēršot manuālo sarakstīšanos, kas palēnina darījumus.
+
+<Note>
+  Tikai **Super administratori** un **Administratori** var izveidot un nosūtīt piedāvājumus. Projektu vadītāji (PV) var skatīt piedāvājumus, bet nevar tos nosūtīt.
+</Note>
+
+## Piedāvājumu panelis
+
+Lai atvērtu Piedāvājumu paneli, kreisajā sānjoslā noklikšķiniet uz **Proposals**. Panelis uzrāda visus nosūtītos un saņemtos piedāvājumus un rāda:
+
+- **Statusu** — Melnraksts, Nosūtīts, Pieņemts vai Gaida
+- **Izveides datumu**, **nosūtīšanas datumu** un **derīguma datumu**
+- **Skatīšanas statusu** — vai klients ir atvēris piedāvājumu
+- Darbību izvēlni, lai **rediģētu**, **nosūtītu**, **kopīgotu** vai **dzēstu** katru piedāvājumu
+
+Varat meklēt piedāvājumus pēc ID un filtrēt vai kārtot sarakstu, lai ātri atrastu nepieciešamo.
+
+## Piedāvājuma izveide
+
+Noklikšķiniet uz **Create Proposal**, lai atvērtu piedāvājumu veidotāju. Tas ir organizēts trīs sadaļās: **Overview**, **Terms & Conditions** un **Setup**.
+
+### Pārskats
+
+Sadaļa Pārskats ir vieta, kur veidojat piedāvājuma saturu un cenas.
+
+#### Piedāvājuma un klienta informācija
+
+Aizpildiet šādus laukus piedāvājuma augšpusē:
+
+- **Proposal Name** un **Proposal ID**
+- **Client or Lead** — atbalsta vairākas e-pasta adreses; atzīmējiet vienu kā primāro
+- **Company Name** un **Address** (valsts, štats, pilsēta, pasta indekss, papildu detaļas)
+- **Assignee**, **Send Date** un **Expiry Date**
+
+#### Satura bloki
+
+Katrs satura bloks izmanto iegultu redaktoru, lai varētu pielāgot stāstījumu katram klientam:
+
+- **Introduction** — iestatiet iesaistīšanās kontekstu un fonu
+- **About Us** — izceliet jūsu aģentūras kompetenci
+- **What You Get** — skaidri definējiet apjomu un piegādājamos darbus
+- **Guarantee** — norādiet visus nodrošinājumus vai saistības
+
+#### Piedāvājumi — pakalpojumi, paketes, papildinājumi un nodokļi
+
+Sadaļa Piedāvājumi ir vieta, kur konfigurējat cenas.
+
+<Accordion title="Services">
+  Pievienojiet piedāvājumam vienu vai vairākus pakalpojumus. Katram pakalpojumam varat:
+
+  - Atlasīt **cenu veidu**: vienreizējs vai abonements
+  - Izvēlēties **pakalpojuma valūtu** (dažādi pakalpojumi vienā piedāvājumā var izmantot dažādas valūtas)
+</Accordion>
+
+<Accordion title="Packages">
+  Katrā pakalpojumā pievienojiet esošas paketes vai izveidojiet jaunas uz vietas. Katrai paketei definējiet:
+
+  - Paketes nosaukumu
+  - Daudzumu un cenu par vienību
+  - Kopējo summu
+
+  Paketes var noņemt jebkurā laikā pirms nosūtīšanas.
+</Accordion>
+
+<Accordion title="Add-ons">
+  Pievienojiet neobligātos papildinājumus jebkuram pakalpojumam. Papildinājumi parādās kā papildus iespējas, ko klienti var redzēt blakus pamata pakalpojuma cenai. Jaunus papildinājumus var izveidot tieši no piedāvājumu veidotāja, neatstājot veidlapu.
+</Accordion>
+
+<Accordion title="Items">
+  Pievienojiet vienreizējus pielāgotus vienumu ar definētu daudzumu un vienības cenu. Vienumi ir noderīgi ad-hoc izmaksām, piemēram, iestatīšanas maksām vai vienreizējiem piegādājamiem darbiem.
+</Accordion>
+
+<Accordion title="Tax Rates">
+  Piemērojiet esošas nodokļu likmes vai izveidojiet jaunas tieši no piedāvājuma. Atlasiet, vai katrs nodoklis ir **Neiekļaujošs** (pievienots papildus cenai) vai **Iekļaujošs** (jau iekļauts). Nodokļi tiek aprēķināti katram pakalpojumam atsevišķi.
+</Accordion>
+
+### Noteikumi un nosacījumi
+
+Izmantojiet sadaļu Noteikumi un nosacījumi, lai pievienotu piedāvājumam specifisko juridisko valodu. Iekļaujiet atcelšanas politikas, atmaksas nosacījumus, lietošanas tiesības un jebkādus citus nosacījumus, kas attiecas uz iesaistīšanos. Šī sadaļa palīdz nodrošināt, ka abas puses saprot savas saistības pirms pieņemšanas.
+
+### Iestatīšana
+
+Sadaļa Iestatīšana kontrolē, kas notiek pēc piedāvājuma nosūtīšanas.
+
+<CardGroup cols={2}>
+  <Card title="Darbība pēc pieņemšanas" icon="bolt">
+    Izvēlieties, ko AgencyHandy dara, kad piedāvājums tiek pieņemts: **Do Nothing** vai automātiski **Create Order & Invoice**.
+  </Card>
+  <Card title="Atgādinājumi" icon="bell">
+    Konfigurējiet atgādinājumu paziņojumus, lai mudinātu klientus, kuri nav atbildējuši līdz derīguma datumam.
+  </Card>
+  <Card title="Paroles aizsardzība" icon="lock">
+    Pievienojiet paroli publiskajai piedāvājuma saitei, lai tikai paredzētais saņēmējs varētu to skatīt.
+  </Card>
+  <Card title="Komentāri" icon="message">
+    Ļaujiet klientiem atstāt komentārus publiskajā piedāvājuma skatā, lai atvieglotu sarakstīšanos.
+  </Card>
+</CardGroup>
+
+## Piedāvājuma nosūtīšana
+
+Jebkurā izveides brīdī varat saglabāt piedāvājumu kā **Melnrakstu** vai **Priekšskatīt** to. Kad tas ir gatavs, noklikšķiniet uz **Send**, lai to piegādātu klientam vai potenciālajam klientam.
+
+Pēc nosūtīšanas:
+
+- Automātiski tiek ģenerēta publiska saite
+- Piedāvājuma statuss atjauninās no **Draft** uz **Sent**
+- AgencyHandy izseko, vai klients ir skatījis piedāvājumu
+
+No piedāvājuma darbību izvēlnes varat arī atkārtoti nosūtīt, lejupielādēt, kopīgot publisko saiti, skatīt komentārus vai dzēst piedāvājumu.
+
+## Piedāvājuma nosūtīšana ar konkrētu paketi
+
+Ja vēlaties nosūtīt ātru piedāvājumu, kas tieši saistīts ar konkrētu pakalpojumu paketi, izmantojiet saīsnes veidlapu **Create Proposal**:
+
+<Steps>
+  <Step title="Atveriet sadaļu Proposals">
+    Kreisajā sānjoslā dodieties uz **Proposals** un noklikšķiniet uz **+ Create Proposal**.
+  </Step>
+  <Step title="Aizpildiet piedāvājuma veidlapu">
+    Ievadiet **klienta vārdu** un atlasiet **pakalpojumu**. Ja pakalpojumam ir vairākas paketes, tās parādīsies automātiski — atlasiet atbilstošo.
+
+    Neobligāti piešķiriet piedāvājumam **Vadītāju**.
+  </Step>
+  <Step title="Pievienojiet pasūtījuma detaļas">
+    Uzrakstiet **Pasūtījuma kopsavilkumu** (obligāts), aprakstot, ko klients saņems. Pievienojiet atbalstošos failus līdz 1 GB.
+  </Step>
+  <Step title="Iestatiet cenas un nosacījumus">
+    Apstipriniet **cenu veidu** (vienreizējs vai abonements), iestatiet **ilgumu**, **daudzumu**, **budžetu** un **valūtu**. Pievienojiet jebkādus **Noteikumus un nosacījumus**, kas attiecas uz piedāvājumu.
+  </Step>
+  <Step title="Izveidojiet un nosūtiet">
+    Noklikšķiniet uz **Create**, lai finalizētu un nosūtītu piedāvājumu klientam. Piedāvājums parādīsies gan jūsu nosūtīto sarakstā, gan klienta saņemto sadaļā.
+  </Step>
+</Steps>
+
+<Note>
+  Pirms noklikšķināšanas uz Create divreiz pārbaudiet automātiski aizpildītās cenas un ilgumu. Kad nosūtīts, klients var pieņemt, noraidīt vai lejupielādēt piedāvājumu no savas Saņemto sadaļas.
+</Note>
+
+## Piedāvājuma statusa dzīves cikls
+
+| Statuss | Nozīme |
+|--------|---------|
+| **Draft** | Piedāvājums ir izveidots, bet vēl nav nosūtīts. |
+| **Sent** | Piedāvājums ir piegādāts klientam vai potenciālajam klientam. |
+| **Pending** | Klients ir pārskatījis un nosūtījis piedāvājumu atpakaļ apspriešanai. |
+| **Accepted** | Kāda no pusēm ir formāli pieņēmusi piedāvājuma nosacījumus. Pasūtījums tiek izveidots automātiski, ja tas ir konfigurēts. |
+| **Rejected** | Kāda no pusēm ir noraidījusi piedāvājumu. Sūtītājs saņem paziņojumu ar iemeslu. |
+
+## Piedāvājuma pieņemšana
+
+Gan aģentūra, gan klients var pieņemt saņemtu piedāvājumu. Kad pieņemšana notiek, AgencyHandy automātiski izveido pasūtījumu (ja tas ir konfigurēts sadaļā Setup).
+
+<Steps>
+  <Step title="Dodieties uz saņemtajiem piedāvājumiem">
+    Sānjoslā noklikšķiniet uz **Proposals**, pēc tam atlasiet cilni **Received**.
+  </Step>
+  <Step title="Atveriet piedāvājumu">
+    No saraksta atlasiet piedāvājumu, kuru vēlaties pieņemt, un pārskatiet tā detaļas.
+  </Step>
+  <Step title="Noklikšķiniet uz Accept">
+    Noklikšķiniet uz pogas **Accept**, lai formāli pieņemtu piedāvājumu. Statuss nekavējoties atjauninās un abas puses tiek informētas.
+  </Step>
+</Steps>
+
+<Note>
+  Ja aģentūra ir tā, kas pieņem, Super administratori un Administratori saņem paziņojumus. Ja klients pieņem, AgencyHandy informē aģentūras Super administratoru un Administratora lietotājus.
+</Note>
+
+## Piedāvājuma noraidīšana
+
+Ja piedāvātie nosacījumi, cenas vai apjoms neatbilst jūsu prasībām, varat noraidīt piedāvājumu un norādīt iemeslu.
+
+<Steps>
+  <Step title="Dodieties uz saņemtajiem piedāvājumiem">
+    Dodieties uz **Proposals → Received**.
+  </Step>
+  <Step title="Atlasiet un pārskatiet piedāvājumu">
+    Izvēlieties piedāvājumu, kuru vēlaties noraidīt, un pārskatiet tā detaļas.
+  </Step>
+  <Step title="Noklikšķiniet uz Reject">
+    Noklikšķiniet uz **Reject** un apstipriniet savu lēmumu. Piedāvājuma sūtītājs saņem paziņojumu kopā ar jūsu norādīto iemeslu.
+  </Step>
+</Steps>
+
+<Warning>
+  Noraidītos piedāvājumus **nevar nosūtīt atkārtoti**. Abām pusēm jāizveido jauns piedāvājums, lai atsāktu sarunas.
+</Warning>
+
+## Publiskais piedāvājuma skats
+
+Kad nosūtāt piedāvājumu, klienti saņem saiti uz publisku skatu, kurā viņi var:
+
+- Pārskatīt visus pakalpojumus, cenas, paketes un nodokļus
+- Pieņemt vai noraidīt piedāvājumu
+- Atstāt komentārus (ja komentāri ir iespējoti)
+- Droši piekļūt piedāvājumam ar paroli (ja paroles aizsardzība ir iespējota)
+
+## Papildu piezīmes
+
+<Accordion title="Multiple emails and leads">
+  Vienam piedāvājumam varat pievienot vairākas e-pasta adreses un atzīmēt vienu kā primāro kontaktpersonu. Piedāvājumi darbojas gan ar reģistrētiem klientiem, gan nereģistrētiem potenciālajiem klientiem.
+</Accordion>
+
+<Accordion title="Auto-generated orders and invoices">
+  Kad konfigurējat sadaļu Setup uz "Create Order & Invoice" pieņemšanas gadījumā, AgencyHandy automātiski ģenerē saistīto pasūtījumu un rēķinu tiklīdz piedāvājums tiek pieņemts — nav nepieciešami manuāli soļi.
+</Accordion>
+
+<Accordion title="Proposal activity tracking">
+  Katrs piedāvājums ietver pilnu aktivitātes pierakstu. Varat redzēt, kad piedāvājums tika izveidots, nosūtīts, skatīts, pieņemts vai noraidīts — viss no AgencyHandy iekšpuses.
+</Accordion>

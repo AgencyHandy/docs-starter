@@ -1,0 +1,201 @@
+---
+title: "AgencyHandy API: programinis naujo potencialaus kliento (lead) kūrimas"
+sidebarTitle: "Sukurti lead"
+description: "Naudokite AgencyHandy API, kad programiškai kurtumėte naujus potencialius klientus (leads) siųsdami POST užklausą į bulk-lead galutinį tašką su reikiamais laukais."
+---
+
+Potencialaus kliento kūrimo (Create Lead) galinis taškas leidžia programiškai pridėti naujus potencialius klientus (leads) prie jūsų AgencyHandy darbo srities iš bet kurios išorinės sistemos — žiniatinklio formos, CRM, rinkodaros automatizavimo platformos ar pasirinktinio scenarijaus. Šiuo galiniu tašku sukurti potencialūs klientai iš karto pasirodo jūsų potencialių klientų konveijeryje, tarsi jie būtų pridėti rankiniu būdu.
+
+<Note>
+  Prieš naudodami šį galutinį tašką, užbaikite vadovą [Darbo pradžia](/lt/api/getting-started), kad gautumėte savo API raktą ir įmonės ID. Taip pat reikia gauti **kliento vaidmens ID**, kuris reikalingas kuriant potencialų klientą.
+</Note>
+
+## Išankstiniai reikalavimai
+
+- ✅ API raktas sugeneruotas iš **Workspace Config → API Key**
+- ✅ Įmonės ID gautas iš `GET {{URL}}/accounts/companies`
+- ✅ Kliento vaidmens ID gautas (žr. 1 žingsnį žemiau)
+
+---
+
+## 1 žingsnis: Gaukite kliento vaidmens ID
+
+Prieš kuriant potencialų klientą, reikalingas jūsų įmonės `client` vaidmens ID.
+
+### Galinis taškas
+
+```
+GET {{URL}}/roles?type=company
+```
+
+### Antraštės
+
+| Antraštė | Reikšmė |
+|---|---|
+| `x-api-key` | Jūsų API raktas |
+| `companyid` | Jūsų įmonės ID |
+
+### Pavyzdinė užklausa
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/roles?type=company" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>"
+```
+
+### Pavyzdinis atsakymas
+
+```json
+{
+  "roles": [
+    {
+      "_id": "6525994184e9ddd798534535",
+      "role": {
+        "_id": "6525994184e9ddd79853451e",
+        "responsibility": "",
+        "name": "client"
+      },
+      "company": "6525994184e9ddd79853450e",
+      "createdAt": "2023-10-10T18:34:41.567Z",
+      "updatedAt": "2024-10-01T07:28:48.340Z",
+      "__v": 0,
+      "type": "company"
+    }
+  ]
+}
+```
+
+Raskite įrašą, kuriame `roles[0].role.name === "client"` ir ištraukite **išorinį** `_id` — tai `roles[0]._id`, **ne** `roles[0].role._id`.
+
+```javascript
+const clientRoleId = roles.find(r => r.role.name === "client")._id;
+// e.g. "6525994184e9ddd798534535"
+```
+
+<Warning>
+  Naudokite `roles[0]._id` (įmonės-vaidmens susiejimo ID), **ne** `roles[0].role._id` (vaidmens apibrėžimo ID). Naudojant neteisingą ID, potencialaus kliento kūrimo užklausa bus nesėkminga.
+</Warning>
+
+---
+
+## 2 žingsnis: Sukurkite naują potencialų klientą
+
+### Galinis taškas
+
+```
+POST {{URL}}/members/bulk-lead
+```
+
+### Antraštės
+
+| Antraštė | Reikšmė |
+|---|---|
+| `x-api-key` | Jūsų API raktas |
+| `companyid` | Jūsų įmonės ID |
+| `Content-Type` | `application/json` |
+
+### Užklausos turinys
+
+Užklausos turinys yra **JSON masyvas** — vienu kvietimu galite sukurti vieną ar daugiau potencialių klientų.
+
+<ParamField body="firstName" type="string" required>
+  Potencialaus kliento vardas.
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  Potencialaus kliento pavardė.
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  Potencialaus kliento el. pašto adresas. Turi būti unikalus jūsų darbo srityje.
+</ParamField>
+
+<ParamField body="role" type="string" required>
+  1 žingsnyje gautas kliento vaidmens ID (t. y. `roles[0]._id`).
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  Kuriant potencialų klientą turi būti nustatyta `false`. Nustatykite `true` tik konvertuojant potencialų klientą į pilnavertį klientą.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Potencialaus kliento konveijeryje esanti būsena. Dažnos reikšmės: `New`, `Contacted`, `Qualified`. Jei praleista, numatytoji reikšmė yra `New`.
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  Potencialaus kliento telefono numeris.
+</ParamField>
+
+<ParamField body="source" type="string">
+  Kaip gavote šį potencialų klientą. Pavyzdinės reikšmės: `website`, `referral`, `social`.
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  Potencialaus kliento pozicija (tvarka) konveijeryje esančiame lentoje. Numatytoji reikšmė `1`.
+</ParamField>
+
+### Pavyzdinė užklausa
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-lead" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "role": "6525994184e9ddd798534535",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+### Sėkmingas atsakymas
+
+```json
+{
+  "message": "Lead created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  Patvirtinimo eilutė: `"Lead created successfully"`.
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  Sukurtų potencialių klientų objektų masyvas.
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  Naujai sukurto potencialaus kliento unikalus ID. Išsaugokite jį, jei reikia nurodyti potencialų klientą tolesniuose API kvietime.
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  Potencialaus kliento pilnas vardas (firstName + lastName).
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  Potencialaus kliento konveijeryje esanti būsena, kaip išsaugota.
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  Nariui priskirto vaidmens pavadinimas — bus `"client"`.
+</ResponseField>
+
+<Tip>
+  Masyve galite perduoti kelis potencialių klientų objektus, kad vienu API kvietimu sukurtumėte kelis potencialius klientus. Kiekvienas objektas turi turėti visus privalomus laukus su savo unikaliu el. pašto adresu.
+</Tip>

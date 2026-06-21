@@ -1,0 +1,201 @@
+---
+title: "واجهة برمجة تطبيقات AgencyHandy: إنشاء عميل محتمل جديد برمجيًا"
+sidebarTitle: "إنشاء عميل محتمل"
+description: "استخدم واجهة برمجة تطبيقات AgencyHandy لإنشاء عملاء محتملين جدد برمجيًا عن طريق إرسال طلب POST إلى نقطة نهاية bulk-lead مع الحقول المطلوبة."
+---
+
+تتيح لك نقطة نهاية إنشاء العميل المحتمل إضافة عملاء محتملين جدد إلى مساحة عمل AgencyHandy برمجيًا من أي نظام خارجي — نموذج ويب، أو نظام إدارة علاقات العملاء (CRM)، أو منصة أتمتة التسويق، أو سكريبت مخصص. تظهر العملاء المحتملون الذين تم إنشاؤهم عبر هذه النقطة النهائية في قمع المبيعات الخاص بك فورًا، تمامًا كما لو تمت إضافتهم يدويًا.
+
+<Note>
+  قبل استخدام هذه النقطة النهائية، أكمل دليل [البدء السريع](/ar/api/getting-started) للحصول على مفتاح API ومعرّف الشركة. تحتاج أيضًا إلى جلب **معرّف دور العميل**، وهو مطلوب عند إنشاء عميل محتمل.
+</Note>
+
+## المتطلبات الأساسية
+
+- ✅ مفتاح API تم إنشاؤه من **تكوين مساحة العمل ← مفتاح API**
+- ✅ معرّف الشركة المسترد من `GET {{URL}}/accounts/companies`
+- ✅ معرّف دور العميل المسترد (انظر الخطوة 1 أدناه)
+
+---
+
+## الخطوة 1: الحصول على معرّف دور العميل
+
+قبل إنشاء عميل محتمل، تحتاج إلى معرّف الدور لدور `client` في شركتك.
+
+### النقطة النهائية
+
+```
+GET {{URL}}/roles?type=company
+```
+
+### الترويسات
+
+| الترويسة | القيمة |
+|---|---|
+| `x-api-key` | مفتاح API الخاص بك |
+| `companyid` | معرّف الشركة الخاص بك |
+
+### مثال على الطلب
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/roles?type=company" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>"
+```
+
+### مثال على الاستجابة
+
+```json
+{
+  "roles": [
+    {
+      "_id": "6525994184e9ddd798534535",
+      "role": {
+        "_id": "6525994184e9ddd79853451e",
+        "responsibility": "",
+        "name": "client"
+      },
+      "company": "6525994184e9ddd79853450e",
+      "createdAt": "2023-10-10T18:34:41.567Z",
+      "updatedAt": "2024-10-01T07:28:48.340Z",
+      "__v": 0,
+      "type": "company"
+    }
+  ]
+}
+```
+
+ابحث عن الإدخال حيث `roles[0].role.name === "client"` واستخرج `_id` **الخارجي** — أي `roles[0]._id`، **وليس** `roles[0].role._id`.
+
+```javascript
+const clientRoleId = roles.find(r => r.role.name === "client")._id;
+// e.g. "6525994184e9ddd798534535"
+```
+
+<Warning>
+  استخدم `roles[0]._id` (معرّف ربط دور الشركة)، **وليس** `roles[0].role._id` (معرّف تعريف الدور). استخدام المعرّف الخاطئ سيتسبب في فشل طلب إنشاء العميل المحتمل.
+</Warning>
+
+---
+
+## الخطوة 2: إنشاء عميل محتمل جديد
+
+### النقطة النهائية
+
+```
+POST {{URL}}/members/bulk-lead
+```
+
+### الترويسات
+
+| الترويسة | القيمة |
+|---|---|
+| `x-api-key` | مفتاح API الخاص بك |
+| `companyid` | معرّف الشركة الخاص بك |
+| `Content-Type` | `application/json` |
+
+### نص الطلب
+
+نص الطلب هو **مصفوفة JSON** — يمكنك إنشاء عميل محتمل واحد أو أكثر في استدعاء واحد.
+
+<ParamField body="firstName" type="string" required>
+  الاسم الأول للعميل المحتمل.
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  الاسم الأخير للعميل المحتمل.
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  عنوان البريد الإلكتروني للعميل المحتمل. يجب أن يكون فريدًا داخل مساحة عملك.
+</ParamField>
+
+<ParamField body="role" type="string" required>
+  معرّف دور العميل المسترد في الخطوة 1 (أي `roles[0]._id`).
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  يجب تعيينه على `false` عند إنشاء عميل محتمل. عيّنه على `true` فقط عند تحويل عميل محتمل إلى عميل كامل.
+</ParamField>
+
+<ParamField body="status" type="string">
+  حالة العميل المحتمل في قمع المبيعات. القيم الشائعة: `New`، `Contacted`، `Qualified`. الإعداد الافتراضي `New` إذا تُرك فارغًا.
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  رقم هاتف العميل المحتمل.
+</ParamField>
+
+<ParamField body="source" type="string">
+  كيف حصلت على هذا العميل المحتمل. أمثلة على القيم: `website`، `referral`، `social`.
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  موضع العميل المحتمل (الترتيب) داخل عمود لوحة قمع المبيعات. الإعداد الافتراضي `1`.
+</ParamField>
+
+### مثال على الطلب
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-lead" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "role": "6525994184e9ddd798534535",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+### استجابة النجاح
+
+```json
+{
+  "message": "Lead created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  سلسلة تأكيد: `"Lead created successfully"`.
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  مصفوفة كائنات العملاء المحتملين الذين تم إنشاؤهم.
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  المعرّف الفريد للعميل المحتمل الذي تم إنشاؤه. احتفظ به إذا كنت بحاجة إلى الرجوع إلى العميل المحتمل في استدعاءات API اللاحقة.
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  الاسم الكامل للعميل المحتمل (الاسم الأول + الاسم الأخير).
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  حالة العميل المحتمل في قمع المبيعات كما تم تخزينها.
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  اسم الدور المُعيَّن للعضو — سيكون `"client"`.
+</ResponseField>
+
+<Tip>
+  يمكنك تمرير كائنات عملاء محتملين متعددة في المصفوفة لإنشاء عدة عملاء محتملين في استدعاء API واحد. يجب أن يتضمن كل كائن جميع الحقول المطلوبة مع عنوان بريد إلكتروني فريد خاص به.
+</Tip>

@@ -1,0 +1,114 @@
+---
+title: "AgencyHandy API: 인증 및 시작하기"
+sidebarTitle: "시작하기"
+description: "API 키를 생성하고, 회사 ID를 조회하고, 이 빠른 설정 가이드를 통해 AgencyHandy REST API를 사용한 연동을 시작하세요."
+---
+
+AgencyHandy API를 사용하면 외부 시스템이나 스크립트에서 리드 생성, 클라이언트 관리, 주문 업데이트 등을 자동화할 수 있습니다. 모든 요청은 워크스페이스 설정에서 생성한 API 키로 인증됩니다. 이 가이드는 자격 증명을 얻고 첫 번째 API 호출을 수행하는 방법을 안내합니다.
+
+<Note>
+  API 키를 생성하려면 AgencyHandy 워크스페이스의 **슈퍼관리자** 또는 **관리자**여야 합니다.
+</Note>
+
+## 기본 URL
+
+모든 API 요청은 다음 주소로 이루어집니다:
+
+```
+https://api.agencyhandy.com
+```
+
+API 문서 전체의 모든 예시 요청에서 `{{URL}}`을 이 기본 URL로 대체하세요.
+
+## 1단계: API 키 생성
+
+<Steps>
+  <Step title="워크스페이스 설정 열기">
+    다음 주소에서 워크스페이스 설정으로 이동합니다:
+
+    ```
+    {{workspaceUrl}}/workspace-config?tab=api-key
+    ```
+
+    워크스페이스 설정 내의 **API 키** 탭이 열립니다.
+  </Step>
+
+  <Step title="API 키 생성 및 복사">
+    **생성**을 클릭합니다(키가 이미 존재하는 경우 **재생성**). API 키를 복사하여 안전하게 보관하세요 — 비밀번호처럼 취급하세요. 페이지를 벗어나면 AgencyHandy는 다시 표시하지 않습니다.
+  </Step>
+</Steps>
+
+<Warning>
+  API 키를 재생성하면 이전 키가 즉시 무효화됩니다. 이전 키를 사용하는 기존 연동은 새 키로 업데이트할 때까지 작동이 중단됩니다.
+</Warning>
+
+## 2단계: 회사 ID 조회
+
+대부분의 API 엔드포인트는 요청이 어느 워크스페이스를 대상으로 하는지 식별하는 `companyid` 헤더가 필요합니다. 다음 엔드포인트를 사용하여 회사 ID를 가져옵니다.
+
+### 엔드포인트
+
+```
+GET {{URL}}/accounts/companies
+```
+
+### 헤더
+
+| 헤더 | 값 |
+|---|---|
+| `x-api-key` | API 키 |
+
+### 요청 예시
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/accounts/companies" \
+  --header "x-api-key: <YOUR_API_KEY>"
+```
+
+### 응답 예시
+
+```json
+{
+  "message": "Companies associated with API token.",
+  "companies": [
+    {
+      "_id": "6525994184e9ddd79853450e",
+      "name": "onethread123",
+      "logo": "",
+      "extraSmallLogo": "",
+      "largeLogo": ""
+    }
+  ]
+}
+```
+
+<Steps>
+  <Step title="회사 ID 찾기">
+    응답에서 `companies` 배열 내의 `_id` 필드를 찾습니다. 이것이 **회사 ID**입니다.
+
+    ```javascript
+    const companyId = response.companies[0]._id;
+    // e.g. "6525994184e9ddd79853450e"
+    ```
+  </Step>
+
+  <Step title="회사 ID 저장">
+    이후의 모든 API 요청에서 사용하기 위해 회사 ID를 저장합니다. `companyid` 헤더로 전달합니다:
+
+    | 헤더 | 값 |
+    |---|---|
+    | `x-api-key` | API 키 |
+    | `companyid` | 회사 ID |
+  </Step>
+</Steps>
+
+## 인증 요약
+
+모든 인증된 API 요청에는 최소한 다음이 필요합니다:
+
+```
+x-api-key: <YOUR_API_KEY>
+companyid: <YOUR_COMPANY_ID>
+```
+
+API 키와 회사 ID를 확보했다면 AgencyHandy API의 나머지 부분을 사용할 준비가 되었습니다. 아래 엔드포인트 가이드 중 하나로 계속 진행하세요.

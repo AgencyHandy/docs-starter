@@ -1,0 +1,126 @@
+---
+title: "Koppel een Eigen Domein aan Uw AgencyHandy Workspace"
+sidebarTitle: "Eigen Domein"
+description: "Koppel uw eigen subdomein (bijv. portal.uwbedrijf.com) aan AgencyHandy door een CNAME-record toe te voegen bij uw DNS-registrar — geen programmeerkennis vereist."
+---
+
+Standaard is uw AgencyHandy workspace toegankelijk via een subdomein onder `agencyhandy.com`. Door een eigen domein te koppelen kunt u die standaard-URL vervangen door uw eigen merkadres — bijvoorbeeld `portal.uwbureau.com` — waardoor klanten een naadloze, professionele ervaring krijgen die uw merk versterkt vanaf de allereerste pagina waarop ze terechtkomen.
+
+<Note>
+  Alleen **Superbeheerders** en **Beheerders** kunnen een eigen domein configureren. U moet ook eigenaar zijn van het domein en toegang hebben tot de DNS-instellingen bij uw registrar om deze installatie te voltooien.
+</Note>
+
+---
+
+## Hoe Het Werkt
+
+Wanneer u een eigen domein toevoegt in AgencyHandy, verstrekt het platform u een **CNAME-record**. U voegt dat record toe aan de DNS-instellingen van uw domein bij uw registrar (GoDaddy, Namecheap, Cloudflare, enz.) en AgencyHandy verifieert de verbinding zodra de DNS is gepropageerd.
+
+---
+
+## Stapsgewijze Installatie
+
+<Steps>
+  <Step title="Open de Eigen Domein-instellingen">
+    Log in op uw AgencyHandy-account. Navigeer naar **Workspace Config** in de linkerzijbalk en klik vervolgens op **Eigen Domein**.
+  </Step>
+  <Step title="Voeg uw eigen domein toe">
+    Klik op de knop **+ Eigen Domein Toevoegen**. Voer in het invoerveld dat verschijnt het subdomein in dat u wilt gebruiken — bijvoorbeeld `portal.uwbureau.com`.
+
+    <Warning>
+      Gebruik **geen** `www` als uw subdomein (d.w.z. vermijd `www.uwbureau.com`). Het `www`-voorvoegsel kan configuratieconflicten veroorzaken en verhindert succesvolle verificatie. Gebruik een ander subdomein zoals `portal`, `klant`, `app` of `hub`.
+    </Warning>
+  </Step>
+  <Step title="Kopieer de CNAME-recordgegevens">
+    Na het indienen van uw domein geeft AgencyHandy het DNS-record weer dat u moet toevoegen:
+
+    | Veld | Waarde |
+    |---------|------------------------------------------------|
+    | **Type** | CNAME |
+    | **Naam** | Uw subdomein (bijv. `portal`) |
+    | **Waarde** | Het doel verstrekt door AgencyHandy |
+
+    Kopieer deze waarden zorgvuldig — u heeft ze nodig in de volgende stap.
+  </Step>
+  <Step title="Voeg het CNAME-record toe bij uw DNS-registrar">
+    Log in op het dashboard van uw domeinregistrar (bijv. GoDaddy, Namecheap, Cloudflare). Navigeer naar het DNS-beheersgedeelte voor uw domein en voeg het CNAME-record toe met het Type, de Naam en de Waarde die u van AgencyHandy heeft gekopieerd.
+
+    Zie de registrar-specifieke richtlijnen hieronder voor Cloudflare.
+  </Step>
+  <Step title="Sla het domein op in AgencyHandy">
+    Ga terug naar AgencyHandy en klik op **Domein opslaan**. De status wordt aanvankelijk weergegeven als **Verbroken** — dit is te verwachten terwijl de DNS wordt gepropageerd.
+  </Step>
+  <Step title="Wacht op DNS-propagatie en verifieer">
+    DNS-wijzigingen kunnen variëren van een paar minuten tot **maximaal 48 uur** om wereldwijd te propageren, afhankelijk van uw registrar en TTL-instellingen. Klik periodiek op **Vernieuwen** om de verbindingsstatus te controleren.
+
+    Zodra de propagatie is voltooid, verandert de status naar **Verbonden** ✅.
+  </Step>
+</Steps>
+
+<Warning>
+  DNS-propagatie kan tot **48 uur** duren. Als uw domein na 48 uur nog steeds **Verbroken** toont, controleer dan nogmaals of het CNAME-record correct is en of er geen conflicterende DNS-records bestaan voor hetzelfde subdomein.
+</Warning>
+
+---
+
+## Cloudflare-Specifieke Instructies
+
+Als uw domein wordt beheerd via Cloudflare, is er één kritieke instelling die u correct moet configureren:
+
+<Steps>
+  <Step title="Log in op Cloudflare en selecteer uw domein">
+    Open uw [Cloudflare-dashboard](https://dash.cloudflare.com) en klik op het domein dat u koppelt aan AgencyHandy.
+  </Step>
+  <Step title="Navigeer naar DNS-instellingen">
+    Klik op het tabblad **DNS** in de bovenste navigatie van het domeininstellingenpaneel.
+  </Step>
+  <Step title="Voeg het CNAME-record toe">
+    Klik op **+ Record toevoegen** en vul de velden in:
+    - **Type:** CNAME
+    - **Naam:** Uw subdomein (bijv. `portal`)
+    - **Doel/Inhoud:** De waarde verstrekt door AgencyHandy
+    - **TTL:** Stel in op **2 minuten** (of de laagst beschikbare optie) tijdens de initiële installatie
+  </Step>
+  <Step title="Schakel de Cloudflare-proxy uit (kritiek)">
+    Zorg er in de kolom **Proxystatus** voor dat de schakelaar is ingesteld op **Alleen DNS** (het wolkpictogram moet grijs verschijnen, niet oranje).
+
+    <Warning>
+      Als de Cloudflare-proxy **ingeschakeld** is (oranje wolkpictogram), wordt het CNAME-record niet correct omgezet en kan AgencyHandy uw domein niet verifiëren. U moet het instellen op **Alleen DNS** voor de verbinding om te werken.
+    </Warning>
+  </Step>
+  <Step title="Sla het record op">
+    Controleer alle waarden op nauwkeurigheid en klik op **Opslaan**.
+  </Step>
+</Steps>
+
+<Tip>
+  Gebruik [dnschecker.org](https://dnschecker.org) om de propagatie van uw CNAME-record over verschillende wereldwijde regio's te bewaken. Zoek naar groene vinkjes in alle regio's voordat u verwacht dat AgencyHandy de verbinding bevestigt.
+</Tip>
+
+---
+
+## Uw Verbindingsstatus Bewaken
+
+Ga na het opslaan terug naar **Workspace Config → Eigen Domein** in AgencyHandy om de status bij te houden:
+
+| Status | Betekenis |
+|------------------|----------------------------------------------------------------------|
+| **Verbroken** | DNS-record is nog niet gepropageerd of bevat een fout |
+| **Verbonden** | Domein is geverifieerd en actief — klanten hebben toegang tot uw workspace via de eigen URL |
+
+---
+
+## Een Eigen Domein Bijwerken of Verwijderen
+
+- **Om uw domein bij te werken:** Verwijder de bestaande invoer en voeg het nieuwe domein toe met dezelfde installatiestappen hierboven.
+- **Om uw domein te verwijderen:** Klik op de knop **Verwijderen** naast uw domein in het paneel Eigen Domein en bevestig de verwijdering. Uw workspace keert terug naar de standaard AgencyHandy-URL. U kunt elk domein op elk gewenst moment opnieuw toevoegen.
+
+---
+
+## Belangrijke Opmerkingen
+
+- **Gebruik een subdomein, geen rootdomein:** AgencyHandy eigen domeinen vereisen een subdomein (bijv. `portal.uwbureau.com`), geen root-/apexdomein (bijv. `uwbureau.com`).
+- **Vermijd `www`:** Het `www`-subdomein kan problemen veroorzaken tijdens verificatie. Gebruik in plaats daarvan een aangepaste subdomeinnaam.
+- **Exacte records vereist:** Voer het CNAME-type, de naam en de waarde exact in zoals weergegeven in AgencyHandy. Elke typefout of ontbrekend teken verhindert de verbinding.
+- **Cloudflare-proxy moet uit zijn:** Stel Cloudflare-records altijd in op **Alleen DNS** voor verificatie van eigen domeinen van AgencyHandy.
+- **Alleen beheerderstoegang:** Alleen Superbeheerders en Beheerders kunnen eigen domeininstellingen toevoegen, wijzigen of verwijderen.

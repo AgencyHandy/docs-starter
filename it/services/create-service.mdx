@@ -1,0 +1,260 @@
+---
+title: "Come Creare un Servizio con Pacchetti, Task e FAQ"
+sidebarTitle: "Crea Servizio"
+description: "Guida passo-passo per costruire un servizio in AgencyHandy: scegli il tipo di fatturazione, configura i pacchetti, imposta i task predefiniti, aggiungi FAQ e pubblica."
+---
+
+Creare un servizio in AgencyHandy è il primo passo per vendere le offerte della tua agenzia tramite la piattaforma. Un singolo servizio può contenere fino a cinque pacchetti di prezzo, task predefiniti automatici che si attivano al momento di un ordine, FAQ per ridurre le domande pre-vendita, un allegato portfolio per la prova sociale e un modulo di acquisizione opzionale — tutto configurato in un unico posto prima della pubblicazione.
+
+<Note>
+  Hai bisogno di un ruolo **Super Amministratore** o **Amministratore** per creare servizi. Gli altri ruoli richiedono permessi espliciti sui servizi per accedere a questa sezione.
+</Note>
+
+<Steps>
+  <Step title="Scegli il tipo di servizio">
+    Apri **Servizi** dalla barra laterale sinistra e clicca su **+ Servizio** per iniziare un nuovo annuncio.
+
+    In cima alla pagina, seleziona il tuo modello di fatturazione:
+
+    - **Servizio Una Tantum** — il cliente paga una tariffa unica e riceve il deliverable una volta. Ideale per progetti con un ambito chiaro: sviluppo di siti web, pacchetti logo, audit, ecc.
+    - **Servizio in Abbonamento** — la fatturazione si ripete automaticamente secondo la pianificazione che definisci. Ideale per retainer, contenuti continuativi, servizi gestiti o piani di manutenzione.
+
+    <Warning>
+      Il tipo di servizio è bloccato dopo il salvataggio. Se hai bisogno di un modello di fatturazione diverso, crea un nuovo servizio.
+    </Warning>
+  </Step>
+
+  <Step title="Aggiungi i dettagli del servizio">
+    Espandi la sezione **Dettagli Servizio** e compila i seguenti campi:
+
+    **Nome Servizio** *(obbligatorio)*
+    Questo è come il servizio appare ai clienti ovunque nella piattaforma — nel catalogo, sulle fatture e nel workspace degli ordini. Rendilo chiaro e descrittivo.
+
+    **Caricamento Media**
+    Carica una o più immagini di anteprima per rappresentare visivamente il servizio. Le immagini di alta qualità aumentano la fiducia dei clienti e i tassi di conversione.
+
+    **Descrizione del Servizio**
+    Scrivi una spiegazione approfondita di cosa include il servizio, a chi è destinato e cosa possono aspettarsi i clienti. Usa questo spazio per differenziare la tua offerta.
+
+    **Impostazioni Fiscali**
+    Scegli se l'imposta è **inclusiva** (già inclusa nel prezzo) o **esclusiva** (aggiunta al momento del pagamento).
+
+    **Valuta**
+    Imposta la valuta per tutti i pacchetti in questo servizio. Tutti i pacchetti all'interno di un singolo servizio condividono la stessa valuta.
+
+    <Tip>
+      Carica le immagini di anteprima con proporzioni 16:9 per la migliore presentazione nel portale cliente.
+    </Tip>
+  </Step>
+
+  <Step title="Crea i pacchetti">
+    Espandi **Dettagli Pacchetto** e clicca su **+ Nuovo Pacchetto** per aggiungere il tuo primo livello di prezzo. Puoi creare fino a **5 pacchetti** per servizio.
+
+    Per ogni pacchetto, configura i seguenti elementi:
+
+    **Nome Pacchetto** *(obbligatorio)*
+    Il nome che i clienti vedono, ad esempio *Base*, *Standard* o *Premium*.
+
+    **Icona Pacchetto** *(opzionale)*
+    Seleziona un'icona integrata o caricane una personalizzata. Le icone caricate devono essere **32 × 32 pixel**.
+
+    **Media Pacchetto** *(opzionale)*
+    Carica un'immagine di copertina specifica per questo pacchetto. Formati accettati: PNG, JPG, JPEG. Dimensione massima del file: **5 MB**. Massimo 1 file per pacchetto. Proporzioni consigliate: **16:9**.
+
+    **Descrizione Breve Pacchetto** *(opzionale)*
+    Un riepilogo di una riga dei deliverable di questo pacchetto. Massimo **140 caratteri**.
+
+    **Cosa È Incluso** *(obbligatorio)*
+    Elenca i deliverable specifici inclusi in questo pacchetto. Puoi aggiungere fino a **15 voci** per pacchetto. Ogni punto elenco dovrebbe descrivere un deliverable concreto (es. *"5 articoli del blog al mese, fino a 1.000 parole ciascuno"*).
+
+    <Tip>
+      Dopo aver creato più pacchetti, trascinali per riordinare come appaiono ai clienti. Contrassegna uno come **Più Popolare** per attirare l'attenzione sul tuo livello consigliato.
+    </Tip>
+  </Step>
+
+  <Step title="Imposta prezzi e regole di consegna">
+    All'interno di ogni pacchetto, imposta i campi di prezzo principali e tutti i controlli opzionali:
+
+    **Importo** *(obbligatorio)*
+    Il prezzo che un cliente paga per questo pacchetto.
+
+    **Tempi di Consegna** *(obbligatori)*
+    Il numero stimato di giorni per consegnare il servizio dopo l'acquisto.
+
+    **Controlli di prezzo opzionali:**
+
+    <Accordion title="Aggiungi Sconto">
+      Applica una riduzione percentuale o a importo fisso al prezzo di questo pacchetto. Il prezzo scontato viene visualizzato ai clienti insieme al prezzo originale, creando un efficace effetto promozionale.
+    </Accordion>
+
+    <Accordion title="Aggiungi Periodo di Prova (solo abbonamento)">
+      Offri una prova gratuita o a prezzo ridotto prima dell'inizio della fatturazione regolare dell'abbonamento. Questa opzione è disponibile solo sui servizi di tipo abbonamento.
+    </Accordion>
+
+    <Accordion title="Aggiungi Limite di Quantità">
+      Limita il numero di unità che un cliente può acquistare in una singola sessione di pagamento. Usalo per pacchetti a disponibilità limitata o servizi con vincoli di capacità.
+    </Accordion>
+
+    <Accordion title="Aggiungi Maggiori Dettagli sul Prezzo">
+      Suddividi il costo totale in singole voci — ad esempio, mostrando *prezzo base + commissione di configurazione + costo unitario*. Ogni etichetta di suddivisione supporta un massimo di **20 caratteri**.
+    </Accordion>
+
+    <Note>
+      Tutti i campi obbligatori (Importo e Tempi di Consegna) devono essere completati per ogni pacchetto prima di poter pubblicare il servizio.
+    </Note>
+  </Step>
+
+  <Step title="Aggiungi task predefiniti per l'automazione">
+    Ogni pacchetto include una sezione **Task Predefiniti**. I task definiti qui vengono generati automaticamente nel workspace dell'ordine nel momento in cui un cliente acquista questo pacchetto — nessuna configurazione manuale necessaria dopo ogni vendita.
+
+    Clicca su **+ Aggiungi Altro** per aprire il modale di creazione task. Per ogni task, puoi configurare:
+
+    | Campo | Dettagli |
+    |---|---|
+    | **Nome Task** | Obbligatorio; massimo **160 caratteri** |
+    | **Descrizione** | Istruzioni dettagliate per l'assegnatario |
+    | **Assegnatario** | Membro del team responsabile del completamento di questo task |
+    | **Allegato** | Carica file di riferimento; formati accettati: csv, odt, doc, docx, htm, html, pdf, ppt, pptx, txt, xls, xlsx, jpg, jpeg, png, gif, webp, svg, ai, mp4, mp3, wav, zip, rar; dimensione massima file **1 GB** per file |
+    | **Etichetta** | Tagga il task per filtraggio e reporting |
+    | **Stato** | Stato iniziale alla creazione del task |
+    | **Revisione Cliente** | Attiva se questo task richiede l'approvazione del cliente prima di essere considerato completato |
+
+    Aggiungi tutti i task necessari per coprire completamente il processo di consegna per questo pacchetto. I task predefiniti coerenti garantiscono che ogni ordine segua lo stesso workflow controllato dalla qualità.
+
+    <Tip>
+      Mappa i tuoi task predefiniti alle tue SOP interne. Ad esempio, un pacchetto *Gestione Social Media* potrebbe generare automaticamente task come *Bozza Calendario Contenuti*, *Approvazione Cliente*, *Programmazione Post* e *Report Mensile*.
+    </Tip>
+  </Step>
+
+  <Step title="Aggiungi FAQ e portfolio">
+    Espandi la sezione **Informazioni Aggiuntive** per aggiungere due elementi opzionali ma ad alto impatto:
+
+    **Allegato Portfolio**
+    Collega una categoria di portfolio a questo servizio in modo che i clienti possano sfogliare campioni pertinenti del tuo lavoro passato direttamente nell'annuncio del servizio. Puoi connettere una categoria di portfolio esistente o crearne una nuova da questa schermata.
+
+    **Domande Frequenti (FAQ)**
+    Clicca su **+ Aggiungi** per inserire una coppia domanda-risposta. Aggiungi tutte le FAQ pertinenti — gli argomenti comuni includono:
+
+    - Originalità dei contenuti e diritti
+    - Processo di revisione e feedback
+    - Limiti dell'ambito e cosa *non* è incluso
+    - Tempistiche e cadenza di comunicazione
+    - Politiche di pagamento e rimborso
+
+    FAQ ben scritte riducono gli scambi prima dell'acquisto e aiutano i clienti ad auto-qualificarsi.
+  </Step>
+
+  <Step title="Allega un modulo di acquisizione">
+    Un modulo di acquisizione raccoglie le informazioni necessarie da un cliente prima dell'inizio del lavoro — ad esempio, linee guida del brand, credenziali di accesso, pubblico di riferimento o obiettivi del progetto.
+
+    - Clicca su **+ Crea Nuovo Modulo di Acquisizione** per costruire un modulo da zero, o seleziona un modulo esistente dal menu a tendina.
+    - Se questo servizio non richiede un modulo di acquisizione, clicca su **Salta** per bypassare questa sezione.
+    - Clicca su **Aggiorna** per salvare la selezione del modulo di acquisizione e continuare.
+
+    <Note>
+      Il modulo di acquisizione è opzionale ma fortemente consigliato per i servizi che richiedono input specifici del cliente prima che possa iniziare la consegna.
+    </Note>
+  </Step>
+
+  <Step title="Pubblica il servizio">
+    In fondo all'editor del servizio:
+
+    1. Attiva il toggle **Pubblica questo Servizio** sulla posizione ON.
+    2. Clicca su **Salva** (o **Aggiorna Servizio** se stai modificando un servizio esistente).
+
+    Una volta pubblicato, il servizio diventa immediatamente visibile ai clienti nel portale. Se lasci il toggle disattivato, il servizio viene salvato come bozza e visibile solo al tuo team.
+
+    <Tip>
+      Usa la modalità bozza per preparare un servizio in anticipo e pubblicarlo al momento del lancio — utile per promozioni stagionali o annunci di nuove offerte.
+    </Tip>
+  </Step>
+</Steps>
+
+## Configurazione dei Componenti Aggiuntivi
+
+I componenti aggiuntivi sono extra opzionali che i clienti possono selezionare durante il pagamento — ad esempio, *Consegna Urgente*, *Revisioni Extra* o un *Report Mensile*. Ti permettono di fare upsell di servizi complementari senza creare elenchi del tutto nuovi.
+
+### Creazione di un Componente Aggiuntivo
+
+<Steps>
+  <Step title="Apri i Componenti Aggiuntivi">
+    Vai su **Servizi** nella barra laterale, clicca sul pulsante **freccia giù** accanto all'intestazione Servizi e seleziona **Componenti Aggiuntivi**.
+  </Step>
+  <Step title="Crea un nuovo componente aggiuntivo">
+    Clicca su **+ Aggiungi Nuovo Componente Aggiuntivo** e compila:
+
+    - **Nome Componente Aggiuntivo**
+    - **Descrizione** — usa l'editor di testo ricco per spiegare chiaramente cosa include il componente aggiuntivo
+    - **Tipo di Prezzo** — scegli *Una Tantum* o *Abbonamento*
+    - **Dettagli prezzo:**
+      - *Una tantum:* inserisci l'importo e la valuta
+      - *Abbonamento:* imposta l'intervallo di fatturazione (es. ogni 1 mese), un limite opzionale dei cicli di fatturazione, la tariffa di abbonamento e la valuta
+  </Step>
+  <Step title="Pubblica e salva">
+    Attiva il toggle **Pubblica** su ON, poi clicca su **Crea**. Solo i componenti aggiuntivi pubblicati sono visibili quando li si connette ai moduli d'ordine.
+  </Step>
+</Steps>
+
+### Allegare un Componente Aggiuntivo a un Modulo d'Ordine
+
+<Steps>
+  <Step title="Apri il modulo d'ordine">
+    Vai su **Moduli** e apri il modulo d'ordine pertinente.
+  </Step>
+  <Step title="Seleziona il servizio">
+    Scegli il servizio a cui vuoi allegare il componente aggiuntivo.
+  </Step>
+  <Step title="Aggiungi i componenti aggiuntivi">
+    Seleziona la sezione **Componenti Aggiuntivi** dal pannello di sinistra, poi scegli i componenti aggiuntivi da associare a questo servizio.
+  </Step>
+  <Step title="Salva il modulo">
+    Clicca su **Salva**. I clienti vedranno ora i componenti aggiuntivi selezionati come extra opzionali durante il pagamento.
+  </Step>
+</Steps>
+
+<Note>
+  I componenti aggiuntivi devono utilizzare la stessa valuta del servizio a cui sono allegati. Se le valute non corrispondono, il componente aggiuntivo non apparirà nell'elenco di selezione.
+</Note>
+
+### Comportamento di Fatturazione dei Componenti Aggiuntivi in Abbonamento
+
+Quando i cicli di fatturazione di un servizio e di un componente aggiuntivo in abbonamento differiscono, AgencyHandy gestisce la sovrapposizione automaticamente:
+
+<Accordion title="Il componente aggiuntivo ha più cicli del servizio">
+  Sia il servizio che il componente aggiuntivo vengono fatturati insieme per la durata del servizio. Al termine del servizio, il componente aggiuntivo continua a essere fatturato da solo per i suoi cicli rimanenti.
+
+  **Esempio:** Il servizio dura 4 cicli, il componente aggiuntivo dura 5 cicli → fatturati insieme per 4 cicli, il componente aggiuntivo viene fatturato da solo per 1 ciclo aggiuntivo.
+</Accordion>
+
+<Accordion title="Il componente aggiuntivo ha meno cicli del servizio">
+  Sia il servizio che il componente aggiuntivo vengono fatturati insieme per la durata del componente aggiuntivo. Al termine del componente aggiuntivo, il servizio continua a essere fatturato da solo per i suoi cicli rimanenti.
+
+  **Esempio:** Il servizio dura 5 cicli, il componente aggiuntivo dura 3 cicli → fatturati insieme per 3 cicli, il servizio viene fatturato da solo per 2 cicli aggiuntivi.
+</Accordion>
+
+## Modifica di un Servizio
+
+Dopo la pubblicazione di un servizio, puoi aggiornare qualsiasi campo senza interrompere gli ordini esistenti.
+
+1. Vai su **Servizi** e trova il servizio che vuoi aggiornare.
+2. Clicca sul **menu a tre punti** (⋮) sul lato destro della riga del servizio.
+3. Seleziona **Modifica**. L'editor del servizio si apre con tutte le impostazioni esistenti popolate.
+4. Apporta le modifiche — aggiorna il titolo, la descrizione, i prezzi, i media, i pacchetti, i task o le FAQ.
+5. Clicca su **Aggiorna Servizio** per salvare.
+
+<Warning>
+  Le modifiche ai prezzi dei pacchetti o ai tempi di consegna hanno effetto solo sui **nuovi ordini**. Gli ordini esistenti non vengono influenzati retroattivamente.
+</Warning>
+
+## Riferimento Campi
+
+| Campo | Limite |
+|---|---|
+| Pacchetti per servizio | Fino a 5 |
+| Deliverable per pacchetto (Cosa È Incluso) | Fino a 15 |
+| Descrizione Breve Pacchetto | 140 caratteri |
+| Dimensione icona pacchetto | 32 × 32 px |
+| Dimensione file media pacchetto | 5 MB (PNG, JPG, JPEG) |
+| Nome task | 160 caratteri |
+| Dimensione file allegato task | 1 GB per file |
+| Etichetta suddivisione prezzo | 20 caratteri |

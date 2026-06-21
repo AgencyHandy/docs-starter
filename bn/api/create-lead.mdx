@@ -1,0 +1,201 @@
+---
+title: "AgencyHandy API: প্রোগ্রামেটিকভাবে একটি নতুন লিড তৈরি করুন"
+sidebarTitle: "লিড তৈরি করুন"
+description: "bulk-lead এন্ডপয়েন্টে প্রয়োজনীয় ক্ষেত্রসহ একটি POST অনুরোধ পাঠিয়ে AgencyHandy API ব্যবহার করে প্রোগ্রামেটিকভাবে নতুন লিড তৈরি করুন।"
+---
+
+Create Lead এন্ডপয়েন্ট আপনাকে যেকোনো বাহ্যিক সিস্টেম থেকে — একটি ওয়েব ফর্ম, CRM, মার্কেটিং অটোমেশন প্ল্যাটফর্ম, বা কাস্টম স্ক্রিপ্ট — প্রোগ্রামেটিকভাবে আপনার AgencyHandy ওয়ার্কস্পেসে নতুন লিড যোগ করতে দেয়। এই এন্ডপয়েন্টের মাধ্যমে তৈরি লিড আপনার লিড পাইপলাইনে অবিলম্বে প্রদর্শিত হয়, ঠিক যেন সেগুলি ম্যানুয়ালি যোগ করা হয়েছিল।
+
+<Note>
+  এই এন্ডপয়েন্ট ব্যবহার করার আগে, আপনার API কী এবং Company ID পেতে [শুরু করা](/bn/api/getting-started) গাইড সম্পন্ন করুন। একটি লিড তৈরি করার সময় আপনার **Client Role ID**-ও আনতে হবে, যা প্রয়োজনীয়।
+</Note>
+
+## পূর্বশর্তসমূহ
+
+- ✅ **Workspace Config → API Key** থেকে API কী তৈরি করা হয়েছে
+- ✅ `GET {{URL}}/accounts/companies` থেকে Company ID পুনরুদ্ধার করা হয়েছে
+- ✅ Client Role ID পুনরুদ্ধার করা হয়েছে (নীচে ধাপ ১ দেখুন)
+
+---
+
+## ধাপ ১: Client Role ID পান
+
+একটি লিড তৈরির আগে, আপনার কোম্পানিতে `client` ভূমিকার Role ID প্রয়োজন।
+
+### এন্ডপয়েন্ট
+
+```
+GET {{URL}}/roles?type=company
+```
+
+### হেডার
+
+| হেডার | মান |
+|---|---|
+| `x-api-key` | আপনার API কী |
+| `companyid` | আপনার Company ID |
+
+### উদাহরণ অনুরোধ
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/roles?type=company" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>"
+```
+
+### উদাহরণ প্রতিক্রিয়া
+
+```json
+{
+  "roles": [
+    {
+      "_id": "6525994184e9ddd798534535",
+      "role": {
+        "_id": "6525994184e9ddd79853451e",
+        "responsibility": "",
+        "name": "client"
+      },
+      "company": "6525994184e9ddd79853450e",
+      "createdAt": "2023-10-10T18:34:41.567Z",
+      "updatedAt": "2024-10-01T07:28:48.340Z",
+      "__v": 0,
+      "type": "company"
+    }
+  ]
+}
+```
+
+যেখানে `roles[0].role.name === "client"` সেই এন্ট্রি খুঁজুন এবং **বাইরের** `_id` বের করুন — সেটি হল `roles[0]._id`, **`roles[0].role._id` নয়**।
+
+```javascript
+const clientRoleId = roles.find(r => r.role.name === "client")._id;
+// e.g. "6525994184e9ddd798534535"
+```
+
+<Warning>
+  `roles[0]._id` (কোম্পানি-ভূমিকা ম্যাপিং ID) ব্যবহার করুন, **`roles[0].role._id` (ভূমিকা সংজ্ঞা ID) নয়**। ভুল ID ব্যবহার করলে লিড তৈরির অনুরোধ ব্যর্থ হয়।
+</Warning>
+
+---
+
+## ধাপ ২: একটি নতুন লিড তৈরি করুন
+
+### এন্ডপয়েন্ট
+
+```
+POST {{URL}}/members/bulk-lead
+```
+
+### হেডার
+
+| হেডার | মান |
+|---|---|
+| `x-api-key` | আপনার API কী |
+| `companyid` | আপনার Company ID |
+| `Content-Type` | `application/json` |
+
+### অনুরোধের বডি
+
+অনুরোধের বডি একটি **JSON অ্যারে** — আপনি একটি কলে এক বা একাধিক লিড তৈরি করতে পারেন।
+
+<ParamField body="firstName" type="string" required>
+  লিডের প্রথম নাম।
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  লিডের শেষ নাম।
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  লিডের ইমেইল ঠিকানা। আপনার ওয়ার্কস্পেসে অনন্য হতে হবে।
+</ParamField>
+
+<ParamField body="role" type="string" required>
+  ধাপ ১-এ পুনরুদ্ধার করা Client Role ID (অর্থাৎ, `roles[0]._id`)।
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  লিড তৈরি করার সময় অবশ্যই `false` সেট করতে হবে। একটি লিডকে পূর্ণ ক্লায়েন্টে রূপান্তর করার সময় কেবল `true` সেট করুন।
+</ParamField>
+
+<ParamField body="status" type="string">
+  লিডের পাইপলাইন স্ট্যাটাস। সাধারণ মান: `New`, `Contacted`, `Qualified`। বাদ দিলে `New`-তে ডিফল্ট হয়।
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  লিডের ফোন নম্বর।
+</ParamField>
+
+<ParamField body="source" type="string">
+  আপনি কীভাবে এই লিড পেয়েছেন। উদাহরণ মান: `website`, `referral`, `social`।
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  পাইপলাইন বোর্ড কলামের মধ্যে লিডের অবস্থান (ক্রম)। `1`-এ ডিফল্ট হয়।
+</ParamField>
+
+### উদাহরণ অনুরোধ
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-lead" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "role": "6525994184e9ddd798534535",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+### সফলতার প্রতিক্রিয়া
+
+```json
+{
+  "message": "Lead created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  নিশ্চিতকরণ স্ট্রিং: `"Lead created successfully"`।
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  তৈরি লিড অবজেক্টের অ্যারে।
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  নতুন তৈরি লিডের অনন্য ID। পরবর্তী API কলে লিড রেফার করতে হলে এটি সংরক্ষণ করুন।
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  লিডের পূর্ণ নাম (firstName + lastName)।
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  সংরক্ষিত লিডের পাইপলাইন স্ট্যাটাস।
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  সদস্যকে বরাদ্দ ভূমিকার নাম — `"client"` হবে।
+</ResponseField>
+
+<Tip>
+  একটি একক API কলে বেশ কয়েকটি লিড তৈরি করতে অ্যারেতে একাধিক লিড অবজেক্ট পাস করুন। প্রতিটি অবজেক্টে তার নিজস্ব অনন্য ইমেইল ঠিকানা সহ সমস্ত প্রয়োজনীয় ক্ষেত্র থাকতে হবে।
+</Tip>

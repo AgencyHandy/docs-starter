@@ -1,0 +1,100 @@
+---
+title: "AgencyHandy Ajansları İçin Fatura Yönetimine Genel Bakış"
+sidebarTitle: "Faturalar"
+description: "AgencyHandy'nin faturalandırma sistemi — faturalama, ödeme takibi, yinelenen faturalar, durumlar, doğrudan faturalar ve finansal kayıt dışa aktarma."
+---
+
+AgencyHandy'nin fatura özelliği, ajansınıza müşterileri, siparişleri ve projeleri yönetmek için kullandığınız platformun içinde eksiksiz bir faturalama ve ödeme yönetim sistemi sunar. Profesyonel faturalar oluşturabilir, e-posta ile müşterilere gönderebilir, ödeme durumunu gerçek zamanlı takip edebilir, abonelik hizmetleri için yinelenen faturalamayı otomatikleştirebilir ve ihtiyaç duyduğunuzda finansal kayıtlarınızı dışa aktarabilirsiniz. Her fatura, ajansınızın logosu ve adresiyle otomatik olarak ilişkilendirilir; böylece iletişimleriniz her zaman marka tutarlılığını korur.
+
+## Fatura Kimleri Oluşturabilir
+
+Yalnızca aşağıdaki rollere sahip kullanıcılar fatura oluşturabilir ve yönetebilir:
+
+- **Süper Yönetici**
+- **Yönetici**
+- **Proje Yöneticisi (PM)**
+
+Müşteriler faturaları görüntüleyip indirebilir ancak oluşturamaz veya düzenleyemez.
+
+## Fatura Dashboard'u
+
+Fatura Dashboard'unu açmak için sol kenar çubuğunda **Faturalar**'a tıklayın. Buradan şunları yapabilirsiniz:
+
+- Fatura oluşturma, düzenleme ve silme
+- **Müşteri adı**, **sipariş kimliği** veya **hizmet adına** göre fatura arama
+- Fatura listesini filtreleme ve sıralama
+- Fatura durumunu bir bakışta görüntüleme
+- Önek yapılandırması dahil fatura ayarlarına erişim
+
+## Faturaların İşlevi
+
+<CardGroup cols={2}>
+  <Card title="Faturalama ve Faturalandırma" icon="file-invoice-dollar">
+    Müşterilere sunduğunuz herhangi bir hizmet veya ürün için tutarlar, indirimler ve son tarihler üzerinde tam kontrol sahibi olarak profesyonel faturalar oluşturun ve gönderin.
+  </Card>
+  <Card title="Ödeme Takibi" icon="chart-line">
+    Faturaların görüntülenip görüntülenmediğini, ödenip ödenmediğini veya vadesi geçip geçmediğini izleyin. Sistem, durum değişiklikleri gerçekleştiğinde ödeme tarihlerini ve geçersiz kılma tarihlerini otomatik olarak kaydeder.
+  </Card>
+  <Card title="Yinelenen Faturalama" icon="rotate">
+    Abonelik tabanlı hizmetler için fatura oluşturmayı otomatikleştirin. AgencyHandy, her fatura döngüsünde manuel müdahale gerektirmeden yinelenen faturaları oluşturur ve iletir.
+  </Card>
+  <Card title="Proje Entegrasyonu" icon="diagram-project">
+    Faturalandırmanın her zaman temel çalışmaya bağlı kalması için faturaları doğrudan siparişler ve hizmetlerle ilişkilendirin. Faturalanabilir kalemler her faturaya doğru şekilde eklenebilir.
+  </Card>
+</CardGroup>
+
+## Fatura Durumları
+
+Her fatura belirlenmiş bir yaşam döngüsünden geçer. Bu durumları anlamak, alacaklarınızı etkin biçimde yönetmenize yardımcı olur.
+
+| Durum | Açıklama |
+|--------|-------------|
+| **Taslak** | Fatura oluşturuldu ancak sonuçlandırılmadı. Herhangi bir bölümünü düzenleyebilirsiniz. Hazır olduğunda durumu Açık olarak değiştirerek sonuçlandırın. Aboneliğe bağlı olmayan taslak faturalar silinebilir. |
+| **Açık / Ödenmemiş** | Fatura sonuçlandırıldı ve ödeme bekleniyor. Ajans bunu müşteriye gönderir; müşteri görüntüleyip ödeyebilir. Açık bir faturayı Ödendi, Geçersiz veya Tahsil Edilemez olarak değiştirebilirsiniz. |
+| **Ödendi** | Fatura ödendi. Sistem, bir faturayı Ödendi olarak işaretlediğinizde ödeme tarihini otomatik olarak kaydeder. |
+| **Geçersiz** | Fatura iptal edildi. Sistem, geçersizlik tarihini otomatik olarak kaydeder. |
+| **Tahsil Edilemez** | Müşterinin ödeme yapma ihtimali düşük. Muhasebe sürecinizde bunu şüpheli alacak olarak değerlendirin. |
+
+<Note>
+  **Müşteriye Gönder** düğmesini kullanarak müşteriye bir fatura gönderdiğinizde durum otomatik olarak **Taslak**'tan **Açık**'a değişir. Yalnızca ajans, durumu Açık'tan Ödendi, Geçersiz veya Tahsil Edilemez olarak değiştirebilir.
+</Note>
+
+## Doğrudan Faturalar (Sipariş Kimliği Olmadan)
+
+AgencyHandy, herhangi bir mevcut siparişe bağlı olmayan **Doğrudan Faturalar**'ı destekler. Bu, tek seferlik faturalama, anlık ödemeler veya sisteminizde henüz müşteri olarak kayıtlı olmayan kişilere fatura göndermek için kullanışlıdır.
+
+Doğrudan Faturaların temel özellikleri:
+
+- Sipariş kimliği seçmeden fatura gönderme
+- Mevcut herhangi bir müşteriye fatura gönderme veya herhangi bir e-posta adresine göndermek için **Bağımsız E-posta** kullanma
+- Manuel olarak kalemler, vergiler ve indirimler ekleme
+- Anında gönderme veya taslak olarak kaydetme
+
+<Tip>
+  AgencyHandy'de resmi bir siparişi olmayan çalışmalar için — acil projeler, danışmanlık görüşmeleri veya kapsam dışı işler gibi — bir müşteriye hızlı fatura kesmek istediğinizde Doğrudan Faturaları kullanın.
+</Tip>
+
+## Faturaları Dışa Aktarma
+
+Fatura listenizi harici muhasebe araçlarında kullanmak veya kayıt tutmak amacıyla dışa aktarabilirsiniz. Dışa aktarma; fatura kimliği, müşteri adı, hizmet, tutarlar, durum ve tarihler gibi tüm görünür sütunları içerir. Fatura Dashboard'undan dışa aktarma seçeneğine erişin.
+
+## Fatura Ayarları
+
+Fatura Dashboard'unun sağ üst köşesindeki **Ayarlar** düğmesinden global fatura ayarlarını yapılandırın. Bu ayarlar şunları içerir:
+
+- **Fatura öneki** — her fatura numarasının önünde görünen öneki özelleştirin
+- **Hatırlatma şablonları** — açık faturalar için otomatik ödeme hatırlatıcıları ayarlayın
+
+## İlgili Özellikler
+
+<CardGroup cols={3}>
+  <Card title="Fatura Oluştur" icon="plus" href="/tr/invoices/create-invoice">
+    Fatura oluşturma, doldurma ve gönderme için adım adım kılavuz.
+  </Card>
+  <Card title="Abonelikler" icon="rotate" href="/tr/invoices/subscriptions">
+    Yinelenen faturalandırmanın nasıl çalıştığı ve abonelik faturalarının nasıl yönetileceği.
+  </Card>
+  <Card title="Destek Talepleri" icon="ticket" href="/tr/tickets/support-tickets">
+    Destek talebi sistemi aracılığıyla müşteri fatura sorularını yönetin.
+  </Card>
+</CardGroup>

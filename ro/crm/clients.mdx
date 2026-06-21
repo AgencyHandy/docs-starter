@@ -1,0 +1,218 @@
+---
+title: "Gestionarea Clienților: Profiluri, Import și Configurare"
+sidebarTitle: "Clienți"
+description: "Creați și importați profiluri de clienți în AgencyHandy, urmăriți comenzile și facturile, gestionați accesul la portal și organizați clienții pe categorii."
+---
+
+Secțiunea Clienți din CRM-ul AgencyHandy este centrul dvs. centralizat pentru fiecare organizație sau persoană care a trecut de etapa de prospect. Aici puteți crea profiluri de clienți manual sau în vrac, menține detaliile de contact actualizate, urmări comenzile și facturile recente, segmenta clienții în categorii personalizate și monitoriza accesul la portal — totul dintr-o singură vizualizare de listă.
+
+<Note>
+  Aveți nevoie de rolul de **Super Admin** sau **Admin** pentru a crea, edita, importa sau configura profiluri de clienți. Managerii pot vizualiza detaliile clienților și jurnalele de activitate.
+</Note>
+
+## Crearea unui Profil de Client
+
+Când înregistrați un nou client, AgencyHandy creează un cont de portal pentru acesta și trimite o invitație de conectare securizată.
+
+<Steps>
+  <Step title="Navigați la Clienți">
+    Conectați-vă la contul dvs. AgencyHandy, apoi faceți clic pe **CRM** în bara laterală din stânga și selectați tab-ul **Clients**.
+  </Step>
+  <Step title="Deschideți formularul de creare">
+    Faceți clic pe **+ Create Client** în colțul din dreapta sus. Se deschide un formular.
+  </Step>
+  <Step title="Introduceți informațiile clientului">
+    Completați detaliile clientului:
+
+    - **First Name / Last Name** *(obligatoriu)*
+    - **Email** *(obligatoriu — utilizat pentru a trimite invitația la portal)*
+    - **Company Name**
+    - **Phone Number**
+    - **Country, State, City, Zip Code**
+    - **Category** — alocați o categorie de configurare existentă dacă este aplicabil
+  </Step>
+  <Step title="Salvați profilul">
+    Faceți clic pe **Create**. Profilul este adăugat imediat în lista dvs. de clienți.
+  </Step>
+</Steps>
+
+<Note>
+  După ce creați profilul, clientul primește un email cu un URL de conectare securizat. Făcând clic pe acel URL, contul său de portal este activat și îi permite să se conecteze pentru prima dată.
+</Note>
+
+## Importul Clienților din CSV
+
+Dacă migrați de pe o altă platformă sau aveți un tabel cu clienți existenți, îi puteți importa pe toți dintr-o dată.
+
+<Steps>
+  <Step title="Faceți clic pe Import">
+    Din lista Clienți, faceți clic pe butonul **Import** din colțul din dreapta sus.
+  </Step>
+  <Step title="Încărcați fișierul CSV">
+    Trageți și plasați fișierul pe zona de încărcare sau faceți clic pentru a-l răsfoi și selecta. AgencyHandy acceptă fișiere CSV care conțin următoarele câmpuri:
+
+    - Client Name *(obligatoriu)*
+    - Email *(obligatoriu)*
+    - Company Name
+    - Country
+    - State
+    - City
+    - Zip Code
+  </Step>
+  <Step title="Mapați coloanele">
+    AgencyHandy detectează automat numele coloanelor care se potrivesc cu numele câmpurilor sale. Pentru coloanele nepotrivite, utilizați meniurile derulante pentru a le mapa manual la câmpurile corecte ale sistemului.
+  </Step>
+  <Step title="Previzualizați și confirmați">
+    Revizuiți tabelul de previzualizare pentru a identifica orice probleme de formatare înainte ca datele să fie salvate.
+  </Step>
+  <Step title="Finalizați importul">
+    Faceți clic pe **Save**. Apare un mesaj de confirmare odată ce toate înregistrările sunt importate cu succes.
+  </Step>
+</Steps>
+
+<Tip>
+  Dacă anteturile coloanelor din tabelul dvs. se potrivesc exact cu numele câmpurilor AgencyHandy (de ex., „email“, „company name“), mapperul se completează automat — nu este necesară nicio potrivire manuală.
+</Tip>
+
+## Exportul Clienților
+
+Faceți backup bazei de date de clienți sau partajați-o cu părțile interesate exportând în CSV sau Excel.
+
+<Steps>
+  <Step title="Faceți clic pe Export">
+    Din lista Clienți, faceți clic pe butonul **Export** din colțul din dreapta sus.
+  </Step>
+  <Step title="Personalizați exportul">
+    Alegeți ce coloane să includeți — selectați **All Columns** pentru un export complet sau alegeți câmpuri specifice, cum ar fi nume, detalii de contact, companie sau adresă.
+  </Step>
+  <Step title="Alegeți un format">
+    Selectați **CSV** sau **XLSX** în funcție de utilizarea intenționată.
+  </Step>
+  <Step title="Descărcați fișierul">
+    Faceți clic pe **Export**. Fișierul se generează și se descarcă pe dispozitivul dvs. Stocați-l în siguranță pentru a proteja datele clienților.
+  </Step>
+</Steps>
+
+## Editarea unui Profil de Client
+
+<Steps>
+  <Step title="Selectați clientul">
+    În lista Clienți, faceți clic pe caseta de selectare de lângă clientul pe care doriți să îl actualizați sau faceți clic direct pe numele acestuia pentru a deschide profilul.
+  </Step>
+  <Step title="Intrați în modul de editare">
+    Faceți clic pe butonul **Edit** din colțul din dreapta sus al profilului clientului. Apare un formular de editare.
+  </Step>
+  <Step title="Actualizați informațiile">
+    Modificați orice câmpuri — nume, email, telefon, adresă, companie sau categorie.
+  </Step>
+  <Step title="Salvați modificările">
+    Faceți clic pe **Update**. Un mesaj de confirmare confirmă că profilul a fost salvat cu succes.
+  </Step>
+</Steps>
+
+## Căutare, Sortare și Filtrare
+
+Lista Clienți vă oferă mai multe instrumente pentru a găsi rapid clientul potrivit:
+
+<CardGroup cols={2}>
+  <Card title="Căutare după Nume" icon="magnifying-glass">
+    Tastați numele unui client în bara de căutare pentru a filtra imediat lista.
+  </Card>
+  <Card title="Filtrare după Companie" icon="building">
+    Restrângeți lista la clienții asociați cu o anumită companie.
+  </Card>
+  <Card title="Filtrare după Email" icon="envelope">
+    Localizați un client când îi cunoașteți adresa de email, dar nu și numele.
+  </Card>
+  <Card title="Filtrare după Stare" icon="circle-check">
+    Afișați doar clienții activi, inactivi sau invitați.
+  </Card>
+  <Card title="Sortare Alfabetică" icon="arrow-down-a-z">
+    Sortați lista completă de clienți de la A la Z sau de la Z la A după nume pentru referință rapidă.
+  </Card>
+  <Card title="Filtrare după Categorie" icon="tag">
+    Afișați doar clienții alocați unei categorii de configurare specifice.
+  </Card>
+</CardGroup>
+
+## Urmărirea Activității Clientului
+
+În interiorul fiecărui profil de client veți găsi tab-uri care vă oferă o imagine live a implicării acelui client cu agenția dvs.:
+
+<Accordion title="Recent Orders">
+  Vizualizați istoricul tuturor comenzilor plasate de client, inclusiv numele serviciului, pachetul, starea și data. Aceasta vă oferă o imagine de ansamblu rapidă a istoricului de achiziții fără a părăsi CRM-ul.
+</Accordion>
+
+<Accordion title="Recent Tickets">
+  Vedeți toate tichetele de suport sau servicii depuse de client. Utilizați această vizualizare pentru a prioritiza răspunsurile și a vă asigura că nicio solicitare nu este omisă.
+</Accordion>
+
+<Accordion title="Recent Invoices">
+  Accesați un jurnal al tuturor facturilor generate pentru client, inclusiv starea plății. Aceasta vă ajută să monitorizați soldurile restante și istoricul facturilor într-un singur loc.
+</Accordion>
+
+## Configurarea Clientului (Categorii)
+
+Configurarea Clientului vă permite să creați categorii codificate prin culori pentru a segmenta lista de clienți — de exemplu, *Prioritate Mare*, *Retainer* sau *În Așteptare*. Categoriile apar ca opțiuni de filtrare în lista de clienți, astfel încât puteți identifica imediat grupul potrivit.
+
+<Steps>
+  <Step title="Deschideți Configurarea">
+    Din secțiunea Clienți, faceți clic pe butonul **Configuration**.
+  </Step>
+  <Step title="Creați o nouă categorie">
+    Faceți clic pe **+ Create Category**.
+  </Step>
+  <Step title="Introduceți detaliile categoriei">
+    - **Category Name** — o etichetă unică și descriptivă (de ex., *Clienți Enterprise*)
+    - **Short Description** — o notă scurtă care explică scopul categoriei
+    - **Color** — alegeți o culoare distinctă pentru recunoaștere vizuală rapidă
+  </Step>
+  <Step title="Salvați categoria">
+    Faceți clic pe **Create**. Categoria este acum disponibilă pentru alocare la editarea profilurilor de clienți.
+  </Step>
+  <Step title="Alocați clienți la categorie">
+    Deschideți orice profil de client, faceți clic pe **Edit**, selectați câmpul **Category** și alegeți categoria relevantă. Faceți clic pe **Update** pentru a salva.
+  </Step>
+</Steps>
+
+<Tip>
+  Utilizați convenții de culori consecvente pentru categorii — de exemplu, roșu pentru clienții cu urgență mare și verde pentru conturile complet integrate — pentru a face lista scanabilă la prima vedere.
+</Tip>
+
+## Jurnalul de Activitate al Clientului
+
+Jurnalul de Activitate înregistrează fiecare eveniment de conectare și deconectare pentru contul de portal al unui client, oferindu-vă un traseu de audit clar al implicării acestuia.
+
+**Pentru a vizualiza jurnalul:**
+
+1. Mergeți la **Clients** și deschideți profilul unui anumit client.
+2. Faceți clic pe tab-ul **Activity Log** din bara de navigare de sus a profilului.
+3. Revizuiți lista cronologică a evenimentelor de autentificare.
+
+**Ce arată jurnalul:**
+
+- Data exactă și marcajul temporal al fiecărei **conectări**
+- Data exactă și marcajul temporal al fiecărei **deconectări**
+- Un istoric continuu al tuturor evenimentelor de autentificare
+
+Jurnalul se actualizează în timp real și nu poate fi editat sau șters. Clienții nu au acces la propriul jurnal de activitate — acesta este destinat vizibilității administrative și de conformitate.
+
+<Note>
+  În această etapă, jurnalul de activitate înregistrează doar evenimentele de autentificare (conectare și deconectare). Acțiunile efectuate în portal — cum ar fi vizualizarea comenzilor — nu sunt înregistrate încă aici.
+</Note>
+
+## Trimiterea de Emailuri unui Client
+
+Puteți trimite un email oricărui client direct din profilul său fără a părăsi AgencyHandy. Deschideți profilul clientului și utilizați opțiunea **Email** pentru a compune mesajul. Câmpul **To** este pre-completat cu adresa de email a clientului.
+
+## Impersonarea Clientului
+
+Adminii pot impersona un cont de client pentru a vedea exact ce vede clientul în portalul său — util pentru depanarea problemelor de acces sau pentru a ghida un client printr-un proces în timpul unui apel de suport. Căutați opțiunea **Impersonate** în interiorul profilului clientului.
+
+<Warning>
+  Utilizați impersonarea doar în scopuri de suport. Orice acțiuni efectuate în timp ce impersonați un client sunt realizate în numele acestuia și se vor reflecta în contul lor.
+</Warning>
+
+## Conturi de Companie (B2B)
+
+Dacă lucrați cu companii mai degrabă decât cu persoane fizice, puteți seta un **Company Name** pe orice profil de client pentru a grupa contactele sub aceeași organizație. Lista Clienți poate fi filtrată după companie, facilitând vizualizarea tuturor contactelor dintr-un cont dat împreună.

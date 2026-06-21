@@ -1,0 +1,235 @@
+---
+title: "Crea, Invia e Gestisci le Fatture dei Clienti in AgencyHandy"
+sidebarTitle: "Crea Fattura"
+description: "Guida passo passo per creare una fattura in AgencyHandy — scegli un cliente, imposta gli importi, aggiungi note, invia al cliente e configura i promemoria di pagamento."
+---
+
+Creare una fattura in AgencyHandy è un processo semplice che collega direttamente la tua fatturazione ai clienti e agli ordini. Inserisci il cliente, collega l'ordine, imposta gli importi, aggiungi eventuali note e invia — tutto da un unico modulo. Una volta inviata, puoi monitorare lo stato del pagamento, impostare promemoria automatici e scaricare la fattura in PDF in qualsiasi momento.
+
+<Note>
+  Devi essere un **Super Admin**, **Admin** o **PM** per creare fatture. Deve esistere almeno un cliente nel tuo workspace prima di poter generare una fattura.
+</Note>
+
+## Impostazioni Prefisso Fattura
+
+Prima di iniziare a creare fatture, valuta la possibilità di configurare il prefisso della fattura. Il prefisso appare prima di ogni numero di fattura e aiuta a identificare le fatture come appartenenti alla tua agenzia.
+
+<Steps>
+  <Step title="Apri le Impostazioni Fatture">
+    Nella Dashboard Fatture, clicca sul pulsante **Impostazioni** nell'angolo in alto a destra.
+  </Step>
+  <Step title="Imposta il tuo prefisso">
+    Vai al campo **Prefisso Fattura** e inserisci il prefisso desiderato (ad esempio, `FAT-` o le iniziali della tua agenzia).
+  </Step>
+  <Step title="Salva">
+    Clicca su **Salva** per applicare il prefisso a tutte le fatture future.
+  </Step>
+</Steps>
+
+## Creazione di una Fattura
+
+<Steps>
+  <Step title="Apri la Dashboard Fatture">
+    Clicca su **Fatture** nella barra laterale sinistra per aprire la Dashboard Fatture.
+  </Step>
+  <Step title="Avvia una nuova fattura">
+    Clicca su **+ Crea Fattura**. Si aprirà il modulo di creazione fattura.
+  </Step>
+  <Step title="Seleziona il cliente">
+    Scegli il nome del cliente dal menu a tendina. Questo è un campo obbligatorio. Tutti gli ID ordine associati a quel cliente verranno popolati automaticamente nel campo successivo.
+
+    Per creare una **Fattura Diretta** (non collegata a un ordine), puoi lasciare vuoto il campo ID ordine o selezionare **E-mail Indipendente** per fatturare qualsiasi indirizzo e-mail esterno al tuo elenco clienti.
+  </Step>
+  <Step title="Seleziona l'ID Ordine">
+    Seleziona l'ID ordine specifico per cui stai emettendo fattura. Questo collega la fattura all'ordine corretto nel sistema. Per le fatture dirette, salta questo campo.
+  </Step>
+  <Step title="Inserisci l'indirizzo di fatturazione">
+    Compila l'**Indirizzo di Pagamento della Fattura**:
+    - Paese, Stato e Città
+    - Codice postale
+    - Indirizzo stradale (se applicabile)
+
+    Questo indirizzo appare sulla fattura stampata per conformità e chiarezza.
+  </Step>
+  <Step title="Imposta i dettagli dell'ordine e finanziari">
+    Nella sezione **Dettagli Ordine**, inserisci quanto segue:
+
+    | Campo | Descrizione |
+    |-------|-------------|
+    | **Valuta** | La valuta in cui desideri essere pagato |
+    | **ID Ordine – Importo** | Il valore monetario associato all'ordine |
+    | **Sconto (%)** e **Importo Sconto** | Applica eventuali sconti applicabili |
+    | **Importo Pagato** | Qualsiasi importo già pagato dal cliente |
+    | **Importo Dovuto** | Il saldo residuo |
+    | **Importo Totale** | L'importo totale da pagare per l'ordine |
+
+    Per le **Fatture Dirette**, clicca su **Aggiungi Articolo** per aggiungere voci manualmente. Inserisci il nome dell'articolo, la quantità e il prezzo. Puoi aggiungere più articoli. Usa **+ Aliquote IVA** per applicare o creare aliquote fiscali (inclusive o esclusive).
+  </Step>
+  <Step title="Aggiungi una nota (facoltativo)">
+    Nel campo **Nota**, aggiungi qualsiasi contesto aggiuntivo per il cliente — ad esempio, istruzioni di pagamento, riferimenti al progetto o un messaggio personale.
+  </Step>
+  <Step title="Esamina il pannello dei dettagli">
+    Il pannello **Dettagli** sul lato destro ti fornisce un riepilogo in tempo reale di:
+
+    - Stato della fattura (Bozza per impostazione predefinita)
+    - Nome del cliente, nome dell'azienda e indirizzo
+    - Indirizzo di pagamento della fattura
+    - Nome del servizio e ID ordine
+    - Data di creazione e data di scadenza
+    - Importo totale
+
+    Controlla tutto attentamente prima di procedere.
+  </Step>
+  <Step title="Invia al cliente o salva come bozza">
+    - Clicca su **Invia al Cliente** per inviare la fattura immediatamente via e-mail. Lo stato cambia automaticamente da **Bozza** ad **Aperta**.
+    - Clicca su **Salva come Bozza** se vuoi finalizzarla in seguito.
+  </Step>
+</Steps>
+
+<Note>
+  Il logo e l'indirizzo dell'agenzia vengono aggiunti automaticamente alla fattura dal sistema — non è necessario inserirli manualmente su ogni fattura.
+</Note>
+
+## Transizioni di Stato della Fattura
+
+Una volta creata una fattura, segue un flusso di stato definito. Solo l'agenzia può spostare una fattura tra gli stati.
+
+```
+Bozza → Aperta (quando inviata al cliente)
+Aperta → Pagata           (pagamento ricevuto)
+Aperta → Annullata        (fattura cancellata)
+Aperta → Non Recuperabile (credito inesigibile)
+```
+
+<Warning>
+  Le fatture possono essere **modificate** solo mentre sono nello stato **Bozza**. Una volta che una fattura è passata ad Aperta, non è possibile modificarla. Se devi apportare modifiche, annulla la fattura e creane una nuova.
+</Warning>
+
+## Modifica di una Fattura
+
+Puoi modificare una fattura solo mentre è nello stato **Bozza**.
+
+<Steps>
+  <Step title="Apri la fattura">
+    Nella Dashboard Fatture, trova la fattura in bozza che vuoi modificare. Cliccaci sopra o spunta la casella di controllo accanto ad essa.
+  </Step>
+  <Step title="Clicca su Modifica">
+    Seleziona l'opzione **Modifica** dal menu azioni. Il modulo della fattura si aprirà con tutti i dettagli esistenti precompilati.
+  </Step>
+  <Step title="Apporta le modifiche">
+    Aggiorna qualsiasi campo — dettagli di fatturazione, descrizioni dei servizi, quantità, importi o termini di pagamento.
+  </Step>
+  <Step title="Salva">
+    Clicca su **Salva** per applicare le modifiche.
+  </Step>
+</Steps>
+
+## Invio di una Fattura a un Cliente
+
+Se hai salvato la fattura come bozza e vuoi inviarla in seguito:
+
+<Steps>
+  <Step title="Trova la fattura">
+    Nella Dashboard Fatture, individua la fattura in bozza che vuoi inviare.
+  </Step>
+  <Step title="Clicca su Invia Fattura">
+    Apri la fattura e clicca sul pulsante **Invia Fattura**. AgencyHandy consegna la fattura all'indirizzo e-mail del cliente nel sistema.
+  </Step>
+  <Step title="Conferma la consegna">
+    Controlla il messaggio di conferma per verificare che la fattura sia stata inviata con successo. Lo stato della fattura si aggiorna ad **Aperta**.
+  </Step>
+</Steps>
+
+<Note>
+  Se una fattura è nello stato **Bozza** e aggiorni il nome del servizio, il nuovo nome verrà riflesso nella fattura. Una volta che lo stato cambia ad Aperta, Pagata, Non Recuperabile o Annullata, il nome del servizio sulla fattura è bloccato e non verrà aggiornato.
+</Note>
+
+## Scaricare e Stampare una Fattura
+
+Sia l'agenzia che il cliente possono scaricare una fattura in qualsiasi momento.
+
+<Steps>
+  <Step title="Apri la fattura">
+    Vai alla Dashboard Fatture e seleziona la fattura che vuoi scaricare.
+  </Step>
+  <Step title="Accedi al download/stampa">
+    Clicca sull'opzione **Scarica** o **Stampa** dal menu azioni della fattura.
+  </Step>
+  <Step title="Scegli il formato">
+    Seleziona **PDF** per il download o scegli le impostazioni della stampante per una copia fisica.
+  </Step>
+  <Step title="Salva o stampa">
+    Salva il file sul tuo dispositivo o invialo alla stampante. Dopo la stampa, archivia la fattura o condividila con gli stakeholder secondo necessità.
+  </Step>
+</Steps>
+
+## Impostazione dei Promemoria sulle Fatture
+
+La funzione Promemoria Fattura ti permette di notificare automaticamente i clienti riguardo a fatture imminenti, in scadenza o scadute, così vieni pagato puntualmente senza follow-up manuali.
+
+<Note>
+  I promemoria funzionano solo sulle fatture che hanno stato **Aperta** e una **data di scadenza** impostata.
+</Note>
+
+<Steps>
+  <Step title="Apri le Impostazioni Fatture">
+    Clicca sul pulsante **Impostazioni** in alto a destra nella Dashboard Fatture.
+  </Step>
+  <Step title="Vai alle impostazioni Promemoria">
+    Scorri fino in fondo alla sezione **Modello** nel pannello di sinistra, poi clicca su **Modifica** per aprire il modal di configurazione dei promemoria.
+  </Step>
+  <Step title="Scegli un tipo di promemoria">
+    Seleziona una delle seguenti opzioni:
+
+    - **Promemoria in Sequenza** — crea una serie di promemoria a intervalli che definisci
+    - **Non Inviare Promemoria** — disabilita i promemoria per le fatture selezionate
+  </Step>
+  <Step title="Configura i dettagli del promemoria">
+    Per ogni promemoria nella sequenza:
+    - Scegli il **modello di promemoria** (ad esempio, "Promemoria Pagamento Fattura in Scadenza")
+    - Imposta la **data del promemoria** — ad esempio, 3 giorni prima o dopo la data di scadenza
+    - Specifica se si attiva **prima** o **dopo** la data di scadenza
+  </Step>
+  <Step title="Aggiungi altri promemoria se necessario">
+    Clicca su **+ Aggiungi Altro Promemoria** per creare una sequenza completa di promemoria. Clicca sul pulsante **Elimina** accanto a qualsiasi promemoria per rimuoverlo.
+  </Step>
+  <Step title="Applica alle fatture attive (facoltativo)">
+    Spunta la casella di controllo per **applicare queste impostazioni di promemoria alle fatture attualmente attive** se vuoi che la nuova configurazione copra le fatture già nello stato Aperta.
+  </Step>
+  <Step title="Salva">
+    Clicca su **Aggiorna** per salvare e attivare il programma di promemoria.
+  </Step>
+</Steps>
+
+## Fatture Dirette (Senza ID Ordine)
+
+Quando devi fatturare rapidamente a un cliente senza creare prima un ordine, usa il flusso di lavoro delle Fatture Dirette.
+
+<Steps>
+  <Step title="Avvia una nuova fattura">
+    Vai su **Fatture → Crea Fattura**.
+  </Step>
+  <Step title="Scegli il tipo di destinatario">
+    Seleziona **Individuale** o **Azienda** come tipo di destinatario.
+  </Step>
+  <Step title="Seleziona o inserisci il destinatario">
+    - Scegli un **cliente esistente** dal menu a tendina, oppure
+    - Seleziona **E-mail Indipendente** per digitare qualsiasi indirizzo e-mail — anche uno non registrato come cliente
+  </Step>
+  <Step title="Lascia vuoto il campo ID Ordine">
+    Salta il campo ID ordine. AgencyHandy crea una fattura autonoma non collegata ad alcun ordine.
+  </Step>
+  <Step title="Aggiungi articoli, tasse e sconti">
+    Clicca su **Aggiungi Articolo** per aggiungere voci con nomi, quantità e prezzi. Applica aliquote fiscali e sconti secondo necessità. Il totale si aggiorna automaticamente.
+  </Step>
+  <Step title="Imposta indirizzo di fatturazione e note">
+    Inserisci l'indirizzo di pagamento della fattura e aggiungi eventuali note per il cliente.
+  </Step>
+  <Step title="Invia o salva">
+    Clicca su **Invia Fattura** per consegnarla immediatamente, o su **Salva come Bozza** per esaminarla prima.
+  </Step>
+</Steps>
+
+<Tip>
+  Le Fatture Dirette sono perfette per richieste urgenti, consulenze o qualsiasi lavoro che devi fatturare al di fuori del normale flusso di lavoro degli ordini. Il monitoraggio dei pagamenti per le fatture autonome deve essere gestito manualmente.
+</Tip>

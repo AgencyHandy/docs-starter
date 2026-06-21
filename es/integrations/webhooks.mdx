@@ -1,0 +1,196 @@
+---
+title: "Gestión de webhooks: crear, probar y autenticar"
+sidebarTitle: "Webhooks"
+description: "Configure webhooks en AgencyHandy para enviar datos de eventos en tiempo real a sistemas externos cada vez que cambien pedidos, tareas, facturas u otras entidades."
+---
+
+Los webhooks permiten a AgencyHandy enviar datos a sus sistemas externos en el momento en que algo cambia, sin necesidad de sondeo (polling). Cuando se dispara un evento configurado (por ejemplo, se actualiza un pedido o se crea un ticket), AgencyHandy envía una solicitud HTTP POST con una carga útil JSON a la URL del endpoint que usted especifique. Esto facilita mantener herramientas externas como CRM, sistemas de facturación o paneles personalizados sincronizados con su espacio de trabajo de AgencyHandy en tiempo real.
+
+<Note>
+  Los espacios de trabajo del plan Business Pro admiten hasta **30,000 eventos de webhook** por período de facturación. Verifique los límites de su plan antes de configurar automatizaciones de alto volumen.
+</Note>
+
+## Eventos admitidos
+
+Puede suscribir un webhook a cualquier combinación de los siguientes eventos:
+
+| Categoría | Eventos |
+|---|---|
+| **Service** | Created, Updated, Deleted |
+| **Order** | Created, Updated, Deleted |
+| **Task** | Created, Assigned, Completed, Updated |
+| **Invoice** | Status changed |
+| **Client / User** | New client added, Client/user deleted |
+| **Proposal** | Sent, Received, Accepted, Rejected |
+| **Ticket** | Created, Assigned, Status changed |
+| **Payment** | Received, Failed |
+| **Service Package** | Created, Updated, Deleted |
+
+## Crear un webhook
+
+<Steps>
+  <Step title="Ir a Webhook Management">
+    En la barra lateral izquierda, vaya a **Integrations → Webhooks Management**.
+  </Step>
+
+  <Step title="Autenticar su token">
+    Haga clic en el botón **Management** para autenticar su token de webhook. Este token se utiliza para firmar las cargas útiles salientes, de modo que pueda verificar que se originaron en AgencyHandy.
+  </Step>
+
+  <Step title="Crear un nuevo webhook">
+    Haga clic en **Create New Webhook** para abrir el formulario de configuración del webhook.
+  </Step>
+
+  <Step title="Introducir la URL del endpoint">
+    En el campo **Endpoint URL**, introduzca la URL del sistema externo que debe recibir los datos del webhook. Debe ser un endpoint **POST** de acceso público.
+  </Step>
+
+  <Step title="Seleccionar el tipo de contenido">
+    Elija **JSON** como tipo de contenido. AgencyHandy envía todas las cargas útiles de webhook como `application/json`.
+  </Step>
+
+  <Step title="Seleccionar los eventos del webhook">
+    Elija cada evento que debe activar este webhook. Puede seleccionar eventos de varias categorías — por ejemplo, **Order: Created** e **Invoice: Status changed** pueden apuntar ambos al mismo endpoint.
+  </Step>
+
+  <Step title="Activar el webhook">
+    Active el botón de opción **Active**. Cuando está activo, AgencyHandy entrega las cargas útiles de todos los eventos seleccionados a su endpoint en tiempo real.
+  </Step>
+
+  <Step title="Guardar la configuración">
+    Revise su configuración y luego haga clic en **Save**. El webhook aparece en la lista y comienza a entregar eventos de inmediato.
+  </Step>
+</Steps>
+
+## Probar un webhook
+
+Después de crear un webhook, envíe una carga útil de prueba para confirmar que su endpoint es accesible y procesa los datos correctamente.
+
+<Steps>
+  <Step title="Abrir el webhook">
+    En la lista de Webhooks Management, haga clic en el webhook que desea probar.
+  </Step>
+
+  <Step title="Hacer clic en Test Event">
+    Haga clic en el botón **Test Event** en la página de detalles del webhook.
+  </Step>
+
+  <Step title="Seleccionar un evento de prueba">
+    Elija un evento de ejemplo de la lista de eventos configurados en este webhook (p. ej., **Order: Created**).
+  </Step>
+
+  <Step title="Enviar la carga útil de prueba">
+    Haga clic en **Send**. AgencyHandy publica una carga útil de ejemplo en la URL de su endpoint.
+  </Step>
+
+  <Step title="Verificar el resultado">
+    Compruebe su sistema externo para confirmar que la carga útil de prueba llegó y se procesó como se esperaba. De vuelta en AgencyHandy, haga clic en el webhook para revisar su **historial** — puede ver la solicitud completa, la respuesta que devolvió su endpoint y reenviar cualquier evento anterior si es necesario.
+  </Step>
+</Steps>
+
+<Tip>
+  Use una herramienta como [Webhook.site](https://webhook.site) o [RequestBin](https://requestbin.com) como endpoint temporal durante la configuración para inspeccionar la forma exacta de la carga útil antes de conectar su sistema real.
+</Tip>
+
+## Autenticar las cargas útiles de los webhooks
+
+Cada solicitud de webhook saliente de AgencyHandy incluye un encabezado de firma que su endpoint puede usar para verificar que la carga útil es genuina y no ha sido manipulada.
+
+### Encabezado de firma
+
+```
+x-ah-sig: <signature>
+```
+
+AgencyHandy añade este encabezado a cada solicitud de webhook. Extraiga el valor de las solicitudes entrantes y páselo al endpoint de verificación.
+
+### Verificar la firma de un webhook
+
+Envíe la siguiente solicitud para confirmar que una carga útil es auténtica:
+
+```
+POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature
+Content-Type: application/json
+```
+
+<ParamField body="webhookId" type="string" required>
+  El ID del webhook que recibió el evento. Lo encontrará en la página de detalles del webhook en AgencyHandy.
+</ParamField>
+
+<ParamField body="signature" type="string" required>
+  El valor del encabezado `x-ah-sig` de la solicitud de webhook entrante.
+</ParamField>
+
+<ParamField body="secret" type="string" required>
+  El secreto del webhook que se muestra en la página de detalles del webhook en AgencyHandy.
+</ParamField>
+
+<ParamField body="payload" type="object" required>
+  El cuerpo JSON sin procesar recibido de la solicitud de webhook de AgencyHandy.
+</ParamField>
+
+<CodeGroup>
+
+```javascript JavaScript
+const url = 'https://api.agencyhandy.com/api/v1/webhooks/verify-signature';
+
+const postData = {
+  webhookId: 'your_webhook_id',
+  signature: 'your_signature',   // value of x-ah-sig header
+  secret: 'your_webhook_secret',
+  payload: {},                   // the parsed JSON body from AgencyHandy
+};
+
+const response = await fetch(url, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(postData),
+});
+
+const data = await response.json();
+console.log(data); // { "verification_status": "SUCCESS" }
+```
+
+```bash cURL
+curl -X POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature \
+  -H "Content-Type: application/json" \
+  -d '{
+    "webhookId": "your_webhook_id",
+    "signature": "your_signature",
+    "secret": "your_webhook_secret",
+    "payload": {}
+  }'
+```
+
+</CodeGroup>
+
+**Respuestas**
+
+<ResponseField name="verification_status" type="string">
+  `SUCCESS` cuando la firma es válida. `FAILED` cuando la verificación falla (HTTP 403).
+</ResponseField>
+
+```json Success (200)
+{
+  "verification_status": "SUCCESS"
+}
+```
+
+```json Failure (403)
+{
+  "type": "PermissionError",
+  "status": 403,
+  "verification_status": "FAILED"
+}
+```
+
+<Warning>
+  Mantenga su secreto de webhook confidencial. Rótelo periódicamente y actualice su lógica de verificación inmediatamente después de la rotación. Nunca lo exponga en código del lado del cliente ni en repositorios públicos.
+</Warning>
+
+## Notas importantes
+
+- La URL de su endpoint debe ser una URL **POST HTTPS de acceso público**.
+- Si su endpoint está temporalmente no disponible, consulte el panel de historial del webhook en AgencyHandy — puede **reenviar** cualquier evento anterior directamente desde allí.
+- Supervise regularmente la actividad de los webhooks para detectar entregas fallidas o intentos de acceso no autorizado.
+- Los webhooks que fallan repetidamente pueden ser pausados por AgencyHandy — revise los registros de entrega para detectar problemas a tiempo.

@@ -1,0 +1,260 @@
+---
+title: "Comment créer un service avec des forfaits, des tâches et des FAQ"
+sidebarTitle: "Créer un service"
+description: "Guide étape par étape pour construire un service AgencyHandy : choisir le type de facturation, configurer les forfaits, définir les tâches par défaut, ajouter des FAQ et publier."
+---
+
+Créer un service dans AgencyHandy est la première étape pour vendre les offres de votre agence via la plateforme. Un seul service peut contenir jusqu'à cinq forfaits de tarification, des tâches par défaut automatisées qui se déclenchent lorsqu'une commande est passée, des FAQ pour réduire les questions avant-vente, une pièce jointe de portfolio pour la preuve sociale et un formulaire d'admission optionnel — le tout configuré au même endroit avant la publication.
+
+<Note>
+  Vous avez besoin d'un rôle **Super Admin** ou **Admin** pour créer des services. Les autres rôles nécessitent des autorisations de service explicites pour accéder à cette section.
+</Note>
+
+<Steps>
+  <Step title="Choisissez le type de service">
+    Ouvrez **Services** dans la barre latérale gauche et cliquez sur **+ Service** pour démarrer une nouvelle fiche.
+
+    En haut de la page, sélectionnez votre modèle de facturation :
+
+    - **Service ponctuel** — le client paie un montant unique et reçoit le livrable une seule fois. Idéal pour les projets avec une portée claire : créations de sites web, forfaits de logo, audits, etc.
+    - **Service par abonnement** — la facturation se répète automatiquement selon le calendrier que vous définissez. Idéal pour les forfaits récurrents, le contenu continu, les services gérés ou les plans de maintenance.
+
+    <Warning>
+      Le type de service est verrouillé après l'enregistrement. Si vous avez besoin d'un modèle de facturation différent, créez un nouveau service.
+    </Warning>
+  </Step>
+
+  <Step title="Ajoutez les détails du service">
+    Développez la section **Service Details** et renseignez les champs suivants :
+
+    **Service Name** *(obligatoire)*
+    C'est ainsi que le service apparaît aux clients partout dans la plateforme — dans le catalogue, sur les factures et dans l'espace de travail de la commande. Rendez-le clair et descriptif.
+
+    **Media Upload**
+    Téléchargez une ou plusieurs images d'aperçu pour représenter visuellement le service. Des images de haute qualité augmentent la confiance des clients et les taux de conversion.
+
+    **Service Description**
+    Rédigez une explication détaillée de ce que le service inclut, à qui il s'adresse et ce à quoi les clients peuvent s'attendre. Utilisez cet espace pour différencier votre offre.
+
+    **Tax Settings**
+    Choisissez si la taxe est **inclusive** (déjà comprise dans le prix) ou **exclusive** (ajoutée au moment du paiement).
+
+    **Currency**
+    Définissez la devise pour tous les forfaits de ce service. Tous les forfaits d'un même service partagent la même devise.
+
+    <Tip>
+      Téléchargez des images d'aperçu au ratio 16:9 pour la meilleure présentation dans le portail client.
+    </Tip>
+  </Step>
+
+  <Step title="Créez des forfaits">
+    Développez **Package Details** et cliquez sur **+ New Package** pour ajouter votre premier niveau de tarification. Vous pouvez créer jusqu'à **5 forfaits** par service.
+
+    Pour chaque forfait, configurez les éléments suivants :
+
+    **Package Name** *(obligatoire)*
+    Le nom que voient les clients, comme *Basic*, *Standard* ou *Premium*.
+
+    **Package Icon** *(optionnel)*
+    Sélectionnez une icône intégrée ou téléchargez-en une personnalisée. Les icônes téléchargées doivent faire **32 × 32 pixels**.
+
+    **Package Media** *(optionnel)*
+    Téléchargez une image de couverture spécifique à ce forfait. Formats acceptés : PNG, JPG, JPEG. Taille de fichier maximale : **5 Mo**. Maximum 1 fichier par forfait. Ratio recommandé : **16:9**.
+
+    **Package Brief** *(optionnel)*
+    Un résumé en une ligne des livrables de ce forfait. Maximum **140 caractères**.
+
+    **What's Included** *(obligatoire)*
+    Listez les livrables spécifiques inclus dans ce forfait. Vous pouvez ajouter jusqu'à **15 éléments de ligne** par forfait. Chaque puce doit décrire un livrable concret (par exemple, *« 5 articles de blog par mois, jusqu'à 1 000 mots chacun »*).
+
+    <Tip>
+      Après avoir créé plusieurs forfaits, glissez-les pour réorganiser leur affichage aux clients. Marquez-en un comme **Most Popular** pour attirer l'attention sur votre niveau recommandé.
+    </Tip>
+  </Step>
+
+  <Step title="Définissez les règles de tarification et de livraison">
+    Dans chaque forfait, définissez les champs de tarification de base et les éventuels contrôles optionnels :
+
+    **Amount** *(obligatoire)*
+    Le prix qu'un client paie pour ce forfait.
+
+    **Delivery Time** *(obligatoire)*
+    Le nombre estimé de jours pour livrer le service après l'achat.
+
+    **Contrôles de tarification optionnels :**
+
+    <Accordion title="Add Discount">
+      Appliquez une réduction en pourcentage ou à montant fixe au prix de ce forfait. Le prix réduit s'affiche aux clients à côté du prix d'origine, créant un effet promotionnel efficace.
+    </Accordion>
+
+    <Accordion title="Add Trial Period (abonnement uniquement)">
+      Offrez un essai gratuit ou à prix réduit avant le début de la facturation régulière de l'abonnement. Cette option n'est disponible que sur les services de type abonnement.
+    </Accordion>
+
+    <Accordion title="Add Quantity Limit">
+      Plafonnez le nombre d'unités qu'un client peut acheter en une seule session de paiement. Utilisez ceci pour les forfaits à disponibilité limitée ou les services soumis à des contraintes de capacité.
+    </Accordion>
+
+    <Accordion title="Add More Price Details">
+      Décomposez le coût total en éléments de ligne individuels — par exemple, en affichant *prix de base + frais d'installation + coût par unité*. Chaque libellé de décomposition prend en charge un maximum de **20 caractères**.
+    </Accordion>
+
+    <Note>
+      Tous les champs obligatoires (Amount et Delivery Time) doivent être complétés pour chaque forfait avant de pouvoir publier le service.
+    </Note>
+  </Step>
+
+  <Step title="Ajoutez des tâches par défaut pour l'automatisation">
+    Chaque forfait comprend une section **Default Tasks**. Les tâches définies ici sont automatiquement générées dans l'espace de travail de la commande dès qu'un client achète ce forfait — aucune configuration manuelle nécessaire après chaque vente.
+
+    Cliquez sur **+ Add More** pour ouvrir la fenêtre de création de tâche. Pour chaque tâche, vous pouvez configurer :
+
+    | Champ | Détails |
+    |---|---|
+    | **Task Name** | Obligatoire ; maximum **160 caractères** |
+    | **Description** | Instructions détaillées pour l'assigné |
+    | **Assignee** | Membre de l'équipe responsable de l'accomplissement de cette tâche |
+    | **Attachment** | Téléchargez des fichiers de référence ; formats acceptés : csv, odt, doc, docx, htm, html, pdf, ppt, pptx, txt, xls, xlsx, jpg, jpeg, png, gif, webp, svg, ai, mp4, mp3, wav, zip, rar ; taille de fichier max **1 Go** par fichier |
+    | **Label** | Étiquetez la tâche pour le filtrage et le reporting |
+    | **Status** | Statut initial lors de la création de la tâche |
+    | **Client Review** | Activez si cette tâche nécessite la validation du client avant d'être considérée comme terminée |
+
+    Ajoutez autant de tâches que nécessaire pour couvrir entièrement le processus de livraison de ce forfait. Des tâches par défaut cohérentes garantissent que chaque commande suit le même flux de travail contrôlé en qualité.
+
+    <Tip>
+      Mappez vos tâches par défaut à votre procédure interne (SOP). Par exemple, un forfait *Gestion des réseaux sociaux* pourrait générer automatiquement des tâches comme *Brouillon du calendrier de contenu*, *Approbation du client*, *Programmer les publications* et *Rapport mensuel*.
+    </Tip>
+  </Step>
+
+  <Step title="Ajoutez des FAQ et un portfolio">
+    Développez la section **Additional Information** pour ajouter deux éléments optionnels mais à fort impact :
+
+    **Portfolio Attachment**
+    Liez une catégorie de portfolio à ce service afin que les clients puissent parcourir des échantillons pertinents de vos travaux passés directement sur la fiche de service. Vous pouvez connecter une catégorie de portfolio existante ou en créer une nouvelle depuis cet écran.
+
+    **Foire aux questions (FAQ)**
+    Cliquez sur **+ Add** pour insérer une paire question-réponse. Ajoutez autant de FAQ que pertinent — les sujets courants incluent :
+
+    - Originalité du contenu et droits
+    - Processus de révision et de retour
+    - Limites de la portée et ce qui n'est *pas* inclus
+    - Délais et cadence de communication
+    - Politiques de paiement et de remboursement
+
+    Des FAQ bien rédigées réduisent les allers-retours avant l'achat et aident les clients à s'auto-qualifier.
+  </Step>
+
+  <Step title="Attachez un formulaire d'admission">
+    Un formulaire d'admission collecte les informations dont vous avez besoin auprès d'un client avant le début du travail — par exemple, les directives de marque, les identifiants d'accès, le public cible ou les objectifs du projet.
+
+    - Cliquez sur **+ Create New Intake Form** pour construire un formulaire à partir de zéro, ou sélectionnez un formulaire existant dans le menu déroulant.
+    - Si ce service ne nécessite pas de formulaire d'admission, cliquez sur **Skip** pour passer cette section.
+    - Cliquez sur **Update** pour enregistrer votre sélection de formulaire d'admission et continuer.
+
+    <Note>
+      Le formulaire d'admission est optionnel mais fortement recommandé pour les services qui nécessitent des informations spécifiques au client avant que la livraison puisse commencer.
+    </Note>
+  </Step>
+
+  <Step title="Publiez le service">
+    En bas de l'éditeur de service :
+
+    1. Basculez **Publish this Service** sur la position ON.
+    2. Cliquez sur **Save** (ou **Update Service** si vous modifiez un service existant).
+
+    Une fois publié, le service devient immédiatement visible par les clients dans le portail. Si vous laissez le commutateur désactivé, le service est enregistré comme brouillon et n'est visible que par votre équipe.
+
+    <Tip>
+      Utilisez le mode brouillon pour préparer un service à l'avance et le publier au moment du lancement — utile pour les promotions saisonnières ou les annonces de nouvelles offres.
+    </Tip>
+  </Step>
+</Steps>
+
+## Configuration des modules complémentaires
+
+Les modules complémentaires sont des extras optionnels que les clients peuvent sélectionner au moment du paiement — par exemple, *Livraison express*, *Révisions supplémentaires* ou un *Rapport mensuel*. Ils vous permettent de faire de la vente incitative sur des services complémentaires sans créer de fiches entièrement nouvelles.
+
+### Créer un module complémentaire
+
+<Steps>
+  <Step title="Ouvrez les modules complémentaires">
+    Allez dans **Services** dans la barre latérale, cliquez sur le bouton **flèche vers le bas** à côté de l'en-tête Services et sélectionnez **Add-Ons**.
+  </Step>
+  <Step title="Créez un nouveau module complémentaire">
+    Cliquez sur **+ Add New Add-on** et renseignez :
+
+    - **Add-on Name**
+    - **Description** — utilisez l'éditeur de texte enrichi pour expliquer clairement ce que le module complémentaire inclut
+    - **Pricing Type** — choisissez *One-Time* ou *Subscription*
+    - **Détails de tarification :**
+      - *Ponctuel :* saisissez le montant et la devise
+      - *Abonnement :* définissez l'intervalle de facturation (par exemple, tous les 1 mois), une limite optionnelle de cycle de facturation, les frais d'abonnement et la devise
+  </Step>
+  <Step title="Publiez et enregistrez">
+    Basculez **Publish** sur ON, puis cliquez sur **Create**. Seuls les modules complémentaires publiés sont visibles lors de leur connexion aux formulaires de commande.
+  </Step>
+</Steps>
+
+### Attacher un module complémentaire à un formulaire de commande
+
+<Steps>
+  <Step title="Ouvrez le formulaire de commande">
+    Accédez à **Forms** et ouvrez le formulaire de commande pertinent.
+  </Step>
+  <Step title="Sélectionnez le service">
+    Choisissez le service auquel vous souhaitez attacher le module complémentaire.
+  </Step>
+  <Step title="Ajoutez les modules complémentaires">
+    Sélectionnez la section **Add-ons** dans le panneau de gauche, puis choisissez les modules complémentaires que vous souhaitez associer à ce service.
+  </Step>
+  <Step title="Enregistrez le formulaire">
+    Cliquez sur **Save**. Les clients verront désormais les modules complémentaires sélectionnés comme extras optionnels au moment du paiement.
+  </Step>
+</Steps>
+
+<Note>
+  Les modules complémentaires doivent utiliser la même devise que le service auquel ils sont attachés. Si les devises ne correspondent pas, le module complémentaire n'apparaîtra pas dans la liste de sélection.
+</Note>
+
+### Comportement de facturation des modules complémentaires par abonnement
+
+Lorsque les cycles de facturation d'un service et d'un module complémentaire par abonnement diffèrent, AgencyHandy gère le chevauchement automatiquement :
+
+<Accordion title="Le module complémentaire a plus de cycles que le service">
+  Le service et le module complémentaire sont facturés ensemble pendant la durée du service. Après la fin du service, le module complémentaire continue d'être facturé seul pour ses cycles restants.
+
+  **Exemple :** Le service dure 4 cycles, le module complémentaire dure 5 cycles → facturés ensemble pendant 4 cycles, le module complémentaire facturé seul pendant 1 cycle supplémentaire.
+</Accordion>
+
+<Accordion title="Le module complémentaire a moins de cycles que le service">
+  Le service et le module complémentaire sont facturés ensemble pendant la durée du module complémentaire. Après la fin du module complémentaire, le service continue d'être facturé seul pour ses cycles restants.
+
+  **Exemple :** Le service dure 5 cycles, le module complémentaire dure 3 cycles → facturés ensemble pendant 3 cycles, le service facturé seul pendant 2 cycles supplémentaires.
+</Accordion>
+
+## Modifier un service
+
+Après la publication d'un service, vous pouvez mettre à jour n'importe quel champ sans interrompre les commandes existantes.
+
+1. Allez dans **Services** et trouvez le service que vous souhaitez mettre à jour.
+2. Cliquez sur le **menu à trois points** (⋮) sur le côté droit de la ligne du service.
+3. Sélectionnez **Edit**. L'éditeur de service s'ouvre avec tous les paramètres existants renseignés.
+4. Apportez vos modifications — mettez à jour le titre, la description, la tarification, les médias, les forfaits, les tâches ou les FAQ.
+5. Cliquez sur **Update Service** pour enregistrer.
+
+<Warning>
+  Les modifications de la tarification ou du délai de livraison d'un forfait ne prennent effet que pour les **nouvelles commandes**. Les commandes existantes ne sont pas affectées rétroactivement.
+</Warning>
+
+## Référence des champs
+
+| Champ | Limite |
+|---|---|
+| Forfaits par service | Jusqu'à 5 |
+| Livrables par forfait (What's Included) | Jusqu'à 15 |
+| Package Brief | 140 caractères |
+| Taille de l'icône du forfait | 32 × 32 px |
+| Taille du fichier média du forfait | 5 Mo (PNG, JPG, JPEG) |
+| Nom de la tâche | 160 caractères |
+| Taille du fichier de pièce jointe de la tâche | 1 Go par fichier |
+| Libellé de décomposition du prix | 20 caractères |

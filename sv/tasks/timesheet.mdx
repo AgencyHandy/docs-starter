@@ -1,0 +1,172 @@
+---
+title: "Tidsspårning och tidrapporthantering i AgencyHandy"
+sidebarTitle: "Tidrapport"
+description: "Logga tid med en live-timer eller manuell registrering, filtrera arbetsloggar efter uppgift, medlem eller tjänst, och exportera tidrapportdata som CSV eller XLSX i AgencyHandy."
+---
+
+Tidrapportfunktionen i AgencyHandy ger dig en central panel för att spåra varje timme ditt team lägger på uppgifter. Du kan starta en live-timer på vilken uppgift som helst, logga tid i efterhand med en manuell post och sedan dela upp data efter datumintervall, teammedlem eller tjänst. När du behöver rapportera produktivitet eller fakturera för tid kan du exportera allt till CSV eller XLSX med några klick. Det är det viktiga verktyget för att hålla ditt team ansvarigt och din tidsbaserade fakturering korrekt.
+
+## Vem kan använda tidraporttfunktioner
+
+| Funktion | Super Admin | Admin | PM | Anställd |
+|---------|:-----------:|:-----:|:--:|:--------:|
+| Visa egna tidsloggar | ✅ | ✅ | ✅ | ✅ |
+| Logga tid för andra | ✅ | ✅ | ✅ | ❌ |
+| Redigera tidsposter | ✅ | ✅ | ✅ | ❌ |
+| Exportera tidrapportdata | ✅ | ✅ | ✅ | ❌ |
+
+<Note>
+  Uppgifter måste finnas innan tid kan spåras mot dem. Se till att uppgifter skapas inom beställningar innan du försöker logga tid.
+</Note>
+
+## Visa tidrapporten
+
+<Steps>
+  <Step title="Öppna tidrapporten">
+    Klicka på **Tidrapport** i den huvudsakliga vänstra sidopanelen. Du ser en tabell med alla tidsloggar för ditt team.
+
+    Varje rad visar datum, teammedlem, uppgiftsnamn, tjänst, loggad tid och eventuella anteckningar kopplade till posten.
+  </Step>
+</Steps>
+
+## Lägga till en tidspost
+
+Du har två alternativ för att logga tid: en live-timer för pågående arbete, eller en manuell post för tid du redan har slutfört.
+
+<Tabs>
+  <Tab title="Starta en timer">
+    <Steps>
+      <Step title="Välj en uppgift">
+        I tidrapporten hittar eller väljer du uppgiften du ska börja arbeta på.
+      </Step>
+      <Step title="Klicka på Starta timer">
+        Klicka på **Starta timer** för att börja spåra tid i realtid. Timern körs tills du stoppar den.
+      </Step>
+      <Step title="Stoppa när du är klar">
+        Klicka på **Stoppa** när du avslutar arbetet. AgencyHandy loggar automatiskt den förflutna tiden mot den valda uppgiften.
+      </Step>
+    </Steps>
+
+    <Tip>
+      Använd timern för pågående arbete för att säkerställa exakt spårning. Att manuellt avrunda eller uppskatta tid i efterhand är mindre exakt än att låta timern köra.
+    </Tip>
+  </Tab>
+  <Tab title="Manuell post">
+    <Steps>
+      <Step title="Klicka på + Lägg till post">
+        I tidrapporten klickar du på **+ Lägg till post**. Ett formulär visas.
+      </Step>
+      <Step title="Fyll i postuppgifterna">
+        - **Uppgift** — välj uppgiften som denna tid gäller
+        - **Teammedlem** — tilldela tiden till rätt person (Admins och Projektledare kan logga för andra)
+        - **Tidsåtgång** — ange timmar och minuter
+        - **Anteckningar** — lägg till kontext om vad som arbetades på
+      </Step>
+      <Step title="Spara">
+        Klicka på **Spara** för att registrera posten. Den visas i tidrapporten omedelbart.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Filtrera efter datumintervall
+
+Använd datumfilter för att fokusera på en specifik tidsperiod.
+
+<Steps>
+  <Step title="Öppna datumfilter">
+    Klicka på datumfilterkontrollen längst upp till höger i tidrapporten.
+  </Step>
+  <Step title="Välj ett intervall">
+    Välj från förinställda intervall:
+    - **Dagligen** — bara dagens loggar
+    - **Veckovis** — den aktuella veckan
+    - **Månadsvis** — den aktuella månaden
+
+    För längre projekt eller historisk rapportering väljer du ett **Anpassat** datumintervall genom att ange ett start- och slutdatum.
+  </Step>
+  <Step title="Tillämpa">
+    Klicka på **Tillämpa** för att uppdatera tabellen med loggar från den valda perioden.
+  </Step>
+</Steps>
+
+<Tip>
+  Filtrera innan du exporterar för att generera fokuserade rapporter. Att exportera hela den ofiltrerade tidrapporten kan producera mycket stora filer för aktiva byråer.
+</Tip>
+
+## Gruppera poster
+
+Gruppering arrangerar om hur tidrapportraderna är organiserade utan att ta bort data. Det hjälper dig att läsa och analysera loggarna snabbare.
+
+<Steps>
+  <Step title="Öppna rullgardinsmenyn Gruppera efter">
+    Klicka på rullgardinsmenyn **Gruppera efter** nära toppen av tidrapporten.
+  </Step>
+  <Step title="Välj en gruppering">
+    Välj från följande alternativ:
+
+    | Gruppera efter alternativ | Vad det visar |
+    |----------------|---------------|
+    | **Uppgiftsnamn** | Alla tidsposter grupperade under varje uppgift |
+    | **Teammedlem** | Alla poster grupperade under varje person |
+    | **Tjänst → Uppgiftsnamn** | Poster grupperade efter tjänst, sedan nedbrutet per uppgift inom varje tjänst |
+  </Step>
+</Steps>
+
+<Note>
+  Gruppering är en visuell förändring — det påverkar inte underliggande data eller vad som exporteras. Exporter inkluderar alltid alla synliga rader.
+</Note>
+
+## Visa uppgiftsuppgifter från tidrapporten
+
+<Steps>
+  <Step title="Klicka på ett uppgiftsnamn">
+    I tidrapporten klickar du på valfritt **Uppgiftsnamn**. AgencyHandy navigerar dig till den uppgiftens fullständiga detaljsida.
+  </Step>
+  <Step title="Granska uppgiftskontexten">
+    På uppgiftsdetaljsidan hittar du den fullständiga tidslogghistoriken, bifogade anteckningar, tilldelade, status och annan uppgiftsnivåinformation. Använd den här vyn för att undersöka poster eller verifiera vilket arbete som gjordes.
+  </Step>
+</Steps>
+
+## Exportera tidrapportdata
+
+Exportera din tidrapport för lönehantering, klientfaktureringsrapporter eller externa projekthanteringsverktyg.
+
+<Steps>
+  <Step title="Tillämpa filter först (rekommenderas)">
+    Använd datumintervallsfiltret för att begränsa exporten till den period du behöver. Detta håller filen fokuserad och hanterbar.
+  </Step>
+  <Step title="Klicka på Exportera">
+    Klicka på knappen **Exportera** längst upp i tidrapporten.
+  </Step>
+  <Step title="Välj ett format">
+    Välj antingen:
+    - **CSV** — för kalkylbladsverktyg som Excel, Google Sheets eller datapipelines
+    - **XLSX** — för Excel-formaterade arbetsböcker med bevarad kolumnformatering
+  </Step>
+  <Step title="Ladda ned filen">
+    Filen laddas ned till din enhet automatiskt. Varje export inkluderar alla synliga kolumner: datum, teammedlem, uppgiftsnamn, tjänst, loggad tid och anteckningar.
+  </Step>
+</Steps>
+
+<Warning>
+  Om exporten inte startar en nedladdning kan din webbläsares **popup-blockerare** förhindra filen från att laddas ned. Inaktivera popup-blockering för AgencyHandy och försök igen.
+</Warning>
+
+## Ytterligare anteckningar
+
+<Accordion title="Timer kontra manuell post">
+  Timern är bäst för aktivt, realtidsarbete. Manuella poster är bäst när du glömde att starta timern eller behöver registrera tid i efterhand. Båda metoderna producerar identiska loggposter i tidrapporten.
+</Accordion>
+
+<Accordion title="Gruppering kontra filtrering">
+  Filter **minskar** vilka rader som visas i tabellen. Gruppering **organiserar om** raderna som redan är synliga. Du kan tillämpa båda samtidigt — filtrera till ett datumintervall och sedan gruppera efter teammedlem för att se varje persons totaler för den perioden.
+</Accordion>
+
+<Accordion title="Exporter inkluderar alla synliga kolumner">
+  Varje export fångar det aktuella tillståndet för den synliga tabellen: datum, användare, uppgift, tjänst, tid och anteckningar. Om du har tillämpat en gruppering återspeglar exporten grupperingsstrukturen också.
+</Accordion>
+
+<Accordion title="Anpassade intervall för historisk data">
+  För långvariga projekt eller kvartalsvisa granskningar använder du det anpassade datumintervallsalternativet för att hämta historisk tidrapportdata bortom de förinställda dagliga/veckovisa/månatliga fönstren.
+</Accordion>

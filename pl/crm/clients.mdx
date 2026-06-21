@@ -1,0 +1,218 @@
+---
+title: "Zarządzanie klientami: profile, import i konfiguracja"
+sidebarTitle: "Klienci"
+description: "Twórz i importuj profile klientów w AgencyHandy, śledź zamówienia i faktury, zarządzaj dostępem do portalu i organizuj klientów według kategorii."
+---
+
+Sekcja Klienci w CRM AgencyHandy stanowi centralne centrum dla każdej organizacji lub osoby, która przeszła etap potencjalnego klienta. Tutaj możesz tworzyć profile klientów ręcznie lub hurtowo, aktualizować dane kontaktowe, śledzić ostatnie zamówienia i faktury, segmentować klientów w niestandardowe kategorie oraz monitorować dostęp do portalu — wszystko z jednego widoku listy.
+
+<Note>
+  Potrzebujesz roli **Super Administratora** lub **Administratora**, aby tworzyć, edytować, importować lub konfigurować profile klientów. Menedżerowie mogą przeglądać szczegóły klientów i dzienniki aktywności.
+</Note>
+
+## Tworzenie profilu klienta
+
+Gdy wprowadzasz nowego klienta, AgencyHandy tworzy dla niego konto w portalu i wysyła bezpieczne zaproszenie do logowania.
+
+<Steps>
+  <Step title="Przejdź do sekcji Klienci">
+    Zaloguj się na swoje konto AgencyHandy, a następnie kliknij **CRM** w lewym pasku bocznym i wybierz zakładkę **Klienci**.
+  </Step>
+  <Step title="Otwórz formularz tworzenia">
+    Kliknij **+ Utwórz klienta** w prawym górnym rogu. Otworzy się formularz.
+  </Step>
+  <Step title="Wprowadź dane klienta">
+    Wypełnij szczegóły klienta:
+
+    - **Imię / Nazwisko** *(obowiązkowe)*
+    - **E-mail** *(obowiązkowy — używany do wysyłania zaproszenia do portalu)*
+    - **Nazwa firmy**
+    - **Numer telefonu**
+    - **Kraj, Województwo/Stan, Miasto, Kod pocztowy**
+    - **Kategoria** — przypisz istniejącą kategorię konfiguracji, jeśli ma zastosowanie
+  </Step>
+  <Step title="Zapisz profil">
+    Kliknij **Utwórz**. Profil zostaje natychmiast dodany do listy klientów.
+  </Step>
+</Steps>
+
+<Note>
+  Po utworzeniu profilu klient otrzymuje e-mail zawierający bezpieczny adres URL logowania. Kliknięcie tego adresu URL aktywuje jego konto w portalu i umożliwia pierwsze logowanie.
+</Note>
+
+## Importowanie klientów z CSV
+
+Jeśli migrujesz z innej platformy lub masz arkusz kalkulacyjny z istniejącymi klientami, możesz zaimportować ich wszystkich naraz.
+
+<Steps>
+  <Step title="Kliknij Importuj">
+    Na liście klientów kliknij przycisk **Importuj** w prawym górnym rogu.
+  </Step>
+  <Step title="Prześlij plik CSV">
+    Przeciągnij i upuść plik na obszar przesyłania lub kliknij, aby go przeglądać i wybrać. AgencyHandy akceptuje pliki CSV zawierające następujące pola:
+
+    - Imię i nazwisko klienta *(wymagane)*
+    - E-mail *(wymagany)*
+    - Nazwa firmy
+    - Kraj
+    - Województwo/Stan
+    - Miasto
+    - Kod pocztowy
+  </Step>
+  <Step title="Mapuj kolumny">
+    AgencyHandy automatycznie wykrywa nazwy kolumn pasujące do nazw pól systemu. Dla niezgodnych kolumn użyj rozwijanych menu, aby ręcznie dopasować je do odpowiednich pól systemowych.
+  </Step>
+  <Step title="Podgląd i potwierdzenie">
+    Sprawdź tabelę podglądu, aby wykryć wszelkie problemy z formatowaniem przed zapisaniem danych.
+  </Step>
+  <Step title="Zakończ import">
+    Kliknij **Zapisz**. Po pomyślnym zaimportowaniu wszystkich rekordów pojawi się komunikat potwierdzający.
+  </Step>
+</Steps>
+
+<Tip>
+  Jeśli nagłówki kolumn w arkuszu kalkulacyjnym dokładnie odpowiadają nazwom pól AgencyHandy (np. „email”, „company name”), maper wypełnia się automatycznie — bez potrzeby ręcznego dopasowywania.
+</Tip>
+
+## Eksportowanie klientów
+
+Utwórz kopię zapasową bazy danych klientów lub udostępnij ją interesariuszom, eksportując do CSV lub Excel.
+
+<Steps>
+  <Step title="Kliknij Eksportuj">
+    Na liście klientów kliknij przycisk **Eksportuj** w prawym górnym rogu.
+  </Step>
+  <Step title="Dostosuj eksport">
+    Wybierz, które kolumny uwzględnić — wybierz **Wszystkie kolumny** dla pełnego eksportu lub wybierz określone pola, takie jak imię i nazwisko, dane kontaktowe, firma lub adres.
+  </Step>
+  <Step title="Wybierz format">
+    Wybierz **CSV** lub **XLSX** w zależności od zamierzonego użycia.
+  </Step>
+  <Step title="Pobierz plik">
+    Kliknij **Eksportuj**. Plik zostanie wygenerowany i pobrany na Twoje urządzenie. Przechowuj go bezpiecznie, aby chronić dane klientów.
+  </Step>
+</Steps>
+
+## Edytowanie profilu klienta
+
+<Steps>
+  <Step title="Wybierz klienta">
+    Na liście klientów kliknij pole wyboru obok klienta, którego chcesz zaktualizować, lub kliknij bezpośrednio na jego imię i nazwisko, aby otworzyć jego profil.
+  </Step>
+  <Step title="Wejdź w tryb edycji">
+    Kliknij przycisk **Edytuj** w prawym górnym rogu profilu klienta. Pojawi się formularz edycji.
+  </Step>
+  <Step title="Zaktualizuj informacje">
+    Zmień dowolne pola — imię i nazwisko, e-mail, telefon, adres, firmę lub kategorię.
+  </Step>
+  <Step title="Zapisz zmiany">
+    Kliknij **Aktualizuj**. Komunikat potwierdzający potwierdza, że profil został pomyślnie zapisany.
+  </Step>
+</Steps>
+
+## Wyszukiwanie, sortowanie i filtrowanie
+
+Lista klientów daje Ci kilka narzędzi do szybkiego znalezienia odpowiedniego klienta:
+
+<CardGroup cols={2}>
+  <Card title="Szukaj według nazwy" icon="magnifying-glass">
+    Wpisz imię i nazwisko klienta w pasku wyszukiwania, aby natychmiast odfiltrować listę.
+  </Card>
+  <Card title="Filtruj według firmy" icon="building">
+    Zawęź listę do klientów powiązanych z określoną firmą.
+  </Card>
+  <Card title="Filtruj według e-maila" icon="envelope">
+    Znajdź klienta, gdy znasz jego adres e-mail, ale nie imię i nazwisko.
+  </Card>
+  <Card title="Filtruj według statusu" icon="circle-check">
+    Wyświetlaj tylko aktywnych, nieaktywnych lub zaproszonych klientów.
+  </Card>
+  <Card title="Sortuj alfabetycznie" icon="arrow-down-a-z">
+    Sortuj pełną listę klientów od A do Z lub od Z do A według nazwy dla szybkiego odniesienia.
+  </Card>
+  <Card title="Filtruj według kategorii" icon="tag">
+    Wyświetlaj tylko klientów przypisanych do określonej kategorii konfiguracji.
+  </Card>
+</CardGroup>
+
+## Śledzenie aktywności klientów
+
+W każdym profilu klienta znajdziesz zakładki, które dają Ci na bieżąco obraz zaangażowania tego klienta z Twoją agencją:
+
+<Accordion title="Ostatnie zamówienia">
+  Przeglądaj historię wszystkich zamówień złożonych przez klienta, w tym nazwę usługi, pakiet, status i datę. Daje to szybki przegląd historii zakupów bez opuszczania CRM.
+</Accordion>
+
+<Accordion title="Ostatnie zgłoszenia">
+  Zobacz wszystkie zgłoszenia obsługi lub serwisu przesłane przez klienta. Użyj tego widoku, aby priorytetyzować odpowiedzi i upewnić się, że żadna prośba nie zostanie pominięta.
+</Accordion>
+
+<Accordion title="Ostatnie faktury">
+  Uzyskaj dostęp do rejestru wszystkich faktur wystawionych dla klienta, w tym statusu płatności. Pomaga to monitorować zaległe salda i historię faktur w jednym miejscu.
+</Accordion>
+
+## Konfiguracja klienta (kategorie)
+
+Konfiguracja klienta pozwala Ci tworzyć kolorowe kategorie do segmentowania listy klientów — na przykład *Wysoki priorytet*, *Retainer* lub *Wstrzymany*. Kategorie pojawiają się jako opcje filtrów na liście klientów, dzięki czemu możesz natychmiast wyświetlić odpowiednią grupę.
+
+<Steps>
+  <Step title="Otwórz Konfigurację">
+    Z sekcji Klienci kliknij przycisk **Konfiguracja**.
+  </Step>
+  <Step title="Utwórz nową kategorię">
+    Kliknij **+ Utwórz kategorię**.
+  </Step>
+  <Step title="Wprowadź szczegóły kategorii">
+    - **Nazwa kategorii** — unikalna, opisowa etykieta (np. *Klienci korporacyjni*)
+    - **Krótki opis** — krótka notatka wyjaśniająca cel kategorii
+    - **Kolor** — wybierz wyróżniający się kolor dla szybkiej identyfikacji wizualnej
+  </Step>
+  <Step title="Zapisz kategorię">
+    Kliknij **Utwórz**. Kategoria jest teraz dostępna do przypisania podczas edytowania profili klientów.
+  </Step>
+  <Step title="Przypisz klientów do kategorii">
+    Otwórz dowolny profil klienta, kliknij **Edytuj**, wybierz pole **Kategoria** i wybierz odpowiednią kategorię. Kliknij **Aktualizuj**, aby zapisać.
+  </Step>
+</Steps>
+
+<Tip>
+  Używaj spójnych konwencji kolorów w kategoriach — na przykład czerwony dla klientów wymagających pilnej uwagi i zielony dla w pełni wdrożonych kont — aby lista była szybko czytelna na pierwszy rzut oka.
+</Tip>
+
+## Dziennik aktywności klienta
+
+Dziennik aktywności rejestruje każde zdarzenie logowania i wylogowania z konta portalu klienta, dając Ci jasną ścieżkę audytu jego zaangażowania.
+
+**Aby wyświetlić dziennik:**
+
+1. Przejdź do **Klientów** i otwórz profil konkretnego klienta.
+2. Kliknij zakładkę **Dziennik aktywności** na górnym pasku nawigacyjnym profilu.
+3. Przejrzyj chronologiczną listę zdarzeń uwierzytelniania.
+
+**Co pokazuje dziennik:**
+
+- Dokładna data i znacznik czasu każdego **logowania**
+- Dokładna data i znacznik czasu każdego **wylogowania**
+- Bieżąca historia wszystkich zdarzeń uwierzytelniania
+
+Dziennik aktualizuje się w czasie rzeczywistym i nie może być edytowany ani usuwany. Klienci nie mają dostępu do własnego dziennika aktywności — jest on przeznaczony wyłącznie do celów administracyjnych i zapewnienia zgodności.
+
+<Note>
+  Na tym etapie dziennik aktywności rejestruje tylko zdarzenia uwierzytelniania (logowanie i wylogowanie). Działania wykonywane w portalu — takie jak przeglądanie zamówień — nie są jeszcze tutaj rejestrowane.
+</Note>
+
+## Wysyłanie e-maila do klienta
+
+Możesz wysłać e-mail do dowolnego klienta bezpośrednio z jego profilu, nie opuszczając AgencyHandy. Otwórz profil klienta i użyj opcji **E-mail**, aby skomponować wiadomość. Pole **Do** jest wstępnie wypełnione adresem e-mail klienta.
+
+## Podszywanie się pod klienta
+
+Administratorzy mogą podszywać się pod konto klienta, aby zobaczyć dokładnie to, co klient widzi w swoim portalu — przydatne do rozwiązywania problemów z dostępem lub przeprowadzania klienta przez proces podczas rozmowy pomocowej. Poszukaj opcji **Podszywaj się** wewnątrz profilu klienta.
+
+<Warning>
+  Używaj podszywania się wyłącznie do celów wsparcia. Wszelkie działania podjęte podczas podszywania się pod klienta są wykonywane w jego imieniu i będą odzwierciedlone na jego koncie.
+</Warning>
+
+## Konta firmowe (B2B)
+
+Jeśli pracujesz z firmami, a nie z osobami fizycznymi, możesz ustawić **Nazwę firmy** w dowolnym profilu klienta, aby grupować kontakty w ramach tej samej organizacji. Listę klientów można filtrować według firmy, dzięki czemu łatwo jest wyświetlić wszystkie kontakty w danym koncie.

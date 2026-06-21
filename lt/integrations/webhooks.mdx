@@ -1,0 +1,196 @@
+---
+title: "Webhook valdymas: kūrimas, testavimas ir autentifikavimas"
+sidebarTitle: "Webhooks"
+description: "Nustatykite webhooks AgencyHandy, kad realiuoju laiku perduotumėte įvykių duomenis į išorines sistemas, kai pasikeičia užsakymai, užduotys, sąskaitos faktūros ar kiti objektai."
+---
+
+Webhooks leidžia AgencyHandy perduoti duomenis į jūsų išorines sistemas tą akimirką, kai kažkas pasikeičia — nereikia jokio apklausimo. Kai įvyksta sukonfigūruotas įvykis (pavyzdžiui, užsakymas atnaujinamas arba bilietas sukuriamas), AgencyHandy siunčia HTTP POST užklausą su JSON duomenų paketu į jūsų nurodyto galinio taško URL. Tai leidžia lengvai sinchronizuoti išorines priemones, tokias kaip CRM sistemas, atsiskaitymo sistemas ar pasirinktines prietaisų skydelius, su jūsų AgencyHandy darbo sritimi realiuoju laiku.
+
+<Note>
+  Business Pro plano darbo sritys palaiko iki **30 000 webhook įvykių** per atsiskaitymo laikotarpį. Prieš nustatydami didelio kiekio automatizavimą, patikrinkite savo plano limitus.
+</Note>
+
+## Palaikomi įvykiai
+
+Webhook galima prenumeruoti bet kokiam šių įvykių deriniui:
+
+| Kategorija | Įvykiai |
+|---|---|
+| **Paslauga** | Sukurta, atnaujinta, ištrinta |
+| **Užsakymas** | Sukurtas, atnaujintas, ištrintas |
+| **Užduotis** | Sukurta, priskirta, užbaigta, atnaujinta |
+| **Sąskaita faktūra** | Pakeista būsena |
+| **Klientas / Naudotojas** | Pridėtas naujas klientas, klientas/naudotojas ištrintas |
+| **Pasiūlymas** | Išsiųstas, gautas, priimtas, atmestas |
+| **Bilietas** | Sukurtas, priskirtas, pakeista būsena |
+| **Mokėjimas** | Gautas, nepavykęs |
+| **Paslaugų paketas** | Sukurtas, atnaujintas, ištrintas |
+
+## Sukurti webhook
+
+<Steps>
+  <Step title="Eikite į Webhook valdymą">
+    Kairiajame šoninėje juostoje eikite į **Integrations → Webhooks Management**.
+  </Step>
+
+  <Step title="Autentifikuokite savo prieigos raktą">
+    Spustelėkite mygtuką **Management**, kad autentifikuotumėte savo webhook prieigos raktą. Šis raktas naudojamas išsiunčiamų duomenų paketų pasirašymui, kad galėtumėte patikrinti, jog jie atsiųsti iš AgencyHandy.
+  </Step>
+
+  <Step title="Sukurkite naują webhook">
+    Spustelėkite **Create New Webhook**, kad atidarytumėte webhook konfigūracijos formą.
+  </Step>
+
+  <Step title="Įveskite galinio taško URL">
+    Lauke **Endpoint URL** įveskite išorinės sistemos, kuri turėtų gauti webhook duomenis, URL. Tai turi būti viešai prieinamas **POST** galinis taškas.
+  </Step>
+
+  <Step title="Pasirinkite turinio tipą">
+    Pasirinkite **JSON** kaip turinio tipą. AgencyHandy siunčia visus webhook duomenų paketus kaip `application/json`.
+  </Step>
+
+  <Step title="Pasirinkite webhook įvykius">
+    Pasirinkite kiekvieną įvykį, kuris turėtų sukelti šį webhook. Galite rinktis įvykius iš kelių kategorijų — pavyzdžiui, **Order: Created** ir **Invoice: Status changed** gali nurodyti į tą patį galutinį tašką.
+  </Step>
+
+  <Step title="Suaktyvinkite webhook">
+    Perjunkite **Active** radijo mygtuką. Kai aktyvus, AgencyHandy realiuoju laiku teikia visų pasirinktų įvykių duomenų paketus į jūsų galutinį tašką.
+  </Step>
+
+  <Step title="Išsaugokite konfigūraciją">
+    Peržiūrėkite nustatymus ir spustelėkite **Save**. Webhook pasirodo sąraše ir iš karto pradeda teikti įvykius.
+  </Step>
+</Steps>
+
+## Patikrinkite webhook
+
+Sukūrę webhook, išsiųskite bandomąjį duomenų paketą, kad patvirtintumėte, jog jūsų galinis taškas yra pasiekiamas ir teisingai apdoroja duomenis.
+
+<Steps>
+  <Step title="Atidarykite webhook">
+    Webhook valdymo sąraše spustelėkite webhook, kurį norite patikrinti.
+  </Step>
+
+  <Step title="Spustelėkite Test Event">
+    Webhook išsamios informacijos puslapyje spustelėkite mygtuką **Test Event**.
+  </Step>
+
+  <Step title="Pasirinkite bandomąjį įvykį">
+    Pasirinkite pavyzdinį įvykį iš šiame webhook sukonfigūruotų įvykių sąrašo (pvz., **Order: Created**).
+  </Step>
+
+  <Step title="Išsiųskite bandomąjį duomenų paketą">
+    Spustelėkite **Send**. AgencyHandy paskelbia pavyzdinį duomenų paketą į jūsų galinio taško URL.
+  </Step>
+
+  <Step title="Patikrinkite rezultatą">
+    Patikrinkite savo išorinę sistemą, kad patvirtintumėte, jog bandomasis duomenų paketas atkeliavo ir buvo apdorotas kaip tikėtasi. Grįžę į AgencyHandy, spustelėkite webhook ir peržiūrėkite jo **istoriją** — galite matyti visą užklausą, jūsų galinio taško grąžintą atsakymą ir iš naujo pristatyti bet kurį ankstesnį įvykį, jei reikia.
+  </Step>
+</Steps>
+
+<Tip>
+  Sąrankos metu kaip laikiną galutinį tašką naudokite įrankius, tokius kaip [Webhook.site](https://webhook.site) arba [RequestBin](https://requestbin.com), kad galėtumėte tiksliai patikrinti duomenų paketo struktūrą prieš prijungdami savo tikrąją sistemą.
+</Tip>
+
+## Autentifikuoti webhook duomenų paketus
+
+Kiekviena išsiunčiama AgencyHandy webhook užklausa turi parašo antraštę, kurią jūsų galinis taškas gali naudoti duomenų paketo autentiškumui patikrinti ir įsitikinti, kad jis nebuvo pakeistas.
+
+### Parašo antraštė
+
+```
+x-ah-sig: <signature>
+```
+
+AgencyHandy prideda šią antraštę prie kiekvienos webhook užklausos. Ištraukite reikšmę iš gaunamų užklausų ir perduokite ją tikrinimo galutiniam taškui.
+
+### Patikrinti webhook parašą
+
+Siųskite šią užklausą, kad patvirtintumėte duomenų paketo autentiškumą:
+
+```
+POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature
+Content-Type: application/json
+```
+
+<ParamField body="webhookId" type="string" required>
+  Webhook, gavusio įvykį, ID. Jį rasite AgencyHandy webhook išsamios informacijos puslapyje.
+</ParamField>
+
+<ParamField body="signature" type="string" required>
+  Gaunamos webhook užklausos antraštės `x-ah-sig` reikšmė.
+</ParamField>
+
+<ParamField body="secret" type="string" required>
+  Webhook slaptasis raktas, rodomas AgencyHandy webhook išsamios informacijos puslapyje.
+</ParamField>
+
+<ParamField body="payload" type="object" required>
+  Neapdorotas JSON turinys, gautas iš AgencyHandy webhook užklausos.
+</ParamField>
+
+<CodeGroup>
+
+```javascript JavaScript
+const url = 'https://api.agencyhandy.com/api/v1/webhooks/verify-signature';
+
+const postData = {
+  webhookId: 'your_webhook_id',
+  signature: 'your_signature',   // value of x-ah-sig header
+  secret: 'your_webhook_secret',
+  payload: {},                   // the parsed JSON body from AgencyHandy
+};
+
+const response = await fetch(url, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(postData),
+});
+
+const data = await response.json();
+console.log(data); // { "verification_status": "SUCCESS" }
+```
+
+```bash cURL
+curl -X POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature \
+  -H "Content-Type: application/json" \
+  -d '{
+    "webhookId": "your_webhook_id",
+    "signature": "your_signature",
+    "secret": "your_webhook_secret",
+    "payload": {}
+  }'
+```
+
+</CodeGroup>
+
+**Atsakymai**
+
+<ResponseField name="verification_status" type="string">
+  `SUCCESS`, kai parašas galioja. `FAILED`, kai tikrinimas nepavyksta (HTTP 403).
+</ResponseField>
+
+```json Success (200)
+{
+  "verification_status": "SUCCESS"
+}
+```
+
+```json Failure (403)
+{
+  "type": "PermissionError",
+  "status": 403,
+  "verification_status": "FAILED"
+}
+```
+
+<Warning>
+  Laikykite savo webhook slaptąjį raktą konfidencialiu. Periodiškai jį keiskite ir nedelsdami atnaujinkite tikrinimo logiką po pakeitimo. Niekada neatskleiskite jo kliento pusės kode ar viešose saugyklose.
+</Warning>
+
+## Svarbios pastabos
+
+- Jūsų galinio taško URL turi būti **viešai prieinamas HTTPS POST** URL.
+- Jei jūsų galinis taškas laikinai nepasiekiamas, AgencyHandy patikrinkite webhook istorijos skydelį — galite **pristatyti iš naujo** bet kurį ankstesnį įvykį tiesiai iš ten.
+- Reguliariai stebėkite webhook veiklą, kad aptiktumėte nepavykusius pristatymus arba neteisėtos prieigos bandymus.
+- Nuolat neveikiantys webhooks gali būti pristabdyti AgencyHandy — peržiūrėkite pristatymo žurnalus, kad anksti pastebėtumėte problemas.

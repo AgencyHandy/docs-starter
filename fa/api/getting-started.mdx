@@ -1,0 +1,114 @@
+---
+title: "API AgencyHandy: احراز هویت و شروع به کار"
+sidebarTitle: "شروع به کار"
+description: "یک API key تولید کنید، Company ID خود را پیدا کنید و با این راهنمای سریع راه‌اندازی، اولین فراخوانی API خود را در برابر REST API AgencyHandy انجام دهید."
+---
+
+API AgencyHandy به شما امکان می‌دهد ایجاد لید، مدیریت مشتری، به‌روزرسانی سفارش و موارد دیگر را از هر سیستم یا اسکریپت خارجی خودکار کنید. هر درخواست با یک API key احراز هویت می‌شود که از تنظیمات فضای کاری خود تولید می‌کنید. این راهنما شما را در مراحل دریافت اعتبارنامه‌ها و انجام اولین فراخوانی API راهنمایی می‌کند.
+
+<Note>
+  برای تولید API key باید **SuperAdmin** یا **Admin** در فضای کاری AgencyHandy خود باشید.
+</Note>
+
+## آدرس پایه
+
+تمام درخواست‌های API به آدرس زیر ارسال می‌شوند:
+
+```
+https://api.agencyhandy.com
+```
+
+در تمام درخواست‌های نمونه در مستندات API، `{{URL}}` را با این آدرس پایه جایگزین کنید.
+
+## مرحله ۱: تولید API key
+
+<Steps>
+  <Step title="باز کردن پیکربندی فضای کاری">
+    به تنظیمات فضای کاری خود در آدرس زیر بروید:
+
+    ```
+    {{workspaceUrl}}/workspace-config?tab=api-key
+    ```
+
+    این صفحه تب **API Key** را داخل پیکربندی فضای کاری باز می‌کند.
+  </Step>
+
+  <Step title="تولید و کپی API key">
+    روی **Generate** (یا **Regenerate** اگر کلید قبلاً وجود دارد) کلیک کنید. API key را کپی کرده و آن را به‌طور امن ذخیره کنید — مانند یک رمز عبور با آن رفتار کنید. AgencyHandy پس از ترک صفحه، آن را دوباره نمایش نخواهد داد.
+  </Step>
+</Steps>
+
+<Warning>
+  تولید مجدد API key، کلید قبلی را فوری غیرفعال می‌کند. هر یکپارچه‌سازی موجود که از کلید قدیمی استفاده می‌کند تا زمانی که آن را با کلید جدید به‌روز نکنید از کار می‌افتد.
+</Warning>
+
+## مرحله ۲: دریافت Company ID
+
+اکثر endpointهای API به یک هدر `companyid` نیاز دارند که مشخص می‌کند درخواست به کدام فضای کاری تعلق دارد. از endpoint زیر برای دریافت Company ID استفاده کنید.
+
+### Endpoint
+
+```
+GET {{URL}}/accounts/companies
+```
+
+### هدرها
+
+| هدر | مقدار |
+|---|---|
+| `x-api-key` | API key شما |
+
+### درخواست نمونه
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/accounts/companies" \
+  --header "x-api-key: <YOUR_API_KEY>"
+```
+
+### پاسخ نمونه
+
+```json
+{
+  "message": "Companies associated with API token.",
+  "companies": [
+    {
+      "_id": "6525994184e9ddd79853450e",
+      "name": "onethread123",
+      "logo": "",
+      "extraSmallLogo": "",
+      "largeLogo": ""
+    }
+  ]
+}
+```
+
+<Steps>
+  <Step title="پیدا کردن Company ID">
+    در پاسخ، فیلد `_id` داخل آرایه `companies` را پیدا کنید. این **Company ID** شماست.
+
+    ```javascript
+    const companyId = response.companies[0]._id;
+    // e.g. "6525994184e9ddd79853450e"
+    ```
+  </Step>
+
+  <Step title="ذخیره Company ID">
+    Company ID را برای استفاده در تمام درخواست‌های API بعدی ذخیره کنید. آن را به‌عنوان هدر `companyid` ارسال خواهید کرد:
+
+    | هدر | مقدار |
+    |---|---|
+    | `x-api-key` | API key شما |
+    | `companyid` | Company ID شما |
+  </Step>
+</Steps>
+
+## خلاصه احراز هویت
+
+هر درخواست API احراز هویت‌شده حداقل به موارد زیر نیاز دارد:
+
+```
+x-api-key: <YOUR_API_KEY>
+companyid: <YOUR_COMPANY_ID>
+```
+
+با داشتن API key و Company ID، آماده استفاده از بقیه API AgencyHandy هستید. به یکی از راهنماهای endpoint زیر ادامه دهید.

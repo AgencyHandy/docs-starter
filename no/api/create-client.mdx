@@ -1,0 +1,137 @@
+---
+title: "AgencyHandy API: Opprett en ny klient programmatisk"
+sidebarTitle: "Opprett klient"
+description: "Legg til nye klienter i AgencyHandy-arbeidsområdet ditt programmatisk ved å poste til bulk-client-endepunktet med navn, e-post og kontaktdetaljer."
+---
+
+Opprett klient-endepunktet lar deg legge til klienter direkte i AgencyHandy-arbeidsområdet ditt fra et eksternt system. I motsetning til leads er klienter fullstendig ombordsteg-kontakter som kan tilordnes bestillinger, fakturaer og prosjekter. Bruk dette endepunktet til å synkronisere nye klienter fra et CRM, et onboarding-skjema eller en annen datakilde.
+
+<Note>
+  Før du bruker dette endepunktet, fullfør guiden [Kom i gang](/no/api/getting-started) for å hente API-nøkkelen og bedrifts-ID-en din. I motsetning til Opprett lead-endepunktet krever ikke opprettelse av en klient et eget oppslagstrinn for Rolle-ID.
+</Note>
+
+## Forutsetninger
+
+- ✅ API-nøkkel generert fra **Arbeidsområdekonfigurasjon → API-nøkkel**
+- ✅ Bedrifts-ID hentet fra `GET {{URL}}/accounts/companies`
+
+---
+
+## Endepunkt
+
+```
+POST {{URL}}/members/bulk-client
+```
+
+## Overskrifter
+
+| Overskrift | Verdi |
+|---|---|
+| `x-api-key` | API-nøkkelen din |
+| `companyId` | Bedrifts-ID-en din |
+| `Content-Type` | `application/json` |
+
+## Forespørselskropp
+
+Forespørselskroppen er en **JSON-array**. Du kan opprette én eller flere klienter i én enkelt forespørsel.
+
+<ParamField body="firstName" type="string" required>
+  Klientens fornavn.
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  Klientens etternavn.
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  Klientens e-postadresse. Må være unik i arbeidsområdet ditt.
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  Sett til `false` for en helt ny klient. Sett til `true` når du konverterer en eksisterende lead til en klient.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Klientens status. Vanlige verdier: `New`, `Active`. Standardverdi er `New` hvis utelatt.
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  Klientens telefonnummer.
+</ParamField>
+
+<ParamField body="source" type="string">
+  Hvordan du anskaffet denne klienten. Eksempelverdier: `website`, `referral`, `social`.
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  Klientens posisjon i brettsøylen. Standardverdi er `1`.
+</ParamField>
+
+## Eksempelforespørsel
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-client" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyId: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+## Vellykket svar
+
+```json
+{
+  "message": "Client created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  Bekreftelsesstreng ved suksess.
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  Array av opprettede klientobjekter.
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  Unik ID for den nyopprettede klienten. Bruk denne ID-en når du tilordner klienten til bestillinger eller fakturaer via API-et.
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  Fullt navn på klienten (fornavn + etternavn).
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  Statusen til klienten slik den er lagret.
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  Rollen tildelt medlemmet — vil være `"client"`.
+</ResponseField>
+
+<Note>
+  `companyId`-overskriften for dette endepunktet bruker stor **I** i `Id` — `companyId` — i motsetning til noen andre endepunkter som bruker `companyid` (kun små bokstaver). Bruk den nøyaktige skrivemåten vist ovenfor for å unngå autentiseringsfeil.
+</Note>
+
+<Tip>
+  Send inn flere klientobjekter i arrayet for å masseopprett klienter i ett enkelt API-kall. Hvert objekt må ha en unik `email`-adresse. Dupliserte e-poster vil forårsake en valideringsfeil for den oppføringen.
+</Tip>

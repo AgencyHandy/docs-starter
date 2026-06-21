@@ -1,0 +1,235 @@
+---
+title: "Opret, send og administrer klientfakturaer i AgencyHandy"
+sidebarTitle: "Opret faktura"
+description: "Trin-for-trin vejledning til at oprette en faktura i AgencyHandy — vælg en klient, angiv beløb, tilføj bemærkninger, send til klient og konfigurer betalingspåmindelser."
+---
+
+At oprette en faktura i AgencyHandy er en enkel proces, der knytter din fakturering direkte til klienter og ordrer. Du udfylder klienten, tilknytter ordren, angiver beløb, tilføjer eventuelle bemærkninger og sender — alt fra én enkelt formular. Når fakturaen er sendt, kan du spore betalingsstatus, angive automatiserede påmindelser og downloade fakturaen som PDF til enhver tid.
+
+<Note>
+  Du skal være **Super Admin**, **Admin** eller **PM** for at oprette fakturaer. Mindst én klient skal eksistere i dit arbejdsområde, inden du kan generere en faktura.
+</Note>
+
+## Indstillinger for fakturapræfiks
+
+Inden du begynder at oprette fakturaer, bør du overveje at konfigurere dit fakturapræfiks. Præfikset vises foran hvert fakturanummer og hjælper med at identificere fakturaer som tilhørende dit bureau.
+
+<Steps>
+  <Step title="Åbn fakturaindstillinger">
+    Klik på knappen **Indstillinger** i øverste højre hjørne i faktura-dashboardet.
+  </Step>
+  <Step title="Angiv dit præfiks">
+    Naviger til feltet **Fakturapræfiks** og indtast det præfiks, du ønsker (f.eks. `FAKT-` eller dit bureaus initialer).
+  </Step>
+  <Step title="Gem">
+    Klik på **Gem** for at anvende præfikset på alle fremtidige fakturaer.
+  </Step>
+</Steps>
+
+## Oprettelse af en faktura
+
+<Steps>
+  <Step title="Åbn faktura-dashboardet">
+    Klik på **Fakturaer** i venstre sidepanel for at åbne faktura-dashboardet.
+  </Step>
+  <Step title="Start en ny faktura">
+    Klik på **+ Opret faktura**. Fakturaoprettelsesformularen åbnes.
+  </Step>
+  <Step title="Vælg klienten">
+    Vælg klientens navn fra rullemenuen. Dette er et obligatorisk felt. Alle ordre-ID'er tilknyttet den pågældende klient udfyldes automatisk i det næste felt.
+
+    For at oprette en **Direkte faktura** (ikke knyttet til en ordre) kan du lade feltet Ordre-ID være tomt eller vælge **Uafhængig e-mail** for at fakturere enhver e-mailadresse uden for din klientliste.
+  </Step>
+  <Step title="Vælg ordre-ID">
+    Vælg det specifikke ordre-ID, du fakturerer for. Dette knytter fakturaen til den korrekte ordre i systemet. For direkte fakturaer springes dette felt over.
+  </Step>
+  <Step title="Indtast faktureringsadressen">
+    Udfyld **Faktureringsadressen**:
+    - Land, stat og by
+    - Postnummer
+    - Gadeadresse (hvis relevant)
+
+    Denne adresse vises på den trykte faktura for overholdelse og klarhed.
+  </Step>
+  <Step title="Angiv ordre- og finansielle oplysninger">
+    Under **Ordreoplysninger** skal du indtaste følgende:
+
+    | Felt | Beskrivelse |
+    |-------|-------------|
+    | **Valuta** | Den valuta, du ønsker at blive betalt i |
+    | **Ordre-ID – Beløb** | Den monetære værdi tilknyttet ordren |
+    | **Rabat (%)** og **Rabatbeløb** | Anvend eventuelle gældende rabatter |
+    | **Betalt beløb** | Ethvert beløb, klienten allerede har betalt |
+    | **Forfaldent beløb** | Den udestående saldo |
+    | **Samlet beløb** | Det fulde betalbare beløb for ordren |
+
+    For **Direkte fakturaer** skal du klikke på **Tilføj post** for manuelt at tilføje linjeposter. Indtast postnavnet, mængden og prisen. Du kan tilføje flere poster. Brug **+ Momssatser** til at anvende eller oprette momssatser (inklusiv eller eksklusiv).
+  </Step>
+  <Step title="Tilføj en bemærkning (valgfrit)">
+    I feltet **Bemærkning** kan du tilføje yderligere kontekst til klienten — f.eks. betalingsinstruktioner, projektreferencer eller en personlig besked.
+  </Step>
+  <Step title="Gennemgå detaljepanelet">
+    Det **Detaljer**-panel i højre side giver dig en live-oversigt over:
+
+    - Fakturastatus (Kladde som standard)
+    - Klientnavn, firmanavn og adresse
+    - Faktureringsadresse
+    - Ydelsesnavn og ordre-ID
+    - Oprettelsesdato og forfaldsdato
+    - Samlet beløb
+
+    Gennemgå alt omhyggeligt inden du fortsætter.
+  </Step>
+  <Step title="Send til klient eller gem som kladde">
+    - Klik på **Send til klient** for straks at sende fakturaen via e-mail. Statussen ændres automatisk fra **Kladde** til **Åben**.
+    - Klik på **Gem som kladde**, hvis du vil afslutte den senere.
+  </Step>
+</Steps>
+
+<Note>
+  Bureauets logo og adresse tilføjes automatisk til fakturaen af systemet — du behøver ikke at indtaste dem manuelt på hver faktura.
+</Note>
+
+## Fakturastatusovergange
+
+Når en faktura er oprettet, følger den et defineret statusforløb. Kun bureauet kan flytte en faktura mellem statusser.
+
+```
+Kladde → Åben (når sendt til klient)
+Åben  → Betalt          (betaling modtaget)
+Åben  → Annulleret      (faktura annulleret)
+Åben  → Uerholdelig     (gæld afskrevet)
+```
+
+<Warning>
+  Fakturaer kan kun **redigeres**, mens de har statussen **Kladde**. Når en faktura er ændret til Åben, kan du ikke redigere den. Hvis du skal foretage ændringer, skal du annullere fakturaen og oprette en ny.
+</Warning>
+
+## Redigering af en faktura
+
+Du kan kun redigere en faktura, mens den har statussen **Kladde**.
+
+<Steps>
+  <Step title="Åbn fakturaen">
+    Find kladdefakturaen, du vil redigere, i faktura-dashboardet. Klik på den, eller sæt flueben i afkrydsningsfeltet ved siden af den.
+  </Step>
+  <Step title="Klik på Rediger">
+    Vælg indstillingen **Rediger** fra handlingsmenuen. Fakturaformularen åbnes med alle eksisterende oplysninger forudfyldt.
+  </Step>
+  <Step title="Foretag dine ændringer">
+    Opdater alle felter — faktureringsoplysninger, ydelsesbeskrivelses, mængder, beløb eller betalingsbetingelser.
+  </Step>
+  <Step title="Gem">
+    Klik på **Gem** for at anvende dine ændringer.
+  </Step>
+</Steps>
+
+## Afsendelse af en faktura til en klient
+
+Hvis du gemte fakturaen som kladde og vil sende den senere:
+
+<Steps>
+  <Step title="Find fakturaen">
+    Find kladdefakturaen, du vil sende, i faktura-dashboardet.
+  </Step>
+  <Step title="Klik på Send faktura">
+    Åbn fakturaen og klik på knappen **Send faktura**. AgencyHandy leverer fakturaen til klientens e-mailadresse i systemet.
+  </Step>
+  <Step title="Bekræft levering">
+    Tjek for bekræftelsesmeddelelsen for at verificere, at fakturaen blev sendt. Fakturastatussen opdateres til **Åben**.
+  </Step>
+</Steps>
+
+<Note>
+  Hvis en faktura har statussen **Kladde** og du opdaterer ydelsesnavnet, vil det nye navn blive afspejlet i fakturaen. Når statussen ændres til Åben, Betalt, Uerholdelig eller Annulleret, låses ydelsesnavnet på fakturaen og opdateres ikke.
+</Note>
+
+## Download og udskriv en faktura
+
+Både bureauet og klienten kan downloade en faktura til enhver tid.
+
+<Steps>
+  <Step title="Åbn fakturaen">
+    Gå til faktura-dashboardet og vælg den faktura, du vil downloade.
+  </Step>
+  <Step title="Åbn download/udskriv">
+    Klik på indstillingen **Download** eller **Udskriv** fra fakturaens handlingsmenu.
+  </Step>
+  <Step title="Vælg dit format">
+    Vælg **PDF** til download, eller vælg dine printerindstillinger til en fysisk kopi.
+  </Step>
+  <Step title="Gem eller udskriv">
+    Gem filen på din enhed, eller send den til printeren. Efter udskrivning skal du arkivere fakturaen eller dele den med interessenter efter behov.
+  </Step>
+</Steps>
+
+## Opsætning af påmindelser på fakturaer
+
+Fakturapåmindelsesfunktionen lader dig automatisk underrette klienter om kommende, forfaldne eller overskredet forfaldne fakturaer, så du bliver betalt til tiden uden manuel opfølgning.
+
+<Note>
+  Påmindelser fungerer kun på fakturaer med statussen **Åben** og en angivet **forfaldsdato**.
+</Note>
+
+<Steps>
+  <Step title="Åbn fakturaindstillinger">
+    Klik på knappen **Indstillinger** øverst til højre i faktura-dashboardet.
+  </Step>
+  <Step title="Naviger til påmindelsesindstillinger">
+    Rul ned til bunden af afsnittet **Skabelon** i venstre panel, og klik derefter på **Rediger** for at åbne påmindelseskonfigurationsmodalen.
+  </Step>
+  <Step title="Vælg en påmindelsestype">
+    Vælg en af følgende:
+
+    - **Sekventiel påmindelse** — opretter en serie påmindelser ved de intervaller, du definerer
+    - **Send ikke påmindelse** — deaktiverer påmindelser for de valgte fakturaer
+  </Step>
+  <Step title="Konfigurer påmindelsesoplysninger">
+    For hver påmindelse i sekvensen:
+    - Vælg **påmindelsesskabelonen** (f.eks. "Kommende fakturabetalingspåmindelse")
+    - Angiv **påmindelsesdatoen** — f.eks. 3 dage før eller efter forfaldsdatoen
+    - Angiv om det udløses **før** eller **efter** forfaldsdatoen
+  </Step>
+  <Step title="Tilføj flere påmindelser efter behov">
+    Klik på **+ Tilføj endnu en påmindelse** for at opbygge en fuld påmindelsessekvens. Klik på knappen **Slet** ved siden af en påmindelse for at fjerne den.
+  </Step>
+  <Step title="Anvend på aktive fakturaer (valgfrit)">
+    Sæt flueben for at **anvende disse påmindelsesindstillinger på aktuelt aktive fakturaer**, hvis du ønsker at den nye konfiguration dækker fakturaer, der allerede har statussen Åben.
+  </Step>
+  <Step title="Gem">
+    Klik på **Opdater** for at gemme og aktivere påmindelsesplanen.
+  </Step>
+</Steps>
+
+## Direkte fakturaer (uden ordre-ID)
+
+Når du hurtigt skal fakturere en klient uden først at oprette en ordre, skal du bruge arbejdsgangen for direkte fakturaer.
+
+<Steps>
+  <Step title="Start en ny faktura">
+    Gå til **Fakturaer → Opret faktura**.
+  </Step>
+  <Step title="Vælg modtagertype">
+    Vælg **Enkeltperson** eller **Virksomhed** som modtagertype.
+  </Step>
+  <Step title="Vælg eller indtast modtageren">
+    - Vælg en **eksisterende klient** fra rullemenuen, eller
+    - Vælg **Uafhængig e-mail** for at skrive en hvilken som helst e-mailadresse — selv en, der ikke er registreret som klient
+  </Step>
+  <Step title="Lad ordre-ID stå tomt">
+    Spring feltet Ordre-ID over. AgencyHandy opretter en selvstændig faktura, der ikke er knyttet til nogen ordre.
+  </Step>
+  <Step title="Tilføj poster, skatter og rabatter">
+    Klik på **Tilføj post** for at tilføje linjeposter med navne, mængder og priser. Anvend momssatser og rabatter efter behov. Det samlede beløb opdateres automatisk.
+  </Step>
+  <Step title="Angiv faktureringsadresse og bemærkninger">
+    Indtast faktureringsadressen og tilføj eventuelle bemærkninger til klienten.
+  </Step>
+  <Step title="Send eller gem">
+    Klik på **Send faktura** for at levere den straks, eller **Gem som kladde** for at gennemgå den først.
+  </Step>
+</Steps>
+
+<Tip>
+  Direkte fakturaer er perfekte til hasteforespørgsler, konsulentsamtaler eller ethvert arbejde, du skal fakturere for uden for den normale ordrearbejdsgang. Betalingssporing for selvstændige fakturaer skal administreres manuelt.
+</Tip>

@@ -1,0 +1,137 @@
+---
+title: "AgencyHandy API: Luo uusi asiakas ohjelmallisesti"
+sidebarTitle: "Luo asiakas"
+description: "Lisää uusia asiakkaita AgencyHandy-työtilaan ohjelmallisesti lähettämällä pyyntö bulk-client-päätepisteelle nimellä, sähköpostilla ja yhteystiedoilla."
+---
+
+Luo asiakas -päätepiste antaa sinun lisätä asiakkaita suoraan AgencyHandy-työtilaan ulkoisesta järjestelmästä. Toisin kuin liidit, asiakkaat ovat täysin käyttöönottettuja yhteystietoja, jotka voidaan osoittaa tilauksiin, laskuihin ja projekteihin. Käytä tätä päätepistettä uusien asiakkaiden synkronointiin CRM-järjestelmästä, käyttöönottolomakkeesta tai muusta tietolähteestä.
+
+<Note>
+  Ennen tämän päätepisteen käyttämistä, suorita [Aloittaminen](/fi/api/getting-started) -opas API-avaimen ja yritystunnuksen hankkimiseksi. Toisin kuin Luo liidi -päätepiste, asiakkaan luominen **ei** edellytä erillistä Role ID:n hakuvaihetta.
+</Note>
+
+## Edellytykset
+
+- ✅ API-avain luotu kohdasta **Workspace Config → API Key**
+- ✅ Yritystunnus haettu kohteesta `GET {{URL}}/accounts/companies`
+
+---
+
+## Päätepiste
+
+```
+POST {{URL}}/members/bulk-client
+```
+
+## Otsikot
+
+| Otsikko | Arvo |
+|---|---|
+| `x-api-key` | API-avaimesi |
+| `companyId` | Yritystunnuksesi |
+| `Content-Type` | `application/json` |
+
+## Pyynnön runko
+
+Pyynnön runko on **JSON-taulukko**. Voit luoda yhden tai useamman asiakkaan yhdellä pyynnöllä.
+
+<ParamField body="firstName" type="string" required>
+  Asiakkaan etunimi.
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  Asiakkaan sukunimi.
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  Asiakkaan sähköpostiosoite. On oltava yksilöllinen työtilasi sisällä.
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  Aseta `false` kokonaan uudelle asiakkaalle. Aseta `true` muuntaessasi olemassa olevan liidin asiakkaaksi.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Asiakkaan tila. Yleiset arvot: `New`, `Active`. Oletus on `New`, jos jätetään pois.
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  Asiakkaan puhelinnumero.
+</ParamField>
+
+<ParamField body="source" type="string">
+  Miten hankit tämän asiakkaan. Esimerkkiarvot: `website`, `referral`, `social`.
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  Asiakkaan sijainti taulun sarakkeessa. Oletus on `1`.
+</ParamField>
+
+## Esimerkkipyyntö
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-client" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyId: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+## Onnistumisvastaus
+
+```json
+{
+  "message": "Client created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  Vahvistusmerkkijono onnistumisen yhteydessä.
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  Luotujen asiakasobjektien taulukko.
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  Äskettäin luodun asiakkaan yksilöllinen tunnus. Käytä tätä tunnusta asiakkaan osoittamiseen tilauksiin tai laskuihin API:n kautta.
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  Asiakkaan koko nimi (etunimi + sukunimi).
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  Asiakkaan tila tallennettuna.
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  Jäsenelle osoitettu rooli — on `"client"`.
+</ResponseField>
+
+<Note>
+  Tämän päätepisteen `companyId`-otsikossa käytetään isoa **I**-kirjainta muodossa `Id` — `companyId` — toisin kuin joissakin muissa päätepisteissä, joissa käytetään `companyid` (kaikki pieniä kirjaimia). Käytä yllä näytettyä tarkkaa kirjainkokoa todentamisvirheiden välttämiseksi.
+</Note>
+
+<Tip>
+  Välitä useita asiakasobjekteja taulukossa luodaksesi asiakkaita joukottain yhdellä API-kutsulla. Jokaisella objektilla on oltava yksilöllinen `email`-osoite. Päällekkäiset sähköpostit aiheuttavat vahvistusvirheen kyseiselle merkinnälle.
+</Tip>

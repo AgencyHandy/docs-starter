@@ -1,0 +1,100 @@
+---
+title: "Przegląd zarządzania fakturami dla agencji AgencyHandy"
+sidebarTitle: "Faktury"
+description: "Poznaj system fakturowania AgencyHandy — rozliczenia, śledzenie płatności, faktury cykliczne, statusy, faktury bezpośrednie i eksport dokumentów finansowych."
+---
+
+Funkcja faktur w AgencyHandy daje Twojej agencji kompletny system zarządzania rozliczeniami i płatnościami w tej samej platformie, której używasz do zarządzania klientami, zleceniami i projektami. Możesz tworzyć profesjonalne faktury, wysyłać je klientom pocztą e-mail, śledzić status płatności w czasie rzeczywistym, automatyzować cykliczne rozliczenia za usługi w ramach subskrypcji oraz eksportować swoje dokumenty finansowe w dowolnym momencie. Każda faktura jest automatycznie powiązana z logo i adresem Twojej agencji, zapewniając spójność komunikacji z marką.
+
+## Kto może tworzyć faktury
+
+Tylko użytkownicy z następującymi rolami mogą tworzyć faktury i nimi zarządzać:
+
+- **Super Admin**
+- **Admin**
+- **Project Manager (PM)**
+
+Klienci mogą przeglądać i pobierać faktury, ale nie mogą ich tworzyć ani edytować.
+
+## Panel faktur
+
+Aby otworzyć Panel faktur, kliknij **Faktury** na lewym pasku bocznym. Stąd możesz:
+
+- Tworzyć, edytować i usuwać faktury
+- Wyszukiwać faktury według **nazwy klienta**, **ID zlecenia** lub **nazwy usługi**
+- Filtrować i sortować listę faktur
+- Przeglądać status faktury na pierwszy rzut oka
+- Uzyskiwać dostęp do ustawień faktur, w tym konfiguracji prefiksu
+
+## Co robią faktury
+
+<CardGroup cols={2}>
+  <Card title="Rozliczenia i fakturowanie" icon="file-invoice-dollar">
+    Twórz i wysyłaj profesjonalne faktury za dowolną usługę lub produkt dostarczany klientom, z pełną kontrolą nad kwotami, rabatami i terminami płatności.
+  </Card>
+  <Card title="Śledzenie płatności" icon="chart-line">
+    Monitoruj, czy faktury zostały wyświetlone, zapłacone lub przeterminowane. System automatycznie rejestruje daty płatności i anulowania w miarę zmian statusów.
+  </Card>
+  <Card title="Cykliczne rozliczenia" icon="rotate">
+    Automatyzuj generowanie faktur dla usług opartych na subskrypcji. AgencyHandy generuje i dostarcza cykliczne faktury w każdym cyklu rozliczeniowym bez ręcznej interwencji.
+  </Card>
+  <Card title="Integracja z projektami" icon="diagram-project">
+    Łącz faktury bezpośrednio ze zleceniami i usługami, aby rozliczenia były zawsze powiązane z wykonaną pracą. Pozycje do rozliczenia można dokładnie dodawać do każdej faktury.
+  </Card>
+</CardGroup>
+
+## Statusy faktur
+
+Każda faktura przechodzi przez zdefiniowany cykl życia. Zrozumienie tych statusów pomaga skutecznie zarządzać należnościami.
+
+| Status | Opis |
+|--------|-------------|
+| **Szkic** | Faktura została utworzona, ale nie sfinalizowana. Możesz edytować jej dowolną część. Gdy będzie gotowa, sfinalizuj ją, zmieniając status na Otwarta. Faktury w trybie szkicu niepowiązane z subskrypcją można usunąć. |
+| **Otwarta / Nieopłacona** | Faktura jest sfinalizowana i oczekuje na płatność. Agencja wysyła ją do klienta, który może ją wyświetlić i opłacić. Możesz zmienić status faktury Otwartej na Opłacona, Anulowana lub Nieściągalna. |
+| **Opłacona** | Faktura została opłacona. System automatycznie rejestruje datę płatności po oznaczeniu faktury jako Opłacona. |
+| **Anulowana** | Faktura została anulowana. System automatycznie rejestruje datę anulowania. |
+| **Nieściągalna** | Klient prawdopodobnie nie zapłaci. Traktuj to jako nieściągalny dług w swoim procesie księgowym. |
+
+<Note>
+  Gdy wysyłasz fakturę do klienta za pomocą przycisku **Wyślij do klienta**, status automatycznie zmienia się z **Szkic** na **Otwarta**. Tylko agencja może zmienić status z Otwartej na Opłacona, Anulowana lub Nieściągalna.
+</Note>
+
+## Faktury bezpośrednie (bez ID zlecenia)
+
+AgencyHandy obsługuje **Faktury bezpośrednie** — faktury niepowiązane z żadnym istniejącym zleceniem. Jest to przydatne do jednorazowych rozliczeń, płatności doraźnych lub fakturowania kontaktów, które nie są jeszcze zarejestrowane jako klienci w Twoim systemie.
+
+Kluczowe możliwości Faktur bezpośrednich:
+
+- Wysyłanie faktur bez wybierania ID zlecenia
+- Fakturowanie dowolnego istniejącego klienta lub użycie **Niezależnego adresu e-mail** do wysyłania na dowolny adres e-mail
+- Ręczne dodawanie pozycji, podatków i rabatów
+- Natychmiastowe wysyłanie lub zapisywanie jako szkic
+
+<Tip>
+  Używaj Faktur bezpośrednich, gdy musisz szybko rozliczyć klienta za pracę, która nie ma formalnego zlecenia w AgencyHandy, na przykład za pilne projekty, konsultacje telefoniczne lub pracę wykraczającą poza zakres.
+</Tip>
+
+## Eksportowanie faktur
+
+Możesz eksportować listę faktur do użytku w zewnętrznych narzędziach księgowych lub do celów archiwizacji. Eksport obejmuje wszystkie widoczne kolumny: ID faktury, nazwa klienta, usługa, kwoty, status i daty. Opcja eksportu jest dostępna z Panelu faktur.
+
+## Ustawienia faktur
+
+Skonfiguruj globalne ustawienia faktur, klikając przycisk **Ustawienia** w prawym górnym rogu Panelu faktur. Obejmuje to:
+
+- **Prefiks faktury** — dostosuj prefiks pojawiający się przed każdym numerem faktury
+- **Szablony przypomnień** — skonfiguruj automatyczne przypomnienia o płatności dla otwartych faktur
+
+## Powiązane funkcje
+
+<CardGroup cols={3}>
+  <Card title="Utwórz fakturę" icon="plus" href="/pl/invoices/create-invoice">
+    Przewodnik krok po kroku dotyczący tworzenia, wypełniania i wysyłania faktury.
+  </Card>
+  <Card title="Subskrypcje" icon="rotate" href="/pl/invoices/subscriptions">
+    Jak działa cykliczne rozliczenie i jak zarządzać fakturami subskrypcji.
+  </Card>
+  <Card title="Zgłoszenia wsparcia" icon="ticket" href="/pl/tickets/support-tickets">
+    Obsługuj pytania klientów dotyczące rozliczeń za pomocą systemu zgłoszeń wsparcia.
+  </Card>
+</CardGroup>

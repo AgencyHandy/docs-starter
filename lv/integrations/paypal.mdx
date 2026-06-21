@@ -1,0 +1,70 @@
+---
+title: "Pievienojiet PayPal drošai klientu maksājumu pieņemšanai"
+sidebarTitle: "PayPal"
+description: "Savienojiet savu PayPal kontu ar AgencyHandy un ļaujiet klientiem apmaksāt rēķinus, izmantojot PayPal uzticamo, pasaulē atzīto maksājumu platformu."
+---
+
+AgencyHandy PayPal integrācija sniedz jūsu klientiem drošu un pazīstamu veidu, kā apmaksāt rēķinus bez kredītkartes. PayPal atbalsta plašu starptautisko valūtu klāstu, kas ir īpaši noderīgi aģentūrām, kuru klienti atrodas ārpus savas valsts.
+
+<Note>
+  PayPal **nevar** izmantot papildpārdošanām (upsells) platformas līmeņa valūtas un reģionālo ierobežojumu dēļ. Papildpārdošanu maksājumiem izmantojiet Stripe.
+</Note>
+
+<Note>
+  Tikai **SuperAdmin** un **Admin** lomas var pievienot vai pārvaldīt PayPal integrāciju. Pirms sākat, jums ir jābūt aktīvam PayPal kontam.
+</Note>
+
+## Pievienot PayPal
+
+<Steps>
+  <Step title="Atveriet PayPal integrācijas iestatījumus">
+    Pierakstieties AgencyHandy, pēc tam kreisajā sānjoslā dodieties uz **Integrations → PayPal Integration**.
+  </Step>
+
+  <Step title="Sāciet savienojumu">
+    Noklikšķiniet uz **Connect PayPal**. Jūs tiksiet novirzīts uz PayPal pieteikšanās lapu.
+  </Step>
+
+  <Step title="Autorizēt AgencyHandy">
+    Pierakstieties savā PayPal kontā un izskatiet pieprasītās atļaujas. Noklikšķiniet uz **Allow** (vai **Grant**), lai autorizētu AgencyHandy piekļuvi jūsu kontam.
+  </Step>
+
+  <Step title="Apstipriniet savienojumu">
+    Pēc veiksmīgas autorizācijas PayPal novirza jūs atpakaļ uz AgencyHandy. Integrācijas kartē parādās apstiprinājuma ziņojums — **PayPal Connected**. Klienti tagad var apmaksāt rēķinus, izmantojot PayPal.
+  </Step>
+</Steps>
+
+## Kā klienti maksā ar PayPal
+
+Kad integrācija ir aktīva, uz katra jūsu nosūtītā rēķina parādās poga **Pay with PayPal**. Klients noklikšķina uz pogas, pierakstās savā PayPal kontā (vai maksā kā viesis atkarībā no viņa reģiona) un pabeidz maksājumu. AgencyHandy automātiski atjaunina rēķina statusu, kad PayPal apstiprina maksājumu.
+
+## Atbalstītās valūtas
+
+AgencyHandy atbalsta šādas valūtas PayPal maksājumiem:
+
+| Reģions | Valūtas |
+|---|---|
+| Amerikas | USD, CAD, BRL, MXN |
+| Eiropa | EUR, GBP, CHF, NOK, SEK, DKK, PLN, CZK, HUF |
+| Āzija un Klusais okeāns | AUD, NZD, JPY, HKD, SGD, MYR, PHP, THB, TWD |
+| Tuvie Austrumi / Citi | ILS, CNY |
+
+<Warning>
+  Dažām valūtām ir ierobežojumi:
+  - **JPY** un dažas citas valūtas neatbalsta decimālās summas — izvairieties no daļskaitļu rēķinu kopsummām.
+  - **BRL** ir pieejama tikai Brazīlijas PayPal kontiem. Ja jūsu konts neatrodas Brazīlijā, BRL maksājumi tiek automātiski konvertēti jūsu primārajā valūtā.
+  - Dažas valūtas ir pieejamas tikai vietējiem kontiem. Pārliecinieties, ka jūsu konta turējuma valūta atbilst rēķina valūtai, lai izvairītos no kļūdām.
+</Warning>
+
+<Note>
+  PayPal piemēro savas konvertācijas komisijas un starpības, kad notiek valūtas maiņa. AgencyHandy šos maksumus nekontrolē.
+</Note>
+
+## Testēt integrāciju
+
+Pirms PayPal izmantošanas reāliem klientu rēķiniem, veiciet ātru pārbaudi:
+
+1. Izveidojiet testa rēķinu AgencyHandy, izmantojot [atbalstīto valūtu](#atbalstītās-valūtas).
+2. Nosūtiet rēķinu uz jūsu kontrolētu sekundāro PayPal kontu.
+3. Pabeidziet maksājumu no sekundārā konta.
+4. Atgriezieties AgencyHandy un apstipriniet, ka rēķina statuss atjauninājās uz **Paid** un ka līdzekļi parādās jūsu PayPal kontā.

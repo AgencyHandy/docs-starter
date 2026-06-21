@@ -1,0 +1,132 @@
+---
+title: "Správa členů týmu a rolí agentury v AgencyHandy"
+sidebarTitle: "Správa týmu"
+description: "Pozvěte členy týmu e-mailem, přiřaďte role a oprávnění, změňte role stávajících členů a odeberte uživatele z pracovního prostoru agentury v AgencyHandy."
+---
+
+Funkce Týmy v AgencyHandy vám poskytuje bezpečný a organizovaný způsob, jak budovat a spravovat pracovní sílu vaší agentury. Pozvete členy e-mailem, přiřadíte jim roli, která určuje, co mohou vidět a dělat, a oni obdrží bezpečný přihlašovací odkaz k dokončení onboardingu. Jak se váš tým vyvíjí, můžete kdykoli aktualizovat role nebo odebrat členy pro zachování správného a relevantního přístupu.
+
+## Přístup k dashboardu týmu
+
+Kliknutím na **Týmy** v levém postranním panelu otevřete Dashboard týmu. Zde vidíte seznam všech aktuálních členů týmu spolu s jejich přiřazenými rolemi. Z tohoto pohledu můžete zvát nové členy, aktualizovat role a odebírat osoby z pracovního prostoru.
+
+## Role v AgencyHandy
+
+AgencyHandy má pět výchozích rolí, každá s přednastavenými úrovněmi oprávnění. Při pozvání člena týmu mu přiřadíte jednu z těchto rolí. Roli člena můžete kdykoli po jeho připojení změnit.
+
+| Role | Typické možnosti |
+|------|---------------------|
+| **Super Admin** | Plný přístup ke všemu — všechna nastavení, všechna data, všechny akce správy týmu |
+| **Admin** | Široký přístup včetně faktur, návrhů, zakázek, správy týmu a nastavení |
+| **Projektový manažer (PM)** | Spravuje jemu přiřazené zakázky, zobrazuje úkoly pro své zakázky, může zvát členy týmu |
+| **Zaměstnanec** | Omezen na úkoly přímo jemu přiřazené; bez přístupu k finančním nebo administrativním sekcím |
+
+<Note>
+  Role mohou měnit nebo členy týmu mazat pouze **Super Admini** a **Admini**. PM mohou zvát nové členy, ale nemohou měnit ani odebírat stávající členy.
+</Note>
+
+## Pozvání člena týmu
+
+<Steps>
+  <Step title="Otevřete Dashboard týmu">
+    Klikněte na **Týmy** v levém postranním panelu.
+  </Step>
+  <Step title="Klikněte na + Vytvořit tým">
+    Klikněte na tlačítko **+ Vytvořit tým**. Zobrazí se formulář pozvánky.
+  </Step>
+  <Step title="Zadejte e-mailovou adresu">
+    Zadejte e-mailovou adresu osoby, kterou chcete pozvat. Toto je povinné pole.
+  </Step>
+  <Step title="Přiřaďte roli">
+    Z rozevíracího seznamu vyberte příslušnou roli. Vybírejte pečlivě — tím se určuje, k čemu bude mít nový člen přístup od svého prvního přihlášení.
+  </Step>
+  <Step title="Odešlete pozvánku">
+    Klikněte na **Pozvat**. AgencyHandy odešle pozvané osobě e-mail obsahující:
+    - **Bezpečnou přihlašovací URL** k pracovnímu prostoru vaší agentury
+    - **Počítačem vygenerované heslo** pro použití při prvním přihlášení
+  </Step>
+  <Step title="Člen dokončí onboarding">
+    Pozvaný člen týmu sleduje odkaz ve svém e-mailu, přihlásí se pomocí poskytnutých přihlašovacích údajů a dokončí proces onboardingu. Jakmile se přihlásí, je přidán do vašeho pracovního prostoru agentury a může okamžitě začít spolupracovat.
+  </Step>
+</Steps>
+
+<Tip>
+  Požádejte nového člena týmu, aby po prvním přihlášení změnil počítačem vygenerované heslo na bezpečné.
+</Tip>
+
+## Nastavení rolí pro členy týmu
+
+Role lze přiřadit nebo aktualizovat dvěma způsoby: při pozvání nebo poté, co člen již vstoupil.
+
+<Tabs>
+  <Tab title="Při pozvání">
+    Při vyplňování formuláře pozvánky vyberte roli z rozevíracího seznamu před kliknutím na **Pozvat**. Role nabude účinnosti, jakmile se člen poprvé přihlásí.
+  </Tab>
+  <Tab title="Pro stávající členy">
+    1. Přejděte na **Týmy** v levém postranním panelu pro otevření Dashboardu týmu.
+    2. Najděte člena týmu, jehož roli chcete změnit.
+    3. Klikněte na tlačítko **šipky dolů** napravo od jeho jména.
+    4. Zobrazí se seznam výchozích názvů rolí. Vyberte novou roli.
+    5. Role se aktualizuje okamžitě — není vyžadován žádný krok uložení.
+  </Tab>
+</Tabs>
+
+<Warning>
+  Roli stávajícího člena týmu mohou měnit pouze **Super Admini** a **Admini**.
+</Warning>
+
+## Přehled oprávnění rolí
+
+Tento přehled použijte jako rychlou referenci při rozhodování, kterou roli přiřadit.
+
+| Funkce | Super Admin | Admin | PM | Zaměstnanec |
+|---------|:-----------:|:-----:|:--:|:--------:|
+| Vytvářet a odesílat návrhy | ✅ | ✅ | ❌ | ❌ |
+| Vytvářet a spravovat faktury | ✅ | ✅ | ✅ | ❌ |
+| Spravovat všechny zakázky | ✅ | ✅ | Pouze přiřazené | ❌ |
+| Zobrazit všechny úkoly | ✅ | ✅ | Pouze přiřazené zakázky | Pouze přiřazené úkoly |
+| Zvát členy týmu | ✅ | ✅ | ✅ | ❌ |
+| Měnit role / odebírat členy | ✅ | ✅ | ❌ | ❌ |
+| Přistupovat k nastavení faktur a agentury | ✅ | ✅ | ❌ | ❌ |
+| Rušit předplatná | ✅ | ✅ | ❌ | ❌ |
+| Exportovat data výkazů práce | ✅ | ✅ | ✅ | ❌ |
+
+## Odebrání člena týmu
+
+Když někdo opustí vaši agenturu nebo již nepotřebuje přístup, odeberte ho z pracovního prostoru pro ochranu vašich dat.
+
+<Steps>
+  <Step title="Otevřete Dashboard týmu">
+    Přejděte na **Týmy** v levém postranním panelu.
+  </Step>
+  <Step title="Vyberte člena k odebrání">
+    Zaškrtněte políčko vedle člena týmu, kterého chcete odebrat. Tlačítko **Smazat** se stane aktivním.
+  </Step>
+  <Step title="Klikněte na Smazat">
+    Klikněte na tlačítko **Smazat**. Zobrazí se potvrzovací modální okno.
+  </Step>
+  <Step title="Potvrďte odebrání">
+    Potvrďte své rozhodnutí. AgencyHandy okamžitě odvolá přístup člena k pracovnímu prostoru a všem přidruženým zdrojům.
+  </Step>
+  <Step title="Dokončete předávání">
+    Po odebrání přeřaďte všechny otevřené úkoly nebo zakázky, za které byl člen odpovědný, a podle potřeby aktualizujte příslušnou dokumentaci a přístupová oprávnění.
+  </Step>
+</Steps>
+
+<Warning>
+  Odebrání člena týmu **nelze vrátit zpět**. Jeho přístup je trvale odvolán. Pokud budete muset v budoucnu dát stejné osobě opět přístup, musíte odeslat novou pozvánku.
+</Warning>
+
+## Doplňující poznámky
+
+<Accordion title="Bezpečný onboarding přes e-mail">
+  Každá pozvánka je doručena prostřednictvím bezpečné přihlašovací URL. Pozvaná osoba používá tuto URL společně s počítačem vygenerovaným heslem pro první přístup na platformu. To zajišťuje, že přístup získá pouze zamýšlená osoba.
+</Accordion>
+
+<Accordion title="Změny rolí nabývají účinnosti okamžitě">
+  Při aktualizaci role člena týmu se změna uplatní okamžitě. Není vyžadován žádný čekající ani potvrzovací krok — nová oprávnění člena jsou aktivní při dalším načtení stránky.
+</Accordion>
+
+<Accordion title="Členové týmu a viditelnost úkolů">
+  Zaměstnanec vidí pouze úkoly, které jsou mu přímo přiřazeny. PM vidí pouze úkoly v rámci zakázek, kde je přiřazen jako manažer. Super Admini a Admini vidí vše. Mějte to na paměti při přiřazování rolí, abyste předešli zmatkům ohledně chybějících úkolů nebo zakázek.
+</Accordion>

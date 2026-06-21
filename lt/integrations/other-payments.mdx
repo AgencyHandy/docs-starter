@@ -1,0 +1,149 @@
+---
+title: "Banko pavedimo, kriptovaliutos ir Wise mokėjimo metodų nustatymas"
+sidebarTitle: "Kiti mokėjimai"
+description: "Įjunkite rankinius mokėjimo alternatyvus — banko pavedimą, kriptovaliutą ir Wise — kad klientai, teikiantys pirmenybę ne kortelių metodams, galėtų apmokėti jūsų sąskaitas faktūras."
+---
+
+AgencyHandy palaiko tris rankinius mokėjimo metodus be Stripe ir PayPal: **banko pavedimą**, **kriptovaliutą** ir **Wise**. Kiekvienas skirtas tam tikram klientų tipui arba darbo eigai. Visiems trims reikalinga rankiniu būdu pažymėti sąskaitą faktūrą kaip **Paid** gavus lėšas, nes AgencyHandy negali automatiškai patvirtinti pavedimų, atliktų ne platformoje.
+
+<Note>
+  Tik **SuperAdmin** ir **Admin** vaidmenys gali įjungti arba konfigūruoti šiuos mokėjimo metodus.
+</Note>
+
+<Tabs>
+  <Tab title="Bank Transfer">
+    ## Banko pavedimas
+
+    Banko pavedimo metodas leidžia priimti rankinius pavedimo arba ACH mokėjimus iš klientų. Jūs pateikiate savo banko duomenis per teksto redaktorių, o AgencyHandy rodo tas instrukcijas klientams atsiskaitymo metu ir sąskaitos faktūros viduje.
+
+    ### Įjungti banko pavedimą
+
+    <Steps>
+      <Step title="Atidarykite banko mokėjimo nustatymus">
+        Kairiajame šoninėje juostoje eikite į **Integrations → Bank Payment Method**.
+      </Step>
+
+      <Step title="Įveskite pavedimo instrukcijas">
+        Naudodami teksto redaktorių įveskite savo banko duomenis. Įtraukite visus laukus, kurių klientams reikia mokėjimui atlikti:
+
+        - **Gavėjo vardas ir pavardė**
+        - **Sąskaitos numeris**
+        - **Banko pavadinimas**
+        - **Maršruto numeris**
+        - **Sąskaitos tipas** (pvz., Einamoji, Taupomoji)
+        - **Banko adresas**
+
+        Taip pat galite pridėti pastabas, komentarus arba palaikymo kontaktą. Simbolių limito nėra, o redaktorius palaiko paryškinimą, pabraukimą, sąrašus, nuorodas ir paveikslėlių formatavimą.
+      </Step>
+
+      <Step title="Nustatykite mokėjimo įrodymo reikalavimą (neprivaloma)">
+        Įjunkite **Payment Screenshot is Required**, jei norite, kad klientai prieš apdorojant užsakymą įkeltų ekrano kopiją.
+
+        - **Įjungta** — klientai privalo įkelti tinkamą ekrano kopiją atsiskaitymo metu. Užsakymas nebus sukurtas, kol failas nebus įkeltas.
+        - **Išjungta** — klientai gali tęsti neįkeldami įrodymo. Užsakymas ir sąskaita faktūra sukuriami iš karto.
+      </Step>
+
+      <Step title="Išsaugoti">
+        Spustelėkite **Update**, kad išsaugotumėte nustatymus. Spustelėkite **Cancel**, jei norite atmesti pakeitimus.
+      </Step>
+    </Steps>
+
+    ### Kliento patirtis
+
+    Kai klientas atsiskaitymo metu pasirenka banko pavedimą, jis mato jūsų pasirinktines pavedimo instrukcijas. Jei reikalingas įrodymas, pasirodo failo įkėlimo raginimas, o užsakymas laukia, kol klientas įkels ekrano kopiją.
+
+    Gavę lėšas į savo banko sąskaitą, atidarykite sąskaitą faktūrą AgencyHandy ir rankiniu būdu pažymėkite ją kaip **Paid**, kad atlaisvintumėte užsakymą.
+
+    <Tip>
+      Į savo instrukcijas įtraukite unikalų nuorodos kodą (pvz., sąskaitos faktūros numerį), kad galėtumėte susieti gaunamus pavedimus su konkrečiais užsakymais be painiavos.
+    </Tip>
+  </Tab>
+
+  <Tab title="Crypto">
+    ## Kriptovaliutos mokėjimas
+
+    Kriptovaliutos mokėjimo metodas leidžia priimti kriptovaliutą iš klientų naudojant piniginės pavedimą. Jūs sukonfigūruojate savo piniginės duomenis ir instrukcijas vieną kartą; klientai juos mato atsiskaitymo metu ir sąskaitoje faktūroje. Šiuo metu palaikoma kriptovaliuta yra **USDC**.
+
+    ### Įjungti kriptovaliutos mokėjimą
+
+    <Steps>
+      <Step title="Atidarykite kriptovaliutos mokėjimo nustatymus">
+        Kairiajame šoninėje juostoje eikite į **Integrations → Crypto Payment**. Atidaromas piniginės nustatymo ekranas su teksto redaktoriumi.
+      </Step>
+
+      <Step title="Įveskite savo piniginės duomenis">
+        Užpildykite šiuos laukus:
+
+        - **Kriptovaliutos tipas** — šiuo metu palaikoma USDC.
+        - **Piniginės adresas** — jūsų viešas piniginės adresas lėšų gavimui.
+        - **Tinklo tipas** — pvz., ERC-20, TRC-20.
+        - **Papildomos instrukcijos** — pastaba, žyma, minimali suma, palaikymo kontaktas arba bet kokia kita informacija klientams.
+      </Step>
+
+      <Step title="Nustatykite mokėjimo įrodymo reikalavimą (neprivaloma)">
+        Įjunkite **Require Proof of Payment**:
+
+        - **Įjungta** — klientai privalo įkelti failą (pvz., sandorio ekrano kopiją) prieš sukuriant užsakymą ir sąskaitą faktūrą.
+        - **Išjungta** — užsakymas ir sąskaita faktūra sukuriami iš karto, kai klientas pasirenka kriptovaliutos mokėjimą, nereikalaujant įrodymo.
+      </Step>
+
+      <Step title="Išsaugoti">
+        Spustelėkite **Save**, kad išsaugotumėte nustatymus. Kriptovaliutos mokėjimą galite bet kada redaguoti arba atjungti tame pačiame ekrane.
+      </Step>
+    </Steps>
+
+    ### Kliento atsiskaitymo eiga
+
+    Kai klientas atsiskaitymo metu pasirenka kriptovaliutą:
+
+    1. Sukuriamas **užsakymas** (būsena: *Pending*) ir **sąskaita faktūra** (būsena: *Open*).
+    2. Klientui rodomas jūsų piniginės adresas ir instrukcijos.
+    3. Jei reikalingas įrodymas, pasirodo failo įkėlimo mygtukas. Klientas privalo įkelti savo sandorio ekrano kopiją prieš tęsiant užsakymą.
+    4. Kai pavedimas bus atliktas ir patikrinsite lėšas grandinėje, atidarykite sąskaitą faktūrą AgencyHandy ir pažymėkite ją kaip **Paid**.
+    5. Kai sąskaita faktūra pažymima kaip **Paid** ir užsakymas yra *Pending*, užsakymo būsena automatiškai atnaujinama į *Ongoing*.
+
+    <Note>
+      Kriptovaliutos mokėjimas atsiskaitymo metu rodomas tik tuo atveju, jei jis įjungtas **Workspace Settings → Payment Methods** IR atitinkamose **Service Group → Payment Availability** nustatymuose. Išjungus jį darbo srities nustatymuose, jis paslėpiamas visur, nepriklausomai nuo paslaugos lygio nustatymų.
+    </Note>
+
+    <Tip>
+      Jei paslauga nepalaiko USDC, kriptovaliutos mokėjimo parinktis automatiškai paslepiama tai paslaugai. Įsitikinkite, kad USDC įjungtas jūsų paslaugos nustatymuose, jei norite, kad klientai galėtų mokėti kriptovaliuta.
+    </Tip>
+  </Tab>
+
+  <Tab title="Wise">
+    ## Wise mokėjimas
+
+    Wise mokėjimo metodas leidžia klientams mokėti per Wise mokėjimo nuorodą. Jūs vieną kartą pridėsite nuorodą sąskaitos faktūros viduje, ir ji automatiškai bus įtraukta į visas būsimas prenumeratos sąskaitas faktūras. Wise idealiai tinka tarptautiniams klientams, kurie teikia pirmenybę banko-banko pavedimams su mažesniais mokesčiais nei tradiciniai pavedimo pervedimai.
+
+    ### Pridėti Wise kaip mokėjimo metodą
+
+    <Steps>
+      <Step title="Atidarykite sąskaitų faktūrų modulį">
+        Kairiajame šoninėje juostoje spustelėkite **Invoices**, tada spustelėkite **Create Invoice**.
+      </Step>
+
+      <Step title="Pridėkite savo Wise nuorodą">
+        Sąskaitos faktūros lange slinkite į skyrių **Payment Methods**. Spustelėkite **Add Wise as a payment method**, tada įklijuokite savo Wise mokėjimo nuorodą į įvesties lauką.
+      </Step>
+
+      <Step title="Išsaugokite sąskaitą faktūrą">
+        Spustelėkite **Save** arba tęskite sąskaitos faktūros finalizavimą. Jūsų Wise mokėjimo nuoroda dabar įterpta ir matoma klientui.
+      </Step>
+    </Steps>
+
+    ### Kaip tai veikia klientams
+
+    Wise nuoroda kliento sąskaitoje faktūroje pasirodo kaip spustelėjamas mygtukas. Klientas atidaro nuorodą, atlieka pavedimą per savo Wise paskyrą ir siunčia jums patvirtinimą. Kadangi AgencyHandy negauna automatinio patvirtinimo iš Wise, gavus lėšas sąskaitą faktūrą turite rankiniu būdu pažymėti kaip **Paid**.
+
+    <Warning>
+      Wise **negali** būti naudojamas automatizuotiems papildomų pardavimų arba prekyvietės mokėjimams. Vienai sąskaitai faktūrai galima pridėti tik vieną Wise mokėjimo nuorodą. Prieš siųsdami patikrinkite nuorodą — neteisinga nuoroda reiškia, kad kliento mokėjimas nukeliauja į neteisingą paskyrą.
+    </Warning>
+
+    ### Platformos elgesys
+
+    - Pridėjus Wise nuorodą, ji automatiškai rodoma visose būsimose **prenumeratos** sąskaitose faktūrose, nebent ją atnaujinsite arba pašalinsite.
+    - AgencyHandy neatlieka jokio automatinio valiutos konvertavimo. Klientas perveda ta valiuta, kuriai sukonfigūruota jūsų Wise nuoroda.
+    - Jūs esate atsakingi už mokėjimų stebėjimą ir sąskaitų faktūrų pažymėjimą kaip Paid po gavimo patvirtinimo.
+  </Tab>
+</Tabs>

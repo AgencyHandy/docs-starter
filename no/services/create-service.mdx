@@ -1,0 +1,260 @@
+---
+title: "Slik oppretter du en tjeneste med pakker, oppgaver og ofte stilte spørsmål"
+sidebarTitle: "Opprett tjeneste"
+description: "Trinnvis veiledning for å bygge en AgencyHandy-tjeneste: velg faktureringstype, konfigurer pakker, angi standard oppgaver, legg til ofte stilte spørsmål og publiser."
+---
+
+Å opprette en tjeneste i AgencyHandy er det første steget for å selge byråets tilbud gjennom plattformen. En enkelt tjeneste kan inneholde opptil fem prispakker, automatiserte standard oppgaver som utløses når en ordre plasseres, ofte stilte spørsmål for å redusere forhåndsspørsmål, et porteføljevedlegg for sosialt bevis og et valgfritt inntaksskjema — alt konfigurert på ett sted før du publiserer.
+
+<Note>
+  Du trenger rollen **Superadministrator** eller **Administrator** for å opprette tjenester. Andre roller krever eksplisitte tjenestetillatelser for å få tilgang til denne seksjonen.
+</Note>
+
+<Steps>
+  <Step title="Velg tjenestetypen">
+    Åpne **Tjenester** fra venstre sidefelt og klikk **+ Tjeneste** for å starte en ny listing.
+
+    Øverst på siden velger du faktureringsmodellen din:
+
+    - **Engangsbetalingstjeneste** — klienten betaler ett enkelt beløp og mottar leveransen én gang. Best for prosjekter med tydelig omfang: nettstedbygg, logopakker, revisjoner osv.
+    - **Abonnementstjeneste** — fakturering gjentas automatisk på den tidsplanen du definerer. Best for retainere, løpende innhold, administrerte tjenester eller vedlikeholdsplaner.
+
+    <Warning>
+      Tjenestetypen låses etter lagring. Hvis du trenger en annen faktureringsmodell, opprett en ny tjeneste.
+    </Warning>
+  </Step>
+
+  <Step title="Legg til tjenestedetaljer">
+    Utvid seksjonen **Tjenestedetaljer** og fyll inn følgende felt:
+
+    **Tjenestenavn** *(obligatorisk)*
+    Dette er hvordan tjenesten vises til klienter overalt på plattformen — i katalogen, på fakturaer og inne i ordrearbeidsområdet. Gjør det tydelig og beskrivende.
+
+    **Medieopplas**
+    Last opp ett eller flere forhåndsvisningsbilder for å representere tjenesten visuelt. Bilder av høy kvalitet øker klienttillit og konverteringsrater.
+
+    **Tjenestebeskrivelse**
+    Skriv en grundig forklaring av hva tjenesten inkluderer, hvem den er for og hva klienter kan forvente. Bruk dette rommet til å differensiere tilbudet ditt.
+
+    **Skatteinnstillinger**
+    Velg om skatt er **inklusiv** (allerede innebygd i prisen) eller **eksklusiv** (legges til på toppen ved kassen).
+
+    **Valuta**
+    Angi valutaen for alle pakker i denne tjenesten. Alle pakker innen en enkelt tjeneste deler samme valuta.
+
+    <Tip>
+      Last opp forhåndsvisningsbilder i 16:9-format for best presentasjon i klientportalen.
+    </Tip>
+  </Step>
+
+  <Step title="Opprett pakker">
+    Utvid **Pakkedetaljer** og klikk **+ Ny pakke** for å legge til ditt første prisnivå. Du kan opprette opptil **5 pakker** per tjeneste.
+
+    For hver pakke konfigurerer du følgende:
+
+    **Pakkenavn** *(obligatorisk)*
+    Navnet klienter ser, for eksempel *Grunnleggende*, *Standard* eller *Premium*.
+
+    **Pakkeikon** *(valgfritt)*
+    Velg et innebygd ikon eller last opp et egendefinert. Opplastede ikoner må være **32 × 32 piksler**.
+
+    **Pakkemedia** *(valgfritt)*
+    Last opp et forsidebilde spesifikt for denne pakken. Aksepterte formater: PNG, JPG, JPEG. Maksimal filstørrelse: **5 MB**. Maksimalt 1 fil per pakke. Anbefalt forhold: **16:9**.
+
+    **Pakkebeskrivelse** *(valgfritt)*
+    Et ett-linjes sammendrag av denne pakkens leveranser. Maksimum **140 tegn**.
+
+    **Hva som er inkludert** *(obligatorisk)*
+    List opp de spesifikke leveransene som er inkludert i denne pakken. Du kan legge til opptil **15 linjelinjer** per pakke. Hvert punkt skal beskrive én konkret leveranse (f.eks. *«5 blogginnlegg per måned, opptil 1 000 ord hver»*).
+
+    <Tip>
+      Etter å ha opprettet flere pakker, dra dem for å sortere rekkefølgen de vises til klienter. Merk én som **Mest populær** for å trekke oppmerksomhet til det anbefalte nivået ditt.
+    </Tip>
+  </Step>
+
+  <Step title="Angi prissetting og leveringsregler">
+    Inne i hver pakke angir du de kjerne prissettingsfeltene og eventuelle valgfrie kontroller:
+
+    **Beløp** *(obligatorisk)*
+    Prisen en klient betaler for denne pakken.
+
+    **Leveringstid** *(obligatorisk)*
+    Det estimerte antall dager for å levere tjenesten etter kjøp.
+
+    **Valgfrie prissettingskontroller:**
+
+    <Accordion title="Legg til rabatt">
+      Bruk en prosent- eller fastbeløpsreduksjon på denne pakkens pris. Den rabatterte prisen vises til klienter ved siden av den opprinnelige prisen, noe som skaper en effektiv salgsfremmende effekt.
+    </Accordion>
+
+    <Accordion title="Legg til prøveperiode (kun abonnement)">
+      Tilby en gratis eller redusert prøveperiode før den vanlige abonnementsfaktureringen begynner. Dette alternativet er bare tilgjengelig for abonnementstjenester.
+    </Accordion>
+
+    <Accordion title="Legg til mengdebegrensning">
+      Begrens antall enheter en klient kan kjøpe i én enkelt kassesøkt. Bruk dette for pakker med begrenset tilgjengelighet eller tjenester med kapasitetsbegrensninger.
+    </Accordion>
+
+    <Accordion title="Legg til flere prisdetaljer">
+      Del opp den totale kostnaden i individuelle linjelinjer — for eksempel ved å vise *grunnpris + oppsettavgift + per-enhetskostnad*. Hver nedbrytingsetikett støtter maksimalt **20 tegn**.
+    </Accordion>
+
+    <Note>
+      Alle obligatoriske felt (Beløp og Leveringstid) må fylles ut for hver pakke før du kan publisere tjenesten.
+    </Note>
+  </Step>
+
+  <Step title="Legg til standard oppgaver for automatisering">
+    Hver pakke inkluderer en seksjon for **Standard oppgaver**. Oppgaver definert her genereres automatisk inne i ordrearbeidsområdet i det øyeblikket en klient kjøper denne pakken — ingen manuell oppsett nødvendig etter hvert salg.
+
+    Klikk **+ Legg til mer** for å åpne modalen for oppgaveopprettelse. For hver oppgave kan du konfigurere:
+
+    | Felt | Detaljer |
+    |---|---|
+    | **Oppgavenavn** | Obligatorisk; maksimum **160 tegn** |
+    | **Beskrivelse** | Detaljerte instruksjoner for den ansvarlige |
+    | **Ansvarlig** | Teammedlem ansvarlig for å fullføre denne oppgaven |
+    | **Vedlegg** | Last opp referansefiler; aksepterte formater: csv, odt, doc, docx, htm, html, pdf, ppt, pptx, txt, xls, xlsx, jpg, jpeg, png, gif, webp, svg, ai, mp4, mp3, wav, zip, rar; maks filstørrelse **1 GB** per fil |
+    | **Etikett** | Merk oppgaven for filtrering og rapportering |
+    | **Status** | Innledende status når oppgaven opprettes |
+    | **Klientgjennomgang** | Slå på hvis denne oppgaven krever klientgodkjenning før den anses som fullført |
+
+    Legg til så mange oppgaver som nødvendig for å dekke leveringsprosessen for denne pakken fullt ut. Konsekvente standard oppgaver sikrer at alle ordre følger den samme kvalitetssikrede arbeidsflyten.
+
+    <Tip>
+      Kartlegg standard oppgavene dine til interne retningslinjer. For eksempel kan en *Administrasjon av sosiale medier*-pakke automatisk generere oppgaver som *Utkast til innholdskalender*, *Klientgodkjenning*, *Planlegg innlegg* og *Månedlig rapport*.
+    </Tip>
+  </Step>
+
+  <Step title="Legg til ofte stilte spørsmål og portefølje">
+    Utvid seksjonen **Tilleggsinformasjon** for å legge til to valgfrie, men svært effektive elementer:
+
+    **Porteføljevedlegg**
+    Koble en porteføljekategori til denne tjenesten slik at klienter kan bla gjennom relevante eksempler på tidligere arbeid direkte på tjenestelisten. Du kan koble til en eksisterende porteføljekategori eller opprette en ny fra dette skjermbildet.
+
+    **Ofte stilte spørsmål (FAQ)**
+    Klikk **+ Legg til** for å sette inn et spørsmål-og-svar-par. Legg til så mange ofte stilte spørsmål som relevant — vanlige emner inkluderer:
+
+    - Innholdets originalitet og rettigheter
+    - Revisjons- og tilbakemeldingsprosessen
+    - Omfangsgrenser og hva som *ikke* er inkludert
+    - Tidslinjer og kommunikasjonskadans
+    - Betalings- og refusjonspolicyer
+
+    Velskrevne ofte stilte spørsmål reduserer kommunikasjon frem og tilbake før kjøp og hjelper klienter med å selvkvalifisere seg.
+  </Step>
+
+  <Step title="Knytt til et inntaksskjema">
+    Et inntaksskjema samler inn informasjonen du trenger fra en klient før arbeidet begynner — for eksempel retningslinjer for merkevaren, tilgangsinformasjon, målgruppe eller prosjektmål.
+
+    - Klikk **+ Opprett nytt inntaksskjema** for å bygge et skjema fra bunnen av, eller velg et eksisterende skjema fra rullegardinmenyen.
+    - Hvis denne tjenesten ikke krever et inntaksskjema, klikk **Hopp over** for å omgå denne seksjonen.
+    - Klikk **Oppdater** for å lagre valget av inntaksskjema og fortsette.
+
+    <Note>
+      Inntaksskjemaet er valgfritt, men anbefales sterkt for tjenester som krever klientspesifikke inndata før leveringen kan starte.
+    </Note>
+  </Step>
+
+  <Step title="Publiser tjenesten">
+    Nederst i tjenesteeditoren:
+
+    1. Slå **Publiser denne tjenesten** til PÅ-posisjonen.
+    2. Klikk **Lagre** (eller **Oppdater tjeneste** hvis du redigerer en eksisterende tjeneste).
+
+    Når den er publisert, blir tjenesten umiddelbart synlig for klienter i portalen. Hvis du lar bryteren stå av, lagres tjenesten som et utkast og er bare synlig for teamet ditt.
+
+    <Tip>
+      Bruk utkastmodus til å forberede en tjeneste på forhånd og publisere den ved lanseringstidspunktet — nyttig for sesongsalg eller nye tilbudsannonseringer.
+    </Tip>
+  </Step>
+</Steps>
+
+## Tillegg-oppsett
+
+Tillegg er valgfrie ekstratjenester som klienter kan velge under kassen — for eksempel *Ekspresslevering*, *Ekstra revisjoner* eller en *Månedlig rapport*. De lar deg mersalg av komplementære tjenester uten å opprette helt nye lister.
+
+### Opprette et tillegg
+
+<Steps>
+  <Step title="Åpne Tillegg">
+    Gå til **Tjenester** i sidefeltet, klikk på **nedpil**-knappen ved siden av Tjenester-overskriften og velg **Tillegg**.
+  </Step>
+  <Step title="Opprett et nytt tillegg">
+    Klikk **+ Legg til nytt tillegg** og fyll inn:
+
+    - **Tilleggsnavn**
+    - **Beskrivelse** — bruk rik tekstredigereren til å tydelig forklare hva tillegget inkluderer
+    - **Pristype** — velg *Engangsbetaling* eller *Abonnement*
+    - **Prisdetaljer:**
+      - *Engangsbetaling:* skriv inn beløp og valuta
+      - *Abonnement:* angi faktureringsintervall (f.eks. hver 1 måned), en valgfri grense for faktureringssykluser, abonnementsavgiften og valuta
+  </Step>
+  <Step title="Publiser og lagre">
+    Slå **Publiser** PÅ, klikk deretter **Opprett**. Bare publiserte tillegg er synlige når du kobler dem til bestillingsskjemaer.
+  </Step>
+</Steps>
+
+### Knytte et tillegg til et bestillingsskjema
+
+<Steps>
+  <Step title="Åpne bestillingsskjemaet">
+    Naviger til **Skjemaer** og åpne det relevante bestillingsskjemaet.
+  </Step>
+  <Step title="Velg tjenesten">
+    Velg tjenesten du vil koble tillegget til.
+  </Step>
+  <Step title="Legg til tilleggene">
+    Velg seksjonen **Tillegg** fra venstre panel, og velg deretter tilleggene du vil knytte til denne tjenesten.
+  </Step>
+  <Step title="Lagre skjemaet">
+    Klikk **Lagre**. Klienter vil nå se de valgte tilleggene som valgfrie ekstratjenester under kassen.
+  </Step>
+</Steps>
+
+<Note>
+  Tillegg må bruke samme valuta som tjenesten de er knyttet til. Hvis valutaene ikke stemmer overens, vises ikke tillegget i valgslisten.
+</Note>
+
+### Faktureringssatferd for abonnementstillegg
+
+Når faktureringssyklusene til en tjeneste og et abonnementstillegg er ulike, håndterer AgencyHandy overlappingen automatisk:
+
+<Accordion title="Tillegg har flere sykluser enn tjenesten">
+  Både tjenesten og tillegget faktureres sammen for tjenestens varighet. Etter at tjenesten slutter, fortsetter tillegget å faktureres alene for de gjenværende syklusene.
+
+  **Eksempel:** Tjeneste kjører i 4 sykluser, tillegg kjører i 5 sykluser → faktureres sammen i 4 sykluser, tillegg faktureres alene i 1 ekstra syklus.
+</Accordion>
+
+<Accordion title="Tillegg har færre sykluser enn tjenesten">
+  Både tjenesten og tillegget faktureres sammen for tilleggets varighet. Etter at tillegget slutter, fortsetter tjenesten å faktureres alene for de gjenværende syklusene.
+
+  **Eksempel:** Tjeneste kjører i 5 sykluser, tillegg kjører i 3 sykluser → faktureres sammen i 3 sykluser, tjeneste faktureres alene i 2 ekstra sykluser.
+</Accordion>
+
+## Redigere en tjeneste
+
+Etter at en tjeneste er publisert, kan du oppdatere alle felt uten å avbryte eksisterende ordre.
+
+1. Gå til **Tjenester** og finn tjenesten du vil oppdatere.
+2. Klikk på **tre-punkts-menyen** (⋮) på høyre side av tjenesteraden.
+3. Velg **Rediger**. Tjenesteeditoren åpnes med alle eksisterende innstillinger fylt ut.
+4. Gjør endringene dine — oppdater tittel, beskrivelse, prissetting, media, pakker, oppgaver eller ofte stilte spørsmål.
+5. Klikk **Oppdater tjeneste** for å lagre.
+
+<Warning>
+  Endringer i pakkepris eller leveringstid trer i kraft for **nye ordre kun**. Eksisterende ordre påvirkes ikke retroaktivt.
+</Warning>
+
+## Feltreferanse
+
+| Felt | Grense |
+|---|---|
+| Pakker per tjeneste | Opptil 5 |
+| Leveranser per pakke (Hva som er inkludert) | Opptil 15 |
+| Pakkebeskrivelse | 140 tegn |
+| Pakkeikonstørrelse | 32 × 32 px |
+| Pakkemedia filstørrelse | 5 MB (PNG, JPG, JPEG) |
+| Oppgavenavn | 160 tegn |
+| Vedlegg til oppgave filstørrelse | 1 GB per fil |
+| Prislabel for nedbrytning | 20 tegn |

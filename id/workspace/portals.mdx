@@ -1,0 +1,290 @@
+---
+title: "Sesuaikan Portal Klien, Kontrol Akses, dan Tarif Pajak"
+sidebarTitle: "Portal"
+description: "Beri merek pada halaman masuk dan daftar klien, kendalikan visibilitas sidebar berdasarkan peran, dan konfigurasi tarif pajak untuk invoice dan checkout di AgencyHandy."
+---
+
+AgencyHandy memberi Anda kontrol mendalam atas apa yang dilihat dan dialami klien Anda — mulai dari halaman pertama yang mereka temui saat masuk, hingga bagian platform mana yang dapat mereka navigasi setelah login. Halaman ini mencakup empat area konfigurasi yang saling terkait: **Portal Masuk**, **Portal Daftar**, **Kontrol Sidebar & Akses**, dan **Tarif Pajak**. Bersama-sama, pengaturan ini memungkinkan Anda menciptakan pengalaman yang halus dan sesuai peran untuk setiap pengguna di workspace Anda.
+
+<Note>
+  Semua pengaturan di halaman ini memerlukan akses **Super Admin** atau **Admin**. Buka **Workspace Config** di sidebar kiri untuk mengakses setiap bagian.
+</Note>
+
+---
+
+<Tabs>
+  <Tab title="Sign-in Portal">
+    ## Portal Masuk
+
+    Portal Masuk adalah halaman login yang dilihat klien dan anggota tim saat mengakses workspace AgencyHandy Anda. Menyesuaikannya memastikan kesan pertama yang diterima klien sepenuhnya mencerminkan merek Anda — lengkap dengan gambar, judul, dan pesan agensi Anda.
+
+    ### Yang Dapat Anda Sesuaikan
+
+    | Elemen     | Deskripsi                                          | Batas                   |
+    |-------------|------------------------------------------------------|-------------------------|
+    | **Heading** | Judul utama yang ditampilkan di bagian atas halaman login | Maks 120 karakter      |
+    | **Image**   | Foto atau ilustrasi bermerek yang ditampilkan di halaman    | PNG, JPG, JPEG — maks 5 MB |
+    | **Subtext** | Pesan singkat di bawah kolom login               | Maks 300 karakter      |
+
+    ### Langkah-langkah Menyesuaikan Portal Masuk
+
+    <Steps>
+      <Step title="Buka pengaturan Portal Masuk">
+        Buka **Workspace Config** di navigasi kiri, lalu pilih **Sign-in Portal** dari submenu.
+      </Step>
+      <Step title="Masukkan judul kustom">
+        Ketik judul yang Anda inginkan di kolom **Heading**. Buat ringkas dan relevan — misalnya, _"Selamat datang kembali di [Nama Agensi]"_ atau _"Portal Klien Anda."_ Panjang maksimal adalah 120 karakter.
+      </Step>
+      <Step title="Unggah gambar bermerek">
+        Klik area unggah atau seret dan lepas file gambar (PNG, JPG, atau JPEG, maksimal 5 MB) untuk menambahkan elemen visual ke halaman masuk. Gambar ini biasanya muncul di samping formulir login.
+
+        <Tip>
+          Gunakan gambar berkualitas tinggi yang mewakili agensi Anda — foto tim, ilustrasi merek yang bersih, atau latar belakang profesional. Pastikan ukuran file di bawah 5 MB untuk menghindari kesalahan unggah.
+        </Tip>
+      </Step>
+      <Step title="Tambahkan subtext">
+        Di kolom **Subtext**, tulis pesan singkat yang muncul di bawah kolom login — misalnya, catatan sambutan, kontak dukungan, atau tagline singkat. Batas 300 karakter.
+      </Step>
+      <Step title="Pratinjau dan simpan">
+        Tinjau tata letak halaman masuk menggunakan pratinjau. Setelah puas, klik **Save** (atau **Update**) untuk menerapkan perubahan. Perubahan berlaku segera.
+      </Step>
+    </Steps>
+
+    ### Mengatur Ulang ke Default
+
+    Klik **Reset Default Settings** di halaman Portal Masuk untuk menghapus semua penyesuaian dan memulihkan halaman masuk AgencyHandy asli.
+
+    <Warning>
+      Mengatur ulang ke default tidak dapat dibatalkan. Semua judul, gambar, dan subtext kustom akan dihapus secara permanen. Klik **Cancel** jika Anda tidak yakin — perubahan yang belum disimpan akan dibuang dan pengaturan tersimpan saat ini tetap utuh.
+    </Warning>
+
+    ### Praktik Terbaik
+
+    - Buat judul singkat dan ramah — klien melihatnya sebelum login, jadi buat meyakinkan.
+    - Gunakan gambar profesional yang mewakili agensi Anda. Hindari foto stok generik yang terasa tidak terhubung dengan merek Anda.
+    - Pratinjau di berbagai ukuran layar sebelum menyimpan untuk memastikan tata letak gambar dan teks terlihat benar.
+    - Jika gambar gagal diunggah, konfirmasi bahwa format (PNG, JPG, JPEG) dan ukuran (di bawah 5 MB) memenuhi persyaratan.
+  </Tab>
+
+  <Tab title="Sign-up Portal">
+    ## Portal Daftar
+
+    Portal Daftar adalah halaman registrasi tempat klien baru mendaftar saat membuat akun di workspace Anda. Menyesuaikannya menciptakan pengalaman bermerek yang konsisten sejak interaksi pertama yang dimiliki calon klien dengan platform agensi Anda.
+
+    ### Yang Dapat Anda Sesuaikan
+
+    | Elemen     | Deskripsi                                           | Batas                    |
+    |-------------|-------------------------------------------------------|--------------------------|
+    | **Heading** | Judul utama yang ditampilkan di bagian atas halaman daftar | Maks 120 karakter     |
+    | **Image**   | Foto atau ilustrasi bermerek yang ditampilkan di halaman     | PNG, JPG, JPEG — maks 5 MB |
+    | **Subtext** | Pesan singkat di bawah kolom registrasi         | Maks 300 karakter       |
+
+    ### Langkah-langkah Menyesuaikan Portal Daftar
+
+    <Steps>
+      <Step title="Buka pengaturan Portal Daftar">
+        Buka **Workspace Config** di navigasi kiri, lalu pilih **Sign-up Portal** dari submenu.
+      </Step>
+      <Step title="Masukkan judul kustom">
+        Ketik judul di kolom **Heading** yang menyambut klien baru. Misalnya, _"Mulai dengan [Nama Agensi]"_ atau _"Buat akun klien Anda."_ Maksimal 120 karakter.
+      </Step>
+      <Step title="Unggah gambar bermerek">
+        Klik area unggah atau seret dan lepas file gambar (PNG, JPG, atau JPEG, maksimal 5 MB). Gambar ini ditampilkan di halaman daftar di samping formulir registrasi.
+
+        <Tip>
+          Gunakan gaya visual dan palet warna yang sama pada gambar portal Masuk dan Daftar Anda untuk menciptakan pengalaman yang kohesif di kedua halaman.
+        </Tip>
+      </Step>
+      <Step title="Tambahkan subtext">
+        Tulis pesan pendukung singkat di kolom **Subtext** — misalnya, instruksi tentang apa yang diharapkan setelah mendaftar, atau proposisi nilai singkat. Maksimal 300 karakter.
+      </Step>
+      <Step title="Pratinjau dan simpan">
+        Tinjau halaman daftar menggunakan opsi pratinjau. Klik **Save** (atau **Update**) untuk menerapkan perubahan segera.
+      </Step>
+    </Steps>
+
+    ### Mengatur Ulang ke Default
+
+    Klik **Reset Default Settings** di halaman Portal Daftar untuk menghapus semua penyesuaian dan memulihkan halaman daftar AgencyHandy asli.
+
+    <Warning>
+      Tindakan ini tidak dapat dibatalkan. Semua konfigurasi judul, gambar, dan subtext kustom akan dihapus secara permanen.
+    </Warning>
+
+    ### Praktik Terbaik
+
+    - Sesuaikan nada judul daftar dengan gaya komunikasi klien Anda secara keseluruhan — profesional, ramah, atau keduanya.
+    - Buat subtext terfokus: beri tahu klien baru apa yang terjadi setelah mereka mendaftar (misalnya, _"Setelah Anda mendaftar, tim kami akan mengirimkan email sambutan dalam 24 jam."_).
+    - Uji alur daftar sendiri setelah menyimpan perubahan untuk mengonfirmasi halaman terlihat dan berperilaku sesuai harapan.
+  </Tab>
+
+  <Tab title="Sidebar & Access">
+    ## Kontrol Sidebar & Akses
+
+    Pengaturan Sidebar & Akses memungkinkan Anda mengontrol dengan tepat apa yang dapat dilihat setiap peran pengguna di menu navigasi kiri. Anda dapat mengganti nama item menu agar sesuai dengan terminologi agensi Anda, mengganti ikon default dengan ikon kustom, dan mengaktifkan atau menonaktifkan visibilitas bagian menu mana pun per peran. Hasilnya adalah antarmuka yang lebih bersih dan bertujuan untuk setiap orang yang login.
+
+    ### Peran yang Dapat Dikonfigurasi
+
+    - Klien
+    - Super Admin
+    - Admin
+    - Manajer
+    - Assignee
+    - Kustom (peran kustom apa pun yang telah Anda buat di Roles & Permissions)
+
+    ### Langkah-langkah Menyesuaikan Item Menu Sidebar
+
+    <Steps>
+      <Step title="Buka pengaturan Sidebar & Access">
+        Buka **Workspace Config**, lalu pilih **Sidebar & Access** dari menu pengaturan.
+      </Step>
+      <Step title="Klik Customize">
+        Klik tombol **Customize** di bagian atas panel. Daftar lengkap item menu sidebar saat ini muncul di bawah kategori **Main**.
+      </Step>
+      <Step title="Ganti nama item menu">
+        Klik kolom teks item menu mana pun dan ketik label baru. Misalnya, ganti nama "Dashboard" menjadi "Ikhtisar" atau "CRM" menjadi "Kontak." Klik **Save** untuk menerapkan nama baru.
+      </Step>
+      <Step title="Ubah ikon menu">
+        Klik ikon di sebelah nama item menu. Popup terbuka dengan sekumpulan opsi ikon — pilih salah satu dari perpustakaan, atau unggah gambar kustom 32×32 px untuk menggunakan ikon bermerek Anda sendiri. Klik **Save** untuk menerapkan.
+      </Step>
+    </Steps>
+
+    ### Langkah-langkah Mengonfigurasi Visibilitas Berbasis Peran
+
+    <Steps>
+      <Step title="Klik Edit Access">
+        Klik tombol **Edit Access** (di sebelah tombol **Customize**). Anda akan melihat tab untuk setiap peran yang tersedia.
+      </Step>
+      <Step title="Pilih peran">
+        Klik tab untuk peran yang ingin Anda konfigurasi — misalnya, **Client**.
+      </Step>
+      <Step title="Aktifkan atau nonaktifkan visibilitas item menu">
+        Untuk setiap item menu yang terdaftar, gunakan toggle untuk menampilkan atau menyembunyikannya untuk peran yang dipilih. Misalnya, Anda mungkin menyembunyikan **Invoices** dan **Subscriptions** dari Klien sambil tetap membuatnya terlihat oleh Admin dan Manajer.
+      </Step>
+      <Step title="Simpan perubahan Anda">
+        Klik **Save**. Pengaturan visibilitas yang diperbarui berlaku segera — pengguna melihat perubahan pada navigasi halaman berikutnya atau setelah login kembali.
+      </Step>
+      <Step title="Atur ulang ke default jika diperlukan">
+        Klik **Reset to Default** di tab peran mana pun untuk memulihkan pengaturan visibilitas asli untuk peran tersebut.
+      </Step>
+    </Steps>
+
+    <Tip>
+      Sidebar yang bersih dan minimal meningkatkan pengalaman klien. Menampilkan kepada klien hanya apa yang mereka butuhkan — seperti **Dashboard**, **Orders**, dan **Messages** — mengurangi kebingungan dan mencegah mereka menemukan bagian internal.
+    </Tip>
+
+    ### Contoh Konfigurasi Peran
+
+    | Peran        | Bagian yang Disarankan untuk Ditampilkan                              |
+    |-------------|-----------------------------------------------------------|
+    | Klien      | Dashboard, Orders, Messages, Invoices (jika diperlukan)         |
+    | Manajer     | CRM, Projects, Timesheet, Tasks                           |
+    | Assignee    | Dashboard, Tasks, Projects, Messages                      |
+    | Super Admin | Semua bagian (tanpa pembatasan)                            |
+
+    ### Catatan Penting
+
+    - **Perubahan bersifat instan:** Pembaruan visibilitas peran berlaku segera setelah pengguna menyegarkan atau login kembali.
+    - **Peran paling permisif yang berlaku:** Jika pengguna memiliki beberapa peran, peran dengan akses terluas yang diprioritaskan.
+    - **Ikon kustom:** Unggah gambar 32×32 px untuk mencocokkan visual merek agensi Anda di sidebar.
+    - **Konsistensi penamaan:** Gunakan konvensi penamaan yang jelas dan konsisten yang dipahami seluruh tim Anda — hindari singkatan atau jargon internal yang tidak dikenali anggota tim baru.
+  </Tab>
+
+  <Tab title="Tax Rates">
+    ## Tarif Pajak
+
+    Fitur Tarif Pajak memungkinkan Anda membuat, mengelola, dan menerapkan konfigurasi pajak di seluruh layanan, langganan, dan invoice Anda. Anda dapat menyiapkan beberapa jenis pajak — PPN, GST, Pajak Penjualan, dan lainnya — dengan tarif khusus negara dan negara bagian, dukungan untuk model penetapan harga inklusif dan eksklusif, dan penerapan otomatis saat checkout berdasarkan lokasi klien.
+
+    <Note>
+      Hanya **Super Admin** dan **Admin** yang dapat membuat, mengedit, atau menghapus konfigurasi pajak.
+    </Note>
+
+    ### Konsep Pajak Sekilas
+
+    | Konsep       | Definisi                                                                                          |
+    |---------------|-----------------------------------------------------------------------------------------------------|
+    | **Eksklusif** | Pajak ditambahkan di atas harga yang tercantum saat checkout (misalnya, $100 + pajak 10% = total $110)            |
+    | **Inklusif** | Pajak sudah termasuk dalam harga yang ditampilkan kepada pelanggan (misalnya, total $110 sudah termasuk pajak) |
+    | **Tax ID**    | Nomor identifikasi pajak bisnis agensi Anda, ditampilkan pada invoice                                 |
+
+    ### Langkah 1: Buat Tarif Pajak
+
+    <Steps>
+      <Step title="Buka Tarif Pajak">
+        Buka **Workspace Config**, lalu klik tab **Tax Rates**.
+      </Step>
+      <Step title="Klik + New Tax">
+        Klik tombol **+ New Tax**. Sebuah formulir muncul.
+      </Step>
+      <Step title="Isi detail pajak">
+        Lengkapi kolom berikut:
+
+        - **Title / Tax Type** *(wajib)*: Masukkan nama deskriptif, misalnya PPN Standar, GST Dikurangi, atau Pajak Penjualan AS. Maksimal 255 karakter.
+        - **Tax ID** *(opsional)*: Nomor identifikasi pajak bisnis agensi Anda. Maksimal 20 karakter.
+        - **Home Country**: Pilih negara utama yang diterapkan pajak ini.
+        - **Home Country General Tax Rate %** *(opsional)*: Tarif default untuk negara asal Anda.
+        - **Country-Specific Rates** *(opsional)*: Tambahkan tarif per negara dengan negara bagian, kode ZIP, dan persentase opsional. Ini berguna untuk agensi yang melayani klien di berbagai yurisdiksi pajak.
+      </Step>
+      <Step title="Tetapkan status">
+        Aktifkan pajak ke **Active** agar segera tersedia untuk digunakan dalam layanan dan invoice. Setel ke **Inactive** untuk menyimpan konfigurasi tanpa menerapkannya pada pembelian baru.
+      </Step>
+      <Step title="Simpan">
+        Klik **Save**. Pajak muncul dalam daftar Tarif Pajak Anda dan sekarang tersedia untuk dihubungkan ke layanan.
+      </Step>
+    </Steps>
+
+    <Tip>
+      Anda dapat mendukung hingga 4 desimal dalam persentase tarif pajak. Tarif pajak 0% valid — gunakan untuk item tarif nol atau skenario kepatuhan di mana pajak harus dicantumkan tetapi jumlahnya nol.
+    </Tip>
+
+    ### Langkah 2: Tautkan Pajak ke Layanan
+
+    <Steps>
+      <Step title="Buka layanan untuk diedit">
+        Buka **Services** dan buat layanan baru atau edit yang sudah ada.
+      </Step>
+      <Step title="Buka bagian Additional Info">
+        Lanjutkan ke Langkah 3 (Additional Info) dari wizard pengaturan layanan.
+      </Step>
+      <Step title="Tambahkan pajak ke layanan">
+        Klik **Add Tax** dan pilih satu atau lebih jenis pajak dari daftar yang dikonfigurasi. Pilih apakah pajak diterapkan sebagai **inklusif** atau **eksklusif** untuk layanan ini. Pengaturan ini berlaku untuk semua pajak yang ditautkan pada layanan, termasuk biaya pengaturan dan add-on.
+      </Step>
+    </Steps>
+
+    ### Langkah 3: Cara Pajak Diterapkan
+
+    Pajak dapat diterapkan **secara otomatis saat checkout** atau **secara manual pada invoice**:
+
+    **Otomatis (Checkout)**
+    - Pajak yang ditautkan ke layanan dihitung secara otomatis berdasarkan lokasi penagihan klien.
+    - Klien harus memberikan negara, negara bagian, dan kode ZIP saat checkout agar pajak berbasis lokasi berlaku.
+    - Untuk akun Stripe India, informasi lokasi lengkap (negara, negara bagian, ZIP) bersifat wajib.
+
+    **Manual (Invoice)**
+    - Saat membuat invoice secara manual, klik **Add Taxes** untuk memilih pajak mana yang akan diterapkan.
+    - Kolom alamat penagihan terisi secara otomatis.
+    - **Hanya pajak eksklusif** yang dapat diterapkan pada invoice manual — pajak inklusif tidak didukung dalam alur ini.
+
+    ### Tampilan Pajak pada Invoice
+
+    Setiap invoice yang mencakup pajak menampilkan detail berikut:
+
+    - **Nama Pajak** — label yang Anda masukkan (misalnya, PPN, GST)
+    - **Persentase Pajak** — tarif yang diterapkan (misalnya, 15%)
+    - **Jumlah Pajak** — jumlah yang dikenakan
+
+    ### Mengelola Tarif Pajak yang Ada
+
+    - **Edit pajak:** Klik entri pajak dalam daftar untuk memperbarui judul, tarif, atau aturan negara. Pembaruan hanya berlaku untuk invoice dan pembelian mendatang.
+    - **Hapus pajak:** Pajak yang dihapus tidak lagi berlaku untuk pembelian atau langganan baru, tetapi invoice yang sudah ada yang menyertakannya tidak terpengaruh.
+    - **Nonaktifkan pajak:** Setel pajak ke **Inactive** untuk berhenti menerapkannya pada pembelian baru tanpa menghapus konfigurasi.
+
+    ### Catatan Penting
+
+    - **Diskon kupon diterapkan sebelum pajak:** Saat klien menggunakan kupon diskon, pajak dihitung dari harga setelah diskon, bukan harga asli.
+    - **Beberapa pajak per layanan:** Anda dapat melampirkan lebih dari satu pajak ke satu layanan (misalnya, PPN + GST secara bersamaan).
+    - **Pajak berlaku untuk add-on dan biaya pengaturan:** Jika layanan Anda memiliki biaya pengaturan atau add-on, pajak juga diterapkan pada jumlah tersebut.
+    - **Lokasi klien terisi otomatis:** Jika klien memiliki negara dan negara bagian penagihan yang tersimpan di profil mereka, kolom tersebut terisi otomatis saat checkout. Namun, mengedit lokasi saat checkout **tidak** memperbarui profil klien.
+    - **Deteksi negara bagian berbasis kode ZIP:** Untuk klien AS, sistem dapat mendeteksi negara bagian secara otomatis dari kode ZIP dan menerapkan pajak regional yang benar jika dikonfigurasi.
+  </Tab>
+</Tabs>

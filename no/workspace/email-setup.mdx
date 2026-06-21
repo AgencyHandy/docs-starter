@@ -1,0 +1,188 @@
+---
+title: "Konfigurer utgående e-post, SMTP og e-postmaler"
+sidebarTitle: "E-postoppsett"
+description: "Konfigurer en egendefinert avsender-e-postadresse, koble til en SMTP-server, legg til DKIM/SPF-poster for leveringssikkerhet, og tilpass e-postmaler i AgencyHandy."
+---
+
+AgencyHandy sitt e-postoppsett lar deg erstatte standard `noreply@agencyhandy.com`-avsender med din egen merkevarebaserte e-postadresse, konfigurere en dedikert SMTP-server for pålitelig levering, og tilpasse malene som brukes til klientvarsler, fakturaer, tilbud og mer. Riktig oppsett sikrer at e-postene dine når klientenes innbokser — ikke søppelpostmapper — og at alle meldinger gjenspeiler byråets identitet.
+
+<Note>
+  Bare **superadministratorer** og **administratorer** kan konfigurere e-postinnstillinger. Naviger til **Workspace Config → E-postoppsett** for å få tilgang til disse alternativene.
+</Note>
+
+---
+
+## Oversikt over e-postoppsett-komponenter
+
+<CardGroup cols={2}>
+  <Card title="Egendefinert e-postadresse" icon="envelope">
+    Angi avsendernavnet og e-postadressen som klienter ser når de mottar meldinger fra arbeidsområdet ditt.
+  </Card>
+  <Card title="DKIM- og SPF-poster" icon="shield-check">
+    Legg til DNS-autentiseringsposter for å bevise at e-postene dine er legitime og forhindre at de flagges som søppelpost.
+  </Card>
+  <Card title="SMTP-server" icon="server">
+    Koble til din egen e-postserver (f.eks. Gmail, Outlook eller en server for eget domene) for å sende alle utgående e-poster fra AgencyHandy.
+  </Card>
+  <Card title="E-postmaler" icon="file-lines">
+    Tilpass innhold, emnelinjer og merkevarebygging for alle automatiserte e-poster AgencyHandy sender til klienter.
+  </Card>
+</CardGroup>
+
+---
+
+## Del 1: Sett opp en egendefinert e-postadresse
+
+Før du konfigurerer avsender-e-posten din, trenger du et registrert domene med e-posthosting. Populære leverandører inkluderer Google Workspace, Microsoft 365, Zoho Mail og Cloudflare Email Routing.
+
+<Steps>
+  <Step title="Registrer et domene og sett opp e-posthosting">
+    Hvis du ikke allerede har gjort det, registrer et domene hos en registrar (f.eks. GoDaddy, Namecheap, Cloudflare) og registrer deg for en e-posthosting-leverandør. Sørg for at du kan opprette og administrere e-postadresser på det domenet (f.eks. `hei@dittbyraa.no`).
+  </Step>
+  <Step title="Naviger til E-postoppsett i AgencyHandy">
+    Logg inn på AgencyHandy. Gå til **Workspace Config** i venstre navigasjon, og klikk deretter på **E-postoppsett**.
+  </Step>
+  <Step title="Angi avsendernavn og e-post">
+    I feltet **Avsendernavn** skriver du inn navnet klienter vil se som avsender (f.eks. `AgencyHandy Support` eller byråets navn). I feltet **Avsender-e-post** skriver du inn den egendefinerte e-postadressen (f.eks. `hei@dittbyraa.no`). Klikk **Lagre**.
+  </Step>
+  <Step title="Bekreft e-postadressen din">
+    AgencyHandy sender en bekreftelseslenke til e-postadressen du oppga. Åpne innboksen din, finn bekreftelsesmeldingen og klikk på lenken for å bekrefte eierskap.
+  </Step>
+  <Step title="Konfigurer DKIM-, SPF- og DMARC-DNS-poster">
+    Etter at du har lagret avsender-e-posten din, gir AgencyHandy deg DNS-postene du må legge til:
+
+    - **SPF-post** (TXT-type) — autoriserer AgencyHandy til å sende e-poster på vegne av domenet ditt.
+    - **DKIM-poster** (3 CNAME-poster) — legger kryptografiske signaturer til utgående e-poster slik at mottakende servere kan verifisere autentisitet.
+    - **DMARC-post** — definerer hvordan mottakende servere skal håndtere e-poster som ikke består autentiseringssjekker.
+
+    Legg til alle disse postene i domenets DNS-innstillinger hos registraren din. For DKIM CNAME-poster, sørg for at **Proxy Status er deaktivert** hvis du bruker Cloudflare.
+  </Step>
+  <Step title="Bekreft aktiv status">
+    Gå tilbake til E-postoppsett-siden i AgencyHandy. Når alle DNS-poster er propagert (dette kan ta mellom 2 minutter og 2 timer), oppdateres e-poststatusen fra **Venter** til å vise et grønt hakemerke ✅. Din egendefinerte e-post er nå aktiv.
+  </Step>
+</Steps>
+
+<Tip>
+  Bruk [MXToolbox](https://mxtoolbox.com/DKIM.aspx) eller [dmarcians DKIM-validator](https://dmarcian.com/dkim-validator/) for å bekrefte at DKIM-postene dine er riktig konfigurert. Oppdater E-postoppsett-siden periodisk mens du venter på propagering.
+</Tip>
+
+---
+
+## Del 2: Konfigurer DKIM og SPF (frittstående oppsett)
+
+Hvis du trenger å generere eller regenerere DKIM- og SPF-poster uavhengig, følg denne veien:
+
+**Workspace Config → E-poster → DKIM og SPF-oppsett → Generer DKIM- og SPF-poster.**
+
+Legg deretter til postene i DNS-en din:
+
+| Posttype | DNS-type | Hva som skal konfigureres                                                                           |
+|-------------|----------|---------------------------------------------------------------------------------------------|
+| SPF         | TXT      | Kopier **Navn** og **Verdi** fra AgencyHandy og legg til en ny TXT-post i DNS-en din       |
+| DKIM (×3)   | CNAME    | Kopier hvert **Navn**- og **Verdi**-par; legg til 3 separate CNAME-poster med proxy deaktivert     |
+
+<Note>
+  DKIM- og SPF-poster kan ta alt fra **2 minutter til 2 timer** å propagere. Hvis statusen fortsatt viser venter etter 2 timer, bekreft at postene ble lagt inn uten skrivefeil og at det ikke finnes motstridende poster.
+</Note>
+
+---
+
+## Del 3: Sett opp SMTP
+
+SMTP (Simple Mail Transfer Protocol) lar deg rute alle utgående AgencyHandy-e-poster gjennom din egen bekreftede e-postserver, noe som gir deg mer kontroll over leveringssikkerhet og merkevarebygging.
+
+<Note>
+  Du kan bruke enten en **egendefinert domenee-post** eller en **SMTP-e-postleverandør** — ikke begge samtidig. Det er mulig å bytte mellom dem når som helst, men du må skrive inn e-postkonfigurasjonen din på nytt når du bytter tilbake til en egendefinert e-post.
+</Note>
+
+<Steps>
+  <Step title="Åpne SMTP-serverinnstillinger">
+    Gå til **Workspace Config → E-postoppsett**, og klikk deretter på **SMTP-server**.
+  </Step>
+  <Step title="Bytt til SMTP-leverandør (hvis nødvendig)">
+    Hvis du allerede har en egendefinert e-post konfigurert, vises en bekreftelsesdialog som spør om du vil bytte. Klikk **Bytt til SMTP** for å fortsette. Dette deaktiverer det eksisterende egendefinerte e-postoppsettet.
+  </Step>
+  <Step title="Skriv inn SMTP-legitimasjonen din">
+    Fyll inn de obligatoriske feltene:
+
+    | Felt        | Eksempelverdi          | Merknader                                     |
+    |-------------|------------------------|-------------------------------------------|
+    | Vertsnavn   | `smtp.gmail.com`       | SMTP-serveradressen til e-postleverandøren din |
+    | Brukernavn  | `deg@dittdomene.no`    | Din fulle e-postadresse                   |
+    | Passord     | App-passord            | Bruk et app-spesifikt passord (se nedenfor)  |
+    | Port        | `465` eller `587`      | 465 for SSL, 587 for TLS                  |
+    | Auto TLS    | Slå av/på              | Valgfritt — aktiverer automatisk TLS-oppgradering  |
+
+    Klikk **Lagre** når du er ferdig.
+  </Step>
+  <Step title="Generer et app-passord (Gmail-eksempel)">
+    Hvis du bruker Gmail med tofaktorautentisering aktivert (nødvendig for app-passord):
+
+    1. Gå til [myaccount.google.com/security](https://myaccount.google.com/security) og bekreft at 2-trinnsbekreftelse er aktiv.
+    2. Besøk [myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords).
+    3. Klikk **Velg app**, velg **E-post** (eller skriv inn et egendefinert navn), klikk deretter **Velg enhet** og velg oppsettet ditt.
+    4. Klikk **Opprett** — Google genererer et 16-tegns app-passord.
+    5. Kopier passordet og lim det inn i **Passord**-feltet i AgencyHandys SMTP-innstillinger.
+
+    <Warning>
+      Bruk **app-passordet**, ikke det vanlige Google-kontopassordet ditt. Bruk av det vanlige passordet vil mislykkes hvis 2FA er aktivert og kan utløse sikkerhetsadvarsler.
+    </Warning>
+  </Step>
+  <Step title="Bekreft oppsettet">
+    Etter lagring viser AgencyHandy en suksessmelding som bekrefter _«SMTP ble opprettet.»_ Lagret vert, brukernavn og portdetaljer vises på SMTP-innstillingssiden.
+  </Step>
+  <Step title="Test SMTP-tilkoblingen">
+    Klikk på **Test**-knappen og skriv inn en mottaker-e-postadresse. AgencyHandy sender en test-e-post til den adressen. Sjekk innboksen for bekreftelsesmeldingen: _«Dette er en bekreftelse på at e-postoppsettet ditt i Agency Handy fungerer som det skal.»_
+  </Step>
+</Steps>
+
+<Tip>
+  Bare én SMTP-konfigurasjon kan være aktiv per arbeidsområde om gangen. Når SMTP er konfigurert, vil alle utgående e-poster fra AgencyHandy — fakturaer, tilbud, oppgavevarsler — bli sendt gjennom SMTP-serveren din.
+</Tip>
+
+---
+
+## Del 4: Tilpass e-postmaler
+
+AgencyHandy inkluderer ferdigbygde maler for alle automatiserte e-poster det sender. Du kan tilpasse hver enkelt for å matche merkevaretonen din og inkludere relevant dynamisk innhold.
+
+**Tilgjengelige maler inkluderer:**
+- Klientregistrering
+- Send tilbud
+- Oppgavegjennomgang
+- Send faktura
+- Faktura- og abonnementspåminnelser
+- Varsler om opprettelse av støttesaker
+
+<Steps>
+  <Step title="Åpne e-postmaler">
+    Gå til **Workspace Config → E-poster**, og velg deretter **E-postmal** fra undermenyen.
+  </Step>
+  <Step title="Velg en mal å redigere">
+    Den fullstendige listen over tilgjengelige maler vises. Klikk på en mal for å åpne konfigurasjonssiden.
+  </Step>
+  <Step title="Tilpass malens felt">
+    Oppdater følgende etter behov:
+    - **Avsender-e-post:** Velg hvilken konfigurert e-postadresse som sender denne malen.
+    - **Emne:** Skriv en tydelig, kortfattet emnelinje.
+    - **Innhold:** Rediger meldingsinnholdet for å matche byråets tone og budskap.
+    - **Dynamiske variabler:** Sett inn plassholdere som `{{client_name}}`, `{{company_name}}` eller `{{invoice_id}}` for å automatisk fylle inn klientspesifikke data.
+    - **Lenker til sosiale medier:** Legg til lenker til byråets sosiale profiler for å oppmuntre til engasjement.
+  </Step>
+  <Step title="Send en test-e-post">
+    Klikk **Send test** for å sende en forhåndsvisning av malen til innboksen din. Bekreft formatering, innhold og at alle dynamiske variabler løses opp korrekt.
+  </Step>
+  <Step title="Lagre endringene dine">
+    Klikk **Lagre endringer** for å bruke den oppdaterte malen. Den nye versjonen vil bli brukt for alle fremtidige automatiserte e-poster som samsvarer med den maltypen.
+  </Step>
+</Steps>
+
+---
+
+## Viktige merknader
+
+- **SMTP og egendefinert e-post er gjensidig utelukkende.** Bare én metode kan være aktiv om gangen per arbeidsområde.
+- **Skriv inn e-post på nytt ved bytte.** Hvis du bytter fra SMTP tilbake til et egendefinert e-postoppsett, må du skrive inn de egendefinerte e-postlegitimasjonene dine på nytt.
+- **Feil SMTP-legitimasjon blokkerer alle utgående e-poster.** Dobbeltsjekk vertsnavn, port, brukernavn og passord hvis e-poster slutter å bli sendt etter en SMTP-endring.
+- **DKIM/SPF-propagering tar tid.** Vent opptil 2 timer og oppdater E-postoppsett-siden før du konkluderer med at det er en feil.
+- **Dynamiske variabler er skrifttypestavfølsomme.** Bruk dem nøyaktig slik de vises i malredigereren for å sikre at de fylles ut korrekt.

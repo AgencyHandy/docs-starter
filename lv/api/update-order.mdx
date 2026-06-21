@@ -1,0 +1,205 @@
+---
+title: "AgencyHandy API: esoša pasūtījuma atjaunināšana ar PUT"
+sidebarTitle: "Atjaunināt pasūtījumu"
+description: "Izmantojiet AgencyHandy API, lai atjauninātu pasūtījuma detaļas, mainītu statusu, pārvietotu projektu vadītājus un pievienotu failus esošam pasūtījumam, izmantojot PUT pieprasījumu."
+---
+
+Pasūtījuma atjaunināšanas galapunkts ļauj modificēt esošu pasūtījumu (projektu) AgencyHandy — mainīt tā nosaukumu, statusu, budžetu, laika grafiku, piešķirtos vadītājus un daudz ko citu — visu no ārējas sistēmas vai automatizācijas skripta. Galapunkts atbalsta arī failu pielikumus, kas tiek pievienoti pasūtījuma sistēmas mapei.
+
+<Note>
+  Pirms šī galapunkta izmantošanas izpildiet rokasgrāmatu [Darba sākšana](/lv/api/getting-started), lai iegūtu API atslēgu un uzņēmuma ID.
+</Note>
+
+<Warning>
+  Šis galapunkts izmanto `Authorization: Bearer <token>` (pierakstījušā dalībnieka piekļuves tokenu), nevis tikai `x-api-key` galveni. Pārliecinieties, ka izsaucējs ir autentificēts kā **apstiprināts dalībnieks** mērķa uzņēmumā. Neautorizēti izsaucēji saņem `403 PermissionError`.
+</Warning>
+
+## Priekšnosacījumi
+
+- ✅ Derīgs **Bearer tokens** apstiprinātam darbvietas dalībniekam
+- ✅ **Uzņēmuma ID** iegūts no `GET {{URL}}/accounts/companies`
+- ✅ **Pasūtījuma ID** (projekta ID, `pid`) atjaunināmajam pasūtījumam
+
+---
+
+## Galapunkts
+
+```
+PUT {{URL}}/orders?pid=<ORDER_ID>
+```
+
+**Content-Type:** `multipart/form-data` — izmantojiet šo pat tad, ja neviens fails nav pievienots, lai apmierinātu servera daudzdaļu parsētāju.
+
+## Galvenes
+
+| Galvene | Obligāts | Apraksts |
+|---|---|---|
+| `Authorization` | Jā | `Bearer <ACCESS_TOKEN>` — pierakstījušā dalībnieka piekļuves tokens. |
+| `companyid` | Jā | Uzņēmuma Mongo ObjectId, kuram pieder pasūtījums. |
+| `clientid` | Neobligāts | Reāllaika klienta ligzdas ID. Ja norādīts, paziņojumi to iekļauj. |
+
+## Vaicājuma parametri
+
+<ParamField query="pid" type="string" required>
+  Atjaunināmā pasūtījuma / projekta ID. Nododiet kā vaicājuma virknes parametru.
+</ParamField>
+
+## Pieprasījuma pamatteksta lauki
+
+<ParamField body="name" type="string">
+  Atjaunina pasūtījuma nosaukumu. Minimums 2 rakstzīmes.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Jauns pasūtījuma statuss. Jābūt vienam no: `Pending`, `Ongoing`, `Review`, `Completed`, `Cancelled`.
+
+  **Atļautās pārejas:**
+  - `Review` var sekot tikai pēc `Ongoing` vai cita `Review`. Pāreja no `Pending` tieši uz `Review` atgriež `400 ValidationError`.
+  - Pasūtījumus ar statusu `Completed` vai `Cancelled` nevar atjaunināt.
+  - Klienti nevar atcelt pasūtījumu, kas pārsniedzis `Pending` statusu.
+</ParamField>
+
+<ParamField body="budget" type="number">
+  Kopējais budžeta skaitlis. Jābūt `≥ 0`. Izmanto pasūtījuma esošo valūtu, ja vien `currency` nav arī norādīts.
+</ParamField>
+
+<ParamField body="currency" type="string">
+  Budžeta valūtas kods. Piemēri: `USD`, `CAD`, `EUR`.
+</ParamField>
+
+<ParamField body="quantity" type="number">
+  Pakotnes iegādāto vienību skaits. Jābūt `≥ 1`.
+</ParamField>
+
+<ParamField body="deadline" type="string">
+  ISO 8601 datuma virkne pasūtījuma izpildes termiņam. Piemērs: `"2025-12-31T00:00:00.000Z"`.
+</ParamField>
+
+<ParamField body="kickoffDate" type="string">
+  ISO 8601 datuma virkne projekta sākuma datumam.
+</ParamField>
+
+<ParamField body="notes" type="string">
+  Iekšējas piezīmes, kas redzamas jūsu komandai.
+</ParamField>
+
+<ParamField body="brief" type="string">
+  Klienta uzdevumu apraksts vai projekta kopsavilkums.
+</ParamField>
+
+<ParamField body="assignedProjectManagers" type="array">
+  Pilns projektu vadītāju dalībnieku ID saraksts, ko piešķirt šim pasūtījumam. Jaunie ID tiek pievienoti komandai; noņemtie ID tiek dzēsti. Katram ID jāpieder dalībniekam ar `projectManager` lomu tajā pašā uzņēmumā.
+</ParamField>
+
+<ParamField body="markTasksAsDone" type="boolean">
+  **Obligāts**, ja `status` ir `Completed` vai `Cancelled`. Ja `true`, visi pasūtījuma uzdevumi tiek atzīmēti kā pabeigti pēc statusa maiņas. Ja `false`, uzdevumi paliek pašreizējā stāvoklī.
+</ParamField>
+
+<ParamField body="rejectRequestedTasks" type="boolean">
+  Atļauts tikai tad, ja `status` ir `Completed` vai `Cancelled`. Ja `true`, visi nenokārtotie klienta pieprasītie uzdevumi tiek noraidīti pēc statusa atjaunināšanas.
+</ParamField>
+
+<ParamField body="repeatCount" type="number">
+  Nepieciešams tikai **abonēšanas** pasūtījumiem, mainot atkārtošanās biežumu. Jāizmanto kopā ar `repeatDuration`.
+</ParamField>
+
+<ParamField body="repeatDuration" type="string">
+  Nepieciešams kopā ar `repeatCount` abonēšanas pasūtījumiem. Viens no: `day`, `week`, `month`, `year`.
+</ParamField>
+
+<ParamField body="billingCycleCount" type="number">
+  Neobligāts ierobežojums atkārtotajiem norēķinu cikliem. Noklusējums ir `0` (bez ierobežojuma).
+</ParamField>
+
+<ParamField body="billingCycleEvent" type="string">
+  Kā tiek apstrādāts katrs norēķinu cikls. Viens no: `createOrderWithTask`, `noChange`.
+</ParamField>
+
+<ParamField body="files" type="file">
+  Nulle vai vairāki failu pielikumi. Faili tiek pievienoti pasūtījuma sistēmas mapei; esošie faili nekad netiek pārrakstīti. Izmantojiet `multipart/form-data` kodējumu un pievienojiet katru failu zem lauka `files`.
+</ParamField>
+
+---
+
+## Piemēra pieprasījums
+
+<CodeGroup>
+
+```bash cURL (no files)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "currency=USD" \
+  --form "quantity=1" \
+  --form "assignedProjectManagers[]=PROJECT_MANAGER_ID" \
+  --form "notes=Scope finalized with client." \
+  --form "brief=Launch-ready design refresh."
+```
+
+```bash cURL (with file)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "repeatCount=3" \
+  --form "repeatDuration=month" \
+  --form "billingCycleEvent=createOrderWithTask" \
+  --form "files=@/path/to/creative-brief.pdf"
+```
+
+</CodeGroup>
+
+**Ekvivalents JSON slodze** (konvertējiet uz daudzdaļu veidlapas ierakstiem, sūtot failus):
+
+```json
+{
+  "name": "Website Redesign",
+  "status": "Review",
+  "budget": 12000,
+  "currency": "USD",
+  "quantity": 1,
+  "assignedProjectManagers": ["{{PROJECT_MANAGER_ID}}"],
+  "repeatCount": 3,
+  "repeatDuration": "month",
+  "billingCycleEvent": "createOrderWithTask",
+  "notes": "Scope finalized with client.",
+  "brief": "Launch-ready design refresh."
+}
+```
+
+---
+
+## Atbildes
+
+| HTTP statuss | Apraksts |
+|---|---|
+| `200 OK` | Atjaunināšana izdevās. |
+| `400 ValidationError` | Nederīgs pasūtījuma ID, bloķēta statusa pāreja vai nepareizi formatēta slodze. Atbilde ietver `fieldName`, ja attiecināms. |
+| `403 PermissionError` | Izsaucējs nav apstiprināts dalībnieks, trūkst uzņēmuma lomas, darbvietas abonements ir beidzies vai klients mēģināja veikt aizliegtu atcelšanu. |
+| `500 Internal Server Error` | Neapstrādāts izņēmums — pārbaudiet servera žurnālus. |
+
+### Veiksmīga atbilde
+
+```json
+{
+  "message": "Project has been updated"
+}
+```
+
+---
+
+## Biznesa noteikumi un blakusefekti
+
+- **Statusa pārejas** ir ierobežotas. `Review` var sekot tikai pēc `Ongoing` vai cita `Review`. Mēģinot veikt `Pending → Review`, tiek atgriezts `400 ValidationError`.
+- Statusa pārvietošana no `Pending` uz `Ongoing`, `Review` vai `Completed` aktivizē pasūtījuma failu mapi, padarot augšupielādētos failus pieejamus projektu komandai.
+- Iestatot `status` uz `Completed` vai `Cancelled`, **obligāti** jānorāda `markTasksAsDone` kā `true` vai `false`.
+- Statusa maiņas uz `Review`, `Completed` vai `Cancelled` automātiski aktivizē klientu paziņojumus:
+  - **Review** — paziņo klientam, ka nepieciešama pārskatīšana.
+  - **Completed** — nosūta klientam `orderCompletion` paziņojumu.
+  - **Cancelled** — nosūta klientam `orderCancellation` paziņojumu.
+- Katrs veiksmīgs atjauninājums aktivizē `ORDER.UPDATED` tīmekļa āķa notikumu ar atjaunināto pasūtījuma dokumentu un pielikuma metadatiem, ja jums ir aktīvs tīmekļa āķis, kas abonē šo notikumu.

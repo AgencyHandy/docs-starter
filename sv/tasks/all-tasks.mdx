@@ -1,0 +1,126 @@
+---
+title: "Alla uppgifter — Centraliserad uppgiftshantering i AgencyHandy"
+sidebarTitle: "Alla uppgifter"
+description: "Använd sidan Alla uppgifter för en realtids-, rollfiltrerad vy av varje uppgift i pågående och granskade beställningar — med sök, filter och sortering."
+---
+
+Sidan Alla uppgifter i AgencyHandy ger dig en enda centraliserad vy av varje uppgift som tillhör aktiva arbetsflöden i din byrå. Istället för att leta igenom enskilda beställningar kan du se alla relevanta uppgifter på ett ställe, filtrera dem efter tilldelad, prioritet eller datum, och göra redigeringar direkt från listan. Synligheten begränsas automatiskt till din roll — Super Admins ser allt, Projektledare ser sina tilldelade beställningar och Anställda ser bara sina egna uppgifter.
+
+## Öppna sidan Alla uppgifter
+
+1. Logga in på ditt AgencyHandy-konto.
+2. Klicka på **Uppgifter** i den vänstra sidopanelen.
+3. Välj **Alla uppgifter** för att öppna den centraliserade uppgiftsinstrumentpanelen.
+
+<Note>
+  Sidan Alla uppgifter visar bara uppgifter från beställningar med statusen **Pågående** eller **Under granskning**. Uppgifter kopplade till beställningar i något annat tillstånd (t.ex. Slutförd, Väntande) visas inte här.
+</Note>
+
+## Uppgiftssynlighet efter roll
+
+Vad du ser på sidan Alla uppgifter beror helt på din roll.
+
+| Roll | Vad de ser |
+|------|---------------|
+| **Super Admin / Admin** | Alla uppgifter i varje beställning, team och status |
+| **Projektledare (PM)** | Endast uppgifter från beställningar där de är tilldelade som ansvarig |
+| **Anställd / Tilldelad** | Endast uppgifter direkt tilldelade till dem — även om teamkamrater arbetar på samma beställning |
+
+<Tip>
+  Om en PM inte kan hitta en uppgift de förväntar sig att se, bekräfta att de är tilldelade som ansvarig för den relevanta beställningen. PM:ar ser inte uppgifter om de inte är den tilldelade ansvarige för den beställningen.
+</Tip>
+
+## När uppgifter visas på den här sidan
+
+Uppgifter visas på sidan Alla uppgifter när dessa villkor är uppfyllda:
+
+<CardGroup cols={2}>
+  <Card title="Beställningar som utlöser uppgiftssynlighet" icon="circle-check">
+    - Manuella beställningar (engångs- eller prenumeration) skapas
+    - Katalogbeställningar via Stripe eller manuella betalningsmetoder placeras
+    - En offert accepteras av byrån
+  </Card>
+  <Card title="Beställningar som håller uppgifter dolda" icon="eye-slash">
+    - Klientbegärda uppgifter som byrån ännu inte har accepterat
+    - Provbeställningar som byrån ännu inte har accepterat
+    - Beställningar med väntande status som inväntar manuell bankbetalningsbekräftelse
+  </Card>
+</CardGroup>
+
+## Söka, filtrera och sortera
+
+Sidan Alla uppgifter inkluderar en fullständig uppsättning kontroller för att hjälpa dig hitta exakt vad du behöver.
+
+### Sök
+
+Använd sökfältet för att hitta uppgifter efter namn, tilldelad eller relaterad beställning. Resultaten uppdateras i realtid när du skriver.
+
+### Filter
+
+Klicka på **Filter → + Lägg till filter** för att öppna filterpanelen. Du kan kombinera flera filter för precisa resultat:
+
+| Filter | Vad det gör |
+|--------|--------------|
+| **Beställnings-ID** | Visa uppgifter kopplade till ett specifikt beställningsnummer |
+| **Tilldelad** | Visa uppgifter tilldelade till en viss teammedlem |
+| **Status** | Filtrera efter uppgiftsprogress: Väntande, Pågående, Granskning, Klar, etc. |
+| **Prioritet** | Fokusera på uppgifter med Hög, Medel eller Låg prioritet |
+| **Etikett** | Begränsa efter uppgiftsetiketter eller kategorier |
+| **Startdatum** | Visa uppgifter som börjar på eller efter ett specifikt datum |
+| **Slutdatum** | Visa uppgifter som förfaller på ett specifikt datum |
+
+<Note>
+  Filter är bara tillgängliga på sidan Alla uppgifter. De bevaras under din webbläsarsession men återställs vid siduppdatering. Filter påverkar bara din vy och ändrar inte vad andra användare ser.
+</Note>
+
+För att rensa alla filter klickar du på **Rensa filter** för att återgå till den fullständiga, ofiltrerade listan.
+
+### Sortering
+
+Sortera uppgiftslistan efter:
+- **Förfallodatum** — visa uppgifter som snart förfaller eller redan är försenade
+- **Prioritet** — ta de mest kritiska uppgifterna till toppen
+- **Skapandetid** — se nyligen tillagda uppgifter först
+
+### Brödsmulenavidering
+
+Använd brödsmulespåret längst upp på sidan för att bibehålla sammanhang när du navigerar mellan deluppgifter, uppgiftslistor och överordnade beställningar. Detta är särskilt användbart när du dyker ned i en specifik uppgift och sedan behöver återvända till den bredare listan.
+
+## Redigera uppgifter
+
+Du kan ändra uppgifter på sidan Alla uppgifter på två sätt:
+
+<Tabs>
+  <Tab title="Inline-redigering">
+    Klicka direkt i ett redigerbart fält inom uppgiftsraden — till exempel status, tilldelad eller förfallodatum — och gör din ändring utan att lämna listvyn. Detta är det snabbaste alternativet för snabba uppdateringar.
+  </Tab>
+  <Tab title="Modalredigering">
+    Klicka på uppgiftsnamnet för att öppna den fullständiga uppgiftsdetalj-modalen. Härifrån kan du uppdatera alla uppgiftsegenskaper, lägga till anteckningar, visa deluppgifter och se den fullständiga uppgiftshistoriken. Använd detta för mer grundliga redigeringar eller när du behöver sammanhang.
+  </Tab>
+</Tabs>
+
+## Regler för borttagning av uppgifter
+
+Uppgifter på sidan Alla uppgifter är direkt kopplade till sina överordnade beställningar.
+
+- När en **beställning tas bort** tas alla uppgifter kopplade till den beställningen **automatiskt och permanent bort** från sidan Alla uppgifter.
+- Denna borttagning påverkar alla användarroller — ingen kan se dessa uppgifter efter att beställningen tagits bort.
+- **Det finns inget återställningsalternativ** för uppgifter som tagits bort vid borttagning av beställning.
+
+<Warning>
+  Att ta bort en beställning tar permanent bort alla dess uppgifter. Se till att viktig uppgiftshistorik eller leveransposterna sparas på annan plats innan du tar bort en beställning.
+</Warning>
+
+## Ytterligare anteckningar
+
+<Accordion title="Realtidsuppdateringar">
+  Ändringar av beställningar, uppgiftstilldelningar eller uppgiftsstatusar återspeglas i realtid på sidan Alla uppgifter. Om en teamkamrat uppdaterar en uppgift medan du har sidan öppen ser du ändringen utan att behöva uppdatera sidan.
+</Accordion>
+
+<Accordion title="Klientbegärda uppgifter">
+  Uppgifter som skickas in av klienter visas inte på sidan Alla uppgifter förrän byrån uttryckligen accepterar dem. Tills de accepterats förblir dessa uppgifter i ett väntande tillstånd och syns inte i den centraliserade vyn.
+</Accordion>
+
+<Accordion title="Uppgifter och beställningsstatus">
+  Uppgifter visas bara för beställningar med statusen Pågående eller Under granskning. Om en beställning flyttas till Slutförd eller pausas visas dess uppgifter inte längre här. Navigera till den specifika beställningen för att visa uppgifter kopplade till beställningar utanför dessa statusar.
+</Accordion>

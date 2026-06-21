@@ -1,0 +1,126 @@
+---
+title: "AgencyHandy Çalışma Alanınıza Özel Alan Adı Bağlayın"
+sidebarTitle: "Özel Alan Adı"
+description: "DNS kayıt şirketinizde bir CNAME kaydı ekleyerek kendi alt alan adınızı (örn. portal.sirketiniz.com) AgencyHandy'ye bağlayın — kod yazma gerektirmez."
+---
+
+Varsayılan olarak AgencyHandy çalışma alanınıza `agencyhandy.com` altındaki bir alt alan adından erişilir. Özel bir alan adı bağlamak, bu varsayılan URL'yi kendi markalı adresinizle — örneğin `portal.ajansınız.com` — değiştirmenizi sağlar; müşterilere ilk açılıştan itibaren markanızı pekiştiren sorunsuz ve profesyonel bir deneyim sunar.
+
+<Note>
+  Yalnızca **Süper Yöneticiler** ve **Yöneticiler** özel alan adı yapılandırabilir. Ayrıca bu kurulumu tamamlamak için alan adına sahip olmanız ve kayıt şirketinizdeki DNS ayarlarına erişiminizin olması gerekir.
+</Note>
+
+---
+
+## Nasıl Çalışır?
+
+AgencyHandy'ye özel bir alan adı eklediğinizde, platform size bir **CNAME kaydı** sağlar. Bu kaydı kayıt şirketinizdeki (GoDaddy, Namecheap, Cloudflare vb.) alan adınızın DNS ayarlarına eklersiniz; DNS yayıldıktan sonra AgencyHandy bağlantıyı doğrular.
+
+---
+
+## Adım Adım Kurulum
+
+<Steps>
+  <Step title="Özel Alan Adı ayarlarını açın">
+    AgencyHandy hesabınıza giriş yapın. Sol kenar çubuğunda **Çalışma Alanı Yapılandırması**'na gidin, ardından **Özel Alan Adı**'na tıklayın.
+  </Step>
+  <Step title="Özel alan adınızı ekleyin">
+    **+ Özel Alan Adı Ekle** düğmesine tıklayın. Görünen giriş alanına kullanmak istediğiniz alt alan adını girin — örneğin `portal.ajansınız.com`.
+
+    <Warning>
+      Alt alan adı olarak `www` **kullanmayın** (yani `www.ajansınız.com` şeklinden kaçının). `www` öneki yapılandırma çakışmalarına neden olabilir ve başarılı doğrulamayı engeller. Bunun yerine `portal`, `client`, `app` veya `hub` gibi farklı bir alt alan adı kullanın.
+    </Warning>
+  </Step>
+  <Step title="CNAME kaydı detaylarını kopyalayın">
+    Alan adınızı gönderdikten sonra AgencyHandy eklemeniz gereken DNS kaydını görüntüler:
+
+    | Alan   | Değer                                          |
+    |--------|------------------------------------------------|
+    | **Tür**  | CNAME                                        |
+    | **Ad**   | Alt alan adınız (örn. `portal`)              |
+    | **Değer** | AgencyHandy tarafından sağlanan hedef       |
+
+    Bu değerleri dikkatlice kopyalayın — bir sonraki adımda bunlara ihtiyaç duyacaksınız.
+  </Step>
+  <Step title="DNS kayıt şirketinizde CNAME kaydını ekleyin">
+    Domain kayıt şirketinizin kontrol paneline (örn. GoDaddy, Namecheap, Cloudflare) giriş yapın. Alan adınızın DNS yönetim bölümüne gidin ve AgencyHandy'den kopyaladığınız Tür, Ad ve Değeri kullanarak CNAME kaydını ekleyin.
+
+    Cloudflare'e özgü rehberlik için aşağıya bakın.
+  </Step>
+  <Step title="Alan adını AgencyHandy'de kaydedin">
+    AgencyHandy'ye dönün ve **Alan Adını Kaydet**'e tıklayın. DNS yayılırken durum başlangıçta **Bağlantı Kesildi** olarak görünecektir — bu, DNS yayılırken beklenen bir durumdur.
+  </Step>
+  <Step title="DNS yayılmasını bekleyin ve doğrulayın">
+    DNS değişikliklerinin küresel olarak yayılması, kayıt şirketinize ve TTL ayarlarınıza bağlı olarak birkaç dakikadan **48 saate kadar** sürebilir. Bağlantı durumunu kontrol etmek için periyodik olarak **Yenile**'ye tıklayın.
+
+    Yayılma tamamlandıktan sonra durum **Bağlandı** ✅ olarak değişir.
+  </Step>
+</Steps>
+
+<Warning>
+  DNS yayılması **48 saate kadar** sürebilir. Alan adınız 48 saat sonra hâlâ **Bağlantı Kesildi** olarak görünüyorsa, CNAME kaydının doğru olduğunu ve aynı alt alan adı için çakışan DNS kayıtlarının bulunmadığını iki kez kontrol edin.
+</Warning>
+
+---
+
+## Cloudflare'e Özgü Talimatlar
+
+Alan adınız Cloudflare üzerinden yönetiliyorsa, doğru şekilde yapılandırmanız gereken kritik bir ayar vardır:
+
+<Steps>
+  <Step title="Cloudflare'e giriş yapın ve alan adınızı seçin">
+    [Cloudflare kontrol panelinizi](https://dash.cloudflare.com) açın ve AgencyHandy'ye bağladığınız alan adına tıklayın.
+  </Step>
+  <Step title="DNS ayarlarına gidin">
+    Alan adı ayarları panelinin üst gezintisindeki **DNS** sekmesine tıklayın.
+  </Step>
+  <Step title="CNAME kaydını ekleyin">
+    **+ Kayıt Ekle**'ye tıklayın ve alanları doldurun:
+    - **Tür:** CNAME
+    - **Ad:** Alt alan adınız (örn. `portal`)
+    - **Hedef/İçerik:** AgencyHandy tarafından sağlanan değer
+    - **TTL:** İlk kurulum sırasında **2 dakika** (veya mevcut en düşük seçenek) olarak ayarlayın
+  </Step>
+  <Step title="Cloudflare proxy'sini devre dışı bırakın (kritik)">
+    **Proxy durumu** sütununda, geçişin **Yalnızca DNS** olarak ayarlandığından emin olun (bulut simgesi turuncu değil, gri görünmelidir).
+
+    <Warning>
+      Cloudflare proxy'si **etkin** durumdaysa (turuncu bulut simgesi), CNAME kaydı doğru şekilde çözümlenmez ve AgencyHandy alan adınızı doğrulayamaz. Bağlantının çalışması için **Yalnızca DNS** olarak ayarlamanız gerekir.
+    </Warning>
+  </Step>
+  <Step title="Kaydı kaydedin">
+    Tüm değerlerin doğruluğunu inceleyin ve **Kaydet**'e tıklayın.
+  </Step>
+</Steps>
+
+<Tip>
+  CNAME kaydınızın farklı küresel bölgelerdeki yayılımını izlemek için [dnschecker.org](https://dnschecker.org) adresini kullanın. AgencyHandy'nin bağlantıyı onaylamasını beklemeden önce tüm bölgelerde yeşil onay işaretleri arayın.
+</Tip>
+
+---
+
+## Bağlantı Durumunuzu İzleme
+
+Kaydettikten sonra durumu takip etmek için AgencyHandy'de **Çalışma Alanı Yapılandırması → Özel Alan Adı** bölümüne dönün:
+
+| Durum            | Anlamı                                                                      |
+|------------------|-----------------------------------------------------------------------------|
+| **Bağlantı Kesildi** | DNS kaydı henüz yayılmadı veya hata içeriyor                            |
+| **Bağlandı**     | Alan adı doğrulandı ve aktif — müşteriler çalışma alanınıza özel URL üzerinden erişebilir |
+
+---
+
+## Özel Alan Adını Güncelleme veya Kaldırma
+
+- **Alan adınızı güncellemek için:** Mevcut kaydı silin ve yukarıdaki aynı kurulum adımlarını kullanarak yeni alan adını ekleyin.
+- **Alan adınızı silmek için:** Özel Alan Adı panelinde alan adınızın yanındaki **Sil** düğmesine tıklayın ve silmeyi onaylayın. Çalışma alanınız varsayılan AgencyHandy URL'sine geri döner. İstediğiniz zaman herhangi bir alan adını yeniden ekleyebilirsiniz.
+
+---
+
+## Önemli Notlar
+
+- **Kök alan adı değil, alt alan adı kullanın:** AgencyHandy özel alan adları bir alt alan adı gerektirir (örn. `portal.ajansınız.com`); kök/apex alan adı değil (örn. `ajansınız.com`).
+- **`www`'den kaçının:** `www` alt alan adı doğrulama sırasında sorunlara neden olabilir. Bunun yerine özel bir alt alan adı kullanın.
+- **Tam kayıtlar gereklidir:** CNAME Türünü, Adını ve Değerini AgencyHandy'de gösterildiği şekilde tam olarak girin. Herhangi bir yazım hatası veya eksik karakter bağlantıyı engeller.
+- **Cloudflare proxy'si kapalı olmalıdır:** AgencyHandy özel alan adı doğrulaması için Cloudflare kayıtlarını her zaman **Yalnızca DNS** olarak ayarlayın.
+- **Yalnızca yönetici erişimi:** Yalnızca Süper Yöneticiler ve Yöneticiler özel alan adı ayarlarını ekleyebilir, değiştirebilir veya silebilir.

@@ -1,0 +1,123 @@
+---
+title: "Konfigurace obecného nastavení pracovního prostoru AgencyHandy"
+sidebarTitle: "Obecné nastavení"
+description: "Nastavte název pracovního prostoru, nahrajte loga, přidejte adresu agentury a vyberte správné časové pásmo pro přizpůsobení pracovního prostoru AgencyHandy."
+---
+
+Stránka Obecného nastavení je prvním místem, které navštívíte po přihlášení do AgencyHandy. Umožňuje vám vytvořit identitu vaší agentury na platformě — od loga a názvu pracovního prostoru až po fyzickou adresu a časové pásmo. Každá změna, kterou zde provedete, se globálně aplikuje v celém pracovním prostoru pro všechny uživatele.
+
+<Note>
+  Ke konfiguraci pracovního prostoru mají přístup a mohou ji upravovat pouze **Super administrátoři** a **Administrátoři**. Pokud možnost **Konfigurace pracovního prostoru** v levé navigaci nevidíte, požádejte svého Super administrátora o úpravu vašich oprávnění role.
+</Note>
+
+## Přístup k obecnému nastavení
+
+<Steps>
+  <Step title="Otevřete Konfiguraci pracovního prostoru">
+    Přihlaste se ke svému účtu AgencyHandy. V levém navigačním menu klikněte na **Konfigurace pracovního prostoru**.
+  </Step>
+  <Step title="Vyberte Obecné nastavení">
+    Klikněte na **Obecné nastavení** v podnabídce Konfigurace pracovního prostoru. Na pravé straně se otevře panel Obecného nastavení.
+  </Step>
+</Steps>
+
+---
+
+## Nahrání loga pracovního prostoru
+
+AgencyHandy podporuje tři různé typy loga, z nichž každý se zobrazuje na jiném místě rozhraní:
+
+| Typ loga | Rozměry | Kde se zobrazuje |
+|------------------|-------------|--------------------------------------------------|
+| Kulaté logo | 32 × 32 px | Oblasti profilu a kompaktní prvky uživatelského rozhraní |
+| Logo favicon | 16 × 16 px | Ikona záložky prohlížeče |
+| Obdélníkové logo | 142 × 36 px | Záhlaví postranního panelu (nahrazuje kulaté logo, je-li nastaveno) |
+
+**Podporované formáty:** PNG, JPG, SVG
+
+<Steps>
+  <Step title="Klikněte na Nahrát logo">
+    V sekci loga klikněte na tlačítko **Nahrát logo** pro typ loga, který chcete nastavit.
+  </Step>
+  <Step title="Vyberte soubor obrázku">
+    Vyhledejte obrázek na svém zařízení. Ujistěte se, že soubor odpovídá požadovaným rozměrům a je v podporovaném formátu.
+  </Step>
+  <Step title="Potvrďte nahrání">
+    Náhled loga se okamžitě aktualizuje. Podle potřeby opakujte pro každý typ loga.
+  </Step>
+</Steps>
+
+<Tip>
+  Nahráním **obdélníkového loga** nahradíte kulaté logo v postranním panelu a automaticky skryjete text s názvem pracovního prostoru vedle něj. Obdélníkové logo se také stane primárním logem používaným ve všech ostatních kontextech, kde se logo zobrazuje — i v případě, že je nahrané také kulaté logo.
+</Tip>
+
+---
+
+## Nastavení názvu a adresy pracovního prostoru
+
+### Název pracovního prostoru
+
+Zadejte název své agentury do pole **Název pracovního prostoru**. Tento název:
+
+- Se zobrazuje na celé platformě pro identifikaci.
+- Slouží jako výchozí subdoména AgencyHandy (např. `vasejmeno.agencyhandy.com`).
+
+<Warning>
+  Změna názvu pracovního prostoru okamžitě aktualizuje výchozí subdoménu. Pokud jste sdíleli výchozí odkaz na subdoménu s klienty, budou potřebovat aktualizovanou URL adresu. Zvažte nastavení [vlastní domény](/cs/workspace/custom-domain), abyste předešli tomuto problému.
+</Warning>
+
+### Adresa pracovního prostoru
+
+Zadejte úplnou fyzickou adresu své agentury do pole **Adresa pracovního prostoru**. Tato adresa se používá pro oficiální reprezentaci na fakturách a v dokumentech určených klientům, proto se ujistěte, že je přesná a aktuální.
+
+---
+
+## Výběr časového pásma
+
+<Steps>
+  <Step title="Otevřete rozbalovací nabídku Časové pásmo">
+    Přejděte na pole **Časové pásmo** a kliknutím na rozbalovací nabídku rozbalte seznam časových pásem.
+  </Step>
+  <Step title="Zvolte své časové pásmo">
+    Vyberte časové pásmo odpovídající primárnímu provoznímu místu vaší agentury. Na tomto nastavení jsou založeny všechny termíny úkolů, naplánovaná oznámení, události v kalendáři a časová razítka v celém pracovním prostoru.
+  </Step>
+</Steps>
+
+<Warning>
+  Nesprávné nastavení časového pásma způsobuje chyby v plánování úkolů, schůzek a termínů splatnosti faktur. Toto nastavení překontrolujte před pozváním svého týmu nebo klientů.
+</Warning>
+
+---
+
+## Uložení změn
+
+Po vyplnění nebo aktualizaci libovolných polí klikněte na **Uložit změny** v dolní části panelu Obecného nastavení. Všechny aktualizace se aplikují globálně a jsou okamžitě viditelné pro každého uživatele v pracovním prostoru.
+
+---
+
+## Nebezpečná zóna: Smazání pracovního prostoru
+
+V dolní části panelu Obecného nastavení se nachází sekce **Nebezpečná zóna** obsahující tlačítko **Smazat pracovní prostor**.
+
+<Warning>
+  Smazání pracovního prostoru je **trvalé a nevratné**. Všechna data — včetně klientů, objednávek, faktur, projektů a konfigurací — budou trvale odstraněna. Neexistuje žádná možnost obnovy. Pokračujte pouze v případě, že jste si absolutně jisti.
+</Warning>
+
+---
+
+## Osvědčené postupy
+
+<CardGroup cols={2}>
+  <Card title="Ověřte rozměry loga" icon="image">
+    Nahrajte loga přesně v doporučených rozměrech v pixelech, abyste předešli roztahování, ořezání nebo rozmazanému zobrazení napříč platformou.
+  </Card>
+  <Card title="Udržujte branding aktuální" icon="paintbrush">
+    Aktualizujte logo a adresu vždy, když vaše agentura změní vizuální identitu nebo sídlo, aby byly všechny dokumenty a stránky určené klientům přesné.
+  </Card>
+  <Card title="Nastavte časové pásmo jako první" icon="clock">
+    Nakonfigurujte časové pásmo před vytvářením služeb, úkolů nebo plánováním čehokoli, aby byla všechna časová razítka od začátku správně nastavena.
+  </Card>
+  <Card title="Omezte přístup administrátorů" icon="shield">
+    Udělujte role Super administrátora nebo Administrátora pouze pracovníkům, kteří skutečně potřebují upravovat konfigurace pracovního prostoru, aby se předešlo nechtěným změnám.
+  </Card>
+</CardGroup>

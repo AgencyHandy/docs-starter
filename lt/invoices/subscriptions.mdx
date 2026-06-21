@@ -1,0 +1,162 @@
+---
+title: "Prenumeratos atsiskaitymas ir pasikartojančios sąskaitos faktūros AgencyHandy"
+sidebarTitle: "Prenumeratos"
+description: "Kaip AgencyHandy tvarko pasikartojantį prenumeratos atsiskaitymą — automatizuotos sąskaitos faktūros, atsiskaitymo ciklai, mokėjimo metodai, atšaukimai ir Wise mokėjimo nuorodos."
+---
+
+AgencyHandy prenumeratos atsiskaitymo sistema leidžia automatizuoti visą pasikartojančių pajamų darbo eigą. Kai klientas prenumeruoja paslaugą, platforma sukuria Prenumeratos ID, generuoja užsakymus ir automatiškai išrašo sąskaitas faktūras kiekvieno atsiskaitymo ciklo metu — nesvarbu, ar tai būtų kasdien, kas savaitę, kas mėnesį ar kasmet. Jūs lieka kontroliuojate: galite peržiūrėti prenumeratos detales, stebėti mokėjimų istoriją, tvarkyti nepavykusius mokėjimus ir atšaukti prenumeratas, kai reikia — visa tai AgencyHandy viduje.
+
+## Kaip veikia prenumeratos atsiskaitymas
+
+AgencyHandy prenumeratos gyvavimo ciklas apima šešis pagrindinius etapus.
+
+<Steps>
+  <Step title="Sukurti prenumerata pagrįstą paslaugą">
+    Pereikite į **Paslaugos** ir spustelėkite **Kurti naują paslaugą**. Pasirinkite **Prenumerata** kaip paslaugos tipą.
+
+    Apibrėžkite:
+    - **Atsiskaitymo ciklas** — kasdien, kas savaitę, kas mėnesį arba kasmet
+    - **Atnaujinimo elgsena** — sukurti naują užsakymą, atnaujinti esamą užsakymą arba palikti nepakeistą
+    - **Kainodara ir mokėjimo metodas** — PayPal, Stripe arba rankinis
+
+    Spustelėkite **Paskelbti**, kad paslauga būtų prieinama.
+  </Step>
+  <Step title="Klientas perka prenumeratą">
+    Klientas pasirenka prenumeratos paslaugą, pereina prie atsiskaitymo ir pasirenka mokėjimo metodą.
+
+    AgencyHandy automatiškai:
+    - Sukuria **Prenumeratos ID**
+    - Generuoja **Užsakymą**
+    - Išrašo **Sąskaitą faktūrą**
+
+    **PayPal arba Stripe** mokėjimų atveju sąskaita faktūra akimirksniu pažymima kaip **Apmokėta**. **Rankinio mokėjimo** atveju sąskaita faktūra lieka **Atvira**, kol agentūra patvirtina gavimą.
+  </Step>
+  <Step title="Automatizuotas pasikartojantis atsiskaitymas">
+    Kiekvieno atnaujinimo datą AgencyHandy automatiškai apdoroja mokėjimą (PayPal/Stripe atveju) ir generuoja kitą sąskaitą faktūrą.
+
+    Jei mokėjimas sėkmingas, sąskaita faktūra pažymima kaip **Apmokėta**. Jei nepavyksta:
+    - Sąskaita faktūra lieka **Atvira**
+    - Klientas gauna **Pranešimą apie nepavykusį mokėjimą**
+    - Agentūra gauna įspėjimą, kad pakartotų arba paprašytų atnaujintų mokėjimo duomenų
+  </Step>
+  <Step title="Valdyti aktyvias prenumeratas">
+    Kairiajame šoninėje juostoje pereikite į **Prenumeratos valdymas**, kad peržiūrėtumėte visas aktyvias ir neaktyvias prenumeratas. Pasirinkite bet kurią prenumeratą, kad pamatytumėte visas jos detales.
+  </Step>
+  <Step title="Tvarkyti atšaukimus">
+    Atšaukdami prenumeratą galite pasirinkti:
+    - **Atšaukti visiškai** — sustabdyti visus būsimus atsiskaitymus ir užsakymus
+    - **Palikti paskutinį aktyvų užsakymą veikiantį** — leisti klientui ir toliau gauti paslaugą per dabartinio laikotarpio terminą
+
+    Norėdami visiškai ištrinti paslaugą, pirmiausia reikia atšaukti visas aktyvias tos paslaugos prenumeratas.
+  </Step>
+  <Step title="Pranešimai">
+    Sistema automatiškai siunčia:
+    - **Atnaujinimo priminimus** prieš kitą atsiskaitymo datą
+    - **Mokėjimo patvirtinimus** po sėkmingų mokesčių
+    - **Pranešimus apie nepavykusį mokėjimą** tiek klientui, tiek agentūros administratoriams
+  </Step>
+</Steps>
+
+## Prenumeratos detalių puslapis
+
+Prenumeratos detalių puslapis suteikia jums išsamų bet kurios atskiros prenumeratos vaizdą — nuo paslaugos ir paketo iki kiekvienos sąskaitos faktūros ir įvykių žurnalo įrašo.
+
+### Kaip pasiekti
+
+1. Kairiajame šoninėje juostoje eikite į **Prenumeratos**
+2. Spustelėkite bet kurią prenumeratą iš sąrašo, kad atidarytumėte jos detalių puslapį
+
+### Ką galite matyti
+
+<Tabs>
+  <Tab title="Prenumeratos informacija">
+    - **Paslaugos pavadinimas** ir **Paketo pavadinimas**
+    - **Kliento pavadinimas**
+    - **Atsiskaitymo ciklas** (pvz., mėnesinis, metinis)
+    - **Pradžios data** ir **Pabaigos data**
+    - Prenumeratos **Būsena** (aktyvi arba neaktyvi)
+  </Tab>
+  <Tab title="Mokėjimo detalės">
+    - **Prenumeratos mokestis**
+    - **Bendras mokėjimų skaičius** iki šiol
+    - **Mokėjimo metodas** (Stripe, PayPal, Wise, rankinis bankinis, ir kt.)
+    - **Kito mokėjimo data**
+  </Tab>
+  <Tab title="Užsakymų istorija">
+    - **Užsakymo ID**
+    - **Būsena** (pvz., vykdoma, baigta)
+    - **Pradžios data** ir **Terminas** kiekvienam užsakymui
+  </Tab>
+  <Tab title="Sąskaitų faktūrų istorija">
+    - **Sąskaitos faktūros ID**
+    - **Suma**
+    - **Būsena** (atvira, apmokėta, ir kt.)
+    - **Mokėjimo data** ir **Terminas**
+  </Tab>
+  <Tab title="Įvykių žurnalai">
+    Chronologinis visų su prenumerata susijusių veiklų audito pėdsakas — būsenų pakeitimai, mokėjimų įvykiai, atšaukimai ir daugiau.
+  </Tab>
+</Tabs>
+
+<Note>
+  Viena prenumerata gali turėti kelis susietų užsakymų ir sąskaitų faktūrų. Prenumeratoms priskirtos sąskaitos faktūros atnaujinamos dinamiškai, kai gaunami mokėjimai.
+</Note>
+
+## Wise palaikymas rankinio prenumeratos sąskaitų faktūrų atvejui
+
+Jei renkate tarptautinius mokėjimus, galite įterpti **Wise mokėjimo nuorodą** tiesiogiai į prenumeratos sąskaitas faktūras. Tai suteikia klientams patogų būdą mokėti be rankinio banko pavedimo nustatymo.
+
+### Reikalavimai
+
+- Aktyvus AgencyHandy paskyra
+- Aktyvi **Wise paskyra** su galiojančia sugeneruota mokėjimo nuoroda
+
+### Žingsniai Wise nuorodos pridėjimui prie sąskaitos faktūros
+
+<Steps>
+  <Step title="Atidaryti sąskaitų faktūrų skyrių">
+    Kairiajame šoninėje juostoje spustelėkite **Sąskaitos faktūros**, tada spustelėkite **+ Kurti sąskaitą faktūrą**.
+  </Step>
+  <Step title="Pasirinkti klientą ir užsakymą">
+    Iš išskleidžiamojo sąrašo pasirinkite klientą. Pasirodys visi susiję užsakymų ID. Pasirinkite atitinkamą užsakymo ID ir įveskite sumą bei atsiskaitytiną elementų sąrašą.
+  </Step>
+  <Step title="Taikyti nuolaidas ir mokesčius">
+    Pridėkite visą taikomą nuolaidos procentą, nuolaidos sumą, apmokėtą sumą, mokėtiną sumą ir PVM/mokesčių detales. Įtraukite atsiskaitymo adresą ir pastabas, jei reikia.
+  </Step>
+  <Step title="Pridėti Wise mokėjimo nuorodą">
+    Skyriuje **Mokėjimo metodas** pasirinkite **Wise** kaip mokėjimo parinktį. Įklijuokite savo Wise mokėjimo nuorodą į numatytą lauką.
+  </Step>
+  <Step title="Išsaugoti sąskaitą faktūrą">
+    Spustelėkite **Išsaugoti**, kad užbaigtumėte sąskaitą faktūrą. Wise mokėjimo nuoroda pasirodys sąskaitoje faktūroje, kad klientas galėtų mokėti tiesiogiai.
+  </Step>
+</Steps>
+
+<Tip>
+  Visada dar kartą patikrinkite savo Wise mokėjimo nuorodą ir sąskaitos faktūros sumas prieš išsaugodami. Patikrinkite, ar užsakymo detalės, nuolaidos ir mokesčių informacija yra tiksli, kad išvengtumėte atsiskaitymo klaidų.
+</Tip>
+
+## Svarbios pastabos apie prenumeratos atsiskaitymą
+
+<Accordion title="Kas gali atšaukti prenumeratas?">
+  Tik **Super administratoriai** ir **Administratoriai** gali atšaukti prenumeratas. Klientai negali patys atšaukti savo prenumeratų — jie turi prašyti atšaukimo per agentūrą.
+</Accordion>
+
+<Accordion title="Prenumeratos ID yra nuolatiniai">
+  Sukūrus prenumeratą, jos Prenumeratos ID negali būti redaguojamas. Tai užtikrina nuoseklų sekimą per visą prenumeratos gyvavimo laiką.
+</Accordion>
+
+<Accordion title="Nepavykę mokėjimai ir užsakymų kūrimas">
+  Kai mokėjimas nepavyksta, sąskaita faktūra lieka Atvira ir sukuriamas naujas užsakymas nepavykusiam laikotarpiui. Prenumeratos būsena lieka **Aktyvi**, kol administratorius rankiniu būdu kartoja mokėjimą arba atšaukia prenumeratą.
+</Accordion>
+
+<Accordion title="Rankinio mokėjimo užsakymai">
+  Jei klientas moka ne per Stripe arba PayPal (pvz., banko pavedimu), administratorius turi rankiniu būdu pažymėti sąskaitą faktūrą kaip **Apmokėtą** AgencyHandy. Sistema to nedaro automatiškai rankiniams mokėjimams.
+</Accordion>
+
+<Accordion title="Neapmokėti savarankiško atsiskaitymo bandymai">
+  Jei klientas pradeda prenumeratos atsiskaitymą, bet nebaiga mokėjimo, jis lieka sistemoje kaip **potencialus klientas (lead)**, kol sėkmingai prenumeruoja.
+</Accordion>
+
+<Accordion title="Sąskaitų faktūrų terminai">
+  Prenumeratos sąskaitų faktūrų terminai nustatomi automatiškai pagal jūsų sukonfigūruotą atsiskaitymo ciklą (pvz., mėnesinių sąskaitų faktūrų terminas yra vienas mėnuo po pradžios datos).
+</Accordion>

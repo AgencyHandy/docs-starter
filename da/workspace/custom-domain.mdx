@@ -1,0 +1,126 @@
+---
+title: "Tilslut et Eget Domæne til Dit AgencyHandy Workspace"
+sidebarTitle: "Eget domæne"
+description: "Forbind dit eget subdomæne (f.eks. portal.ditfirma.dk) til AgencyHandy ved at tilføje en CNAME-record hos din DNS-udbyder — ingen kodning kræves."
+---
+
+Som standard er dit AgencyHandy-workspace tilgængeligt på et subdomæne under `agencyhandy.com`. Ved at tilslutte et eget domæne kan du erstatte den standard-URL med din egen brandede adresse — f.eks. `portal.ditbureau.dk` — og give kunder en problemfri, professionel oplevelse, der styrker dit brand fra den allerførste side, de lander på.
+
+<Note>
+  Kun **Super Admins** og **Admins** kan konfigurere et eget domæne. Du skal også eje domænet og have adgang til dets DNS-indstillinger hos din registrator for at fuldføre denne opsætning.
+</Note>
+
+---
+
+## Sådan Fungerer Det
+
+Når du tilføjer et eget domæne i AgencyHandy, giver platformen dig en **CNAME-record**. Du tilføjer den record til dit domænes DNS-indstillinger hos din registrator (GoDaddy, Namecheap, Cloudflare osv.), og AgencyHandy bekræfter forbindelsen, når DNS er propageret.
+
+---
+
+## Trin-for-trin Opsætning
+
+<Steps>
+  <Step title="Åbn indstillingerne for Eget domæne">
+    Log ind på din AgencyHandy-konto. Naviger til **Workspace Config** i den venstre sidevæg, og klik derefter på **Custom Domain**.
+  </Step>
+  <Step title="Tilføj dit eget domæne">
+    Klik på knappen **+ Add Custom Domain**. Indtast det subdomæne, du vil bruge, i det inputfelt, der vises — f.eks. `portal.ditbureau.dk`.
+
+    <Warning>
+      Brug **ikke** `www` som dit subdomæne (dvs. undgå `www.ditbureau.dk`). `www`-præfikset kan forårsage konfigurationskonflikter og forhindrer vellykket bekræftelse. Brug et andet subdomæne som f.eks. `portal`, `client`, `app` eller `hub`.
+    </Warning>
+  </Step>
+  <Step title="Kopiér CNAME-record-oplysningerne">
+    Efter at have indsendt dit domæne viser AgencyHandy den DNS-record, du skal tilføje:
+
+    | Felt | Værdi |
+    |---------|------------------------------------------------|
+    | **Type** | CNAME |
+    | **Name** | Dit subdomæne (f.eks. `portal`) |
+    | **Value** | Det mål, som AgencyHandy angiver |
+
+    Kopiér disse værdier omhyggeligt — du skal bruge dem i næste trin.
+  </Step>
+  <Step title="Tilføj CNAME-recorden hos din DNS-registrator">
+    Log ind på din domæneregistrators dashboard (f.eks. GoDaddy, Namecheap, Cloudflare). Naviger til DNS-styringssektionen for dit domæne og tilføj CNAME-recorden ved hjælp af Type, Name og Value kopieret fra AgencyHandy.
+
+    Se den registratorspecifikke vejledning nedenfor for Cloudflare.
+  </Step>
+  <Step title="Gem domænet i AgencyHandy">
+    Vend tilbage til AgencyHandy og klik på **Save Domain**. Status vil indledningsvis vise **Disconnected** — dette er forventet, mens DNS propagerer.
+  </Step>
+  <Step title="Vent på DNS-propagering og bekræft">
+    DNS-ændringer kan tage fra få minutter til **op til 48 timer** at propagere globalt, afhængigt af din registrator og TTL-indstillinger. Klik på **Refresh** med jævne mellemrum for at kontrollere forbindelsesstatus.
+
+    Når propageringen er fuldført, ændres status til **Connected** ✅.
+  </Step>
+</Steps>
+
+<Warning>
+  DNS-propagering kan tage op til **48 timer**. Hvis dit domæne stadig viser **Disconnected** efter 48 timer, skal du dobbelttjekke, at CNAME-recorden er korrekt, og at der ikke findes nogen modstridende DNS-records for det samme subdomæne.
+</Warning>
+
+---
+
+## Cloudflare-specifikke Instruktioner
+
+Hvis dit domæne administreres via Cloudflare, er der én kritisk indstilling, du skal konfigurere korrekt:
+
+<Steps>
+  <Step title="Log ind på Cloudflare og vælg dit domæne">
+    Åbn dit [Cloudflare-dashboard](https://dash.cloudflare.com) og klik på det domæne, du tilslutter AgencyHandy.
+  </Step>
+  <Step title="Naviger til DNS-indstillinger">
+    Klik på fanen **DNS** i den øverste navigation på domæneindstillingspanelet.
+  </Step>
+  <Step title="Tilføj CNAME-recorden">
+    Klik på **+ Add Record** og udfyld felterne:
+    - **Type:** CNAME
+    - **Name:** Dit subdomæne (f.eks. `portal`)
+    - **Target/Content:** Den værdi, som AgencyHandy angiver
+    - **TTL:** Sæt til **2 minutter** (eller den laveste tilgængelige mulighed) under den indledende opsætning
+  </Step>
+  <Step title="Deaktiver Cloudflare-proxyen (kritisk)">
+    I kolonnen **Proxy status** skal du sørge for, at skifteknappen er sat til **DNS only** (sky-ikonet skal fremstå grå, ikke orange).
+
+    <Warning>
+      Hvis Cloudflare-proxyen er **aktiveret** (orange sky-ikon), vil CNAME-recorden ikke løse sig korrekt, og AgencyHandy kan ikke bekræfte dit domæne. Du skal sætte den til **DNS Only** for at forbindelsen kan fungere.
+    </Warning>
+  </Step>
+  <Step title="Gem recorden">
+    Gennemgå alle værdier for nøjagtighed og klik på **Save**.
+  </Step>
+</Steps>
+
+<Tip>
+  Brug [dnschecker.org](https://dnschecker.org) til at overvåge din CNAME-records propagering på tværs af forskellige globale regioner. Se efter grønne flueben på tværs af alle regioner, inden du forventer, at AgencyHandy bekræfter forbindelsen.
+</Tip>
+
+---
+
+## Overvågning af Din Forbindelsesstatus
+
+Efter at have gemt skal du vende tilbage til **Workspace Config → Custom Domain** i AgencyHandy for at spore status:
+
+| Status | Betydning |
+|------------------|----------------------------------------------------------------------|
+| **Disconnected** | DNS-recorden er endnu ikke propageret eller indeholder en fejl |
+| **Connected** | Domæne er bekræftet og aktivt — kunder kan tilgå dit workspace via den brugerdefinerede URL |
+
+---
+
+## Opdatering eller Fjernelse af et Eget Domæne
+
+- **For at opdatere dit domæne:** Slet den eksisterende post og tilføj det nye domæne ved hjælp af de samme opsætningstrin ovenfor.
+- **For at slette dit domæne:** Klik på knappen **Delete** ud for dit domæne i panelet Eget domæne og bekræft sletningen. Dit workspace vender tilbage til standard AgencyHandy-URL'en. Du kan til enhver tid tilføje et domæne igen.
+
+---
+
+## Vigtige Bemærkninger
+
+- **Brug et subdomæne, ikke et roddomæne:** AgencyHandy egne domæner kræver et subdomæne (f.eks. `portal.ditbureau.dk`), ikke et rod-/apex-domæne (f.eks. `ditbureau.dk`).
+- **Undgå `www`:** `www`-subdomænet kan forårsage problemer under bekræftelse. Brug i stedet et brugerdefineret subdomænenavn.
+- **Nøjagtige records kræves:** Indtast CNAME Type, Name og Value nøjagtigt som vist i AgencyHandy. Enhver tastefejl eller manglende tegn forhindrer forbindelsen.
+- **Cloudflare-proxy skal være slået fra:** Sæt altid Cloudflare-records til **DNS Only** ved AgencyHandy-bekræftelse af eget domæne.
+- **Kun administratoradgang:** Kun Super Admins og Admins kan tilføje, ændre eller slette indstillinger for eget domæne.

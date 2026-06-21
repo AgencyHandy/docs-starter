@@ -1,0 +1,137 @@
+---
+title: "API AgencyHandy: программное создание нового клиента"
+sidebarTitle: "Создание клиента"
+description: "Программно добавляйте новых клиентов в ваше рабочее пространство AgencyHandy, отправив запрос на конечную точку bulk-client с именем, электронной почтой и контактными данными."
+---
+
+Конечная точка «Создание клиента» позволяет добавлять клиентов непосредственно в ваше рабочее пространство AgencyHandy из внешней системы. В отличие от лидов, клиенты — это полностью подключённые контакты, которых можно назначать к заказам, счетам и проектам. Используйте эту конечную точку для синхронизации новых клиентов из CRM-системы, формы регистрации или любого другого источника данных.
+
+<Note>
+  Перед использованием этой конечной точки выполните руководство [Начало работы](/ru/api/getting-started) для получения API-ключа и идентификатора компании. В отличие от конечной точки «Создание лида», создание клиента **не** требует отдельного шага для получения идентификатора роли.
+</Note>
+
+## Предварительные требования
+
+- ✅ API-ключ, сгенерированный в разделе **Настройки рабочего пространства → API-ключ**
+- ✅ Идентификатор компании, полученный из `GET {{URL}}/accounts/companies`
+
+---
+
+## Конечная точка
+
+```
+POST {{URL}}/members/bulk-client
+```
+
+## Заголовки
+
+| Заголовок | Значение |
+|---|---|
+| `x-api-key` | Ваш API-ключ |
+| `companyId` | Ваш идентификатор компании |
+| `Content-Type` | `application/json` |
+
+## Тело запроса
+
+Тело запроса представляет собой **массив JSON**. Вы можете создать одного или нескольких клиентов в одном запросе.
+
+<ParamField body="firstName" type="string" required>
+  Имя клиента.
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  Фамилия клиента.
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  Адрес электронной почты клиента. Должен быть уникальным в пределах вашего рабочего пространства.
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  Установите `false` для совершенно нового клиента. Установите `true` при конвертации существующего лида в клиента.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Статус клиента. Распространённые значения: `New`, `Active`. По умолчанию используется `New`, если не указано.
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  Номер телефона клиента.
+</ParamField>
+
+<ParamField body="source" type="string">
+  Источник привлечения клиента. Примеры значений: `website`, `referral`, `social`.
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  Позиция клиента в столбце доски. По умолчанию `1`.
+</ParamField>
+
+## Пример запроса
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-client" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyId: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+## Успешный ответ
+
+```json
+{
+  "message": "Client created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  Строка подтверждения при успешном выполнении.
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  Массив созданных объектов клиентов.
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  Уникальный идентификатор вновь созданного клиента. Используйте этот идентификатор при назначении клиента к заказам или счетам через API.
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  Полное имя клиента (firstName + lastName).
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  Статус клиента в том виде, как он сохранён.
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  Роль, назначенная участнику — будет `"client"`.
+</ResponseField>
+
+<Note>
+  Заголовок `companyId` для этой конечной точки использует заглавную букву **I** в `Id` — `companyId` — в отличие от некоторых других конечных точек, которые используют `companyid` (все строчные). Используйте точное написание, указанное выше, во избежание ошибок аутентификации.
+</Note>
+
+<Tip>
+  Передайте несколько объектов клиентов в массиве для массового создания клиентов в одном API-вызове. Каждый объект должен иметь уникальный адрес `email`. Дублирующиеся адреса электронной почты вызовут ошибку валидации для соответствующей записи.
+</Tip>

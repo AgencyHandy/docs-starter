@@ -1,0 +1,240 @@
+---
+title: "Gestione delle Attività: Creare e Monitorare il Lavoro negli Ordini"
+sidebarTitle: "Attività"
+description: "Crea, modifica e gestisci le attività all'interno degli ordini — inclusi monitoraggio del tempo, feedback sui file, attività richieste dai clienti e visibilità delle attività tra tutti gli ordini."
+---
+
+Le attività sono le unità di lavoro che trasformano un ordine in un deliverable. Ogni attività risiede all'interno di un ordine specifico, può essere assegnata a un membro del team e tiene traccia del proprio stato, della timeline, degli allegati e del thread di feedback. Questa pagina spiega come creare e gestire le attività, come i clienti possono richiedere attività, come funzionano il monitoraggio del tempo e il feedback sui file, e come visualizzare le attività su tutti gli ordini contemporaneamente.
+
+## Requisiti di Ruolo
+
+| Azione | Chi Può Farlo |
+|---|---|
+| Creare attività | Super Admin, Admin, Project Manager |
+| Modificare attività | Super Admin, Admin, Project Manager |
+| Eliminare attività | Super Admin, Admin, Project Manager |
+| Visualizzare attività in revisione / completate | Super Admin, Admin, PM, Cliente |
+| Inviare e rispondere ai feedback | Super Admin, Admin, PM |
+| Registrare il tempo sulle attività | Tutti gli utenti assegnati (i Super Admin e gli Admin possono registrare per conto di altri) |
+| Richiedere un'attività (cliente) | Cliente |
+| Approvare / rifiutare attività richieste | Super Admin, Admin |
+
+<Note>
+I dipendenti assegnati a un ordine possono vedere le attività che sono nello stato **In Revisione** o **Completata**. Le attività **In Corso** non sono visibili ai dipendenti.
+</Note>
+
+## Crea un'Attività
+
+<Steps>
+  <Step title="Apri l'ordine">
+    Vai su **Ordini** nella barra laterale sinistra e clicca sull'ordine in cui vuoi aggiungere un'attività.
+  </Step>
+
+  <Step title="Aggiungi una nuova attività">
+    All'interno dell'ordine, scorri fino alla sezione **Attività** e clicca su **+ Aggiungi Nuova Attività**. Apparirà un modulo di creazione attività.
+  </Step>
+
+  <Step title="Compila i dettagli dell'attività">
+    Completa i campi disponibili:
+
+    | Campo | Note |
+    |---|---|
+    | **Nome Attività** | Un titolo chiaro e conciso per il lavoro da svolgere |
+    | **Descrizione** | Contesto dettagliato, requisiti o istruzioni |
+    | **Assegnatario** | Il membro del team responsabile del completamento dell'attività |
+    | **Etichetta** | Tag categorico per organizzare le attività (es. Design, Testi) |
+    | **Data di Inizio** | Quando inizia il lavoro sull'attività |
+    | **Data di Scadenza** | Quando l'attività deve essere completata |
+    | **Revisione Cliente Richiesta** | Casella di controllo che richiede al cliente di approvare l'attività prima che venga contrassegnata come Completata — selezionata per impostazione predefinita |
+    | **Allegati** | File di riferimento o materiali di supporto |
+  </Step>
+
+  <Step title="Salva l'attività">
+    Clicca su **Salva** per creare l'attività. Il cliente riceve una notifica automatica che è stata aggiunta una nuova attività al suo ordine.
+  </Step>
+</Steps>
+
+<Tip>
+La casella **Revisione Cliente Richiesta** è abilitata per impostazione predefinita su ogni nuova attività. Se un'attività è puramente interna e non richiede l'approvazione del cliente, puoi deselezionarla prima di salvare.
+</Tip>
+
+## Stati delle Attività
+
+Le attività attraversano i seguenti stati:
+
+- **In Corso** — L'attività è in lavorazione (non visibile ai clienti o ai dipendenti)
+- **In Revisione** — L'attività è stata inviata per la revisione; visibile ai clienti
+- **Completata** — L'attività è stata approvata e completata
+
+<Note>
+Quando un cliente o un revisore rifiuta un'attività da **In Revisione**, il suo stato torna automaticamente a **In Corso**.
+</Note>
+
+## Finestra Attività e Pagina Attività
+
+Cliccando su qualsiasi attività si apre la **Finestra Attività**, una visualizzazione completa che funge da hub delle attività. Da qui puoi vedere e gestire:
+
+- Stato attuale, assegnatario, data di inizio e data di scadenza
+- Descrizione dell'attività e file allegati
+- Tutti i thread di feedback e le risposte
+- Un registro delle attività completo che mostra ogni aggiornamento, commento e cambio di stato sull'attività
+
+Chiunque faccia parte dell'ordine — inclusi i clienti, quando la revisione del cliente è abilitata — può accedere alla finestra attività per le attività di cui ha visibilità.
+
+## Modifica un'Attività
+
+Per aggiornare i dettagli di un'attività dopo che è stata creata, apri la finestra attività e modifica i campi pertinenti (nome, descrizione, assegnatario, date, etichetta o allegati). Salva le modifiche per applicare l'aggiornamento. Solo i Super Admin, gli Admin e i PM possono modificare le attività.
+
+## Elimina un'Attività
+
+Per eliminare un'attività, aprila e usa l'opzione di eliminazione nel menu azioni dell'attività. L'eliminazione è definitiva — tutti i log di tempo e le versioni dei file vengono rimossi insieme all'attività.
+
+<Warning>
+L'eliminazione di un'attività rimuove anche tutte le versioni dei file e i commenti di feedback associati. Questa azione non può essere annullata.
+</Warning>
+
+## Monitoraggio del Tempo
+
+AgencyHandy include il monitoraggio del tempo integrato in modo che il tuo team possa registrare le ore direttamente sulle attività — senza strumenti esterni.
+
+### Avviare il Timer
+
+<Steps>
+  <Step title="Apri l'attività">
+    Vai su **Ordini → Attività** e apri l'attività su cui vuoi monitorare il tempo.
+  </Step>
+
+  <Step title="Avvia il timer">
+    Clicca su **Avvia Timer**. Il timer inizia a scorrere e mostra il nome dell'attività, il tempo trascorso in tempo reale e il tempo totale registrato.
+  </Step>
+
+  <Step title="Metti in pausa o interrompi quando hai finito">
+    Clicca su **Pausa Timer** per interrompere temporaneamente il monitoraggio, o su **Interrompi Timer** per finalizzare la voce. Quando interrompi, dovrai confermare la data, l'ora di inizio, l'ora di fine, la durata totale e una nota facoltativa.
+  </Step>
+</Steps>
+
+<Note>
+Puoi avere un solo timer attivo alla volta. L'avvio di un nuovo timer mette automaticamente in pausa quello esistente.
+</Note>
+
+<Warning>
+Se un'attività è contrassegnata come **Completata**, il timer è disabilitato. Riapri l'attività per riabilitare la registrazione del tempo.
+</Warning>
+
+### Inserimento Manuale del Tempo
+
+Se devi registrare il tempo retroattivamente, clicca su **Inserimento Manuale del Tempo** sull'attività e inserisci:
+
+- **Data**
+- **Ora di Inizio e Ora di Fine** (oppure una **Durata** in ore e minuti)
+- **Note** (facoltativo)
+
+Più utenti possono registrare il tempo sulla stessa attività contemporaneamente. I Super Admin e gli Admin possono creare inserimenti manuali di tempo per conto di qualsiasi utente.
+
+### Registri di Lavoro
+
+Clicca sul pulsante **Registro di Lavoro** accanto al timer per vedere un riepilogo completo di tutte le voci di tempo sull'attività, incluse data, orari di inizio/fine, tempo totale attivo e note. Gli Admin e i Super Admin possono eliminare qualsiasi voce; gli utenti normali possono eliminare solo le proprie.
+
+### Fogli Presenze
+
+Vai su **Fogli Presenze** dalla barra laterale sinistra per una visualizzazione trasversale di tutto il tempo registrato su tutti gli ordini. Puoi filtrare per nome attività, ID ordine, assegnatario o intervallo di date (giornaliero, settimanale, mensile) e raggruppare i risultati per membro del team, nome del servizio o nome dell'attività. Puoi anche avviare un timer o aggiungere un inserimento manuale direttamente dalla visualizzazione Fogli Presenze.
+
+## Feedback sui File
+
+Il sistema di feedback sui file di AgencyHandy ti permette di lasciare commenti precisi e visivi sui deliverable — direttamente all'interno delle attività. Supporta immagini, PDF, video e siti web live, con controllo delle versioni e discussioni strutturate integrate.
+
+### Caricare un File per la Revisione
+
+Apri l'attività, clicca sull'icona **➕** nella sezione **Allegati** e carica un'immagine, un PDF, un video, o incolla l'URL di un sito web live.
+
+### Lasciare Feedback per Tipo di File
+
+**Immagini e PDF**
+Apri il file e usa la barra degli strumenti di annotazione (Freccia, Linea, Rettangolo, Evidenziazione) per contrassegnare aree specifiche. Seleziona una regione, digita il tuo commento e scegli se condividerlo con il tuo team, con il cliente o con entrambi. Puoi anche annullare o rifare le annotazioni e cambiare i colori delle annotazioni.
+
+**Video**
+Apri il video e mettilo in pausa nel fotogramma esatto in cui si applica il tuo feedback. Digita il tuo commento — il video si mette automaticamente in pausa mentre scrivi. Il feedback è contrassegnato con il timestamp di quel momento. Puoi rimuovere il timestamp per lasciare un commento generale.
+
+**Siti Web Live**
+Aggiungi l'URL del sito all'attività usando il pulsante **➕**, quindi installa l'estensione del browser AgencyHandy. Apri il sito in **Modalità Visualizzazione** (interattiva) o passa alla **Modalità Revisione** per acquisire uno screenshot e annotarlo con strumenti di disegno, testo o forme.
+
+### Azioni sui Commenti
+
+Ogni commento ha un menu a tre punti con le opzioni per:
+
+- Modificare il commento
+- Copiare la risposta
+- Eliminare il commento
+- Limitare la visibilità solo al team interno
+
+### Risoluzione del Feedback
+
+Clicca sul pulsante **✓** su un commento per contrassegnarlo come **Risolto**. I commenti risolti rimangono visibili come riferimento e possono essere riaperti. Riceverai una notifica quando un commento che hai lasciato viene risolto da qualcun altro.
+
+### Versioni dei File
+
+Clicca su **Carica Nuova Versione** per aggiungere un file revisionato. Le versioni precedenti e il loro feedback sono conservati e accessibili dal menu a tendina delle versioni. Quando si apre una versione precedente, AgencyHandy ti avvisa che esiste una versione più recente.
+
+Puoi etichettare ogni file come **Da Revisionare** o **Approvato** per comunicare lo stato di revisione a colpo d'occhio.
+
+<Note>
+I clienti possono lasciare feedback sui file solo se la casella **Revisione Cliente Richiesta** è abilitata sull'attività. Il feedback sui file è disponibile solo all'interno di attività o ordini — non nel catalogo dei servizi o nelle immagini del profilo.
+</Note>
+
+## Attività Richieste dai Clienti
+
+I clienti possono inviare richieste di attività dal loro portale, dando loro un modo strutturato per segnalare esigenze aggiuntive senza aggirare il tuo processo di approvazione.
+
+### Flusso di Lavoro del Cliente
+
+<Steps>
+  <Step title="Accedi alle Richieste">
+    Il cliente clicca su **Richieste** nella barra laterale del suo Portale Cliente — o usa il pulsante **+ Richiedi un'Attività** direttamente all'interno di un ordine.
+  </Step>
+
+  <Step title="Compila il modulo di richiesta">
+    Il cliente fornisce:
+    - **Ordine** (obbligatorio — le richieste devono essere collegate a un ordine esistente)
+    - **Nome Attività** (obbligatorio)
+    - **Descrizione** (facoltativo)
+    - **Allegati** (facoltativo — fino a 1 GB; i formati includono PDF, DOCX, JPG, PNG, MP4, ZIP e altri)
+    - **Date di Inizio e Fine** (facoltativo)
+  </Step>
+
+  <Step title="Invia la richiesta">
+    Il cliente clicca su **Richiedi**. L'attività appare nel suo portale come **In Attesa** e la tua agenzia riceve una notifica.
+  </Step>
+</Steps>
+
+### Flusso di Lavoro dell'Agenzia
+
+<Steps>
+  <Step title="Visualizza le richieste in arrivo">
+    Clicca su **Richieste** nella barra laterale del Portale Agenzia. Tutte le richieste in attesa appaiono in una visualizzazione elenco. Puoi filtrare per cliente o ID ordine, ordinare alfabeticamente o per data di emissione, e usare **Preferenze** per mostrare o nascondere le colonne.
+  </Step>
+
+  <Step title="Esamina la richiesta">
+    Clicca su una richiesta per leggere la descrizione e visualizzare in anteprima gli allegati prima di prendere una decisione.
+  </Step>
+
+  <Step title="Approva o rifiuta">
+    Usa i pulsanti di azione accanto a ogni richiesta per approvare o rifiutare singolarmente — o usa le azioni in blocco in alto a destra per approvare o rifiutare tutte le richieste contemporaneamente.
+
+    - Le richieste **Approvate** diventano attività attive nell'ordine e seguono il normale flusso di lavoro delle attività.
+    - Le richieste **Rifiutate** rimangono registrate con uno stato **Rifiutato** e non vengono aggiunte all'ordine.
+  </Step>
+</Steps>
+
+<Note>
+I clienti non possono aggirare la fase di approvazione. Una richiesta richiede sempre un'azione dell'agenzia prima di diventare un'attività attiva. Le richieste in attesa rimangono visibili sia al cliente che all'agenzia fino a quando non viene presa una decisione.
+</Note>
+
+## Visualizzazione Tutte le Attività
+
+Oltre a gestire le attività all'interno dei singoli ordini, puoi visualizzare le attività su tutti gli ordini da un'unica schermata. Vai su **Attività** nella barra laterale sinistra per accedere alla pagina **Tutte le Attività**. Da qui puoi:
+
+- Vedere ogni attività di cui hai visibilità, indipendentemente dall'ordine di appartenenza
+- Filtrare e ordinare per stato, assegnatario, data di scadenza o ordine
+- Identificare rapidamente gli elementi in ritardo o a rischio nell'intero carico di lavoro
+
+Questa visibilità trasversale è particolarmente utile per i Project Manager e gli Admin che devono bilanciare la capacità del team e monitorare lo stato delle consegne a livello di agenzia.

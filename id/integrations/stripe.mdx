@@ -1,0 +1,77 @@
+---
+title: "Hubungkan Stripe untuk Menerima Pembayaran Online di AgencyHandy"
+sidebarTitle: "Stripe"
+description: "Tautkan akun Stripe Anda ke AgencyHandy untuk mengirim tagihan dan mengumpulkan pembayaran online yang aman dari klien tanpa meninggalkan platform."
+---
+
+Integrasi Stripe AgencyHandy memungkinkan Anda menerima pembayaran kartu langsung dari klien melalui tagihan yang Anda kirim di dalam platform. Setelah terhubung, klien Anda melihat checkout yang dihosting Stripe yang familiar, dan status pembayaran disinkronkan kembali ke AgencyHandy secara otomatis — tidak perlu rekonsiliasi manual.
+
+<Note>
+  Hanya peran **SuperAdmin** dan **Admin** yang dapat menghubungkan atau mengelola integrasi Stripe. Anda juga harus memiliki akun Stripe yang terverifikasi dengan izin yang sesuai sebelum memulai.
+</Note>
+
+## Hubungkan Stripe
+
+<Steps>
+  <Step title="Buka pengaturan Stripe Integration">
+    Di bilah sisi kiri, navigasi ke **Integrations → Stripe Integration**.
+  </Step>
+
+  <Step title="Otorisasi di Stripe">
+    Klik **Connect Stripe**. Anda akan diarahkan ke layar otorisasi Stripe. Masuk ke akun Stripe Anda dan klik **Allow** untuk memberikan akses AgencyHandy. Setelah disetujui, Stripe mengarahkan Anda kembali ke AgencyHandy secara otomatis.
+  </Step>
+
+  <Step title="Konfigurasikan preferensi pembayaran">
+    Setelah diarahkan kembali, konfigurasikan opsi berikut:
+
+    - **Currency** — pilih mata uang penagihan default untuk workspace Anda.
+    - **Payment methods** — aktifkan atau nonaktifkan jenis kartu (Visa, Mastercard, dll.) sesuai yang didukung akun Stripe Anda.
+    - **Billing preferences** — opsional tetapkan tarif pajak, awalan tagihan, atau persyaratan pembayaran dan tanggal jatuh tempo default.
+  </Step>
+
+  <Step title="Simpan dan konfirmasi">
+    Klik **Save**. Banner konfirmasi muncul saat integrasi aktif. Stripe sekarang terhubung ke workspace Anda dan klien Anda dapat membayar tagihan secara online.
+  </Step>
+</Steps>
+
+## Uji integrasi
+
+Sebelum mengirim tagihan langsung, lakukan uji end-to-end cepat untuk mengonfirmasi bahwa koneksi berfungsi dengan benar.
+
+<Steps>
+  <Step title="Buat tagihan uji">
+    Buat tagihan draf di dalam AgencyHandy dan tetapkan jumlah kecil.
+  </Step>
+  <Step title="Kirim ke diri sendiri">
+    Kirim tagihan ke alamat email Anda sendiri atau ke anggota tim yang dapat membantu pengujian.
+  </Step>
+  <Step title="Selesaikan pembayaran uji">
+    Buka tautan tagihan dan selesaikan pembayaran menggunakan kartu uji Stripe (misalnya `4242 4242 4242 4242`) jika akun Stripe Anda dalam mode uji, atau kartu nyata dalam mode langsung.
+  </Step>
+  <Step title="Verifikasi pembaruan status">
+    Kembali ke AgencyHandy dan konfirmasi bahwa status tagihan berubah menjadi **Paid**. Jika ya, integrasi Anda berfungsi dengan benar.
+  </Step>
+</Steps>
+
+## Kelola koneksi Stripe Anda
+
+Kembali ke **Integrations → Stripe Integration** kapan saja untuk:
+
+- **Perbarui pengaturan pembayaran** — ubah mata uang, metode pembayaran, atau preferensi penagihan.
+- **Tinjau status koneksi** — periksa apakah Stripe saat ini aktif.
+- **Putus koneksi** — klik **Disconnect** untuk memutus tautan akun Stripe Anda. Pengumpulan pembayaran langsung dijeda sampai Anda menyambungkan kembali.
+- **Sambungkan kembali** — klik **Connect Stripe** lagi dan otorisasi ulang untuk memulihkan integrasi.
+
+<Warning>
+  Memutus koneksi Stripe menjeda pengumpulan pembayaran untuk semua tagihan yang belum dibayar. Klien tidak akan dapat membayar secara online sampai Anda menyambungkan kembali dan mengotorisasi ulang.
+</Warning>
+
+## Catatan tambahan
+
+<Note>
+  AgencyHandy tidak pernah menyimpan kredensial pembayaran Anda. Semua data pembayaran ditangani secara eksklusif oleh infrastruktur aman Stripe.
+</Note>
+
+- **Satu akun per workspace** — Anda hanya dapat menghubungkan satu akun Stripe ke setiap workspace AgencyHandy. Untuk mengganti akun, putus koneksi yang ada terlebih dahulu, lalu hubungkan kembali dengan akun baru.
+- **Status tagihan langsung** — semua tagihan yang terhubung ke Stripe terus mencerminkan pembaruan status real-time yang diterima langsung dari Stripe.
+- **Mata uang** — pastikan mata uang yang dikonfigurasi di AgencyHandy sesuai dengan mata uang yang diaktifkan di akun Stripe Anda untuk menghindari kesalahan pembayaran.

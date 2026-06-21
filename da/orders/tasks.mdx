@@ -1,0 +1,240 @@
+---
+title: "Opgavestyring: Oprettelse og sporing af arbejde i ordrer"
+sidebarTitle: "Opgaver"
+description: "Opret, rediger og administrer opgaver i ordrer — herunder tidsregistrering, fil-feedback, klient-anmodede opgaver og opgavevisning på tværs af ordrer."
+---
+
+Opgaver er de arbejdsenheder, der omdanner en ordre til et leverbart resultat. Hver opgave befinder sig i en specifik ordre, kan tildeles et teammedlem og sporer sin egen status, tidslinje, vedhæftede filer og feedback-tråd. Denne side forklarer, hvordan du opretter og administrerer opgaver, hvordan klienter kan anmode om opgaver, hvordan tidsregistrering og fil-feedback fungerer, og hvordan du ser opgaver på tværs af alle ordrer på én gang.
+
+## Rollekrav
+
+| Handling | Hvem kan gøre det |
+|---|---|
+| Opret opgaver | Super Admin, Admin, Project Manager |
+| Rediger opgaver | Super Admin, Admin, Project Manager |
+| Slet opgaver | Super Admin, Admin, Project Manager |
+| Se opgaver til gennemgang / udført | Super Admin, Admin, PM, Klient |
+| Send og svar på feedback | Super Admin, Admin, PM |
+| Registrer tid på opgaver | Alle tildelte brugere (Super Admins og Admins kan registrere på vegne af andre) |
+| Anmod om en opgave (klient) | Klient |
+| Godkend / afvis anmodede opgaver | Super Admin, Admin |
+
+<Note>
+Medarbejdere tildelt en ordre kan se opgaver, der har statussen **Til gennemgang** eller **Udført**. Opgaver med statussen **Igangværende** er ikke synlige for medarbejdere.
+</Note>
+
+## Opret en opgave
+
+<Steps>
+  <Step title="Åbn ordren">
+    Naviger til **Ordrer** i venstre sidepanel og klik på den ordre, hvor du vil tilføje en opgave.
+  </Step>
+
+  <Step title="Tilføj en ny opgave">
+    Rul til afsnittet **Opgaver** inde i ordren, og klik på **+ Tilføj ny opgave**. En opgaveoprettelsesformular vises.
+  </Step>
+
+  <Step title="Udfyld opgaveoplysningerne">
+    Udfyld de tilgængelige felter:
+
+    | Felt | Bemærkninger |
+    |---|---|
+    | **Opgavenavn** | En klar, kortfattet titel for arbejdsemnet |
+    | **Beskrivelse** | Detaljeret kontekst, krav eller instruktioner |
+    | **Ansvarlig** | Det teammedlem, der er ansvarlig for at udføre opgaven |
+    | **Etiket** | Kategorisk tag til organisering af opgaver (f.eks. Design, Tekst) |
+    | **Startdato** | Hvornår arbejdet på opgaven begynder |
+    | **Forfaldsdato** | Hvornår opgaven skal være fuldført |
+    | **Klientgennemgang krævet** | Afkrydsningsfelt, der kræver klientgodkendelse, inden opgaven markeres som udført — markeret som standard |
+    | **Vedhæftede filer** | Referencefiler eller understøttende materialer |
+  </Step>
+
+  <Step title="Gem opgaven">
+    Klik på **Gem** for at oprette opgaven. Klienten modtager automatisk en notifikation om, at en ny opgave er tilføjet til deres ordre.
+  </Step>
+</Steps>
+
+<Tip>
+Afkrydsningsfeltet **Klientgennemgang krævet** er aktiveret som standard på alle nye opgaver. Hvis en opgave er rent intern og ikke kræver klientgodkendelse, kan du fjerne markeringen inden du gemmer.
+</Tip>
+
+## Opgavestatusser
+
+Opgaver bevæger sig igennem følgende statusser:
+
+- **Igangværende** — Opgaven arbejdes på (ikke synlig for klienter eller medarbejdere)
+- **Til gennemgang** — Opgaven er indsendt til gennemgang; synlig for klienter
+- **Udført** — Opgaven er godkendt og fuldført
+
+<Note>
+Når en klient eller gennemgangsperson afviser en opgave fra **Til gennemgang**, vender dens status automatisk tilbage til **Igangværende**.
+</Note>
+
+## Opgavemodal og aktivitetsside
+
+Klik på en opgave åbner **Opgavemodalen**, en fuldstændig detaljeret visning, der fungerer som opgavens aktivitetshub. Herfra kan du se og administrere:
+
+- Nuværende status, ansvarlig, startdato og forfaldsdato
+- Opgavebeskrivelse og eventuelle vedhæftede filer
+- Alle feedback-tråde og svar
+- En komplet aktivitetslog, der viser alle opdateringer, kommentarer og statusændringer på opgaven
+
+Alle der er en del af ordren — herunder klienter, når klientgennemgang er aktiveret — kan få adgang til opgavemodalen for opgaver, de har synlighed på.
+
+## Rediger en opgave
+
+For at opdatere en opgaves oplysninger, efter den er oprettet, skal du åbne opgavemodalen og ændre de relevante felter (navn, beskrivelse, ansvarlig, datoer, etiket eller vedhæftede filer). Gem dine ændringer for at anvende opdateringen. Kun Super Admins, Admins og PM'er kan redigere opgaver.
+
+## Slet en opgave
+
+For at slette en opgave skal du åbne den og bruge sletteindstillingen i opgavens handlingsmenu. Sletning er permanent — alle tilknyttede tidsregistreringer og filversioner fjernes sammen med opgaven.
+
+<Warning>
+Sletning af en opgave fjerner også alle filversioner og deres tilknyttede feedback-kommentarer. Denne handling kan ikke fortrydes.
+</Warning>
+
+## Tidsregistrering
+
+AgencyHandy inkluderer indbygget tidsregistrering, så dit team kan logge timer direkte mod opgaver — intet eksternt værktøj nødvendigt.
+
+### Start timeren
+
+<Steps>
+  <Step title="Åbn opgaven">
+    Gå til **Ordrer → Opgaver** og åbn den opgave, du vil registrere tid på.
+  </Step>
+
+  <Step title="Start timeren">
+    Klik på **Start timer**. Timeren begynder at køre og viser opgavenavnet, forløbet tid i realtid og samlet registreret tid.
+  </Step>
+
+  <Step title="Pause eller stop, når du er færdig">
+    Klik på **Pause timer** for midlertidigt at stoppe registreringen, eller **Stop timer** for at afslutte posten. Når du stopper, bekræfter du datoen, starttidspunktet, sluttidspunktet, den samlede varighed og en valgfri bemærkning.
+  </Step>
+</Steps>
+
+<Note>
+Du kan kun have én aktiv timer kørende ad gangen. Start af en ny timer sætter automatisk den eksisterende på pause.
+</Note>
+
+<Warning>
+Hvis en opgave er markeret som **Udført**, er timeren deaktiveret. Genåbn opgaven for at genaktivere tidsregistrering.
+</Warning>
+
+### Manuel tidsregistrering
+
+Hvis du skal registrere tid efterfølgende, skal du klikke på **Manuel tidsregistrering** på opgaven og indtaste:
+
+- **Dato**
+- **Starttidspunkt og sluttidspunkt** (eller en **Varighed** i timer og minutter)
+- **Bemærkninger** (valgfrit)
+
+Flere brugere kan registrere tid mod den samme opgave samtidigt. Super Admins og Admins kan oprette manuelle tidsposter på vegne af enhver bruger.
+
+### Arbejdslogge
+
+Klik på knappen **Arbejdslog** ved siden af timeren for at se en fuldstændig oversigt over alle tidsposter på opgaven, herunder dato, start-/sluttidspunkter, samlet aktiv tid og eventuelle bemærkninger. Admins og Super Admins kan slette enhver post; almindelige brugere kan kun slette deres egne.
+
+### Timesedler
+
+Naviger til **Timesedler** fra venstre sidepanel for en tværgående visning af al registreret tid. Du kan filtrere efter opgavenavn, ordre-ID, ansvarlig eller datointerval (dagligt, ugentligt, månedligt) og gruppere resultater efter teammedlem, ydelsesnavn eller opgavenavn. Du kan også starte en timer eller tilføje en manuel post direkte fra Timesedler-visningen.
+
+## Fil-feedback
+
+AgencyHandy's fil-feedback-system lader dig og dine klienter efterlade præcise, visuelle kommentarer på leverancer — direkte inde i opgaver. Det understøtter billeder, PDF'er, videoer og live-hjemmesider med versionsstyring og trådede diskussioner indbygget.
+
+### Upload en fil til gennemgang
+
+Åbn opgaven, klik på **➕**-ikonet i afsnittet **Vedhæftede filer**, og upload et billede, en PDF, en video eller indsæt en live hjemmeside-URL.
+
+### Efterlad feedback efter filtype
+
+**Billeder og PDF'er**
+Åbn filen og brug annoteringsværktøjslinjen (Pil, Linje, Rektangel, Fremhæv) til at markere specifikke områder. Vælg et område, skriv din kommentar, og vælg om du vil dele den med dit team, klienten eller begge. Du kan også fortryde eller gentage annoteringer og ændre annotationsfarver.
+
+**Videoer**
+Åbn videoen og sæt den på pause ved præcis det frame, hvor din feedback gælder. Skriv din kommentar — videoen sættes automatisk på pause, mens du skriver. Feedbacken er tidsstemplet til det pågældende øjeblik. Du kan fjerne tidsstemplet for at efterlade en generel kommentar i stedet.
+
+**Live hjemmesider**
+Tilføj hjemmeside-URL'en til opgaven ved hjælp af **➕**-knappen, og installer derefter AgencyHandy-browserudvidelsen. Åbn siden i **Visningstilstand** (interaktiv) eller skift til **Gennemgangstilstand** for at tage et skærmbillede og annotere det med tegne-, tekst- eller formværktøjer.
+
+### Kommentarhandlinger
+
+Hver kommentar har en menu med tre prikker med muligheder for at:
+
+- Redigere kommentaren
+- Kopiere svaret
+- Slette kommentaren
+- Begrænse synlighed til det interne team
+
+### Løsning af feedback
+
+Klik på **✓**-knappen på en kommentar for at markere den som **Løst**. Løste kommentarer forbliver synlige til reference og kan genåbnes. Du modtager en notifikation, når en kommentar du har efterladt løses af en anden.
+
+### Filversioner
+
+Klik på **Upload ny version** for at tilføje en revideret fil. Tidligere versioner og deres feedback bevares og er tilgængelige fra versionsrullemenuen. Når du åbner en ældre version, giver AgencyHandy dig besked om, at der findes en nyere version.
+
+Du kan mærke hver fil som **Kræver gennemgang** eller **Godkendt** for at kommunikere gennemgangsstatus på et øjeblik.
+
+<Note>
+Klienter kan kun efterlade feedback på filer, hvis afkrydsningsfeltet **Klientgennemgang krævet** er aktiveret på opgaven. Fil-feedback er kun tilgængeligt inde i opgaver eller ordrer — ikke i servicekataloget eller profilbilleder.
+</Note>
+
+## Klient-anmodede opgaver
+
+Klienter kan indsende opgaveanmodninger fra deres portal, hvilket giver dem en struktureret måde at fremhæve yderligere behov uden at omgå din godkendelsesproces.
+
+### Klientarbejdsgang
+
+<Steps>
+  <Step title="Åbn Anmodninger">
+    Klienten klikker på **Anmodninger** i sidepanelet i deres klientportal — eller bruger knappen **+ Anmod om en opgave** direkte inde i en ordre.
+  </Step>
+
+  <Step title="Udfyld anmodningsformularen">
+    Klienten angiver:
+    - **Ordre** (obligatorisk — anmodninger skal være knyttet til en eksisterende ordre)
+    - **Opgavenavn** (obligatorisk)
+    - **Beskrivelse** (valgfrit)
+    - **Vedhæftede filer** (valgfrit — op til 1 GB; formater inkluderer PDF, DOCX, JPG, PNG, MP4, ZIP med mere)
+    - **Start- og slutdatoer** (valgfrit)
+  </Step>
+
+  <Step title="Send anmodningen">
+    Klienten klikker på **Anmod**. Opgaven vises i deres portal som **Afventer**, og dit bureau modtager en notifikation.
+  </Step>
+</Steps>
+
+### Bureauets arbejdsgang
+
+<Steps>
+  <Step title="Se indkommende anmodninger">
+    Klik på **Anmodninger** i sidepanelet i bureauportalen. Alle afventende anmodninger vises i en listevisning. Du kan filtrere efter klient eller ordre-ID, sortere alfabetisk eller efter udstedelsesdato og bruge **Præferencer** til at vise eller skjule kolonner.
+  </Step>
+
+  <Step title="Gennemgå anmodningen">
+    Klik på en anmodning for at læse beskrivelsen og forhåndsvise eventuelle vedhæftede filer inden du træffer en beslutning.
+  </Step>
+
+  <Step title="Godkend eller afvis">
+    Brug handlingsknapperne ved siden af hver anmodning til at godkende eller afvise individuelt — eller brug massehandlingerne øverst til højre for at godkende eller afvise alle anmodninger på én gang.
+
+    - **Godkendte** anmodninger bliver aktive opgaver i ordren og følger den normale opgavearbejdsgang.
+    - **Afviste** anmodninger forbliver registreret med statussen **Afvist** og tilføjes ikke til ordren.
+  </Step>
+</Steps>
+
+<Note>
+Klienter kan ikke omgå godkendelsestrinnet. En anmodning kræver altid bureauets handling, inden den bliver en aktiv opgave. Afventende anmodninger forbliver synlige for både klienten og bureauet, indtil der er truffet en beslutning.
+</Note>
+
+## Alle opgaver-visning
+
+Ud over at administrere opgaver i individuelle ordrer kan du se opgaver på tværs af alle ordrer fra én enkelt skærm. Naviger til **Opgaver** i venstre sidepanel for at åbne siden **Alle opgaver**. Herfra kan du:
+
+- Se alle opgaver, du har synlighed på, uanset hvilken ordre de tilhører
+- Filtrere og sortere efter status, ansvarlig, forfaldsdato eller ordre
+- Hurtigt identificere forsinkede eller risikobetonede elementer på tværs af hele din arbejdsbyrde
+
+Denne tværgående synlighed er særligt nyttig for Project Managers og Admins, der har brug for at afbalancere teamkapacitet og spore leveringssundhed på bureauniveau.

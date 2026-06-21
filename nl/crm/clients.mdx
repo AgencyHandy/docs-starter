@@ -1,0 +1,218 @@
+---
+title: "Klantbeheer: Profielen, import en configuratie"
+sidebarTitle: "Klanten"
+description: "Maak klantprofielen aan en importeer ze in AgencyHandy, volg opdrachten en facturen, beheer portaaltoegang en organiseer klanten met categorieën."
+---
+
+De sectie Klanten van de CRM van AgencyHandy is je centrale hub voor elke organisatie of elk individu dat de prospectfase heeft doorlopen. Hier kun je klantprofielen handmatig of in bulk aanmaken, contactgegevens actueel houden, recente opdrachten en facturen bijhouden, klanten indelen in aangepaste categorieën en portaaltoegang bewaken — alles vanuit één lijstweergave.
+
+<Note>
+  Je hebt een **Superbeheerder**- of **Beheerder**-rol nodig om klantprofielen aan te maken, te bewerken, te importeren of te configureren. Managers kunnen klantgegevens en activiteitenlogboeken bekijken.
+</Note>
+
+## Een klantprofiel aanmaken
+
+Wanneer je een nieuwe klant onboardt, maakt AgencyHandy een portaalaccount voor hen aan en stuurt een beveiligde inloguitnodiging.
+
+<Steps>
+  <Step title="Ga naar Klanten">
+    Log in op je AgencyHandy-account, klik vervolgens op **CRM** in de linker zijbalk en selecteer het tabblad **Klanten**.
+  </Step>
+  <Step title="Open het aanmaakformulier">
+    Klik op **+ Klant aanmaken** rechtsboven. Er wordt een formulier geopend.
+  </Step>
+  <Step title="Voer klantgegevens in">
+    Vul de gegevens van de klant in:
+
+    - **Voornaam / Achternaam** *(verplicht)*
+    - **E-mail** *(verplicht — wordt gebruikt om de portaaluitnodiging te versturen)*
+    - **Bedrijfsnaam**
+    - **Telefoonnummer**
+    - **Land, Staat, Stad, Postcode**
+    - **Categorie** — wijs een bestaande configuratiecategorie toe indien van toepassing
+  </Step>
+  <Step title="Sla het profiel op">
+    Klik op **Aanmaken**. Het profiel wordt onmiddellijk toegevoegd aan je klantenlijst.
+  </Step>
+</Steps>
+
+<Note>
+  Nadat je het profiel hebt aangemaakt, ontvangt de klant een e-mail met een beveiligde inlog-URL. Door op die URL te klikken, wordt hun portaalaccount geactiveerd en kunnen ze voor het eerst inloggen.
+</Note>
+
+## Klanten importeren vanuit CSV
+
+Als je migreert vanuit een ander platform of een spreadsheet met bestaande klanten hebt, kun je ze allemaal tegelijk importeren.
+
+<Steps>
+  <Step title="Klik op Importeren">
+    Klik in de klantenlijst op de knop **Importeren** rechtsboven.
+  </Step>
+  <Step title="Upload je CSV-bestand">
+    Sleep je bestand naar het uploadgebied of klik om het te bladeren en selecteren. AgencyHandy accepteert CSV-bestanden met de volgende velden:
+
+    - Klantnaam *(verplicht)*
+    - E-mail *(verplicht)*
+    - Bedrijfsnaam
+    - Land
+    - Staat
+    - Stad
+    - Postcode
+  </Step>
+  <Step title="Wijs je kolommen toe">
+    AgencyHandy detecteert automatisch kolomnamen die overeenkomen met zijn veldnamen. Gebruik voor niet-overeenkomende kolommen de vervolgkeuzemenu's om ze handmatig toe te wijzen aan de juiste systeemvelden.
+  </Step>
+  <Step title="Bekijk een voorbeeld en bevestig">
+    Bekijk de voorbeeldtabel om eventuele opmaakproblemen op te sporen voordat de gegevens worden opgeslagen.
+  </Step>
+  <Step title="Voltooi de import">
+    Klik op **Opslaan**. Er verschijnt een bevestigingsbericht zodra alle records succesvol zijn geïmporteerd.
+  </Step>
+</Steps>
+
+<Tip>
+  Als de kolomkoppen van je spreadsheet exact overeenkomen met de veldnamen van AgencyHandy (bijv. "email", "company name"), wordt de toewijzer automatisch ingevuld — handmatige toewijzing is dan niet nodig.
+</Tip>
+
+## Klanten exporteren
+
+Maak een back-up van je klantendatabase of deel deze met belanghebbenden door te exporteren naar CSV of Excel.
+
+<Steps>
+  <Step title="Klik op Exporteren">
+    Klik in de klantenlijst op de knop **Exporteren** rechtsboven.
+  </Step>
+  <Step title="Pas je export aan">
+    Kies welke kolommen je wilt opnemen — selecteer **Alle kolommen** voor een volledige export, of kies specifieke velden zoals naam, contactgegevens, bedrijf of adres.
+  </Step>
+  <Step title="Kies een formaat">
+    Selecteer **CSV** of **XLSX** afhankelijk van het beoogde gebruik.
+  </Step>
+  <Step title="Download het bestand">
+    Klik op **Exporteren**. Het bestand wordt gegenereerd en gedownload naar je apparaat. Bewaar het veilig om klantgegevens te beschermen.
+  </Step>
+</Steps>
+
+## Een klantprofiel bewerken
+
+<Steps>
+  <Step title="Selecteer de klant">
+    Klik in de klantenlijst op het selectievakje naast de klant die je wilt bijwerken, of klik direct op diens naam om het profiel te openen.
+  </Step>
+  <Step title="Activeer de bewerkingsmodus">
+    Klik op de knop **Bewerken** rechtsboven in het klantprofiel. Er verschijnt een bewerkingsformulier.
+  </Step>
+  <Step title="Werk de gegevens bij">
+    Pas alle velden aan — naam, e-mail, telefoon, adres, bedrijf of categorie.
+  </Step>
+  <Step title="Sla je wijzigingen op">
+    Klik op **Bijwerken**. Een bevestigingsbericht bevestigt dat het profiel succesvol is opgeslagen.
+  </Step>
+</Steps>
+
+## Zoeken, sorteren en filteren
+
+De klantenlijst biedt je diverse hulpmiddelen om snel de juiste klant te vinden:
+
+<CardGroup cols={2}>
+  <Card title="Zoeken op naam" icon="magnifying-glass">
+    Typ de naam van een klant in de zoekbalk om de lijst direct te filteren.
+  </Card>
+  <Card title="Filteren op bedrijf" icon="building">
+    Verklein de lijst tot klanten die zijn gekoppeld aan een specifiek bedrijf.
+  </Card>
+  <Card title="Filteren op e-mail" icon="envelope">
+    Zoek een klant wanneer je zijn e-mailadres kent maar niet zijn naam.
+  </Card>
+  <Card title="Filteren op status" icon="circle-check">
+    Toon alleen actieve, inactieve of uitgenodigde klanten.
+  </Card>
+  <Card title="Alfabetisch sorteren" icon="arrow-down-a-z">
+    Sorteer de volledige klantenlijst A–Z of Z–A op naam voor snel naslagwerk.
+  </Card>
+  <Card title="Filteren op categorie" icon="tag">
+    Toon alleen klanten die zijn toegewezen aan een specifieke configuratiecategorie.
+  </Card>
+</CardGroup>
+
+## Klantactiviteit volgen
+
+In elk klantprofiel vind je tabbladen die je een actueel beeld geven van de betrokkenheid van die klant bij je bureau:
+
+<Accordion title="Recente opdrachten">
+  Bekijk een geschiedenis van alle opdrachten die door de klant zijn geplaatst, inclusief dienstnaam, pakket, status en datum. Dit geeft je een snel overzicht van hun aankoopgeschiedenis zonder de CRM te verlaten.
+</Accordion>
+
+<Accordion title="Recente tickets">
+  Bekijk alle ondersteunings- of servicetickets die door de klant zijn ingediend. Gebruik deze weergave om reacties te prioriteren en ervoor te zorgen dat geen enkel verzoek door de mazen valt.
+</Accordion>
+
+<Accordion title="Recente facturen">
+  Bekijk een logboek van alle facturen die voor de klant zijn gegenereerd, inclusief betalingsstatus. Dit helpt je om openstaande saldi en factuurgeschiedenis op één plek bij te houden.
+</Accordion>
+
+## Klantconfiguratie (categorieën)
+
+Klantconfiguratie laat je kleurgecodeerde categorieën aanmaken om je klantenlijst te segmenteren — bijvoorbeeld *Hoge prioriteit*, *Retainer* of *In de wacht*. Categorieën verschijnen als filteropties in de klantenlijst zodat je de juiste groep onmiddellijk kunt ophalen.
+
+<Steps>
+  <Step title="Open Configuratie">
+    Klik in de sectie Klanten op de knop **Configuratie**.
+  </Step>
+  <Step title="Maak een nieuwe categorie aan">
+    Klik op **+ Categorie aanmaken**.
+  </Step>
+  <Step title="Voer categoriegegevens in">
+    - **Categorienaam** — een uniek, beschrijvend label (bijv. *Enterprise-klanten*)
+    - **Korte beschrijving** — een korte notitie die het doel van de categorie uitlegt
+    - **Kleur** — kies een onderscheidende kleur voor snelle visuele herkenning
+  </Step>
+  <Step title="Sla de categorie op">
+    Klik op **Aanmaken**. De categorie is nu beschikbaar om toe te wijzen bij het bewerken van klantprofielen.
+  </Step>
+  <Step title="Wijs klanten toe aan de categorie">
+    Open een klantprofiel, klik op **Bewerken**, selecteer het veld **Categorie** en kies de relevante categorie. Klik op **Bijwerken** om op te slaan.
+  </Step>
+</Steps>
+
+<Tip>
+  Gebruik consistente kleurconventies voor categorieën — bijvoorbeeld rood voor klanten met hoge urgentie en groen voor volledig onboarde accounts — om de lijst in één oogopslag scanbaar te maken.
+</Tip>
+
+## Klantactiviteitenlogboek
+
+Het activiteitenlogboek registreert elke inlog- en uitloggebeurtenis voor het portaalaccount van een klant, wat je een duidelijk auditspoor van hun betrokkenheid geeft.
+
+**Het logboek bekijken:**
+
+1. Ga naar **Klanten** en open het profiel van een specifieke klant.
+2. Klik op het tabblad **Activiteitenlogboek** in de bovenste navigatiebalk van het profiel.
+3. Bekijk de chronologische lijst met authenticatiegebeurtenissen.
+
+**Wat het logboek toont:**
+
+- Exacte datum en tijdstempel van elke **inlog**
+- Exacte datum en tijdstempel van elke **uitlog**
+- Een doorlopende geschiedenis van alle authenticatiegebeurtenissen
+
+Het logboek wordt in real time bijgewerkt en kan niet worden bewerkt of verwijderd. Klanten hebben geen toegang tot hun eigen activiteitenlogboek — het is alleen bedoeld voor administratieve en nalevingsdoeleinden.
+
+<Note>
+  In dit stadium legt het activiteitenlogboek alleen authenticatiegebeurtenissen vast (inloggen en uitloggen). Acties die binnen het portaal worden ondernomen — zoals het bekijken van opdrachten — worden hier nog niet gelogd.
+</Note>
+
+## Een klant e-mailen
+
+Je kunt rechtstreeks vanuit hun profiel een e-mail sturen naar een klant zonder AgencyHandy te verlaten. Open het profiel van de klant en gebruik de optie **E-mail** om je bericht op te stellen. Het veld **Aan** is vooraf ingevuld met het e-mailadres van de klant.
+
+## Klantimpersonatie
+
+Beheerders kunnen een klantaccount impersoneren om precies te zien wat de klant ziet in zijn portaal — handig voor het oplossen van toegangsproblemen of het begeleiden van een klant door een proces tijdens een ondersteuningsgesprek. Zoek de optie **Impersoneren** in het profiel van de klant.
+
+<Warning>
+  Gebruik impersonatie alleen voor ondersteuningsdoeleinden. Alle acties die worden ondernomen tijdens het impersoneren van een klant worden namens hen uitgevoerd en worden weerspiegeld in hun account.
+</Warning>
+
+## Bedrijfsaccounts (B2B)
+
+Als je werkt met bedrijven in plaats van individuen, kun je een **Bedrijfsnaam** instellen op elk klantprofiel om contacten onder dezelfde organisatie te groeperen. De klantenlijst kan worden gefilterd op bedrijf, waardoor het gemakkelijk is om alle contacten van een bepaald account samen te bekijken.

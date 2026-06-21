@@ -1,0 +1,240 @@
+---
+title: "Manajemen Tugas: Membuat dan Melacak Pekerjaan dalam Order"
+sidebarTitle: "Tugas"
+description: "Buat, edit, dan kelola tugas di dalam order — termasuk pelacakan waktu, umpan balik file, tugas yang diminta klien, dan visibilitas tugas lintas order."
+---
+
+Tugas adalah unit pekerjaan yang mengubah order menjadi hasil yang dapat diserahkan. Setiap tugas berada di dalam order tertentu, dapat ditugaskan kepada anggota tim, dan melacak status, jadwal, lampiran, dan thread umpan baliknya sendiri. Halaman ini menjelaskan cara membuat dan mengelola tugas, cara klien dapat meminta tugas, cara pelacakan waktu dan umpan balik file bekerja, serta cara melihat tugas di semua order sekaligus.
+
+## Persyaratan Peran
+
+| Tindakan | Siapa yang Dapat Melakukannya |
+|---|---|
+| Membuat tugas | Super Admin, Admin, Project Manager |
+| Mengedit tugas | Super Admin, Admin, Project Manager |
+| Menghapus tugas | Super Admin, Admin, Project Manager |
+| Melihat tugas dalam tinjauan / selesai | Super Admin, Admin, PM, Klien |
+| Mengirim dan membalas umpan balik | Super Admin, Admin, PM |
+| Mencatat waktu pada tugas | Semua pengguna yang ditugaskan (Superadmin dan Admin dapat mencatat atas nama orang lain) |
+| Meminta tugas (klien) | Klien |
+| Menyetujui / menolak tugas yang diminta | Super Admin, Admin |
+
+<Note>
+Karyawan yang ditugaskan ke order dapat melihat tugas yang berstatus **In Review** atau **Done**. Tugas yang berstatus **In Progress** tidak terlihat oleh karyawan.
+</Note>
+
+## Membuat Tugas
+
+<Steps>
+  <Step title="Buka order">
+    Navigasi ke **Orders** di bilah sisi kiri dan klik order tempat Anda ingin menambahkan tugas.
+  </Step>
+
+  <Step title="Tambahkan tugas baru">
+    Di dalam order, gulir ke bagian **Tasks** dan klik **+ Add New Task**. Formulir pembuatan tugas akan muncul.
+  </Step>
+
+  <Step title="Isi detail tugas">
+    Lengkapi kolom yang tersedia:
+
+    | Kolom | Catatan |
+    |---|---|
+    | **Task Name** | Judul yang jelas dan ringkas untuk item pekerjaan |
+    | **Description** | Konteks terperinci, persyaratan, atau instruksi |
+    | **Assignee** | Anggota tim yang bertanggung jawab menyelesaikan tugas |
+    | **Label** | Tag kategori untuk mengorganisir tugas (misalnya, Desain, Teks) |
+    | **Start Date** | Kapan pekerjaan pada tugas dimulai |
+    | **Due Date** | Kapan tugas harus diselesaikan |
+    | **Client Review Required** | Kotak centang yang mengharuskan klien menyetujui tugas sebelum ditandai Selesai — dicentang secara default |
+    | **Attachments** | File referensi atau materi pendukung |
+  </Step>
+
+  <Step title="Simpan tugas">
+    Klik **Save** untuk membuat tugas. Klien menerima notifikasi otomatis bahwa tugas baru telah ditambahkan ke order mereka.
+  </Step>
+</Steps>
+
+<Tip>
+Kotak centang **Client Review Required** diaktifkan secara default pada setiap tugas baru. Jika suatu tugas sepenuhnya bersifat internal dan tidak memerlukan persetujuan klien, Anda dapat menghapus centangnya sebelum menyimpan.
+</Tip>
+
+## Status Tugas
+
+Tugas bergerak melalui status-status berikut:
+
+- **In Progress** — Tugas sedang dikerjakan (tidak terlihat oleh klien atau karyawan)
+- **In Review** — Tugas telah dikirimkan untuk ditinjau; terlihat oleh klien
+- **Done** — Tugas telah disetujui dan diselesaikan
+
+<Note>
+Ketika klien atau peninjau menolak tugas dari status **In Review**, statusnya secara otomatis kembali ke **In Progress**.
+</Note>
+
+## Modal Tugas dan Halaman Aktivitas
+
+Mengklik tugas mana pun akan membuka **Modal Tugas**, tampilan detail lengkap yang berfungsi sebagai pusat aktivitas tugas. Dari sini Anda dapat melihat dan mengelola:
+
+- Status saat ini, penanggung jawab, tanggal mulai, dan tanggal jatuh tempo
+- Deskripsi tugas dan file yang dilampirkan
+- Semua thread umpan balik dan balasan
+- Log aktivitas lengkap yang menampilkan setiap pembaruan, komentar, dan perubahan status pada tugas
+
+Siapa pun yang merupakan bagian dari order — termasuk klien, ketika tinjauan klien diaktifkan — dapat mengakses modal tugas untuk tugas yang mereka miliki visibilitasnya.
+
+## Mengedit Tugas
+
+Untuk memperbarui detail tugas setelah dibuat, buka modal tugas dan modifikasi kolom yang relevan (nama, deskripsi, penanggung jawab, tanggal, label, atau lampiran). Simpan perubahan Anda untuk menerapkan pembaruan. Hanya Super Admin, Admin, dan PM yang dapat mengedit tugas.
+
+## Menghapus Tugas
+
+Untuk menghapus tugas, buka tugas tersebut dan gunakan opsi hapus di menu tindakan tugas. Penghapusan bersifat permanen — semua log waktu dan versi file terkait dihapus bersama tugas.
+
+<Warning>
+Menghapus tugas juga menghapus semua versi file dan komentar umpan balik terkaitnya. Tindakan ini tidak dapat diurungkan.
+</Warning>
+
+## Pelacakan Waktu
+
+AgencyHandy menyertakan pelacakan waktu bawaan sehingga tim Anda dapat mencatat jam langsung terhadap tugas — tidak diperlukan alat eksternal.
+
+### Memulai Penghitung Waktu
+
+<Steps>
+  <Step title="Buka tugas">
+    Pergi ke **Orders → Tasks** dan buka tugas yang ingin Anda lacak waktunya.
+  </Step>
+
+  <Step title="Mulai penghitung waktu">
+    Klik **Start Timer**. Penghitung waktu mulai berjalan dan menampilkan nama tugas, waktu yang telah berlalu secara real-time, dan total waktu yang dicatat.
+  </Step>
+
+  <Step title="Jeda atau hentikan setelah selesai">
+    Klik **Pause Timer** untuk sementara menghentikan pelacakan, atau **Stop Timer** untuk menyelesaikan entri. Saat Anda berhenti, Anda akan mengonfirmasi tanggal, waktu mulai, waktu selesai, total durasi, dan catatan opsional.
+  </Step>
+</Steps>
+
+<Note>
+Anda hanya dapat memiliki satu penghitung waktu aktif pada satu waktu. Memulai penghitung waktu baru secara otomatis menjeda yang sudah ada.
+</Note>
+
+<Warning>
+Jika tugas ditandai **Done**, penghitung waktu dinonaktifkan. Buka kembali tugas untuk mengaktifkan kembali pencatatan waktu.
+</Warning>
+
+### Entri Waktu Manual
+
+Jika Anda perlu mencatat waktu secara retroaktif, klik **Manual Time Entry** pada tugas dan masukkan:
+
+- **Date**
+- **Start Time dan End Time** (atau **Duration** dalam jam dan menit)
+- **Notes** (opsional)
+
+Beberapa pengguna dapat mencatat waktu terhadap tugas yang sama secara bersamaan. Superadmin dan Admin dapat membuat entri waktu manual atas nama pengguna mana pun.
+
+### Log Kerja
+
+Klik tombol **Work Log** di sebelah penghitung waktu untuk melihat rincian lengkap semua entri waktu pada tugas, termasuk tanggal, waktu mulai/selesai, total waktu aktif, dan catatan apa pun. Admin dan Superadmin dapat menghapus entri mana pun; pengguna biasa hanya dapat menghapus entri mereka sendiri.
+
+### Timesheet
+
+Navigasi ke **Timesheets** dari bilah sisi kiri untuk tampilan lintas order dari semua waktu yang dicatat. Anda dapat memfilter berdasarkan nama tugas, ID order, penanggung jawab, atau rentang tanggal (harian, mingguan, bulanan), dan mengelompokkan hasil berdasarkan anggota tim, nama layanan, atau nama tugas. Anda juga dapat memulai penghitung waktu atau menambahkan entri manual langsung dari tampilan Timesheet.
+
+## Umpan Balik File
+
+Sistem umpan balik file AgencyHandy memungkinkan Anda dan klien Anda meninggalkan komentar visual yang tepat pada hasil kerja — langsung di dalam tugas. Sistem ini mendukung gambar, PDF, video, dan situs web langsung, dengan kontrol versi dan diskusi berulir yang sudah terintegrasi.
+
+### Mengunggah File untuk Ditinjau
+
+Buka tugas, klik ikon **➕** di bagian **Attachments**, dan unggah gambar, PDF, video, atau tempel URL situs web langsung.
+
+### Meninggalkan Umpan Balik Berdasarkan Jenis File
+
+**Gambar dan PDF**
+Buka file dan gunakan toolbar anotasi (Arrow, Line, Rectangle, Highlight) untuk menandai area tertentu. Pilih area, ketik komentar Anda, dan pilih apakah akan berbagi dengan tim, klien, atau keduanya. Anda juga dapat membatalkan atau mengulang anotasi dan mengubah warna anotasi.
+
+**Video**
+Buka video dan jeda di frame tepat di mana umpan balik Anda berlaku. Ketik komentar Anda — video dijeda secara otomatis saat Anda mengetik. Umpan balik diberi cap waktu pada momen tersebut. Anda dapat menghapus cap waktu untuk meninggalkan komentar umum.
+
+**Situs Web Langsung**
+Tambahkan URL situs ke tugas menggunakan tombol **➕**, lalu instal ekstensi browser AgencyHandy. Buka situs dalam **View Mode** (interaktif) atau beralih ke **Review Mode** untuk mengambil tangkapan layar dan membuat anotasi dengan alat gambar, teks, atau bentuk.
+
+### Tindakan Komentar
+
+Setiap komentar memiliki menu tiga titik dengan opsi untuk:
+
+- Mengedit komentar
+- Menyalin balasan
+- Menghapus komentar
+- Membatasi visibilitas hanya untuk tim internal
+
+### Menyelesaikan Umpan Balik
+
+Klik tombol **✓** pada komentar untuk menandainya sebagai **Resolved**. Komentar yang diselesaikan tetap terlihat sebagai referensi dan dapat dibuka kembali. Anda menerima notifikasi ketika komentar yang Anda tinggalkan diselesaikan oleh orang lain.
+
+### Versi File
+
+Klik **Upload New Version** untuk menambahkan file yang direvisi. Versi sebelumnya dan umpan baliknya disimpan dan dapat diakses dari menu tarik-turun versi. Saat membuka versi lama, AgencyHandy memberi tahu Anda bahwa versi yang lebih baru ada.
+
+Anda dapat memberi label setiap file sebagai **Needs Review** atau **Approved** untuk mengomunikasikan status tinjauan secara sekilas.
+
+<Note>
+Klien hanya dapat meninggalkan umpan balik pada file jika kotak centang **Client Review Required** diaktifkan pada tugas. Umpan balik file hanya tersedia di dalam tugas atau order — tidak dalam katalog layanan atau gambar profil.
+</Note>
+
+## Tugas yang Diminta Klien
+
+Klien dapat mengajukan permintaan tugas dari portal mereka, memberi mereka cara terstruktur untuk menyampaikan kebutuhan tambahan tanpa melewati proses persetujuan Anda.
+
+### Alur Kerja Klien
+
+<Steps>
+  <Step title="Akses Permintaan">
+    Klien mengklik **Requests** di bilah sisi Portal Klien mereka — atau menggunakan tombol **+ Request a Task** langsung di dalam order.
+  </Step>
+
+  <Step title="Isi formulir permintaan">
+    Klien menyediakan:
+    - **Order** (wajib — permintaan harus terkait dengan order yang sudah ada)
+    - **Task Name** (wajib)
+    - **Description** (opsional)
+    - **Attachments** (opsional — hingga 1 GB; format termasuk PDF, DOCX, JPG, PNG, MP4, ZIP, dan lainnya)
+    - **Start and End Dates** (opsional)
+  </Step>
+
+  <Step title="Kirim permintaan">
+    Klien mengklik **Request**. Tugas muncul di portal mereka sebagai **Pending** dan agensi Anda menerima notifikasi.
+  </Step>
+</Steps>
+
+### Alur Kerja Agensi
+
+<Steps>
+  <Step title="Lihat permintaan masuk">
+    Klik **Requests** di bilah sisi Portal Agensi. Semua permintaan yang tertunda muncul dalam tampilan daftar. Anda dapat memfilter berdasarkan klien atau ID order, mengurutkan secara alfabetis atau berdasarkan tanggal pengajuan, dan menggunakan **Preferences** untuk menampilkan atau menyembunyikan kolom.
+  </Step>
+
+  <Step title="Tinjau permintaan">
+    Klik permintaan untuk membaca deskripsi dan melihat pratinjau lampiran sebelum mengambil keputusan.
+  </Step>
+
+  <Step title="Setujui atau tolak">
+    Gunakan tombol tindakan di sebelah setiap permintaan untuk menyetujui atau menolak secara individual — atau gunakan tindakan massal di kanan atas untuk menyetujui atau menolak semua permintaan sekaligus.
+
+    - Permintaan yang **Disetujui** menjadi tugas aktif dalam order dan mengikuti alur kerja tugas normal.
+    - Permintaan yang **Ditolak** tetap tercatat dengan status **Rejected** dan tidak ditambahkan ke order.
+  </Step>
+</Steps>
+
+<Note>
+Klien tidak dapat melewati langkah persetujuan. Permintaan selalu memerlukan tindakan agensi sebelum menjadi tugas aktif. Permintaan yang tertunda tetap terlihat oleh klien dan agensi hingga keputusan dibuat.
+</Note>
+
+## Tampilan Semua Tugas
+
+Selain mengelola tugas di dalam order individual, Anda dapat melihat tugas di setiap order dari satu layar. Navigasi ke **Tasks** di bilah sisi kiri untuk mengakses halaman **All Tasks**. Dari sini Anda dapat:
+
+- Melihat setiap tugas yang memiliki visibilitas bagi Anda, terlepas dari order mana tempatnya berada
+- Memfilter dan mengurutkan berdasarkan status, penanggung jawab, tanggal jatuh tempo, atau order
+- Mengidentifikasi dengan cepat item yang terlambat atau berisiko di seluruh beban kerja Anda
+
+Visibilitas lintas order ini sangat berguna bagi Project Manager dan Admin yang perlu menyeimbangkan kapasitas tim dan melacak kesehatan pengiriman di tingkat agensi.

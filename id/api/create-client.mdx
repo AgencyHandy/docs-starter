@@ -1,0 +1,137 @@
+---
+title: "AgencyHandy API: Buat Klien Baru Secara Terprogram"
+sidebarTitle: "Buat Klien"
+description: "Tambahkan klien baru ke workspace AgencyHandy Anda secara terprogram dengan mengirim ke endpoint bulk-client beserta nama, email, dan detail kontak."
+---
+
+Endpoint Create Client memungkinkan Anda menambahkan klien langsung ke workspace AgencyHandy dari sistem eksternal. Tidak seperti lead, klien adalah kontak yang sepenuhnya terdaftar dan dapat ditetapkan ke pesanan, tagihan, dan proyek. Gunakan endpoint ini untuk menyinkronkan klien baru dari CRM, formulir orientasi, atau sumber data lainnya.
+
+<Note>
+  Sebelum menggunakan endpoint ini, selesaikan panduan [Memulai](/id/api/getting-started) untuk mendapatkan API key dan Company ID Anda. Tidak seperti endpoint Create Lead, membuat klien **tidak** memerlukan langkah pencarian Role ID terpisah.
+</Note>
+
+## Prasyarat
+
+- ✅ API key yang dibuat dari **Workspace Config → API Key**
+- ✅ Company ID yang diambil dari `GET {{URL}}/accounts/companies`
+
+---
+
+## Endpoint
+
+```
+POST {{URL}}/members/bulk-client
+```
+
+## Header
+
+| Header | Nilai |
+|---|---|
+| `x-api-key` | API key Anda |
+| `companyId` | Company ID Anda |
+| `Content-Type` | `application/json` |
+
+## Isi permintaan
+
+Isi permintaan adalah **array JSON**. Anda dapat membuat satu atau lebih klien dalam satu permintaan.
+
+<ParamField body="firstName" type="string" required>
+  Nama depan klien.
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  Nama belakang klien.
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  Alamat email klien. Harus unik dalam workspace Anda.
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  Atur ke `false` untuk klien yang benar-benar baru. Atur ke `true` saat mengonversi lead yang ada menjadi klien.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Status klien. Nilai umum: `New`, `Active`. Default ke `New` jika dihilangkan.
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  Nomor telepon klien.
+</ParamField>
+
+<ParamField body="source" type="string">
+  Cara Anda mendapatkan klien ini. Contoh nilai: `website`, `referral`, `social`.
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  Posisi klien dalam kolom papan. Default ke `1`.
+</ParamField>
+
+## Contoh permintaan
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-client" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyId: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+## Respons sukses
+
+```json
+{
+  "message": "Client created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  String konfirmasi saat berhasil.
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  Array objek klien yang telah dibuat.
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  ID unik dari klien yang baru dibuat. Gunakan ID ini saat menetapkan klien ke pesanan atau tagihan melalui API.
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  Nama lengkap klien (firstName + lastName).
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  Status klien yang tersimpan.
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  Peran yang ditetapkan ke anggota — akan menjadi `"client"`.
+</ResponseField>
+
+<Note>
+  Header `companyId` untuk endpoint ini menggunakan huruf kapital **I** dalam `Id` — `companyId` — tidak seperti beberapa endpoint lain yang menggunakan `companyid` (semua huruf kecil). Gunakan kapitalisasi persis seperti yang ditunjukkan di atas untuk menghindari kesalahan autentikasi.
+</Note>
+
+<Tip>
+  Teruskan beberapa objek klien dalam array untuk membuat klien secara massal dalam satu panggilan API. Setiap objek harus memiliki alamat `email` yang unik. Email duplikat akan menyebabkan kesalahan validasi untuk entri tersebut.
+</Tip>

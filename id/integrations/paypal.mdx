@@ -1,0 +1,70 @@
+---
+title: "Hubungkan PayPal untuk Pengumpulan Pembayaran Klien yang Aman"
+sidebarTitle: "PayPal"
+description: "Tautkan akun PayPal Anda ke AgencyHandy dan biarkan klien membayar tagihan menggunakan platform pembayaran PayPal yang terpercaya dan dikenal secara global."
+---
+
+Integrasi PayPal AgencyHandy memberi klien Anda cara yang aman dan familiar untuk membayar tagihan tanpa kartu kredit. PayPal mendukung berbagai mata uang internasional, sehingga sangat berguna bagi agensi yang memiliki klien di luar negeri asal mereka.
+
+<Note>
+  PayPal **tidak dapat** digunakan untuk upsell karena keterbatasan mata uang dan regional di tingkat platform. Untuk pembayaran upsell, gunakan Stripe.
+</Note>
+
+<Note>
+  Hanya peran **SuperAdmin** dan **Admin** yang dapat menghubungkan atau mengelola integrasi PayPal. Anda harus memiliki akun PayPal aktif sebelum memulai.
+</Note>
+
+## Hubungkan PayPal
+
+<Steps>
+  <Step title="Buka pengaturan Integrasi PayPal">
+    Masuk ke AgencyHandy, lalu pergi ke **Integrations → PayPal Integration** di bilah sisi kiri.
+  </Step>
+
+  <Step title="Mulai koneksi">
+    Klik **Connect PayPal**. Anda akan diarahkan ke halaman login PayPal.
+  </Step>
+
+  <Step title="Otorisasi AgencyHandy">
+    Masuk ke akun PayPal Anda dan tinjau izin yang diminta. Klik **Allow** (atau **Grant**) untuk mengotorisasi AgencyHandy mengakses akun Anda.
+  </Step>
+
+  <Step title="Konfirmasi koneksi">
+    Setelah otorisasi berhasil, PayPal mengarahkan Anda kembali ke AgencyHandy. Pesan konfirmasi — **PayPal Connected** — muncul pada kartu integrasi. Klien sekarang dapat membayar tagihan menggunakan PayPal.
+  </Step>
+</Steps>
+
+## Cara klien membayar melalui PayPal
+
+Setelah integrasi aktif, tombol **Pay with PayPal** akan muncul pada setiap tagihan yang Anda kirim. Klien Anda mengklik tombol tersebut, masuk ke akun PayPal mereka (atau membayar sebagai tamu tergantung wilayah mereka), dan menyelesaikan pembayaran. AgencyHandy memperbarui status tagihan secara otomatis ketika pembayaran dikonfirmasi oleh PayPal.
+
+## Mata uang yang didukung
+
+AgencyHandy mendukung mata uang berikut untuk pembayaran PayPal:
+
+| Wilayah | Mata Uang |
+|---|---|
+| Amerika | USD, CAD, BRL, MXN |
+| Eropa | EUR, GBP, CHF, NOK, SEK, DKK, PLN, CZK, HUF |
+| Asia-Pasifik | AUD, NZD, JPY, HKD, SGD, MYR, PHP, THB, TWD |
+| Timur Tengah / Lainnya | ILS, CNY |
+
+<Warning>
+  Beberapa mata uang memiliki batasan:
+  - **JPY** dan beberapa lainnya tidak mendukung jumlah desimal — hindari total tagihan pecahan.
+  - **BRL** hanya tersedia untuk akun PayPal Brasil. Jika akun Anda tidak berbasis di Brasil, pembayaran BRL secara otomatis dikonversi ke mata uang utama Anda.
+  - Mata uang tertentu hanya tersedia untuk akun dalam negeri. Pastikan mata uang akun Anda sesuai dengan mata uang tagihan untuk mencegah kesalahan.
+</Warning>
+
+<Note>
+  PayPal menerapkan biaya konversi dan selisih kursnya sendiri ketika konversi mata uang terjadi. Hal ini tidak dikendalikan oleh AgencyHandy.
+</Note>
+
+## Uji integrasi
+
+Sebelum menggunakan PayPal untuk tagihan klien yang sesungguhnya, lakukan uji cepat:
+
+1. Buat tagihan uji di AgencyHandy menggunakan [mata uang yang didukung](#mata-uang-yang-didukung).
+2. Kirimkan tagihan ke akun PayPal sekunder yang Anda kendalikan.
+3. Selesaikan pembayaran dari akun sekunder tersebut.
+4. Kembali ke AgencyHandy dan konfirmasi bahwa status tagihan telah diperbarui menjadi **Paid** dan dana muncul di akun PayPal Anda.

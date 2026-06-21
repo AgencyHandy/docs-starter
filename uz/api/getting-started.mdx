@@ -1,0 +1,114 @@
+---
+title: "AgencyHandy API: Autentifikatsiya va Boshlash"
+sidebarTitle: "Boshlash"
+description: "API kalitini yarating, Kompaniya ID sini toping va ushbu tezkor qo'llanma yordamida AgencyHandy REST API bilan integratsiyalar qurishni boshlang."
+---
+
+AgencyHandy API istalgan tashqi tizim yoki skriptdan lead yaratish, mijozlarni boshqarish, buyurtmalarni yangilash va boshqa ko'plab ishlarni avtomatlashtirishga imkon beradi. Har bir so'rov ish muhiti sozlamalaridan yaratgan API kaliti bilan autentifikatsiya qilinadi. Ushbu qo'llanma sizni hisob ma'lumotlarini olish va birinchi API chaqiruvini amalga oshirishda yo'llab-boradi.
+
+<Note>
+  API kalitini yaratish uchun AgencyHandy ish muhitida **SuperAdmin** yoki **Admin** bo'lishingiz shart.
+</Note>
+
+## Asosiy URL
+
+Barcha API so'rovlari quyidagi manzilga yuboriladi:
+
+```
+https://api.agencyhandy.com
+```
+
+API hujjatlaridagi barcha namuna so'rovlarda `{{URL}}` ni ushbu asosiy URL bilan almashtiring.
+
+## 1-qadam: API kalitini yarating
+
+<Steps>
+  <Step title="Ish muhiti konfiguratsiyasini oching">
+    Quyidagi manzil orqali ish muhiti sozlamalariga o'ting:
+
+    ```
+    {{workspaceUrl}}/workspace-config?tab=api-key
+    ```
+
+    Bu Workspace Configuration ichidagi **API Key** tabini ochadi.
+  </Step>
+
+  <Step title="API kalitini yarating va nusxalang">
+    **Generate** (yoki kalit allaqachon mavjud bo'lsa **Regenerate**) tugmasini bosing. API kalitini nusxalang va uni xavfsiz joyda saqlang — uni parol kabi muomala qiling. AgencyHandy sahifadan chiqib ketganingizdan so'ng uni yana ko'rsatmaydi.
+  </Step>
+</Steps>
+
+<Warning>
+  API kalitini qayta yaratish oldingi kalitni darhol bekor qiladi. Eski kalitdan foydalanadigan mavjud integratsiyalar yangi kalit bilan yangilanmaguncha ishlashni to'xtatadi.
+</Warning>
+
+## 2-qadam: Kompaniya ID sini oling
+
+Ko'pgina API endpointlari so'rov qaysi ish muhitiga qaratilganligini ko'rsatuvchi `companyid` sarlavhasini talab qiladi. Kompaniya ID sini olish uchun quyidagi endpointdan foydalaning.
+
+### Endpoint
+
+```
+GET {{URL}}/accounts/companies
+```
+
+### Sarlavhalar
+
+| Sarlavha | Qiymat |
+|---|---|
+| `x-api-key` | Sizning API kalitingiz |
+
+### Namuna so'rov
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/accounts/companies" \
+  --header "x-api-key: <YOUR_API_KEY>"
+```
+
+### Namuna javob
+
+```json
+{
+  "message": "Companies associated with API token.",
+  "companies": [
+    {
+      "_id": "6525994184e9ddd79853450e",
+      "name": "onethread123",
+      "logo": "",
+      "extraSmallLogo": "",
+      "largeLogo": ""
+    }
+  ]
+}
+```
+
+<Steps>
+  <Step title="Kompaniya ID sini toping">
+    Javobda `companies` massivi ichidagi `_id` maydonini toping. Bu sizning **Kompaniya ID** ingiz.
+
+    ```javascript
+    const companyId = response.companies[0]._id;
+    // e.g. "6525994184e9ddd79853450e"
+    ```
+  </Step>
+
+  <Step title="Kompaniya ID sini saqlang">
+    Kompaniya ID sini keyingi barcha API so'rovlarida ishlatish uchun saqlang. Uni `companyid` sarlavhasi sifatida uzatasiz:
+
+    | Sarlavha | Qiymat |
+    |---|---|
+    | `x-api-key` | Sizning API kalitingiz |
+    | `companyid` | Sizning Kompaniya ID ingiz |
+  </Step>
+</Steps>
+
+## Autentifikatsiya xulosasi
+
+Har bir autentifikatsiya qilingan API so'rovi kamida quyidagilarni talab qiladi:
+
+```
+x-api-key: <YOUR_API_KEY>
+companyid: <YOUR_COMPANY_ID>
+```
+
+API kaliti va Kompaniya ID si qo'lingizda bo'lgach, AgencyHandy API-ning qolgan qismidan foydalanishga tayyorsiz. Quyidagi endpoint qo'llanmalaridan biriga davom eting.

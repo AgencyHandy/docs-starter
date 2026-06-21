@@ -1,0 +1,126 @@
+---
+title: "Wszystkie zadania — scentralizowane zarządzanie zadaniami w AgencyHandy"
+sidebarTitle: "Wszystkie zadania"
+description: "Użyj strony Wszystkie zadania, aby uzyskać widok w czasie rzeczywistym, filtrowany według roli, wszystkich zadań z trwających i przeglądanych zleceń — z wyszukiwaniem, filtrami i sortowaniem."
+---
+
+Strona Wszystkie zadania w AgencyHandy daje Ci pojedynczy, scentralizowany widok każdego zadania należącego do aktywnych procesów w Twojej agencji. Zamiast przeszukiwać poszczególne zlecenia, możesz zobaczyć wszystkie odpowiednie zadania w jednym miejscu, filtrować je według osoby odpowiedzialnej, priorytetu lub daty, i edytować je bezpośrednio z listy. Widoczność jest automatycznie ograniczona do Twojej roli — Super Adminowie widzą wszystko, Managerowie widzą swoje przypisane zlecenia, a Pracownicy widzą tylko własne zadania.
+
+## Dostęp do strony Wszystkie zadania
+
+1. Zaloguj się na swoje konto AgencyHandy.
+2. Kliknij **Zadania** na lewym pasku bocznym.
+3. Wybierz **Wszystkie zadania**, aby otworzyć scentralizowany panel zadań.
+
+<Note>
+  Strona Wszystkie zadania wyświetla tylko zadania ze zleceń o statusie **W toku** lub **W przeglądzie**. Zadania powiązane ze zleceniami w innym stanie (np. Zakończone, Oczekujące) nie pojawiają się tutaj.
+</Note>
+
+## Widoczność zadań według roli
+
+To, co widzisz na stronie Wszystkie zadania, zależy całkowicie od Twojej roli.
+
+| Rola | Co widzą |
+|------|---------------|
+| **Super Admin / Admin** | Wszystkie zadania ze wszystkich zleceń, zespołów i statusów |
+| **Project Manager (PM)** | Tylko zadania ze zleceń, w których są przypisani jako Manager |
+| **Pracownik / Osoba odpowiedzialna** | Tylko zadania bezpośrednio im przypisane — nawet jeśli współpracownicy pracują nad tym samym zleceniem |
+
+<Tip>
+  Jeśli PM nie może znaleźć zadania, które spodziewa się zobaczyć, potwierdź, że jest przypisany jako Manager do odpowiedniego zlecenia. PM-owie nie widzą zadań, chyba że są przypisanym Managerem danego zlecenia.
+</Tip>
+
+## Kiedy zadania pojawiają się na tej stronie
+
+Zadania pojawiają się na stronie Wszystkie zadania, gdy spełnione są następujące warunki:
+
+<CardGroup cols={2}>
+  <Card title="Zlecenia wyzwalające widoczność zadań" icon="circle-check">
+    - Tworzone są zlecenia ręczne (jednorazowe lub subskrypcyjne)
+    - Składane są zlecenia z katalogu przez Stripe lub ręczne metody płatności
+    - Propozycja jest zaakceptowana przez agencję
+  </Card>
+  <Card title="Zlecenia ukrywające zadania" icon="eye-slash">
+    - Zadania zlecone przez klientów, które agencja jeszcze nie zaakceptowała
+    - Zlecenia próbne, których agencja jeszcze nie zaakceptowała
+    - Zlecenia o statusie oczekującym na potwierdzenie ręcznej płatności bankowej
+  </Card>
+</CardGroup>
+
+## Wyszukiwanie, filtrowanie i sortowanie
+
+Strona Wszystkie zadania zawiera pełen zestaw kontrolek, które pomagają znaleźć dokładnie to, czego szukasz.
+
+### Wyszukiwanie
+
+Użyj paska wyszukiwania, aby lokalizować zadania według nazwy, osoby odpowiedzialnej lub powiązanego zlecenia. Wyniki aktualizują się w czasie rzeczywistym podczas wpisywania.
+
+### Filtry
+
+Kliknij **Filtr → + Dodaj filtr**, aby otworzyć panel filtrów. Możesz łączyć wiele filtrów dla precyzyjnych wyników:
+
+| Filtr | Co robi |
+|--------|--------------|
+| **ID zlecenia** | Wyświetla zadania powiązane z konkretnym numerem zlecenia |
+| **Osoba odpowiedzialna** | Wyświetla zadania przypisane do konkretnego członka zespołu |
+| **Status** | Filtruje według postępu zadania: Oczekujące, W toku, W przeglądzie, Zakończone itp. |
+| **Priorytet** | Skupia się na zadaniach o Wysokim, Średnim lub Niskim priorytecie |
+| **Etykieta** | Zawęża według etykiet lub kategorii zadań |
+| **Data rozpoczęcia** | Wyświetla zadania rozpoczynające się w określonym dniu lub po nim |
+| **Data zakończenia** | Wyświetla zadania należne do określonej daty |
+
+<Note>
+  Filtry są dostępne tylko na stronie Wszystkie zadania. Są zachowywane podczas sesji przeglądarki, ale resetują się po odświeżeniu strony. Filtry wpływają tylko na Twój widok i nie zmieniają tego, co widzą inni użytkownicy.
+</Note>
+
+Aby wyczyścić wszystkie filtry, kliknij **Wyczyść filtry**, aby powrócić do pełnej, niefiltrowanej listy.
+
+### Sortowanie
+
+Sortuj listę zadań według:
+- **Terminu wykonania** — wyeksponuj zadania zbliżające się lub już przeterminowane
+- **Priorytetu** — przenieś najważniejsze zadania na górę
+- **Czasu utworzenia** — najpierw wyświetlaj ostatnio dodane zadania
+
+### Nawigacja okruszkowa
+
+Użyj ścieżki nawigacji okruszkowej na górze strony, aby zachować kontekst podczas nawigacji między podzadaniami, listami zadań i nadrzędnymi zleceniami. Jest to szczególnie pomocne podczas zagłębiania się w konkretne zadanie, a następnie powrotu do szerszej listy.
+
+## Edytowanie zadań
+
+Możesz modyfikować zadania na stronie Wszystkie zadania na dwa sposoby:
+
+<Tabs>
+  <Tab title="Edycja w miejscu">
+    Kliknij bezpośrednio w edytowalne pole w wierszu zadania — takie jak status, osoba odpowiedzialna lub termin wykonania — i wprowadź zmianę bez opuszczania widoku listy. Jest to najszybsza opcja do szybkich aktualizacji.
+  </Tab>
+  <Tab title="Edycja w oknie dialogowym">
+    Kliknij nazwę zadania, aby otworzyć pełne okno dialogowe szczegółów zadania. Stąd możesz aktualizować wszystkie właściwości zadania, dodawać notatki, przeglądać podzadania i zobaczyć pełną historię zadania. Użyj tego do bardziej szczegółowych edycji lub gdy potrzebujesz kontekstu.
+  </Tab>
+</Tabs>
+
+## Zasady usuwania zadań
+
+Zadania na stronie Wszystkie zadania są bezpośrednio powiązane z nadrzędnymi zleceniami.
+
+- Gdy **zlecenie jest usunięte**, wszystkie zadania powiązane z tym zleceniem są **automatycznie i trwale usuwane** ze strony Wszystkie zadania.
+- To usunięcie dotyczy wszystkich ról użytkowników — nikt nie będzie mógł zobaczyć tych zadań po usunięciu zlecenia.
+- **Nie ma opcji odzyskiwania** zadań usuniętych przez usunięcie zlecenia.
+
+<Warning>
+  Usunięcie zlecenia trwale usuwa wszystkie jego zadania. Upewnij się, że wszelka ważna historia zadań lub dokumenty wyników są zapisane gdzie indziej przed usunięciem zlecenia.
+</Warning>
+
+## Dodatkowe uwagi
+
+<Accordion title="Aktualizacje w czasie rzeczywistym">
+  Zmiany w zleceniach, przypisaniach zadań lub statusach zadań odzwierciedlają się w czasie rzeczywistym na stronie Wszystkie zadania. Jeśli współpracownik zaktualizuje zadanie, gdy masz otwartą stronę, zobaczysz zmianę bez potrzeby odświeżania.
+</Accordion>
+
+<Accordion title="Zadania zlecone przez klientów">
+  Zadania zgłoszone przez klientów nie pojawiają się na stronie Wszystkie zadania, dopóki agencja ich wyraźnie nie zaakceptuje. Do momentu zaakceptowania zadania te pozostają w stanie oczekiwania i nie są widoczne w widoku scentralizowanym.
+</Accordion>
+
+<Accordion title="Zadania a status zlecenia">
+  Zadania pojawiają się tylko dla zleceń o statusie W toku lub W przeglądzie. Jeśli zlecenie przejdzie do statusu Zakończone lub zostanie wstrzymane, jego zadania nie będą już wyświetlane tutaj. Przejdź do konkretnego zlecenia, aby wyświetlić zadania powiązane ze zleceniami poza tymi statusami.
+</Accordion>

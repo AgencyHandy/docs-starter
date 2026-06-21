@@ -1,0 +1,114 @@
+---
+title: "AgencyHandy API: Autentikasi dan Memulai"
+sidebarTitle: "Memulai"
+description: "Buat API key, cari Company ID Anda, dan mulai membangun integrasi dengan AgencyHandy REST API menggunakan panduan pengaturan cepat ini."
+---
+
+API AgencyHandy memungkinkan Anda mengotomatiskan pembuatan lead, manajemen klien, pembaruan pesanan, dan banyak lagi dari sistem atau skrip eksternal mana pun. Setiap permintaan diautentikasi dengan API key yang Anda buat dari pengaturan workspace. Panduan ini memandu Anda mendapatkan kredensial dan melakukan panggilan API pertama Anda.
+
+<Note>
+  Anda harus menjadi **SuperAdmin** atau **Admin** di workspace AgencyHandy Anda untuk membuat API key.
+</Note>
+
+## URL Dasar
+
+Semua permintaan API dibuat ke:
+
+```
+https://api.agencyhandy.com
+```
+
+Ganti `{{URL}}` dengan URL dasar ini di semua contoh permintaan di seluruh dokumentasi API.
+
+## Langkah 1: Buat API key
+
+<Steps>
+  <Step title="Buka Workspace Configuration">
+    Navigasi ke pengaturan workspace Anda di:
+
+    ```
+    {{workspaceUrl}}/workspace-config?tab=api-key
+    ```
+
+    Ini membuka tab **API Key** di dalam Workspace Configuration.
+  </Step>
+
+  <Step title="Buat dan salin API key Anda">
+    Klik **Generate** (atau **Regenerate** jika key sudah ada). Salin API key dan simpan dengan aman — perlakukan seperti kata sandi. AgencyHandy tidak akan menampilkannya lagi setelah Anda meninggalkan halaman.
+  </Step>
+</Steps>
+
+<Warning>
+  Membuat ulang API key Anda segera membatalkan key sebelumnya. Integrasi yang ada menggunakan key lama akan berhenti berfungsi sampai Anda memperbaruinya dengan key baru.
+</Warning>
+
+## Langkah 2: Ambil Company ID Anda
+
+Sebagian besar endpoint API memerlukan header `companyid` yang mengidentifikasi workspace mana yang menjadi target permintaan. Gunakan endpoint berikut untuk mengambil Company ID Anda.
+
+### Endpoint
+
+```
+GET {{URL}}/accounts/companies
+```
+
+### Header
+
+| Header | Nilai |
+|---|---|
+| `x-api-key` | API key Anda |
+
+### Contoh permintaan
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/accounts/companies" \
+  --header "x-api-key: <YOUR_API_KEY>"
+```
+
+### Contoh respons
+
+```json
+{
+  "message": "Companies associated with API token.",
+  "companies": [
+    {
+      "_id": "6525994184e9ddd79853450e",
+      "name": "onethread123",
+      "logo": "",
+      "extraSmallLogo": "",
+      "largeLogo": ""
+    }
+  ]
+}
+```
+
+<Steps>
+  <Step title="Temukan Company ID Anda">
+    Dalam respons, temukan kolom `_id` di dalam array `companies`. Ini adalah **Company ID** Anda.
+
+    ```javascript
+    const companyId = response.companies[0]._id;
+    // e.g. "6525994184e9ddd79853450e"
+    ```
+  </Step>
+
+  <Step title="Simpan Company ID">
+    Simpan Company ID untuk digunakan di semua permintaan API berikutnya. Anda akan meneruskannya sebagai header `companyid`:
+
+    | Header | Nilai |
+    |---|---|
+    | `x-api-key` | API key Anda |
+    | `companyid` | Company ID Anda |
+  </Step>
+</Steps>
+
+## Ringkasan autentikasi
+
+Setiap permintaan API yang terautentikasi memerlukan minimal:
+
+```
+x-api-key: <YOUR_API_KEY>
+companyid: <YOUR_COMPANY_ID>
+```
+
+Dengan API key dan Company ID di tangan, Anda siap menggunakan sisa API AgencyHandy. Lanjutkan ke salah satu panduan endpoint di bawah ini.

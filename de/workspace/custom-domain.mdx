@@ -1,0 +1,126 @@
+---
+title: "Eine eigene Domain mit Ihrem AgencyHandy-Workspace verbinden"
+sidebarTitle: "Eigene Domain"
+description: "Verknüpfen Sie Ihre eigene Subdomain (z. B. portal.ihrunternehmen.de) mit AgencyHandy, indem Sie bei Ihrem DNS-Registrar einen CNAME-Eintrag hinzufügen — kein Programmieren erforderlich."
+---
+
+Standardmäßig ist Ihr AgencyHandy-Workspace unter einer Subdomain von `agencyhandy.com` erreichbar. Das Verbinden einer eigenen Domain ermöglicht es Ihnen, diese Standard-URL durch Ihre eigene Markenadresse zu ersetzen — zum Beispiel `portal.ihreagentur.de` — und Kunden so ein nahtloses, professionelles Erlebnis zu bieten, das Ihre Marke von der ersten Seite an stärkt.
+
+<Note>
+  Nur **Super-Administratoren** und **Administratoren** können eine eigene Domain konfigurieren. Sie müssen außerdem Eigentümer der Domain sein und Zugriff auf deren DNS-Einstellungen bei Ihrem Registrar haben, um diese Einrichtung abzuschließen.
+</Note>
+
+---
+
+## So funktioniert es
+
+Wenn Sie in AgencyHandy eine eigene Domain hinzufügen, stellt die Plattform Ihnen einen **CNAME-Eintrag** zur Verfügung. Sie fügen diesen Eintrag zu den DNS-Einstellungen Ihrer Domain bei Ihrem Registrar (GoDaddy, Namecheap, Cloudflare usw.) hinzu, und AgencyHandy überprüft die Verbindung, sobald die DNS-Weitergabe abgeschlossen ist.
+
+---
+
+## Schritt-für-Schritt-Einrichtung
+
+<Steps>
+  <Step title="Einstellungen für die eigene Domain öffnen">
+    Melden Sie sich bei Ihrem AgencyHandy-Konto an. Navigieren Sie in der linken Seitenleiste zu **Workspace-Konfiguration** und klicken Sie dann auf **Eigene Domain**.
+  </Step>
+  <Step title="Ihre eigene Domain hinzufügen">
+    Klicken Sie auf die Schaltfläche **+ Eigene Domain hinzufügen**. Geben Sie in das erscheinende Eingabefeld die Subdomain ein, die Sie verwenden möchten — zum Beispiel `portal.ihreagentur.de`.
+
+    <Warning>
+      Verwenden Sie **nicht** `www` als Ihre Subdomain (d. h. vermeiden Sie `www.ihreagentur.de`). Das `www`-Präfix kann zu Konfigurationskonflikten führen und verhindert eine erfolgreiche Verifizierung. Verwenden Sie stattdessen eine andere Subdomain wie `portal`, `client`, `app` oder `hub`.
+    </Warning>
+  </Step>
+  <Step title="Die CNAME-Eintragsdetails kopieren">
+    Nach dem Absenden Ihrer Domain zeigt AgencyHandy den DNS-Eintrag an, den Sie hinzufügen müssen:
+
+    | Feld      | Wert                                              |
+    |-----------|---------------------------------------------------|
+    | **Typ**   | CNAME                                             |
+    | **Name**  | Ihre Subdomain (z. B. `portal`)                  |
+    | **Wert**  | Das von AgencyHandy bereitgestellte Ziel          |
+
+    Kopieren Sie diese Werte sorgfältig — Sie benötigen sie im nächsten Schritt.
+  </Step>
+  <Step title="Den CNAME-Eintrag bei Ihrem DNS-Registrar hinzufügen">
+    Melden Sie sich im Dashboard Ihres Domain-Registrars an (z. B. GoDaddy, Namecheap, Cloudflare). Navigieren Sie zum DNS-Verwaltungsbereich Ihrer Domain und fügen Sie den CNAME-Eintrag mit dem Typ, Namen und Wert ein, die Sie aus AgencyHandy kopiert haben.
+
+    Spezifische Anweisungen für Cloudflare finden Sie weiter unten.
+  </Step>
+  <Step title="Die Domain in AgencyHandy speichern">
+    Kehren Sie zu AgencyHandy zurück und klicken Sie auf **Domain speichern**. Der Status wird zunächst als **Getrennt** angezeigt — dies ist zu erwarten, während die DNS-Weitergabe läuft.
+  </Step>
+  <Step title="Auf DNS-Weitergabe warten und verifizieren">
+    DNS-Änderungen können je nach Registrar und TTL-Einstellungen von wenigen Minuten bis zu **48 Stunden** dauern, um sich global weiterzugeben. Klicken Sie regelmäßig auf **Aktualisieren**, um den Verbindungsstatus zu prüfen.
+
+    Sobald die Weitergabe abgeschlossen ist, ändert sich der Status zu **Verbunden** ✅.
+  </Step>
+</Steps>
+
+<Warning>
+  Die DNS-Weitergabe kann bis zu **48 Stunden** dauern. Wenn Ihre Domain nach 48 Stunden immer noch **Getrennt** anzeigt, überprüfen Sie, ob der CNAME-Eintrag korrekt ist und ob keine widersprüchlichen DNS-Einträge für dieselbe Subdomain vorhanden sind.
+</Warning>
+
+---
+
+## Cloudflare-spezifische Anweisungen
+
+Wenn Ihre Domain über Cloudflare verwaltet wird, gibt es eine kritische Einstellung, die Sie korrekt konfigurieren müssen:
+
+<Steps>
+  <Step title="Bei Cloudflare anmelden und Ihre Domain auswählen">
+    Öffnen Sie Ihr [Cloudflare-Dashboard](https://dash.cloudflare.com) und klicken Sie auf die Domain, die Sie mit AgencyHandy verbinden.
+  </Step>
+  <Step title="Zu den DNS-Einstellungen navigieren">
+    Klicken Sie in der oberen Navigation des Domain-Einstellungspanels auf die Registerkarte **DNS**.
+  </Step>
+  <Step title="Den CNAME-Eintrag hinzufügen">
+    Klicken Sie auf **+ Eintrag hinzufügen** und füllen Sie die Felder aus:
+    - **Typ:** CNAME
+    - **Name:** Ihre Subdomain (z. B. `portal`)
+    - **Ziel/Inhalt:** Der von AgencyHandy bereitgestellte Wert
+    - **TTL:** Während der Ersteinrichtung auf **2 Minuten** (oder die niedrigste verfügbare Option) setzen
+  </Step>
+  <Step title="Den Cloudflare-Proxy deaktivieren (kritisch)">
+    Stellen Sie in der Spalte **Proxy-Status** sicher, dass der Schalter auf **Nur DNS** gesetzt ist (das Wolkensymbol sollte grau erscheinen, nicht orange).
+
+    <Warning>
+      Wenn der Cloudflare-Proxy **aktiviert** ist (orangefarbenes Wolkensymbol), wird der CNAME-Eintrag nicht korrekt aufgelöst und AgencyHandy kann Ihre Domain nicht verifizieren. Sie müssen ihn auf **Nur DNS** setzen, damit die Verbindung funktioniert.
+    </Warning>
+  </Step>
+  <Step title="Den Eintrag speichern">
+    Überprüfen Sie alle Werte auf Richtigkeit und klicken Sie auf **Speichern**.
+  </Step>
+</Steps>
+
+<Tip>
+  Verwenden Sie [dnschecker.org](https://dnschecker.org), um die Weitergabe Ihres CNAME-Eintrags in verschiedenen globalen Regionen zu überwachen. Warten Sie auf grüne Häkchen in allen Regionen, bevor Sie erwarten, dass AgencyHandy die Verbindung bestätigt.
+</Tip>
+
+---
+
+## Ihren Verbindungsstatus überwachen
+
+Kehren Sie nach dem Speichern in AgencyHandy zu **Workspace-Konfiguration → Eigene Domain** zurück, um den Status zu verfolgen:
+
+| Status        | Bedeutung                                                                                   |
+|---------------|---------------------------------------------------------------------------------------------|
+| **Getrennt**  | DNS-Eintrag wurde noch nicht weitergegeben oder enthält einen Fehler                        |
+| **Verbunden** | Domain ist verifiziert und aktiv — Kunden können über die eigene URL auf Ihren Workspace zugreifen |
+
+---
+
+## Eine eigene Domain aktualisieren oder entfernen
+
+- **Domain aktualisieren:** Löschen Sie den vorhandenen Eintrag und fügen Sie die neue Domain mit denselben Einrichtungsschritten wie oben beschrieben hinzu.
+- **Domain löschen:** Klicken Sie im Panel für die eigene Domain auf die Schaltfläche **Löschen** neben Ihrer Domain und bestätigen Sie den Löschvorgang. Ihr Workspace kehrt zur Standard-AgencyHandy-URL zurück. Sie können jederzeit eine Domain erneut hinzufügen.
+
+---
+
+## Wichtige Hinweise
+
+- **Subdomain verwenden, keine Root-Domain:** Eigene Domains bei AgencyHandy erfordern eine Subdomain (z. B. `portal.ihreagentur.de`), keine Root- oder Apex-Domain (z. B. `ihreagentur.de`).
+- **`www` vermeiden:** Die `www`-Subdomain kann bei der Verifizierung zu Problemen führen. Verwenden Sie stattdessen einen benutzerdefinierten Subdomain-Namen.
+- **Exakte Einträge erforderlich:** Geben Sie CNAME-Typ, -Name und -Wert genau so ein, wie in AgencyHandy angezeigt. Jeder Tippfehler oder fehlendes Zeichen verhindert die Verbindung.
+- **Cloudflare-Proxy muss deaktiviert sein:** Setzen Sie Cloudflare-Einträge für die Verifizierung der eigenen Domain bei AgencyHandy immer auf **Nur DNS**.
+- **Nur Administratorzugriff:** Nur Super-Administratoren und Administratoren können Einstellungen für eigene Domains hinzufügen, ändern oder löschen.

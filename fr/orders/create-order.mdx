@@ -1,0 +1,143 @@
+---
+title: "Comment créer, modifier et supprimer des commandes dans AgencyHandy"
+sidebarTitle: "Créer une commande"
+description: "Guide étape par étape pour créer, modifier et supprimer des commandes dans AgencyHandy — y compris les rôles requis, les champs de formulaire et les transitions de statut."
+---
+
+Créer une commande dans AgencyHandy vous offre un espace de travail structuré pour livrer un service à un client. Vous renseignez les informations clés en amont — client, service, tarification, dates et un brief de projet — et tout le reste, des tâches aux discussions, découle de ce seul enregistrement. Cette page vous guide pour créer une commande à partir de zéro, la mettre à jour par la suite, modifier son statut et la supprimer lorsqu'elle n'est plus nécessaire.
+
+## Prérequis
+
+- Vous devez être connecté à AgencyHandy.
+- Vous devez disposer d'un rôle **Super Admin**, **Admin** ou **Project Manager** pour créer ou modifier des commandes.
+- Seuls les **Super Admins** et les **Admins** peuvent supprimer des commandes.
+
+## Créer une nouvelle commande
+
+<Steps>
+  <Step title="Accéder aux Commandes">
+    Dans la barre latérale gauche de votre tableau de bord AgencyHandy, cliquez sur **Orders**.
+  </Step>
+
+  <Step title="Ouvrir le formulaire de création">
+    Cliquez sur **+ Create New Order** dans le coin supérieur droit. Un formulaire apparaîtra.
+  </Step>
+
+  <Step title="Renseigner les détails de la commande">
+    Complétez les champs du formulaire :
+
+    | Champ | Obligatoire | Remarques |
+    |---|---|---|
+    | **Client** | ✅ | Sélectionnez-le dans votre liste de clients existante |
+    | **Service** | ✅ | Inclut les services publiés et non publiés |
+    | **Project Manager** | ❌ | Facultatif ; assignez un PM pour piloter la livraison |
+    | **Quantity** | ✅ | Nombre d'unités commandées |
+    | **Price** | ✅ | Budget convenu pour la commande |
+    | **Kick-off Date** | ✅ | Date de début des travaux |
+    | **Due Date** | ✅ | Date limite de livraison |
+    | **Order Brief** | ❌ | Instructions, exigences ou notes de référence pour votre équipe |
+    | **Attachments** | ❌ | Fichiers de support pertinents pour la commande |
+
+    <Tip>
+      Si le service sélectionné comporte des modules complémentaires associés, une section **Add-On** apparaîtra dans le formulaire. Incluez tous les modules complémentaires pertinents avant de soumettre.
+    </Tip>
+  </Step>
+
+  <Step title="Vérifier vos saisies">
+    Vérifiez l'exactitude de tous les champs — en particulier le client, le service, le prix et la date d'échéance.
+  </Step>
+
+  <Step title="Soumettre la commande">
+    Cliquez sur **Create** pour finaliser la commande. Vous recevrez un message de confirmation une fois la commande créée avec succès.
+  </Step>
+</Steps>
+
+### Ce qui se passe après la création d'une commande
+
+- Tous les Super Admins de votre entreprise obtiennent automatiquement l'accès à la nouvelle commande.
+- Le client reçoit une notification l'informant que sa commande a été créée.
+- La commande apparaît dans la liste **Orders** avec le statut **Pending**.
+
+## Modifier ou mettre à jour une commande
+
+Vous pouvez mettre à jour une commande à tout moment pour corriger des détails, ajuster la tarification, modifier la date d'échéance ou répondre aux demandes des clients.
+
+<Note>
+Vous devez être **Super Admin**, **Admin** ou **Project Manager** pour modifier une commande.
+</Note>
+
+<Steps>
+  <Step title="Ouvrir la liste des Commandes">
+    Accédez à **Orders** dans la barre latérale gauche.
+  </Step>
+
+  <Step title="Sélectionner la commande à modifier">
+    Repérez la commande que vous souhaitez mettre à jour et cochez la case située à côté.
+  </Step>
+
+  <Step title="Activer le bouton de modification">
+    Un bouton **Edit** apparaîtra dans le coin supérieur droit. Cliquez dessus pour ouvrir les détails de la commande en mode édition.
+  </Step>
+
+  <Step title="Modifier les champs nécessaires">
+    Mettez à jour tous les champs à modifier — détails du client, service, tarification, dates, brief ou PM assigné.
+  </Step>
+
+  <Step title="Enregistrer vos modifications">
+    Cliquez sur **Update** pour enregistrer. Un message de confirmation confirmera que la mise à jour a réussi.
+  </Step>
+</Steps>
+
+## Modifier le statut d'une commande
+
+Le statut d'une commande reflète l'état d'avancement d'un travail dans votre pipeline de livraison. AgencyHandy définit cinq statuts fixes — vous ne pouvez ni en ajouter ni les renommer.
+
+| Statut | Signification |
+|---|---|
+| **Pending** | Créée, pas encore démarrée |
+| **Ongoing** | En cours de réalisation |
+| **In Review** | Soumise pour révision ; en attente d'acceptation |
+| **Complete** | Livrée et acceptée |
+| **Cancelled** | Plus active |
+
+<Note>
+Seuls les **Super Admins**, **Admins** et **Project Managers** peuvent modifier le statut d'une commande. Les employés et les clients ne peuvent pas modifier le statut.
+</Note>
+
+Pour mettre à jour le statut, ouvrez la commande et utilisez le sélecteur de statut en haut de la page de détail de la commande. Sélectionnez le nouveau statut dans le menu déroulant et confirmez.
+
+## Supprimer une commande
+
+La suppression d'une commande la retire définitivement du système. N'utilisez cette option que lorsqu'une commande est véritablement obsolète — par exemple, si elle a été créée par erreur ou est un doublon.
+
+<Warning>
+La suppression d'une commande est irréversible. Une fois supprimée, une commande ne peut pas être récupérée. Procédez avec prudence.
+</Warning>
+
+<Note>
+Seuls les **Super Admins** et les **Admins** peuvent supprimer des commandes.
+</Note>
+
+<Steps>
+  <Step title="Accéder aux Commandes">
+    Cliquez sur **Orders** dans la barre latérale gauche.
+  </Step>
+
+  <Step title="Trouver la commande à supprimer">
+    Faites défiler ou recherchez la commande que vous souhaitez retirer de la liste.
+  </Step>
+
+  <Step title="Lancer la suppression">
+    Cliquez sur l'**icône de corbeille** associée à la commande.
+  </Step>
+
+  <Step title="Confirmer la suppression">
+    Une invite de confirmation apparaîtra. Confirmez pour supprimer définitivement la commande.
+  </Step>
+</Steps>
+
+Après la suppression, passez en revue vos commandes restantes pour vous assurer que tout est en ordre. L'entrée supprimée n'apparaîtra plus dans aucune liste ni aucun rapport.
+
+## Ajouter des membres de l'équipe à une commande
+
+Les Super Admins, Admins et PM peuvent ajouter des employés à une commande à tout moment. Lorsqu'un membre de l'équipe est ajouté, il reçoit une notification dans l'application. Les employés assignés gagnent une visibilité sur la commande et ses tâches, mais ils ne peuvent pas gérer la commande elle-même (modifier les détails, changer le statut ou la supprimer).

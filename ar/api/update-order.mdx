@@ -1,0 +1,205 @@
+---
+title: "واجهة برمجة تطبيقات AgencyHandy: تحديث طلب موجود باستخدام PUT"
+sidebarTitle: "تحديث الطلب"
+description: "استخدم واجهة برمجة تطبيقات AgencyHandy لتحديث تفاصيل الطلب وتغيير الحالة وإعادة تعيين مديري المشاريع وإرفاق الملفات بطلب موجود عبر طلب PUT."
+---
+
+تتيح لك نقطة نهاية تحديث الطلب تعديل طلب (مشروع) موجود في AgencyHandy — تغيير اسمه وحالته وميزانيته والجدول الزمني والمديرين المعيّنين والمزيد — كل ذلك من نظام خارجي أو سكريبت أتمتة. تدعم النقطة النهائية أيضًا مرفقات الملفات، التي تُضاف إلى مجلد النظام الخاص بالطلب.
+
+<Note>
+  قبل استخدام هذه النقطة النهائية، أكمل دليل [البدء السريع](/ar/api/getting-started) للحصول على مفتاح API ومعرّف الشركة.
+</Note>
+
+<Warning>
+  تستخدم هذه النقطة النهائية `Authorization: Bearer <token>` (رمز وصول عضو مسجّل) بدلًا من ترويسة `x-api-key` فحسب. تأكد من أن المُستدعي مُصادَق عليه كـ **عضو معتمد** في الشركة المستهدفة. يتلقى المُستدعيون غير المصرح لهم خطأ `403 PermissionError`.
+</Warning>
+
+## المتطلبات الأساسية
+
+- ✅ **رمز Bearer** صالح لعضو مساحة عمل معتمد
+- ✅ **معرّف الشركة** المسترد من `GET {{URL}}/accounts/companies`
+- ✅ **معرّف الطلب** (معرّف المشروع، `pid`) للطلب الذي تريد تحديثه
+
+---
+
+## النقطة النهائية
+
+```
+PUT {{URL}}/orders?pid=<ORDER_ID>
+```
+
+**Content-Type:** `multipart/form-data` — استخدم هذا حتى عند عدم إرفاق ملفات لإرضاء محلل multipart الخاص بالخادم.
+
+## الترويسات
+
+| الترويسة | مطلوبة | الوصف |
+|---|---|---|
+| `Authorization` | نعم | `Bearer <ACCESS_TOKEN>` — رمز وصول العضو المسجّل. |
+| `companyid` | نعم | معرّف Mongo ObjectId للشركة التي ينتمي إليها الطلب. |
+| `clientid` | اختياري | معرّف مقبس العميل في الوقت الفعلي. عند توفيره، تتضمنه الإشعارات. |
+
+## معاملات الاستعلام
+
+<ParamField query="pid" type="string" required>
+  معرّف الطلب / المشروع المراد تحديثه. مرر هذا كمعامل سلسلة استعلام.
+</ParamField>
+
+## حقول نص الطلب
+
+<ParamField body="name" type="string">
+  يُحدِّث عنوان الطلب. الحد الأدنى حرفان.
+</ParamField>
+
+<ParamField body="status" type="string">
+  الحالة الجديدة للطلب. يجب أن تكون إحدى: `Pending`، `Ongoing`، `Review`، `Completed`، `Cancelled`.
+
+  **الانتقالات المسموح بها:**
+  - `Review` لا يمكن أن يتبع إلا `Ongoing` أو `Review` أخرى. الانتقال من `Pending` مباشرةً إلى `Review` يُعيد `400 ValidationError`.
+  - الطلبات التي حالتها `Completed` أو `Cancelled` بالفعل لا يمكن تحديثها.
+  - لا يمكن للعملاء إلغاء طلب تجاوز مرحلة `Pending`.
+</ParamField>
+
+<ParamField body="budget" type="number">
+  رقم الميزانية الإجمالية. يجب أن يكون `≥ 0`. يستخدم العملة الحالية للطلب ما لم يتم توفير `currency` أيضًا.
+</ParamField>
+
+<ParamField body="currency" type="string">
+  رمز العملة للميزانية. أمثلة: `USD`، `CAD`، `EUR`.
+</ParamField>
+
+<ParamField body="quantity" type="number">
+  عدد الوحدات المشتراة للحزمة. يجب أن يكون `≥ 1`.
+</ParamField>
+
+<ParamField body="deadline" type="string">
+  سلسلة تاريخ ISO 8601 لتاريخ استحقاق الطلب. مثال: `"2025-12-31T00:00:00.000Z"`.
+</ParamField>
+
+<ParamField body="kickoffDate" type="string">
+  سلسلة تاريخ ISO 8601 لتاريخ بدء المشروع.
+</ParamField>
+
+<ParamField body="notes" type="string">
+  ملاحظات داخلية مرئية لفريقك.
+</ParamField>
+
+<ParamField body="brief" type="string">
+  موجز العميل أو ملخص المشروع.
+</ParamField>
+
+<ParamField body="assignedProjectManagers" type="array">
+  القائمة الكاملة لمعرّفات أعضاء مديري المشاريع المراد تعيينهم لهذا الطلب. تُضاف المعرّفات الجديدة إلى الفريق؛ وتُحذف المعرّفات المُزالة. يجب أن ينتمي كل معرّف إلى عضو له دور `projectManager` داخل نفس الشركة.
+</ParamField>
+
+<ParamField body="markTasksAsDone" type="boolean">
+  **مطلوب** عندما تكون `status` هي `Completed` أو `Cancelled`. عند تعيينه على `true`، تُحدَّث حالة جميع المهام في الطلب إلى منجزة بعد تغيير الحالة. عند `false`، تبقى المهام في حالتها الحالية.
+</ParamField>
+
+<ParamField body="rejectRequestedTasks" type="boolean">
+  مسموح به فقط عندما تكون `status` هي `Completed` أو `Cancelled`. عند تعيينه على `true`، تُرفض جميع مهام العملاء المعلقة بعد تحديث الحالة.
+</ParamField>
+
+<ParamField body="repeatCount" type="number">
+  مطلوب فقط لطلبات **الاشتراك** عند تغيير تكرار التكرار. اقرنه بـ `repeatDuration`.
+</ParamField>
+
+<ParamField body="repeatDuration" type="string">
+  مطلوب جنبًا إلى جنب مع `repeatCount` لطلبات الاشتراك. إحدى: `day`، `week`، `month`، `year`.
+</ParamField>
+
+<ParamField body="billingCycleCount" type="number">
+  حد اختياري لدورات الفوترة المتكررة. الإعداد الافتراضي `0` (بلا حد).
+</ParamField>
+
+<ParamField body="billingCycleEvent" type="string">
+  كيفية التعامل مع كل دورة فوترة. إحدى: `createOrderWithTask`، `noChange`.
+</ParamField>
+
+<ParamField body="files" type="file">
+  صفر أو أكثر من مرفقات الملفات. تُضاف الملفات إلى مجلد النظام الخاص بالطلب؛ ولا تُستبدل الملفات الموجودة أبدًا. استخدم ترميز `multipart/form-data` وأرفق كل ملف تحت حقل `files`.
+</ParamField>
+
+---
+
+## مثال على الطلب
+
+<CodeGroup>
+
+```bash cURL (no files)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "currency=USD" \
+  --form "quantity=1" \
+  --form "assignedProjectManagers[]=PROJECT_MANAGER_ID" \
+  --form "notes=Scope finalized with client." \
+  --form "brief=Launch-ready design refresh."
+```
+
+```bash cURL (with file)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "repeatCount=3" \
+  --form "repeatDuration=month" \
+  --form "billingCycleEvent=createOrderWithTask" \
+  --form "files=@/path/to/creative-brief.pdf"
+```
+
+</CodeGroup>
+
+**حمولة JSON المكافئة** (حوّلها إلى إدخالات نموذج multipart عند إرسال الملفات):
+
+```json
+{
+  "name": "Website Redesign",
+  "status": "Review",
+  "budget": 12000,
+  "currency": "USD",
+  "quantity": 1,
+  "assignedProjectManagers": ["{{PROJECT_MANAGER_ID}}"],
+  "repeatCount": 3,
+  "repeatDuration": "month",
+  "billingCycleEvent": "createOrderWithTask",
+  "notes": "Scope finalized with client.",
+  "brief": "Launch-ready design refresh."
+}
+```
+
+---
+
+## الاستجابات
+
+| حالة HTTP | الوصف |
+|---|---|
+| `200 OK` | نجح التحديث. |
+| `400 ValidationError` | معرّف طلب غير صالح، أو انتقال حالة محظور، أو حمولة مشوهة. تتضمن الاستجابة `fieldName` عند الاقتضاء. |
+| `403 PermissionError` | المُستدعي ليس عضوًا معتمدًا، أو يفتقر إلى دور الشركة، أو انتهت صلاحية اشتراك مساحة العمل، أو حاول عميل إلغاءً محظورًا. |
+| `500 Internal Server Error` | استثناء غير معالج — تحقق من سجلات الخادم. |
+
+### استجابة النجاح
+
+```json
+{
+  "message": "Project has been updated"
+}
+```
+
+---
+
+## قواعد العمل والتأثيرات الجانبية
+
+- **انتقالات الحالة** مقيّدة. `Review` لا يمكن أن يتبع إلا `Ongoing` أو `Review` أخرى. محاولة `Pending → Review` تُعيد `400 ValidationError`.
+- نقل الحالة من `Pending` إلى `Ongoing` أو `Review` أو `Completed` يُفعِّل مجلد ملفات الطلب حتى تصبح الملفات المرفوعة متاحة لفريق المشروع.
+- تعيين `status` إلى `Completed` أو `Cancelled` **يتطلب** تعيين `markTasksAsDone` صراحةً إلى `true` أو `false`.
+- تغييرات الحالة إلى `Review` أو `Completed` أو `Cancelled` تُشغّل تلقائيًا إشعارات العميل:
+  - **Review** — يُخطر العميل بأن المراجعة مطلوبة.
+  - **Completed** — يرسل إشعار `orderCompletion` للعميل.
+  - **Cancelled** — يرسل إشعار `orderCancellation` للعميل.
+- كل تحديث ناجح يُشغّل حدث webhook `ORDER.UPDATED` مع وثيقة الطلب المحدّثة وبيانات تعريف المرفق، إذا كان لديك webhook نشط مشترك في ذلك الحدث.

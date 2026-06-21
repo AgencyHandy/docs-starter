@@ -1,0 +1,235 @@
+---
+title: "Criar, Enviar e Gerenciar Faturas de Clientes no AgencyHandy"
+sidebarTitle: "Criar Fatura"
+description: "Guia passo a passo para criar uma fatura no AgencyHandy — escolha um cliente, defina valores, adicione notas, envie ao cliente e configure lembretes de pagamento."
+---
+
+Criar uma fatura no AgencyHandy é um processo simples que vincula seu faturamento diretamente a clientes e pedidos. Você preenche o cliente, vincula o pedido, define os valores, adiciona quaisquer notas e envia — tudo a partir de um único formulário. Uma vez enviada, você pode acompanhar o status do pagamento, configurar lembretes automáticos e baixar a fatura como PDF a qualquer momento.
+
+<Note>
+  Você deve ser **Super Admin**, **Admin** ou **GP** para criar faturas. Pelo menos um cliente deve existir no seu espaço de trabalho antes de gerar uma fatura.
+</Note>
+
+## Configurações de Prefixo da Fatura
+
+Antes de começar a criar faturas, considere configurar o prefixo da sua fatura. O prefixo aparece antes de cada número de fatura e ajuda a identificar as faturas como pertencentes à sua agência.
+
+<Steps>
+  <Step title="Abrir as Configurações de Fatura">
+    No Painel de Faturas, clique no botão **Configurações** no canto superior direito.
+  </Step>
+  <Step title="Definir seu prefixo">
+    Navegue até o campo **Prefixo da Fatura** e insira o prefixo desejado (por exemplo, `FAT-` ou as iniciais da sua agência).
+  </Step>
+  <Step title="Salvar">
+    Clique em **Salvar** para aplicar o prefixo a todas as faturas futuras.
+  </Step>
+</Steps>
+
+## Criando uma Fatura
+
+<Steps>
+  <Step title="Abrir o Painel de Faturas">
+    Clique em **Faturas** na barra lateral esquerda para abrir o Painel de Faturas.
+  </Step>
+  <Step title="Iniciar uma nova fatura">
+    Clique em **+ Criar Fatura**. O formulário de criação de fatura será aberto.
+  </Step>
+  <Step title="Selecionar o cliente">
+    Escolha o nome do cliente no menu suspenso. Este é um campo obrigatório. Todos os IDs de Pedido associados a esse cliente serão preenchidos automaticamente no próximo campo.
+
+    Para criar uma **Fatura Direta** (não vinculada a um pedido), você pode deixar o campo ID do Pedido vazio ou selecionar **E-mail Independente** para faturar qualquer endereço de e-mail fora da sua lista de clientes.
+  </Step>
+  <Step title="Selecionar o ID do Pedido">
+    Selecione o ID do Pedido específico para o qual está faturando. Isso vincula a fatura ao pedido correto no sistema. Para faturas diretas, pule este campo.
+  </Step>
+  <Step title="Inserir o endereço de cobrança">
+    Preencha o **Endereço de Pagamento da Fatura**:
+    - País, Estado e Cidade
+    - CEP
+    - Endereço (se aplicável)
+
+    Esse endereço aparece na fatura impressa para conformidade e clareza.
+  </Step>
+  <Step title="Definir detalhes do pedido e financeiros">
+    Em **Detalhes do Pedido**, insira as seguintes informações:
+
+    | Campo | Descrição |
+    |-------|-------------|
+    | **Moeda** | A moeda na qual deseja ser pago |
+    | **ID do Pedido – Valor** | O valor monetário associado ao pedido |
+    | **Desconto (%)** e **Valor do Desconto** | Aplique quaisquer descontos aplicáveis |
+    | **Valor Pago** | Qualquer valor que o cliente já tenha pago |
+    | **Valor Devido** | O saldo pendente restante |
+    | **Valor Total** | O valor total a pagar pelo pedido |
+
+    Para **Faturas Diretas**, clique em **Adicionar Item** para adicionar itens de linha manualmente. Insira o nome do item, quantidade e preço. Você pode adicionar vários itens. Use **+ Alíquotas de Imposto** para aplicar ou criar alíquotas de imposto (inclusivo ou exclusivo).
+  </Step>
+  <Step title="Adicionar uma nota (opcional)">
+    No campo **Nota**, adicione qualquer contexto adicional para o cliente — por exemplo, instruções de pagamento, referências do projeto ou uma mensagem pessoal.
+  </Step>
+  <Step title="Revisar o painel de detalhes">
+    O painel **Detalhes** no lado direito fornece um resumo em tempo real de:
+
+    - Status da fatura (Rascunho por padrão)
+    - Nome do cliente, nome da empresa e endereço
+    - Endereço de pagamento da fatura
+    - Nome do serviço e ID do Pedido
+    - Data de criação e data de vencimento
+    - Valor total
+
+    Revise tudo cuidadosamente antes de prosseguir.
+  </Step>
+  <Step title="Enviar ao cliente ou salvar como rascunho">
+    - Clique em **Enviar ao Cliente** para enviar a fatura por e-mail imediatamente. O status muda de **Rascunho** para **Aberta** automaticamente.
+    - Clique em **Salvar como Rascunho** se quiser finalizá-la mais tarde.
+  </Step>
+</Steps>
+
+<Note>
+  O logotipo e o endereço da agência são adicionados à fatura automaticamente pelo sistema — você não precisa inseri-los manualmente em cada fatura.
+</Note>
+
+## Transições de Status da Fatura
+
+Depois que uma fatura é criada, ela segue um fluxo de status definido. Somente a agência pode mover uma fatura entre os status.
+
+```
+Rascunho → Aberta (quando enviada ao cliente)
+Aberta   → Paga          (pagamento recebido)
+Aberta   → Cancelada     (fatura anulada)
+Aberta   → Incobrável    (dívida baixada)
+```
+
+<Warning>
+  As faturas só podem ser **editadas** enquanto estiverem no status **Rascunho**. Uma vez que uma fatura seja movida para Aberta, você não pode editá-la. Se precisar fazer alterações, cancele a fatura e crie uma nova.
+</Warning>
+
+## Editando uma Fatura
+
+Você pode editar uma fatura somente enquanto ela estiver no status **Rascunho**.
+
+<Steps>
+  <Step title="Abrir a fatura">
+    No Painel de Faturas, encontre a fatura em rascunho que deseja editar. Clique nela ou marque a caixa de seleção ao lado dela.
+  </Step>
+  <Step title="Clicar em Editar">
+    Selecione a opção **Editar** no menu de ações. O formulário da fatura será aberto com todos os detalhes existentes preenchidos.
+  </Step>
+  <Step title="Fazer suas alterações">
+    Atualize qualquer campo — detalhes de cobrança, descrições de serviço, quantidades, valores ou condições de pagamento.
+  </Step>
+  <Step title="Salvar">
+    Clique em **Salvar** para aplicar suas alterações.
+  </Step>
+</Steps>
+
+## Enviando uma Fatura ao Cliente
+
+Se você salvou a fatura como rascunho e deseja enviá-la posteriormente:
+
+<Steps>
+  <Step title="Encontrar a fatura">
+    No Painel de Faturas, localize a fatura em rascunho que deseja enviar.
+  </Step>
+  <Step title="Clicar em Enviar Fatura">
+    Abra a fatura e clique no botão **Enviar Fatura**. O AgencyHandy entrega a fatura ao endereço de e-mail do cliente cadastrado.
+  </Step>
+  <Step title="Confirmar o envio">
+    Verifique a mensagem de confirmação para certificar-se de que a fatura foi enviada com sucesso. O status da fatura é atualizado para **Aberta**.
+  </Step>
+</Steps>
+
+<Note>
+  Se uma fatura estiver no status **Rascunho** e você atualizar o nome do serviço, o novo nome será refletido na fatura. Uma vez que o status mude para Aberta, Paga, Incobrável ou Cancelada, o nome do serviço na fatura fica bloqueado e não será atualizado.
+</Note>
+
+## Baixando e Imprimindo uma Fatura
+
+Tanto a agência quanto o cliente podem baixar uma fatura a qualquer momento.
+
+<Steps>
+  <Step title="Abrir a fatura">
+    Vá ao Painel de Faturas e selecione a fatura que deseja baixar.
+  </Step>
+  <Step title="Acessar download/impressão">
+    Clique na opção **Baixar** ou **Imprimir** no menu de ações da fatura.
+  </Step>
+  <Step title="Escolher o formato">
+    Selecione **PDF** para download ou escolha as configurações de impressora para uma cópia física.
+  </Step>
+  <Step title="Salvar ou imprimir">
+    Salve o arquivo no seu dispositivo ou envie para a impressora. Após a impressão, arquive a fatura ou compartilhe-a com as partes interessadas conforme necessário.
+  </Step>
+</Steps>
+
+## Configurando Lembretes nas Faturas
+
+O recurso de Lembrete de Fatura permite que você notifique automaticamente os clientes sobre faturas próximas do vencimento, vencidas ou em atraso, para que você receba no prazo sem acompanhamento manual.
+
+<Note>
+  Os lembretes funcionam apenas em faturas com status **Aberta** e com uma **data de vencimento** definida.
+</Note>
+
+<Steps>
+  <Step title="Abrir as Configurações de Fatura">
+    Clique no botão **Configurações** no canto superior direito do Painel de Faturas.
+  </Step>
+  <Step title="Navegar até as configurações de Lembrete">
+    Role até o final da seção **Modelo** no painel esquerdo e clique em **Editar** para abrir o modal de configuração de lembrete.
+  </Step>
+  <Step title="Escolher um tipo de lembrete">
+    Selecione uma das seguintes opções:
+
+    - **Lembrete Sequencial** — cria uma série de lembretes nos intervalos que você definir
+    - **Não Enviar Lembrete** — desativa lembretes para as faturas selecionadas
+  </Step>
+  <Step title="Configurar os detalhes do lembrete">
+    Para cada lembrete na sequência:
+    - Escolha o **modelo de lembrete** (por exemplo, "Lembrete de Pagamento de Fatura Próximo")
+    - Defina a **data do lembrete** — por exemplo, 3 dias antes ou após a data de vencimento
+    - Especifique se ele é acionado **antes** ou **após** a data de vencimento
+  </Step>
+  <Step title="Adicionar mais lembretes se necessário">
+    Clique em **+ Adicionar Outro Lembrete** para criar uma sequência completa de lembretes. Clique no botão **Excluir** ao lado de qualquer lembrete para removê-lo.
+  </Step>
+  <Step title="Aplicar às faturas ativas (opcional)">
+    Marque a caixa de seleção para **aplicar essas configurações de lembrete às faturas atualmente ativas** se quiser que a nova configuração abranja faturas que já estão com status Aberta.
+  </Step>
+  <Step title="Salvar">
+    Clique em **Atualizar** para salvar e ativar o cronograma de lembretes.
+  </Step>
+</Steps>
+
+## Faturas Diretas (Sem ID de Pedido)
+
+Quando você precisar cobrar um cliente rapidamente sem criar um pedido primeiro, use o fluxo de Fatura Direta.
+
+<Steps>
+  <Step title="Iniciar uma nova fatura">
+    Vá para **Faturas → Criar Fatura**.
+  </Step>
+  <Step title="Escolher o tipo de destinatário">
+    Selecione **Pessoa Física** ou **Empresa** como tipo de destinatário.
+  </Step>
+  <Step title="Selecionar ou inserir o destinatário">
+    - Escolha um **cliente existente** no menu suspenso, ou
+    - Selecione **E-mail Independente** para digitar qualquer endereço de e-mail — mesmo um que não esteja registrado como cliente
+  </Step>
+  <Step title="Deixar o ID do Pedido vazio">
+    Pule o campo ID do Pedido. O AgencyHandy cria uma fatura avulsa não vinculada a nenhum pedido.
+  </Step>
+  <Step title="Adicionar itens, impostos e descontos">
+    Clique em **Adicionar Item** para inserir itens de linha com nomes, quantidades e preços. Aplique alíquotas de imposto e descontos conforme necessário. O total é atualizado automaticamente.
+  </Step>
+  <Step title="Definir endereço de cobrança e notas">
+    Insira o endereço de pagamento da fatura e adicione quaisquer notas para o cliente.
+  </Step>
+  <Step title="Enviar ou salvar">
+    Clique em **Enviar Fatura** para entregá-la imediatamente, ou em **Salvar como Rascunho** para revisá-la primeiro.
+  </Step>
+</Steps>
+
+<Tip>
+  Faturas Diretas são ideais para solicitações urgentes, consultorias ou qualquer trabalho que você precise faturar fora do fluxo normal de pedidos. O acompanhamento de pagamentos para faturas avulsas deve ser gerenciado manualmente.
+</Tip>

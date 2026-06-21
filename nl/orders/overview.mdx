@@ -1,0 +1,91 @@
+---
+title: "Opdrachtenoverrzicht: Klantwerk beheren in AgencyHandy"
+sidebarTitle: "Overzicht"
+description: "Begrijp hoe opdrachten werken in AgencyHandy — statussen, rollen, opdrachtdetails, handmatige opdrachten en add-ons voor niet-gepubliceerde diensten."
+---
+
+Opdrachten zijn de operationele ruggengraat van AgencyHandy. Een opdracht vertegenwoordigt het verzoek van een klant voor een dienst of product, en fungeert als de centrale werkruimte waar je team de voortgang bijhoudt, taken beheert, feedback uitwisselt en resultaten levert. Of een klant een opdracht plaatst via je gepubliceerde dienstencatalogus of je team er handmatig een aanmaakt — elke opdracht volgt dezelfde gestructureerde levenscyclus die je bureau georganiseerd houdt en je klanten geïnformeerd.
+
+## Wat een opdracht bevat
+
+Elke opdracht toont in één oogopslag de belangrijkste informatie en geeft teamleden één plek om het werk te coördineren:
+
+| Veld | Beschrijving |
+|---|---|
+| **Opdracht-ID** | Automatisch gegenereerde unieke identificator voor elke opdracht |
+| **Klant** | De klant waarbij de opdracht hoort |
+| **Dienst** | De te leveren dienst |
+| **Projectmanager (PM)** | Het teamlid dat verantwoordelijk is voor levering (optioneel) |
+| **Budget** | Overeengekomen prijs voor de opdracht |
+| **Startdatum** | Wanneer het werk begint |
+| **Vervaldatum** | Deadline voor voltooiing van de opdracht |
+| **Opdrachtomschrijving** | Instructies, notities en bijgevoegde referentiebestanden van de klant |
+| **Taken** | Afzonderlijke werkeenheden toegewezen aan teamleden |
+| **Discussies** | Discussiethreads tussen bureaumedewerkers en klanten |
+
+## Opdrachstatussen
+
+Elke opdracht doorloopt een vaste reeks statussen. Je kunt deze statussen niet toevoegen of hernoemen.
+
+<Note>
+Alleen Superbeheerders, Beheerders en Projectmanagers kunnen de status van een opdracht wijzigen.
+</Note>
+
+| Status | Betekenis |
+|---|---|
+| **In behandeling** | De opdracht is aangemaakt en wacht op het begin van het werk |
+| **In uitvoering** | Actief werk is aan de gang |
+| **In beoordeling** | Deliverables zijn ingediend en wachten op beoordeling door de klant of intern |
+| **Voltooid** | De opdracht is volledig geleverd en geaccepteerd |
+| **Geannuleerd** | De opdracht is geannuleerd en is niet langer actief |
+
+## Rolgebaseerde toegang
+
+Verschillende rollen in AgencyHandy hebben verschillende mogelijkheden binnen opdrachten:
+
+| Rol | Kan opdrachten aanmaken | Kan opdrachten bewerken | Kan opdrachten verwijderen | Kan status wijzigen | Kan taken toevoegen | Kan teamleden toevoegen |
+|---|---|---|---|---|---|---|
+| **Superbeheerder** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Beheerder** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Projectmanager (PM)** | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ |
+| **Medewerker** | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| **Klant** | ❌ | ❌ | ❌ | ❌ | ✅ (alleen verzoek) | ❌ |
+
+<Tip>
+Klanten kunnen feedback sturen en deelnemen aan discussies over opdrachten. Medewerkers die aan een opdracht zijn toegewezen, kunnen taken bekijken en eraan werken, maar kunnen de opdracht zelf niet beheren.
+</Tip>
+
+## Wat je kunt doen met opdrachten
+
+AgencyHandy geeft je een volledig gereedschapsset voor het beheren van opdrachten gedurende hun levenscyclus:
+
+- **Opdrachten aanmaken** voor klanten — ofwel vanuit gepubliceerde diensten of handmatig voor diensten die nog in ontwikkeling zijn
+- Klant-ingediende opdrachten **accepteren en weigeren**, met de optie om een reden op te geven bij weigering
+- **Opdrachtdetails bekijken** inclusief voortgang, toegewezen teamleden, start- en vervaldatums, budget en omschrijving
+- **Sorteren, filteren en zoeken** in alle opdrachten op ID, status, klantnaam of andere criteria
+- **Taken toevoegen** direct binnen een opdracht om afzonderlijke werkeenheden bij te houden en toe te wijzen
+- **Discussies starten** om te communiceren met klanten en teamleden in context
+
+## Handmatige opdrachten voor niet-gepubliceerde diensten
+
+Je bent niet beperkt tot het aanmaken van opdrachten uitsluitend voor diensten die je openbaar hebt gepubliceerd. Superbeheerders en Beheerders kunnen handmatige opdrachten aanmaken voor niet-gepubliceerde diensten — handig wanneer een dienst nog in ontwikkeling is, tijdelijk niet beschikbaar is of aan een specifieke klant wordt aangeboden vóór de officiële lancering.
+
+Wanneer je het aanmaakformulier voor opdrachten opent, toont de vervolgkeuzelijst **Dienst** zowel gepubliceerde als niet-gepubliceerde diensten, zodat je de toepasselijke kunt selecteren. Alle andere opdrachtv elden en workflows werken hetzelfde als een standaardopdracht.
+
+## Add-ons in handmatige opdrachten
+
+Bij het opbouwen van een handmatige opdracht kun je **add-ondiensten** opnemen zodat klanten aangepaste pakketten kunnen ontvangen die verder gaan dan de kerndienst. Add-ons moeten van tevoren worden aangemaakt en worden gekoppeld aan de relevante dienst in de sectie **Formulieren** voordat ze als optie in het opdrachtformulier verschijnen.
+
+<Note>
+De add-onselectie verschijnt alleen in het handmatige opdrachtformulier als er minimaal één add-on is gekoppeld aan de geselecteerde dienst. Als je hem niet ziet, controleer dan of je add-on correct is gekoppeld in de dienstconfiguratie.
+</Note>
+
+Zodra een dienst met gekoppelde add-ons is geselecteerd, kun je die add-ons opnemen voordat je de opdracht afrondt en indient.
+
+## Meldingen
+
+AgencyHandy informeert automatisch de juiste mensen wanneer opdrachten vorderen:
+
+- Wanneer een opdracht wordt aangemaakt door een PM, Beheerder of Superbeheerder, krijgen alle Superbeheerders in je bedrijf toegang en ontvangt de klant een aanmakingsmelding.
+- Wanneer een teamlid wordt toegevoegd aan een opdracht, ontvangt dat lid een melding.
+- Wanneer taken worden aangemaakt binnen een opdracht, ontvangt de klant een melding.

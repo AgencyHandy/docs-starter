@@ -1,0 +1,117 @@
+---
+title: "Criar Formulários de Intake para Recolher Requisitos dos Clientes"
+sidebarTitle: "Formulários de Intake"
+description: "Crie formulários de intake personalizados para recolher todos os detalhes necessários antes de iniciar um projeto — associados a serviços para que os clientes os preencham logo após encomendar."
+---
+
+Antes de a sua equipa poder começar a entregar, precisa de ter o quadro completo: objetivos, prazos, diretrizes de marca, materiais de referência e quaisquer outros detalhes específicos do projeto de cada cliente. Os formulários de intake permitem definir exatamente que informação recolher e associar esse formulário diretamente a um serviço — para que no momento em que um cliente faz uma encomenda, o AgencyHandy o solicite a preenchê-lo. Sem perseguir e-mails, sem briefings incompletos.
+
+## Por que os formulários de intake são importantes
+
+Sem um processo de intake estruturado, detalhes importantes ficam enterrados em cadeias de e-mail ou simplesmente nunca são recolhidos. Um formulário de intake:
+
+- **Padroniza o briefing** — cada projeto começa com o mesmo nível de qualidade de informação.
+- **Reduz as trocas de mensagens** — obtém o que precisa antecipadamente, para que o trabalho possa começar imediatamente.
+- **Define expectativas** — os clientes refletem sobre os seus requisitos antes do início do projeto, levando a um âmbito mais claro e menos ciclos de revisão.
+- **Fica dentro da encomenda** — todas as respostas são armazenadas na encomenda no AgencyHandy, para que a sua equipa saiba sempre onde procurar.
+
+## Duas formas de criar um formulário de intake
+
+Pode construir um formulário de intake durante a configuração de um serviço, ou de forma independente a partir da secção **Formulários** e depois associá-lo posteriormente.
+
+<Tabs>
+  <Tab title="A partir de um serviço">
+    Esta é a rota mais direta quando está a configurar um novo serviço e pretende ter o formulário de intake pronto desde o primeiro dia.
+
+    <Steps>
+      <Step title="Abrir ou criar um serviço">
+        Navegue até **Serviços** e abra um serviço existente ou crie um novo.
+      </Step>
+      <Step title="Aceder às definições do Formulário de Intake">
+        Dentro das definições do serviço, localize o separador ou secção **Formulário de Intake** (por vezes denominado **Requisitos**).
+      </Step>
+      <Step title="Adicionar os seus campos">
+        Clique em **Adicionar Campo** e escolha o tipo de campo mais adequado para a informação que necessita. Consulte a [referência de tipos de campo](#available-field-types) abaixo para uma lista completa.
+      </Step>
+      <Step title="Configurar cada campo">
+        Dê a cada campo uma etiqueta clara e, se útil, adicione texto de placeholder ou instruções de ajuda para orientar a resposta do cliente. Marque o campo como **Obrigatório** se tiver de ser preenchido antes de o formulário poder ser submetido.
+      </Step>
+      <Step title="Pré-visualizar e guardar">
+        Use a opção **Pré-visualizar** para ver o formulário na perspetiva do cliente e, em seguida, clique em **Guardar** para associá-lo ao serviço.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="A partir da secção Formulários">
+    Use esta rota quando pretende construir uma biblioteca de formulários de intake reutilizáveis antes de os atribuir a serviços.
+
+    <Steps>
+      <Step title="Navegar até Formulários">
+        Na barra lateral, clique em **Formulários**, depois selecione **Formulário de Intake**.
+      </Step>
+      <Step title="Criar um novo formulário de intake">
+        Clique em **Criar Novo Formulário de Intake** no canto superior direito.
+      </Step>
+      <Step title="Nomear o formulário">
+        Dê ao formulário um nome descritivo que reflita o serviço a que será associado, por exemplo "Briefing de Auditoria SEO" ou "Requisitos de Design de Logótipo".
+      </Step>
+      <Step title="Adicionar e configurar campos">
+        Adicione campos do painel de componentes à direita. Configure etiquetas, texto de ajuda e estado de obrigatoriedade para cada campo.
+      </Step>
+      <Step title="Pré-visualizar e guardar">
+        Pré-visualize o formulário e, em seguida, clique em **Guardar** para o armazenar na sua biblioteca de formulários.
+      </Step>
+      <Step title="Associar a um serviço">
+        Abra o serviço relevante, aceda às suas definições de **Formulário de Intake** e selecione o formulário guardado da biblioteca para o associar.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Tipos de campo disponíveis
+
+<Accordion title="Campos de texto e resposta longa">
+  | Tipo de campo | Limite de carateres | Melhor utilizado para |
+  |---|---|---|
+  | **Resposta Curta** | 120 carateres | Nomes de projetos, etiquetas rápidas, respostas de uma linha |
+  | **Parágrafo** | 500 carateres | Briefings em aberto, descrições de contexto |
+  | **Texto Formatado** | Flexível | Especificações detalhadas que beneficiam de negrito, itálico ou listas |
+</Accordion>
+
+<Accordion title="Campos de escolha">
+  | Tipo de campo | Descrição |
+  |---|---|
+  | **Escolha Múltipla (Caixa de Verificação)** | Permite que os clientes selecionem todas as opções aplicáveis — útil para selecionar formatos de entrega, plataformas alvo ou preferências de estilo |
+  | **Seleção (Botão de Opção)** | Permite que os clientes escolham exatamente uma opção — ideal para escolhas exclusivas como idioma preferido ou nível de pacote |
+</Accordion>
+
+<Accordion title="Campos de data e ficheiro">
+  | Tipo de campo | Descrição |
+  |---|---|
+  | **Data** | Um seletor de data para prazos, datas de lançamento ou datas de eventos |
+  | **Anexar Ficheiro** | Permite que os clientes façam upload de ficheiros de referência, como logótipos, guias de marca ou exemplos de ativos |
+  | **Folha de Cálculo** | Para entradas de dados em volume, como listas de palavras-chave, catálogos de produtos ou dados de localização |
+</Accordion>
+
+## Como os clientes preenchem os formulários de intake
+
+Depois de um cliente concluir o checkout numa encomenda que tem um formulário de intake associado, o AgencyHandy apresenta automaticamente o formulário como o próximo passo obrigatório. Eis o que acontece:
+
+1. O cliente vê um prompt para preencher o formulário de intake da sua nova encomenda.
+2. Percorre cada campo, fazendo upload dos ficheiros necessários ao longo do processo.
+3. Assim que todos os campos obrigatórios estiverem preenchidos, clica em **Submeter**.
+4. As respostas são guardadas na encomenda no AgencyHandy e a sua equipa é notificada.
+
+<Note>
+  Se um cliente ignorar o formulário de intake no checkout, pode regressar ao mesmo em qualquer momento a partir do seu portal de cliente, dentro da encomenda relevante. Também pode verificar se o formulário foi preenchido a partir da página de detalhes da encomenda no seu dashboard.
+</Note>
+
+## Dicas para formulários de intake eficazes
+
+<Tip>
+  Mantenha o seu formulário de intake focado — pergunte apenas por informação que irá realmente utilizar. Formulários longos reduzem as taxas de preenchimento. Se precisar de muitos detalhes, divida o formulário em secções lógicas com títulos claros.
+</Tip>
+
+- **Use texto de ajuda** em campos complexos para explicar exatamente que formato ou nível de detalhe necessita.
+- **Marque campos genuinamente críticos como Obrigatórios**, mas evite marcar tudo como obrigatório, pois os clientes podem sentir-se sobrecarregados.
+- **Teste o formulário você mesmo** na perspetiva do cliente antes de o associar a um serviço ativo — submeta uma encomenda de teste e preencha o formulário para verificar o fluxo.
+- **Atualize os formulários quando o seu processo muda** — pode editar um formulário de intake em qualquer momento e a versão atualizada aplicar-se-á a todas as encomendas futuras.

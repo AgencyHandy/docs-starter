@@ -1,0 +1,240 @@
+---
+title: "Gestionarea Sarcinilor: Crearea și Urmărirea Lucrului în Comenzi"
+sidebarTitle: "Sarcini"
+description: "Creează, editează și gestionează sarcini în cadrul comenzilor — inclusiv urmărirea timpului, feedback pe fișiere, sarcini solicitate de clienți și vizibilitate cross-comandă."
+---
+
+Sarcinile sunt unitățile de lucru care transformă o comandă într-un livrabil. Fiecare sarcină trăiește în cadrul unei comenzi specifice, poate fi atribuită unui membru al echipei și urmărește propria stare, cronologie, atașamente și fir de feedback. Această pagină explică cum să creezi și să gestionezi sarcini, cum pot solicita clienții sarcini, cum funcționează urmărirea timpului și feedbackul pe fișiere și cum să vizualizezi sarcini din toate comenzile simultan.
+
+## Cerințe de Rol
+
+| Acțiune | Cine poate face asta |
+|---|---|
+| Creare sarcini | Super Admin, Admin, Project Manager |
+| Editare sarcini | Super Admin, Admin, Project Manager |
+| Ștergere sarcini | Super Admin, Admin, Project Manager |
+| Vizualizare sarcini în revizuire / finalizate | Super Admin, Admin, PM, Client |
+| Trimitere și răspuns la feedback | Super Admin, Admin, PM |
+| Înregistrare timp pe sarcini | Toți utilizatorii atribuiți (Superadminii și Adminii pot înregistra în numele altora) |
+| Solicitare sarcină (client) | Client |
+| Aprobare / respingere sarcini solicitate | Super Admin, Admin |
+
+<Note>
+Angajații atribuiți unei comenzi pot vedea sarcinile cu starea **In Review** sau **Done**. Sarcinile cu starea **In Progress** nu sunt vizibile pentru angajați.
+</Note>
+
+## Crearea unei Sarcini
+
+<Steps>
+  <Step title="Deschide comanda">
+    Navighează la **Orders** în bara laterală stângă și apasă pe comanda unde vrei să adaugi o sarcină.
+  </Step>
+
+  <Step title="Adaugă o sarcină nouă">
+    În cadrul comenzii, derulează până la secțiunea **Tasks** și apasă **+ Add New Task**. Va apărea un formular de creare a sarcinii.
+  </Step>
+
+  <Step title="Completează detaliile sarcinii">
+    Completează câmpurile disponibile:
+
+    | Câmp | Note |
+    |---|---|
+    | **Task Name** | Un titlu clar și concis pentru elementul de lucru |
+    | **Description** | Context detaliat, cerințe sau instrucțiuni |
+    | **Assignee** | Membrul echipei responsabil de finalizarea sarcinii |
+    | **Label** | Etichetă categorică pentru organizarea sarcinilor (ex. Design, Redactare) |
+    | **Start Date** | Data la care începe lucrul la sarcină |
+    | **Due Date** | Data până la care sarcina trebuie finalizată |
+    | **Client Review Required** | Căsuță de bifat care impune ca clientul să aprobe sarcina înainte de a fi marcată ca Finalizată — bifată implicit |
+    | **Attachments** | Fișiere de referință sau materiale suport |
+  </Step>
+
+  <Step title="Salvează sarcina">
+    Apasă **Save** pentru a crea sarcina. Clientul primește o notificare automată că a fost adăugată o nouă sarcină la comanda sa.
+  </Step>
+</Steps>
+
+<Tip>
+Căsuța **Client Review Required** este activată implicit pentru fiecare sarcină nouă. Dacă o sarcină este pur internă și nu necesită aprobarea clientului, poți să o debifezi înainte de salvare.
+</Tip>
+
+## Stările Sarcinilor
+
+Sarcinile parcurg următoarele stări:
+
+- **In Progress** — Sarcina este în curs de execuție (nu este vizibilă clienților sau angajaților)
+- **In Review** — Sarcina a fost trimisă pentru revizuire; vizibilă clienților
+- **Done** — Sarcina a fost aprobată și finalizată
+
+<Note>
+Când un client sau un evaluator respinge o sarcină din starea **In Review**, starea acesteia revine automat la **In Progress**.
+</Note>
+
+## Modalul Sarcinii și Pagina de Activitate
+
+Apăsând pe orice sarcină se deschide **Modalul Sarcinii**, o vizualizare completă care servește drept centrul de activitate al sarcinii. De aici poți vedea și gestiona:
+
+- Starea curentă, persoana atribuită, data de început și data scadenței
+- Descrierea sarcinii și orice fișiere atașate
+- Toate firele de feedback și răspunsurile
+- Un jurnal complet de activitate care arată fiecare actualizare, comentariu și schimbare de stare a sarcinii
+
+Oricine face parte din comandă — inclusiv clienții, când revizuirea de client este activată — poate accesa modalul sarcinii pentru sarcinile asupra cărora au vizibilitate.
+
+## Editarea unei Sarcini
+
+Pentru a actualiza detaliile unei sarcini după ce a fost creată, deschide modalul sarcinii și modifică câmpurile relevante (nume, descriere, persoana atribuită, date, etichetă sau atașamente). Salvează modificările pentru a aplica actualizarea. Doar Super Adminii, Adminii și PM-urile pot edita sarcini.
+
+## Ștergerea unei Sarcini
+
+Pentru a șterge o sarcină, deschide-o și folosește opțiunea de ștergere din meniul de acțiuni al sarcinii. Ștergerea este permanentă — toate jurnalele de timp asociate și versiunile de fișiere sunt eliminate odată cu sarcina.
+
+<Warning>
+Ștergerea unei sarcini elimină și toate versiunile de fișiere și comentariile de feedback asociate acestora. Această acțiune nu poate fi anulată.
+</Warning>
+
+## Urmărirea Timpului
+
+AgencyHandy include urmărire integrată a timpului, astfel încât echipa ta poate înregistra orele direct pe sarcini — fără a fi nevoie de un instrument extern.
+
+### Pornirea Cronometrului
+
+<Steps>
+  <Step title="Deschide sarcina">
+    Mergi la **Orders → Tasks** și deschide sarcina pentru care vrei să urmărești timpul.
+  </Step>
+
+  <Step title="Pornește cronometrul">
+    Apasă **Start Timer**. Cronometrul începe să ruleze și afișează numele sarcinii, timpul scurs în timp real și timpul total înregistrat.
+  </Step>
+
+  <Step title="Pauză sau oprire când ai terminat">
+    Apasă **Pause Timer** pentru a opri temporar urmărirea sau **Stop Timer** pentru a finaliza înregistrarea. Când oprești, vei confirma data, ora de început, ora de sfârșit, durata totală și o notă opțională.
+  </Step>
+</Steps>
+
+<Note>
+Poți avea un singur cronometru activ la un moment dat. Pornirea unui cronometru nou pune automat pe pauză orice cronometru existent.
+</Note>
+
+<Warning>
+Dacă o sarcină este marcată ca **Done**, cronometrul este dezactivat. Redeschide sarcina pentru a reactiva înregistrarea timpului.
+</Warning>
+
+### Înregistrare Manuală a Timpului
+
+Dacă trebuie să înregistrezi timp retroactiv, apasă **Manual Time Entry** pe sarcină și introdu:
+
+- **Date** — Data
+- **Start Time and End Time** — Ora de început și ora de sfârșit (sau o **Durată** în ore și minute)
+- **Notes** — Note (opțional)
+
+Mai mulți utilizatori pot înregistra timp simultan pe aceeași sarcină. Superadminii și Adminii pot crea înregistrări manuale de timp în numele oricărui utilizator.
+
+### Jurnalele de Lucru
+
+Apasă butonul **Work Log** de lângă cronometru pentru a vedea o defalcare completă a tuturor înregistrărilor de timp ale sarcinii, inclusiv data, orele de început/sfârșit, timpul activ total și orice note. Adminii și Superadminii pot șterge orice înregistrare; utilizatorii obișnuiți pot șterge doar propriile înregistrări.
+
+### Foile de Pontaj
+
+Navighează la **Timesheets** din bara laterală stângă pentru o vizualizare cross-comandă a întregului timp înregistrat. Poți filtra după numele sarcinii, ID-ul comenzii, persoana atribuită sau intervalul de date (zilnic, săptămânal, lunar) și grupa rezultatele după membrul echipei, numele serviciului sau numele sarcinii. Poți, de asemenea, să pornești un cronometru sau să adaugi o înregistrare manuală direct din vizualizarea Foilor de Pontaj.
+
+## Feedback pe Fișiere
+
+Sistemul de feedback pe fișiere al AgencyHandy îți permite ție și clienților tăi să lași comentarii precise, vizuale pe livrabile — direct în sarcini. Suportă imagini, PDF-uri, videoclipuri și site-uri web live, cu control al versiunilor și discuții cu fire incluse.
+
+### Încărcarea unui Fișier pentru Revizuire
+
+Deschide sarcina, apasă pictograma **➕** din secțiunea **Attachments** și încarcă o imagine, PDF, videoclip sau lipește un URL de site web live.
+
+### Lăsarea Feedback-ului pe Tipuri de Fișiere
+
+**Imagini și PDF-uri**
+Deschide fișierul și folosește bara de instrumente de adnotare (Săgeată, Linie, Dreptunghi, Evidențiere) pentru a marca zone specifice. Selectează o regiune, tastează comentariul și alege dacă îl distribui echipei tale, clientului sau ambilor. Poți, de asemenea, să anulezi sau să reaplici adnotările și să schimbi culorile adnotărilor.
+
+**Videoclipuri**
+Deschide videoclipul și pune-l pe pauză exact la cadrul unde se aplică feedbackul tău. Tastează comentariul — videoclipul se pune automat pe pauză în timp ce tastezi. Feedbackul este marcat cu timestamp-ul acelui moment. Poți elimina timestamp-ul pentru a lăsa un comentariu general.
+
+**Site-uri Web Live**
+Adaugă URL-ul site-ului la sarcină folosind butonul **➕**, apoi instalează extensia de browser AgencyHandy. Deschide site-ul în **View Mode** (interactiv) sau treci la **Review Mode** pentru a face o captură de ecran și a o adnota cu instrumente de desenat, text sau forme.
+
+### Acțiuni pe Comentarii
+
+Fiecare comentariu are un meniu cu trei puncte cu opțiuni pentru a:
+
+- Edita comentariul
+- Copia răspunsul
+- Șterge comentariul
+- Restricționa vizibilitatea doar pentru echipa internă
+
+### Rezolvarea Feedback-ului
+
+Apasă butonul **✓** de pe un comentariu pentru a-l marca ca **Resolved** (Rezolvat). Comentariile rezolvate rămân vizibile pentru referință și pot fi redeschise. Primești o notificare când un comentariu pe care l-ai lăsat este rezolvat de altcineva.
+
+### Versiunile Fișierelor
+
+Apasă **Upload New Version** pentru a adăuga un fișier revizuit. Versiunile anterioare și feedbackul lor sunt păstrate și accesibile din meniul derulant de versiuni. Când deschizi o versiune mai veche, AgencyHandy te notifică că există o versiune mai nouă.
+
+Poți eticheta fiecare fișier ca **Needs Review** (Necesită Revizuire) sau **Approved** (Aprobat) pentru a comunica starea revizuirii dintr-o privire.
+
+<Note>
+Clienții pot lăsa feedback pe fișiere doar dacă căsuța **Client Review Required** este activată pe sarcină. Feedbackul pe fișiere este disponibil doar în sarcini sau comenzi — nu în catalogul de servicii sau în imaginile de profil.
+</Note>
+
+## Sarcini Solicitate de Clienți
+
+Clienții pot trimite solicitări de sarcini din portalul lor, oferindu-le un mod structurat de a exprima nevoi suplimentare fără a ocoli procesul tău de aprobare.
+
+### Fluxul Clientului
+
+<Steps>
+  <Step title="Accesează Solicitările">
+    Clientul apasă pe **Requests** în bara laterală a Portalului Client — sau folosește butonul **+ Request a Task** direct în cadrul unei comenzi.
+  </Step>
+
+  <Step title="Completează formularul de solicitare">
+    Clientul furnizează:
+    - **Order** (obligatoriu — solicitările trebuie asociate cu o comandă existentă)
+    - **Task Name** — Numele sarcinii (obligatoriu)
+    - **Description** — Descriere (opțional)
+    - **Attachments** — Atașamente (opțional — până la 1 GB; formatele includ PDF, DOCX, JPG, PNG, MP4, ZIP și altele)
+    - **Start and End Dates** — Date de început și sfârșit (opțional)
+  </Step>
+
+  <Step title="Trimite solicitarea">
+    Clientul apasă **Request**. Sarcina apare în portalul său ca **Pending** și agenția ta primește o notificare.
+  </Step>
+</Steps>
+
+### Fluxul Agenției
+
+<Steps>
+  <Step title="Vizualizează solicitările primite">
+    Apasă **Requests** în bara laterală a Portalului Agenției. Toate solicitările în așteptare apar într-o vizualizare de tip listă. Poți filtra după client sau ID comandă, sorta alfabetic sau după data emiterii și folosi **Preferences** pentru a afișa sau ascunde coloane.
+  </Step>
+
+  <Step title="Revizuiește solicitarea">
+    Apasă o solicitare pentru a citi descrierea și a previzualiza atașamentele înainte de a lua o decizie.
+  </Step>
+
+  <Step title="Aprobă sau respinge">
+    Folosește butoanele de acțiune de lângă fiecare solicitare pentru a aproba sau respinge individual — sau folosește acțiunile în bloc din colțul din dreapta sus pentru a aproba sau respinge toate solicitările simultan.
+
+    - Solicitările **aprobate** devin sarcini active în comandă și urmează fluxul normal de lucru al sarcinilor.
+    - Solicitările **respinse** rămân înregistrate cu starea **Rejected** și nu sunt adăugate în comandă.
+  </Step>
+</Steps>
+
+<Note>
+Clienții nu pot ocoli pasul de aprobare. O solicitare necesită întotdeauna acțiunea agenției înainte de a deveni o sarcină activă. Solicitările în așteptare rămân vizibile atât pentru client, cât și pentru agenție până când se ia o decizie.
+</Note>
+
+## Vizualizarea Tuturor Sarcinilor
+
+Pe lângă gestionarea sarcinilor în comenzile individuale, poți vizualiza sarcinile din toate comenzile de pe un singur ecran. Navighează la **Tasks** în bara laterală stângă pentru a accesa pagina **All Tasks**. De aici poți:
+
+- Vedea fiecare sarcină asupra căreia ai vizibilitate, indiferent de comanda căreia îi aparține
+- Filtra și sorta după stare, persoana atribuită, data scadenței sau comandă
+- Identifica rapid elementele întârziate sau cu risc din întreaga ta sarcină de lucru
+
+Această vizibilitate cross-comandă este deosebit de utilă pentru Project Manageri și Admini care trebuie să echilibreze capacitatea echipei și să urmărească sănătatea livrărilor la nivel de agenție.

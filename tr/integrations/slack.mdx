@@ -1,0 +1,69 @@
+---
+title: "Gerçek Zamanlı AgencyHandy Bildirimleri Almak İçin Slack'i Bağlayın"
+sidebarTitle: "Slack"
+description: "Sipariş güncellemeleri, görev değişiklikleri ve destek talebi bildirimleri otomatik olarak bir Slack kanalına iletilsin diye Slack çalışma alanınızı AgencyHandy'ye bağlayın."
+---
+
+AgencyHandy'nin Slack entegrasyonu, ekibinizin uygulamalar arasında geçiş yapmasına gerek kalmadan her şeyden haberdar olmasını sağlar. Bağlantı kurulduktan sonra AgencyHandy, görevler, siparişler veya diğer çalışma alanı etkinlikleri değiştiğinde seçtiğiniz Slack kanalına otomatik bildirimler gönderir — böylece ekibiniz her zaman gerçek zamanlı olarak neler olduğunu bilir.
+
+<Note>
+  Yalnızca **SuperAdmin**, **Admin** ve **Manager** rolleri (entegrasyon izinleriyle) Slack entegrasyonunu bağlayabilir veya yönetebilir. Bağlantıyı yetkilendirmek için Slack çalışma alanı yöneticisi haklarına ihtiyacınız vardır.
+</Note>
+
+## Slack'i Bağlayın
+
+<Steps>
+  <Step title="Entegrasyonları açın">
+    Sol kenar çubuğunda **Entegrasyonlar**'a tıklayın.
+  </Step>
+
+  <Step title="Slack kartını bulun">
+    **Slack** kartına gidin ve **Bağla**'ya tıklayın.
+  </Step>
+
+  <Step title="Slack'te AgencyHandy'ye yetki verin">
+    Bir Slack yetkilendirme penceresi açılır. Slack çalışma alanınıza henüz giriş yapmadıysanız şimdi giriş yapın. AgencyHandy'nin istediği izinleri inceleyin ve erişim vermek için **İzin Ver**'e tıklayın.
+  </Step>
+
+  <Step title="Bildirim kanalını seçin">
+    Yetkilendirmenin ardından AgencyHandy bildirimlerinin görünmesini istediğiniz Slack kanalını seçin. Açılır menüden bir kanal seçin ve onaylamak için **Kaydet**'e tıklayın.
+  </Step>
+
+  <Step title="Kurulumu onaylayın">
+    Slack kartı **Bağlandı** olarak güncellenir. AgencyHandy hemen seçilen kanala bildirim göndermeye başlar.
+  </Step>
+</Steps>
+
+## Slack'e hangi bildirimler gönderilir
+
+AgencyHandy, aşağıdaki olaylardan herhangi biri gerçekleştiğinde bir Slack mesajı gönderir:
+
+| Kategori | Bildirimi tetikleyen olaylar |
+|---|---|
+| **Görevler** | Görev oluşturuldu, güncellendi, atandı veya tamamlandı |
+| **Siparişler** | Sipariş oluşturuldu veya durumu değişti |
+| **Yorumlar** | Bir görev veya siparişe yeni yorum eklendi |
+| **Dosya ekleri** | Bir göreve dosya veya ek eklendi |
+| **Destek Talepleri** | Destek talebi oluşturuldu, atandı veya durumu değişti |
+
+Her Slack mesajında şunlar yer alır:
+
+- Görevin, siparişin veya destek talebinin **adı**
+- Mesajı tetikleyen **durum değişikliği** veya işlem
+- AgencyHandy'deki ilgili öğeye geri dönen bir **bağlantı**
+
+Bir göreve dosya veya ek eklendiğinde Slack mesajı, söz konusu ekin önizlemesini de içerir.
+
+<Tip>
+  Bildirimleri düzenli tutmak ve ana ekip kanallarınızın dağılmasını önlemek için özel bir **#agency-handy-bildirimleri** kanalı (veya benzeri) oluşturun.
+</Tip>
+
+## Slack Bağlantısını Kesin
+
+Bildirimleri durdurmak için **Entegrasyonlar**'a dönün ve Slack kartında **Bağlantıyı Kes**'e tıklayın. Tüm bildirimler hemen durur.
+
+## Önemli notlar
+
+- **Bağlantı başına bir çalışma alanı** — her AgencyHandy çalışma alanına yalnızca tek bir Slack çalışma alanı bağlayabilirsiniz. Farklı bir Slack çalışma alanına geçmek için mevcut bağlantıyı kesin ve yeniden bağlanın.
+- **Kanal görünürlüğü** — bildirimler seçilen Slack kanalındaki herkese görünür. Paylaşılan ayrıntı düzeyine uygun bir kanal seçtiğinizden emin olun (ör. müşteriye özel sipariş bilgilerini herkese açık bir kanala göndermekten kaçının).
+- **Yeniden yetkilendirme** — Slack token'ınızın süresi dolması veya izinlerin değişmesi durumunda bildirimleri geri yüklemek için Entegrasyonlar'a dönün ve yeniden bağlanın.

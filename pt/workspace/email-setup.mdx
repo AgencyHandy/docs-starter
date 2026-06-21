@@ -1,0 +1,188 @@
+---
+title: "Configurar Email de Saída, SMTP e Modelos de Email"
+sidebarTitle: "Configuração de Email"
+description: "Configure um endereço de email de remetente personalizado, ligue um servidor SMTP, adicione registos DKIM/SPF para entregabilidade e personalize modelos de email no AgencyHandy."
+---
+
+A configuração de email do AgencyHandy permite-lhe substituir o remetente predefinido `noreply@agencyhandy.com` pelo seu próprio endereço de email com a marca da sua agência, configurar um servidor SMTP dedicado para envios fiáveis e personalizar os modelos usados para notificações a clientes, faturas, propostas e muito mais. Configurar isto corretamente garante que os seus emails chegam à caixa de entrada dos clientes — e não à pasta de spam — e que cada mensagem reflete a identidade da sua agência.
+
+<Note>
+  Apenas **Super Admins** e **Admins** podem configurar as definições de email. Aceda a **Workspace Config → Configuração de Email** para aceder a estas opções.
+</Note>
+
+---
+
+## Visão Geral dos Componentes de Configuração de Email
+
+<CardGroup cols={2}>
+  <Card title="Endereço de Email Personalizado" icon="envelope">
+    Defina o nome do remetente e o endereço de email que os clientes veem quando recebem mensagens do seu workspace.
+  </Card>
+  <Card title="Registos DKIM & SPF" icon="shield-check">
+    Adicione registos de autenticação DNS para provar que os seus emails são legítimos e evitar que sejam sinalizados como spam.
+  </Card>
+  <Card title="Servidor SMTP" icon="server">
+    Ligue o seu próprio servidor de email (por exemplo, Gmail, Outlook ou um servidor de domínio personalizado) para enviar todos os emails de saída do AgencyHandy.
+  </Card>
+  <Card title="Modelos de Email" icon="file-lines">
+    Personalize o conteúdo, as linhas de assunto e a identidade visual de cada email automático que o AgencyHandy envia aos clientes.
+  </Card>
+</CardGroup>
+
+---
+
+## Parte 1: Configurar um Endereço de Email Personalizado
+
+Antes de configurar o seu email de remetente, precisa de um domínio registado com alojamento de email. Os fornecedores mais populares incluem Google Workspace, Microsoft 365, Zoho Mail e Cloudflare Email Routing.
+
+<Steps>
+  <Step title="Registar um domínio e configurar alojamento de email">
+    Se ainda não o fez, registe um domínio numa registadora (por exemplo, GoDaddy, Namecheap, Cloudflare) e subscreva um fornecedor de alojamento de email. Certifique-se de que consegue criar e gerir endereços de email nesse domínio (por exemplo, `hello@suaagencia.com`).
+  </Step>
+  <Step title="Aceder à Configuração de Email no AgencyHandy">
+    Inicie sessão no AgencyHandy. Aceda a **Workspace Config** na navegação esquerda e clique em **Configuração de Email**.
+  </Step>
+  <Step title="Introduzir o nome e email do remetente">
+    No campo **Nome do Remetente**, escreva o nome que os clientes verão como remetente (por exemplo, `Suporte AgencyHandy` ou o nome da sua agência). No campo **Email do Remetente**, introduza o endereço de email personalizado (por exemplo, `hello@suaagencia.com`). Clique em **Guardar**.
+  </Step>
+  <Step title="Verificar o seu endereço de email">
+    O AgencyHandy envia um link de verificação para o endereço de email que introduziu. Abra a sua caixa de entrada, encontre a mensagem de verificação e clique no link para confirmar a propriedade.
+  </Step>
+  <Step title="Configurar os registos DNS DKIM, SPF e DMARC">
+    Após guardar o email do remetente, o AgencyHandy fornece-lhe os registos DNS que precisa de adicionar:
+
+    - **Registo SPF** (tipo TXT) — autoriza o AgencyHandy a enviar emails em nome do seu domínio.
+    - **Registos DKIM** (3 registos CNAME) — adicionam assinaturas criptográficas aos emails de saída para que os servidores recetores possam verificar a autenticidade.
+    - **Registo DMARC** — define como os servidores recetores devem tratar emails que falham as verificações de autenticação.
+
+    Adicione todos estes registos nas definições DNS do seu domínio na sua registadora. Para os registos CNAME de DKIM, certifique-se de que o **Estado de Proxy está desativado** se utilizar Cloudflare.
+  </Step>
+  <Step title="Confirmar o estado ativo">
+    Regresse à página de Configuração de Email no AgencyHandy. Assim que todos os registos DNS se propagarem (o que pode demorar entre 2 minutos e 2 horas), o estado do email atualiza de **Pendente** para mostrar uma marca verde ✅. O seu email personalizado está agora ativo.
+  </Step>
+</Steps>
+
+<Tip>
+  Utilize o [MXToolbox](https://mxtoolbox.com/DKIM.aspx) ou o [Validador DKIM da dmarcian](https://dmarcian.com/dkim-validator/) para verificar se os seus registos DKIM estão corretamente configurados. Atualize a página de Configuração de Email periodicamente enquanto aguarda a propagação.
+</Tip>
+
+---
+
+## Parte 2: Configurar DKIM & SPF (Configuração Independente)
+
+Se precisar de gerar ou regenerar registos DKIM e SPF de forma independente, siga este caminho:
+
+**Workspace Config → Emails → Configuração DKIM & SPF → Gerar registos DKIM e SPF.**
+
+Em seguida, adicione os registos ao seu DNS:
+
+| Tipo de Registo | Tipo DNS | O Que Configurar                                                                                |
+|-----------------|----------|-------------------------------------------------------------------------------------------------|
+| SPF             | TXT      | Copie o **Nome** e o **Valor** do AgencyHandy e adicione um novo registo TXT no seu DNS         |
+| DKIM (×3)       | CNAME    | Copie cada par **Nome** e **Valor**; adicione 3 registos CNAME separados com o proxy desativado |
+
+<Note>
+  Os registos DKIM e SPF podem demorar entre **2 minutos e 2 horas** a propagar. Se o estado ainda aparecer como pendente após 2 horas, verifique se os registos foram introduzidos sem erros tipográficos e se não existem registos conflituantes.
+</Note>
+
+---
+
+## Parte 3: Configurar SMTP
+
+O SMTP (Simple Mail Transfer Protocol) permite-lhe encaminhar todos os emails de saída do AgencyHandy através do seu próprio servidor de email verificado, dando-lhe maior controlo sobre a entregabilidade e a identidade visual.
+
+<Note>
+  Pode utilizar um **Email de Domínio Personalizado** ou um **Fornecedor de Email SMTP** — não ambos em simultâneo. É possível alternar entre eles a qualquer momento, mas terá de reintroduzir a configuração de email ao regressar ao email personalizado.
+</Note>
+
+<Steps>
+  <Step title="Abrir as definições do Servidor SMTP">
+    Aceda a **Workspace Config → Configuração de Email** e clique em **Servidor SMTP**.
+  </Step>
+  <Step title="Mudar para Fornecedor SMTP (se necessário)">
+    Se já tiver um email personalizado configurado, aparece um popup de confirmação a perguntar se pretende mudar. Clique em **Mudar para SMTP** para continuar. Isto desativa a configuração de email personalizado existente.
+  </Step>
+  <Step title="Introduzir as credenciais SMTP">
+    Preencha os campos obrigatórios:
+
+    | Campo        | Valor de Exemplo         | Notas                                             |
+    |--------------|--------------------------|---------------------------------------------------|
+    | Nome do Host | `smtp.gmail.com`         | Endereço do servidor SMTP do seu fornecedor       |
+    | Nome de Utilizador | `voce@seudominio.com` | O seu endereço de email completo               |
+    | Palavra-passe | Palavra-passe de app    | Utilize uma palavra-passe específica de app (ver abaixo) |
+    | Porta        | `465` ou `587`           | 465 para SSL, 587 para TLS                        |
+    | Auto TLS     | Ativar/desativar         | Opcional — ativa a atualização automática para TLS |
+
+    Clique em **Guardar** quando terminar.
+  </Step>
+  <Step title="Gerar uma palavra-passe de app (exemplo Gmail)">
+    Se estiver a usar Gmail com Autenticação de 2 Fatores ativada (obrigatório para palavras-passe de app):
+
+    1. Aceda a [myaccount.google.com/security](https://myaccount.google.com/security) e confirme que a Verificação em 2 Passos está ativa.
+    2. Visite [myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords).
+    3. Clique em **Selecionar app**, escolha **Mail** (ou introduza um nome personalizado), depois clique em **Selecionar dispositivo** e escolha a sua configuração.
+    4. Clique em **Criar** — o Google gera uma palavra-passe de app com 16 caracteres.
+    5. Copie a palavra-passe e cole-a no campo **Palavra-passe** nas definições SMTP do AgencyHandy.
+
+    <Warning>
+      Utilize a **palavra-passe de app**, não a sua palavra-passe normal da conta Google. Usar a palavra-passe normal falhará se a 2FA estiver ativada e pode desencadear alertas de segurança.
+    </Warning>
+  </Step>
+  <Step title="Confirmar a configuração">
+    Após guardar, o AgencyHandy apresenta uma mensagem de sucesso confirmando _"O SMTP foi criado com sucesso."_ Os detalhes guardados de host, nome de utilizador e porta aparecem na página de definições SMTP.
+  </Step>
+  <Step title="Testar a ligação SMTP">
+    Clique no botão **Testar** e introduza um endereço de email de destinatário. O AgencyHandy envia um email de teste para esse endereço. Verifique a caixa de entrada para a mensagem de confirmação: _"Esta é uma confirmação de que a sua configuração de email no Agency Handy está a funcionar corretamente."_
+  </Step>
+</Steps>
+
+<Tip>
+  Apenas uma configuração SMTP pode estar ativa por workspace de cada vez. Uma vez configurado o SMTP, todos os emails de saída do AgencyHandy — faturas, propostas, notificações de tarefas — serão enviados através do seu servidor SMTP.
+</Tip>
+
+---
+
+## Parte 4: Personalizar Modelos de Email
+
+O AgencyHandy inclui modelos pré-construídos para cada email automático que envia. Pode personalizar cada um para corresponder ao tom da sua marca e incluir conteúdo dinâmico relevante.
+
+**Os modelos disponíveis incluem:**
+- Registo de Cliente
+- Enviar Proposta
+- Revisão de Tarefa
+- Enviar Fatura
+- Lembretes de Fatura e Subscrição
+- Notificações de Criação de Ticket
+
+<Steps>
+  <Step title="Abrir Modelos de Email">
+    Aceda a **Workspace Config → Emails** e selecione **Modelo de Email** no submenu.
+  </Step>
+  <Step title="Selecionar um modelo para editar">
+    A lista completa de modelos disponíveis é apresentada. Clique em qualquer modelo para abrir a sua página de configuração.
+  </Step>
+  <Step title="Personalizar os campos do modelo">
+    Atualize o seguinte conforme necessário:
+    - **Email do Remetente:** Escolha qual o endereço de email configurado que envia este modelo.
+    - **Assunto:** Escreva uma linha de assunto clara e concisa.
+    - **Corpo:** Edite o conteúdo da mensagem para corresponder ao tom e mensagens da sua agência.
+    - **Variáveis Dinâmicas:** Insira marcadores de posição como `{{client_name}}`, `{{company_name}}` ou `{{invoice_id}}` para preencher automaticamente dados específicos do cliente.
+    - **Links de Redes Sociais:** Adicione links para os perfis sociais da sua agência para incentivar o envolvimento.
+  </Step>
+  <Step title="Enviar um email de teste">
+    Clique em **Enviar Teste** para enviar uma pré-visualização do modelo para a sua caixa de entrada. Verifique a formatação, o conteúdo e que todas as variáveis dinâmicas são resolvidas corretamente.
+  </Step>
+  <Step title="Guardar as alterações">
+    Clique em **Guardar Alterações** para aplicar o modelo atualizado. A nova versão será utilizada em todos os emails automáticos futuros correspondentes a esse tipo de modelo.
+  </Step>
+</Steps>
+
+---
+
+## Notas Importantes
+
+- **SMTP e email personalizado são mutuamente exclusivos.** Apenas um método pode estar ativo de cada vez por workspace.
+- **Reintroduzir email ao mudar.** Se mudar de SMTP para uma configuração de email personalizado, tem de reintroduzir as suas credenciais de email personalizado.
+- **Credenciais SMTP incorretas bloqueiam todos os emails de saída.** Verifique novamente o nome do host, a porta, o nome de utilizador e a palavra-passe se os emails deixarem de ser enviados após uma alteração SMTP.
+- **A propagação de DKIM/SPF demora algum tempo.** Aguarde até 2 horas e atualize a página de Configuração de Email antes de concluir que existe um erro.
+- **As variáveis dinâmicas são sensíveis a maiúsculas e minúsculas.** Utilize-as exatamente como mostrado no editor de modelos para garantir que são preenchidas corretamente.

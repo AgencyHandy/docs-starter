@@ -1,0 +1,218 @@
+---
+title: "Klientų valdymas: profiliai, importavimas ir konfigūravimas"
+sidebarTitle: "Klientai"
+description: "Kurkite ir importuokite klientų profilius AgencyHandy, sekite užsakymus ir sąskaitas faktūras, valdykite portalo prieigą ir organizuokite klientus pagal kategorijas."
+---
+
+AgencyHandy CRM klientų sekcija yra jūsų centralizuotas centras kiekvienai organizacijai ar asmeniui, kuris perėjo perspektyvos etapą. Čia galite kurti klientų profilius rankiniu būdu arba masiniu, laikyti kontaktinę informaciją atnaujintą, sekti naujausius užsakymus ir sąskaitas faktūras, segmentuoti klientus į pasirinktines kategorijas ir stebėti portalo prieigą — visa tai iš vieno sąrašo rodinio.
+
+<Note>
+  Norint kurti, redaguoti, importuoti ar konfigūruoti klientų profilius, reikia **Super administratoriaus** arba **Administratoriaus** vaidmens. Vadybininkai gali peržiūrėti klientų duomenis ir veiklos žurnalus.
+</Note>
+
+## Kliento profilio kūrimas
+
+Kai suregistruojate naują klientą, AgencyHandy sukuria jam portalo paskyrą ir siunčia saugų prisijungimo kvietimą.
+
+<Steps>
+  <Step title="Eikite į Klientai">
+    Prisijunkite prie AgencyHandy paskyros, tada kairėje šoninėje juostoje spustelėkite **CRM** ir pasirinkite skirtuką **Klientai**.
+  </Step>
+  <Step title="Atidarykite kūrimo formą">
+    Viršutiniame dešiniajame kampe spustelėkite **+ Sukurti klientą**. Atsidaro forma.
+  </Step>
+  <Step title="Įveskite kliento informaciją">
+    Užpildykite kliento duomenis:
+
+    - **Vardas / Pavardė** *(privaloma)*
+    - **El. paštas** *(privaloma — naudojamas portalo kvietimui siųsti)*
+    - **Įmonės pavadinimas**
+    - **Telefono numeris**
+    - **Šalis, valstybė, miestas, pašto kodas**
+    - **Kategorija** — priskirti esamą konfigūracijos kategoriją, jei taikytina
+  </Step>
+  <Step title="Išsaugokite profilį">
+    Spustelėkite **Kurti**. Profilis nedelsiant pridedamas prie jūsų klientų sąrašo.
+  </Step>
+</Steps>
+
+<Note>
+  Sukūrę profilį, klientas gauna el. laišką su saugiu prisijungimo URL. Paspaudus tą URL, aktyvuojama jo portalo paskyra ir leidžiama pirmą kartą prisijungti.
+</Note>
+
+## Klientų importavimas iš CSV
+
+Jei migruojate iš kitos platformos arba turite esamų klientų skaičiuoklę, galite importuoti juos visus vienu metu.
+
+<Steps>
+  <Step title="Spustelėkite Importuoti">
+    Klientų sąraše viršutiniame dešiniajame kampe spustelėkite mygtuką **Importuoti**.
+  </Step>
+  <Step title="Įkelkite CSV failą">
+    Nuvilkite failą ant įkėlimo srities arba spustelėkite, kad naršytumėte ir pasirinktumėte. AgencyHandy priima CSV failus su šiais laukais:
+
+    - Kliento vardas *(privaloma)*
+    - El. paštas *(privaloma)*
+    - Įmonės pavadinimas
+    - Šalis
+    - Valstybė
+    - Miestas
+    - Pašto kodas
+  </Step>
+  <Step title="Susiekite stulpelius">
+    AgencyHandy automatiškai aptinka stulpelių pavadinimus, atitinkančius jo laukų pavadinimus. Bet kuriems neatpažintiems stulpeliams naudokite išskleidžiamuosius meniu, kad rankiniu būdu susietumėte juos su teisingais sistemos laukais.
+  </Step>
+  <Step title="Peržiūrėkite ir patvirtinkite">
+    Peržiūrėkite peržiūros lentelę, kad aptiktumėte formatavimo problemas prieš išsaugant duomenis.
+  </Step>
+  <Step title="Užbaikite importavimą">
+    Spustelėkite **Išsaugoti**. Sėkmingai importavus visus įrašus, pasirodo patvirtinimo pranešimas.
+  </Step>
+</Steps>
+
+<Tip>
+  Jei jūsų skaičiuoklės stulpelių antraštės tiksliai atitinka AgencyHandy laukų pavadinimus (pvz., „email“, „company name“), susiejimas užsipildo automatiškai — rankinis atitikimas nereikalingas.
+</Tip>
+
+## Klientų eksportavimas
+
+Sukurkite atsarginę kopiją klientų duomenų bazės arba bendrinkite ją su suinteresuotais šalimis eksportuodami į CSV arba Excel.
+
+<Steps>
+  <Step title="Spustelėkite Eksportuoti">
+    Klientų sąraše viršutiniame dešiniajame kampe spustelėkite mygtuką **Eksportuoti**.
+  </Step>
+  <Step title="Tinkinkite eksportą">
+    Pasirinkite, kuriuos stulpelius įtraukti — pasirinkite **Visi stulpeliai** pilnam eksportui arba pasirinkite konkrečius laukus, pvz., vardą, kontaktinius duomenis, įmonę arba adresą.
+  </Step>
+  <Step title="Pasirinkite formatą">
+    Pasirinkite **CSV** arba **XLSX**, atsižvelgdami į numatomą naudojimą.
+  </Step>
+  <Step title="Atsisiųskite failą">
+    Spustelėkite **Eksportuoti**. Failas sugeneruojamas ir atsiunčiamas į jūsų įrenginį. Saugiai jį laikykite, kad apsaugotumėte klientų duomenis.
+  </Step>
+</Steps>
+
+## Kliento profilio redagavimas
+
+<Steps>
+  <Step title="Pasirinkite klientą">
+    Klientų sąraše pažymėkite langelį šalia kliento, kurį norite atnaujinti, arba tiesiogiai spustelėkite jo vardą, kad atidarytumėte profilį.
+  </Step>
+  <Step title="Įjunkite redagavimo režimą">
+    Kliento profilio viršutiniame dešiniajame kampe spustelėkite mygtuką **Redaguoti**. Atsiranda redagavimo forma.
+  </Step>
+  <Step title="Atnaujinkite informaciją">
+    Keiskite bet kuriuos laukus — vardą, el. paštą, telefoną, adresą, įmonę arba kategoriją.
+  </Step>
+  <Step title="Išsaugokite pakeitimus">
+    Spustelėkite **Atnaujinti**. Patvirtinimo pranešimas patvirtina, kad profilis sėkmingai išsaugotas.
+  </Step>
+</Steps>
+
+## Paieška, rikiavimas ir filtravimas
+
+Klientų sąrašas suteikia kelis įrankius, kad greitai rastumėte reikiamą klientą:
+
+<CardGroup cols={2}>
+  <Card title="Paieška pagal vardą" icon="magnifying-glass">
+    Paieškos juostoje įveskite kliento vardą, kad akimirksniu filtruotumėte sąrašą.
+  </Card>
+  <Card title="Filtruoti pagal įmonę" icon="building">
+    Susiaurinkite sąrašą iki klientų, susijusių su konkrečia įmone.
+  </Card>
+  <Card title="Filtruoti pagal el. paštą" icon="envelope">
+    Raskite klientą, kai žinote jo el. pašto adresą, bet ne vardą.
+  </Card>
+  <Card title="Filtruoti pagal būseną" icon="circle-check">
+    Rodykite tik aktyvius, neaktyvius arba pakviestus klientus.
+  </Card>
+  <Card title="Rikiuoti abėcėliškai" icon="arrow-down-a-z">
+    Rikiuokite visą klientų sąrašą nuo A iki Z arba nuo Z iki A pagal vardą, kad greitai jį peržiūrėtumėte.
+  </Card>
+  <Card title="Filtruoti pagal kategoriją" icon="tag">
+    Rodykite tik klientus, priskirtus konkrečiai konfigūracijos kategorijai.
+  </Card>
+</CardGroup>
+
+## Kliento veiklos sekimas
+
+Kiekviename kliento profilyje rasite skirtukus, kurie pateikia gyvą kliento įsitraukimo su jūsų agentūra vaizdą:
+
+<Accordion title="Naujausi užsakymai">
+  Peržiūrėkite visų kliento pateiktų užsakymų istoriją, įskaitant paslaugos pavadinimą, paketą, būseną ir datą. Tai suteikia greitą jo pirkimo istorijos momentinę nuotrauką neišeinant iš CRM.
+</Accordion>
+
+<Accordion title="Naujausi bilietai">
+  Peržiūrėkite visus kliento pateiktus palaikymo ar paslaugų bilietus. Naudokite šį rodinį, kad teiktumėte pirmenybę atsakymams ir užtikrintumėte, kad nė vienas prašymas nebūtų praleistas.
+</Accordion>
+
+<Accordion title="Naujausioms sąskaitos faktūros">
+  Peržiūrėkite visų klientui sugeneruotų sąskaitų faktūrų žurnalą, įskaitant mokėjimo būseną. Tai padeda stebėti neapmokėtus likučius ir sąskaitų faktūrų istoriją vienoje vietoje.
+</Accordion>
+
+## Klientų konfigūravimas (kategorijos)
+
+Klientų konfigūravimas leidžia jums kurti spalvomis pažymėtas kategorijas, kad segmentuotumėte klientų sąrašą — pavyzdžiui, *Aukštas prioritetas*, *Retaineris* arba *Laukiama*. Kategorijos rodomi kaip filtravimo parinktys klientų sąraše, kad galėtumėte akimirksniu matyti reikiamą grupę.
+
+<Steps>
+  <Step title="Atidarykite konfigūraciją">
+    Klientų sekcijoje spustelėkite mygtuką **Konfigūracija**.
+  </Step>
+  <Step title="Sukurkite naują kategoriją">
+    Spustelėkite **+ Sukurti kategoriją**.
+  </Step>
+  <Step title="Įveskite kategorijos duomenis">
+    - **Kategorijos pavadinimas** — unikalus, aprašomasis ženklas (pvz., *Įmonių klientai*)
+    - **Trumpas aprašymas** — trumpa pastaba, paaiškinanti kategorijos paskirtį
+    - **Spalva** — pasirinkite aiškią spalvą greičiau vizualiniam atpažinimui
+  </Step>
+  <Step title="Išsaugokite kategoriją">
+    Spustelėkite **Kurti**. Kategorija dabar prieinama priskiriant klientų profilius.
+  </Step>
+  <Step title="Priskirkite klientus kategorijai">
+    Atidarykite bet kurį kliento profilį, spustelėkite **Redaguoti**, pasirinkite lauką **Kategorija** ir pasirinkite atitinkamą kategoriją. Spustelėkite **Atnaujinti**, kad išsaugotumėte.
+  </Step>
+</Steps>
+
+<Tip>
+  Naudokite nuoseklias spalvų konvencijas kategorijose — pavyzdžiui, raudona aukšto skubumo klientams ir žalia visiškai suregistruotoms paskyroms — kad sąrašas būtų lengvai skaitomas iš pirmo žvilgsnio.
+</Tip>
+
+## Kliento veiklos žurnalas
+
+Veiklos žurnalas įrašo kiekvieną kliento portalo paskyros prisijungimo ir atsijungimo įvykį, suteikdamas jums aiškų jo įsitraukimo audito taką.
+
+**Žurnalo peržiūra:**
+
+1. Eikite į **Klientai** ir atidarykite konkretaus kliento profilį.
+2. Profilio viršutinėje naršymo juostoje spustelėkite skirtuką **Veiklos žurnalas**.
+3. Peržiūrėkite chronologinį autentifikavimo įvykių sąrašą.
+
+**Ką rodo žurnalas:**
+
+- Tiksli kiekvieno **prisijungimo** data ir laiko žyma
+- Tiksli kiekvieno **atsijungimo** data ir laiko žyma
+- Veikianti visų autentifikavimo įvykių istorija
+
+Žurnalas atnaujinamas realiuoju laiku ir jo negalima redaguoti ar ištrinti. Klientai neturi prieigos prie savo veiklos žurnalo — jis skirtas tik administratoriaus ir atitikties matomumui.
+
+<Note>
+  Šiame etape veiklos žurnalas fiksuoja tik autentifikavimo įvykius (prisijungimą ir atsijungimą). Portale atlikti veiksmai — pvz., užsakymų peržiūra — čia dar neregistruojami.
+</Note>
+
+## El. laiško siuntimas klientui
+
+Galite siųsti el. laišką bet kuriam klientui tiesiogiai iš jo profilio neišeinant iš AgencyHandy. Atidarykite kliento profilį ir naudokite parinktį **El. paštas**, kad suformuluotumėte savo pranešimą. Laukas **Kam** iš anksto užpildytas kliento el. pašto adresu.
+
+## Kliento imitavimas
+
+Administratoriai gali imituoti kliento paskyrą, kad tiksliai matytų, ką klientas mato savo portale — naudinga sprendžiant prieigos problemas arba vedant klientą per procesą palaikymo skambučio metu. Kliento profilyje ieškokite parinkties **Imituoti**.
+
+<Warning>
+  Naudokite imitavimą tik palaikymo tikslais. Bet kokie veiksmai, atlikti imituojant klientą, atliekami jo vardu ir bus atspindėti jo paskyroje.
+</Warning>
+
+## Įmonių paskyros (B2B)
+
+Jei dirbate su verslo subjektais, o ne asmenimis, bet kuriame kliento profilyje galite nustatyti **Įmonės pavadinimą**, kad sugrupuotumėte kontaktus toje pačioje organizacijoje. Klientų sąrašą galima filtruoti pagal įmonę, todėl lengva vienu metu matyti visus konkrečios paskyros kontaktus.

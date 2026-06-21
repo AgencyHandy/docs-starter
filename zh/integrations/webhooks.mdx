@@ -1,0 +1,196 @@
+---
+title: "Webhook 管理：创建、测试与认证"
+sidebarTitle: "Webhooks"
+description: "在 AgencyHandy 中设置 Webhook，以便在订单、任务、发票或其他实体发生变化时，将实时事件数据推送到外部系统。"
+---
+
+Webhook 让 AgencyHandy 能够在发生变化的那一刻将数据推送到您的外部系统 — 无需轮询。当配置的事件触发时（例如，订单被更新或工单被创建），AgencyHandy 会向您指定的端点 URL 发送一个包含 JSON 负载的 HTTP POST 请求。这使得外部工具（如 CRM、账单系统或自定义仪表板）能够与您的 AgencyHandy 工作区实时保持同步。
+
+<Note>
+  Business Pro 计划的工作区每个计费周期支持最多 **30,000 个 Webhook 事件**。在设置高频自动化之前，请检查您的计划限制。
+</Note>
+
+## 支持的事件
+
+您可以为 Webhook 订阅以下任意组合的事件：
+
+| 类别 | 事件 |
+|---|---|
+| **服务** | 已创建、已更新、已删除 |
+| **订单** | 已创建、已更新、已删除 |
+| **任务** | 已创建、已分配、已完成、已更新 |
+| **发票** | 状态已变更 |
+| **客户 / 用户** | 新客户已添加、客户/用户已删除 |
+| **提案** | 已发送、已接收、已接受、已拒绝 |
+| **工单** | 已创建、已分配、状态已变更 |
+| **付款** | 已收到、已失败 |
+| **服务套餐** | 已创建、已更新、已删除 |
+
+## 创建 Webhook
+
+<Steps>
+  <Step title="导航至 Webhook 管理">
+    在左侧边栏中，前往 **集成 → Webhook 管理**。
+  </Step>
+
+  <Step title="验证您的令牌">
+    点击 **管理** 按钮以验证您的 Webhook 令牌。该令牌用于对出站负载进行签名，以便您验证其来源是否为 AgencyHandy。
+  </Step>
+
+  <Step title="创建新的 Webhook">
+    点击 **创建新 Webhook** 以打开 Webhook 配置表单。
+  </Step>
+
+  <Step title="输入端点 URL">
+    在 **端点 URL** 字段中，输入接收 Webhook 数据的外部系统 URL。这必须是一个可公开访问的 **POST** 端点。
+  </Step>
+
+  <Step title="选择内容类型">
+    选择 **JSON** 作为内容类型。AgencyHandy 以 `application/json` 格式发送所有 Webhook 负载。
+  </Step>
+
+  <Step title="选择 Webhook 事件">
+    选择所有应触发此 Webhook 的事件。您可以从多个类别中选择事件 — 例如，**订单：已创建** 和 **发票：状态已变更** 可以同时指向同一个端点。
+  </Step>
+
+  <Step title="激活 Webhook">
+    切换 **启用** 单选按钮。启用后，AgencyHandy 将实时向您的端点传送所有已选事件的负载。
+  </Step>
+
+  <Step title="保存配置">
+    检查您的设置，然后点击 **保存**。Webhook 将出现在列表中并立即开始传送事件。
+  </Step>
+</Steps>
+
+## 测试 Webhook
+
+创建 Webhook 后，发送一个测试负载以确认您的端点可访问且能正确处理数据。
+
+<Steps>
+  <Step title="打开 Webhook">
+    在 Webhook 管理列表中，点击您要测试的 Webhook。
+  </Step>
+
+  <Step title="点击测试事件">
+    在 Webhook 详情页面上点击 **测试事件** 按钮。
+  </Step>
+
+  <Step title="选择测试事件">
+    从该 Webhook 配置的事件列表中选择一个示例事件（例如，**订单：已创建**）。
+  </Step>
+
+  <Step title="发送测试负载">
+    点击 **发送**。AgencyHandy 将向您的端点 URL 发布一个示例负载。
+  </Step>
+
+  <Step title="验证结果">
+    检查您的外部系统以确认测试负载已到达并按预期处理。在 AgencyHandy 中，点击进入该 Webhook 查看其**历史记录** — 您可以查看完整请求、端点返回的响应，以及在需要时重新传送任何历史事件。
+  </Step>
+</Steps>
+
+<Tip>
+  在设置过程中，使用 [Webhook.site](https://webhook.site) 或 [RequestBin](https://requestbin.com) 之类的工具作为临时端点，以便在接入真实系统之前检查确切的负载结构。
+</Tip>
+
+## 验证 Webhook 负载
+
+AgencyHandy 的每个出站 Webhook 请求都包含一个签名标头，您的端点可以使用它来验证负载是否真实且未被篡改。
+
+### 签名标头
+
+```
+x-ah-sig: <signature>
+```
+
+AgencyHandy 在每个 Webhook 请求中添加此标头。从传入请求中提取该值并将其传递给验证端点。
+
+### 验证 Webhook 签名
+
+发送以下请求以确认负载的真实性：
+
+```
+POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature
+Content-Type: application/json
+```
+
+<ParamField body="webhookId" type="string" required>
+  接收事件的 Webhook ID。在 AgencyHandy 的 Webhook 详情页面中可以找到此 ID。
+</ParamField>
+
+<ParamField body="signature" type="string" required>
+  传入 Webhook 请求中 `x-ah-sig` 标头的值。
+</ParamField>
+
+<ParamField body="secret" type="string" required>
+  AgencyHandy Webhook 详情页面上显示的 Webhook 密钥。
+</ParamField>
+
+<ParamField body="payload" type="object" required>
+  从 AgencyHandy Webhook 请求中收到的原始 JSON 主体。
+</ParamField>
+
+<CodeGroup>
+
+```javascript JavaScript
+const url = 'https://api.agencyhandy.com/api/v1/webhooks/verify-signature';
+
+const postData = {
+  webhookId: 'your_webhook_id',
+  signature: 'your_signature',   // value of x-ah-sig header
+  secret: 'your_webhook_secret',
+  payload: {},                   // the parsed JSON body from AgencyHandy
+};
+
+const response = await fetch(url, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(postData),
+});
+
+const data = await response.json();
+console.log(data); // { "verification_status": "SUCCESS" }
+```
+
+```bash cURL
+curl -X POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature \
+  -H "Content-Type: application/json" \
+  -d '{
+    "webhookId": "your_webhook_id",
+    "signature": "your_signature",
+    "secret": "your_webhook_secret",
+    "payload": {}
+  }'
+```
+
+</CodeGroup>
+
+**响应**
+
+<ResponseField name="verification_status" type="string">
+  签名有效时返回 `SUCCESS`。验证失败时返回 `FAILED`（HTTP 403）。
+</ResponseField>
+
+```json Success (200)
+{
+  "verification_status": "SUCCESS"
+}
+```
+
+```json Failure (403)
+{
+  "type": "PermissionError",
+  "status": 403,
+  "verification_status": "FAILED"
+}
+```
+
+<Warning>
+  请妥善保管您的 Webhook 密钥。定期轮换密钥，并在轮换后立即更新您的验证逻辑。切勿在客户端代码或公开仓库中暴露密钥。
+</Warning>
+
+## 重要说明
+
+- 您的端点 URL 必须是**可公开访问的 HTTPS POST** URL。
+- 如果您的端点暂时不可用，请在 AgencyHandy 中查看 Webhook 的历史面板 — 您可以直接从那里**重新传送**任何历史事件。
+- 定期监控 Webhook 活动，以检测传送失败或未授权访问尝试。
+- 多次失败的 Webhook 可能会被 AgencyHandy 暂停 — 请检查传送日志以尽早发现问题。

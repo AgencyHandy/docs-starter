@@ -1,0 +1,205 @@
+---
+title: "AgencyHandy API: PUT দিয়ে বিদ্যমান অর্ডার আপডেট করুন"
+sidebarTitle: "অর্ডার আপডেট করুন"
+description: "PUT অনুরোধের মাধ্যমে বিদ্যমান অর্ডারের বিবরণ আপডেট করতে, স্ট্যাটাস পরিবর্তন করতে, প্রজেক্ট ম্যানেজার পুনরায় নিয়োগ দিতে এবং ফাইল সংযুক্ত করতে AgencyHandy API ব্যবহার করুন।"
+---
+
+Update Order এন্ডপয়েন্ট আপনাকে AgencyHandy-তে একটি বিদ্যমান অর্ডার (প্রকল্প) পরিবর্তন করতে দেয় — এর নাম, স্ট্যাটাস, বাজেট, সময়সীমা, নিযুক্ত ম্যানেজার এবং আরও অনেক কিছু — সবই একটি বাহ্যিক সিস্টেম বা অটোমেশন স্ক্রিপ্ট থেকে। এন্ডপয়েন্টটি ফাইল সংযুক্তিও সমর্থন করে, যা অর্ডারের সিস্টেম ফোল্ডারে যুক্ত হয়।
+
+<Note>
+  এই এন্ডপয়েন্ট ব্যবহার করার আগে, আপনার API কী এবং Company ID পেতে [শুরু করা](/bn/api/getting-started) গাইড সম্পন্ন করুন।
+</Note>
+
+<Warning>
+  এই এন্ডপয়েন্ট শুধু `x-api-key` হেডারের পরিবর্তে `Authorization: Bearer <token>` (একজন সাইন-ইন করা সদস্যের অ্যাক্সেস টোকেন) ব্যবহার করে। নিশ্চিত করুন যে আপনার কলার লক্ষ্য কোম্পানির একজন **অনুমোদিত সদস্য** হিসেবে প্রমাণীকৃত। অননুমোদিত কলার `403 PermissionError` পাবে।
+</Warning>
+
+## পূর্বশর্তসমূহ
+
+- ✅ একজন অনুমোদিত ওয়ার্কস্পেস সদস্যের জন্য একটি বৈধ **Bearer টোকেন**
+- ✅ `GET {{URL}}/accounts/companies` থেকে **Company ID** পুনরুদ্ধার করা হয়েছে
+- ✅ আপনি যে অর্ডার আপডেট করতে চান তার **Order ID** (Project ID, `pid`)
+
+---
+
+## এন্ডপয়েন্ট
+
+```
+PUT {{URL}}/orders?pid=<ORDER_ID>
+```
+
+**Content-Type:** `multipart/form-data` — কোনো ফাইল সংযুক্ত না থাকলেও সার্ভারের মাল্টিপার্ট পার্সার সন্তুষ্ট করতে এটি ব্যবহার করুন।
+
+## হেডার
+
+| হেডার | প্রয়োজনীয় | বিবরণ |
+|---|---|---|
+| `Authorization` | হ্যাঁ | `Bearer <ACCESS_TOKEN>` — সাইন-ইন করা সদস্যের অ্যাক্সেস টোকেন। |
+| `companyid` | হ্যাঁ | অর্ডারটি যে কোম্পানির সেটির Mongo ObjectId। |
+| `clientid` | ঐচ্ছিক | রিয়েল-টাইম ক্লায়েন্ট সকেট ID। সরবরাহ করা হলে, নোটিফিকেশনে এটি অন্তর্ভুক্ত হয়। |
+
+## কুয়েরি প্যারামিটার
+
+<ParamField query="pid" type="string" required>
+  আপডেট করার অর্ডার / প্রকল্প ID। এটি একটি কুয়েরি স্ট্রিং প্যারামিটার হিসেবে পাস করুন।
+</ParamField>
+
+## অনুরোধের বডি ক্ষেত্রসমূহ
+
+<ParamField body="name" type="string">
+  অর্ডারের শিরোনাম আপডেট করে। ন্যূনতম ২ ক্যারেক্টার।
+</ParamField>
+
+<ParamField body="status" type="string">
+  অর্ডারের নতুন স্ট্যাটাস। অবশ্যই এর মধ্যে একটি হতে হবে: `Pending`, `Ongoing`, `Review`, `Completed`, `Cancelled`।
+
+  **অনুমোদিত ট্রানজিশন:**
+  - `Review` শুধুমাত্র `Ongoing` বা অন্য `Review`-এর পরে আসতে পারে। `Pending` থেকে সরাসরি `Review`-এ লাফ দিলে `400 ValidationError` ফেরত আসে।
+  - ইতিমধ্যে `Completed` বা `Cancelled` অর্ডার আপডেট করা যাবে না।
+  - ক্লায়েন্টরা `Pending` পেরিয়ে গেছে এমন অর্ডার বাতিল করতে পারবে না।
+</ParamField>
+
+<ParamField body="budget" type="number">
+  মোট বাজেটের সংখ্যা। `≥ 0` হতে হবে। `currency`-ও প্রদান না করা হলে অর্ডারের বিদ্যমান মুদ্রা ব্যবহার করে।
+</ParamField>
+
+<ParamField body="currency" type="string">
+  বাজেটের মুদ্রা কোড। উদাহরণ: `USD`, `CAD`, `EUR`।
+</ParamField>
+
+<ParamField body="quantity" type="number">
+  প্যাকেজের জন্য কেনা ইউনিটের সংখ্যা। `≥ 1` হতে হবে।
+</ParamField>
+
+<ParamField body="deadline" type="string">
+  অর্ডারের নির্ধারিত তারিখের জন্য ISO 8601 তারিখ স্ট্রিং। উদাহরণ: `"2025-12-31T00:00:00.000Z"`।
+</ParamField>
+
+<ParamField body="kickoffDate" type="string">
+  প্রকল্পের শুরুর তারিখের জন্য ISO 8601 তারিখ স্ট্রিং।
+</ParamField>
+
+<ParamField body="notes" type="string">
+  আপনার দলের কাছে দৃশ্যমান অভ্যন্তরীণ নোট।
+</ParamField>
+
+<ParamField body="brief" type="string">
+  ক্লায়েন্ট ব্রিফ বা প্রকল্পের সারসংক্ষেপ।
+</ParamField>
+
+<ParamField body="assignedProjectManagers" type="array">
+  এই অর্ডারে নিয়োগ দেওয়ার প্রজেক্ট ম্যানেজার সদস্য IDগুলির সম্পূর্ণ তালিকা। নতুন IDগুলি দলে যোগ করা হয়; সরানো IDগুলি মুছে যায়। প্রতিটি ID একই কোম্পানির `projectManager` ভূমিকার একজন সদস্যের হতে হবে।
+</ParamField>
+
+<ParamField body="markTasksAsDone" type="boolean">
+  `status` যখন `Completed` বা `Cancelled` হয় তখন **প্রয়োজনীয়**। `true` হলে, স্ট্যাটাস পরিবর্তনের পরে অর্ডারের সমস্ত টাস্ক সম্পন্ন হিসেবে চিহ্নিত হয়। `false` হলে, টাস্কগুলি তাদের বর্তমান অবস্থায় থাকে।
+</ParamField>
+
+<ParamField body="rejectRequestedTasks" type="boolean">
+  শুধুমাত্র `status` `Completed` বা `Cancelled` হলে অনুমোদিত। `true` হলে, স্ট্যাটাস আপডেটের পরে সমস্ত বকেয়া ক্লায়েন্ট-অনুরোধকৃত টাস্ক প্রত্যাখ্যাত হয়।
+</ParamField>
+
+<ParamField body="repeatCount" type="number">
+  পুনরাবৃত্তি ফ্রিকোয়েন্সি পরিবর্তন করার সময় শুধুমাত্র **সাবস্ক্রিপশন** অর্ডারের জন্য প্রয়োজনীয়। `repeatDuration`-এর সাথে জোড়া লাগান।
+</ParamField>
+
+<ParamField body="repeatDuration" type="string">
+  সাবস্ক্রিপশন অর্ডারের জন্য `repeatCount`-এর পাশাপাশি প্রয়োজনীয়। এর মধ্যে একটি: `day`, `week`, `month`, `year`।
+</ParamField>
+
+<ParamField body="billingCycleCount" type="number">
+  পুনরাবৃত্ত বিলিং সাইকেলের ঐচ্ছিক সীমা। `0`-তে ডিফল্ট (কোনো সীমা নেই)।
+</ParamField>
+
+<ParamField body="billingCycleEvent" type="string">
+  প্রতিটি বিলিং সাইকেল কীভাবে পরিচালিত হয়। এর মধ্যে একটি: `createOrderWithTask`, `noChange`।
+</ParamField>
+
+<ParamField body="files" type="file">
+  শূন্য বা তার বেশি ফাইল সংযুক্তি। ফাইলগুলি অর্ডারের সিস্টেম ফোল্ডারে যুক্ত হয়; বিদ্যমান ফাইলগুলি কখনও ওভাররাইট হয় না। `multipart/form-data` এনকোডিং ব্যবহার করুন এবং `files` ফিল্ডের অধীনে প্রতিটি ফাইল সংযুক্ত করুন।
+</ParamField>
+
+---
+
+## উদাহরণ অনুরোধ
+
+<CodeGroup>
+
+```bash cURL (no files)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "currency=USD" \
+  --form "quantity=1" \
+  --form "assignedProjectManagers[]=PROJECT_MANAGER_ID" \
+  --form "notes=Scope finalized with client." \
+  --form "brief=Launch-ready design refresh."
+```
+
+```bash cURL (with file)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "repeatCount=3" \
+  --form "repeatDuration=month" \
+  --form "billingCycleEvent=createOrderWithTask" \
+  --form "files=@/path/to/creative-brief.pdf"
+```
+
+</CodeGroup>
+
+**সমতুল্য JSON পেলোড** (ফাইল পাঠানোর সময় মাল্টিপার্ট ফর্ম এন্ট্রিতে রূপান্তর করুন):
+
+```json
+{
+  "name": "Website Redesign",
+  "status": "Review",
+  "budget": 12000,
+  "currency": "USD",
+  "quantity": 1,
+  "assignedProjectManagers": ["{{PROJECT_MANAGER_ID}}"],
+  "repeatCount": 3,
+  "repeatDuration": "month",
+  "billingCycleEvent": "createOrderWithTask",
+  "notes": "Scope finalized with client.",
+  "brief": "Launch-ready design refresh."
+}
+```
+
+---
+
+## প্রতিক্রিয়াসমূহ
+
+| HTTP স্ট্যাটাস | বিবরণ |
+|---|---|
+| `200 OK` | আপডেট সফল হয়েছে। |
+| `400 ValidationError` | অবৈধ অর্ডার ID, অবরুদ্ধ স্ট্যাটাস ট্রানজিশন, বা বিকৃত পেলোড। প্রাসঙ্গিক হলে প্রতিক্রিয়ায় `fieldName` অন্তর্ভুক্ত থাকে। |
+| `403 PermissionError` | কলার একজন অনুমোদিত সদস্য নয়, কোম্পানির ভূমিকা নেই, ওয়ার্কস্পেস সাবস্ক্রিপশন মেয়াদ শেষ হয়েছে, বা একজন ক্লায়েন্ট একটি নিষিদ্ধ বাতিলের চেষ্টা করেছে। |
+| `500 Internal Server Error` | অপরিচালিত ব্যতিক্রম — সার্ভার লগ পরীক্ষা করুন। |
+
+### সফলতার প্রতিক্রিয়া
+
+```json
+{
+  "message": "Project has been updated"
+}
+```
+
+---
+
+## ব্যবসায়িক নিয়ম এবং পার্শ্ব-প্রতিক্রিয়া
+
+- **স্ট্যাটাস ট্রানজিশন** সীমাবদ্ধ। `Review` শুধুমাত্র `Ongoing` বা অন্য `Review`-এর পরে আসতে পারে। `Pending → Review` চেষ্টা করলে `400 ValidationError` ফেরত আসে।
+- `Pending` থেকে `Ongoing`, `Review`, বা `Completed`-এ স্ট্যাটাস সরানো অর্ডারের ফাইল ফোল্ডার সক্রিয় করে যাতে আপলোড করা ফাইলগুলি প্রকল্প দলের কাছে অ্যাক্সেসযোগ্য হয়।
+- `status`-কে `Completed` বা `Cancelled`-এ সেট করলে `markTasksAsDone`-কে স্পষ্টভাবে `true` বা `false`-এ সেট করতে **হবে**।
+- `Review`, `Completed`, বা `Cancelled`-এ স্ট্যাটাস পরিবর্তন স্বয়ংক্রিয়ভাবে ক্লায়েন্ট নোটিফিকেশন ট্রিগার করে:
+  - **Review** — ক্লায়েন্টকে জানায় যে পর্যালোচনা প্রয়োজন।
+  - **Completed** — ক্লায়েন্টকে `orderCompletion` নোটিফিকেশন পাঠায়।
+  - **Cancelled** — ক্লায়েন্টকে `orderCancellation` নোটিফিকেশন পাঠায়।
+- প্রতিটি সফল আপডেট `ORDER.UPDATED` webhook ইভেন্ট ফায়ার করে আপডেট করা অর্ডার ডকুমেন্ট এবং সংযুক্তি মেটাডেটা সহ, যদি আপনার কাছে সেই ইভেন্টে সাবস্ক্রাইব করা একটি সক্রিয় webhook থাকে।

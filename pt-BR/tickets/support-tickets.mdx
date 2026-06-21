@@ -1,0 +1,162 @@
+---
+title: "Tickets de Suporte — Gerencie as Solicitações dos Clientes no AgencyHandy"
+sidebarTitle: "Tickets de Suporte"
+description: "Crie, edite e gerencie tickets de suporte no AgencyHandy para rastrear solicitações de clientes, definir prioridades, atribuir status e manter um histórico completo de interações."
+---
+
+O recurso de Tickets do AgencyHandy oferece à sua agência uma maneira estruturada de lidar com dúvidas, problemas e solicitações dos clientes. Em vez de deixar perguntas se perderem em e-mails ou threads de conversa, cada solicitação de suporte fica em um ticket com assunto, prioridade, responsável e status — tudo pesquisável e rastreável em um único painel. Tanto sua equipe quanto seus clientes podem criar tickets, e o histórico completo de cada ticket é preservado para que nada seja perdido.
+
+## Acessando o Painel de Tickets
+
+Clique em **Tickets** na barra lateral esquerda para abrir o Painel de Tickets. A partir daqui você pode:
+
+- Criar, editar e excluir tickets
+- Pesquisar tickets por **assunto**, **nome do cliente** ou **ID do pedido**
+- Visualizar o status e a prioridade dos tickets de forma rápida
+- Monitorar todos os tickets abertos, em espera e encerrados da agência
+
+## O que os Tickets Fazem
+
+<CardGroup cols={3}>
+  <Card title="Gerenciamento de Solicitações de Suporte" icon="headset">
+    Clientes e membros da equipe da agência podem enviar dúvidas, problemas ou solicitações pelo sistema de tickets. Cada envio é registrado e rastreado.
+  </Card>
+  <Card title="Acompanhamento de Resolução de Problemas" icon="circle-check">
+    Atribua tickets a membros da equipe, defina prioridades e atualize os status conforme o trabalho avança em direção à resolução. Todos ficam informados.
+  </Card>
+  <Card title="Histórico de Comunicação" icon="clock-rotate-left">
+    Cada ticket mantém um histórico completo de ações, atualizações e interações. Revise comunicações anteriores a qualquer momento para contexto ou fins de auditoria.
+  </Card>
+</CardGroup>
+
+## Criando um Ticket
+
+Tanto os membros da equipe da agência quanto os clientes podem criar tickets. O processo de criação é o mesmo para ambos.
+
+**Quem pode criar tickets:** Super Admin, Admin, PM e Cliente.
+
+<Steps>
+  <Step title="Abra o Painel de Tickets">
+    Clique em **Tickets** na barra lateral esquerda.
+  </Step>
+  <Step title="Clique em + Criar Ticket">
+    Clique no botão **+ Criar Ticket**. Um formulário será exibido.
+  </Step>
+  <Step title="Selecione o cliente">
+    Escolha o nome do cliente na lista suspensa. Isso vincula o ticket ao perfil correto do cliente.
+  </Step>
+  <Step title="Vincule a um pedido (opcional)">
+    Insira o **ID do pedido** para associar o ticket a um pedido específico. Isso é útil para problemas relacionados a faturamento ou projetos. Você também pode criar um ticket sem ID do pedido para consultas gerais.
+  </Step>
+  <Step title="Preencha os detalhes do ticket">
+    Complete os seguintes campos:
+
+    | Campo | Descrição |
+    |-------|-------------|
+    | **Assunto** | Um título breve e descritivo para o ticket |
+    | **Descrição** | Uma explicação detalhada do problema ou solicitação |
+    | **Nome do Responsável** | O membro da equipe responsável por resolver este ticket |
+    | **Prioridade** | Nível de urgência: Máxima, Alta, Normal, Baixa ou Mínima |
+    | **Data de Emissão** | A data em que o ticket foi criado (registrada automaticamente) |
+    | **Status** | Estado atual: Aberto, Em Espera ou Encerrado |
+  </Step>
+  <Step title="Clique em Criar">
+    Clique em **Criar** para salvar o ticket. Ele aparecerá no Painel de Tickets imediatamente.
+  </Step>
+</Steps>
+
+## Status dos Tickets
+
+Os tickets passam por três status conforme o trabalho avança:
+
+| Status | Significado |
+|--------|---------|
+| **Aberto** | O ticket foi enviado e está sendo trabalhado ativamente |
+| **Em Espera** | O trabalho no ticket está temporariamente pausado, geralmente aguardando mais informações |
+| **Encerrado** | O problema foi resolvido e o ticket está arquivado para referência |
+
+<Tip>
+  Use o status **Em Espera** quando estiver aguardando uma resposta do cliente ou uma dependência externa. Isso mantém o ticket visível sem sobrecarregar a fila ativa.
+</Tip>
+
+## Editando um Ticket
+
+Os membros da equipe da agência podem atualizar os detalhes do ticket a qualquer momento para refletir novas informações, mudanças de prioridade ou atualizações de resolução.
+
+**Quem pode editar tickets:** Super Admin, Admin e PM. Os clientes podem criar tickets, mas não podem editá-los.
+
+<Note>
+  Somente tickets criados pelo **lado da agência** podem ser editados. Tickets enviados por clientes não podem ser modificados pelo cliente após o envio.
+</Note>
+
+<Steps>
+  <Step title="Abra o Painel de Tickets">
+    Navegue até **Tickets** na barra lateral esquerda.
+  </Step>
+  <Step title="Selecione o ticket a editar">
+    Marque a caixa de seleção ao lado do ticket que deseja editar. O botão **Editar Ticket** ficará ativo.
+  </Step>
+  <Step title="Clique em Editar Ticket">
+    Clique no botão **Editar Ticket**. O formulário do ticket abrirá com todos os detalhes existentes preenchidos.
+  </Step>
+  <Step title="Faça suas alterações">
+    Atualize quaisquer campos que precisem ser alterados — a descrição, prioridade, responsável, status ou outros detalhes.
+  </Step>
+  <Step title="Salvar">
+    Clique em **Salvar** para aplicar suas alterações. O ticket é atualizado imediatamente no painel.
+  </Step>
+  <Step title="Comunique as atualizações">
+    Se a alteração for significativa — como uma escalada de prioridade ou troca de responsável — notifique os membros relevantes da equipe para que possam responder adequadamente.
+  </Step>
+</Steps>
+
+## Excluindo um Ticket
+
+Remova tickets desatualizados ou desnecessários para manter o painel limpo e relevante.
+
+**Quem pode excluir tickets:** Super Admin, Admin e PM.
+
+<Steps>
+  <Step title="Selecione o ticket">
+    No Painel de Tickets, marque a caixa de seleção ao lado do ticket que deseja excluir. O botão **Excluir** ficará ativo.
+  </Step>
+  <Step title="Clique em Excluir">
+    Clique em **Excluir**. Um modal de confirmação será exibido.
+  </Step>
+  <Step title="Confirme a exclusão">
+    Confirme sua decisão no modal. O ticket é removido permanentemente do sistema.
+  </Step>
+  <Step title="Verifique a remoção">
+    Verifique a lista de tickets ou pesquise pelo ticket por assunto ou ID do pedido para confirmar que ele não existe mais.
+  </Step>
+</Steps>
+
+<Warning>
+  Excluir um ticket é **permanente e não pode ser desfeito**. Antes de excluir, certifique-se de que qualquer comunicação importante ou notas de resolução do ticket tenham sido documentadas em outro lugar.
+</Warning>
+
+## Pesquisando e Filtrando Tickets
+
+Use a barra de pesquisa no topo do Painel de Tickets para encontrar tickets rapidamente. Você pode pesquisar por:
+
+- **Assunto** — o título do ticket
+- **Nome do cliente** — todos os tickets de um cliente específico
+- **ID do pedido** — todos os tickets vinculados a um pedido específico
+
+## Melhores Práticas para Usar Tickets
+
+<Accordion title="Defina níveis de prioridade de forma consistente">
+  Combine uma escala de prioridade com sua equipe antes de começar a criar tickets. Se "Alta" significa coisas diferentes para pessoas diferentes, os fluxos de escalada deixam de funcionar. Use Máxima apenas para problemas que bloqueiam entregas ao cliente.
+</Accordion>
+
+<Accordion title="Vincule tickets a pedidos sempre que possível">
+  Conectar um ticket a um ID do pedido facilita muito o rastreamento de qual problema do cliente está afetando qual projeto. Isso também ajuda ao revisar tickets anteriores de um pedido específico.
+</Accordion>
+
+<Accordion title="Encerre tickets prontamente após a resolução">
+  Assim que um problema for resolvido, altere o status para **Encerrado** imediatamente. Deixar tickets abertos após a resolução infla sua fila ativa e dificulta identificar o trabalho genuinamente em andamento.
+</Accordion>
+
+<Accordion title="Use o status Em Espera para períodos de aguardo">
+  Quando estiver aguardando um cliente ou terceiro, defina o ticket como **Em Espera** em vez de deixá-lo Aberto. Isso dá à sua equipe um sinal claro de que nenhuma ação é necessária até que uma resposta chegue.
+</Accordion>

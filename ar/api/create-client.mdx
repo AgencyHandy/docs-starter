@@ -1,0 +1,137 @@
+---
+title: "واجهة برمجة تطبيقات AgencyHandy: إنشاء عميل جديد برمجيًا"
+sidebarTitle: "إنشاء عميل"
+description: "أضف عملاء جددًا إلى مساحة عمل AgencyHandy برمجيًا عن طريق الإرسال إلى نقطة نهاية bulk-client مع الاسم والبريد الإلكتروني وبيانات الاتصال."
+---
+
+تتيح لك نقطة نهاية إنشاء العميل إضافة عملاء مباشرةً إلى مساحة عمل AgencyHandy من نظام خارجي. على عكس العملاء المحتملين، العملاء هم جهات اتصال مُدرجة بالكامل يمكن تعيينها للطلبات والفواتير والمشاريع. استخدم هذه النقطة النهائية لمزامنة العملاء الجدد من نظام إدارة علاقات العملاء (CRM) أو نموذج الانضمام أو أي مصدر بيانات آخر.
+
+<Note>
+  قبل استخدام هذه النقطة النهائية، أكمل دليل [البدء السريع](/ar/api/getting-started) للحصول على مفتاح API ومعرّف الشركة. على عكس نقطة نهاية إنشاء العميل المحتمل، لا يتطلب إنشاء عميل خطوة بحث منفصلة عن معرّف الدور.
+</Note>
+
+## المتطلبات الأساسية
+
+- ✅ مفتاح API تم إنشاؤه من **تكوين مساحة العمل ← مفتاح API**
+- ✅ معرّف الشركة المسترد من `GET {{URL}}/accounts/companies`
+
+---
+
+## النقطة النهائية
+
+```
+POST {{URL}}/members/bulk-client
+```
+
+## الترويسات
+
+| الترويسة | القيمة |
+|---|---|
+| `x-api-key` | مفتاح API الخاص بك |
+| `companyId` | معرّف الشركة الخاص بك |
+| `Content-Type` | `application/json` |
+
+## نص الطلب
+
+نص الطلب هو **مصفوفة JSON**. يمكنك إنشاء عميل واحد أو أكثر في طلب واحد.
+
+<ParamField body="firstName" type="string" required>
+  الاسم الأول للعميل.
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  الاسم الأخير للعميل.
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  عنوان البريد الإلكتروني للعميل. يجب أن يكون فريدًا داخل مساحة عملك.
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  عيّنه على `false` لعميل جديد تمامًا. عيّنه على `true` عند تحويل عميل محتمل موجود إلى عميل.
+</ParamField>
+
+<ParamField body="status" type="string">
+  حالة العميل. القيم الشائعة: `New`، `Active`. الإعداد الافتراضي `New` إذا تُرك فارغًا.
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  رقم هاتف العميل.
+</ParamField>
+
+<ParamField body="source" type="string">
+  كيف حصلت على هذا العميل. أمثلة على القيم: `website`، `referral`، `social`.
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  موضع العميل داخل عمود اللوحة. الإعداد الافتراضي `1`.
+</ParamField>
+
+## مثال على الطلب
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-client" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyId: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+## استجابة النجاح
+
+```json
+{
+  "message": "Client created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  سلسلة تأكيد عند النجاح.
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  مصفوفة كائنات العملاء الذين تم إنشاؤهم.
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  المعرّف الفريد للعميل الذي تم إنشاؤه. استخدم هذا المعرّف عند تعيين العميل للطلبات أو الفواتير عبر API.
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  الاسم الكامل للعميل (الاسم الأول + الاسم الأخير).
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  حالة العميل كما تم تخزينها.
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  الدور المُعيَّن للعضو — سيكون `"client"`.
+</ResponseField>
+
+<Note>
+  ترويسة `companyId` لهذه النقطة النهائية تستخدم حرف **I** كبير في `Id` — `companyId` — على عكس بعض النقاط النهائية الأخرى التي تستخدم `companyid` (بأحرف صغيرة كاملة). استخدم حالة الأحرف الدقيقة الموضحة أعلاه لتجنب أخطاء المصادقة.
+</Note>
+
+<Tip>
+  مرر كائنات عملاء متعددة في المصفوفة لإنشاء عملاء بالجملة في استدعاء API واحد. يجب أن يكون لكل كائن عنوان `email` فريد. ستتسبب رسائل البريد الإلكتروني المكررة في حدوث خطأ تحقق لذلك الإدخال.
+</Tip>

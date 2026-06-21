@@ -1,0 +1,162 @@
+---
+title: "Fatturazione in Abbonamento e Fatture Ricorrenti in AgencyHandy"
+sidebarTitle: "Abbonamenti"
+description: "Come AgencyHandy gestisce la fatturazione ricorrente degli abbonamenti — fatture automatizzate, cicli di fatturazione, metodi di pagamento, cancellazioni e link di pagamento Wise."
+---
+
+Il sistema di fatturazione in abbonamento di AgencyHandy ti permette di automatizzare l'intero flusso di lavoro delle entrate ricorrenti. Quando un cliente si abbona a un servizio, la piattaforma crea un ID abbonamento, genera ordini ed emette fatture automaticamente ad ogni ciclo di fatturazione — che sia giornaliero, settimanale, mensile o annuale. Mantieni il controllo: puoi visualizzare i dettagli dell'abbonamento, monitorare la cronologia dei pagamenti, gestire i pagamenti falliti e cancellare gli abbonamenti quando necessario, tutto dall'interno di AgencyHandy.
+
+## Come Funziona la Fatturazione in Abbonamento
+
+Il ciclo di vita dell'abbonamento in AgencyHandy segue sei fasi chiave.
+
+<Steps>
+  <Step title="Crea un servizio basato su abbonamento">
+    Vai su **Servizi** e clicca su **Crea Nuovo Servizio**. Seleziona **Abbonamento** come tipo di servizio.
+
+    Definisci:
+    - **Ciclo di Fatturazione** — Giornaliero, Settimanale, Mensile o Annuale
+    - **Comportamento di Rinnovo** — Crea Nuovo Ordine, Aggiorna Ordine Esistente o Mantieni Invariato
+    - **Prezzi e Metodo di Pagamento** — PayPal, Stripe o Manuale
+
+    Clicca su **Pubblica** per rendere disponibile il servizio.
+  </Step>
+  <Step title="Il cliente acquista l'abbonamento">
+    Il cliente seleziona il servizio in abbonamento, procede al checkout e sceglie un metodo di pagamento.
+
+    AgencyHandy automaticamente:
+    - Crea un **ID Abbonamento**
+    - Genera un **Ordine**
+    - Emette una **Fattura**
+
+    Per i pagamenti tramite **PayPal o Stripe**, la fattura viene contrassegnata come **Pagata** istantaneamente. Per il **Pagamento Manuale**, la fattura rimane **Aperta** finché l'agenzia non conferma la ricezione.
+  </Step>
+  <Step title="Fatturazione ricorrente automatizzata">
+    Ad ogni data di rinnovo, AgencyHandy elabora il pagamento automaticamente (per PayPal/Stripe) e genera la fattura successiva.
+
+    Se il pagamento ha successo, la fattura viene contrassegnata come **Pagata**. Se fallisce:
+    - La fattura rimane **Aperta**
+    - Il cliente riceve una **Notifica di Pagamento Fallito**
+    - L'agenzia riceve un avviso per riprovare o richiedere i dettagli di pagamento aggiornati
+  </Step>
+  <Step title="Gestisci gli abbonamenti attivi">
+    Vai su **Gestione Abbonamenti** nella barra laterale sinistra per visualizzare tutti gli abbonamenti attivi e inattivi. Seleziona qualsiasi abbonamento per vedere i suoi dettagli completi.
+  </Step>
+  <Step title="Gestisci le cancellazioni">
+    Quando cancelli un abbonamento, puoi scegliere di:
+    - **Cancellare completamente** — interrompere tutta la fatturazione e gli ordini futuri
+    - **Mantenere attivo l'ultimo ordine** — lasciare che il cliente continui a ricevere il servizio fino alla scadenza del periodo corrente
+
+    Per eliminare completamente un servizio, tutti gli abbonamenti attivi su quel servizio devono essere cancellati prima.
+  </Step>
+  <Step title="Notifiche">
+    Il sistema invia automaticamente:
+    - **Promemoria di Rinnovo** prima della prossima data di fatturazione
+    - **Conferme di Pagamento** dopo gli addebiti riusciti
+    - **Avvisi di Pagamento Fallito** sia al cliente che agli amministratori dell'agenzia
+  </Step>
+</Steps>
+
+## Pagina Dettagli Abbonamento
+
+La pagina Dettagli Abbonamento ti offre un quadro completo di qualsiasi abbonamento individuale — dal servizio e dal pacchetto fino ad ogni fattura e voce del registro eventi.
+
+### Come Accedere
+
+1. Vai su **Abbonamenti** nella barra laterale sinistra
+2. Clicca su qualsiasi abbonamento dall'elenco per aprire la sua pagina di dettaglio
+
+### Cosa Puoi Vedere
+
+<Tabs>
+  <Tab title="Informazioni Abbonamento">
+    - **Nome Servizio** e **Nome Pacchetto**
+    - **Nome Cliente**
+    - **Ciclo di Fatturazione** (es. Mensile, Annuale)
+    - **Data di Inizio** e **Data di Fine**
+    - **Stato** dell'abbonamento (Attivo o Inattivo)
+  </Tab>
+  <Tab title="Dettagli Pagamento">
+    - **Quota di Abbonamento**
+    - **Numero Totale di Pagamenti** effettuati fino ad oggi
+    - **Metodo di Pagamento** (Stripe, PayPal, Wise, Bonifico Bancario Manuale, ecc.)
+    - **Prossima Data di Pagamento**
+  </Tab>
+  <Tab title="Cronologia Ordini">
+    - **ID Ordine**
+    - **Stato** (es. In Corso, Completato)
+    - **Data di Inizio** e **Data di Scadenza** per ogni ordine
+  </Tab>
+  <Tab title="Cronologia Fatture">
+    - **ID Fattura**
+    - **Importo**
+    - **Stato** (Aperta, Pagata, ecc.)
+    - **Data di Pagamento** e **Data di Scadenza**
+  </Tab>
+  <Tab title="Registro Eventi">
+    Una traccia di audit cronologica di tutte le attività relative all'abbonamento — cambi di stato, eventi di pagamento, cancellazioni e altro.
+  </Tab>
+</Tabs>
+
+<Note>
+  Un singolo abbonamento può avere più ordini e fatture collegati. Le fatture collegate agli abbonamenti si aggiornano dinamicamente quando vengono ricevuti i pagamenti.
+</Note>
+
+## Supporto Wise per le Fatture di Abbonamento Manuale
+
+Se gestisci pagamenti internazionali, puoi incorporare un **link di pagamento Wise** direttamente nelle fatture di abbonamento. Questo offre ai clienti un modo conveniente per pagare senza dover configurare manualmente un bonifico bancario.
+
+### Requisiti
+
+- Un account AgencyHandy attivo
+- Un **account Wise** attivo con un link di pagamento valido generato
+
+### Passaggi per Aggiungere un Link Wise a una Fattura
+
+<Steps>
+  <Step title="Apri la sezione Fatture">
+    Clicca su **Fatture** nella barra laterale sinistra, poi clicca su **+ Crea Fattura**.
+  </Step>
+  <Step title="Seleziona il cliente e l'ordine">
+    Scegli il cliente dal menu a tendina. Appariranno tutti gli ID ordine correlati. Seleziona l'ID ordine pertinente e inserisci l'importo e gli eventuali articoli da fatturare.
+  </Step>
+  <Step title="Applica sconti e tasse">
+    Aggiungi eventuali percentuali di sconto, importi di sconto, importi pagati, importi dovuti e dettagli IVA/fiscali applicabili. Includi indirizzo di fatturazione e note secondo necessità.
+  </Step>
+  <Step title="Aggiungi il link di pagamento Wise">
+    Nella sezione **Metodo di Pagamento**, seleziona **Wise** come opzione di pagamento. Incolla il tuo link di pagamento Wise nel campo fornito.
+  </Step>
+  <Step title="Salva la fattura">
+    Clicca su **Salva** per finalizzare la fattura. Il link di pagamento Wise apparirà nella fattura in modo che il cliente possa pagare direttamente.
+  </Step>
+</Steps>
+
+<Tip>
+  Verifica sempre il tuo link di pagamento Wise e i totali della fattura prima di salvare. Controlla che i dettagli dell'ordine, gli sconti e le informazioni fiscali siano accurati per evitare errori di fatturazione.
+</Tip>
+
+## Note Importanti sulla Fatturazione in Abbonamento
+
+<Accordion title="Chi può cancellare gli abbonamenti?">
+  Solo i **Super Admin** e gli **Admin** possono cancellare gli abbonamenti. I clienti non possono cancellare i propri abbonamenti — devono richiedere la cancellazione tramite l'agenzia.
+</Accordion>
+
+<Accordion title="Gli ID abbonamento sono permanenti">
+  Una volta creato un abbonamento, il suo ID non può essere modificato. Questo garantisce un monitoraggio coerente per tutta la durata dell'abbonamento.
+</Accordion>
+
+<Accordion title="Pagamenti falliti e creazione ordini">
+  Quando un pagamento fallisce, la fattura rimane Aperta e viene creato un nuovo ordine per il periodo del pagamento fallito. Lo stato dell'abbonamento rimane **Attivo** finché un amministratore non riprova manualmente il pagamento o cancella l'abbonamento.
+</Accordion>
+
+<Accordion title="Ordini con pagamento manuale">
+  Se un cliente paga al di fuori di Stripe o PayPal (ad esempio, tramite bonifico bancario), l'amministratore deve contrassegnare manualmente la fattura come **Pagata** in AgencyHandy. Il sistema non esegue questa operazione automaticamente per i pagamenti manuali.
+</Accordion>
+
+<Accordion title="Tentativi di acquisto in self-checkout non completati">
+  Se un cliente avvia un checkout di abbonamento ma non completa il pagamento, rimane nel sistema come **lead** fino a quando non si abbona con successo.
+</Accordion>
+
+<Accordion title="Date di scadenza delle fatture">
+  Le date di scadenza per le fatture di abbonamento vengono impostate automaticamente in base al ciclo di fatturazione configurato (ad esempio, le fatture mensili scadono un mese dopo la data di inizio).
+</Accordion>

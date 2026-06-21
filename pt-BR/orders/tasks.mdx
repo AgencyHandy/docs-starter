@@ -1,0 +1,240 @@
+---
+title: "Gerenciamento de Tarefas: Criando e Acompanhando Trabalhos em Pedidos"
+sidebarTitle: "Tarefas"
+description: "Crie, edite e gerencie tarefas dentro de pedidos — incluindo controle de tempo, feedback em arquivos, tarefas solicitadas por clientes e visibilidade de tarefas entre pedidos."
+---
+
+As tarefas são as unidades de trabalho que transformam um pedido em uma entrega. Cada tarefa está vinculada a um pedido específico, pode ser atribuída a um membro da equipe e acompanha seu próprio status, cronograma, anexos e thread de feedback. Esta página explica como criar e gerenciar tarefas, como os clientes podem solicitar tarefas, como funcionam o controle de tempo e o feedback em arquivos, e como visualizar tarefas de todos os pedidos em um único lugar.
+
+## Requisitos de Função
+
+| Ação | Quem Pode Realizar |
+|---|---|
+| Criar tarefas | Super Admin, Admin, Gerente de Projetos |
+| Editar tarefas | Super Admin, Admin, Gerente de Projetos |
+| Excluir tarefas | Super Admin, Admin, Gerente de Projetos |
+| Visualizar tarefas em revisão / concluídas | Super Admin, Admin, GP, Cliente |
+| Enviar e responder feedback | Super Admin, Admin, GP |
+| Registrar tempo em tarefas | Todos os usuários atribuídos (Super Admins e Admins podem registrar em nome de outros) |
+| Solicitar uma tarefa (cliente) | Cliente |
+| Aprovar / rejeitar tarefas solicitadas | Super Admin, Admin |
+
+<Note>
+Funcionários atribuídos a um pedido podem ver tarefas com status **Em Revisão** ou **Concluída**. Tarefas **Em Andamento** não são visíveis para funcionários.
+</Note>
+
+## Criar uma Tarefa
+
+<Steps>
+  <Step title="Abrir o pedido">
+    Navegue até **Pedidos** na barra lateral esquerda e clique no pedido onde deseja adicionar uma tarefa.
+  </Step>
+
+  <Step title="Adicionar uma nova tarefa">
+    Dentro do pedido, role até a seção **Tarefas** e clique em **+ Adicionar Nova Tarefa**. Um formulário de criação de tarefa será exibido.
+  </Step>
+
+  <Step title="Preencher os detalhes da tarefa">
+    Preencha os campos disponíveis:
+
+    | Campo | Observações |
+    |---|---|
+    | **Nome da Tarefa** | Um título claro e conciso para o item de trabalho |
+    | **Descrição** | Contexto detalhado, requisitos ou instruções |
+    | **Responsável** | O membro da equipe responsável pela conclusão da tarefa |
+    | **Etiqueta** | Tag de categoria para organizar tarefas (ex.: Design, Texto) |
+    | **Data de Início** | Quando o trabalho na tarefa começa |
+    | **Data de Entrega** | Quando a tarefa deve ser concluída |
+    | **Revisão do Cliente Necessária** | Caixa de seleção que exige a aprovação do cliente antes de marcar a tarefa como Concluída — marcada por padrão |
+    | **Anexos** | Arquivos de referência ou materiais de suporte |
+  </Step>
+
+  <Step title="Salvar a tarefa">
+    Clique em **Salvar** para criar a tarefa. O cliente recebe uma notificação automática de que uma nova tarefa foi adicionada ao seu pedido.
+  </Step>
+</Steps>
+
+<Tip>
+A caixa de seleção **Revisão do Cliente Necessária** está habilitada por padrão em cada nova tarefa. Se uma tarefa for puramente interna e não precisar de aprovação do cliente, você pode desmarcá-la antes de salvar.
+</Tip>
+
+## Status das Tarefas
+
+As tarefas passam pelos seguintes status:
+
+- **Em Andamento** — A tarefa está sendo trabalhada (não visível para clientes ou funcionários)
+- **Em Revisão** — A tarefa foi enviada para revisão; visível para clientes
+- **Concluída** — A tarefa foi aprovada e finalizada
+
+<Note>
+Quando um cliente ou revisor rejeita uma tarefa em **Em Revisão**, seu status reverte automaticamente para **Em Andamento**.
+</Note>
+
+## Modal da Tarefa e Página de Atividades
+
+Clicar em qualquer tarefa abre o **Modal da Tarefa**, uma visualização detalhada que serve como central de atividades da tarefa. A partir daqui você pode ver e gerenciar:
+
+- Status atual, responsável, data de início e data de entrega
+- Descrição da tarefa e quaisquer arquivos anexados
+- Todos os threads de feedback e respostas
+- Um registro de atividades completo mostrando cada atualização, comentário e alteração de status na tarefa
+
+Qualquer pessoa que faça parte do pedido — incluindo clientes, quando a revisão do cliente está habilitada — pode acessar o modal da tarefa para as tarefas que têm visibilidade.
+
+## Editar uma Tarefa
+
+Para atualizar os detalhes de uma tarefa após sua criação, abra o modal da tarefa e modifique os campos relevantes (nome, descrição, responsável, datas, etiqueta ou anexos). Salve suas alterações para aplicar a atualização. Somente Super Admins, Admins e GPs podem editar tarefas.
+
+## Excluir uma Tarefa
+
+Para excluir uma tarefa, abra-a e use a opção de exclusão no menu de ações da tarefa. A exclusão é permanente — todos os registros de tempo e versões de arquivo associados são removidos junto com a tarefa.
+
+<Warning>
+Excluir uma tarefa também remove todas as versões de arquivo e seus comentários de feedback associados. Esta ação não pode ser desfeita.
+</Warning>
+
+## Controle de Tempo
+
+O AgencyHandy inclui controle de tempo integrado para que sua equipe possa registrar horas diretamente nas tarefas — sem necessidade de ferramentas externas.
+
+### Iniciando o Cronômetro
+
+<Steps>
+  <Step title="Abrir a tarefa">
+    Vá para **Pedidos → Tarefas** e abra a tarefa em que deseja controlar o tempo.
+  </Step>
+
+  <Step title="Iniciar o cronômetro">
+    Clique em **Iniciar Cronômetro**. O cronômetro começa a funcionar e exibe o nome da tarefa, o tempo decorrido em tempo real e o tempo total registrado.
+  </Step>
+
+  <Step title="Pausar ou parar quando terminar">
+    Clique em **Pausar Cronômetro** para interromper temporariamente o registro, ou em **Parar Cronômetro** para finalizar a entrada. Ao parar, você confirmará a data, hora de início, hora de término, duração total e uma nota opcional.
+  </Step>
+</Steps>
+
+<Note>
+Você só pode ter um cronômetro ativo por vez. Iniciar um novo cronômetro pausa automaticamente qualquer outro em andamento.
+</Note>
+
+<Warning>
+Se uma tarefa for marcada como **Concluída**, o cronômetro é desativado. Reabra a tarefa para reativar o registro de tempo.
+</Warning>
+
+### Entrada Manual de Tempo
+
+Se você precisar registrar tempo retroativamente, clique em **Entrada Manual de Tempo** na tarefa e insira:
+
+- **Data**
+- **Hora de Início e Hora de Término** (ou uma **Duração** em horas e minutos)
+- **Notas** (opcional)
+
+Vários usuários podem registrar tempo na mesma tarefa simultaneamente. Super Admins e Admins podem criar entradas manuais de tempo em nome de qualquer usuário.
+
+### Registros de Trabalho
+
+Clique no botão **Registro de Trabalho** ao lado do cronômetro para ver um detalhamento completo de todas as entradas de tempo na tarefa, incluindo data, horários de início/término, tempo ativo total e quaisquer notas. Admins e Super Admins podem excluir qualquer entrada; usuários comuns podem excluir apenas as próprias entradas.
+
+### Planilhas de Horas
+
+Navegue até **Planilha de Horas** na barra lateral esquerda para uma visualização de todos os pedidos com todo o tempo registrado. Você pode filtrar por nome de tarefa, ID do pedido, responsável ou intervalo de datas (diário, semanal, mensal), e agrupar os resultados por membro da equipe, nome do serviço ou nome da tarefa. Você também pode iniciar um cronômetro ou adicionar uma entrada manual diretamente da visualização de Planilha de Horas.
+
+## Feedback em Arquivos
+
+O sistema de feedback em arquivos do AgencyHandy permite que você e seus clientes deixem comentários visuais precisos nas entregas — diretamente dentro das tarefas. Ele suporta imagens, PDFs, vídeos e sites ao vivo, com controle de versão e discussões encadeadas integrados.
+
+### Enviando um Arquivo para Revisão
+
+Abra a tarefa, clique no ícone **➕** na seção **Anexos** e faça o upload de uma imagem, PDF, vídeo ou cole a URL de um site ao vivo.
+
+### Deixando Feedback por Tipo de Arquivo
+
+**Imagens e PDFs**
+Abra o arquivo e use a barra de ferramentas de anotação (Seta, Linha, Retângulo, Destacar) para marcar áreas específicas. Selecione uma região, digite seu comentário e escolha se deseja compartilhá-lo com sua equipe, o cliente ou ambos. Você também pode desfazer ou refazer anotações e alterar as cores das anotações.
+
+**Vídeos**
+Abra o vídeo e pause-o no frame exato onde seu feedback se aplica. Digite seu comentário — o vídeo pausa automaticamente enquanto você digita. O feedback é marcado com o timestamp daquele momento. Você pode remover o timestamp para deixar um comentário geral.
+
+**Sites ao Vivo**
+Adicione a URL do site à tarefa usando o botão **➕**, depois instale a extensão do AgencyHandy para o navegador. Abra o site no **Modo de Visualização** (interativo) ou mude para o **Modo de Revisão** para tirar uma captura de tela e anotá-la com ferramentas de desenho, texto ou forma.
+
+### Ações de Comentário
+
+Cada comentário tem um menu de três pontos com opções para:
+
+- Editar o comentário
+- Copiar a resposta
+- Excluir o comentário
+- Restringir a visibilidade somente para a equipe interna
+
+### Resolução de Feedback
+
+Clique no botão **✓** em um comentário para marcá-lo como **Resolvido**. Comentários resolvidos permanecem visíveis para referência e podem ser reabertos. Você recebe uma notificação quando um comentário que você deixou é resolvido por outra pessoa.
+
+### Versões de Arquivo
+
+Clique em **Fazer Upload de Nova Versão** para adicionar um arquivo revisado. Versões anteriores e seus feedbacks são preservados e acessíveis no menu suspenso de versões. Ao abrir uma versão mais antiga, o AgencyHandy notifica você de que existe uma versão mais recente.
+
+Você pode etiquetar cada arquivo como **Necessita Revisão** ou **Aprovado** para comunicar o status de revisão de forma rápida.
+
+<Note>
+Os clientes só podem deixar feedback em arquivos se a caixa de seleção **Revisão do Cliente Necessária** estiver habilitada na tarefa. O feedback em arquivos está disponível apenas dentro de tarefas ou pedidos — não no catálogo de serviços ou em imagens de perfil.
+</Note>
+
+## Tarefas Solicitadas por Clientes
+
+Os clientes podem enviar solicitações de tarefas pelo portal deles, oferecendo uma forma estruturada de comunicar necessidades adicionais sem contornar seu processo de aprovação.
+
+### Fluxo do Cliente
+
+<Steps>
+  <Step title="Acessar Solicitações">
+    O cliente clica em **Solicitações** na barra lateral do Portal do Cliente — ou usa o botão **+ Solicitar uma Tarefa** diretamente dentro de um pedido.
+  </Step>
+
+  <Step title="Preencher o formulário de solicitação">
+    O cliente fornece:
+    - **Pedido** (obrigatório — as solicitações devem estar vinculadas a um pedido existente)
+    - **Nome da Tarefa** (obrigatório)
+    - **Descrição** (opcional)
+    - **Anexos** (opcional — até 1 GB; formatos incluem PDF, DOCX, JPG, PNG, MP4, ZIP e outros)
+    - **Datas de Início e Término** (opcional)
+  </Step>
+
+  <Step title="Enviar a solicitação">
+    O cliente clica em **Solicitar**. A tarefa aparece no portal dele como **Pendente** e sua agência recebe uma notificação.
+  </Step>
+</Steps>
+
+### Fluxo da Agência
+
+<Steps>
+  <Step title="Visualizar solicitações recebidas">
+    Clique em **Solicitações** na barra lateral do Portal da Agência. Todas as solicitações pendentes aparecem em uma visualização de lista. Você pode filtrar por cliente ou ID do pedido, classificar alfabeticamente ou por data de emissão, e usar **Preferências** para mostrar ou ocultar colunas.
+  </Step>
+
+  <Step title="Revisar a solicitação">
+    Clique em uma solicitação para ler a descrição e visualizar quaisquer anexos antes de tomar uma decisão.
+  </Step>
+
+  <Step title="Aprovar ou rejeitar">
+    Use os botões de ação ao lado de cada solicitação para aprovar ou rejeitar individualmente — ou use as ações em massa no canto superior direito para aprovar ou rejeitar todas as solicitações de uma vez.
+
+    - Solicitações **Aprovadas** se tornam tarefas ativas no pedido e seguem o fluxo normal de tarefas.
+    - Solicitações **Rejeitadas** permanecem registradas com o status **Rejeitada** e não são adicionadas ao pedido.
+  </Step>
+</Steps>
+
+<Note>
+Os clientes não podem contornar a etapa de aprovação. Uma solicitação sempre requer uma ação da agência antes de se tornar uma tarefa ativa. Solicitações pendentes permanecem visíveis tanto para o cliente quanto para a agência até que uma decisão seja tomada.
+</Note>
+
+## Visualização de Todas as Tarefas
+
+Além de gerenciar tarefas dentro de pedidos individuais, você pode visualizar tarefas de todos os pedidos em uma única tela. Navegue até **Tarefas** na barra lateral esquerda para acessar a página **Todas as Tarefas**. A partir daqui você pode:
+
+- Ver todas as tarefas que você tem visibilidade, independentemente de qual pedido elas pertencem
+- Filtrar e classificar por status, responsável, data de entrega ou pedido
+- Identificar rapidamente itens atrasados ou em risco em toda a sua carga de trabalho
+
+Esta visibilidade entre pedidos é especialmente útil para Gerentes de Projetos e Admins que precisam equilibrar a capacidade da equipe e acompanhar a saúde das entregas no nível da agência.

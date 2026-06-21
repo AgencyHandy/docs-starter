@@ -1,0 +1,172 @@
+---
+title: "Controle de Tempo e Gerenciamento de Planilha de Horas no AgencyHandy"
+sidebarTitle: "Planilha de Horas"
+description: "Registre tempo com um cronômetro ao vivo ou entrada manual, filtre registros de trabalho por tarefa, membro ou serviço, e exporte dados da planilha de horas como CSV ou XLSX no AgencyHandy."
+---
+
+O recurso de Planilha de Horas no AgencyHandy oferece um painel central para rastrear cada hora que sua equipe passa em tarefas. Você pode iniciar um cronômetro ao vivo em qualquer tarefa, registrar tempo retroativamente com uma entrada manual e depois analisar os dados por intervalo de datas, membro da equipe ou serviço. Quando precisar reportar produtividade ou cobrar pelo tempo, você pode exportar tudo para CSV ou XLSX em poucos cliques. É a ferramenta essencial para manter sua equipe responsável e sua cobrança por tempo precisa.
+
+## Quem Pode Usar os Recursos de Planilha de Horas
+
+| Recurso | Super Admin | Admin | GP | Funcionário |
+|---------|:-----------:|:-----:|:--:|:--------:|
+| Visualizar próprios registros de tempo | ✅ | ✅ | ✅ | ✅ |
+| Registrar tempo por outros | ✅ | ✅ | ✅ | ❌ |
+| Editar entradas de tempo | ✅ | ✅ | ✅ | ❌ |
+| Exportar dados da planilha de horas | ✅ | ✅ | ✅ | ❌ |
+
+<Note>
+  As tarefas devem existir antes que o tempo possa ser registrado nelas. Certifique-se de que as tarefas sejam criadas dentro dos pedidos antes de tentar registrar tempo.
+</Note>
+
+## Visualizando a Planilha de Horas
+
+<Steps>
+  <Step title="Abrir a Planilha de Horas">
+    Clique em **Planilha de Horas** na barra lateral esquerda principal. Você verá uma tabela com todos os registros de tempo da sua equipe.
+
+    Cada linha mostra a data, o membro da equipe, o nome da tarefa, o serviço, o tempo registrado e quaisquer notas anexadas à entrada.
+  </Step>
+</Steps>
+
+## Adicionando uma Entrada de Tempo
+
+Você tem duas opções para registrar tempo: um cronômetro ao vivo para trabalho em andamento ou uma entrada manual para tempo já concluído.
+
+<Tabs>
+  <Tab title="Iniciar um Cronômetro">
+    <Steps>
+      <Step title="Selecionar uma tarefa">
+        Na visualização da Planilha de Horas, encontre ou selecione a tarefa em que está prestes a trabalhar.
+      </Step>
+      <Step title="Clicar em Iniciar Cronômetro">
+        Clique em **Iniciar Cronômetro** para começar a rastrear o tempo em tempo real. O cronômetro funciona até você pará-lo.
+      </Step>
+      <Step title="Parar quando terminar">
+        Clique em **Parar** quando finalizar o trabalho. O AgencyHandy registra automaticamente o tempo decorrido na tarefa selecionada.
+      </Step>
+    </Steps>
+
+    <Tip>
+      Use o cronômetro para trabalho em andamento para garantir um rastreamento preciso. Arredondar ou estimar o tempo após o fato é menos preciso do que deixar o cronômetro funcionar.
+    </Tip>
+  </Tab>
+  <Tab title="Entrada Manual">
+    <Steps>
+      <Step title="Clicar em + Adicionar Entrada">
+        No painel da Planilha de Horas, clique em **+ Adicionar Entrada**. Um formulário será exibido.
+      </Step>
+      <Step title="Preencher os detalhes da entrada">
+        - **Tarefa** — selecione a tarefa à qual este tempo se aplica
+        - **Membro da Equipe** — atribua o tempo à pessoa correta (Admins e Gerentes podem registrar para outros)
+        - **Tempo Gasto** — insira as horas e minutos
+        - **Notas** — adicione qualquer contexto sobre o que foi trabalhado
+      </Step>
+      <Step title="Salvar">
+        Clique em **Salvar** para registrar a entrada. Ela aparecerá na tabela da planilha de horas imediatamente.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Filtrando por Intervalo de Datas
+
+Use os filtros de data para focar em um período específico.
+
+<Steps>
+  <Step title="Abrir os filtros de data">
+    Clique nos controles de filtro de data no canto superior direito do painel da Planilha de Horas.
+  </Step>
+  <Step title="Selecionar um intervalo">
+    Escolha entre intervalos predefinidos:
+    - **Diário** — registros somente de hoje
+    - **Semanal** — a semana atual
+    - **Mensal** — o mês atual
+
+    Para projetos de longa duração ou relatórios históricos, selecione um intervalo de datas **Personalizado** inserindo uma data de início e término.
+  </Step>
+  <Step title="Aplicar">
+    Clique em **Aplicar** para atualizar a tabela com os registros do período selecionado.
+  </Step>
+</Steps>
+
+<Tip>
+  Filtre antes de exportar para gerar relatórios focados. Exportar a planilha de horas completa sem filtros pode produzir arquivos muito grandes para agências ativas.
+</Tip>
+
+## Agrupando Entradas
+
+O agrupamento reorganiza como as linhas da planilha de horas são organizadas sem remover nenhum dado. Ajuda você a ler e analisar os registros mais rapidamente.
+
+<Steps>
+  <Step title="Abrir o menu suspenso Agrupar Por">
+    Clique no menu suspenso **Agrupar Por** próximo ao topo do painel da Planilha de Horas.
+  </Step>
+  <Step title="Selecionar um agrupamento">
+    Escolha entre as seguintes opções:
+
+    | Opção de Agrupamento | O Que Mostra |
+    |----------------|---------------|
+    | **Nome da Tarefa** | Todas as entradas de tempo agrupadas sob cada tarefa |
+    | **Membro da Equipe** | Todas as entradas agrupadas sob cada pessoa |
+    | **Serviço → Nome da Tarefa** | Entradas agrupadas por serviço, depois detalhadas por tarefa dentro de cada serviço |
+  </Step>
+</Steps>
+
+<Note>
+  O agrupamento é uma alteração apenas visual — não afeta os dados subjacentes nem o que é exportado. As exportações sempre incluem todas as linhas visíveis.
+</Note>
+
+## Visualizando Detalhes da Tarefa a Partir da Planilha de Horas
+
+<Steps>
+  <Step title="Clicar em um nome de tarefa">
+    Na tabela da planilha de horas, clique em qualquer **Nome de Tarefa**. O AgencyHandy o redireciona para a página de detalhes completos daquela tarefa.
+  </Step>
+  <Step title="Revisar o contexto da tarefa">
+    Na página de detalhes da tarefa, você encontrará o histórico completo de registros de tempo, notas anexadas, responsáveis, status e outras informações no nível da tarefa. Use esta visualização para investigar entradas ou verificar o que foi feito.
+  </Step>
+</Steps>
+
+## Exportando Dados da Planilha de Horas
+
+Exporte sua planilha de horas para folha de pagamento, relatórios de cobrança ao cliente ou ferramentas externas de gerenciamento de projetos.
+
+<Steps>
+  <Step title="Aplicar filtros primeiro (recomendado)">
+    Use o filtro de intervalo de datas para restringir a exportação ao período necessário. Isso mantém o arquivo focado e gerenciável.
+  </Step>
+  <Step title="Clicar em Exportar">
+    Clique no botão **Exportar** no topo do painel da Planilha de Horas.
+  </Step>
+  <Step title="Escolher um formato">
+    Selecione:
+    - **CSV** — para ferramentas de planilha como Excel, Google Sheets ou pipelines de dados
+    - **XLSX** — para pastas de trabalho formatadas em Excel com formatação de colunas preservada
+  </Step>
+  <Step title="Baixar o arquivo">
+    O arquivo é baixado automaticamente para o seu dispositivo. Cada exportação inclui todas as colunas visíveis: data, membro da equipe, nome da tarefa, serviço, tempo registrado e notas.
+  </Step>
+</Steps>
+
+<Warning>
+  Se a exportação não iniciar um download, o **bloqueador de pop-ups** do seu navegador pode estar impedindo o download do arquivo. Desative o bloqueio de pop-ups para o AgencyHandy e tente novamente.
+</Warning>
+
+## Notas Adicionais
+
+<Accordion title="Cronômetro vs. entrada manual">
+  O cronômetro é ideal para trabalho ativo em tempo real. As entradas manuais são ideais quando você esqueceu de iniciar o cronômetro ou precisa registrar tempo retroativamente. Ambos os métodos produzem entradas de registro idênticas na tabela da planilha de horas.
+</Accordion>
+
+<Accordion title="Agrupamento vs. filtragem">
+  Os filtros **reduzem** quais linhas são mostradas na tabela. O agrupamento **reorganiza** as linhas que já estão visíveis. Você pode aplicar ambos ao mesmo tempo — filtre por um intervalo de datas, depois agrupe por membro da equipe para ver os totais de cada pessoa naquele período.
+</Accordion>
+
+<Accordion title="As exportações incluem todas as colunas visíveis">
+  Cada exportação captura o estado atual da tabela visível: data, usuário, tarefa, serviço, tempo e notas. Se você aplicou uma configuração de agrupamento, a exportação reflete a estrutura de agrupamento também.
+</Accordion>
+
+<Accordion title="Intervalos personalizados para dados históricos">
+  Para projetos de longa duração ou revisões trimestrais, use a opção de intervalo de datas personalizado para extrair dados históricos da planilha de horas além das janelas predefinidas diária/semanal/mensal.
+</Accordion>

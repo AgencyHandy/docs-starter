@@ -1,0 +1,205 @@
+---
+title: "AgencyHandy API: Een Bestaande Bestelling Bijwerken met PUT"
+sidebarTitle: "Bestelling Bijwerken"
+description: "Gebruik de AgencyHandy API om bestellingdetails bij te werken, de status te wijzigen, projectmanagers opnieuw toe te wijzen en bestanden toe te voegen aan een bestaande bestelling via PUT-verzoek."
+---
+
+Met het eindpunt Bestelling bijwerken kunt u een bestaande bestelling (project) in AgencyHandy aanpassen — naam, status, budget, tijdlijn, toegewezen managers en meer wijzigen — allemaal vanuit een extern systeem of automatiseringsscript. Het eindpunt ondersteunt ook bestandsbijlagen, die worden toegevoegd aan de systeemmap van de bestelling.
+
+<Note>
+  Voltooi voordat u dit eindpunt gebruikt de gids [Aan de Slag](/nl/api/getting-started) om uw API-sleutel en Bedrijfs-ID te verkrijgen.
+</Note>
+
+<Warning>
+  Dit eindpunt gebruikt `Authorization: Bearer <token>` (het toegangstoken van een aangemeld lid) in plaats van alleen de `x-api-key`-header. Zorg ervoor dat uw aanroeper is geauthenticeerd als een **goedgekeurd lid** van het doelbedrijf. Niet-geautoriseerde aanroepers ontvangen een `403 PermissionError`.
+</Warning>
+
+## Vereisten
+
+- ✅ Een geldig **Bearer-token** voor een goedgekeurd werkruimtelid
+- ✅ **Bedrijfs-ID** opgehaald via `GET {{URL}}/accounts/companies`
+- ✅ Het **Bestelling-ID** (Project-ID, `pid`) van de bestelling die u wilt bijwerken
+
+---
+
+## Eindpunt
+
+```
+PUT {{URL}}/orders?pid=<ORDER_ID>
+```
+
+**Content-Type:** `multipart/form-data` — gebruik dit ook wanneer er geen bestanden zijn bijgevoegd om te voldoen aan de multipart-parser van de server.
+
+## Headers
+
+| Header | Vereist | Beschrijving |
+|---|---|---|
+| `Authorization` | Ja | `Bearer <ACCESS_TOKEN>` — het toegangstoken van het aangemelde lid. |
+| `companyid` | Ja | Mongo ObjectId van het bedrijf waartoe de bestelling behoort. |
+| `clientid` | Optioneel | Real-time client socket-ID. Wanneer opgegeven, worden meldingen hiermee inclusief. |
+
+## Queryparameters
+
+<ParamField query="pid" type="string" required>
+  Het Bestelling-/Project-ID dat bijgewerkt moet worden. Geef dit door als een querystring-parameter.
+</ParamField>
+
+## Verzoekbody-velden
+
+<ParamField body="name" type="string">
+  Werkt de bestelling­stitel bij. Minimaal 2 tekens.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Nieuwe status voor de bestelling. Moet een van de volgende zijn: `Pending`, `Ongoing`, `Review`, `Completed`, `Cancelled`.
+
+  **Toegestane overgangen:**
+  - `Review` kan alleen volgen op `Ongoing` of een andere `Review`. Springen van `Pending` direct naar `Review` geeft een `400 ValidationError`.
+  - Bestellingen die al `Completed` of `Cancelled` zijn, kunnen niet worden bijgewerkt.
+  - Klanten kunnen een bestelling die verder is gegaan dan `Pending` niet annuleren.
+</ParamField>
+
+<ParamField body="budget" type="number">
+  Totaal budgetbedrag. Moet `≥ 0` zijn. Gebruikt de bestaande valuta van de bestelling tenzij ook `currency` is opgegeven.
+</ParamField>
+
+<ParamField body="currency" type="string">
+  Valutacode voor het budget. Voorbeelden: `USD`, `CAD`, `EUR`.
+</ParamField>
+
+<ParamField body="quantity" type="number">
+  Aantal gekochte eenheden voor het pakket. Moet `≥ 1` zijn.
+</ParamField>
+
+<ParamField body="deadline" type="string">
+  ISO 8601-datumreeks voor de vervaldatum van de bestelling. Voorbeeld: `"2025-12-31T00:00:00.000Z"`.
+</ParamField>
+
+<ParamField body="kickoffDate" type="string">
+  ISO 8601-datumreeks voor de startdatum van het project.
+</ParamField>
+
+<ParamField body="notes" type="string">
+  Interne notities zichtbaar voor uw team.
+</ParamField>
+
+<ParamField body="brief" type="string">
+  Klantbriefing of projectsamenvatting.
+</ParamField>
+
+<ParamField body="assignedProjectManagers" type="array">
+  Volledige lijst van projectmanager-lid-ID's om toe te wijzen aan deze bestelling. Nieuwe ID's worden aan het team toegevoegd; verwijderde ID's worden verwijderd. Elk ID moet behoren aan een lid met een `projectManager`-rol binnen hetzelfde bedrijf.
+</ParamField>
+
+<ParamField body="markTasksAsDone" type="boolean">
+  **Vereist** wanneer `status` `Completed` of `Cancelled` is. Wanneer `true`, worden alle taken in de bestelling als gereed gemarkeerd na de statuswijziging. Wanneer `false`, blijven taken in hun huidige staat.
+</ParamField>
+
+<ParamField body="rejectRequestedTasks" type="boolean">
+  Alleen toegestaan wanneer `status` `Completed` of `Cancelled` is. Wanneer `true`, worden alle openstaande door de klant verzochte taken afgewezen na de statusupdate.
+</ParamField>
+
+<ParamField body="repeatCount" type="number">
+  Alleen vereist voor **abonnements**bestellingen bij het wijzigen van de herhalingsfrequentie. Combineer met `repeatDuration`.
+</ParamField>
+
+<ParamField body="repeatDuration" type="string">
+  Vereist naast `repeatCount` voor abonnementsbestellingen. Een van: `day`, `week`, `month`, `year`.
+</ParamField>
+
+<ParamField body="billingCycleCount" type="number">
+  Optionele limiet op terugkerende factureringscycli. Standaard `0` (geen limiet).
+</ParamField>
+
+<ParamField body="billingCycleEvent" type="string">
+  Hoe elke factureringscyclus wordt afgehandeld. Een van: `createOrderWithTask`, `noChange`.
+</ParamField>
+
+<ParamField body="files" type="file">
+  Nul of meer bestandsbijlagen. Bestanden worden toegevoegd aan de systeemmap van de bestelling; bestaande bestanden worden nooit overschreven. Gebruik `multipart/form-data`-codering en voeg elk bestand toe onder het veld `files`.
+</ParamField>
+
+---
+
+## Voorbeeldverzoek
+
+<CodeGroup>
+
+```bash cURL (no files)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "currency=USD" \
+  --form "quantity=1" \
+  --form "assignedProjectManagers[]=PROJECT_MANAGER_ID" \
+  --form "notes=Scope finalized with client." \
+  --form "brief=Launch-ready design refresh."
+```
+
+```bash cURL (with file)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "repeatCount=3" \
+  --form "repeatDuration=month" \
+  --form "billingCycleEvent=createOrderWithTask" \
+  --form "files=@/path/to/creative-brief.pdf"
+```
+
+</CodeGroup>
+
+**Equivalent JSON-payload** (converteer naar multipart-formulieritems bij het verzenden van bestanden):
+
+```json
+{
+  "name": "Website Redesign",
+  "status": "Review",
+  "budget": 12000,
+  "currency": "USD",
+  "quantity": 1,
+  "assignedProjectManagers": ["{{PROJECT_MANAGER_ID}}"],
+  "repeatCount": 3,
+  "repeatDuration": "month",
+  "billingCycleEvent": "createOrderWithTask",
+  "notes": "Scope finalized with client.",
+  "brief": "Launch-ready design refresh."
+}
+```
+
+---
+
+## Antwoorden
+
+| HTTP-status | Beschrijving |
+|---|---|
+| `200 OK` | Update geslaagd. |
+| `400 ValidationError` | Ongeldig bestelling-ID, geblokkeerde statusovergang of onjuist gevormde payload. Het antwoord bevat `fieldName` indien van toepassing. |
+| `403 PermissionError` | De aanroeper is geen goedgekeurd lid, mist de bedrijfsrol, het werkruimteabonnement is verlopen of een klant probeerde een verboden annulering. |
+| `500 Internal Server Error` | Onverwerkte uitzondering — controleer serverlogs. |
+
+### Succesantwoord
+
+```json
+{
+  "message": "Project has been updated"
+}
+```
+
+---
+
+## Bedrijfsregels en neveneffecten
+
+- **Statusovergangen** zijn beperkt. `Review` kan alleen volgen op `Ongoing` of een andere `Review`. Een poging tot `Pending → Review` geeft een `400 ValidationError`.
+- Het verplaatsen van een status van `Pending` naar `Ongoing`, `Review` of `Completed` activeert de bestandsmap van de bestelling zodat geüploade bestanden toegankelijk worden voor het projectteam.
+- Het instellen van `status` op `Completed` of `Cancelled` **vereist** dat `markTasksAsDone` expliciet wordt ingesteld op `true` of `false`.
+- Statuswijzigingen naar `Review`, `Completed` of `Cancelled` activeren automatisch klantmeldingen:
+  - **Review** — informeert de klant dat beoordeling nodig is.
+  - **Completed** — stuurt de `orderCompletion`-melding naar de klant.
+  - **Cancelled** — stuurt de `orderCancellation`-melding naar de klant.
+- Elke succesvolle update activeert een `ORDER.UPDATED`-webhookgebeurtenis met het bijgewerkte bestellingsdocument en bijlagemeta­data, als u een actieve webhook heeft die is geabonneerd op die gebeurtenis.

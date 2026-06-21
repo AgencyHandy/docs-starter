@@ -1,0 +1,137 @@
+---
+title: "API AgencyHandy: ایجاد مشتری جدید به‌صورت برنامه‌ای"
+sidebarTitle: "ایجاد مشتری"
+description: "با ارسال درخواست به endpoint bulk-client با نام، ایمیل و اطلاعات تماس، مشتریان جدید را به‌صورت برنامه‌ای به فضای کاری AgencyHandy خود اضافه کنید."
+---
+
+endpoint ایجاد مشتری به شما امکان می‌دهد مشتریان را مستقیماً از یک سیستم خارجی به فضای کاری AgencyHandy خود اضافه کنید. برخلاف لیدها، مشتریان مخاطبانی هستند که به‌طور کامل معرفی شده‌اند و می‌توانند به سفارش‌ها، فاکتورها و پروژه‌ها اختصاص یابند. از این endpoint برای همگام‌سازی مشتریان جدید از یک CRM، فرم ورود یا هر منبع داده دیگری استفاده کنید.
+
+<Note>
+  پیش از استفاده از این endpoint، راهنمای [شروع به کار](/fa/api/getting-started) را تکمیل کنید تا API key و Company ID خود را دریافت کنید. برخلاف endpoint ایجاد لید، ایجاد مشتری به مرحله جداگانه‌ای برای دریافت Role ID **نیاز ندارد**.
+</Note>
+
+## پیش‌نیازها
+
+- ✅ API key تولیدشده از **Workspace Config → API Key**
+- ✅ Company ID دریافت‌شده از `GET {{URL}}/accounts/companies`
+
+---
+
+## Endpoint
+
+```
+POST {{URL}}/members/bulk-client
+```
+
+## هدرها
+
+| هدر | مقدار |
+|---|---|
+| `x-api-key` | API key شما |
+| `companyId` | Company ID شما |
+| `Content-Type` | `application/json` |
+
+## بدنه درخواست
+
+بدنه درخواست یک **آرایه JSON** است. می‌توانید یک یا چند مشتری را در یک درخواست ایجاد کنید.
+
+<ParamField body="firstName" type="string" required>
+  نام مشتری.
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  نام خانوادگی مشتری.
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  آدرس ایمیل مشتری. باید در فضای کاری شما منحصربه‌فرد باشد.
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  برای یک مشتری کاملاً جدید روی `false` تنظیم کنید. هنگام تبدیل لید موجود به مشتری روی `true` تنظیم کنید.
+</ParamField>
+
+<ParamField body="status" type="string">
+  وضعیت مشتری. مقادیر رایج: `New`، `Active`. در صورت حذف، پیش‌فرض `New` است.
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  شماره تلفن مشتری.
+</ParamField>
+
+<ParamField body="source" type="string">
+  نحوه به‌دست آمدن این مشتری. مقادیر نمونه: `website`، `referral`، `social`.
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  موقعیت مشتری در ستون تابلو. پیش‌فرض `1` است.
+</ParamField>
+
+## درخواست نمونه
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-client" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyId: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+## پاسخ موفق
+
+```json
+{
+  "message": "Client created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  رشته تأیید در صورت موفقیت.
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  آرایه‌ای از اشیاء مشتری ایجادشده.
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  شناسه منحصربه‌فرد مشتری تازه ایجادشده. از این شناسه هنگام اختصاص مشتری به سفارش‌ها یا فاکتورها از طریق API استفاده کنید.
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  نام کامل مشتری (نام + نام خانوادگی).
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  وضعیت مشتری به‌گونه‌ای که ذخیره شده است.
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  نقش اختصاص‌یافته به عضو — `"client"` خواهد بود.
+</ResponseField>
+
+<Note>
+  هدر `companyId` برای این endpoint از حرف بزرگ **I** در `Id` استفاده می‌کند — `companyId` — برخلاف برخی endpointهای دیگر که از `companyid` (همه حروف کوچک) استفاده می‌کنند. برای جلوگیری از خطاهای احراز هویت، از همان حروف‌نویسی نشان‌داده‌شده استفاده کنید.
+</Note>
+
+<Tip>
+  چندین شیء مشتری را در آرایه ارسال کنید تا مشتریان را به‌صورت انبوه در یک فراخوانی API ایجاد کنید. هر شیء باید آدرس `email` منحصربه‌فرد داشته باشد. ایمیل‌های تکراری برای آن رکورد باعث خطای اعتبارسنجی می‌شوند.
+</Tip>

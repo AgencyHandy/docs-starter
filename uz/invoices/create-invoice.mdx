@@ -1,0 +1,235 @@
+---
+title: "AgencyHandy'da Mijoz Hisob-Fakturalarini Yaratish, Yuborish va Boshqarish"
+sidebarTitle: "Hisob-Faktura Yaratish"
+description: "AgencyHandy'da hisob-faktura yaratish bo'yicha bosqichma-bosqich qo'llanma — mijozni tanlash, summalarni belgilash, izohlar qo'shish, mijozga yuborish va to'lov eslatmalarini sozlash."
+---
+
+AgencyHandy'da hisob-faktura yaratish — hisoblashingizni to'g'ridan-to'g'ri mijozlar va buyurtmalarga bog'laydigan oddiy jarayon. Siz mijozni to'ldirasiz, buyurtmaga bog'laysiz, summalarni belgilaysiz, izohlar qo'shasiz va yubor-asiz — hammasini bitta formadan. Yuborgandan so'ng, to'lov holatini kuzatishingiz, avtomatlashtirilgan eslatmalar o'rnatishingiz va istalgan vaqtda hisob-fakturani PDF sifatida yuklab olishingiz mumkin.
+
+<Note>
+  Hisob-fakturalar yaratish uchun **Super Admin**, **Admin** yoki **PM** bo'lishingiz kerak. Hisob-faktura yaratishdan oldin ish maydoningizda kamida bitta mijoz mavjud bo'lishi kerak.
+</Note>
+
+## Hisob-Faktura Prefiksi Sozlamalari
+
+Hisob-fakturalar yaratishni boshlashdan oldin hisob-faktura prefiksingizni sozlashni o'ylab ko'ring. Prefiks har bir hisob-faktura raqamidan oldin paydo bo'ladi va hisob-fakturalarni agentligingizga tegishli deb aniqlashga yordam beradi.
+
+<Steps>
+  <Step title="Hisob-Faktura Sozlamalarini Ochish">
+    Hisob-Faktura Boshqaruv Panelida yuqori o'ng burchakdagi **Sozlamalar** tugmasini bosing.
+  </Step>
+  <Step title="Prefiksingizni belgilash">
+    **Hisob-Faktura Prefiksi** maydoniga o'ting va xohlagan prefiksni kiriting (masalan, `INV-` yoki agentligingizning bosh harflari).
+  </Step>
+  <Step title="Saqlash">
+    Prefiksni kelajakdagi barcha hisob-fakturalarga qo'llash uchun **Saqlash** tugmasini bosing.
+  </Step>
+</Steps>
+
+## Hisob-Faktura Yaratish
+
+<Steps>
+  <Step title="Hisob-Faktura Boshqaruv Panelini Ochish">
+    Hisob-Faktura Boshqaruv Panelini ochish uchun chap yon paneldagi **Hisob-Fakturalar** tugmasini bosing.
+  </Step>
+  <Step title="Yangi hisob-faktura boshlash">
+    **+ Hisob-Faktura Yaratish** tugmasini bosing. Hisob-faktura yaratish formasi ochiladi.
+  </Step>
+  <Step title="Mijozni tanlash">
+    Ochiladigan ro'yxatdan mijoz nomini tanlang. Bu majburiy maydon. O'sha mijoz bilan bog'liq barcha Buyurtma IDlar keyingi maydonda avtomatik to'ldiriladi.
+
+    **To'g'ridan-to'g'ri Hisob-Faktura** (buyurtmaga bog'liq bo'lmagan) yaratish uchun Buyurtma ID maydonini bo'sh qoldiring yoki mijozlar ro'yxatingizdan tashqaridagi istalgan elektron pochta manziliga hisob-faktura chiqarish uchun **Mustaqil Elektron Pochta** ni tanlang.
+  </Step>
+  <Step title="Buyurtma IDni tanlash">
+    Hisob-faktura chiqarayotgan muayyan Buyurtma IDni tanlang. Bu hisob-fakturani tizimda to'g'ri buyurtmaga bog'laydi. To'g'ridan-to'g'ri hisob-fakturalar uchun bu maydonni o'tkazib yuboring.
+  </Step>
+  <Step title="Hisoblash manzilini kiritish">
+    **To'lov Hisoblash Manzilini** to'ldiring:
+    - Mamlakat, Viloyat va Shahar
+    - Pochta indeksi
+    - Ko'cha manzili (tegishli bo'lsa)
+
+    Ushbu manzil muvofiqlik va ravshonlik uchun chop etilgan hisob-fakturada ko'rinadi.
+  </Step>
+  <Step title="Buyurtma va moliyaviy tafsilotlarni belgilash">
+    **Buyurtma Tafsilotlari** ostida quyidagilarni kiriting:
+
+    | Maydon | Tavsif |
+    |-------|-------------|
+    | **Valyuta** | To'lov olishni xohlagan valyuta |
+    | **Buyurtma ID – Summa** | Buyurtma bilan bog'liq pul qiymati |
+    | **Chegirma (%)** va **Chegirma Summasi** | Tegishli chegirmalarni qo'llang |
+    | **To'langan Summa** | Mijoz allaqachon to'lagan summa |
+    | **Qoldiq Summa** | Qolgan balans |
+    | **Jami Summa** | Buyurtma uchun to'liq to'lanishi kerak bo'lgan summa |
+
+    **To'g'ridan-to'g'ri Hisob-Fakturalar** uchun qo'lda elementlar qo'shish uchun **Element Qo'shish** tugmasini bosing. Element nomini, miqdorini va narxini kiriting. Bir nechta element qo'shishingiz mumkin. Soliq stavkalarini qo'llash yoki yaratish uchun **+ Soliq Stavkalari** dan foydalaning (inklyuziv yoki eksklyuziv).
+  </Step>
+  <Step title="Izoh qo'shish (ixtiyoriy)">
+    **Izoh** maydonida mijoz uchun har qanday qo'shimcha kontekst qo'shing — masalan, to'lov ko'rsatmalari, loyiha ma'lumotnomalar yoki shaxsiy xabar.
+  </Step>
+  <Step title="Tafsilotlar panelini ko'rib chiqish">
+    O'ng tarafdagi **Tafsilotlar** paneli quyidagilarning jonli xulosasini beradi:
+
+    - Hisob-faktura holati (standart holda Qoralama)
+    - Mijoz nomi, kompaniya nomi va manzil
+    - To'lov hisoblash manzili
+    - Xizmat nomi va Buyurtma ID
+    - Yaratilgan sana va muddat
+    - Jami summa
+
+    Davom etishdan oldin hamma narsani diqqat bilan ko'rib chiqing.
+  </Step>
+  <Step title="Mijozga yuborish yoki qoralama sifatida saqlash">
+    - Hisob-fakturani darhol elektron pochta orqali yuborish uchun **Mijozga Yuborish** tugmasini bosing. Holat avtomatik ravishda **Qoralamadan** **Ochiq** ga o'zgaradi.
+    - Keyinroq yakunlashni xohlasangiz **Qoralama Sifatida Saqlash** tugmasini bosing.
+  </Step>
+</Steps>
+
+<Note>
+  Agentlik logotipi va manzili tizim tomonidan hisob-fakturaga avtomatik qo'shiladi — har bir hisob-fakturada ularni qo'lda kiritishingiz shart emas.
+</Note>
+
+## Hisob-Faktura Holat O'tishlari
+
+Hisob-faktura yaratilgandan so'ng u belgilangan holat oqimiga amal qiladi. Faqat agentlik hisob-fakturani holatlar o'rtasida ko'chira oladi.
+
+```
+Qoralama → Ochiq (mijozga yuborganda)
+Ochiq  → To'langan       (to'lov qabul qilindi)
+Ochiq  → Bekor qilingan  (hisob-faktura bekor qilindi)
+Ochiq  → Undirish mumkin emas  (qarz hisobdan chiqarildi)
+```
+
+<Warning>
+  Hisob-fakturalar faqat **Qoralama** holatida bo'lganida **tahrirlanishi** mumkin. Hisob-faktura Ochiq holatiga o'tkazilgandan so'ng, uni tahrirlash mumkin emas. O'zgartirish kiritish kerak bo'lsa, hisob-fakturani bekor qiling va yangisini yarating.
+</Warning>
+
+## Hisob-Fakturani Tahrirlash
+
+Hisob-fakturani faqat **Qoralama** holatida bo'lganda tahrirlash mumkin.
+
+<Steps>
+  <Step title="Hisob-fakturani ochish">
+    Hisob-Faktura Boshqaruv Panelida tahrirlashni xohlagan qoralama hisob-fakturani toping. Uni bosing yoki yonidagi katakchani belgilang.
+  </Step>
+  <Step title="Tahrirlash tugmasini bosish">
+    Amal menyusidan **Tahrirlash** opsiyasini tanlang. Hisob-faktura formasi barcha mavjud tafsilotlar bilan oldindan to'ldirilgan holda ochiladi.
+  </Step>
+  <Step title="O'zgarishlar kiritish">
+    Har qanday maydonlarni yangilang — hisoblash tafsilotlari, xizmat tavsifi, miqdorlar, summalar yoki to'lov shartlari.
+  </Step>
+  <Step title="Saqlash">
+    O'zgarishlarni qo'llash uchun **Saqlash** tugmasini bosing.
+  </Step>
+</Steps>
+
+## Hisob-Fakturani Mijozga Yuborish
+
+Agar hisob-fakturani qoralama sifatida saqlagan bo'lsangiz va uni keyinroq yubormoqchi bo'lsangiz:
+
+<Steps>
+  <Step title="Hisob-fakturani topish">
+    Hisob-Faktura Boshqaruv Panelida yubormoqchi bo'lgan qoralama hisob-fakturani toping.
+  </Step>
+  <Step title="Hisob-Faktura Yuborish tugmasini bosish">
+    Hisob-fakturani oching va **Hisob-Faktura Yuborish** tugmasini bosing. AgencyHandy hisob-fakturani mijozning tizimdagi elektron pochta manziliga yetkazadi.
+  </Step>
+  <Step title="Yetkazilishini tasdiqlash">
+    Hisob-faktura muvaffaqiyatli yuborilganligini tekshirish uchun tasdiqlash xabarini tekshiring. Hisob-faktura holati **Ochiq** holatiga yangilanadi.
+  </Step>
+</Steps>
+
+<Note>
+  Agar hisob-faktura **Qoralama** holatida bo'lsa va xizmat nomini yangilasangiz, yangi nom hisob-fakturada aks etadi. Holat Ochiq, To'langan, Undirish mumkin emas yoki Bekor qilingan holatiga o'tgandan so'ng, hisob-fakturadagi xizmat nomi qulflanaadi va yangilanmaydi.
+</Note>
+
+## Hisob-Fakturani Yuklab Olish va Chop Etish
+
+Agentlik ham, mijoz ham istalgan vaqtda hisob-fakturani yuklab olishi mumkin.
+
+<Steps>
+  <Step title="Hisob-fakturani ochish">
+    Hisob-Faktura Boshqaruv Paneliga o'ting va yuklab olmoqchi bo'lgan hisob-fakturani tanlang.
+  </Step>
+  <Step title="Yuklab olish/chop etishga kirish">
+    Hisob-faktura amal menyusidan **Yuklab Olish** yoki **Chop Etish** opsiyasini bosing.
+  </Step>
+  <Step title="Formatni tanlash">
+    Yuklab olish uchun **PDF** ni tanlang yoki jismoniy nusxa uchun printer sozlamalarini tanlang.
+  </Step>
+  <Step title="Saqlash yoki chop etish">
+    Faylni qurilmangizga saqlang yoki printerga yuboring. Chop etgandan so'ng, hisob-fakturani arxivlang yoki manfaatdor tomonlar bilan baham ko'ring.
+  </Step>
+</Steps>
+
+## Hisob-Fakturalarda Eslatmalar O'rnatish
+
+Hisob-Faktura Eslatmasi funksiyasi mijozlarga kelayotgan, muddatli yoki muddati o'tgan hisob-fakturalar haqida qo'lda kuzatmasdan vaqtida to'lov olish uchun avtomatik xabar berish imkonini beradi.
+
+<Note>
+  Eslatmalar faqat **Ochiq** holatidagi va belgilangan **muddati** bo'lgan hisob-fakturalarda ishlaydi.
+</Note>
+
+<Steps>
+  <Step title="Hisob-Faktura Sozlamalarini Ochish">
+    Hisob-Faktura Boshqaruv Panelining yuqori o'ng tomonidagi **Sozlamalar** tugmasini bosing.
+  </Step>
+  <Step title="Eslatma sozlamalariga o'tish">
+    Chap paneldagi **Shablon** bo'limining pastiga aylantiring, so'ngra eslatma konfiguratsiya modalini ochish uchun **Tahrirlash** tugmasini bosing.
+  </Step>
+  <Step title="Eslatma turini tanlash">
+    Quyidagilardan birini tanlang:
+
+    - **Ketma-ket Eslatma** — belgilangan intervallarda bir qator eslatmalar yaratadi
+    - **Eslatma Yubormaslik** — tanlangan hisob-fakturalar uchun eslatmalarni o'chiradi
+  </Step>
+  <Step title="Eslatma tafsilotlarini sozlash">
+    Ketma-ketlikdagi har bir eslatma uchun:
+    - **Eslatma shablonini** tanlang (masalan, "Kelayotgan Hisob-Faktura To'lov Eslatmasi")
+    - **Eslatma sanasini** belgilang — masalan, muddatdan 3 kun oldin yoki keyin
+    - Muddatdan **oldin** yoki **keyin** ishga tushishi kerakligini ko'rsating
+  </Step>
+  <Step title="Kerak bo'lsa qo'shimcha eslatmalar qo'shish">
+    To'liq eslatma ketma-ketligi tuzish uchun **+ Yana Eslatma Qo'shish** tugmasini bosing. Uni o'chirish uchun istalgan eslatma yonidagi **O'chirish** tugmasini bosing.
+  </Step>
+  <Step title="Faol hisob-fakturalarga qo'llash (ixtiyoriy)">
+    Yangi konfiguratsiya allaqachon Ochiq holatidagi hisob-fakturalarni qamrab olishini xohlasangiz, **bu eslatma sozlamalarini hozirda faol hisob-fakturalarga qo'llash** katakchasini belgilang.
+  </Step>
+  <Step title="Saqlash">
+    Eslatma jadvalini saqlash va faollashtirish uchun **Yangilash** tugmasini bosing.
+  </Step>
+</Steps>
+
+## To'g'ridan-To'g'ri Hisob-Fakturalar (Buyurtma ID Siz)
+
+Avval buyurtma yaratmasdan mijozga tezda hisob-faktura chiqarish kerak bo'lganda, To'g'ridan-to'g'ri Hisob-Faktura ish oqimidan foydalaning.
+
+<Steps>
+  <Step title="Yangi hisob-faktura boshlash">
+    **Hisob-Fakturalar → Hisob-Faktura Yaratish** bo'limiga o'ting.
+  </Step>
+  <Step title="Qabul qiluvchi turini tanlash">
+    Qabul qiluvchi turi sifatida **Jismoniy Shaxs** yoki **Kompaniya** ni tanlang.
+  </Step>
+  <Step title="Qabul qiluvchini tanlash yoki kiritish">
+    - Ochiladigan ro'yxatdan **mavjud mijozni** tanlang, yoki
+    - Mijoz sifatida ro'yxatdan o'tmagan istalgan elektron pochta manzilini kiritish uchun **Mustaqil Elektron Pochta** ni tanlang
+  </Step>
+  <Step title="Buyurtma IDni bo'sh qoldirish">
+    Buyurtma ID maydonini o'tkazib yuboring. AgencyHandy hech qanday buyurtmaga bog'liq bo'lmagan mustaqil hisob-faktura yaratadi.
+  </Step>
+  <Step title="Elementlar, soliqlar va chegirmalar qo'shish">
+    Nomlar, miqdorlar va narxlar bilan elementlar qo'shish uchun **Element Qo'shish** tugmasini bosing. Kerak bo'lganda soliq stavkalari va chegirmalarni qo'llang. Jami avtomatik yangilanadi.
+  </Step>
+  <Step title="Hisoblash manzili va izohlarni belgilash">
+    To'lov hisoblash manzilini kiriting va mijoz uchun izohlar qo'shing.
+  </Step>
+  <Step title="Yuborish yoki saqlash">
+    Darhol yetkazish uchun **Hisob-Faktura Yuborish** tugmasini bosing, yoki avval ko'rib chiqish uchun **Qoralama Sifatida Saqlash** tugmasini bosing.
+  </Step>
+</Steps>
+
+<Tip>
+  To'g'ridan-to'g'ri Hisob-Fakturalar shoshilinch so'rovlar, maslahat qo'ng'iroqlari yoki oddiy buyurtma ish oqimidan tashqarida hisob-faktura chiqarish kerak bo'lgan har qanday ish uchun juda mos keladi. Mustaqil hisob-fakturalar uchun to'lovni kuzatishni qo'lda boshqarish kerak.
+</Tip>

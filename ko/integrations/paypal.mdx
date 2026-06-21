@@ -1,0 +1,70 @@
+---
+title: "안전한 클라이언트 결제 수집을 위한 PayPal 연결"
+sidebarTitle: "PayPal"
+description: "PayPal 계정을 AgencyHandy에 연결하여 클라이언트가 PayPal의 신뢰할 수 있는 글로벌 결제 플랫폼을 통해 인보이스를 결제할 수 있도록 하세요."
+---
+
+AgencyHandy의 PayPal 연동을 통해 클라이언트는 신용카드 없이도 안전하고 익숙한 방법으로 인보이스를 결제할 수 있습니다. PayPal은 다양한 국제 통화를 지원하므로, 해외 클라이언트를 보유한 에이전시에 특히 유용합니다.
+
+<Note>
+  PayPal은 플랫폼 수준의 통화 및 지역 제한으로 인해 업셀에는 사용할 수 **없습니다**. 업셀 결제에는 Stripe를 사용하세요.
+</Note>
+
+<Note>
+  PayPal 연동의 연결 및 관리는 **슈퍼관리자**와 **관리자** 역할만 가능합니다. 시작하기 전에 활성화된 PayPal 계정이 있어야 합니다.
+</Note>
+
+## PayPal 연결
+
+<Steps>
+  <Step title="PayPal 연동 설정 열기">
+    AgencyHandy에 로그인한 후, 왼쪽 사이드바에서 **연동 → PayPal 연동**으로 이동합니다.
+  </Step>
+
+  <Step title="연결 시작">
+    **PayPal 연결**을 클릭합니다. PayPal 로그인 페이지로 리디렉션됩니다.
+  </Step>
+
+  <Step title="AgencyHandy 권한 부여">
+    PayPal 계정에 로그인하고 요청된 권한을 검토합니다. **허용** (또는 **승인**)을 클릭하여 AgencyHandy가 계정에 접근할 수 있도록 승인합니다.
+  </Step>
+
+  <Step title="연결 확인">
+    성공적으로 승인되면 PayPal이 AgencyHandy로 다시 리디렉션합니다. 연동 카드에 **PayPal 연결됨** 확인 메시지가 표시됩니다. 이제 클라이언트는 PayPal을 통해 인보이스를 결제할 수 있습니다.
+  </Step>
+</Steps>
+
+## 클라이언트의 PayPal 결제 방법
+
+연동이 활성화되면 발송하는 모든 인보이스에 **PayPal로 결제** 버튼이 표시됩니다. 클라이언트가 버튼을 클릭하고 PayPal 계정에 로그인하면(또는 지역에 따라 비회원으로 결제), 결제가 완료됩니다. PayPal에서 결제가 확인되면 AgencyHandy가 인보이스 상태를 자동으로 업데이트합니다.
+
+## 지원 통화
+
+AgencyHandy는 PayPal 결제에 대해 다음 통화를 지원합니다:
+
+| 지역 | 통화 |
+|---|---|
+| 아메리카 | USD, CAD, BRL, MXN |
+| 유럽 | EUR, GBP, CHF, NOK, SEK, DKK, PLN, CZK, HUF |
+| 아시아-태평양 | AUD, NZD, JPY, HKD, SGD, MYR, PHP, THB, TWD |
+| 중동 / 기타 | ILS, CNY |
+
+<Warning>
+  일부 통화에는 제한이 있습니다:
+  - **JPY** 및 일부 통화는 소수점 금액을 지원하지 않습니다 — 소수점이 포함된 인보이스 합계는 사용하지 마세요.
+  - **BRL**은 브라질 PayPal 계정에서만 사용 가능합니다. 계정이 브라질 기반이 아닌 경우, BRL 결제는 자동으로 기본 통화로 환전됩니다.
+  - 특정 통화는 해당 국가 계정에서만 사용 가능합니다. 오류를 방지하려면 계정의 보유 통화가 인보이스 통화와 일치하는지 확인하세요.
+</Warning>
+
+<Note>
+  통화 환전이 발생하는 경우 PayPal은 자체 환전 수수료와 스프레드를 적용합니다. 이는 AgencyHandy가 통제하지 않습니다.
+</Note>
+
+## 연동 테스트
+
+실제 클라이언트 인보이스에 PayPal을 사용하기 전에 간단한 테스트를 진행하세요:
+
+1. [지원 통화](#supported-currencies)를 사용하여 AgencyHandy에서 테스트 인보이스를 생성합니다.
+2. 본인이 관리하는 보조 PayPal 계정으로 인보이스를 발송합니다.
+3. 보조 계정에서 결제를 완료합니다.
+4. AgencyHandy로 돌아와 인보이스 상태가 **결제 완료**로 업데이트되었는지, 그리고 PayPal 계정에 금액이 입금되었는지 확인합니다.

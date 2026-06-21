@@ -1,0 +1,240 @@
+---
+title: "Tehtävien hallinta: työn luominen ja seuranta tilauksissa"
+sidebarTitle: "Tehtävät"
+description: "Luo, muokkaa ja hallinnoi tehtäviä tilausten sisällä — sisältää ajanseurannan, tiedostopalautteen, asiakkaan pyytämät tehtävät ja tehtävien näkyvyyden eri tilauksissa."
+---
+
+Tehtävät ovat työn yksiköitä, jotka muuttavat tilauksen toimitettavaksi tuotteeksi. Jokainen tehtävä sijaitsee tietyssä tilauksessa, se voidaan määrittää tiimin jäsenelle, ja se seuraa omaa tilaansa, aikatauluaan, liitteitään ja palauteketjuaan. Tällä sivulla selitetään, miten tehtäviä luodaan ja hallinnoidaan, miten asiakkaat voivat pyytää tehtäviä, miten ajanseuranta ja tiedostopalaute toimivat, sekä miten tehtäviä voidaan tarkastella kaikkien tilausten osalta kerralla.
+
+## Roolivaatimukset
+
+| Toiminto | Kuka voi tehdä sen |
+|---|---|
+| Luo tehtäviä | Super Admin, Admin, Project Manager |
+| Muokkaa tehtäviä | Super Admin, Admin, Project Manager |
+| Poista tehtäviä | Super Admin, Admin, Project Manager |
+| Katso tarkistuksessa / valmis -tilassa olevia tehtäviä | Super Admin, Admin, PM, Asiakas |
+| Lähetä ja vastaa palautteeseen | Super Admin, Admin, PM |
+| Kirjaa aikaa tehtäville | Kaikki määritetyt käyttäjät (Super Adminit ja Adminit voivat kirjata muiden puolesta) |
+| Pyydä tehtävää (asiakas) | Asiakas |
+| Hyväksy / hylkää pyydetyt tehtävät | Super Admin, Admin |
+
+<Note>
+Tilaukseen määritetyt työntekijät näkevät tehtävät, jotka ovat **Tarkistuksessa** tai **Valmis** -tilassa. **Käynnissä**-tilassa olevat tehtävät eivät näy työntekijöille.
+</Note>
+
+## Luo tehtävä
+
+<Steps>
+  <Step title="Avaa tilaus">
+    Siirry vasemman sivupalkin **Tilaukset**-kohtaan ja napsauta tilausta, johon haluat lisätä tehtävän.
+  </Step>
+
+  <Step title="Lisää uusi tehtävä">
+    Selaa tilauksen sisällä **Tehtävät**-osioon ja napsauta **+ Lisää uusi tehtävä**. Tehtävän luomislomake avautuu.
+  </Step>
+
+  <Step title="Täytä tehtävän tiedot">
+    Täytä käytettävissä olevat kentät:
+
+    | Kenttä | Huomautukset |
+    |---|---|
+    | **Tehtävän nimi** | Selkeä, ytimekäs otsikko työkohteelle |
+    | **Kuvaus** | Yksityiskohtainen konteksti, vaatimukset tai ohjeet |
+    | **Vastuuhenkilö** | Tehtävän suorittamisesta vastaava tiimin jäsen |
+    | **Tunniste** | Luokittelumerkintä tehtävien järjestämiseen (esim. Suunnittelu, Teksti) |
+    | **Aloituspäivä** | Milloin tehtävätyö alkaa |
+    | **Eräpäivä** | Milloin tehtävä on suoritettava |
+    | **Asiakkaan tarkistus vaaditaan** | Valintaruutu, joka edellyttää asiakkaan hyväksyntää ennen kuin tehtävä merkitään valmiiksi — oletuksena valittu |
+    | **Liitteet** | Viitetiedostot tai tukimateriaalit |
+  </Step>
+
+  <Step title="Tallenna tehtävä">
+    Napsauta **Tallenna** luodaksesi tehtävän. Asiakas saa automaattisen ilmoituksen siitä, että uusi tehtävä on lisätty heidän tilaukseensa.
+  </Step>
+</Steps>
+
+<Tip>
+**Asiakkaan tarkistus vaaditaan** -valintaruutu on oletusarvoisesti käytössä jokaisessa uudessa tehtävässä. Jos tehtävä on puhtaasti sisäinen eikä vaadi asiakkaan hyväksyntää, voit poistaa sen valinnan ennen tallentamista.
+</Tip>
+
+## Tehtävien tilat
+
+Tehtävät siirtyvät seuraavien tilojen läpi:
+
+- **Käynnissä** — Tehtävää työstetään (ei näy asiakkaille tai työntekijöille)
+- **Tarkistuksessa** — Tehtävä on lähetetty tarkistettavaksi; näkyy asiakkaille
+- **Valmis** — Tehtävä on hyväksytty ja suoritettu
+
+<Note>
+Kun asiakas tai tarkistaja hylkää tehtävän **Tarkistuksessa**-tilasta, sen tila palautuu automaattisesti **Käynnissä**-tilaan.
+</Note>
+
+## Tehtäväikkuna ja toimintasivu
+
+Minkä tahansa tehtävän napsauttaminen avaa **Tehtäväikkunan**, joka on koko tehtävän yksityiskohtainen näkymä, joka toimii tehtävän toimintakeskuksena. Täältä voit tarkastella ja hallita:
+
+- Nykyistä tilaa, vastuuhenkilöä, aloituspäivää ja eräpäivää
+- Tehtävän kuvausta ja liitettyjä tiedostoja
+- Kaikkia palauteketjuja ja vastauksia
+- Täydellistä toimintolokia, joka näyttää jokaisen päivityksen, kommentin ja tilamuutoksen tehtävässä
+
+Kaikki tilaukseen kuuluvat henkilöt — mukaan lukien asiakkaat, kun asiakkaan tarkistus on käytössä — voivat käyttää tehtäväikkunaa tehtävissä, joihin heillä on näkyvyys.
+
+## Muokkaa tehtävää
+
+Päivittääksesi tehtävän tietoja sen luomisen jälkeen, avaa tehtäväikkuna ja muokkaa asiaankuuluvia kenttiä (nimi, kuvaus, vastuuhenkilö, päivämäärät, tunniste tai liitteet). Tallenna muutokset ottaaksesi päivityksen käyttöön. Vain Super Adminit, Adminit ja projektipäälliköt voivat muokata tehtäviä.
+
+## Poista tehtävä
+
+Poistaaksesi tehtävän, avaa se ja käytä tehtävän toimintovalikon poistovaihtoehtoa. Poistaminen on pysyvää — kaikki liittyvät aikaloki- ja tiedostoversiomerkinnät poistetaan yhdessä tehtävän kanssa.
+
+<Warning>
+Tehtävän poistaminen poistaa myös kaikki tiedostoversiot ja niihin liittyvät palautekommentit. Tätä toimintoa ei voi peruuttaa.
+</Warning>
+
+## Ajanseuranta
+
+AgencyHandy sisältää sisäänrakennetun ajanseurannan, joten tiimisi voi kirjata tunnit suoraan tehtäville — ei tarvita ulkoista työkalua.
+
+### Ajastimen käynnistäminen
+
+<Steps>
+  <Step title="Avaa tehtävä">
+    Siirry kohtaan **Tilaukset → Tehtävät** ja avaa tehtävä, jonka ajankäyttöä haluat seurata.
+  </Step>
+
+  <Step title="Käynnistä ajastin">
+    Napsauta **Käynnistä ajastin**. Ajastin alkaa käydä ja näyttää tehtävän nimen, reaaliaikaisen kuluneen ajan ja kokonaiskirjatun ajan.
+  </Step>
+
+  <Step title="Keskeytä tai pysäytä kun valmis">
+    Napsauta **Keskeytä ajastin** keskeyttääksesi seurannan väliaikaisesti tai **Pysäytä ajastin** viimeistelläksesi merkinnän. Pysäyttämisen yhteydessä vahvistat päivämäärän, aloitusajan, lopetusajan, kokonaiskeston ja valinnaisen muistiinpanon.
+  </Step>
+</Steps>
+
+<Note>
+Voit pitää vain yhden ajastimen käynnissä kerrallaan. Uuden ajastimen käynnistäminen keskeyttää automaattisesti mahdollisen olemassa olevan ajastimen.
+</Note>
+
+<Warning>
+Jos tehtävä on merkitty **Valmiiksi**, ajastin on poistettu käytöstä. Avaa tehtävä uudelleen ottaaksesi ajankirjauksen uudelleen käyttöön.
+</Warning>
+
+### Manuaalinen ajankirjaus
+
+Jos sinun on kirjattava aikaa jälkikäteen, napsauta tehtävässä **Manuaalinen ajankirjaus** ja syötä:
+
+- **Päivämäärä**
+- **Aloitusaika ja lopetusaika** (tai **Kesto** tunteina ja minuutteina)
+- **Muistiinpanot** (valinnainen)
+
+Useampi käyttäjä voi kirjata aikaa samalle tehtävälle samanaikaisesti. Super Adminit ja Adminit voivat luoda manuaalisia ajankirjauksia minkä tahansa käyttäjän puolesta.
+
+### Työloki
+
+Napsauta ajastimen vieressä olevaa **Työloki**-painiketta nähdäksesi täydellisen erittelyn kaikista tehtävän ajankirjauksista, mukaan lukien päivämäärä, aloitus-/lopetusajat, kokonaisaktiivinen aika ja mahdolliset muistiinpanot. Adminit ja Super Adminit voivat poistaa minkä tahansa merkinnän; tavalliset käyttäjät voivat poistaa vain omat merkintänsä.
+
+### Tuntikirjanpito
+
+Siirry vasemman sivupalkin **Tuntikirjanpito**-kohtaan nähdäksesi tilaukset ylittävän näkymän kaikesta kirjatusta ajasta. Voit suodattaa tehtävän nimen, tilauksen tunnuksen, vastuuhenkilön tai päivämäärävälin (päivittäinen, viikoittainen, kuukausittainen) mukaan, ja ryhmitellä tulokset tiimin jäsenen, palvelun nimen tai tehtävän nimen mukaan. Voit myös käynnistää ajastimen tai lisätä manuaalisen merkinnän suoraan Tuntikirjanpito-näkymästä.
+
+## Tiedostopalaute
+
+AgencyHandyn tiedostopalautejärjestelmä antaa sinulle ja asiakkaillesi mahdollisuuden jättää tarkkoja, visuaalisia kommentteja toimitettavista tuotteista — suoraan tehtävien sisällä. Se tukee kuvia, PDF-tiedostoja, videoita ja live-verkkosivustoja, ja siihen on rakennettu versiohallinta ja ketjutetut keskustelut.
+
+### Tiedoston lataaminen tarkistettavaksi
+
+Avaa tehtävä, napsauta **➕**-kuvaketta **Liitteet**-osiossa ja lataa kuva, PDF, video tai liitä live-verkkosivuston URL-osoite.
+
+### Palautteen jättäminen tiedostotyypin mukaan
+
+**Kuvat ja PDF-tiedostot**
+Avaa tiedosto ja käytä merkintätyökalupalkkia (Nuoli, Viiva, Suorakulmio, Korostus) merkitäksesi tiettyjä alueita. Valitse alue, kirjoita kommenttisi ja valitse, haluatko jakaa sen tiimillesi, asiakkaalle vai molemmille. Voit myös kumota tai toistaa merkintöjä ja vaihtaa merkintöjen värejä.
+
+**Videot**
+Avaa video ja pysäytä se tarkalleen siihen kuvaan, johon palautteesi liittyy. Kirjoita kommenttisi — video pysähtyy automaattisesti kirjoittamisen ajaksi. Palaute merkitään kyseiseen hetkeen. Voit poistaa aikaleiman jättääksesi yleisen kommentin.
+
+**Live-verkkosivustot**
+Lisää sivuston URL-osoite tehtävään **➕**-painikkeella, asenna sitten AgencyHandy-selainlaajennus. Avaa sivusto **Katselutilassa** (interaktiivinen) tai vaihda **Arviointitilaan** ottaaksesi kuvakaappauksen ja merkitäksesi sen piirros-, teksti- tai muototyökaluilla.
+
+### Kommenttitoiminnot
+
+Jokaisessa kommentissa on kolmen pisteen valikko, jossa on vaihtoehdot:
+
+- Muokkaa kommenttia
+- Kopioi vastaus
+- Poista kommentti
+- Rajoita näkyvyys vain sisäiselle tiimille
+
+### Palautteen ratkaiseminen
+
+Napsauta kommentin **✓**-painiketta merkitäksesi sen **Ratkaistuksi**. Ratkaistut kommentit pysyvät näkyvissä viitettä varten ja ne voidaan avata uudelleen. Saat ilmoituksen, kun joku muu ratkaisee jättämäsi kommentin.
+
+### Tiedostoversiot
+
+Napsauta **Lataa uusi versio** lisätäksesi tarkistetun tiedoston. Aiemmat versiot ja niiden palaute säilytetään ja ovat käytettävissä versioiden pudotusvalikosta. Vanhempaa versiota avattaessa AgencyHandy ilmoittaa, että uudempi versio on olemassa.
+
+Voit merkitä jokaisen tiedoston tilaksi **Tarkistusta odottaa** tai **Hyväksytty** välittääksesi tarkistustilan yhdellä silmäyksellä.
+
+<Note>
+Asiakkaat voivat jättää palautetta tiedostoista vain, jos tehtävässä on käytössä **Asiakkaan tarkistus vaaditaan** -valintaruutu. Tiedostopalaute on käytettävissä vain tehtävien tai tilausten sisällä — ei palveluluettelossa tai profiilikuvissa.
+</Note>
+
+## Asiakkaan pyytämät tehtävät
+
+Asiakkaat voivat lähettää tehtäväpyyntöjä portaalilstaan, mikä antaa heille jäsennellyn tavan tuoda esiin lisätarpeita ilman, että he ohittavat hyväksymisprosessisi.
+
+### Asiakkaan työnkulku
+
+<Steps>
+  <Step title="Käytä pyyntöjä">
+    Asiakas napsauttaa **Pyynnöt**-kohtaa Asiakasportaalin sivupalkissa — tai käyttää **+ Pyydä tehtävää** -painiketta suoraan tilauksen sisällä.
+  </Step>
+
+  <Step title="Täytä pyyntölomake">
+    Asiakas antaa:
+    - **Tilaus** (pakollinen — pyynnöt on sidottava olemassa olevaan tilaukseen)
+    - **Tehtävän nimi** (pakollinen)
+    - **Kuvaus** (valinnainen)
+    - **Liitteet** (valinnainen — enintään 1 Gt; formaatit sisältävät PDF, DOCX, JPG, PNG, MP4, ZIP ja muita)
+    - **Aloitus- ja lopetuspäivät** (valinnainen)
+  </Step>
+
+  <Step title="Lähetä pyyntö">
+    Asiakas napsauttaa **Pyydä**. Tehtävä näkyy heidän portaalissaan **Odottaa**-tilana ja toimistosi saa ilmoituksen.
+  </Step>
+</Steps>
+
+### Toimiston työnkulku
+
+<Steps>
+  <Step title="Katso saapuvat pyynnöt">
+    Napsauta **Pyynnöt** Toimistoportaalin sivupalkissa. Kaikki odottavat pyynnöt näkyvät luettelonäkymässä. Voit suodattaa asiakkaan tai tilauksen tunnuksen mukaan, lajitella aakkosjärjestyksessä tai julkaisupäivän mukaan, ja käyttää **Asetuksia** sarakkeiden näyttämiseen tai piilottamiseen.
+  </Step>
+
+  <Step title="Tarkista pyyntö">
+    Napsauta pyyntöä lukeaksesi kuvauksen ja esikatsellaksesi liitteitä ennen päätöksen tekemistä.
+  </Step>
+
+  <Step title="Hyväksy tai hylkää">
+    Käytä jokaisen pyynnön vieressä olevia toimintopainikkeita hyväksyäksesi tai hylätäksesi yksittäin — tai käytä oikeassa yläkulmassa olevia joukkoihin toimintoja hyväksyäksesi tai hylätäksesi kaikki pyynnöt kerralla.
+
+    - **Hyväksytyt** pyynnöt muuttuvat aktiivisiksi tehtäviksi tilauksessa ja noudattavat normaalia tehtävätyönkulkua.
+    - **Hylätyt** pyynnöt pysyvät kirjattuina **Hylätty**-tilassa eikä niitä lisätä tilaukseen.
+  </Step>
+</Steps>
+
+<Note>
+Asiakkaat eivät voi ohittaa hyväksymisvaihetta. Pyyntö vaatii aina toimiston toimenpiteet ennen kuin siitä tulee aktiivinen tehtävä. Odottavat pyynnöt pysyvät näkyvissä sekä asiakkaalle että toimistolle, kunnes päätös tehdään.
+</Note>
+
+## Kaikki tehtävät -näkymä
+
+Yksittäisten tilausten tehtävien hallinnan lisäksi voit tarkastella tehtäviä kaikissa tilauksissa yhdeltä näytöltä. Siirry vasemman sivupalkin **Tehtävät**-kohtaan päästäksesi **Kaikki tehtävät** -sivulle. Täältä voit:
+
+- Nähdä kaikki tehtävät, joihin sinulla on näkyvyys, riippumatta siitä, mihin tilaukseen ne kuuluvat
+- Suodattaa ja lajitella tilan, vastuuhenkilön, eräpäivän tai tilauksen mukaan
+- Tunnistaa nopeasti myöhästyneet tai riskissä olevat kohteet koko työkuormassasi
+
+Tämä tilaukset ylittävä näkyvyys on erityisen hyödyllinen projektipäälliköille ja admineille, joiden on tasapainotettava tiimin kapasiteettia ja seurattava toimituksen terveydentilaa toimiston tasolla.

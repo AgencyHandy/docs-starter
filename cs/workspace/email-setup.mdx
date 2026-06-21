@@ -1,0 +1,188 @@
+---
+title: "Konfigurace odchozího e-mailu, SMTP a e-mailových šablon"
+sidebarTitle: "Nastavení e-mailu"
+description: "Nastavte vlastní e-mailovou adresu odesílatele, připojte SMTP server, přidejte záznamy DKIM/SPF pro doručitelnost a přizpůsobte e-mailové šablony v AgencyHandy."
+---
+
+Nastavení e-mailu v AgencyHandy umožňuje nahradit výchozího odesílatele `noreply@agencyhandy.com` vlastní e-mailovou adresou s vaší značkou, nakonfigurovat dedikovaný SMTP server pro spolehlivé doručování a přizpůsobit šablony používané pro oznámení klientům, faktury, nabídky a další. Správné nastavení zajistí, že vaše e-maily dorazí do doručené pošty klientů — ne do složky se spamem — a že každá zpráva odráží identitu vaší agentury.
+
+<Note>
+  Nastavení e-mailu mohou konfigurovat pouze **Super administrátoři** a **Administrátoři**. Přejděte do **Konfigurace workspace → Nastavení e-mailu** pro přístup k těmto možnostem.
+</Note>
+
+---
+
+## Přehled komponent nastavení e-mailu
+
+<CardGroup cols={2}>
+  <Card title="Vlastní e-mailová adresa" icon="envelope">
+    Nastavte jméno odesílatele a e-mailovou adresu, které klienti uvidí při přijímání zpráv z vašeho workspace.
+  </Card>
+  <Card title="Záznamy DKIM a SPF" icon="shield-check">
+    Přidejte DNS autentizační záznamy, které potvrdí legitimitu vašich e-mailů a zabrání jejich označení jako spam.
+  </Card>
+  <Card title="SMTP server" icon="server">
+    Připojte vlastní poštovní server (např. Gmail, Outlook nebo server s vlastní doménou) pro odesílání veškeré odchozí pošty z AgencyHandy.
+  </Card>
+  <Card title="E-mailové šablony" icon="file-lines">
+    Přizpůsobte obsah, předmět a design každého automatického e-mailu, který AgencyHandy odesílá klientům.
+  </Card>
+</CardGroup>
+
+---
+
+## Část 1: Nastavení vlastní e-mailové adresy
+
+Před konfigurací e-mailové adresy odesílatele potřebujete registrovanou doménu s e-mailovým hostingem. Mezi oblíbené poskytovatele patří Google Workspace, Microsoft 365, Zoho Mail a Cloudflare Email Routing.
+
+<Steps>
+  <Step title="Zaregistrujte doménu a nastavte e-mailový hosting">
+    Pokud jste to ještě neudělali, zaregistrujte doménu u registrátora (např. GoDaddy, Namecheap, Cloudflare) a přihlaste se k poskytovateli e-mailového hostingu. Ujistěte se, že na dané doméně můžete vytvářet a spravovat e-mailové adresy (např. `hello@vasaagent.cz`).
+  </Step>
+  <Step title="Přejděte na Nastavení e-mailu v AgencyHandy">
+    Přihlaste se do AgencyHandy. Přejděte do **Konfigurace workspace** v levém navigačním panelu a klikněte na **Nastavení e-mailu**.
+  </Step>
+  <Step title="Zadejte jméno odesílatele a e-mail">
+    Do pole **Jméno odesílatele** zadejte jméno, které klienti uvidí jako odesílatele (např. `AgencyHandy Support` nebo název vaší agentury). Do pole **E-mail odesílatele** zadejte vlastní e-mailovou adresu (např. `hello@vasaagent.cz`). Klikněte na **Uložit**.
+  </Step>
+  <Step title="Ověřte svou e-mailovou adresu">
+    AgencyHandy odešle ověřovací odkaz na zadanou e-mailovou adresu. Otevřete svou doručenou poštu, najděte ověřovací zprávu a klikněte na odkaz pro potvrzení vlastnictví.
+  </Step>
+  <Step title="Nakonfigurujte DNS záznamy DKIM, SPF a DMARC">
+    Po uložení e-mailu odesílatele vám AgencyHandy poskytne DNS záznamy, které je třeba přidat:
+
+    - **Záznam SPF** (typ TXT) — opravňuje AgencyHandy odesílat e-maily jménem vaší domény.
+    - **Záznamy DKIM** (3 záznamy CNAME) — přidávají kryptografické podpisy k odchozím e-mailům, aby přijímající servery mohly ověřit jejich pravost.
+    - **Záznam DMARC** — definuje, jak mají příjemcovy servery nakládat s e-maily, které neprošly autentizací.
+
+    Přidejte všechny tyto záznamy do nastavení DNS vaší domény u vašeho registrátora. U záznamů DKIM CNAME se ujistěte, že **Proxy status je vypnutý**, pokud používáte Cloudflare.
+  </Step>
+  <Step title="Potvrďte aktivní stav">
+    Vraťte se na stránku Nastavení e-mailu v AgencyHandy. Jakmile se všechny DNS záznamy rozšíří (může to trvat od 2 minut do 2 hodin), stav e-mailu se změní z **Čeká** na zelené zaškrtnutí ✅. Váš vlastní e-mail je nyní aktivní.
+  </Step>
+</Steps>
+
+<Tip>
+  Pomocí [MXToolbox](https://mxtoolbox.com/DKIM.aspx) nebo [dmarcian's DKIM Validator](https://dmarcian.com/dkim-validator/) ověřte, zda jsou vaše záznamy DKIM správně nakonfigurovány. Pravidelně obnovujte stránku Nastavení e-mailu, dokud čekáte na propagaci záznamů.
+</Tip>
+
+---
+
+## Část 2: Konfigurace DKIM a SPF (samostatné nastavení)
+
+Pokud potřebujete generovat nebo znovu generovat záznamy DKIM a SPF samostatně, postupujte takto:
+
+**Konfigurace workspace → E-maily → Nastavení DKIM a SPF → Generovat záznamy DKIM a SPF.**
+
+Poté přidejte záznamy do svého DNS:
+
+| Typ záznamu | Typ DNS | Co nakonfigurovat                                                                                      |
+|-------------|---------|--------------------------------------------------------------------------------------------------------|
+| SPF         | TXT     | Zkopírujte **Název** a **Hodnotu** z AgencyHandy a přidejte nový TXT záznam do svého DNS               |
+| DKIM (×3)   | CNAME   | Zkopírujte každý pár **Název** a **Hodnota**; přidejte 3 samostatné záznamy CNAME s vypnutým proxy     |
+
+<Note>
+  Propagace záznamů DKIM a SPF může trvat **2 minuty až 2 hodiny**. Pokud stav stále ukazuje čekání po 2 hodinách, ověřte, zda byly záznamy zadány bez překlepů a zda neexistují žádné konfliktní záznamy.
+</Note>
+
+---
+
+## Část 3: Nastavení SMTP
+
+SMTP (Simple Mail Transfer Protocol) umožňuje směrovat veškerou odchozí poštu AgencyHandy přes váš vlastní ověřený poštovní server, čímž získáte větší kontrolu nad doručitelností a designem.
+
+<Note>
+  Můžete použít buď **E-mail s vlastní doménou** nebo **Poskytovatele SMTP e-mailu** — ne obojí současně. Přepínání mezi nimi je kdykoli možné, ale při přepnutí zpět na vlastní e-mail budete muset znovu zadat konfiguraci e-mailu.
+</Note>
+
+<Steps>
+  <Step title="Otevřete nastavení SMTP serveru">
+    Přejděte do **Konfigurace workspace → Nastavení e-mailu** a klikněte na **SMTP server**.
+  </Step>
+  <Step title="Přepněte na poskytovatele SMTP (pokud je třeba)">
+    Pokud již máte nakonfigurován vlastní e-mail, zobrazí se potvrzovací vyskakovací okno s dotazem, zda chcete přepnout. Klikněte na **Přepnout na SMTP** a pokračujte. Tím se deaktivuje stávající nastavení vlastního e-mailu.
+  </Step>
+  <Step title="Zadejte přihlašovací údaje SMTP">
+    Vyplňte požadovaná pole:
+
+    | Pole         | Příklad hodnoty        | Poznámky                                        |
+    |--------------|------------------------|-------------------------------------------------|
+    | Název hostitele | `smtp.gmail.com`    | Adresa SMTP serveru vašeho poskytovatele e-mailu |
+    | Uživatelské jméno | `vy@vasadomena.cz` | Vaše úplná e-mailová adresa                    |
+    | Heslo        | Heslo aplikace         | Použijte heslo specifické pro aplikaci (viz níže) |
+    | Port         | `465` nebo `587`       | 465 pro SSL, 587 pro TLS                        |
+    | Automatické TLS | Přepínač zapnout/vypnout | Volitelné — umožňuje automatický upgrade TLS  |
+
+    Po dokončení klikněte na **Uložit**.
+  </Step>
+  <Step title="Vygenerujte heslo aplikace (příklad Gmail)">
+    Pokud používáte Gmail s povoleným dvoufázovým ověřením (nutné pro hesla aplikací):
+
+    1. Přejděte na [myaccount.google.com/security](https://myaccount.google.com/security) a potvrďte, že je aktivní dvoustupňové ověření.
+    2. Navštivte [myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords).
+    3. Klikněte na **Vybrat aplikaci**, zvolte **Pošta** (nebo zadejte vlastní název), poté klikněte na **Vybrat zařízení** a vyberte své nastavení.
+    4. Klikněte na **Vytvořit** — Google vygeneruje 16místné heslo aplikace.
+    5. Zkopírujte heslo a vložte ho do pole **Heslo** v nastavení SMTP AgencyHandy.
+
+    <Warning>
+      Použijte **heslo aplikace**, nikoli své běžné heslo Google účtu. Použití běžného hesla selže, pokud je povoleno 2FA, a může spustit bezpečnostní upozornění.
+    </Warning>
+  </Step>
+  <Step title="Potvrďte nastavení">
+    Po uložení AgencyHandy zobrazí zprávu o úspěchu potvrzující _„SMTP bylo úspěšně vytvořeno.“_ Uložené informace o hostiteli, uživatelském jménu a portu se zobrazí na stránce nastavení SMTP.
+  </Step>
+  <Step title="Otestujte připojení SMTP">
+    Klikněte na tlačítko **Test** a zadejte e-mailovou adresu příjemce. AgencyHandy odešle testovací e-mail na tuto adresu. Zkontrolujte doručenou poštu pro potvrzovací zprávu: _„Toto je potvrzení, že nastavení e-mailu v Agency Handy funguje správně.“_
+  </Step>
+</Steps>
+
+<Tip>
+  V jednom workspace může být aktivní vždy pouze jedna konfigurace SMTP. Jakmile je SMTP nakonfigurováno, veškerá odchozí pošta z AgencyHandy — faktury, nabídky, oznámení o úkolech — bude odesílána přes váš SMTP server.
+</Tip>
+
+---
+
+## Část 4: Přizpůsobení e-mailových šablon
+
+AgencyHandy obsahuje předpřipravené šablony pro každý automatický e-mail, který odesílá. Každou z nich můžete přizpůsobit tak, aby odpovídala tónu vaší značky a obsahovala relevantní dynamický obsah.
+
+**Dostupné šablony zahrnují:**
+- Registrace klienta
+- Odeslání nabídky
+- Kontrola úkolu
+- Odeslání faktury
+- Připomínky faktur a předplatného
+- Oznámení o vytvoření tiketu
+
+<Steps>
+  <Step title="Otevřete E-mailové šablony">
+    Přejděte do **Konfigurace workspace → E-maily** a z podnabídky vyberte **E-mailová šablona**.
+  </Step>
+  <Step title="Vyberte šablonu k úpravě">
+    Zobrazí se úplný seznam dostupných šablon. Kliknutím na libovolnou šablonu otevřete její konfigurační stránku.
+  </Step>
+  <Step title="Přizpůsobte pole šablony">
+    Podle potřeby aktualizujte následující:
+    - **E-mail odesílatele:** Zvolte, která nakonfigurovaná e-mailová adresa tuto šablonu odesílá.
+    - **Předmět:** Napište jasný a stručný předmět.
+    - **Tělo:** Upravte obsah zprávy tak, aby odpovídal tónu a sdělení vaší agentury.
+    - **Dynamické proměnné:** Vložte zástupné symboly jako `{{client_name}}`, `{{company_name}}` nebo `{{invoice_id}}` pro automatické doplnění dat specifických pro klienta.
+    - **Odkazy na sociální sítě:** Přidejte odkazy na profily vaší agentury na sociálních sítích pro podporu zapojení.
+  </Step>
+  <Step title="Odešlete testovací e-mail">
+    Klikněte na **Odeslat test** pro odeslání náhledu šablony do vaší doručené pošty. Ověřte formátování, obsah a správné vyplnění všech dynamických proměnných.
+  </Step>
+  <Step title="Uložte změny">
+    Klikněte na **Uložit změny** pro použití aktualizované šablony. Nová verze bude použita pro všechny budoucí automatické e-maily odpovídající danému typu šablony.
+  </Step>
+</Steps>
+
+---
+
+## Důležité poznámky
+
+- **SMTP a vlastní e-mail se vzájemně vylučují.** V jednom workspace může být aktivní vždy pouze jedna metoda.
+- **Při přepnutí znovu zadejte e-mail.** Pokud přepínáte ze SMTP zpět na vlastní e-mail, musíte znovu zadat přihlašovací údaje vlastního e-mailu.
+- **Nesprávné přihlašovací údaje SMTP blokují veškerou odchozí poštu.** Pokud e-maily přestanou být odesílány po změně SMTP, dvakrát zkontrolujte název hostitele, port, uživatelské jméno a heslo.
+- **Propagace DKIM/SPF trvá určitou dobu.** Počkejte až 2 hodiny a obnovte stránku Nastavení e-mailu, než dospějete k závěru, že došlo k chybě.
+- **Dynamické proměnné rozlišují velká a malá písmena.** Používejte je přesně tak, jak jsou zobrazeny v editoru šablon, aby se správně doplňovaly.

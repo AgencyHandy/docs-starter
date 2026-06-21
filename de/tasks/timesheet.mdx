@@ -1,0 +1,172 @@
+---
+title: "Zeiterfassung und Arbeitszeitnachweise in AgencyHandy"
+sidebarTitle: "Arbeitszeitnachweise"
+description: "Zeit mit einem Live-Timer oder manueller Eingabe erfassen, Arbeitsprotokolle nach Aufgabe, Mitglied oder Dienstleistung filtern und Arbeitszeitnachweisdaten als CSV oder XLSX in AgencyHandy exportieren."
+---
+
+Die Arbeitszeitnachweise-Funktion in AgencyHandy bietet Ihnen ein zentrales Panel zur Erfassung jeder Stunde, die Ihr Team für Aufgaben aufwendet. Sie können einen Live-Timer für jede Aufgabe starten, Zeit nachträglich per manueller Eingabe protokollieren und die Daten dann nach Datumsbereich, Teammitglied oder Dienstleistung aufschlüsseln. Wenn Sie Produktivitätsberichte erstellen oder Zeit abrechnen müssen, können Sie alles in wenigen Klicks als CSV oder XLSX exportieren. Es ist das unverzichtbare Werkzeug, um Ihr Team zur Verantwortung zu halten und Ihre zeitbasierte Abrechnung präzise zu gestalten.
+
+## Wer die Arbeitszeitnachweise-Funktionen nutzen kann
+
+| Funktion | Super Admin | Admin | PM | Mitarbeiter |
+|---------|:-----------:|:-----:|:--:|:--------:|
+| Eigene Zeitprotokolle anzeigen | ✅ | ✅ | ✅ | ✅ |
+| Zeit für andere protokollieren | ✅ | ✅ | ✅ | ❌ |
+| Zeiteinträge bearbeiten | ✅ | ✅ | ✅ | ❌ |
+| Arbeitszeitnachweisdaten exportieren | ✅ | ✅ | ✅ | ❌ |
+
+<Note>
+  Aufgaben müssen vorhanden sein, bevor Zeit für sie erfasst werden kann. Stellen Sie sicher, dass Aufgaben innerhalb von Aufträgen erstellt werden, bevor Sie versuchen, Zeit zu protokollieren.
+</Note>
+
+## Arbeitszeitnachweise anzeigen
+
+<Steps>
+  <Step title="Arbeitszeitnachweise öffnen">
+    Klicken Sie in der linken Hauptseitenleiste auf **Arbeitszeitnachweise**. Sie sehen eine Tabelle mit allen Zeitprotokollen für Ihr Team.
+
+    Jede Zeile zeigt Datum, Teammitglied, Aufgabenname, Dienstleistung, protokollierte Zeit und alle dem Eintrag beigefügten Notizen.
+  </Step>
+</Steps>
+
+## Zeiteintrag hinzufügen
+
+Sie haben zwei Optionen zum Protokollieren von Zeit: einen Live-Timer für laufende Arbeit oder einen manuellen Eintrag für bereits abgeschlossene Zeit.
+
+<Tabs>
+  <Tab title="Timer starten">
+    <Steps>
+      <Step title="Aufgabe auswählen">
+        Suchen oder wählen Sie in der Arbeitszeitnachweise-Ansicht die Aufgabe aus, an der Sie gleich arbeiten werden.
+      </Step>
+      <Step title="Timer starten klicken">
+        Klicken Sie auf **Timer starten**, um die Zeiterfassung in Echtzeit zu beginnen. Der Timer läuft, bis Sie ihn stoppen.
+      </Step>
+      <Step title="Stoppen, wenn fertig">
+        Klicken Sie auf **Stopp**, wenn Sie die Arbeit abgeschlossen haben. AgencyHandy protokolliert automatisch die verstrichene Zeit für die ausgewählte Aufgabe.
+      </Step>
+    </Steps>
+
+    <Tip>
+      Verwenden Sie den Timer für laufende Arbeiten, um eine präzise Erfassung zu gewährleisten. Zeit manuell aufzurunden oder nachträglich zu schätzen ist weniger genau, als den Timer laufen zu lassen.
+    </Tip>
+  </Tab>
+  <Tab title="Manuelle Eingabe">
+    <Steps>
+      <Step title="+ Eintrag hinzufügen klicken">
+        Klicken Sie im Arbeitszeitnachweise-Panel auf **+ Eintrag hinzufügen**. Ein Formular wird angezeigt.
+      </Step>
+      <Step title="Eintragsdetails ausfüllen">
+        - **Aufgabe** — wählen Sie die Aufgabe aus, auf die sich diese Zeit bezieht
+        - **Teammitglied** — weisen Sie die Zeit der richtigen Person zu (Admins und Manager können für andere protokollieren)
+        - **Aufgewendete Zeit** — geben Sie die Stunden und Minuten ein
+        - **Notizen** — fügen Sie Kontext darüber hinzu, woran gearbeitet wurde
+      </Step>
+      <Step title="Speichern">
+        Klicken Sie auf **Speichern**, um den Eintrag zu erfassen. Er erscheint sofort in der Arbeitszeitnachweise-Tabelle.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Nach Datumsbereich filtern
+
+Verwenden Sie die Datumsfilter, um sich auf einen bestimmten Zeitraum zu konzentrieren.
+
+<Steps>
+  <Step title="Datumsfilter öffnen">
+    Klicken Sie auf die Datumsfilter-Steuerelemente oben rechts im Arbeitszeitnachweise-Panel.
+  </Step>
+  <Step title="Bereich auswählen">
+    Wählen Sie aus voreingestellten Bereichen:
+    - **Täglich** — nur die heutigen Protokolle
+    - **Wöchentlich** — die aktuelle Woche
+    - **Monatlich** — der aktuelle Monat
+
+    Für längere Projekte oder historische Berichte wählen Sie einen **Benutzerdefinierter** Datumsbereich, indem Sie ein Start- und Enddatum eingeben.
+  </Step>
+  <Step title="Anwenden">
+    Klicken Sie auf **Anwenden**, um die Tabelle mit Protokollen aus dem ausgewählten Zeitraum zu aktualisieren.
+  </Step>
+</Steps>
+
+<Tip>
+  Filtern Sie vor dem Exportieren, um fokussierte Berichte zu erstellen. Das Exportieren des vollständigen ungefilterten Arbeitszeitnachweises kann für aktive Agenturen sehr große Dateien erzeugen.
+</Tip>
+
+## Einträge gruppieren
+
+Gruppierung ordnet die Arbeitszeitnachweise-Zeilen neu an, ohne Daten zu entfernen. Es hilft Ihnen, die Protokolle schneller zu lesen und zu analysieren.
+
+<Steps>
+  <Step title="Dropdown 'Gruppieren nach' öffnen">
+    Klicken Sie auf das Dropdown **Gruppieren nach** nahe der Oberseite des Arbeitszeitnachweise-Panels.
+  </Step>
+  <Step title="Gruppierung auswählen">
+    Wählen Sie aus den folgenden Optionen:
+
+    | Gruppierungsoption | Anzeige |
+    |----------------|---------------|
+    | **Aufgabenname** | Alle Zeiteinträge unter jeder Aufgabe gruppiert |
+    | **Teammitglied** | Alle Einträge unter jeder Person gruppiert |
+    | **Dienstleistung → Aufgabenname** | Einträge nach Dienstleistung gruppiert, dann nach Aufgabe innerhalb jeder Dienstleistung aufgeschlüsselt |
+  </Step>
+</Steps>
+
+<Note>
+  Gruppierung ist eine rein visuelle Änderung – sie beeinflusst weder die zugrunde liegenden Daten noch das, was exportiert wird. Exporte enthalten immer alle sichtbaren Zeilen.
+</Note>
+
+## Aufgabendetails aus dem Arbeitszeitnachweise anzeigen
+
+<Steps>
+  <Step title="Aufgabenname anklicken">
+    Klicken Sie in der Arbeitszeitnachweise-Tabelle auf einen **Aufgabennamen**. AgencyHandy navigiert Sie zur vollständigen Detailseite dieser Aufgabe.
+  </Step>
+  <Step title="Aufgabenkontext überprüfen">
+    Auf der Aufgabendetailseite finden Sie den vollständigen Zeitprotokollverlauf, angehängte Notizen, Verantwortliche, Status und andere aufgabenbezogene Informationen. Verwenden Sie diese Ansicht, um Einträge zu untersuchen oder zu überprüfen, welche Arbeit geleistet wurde.
+  </Step>
+</Steps>
+
+## Arbeitszeitnachweisdaten exportieren
+
+Exportieren Sie Ihren Arbeitszeitnachweis für die Gehaltsabrechnung, Kundenrechnungsberichte oder externe Projektmanagement-Tools.
+
+<Steps>
+  <Step title="Zuerst Filter anwenden (empfohlen)">
+    Verwenden Sie den Datumsbereichsfilter, um den Export auf den benötigten Zeitraum einzugrenzen. Dadurch bleibt die Datei fokussiert und übersichtlich.
+  </Step>
+  <Step title="Exportieren klicken">
+    Klicken Sie auf die Schaltfläche **Exportieren** oben im Arbeitszeitnachweise-Panel.
+  </Step>
+  <Step title="Format auswählen">
+    Wählen Sie entweder:
+    - **CSV** — für Tabellenkalkulationstools wie Excel, Google Sheets oder Datenpipelines
+    - **XLSX** — für Excel-formatierte Arbeitsmappen mit erhaltener Spaltenformatierung
+  </Step>
+  <Step title="Datei herunterladen">
+    Die Datei wird automatisch auf Ihr Gerät heruntergeladen. Jeder Export enthält alle sichtbaren Spalten: Datum, Teammitglied, Aufgabenname, Dienstleistung, protokollierte Zeit und Notizen.
+  </Step>
+</Steps>
+
+<Warning>
+  Wenn der Export keinen Download auslöst, verhindert möglicherweise der **Popup-Blocker** Ihres Browsers den Download der Datei. Deaktivieren Sie die Popup-Blockierung für AgencyHandy und versuchen Sie es erneut.
+</Warning>
+
+## Weitere Hinweise
+
+<Accordion title="Timer vs. manuelle Eingabe">
+  Der Timer eignet sich am besten für aktive, Echtzeit-Arbeit. Manuelle Einträge eignen sich am besten, wenn Sie vergessen haben, den Timer zu starten, oder wenn Sie Zeit rückwirkend erfassen müssen. Beide Methoden erzeugen identische Protokolleinträge in der Arbeitszeitnachweise-Tabelle.
+</Accordion>
+
+<Accordion title="Gruppierung vs. Filterung">
+  Filter **reduzieren**, welche Zeilen in der Tabelle angezeigt werden. Gruppierung **reorganisiert** die bereits sichtbaren Zeilen. Sie können beides gleichzeitig anwenden – nach einem Datumsbereich filtern und dann nach Teammitglied gruppieren, um die Gesamtzeiten jeder Person für diesen Zeitraum zu sehen.
+</Accordion>
+
+<Accordion title="Exporte enthalten alle sichtbaren Spalten">
+  Jeder Export erfasst den aktuellen Zustand der sichtbaren Tabelle: Datum, Benutzer, Aufgabe, Dienstleistung, Zeit und Notizen. Wenn Sie eine Gruppierungseinstellung angewendet haben, spiegelt der Export die Gruppierungsstruktur ebenfalls wider.
+</Accordion>
+
+<Accordion title="Benutzerdefinierte Bereiche für historische Daten">
+  Verwenden Sie für langfristige Projekte oder Quartalsüberprüfungen die Option für benutzerdefinierte Datumsbereiche, um historische Arbeitszeitnachweisdaten über die voreingestellten täglichen/wöchentlichen/monatlichen Fenster hinaus abzurufen.
+</Accordion>

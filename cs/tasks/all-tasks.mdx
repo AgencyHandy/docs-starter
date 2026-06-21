@@ -1,0 +1,126 @@
+---
+title: "Všechny úkoly — centralizovaná správa úkolů v AgencyHandy"
+sidebarTitle: "Všechny úkoly"
+description: "Využijte stránku Všechny úkoly pro zobrazení všech úkolů v reálném čase s filtrováním podle role — napříč probíhajícími a revidovanými zakázkami — s vyhledáváním, filtry a řazením."
+---
+
+Stránka Všechny úkoly v AgencyHandy vám poskytuje jediný centralizovaný přehled všech úkolů patřících k aktivním pracovním postupům vaší agentury. Místo prohledávání jednotlivých zakázek vidíte všechny relevantní úkoly na jednom místě, můžete je filtrovat podle přiřazené osoby, priority nebo data a provádět úpravy přímo ze seznamu. Viditelnost je automaticky omezena podle vaší role — Super Admini vidí vše, manažeři vidí své přiřazené zakázky a zaměstnanci vidí pouze své vlastní úkoly.
+
+## Přístup na stránku Všechny úkoly
+
+1. Přihlaste se ke svému účtu AgencyHandy.
+2. Klikněte na **Úkoly** v levém postranním panelu.
+3. Vyberte **Všechny úkoly** pro otevření centralizovaného dashboardu úkolů.
+
+<Note>
+  Stránka Všechny úkoly zobrazuje pouze úkoly ze zakázek, které jsou ve stavu **Probíhající** nebo **V revizi**. Úkoly vázané na zakázky v jakémkoli jiném stavu (např. Dokončeno, Čekající) se zde nezobrazí.
+</Note>
+
+## Viditelnost úkolů podle role
+
+To, co vidíte na stránce Všechny úkoly, závisí zcela na vaší roli.
+
+| Role | Co vidí |
+|------|---------------|
+| **Super Admin / Admin** | Všechny úkoly napříč každou zakázkou, týmem a stavem |
+| **Projektový manažer (PM)** | Pouze úkoly ze zakázek, kde je přiřazen jako manažer |
+| **Zaměstnanec / Přiřazená osoba** | Pouze úkoly přímo přiřazené jim — i když spolupracovníci pracují na stejné zakázce |
+
+<Tip>
+  Pokud PM nemůže najít úkol, který by měl vidět, potvrďte, že je přiřazen jako Manažer na příslušné zakázce. PM nevidí úkoly, pokud nejsou přiřazeným manažerem dané zakázky.
+</Tip>
+
+## Kdy se úkoly zobrazí na této stránce
+
+Úkoly se na stránce Všechny úkoly zobrazí, jsou-li splněny tyto podmínky:
+
+<CardGroup cols={2}>
+  <Card title="Zakázky, které aktivují viditelnost úkolů" icon="circle-check">
+    - Manuální zakázky (jednorázové nebo předplatné) jsou vytvořeny
+    - Zakázky z katalogu přes Stripe nebo manuální platební metody jsou zadány
+    - Návrh je přijat agenturou
+  </Card>
+  <Card title="Zakázky, které ponechávají úkoly skryté" icon="eye-slash">
+    - Úkoly požadované klientem, které agentura dosud nepřijala
+    - Zkušební zakázky, které agentura dosud nepřijala
+    - Zakázky s čekajícím stavem čekající na potvrzení manuální bankovní platby
+  </Card>
+</CardGroup>
+
+## Vyhledávání, filtrování a řazení
+
+Stránka Všechny úkoly obsahuje kompletní sadu ovládacích prvků, které vám pomohou najít přesně to, co potřebujete.
+
+### Vyhledávání
+
+Pomocí vyhledávacího pole vyhledávejte úkoly podle názvu, přiřazené osoby nebo související zakázky. Výsledky se aktualizují v reálném čase při psaní.
+
+### Filtry
+
+Klikněte na **Filtr → + Přidat filtr** pro otevření panelu filtrů. Můžete kombinovat více filtrů pro přesné výsledky:
+
+| Filtr | Co dělá |
+|--------|--------------|
+| **ID zakázky** | Zobrazí úkoly propojené s konkrétním číslem zakázky |
+| **Přiřazená osoba** | Zobrazí úkoly přiřazené konkrétnímu členovi týmu |
+| **Stav** | Filtruje podle průběhu úkolu: Čekající, Probíhající, Revize, Dokončeno atd. |
+| **Priorita** | Zaměří se na Vysokou, Střední nebo Nízkou prioritu úkolů |
+| **Štítek** | Omezí výběr na štítky nebo kategorie úkolů |
+| **Datum zahájení** | Zobrazí úkoly začínající ke konkrétnímu datu nebo po něm |
+| **Datum ukončení** | Zobrazí úkoly splatné ke konkrétnímu datu |
+
+<Note>
+  Filtry jsou dostupné pouze na stránce Všechny úkoly. Přetrvávají během relace prohlížeče, ale resetují se po obnovení stránky. Filtry ovlivňují pouze váš pohled a nemění to, co vidí ostatní uživatelé.
+</Note>
+
+Chcete-li vymazat všechny filtry, klikněte na **Vymazat filtry** pro návrat k úplnému nefiltrovanému seznamu.
+
+### Řazení
+
+Seřaďte seznam úkolů podle:
+- **Data dokončení** — zobrazte úkoly, které se blíží nebo jsou již po termínu
+- **Priority** — přesuňte nejkritičtější úkoly na vrchol
+- **Času vytvoření** — zobrazte nejnověji přidané úkoly jako první
+
+### Navigace pomocí popisné cesty
+
+Pomocí popisné cesty v horní části stránky udržujte přehled o kontextu při navigaci mezi dílčími úkoly, seznamy úkolů a nadřazenými zakázkami. To je obzvláště užitečné při hlubším zkoumání konkrétního úkolu a následném návratu k širšímu seznamu.
+
+## Úprava úkolů
+
+Úkoly na stránce Všechny úkoly lze upravovat dvěma způsoby:
+
+<Tabs>
+  <Tab title="Přímá úprava">
+    Klikněte přímo do upravitelného pole v řádku úkolu — například stavu, přiřazené osoby nebo data dokončení — a proveďte změnu bez opuštění zobrazení seznamu. Toto je nejrychlejší možnost pro rychlé aktualizace.
+  </Tab>
+  <Tab title="Úprava v modálním okně">
+    Klikněte na název úkolu pro otevření úplného modálního okna s podrobnostmi úkolu. Odtud můžete aktualizovat všechny vlastnosti úkolu, přidávat poznámky, zobrazovat dílčí úkoly a vidět kompletní historii úkolu. Tuto možnost použijte pro důkladnější úpravy nebo když potřebujete kontext.
+  </Tab>
+</Tabs>
+
+## Pravidla mazání úkolů
+
+Úkoly na stránce Všechny úkoly jsou přímo vázány na své nadřazené zakázky.
+
+- Při **smazání zakázky** jsou všechny úkoly přidružené k dané zakázce **automaticky a trvale odstraněny** ze stránky Všechny úkoly.
+- Toto smazání se týká všech uživatelských rolí — nikdo nebude moci vidět tyto úkoly po smazání zakázky.
+- **Neexistuje možnost obnovení** úkolů smazaných prostřednictvím smazání zakázky.
+
+<Warning>
+  Smazáním zakázky se trvale odstraní všechny její úkoly. Ujistěte se, že jsou veškeré důležité záznamy o historii úkolů nebo dodávkách uloženy jinde, než zakázku smažete.
+</Warning>
+
+## Doplňující poznámky
+
+<Accordion title="Aktualizace v reálném čase">
+  Změny zakázek, přiřazení úkolů nebo stavů úkolů se na stránce Všechny úkoly projevují v reálném čase. Pokud spolupracovník aktualizuje úkol, zatímco máte stránku otevřenou, uvidíte změnu bez nutnosti obnovení stránky.
+</Accordion>
+
+<Accordion title="Úkoly požadované klientem">
+  Úkoly odeslané klienty se na stránce Všechny úkoly nezobrazí, dokud je agentura výslovně nepřijme. Do přijetí zůstávají tyto úkoly v čekajícím stavu a nejsou viditelné v centralizovaném pohledu.
+</Accordion>
+
+<Accordion title="Úkoly a stav zakázky">
+  Úkoly se zobrazují pouze pro zakázky ve stavu Probíhající nebo V revizi. Pokud se zakázka přesune do stavu Dokončeno nebo je pozastavena, její úkoly se zde již nezobrazují. Pro zobrazení úkolů vázaných na zakázky mimo tyto stavy přejděte na konkrétní zakázku.
+</Accordion>

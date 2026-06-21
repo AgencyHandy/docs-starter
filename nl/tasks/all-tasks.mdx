@@ -1,0 +1,126 @@
+---
+title: "Alle taken — Gecentraliseerd taakbeheer in AgencyHandy"
+sidebarTitle: "Alle taken"
+description: "Gebruik de pagina Alle taken voor een realtime, op rol gefilterd overzicht van elke taak over lopende en ter beoordeling staande orders — met zoeken, filters en sortering."
+---
+
+De pagina Alle taken in AgencyHandy geeft je één gecentraliseerd overzicht van elke taak die behoort tot actieve werkstromen in je bureau. In plaats van door individuele orders te zoeken, kun je alle relevante taken op één plek bekijken, ze filteren op toegewezene, prioriteit of datum, en direct vanuit de lijst bewerkingen uitvoeren. Zichtbaarheid is automatisch afgestemd op je rol — Super Admins zien alles, Managers zien hun toegewezen orders en Medewerkers zien alleen hun eigen taken.
+
+## Toegang tot de pagina Alle taken
+
+1. Log in op je AgencyHandy-account.
+2. Klik op **Taken** in de linker zijbalk.
+3. Selecteer **Alle taken** om het gecentraliseerde takendashboard te openen.
+
+<Note>
+  De pagina Alle taken toont alleen taken van orders met de status **Lopend** of **Ter beoordeling**. Taken die gekoppeld zijn aan orders in een andere staat (bijv. Voltooid, In behandeling) worden hier niet weergegeven.
+</Note>
+
+## Taakzichtbaarheid per rol
+
+Wat je ziet op de pagina Alle taken hangt volledig af van je rol.
+
+| Rol | Wat zij zien |
+|------|---------------|
+| **Super Admin / Admin** | Alle taken over elke order, elk team en elke status |
+| **Projectmanager (PM)** | Alleen taken van orders waarbij ze als Manager zijn aangewezen |
+| **Medewerker / Toegewezene** | Alleen taken die direct aan hen zijn toegewezen — ook al werken teamgenoten aan dezelfde order |
+
+<Tip>
+  Als een PM een taak niet kan vinden die ze verwachten te zien, controleer dan of ze als Manager zijn aangewezen op de betreffende order. PM's zien geen taken tenzij ze de aangewezen Manager zijn voor die order.
+</Tip>
+
+## Wanneer taken op deze pagina verschijnen
+
+Taken worden weergegeven op de pagina Alle taken wanneer aan deze voorwaarden is voldaan:
+
+<CardGroup cols={2}>
+  <Card title="Orders die taakzichtbaarheid activeren" icon="circle-check">
+    - Handmatige orders (eenmalig of abonnement) worden aangemaakt
+    - Catalogusorders via Stripe of handmatige betaalmethoden worden geplaatst
+    - Een voorstel wordt geaccepteerd door het bureau
+  </Card>
+  <Card title="Orders die taken verborgen houden" icon="eye-slash">
+    - Door klanten aangevraagde taken die het bureau nog niet heeft geaccepteerd
+    - Proeforders die het bureau nog niet heeft geaccepteerd
+    - Orders met de status In behandeling die wachten op bevestiging van handmatige bankbetaling
+  </Card>
+</CardGroup>
+
+## Zoeken, filteren en sorteren
+
+De pagina Alle taken bevat een volledige reeks bedieningselementen om precies te vinden wat je nodig hebt.
+
+### Zoeken
+
+Gebruik de zoekbalk om taken te vinden op naam, toegewezene of gerelateerde order. Resultaten worden in realtime bijgewerkt terwijl je typt.
+
+### Filters
+
+Klik op **Filter → + Filter toevoegen** om het filterpaneel te openen. Je kunt meerdere filters combineren voor nauwkeurige resultaten:
+
+| Filter | Wat het doet |
+|--------|--------------|
+| **Order-ID** | Toon taken gekoppeld aan een specifiek ordernummer |
+| **Toegewezene** | Toon taken toegewezen aan een bepaald teamlid |
+| **Status** | Filter op taakvoortgang: In behandeling, In uitvoering, Ter beoordeling, Gereed, enz. |
+| **Prioriteit** | Focus op taken met Hoge, Gemiddelde of Lage prioriteit |
+| **Label** | Verfijn op taaklabels of categorieën |
+| **Startdatum** | Toon taken die starten op of na een bepaalde datum |
+| **Einddatum** | Toon taken die vóór een bepaalde datum moeten zijn voltooid |
+
+<Note>
+  Filters zijn alleen beschikbaar op de pagina Alle taken. Ze blijven behouden tijdens je browsersessie maar worden opnieuw ingesteld bij het vernieuwen van de pagina. Filters beïnvloeden alleen jouw weergave en veranderen niet wat andere gebruikers zien.
+</Note>
+
+Om alle filters te wissen, klik je op **Filters wissen** om terug te keren naar de volledige, ongefilterde lijst.
+
+### Sorteren
+
+Sorteer de takenlijst op:
+- **Deadline** — taken weergeven die eraan komen of al achterstallig zijn
+- **Prioriteit** — de meest kritieke taken bovenaan brengen
+- **Aanmaaktijdstip** — recent toegevoegde taken als eerste weergeven
+
+### Broodkruimelnavigatie
+
+Gebruik het broodkruimelspoor bovenaan de pagina om context te behouden terwijl je navigeert tussen subtaken, takenlijsten en bovenliggende orders. Dit is vooral handig wanneer je in een specifieke taak duikt en vervolgens terug wilt keren naar de bredere lijst.
+
+## Taken bewerken
+
+Je kunt taken op de pagina Alle taken op twee manieren aanpassen:
+
+<Tabs>
+  <Tab title="Inline bewerken">
+    Klik direct in een bewerkbaar veld binnen de taakreg — zoals de status, toegewezene of deadline — en breng je wijziging aan zonder de lijstweergave te verlaten. Dit is de snelste optie voor snelle updates.
+  </Tab>
+  <Tab title="Modaal bewerken">
+    Klik op de taaknaam om het volledige taakdetailmodal te openen. Van hieruit kun je alle taakeigenschappen bijwerken, notities toevoegen, subtaken bekijken en de volledige taakgeschiedenis inzien. Gebruik dit voor grondiger bewerkingen of wanneer je context nodig hebt.
+  </Tab>
+</Tabs>
+
+## Regels voor het verwijderen van taken
+
+Taken op de pagina Alle taken zijn direct gekoppeld aan hun bovenliggende orders.
+
+- Wanneer een **order wordt verwijderd**, worden alle taken die aan die order zijn gekoppeld **automatisch en permanent verwijderd** van de pagina Alle taken.
+- Deze verwijdering betreft alle gebruikersrollen — niemand kan die taken meer zien nadat de order is verwijderd.
+- **Er is geen hersteloptie** voor taken die via orderverwijdering zijn verwijderd.
+
+<Warning>
+  Het verwijderen van een order verwijdert permanent alle bijbehorende taken. Zorg ervoor dat belangrijke taakgeschiedenissen of leveringsrecords elders zijn opgeslagen voordat je een order verwijdert.
+</Warning>
+
+## Aanvullende opmerkingen
+
+<Accordion title="Realtime updates">
+  Wijzigingen in orders, taaktoewijzingen of taakstatussen worden in realtime weerspiegeld op de pagina Alle taken. Als een teamgenoot een taak bijwerkt terwijl jij de pagina open hebt, zie je de wijziging zonder te hoeven vernieuwen.
+</Accordion>
+
+<Accordion title="Door klanten aangevraagde taken">
+  Taken ingediend door klanten verschijnen niet op de pagina Alle taken totdat het bureau ze expliciet accepteert. Tot die tijd blijven deze taken in een in behandeling zijnde staat en zijn ze niet zichtbaar in het gecentraliseerde overzicht.
+</Accordion>
+
+<Accordion title="Taken en orderstatus">
+  Taken worden alleen weergegeven voor orders met de status Lopend of Ter beoordeling. Als een order naar Voltooid wordt verplaatst of wordt gepauzeerd, worden de bijbehorende taken hier niet meer weergegeven. Navigeer naar de specifieke order om taken te bekijken die gekoppeld zijn aan orders buiten deze statussen.
+</Accordion>

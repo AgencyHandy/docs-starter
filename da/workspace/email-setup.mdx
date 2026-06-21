@@ -1,0 +1,188 @@
+---
+title: "Konfigurer udgående e-mail, SMTP og e-mailskabeloner"
+sidebarTitle: "E-mailopsætning"
+description: "Konfigurer en tilpasset afsender-e-mailadresse, tilslut en SMTP-server, tilføj DKIM/SPF-poster for leveringsevne, og tilpas e-mailskabeloner i AgencyHandy."
+---
+
+AgencyHandy's e-mailopsætning giver dig mulighed for at erstatte standardafsenderen `noreply@agencyhandy.com` med din egen brandede e-mailadresse, konfigurere en dedikeret SMTP-server for pålidelig levering og tilpasse de skabeloner, der bruges til klientnotifikationer, fakturaer, tilbud og mere. En korrekt opsætning sikrer, at dine e-mails når frem til klienternes indbakke — og ikke deres spammapper — og at alle beskeder afspejler dit bureaus identitet.
+
+<Note>
+  Kun **Super Admins** og **Admins** kan konfigurere e-mailindstillinger. Gå til **Workspace Config → E-mailopsætning** for at tilgå disse muligheder.
+</Note>
+
+---
+
+## Oversigt over e-mailopsætningens komponenter
+
+<CardGroup cols={2}>
+  <Card title="Tilpasset e-mailadresse" icon="envelope">
+    Angiv det afsendernavn og den e-mailadresse, som klienter ser, når de modtager beskeder fra dit workspace.
+  </Card>
+  <Card title="DKIM & SPF-poster" icon="shield-check">
+    Tilføj DNS-godkendelsesposter for at bevise, at dine e-mails er legitime og forhindre, at de markeres som spam.
+  </Card>
+  <Card title="SMTP-server" icon="server">
+    Tilslut din egen mailserver (f.eks. Gmail, Outlook eller en tilpasset domæneserver) for at sende alle udgående e-mails fra AgencyHandy.
+  </Card>
+  <Card title="E-mailskabeloner" icon="file-lines">
+    Tilpas indhold, emnelinjer og branding for alle automatiserede e-mails, som AgencyHandy sender til klienter.
+  </Card>
+</CardGroup>
+
+---
+
+## Del 1: Opsæt en tilpasset e-mailadresse
+
+Inden du konfigurerer din afsender-e-mail, skal du have et registreret domæne med e-mailhosting. Populære udbydere inkluderer Google Workspace, Microsoft 365, Zoho Mail og Cloudflare Email Routing.
+
+<Steps>
+  <Step title="Registrer et domæne og opsæt e-mailhosting">
+    Hvis du ikke allerede har gjort det, skal du registrere et domæne hos en registrator (f.eks. GoDaddy, Namecheap, Cloudflare) og tilmelde dig en e-mailhostingudbyder. Sørg for, at du kan oprette og administrere e-mailadresser på det pågældende domæne (f.eks. `hello@youragency.com`).
+  </Step>
+  <Step title="Naviger til E-mailopsætning i AgencyHandy">
+    Log ind i AgencyHandy. Gå til **Workspace Config** i venstre navigation og klik på **E-mailopsætning**.
+  </Step>
+  <Step title="Indtast dit afsendernavn og din e-mail">
+    I feltet **Afsendernavn** skal du indtaste det navn, klienter vil se som afsender (f.eks. `AgencyHandy Support` eller dit bureaus navn). I feltet **Afsender-e-mail** skal du indtaste den tilpassede e-mailadresse (f.eks. `hello@youragency.com`). Klik på **Gem**.
+  </Step>
+  <Step title="Bekræft din e-mailadresse">
+    AgencyHandy sender et bekræftelseslink til den e-mailadresse, du har angivet. Åbn din e-mailindbakke, find bekræftelsesmeddelelsen, og klik på linket for at bekræfte ejerskab.
+  </Step>
+  <Step title="Konfigurer DKIM-, SPF- og DMARC DNS-poster">
+    Når du har gemt din afsender-e-mail, leverer AgencyHandy de DNS-poster, du skal tilføje:
+
+    - **SPF-post** (TXT-type) — autoriserer AgencyHandy til at sende e-mails på vegne af dit domæne.
+    - **DKIM-poster** (3 CNAME-poster) — tilføjer kryptografiske signaturer til udgående e-mails, så modtagerservere kan verificere ægthed.
+    - **DMARC-post** — definerer, hvordan modtagerservere skal håndtere e-mails, der ikke består godkendelsestjek.
+
+    Tilføj alle disse poster til dit domænes DNS-indstillinger hos din registrator. For DKIM CNAME-poster skal du sørge for, at **Proxy Status er deaktiveret**, hvis du bruger Cloudflare.
+  </Step>
+  <Step title="Bekræft aktiv status">
+    Vend tilbage til siden E-mailopsætning i AgencyHandy. Når alle DNS-poster er propageret (dette kan tage mellem 2 minutter og 2 timer), opdateres e-mailstatussen fra **Afventer** til at vise et grønt flueben ✅. Din tilpassede e-mail er nu aktiv.
+  </Step>
+</Steps>
+
+<Tip>
+  Brug [MXToolbox](https://mxtoolbox.com/DKIM.aspx) eller [dmarcian's DKIM Validator](https://dmarcian.com/dkim-validator/) til at bekræfte, at dine DKIM-poster er korrekt konfigureret. Opdater siden E-mailopsætning med jævne mellemrum, mens du venter på propagering.
+</Tip>
+
+---
+
+## Del 2: Konfigurer DKIM & SPF (selvstændig opsætning)
+
+Hvis du har brug for at generere eller genskabe DKIM- og SPF-poster uafhængigt, skal du følge denne sti:
+
+**Workspace Config → E-mails → DKIM & SPF-opsætning → Generer DKIM- og SPF-poster.**
+
+Tilføj derefter posterne til din DNS:
+
+| Posttype    | DNS-type | Hvad du skal konfigurere                                                                                    |
+|-------------|----------|-------------------------------------------------------------------------------------------------------------|
+| SPF         | TXT      | Kopiér **Navn** og **Værdi** fra AgencyHandy, og tilføj en ny TXT-post i din DNS                           |
+| DKIM (×3)   | CNAME    | Kopiér hvert **Navn** og **Værdi**-par; tilføj 3 separate CNAME-poster med proxy deaktiveret               |
+
+<Note>
+  DKIM- og SPF-poster kan tage alt fra **2 minutter til 2 timer** at propagere. Hvis status stadig viser afventende efter 2 timer, skal du kontrollere, at posterne blev indtastet uden slåfejl, og at der ikke findes modstridende poster.
+</Note>
+
+---
+
+## Del 3: Opsæt SMTP
+
+SMTP (Simple Mail Transfer Protocol) giver dig mulighed for at rute alle udgående AgencyHandy-e-mails gennem din egen verificerede mailserver, hvilket giver dig mere kontrol over leveringsevne og branding.
+
+<Note>
+  Du kan bruge enten en **tilpasset domæne-e-mail** eller en **SMTP-e-mailudbyder** — ikke begge på samme tid. Det er muligt at skifte mellem dem når som helst, men du skal genindtaste din e-mailkonfiguration, når du skifter tilbage til en tilpasset e-mail.
+</Note>
+
+<Steps>
+  <Step title="Åbn SMTP-serverindstillinger">
+    Gå til **Workspace Config → E-mailopsætning**, og klik på **SMTP-server**.
+  </Step>
+  <Step title="Skift til SMTP-udbyder (hvis nødvendigt)">
+    Hvis du allerede har konfigureret en tilpasset e-mail, vises en bekræftelsespopup, der spørger, om du vil skifte. Klik på **Skift til SMTP** for at fortsætte. Dette deaktiverer den eksisterende tilpassede e-mailopsætning.
+  </Step>
+  <Step title="Indtast dine SMTP-loginoplysninger">
+    Udfyld de påkrævede felter:
+
+    | Felt        | Eksempelværdi          | Noter                                          |
+    |-------------|------------------------|------------------------------------------------|
+    | Værtsnavn   | `smtp.gmail.com`       | Din e-mailudbyders SMTP-serveradresse          |
+    | Brugernavn  | `you@yourdomain.com`   | Din fulde e-mailadresse                        |
+    | Adgangskode | App-adgangskode        | Brug en app-specifik adgangskode (se nedenfor) |
+    | Port        | `465` eller `587`      | 465 for SSL, 587 for TLS                       |
+    | Auto TLS    | Til/fra               | Valgfrit — aktiverer automatisk TLS-opgradering |
+
+    Klik på **Gem**, når du er færdig.
+  </Step>
+  <Step title="Generer en app-adgangskode (Gmail-eksempel)">
+    Hvis du bruger Gmail med 2-faktor-godkendelse aktiveret (påkrævet for app-adgangskoder):
+
+    1. Gå til [myaccount.google.com/security](https://myaccount.google.com/security) og bekræft, at 2-trinsgodkendelse er aktiv.
+    2. Besøg [myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords).
+    3. Klik på **Vælg app**, vælg **Mail** (eller indtast et tilpasset navn), klik derefter på **Vælg enhed** og vælg din opsætning.
+    4. Klik på **Opret** — Google genererer en 16-tegns app-adgangskode.
+    5. Kopiér adgangskoden og indsæt den i feltet **Adgangskode** i AgencyHandy's SMTP-indstillinger.
+
+    <Warning>
+      Brug **app-adgangskoden**, ikke din normale Google-kontoadgangskode. Brug af din normale adgangskode vil mislykkes, hvis 2FA er aktiveret, og kan udløse sikkerhedsadvarsler.
+    </Warning>
+  </Step>
+  <Step title="Bekræft opsætningen">
+    Efter lagring viser AgencyHandy en succesbesked, der bekræfter _"SMTP er oprettet succesfuldt."_ Dine gemte oplysninger om vært, brugernavn og port vises på SMTP-indstillingssiden.
+  </Step>
+  <Step title="Test SMTP-forbindelsen">
+    Klik på knappen **Test**, og indtast en modtager-e-mailadresse. AgencyHandy sender en test-e-mail til den adresse. Tjek indbakken for bekræftelsesmeddelelsen: _"Dette er en bekræftelse på, at din e-mailopsætning i Agency Handy fungerer korrekt."_
+  </Step>
+</Steps>
+
+<Tip>
+  Der kan kun være én aktiv SMTP-konfiguration per workspace ad gangen. Når SMTP er konfigureret, vil alle udgående e-mails fra AgencyHandy — fakturaer, tilbud, opgavenotifikationer — blive sendt gennem din SMTP-server.
+</Tip>
+
+---
+
+## Del 4: Tilpas e-mailskabeloner
+
+AgencyHandy inkluderer færdigbyggede skabeloner til alle automatiserede e-mails, det sender. Du kan tilpasse hver enkelt til at matche din brandtone og inkludere relevant dynamisk indhold.
+
+**Tilgængelige skabeloner inkluderer:**
+- Klienttilmelding
+- Send tilbud
+- Opgavegennemgang
+- Send faktura
+- Faktura- og abonnementspåmindelser
+- Notifikationer om oprettelse af supportticket
+
+<Steps>
+  <Step title="Åbn E-mailskabeloner">
+    Gå til **Workspace Config → E-mails**, og vælg derefter **E-mailskabelon** fra undermenuen.
+  </Step>
+  <Step title="Vælg en skabelon til redigering">
+    Den komplette liste over tilgængelige skabeloner vises. Klik på en skabelon for at åbne dens konfigurationsside.
+  </Step>
+  <Step title="Tilpas skabelonfelterne">
+    Opdater følgende efter behov:
+    - **Afsender-e-mail:** Vælg hvilken konfigureret e-mailadresse der sender denne skabelon.
+    - **Emne:** Skriv en klar, præcis emnelinje.
+    - **Brødtekst:** Rediger beskedens indhold, så det matcher dit bureaus tone og budskab.
+    - **Dynamiske variabler:** Indsæt pladsholdere som `{{client_name}}`, `{{company_name}}` eller `{{invoice_id}}` til automatisk udfyldning af klientspecifikke data.
+    - **Links til sociale medier:** Tilføj links til dit bureaus sociale profiler for at fremme engagement.
+  </Step>
+  <Step title="Send en test-e-mail">
+    Klik på **Send test** for at sende en forhåndsvisning af skabelonen til din indbakke. Kontrollér formateringen, indholdet og at alle dynamiske variabler løses korrekt.
+  </Step>
+  <Step title="Gem dine ændringer">
+    Klik på **Gem ændringer** for at anvende den opdaterede skabelon. Den nye version bruges til alle fremtidige automatiserede e-mails, der matcher den pågældende skabelontype.
+  </Step>
+</Steps>
+
+---
+
+## Vigtige noter
+
+- **SMTP og tilpasset e-mail udelukker hinanden.** Kun én metode kan være aktiv ad gangen per workspace.
+- **Genindtast e-mail ved skift.** Hvis du skifter fra SMTP tilbage til en tilpasset e-mailopsætning, skal du genindtaste dine tilpassede e-mailoplysninger.
+- **Forkerte SMTP-loginoplysninger blokerer alle udgående e-mails.** Dobbelttjek dit værtsnavn, port, brugernavn og adgangskode, hvis e-mails holder op med at blive sendt efter en SMTP-ændring.
+- **DKIM/SPF-propagering tager tid.** Vent op til 2 timer og opdater siden E-mailopsætning, inden du konkluderer, at der er en fejl.
+- **Dynamiske variabler er store/små bogstaver-følsomme.** Brug dem nøjagtigt som vist i skabeloneditoren for at sikre, at de udfyldes korrekt.

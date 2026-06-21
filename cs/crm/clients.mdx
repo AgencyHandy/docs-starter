@@ -1,0 +1,218 @@
+---
+title: "Správa klientů: Profily, import a konfigurace"
+sidebarTitle: "Klienti"
+description: "Vytvářejte a importujte profily klientů v AgencyHandy, sledujte objednávky a faktury, spravujte přístup k portálu a organizujte klienty pomocí kategorií."
+---
+
+Sekce Klienti v CRM systému AgencyHandy je vaším centrálním rozbočištěm pro každou organizaci nebo jednotlivce, kteří prošli fází potenciálního klienta. Zde můžete vytvářet profily klientů ručně nebo hromadně, udržovat kontaktní údaje aktuální, sledovat nedávné objednávky a faktury, segmentovat klienty do vlastních kategorií a monitorovat přístup k portálu — vše z jednoho zobrazení seznamu.
+
+<Note>
+  Pro vytváření, úpravy, import nebo konfiguraci profilů klientů potřebujete roli **Super administrátora** nebo **Administrátora**. Manažeři mohou zobrazovat detaily klientů a protokoly aktivity.
+</Note>
+
+## Vytvoření profilu klienta
+
+Když onboardujete nového klienta, AgencyHandy pro něj vytvoří účet v portálu a odešle mu zabezpečenou přihlašovací pozvánku.
+
+<Steps>
+  <Step title="Přejděte na Klienty">
+    Přihlaste se do svého účtu AgencyHandy, poté klikněte na **CRM** v levém postranním panelu a vyberte záložku **Klienti**.
+  </Step>
+  <Step title="Otevřete formulář pro vytvoření">
+    Klikněte na **+ Vytvořit klienta** v pravém horním rohu. Otevře se formulář.
+  </Step>
+  <Step title="Zadejte informace o klientovi">
+    Vyplňte údaje klienta:
+
+    - **Křestní jméno / Příjmení** *(povinné)*
+    - **E-mail** *(povinné — používá se pro odeslání pozvánky do portálu)*
+    - **Název společnosti**
+    - **Telefonní číslo**
+    - **Země, Stát, Město, PSČ**
+    - **Kategorie** — přiřaďte stávající konfigurační kategorii, pokud je relevantní
+  </Step>
+  <Step title="Uložte profil">
+    Klikněte na **Vytvořit**. Profil je okamžitě přidán do vašeho seznamu klientů.
+  </Step>
+</Steps>
+
+<Note>
+  Po vytvoření profilu klient obdrží e-mail s odkazem na zabezpečenou přihlašovací URL. Kliknutím na tento odkaz se aktivuje jejich účet v portálu a mohou se poprvé přihlásit.
+</Note>
+
+## Import klientů z CSV
+
+Pokud migrujete z jiné platformy nebo máte tabulku stávajících klientů, můžete je importovat najednou.
+
+<Steps>
+  <Step title="Klikněte na Import">
+    V seznamu Klientů klikněte na tlačítko **Import** v pravém horním rohu.
+  </Step>
+  <Step title="Nahrajte soubor CSV">
+    Přetáhněte soubor do oblasti pro nahrávání nebo klikněte pro procházení a výběr. AgencyHandy přijímá soubory CSV obsahující následující pole:
+
+    - Jméno klienta *(povinné)*
+    - E-mail *(povinné)*
+    - Název společnosti
+    - Země
+    - Stát
+    - Město
+    - PSČ
+  </Step>
+  <Step title="Mapujte sloupce">
+    AgencyHandy automaticky detekuje názvy sloupců, které odpovídají názvům jeho polí. Pro neshodné sloupce použijte rozbalovací nabídky k ručnímu mapování na správná systémová pole.
+  </Step>
+  <Step title="Náhled a potvrzení">
+    Zkontrolujte náhledovou tabulku pro zachycení případných problémů s formátováním před uložením dat.
+  </Step>
+  <Step title="Dokončete import">
+    Klikněte na **Uložit**. Po úspěšném importu všech záznamů se zobrazí potvrzovací zpráva.
+  </Step>
+</Steps>
+
+<Tip>
+  Pokud záhlaví sloupců v tabulce přesně odpovídají názvům polí AgencyHandy (např. „email“, „company name“), mapovač se vyplní automaticky — není třeba ruční přiřazování.
+</Tip>
+
+## Export klientů
+
+Zazálohujte databázi klientů nebo ji sdílejte se zainteresovanými stranami exportem do CSV nebo Excelu.
+
+<Steps>
+  <Step title="Klikněte na Export">
+    V seznamu Klientů klikněte na tlačítko **Export** v pravém horním rohu.
+  </Step>
+  <Step title="Přizpůsobte export">
+    Vyberte, které sloupce zahrnout — zvolte **Všechny sloupce** pro úplný export nebo vyberte konkrétní pole, jako je jméno, kontaktní údaje, společnost nebo adresa.
+  </Step>
+  <Step title="Vyberte formát">
+    Vyberte **CSV** nebo **XLSX** podle zamýšleného použití.
+  </Step>
+  <Step title="Stáhněte soubor">
+    Klikněte na **Export**. Soubor se vygeneruje a stáhne do vašeho zařízení. Bezpečně ho uložte pro ochranu dat klientů.
+  </Step>
+</Steps>
+
+## Úprava profilu klienta
+
+<Steps>
+  <Step title="Vyberte klienta">
+    V seznamu Klientů klikněte na zaškrtávací políčko vedle klienta, kterého chcete aktualizovat, nebo klikněte přímo na jeho jméno pro otevření profilu.
+  </Step>
+  <Step title="Vstupte do režimu úprav">
+    Klikněte na tlačítko **Upravit** v pravém horním rohu profilu klienta. Zobrazí se formulář pro úpravy.
+  </Step>
+  <Step title="Aktualizujte informace">
+    Upravte libovolná pole — jméno, e-mail, telefon, adresu, společnost nebo kategorii.
+  </Step>
+  <Step title="Uložte změny">
+    Klikněte na **Aktualizovat**. Potvrzovací zpráva potvrdí úspěšné uložení profilu.
+  </Step>
+</Steps>
+
+## Vyhledávání, řazení a filtrování
+
+Seznam Klientů nabízí několik nástrojů pro rychlé nalezení správného klienta:
+
+<CardGroup cols={2}>
+  <Card title="Vyhledávání podle jména" icon="magnifying-glass">
+    Zadejte jméno klienta do vyhledávacího pole pro okamžité filtrování seznamu.
+  </Card>
+  <Card title="Filtr podle společnosti" icon="building">
+    Zúžte seznam na klienty přidružené ke konkrétní společnosti.
+  </Card>
+  <Card title="Filtr podle e-mailu" icon="envelope">
+    Vyhledejte klienta, pokud znáte jeho e-mailovou adresu, ale ne jméno.
+  </Card>
+  <Card title="Filtr podle stavu" icon="circle-check">
+    Zobrazí pouze aktivní, neaktivní nebo pozvané klienty.
+  </Card>
+  <Card title="Řazení abecedně" icon="arrow-down-a-z">
+    Seřaďte celý seznam klientů od A do Z nebo od Z do A pro rychlý přehled.
+  </Card>
+  <Card title="Filtr podle kategorie" icon="tag">
+    Zobrazí pouze klienty přiřazené ke konkrétní konfigurační kategorii.
+  </Card>
+</CardGroup>
+
+## Sledování aktivity klienta
+
+Uvnitř každého profilu klienta najdete záložky, které vám poskytují aktuální přehled o zapojení daného klienta s vaší agenturou:
+
+<Accordion title="Nedávné objednávky">
+  Prohlédněte si historii všech objednávek zadaných klientem, včetně názvu služby, balíčku, stavu a data. Získáte tak rychlý přehled o jejich nákupní historii bez opuštění CRM systému.
+</Accordion>
+
+<Accordion title="Nedávné tikety">
+  Zobrazte všechny tikety podpory nebo servisní tikety odeslané klientem. Toto zobrazení slouží k prioritizaci odpovědí a zajištění toho, aby žádný požadavek nezůstal bez odezvy.
+</Accordion>
+
+<Accordion title="Nedávné faktury">
+  Přistupte k protokolu všech faktur vygenerovaných pro klienta, včetně stavu platby. To pomáhá sledovat nevyřízené zůstatky a historii faktur na jednom místě.
+</Accordion>
+
+## Konfigurace klientů (Kategorie)
+
+Konfigurace klientů umožňuje vytvářet barevně odlišené kategorie pro segmentaci seznamu klientů — například *Vysoká priorita*, *Paušální smlouva* nebo *Pozastaveno*. Kategorie se zobrazují jako možnosti filtru v seznamu klientů, takže správnou skupinu okamžitě vyvoláte.
+
+<Steps>
+  <Step title="Otevřete Konfiguraci">
+    V sekci Klienti klikněte na tlačítko **Konfigurace**.
+  </Step>
+  <Step title="Vytvořte novou kategorii">
+    Klikněte na **+ Vytvořit kategorii**.
+  </Step>
+  <Step title="Zadejte detaily kategorie">
+    - **Název kategorie** — jedinečný, popisný popis (např. *Firemní klienti*)
+    - **Krátký popis** — stručná poznámka vysvětlující účel kategorie
+    - **Barva** — vyberte výraznou barvu pro snadné vizuální rozpoznání
+  </Step>
+  <Step title="Uložte kategorii">
+    Klikněte na **Vytvořit**. Kategorie je nyní dostupná pro přiřazení při úpravě profilů klientů.
+  </Step>
+  <Step title="Přiřaďte klienty do kategorie">
+    Otevřete libovolný profil klienta, klikněte na **Upravit**, vyberte pole **Kategorie** a zvolte příslušnou kategorii. Klikněte na **Aktualizovat** pro uložení.
+  </Step>
+</Steps>
+
+<Tip>
+  Používejte konzistentní barevné konvence napříč kategoriemi — například červenou pro urgentní klienty a zelenou pro plně onboardované účty — aby byl seznam přehledný na první pohled.
+</Tip>
+
+## Protokol aktivity klienta
+
+Protokol aktivity zaznamenává každou přihlašovací a odhlašovací událost pro účet klienta v portálu, čímž poskytuje jasný auditní záznam jejich zapojení.
+
+**Zobrazení protokolu:**
+
+1. Přejděte na **Klienty** a otevřete profil konkrétního klienta.
+2. Klikněte na záložku **Protokol aktivity** v horním navigačním panelu profilu.
+3. Prohlédněte si chronologický seznam autentizačních událostí.
+
+**Co protokol zobrazuje:**
+
+- Přesné datum a čas každého **přihlášení**
+- Přesné datum a čas každého **odhlášení**
+- Průběžná historie všech autentizačních událostí
+
+Protokol se aktualizuje v reálném čase a nelze jej upravovat ani mazat. Klienti nemají přístup k vlastnímu protokolu aktivity — je určen pouze pro administrativní a compliance přehled.
+
+<Note>
+  V tuto chvíli protokol aktivity zachycuje pouze autentizační události (přihlášení a odhlášení). Akce provedené v portálu — například prohlížení objednávek — zde zatím nejsou zaznamenávány.
+</Note>
+
+## Odeslání e-mailu klientovi
+
+Můžete odeslat e-mail libovolnému klientovi přímo z jeho profilu, aniž byste opustili AgencyHandy. Otevřete profil klienta a použijte možnost **E-mail** pro sestavení zprávy. Pole **Komu** je předvyplněno e-mailovou adresou klienta.
+
+## Zosobnění klienta
+
+Administrátoři mohou zosobnit účet klienta a vidět přesně to, co klient vidí ve svém portálu — užitečné pro řešení problémů s přístupem nebo provázení klienta procesem během hovoru se zákaznickou podporou. Možnost **Zosobnit** najdete uvnitř profilu klienta.
+
+<Warning>
+  Zosobnění používejte výhradně pro účely podpory. Veškeré akce provedené při zosobnění klienta jsou prováděny jeho jménem a budou se odrážet v jeho účtu.
+</Warning>
+
+## Firemní účty (B2B)
+
+Pokud pracujete se společnostmi, nikoli jednotlivci, můžete nastavit **Název společnosti** v libovolném profilu klienta pro seskupení kontaktů pod stejnou organizaci. Seznam Klientů lze filtrovat podle společnosti, takže je snadné zobrazit všechny kontakty na daném účtu najednou.

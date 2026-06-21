@@ -1,0 +1,201 @@
+---
+title: "API AgencyHandy: ایجاد لید جدید به‌صورت برنامه‌ای"
+sidebarTitle: "ایجاد لید"
+description: "از API AgencyHandy برای ایجاد برنامه‌ای لیدهای جدید با ارسال درخواست POST به endpoint bulk-lead با فیلدهای مورد نیاز استفاده کنید."
+---
+
+endpoint ایجاد لید به شما امکان می‌دهد از هر سیستم خارجی — یک فرم وب، یک CRM، یک پلتفرم اتوماسیون بازاریابی یا یک اسکریپت سفارشی — لیدهای جدید را به‌صورت برنامه‌ای به فضای کاری AgencyHandy خود اضافه کنید. لیدهایی که از طریق این endpoint ایجاد می‌شوند فوری در پایپلاین لید شما ظاهر می‌شوند، درست مانند اینکه به‌صورت دستی اضافه شده باشند.
+
+<Note>
+  پیش از استفاده از این endpoint، راهنمای [شروع به کار](/fa/api/getting-started) را تکمیل کنید تا API key و Company ID خود را دریافت کنید. همچنین باید **Client Role ID** را دریافت کنید که هنگام ایجاد لید الزامی است.
+</Note>
+
+## پیش‌نیازها
+
+- ✅ API key تولیدشده از **Workspace Config → API Key**
+- ✅ Company ID دریافت‌شده از `GET {{URL}}/accounts/companies`
+- ✅ Client Role ID دریافت‌شده (به مرحله ۱ زیر مراجعه کنید)
+
+---
+
+## مرحله ۱: دریافت Client Role ID
+
+پیش از ایجاد لید، به Role ID برای نقش `client` در شرکت خود نیاز دارید.
+
+### Endpoint
+
+```
+GET {{URL}}/roles?type=company
+```
+
+### هدرها
+
+| هدر | مقدار |
+|---|---|
+| `x-api-key` | API key شما |
+| `companyid` | Company ID شما |
+
+### درخواست نمونه
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/roles?type=company" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>"
+```
+
+### پاسخ نمونه
+
+```json
+{
+  "roles": [
+    {
+      "_id": "6525994184e9ddd798534535",
+      "role": {
+        "_id": "6525994184e9ddd79853451e",
+        "responsibility": "",
+        "name": "client"
+      },
+      "company": "6525994184e9ddd79853450e",
+      "createdAt": "2023-10-10T18:34:41.567Z",
+      "updatedAt": "2024-10-01T07:28:48.340Z",
+      "__v": 0,
+      "type": "company"
+    }
+  ]
+}
+```
+
+رکوردی که `roles[0].role.name === "client"` است را پیدا کنید و `_id` **بیرونی** را استخراج کنید — یعنی `roles[0]._id`، **نه** `roles[0].role._id`.
+
+```javascript
+const clientRoleId = roles.find(r => r.role.name === "client")._id;
+// e.g. "6525994184e9ddd798534535"
+```
+
+<Warning>
+  از `roles[0]._id` (شناسه نگاشت نقش-شرکت) استفاده کنید، **نه** `roles[0].role._id` (شناسه تعریف نقش). استفاده از شناسه اشتباه باعث می‌شود درخواست ایجاد لید شکست بخورد.
+</Warning>
+
+---
+
+## مرحله ۲: ایجاد لید جدید
+
+### Endpoint
+
+```
+POST {{URL}}/members/bulk-lead
+```
+
+### هدرها
+
+| هدر | مقدار |
+|---|---|
+| `x-api-key` | API key شما |
+| `companyid` | Company ID شما |
+| `Content-Type` | `application/json` |
+
+### بدنه درخواست
+
+بدنه درخواست یک **آرایه JSON** است — می‌توانید یک یا چند لید را در یک فراخوانی ایجاد کنید.
+
+<ParamField body="firstName" type="string" required>
+  نام لید.
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  نام خانوادگی لید.
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  آدرس ایمیل لید. باید در فضای کاری شما منحصربه‌فرد باشد.
+</ParamField>
+
+<ParamField body="role" type="string" required>
+  Client Role ID دریافت‌شده در مرحله ۱ (یعنی `roles[0]._id`).
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  هنگام ایجاد لید باید روی `false` تنظیم شود. تنها هنگام تبدیل لید به مشتری کامل روی `true` تنظیم کنید.
+</ParamField>
+
+<ParamField body="status" type="string">
+  وضعیت پایپلاین لید. مقادیر رایج: `New`، `Contacted`، `Qualified`. در صورت حذف، پیش‌فرض `New` است.
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  شماره تلفن لید.
+</ParamField>
+
+<ParamField body="source" type="string">
+  نحوه به‌دست آمدن این لید. مقادیر نمونه: `website`، `referral`، `social`.
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  موقعیت (ترتیب) لید در ستون تابلوی پایپلاین. پیش‌فرض `1` است.
+</ParamField>
+
+### درخواست نمونه
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-lead" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "role": "6525994184e9ddd798534535",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+### پاسخ موفق
+
+```json
+{
+  "message": "Lead created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  رشته تأیید: `"Lead created successfully"`.
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  آرایه‌ای از اشیاء لید ایجادشده.
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  شناسه منحصربه‌فرد لید تازه ایجادشده. اگر نیاز دارید در فراخوانی‌های API بعدی به لید ارجاع دهید، این را ذخیره کنید.
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  نام کامل لید (نام + نام خانوادگی).
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  وضعیت پایپلاین لید به‌گونه‌ای که ذخیره شده است.
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  نام نقش اختصاص‌یافته به عضو — `"client"` خواهد بود.
+</ResponseField>
+
+<Tip>
+  می‌توانید چندین شیء لید را در آرایه ارسال کنید تا چندین لید را در یک فراخوانی API ایجاد کنید. هر شیء باید شامل تمام فیلدهای الزامی با آدرس ایمیل منحصربه‌فرد خود باشد.
+</Tip>

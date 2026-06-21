@@ -1,0 +1,162 @@
+---
+title: "Abonēšanas norēķini un atkārtoti rēķini AgencyHandy"
+sidebarTitle: "Abonementi"
+description: "Kā AgencyHandy apstrādā atkārtotus abonēšanas norēķinus — automatizēti rēķini, norēķinu cikli, maksājumu metodes, atcelšana un Wise maksājumu saites."
+---
+
+AgencyHandy abonēšanas norēķinu sistēma ļauj automatizēt visu atkārtoto ieņēmumu darbplūsmu. Kad klients abonē pakalpojumu, platforma izveido Abonementa ID, ģenerē pasūtījumus un katrā norēķinu ciklā automātiski izsniedz rēķinus — neatkarīgi no tā, vai tas ir katru dienu, nedēļu, mēnesi vai gadu. Jūs paliekat kontrolē: varat skatīt abonementa datus, uzraudzīt maksājumu vēsturi, apstrādāt neveiksmīgus maksājumus un atcelt abonementus, kad nepieciešams — viss AgencyHandy ietvaros.
+
+## Kā darbojas abonēšanas norēķini
+
+Abonementa dzīves cikls AgencyHandy ietver sešus galvenos posmus.
+
+<Steps>
+  <Step title="Izveidojiet abonēšanas pakalpojumu">
+    Pārejiet uz **Pakalpojumi** un noklikšķiniet uz **Izveidot jaunu pakalpojumu**. Kā pakalpojuma veidu atlasiet **Abonements**.
+
+    Definējiet:
+    - **Norēķinu ciklu** — Katru dienu, Katru nedēļu, Katru mēnesi vai Katru gadu
+    - **Atjaunošanas darbību** — Izveidot jaunu pasūtījumu, Atjaunināt esošo pasūtījumu vai Atstāt nemainītu
+    - **Cenu un maksājumu metodi** — PayPal, Stripe vai Manuāla
+
+    Noklikšķiniet uz **Publicēt**, lai pakalpojums kļūtu pieejams.
+  </Step>
+  <Step title="Klients iegādājas abonementu">
+    Klients atlasa abonēšanas pakalpojumu, turpina uz norēķinu un izvēlas maksājumu metodi.
+
+    AgencyHandy automātiski:
+    - Izveido **Abonementa ID**
+    - Ģenerē **Pasūtījumu**
+    - Izsniedz **Rēķinu**
+
+    **PayPal vai Stripe** maksājumiem rēķins tiek nekavējoties atzīmēts kā **Apmaksāts**. **Manuālam maksājumam** rēķins paliek **Atvērts**, līdz aģentūra apstiprina saņemšanu.
+  </Step>
+  <Step title="Automatizēti atkārtoti norēķini">
+    Katrā atjaunošanas datumā AgencyHandy automātiski apstrādā maksājumu (PayPal/Stripe gadījumā) un ģenerē nākamo rēķinu.
+
+    Ja maksājums ir veiksmīgs, rēķins tiek atzīmēts kā **Apmaksāts**. Ja tas neizdodas:
+    - Rēķins paliek **Atvērts**
+    - Klients saņem **Neveiksmīga maksājuma paziņojumu**
+    - Aģentūra saņem brīdinājumu, lai atkārtotu mēģinājumu vai pieprasītu atjauninātus maksājumu datus
+  </Step>
+  <Step title="Pārvaldiet aktīvos abonementus">
+    Kreisajā sānjoslā pārejiet uz **Abonementu pārvaldība**, lai skatītu visus aktīvos un neaktīvos abonementus. Atlasiet jebkuru abonementu, lai skatītu tā pilnus datus.
+  </Step>
+  <Step title="Apstrādājiet atcelšanu">
+    Atceļot abonementu, varat izvēlēties:
+    - **Pilnībā atcelt** — apturēt visus turpmākos norēķinus un pasūtījumus
+    - **Atstāt pēdējo aktīvo pasūtījumu aktīvu** — ļaut klientam turpināt saņemt pakalpojumu līdz pašreizējā perioda beigām
+
+    Lai pilnībā dzēstu pakalpojumu, vispirms jāatceļ visi aktīvie abonementi šim pakalpojumam.
+  </Step>
+  <Step title="Paziņojumi">
+    Sistēma automātiski nosūta:
+    - **Atjaunošanas atgādinājumus** pirms nākamā norēķinu datuma
+    - **Maksājumu apstiprinājumus** pēc veiksmīgiem maksājumiem
+    - **Neveiksmīga maksājuma brīdinājumus** gan klientam, gan aģentūras administratoriem
+  </Step>
+</Steps>
+
+## Abonementa datu lapa
+
+Abonementa datu lapa sniedz pilnīgu priekšstatu par jebkuru atsevišķu abonementu — no pakalpojuma un pakotnes līdz katram rēķinam un notikumu žurnāla ierakstam.
+
+### Kā piekļūt
+
+1. Kreisajā sānjoslā pārejiet uz **Abonementi**
+2. Noklikšķiniet uz jebkura abonementa sarakstā, lai atvērtu tā datu lapu
+
+### Ko varat redzēt
+
+<Tabs>
+  <Tab title="Abonementa informācija">
+    - **Pakalpojuma nosaukums** un **Pakotnes nosaukums**
+    - **Klienta vārds**
+    - **Norēķinu cikls** (piemēram, Katru mēnesi, Katru gadu)
+    - **Sākuma datums** un **Beigu datums**
+    - Abonementa **Statuss** (Aktīvs vai Neaktīvs)
+  </Tab>
+  <Tab title="Maksājumu dati">
+    - **Abonementa maksa**
+    - **Kopējais veikto maksājumu skaits** līdz šim
+    - **Maksājumu metode** (Stripe, PayPal, Wise, Manuāla bankas pārskaitījums utt.)
+    - **Nākamā maksājuma datums**
+  </Tab>
+  <Tab title="Pasūtījumu vēsture">
+    - **Pasūtījuma ID**
+    - **Statuss** (piemēram, Notiek, Pabeigts)
+    - **Sākuma datums** un **Izpildes termiņš** katram pasūtījumam
+  </Tab>
+  <Tab title="Rēķinu vēsture">
+    - **Rēķina ID**
+    - **Summa**
+    - **Statuss** (Atvērts, Apmaksāts utt.)
+    - **Maksājuma datums** un **Apmaksas termiņš**
+  </Tab>
+  <Tab title="Notikumu žurnāli">
+    Hronoloģisks audita pieraksts par visām ar abonementu saistītajām darbībām — statusa izmaiņām, maksājumu notikumiem, atcelšanām un citiem.
+  </Tab>
+</Tabs>
+
+<Note>
+  Vienam abonementam var būt vairāki piesaistīti pasūtījumi un rēķini. Rēķini, kas piesaistīti abonementiem, tiek dinamiski atjaunināti, saņemot maksājumus.
+</Note>
+
+## Wise atbalsts manuālo abonementu rēķiniem
+
+Ja iekasējat starptautiskus maksājumus, varat tieši abonementu rēķinos iegult **Wise maksājumu saiti**. Tas klientiem nodrošina ērtus maksājumus bez nepieciešamības manuāli iestatīt bankas pārskaitījumu.
+
+### Prasības
+
+- Aktīvs AgencyHandy konts
+- Aktīvs **Wise konts** ar ģenerētu derīgu maksājumu saiti
+
+### Soļi Wise saites pievienošanai rēķinam
+
+<Steps>
+  <Step title="Atveriet sadaļu Rēķini">
+    Kreisajā sānjoslā noklikšķiniet uz **Rēķini**, pēc tam noklikšķiniet uz **+ Izveidot rēķinu**.
+  </Step>
+  <Step title="Atlasiet klientu un pasūtījumu">
+    Nolaižamajā sarakstā izvēlieties klientu. Parādīsies visi saistītie pasūtījumu ID. Atlasiet attiecīgo pasūtījuma ID un ievadiet summu un jebkuras apmaksājamās pozīcijas.
+  </Step>
+  <Step title="Piemērojiet atlaides un nodokļus">
+    Pievienojiet jebkuru piemērojamu atlaides procentuālo daļu, atlaides summu, apmaksāto summu, atlikušo summu un PVN/nodokļu datus. Pēc vajadzības iekļaujiet rēķina adresi un piezīmes.
+  </Step>
+  <Step title="Pievienojiet Wise maksājumu saiti">
+    Sadaļā **Maksājumu metode** kā maksājumu opciju atlasiet **Wise**. Ielīmējiet savu Wise maksājumu saiti paredzētajā laukā.
+  </Step>
+  <Step title="Saglabājiet rēķinu">
+    Noklikšķiniet uz **Saglabāt**, lai pabeigtu rēķinu. Wise maksājumu saite parādīsies rēķinā, lai klients varētu maksāt tieši.
+  </Step>
+</Steps>
+
+<Tip>
+  Pirms saglabāšanas vienmēr pārbaudiet savu Wise maksājumu saiti un rēķina kopsumsas. Pārliecinieties, ka pasūtījuma dati, atlaides un nodokļu informācija ir precīza, lai izvairītos no norēķinu kļūdām.
+</Tip>
+
+## Svarīgas piezīmes par abonēšanas norēķiniem
+
+<Accordion title="Kas var atcelt abonementus?">
+  Tikai **Super administratori** un **Administratori** var atcelt abonementus. Klienti nevar patstāvīgi atcelt savus abonementus — viņiem jāpieprasa atcelšana no aģentūras.
+</Accordion>
+
+<Accordion title="Abonementa ID ir pastāvīgi">
+  Kad abonements ir izveidots, tā Abonementa ID nevar rediģēt. Tas nodrošina konsekventu izsekošanu visā abonementa darbības laikā.
+</Accordion>
+
+<Accordion title="Neveiksmīgi maksājumi un pasūtījumu izveide">
+  Kad maksājums neizdodas, rēķins paliek Atvērts un neveiksmīgajam periodam tiek izveidots jauns pasūtījums. Abonementa statuss paliek **Aktīvs**, līdz administrators manuāli atkārto maksājumu vai atceļ abonementu.
+</Accordion>
+
+<Accordion title="Manuālie maksājumu pasūtījumi">
+  Ja klients maksā ārpus Stripe vai PayPal (piemēram, ar bankas pārskaitījumu), administrators manuāli jāatzīmē rēķins kā **Apmaksāts** AgencyHandy. Sistēma to automātiski nedara manuāliem maksājumiem.
+</Accordion>
+
+<Accordion title="Neapmaksāti pašapkalpošanās norēķinu mēģinājumi">
+  Ja klients uzsāk abonementa norēķinu, bet nepabeidz maksājumu, tas sistēmā paliek kā **Iespējamais klients**, līdz veiksmīgi abonē.
+</Accordion>
+
+<Accordion title="Rēķinu apmaksas termiņi">
+  Abonementu rēķinu apmaksas termiņi tiek iestatīti automātiski, pamatojoties uz jūsu konfigurēto norēķinu ciklu (piemēram, ikmēneša rēķini jāapmaksā vienu mēnesi pēc sākuma datuma).
+</Accordion>

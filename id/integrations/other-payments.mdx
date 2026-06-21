@@ -1,0 +1,149 @@
+---
+title: "Pengaturan Metode Pembayaran Transfer Bank, Kripto, dan Wise"
+sidebarTitle: "Pembayaran Lainnya"
+description: "Aktifkan alternatif pembayaran manual — transfer bank, mata uang kripto, dan Wise — sehingga klien yang memilih metode non-kartu dapat membayar tagihan Anda."
+---
+
+AgencyHandy mendukung tiga metode pembayaran manual selain Stripe dan PayPal: **Transfer Bank**, **Kripto**, dan **Wise**. Masing-masing dirancang untuk jenis klien atau alur kerja tertentu. Ketiga metode ini mengharuskan Anda menandai tagihan secara manual sebagai **Paid** setelah menerima dana, karena AgencyHandy tidak dapat mengonfirmasi transfer di luar platform secara otomatis.
+
+<Note>
+  Hanya peran **SuperAdmin** dan **Admin** yang dapat mengaktifkan atau mengonfigurasi metode pembayaran ini.
+</Note>
+
+<Tabs>
+  <Tab title="Bank Transfer">
+    ## Transfer Bank
+
+    Metode Transfer Bank memungkinkan Anda menerima pembayaran wire atau ACH manual dari klien. Anda memberikan detail perbankan melalui editor teks kaya, dan AgencyHandy menampilkan instruksi tersebut kepada klien saat checkout dan di dalam tagihan.
+
+    ### Aktifkan Transfer Bank
+
+    <Steps>
+      <Step title="Buka pengaturan Bank Payment">
+        Di bilah sisi kiri, pergi ke **Integrations → Bank Payment Method**.
+      </Step>
+
+      <Step title="Isi instruksi transfer Anda">
+        Gunakan editor teks kaya untuk memasukkan detail perbankan Anda. Sertakan semua kolom yang dibutuhkan klien untuk menyelesaikan transfer:
+
+        - **Nama Penerima**
+        - **Nomor Rekening**
+        - **Nama Bank**
+        - **Nomor Routing**
+        - **Jenis Rekening** (misalnya, Giro, Tabungan)
+        - **Alamat Bank**
+
+        Anda juga dapat menambahkan memo, catatan, atau kontak dukungan. Tidak ada batas karakter, dan editor mendukung format tebal, garis bawah, daftar, tautan, dan gambar.
+      </Step>
+
+      <Step title="Atur persyaratan bukti pembayaran (opsional)">
+        Aktifkan **Payment Screenshot is Required** jika Anda ingin klien mengunggah tangkapan layar sebelum pesanan mereka diproses.
+
+        - **Diaktifkan** — klien harus mengunggah tangkapan layar yang valid saat checkout. Tidak ada pesanan yang dibuat sampai file diunggah.
+        - **Dinonaktifkan** — klien dapat melanjutkan tanpa mengunggah bukti. Pesanan dan tagihan dibuat segera.
+      </Step>
+
+      <Step title="Simpan">
+        Klik **Update** untuk menyimpan pengaturan Anda. Klik **Cancel** untuk membatalkan perubahan.
+      </Step>
+    </Steps>
+
+    ### Pengalaman klien
+
+    Ketika klien memilih Transfer Bank saat checkout, mereka melihat instruksi transfer kustom Anda. Jika bukti diperlukan, prompt pengunggahan file muncul dan pesanan ditahan sampai mereka mengunggah tangkapan layar.
+
+    Setelah menerima dana di rekening bank Anda, buka tagihan di AgencyHandy dan tandai secara manual sebagai **Paid** untuk merilis pesanan.
+
+    <Tip>
+      Sertakan kode referensi unik dalam instruksi Anda (misalnya, nomor tagihan) sehingga Anda dapat mencocokkan transfer masuk dengan pesanan tertentu tanpa kebingungan.
+    </Tip>
+  </Tab>
+
+  <Tab title="Crypto">
+    ## Pembayaran Kripto
+
+    Metode Pembayaran Kripto memungkinkan Anda menerima mata uang kripto dari klien menggunakan transfer berbasis dompet. Anda mengonfigurasi detail dompet dan instruksi sekali saja; klien melihatnya saat checkout dan di dalam tagihan. Saat ini, **USDC** adalah mata uang kripto yang didukung.
+
+    ### Aktifkan Pembayaran Kripto
+
+    <Steps>
+      <Step title="Buka pengaturan Crypto Payment">
+        Di bilah sisi kiri, pergi ke **Integrations → Crypto Payment**. Layar pengaturan dompet terbuka dengan editor teks kaya.
+      </Step>
+
+      <Step title="Masukkan detail dompet Anda">
+        Isi kolom-kolom berikut:
+
+        - **Cryptocurrency Type** — saat ini USDC didukung.
+        - **Wallet Address** — alamat dompet publik Anda untuk menerima dana.
+        - **Network Type** — misalnya, ERC-20, TRC-20.
+        - **Additional Instructions** — memo, tag, jumlah minimum, kontak dukungan, atau panduan lain untuk klien Anda.
+      </Step>
+
+      <Step title="Atur persyaratan bukti pembayaran (opsional)">
+        Aktifkan **Require Proof of Payment**:
+
+        - **Diaktifkan** — klien harus mengunggah file (misalnya, tangkapan layar transaksi) sebelum pesanan dan tagihan dibuat.
+        - **Dinonaktifkan** — pesanan dan tagihan dibuat segera setelah klien memilih pembayaran kripto, tanpa memerlukan bukti.
+      </Step>
+
+      <Step title="Simpan">
+        Klik **Save** untuk menyimpan pengaturan Anda. Anda dapat mengedit atau memutuskan Pembayaran Kripto kapan saja dari layar yang sama.
+      </Step>
+    </Steps>
+
+    ### Alur checkout klien
+
+    Ketika klien memilih Kripto saat checkout:
+
+    1. Sebuah **Pesanan** (status: *Pending*) dan sebuah **Tagihan** (status: *Open*) dibuat.
+    2. Klien ditampilkan alamat dompet dan instruksi Anda.
+    3. Jika bukti diperlukan, tombol pengunggahan file muncul. Klien harus mengunggah tangkapan layar transaksi mereka sebelum pesanan dilanjutkan.
+    4. Setelah transfer selesai dan Anda telah memverifikasi dana secara on-chain, buka tagihan di AgencyHandy dan tandai sebagai **Paid**.
+    5. Ketika tagihan ditandai **Paid** dan pesanan berstatus *Pending*, status pesanan secara otomatis diperbarui menjadi *Ongoing*.
+
+    <Note>
+      Pembayaran Kripto hanya muncul saat checkout jika diaktifkan di **Workspace Settings → Payment Methods** DAN di pengaturan **Service Group → Payment Availability** yang relevan. Menonaktifkannya di Workspace Settings menyembunyikannya di mana saja, terlepas dari pengaturan tingkat layanan.
+    </Note>
+
+    <Tip>
+      Jika suatu layanan tidak mendukung USDC, opsi pembayaran Kripto secara otomatis disembunyikan untuk layanan tersebut. Pastikan USDC diaktifkan di pengaturan layanan Anda jika Anda ingin klien membayar dengan kripto.
+    </Tip>
+  </Tab>
+
+  <Tab title="Wise">
+    ## Pembayaran Wise
+
+    Metode Pembayaran Wise memungkinkan klien membayar melalui tautan pembayaran Wise. Anda menambahkan tautan sekali di dalam tagihan, dan tautan tersebut secara otomatis disertakan dalam semua tagihan langganan di masa mendatang. Wise ideal untuk klien internasional yang lebih menyukai transfer bank-ke-bank dengan biaya lebih rendah dibandingkan transfer wire tradisional.
+
+    ### Tambahkan Wise sebagai metode pembayaran
+
+    <Steps>
+      <Step title="Buka modul Tagihan">
+        Di bilah sisi kiri, klik **Invoices**, lalu klik **Create Invoice**.
+      </Step>
+
+      <Step title="Tambahkan tautan Wise Anda">
+        Di dalam modal tagihan, gulir ke bagian **Payment Methods**. Klik **Add Wise as a payment method**, lalu tempelkan tautan pembayaran Wise Anda ke kolom input.
+      </Step>
+
+      <Step title="Simpan tagihan">
+        Klik **Save** atau lanjutkan untuk menyelesaikan tagihan. Tautan pembayaran Wise Anda sekarang tertanam dan terlihat oleh klien.
+      </Step>
+    </Steps>
+
+    ### Cara kerjanya untuk klien
+
+    Tautan Wise muncul sebagai tombol yang dapat diklik pada tagihan klien. Klien membuka tautan, menyelesaikan transfer melalui akun Wise mereka, dan mengirimkan konfirmasi kepada Anda. Karena AgencyHandy tidak menerima konfirmasi otomatis dari Wise, Anda harus menandai tagihan secara manual sebagai **Paid** setelah menerima dana.
+
+    <Warning>
+      Wise **tidak dapat** digunakan untuk pembayaran upsell atau marketplace otomatis. Hanya satu tautan pembayaran Wise yang dapat ditambahkan per tagihan. Periksa ulang tautan sebelum mengirim — tautan yang salah berarti pembayaran klien masuk ke akun yang salah.
+    </Warning>
+
+    ### Perilaku platform
+
+    - Setelah tautan Wise ditambahkan, tautan tersebut secara otomatis muncul di semua tagihan **langganan** di masa mendatang kecuali Anda memperbaruinya atau menghapusnya.
+    - AgencyHandy tidak melakukan konversi mata uang secara otomatis. Klien melakukan transfer dalam mata uang apa pun yang dikonfigurasi oleh tautan Wise Anda.
+    - Anda bertanggung jawab untuk melacak pembayaran dan menandai tagihan sebagai Paid setelah mengonfirmasi penerimaan.
+  </Tab>
+</Tabs>

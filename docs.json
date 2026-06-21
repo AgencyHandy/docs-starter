@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "almond",
+  "theme": "mint",
   "name": "AgencyHandy",
   "description": "AgencyHandy documentation — learn how to manage clients, orders, invoices, and your team from a single platform.",
   "colors": {
@@ -16,11 +16,16 @@
     "eyebrows": "breadcrumbs"
   },
   "contextual": {
-    "options": ["copy", "view", "assistant", "mcp", "add-mcp"]
+    "options": [
+      "copy",
+      "view",
+      "chatgpt",
+      "claude"
+    ]
   },
   "logo": {
-    "light": "https://media.brand.dev/a0ee703a-a72d-4617-b74e-ac9f1d6da0ab.svg",
-    "dark": "https://media.brand.dev/a0ee703a-a72d-4617-b74e-ac9f1d6da0ab.svg"
+    "light": "/logo/agencyhandy-light.png",
+    "dark": "/logo/agencyhandy-dark.png"
   },
   "navbar": {
     "links": [],
@@ -31,139 +36,4830 @@
     }
   },
   "navigation": {
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Home",
-          "icon": "house",
-          "href": "/"
-        },
-        {
-          "anchor": "AgencyHandy App",
-          "icon": "arrow-up-right",
-          "href": "https://app.agencyhandy.com"
-        },
-        {
-          "anchor": "Support",
-          "icon": "life-buoy",
-          "href": "https://www.agencyhandy.com"
-        }
-      ]
-    },
     "directory": "card",
-    "tabs": [
+    "languages": [
       {
-        "tab": "User Guide",
-        "groups": [
+        "language": "en",
+        "default": true,
+        "global": {
+          "anchors": [
+            {
+              "anchor": "Home",
+              "icon": "house",
+              "href": "/"
+            },
+            {
+              "anchor": "AgencyHandy App",
+              "icon": "arrow-up-right",
+              "href": "https://app.agencyhandy.com"
+            },
+            {
+              "anchor": "Community",
+              "icon": "users",
+              "href": "https://community.agencyhandy.com"
+            }
+          ]
+        },
+        "navbar": {
+          "links": [],
+          "primary": {
+            "type": "button",
+            "label": "Sign In",
+            "href": "https://app.agencyhandy.com"
+          }
+        },
+        "tabs": [
           {
-            "group": "Get Started",
-            "icon": "rocket",
-            "expanded": true,
-            "pages": [
-              "getting-started/introduction",
-              "getting-started/sign-up",
-              "getting-started/log-in",
-              "getting-started/dashboard-overview"
+            "tab": "For Agency",
+            "groups": [
+              {
+                "group": "Get Started",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "getting-started/introduction",
+                  "getting-started/sign-up",
+                  "getting-started/log-in",
+                  "getting-started/dashboard-overview"
+                ]
+              },
+              {
+                "group": "Workspace Setup",
+                "icon": "settings",
+                "pages": [
+                  "workspace/general-settings",
+                  "workspace/appearance",
+                  "workspace/custom-domain",
+                  "workspace/email-setup",
+                  "workspace/portals"
+                ]
+              },
+              {
+                "group": "CRM",
+                "icon": "users",
+                "pages": [
+                  "crm/leads",
+                  "crm/clients"
+                ]
+              },
+              {
+                "group": "Services & Orders",
+                "icon": "package",
+                "pages": [
+                  "services/overview",
+                  "services/create-service",
+                  "orders/overview",
+                  "orders/create-order",
+                  "orders/tasks"
+                ]
+              },
+              {
+                "group": "Proposals & Invoices",
+                "icon": "file-text",
+                "pages": [
+                  "proposals/overview",
+                  "invoices/overview",
+                  "invoices/create-invoice",
+                  "invoices/subscriptions"
+                ]
+              },
+              {
+                "group": "Team & Tasks",
+                "icon": "circle-check",
+                "pages": [
+                  "teams/manage-team",
+                  "tasks/all-tasks",
+                  "tasks/timesheet",
+                  "tickets/support-tickets"
+                ]
+              },
+              {
+                "group": "Forms & Files",
+                "icon": "layout-template",
+                "pages": [
+                  "forms/order-forms",
+                  "forms/intake-forms",
+                  "files/manage-files"
+                ]
+              },
+              {
+                "group": "Account & Billing",
+                "icon": "credit-card",
+                "pages": [
+                  "account/profile",
+                  "account/plans-pricing",
+                  "account/multiple-workspaces"
+                ]
+              },
+              {
+                "group": "Payments",
+                "icon": "wallet",
+                "pages": [
+                  "integrations/stripe",
+                  "integrations/paypal",
+                  "integrations/other-payments"
+                ]
+              },
+              {
+                "group": "Integrations",
+                "icon": "plug",
+                "pages": [
+                  "integrations/slack",
+                  "integrations/webhooks"
+                ]
+              }
             ]
           },
           {
-            "group": "Workspace Setup",
-            "icon": "settings",
-            "pages": [
-              "workspace/general-settings",
-              "workspace/appearance",
-              "workspace/custom-domain",
-              "workspace/email-setup",
-              "workspace/portals"
+            "tab": "For Client",
+            "groups": [
+              {
+                "group": "Getting Started",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "client/introduction",
+                  "client/accessing-portal"
+                ]
+              },
+              {
+                "group": "Orders & Services",
+                "icon": "package",
+                "pages": [
+                  "client/browse-and-order",
+                  "client/orders-and-tasks"
+                ]
+              },
+              {
+                "group": "Billing",
+                "icon": "credit-card",
+                "pages": [
+                  "client/proposals",
+                  "client/invoices-payments"
+                ]
+              },
+              {
+                "group": "Support",
+                "icon": "life-buoy",
+                "pages": [
+                  "client/files-and-forms",
+                  "client/support-tickets"
+                ]
+              }
             ]
           },
           {
-            "group": "CRM",
-            "icon": "users",
-            "pages": [
-              "crm/leads",
-              "crm/clients"
-            ]
-          },
-          {
-            "group": "Services & Orders",
-            "icon": "package",
-            "pages": [
-              "services/overview",
-              "services/create-service",
-              "orders/overview",
-              "orders/create-order",
-              "orders/tasks"
-            ]
-          },
-          {
-            "group": "Proposals & Invoices",
-            "icon": "file-text",
-            "pages": [
-              "proposals/overview",
-              "invoices/overview",
-              "invoices/create-invoice",
-              "invoices/subscriptions"
-            ]
-          },
-          {
-            "group": "Team & Tasks",
-            "icon": "circle-check",
-            "pages": [
-              "teams/manage-team",
-              "tasks/all-tasks",
-              "tasks/timesheet",
-              "tickets/support-tickets"
-            ]
-          },
-          {
-            "group": "Forms & Files",
-            "icon": "layout-template",
-            "pages": [
-              "forms/order-forms",
-              "forms/intake-forms",
-              "files/manage-files"
-            ]
-          },
-          {
-            "group": "Account & Billing",
-            "icon": "credit-card",
-            "pages": [
-              "account/profile",
-              "account/plans-pricing",
-              "account/multiple-workspaces"
+            "tab": "API Reference",
+            "groups": [
+              {
+                "group": "Introduction",
+                "icon": "book-open",
+                "expanded": true,
+                "pages": [
+                  "api/getting-started"
+                ]
+              },
+              {
+                "group": "Endpoints",
+                "icon": "code",
+                "pages": [
+                  "api/create-lead",
+                  "api/create-client",
+                  "api/update-order"
+                ]
+              }
             ]
           }
         ]
       },
       {
-        "tab": "Integrations & API",
-        "groups": [
+        "language": "fr",
+        "global": {
+          "anchors": [
+            {
+              "anchor": "Accueil",
+              "icon": "house",
+              "href": "/fr"
+            },
+            {
+              "anchor": "Application AgencyHandy",
+              "icon": "arrow-up-right",
+              "href": "https://app.agencyhandy.com"
+            },
+            {
+              "anchor": "Communauté",
+              "icon": "users",
+              "href": "https://community.agencyhandy.com"
+            }
+          ]
+        },
+        "navbar": {
+          "links": [],
+          "primary": {
+            "type": "button",
+            "label": "Se connecter",
+            "href": "https://app.agencyhandy.com"
+          }
+        },
+        "tabs": [
           {
-            "group": "Payments",
-            "icon": "credit-card",
-            "pages": [
-              "integrations/stripe",
-              "integrations/paypal",
-              "integrations/other-payments"
+            "tab": "Pour l'agence",
+            "groups": [
+              {
+                "group": "Prise en main",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "fr/getting-started/introduction",
+                  "fr/getting-started/sign-up",
+                  "fr/getting-started/log-in",
+                  "fr/getting-started/dashboard-overview"
+                ]
+              },
+              {
+                "group": "Configuration de l'espace de travail",
+                "icon": "settings",
+                "pages": [
+                  "fr/workspace/general-settings",
+                  "fr/workspace/appearance",
+                  "fr/workspace/custom-domain",
+                  "fr/workspace/email-setup",
+                  "fr/workspace/portals"
+                ]
+              },
+              {
+                "group": "CRM",
+                "icon": "users",
+                "pages": [
+                  "fr/crm/leads",
+                  "fr/crm/clients"
+                ]
+              },
+              {
+                "group": "Services et commandes",
+                "icon": "package",
+                "pages": [
+                  "fr/services/overview",
+                  "fr/services/create-service",
+                  "fr/orders/overview",
+                  "fr/orders/create-order",
+                  "fr/orders/tasks"
+                ]
+              },
+              {
+                "group": "Propositions et factures",
+                "icon": "file-text",
+                "pages": [
+                  "fr/proposals/overview",
+                  "fr/invoices/overview",
+                  "fr/invoices/create-invoice",
+                  "fr/invoices/subscriptions"
+                ]
+              },
+              {
+                "group": "Équipe et tâches",
+                "icon": "circle-check",
+                "pages": [
+                  "fr/teams/manage-team",
+                  "fr/tasks/all-tasks",
+                  "fr/tasks/timesheet",
+                  "fr/tickets/support-tickets"
+                ]
+              },
+              {
+                "group": "Formulaires et fichiers",
+                "icon": "layout-template",
+                "pages": [
+                  "fr/forms/order-forms",
+                  "fr/forms/intake-forms",
+                  "fr/files/manage-files"
+                ]
+              },
+              {
+                "group": "Compte et facturation",
+                "icon": "credit-card",
+                "pages": [
+                  "fr/account/profile",
+                  "fr/account/plans-pricing",
+                  "fr/account/multiple-workspaces"
+                ]
+              },
+              {
+                "group": "Paiements",
+                "icon": "wallet",
+                "pages": [
+                  "fr/integrations/stripe",
+                  "fr/integrations/paypal",
+                  "fr/integrations/other-payments"
+                ]
+              },
+              {
+                "group": "Intégrations",
+                "icon": "plug",
+                "pages": [
+                  "fr/integrations/slack",
+                  "fr/integrations/webhooks"
+                ]
+              }
             ]
           },
           {
-            "group": "Integrations",
-            "icon": "plug",
-            "pages": [
-              "integrations/slack",
-              "integrations/webhooks"
+            "tab": "Pour le client",
+            "groups": [
+              {
+                "group": "Prise en main",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "fr/client/introduction",
+                  "fr/client/accessing-portal"
+                ]
+              },
+              {
+                "group": "Commandes et services",
+                "icon": "package",
+                "pages": [
+                  "fr/client/browse-and-order",
+                  "fr/client/orders-and-tasks"
+                ]
+              },
+              {
+                "group": "Facturation",
+                "icon": "credit-card",
+                "pages": [
+                  "fr/client/proposals",
+                  "fr/client/invoices-payments"
+                ]
+              },
+              {
+                "group": "Assistance",
+                "icon": "life-buoy",
+                "pages": [
+                  "fr/client/files-and-forms",
+                  "fr/client/support-tickets"
+                ]
+              }
             ]
           },
           {
-            "group": "API Reference",
-            "icon": "code",
-            "pages": [
-              "api/getting-started",
-              "api/create-lead",
-              "api/create-client",
-              "api/update-order"
+            "tab": "Référence API",
+            "groups": [
+              {
+                "group": "Introduction",
+                "icon": "book-open",
+                "expanded": true,
+                "pages": [
+                  "fr/api/getting-started"
+                ]
+              },
+              {
+                "group": "Points de terminaison",
+                "icon": "code",
+                "pages": [
+                  "fr/api/create-lead",
+                  "fr/api/create-client",
+                  "fr/api/update-order"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "es",
+        "global": {
+          "anchors": [
+            {
+              "anchor": "Inicio",
+              "icon": "house",
+              "href": "/es"
+            },
+            {
+              "anchor": "Aplicación de AgencyHandy",
+              "icon": "arrow-up-right",
+              "href": "https://app.agencyhandy.com"
+            },
+            {
+              "anchor": "Comunidad",
+              "icon": "users",
+              "href": "https://community.agencyhandy.com"
+            }
+          ]
+        },
+        "navbar": {
+          "links": [],
+          "primary": {
+            "type": "button",
+            "label": "Iniciar sesión",
+            "href": "https://app.agencyhandy.com"
+          }
+        },
+        "tabs": [
+          {
+            "tab": "Para la agencia",
+            "groups": [
+              {
+                "group": "Primeros pasos",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "es/getting-started/introduction",
+                  "es/getting-started/sign-up",
+                  "es/getting-started/log-in",
+                  "es/getting-started/dashboard-overview"
+                ]
+              },
+              {
+                "group": "Configuración del espacio de trabajo",
+                "icon": "settings",
+                "pages": [
+                  "es/workspace/general-settings",
+                  "es/workspace/appearance",
+                  "es/workspace/custom-domain",
+                  "es/workspace/email-setup",
+                  "es/workspace/portals"
+                ]
+              },
+              {
+                "group": "CRM",
+                "icon": "users",
+                "pages": [
+                  "es/crm/leads",
+                  "es/crm/clients"
+                ]
+              },
+              {
+                "group": "Servicios y pedidos",
+                "icon": "package",
+                "pages": [
+                  "es/services/overview",
+                  "es/services/create-service",
+                  "es/orders/overview",
+                  "es/orders/create-order",
+                  "es/orders/tasks"
+                ]
+              },
+              {
+                "group": "Propuestas y facturas",
+                "icon": "file-text",
+                "pages": [
+                  "es/proposals/overview",
+                  "es/invoices/overview",
+                  "es/invoices/create-invoice",
+                  "es/invoices/subscriptions"
+                ]
+              },
+              {
+                "group": "Equipo y tareas",
+                "icon": "circle-check",
+                "pages": [
+                  "es/teams/manage-team",
+                  "es/tasks/all-tasks",
+                  "es/tasks/timesheet",
+                  "es/tickets/support-tickets"
+                ]
+              },
+              {
+                "group": "Formularios y archivos",
+                "icon": "layout-template",
+                "pages": [
+                  "es/forms/order-forms",
+                  "es/forms/intake-forms",
+                  "es/files/manage-files"
+                ]
+              },
+              {
+                "group": "Cuenta y facturación",
+                "icon": "credit-card",
+                "pages": [
+                  "es/account/profile",
+                  "es/account/plans-pricing",
+                  "es/account/multiple-workspaces"
+                ]
+              },
+              {
+                "group": "Pagos",
+                "icon": "wallet",
+                "pages": [
+                  "es/integrations/stripe",
+                  "es/integrations/paypal",
+                  "es/integrations/other-payments"
+                ]
+              },
+              {
+                "group": "Integraciones",
+                "icon": "plug",
+                "pages": [
+                  "es/integrations/slack",
+                  "es/integrations/webhooks"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Para el cliente",
+            "groups": [
+              {
+                "group": "Primeros pasos",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "es/client/introduction",
+                  "es/client/accessing-portal"
+                ]
+              },
+              {
+                "group": "Pedidos y servicios",
+                "icon": "package",
+                "pages": [
+                  "es/client/browse-and-order",
+                  "es/client/orders-and-tasks"
+                ]
+              },
+              {
+                "group": "Facturación",
+                "icon": "credit-card",
+                "pages": [
+                  "es/client/proposals",
+                  "es/client/invoices-payments"
+                ]
+              },
+              {
+                "group": "Soporte",
+                "icon": "life-buoy",
+                "pages": [
+                  "es/client/files-and-forms",
+                  "es/client/support-tickets"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Referencia de la API",
+            "groups": [
+              {
+                "group": "Introducción",
+                "icon": "book-open",
+                "expanded": true,
+                "pages": [
+                  "es/api/getting-started"
+                ]
+              },
+              {
+                "group": "Endpoints",
+                "icon": "code",
+                "pages": [
+                  "es/api/create-lead",
+                  "es/api/create-client",
+                  "es/api/update-order"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "zh",
+        "global": {
+          "anchors": [
+            {
+              "anchor": "首页",
+              "icon": "house",
+              "href": "/zh"
+            },
+            {
+              "anchor": "AgencyHandy 应用",
+              "icon": "arrow-up-right",
+              "href": "https://app.agencyhandy.com"
+            },
+            {
+              "anchor": "社区",
+              "icon": "users",
+              "href": "https://community.agencyhandy.com"
+            }
+          ]
+        },
+        "navbar": {
+          "links": [],
+          "primary": {
+            "type": "button",
+            "label": "登录",
+            "href": "https://app.agencyhandy.com"
+          }
+        },
+        "tabs": [
+          {
+            "tab": "面向代理商",
+            "groups": [
+              {
+                "group": "快速入门",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "zh/getting-started/introduction",
+                  "zh/getting-started/sign-up",
+                  "zh/getting-started/log-in",
+                  "zh/getting-started/dashboard-overview"
+                ]
+              },
+              {
+                "group": "工作区设置",
+                "icon": "settings",
+                "pages": [
+                  "zh/workspace/general-settings",
+                  "zh/workspace/appearance",
+                  "zh/workspace/custom-domain",
+                  "zh/workspace/email-setup",
+                  "zh/workspace/portals"
+                ]
+              },
+              {
+                "group": "CRM",
+                "icon": "users",
+                "pages": [
+                  "zh/crm/leads",
+                  "zh/crm/clients"
+                ]
+              },
+              {
+                "group": "服务与订单",
+                "icon": "package",
+                "pages": [
+                  "zh/services/overview",
+                  "zh/services/create-service",
+                  "zh/orders/overview",
+                  "zh/orders/create-order",
+                  "zh/orders/tasks"
+                ]
+              },
+              {
+                "group": "提案与发票",
+                "icon": "file-text",
+                "pages": [
+                  "zh/proposals/overview",
+                  "zh/invoices/overview",
+                  "zh/invoices/create-invoice",
+                  "zh/invoices/subscriptions"
+                ]
+              },
+              {
+                "group": "团队与任务",
+                "icon": "circle-check",
+                "pages": [
+                  "zh/teams/manage-team",
+                  "zh/tasks/all-tasks",
+                  "zh/tasks/timesheet",
+                  "zh/tickets/support-tickets"
+                ]
+              },
+              {
+                "group": "表单与文件",
+                "icon": "layout-template",
+                "pages": [
+                  "zh/forms/order-forms",
+                  "zh/forms/intake-forms",
+                  "zh/files/manage-files"
+                ]
+              },
+              {
+                "group": "账户与账单",
+                "icon": "credit-card",
+                "pages": [
+                  "zh/account/profile",
+                  "zh/account/plans-pricing",
+                  "zh/account/multiple-workspaces"
+                ]
+              },
+              {
+                "group": "付款",
+                "icon": "wallet",
+                "pages": [
+                  "zh/integrations/stripe",
+                  "zh/integrations/paypal",
+                  "zh/integrations/other-payments"
+                ]
+              },
+              {
+                "group": "集成",
+                "icon": "plug",
+                "pages": [
+                  "zh/integrations/slack",
+                  "zh/integrations/webhooks"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "面向客户",
+            "groups": [
+              {
+                "group": "入门指南",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "zh/client/introduction",
+                  "zh/client/accessing-portal"
+                ]
+              },
+              {
+                "group": "订单与服务",
+                "icon": "package",
+                "pages": [
+                  "zh/client/browse-and-order",
+                  "zh/client/orders-and-tasks"
+                ]
+              },
+              {
+                "group": "账单",
+                "icon": "credit-card",
+                "pages": [
+                  "zh/client/proposals",
+                  "zh/client/invoices-payments"
+                ]
+              },
+              {
+                "group": "支持",
+                "icon": "life-buoy",
+                "pages": [
+                  "zh/client/files-and-forms",
+                  "zh/client/support-tickets"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "API 参考",
+            "groups": [
+              {
+                "group": "简介",
+                "icon": "book-open",
+                "expanded": true,
+                "pages": [
+                  "zh/api/getting-started"
+                ]
+              },
+              {
+                "group": "端点",
+                "icon": "code",
+                "pages": [
+                  "zh/api/create-lead",
+                  "zh/api/create-client",
+                  "zh/api/update-order"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "zh-Hant",
+        "global": {
+          "anchors": [
+            {
+              "anchor": "首頁",
+              "icon": "house",
+              "href": "/zh-Hant"
+            },
+            {
+              "anchor": "AgencyHandy 應用程式",
+              "icon": "arrow-up-right",
+              "href": "https://app.agencyhandy.com"
+            },
+            {
+              "anchor": "社群",
+              "icon": "users",
+              "href": "https://community.agencyhandy.com"
+            }
+          ]
+        },
+        "navbar": {
+          "links": [],
+          "primary": {
+            "type": "button",
+            "label": "登入",
+            "href": "https://app.agencyhandy.com"
+          }
+        },
+        "tabs": [
+          {
+            "tab": "適用於代理商",
+            "groups": [
+              {
+                "group": "開始使用",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "zh-Hant/getting-started/introduction",
+                  "zh-Hant/getting-started/sign-up",
+                  "zh-Hant/getting-started/log-in",
+                  "zh-Hant/getting-started/dashboard-overview"
+                ]
+              },
+              {
+                "group": "工作區設定",
+                "icon": "settings",
+                "pages": [
+                  "zh-Hant/workspace/general-settings",
+                  "zh-Hant/workspace/appearance",
+                  "zh-Hant/workspace/custom-domain",
+                  "zh-Hant/workspace/email-setup",
+                  "zh-Hant/workspace/portals"
+                ]
+              },
+              {
+                "group": "CRM",
+                "icon": "users",
+                "pages": [
+                  "zh-Hant/crm/leads",
+                  "zh-Hant/crm/clients"
+                ]
+              },
+              {
+                "group": "服務與訂單",
+                "icon": "package",
+                "pages": [
+                  "zh-Hant/services/overview",
+                  "zh-Hant/services/create-service",
+                  "zh-Hant/orders/overview",
+                  "zh-Hant/orders/create-order",
+                  "zh-Hant/orders/tasks"
+                ]
+              },
+              {
+                "group": "提案與發票",
+                "icon": "file-text",
+                "pages": [
+                  "zh-Hant/proposals/overview",
+                  "zh-Hant/invoices/overview",
+                  "zh-Hant/invoices/create-invoice",
+                  "zh-Hant/invoices/subscriptions"
+                ]
+              },
+              {
+                "group": "團隊與任務",
+                "icon": "circle-check",
+                "pages": [
+                  "zh-Hant/teams/manage-team",
+                  "zh-Hant/tasks/all-tasks",
+                  "zh-Hant/tasks/timesheet",
+                  "zh-Hant/tickets/support-tickets"
+                ]
+              },
+              {
+                "group": "表單與檔案",
+                "icon": "layout-template",
+                "pages": [
+                  "zh-Hant/forms/order-forms",
+                  "zh-Hant/forms/intake-forms",
+                  "zh-Hant/files/manage-files"
+                ]
+              },
+              {
+                "group": "帳戶與帳單",
+                "icon": "credit-card",
+                "pages": [
+                  "zh-Hant/account/profile",
+                  "zh-Hant/account/plans-pricing",
+                  "zh-Hant/account/multiple-workspaces"
+                ]
+              },
+              {
+                "group": "付款",
+                "icon": "wallet",
+                "pages": [
+                  "zh-Hant/integrations/stripe",
+                  "zh-Hant/integrations/paypal",
+                  "zh-Hant/integrations/other-payments"
+                ]
+              },
+              {
+                "group": "整合",
+                "icon": "plug",
+                "pages": [
+                  "zh-Hant/integrations/slack",
+                  "zh-Hant/integrations/webhooks"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "適用於客戶",
+            "groups": [
+              {
+                "group": "快速入門",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "zh-Hant/client/introduction",
+                  "zh-Hant/client/accessing-portal"
+                ]
+              },
+              {
+                "group": "訂單與服務",
+                "icon": "package",
+                "pages": [
+                  "zh-Hant/client/browse-and-order",
+                  "zh-Hant/client/orders-and-tasks"
+                ]
+              },
+              {
+                "group": "帳單",
+                "icon": "credit-card",
+                "pages": [
+                  "zh-Hant/client/proposals",
+                  "zh-Hant/client/invoices-payments"
+                ]
+              },
+              {
+                "group": "支援",
+                "icon": "life-buoy",
+                "pages": [
+                  "zh-Hant/client/files-and-forms",
+                  "zh-Hant/client/support-tickets"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "API 參考",
+            "groups": [
+              {
+                "group": "簡介",
+                "icon": "book-open",
+                "expanded": true,
+                "pages": [
+                  "zh-Hant/api/getting-started"
+                ]
+              },
+              {
+                "group": "端點",
+                "icon": "code",
+                "pages": [
+                  "zh-Hant/api/create-lead",
+                  "zh-Hant/api/create-client",
+                  "zh-Hant/api/update-order"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "de",
+        "global": {
+          "anchors": [
+            {
+              "anchor": "Startseite",
+              "icon": "house",
+              "href": "/de"
+            },
+            {
+              "anchor": "AgencyHandy App",
+              "icon": "arrow-up-right",
+              "href": "https://app.agencyhandy.com"
+            },
+            {
+              "anchor": "Community",
+              "icon": "users",
+              "href": "https://community.agencyhandy.com"
+            }
+          ]
+        },
+        "navbar": {
+          "links": [],
+          "primary": {
+            "type": "button",
+            "label": "Anmelden",
+            "href": "https://app.agencyhandy.com"
+          }
+        },
+        "tabs": [
+          {
+            "tab": "Für Agenturen",
+            "groups": [
+              {
+                "group": "Erste Schritte",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "de/getting-started/introduction",
+                  "de/getting-started/sign-up",
+                  "de/getting-started/log-in",
+                  "de/getting-started/dashboard-overview"
+                ]
+              },
+              {
+                "group": "Workspace einrichten",
+                "icon": "settings",
+                "pages": [
+                  "de/workspace/general-settings",
+                  "de/workspace/appearance",
+                  "de/workspace/custom-domain",
+                  "de/workspace/email-setup",
+                  "de/workspace/portals"
+                ]
+              },
+              {
+                "group": "CRM",
+                "icon": "users",
+                "pages": [
+                  "de/crm/leads",
+                  "de/crm/clients"
+                ]
+              },
+              {
+                "group": "Leistungen & Aufträge",
+                "icon": "package",
+                "pages": [
+                  "de/services/overview",
+                  "de/services/create-service",
+                  "de/orders/overview",
+                  "de/orders/create-order",
+                  "de/orders/tasks"
+                ]
+              },
+              {
+                "group": "Angebote & Rechnungen",
+                "icon": "file-text",
+                "pages": [
+                  "de/proposals/overview",
+                  "de/invoices/overview",
+                  "de/invoices/create-invoice",
+                  "de/invoices/subscriptions"
+                ]
+              },
+              {
+                "group": "Team & Aufgaben",
+                "icon": "circle-check",
+                "pages": [
+                  "de/teams/manage-team",
+                  "de/tasks/all-tasks",
+                  "de/tasks/timesheet",
+                  "de/tickets/support-tickets"
+                ]
+              },
+              {
+                "group": "Formulare & Dateien",
+                "icon": "layout-template",
+                "pages": [
+                  "de/forms/order-forms",
+                  "de/forms/intake-forms",
+                  "de/files/manage-files"
+                ]
+              },
+              {
+                "group": "Konto & Abrechnung",
+                "icon": "credit-card",
+                "pages": [
+                  "de/account/profile",
+                  "de/account/plans-pricing",
+                  "de/account/multiple-workspaces"
+                ]
+              },
+              {
+                "group": "Zahlungen",
+                "icon": "wallet",
+                "pages": [
+                  "de/integrations/stripe",
+                  "de/integrations/paypal",
+                  "de/integrations/other-payments"
+                ]
+              },
+              {
+                "group": "Integrationen",
+                "icon": "plug",
+                "pages": [
+                  "de/integrations/slack",
+                  "de/integrations/webhooks"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Für Kunden",
+            "groups": [
+              {
+                "group": "Erste Schritte",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "de/client/introduction",
+                  "de/client/accessing-portal"
+                ]
+              },
+              {
+                "group": "Aufträge & Leistungen",
+                "icon": "package",
+                "pages": [
+                  "de/client/browse-and-order",
+                  "de/client/orders-and-tasks"
+                ]
+              },
+              {
+                "group": "Abrechnung",
+                "icon": "credit-card",
+                "pages": [
+                  "de/client/proposals",
+                  "de/client/invoices-payments"
+                ]
+              },
+              {
+                "group": "Support",
+                "icon": "life-buoy",
+                "pages": [
+                  "de/client/files-and-forms",
+                  "de/client/support-tickets"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "API Referenz",
+            "groups": [
+              {
+                "group": "Einführung",
+                "icon": "book-open",
+                "expanded": true,
+                "pages": [
+                  "de/api/getting-started"
+                ]
+              },
+              {
+                "group": "Endpunkte",
+                "icon": "code",
+                "pages": [
+                  "de/api/create-lead",
+                  "de/api/create-client",
+                  "de/api/update-order"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "ko",
+        "global": {
+          "anchors": [
+            {
+              "anchor": "홈",
+              "icon": "house",
+              "href": "/ko"
+            },
+            {
+              "anchor": "AgencyHandy 앱",
+              "icon": "arrow-up-right",
+              "href": "https://app.agencyhandy.com"
+            },
+            {
+              "anchor": "커뮤니티",
+              "icon": "users",
+              "href": "https://community.agencyhandy.com"
+            }
+          ]
+        },
+        "navbar": {
+          "links": [],
+          "primary": {
+            "type": "button",
+            "label": "로그인",
+            "href": "https://app.agencyhandy.com"
+          }
+        },
+        "tabs": [
+          {
+            "tab": "에이전시용",
+            "groups": [
+              {
+                "group": "시작하기",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "ko/getting-started/introduction",
+                  "ko/getting-started/sign-up",
+                  "ko/getting-started/log-in",
+                  "ko/getting-started/dashboard-overview"
+                ]
+              },
+              {
+                "group": "워크스페이스 설정",
+                "icon": "settings",
+                "pages": [
+                  "ko/workspace/general-settings",
+                  "ko/workspace/appearance",
+                  "ko/workspace/custom-domain",
+                  "ko/workspace/email-setup",
+                  "ko/workspace/portals"
+                ]
+              },
+              {
+                "group": "CRM",
+                "icon": "users",
+                "pages": [
+                  "ko/crm/leads",
+                  "ko/crm/clients"
+                ]
+              },
+              {
+                "group": "서비스 & 주문",
+                "icon": "package",
+                "pages": [
+                  "ko/services/overview",
+                  "ko/services/create-service",
+                  "ko/orders/overview",
+                  "ko/orders/create-order",
+                  "ko/orders/tasks"
+                ]
+              },
+              {
+                "group": "제안서 & 인보이스",
+                "icon": "file-text",
+                "pages": [
+                  "ko/proposals/overview",
+                  "ko/invoices/overview",
+                  "ko/invoices/create-invoice",
+                  "ko/invoices/subscriptions"
+                ]
+              },
+              {
+                "group": "팀 & 작업",
+                "icon": "circle-check",
+                "pages": [
+                  "ko/teams/manage-team",
+                  "ko/tasks/all-tasks",
+                  "ko/tasks/timesheet",
+                  "ko/tickets/support-tickets"
+                ]
+              },
+              {
+                "group": "양식 & 파일",
+                "icon": "layout-template",
+                "pages": [
+                  "ko/forms/order-forms",
+                  "ko/forms/intake-forms",
+                  "ko/files/manage-files"
+                ]
+              },
+              {
+                "group": "계정 & 결제",
+                "icon": "credit-card",
+                "pages": [
+                  "ko/account/profile",
+                  "ko/account/plans-pricing",
+                  "ko/account/multiple-workspaces"
+                ]
+              },
+              {
+                "group": "결제",
+                "icon": "wallet",
+                "pages": [
+                  "ko/integrations/stripe",
+                  "ko/integrations/paypal",
+                  "ko/integrations/other-payments"
+                ]
+              },
+              {
+                "group": "통합",
+                "icon": "plug",
+                "pages": [
+                  "ko/integrations/slack",
+                  "ko/integrations/webhooks"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "클라이언트용",
+            "groups": [
+              {
+                "group": "시작하기",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "ko/client/introduction",
+                  "ko/client/accessing-portal"
+                ]
+              },
+              {
+                "group": "주문 & 서비스",
+                "icon": "package",
+                "pages": [
+                  "ko/client/browse-and-order",
+                  "ko/client/orders-and-tasks"
+                ]
+              },
+              {
+                "group": "청구",
+                "icon": "credit-card",
+                "pages": [
+                  "ko/client/proposals",
+                  "ko/client/invoices-payments"
+                ]
+              },
+              {
+                "group": "지원",
+                "icon": "life-buoy",
+                "pages": [
+                  "ko/client/files-and-forms",
+                  "ko/client/support-tickets"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "API 레퍼런스",
+            "groups": [
+              {
+                "group": "소개",
+                "icon": "book-open",
+                "expanded": true,
+                "pages": [
+                  "ko/api/getting-started"
+                ]
+              },
+              {
+                "group": "엔드포인트",
+                "icon": "code",
+                "pages": [
+                  "ko/api/create-lead",
+                  "ko/api/create-client",
+                  "ko/api/update-order"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "cs",
+        "global": {
+          "anchors": [
+            {
+              "anchor": "Domů",
+              "icon": "house",
+              "href": "/cs"
+            },
+            {
+              "anchor": "AgencyHandy Aplikace",
+              "icon": "arrow-up-right",
+              "href": "https://app.agencyhandy.com"
+            },
+            {
+              "anchor": "Komunita",
+              "icon": "users",
+              "href": "https://community.agencyhandy.com"
+            }
+          ]
+        },
+        "navbar": {
+          "links": [],
+          "primary": {
+            "type": "button",
+            "label": "Přihlásit se",
+            "href": "https://app.agencyhandy.com"
+          }
+        },
+        "tabs": [
+          {
+            "tab": "Pro agentury",
+            "groups": [
+              {
+                "group": "Začínáme",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "cs/getting-started/introduction",
+                  "cs/getting-started/sign-up",
+                  "cs/getting-started/log-in",
+                  "cs/getting-started/dashboard-overview"
+                ]
+              },
+              {
+                "group": "Nastavení pracovního prostoru",
+                "icon": "settings",
+                "pages": [
+                  "cs/workspace/general-settings",
+                  "cs/workspace/appearance",
+                  "cs/workspace/custom-domain",
+                  "cs/workspace/email-setup",
+                  "cs/workspace/portals"
+                ]
+              },
+              {
+                "group": "CRM",
+                "icon": "users",
+                "pages": [
+                  "cs/crm/leads",
+                  "cs/crm/clients"
+                ]
+              },
+              {
+                "group": "Služby a objednávky",
+                "icon": "package",
+                "pages": [
+                  "cs/services/overview",
+                  "cs/services/create-service",
+                  "cs/orders/overview",
+                  "cs/orders/create-order",
+                  "cs/orders/tasks"
+                ]
+              },
+              {
+                "group": "Nabídky a faktury",
+                "icon": "file-text",
+                "pages": [
+                  "cs/proposals/overview",
+                  "cs/invoices/overview",
+                  "cs/invoices/create-invoice",
+                  "cs/invoices/subscriptions"
+                ]
+              },
+              {
+                "group": "Tým a úkoly",
+                "icon": "circle-check",
+                "pages": [
+                  "cs/teams/manage-team",
+                  "cs/tasks/all-tasks",
+                  "cs/tasks/timesheet",
+                  "cs/tickets/support-tickets"
+                ]
+              },
+              {
+                "group": "Formuláře a soubory",
+                "icon": "layout-template",
+                "pages": [
+                  "cs/forms/order-forms",
+                  "cs/forms/intake-forms",
+                  "cs/files/manage-files"
+                ]
+              },
+              {
+                "group": "Účet a fakturace",
+                "icon": "credit-card",
+                "pages": [
+                  "cs/account/profile",
+                  "cs/account/plans-pricing",
+                  "cs/account/multiple-workspaces"
+                ]
+              },
+              {
+                "group": "Platby",
+                "icon": "wallet",
+                "pages": [
+                  "cs/integrations/stripe",
+                  "cs/integrations/paypal",
+                  "cs/integrations/other-payments"
+                ]
+              },
+              {
+                "group": "Integrace",
+                "icon": "plug",
+                "pages": [
+                  "cs/integrations/slack",
+                  "cs/integrations/webhooks"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Pro klienty",
+            "groups": [
+              {
+                "group": "Začínáme",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "cs/client/introduction",
+                  "cs/client/accessing-portal"
+                ]
+              },
+              {
+                "group": "Objednávky a služby",
+                "icon": "package",
+                "pages": [
+                  "cs/client/browse-and-order",
+                  "cs/client/orders-and-tasks"
+                ]
+              },
+              {
+                "group": "Fakturace",
+                "icon": "credit-card",
+                "pages": [
+                  "cs/client/proposals",
+                  "cs/client/invoices-payments"
+                ]
+              },
+              {
+                "group": "Podpora",
+                "icon": "life-buoy",
+                "pages": [
+                  "cs/client/files-and-forms",
+                  "cs/client/support-tickets"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "API Reference",
+            "groups": [
+              {
+                "group": "Úvod",
+                "icon": "book-open",
+                "expanded": true,
+                "pages": [
+                  "cs/api/getting-started"
+                ]
+              },
+              {
+                "group": "Endpoints",
+                "icon": "code",
+                "pages": [
+                  "cs/api/create-lead",
+                  "cs/api/create-client",
+                  "cs/api/update-order"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "ja",
+        "global": {
+          "anchors": [
+            {
+              "anchor": "ホーム",
+              "icon": "house",
+              "href": "/ja"
+            },
+            {
+              "anchor": "AgencyHandy アプリ",
+              "icon": "arrow-up-right",
+              "href": "https://app.agencyhandy.com"
+            },
+            {
+              "anchor": "コミュニティ",
+              "icon": "users",
+              "href": "https://community.agencyhandy.com"
+            }
+          ]
+        },
+        "navbar": {
+          "links": [],
+          "primary": {
+            "type": "button",
+            "label": "サインイン",
+            "href": "https://app.agencyhandy.com"
+          }
+        },
+        "tabs": [
+          {
+            "tab": "エージェンシー向け",
+            "groups": [
+              {
+                "group": "はじめに",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "ja/getting-started/introduction",
+                  "ja/getting-started/sign-up",
+                  "ja/getting-started/log-in",
+                  "ja/getting-started/dashboard-overview"
+                ]
+              },
+              {
+                "group": "ワークスペース設定",
+                "icon": "settings",
+                "pages": [
+                  "ja/workspace/general-settings",
+                  "ja/workspace/appearance",
+                  "ja/workspace/custom-domain",
+                  "ja/workspace/email-setup",
+                  "ja/workspace/portals"
+                ]
+              },
+              {
+                "group": "CRM",
+                "icon": "users",
+                "pages": [
+                  "ja/crm/leads",
+                  "ja/crm/clients"
+                ]
+              },
+              {
+                "group": "サービスと注文",
+                "icon": "package",
+                "pages": [
+                  "ja/services/overview",
+                  "ja/services/create-service",
+                  "ja/orders/overview",
+                  "ja/orders/create-order",
+                  "ja/orders/tasks"
+                ]
+              },
+              {
+                "group": "提案と請求書",
+                "icon": "file-text",
+                "pages": [
+                  "ja/proposals/overview",
+                  "ja/invoices/overview",
+                  "ja/invoices/create-invoice",
+                  "ja/invoices/subscriptions"
+                ]
+              },
+              {
+                "group": "チームとタスク",
+                "icon": "circle-check",
+                "pages": [
+                  "ja/teams/manage-team",
+                  "ja/tasks/all-tasks",
+                  "ja/tasks/timesheet",
+                  "ja/tickets/support-tickets"
+                ]
+              },
+              {
+                "group": "フォームとファイル",
+                "icon": "layout-template",
+                "pages": [
+                  "ja/forms/order-forms",
+                  "ja/forms/intake-forms",
+                  "ja/files/manage-files"
+                ]
+              },
+              {
+                "group": "アカウントと請求",
+                "icon": "credit-card",
+                "pages": [
+                  "ja/account/profile",
+                  "ja/account/plans-pricing",
+                  "ja/account/multiple-workspaces"
+                ]
+              },
+              {
+                "group": "支払い",
+                "icon": "wallet",
+                "pages": [
+                  "ja/integrations/stripe",
+                  "ja/integrations/paypal",
+                  "ja/integrations/other-payments"
+                ]
+              },
+              {
+                "group": "インテグレーション",
+                "icon": "plug",
+                "pages": [
+                  "ja/integrations/slack",
+                  "ja/integrations/webhooks"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "クライアント向け",
+            "groups": [
+              {
+                "group": "スタートガイド",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "ja/client/introduction",
+                  "ja/client/accessing-portal"
+                ]
+              },
+              {
+                "group": "注文とサービス",
+                "icon": "package",
+                "pages": [
+                  "ja/client/browse-and-order",
+                  "ja/client/orders-and-tasks"
+                ]
+              },
+              {
+                "group": "請求",
+                "icon": "credit-card",
+                "pages": [
+                  "ja/client/proposals",
+                  "ja/client/invoices-payments"
+                ]
+              },
+              {
+                "group": "サポート",
+                "icon": "life-buoy",
+                "pages": [
+                  "ja/client/files-and-forms",
+                  "ja/client/support-tickets"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "APIリファレンス",
+            "groups": [
+              {
+                "group": "はじめに",
+                "icon": "book-open",
+                "expanded": true,
+                "pages": [
+                  "ja/api/getting-started"
+                ]
+              },
+              {
+                "group": "エンドポイント",
+                "icon": "code",
+                "pages": [
+                  "ja/api/create-lead",
+                  "ja/api/create-client",
+                  "ja/api/update-order"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "it",
+        "global": {
+          "anchors": [
+            {
+              "anchor": "Home",
+              "icon": "house",
+              "href": "/it"
+            },
+            {
+              "anchor": "AgencyHandy App",
+              "icon": "arrow-up-right",
+              "href": "https://app.agencyhandy.com"
+            },
+            {
+              "anchor": "Community",
+              "icon": "users",
+              "href": "https://community.agencyhandy.com"
+            }
+          ]
+        },
+        "navbar": {
+          "links": [],
+          "primary": {
+            "type": "button",
+            "label": "Accedi",
+            "href": "https://app.agencyhandy.com"
+          }
+        },
+        "tabs": [
+          {
+            "tab": "Per le Agenzie",
+            "groups": [
+              {
+                "group": "Inizia",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "it/getting-started/introduction",
+                  "it/getting-started/sign-up",
+                  "it/getting-started/log-in",
+                  "it/getting-started/dashboard-overview"
+                ]
+              },
+              {
+                "group": "Configurazione Workspace",
+                "icon": "settings",
+                "pages": [
+                  "it/workspace/general-settings",
+                  "it/workspace/appearance",
+                  "it/workspace/custom-domain",
+                  "it/workspace/email-setup",
+                  "it/workspace/portals"
+                ]
+              },
+              {
+                "group": "CRM",
+                "icon": "users",
+                "pages": [
+                  "it/crm/leads",
+                  "it/crm/clients"
+                ]
+              },
+              {
+                "group": "Servizi e Ordini",
+                "icon": "package",
+                "pages": [
+                  "it/services/overview",
+                  "it/services/create-service",
+                  "it/orders/overview",
+                  "it/orders/create-order",
+                  "it/orders/tasks"
+                ]
+              },
+              {
+                "group": "Proposte e Fatture",
+                "icon": "file-text",
+                "pages": [
+                  "it/proposals/overview",
+                  "it/invoices/overview",
+                  "it/invoices/create-invoice",
+                  "it/invoices/subscriptions"
+                ]
+              },
+              {
+                "group": "Team e Attività",
+                "icon": "circle-check",
+                "pages": [
+                  "it/teams/manage-team",
+                  "it/tasks/all-tasks",
+                  "it/tasks/timesheet",
+                  "it/tickets/support-tickets"
+                ]
+              },
+              {
+                "group": "Moduli e File",
+                "icon": "layout-template",
+                "pages": [
+                  "it/forms/order-forms",
+                  "it/forms/intake-forms",
+                  "it/files/manage-files"
+                ]
+              },
+              {
+                "group": "Account e Fatturazione",
+                "icon": "credit-card",
+                "pages": [
+                  "it/account/profile",
+                  "it/account/plans-pricing",
+                  "it/account/multiple-workspaces"
+                ]
+              },
+              {
+                "group": "Pagamenti",
+                "icon": "wallet",
+                "pages": [
+                  "it/integrations/stripe",
+                  "it/integrations/paypal",
+                  "it/integrations/other-payments"
+                ]
+              },
+              {
+                "group": "Integrazioni",
+                "icon": "plug",
+                "pages": [
+                  "it/integrations/slack",
+                  "it/integrations/webhooks"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Per il Cliente",
+            "groups": [
+              {
+                "group": "Per Iniziare",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "it/client/introduction",
+                  "it/client/accessing-portal"
+                ]
+              },
+              {
+                "group": "Ordini e Servizi",
+                "icon": "package",
+                "pages": [
+                  "it/client/browse-and-order",
+                  "it/client/orders-and-tasks"
+                ]
+              },
+              {
+                "group": "Fatturazione",
+                "icon": "credit-card",
+                "pages": [
+                  "it/client/proposals",
+                  "it/client/invoices-payments"
+                ]
+              },
+              {
+                "group": "Supporto",
+                "icon": "life-buoy",
+                "pages": [
+                  "it/client/files-and-forms",
+                  "it/client/support-tickets"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Riferimento API",
+            "groups": [
+              {
+                "group": "Introduzione",
+                "icon": "book-open",
+                "expanded": true,
+                "pages": [
+                  "it/api/getting-started"
+                ]
+              },
+              {
+                "group": "Endpoint",
+                "icon": "code",
+                "pages": [
+                  "it/api/create-lead",
+                  "it/api/create-client",
+                  "it/api/update-order"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "lv",
+        "global": {
+          "anchors": [
+            {
+              "anchor": "Sākums",
+              "icon": "house",
+              "href": "/lv"
+            },
+            {
+              "anchor": "AgencyHandy Lietotne",
+              "icon": "arrow-up-right",
+              "href": "https://app.agencyhandy.com"
+            },
+            {
+              "anchor": "Kopiena",
+              "icon": "users",
+              "href": "https://community.agencyhandy.com"
+            }
+          ]
+        },
+        "navbar": {
+          "links": [],
+          "primary": {
+            "type": "button",
+            "label": "Pierakstīties",
+            "href": "https://app.agencyhandy.com"
+          }
+        },
+        "tabs": [
+          {
+            "tab": "Aģentūrai",
+            "groups": [
+              {
+                "group": "Sākt",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "lv/getting-started/introduction",
+                  "lv/getting-started/sign-up",
+                  "lv/getting-started/log-in",
+                  "lv/getting-started/dashboard-overview"
+                ]
+              },
+              {
+                "group": "Darbvietas iestatīšana",
+                "icon": "settings",
+                "pages": [
+                  "lv/workspace/general-settings",
+                  "lv/workspace/appearance",
+                  "lv/workspace/custom-domain",
+                  "lv/workspace/email-setup",
+                  "lv/workspace/portals"
+                ]
+              },
+              {
+                "group": "CRM",
+                "icon": "users",
+                "pages": [
+                  "lv/crm/leads",
+                  "lv/crm/clients"
+                ]
+              },
+              {
+                "group": "Pakalpojumi un pasūtījumi",
+                "icon": "package",
+                "pages": [
+                  "lv/services/overview",
+                  "lv/services/create-service",
+                  "lv/orders/overview",
+                  "lv/orders/create-order",
+                  "lv/orders/tasks"
+                ]
+              },
+              {
+                "group": "Piedāvājumi un rēķini",
+                "icon": "file-text",
+                "pages": [
+                  "lv/proposals/overview",
+                  "lv/invoices/overview",
+                  "lv/invoices/create-invoice",
+                  "lv/invoices/subscriptions"
+                ]
+              },
+              {
+                "group": "Komanda un uzdevumi",
+                "icon": "circle-check",
+                "pages": [
+                  "lv/teams/manage-team",
+                  "lv/tasks/all-tasks",
+                  "lv/tasks/timesheet",
+                  "lv/tickets/support-tickets"
+                ]
+              },
+              {
+                "group": "Veidlapas un faili",
+                "icon": "layout-template",
+                "pages": [
+                  "lv/forms/order-forms",
+                  "lv/forms/intake-forms",
+                  "lv/files/manage-files"
+                ]
+              },
+              {
+                "group": "Konts un norēķini",
+                "icon": "credit-card",
+                "pages": [
+                  "lv/account/profile",
+                  "lv/account/plans-pricing",
+                  "lv/account/multiple-workspaces"
+                ]
+              },
+              {
+                "group": "Maksājumi",
+                "icon": "wallet",
+                "pages": [
+                  "lv/integrations/stripe",
+                  "lv/integrations/paypal",
+                  "lv/integrations/other-payments"
+                ]
+              },
+              {
+                "group": "Integrācijas",
+                "icon": "plug",
+                "pages": [
+                  "lv/integrations/slack",
+                  "lv/integrations/webhooks"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Klientam",
+            "groups": [
+              {
+                "group": "Darba sākšana",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "lv/client/introduction",
+                  "lv/client/accessing-portal"
+                ]
+              },
+              {
+                "group": "Pasūtījumi un pakalpojumi",
+                "icon": "package",
+                "pages": [
+                  "lv/client/browse-and-order",
+                  "lv/client/orders-and-tasks"
+                ]
+              },
+              {
+                "group": "Norēķini",
+                "icon": "credit-card",
+                "pages": [
+                  "lv/client/proposals",
+                  "lv/client/invoices-payments"
+                ]
+              },
+              {
+                "group": "Atbalsts",
+                "icon": "life-buoy",
+                "pages": [
+                  "lv/client/files-and-forms",
+                  "lv/client/support-tickets"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "API Uzziņa",
+            "groups": [
+              {
+                "group": "Ievads",
+                "icon": "book-open",
+                "expanded": true,
+                "pages": [
+                  "lv/api/getting-started"
+                ]
+              },
+              {
+                "group": "Endpoints",
+                "icon": "code",
+                "pages": [
+                  "lv/api/create-lead",
+                  "lv/api/create-client",
+                  "lv/api/update-order"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "no",
+        "global": {
+          "anchors": [
+            {
+              "anchor": "Hjem",
+              "icon": "house",
+              "href": "/no"
+            },
+            {
+              "anchor": "AgencyHandy App",
+              "icon": "arrow-up-right",
+              "href": "https://app.agencyhandy.com"
+            },
+            {
+              "anchor": "Fellesskap",
+              "icon": "users",
+              "href": "https://community.agencyhandy.com"
+            }
+          ]
+        },
+        "navbar": {
+          "links": [],
+          "primary": {
+            "type": "button",
+            "label": "Logg inn",
+            "href": "https://app.agencyhandy.com"
+          }
+        },
+        "tabs": [
+          {
+            "tab": "For byrå",
+            "groups": [
+              {
+                "group": "Kom i gang",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "no/getting-started/introduction",
+                  "no/getting-started/sign-up",
+                  "no/getting-started/log-in",
+                  "no/getting-started/dashboard-overview"
+                ]
+              },
+              {
+                "group": "Arbeidsområdeoppsett",
+                "icon": "settings",
+                "pages": [
+                  "no/workspace/general-settings",
+                  "no/workspace/appearance",
+                  "no/workspace/custom-domain",
+                  "no/workspace/email-setup",
+                  "no/workspace/portals"
+                ]
+              },
+              {
+                "group": "CRM",
+                "icon": "users",
+                "pages": [
+                  "no/crm/leads",
+                  "no/crm/clients"
+                ]
+              },
+              {
+                "group": "Tjenester og ordre",
+                "icon": "package",
+                "pages": [
+                  "no/services/overview",
+                  "no/services/create-service",
+                  "no/orders/overview",
+                  "no/orders/create-order",
+                  "no/orders/tasks"
+                ]
+              },
+              {
+                "group": "Tilbud og fakturaer",
+                "icon": "file-text",
+                "pages": [
+                  "no/proposals/overview",
+                  "no/invoices/overview",
+                  "no/invoices/create-invoice",
+                  "no/invoices/subscriptions"
+                ]
+              },
+              {
+                "group": "Team og oppgaver",
+                "icon": "circle-check",
+                "pages": [
+                  "no/teams/manage-team",
+                  "no/tasks/all-tasks",
+                  "no/tasks/timesheet",
+                  "no/tickets/support-tickets"
+                ]
+              },
+              {
+                "group": "Skjemaer og filer",
+                "icon": "layout-template",
+                "pages": [
+                  "no/forms/order-forms",
+                  "no/forms/intake-forms",
+                  "no/files/manage-files"
+                ]
+              },
+              {
+                "group": "Konto og fakturering",
+                "icon": "credit-card",
+                "pages": [
+                  "no/account/profile",
+                  "no/account/plans-pricing",
+                  "no/account/multiple-workspaces"
+                ]
+              },
+              {
+                "group": "Betalinger",
+                "icon": "wallet",
+                "pages": [
+                  "no/integrations/stripe",
+                  "no/integrations/paypal",
+                  "no/integrations/other-payments"
+                ]
+              },
+              {
+                "group": "Integrasjoner",
+                "icon": "plug",
+                "pages": [
+                  "no/integrations/slack",
+                  "no/integrations/webhooks"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "For klient",
+            "groups": [
+              {
+                "group": "Kom i gang",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "no/client/introduction",
+                  "no/client/accessing-portal"
+                ]
+              },
+              {
+                "group": "Ordre og tjenester",
+                "icon": "package",
+                "pages": [
+                  "no/client/browse-and-order",
+                  "no/client/orders-and-tasks"
+                ]
+              },
+              {
+                "group": "Fakturering",
+                "icon": "credit-card",
+                "pages": [
+                  "no/client/proposals",
+                  "no/client/invoices-payments"
+                ]
+              },
+              {
+                "group": "Støtte",
+                "icon": "life-buoy",
+                "pages": [
+                  "no/client/files-and-forms",
+                  "no/client/support-tickets"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "API-referanse",
+            "groups": [
+              {
+                "group": "Introduksjon",
+                "icon": "book-open",
+                "expanded": true,
+                "pages": [
+                  "no/api/getting-started"
+                ]
+              },
+              {
+                "group": "Endepunkter",
+                "icon": "code",
+                "pages": [
+                  "no/api/create-lead",
+                  "no/api/create-client",
+                  "no/api/update-order"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "ar",
+        "global": {
+          "anchors": [
+            {
+              "anchor": "الرئيسية",
+              "icon": "house",
+              "href": "/ar"
+            },
+            {
+              "anchor": "تطبيق AgencyHandy",
+              "icon": "arrow-up-right",
+              "href": "https://app.agencyhandy.com"
+            },
+            {
+              "anchor": "المجتمع",
+              "icon": "users",
+              "href": "https://community.agencyhandy.com"
+            }
+          ]
+        },
+        "navbar": {
+          "links": [],
+          "primary": {
+            "type": "button",
+            "label": "تسجيل الدخول",
+            "href": "https://app.agencyhandy.com"
+          }
+        },
+        "tabs": [
+          {
+            "tab": "للوكالة",
+            "groups": [
+              {
+                "group": "ابدأ الآن",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "ar/getting-started/introduction",
+                  "ar/getting-started/sign-up",
+                  "ar/getting-started/log-in",
+                  "ar/getting-started/dashboard-overview"
+                ]
+              },
+              {
+                "group": "إعداد مساحة العمل",
+                "icon": "settings",
+                "pages": [
+                  "ar/workspace/general-settings",
+                  "ar/workspace/appearance",
+                  "ar/workspace/custom-domain",
+                  "ar/workspace/email-setup",
+                  "ar/workspace/portals"
+                ]
+              },
+              {
+                "group": "CRM",
+                "icon": "users",
+                "pages": [
+                  "ar/crm/leads",
+                  "ar/crm/clients"
+                ]
+              },
+              {
+                "group": "الخدمات والطلبات",
+                "icon": "package",
+                "pages": [
+                  "ar/services/overview",
+                  "ar/services/create-service",
+                  "ar/orders/overview",
+                  "ar/orders/create-order",
+                  "ar/orders/tasks"
+                ]
+              },
+              {
+                "group": "العروض والفواتير",
+                "icon": "file-text",
+                "pages": [
+                  "ar/proposals/overview",
+                  "ar/invoices/overview",
+                  "ar/invoices/create-invoice",
+                  "ar/invoices/subscriptions"
+                ]
+              },
+              {
+                "group": "الفريق والمهام",
+                "icon": "circle-check",
+                "pages": [
+                  "ar/teams/manage-team",
+                  "ar/tasks/all-tasks",
+                  "ar/tasks/timesheet",
+                  "ar/tickets/support-tickets"
+                ]
+              },
+              {
+                "group": "النماذج والملفات",
+                "icon": "layout-template",
+                "pages": [
+                  "ar/forms/order-forms",
+                  "ar/forms/intake-forms",
+                  "ar/files/manage-files"
+                ]
+              },
+              {
+                "group": "الحساب والفوترة",
+                "icon": "credit-card",
+                "pages": [
+                  "ar/account/profile",
+                  "ar/account/plans-pricing",
+                  "ar/account/multiple-workspaces"
+                ]
+              },
+              {
+                "group": "المدفوعات",
+                "icon": "wallet",
+                "pages": [
+                  "ar/integrations/stripe",
+                  "ar/integrations/paypal",
+                  "ar/integrations/other-payments"
+                ]
+              },
+              {
+                "group": "التكاملات",
+                "icon": "plug",
+                "pages": [
+                  "ar/integrations/slack",
+                  "ar/integrations/webhooks"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "للعميل",
+            "groups": [
+              {
+                "group": "البدء",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "ar/client/introduction",
+                  "ar/client/accessing-portal"
+                ]
+              },
+              {
+                "group": "الطلبات والخدمات",
+                "icon": "package",
+                "pages": [
+                  "ar/client/browse-and-order",
+                  "ar/client/orders-and-tasks"
+                ]
+              },
+              {
+                "group": "الفوترة",
+                "icon": "credit-card",
+                "pages": [
+                  "ar/client/proposals",
+                  "ar/client/invoices-payments"
+                ]
+              },
+              {
+                "group": "الدعم",
+                "icon": "life-buoy",
+                "pages": [
+                  "ar/client/files-and-forms",
+                  "ar/client/support-tickets"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "مرجع API",
+            "groups": [
+              {
+                "group": "مقدمة",
+                "icon": "book-open",
+                "expanded": true,
+                "pages": [
+                  "ar/api/getting-started"
+                ]
+              },
+              {
+                "group": "نقاط النهاية",
+                "icon": "code",
+                "pages": [
+                  "ar/api/create-lead",
+                  "ar/api/create-client",
+                  "ar/api/update-order"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "sv",
+        "global": {
+          "anchors": [
+            {
+              "anchor": "Hem",
+              "icon": "house",
+              "href": "/sv"
+            },
+            {
+              "anchor": "AgencyHandy App",
+              "icon": "arrow-up-right",
+              "href": "https://app.agencyhandy.com"
+            },
+            {
+              "anchor": "Community",
+              "icon": "users",
+              "href": "https://community.agencyhandy.com"
+            }
+          ]
+        },
+        "navbar": {
+          "links": [],
+          "primary": {
+            "type": "button",
+            "label": "Logga in",
+            "href": "https://app.agencyhandy.com"
+          }
+        },
+        "tabs": [
+          {
+            "tab": "För Byrå",
+            "groups": [
+              {
+                "group": "Kom igång",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "sv/getting-started/introduction",
+                  "sv/getting-started/sign-up",
+                  "sv/getting-started/log-in",
+                  "sv/getting-started/dashboard-overview"
+                ]
+              },
+              {
+                "group": "Arbetsyteinställning",
+                "icon": "settings",
+                "pages": [
+                  "sv/workspace/general-settings",
+                  "sv/workspace/appearance",
+                  "sv/workspace/custom-domain",
+                  "sv/workspace/email-setup",
+                  "sv/workspace/portals"
+                ]
+              },
+              {
+                "group": "CRM",
+                "icon": "users",
+                "pages": [
+                  "sv/crm/leads",
+                  "sv/crm/clients"
+                ]
+              },
+              {
+                "group": "Tjänster & Beställningar",
+                "icon": "package",
+                "pages": [
+                  "sv/services/overview",
+                  "sv/services/create-service",
+                  "sv/orders/overview",
+                  "sv/orders/create-order",
+                  "sv/orders/tasks"
+                ]
+              },
+              {
+                "group": "Offerter & Fakturor",
+                "icon": "file-text",
+                "pages": [
+                  "sv/proposals/overview",
+                  "sv/invoices/overview",
+                  "sv/invoices/create-invoice",
+                  "sv/invoices/subscriptions"
+                ]
+              },
+              {
+                "group": "Team & Uppgifter",
+                "icon": "circle-check",
+                "pages": [
+                  "sv/teams/manage-team",
+                  "sv/tasks/all-tasks",
+                  "sv/tasks/timesheet",
+                  "sv/tickets/support-tickets"
+                ]
+              },
+              {
+                "group": "Formulär & Filer",
+                "icon": "layout-template",
+                "pages": [
+                  "sv/forms/order-forms",
+                  "sv/forms/intake-forms",
+                  "sv/files/manage-files"
+                ]
+              },
+              {
+                "group": "Konto & Fakturering",
+                "icon": "credit-card",
+                "pages": [
+                  "sv/account/profile",
+                  "sv/account/plans-pricing",
+                  "sv/account/multiple-workspaces"
+                ]
+              },
+              {
+                "group": "Betalningar",
+                "icon": "wallet",
+                "pages": [
+                  "sv/integrations/stripe",
+                  "sv/integrations/paypal",
+                  "sv/integrations/other-payments"
+                ]
+              },
+              {
+                "group": "Integrationer",
+                "icon": "plug",
+                "pages": [
+                  "sv/integrations/slack",
+                  "sv/integrations/webhooks"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "För Klient",
+            "groups": [
+              {
+                "group": "Kom igång",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "sv/client/introduction",
+                  "sv/client/accessing-portal"
+                ]
+              },
+              {
+                "group": "Beställningar & Tjänster",
+                "icon": "package",
+                "pages": [
+                  "sv/client/browse-and-order",
+                  "sv/client/orders-and-tasks"
+                ]
+              },
+              {
+                "group": "Fakturering",
+                "icon": "credit-card",
+                "pages": [
+                  "sv/client/proposals",
+                  "sv/client/invoices-payments"
+                ]
+              },
+              {
+                "group": "Support",
+                "icon": "life-buoy",
+                "pages": [
+                  "sv/client/files-and-forms",
+                  "sv/client/support-tickets"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "API-referens",
+            "groups": [
+              {
+                "group": "Introduktion",
+                "icon": "book-open",
+                "expanded": true,
+                "pages": [
+                  "sv/api/getting-started"
+                ]
+              },
+              {
+                "group": "Endpoints",
+                "icon": "code",
+                "pages": [
+                  "sv/api/create-lead",
+                  "sv/api/create-client",
+                  "sv/api/update-order"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "da",
+        "global": {
+          "anchors": [
+            {
+              "anchor": "Hjem",
+              "icon": "house",
+              "href": "/da"
+            },
+            {
+              "anchor": "AgencyHandy App",
+              "icon": "arrow-up-right",
+              "href": "https://app.agencyhandy.com"
+            },
+            {
+              "anchor": "Community",
+              "icon": "users",
+              "href": "https://community.agencyhandy.com"
+            }
+          ]
+        },
+        "navbar": {
+          "links": [],
+          "primary": {
+            "type": "button",
+            "label": "Log ind",
+            "href": "https://app.agencyhandy.com"
+          }
+        },
+        "tabs": [
+          {
+            "tab": "For Bureau",
+            "groups": [
+              {
+                "group": "Kom i gang",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "da/getting-started/introduction",
+                  "da/getting-started/sign-up",
+                  "da/getting-started/log-in",
+                  "da/getting-started/dashboard-overview"
+                ]
+              },
+              {
+                "group": "Workspace-opsætning",
+                "icon": "settings",
+                "pages": [
+                  "da/workspace/general-settings",
+                  "da/workspace/appearance",
+                  "da/workspace/custom-domain",
+                  "da/workspace/email-setup",
+                  "da/workspace/portals"
+                ]
+              },
+              {
+                "group": "CRM",
+                "icon": "users",
+                "pages": [
+                  "da/crm/leads",
+                  "da/crm/clients"
+                ]
+              },
+              {
+                "group": "Tjenester & Ordrer",
+                "icon": "package",
+                "pages": [
+                  "da/services/overview",
+                  "da/services/create-service",
+                  "da/orders/overview",
+                  "da/orders/create-order",
+                  "da/orders/tasks"
+                ]
+              },
+              {
+                "group": "Tilbud & Fakturaer",
+                "icon": "file-text",
+                "pages": [
+                  "da/proposals/overview",
+                  "da/invoices/overview",
+                  "da/invoices/create-invoice",
+                  "da/invoices/subscriptions"
+                ]
+              },
+              {
+                "group": "Team & Opgaver",
+                "icon": "circle-check",
+                "pages": [
+                  "da/teams/manage-team",
+                  "da/tasks/all-tasks",
+                  "da/tasks/timesheet",
+                  "da/tickets/support-tickets"
+                ]
+              },
+              {
+                "group": "Formularer & Filer",
+                "icon": "layout-template",
+                "pages": [
+                  "da/forms/order-forms",
+                  "da/forms/intake-forms",
+                  "da/files/manage-files"
+                ]
+              },
+              {
+                "group": "Konto & Fakturering",
+                "icon": "credit-card",
+                "pages": [
+                  "da/account/profile",
+                  "da/account/plans-pricing",
+                  "da/account/multiple-workspaces"
+                ]
+              },
+              {
+                "group": "Betalinger",
+                "icon": "wallet",
+                "pages": [
+                  "da/integrations/stripe",
+                  "da/integrations/paypal",
+                  "da/integrations/other-payments"
+                ]
+              },
+              {
+                "group": "Integrationer",
+                "icon": "plug",
+                "pages": [
+                  "da/integrations/slack",
+                  "da/integrations/webhooks"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "For Kunde",
+            "groups": [
+              {
+                "group": "Kom i gang",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "da/client/introduction",
+                  "da/client/accessing-portal"
+                ]
+              },
+              {
+                "group": "Ordrer & Tjenester",
+                "icon": "package",
+                "pages": [
+                  "da/client/browse-and-order",
+                  "da/client/orders-and-tasks"
+                ]
+              },
+              {
+                "group": "Fakturering",
+                "icon": "credit-card",
+                "pages": [
+                  "da/client/proposals",
+                  "da/client/invoices-payments"
+                ]
+              },
+              {
+                "group": "Support",
+                "icon": "life-buoy",
+                "pages": [
+                  "da/client/files-and-forms",
+                  "da/client/support-tickets"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "API Reference",
+            "groups": [
+              {
+                "group": "Introduktion",
+                "icon": "book-open",
+                "expanded": true,
+                "pages": [
+                  "da/api/getting-started"
+                ]
+              },
+              {
+                "group": "Endpoints",
+                "icon": "code",
+                "pages": [
+                  "da/api/create-lead",
+                  "da/api/create-client",
+                  "da/api/update-order"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "pl",
+        "global": {
+          "anchors": [
+            {
+              "anchor": "Strona Główna",
+              "icon": "house",
+              "href": "/pl"
+            },
+            {
+              "anchor": "Aplikacja AgencyHandy",
+              "icon": "arrow-up-right",
+              "href": "https://app.agencyhandy.com"
+            },
+            {
+              "anchor": "Społeczność",
+              "icon": "users",
+              "href": "https://community.agencyhandy.com"
+            }
+          ]
+        },
+        "navbar": {
+          "links": [],
+          "primary": {
+            "type": "button",
+            "label": "Zaloguj się",
+            "href": "https://app.agencyhandy.com"
+          }
+        },
+        "tabs": [
+          {
+            "tab": "Dla Agencji",
+            "groups": [
+              {
+                "group": "Pierwsze Kroki",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "pl/getting-started/introduction",
+                  "pl/getting-started/sign-up",
+                  "pl/getting-started/log-in",
+                  "pl/getting-started/dashboard-overview"
+                ]
+              },
+              {
+                "group": "Konfiguracja Przestrzeni Roboczej",
+                "icon": "settings",
+                "pages": [
+                  "pl/workspace/general-settings",
+                  "pl/workspace/appearance",
+                  "pl/workspace/custom-domain",
+                  "pl/workspace/email-setup",
+                  "pl/workspace/portals"
+                ]
+              },
+              {
+                "group": "CRM",
+                "icon": "users",
+                "pages": [
+                  "pl/crm/leads",
+                  "pl/crm/clients"
+                ]
+              },
+              {
+                "group": "Usługi i Zamówienia",
+                "icon": "package",
+                "pages": [
+                  "pl/services/overview",
+                  "pl/services/create-service",
+                  "pl/orders/overview",
+                  "pl/orders/create-order",
+                  "pl/orders/tasks"
+                ]
+              },
+              {
+                "group": "Oferty i Faktury",
+                "icon": "file-text",
+                "pages": [
+                  "pl/proposals/overview",
+                  "pl/invoices/overview",
+                  "pl/invoices/create-invoice",
+                  "pl/invoices/subscriptions"
+                ]
+              },
+              {
+                "group": "Zespół i Zadania",
+                "icon": "circle-check",
+                "pages": [
+                  "pl/teams/manage-team",
+                  "pl/tasks/all-tasks",
+                  "pl/tasks/timesheet",
+                  "pl/tickets/support-tickets"
+                ]
+              },
+              {
+                "group": "Formularze i Pliki",
+                "icon": "layout-template",
+                "pages": [
+                  "pl/forms/order-forms",
+                  "pl/forms/intake-forms",
+                  "pl/files/manage-files"
+                ]
+              },
+              {
+                "group": "Konto i Rozliczenia",
+                "icon": "credit-card",
+                "pages": [
+                  "pl/account/profile",
+                  "pl/account/plans-pricing",
+                  "pl/account/multiple-workspaces"
+                ]
+              },
+              {
+                "group": "Płatności",
+                "icon": "wallet",
+                "pages": [
+                  "pl/integrations/stripe",
+                  "pl/integrations/paypal",
+                  "pl/integrations/other-payments"
+                ]
+              },
+              {
+                "group": "Integracje",
+                "icon": "plug",
+                "pages": [
+                  "pl/integrations/slack",
+                  "pl/integrations/webhooks"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Dla Klienta",
+            "groups": [
+              {
+                "group": "Pierwsze Kroki",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "pl/client/introduction",
+                  "pl/client/accessing-portal"
+                ]
+              },
+              {
+                "group": "Zamówienia i Usługi",
+                "icon": "package",
+                "pages": [
+                  "pl/client/browse-and-order",
+                  "pl/client/orders-and-tasks"
+                ]
+              },
+              {
+                "group": "Rozliczenia",
+                "icon": "credit-card",
+                "pages": [
+                  "pl/client/proposals",
+                  "pl/client/invoices-payments"
+                ]
+              },
+              {
+                "group": "Wsparcie",
+                "icon": "life-buoy",
+                "pages": [
+                  "pl/client/files-and-forms",
+                  "pl/client/support-tickets"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Dokumentacja API",
+            "groups": [
+              {
+                "group": "Wprowadzenie",
+                "icon": "book-open",
+                "expanded": true,
+                "pages": [
+                  "pl/api/getting-started"
+                ]
+              },
+              {
+                "group": "Endpointy",
+                "icon": "code",
+                "pages": [
+                  "pl/api/create-lead",
+                  "pl/api/create-client",
+                  "pl/api/update-order"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "nl",
+        "global": {
+          "anchors": [
+            {
+              "anchor": "Home",
+              "icon": "house",
+              "href": "/nl"
+            },
+            {
+              "anchor": "AgencyHandy App",
+              "icon": "arrow-up-right",
+              "href": "https://app.agencyhandy.com"
+            },
+            {
+              "anchor": "Community",
+              "icon": "users",
+              "href": "https://community.agencyhandy.com"
+            }
+          ]
+        },
+        "navbar": {
+          "links": [],
+          "primary": {
+            "type": "button",
+            "label": "Inloggen",
+            "href": "https://app.agencyhandy.com"
+          }
+        },
+        "tabs": [
+          {
+            "tab": "Voor Bureau",
+            "groups": [
+              {
+                "group": "Aan de slag",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "nl/getting-started/introduction",
+                  "nl/getting-started/sign-up",
+                  "nl/getting-started/log-in",
+                  "nl/getting-started/dashboard-overview"
+                ]
+              },
+              {
+                "group": "Werkruimte instellen",
+                "icon": "settings",
+                "pages": [
+                  "nl/workspace/general-settings",
+                  "nl/workspace/appearance",
+                  "nl/workspace/custom-domain",
+                  "nl/workspace/email-setup",
+                  "nl/workspace/portals"
+                ]
+              },
+              {
+                "group": "CRM",
+                "icon": "users",
+                "pages": [
+                  "nl/crm/leads",
+                  "nl/crm/clients"
+                ]
+              },
+              {
+                "group": "Diensten & Bestellingen",
+                "icon": "package",
+                "pages": [
+                  "nl/services/overview",
+                  "nl/services/create-service",
+                  "nl/orders/overview",
+                  "nl/orders/create-order",
+                  "nl/orders/tasks"
+                ]
+              },
+              {
+                "group": "Offertes & Facturen",
+                "icon": "file-text",
+                "pages": [
+                  "nl/proposals/overview",
+                  "nl/invoices/overview",
+                  "nl/invoices/create-invoice",
+                  "nl/invoices/subscriptions"
+                ]
+              },
+              {
+                "group": "Team & Taken",
+                "icon": "circle-check",
+                "pages": [
+                  "nl/teams/manage-team",
+                  "nl/tasks/all-tasks",
+                  "nl/tasks/timesheet",
+                  "nl/tickets/support-tickets"
+                ]
+              },
+              {
+                "group": "Formulieren & Bestanden",
+                "icon": "layout-template",
+                "pages": [
+                  "nl/forms/order-forms",
+                  "nl/forms/intake-forms",
+                  "nl/files/manage-files"
+                ]
+              },
+              {
+                "group": "Account & Facturering",
+                "icon": "credit-card",
+                "pages": [
+                  "nl/account/profile",
+                  "nl/account/plans-pricing",
+                  "nl/account/multiple-workspaces"
+                ]
+              },
+              {
+                "group": "Betalingen",
+                "icon": "wallet",
+                "pages": [
+                  "nl/integrations/stripe",
+                  "nl/integrations/paypal",
+                  "nl/integrations/other-payments"
+                ]
+              },
+              {
+                "group": "Integraties",
+                "icon": "plug",
+                "pages": [
+                  "nl/integrations/slack",
+                  "nl/integrations/webhooks"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Voor Klant",
+            "groups": [
+              {
+                "group": "Aan de slag",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "nl/client/introduction",
+                  "nl/client/accessing-portal"
+                ]
+              },
+              {
+                "group": "Bestellingen & Diensten",
+                "icon": "package",
+                "pages": [
+                  "nl/client/browse-and-order",
+                  "nl/client/orders-and-tasks"
+                ]
+              },
+              {
+                "group": "Facturering",
+                "icon": "credit-card",
+                "pages": [
+                  "nl/client/proposals",
+                  "nl/client/invoices-payments"
+                ]
+              },
+              {
+                "group": "Ondersteuning",
+                "icon": "life-buoy",
+                "pages": [
+                  "nl/client/files-and-forms",
+                  "nl/client/support-tickets"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "API Referentie",
+            "groups": [
+              {
+                "group": "Introductie",
+                "icon": "book-open",
+                "expanded": true,
+                "pages": [
+                  "nl/api/getting-started"
+                ]
+              },
+              {
+                "group": "Endpoints",
+                "icon": "code",
+                "pages": [
+                  "nl/api/create-lead",
+                  "nl/api/create-client",
+                  "nl/api/update-order"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "tr",
+        "global": {
+          "anchors": [
+            {
+              "anchor": "Ana Sayfa",
+              "icon": "house",
+              "href": "/tr"
+            },
+            {
+              "anchor": "AgencyHandy Uygulaması",
+              "icon": "arrow-up-right",
+              "href": "https://app.agencyhandy.com"
+            },
+            {
+              "anchor": "Topluluk",
+              "icon": "users",
+              "href": "https://community.agencyhandy.com"
+            }
+          ]
+        },
+        "navbar": {
+          "links": [],
+          "primary": {
+            "type": "button",
+            "label": "Giriş Yap",
+            "href": "https://app.agencyhandy.com"
+          }
+        },
+        "tabs": [
+          {
+            "tab": "Ajans İçin",
+            "groups": [
+              {
+                "group": "Başlarken",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "tr/getting-started/introduction",
+                  "tr/getting-started/sign-up",
+                  "tr/getting-started/log-in",
+                  "tr/getting-started/dashboard-overview"
+                ]
+              },
+              {
+                "group": "Çalışma Alanı Kurulumu",
+                "icon": "settings",
+                "pages": [
+                  "tr/workspace/general-settings",
+                  "tr/workspace/appearance",
+                  "tr/workspace/custom-domain",
+                  "tr/workspace/email-setup",
+                  "tr/workspace/portals"
+                ]
+              },
+              {
+                "group": "CRM",
+                "icon": "users",
+                "pages": [
+                  "tr/crm/leads",
+                  "tr/crm/clients"
+                ]
+              },
+              {
+                "group": "Hizmetler & Siparişler",
+                "icon": "package",
+                "pages": [
+                  "tr/services/overview",
+                  "tr/services/create-service",
+                  "tr/orders/overview",
+                  "tr/orders/create-order",
+                  "tr/orders/tasks"
+                ]
+              },
+              {
+                "group": "Teklifler & Faturalar",
+                "icon": "file-text",
+                "pages": [
+                  "tr/proposals/overview",
+                  "tr/invoices/overview",
+                  "tr/invoices/create-invoice",
+                  "tr/invoices/subscriptions"
+                ]
+              },
+              {
+                "group": "Ekip & Görevler",
+                "icon": "circle-check",
+                "pages": [
+                  "tr/teams/manage-team",
+                  "tr/tasks/all-tasks",
+                  "tr/tasks/timesheet",
+                  "tr/tickets/support-tickets"
+                ]
+              },
+              {
+                "group": "Formlar & Dosyalar",
+                "icon": "layout-template",
+                "pages": [
+                  "tr/forms/order-forms",
+                  "tr/forms/intake-forms",
+                  "tr/files/manage-files"
+                ]
+              },
+              {
+                "group": "Hesap & Faturalandırma",
+                "icon": "credit-card",
+                "pages": [
+                  "tr/account/profile",
+                  "tr/account/plans-pricing",
+                  "tr/account/multiple-workspaces"
+                ]
+              },
+              {
+                "group": "Ödemeler",
+                "icon": "wallet",
+                "pages": [
+                  "tr/integrations/stripe",
+                  "tr/integrations/paypal",
+                  "tr/integrations/other-payments"
+                ]
+              },
+              {
+                "group": "Entegrasyonlar",
+                "icon": "plug",
+                "pages": [
+                  "tr/integrations/slack",
+                  "tr/integrations/webhooks"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Müşteri İçin",
+            "groups": [
+              {
+                "group": "Başlarken",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "tr/client/introduction",
+                  "tr/client/accessing-portal"
+                ]
+              },
+              {
+                "group": "Siparişler & Hizmetler",
+                "icon": "package",
+                "pages": [
+                  "tr/client/browse-and-order",
+                  "tr/client/orders-and-tasks"
+                ]
+              },
+              {
+                "group": "Faturalandırma",
+                "icon": "credit-card",
+                "pages": [
+                  "tr/client/proposals",
+                  "tr/client/invoices-payments"
+                ]
+              },
+              {
+                "group": "Destek",
+                "icon": "life-buoy",
+                "pages": [
+                  "tr/client/files-and-forms",
+                  "tr/client/support-tickets"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "API Referansı",
+            "groups": [
+              {
+                "group": "Giriş",
+                "icon": "book-open",
+                "expanded": true,
+                "pages": [
+                  "tr/api/getting-started"
+                ]
+              },
+              {
+                "group": "Uç Noktalar",
+                "icon": "code",
+                "pages": [
+                  "tr/api/create-lead",
+                  "tr/api/create-client",
+                  "tr/api/update-order"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "uz",
+        "global": {
+          "anchors": [
+            {
+              "anchor": "Bosh sahifa",
+              "icon": "house",
+              "href": "/uz"
+            },
+            {
+              "anchor": "AgencyHandy Ilovasi",
+              "icon": "arrow-up-right",
+              "href": "https://app.agencyhandy.com"
+            },
+            {
+              "anchor": "Jamiyat",
+              "icon": "users",
+              "href": "https://community.agencyhandy.com"
+            }
+          ]
+        },
+        "navbar": {
+          "links": [],
+          "primary": {
+            "type": "button",
+            "label": "Kirish",
+            "href": "https://app.agencyhandy.com"
+          }
+        },
+        "tabs": [
+          {
+            "tab": "Agentlik uchun",
+            "groups": [
+              {
+                "group": "Boshlash",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "uz/getting-started/introduction",
+                  "uz/getting-started/sign-up",
+                  "uz/getting-started/log-in",
+                  "uz/getting-started/dashboard-overview"
+                ]
+              },
+              {
+                "group": "Ish muhitini sozlash",
+                "icon": "settings",
+                "pages": [
+                  "uz/workspace/general-settings",
+                  "uz/workspace/appearance",
+                  "uz/workspace/custom-domain",
+                  "uz/workspace/email-setup",
+                  "uz/workspace/portals"
+                ]
+              },
+              {
+                "group": "CRM",
+                "icon": "users",
+                "pages": [
+                  "uz/crm/leads",
+                  "uz/crm/clients"
+                ]
+              },
+              {
+                "group": "Xizmatlar va Buyurtmalar",
+                "icon": "package",
+                "pages": [
+                  "uz/services/overview",
+                  "uz/services/create-service",
+                  "uz/orders/overview",
+                  "uz/orders/create-order",
+                  "uz/orders/tasks"
+                ]
+              },
+              {
+                "group": "Takliflar va Hisob-fakturalar",
+                "icon": "file-text",
+                "pages": [
+                  "uz/proposals/overview",
+                  "uz/invoices/overview",
+                  "uz/invoices/create-invoice",
+                  "uz/invoices/subscriptions"
+                ]
+              },
+              {
+                "group": "Jamoa va Vazifalar",
+                "icon": "circle-check",
+                "pages": [
+                  "uz/teams/manage-team",
+                  "uz/tasks/all-tasks",
+                  "uz/tasks/timesheet",
+                  "uz/tickets/support-tickets"
+                ]
+              },
+              {
+                "group": "Shakllar va Fayllar",
+                "icon": "layout-template",
+                "pages": [
+                  "uz/forms/order-forms",
+                  "uz/forms/intake-forms",
+                  "uz/files/manage-files"
+                ]
+              },
+              {
+                "group": "Hisob va To'lov",
+                "icon": "credit-card",
+                "pages": [
+                  "uz/account/profile",
+                  "uz/account/plans-pricing",
+                  "uz/account/multiple-workspaces"
+                ]
+              },
+              {
+                "group": "To'lovlar",
+                "icon": "wallet",
+                "pages": [
+                  "uz/integrations/stripe",
+                  "uz/integrations/paypal",
+                  "uz/integrations/other-payments"
+                ]
+              },
+              {
+                "group": "Integratsiyalar",
+                "icon": "plug",
+                "pages": [
+                  "uz/integrations/slack",
+                  "uz/integrations/webhooks"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Mijoz uchun",
+            "groups": [
+              {
+                "group": "Ishni Boshlash",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "uz/client/introduction",
+                  "uz/client/accessing-portal"
+                ]
+              },
+              {
+                "group": "Buyurtmalar va Xizmatlar",
+                "icon": "package",
+                "pages": [
+                  "uz/client/browse-and-order",
+                  "uz/client/orders-and-tasks"
+                ]
+              },
+              {
+                "group": "To'lov",
+                "icon": "credit-card",
+                "pages": [
+                  "uz/client/proposals",
+                  "uz/client/invoices-payments"
+                ]
+              },
+              {
+                "group": "Yordam",
+                "icon": "life-buoy",
+                "pages": [
+                  "uz/client/files-and-forms",
+                  "uz/client/support-tickets"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "API Ma'lumotnomasi",
+            "groups": [
+              {
+                "group": "Kirish",
+                "icon": "book-open",
+                "expanded": true,
+                "pages": [
+                  "uz/api/getting-started"
+                ]
+              },
+              {
+                "group": "Endpointlar",
+                "icon": "code",
+                "pages": [
+                  "uz/api/create-lead",
+                  "uz/api/create-client",
+                  "uz/api/update-order"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "ru",
+        "global": {
+          "anchors": [
+            {
+              "anchor": "Главная",
+              "icon": "house",
+              "href": "/ru"
+            },
+            {
+              "anchor": "Приложение AgencyHandy",
+              "icon": "arrow-up-right",
+              "href": "https://app.agencyhandy.com"
+            },
+            {
+              "anchor": "Сообщество",
+              "icon": "users",
+              "href": "https://community.agencyhandy.com"
+            }
+          ]
+        },
+        "navbar": {
+          "links": [],
+          "primary": {
+            "type": "button",
+            "label": "Войти",
+            "href": "https://app.agencyhandy.com"
+          }
+        },
+        "tabs": [
+          {
+            "tab": "Для агентства",
+            "groups": [
+              {
+                "group": "Начало работы",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "ru/getting-started/introduction",
+                  "ru/getting-started/sign-up",
+                  "ru/getting-started/log-in",
+                  "ru/getting-started/dashboard-overview"
+                ]
+              },
+              {
+                "group": "Настройка рабочего пространства",
+                "icon": "settings",
+                "pages": [
+                  "ru/workspace/general-settings",
+                  "ru/workspace/appearance",
+                  "ru/workspace/custom-domain",
+                  "ru/workspace/email-setup",
+                  "ru/workspace/portals"
+                ]
+              },
+              {
+                "group": "CRM",
+                "icon": "users",
+                "pages": [
+                  "ru/crm/leads",
+                  "ru/crm/clients"
+                ]
+              },
+              {
+                "group": "Услуги и заказы",
+                "icon": "package",
+                "pages": [
+                  "ru/services/overview",
+                  "ru/services/create-service",
+                  "ru/orders/overview",
+                  "ru/orders/create-order",
+                  "ru/orders/tasks"
+                ]
+              },
+              {
+                "group": "Предложения и счета",
+                "icon": "file-text",
+                "pages": [
+                  "ru/proposals/overview",
+                  "ru/invoices/overview",
+                  "ru/invoices/create-invoice",
+                  "ru/invoices/subscriptions"
+                ]
+              },
+              {
+                "group": "Команда и задачи",
+                "icon": "circle-check",
+                "pages": [
+                  "ru/teams/manage-team",
+                  "ru/tasks/all-tasks",
+                  "ru/tasks/timesheet",
+                  "ru/tickets/support-tickets"
+                ]
+              },
+              {
+                "group": "Формы и файлы",
+                "icon": "layout-template",
+                "pages": [
+                  "ru/forms/order-forms",
+                  "ru/forms/intake-forms",
+                  "ru/files/manage-files"
+                ]
+              },
+              {
+                "group": "Аккаунт и оплата",
+                "icon": "credit-card",
+                "pages": [
+                  "ru/account/profile",
+                  "ru/account/plans-pricing",
+                  "ru/account/multiple-workspaces"
+                ]
+              },
+              {
+                "group": "Платежи",
+                "icon": "wallet",
+                "pages": [
+                  "ru/integrations/stripe",
+                  "ru/integrations/paypal",
+                  "ru/integrations/other-payments"
+                ]
+              },
+              {
+                "group": "Интеграции",
+                "icon": "plug",
+                "pages": [
+                  "ru/integrations/slack",
+                  "ru/integrations/webhooks"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Для клиента",
+            "groups": [
+              {
+                "group": "Начало работы",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "ru/client/introduction",
+                  "ru/client/accessing-portal"
+                ]
+              },
+              {
+                "group": "Заказы и услуги",
+                "icon": "package",
+                "pages": [
+                  "ru/client/browse-and-order",
+                  "ru/client/orders-and-tasks"
+                ]
+              },
+              {
+                "group": "Оплата",
+                "icon": "credit-card",
+                "pages": [
+                  "ru/client/proposals",
+                  "ru/client/invoices-payments"
+                ]
+              },
+              {
+                "group": "Поддержка",
+                "icon": "life-buoy",
+                "pages": [
+                  "ru/client/files-and-forms",
+                  "ru/client/support-tickets"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Справочник API",
+            "groups": [
+              {
+                "group": "Введение",
+                "icon": "book-open",
+                "expanded": true,
+                "pages": [
+                  "ru/api/getting-started"
+                ]
+              },
+              {
+                "group": "Эндпоинты",
+                "icon": "code",
+                "pages": [
+                  "ru/api/create-lead",
+                  "ru/api/create-client",
+                  "ru/api/update-order"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "pt",
+        "global": {
+          "anchors": [
+            {
+              "anchor": "Início",
+              "icon": "house",
+              "href": "/pt"
+            },
+            {
+              "anchor": "AgencyHandy App",
+              "icon": "arrow-up-right",
+              "href": "https://app.agencyhandy.com"
+            },
+            {
+              "anchor": "Comunidade",
+              "icon": "users",
+              "href": "https://community.agencyhandy.com"
+            }
+          ]
+        },
+        "navbar": {
+          "links": [],
+          "primary": {
+            "type": "button",
+            "label": "Iniciar Sessão",
+            "href": "https://app.agencyhandy.com"
+          }
+        },
+        "tabs": [
+          {
+            "tab": "Para Agências",
+            "groups": [
+              {
+                "group": "Começar",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "pt/getting-started/introduction",
+                  "pt/getting-started/sign-up",
+                  "pt/getting-started/log-in",
+                  "pt/getting-started/dashboard-overview"
+                ]
+              },
+              {
+                "group": "Configuração do Espaço de Trabalho",
+                "icon": "settings",
+                "pages": [
+                  "pt/workspace/general-settings",
+                  "pt/workspace/appearance",
+                  "pt/workspace/custom-domain",
+                  "pt/workspace/email-setup",
+                  "pt/workspace/portals"
+                ]
+              },
+              {
+                "group": "CRM",
+                "icon": "users",
+                "pages": [
+                  "pt/crm/leads",
+                  "pt/crm/clients"
+                ]
+              },
+              {
+                "group": "Serviços & Encomendas",
+                "icon": "package",
+                "pages": [
+                  "pt/services/overview",
+                  "pt/services/create-service",
+                  "pt/orders/overview",
+                  "pt/orders/create-order",
+                  "pt/orders/tasks"
+                ]
+              },
+              {
+                "group": "Propostas & Faturas",
+                "icon": "file-text",
+                "pages": [
+                  "pt/proposals/overview",
+                  "pt/invoices/overview",
+                  "pt/invoices/create-invoice",
+                  "pt/invoices/subscriptions"
+                ]
+              },
+              {
+                "group": "Equipa & Tarefas",
+                "icon": "circle-check",
+                "pages": [
+                  "pt/teams/manage-team",
+                  "pt/tasks/all-tasks",
+                  "pt/tasks/timesheet",
+                  "pt/tickets/support-tickets"
+                ]
+              },
+              {
+                "group": "Formulários & Ficheiros",
+                "icon": "layout-template",
+                "pages": [
+                  "pt/forms/order-forms",
+                  "pt/forms/intake-forms",
+                  "pt/files/manage-files"
+                ]
+              },
+              {
+                "group": "Conta & Faturação",
+                "icon": "credit-card",
+                "pages": [
+                  "pt/account/profile",
+                  "pt/account/plans-pricing",
+                  "pt/account/multiple-workspaces"
+                ]
+              },
+              {
+                "group": "Pagamentos",
+                "icon": "wallet",
+                "pages": [
+                  "pt/integrations/stripe",
+                  "pt/integrations/paypal",
+                  "pt/integrations/other-payments"
+                ]
+              },
+              {
+                "group": "Integrações",
+                "icon": "plug",
+                "pages": [
+                  "pt/integrations/slack",
+                  "pt/integrations/webhooks"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Para Clientes",
+            "groups": [
+              {
+                "group": "Primeiros Passos",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "pt/client/introduction",
+                  "pt/client/accessing-portal"
+                ]
+              },
+              {
+                "group": "Encomendas & Serviços",
+                "icon": "package",
+                "pages": [
+                  "pt/client/browse-and-order",
+                  "pt/client/orders-and-tasks"
+                ]
+              },
+              {
+                "group": "Faturação",
+                "icon": "credit-card",
+                "pages": [
+                  "pt/client/proposals",
+                  "pt/client/invoices-payments"
+                ]
+              },
+              {
+                "group": "Suporte",
+                "icon": "life-buoy",
+                "pages": [
+                  "pt/client/files-and-forms",
+                  "pt/client/support-tickets"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Referência API",
+            "groups": [
+              {
+                "group": "Introdução",
+                "icon": "book-open",
+                "expanded": true,
+                "pages": [
+                  "pt/api/getting-started"
+                ]
+              },
+              {
+                "group": "Endpoints",
+                "icon": "code",
+                "pages": [
+                  "pt/api/create-lead",
+                  "pt/api/create-client",
+                  "pt/api/update-order"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "pt-BR",
+        "global": {
+          "anchors": [
+            {
+              "anchor": "Início",
+              "icon": "house",
+              "href": "/pt-BR"
+            },
+            {
+              "anchor": "AgencyHandy App",
+              "icon": "arrow-up-right",
+              "href": "https://app.agencyhandy.com"
+            },
+            {
+              "anchor": "Comunidade",
+              "icon": "users",
+              "href": "https://community.agencyhandy.com"
+            }
+          ]
+        },
+        "navbar": {
+          "links": [],
+          "primary": {
+            "type": "button",
+            "label": "Entrar",
+            "href": "https://app.agencyhandy.com"
+          }
+        },
+        "tabs": [
+          {
+            "tab": "Para Agências",
+            "groups": [
+              {
+                "group": "Primeiros Passos",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "pt-BR/getting-started/introduction",
+                  "pt-BR/getting-started/sign-up",
+                  "pt-BR/getting-started/log-in",
+                  "pt-BR/getting-started/dashboard-overview"
+                ]
+              },
+              {
+                "group": "Configuração do Espaço de Trabalho",
+                "icon": "settings",
+                "pages": [
+                  "pt-BR/workspace/general-settings",
+                  "pt-BR/workspace/appearance",
+                  "pt-BR/workspace/custom-domain",
+                  "pt-BR/workspace/email-setup",
+                  "pt-BR/workspace/portals"
+                ]
+              },
+              {
+                "group": "CRM",
+                "icon": "users",
+                "pages": [
+                  "pt-BR/crm/leads",
+                  "pt-BR/crm/clients"
+                ]
+              },
+              {
+                "group": "Serviços & Pedidos",
+                "icon": "package",
+                "pages": [
+                  "pt-BR/services/overview",
+                  "pt-BR/services/create-service",
+                  "pt-BR/orders/overview",
+                  "pt-BR/orders/create-order",
+                  "pt-BR/orders/tasks"
+                ]
+              },
+              {
+                "group": "Propostas & Faturas",
+                "icon": "file-text",
+                "pages": [
+                  "pt-BR/proposals/overview",
+                  "pt-BR/invoices/overview",
+                  "pt-BR/invoices/create-invoice",
+                  "pt-BR/invoices/subscriptions"
+                ]
+              },
+              {
+                "group": "Equipe & Tarefas",
+                "icon": "circle-check",
+                "pages": [
+                  "pt-BR/teams/manage-team",
+                  "pt-BR/tasks/all-tasks",
+                  "pt-BR/tasks/timesheet",
+                  "pt-BR/tickets/support-tickets"
+                ]
+              },
+              {
+                "group": "Formulários & Arquivos",
+                "icon": "layout-template",
+                "pages": [
+                  "pt-BR/forms/order-forms",
+                  "pt-BR/forms/intake-forms",
+                  "pt-BR/files/manage-files"
+                ]
+              },
+              {
+                "group": "Conta & Cobrança",
+                "icon": "credit-card",
+                "pages": [
+                  "pt-BR/account/profile",
+                  "pt-BR/account/plans-pricing",
+                  "pt-BR/account/multiple-workspaces"
+                ]
+              },
+              {
+                "group": "Pagamentos",
+                "icon": "wallet",
+                "pages": [
+                  "pt-BR/integrations/stripe",
+                  "pt-BR/integrations/paypal",
+                  "pt-BR/integrations/other-payments"
+                ]
+              },
+              {
+                "group": "Integrações",
+                "icon": "plug",
+                "pages": [
+                  "pt-BR/integrations/slack",
+                  "pt-BR/integrations/webhooks"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Para Clientes",
+            "groups": [
+              {
+                "group": "Introdução",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "pt-BR/client/introduction",
+                  "pt-BR/client/accessing-portal"
+                ]
+              },
+              {
+                "group": "Pedidos & Serviços",
+                "icon": "package",
+                "pages": [
+                  "pt-BR/client/browse-and-order",
+                  "pt-BR/client/orders-and-tasks"
+                ]
+              },
+              {
+                "group": "Cobrança",
+                "icon": "credit-card",
+                "pages": [
+                  "pt-BR/client/proposals",
+                  "pt-BR/client/invoices-payments"
+                ]
+              },
+              {
+                "group": "Suporte",
+                "icon": "life-buoy",
+                "pages": [
+                  "pt-BR/client/files-and-forms",
+                  "pt-BR/client/support-tickets"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Referência da API",
+            "groups": [
+              {
+                "group": "Introdução",
+                "icon": "book-open",
+                "expanded": true,
+                "pages": [
+                  "pt-BR/api/getting-started"
+                ]
+              },
+              {
+                "group": "Endpoints",
+                "icon": "code",
+                "pages": [
+                  "pt-BR/api/create-lead",
+                  "pt-BR/api/create-client",
+                  "pt-BR/api/update-order"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "id",
+        "global": {
+          "anchors": [
+            {
+              "anchor": "Beranda",
+              "icon": "house",
+              "href": "/id"
+            },
+            {
+              "anchor": "Aplikasi AgencyHandy",
+              "icon": "arrow-up-right",
+              "href": "https://app.agencyhandy.com"
+            },
+            {
+              "anchor": "Komunitas",
+              "icon": "users",
+              "href": "https://community.agencyhandy.com"
+            }
+          ]
+        },
+        "navbar": {
+          "links": [],
+          "primary": {
+            "type": "button",
+            "label": "Masuk",
+            "href": "https://app.agencyhandy.com"
+          }
+        },
+        "tabs": [
+          {
+            "tab": "Untuk Agensi",
+            "groups": [
+              {
+                "group": "Mulai",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "id/getting-started/introduction",
+                  "id/getting-started/sign-up",
+                  "id/getting-started/log-in",
+                  "id/getting-started/dashboard-overview"
+                ]
+              },
+              {
+                "group": "Pengaturan Ruang Kerja",
+                "icon": "settings",
+                "pages": [
+                  "id/workspace/general-settings",
+                  "id/workspace/appearance",
+                  "id/workspace/custom-domain",
+                  "id/workspace/email-setup",
+                  "id/workspace/portals"
+                ]
+              },
+              {
+                "group": "CRM",
+                "icon": "users",
+                "pages": [
+                  "id/crm/leads",
+                  "id/crm/clients"
+                ]
+              },
+              {
+                "group": "Layanan & Pesanan",
+                "icon": "package",
+                "pages": [
+                  "id/services/overview",
+                  "id/services/create-service",
+                  "id/orders/overview",
+                  "id/orders/create-order",
+                  "id/orders/tasks"
+                ]
+              },
+              {
+                "group": "Proposal & Faktur",
+                "icon": "file-text",
+                "pages": [
+                  "id/proposals/overview",
+                  "id/invoices/overview",
+                  "id/invoices/create-invoice",
+                  "id/invoices/subscriptions"
+                ]
+              },
+              {
+                "group": "Tim & Tugas",
+                "icon": "circle-check",
+                "pages": [
+                  "id/teams/manage-team",
+                  "id/tasks/all-tasks",
+                  "id/tasks/timesheet",
+                  "id/tickets/support-tickets"
+                ]
+              },
+              {
+                "group": "Formulir & Berkas",
+                "icon": "layout-template",
+                "pages": [
+                  "id/forms/order-forms",
+                  "id/forms/intake-forms",
+                  "id/files/manage-files"
+                ]
+              },
+              {
+                "group": "Akun & Tagihan",
+                "icon": "credit-card",
+                "pages": [
+                  "id/account/profile",
+                  "id/account/plans-pricing",
+                  "id/account/multiple-workspaces"
+                ]
+              },
+              {
+                "group": "Pembayaran",
+                "icon": "wallet",
+                "pages": [
+                  "id/integrations/stripe",
+                  "id/integrations/paypal",
+                  "id/integrations/other-payments"
+                ]
+              },
+              {
+                "group": "Integrasi",
+                "icon": "plug",
+                "pages": [
+                  "id/integrations/slack",
+                  "id/integrations/webhooks"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Untuk Klien",
+            "groups": [
+              {
+                "group": "Memulai",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "id/client/introduction",
+                  "id/client/accessing-portal"
+                ]
+              },
+              {
+                "group": "Pesanan & Layanan",
+                "icon": "package",
+                "pages": [
+                  "id/client/browse-and-order",
+                  "id/client/orders-and-tasks"
+                ]
+              },
+              {
+                "group": "Tagihan",
+                "icon": "credit-card",
+                "pages": [
+                  "id/client/proposals",
+                  "id/client/invoices-payments"
+                ]
+              },
+              {
+                "group": "Dukungan",
+                "icon": "life-buoy",
+                "pages": [
+                  "id/client/files-and-forms",
+                  "id/client/support-tickets"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Referensi API",
+            "groups": [
+              {
+                "group": "Pengantar",
+                "icon": "book-open",
+                "expanded": true,
+                "pages": [
+                  "id/api/getting-started"
+                ]
+              },
+              {
+                "group": "Endpoints",
+                "icon": "code",
+                "pages": [
+                  "id/api/create-lead",
+                  "id/api/create-client",
+                  "id/api/update-order"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "fi",
+        "global": {
+          "anchors": [
+            {
+              "anchor": "Etusivu",
+              "icon": "house",
+              "href": "/fi"
+            },
+            {
+              "anchor": "AgencyHandy Sovellus",
+              "icon": "arrow-up-right",
+              "href": "https://app.agencyhandy.com"
+            },
+            {
+              "anchor": "Yhteisö",
+              "icon": "users",
+              "href": "https://community.agencyhandy.com"
+            }
+          ]
+        },
+        "navbar": {
+          "links": [],
+          "primary": {
+            "type": "button",
+            "label": "Kirjaudu sisään",
+            "href": "https://app.agencyhandy.com"
+          }
+        },
+        "tabs": [
+          {
+            "tab": "Toimistolle",
+            "groups": [
+              {
+                "group": "Aloita",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "fi/getting-started/introduction",
+                  "fi/getting-started/sign-up",
+                  "fi/getting-started/log-in",
+                  "fi/getting-started/dashboard-overview"
+                ]
+              },
+              {
+                "group": "Työtilan asetukset",
+                "icon": "settings",
+                "pages": [
+                  "fi/workspace/general-settings",
+                  "fi/workspace/appearance",
+                  "fi/workspace/custom-domain",
+                  "fi/workspace/email-setup",
+                  "fi/workspace/portals"
+                ]
+              },
+              {
+                "group": "CRM",
+                "icon": "users",
+                "pages": [
+                  "fi/crm/leads",
+                  "fi/crm/clients"
+                ]
+              },
+              {
+                "group": "Palvelut ja tilaukset",
+                "icon": "package",
+                "pages": [
+                  "fi/services/overview",
+                  "fi/services/create-service",
+                  "fi/orders/overview",
+                  "fi/orders/create-order",
+                  "fi/orders/tasks"
+                ]
+              },
+              {
+                "group": "Tarjoukset ja laskut",
+                "icon": "file-text",
+                "pages": [
+                  "fi/proposals/overview",
+                  "fi/invoices/overview",
+                  "fi/invoices/create-invoice",
+                  "fi/invoices/subscriptions"
+                ]
+              },
+              {
+                "group": "Tiimi ja tehtävät",
+                "icon": "circle-check",
+                "pages": [
+                  "fi/teams/manage-team",
+                  "fi/tasks/all-tasks",
+                  "fi/tasks/timesheet",
+                  "fi/tickets/support-tickets"
+                ]
+              },
+              {
+                "group": "Lomakkeet ja tiedostot",
+                "icon": "layout-template",
+                "pages": [
+                  "fi/forms/order-forms",
+                  "fi/forms/intake-forms",
+                  "fi/files/manage-files"
+                ]
+              },
+              {
+                "group": "Tili ja laskutus",
+                "icon": "credit-card",
+                "pages": [
+                  "fi/account/profile",
+                  "fi/account/plans-pricing",
+                  "fi/account/multiple-workspaces"
+                ]
+              },
+              {
+                "group": "Maksut",
+                "icon": "wallet",
+                "pages": [
+                  "fi/integrations/stripe",
+                  "fi/integrations/paypal",
+                  "fi/integrations/other-payments"
+                ]
+              },
+              {
+                "group": "Integraatiot",
+                "icon": "plug",
+                "pages": [
+                  "fi/integrations/slack",
+                  "fi/integrations/webhooks"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Asiakkaalle",
+            "groups": [
+              {
+                "group": "Aloittaminen",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "fi/client/introduction",
+                  "fi/client/accessing-portal"
+                ]
+              },
+              {
+                "group": "Tilaukset ja palvelut",
+                "icon": "package",
+                "pages": [
+                  "fi/client/browse-and-order",
+                  "fi/client/orders-and-tasks"
+                ]
+              },
+              {
+                "group": "Laskutus",
+                "icon": "credit-card",
+                "pages": [
+                  "fi/client/proposals",
+                  "fi/client/invoices-payments"
+                ]
+              },
+              {
+                "group": "Tuki",
+                "icon": "life-buoy",
+                "pages": [
+                  "fi/client/files-and-forms",
+                  "fi/client/support-tickets"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "API-viite",
+            "groups": [
+              {
+                "group": "Johdanto",
+                "icon": "book-open",
+                "expanded": true,
+                "pages": [
+                  "fi/api/getting-started"
+                ]
+              },
+              {
+                "group": "Endpoints",
+                "icon": "code",
+                "pages": [
+                  "fi/api/create-lead",
+                  "fi/api/create-client",
+                  "fi/api/update-order"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "ro",
+        "global": {
+          "anchors": [
+            {
+              "anchor": "Acasă",
+              "icon": "house",
+              "href": "/ro"
+            },
+            {
+              "anchor": "AgencyHandy Aplicație",
+              "icon": "arrow-up-right",
+              "href": "https://app.agencyhandy.com"
+            },
+            {
+              "anchor": "Comunitate",
+              "icon": "users",
+              "href": "https://community.agencyhandy.com"
+            }
+          ]
+        },
+        "navbar": {
+          "links": [],
+          "primary": {
+            "type": "button",
+            "label": "Conectare",
+            "href": "https://app.agencyhandy.com"
+          }
+        },
+        "tabs": [
+          {
+            "tab": "Pentru Agenție",
+            "groups": [
+              {
+                "group": "Începe",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "ro/getting-started/introduction",
+                  "ro/getting-started/sign-up",
+                  "ro/getting-started/log-in",
+                  "ro/getting-started/dashboard-overview"
+                ]
+              },
+              {
+                "group": "Configurare Spațiu de Lucru",
+                "icon": "settings",
+                "pages": [
+                  "ro/workspace/general-settings",
+                  "ro/workspace/appearance",
+                  "ro/workspace/custom-domain",
+                  "ro/workspace/email-setup",
+                  "ro/workspace/portals"
+                ]
+              },
+              {
+                "group": "CRM",
+                "icon": "users",
+                "pages": [
+                  "ro/crm/leads",
+                  "ro/crm/clients"
+                ]
+              },
+              {
+                "group": "Servicii & Comenzi",
+                "icon": "package",
+                "pages": [
+                  "ro/services/overview",
+                  "ro/services/create-service",
+                  "ro/orders/overview",
+                  "ro/orders/create-order",
+                  "ro/orders/tasks"
+                ]
+              },
+              {
+                "group": "Propuneri & Facturi",
+                "icon": "file-text",
+                "pages": [
+                  "ro/proposals/overview",
+                  "ro/invoices/overview",
+                  "ro/invoices/create-invoice",
+                  "ro/invoices/subscriptions"
+                ]
+              },
+              {
+                "group": "Echipă & Sarcini",
+                "icon": "circle-check",
+                "pages": [
+                  "ro/teams/manage-team",
+                  "ro/tasks/all-tasks",
+                  "ro/tasks/timesheet",
+                  "ro/tickets/support-tickets"
+                ]
+              },
+              {
+                "group": "Formulare & Fișiere",
+                "icon": "layout-template",
+                "pages": [
+                  "ro/forms/order-forms",
+                  "ro/forms/intake-forms",
+                  "ro/files/manage-files"
+                ]
+              },
+              {
+                "group": "Cont & Facturare",
+                "icon": "credit-card",
+                "pages": [
+                  "ro/account/profile",
+                  "ro/account/plans-pricing",
+                  "ro/account/multiple-workspaces"
+                ]
+              },
+              {
+                "group": "Plăți",
+                "icon": "wallet",
+                "pages": [
+                  "ro/integrations/stripe",
+                  "ro/integrations/paypal",
+                  "ro/integrations/other-payments"
+                ]
+              },
+              {
+                "group": "Integrări",
+                "icon": "plug",
+                "pages": [
+                  "ro/integrations/slack",
+                  "ro/integrations/webhooks"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Pentru Client",
+            "groups": [
+              {
+                "group": "Primii Pași",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "ro/client/introduction",
+                  "ro/client/accessing-portal"
+                ]
+              },
+              {
+                "group": "Comenzi & Servicii",
+                "icon": "package",
+                "pages": [
+                  "ro/client/browse-and-order",
+                  "ro/client/orders-and-tasks"
+                ]
+              },
+              {
+                "group": "Facturare",
+                "icon": "credit-card",
+                "pages": [
+                  "ro/client/proposals",
+                  "ro/client/invoices-payments"
+                ]
+              },
+              {
+                "group": "Suport",
+                "icon": "life-buoy",
+                "pages": [
+                  "ro/client/files-and-forms",
+                  "ro/client/support-tickets"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Referință API",
+            "groups": [
+              {
+                "group": "Introducere",
+                "icon": "book-open",
+                "expanded": true,
+                "pages": [
+                  "ro/api/getting-started"
+                ]
+              },
+              {
+                "group": "Endpoints",
+                "icon": "code",
+                "pages": [
+                  "ro/api/create-lead",
+                  "ro/api/create-client",
+                  "ro/api/update-order"
+                ]
+              }
             ]
           }
         ]

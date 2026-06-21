@@ -1,0 +1,69 @@
+---
+title: "Connecter Slack pour recevoir des alertes AgencyHandy en temps réel"
+sidebarTitle: "Slack"
+description: "Reliez votre espace de travail Slack à AgencyHandy afin que les mises à jour de commandes, les changements de tâches et les alertes de tickets soient publiés automatiquement dans un canal Slack."
+---
+
+L'intégration Slack d'AgencyHandy garde votre équipe informée sans que personne ait besoin de basculer entre les applications. Une fois connectée, AgencyHandy publie des notifications automatiques dans le canal Slack de votre choix chaque fois que des tâches, des commandes ou d'autres activités de l'espace de travail changent — afin que votre équipe sache toujours ce qui se passe en temps réel.
+
+<Note>
+  Seuls les rôles **SuperAdmin**, **Admin** et **Manager** (disposant des autorisations d'intégration) peuvent connecter ou gérer l'intégration Slack. Vous avez besoin des droits d'administrateur de l'espace de travail Slack pour autoriser la connexion.
+</Note>
+
+## Connecter Slack
+
+<Steps>
+  <Step title="Ouvrir Integrations">
+    Dans la barre latérale gauche, cliquez sur **Integrations**.
+  </Step>
+
+  <Step title="Trouver la carte Slack">
+    Faites défiler jusqu'à la carte **Slack** et cliquez sur **Connect**.
+  </Step>
+
+  <Step title="Autoriser AgencyHandy dans Slack">
+    Une fenêtre d'autorisation Slack s'ouvre. Si vous n'êtes pas déjà connecté à votre espace de travail Slack, connectez-vous maintenant. Examinez les autorisations demandées par AgencyHandy et cliquez sur **Allow** pour accorder l'accès.
+  </Step>
+
+  <Step title="Sélectionner un canal de notification">
+    Après autorisation, choisissez le canal Slack dans lequel vous souhaitez que les notifications AgencyHandy apparaissent. Sélectionnez un canal dans le menu déroulant et cliquez sur **Save** pour confirmer.
+  </Step>
+
+  <Step title="Confirmer la configuration">
+    La carte Slack se met à jour pour afficher **Connected**. AgencyHandy commence immédiatement à publier des notifications dans le canal sélectionné.
+  </Step>
+</Steps>
+
+## Quelles notifications sont envoyées vers Slack
+
+AgencyHandy publie un message Slack chaque fois que l'un des événements suivants se produit :
+
+| Catégorie | Événements déclenchant une notification |
+|---|---|
+| **Tâches** | Tâche créée, mise à jour, assignée ou terminée |
+| **Commandes** | Commande créée ou changement de statut |
+| **Commentaires** | Nouveau commentaire ajouté à une tâche ou une commande |
+| **Pièces jointes** | Fichier ou pièce jointe ajouté à une tâche |
+| **Tickets** | Ticket créé, assigné ou changement de statut |
+
+Chaque message Slack inclut :
+
+- Le **nom** de la tâche, de la commande ou du ticket
+- Le **changement de statut** ou l'action qui a déclenché le message
+- Un **lien** renvoyant vers l'élément concerné dans AgencyHandy
+
+Lorsqu'un fichier ou une pièce jointe est ajouté à une tâche, le message Slack inclut également un aperçu de cette pièce jointe.
+
+<Tip>
+  Choisissez un canal dédié **#agency-handy-alerts** (ou similaire) pour garder les notifications organisées et éviter qu'elles n'encombrent les canaux principaux de votre équipe.
+</Tip>
+
+## Déconnecter Slack
+
+Pour arrêter les notifications, revenez à **Integrations** et cliquez sur **Disconnect** sur la carte Slack. Toutes les notifications cessent immédiatement.
+
+## Notes importantes
+
+- **Un espace de travail par connexion** — vous ne pouvez connecter qu'un seul espace de travail Slack à chaque espace de travail AgencyHandy. Pour passer à un autre espace de travail Slack, déconnectez l'actuel et reconnectez-vous.
+- **Visibilité du canal** — les notifications sont visibles par tous les membres du canal Slack sélectionné. Assurez-vous que le canal est adapté au niveau de détail partagé (par exemple, évitez de publier des détails de commande sensibles pour le client dans un canal public).
+- **Réautorisation** — si votre jeton Slack expire ou que les autorisations changent, revenez dans Integrations et reconnectez-vous pour restaurer les notifications.

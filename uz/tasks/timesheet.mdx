@@ -1,0 +1,172 @@
+---
+title: "AgencyHandy'da Vaqtni Kuzatish va Vaqt Jadvali Boshqaruvi"
+sidebarTitle: "Vaqt Jadvali"
+description: "Jonli taymeri yoki qo'lda yozuv bilan vaqtni qayd eting, ish jurnallarini vazifa, a'zo yoki xizmat bo'yicha filtrlang va AgencyHandy'da vaqt jadval ma'lumotlarini CSV yoki XLSX sifatida eksport qiling."
+---
+
+AgencyHandy'dagi Vaqt Jadvali funksiyasi jamoangiz vazifalarga sarflagan har bir soatni kuzatish uchun markaziy panel beradi. Istalgan vazifada jonli taymerni boshlashingiz, vaqtni keyin qo'lda yozuv bilan qayd etishingiz, va keyin ma'lumotlarni sana oralig'i, jamoa a'zosi yoki xizmat bo'yicha kesib ko'rishingiz mumkin. Mahsuldorlik haqida hisobot kerak bo'lganda yoki vaqt bo'yicha hisob chiqarayotganda, hamma narsani bir necha bosish bilan CSV yoki XLSX sifatida eksport qilishingiz mumkin. Bu jamoangizning mas'uliyatini va vaqt asosidagi hisoblashingizning aniqligini ta'minlash uchun muhim vosita.
+
+## Vaqt Jadvali Funksiyalaridan Kim Foydalana Oladi
+
+| Funksiya | Super Admin | Admin | PM | Xodim |
+|---------|:-----------:|:-----:|:--:|:--------:|
+| O'z vaqt jurnallarini ko'rish | ✅ | ✅ | ✅ | ✅ |
+| Boshqalar uchun vaqt qayd etish | ✅ | ✅ | ✅ | ❌ |
+| Vaqt yozuvlarini tahrirlash | ✅ | ✅ | ✅ | ❌ |
+| Vaqt jadval ma'lumotlarini eksport qilish | ✅ | ✅ | ✅ | ❌ |
+
+<Note>
+  Vaqtni kuzatishdan oldin vazifalar mavjud bo'lishi kerak. Vaqt qayd etishdan oldin buyurtmalar ichida vazifalar yaratilganligiga ishonch hosil qiling.
+</Note>
+
+## Vaqt Jadvalini Ko'rish
+
+<Steps>
+  <Step title="Vaqt Jadvalini Ochish">
+    Asosiy chap yon paneldagi **Vaqt Jadvali** tugmasini bosing. Jamoangiz uchun barcha vaqt jurnallarini ro'yxatlovchi jadval ko'rasiz.
+
+    Har bir qator sanani, jamoa a'zosini, vazifa nomini, xizmatni, qayd etilgan vaqtni va yozuvga biriktirilgan izohlarni ko'rsatadi.
+  </Step>
+</Steps>
+
+## Vaqt Yozuvi Qo'shish
+
+Vaqtni qayd etish uchun ikki variant mavjud: jarayondagi ish uchun jonli taymeri yoki allaqachon yakunlangan vaqt uchun qo'lda yozuv.
+
+<Tabs>
+  <Tab title="Taymerni Boshlash">
+    <Steps>
+      <Step title="Vazifani tanlash">
+        Vaqt jadval ko'rinishida ishlashga tayyorlanayotgan vazifani toping yoki tanlang.
+      </Step>
+      <Step title="Taymerni Boshlash tugmasini bosish">
+        Vaqtni real vaqtda kuzatishni boshlash uchun **Taymerni Boshlash** tugmasini bosing. Taymeri siz to'xtatguncha ishlaydi.
+      </Step>
+      <Step title="Tugatganda to'xtatish">
+        Ishni tugatganda **To'xtatish** tugmasini bosing. AgencyHandy o'tgan vaqtni avtomatik ravishda tanlangan vazifaga nisbatan qayd etadi.
+      </Step>
+    </Steps>
+
+    <Tip>
+      Aniq kuzatishni ta'minlash uchun faol, real vaqt ishlari uchun taymeridan foydalaning. Vaqtni keyin qo'lda yumalash yoki taxmin qilish taymerini ishlashdan kam aniqdir.
+    </Tip>
+  </Tab>
+  <Tab title="Qo'lda Yozuv">
+    <Steps>
+      <Step title="+ Yozuv Qo'shish tugmasini bosish">
+        Vaqt Jadvali panelida **+ Yozuv Qo'shish** tugmasini bosing. Forma paydo bo'ladi.
+      </Step>
+      <Step title="Yozuv tafsilotlarini to'ldirish">
+        - **Vazifa** — bu vaqt tegishli bo'lgan vazifani tanlang
+        - **Jamoa A'zosi** — vaqtni to'g'ri shaxsga tayinlang (Adminlar va Menejerlar boshqalar uchun qayd eta oladi)
+        - **Sarflangan Vaqt** — soat va daqiqalarni kiriting
+        - **Izohlar** — nima ustida ishlanganligi haqida har qanday kontekst qo'shing
+      </Step>
+      <Step title="Saqlash">
+        Yozuvni qayd etish uchun **Saqlash** tugmasini bosing. U darhol vaqt jadval jadvalida ko'rinadi.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Sana Oralig'i Bo'yicha Filtrlash
+
+Muayyan vaqt davriga e'tibor qaratish uchun sana filtrlaridan foydalaning.
+
+<Steps>
+  <Step title="Sana filtrlarini ochish">
+    Vaqt Jadvali panelining yuqori o'ng tomonidagi sana filtri boshqaruvlarini bosing.
+  </Step>
+  <Step title="Oraliqni tanlash">
+    Oldindan belgilangan oraliqlardan birini tanlang:
+    - **Kunlik** — faqat bugungi jurnallar
+    - **Haftalik** — joriy hafta
+    - **Oylik** — joriy oy
+
+    Uzoq loyihalar yoki tarixiy hisobot uchun boshlanish va tugash sanasini kiritib **Maxsus** sana oralig'ini tanlang.
+  </Step>
+  <Step title="Qo'llash">
+    Jadvalni tanlangan davrdagi jurnallar bilan yangilash uchun **Qo'llash** tugmasini bosing.
+  </Step>
+</Steps>
+
+<Tip>
+  Maqsadli hisobotlar yaratish uchun eksport qilishdan oldin filtrlang. To'liq filtrsiz vaqt jadvalini eksport qilish faol agentliklar uchun juda katta fayllar yaratishi mumkin.
+</Tip>
+
+## Yozuvlarni Guruhlash
+
+Guruhlash hech qanday ma'lumotni olib tashlamasdan vaqt jadval qatorlarining tashkil etilish usulini qayta tartibga soladi. U jurnallarni tezroq o'qish va tahlil qilishga yordam beradi.
+
+<Steps>
+  <Step title="Guruhlash Ochiladigan Ro'yxatini Ochish">
+    Vaqt Jadvali panelining yuqori qismidagi **Guruhlash** ochiladigan ro'yxatini bosing.
+  </Step>
+  <Step title="Guruhlanishni tanlash">
+    Quyidagi variantlardan birini tanlang:
+
+    | Guruhlash Varianti | Nima Ko'rsatadi |
+    |----------------|---------------|
+    | **Vazifa Nomi** | Har bir vazifa ostida guruhlangan barcha vaqt yozuvlari |
+    | **Jamoa A'zosi** | Har bir shaxs ostida guruhlangan barcha yozuvlar |
+    | **Xizmat → Vazifa Nomi** | Xizmat bo'yicha guruhlangan, keyin har bir xizmat ichida vazifa bo'yicha ajratilgan yozuvlar |
+  </Step>
+</Steps>
+
+<Note>
+  Guruhlash faqat vizual o'zgarish — u asosiy ma'lumotlarga yoki eksport qilingan narsaga ta'sir qilmaydi. Eksportlar har doim barcha ko'rinadigan qatorlarni o'z ichiga oladi.
+</Note>
+
+## Vaqt Jadvalidan Vazifa Tafsilotlarini Ko'rish
+
+<Steps>
+  <Step title="Vazifa nomini bosish">
+    Vaqt jadval jadvalida istalgan **Vazifa Nomini** bosing. AgencyHandy sizni o'sha vazifaning to'liq tafsilot sahifasiga yo'naltiradi.
+  </Step>
+  <Step title="Vazifa kontekstini ko'rib chiqish">
+    Vazifa tafsilot sahifasida to'liq vaqt jurnali tarixi, biriktirilgan izohlar, tayinlanganlar, holat va boshqa vazifa darajasidagi ma'lumotlarni topasiz. Yozuvlarni tekshirish yoki qanday ish bajarilganligini tasdiqlash uchun ushbu ko'rinishdan foydalaning.
+  </Step>
+</Steps>
+
+## Vaqt Jadval Ma'lumotlarini Eksport Qilish
+
+Ish haqi, mijoz hisoblash hisobotlari yoki tashqi loyiha boshqaruvi vositalari uchun vaqt jadvalingizni eksport qiling.
+
+<Steps>
+  <Step title="Avval filtrlarni qo'llash (tavsiya etiladi)">
+    Eksportni kerakli davrga toraytirish uchun sana oralig'i filtridan foydalaning. Bu faylni maqsadli va boshqariladigan holda saqlaydi.
+  </Step>
+  <Step title="Eksport tugmasini bosish">
+    Vaqt Jadvali panelining yuqorisidagi **Eksport** tugmasini bosing.
+  </Step>
+  <Step title="Format tanlash">
+    Quyidagilardan birini tanlang:
+    - **CSV** — Excel, Google Sheets kabi elektron jadval vositalari yoki ma'lumotlar quvurlari uchun
+    - **XLSX** — ustun formatlash saqlangan holda Excel formatidagi ish kitoblari uchun
+  </Step>
+  <Step title="Faylni yuklab olish">
+    Fayl qurilmangizga avtomatik yuklab olinadi. Har bir eksport barcha ko'rinadigan ustunlarni o'z ichiga oladi: sana, jamoa a'zosi, vazifa nomi, xizmat, qayd etilgan vaqt va izohlar.
+  </Step>
+</Steps>
+
+<Warning>
+  Agar eksport yuklab olishni boshlamasa, brauzeringizning **pop-up bloklash** funksiyasi faylning yuklab olinishiga to'sqinlik qilayotgan bo'lishi mumkin. AgencyHandy uchun pop-up bloklashni o'chiring va qayta urinib ko'ring.
+</Warning>
+
+## Qo'shimcha Izohlar
+
+<Accordion title="Taymeri va qo'lda yozuv">
+  Taymeri faol, real vaqt ishlari uchun eng mos. Qo'lda yozuvlar taymerini boshlashni unutganda yoki vaqtni retrospektiv ravishda qayd etish kerak bo'lganda eng mos. Ikala usul ham vaqt jadval jadvalida bir xil jurnallar yozuvlarini yaratadi.
+</Accordion>
+
+<Accordion title="Guruhlash va filtrlash">
+  Filtrlar jadvaldagi ko'rinadigan qatorlarni **kamaytiradi**. Guruhlash allaqachon ko'rinadigan qatorlarni **qayta tartibga soladi**. Ikkalasini bir vaqtning o'zida qo'llashingiz mumkin — sana oralig'i bo'yicha filtrlang, keyin o'sha davr uchun har bir shaxsning jami summasini ko'rish uchun jamoa a'zosi bo'yicha guruhlang.
+</Accordion>
+
+<Accordion title="Eksportlar barcha ko'rinadigan ustunlarni o'z ichiga oladi">
+  Har bir eksport ko'rinadigan jadvaning joriy holatini oladi: sana, foydalanuvchi, vazifa, xizmat, vaqt va izohlar. Agar guruhlash sozlamasini qo'llagan bo'lsangiz, eksport ham guruhlash tuzilishini aks ettiradi.
+</Accordion>
+
+<Accordion title="Tarixiy ma'lumotlar uchun maxsus oraliqlar">
+  Uzoq muddatli loyihalar yoki chorak yillik ko'rib chiqishlar uchun oldindan belgilangan kunlik/haftalik/oylik oynalardan tashqaridagi tarixiy vaqt jadval ma'lumotlarini olish uchun maxsus sana oralig'i opsiyasidan foydalaning.
+</Accordion>

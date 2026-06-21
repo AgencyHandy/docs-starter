@@ -1,0 +1,218 @@
+---
+title: "Asiakashallinta: profiilit, tuonti ja konfiguraatio"
+sidebarTitle: "Asiakkaat"
+description: "Luo ja tuo asiakasprofiileja AgencyHandyssa, seuraa tilauksia ja laskuja, hallinnoi portaalin käyttöoikeuksia ja järjestä asiakkaat kategorioihin."
+---
+
+AgencyHandyn CRM:n Asiakkaat-osio on keskitetty keskus kaikille organisaatioille ja yksityishenkilöille, jotka ovat edenneet prospektivaiheesta eteenpäin. Täältä voit luoda asiakasprofiileja manuaalisesti tai kerralla, pitää yhteystiedot ajan tasalla, seurata viimeisimpiä tilauksia ja laskuja, segmentoida asiakkaat mukautettuihin kategorioihin ja valvoa portaalin käyttöoikeuksia — kaikki yhdestä listanäkymästä.
+
+<Note>
+  Tarvitset **pääylläpitäjän** tai **ylläpitäjän** roolin luodaksesi, muokataksesi, tuodaksesi tai määrittääksesi asiakasprofiileja. Managerit voivat tarkastella asiakkaan tietoja ja toimintalokeja.
+</Note>
+
+## Asiakasprofiilin luominen
+
+Kun otat uuden asiakkaan käyttöön, AgencyHandy luo heille portaalitililin ja lähettää suojatun kirjautumiskutsun.
+
+<Steps>
+  <Step title="Siirry kohtaan Asiakkaat">
+    Kirjaudu AgencyHandy-tiliisi, napsauta vasemmassa sivupalkissa **CRM** ja valitse **Asiakkaat**-välilehti.
+  </Step>
+  <Step title="Avaa luomislomake">
+    Napsauta oikeassa yläkulmassa **+ Luo asiakas**. Lomake avautuu.
+  </Step>
+  <Step title="Syötä asiakkaan tiedot">
+    Täytä asiakkaan tiedot:
+
+    - **Etunimi / Sukunimi** *(pakollinen)*
+    - **Sähköposti** *(pakollinen — käytetään portaalikutsun lähettämiseen)*
+    - **Yrityksen nimi**
+    - **Puhelinnumero**
+    - **Maa, osavaltio, kaupunki, postinumero**
+    - **Kategoria** — määritä olemassa oleva konfiguraatiokategoria, jos sovellettavissa
+  </Step>
+  <Step title="Tallenna profiili">
+    Napsauta **Luo**. Profiili lisätään asiakasluetteloosi välittömästi.
+  </Step>
+</Steps>
+
+<Note>
+  Kun olet luonut profiilin, asiakas saa sähköpostin, joka sisältää suojatun kirjautumis-URL:n. Tätä URL:ia napsauttamalla aktivoidaan heidän portaalitilinsä, jolloin he voivat kirjautua sisään ensimmäistä kertaa.
+</Note>
+
+## Asiakkaiden tuominen CSV-tiedostosta
+
+Jos olet siirtymässä toiselta alustalta tai sinulla on laskentataulukko olemassa olevista asiakkaista, voit tuoda ne kaikki kerralla.
+
+<Steps>
+  <Step title="Napsauta Tuo">
+    Napsauta Asiakkaat-luettelossa oikeassa yläkulmassa olevaa **Tuo**-painiketta.
+  </Step>
+  <Step title="Lataa CSV-tiedostosi">
+    Vedä ja pudota tiedostosi latausalueelle tai napsauta selaamisen ja valitsemisen aloittamiseksi. AgencyHandy hyväksyy CSV-tiedostot, jotka sisältävät seuraavat kentät:
+
+    - Asiakkaan nimi *(pakollinen)*
+    - Sähköposti *(pakollinen)*
+    - Yrityksen nimi
+    - Maa
+    - Osavaltio
+    - Kaupunki
+    - Postinumero
+  </Step>
+  <Step title="Kartoita sarakkeet">
+    AgencyHandy tunnistaa automaattisesti sarakkeiden nimet, jotka vastaavat sen kenttien nimiä. Käytä pudotusvalikoita kartoittaaksesi manuaalisesti kaikki vastaavuudetta olevat sarakkeet oikeisiin järjestelmäkenttiin.
+  </Step>
+  <Step title="Esikatsele ja vahvista">
+    Tarkasta esikatselutaulukko havaitaksesi mahdolliset muotoiluongelmat ennen tietojen tallentamista.
+  </Step>
+  <Step title="Viimeistele tuonti">
+    Napsauta **Tallenna**. Vahvistusviesti ilmestyy, kun kaikki tietueet on tuotu onnistuneesti.
+  </Step>
+</Steps>
+
+<Tip>
+  Jos laskentataulukkosi sarakkeiden otsikot vastaavat täsmälleen AgencyHandyn kenttien nimiä (esim. "email", "company name"), mapper täyttyy automaattisesti — manuaalista yhdistämistä ei tarvita.
+</Tip>
+
+## Asiakkaiden vieminen
+
+Varmuuskopioi asiakastietokantasi tai jaa se sidosryhmille viemällä CSV- tai Excel-muotoon.
+
+<Steps>
+  <Step title="Napsauta Vie">
+    Napsauta Asiakkaat-luettelossa oikeassa yläkulmassa olevaa **Vie**-painiketta.
+  </Step>
+  <Step title="Mukauta vientiäsi">
+    Valitse sisällytettävät sarakkeet — valitse **Kaikki sarakkeet** täydelliseen vientiin tai valitse tietyt kentät, kuten nimi, yhteystiedot, yritys tai osoite.
+  </Step>
+  <Step title="Valitse muoto">
+    Valitse **CSV** tai **XLSX** käyttötarkoituksesi mukaan.
+  </Step>
+  <Step title="Lataa tiedosto">
+    Napsauta **Vie**. Tiedosto luodaan ja ladataan laitteellesi. Säilytä se turvallisesti asiakastietojen suojaamiseksi.
+  </Step>
+</Steps>
+
+## Asiakasprofiilin muokkaaminen
+
+<Steps>
+  <Step title="Valitse asiakas">
+    Napsauta Asiakkaat-luettelossa päivitettävän asiakkaan vieressä olevaa valintaruutua tai napsauta suoraan heidän nimeään avataksesi profiilinsa.
+  </Step>
+  <Step title="Siirry muokkaustilaan">
+    Napsauta asiakasprofiilin oikeassa yläkulmassa olevaa **Muokkaa**-painiketta. Muokkauslomake tulee näkyviin.
+  </Step>
+  <Step title="Päivitä tiedot">
+    Muokkaa mitä tahansa kenttiä — nimi, sähköposti, puhelin, osoite, yritys tai kategoria.
+  </Step>
+  <Step title="Tallenna muutokset">
+    Napsauta **Päivitä**. Vahvistusviesti vahvistaa, että profiili on tallennettu onnistuneesti.
+  </Step>
+</Steps>
+
+## Etsiminen, lajittelu ja suodatus
+
+Asiakkaat-luettelo tarjoaa useita työkaluja oikean asiakkaan löytämiseksi nopeasti:
+
+<CardGroup cols={2}>
+  <Card title="Etsi nimellä" icon="magnifying-glass">
+    Kirjoita asiakkaan nimi hakupalkkiin suodattaaksesi luettelon välittömästi.
+  </Card>
+  <Card title="Suodata yrityksen mukaan" icon="building">
+    Rajaa luettelo asiakkaisiin, jotka liittyvät tiettyyn yritykseen.
+  </Card>
+  <Card title="Suodata sähköpostin mukaan" icon="envelope">
+    Etsi asiakas, kun tiedät hänen sähköpostiosoitteensa mutta et nimeään.
+  </Card>
+  <Card title="Suodata tilan mukaan" icon="circle-check">
+    Näytä vain aktiiviset, inaktiiviset tai kutsutut asiakkaat.
+  </Card>
+  <Card title="Lajittele aakkosjärjestyksessä" icon="arrow-down-a-z">
+    Lajittele koko asiakasluettelo A–Ö tai Ö–A nimellä nopeaa käyttöä varten.
+  </Card>
+  <Card title="Suodata kategorian mukaan" icon="tag">
+    Näytä vain tiettyyn konfiguraatiokategoriaan osoitetut asiakkaat.
+  </Card>
+</CardGroup>
+
+## Asiakkaan toiminnan seuranta
+
+Jokaisen asiakasprofiilin sisällä on välilehtiä, jotka antavat sinulle reaaliaikaisen kuvan kyseisen asiakkaan vuorovaikutuksesta toimistosi kanssa:
+
+<Accordion title="Viimeisimmät tilaukset">
+  Tarkastele kaikkien asiakkaan tekemien tilausten historiaa, mukaan lukien palvelun nimi, paketti, tila ja päivämäärä. Tämä antaa nopean tilannekatsauksen heidän ostoshistoriastaan poistumatta CRM:stä.
+</Accordion>
+
+<Accordion title="Viimeisimmät tukipyynnöt">
+  Näe kaikki asiakkaan lähettämät tuki- tai palvelupyynnöt. Käytä tätä näkymää priorisoidaksesi vastaukset ja varmistaaksesi, ettei mikään pyyntö jää huomiotta.
+</Accordion>
+
+<Accordion title="Viimeisimmät laskut">
+  Käytä laskujen lokia, joka on luotu asiakkaalle, mukaan lukien maksutila. Tämä auttaa sinua seuraamaan avoimia saldoja ja laskuhistoriaa yhdessä paikassa.
+</Accordion>
+
+## Asiakkaan konfiguraatio (kategoriat)
+
+Asiakkaan konfiguraation avulla voit luoda värillisiä kategorioita asiakasluettelosi segmentointiin — esimerkiksi *Korkea prioriteetti*, *Jatkuva sopimus* tai *Pidossa*. Kategoriat näkyvät suodatusvaihtoehtoina asiakasluettelossa, joten voit löytää oikean ryhmän välittömästi.
+
+<Steps>
+  <Step title="Avaa Konfiguraatio">
+    Napsauta Asiakkaat-osiosta **Konfiguraatio**-painiketta.
+  </Step>
+  <Step title="Luo uusi kategoria">
+    Napsauta **+ Luo kategoria**.
+  </Step>
+  <Step title="Syötä kategorian tiedot">
+    - **Kategorian nimi** — yksilöllinen, kuvaava etiketti (esim. *Yritysasiakkaat*)
+    - **Lyhyt kuvaus** — lyhyt huomio, joka selittää kategorian tarkoituksen
+    - **Väri** — valitse selkeä väri nopeaa visuaalista tunnistamista varten
+  </Step>
+  <Step title="Tallenna kategoria">
+    Napsauta **Luo**. Kategoria on nyt saatavilla osoitettavaksi asiakasprofiileita muokattaessa.
+  </Step>
+  <Step title="Osoita asiakkaat kategoriaan">
+    Avaa mikä tahansa asiakasprofiili, napsauta **Muokkaa**, valitse **Kategoria**-kenttä ja valitse asianmukainen kategoria. Napsauta **Päivitä** tallentaaksesi.
+  </Step>
+</Steps>
+
+<Tip>
+  Käytä johdonmukaisia värikäytäntöjä kategorioissa — esimerkiksi punainen kiireellisille asiakkaille ja vihreä täysin käyttöön otetuille tileille — jotta luettelo on silmäiltävissä yhdellä silmäyksellä.
+</Tip>
+
+## Asiakkaan toimintaloki
+
+Toimintaloki kirjaa jokaisen asiakkaan portaalitilille tapahtuvan kirjautumis- ja uloskirjautumistapahtuman, antaen sinulle selkeän auditointipolun heidän sitoutumisestaan.
+
+**Lokia tarkastellaksesi:**
+
+1. Siirry kohtaan **Asiakkaat** ja avaa tietyn asiakkaan profiili.
+2. Napsauta profiilin ylänavigointipalkin **Toimintaloki**-välilehteä.
+3. Tarkastele todennustapahtumien kronologista luetteloa.
+
+**Mitä loki näyttää:**
+
+- Jokaisen **kirjautumisen** tarkka päivämäärä ja aikaleima
+- Jokaisen **uloskirjautumisen** tarkka päivämäärä ja aikaleima
+- Kaikkien todennustapahtumien jatkuva historia
+
+Loki päivittyy reaaliajassa eikä sitä voi muokata tai poistaa. Asiakkailla ei ole pääsyä omaan toimintalokiinsa — se on tarkoitettu vain hallinnolliseen ja vaatimustenmukaisuuden näkyvyyteen.
+
+<Note>
+  Tässä vaiheessa toimintaloki tallentaa vain todennustapahtumat (kirjautuminen ja uloskirjautuminen). Portaalin sisällä tehtyjä toimintoja — kuten tilausten tarkastelua — ei vielä kirjata tänne.
+</Note>
+
+## Asiakkaalle sähköpostin lähettäminen
+
+Voit lähettää sähköpostin kenelle tahansa asiakkaalle suoraan heidän profiilistaan poistumatta AgencyHandystä. Avaa asiakkaan profiili ja käytä **Sähköposti**-vaihtoehtoa viestin kirjoittamiseen. **Vastaanottaja**-kenttä on esitäytetty asiakkaan sähköpostiosoitteella.
+
+## Asiakkaan imitointi
+
+Ylläpitäjät voivat imitoida asiakastiliä nähdäkseen täsmälleen, mitä asiakas näkee portaalissaan — hyödyllistä käyttöoikeusongelmien vianmäärityksessä tai asiakkaan opastamisessa prosessin läpi tukipuhelun aikana. Etsi **Imitoi**-vaihtoehto asiakkaan profiilin sisältä.
+
+<Warning>
+  Käytä imitointia vain tukitarkoituksiin. Kaikki imitoinnin aikana tehdyt toiminnot suoritetaan asiakkaan puolesta ja heijastuvat heidän tililleen.
+</Warning>
+
+## Yritystilit (B2B)
+
+Jos työskentelet yksityishenkilöiden sijaan yritysten kanssa, voit asettaa **Yrityksen nimen** mille tahansa asiakasprofiilille ryhmittääksesi yhteystiedot saman organisaation alle. Asiakkaat-luetteloa voidaan suodattaa yrityksen mukaan, jolloin kaikki tietyn tilin yhteystiedot on helppo tarkastella yhdessä.

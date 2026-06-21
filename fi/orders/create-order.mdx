@@ -1,0 +1,143 @@
+---
+title: "Tilausten luominen, muokkaaminen ja poistaminen AgencyHandyssa"
+sidebarTitle: "Luo tilaus"
+description: "Vaiheittainen opas tilausten luomiseen, muokkaamiseen ja poistamiseen AgencyHandyssa — sisältää roolivaatimukset, lomakekentät ja tilasiirtymät."
+---
+
+Tilauksen luominen AgencyHandyssa antaa sinulle jäsennellyn työtilan palvelun toimittamiseksi asiakkaalle. Täytät tärkeimmät tiedot etukäteen — asiakas, palvelu, hinnoittelu, päivämäärät ja projektin kuvaus — ja kaikki muu, tehtävistä keskusteluihin, virtaa tästä yhdestä tietueesta. Tämä sivu opastaa sinua luomaan tilauksen alusta alkaen, päivittämään sen jälkikäteen, muuttamaan sen tilan ja poistamaan sen, kun sitä ei enää tarvita.
+
+## Vaatimukset
+
+- Sinun on oltava kirjautuneena AgencyHandyyn.
+- Sinulla on oltava **Super Admin**-, **Admin**- tai **Project Manager** -rooli tilausten luomiseen tai muokkaamiseen.
+- Vain **Super Adminit** ja **Adminit** voivat poistaa tilauksia.
+
+## Luo uusi tilaus
+
+<Steps>
+  <Step title="Siirry tilauksiin">
+    Napsauta AgencyHandy-hallintapaneelin vasemmassa sivupalkissa **Tilaukset**.
+  </Step>
+
+  <Step title="Avaa luomislomake">
+    Napsauta **+ Luo uusi tilaus** oikeassa yläkulmassa. Lomake avautuu.
+  </Step>
+
+  <Step title="Täytä tilauksen tiedot">
+    Täytä lomakkeen kentät:
+
+    | Kenttä | Pakollinen | Huomautukset |
+    |---|---|---|
+    | **Asiakas** | ✅ | Valitse olemassa olevasta asiakasluettelostasi |
+    | **Palvelu** | ✅ | Sisältää sekä julkaistut että julkaisemattomat palvelut |
+    | **Projektipäällikkö** | ❌ | Valinnainen; määritä projektipäällikkö vastaamaan toimituksesta |
+    | **Määrä** | ✅ | Tilattujen yksiköiden lukumäärä |
+    | **Hinta** | ✅ | Tilauksen sovittu budjetti |
+    | **Aloituspäivä** | ✅ | Milloin työ alkaa |
+    | **Eräpäivä** | ✅ | Toimituksen määräaika |
+    | **Tilauksen kuvaus** | ❌ | Ohjeet, vaatimukset tai viitemuistiinpanot tiimillesi |
+    | **Liitteet** | ❌ | Tilaukseen liittyvät tukitiedostot |
+
+    <Tip>
+      Jos valittuun palveluun on liitetty lisäosia, lomakkeeseen ilmestyy **Lisäosa**-osio. Lisää kaikki asiaankuuluvat lisäosat ennen lähettämistä.
+    </Tip>
+  </Step>
+
+  <Step title="Tarkista merkintäsi">
+    Tarkista kaikki kentät huolellisesti — erityisesti asiakas, palvelu, hinta ja eräpäivä.
+  </Step>
+
+  <Step title="Lähetä tilaus">
+    Napsauta **Luo** viimeistelläksesi tilauksen. Saat vahvistusviestin, kun tilaus on luotu onnistuneesti.
+  </Step>
+</Steps>
+
+### Mitä tapahtuu tilauksen luomisen jälkeen
+
+- Kaikki yrityksesi Super Adminit saavat automaattisesti pääsyn uuteen tilaukseen.
+- Asiakas saa ilmoituksen siitä, että heidän tilauksensa on luotu.
+- Tilaus näkyy **Tilaukset**-luettelossa tilalla **Odottaa**.
+
+## Muokkaa tai päivitä tilaus
+
+Voit päivittää tilausta milloin tahansa korjataksesi tietoja, muuttaaksesi hinnoittelua, vaihtaaksesi eräpäivää tai vastataksesi asiakkaan pyyntöihin.
+
+<Note>
+Sinun on oltava **Super Admin**, **Admin** tai **Project Manager** muokataksesi tilausta.
+</Note>
+
+<Steps>
+  <Step title="Avaa tilausluettelo">
+    Siirry vasemman sivupalkin **Tilaukset**-kohtaan.
+  </Step>
+
+  <Step title="Valitse muokattava tilaus">
+    Etsi päivitettävä tilaus ja valitse sen vieressä oleva valintaruutu.
+  </Step>
+
+  <Step title="Aktivoi muokkauspainike">
+    **Muokkaa**-painike ilmestyy oikeaan yläkulmaan. Napsauta sitä avataksesi tilauksen tiedot muokkaustilassa.
+  </Step>
+
+  <Step title="Muuta tarvittavia kenttiä">
+    Päivitä kaikki muutosta tarvitsevat kentät — asiakastiedot, palvelu, hinnoittelu, päivämäärät, kuvaus tai määritetty projektipäällikkö.
+  </Step>
+
+  <Step title="Tallenna muutokset">
+    Napsauta **Päivitä** tallentaaksesi. Vahvistusviesti kertoo, että päivitys onnistui.
+  </Step>
+</Steps>
+
+## Muuta tilauksen tila
+
+Tilauksen tila kuvastaa, missä vaiheessa työ on toimitusputkessasi. AgencyHandy määrittelee viisi kiinteää tilaa — et voi lisätä tai nimetä niitä uudelleen.
+
+| Tila | Merkitys |
+|---|---|
+| **Odottaa** | Luotu, ei vielä aloitettu |
+| **Käynnissä** | Työ on aktiivisesti käynnissä |
+| **Tarkistuksessa** | Lähetetty tarkistettavaksi; odottaa hyväksyntää |
+| **Valmis** | Toimitettu ja hyväksytty |
+| **Peruutettu** | Ei enää aktiivinen |
+
+<Note>
+Vain **Super Adminit**, **Adminit** ja **Projektipäälliköt** voivat muuttaa tilauksen tilaa. Työntekijät ja asiakkaat eivät voi muuttaa tilaa.
+</Note>
+
+Päivitä tila avaamalla tilaus ja käyttämällä tilauksen yksityiskohtasivun yläosassa olevaa tilanvalitsinta. Valitse uusi tila pudotusvalikosta ja vahvista.
+
+## Poista tilaus
+
+Tilauksen poistaminen poistaa sen pysyvästi järjestelmästä. Käytä tätä vain, kun tilaus on todella vanhentunut — esimerkiksi jos se luotiin virheellisesti tai on kaksoiskappale.
+
+<Warning>
+Tilauksen poistaminen on peruuttamatonta. Kun olet poistanut tilauksen, sitä ei voi palauttaa. Jatka varoen.
+</Warning>
+
+<Note>
+Vain **Super Adminit** ja **Adminit** voivat poistaa tilauksia.
+</Note>
+
+<Steps>
+  <Step title="Siirry tilauksiin">
+    Napsauta vasemmassa sivupalkissa **Tilaukset**.
+  </Step>
+
+  <Step title="Etsi poistettava tilaus">
+    Selaa tai hae luettelosta tilaus, jonka haluat poistaa.
+  </Step>
+
+  <Step title="Aloita poistaminen">
+    Napsauta tilaukseen liittyvää **roskakori-kuvaketta**.
+  </Step>
+
+  <Step title="Vahvista poistaminen">
+    Vahvistusikkuna avautuu. Vahvista poistaaksesi tilauksen pysyvästi.
+  </Step>
+</Steps>
+
+Poistamisen jälkeen tarkista jäljellä olevat tilauksesi varmistaaksesi, että kaikki on kunnossa. Poistettu merkintä ei enää näy missään luettelossa tai raportissa.
+
+## Tiimin jäsenten lisääminen tilaukseen
+
+Super Adminit, Adminit ja projektipäälliköt voivat lisätä työntekijöitä tilaukseen milloin tahansa. Kun tiimin jäsen lisätään, hän saa sovelluksen sisäisen ilmoituksen. Määritetyt työntekijät saavat näkyvyyden tilaukseen ja sen tehtäviin, mutta he eivät voi hallita itse tilausta (muokata tietoja, muuttaa tilaa tai poistaa sitä).

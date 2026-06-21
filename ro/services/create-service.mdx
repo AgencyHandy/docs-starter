@@ -1,0 +1,260 @@
+---
+title: "Cum să Creați un Serviciu cu Pachete, Sarcini și Întrebări Frecvente"
+sidebarTitle: "Creați un Serviciu"
+description: "Ghid pas cu pas pentru construirea unui serviciu AgencyHandy: alegeți tipul de facturare, configurați pachete, setați sarcini implicite, adăugați întrebări frecvente și publicați."
+---
+
+Crearea unui serviciu în AgencyHandy este primul pas pentru a vinde ofertele agenției dvs. prin platformă. Un singur serviciu poate conține până la cinci pachete de prețuri, sarcini implicite automatizate care se declanșează la plasarea unei comenzi, întrebări frecvente pentru a reduce întrebările înainte de vânzare, un atașament de portofoliu pentru dovezi sociale și un formular de intake opțional — toate configurate într-un singur loc înainte de publicare.
+
+<Note>
+  Aveți nevoie de rolul de **Super Admin** sau **Admin** pentru a crea servicii. Alte roluri necesită permisiuni explicite de serviciu pentru a accesa această secțiune.
+</Note>
+
+<Steps>
+  <Step title="Alegeți tipul de serviciu">
+    Deschideți **Services** din bara laterală din stânga și faceți clic pe **+ Service** pentru a începe un nou anunț.
+
+    În partea de sus a paginii, selectați modelul de facturare:
+
+    - **One-Time Service** — clientul plătește un singur tarif și primește livrabilul o singură dată. Cel mai bun pentru proiecte cu un scop clar: construcții de site-uri web, pachete de logo, audituri etc.
+    - **Subscription Service** — facturarea se repetă automat conform programului pe care îl definiți. Cel mai bun pentru retainere, conținut continuu, servicii gestionate sau planuri de întreținere.
+
+    <Warning>
+      Tipul de serviciu este blocat după ce salvați. Dacă aveți nevoie de un model de facturare diferit, creați un serviciu nou.
+    </Warning>
+  </Step>
+
+  <Step title="Adăugați detalii despre serviciu">
+    Extindeți secțiunea **Service Details** și completați următoarele câmpuri:
+
+    **Service Name** *(obligatoriu)*
+    Acesta este modul în care serviciul apare clienților peste tot în platformă — în catalog, pe facturi și în spațiul de lucru al comenzii. Faceți-l clar și descriptiv.
+
+    **Media Upload**
+    Încărcați una sau mai multe imagini de previzualizare pentru a reprezenta serviciul vizual. Imaginile de înaltă calitate cresc încrederea clienților și ratele de conversie.
+
+    **Service Description**
+    Scrieți o explicație completă a ce include serviciul, pentru cine este și la ce se pot aștepta clienții. Utilizați acest spațiu pentru a diferenția oferta dvs.
+
+    **Tax Settings**
+    Alegeți dacă taxa este **inclusive** (deja inclusă în preț) sau **exclusive** (adăugată pe deasupra la checkout).
+
+    **Currency**
+    Setați moneda pentru toate pachetele din acest serviciu. Toate pachetele dintr-un singur serviciu partajează aceeași monedă.
+
+    <Tip>
+      Încărcați imagini de previzualizare în raport de 16:9 pentru cea mai bună prezentare în portalul pentru clienți.
+    </Tip>
+  </Step>
+
+  <Step title="Creați pachete">
+    Extindeți **Package Details** și faceți clic pe **+ New Package** pentru a adăuga primul nivel de prețuri. Puteți crea până la **5 pachete** per serviciu.
+
+    Pentru fiecare pachet, configurați următoarele:
+
+    **Package Name** *(obligatoriu)*
+    Numele pe care îl văd clienții, cum ar fi *Basic*, *Standard* sau *Premium*.
+
+    **Package Icon** *(opțional)*
+    Selectați o pictogramă integrată sau încărcați una personalizată. Pictogramele încărcate trebuie să fie de **32 × 32 pixeli**.
+
+    **Package Media** *(opțional)*
+    Încărcați o imagine de copertă specifică pentru acest pachet. Formate acceptate: PNG, JPG, JPEG. Dimensiune maximă a fișierului: **5 MB**. Maximum 1 fișier per pachet. Raport recomandat: **16:9**.
+
+    **Package Brief** *(opțional)*
+    Un rezumat pe o singură linie al livrabilelor acestui pachet. Maximum **140 de caractere**.
+
+    **What's Included** *(obligatoriu)*
+    Enumerați livrabilele specifice incluse în acest pachet. Puteți adăuga până la **15 elemente** per pachet. Fiecare punct ar trebui să descrie un livrabil concret (de ex., *„5 articole de blog pe lună, până la 1.000 de cuvinte fiecare“*).
+
+    <Tip>
+      După crearea mai multor pachete, glisați-le pentru a reordona modul în care sunt afișate clienților. Marcați unul ca **Most Popular** pentru a atrage atenția asupra nivelului dvs. recomandat.
+    </Tip>
+  </Step>
+
+  <Step title="Setați regulile de prețuri și livrare">
+    În interiorul fiecărui pachet, setați câmpurile de prețuri principale și orice controale opționale:
+
+    **Amount** *(obligatoriu)*
+    Prețul pe care un client îl plătește pentru acest pachet.
+
+    **Delivery Time** *(obligatoriu)*
+    Numărul estimat de zile pentru livrarea serviciului după achiziție.
+
+    **Controale opționale de prețuri:**
+
+    <Accordion title="Add Discount">
+      Aplicați o reducere procentuală sau de sumă fixă la prețul acestui pachet. Prețul redus este afișat clienților alături de prețul original, creând un efect promoțional eficient.
+    </Accordion>
+
+    <Accordion title="Add Trial Period (subscription only)">
+      Oferiți o perioadă de probă gratuită sau la preț redus înainte ca facturarea regulată a abonamentului să înceapă. Această opțiune este disponibilă doar pentru serviciile de tip abonament.
+    </Accordion>
+
+    <Accordion title="Add Quantity Limit">
+      Limitați numărul de unități pe care un client le poate achiziționa într-o singură sesiune de checkout. Utilizați aceasta pentru pachete cu disponibilitate limitată sau servicii cu restricții de capacitate.
+    </Accordion>
+
+    <Accordion title="Add More Price Details">
+      Defalcați costul total în elemente individuale — de exemplu, afișând *prețul de bază + tariful de configurare + costul per unitate*. Fiecare etichetă de defalcare suportă maximum **20 de caractere**.
+    </Accordion>
+
+    <Note>
+      Toate câmpurile obligatorii (Amount și Delivery Time) trebuie completate pentru fiecare pachet înainte de a putea publica serviciul.
+    </Note>
+  </Step>
+
+  <Step title="Adăugați sarcini implicite pentru automatizare">
+    Fiecare pachet include o secțiune **Default Tasks**. Sarcinile definite aici se generează automat în spațiul de lucru al comenzii în momentul în care un client achiziționează acest pachet — nu este necesară nicio configurare manuală după fiecare vânzare.
+
+    Faceți clic pe **+ Add More** pentru a deschide modalul de creare a sarcinii. Pentru fiecare sarcină, puteți configura:
+
+    | Câmp | Detalii |
+    |---|---|
+    | **Task Name** | Obligatoriu; maximum **160 de caractere** |
+    | **Description** | Instrucțiuni detaliate pentru persoana alocată |
+    | **Assignee** | Membrul echipei responsabil pentru finalizarea acestei sarcini |
+    | **Attachment** | Încărcați fișiere de referință; formate acceptate: csv, odt, doc, docx, htm, html, pdf, ppt, pptx, txt, xls, xlsx, jpg, jpeg, png, gif, webp, svg, ai, mp4, mp3, wav, zip, rar; dimensiunea maximă a fișierului **1 GB** per fișier |
+    | **Label** | Etichetați sarcina pentru filtrare și raportare |
+    | **Status** | Starea inițială la crearea sarcinii |
+    | **Client Review** | Activați dacă această sarcină necesită aprobarea clientului înainte de a fi considerată finalizată |
+
+    Adăugați atâtea sarcini câte sunt necesare pentru a acoperi complet procesul de livrare pentru acest pachet. Sarcinile implicite consecvente asigură că fiecare comandă urmează același flux de lucru controlat calitativ.
+
+    <Tip>
+      Mapați sarcinile implicite la SOP-ul dvs. intern. De exemplu, un pachet de *Social Media Management* ar putea genera automat sarcini precum *Schiță Calendar de Conținut*, *Aprobare Client*, *Programare Postări* și *Raport Lunar*.
+    </Tip>
+  </Step>
+
+  <Step title="Adăugați întrebări frecvente și portofoliu">
+    Extindeți secțiunea **Additional Information** pentru a adăuga două elemente opționale, dar cu impact major:
+
+    **Portfolio Attachment**
+    Legați o categorie de portofoliu la acest serviciu astfel încât clienții să poată răsfoi mostre relevante din lucrările dvs. anterioare direct pe anunțul de serviciu. Puteți conecta o categorie de portofoliu existentă sau puteți crea una nouă din acest ecran.
+
+    **Frequently Asked Questions (FAQs)**
+    Faceți clic pe **+ Add** pentru a insera o pereche întrebare-răspuns. Adăugați atâtea întrebări frecvente câte sunt relevante — subiectele comune includ:
+
+    - Originalitatea conținutului și drepturile
+    - Procesul de revizuire și feedback
+    - Limitele scopului și ce *nu* este inclus
+    - Termenele și cadența comunicării
+    - Politicile de plată și rambursare
+
+    Întrebările frecvente bine scrise reduc întrebările înainte de achiziție și ajută clienții să se auto-califice.
+  </Step>
+
+  <Step title="Atașați un formular de intake">
+    Un formular de intake colectează informațiile de care aveți nevoie de la un client înainte de a începe lucrul — de exemplu, ghiduri de brand, credențiale de acces, publicul țintă sau obiectivele proiectului.
+
+    - Faceți clic pe **+ Create New Intake Form** pentru a construi un formular de la zero sau selectați un formular existent din meniul derulant.
+    - Dacă acest serviciu nu necesită un formular de intake, faceți clic pe **Skip** pentru a omite această secțiune.
+    - Faceți clic pe **Update** pentru a salva selecția formularului de intake și a continua.
+
+    <Note>
+      Formularul de intake este opțional, dar recomandat cu tărie pentru serviciile care necesită informații specifice clientului înainte de a putea începe livrarea.
+    </Note>
+  </Step>
+
+  <Step title="Publicați serviciul">
+    La baza editorului de servicii:
+
+    1. Comutați **Publish this Service** în poziția ON.
+    2. Faceți clic pe **Save** (sau **Update Service** dacă editați un serviciu existent).
+
+    Odată publicat, serviciul devine imediat vizibil clienților în portal. Dacă lăsați comutatorul dezactivat, serviciul este salvat ca ciornă și este vizibil doar echipei dvs.
+
+    <Tip>
+      Utilizați modul ciornă pentru a pregăti un serviciu în avans și a-l publica la momentul lansării — util pentru promoții sezoniere sau anunțuri de noi oferte.
+    </Tip>
+  </Step>
+</Steps>
+
+## Configurarea Suplimentelor
+
+Suplimentele sunt extra-uri opționale pe care clienții le pot selecta la checkout — de exemplu, *Livrare Rapidă*, *Revizuiri Suplimentare* sau un *Raport Lunar*. Vă permit să faceți upsell la servicii complementare fără a crea listări complet noi.
+
+### Crearea unui Supliment
+
+<Steps>
+  <Step title="Deschideți Suplimentele">
+    Mergeți la **Services** în bara laterală, faceți clic pe butonul **săgeată în jos** de lângă titlul Services și selectați **Add-Ons**.
+  </Step>
+  <Step title="Creați un nou supliment">
+    Faceți clic pe **+ Add New Add-on** și completați:
+
+    - **Add-on Name**
+    - **Description** — utilizați editorul de text îmbogățit pentru a explica clar ce include suplimentul
+    - **Pricing Type** — alegeți *One-Time* sau *Subscription*
+    - **Detalii de prețuri:**
+      - *Unic:* introduceți suma și moneda
+      - *Abonament:* setați intervalul de facturare (de ex., la fiecare 1 lună), o limită opțională a ciclurilor de facturare, tariful de abonament și moneda
+  </Step>
+  <Step title="Publicați și salvați">
+    Comutați **Publish** ON, apoi faceți clic pe **Create**. Doar suplimentele publicate sunt vizibile la conectarea lor la formularele de comandă.
+  </Step>
+</Steps>
+
+### Atașarea unui Supliment la un Formular de Comandă
+
+<Steps>
+  <Step title="Deschideți formularul de comandă">
+    Navigați la **Forms** și deschideți formularul de comandă relevant.
+  </Step>
+  <Step title="Selectați serviciul">
+    Alegeți serviciul la care doriți să atașați suplimentul.
+  </Step>
+  <Step title="Adăugați suplimentele">
+    Selectați secțiunea **Add-ons** din panoul din stânga, apoi alegeți suplimentele pe care doriți să le asociați cu acest serviciu.
+  </Step>
+  <Step title="Salvați formularul">
+    Faceți clic pe **Save**. Clienții vor vedea acum suplimentele selectate ca extra-uri opționale la checkout.
+  </Step>
+</Steps>
+
+<Note>
+  Suplimentele trebuie să utilizeze aceeași monedă ca și serviciul la care sunt atașate. Dacă monedele nu se potrivesc, suplimentul nu va apărea în lista de selecție.
+</Note>
+
+### Comportamentul de Facturare al Suplimentelor prin Abonament
+
+Când ciclurile de facturare ale unui serviciu și ale unui supliment prin abonament diferă, AgencyHandy gestionează suprapunerea automat:
+
+<Accordion title="Suplimentul are mai multe cicluri decât serviciul">
+  Atât serviciul, cât și suplimentul sunt facturate împreună pe durata serviciului. După ce serviciul se termină, suplimentul continuă să fie facturat singur pentru ciclurile rămase.
+
+  **Exemplu:** Serviciul rulează pentru 4 cicluri, suplimentul rulează pentru 5 cicluri → facturate împreună pentru 4 cicluri, suplimentul facturat singur pentru 1 ciclu suplimentar.
+</Accordion>
+
+<Accordion title="Suplimentul are mai puține cicluri decât serviciul">
+  Atât serviciul, cât și suplimentul sunt facturate împreună pe durata suplimentului. După ce suplimentul se termină, serviciul continuă să fie facturat singur pentru ciclurile rămase.
+
+  **Exemplu:** Serviciul rulează pentru 5 cicluri, suplimentul rulează pentru 3 cicluri → facturate împreună pentru 3 cicluri, serviciul facturat singur pentru 2 cicluri suplimentare.
+</Accordion>
+
+## Editarea unui Serviciu
+
+După publicarea unui serviciu, puteți actualiza orice câmp fără a întrerupe comenzile existente.
+
+1. Mergeți la **Services** și găsiți serviciul pe care doriți să îl actualizați.
+2. Faceți clic pe **meniul cu trei puncte** (⋮) din partea dreaptă a rândului serviciului.
+3. Selectați **Edit**. Editorul de servicii se deschide cu toate setările existente completate.
+4. Efectuați modificările — actualizați titlul, descrierea, prețurile, media, pachetele, sarcinile sau întrebările frecvente.
+5. Faceți clic pe **Update Service** pentru a salva.
+
+<Warning>
+  Modificările la prețurile pachetelor sau la timpul de livrare intră în vigoare doar pentru **noile comenzi**. Comenzile existente nu sunt afectate retroactiv.
+</Warning>
+
+## Referință Câmpuri
+
+| Câmp | Limită |
+|---|---|
+| Pachete per serviciu | Până la 5 |
+| Livrabile per pachet (What's Included) | Până la 15 |
+| Package Brief | 140 de caractere |
+| Dimensiunea pictogramei pachetului | 32 × 32 px |
+| Dimensiunea fișierului media al pachetului | 5 MB (PNG, JPG, JPEG) |
+| Numele sarcinii | 160 de caractere |
+| Dimensiunea fișierului atașat sarcinii | 1 GB per fișier |
+| Eticheta defalcării prețului | 20 de caractere |

@@ -1,0 +1,217 @@
+---
+title: "Vytváření a odesílání nabídek klientům v AgencyHandy"
+sidebarTitle: "Nabídky"
+description: "Sestavujte, přizpůsobujte a odesílejte profesionální nabídky v AgencyHandy — pokrývající ceny služeb, balíčky, přijetí klientem a automatické vytváření objednávek."
+---
+
+Funkce Nabídky v AgencyHandy vám nabízí profesionální, komplexní pracovní postup pro přeměnu poptávek na aktivní projekty. Můžete sestavovat podrobné nabídky se službami, balíčky, doplňky, daněmi a smluvními podmínkami — poté je odesílat klientům nebo leadům přímo z platformy. Jakmile klient nabídku přijme, AgencyHandy může automaticky vytvořit objednávku a fakturu, čímž odstraní ruční výměnu zpráv, která zpomaluje uzavírání obchodů.
+
+<Note>
+  Nabídky mohou vytvářet a odesílat pouze **Super administrátoři** a **Administrátoři**. Projektoví manažeři (PM) mohou nabídky zobrazovat, ale nemohou je odesílat.
+</Note>
+
+## Přehled nabídek
+
+Pro otevření přehledu nabídek klikněte na **Nabídky** v levém postranním panelu. Přehled zobrazuje všechny odeslané a přijaté nabídky a ukazuje:
+
+- **Stav** — Koncept, Odesláno, Přijato nebo Čeká na vyřízení
+- **Datum vytvoření**, **datum odeslání** a **datum vypršení platnosti**
+- **Stav zobrazení** — zda klient nabídku otevřel
+- Nabídka akcí pro **úpravy**, **odeslání**, **sdílení** nebo **smazání** každé nabídky
+
+Nabídky lze prohledávat podle ID a seznam filtrovat nebo řadit pro rychlé nalezení potřebného.
+
+## Vytvoření nabídky
+
+Kliknutím na **Vytvořit nabídku** otevřete nástroj pro sestavení nabídky. Je organizován do tří sekcí: **Přehled**, **Smluvní podmínky** a **Nastavení**.
+
+### Přehled
+
+Sekce Přehled je místem, kde sestavujete obsah a ceny nabídky.
+
+#### Informace o nabídce a klientovi
+
+Vyplňte následující pole v horní části nabídky:
+
+- **Název nabídky** a **ID nabídky**
+- **Klient nebo Lead** — podporuje více e-mailových adres; označte jednu jako Primární
+- **Název společnosti** a **Adresa** (země, stát, město, PSČ, doplňující údaje)
+- **Přiřazený pracovník**, **Datum odeslání** a **Datum vypršení platnosti**
+
+#### Obsahové bloky
+
+Každý obsahový blok používá vložený editor, takže můžete příběh přizpůsobit každému klientovi:
+
+- **Úvod** — nastavte kontext a pozadí angažmá
+- **O nás** — zdůrazněte odbornost vaší agentury
+- **Co získáte** — jasně definujte rozsah a dodávky
+- **Záruka** — uveďte jakékoli záruky nebo závazky
+
+#### Nabídky — Služby, balíčky, doplňky a daně
+
+Sekce Nabídky je místem, kde konfigurujete ceny.
+
+<Accordion title="Služby">
+  Přidejte jednu nebo více služeb do nabídky. Pro každou službu můžete:
+
+  - Vybrat **typ ceny**: Jednorázový nebo Předplatné
+  - Zvolit **měnu služby** (různé služby mohou v téže nabídce používat různé měny)
+</Accordion>
+
+<Accordion title="Balíčky">
+  V rámci každé služby přidejte existující balíčky nebo vytvořte nové okamžitě. Pro každý balíček definujte:
+
+  - Název balíčku
+  - Množství a cena za jednotku
+  - Celková částka
+
+  Balíčky lze kdykoli před odesláním odebrat.
+</Accordion>
+
+<Accordion title="Doplňky">
+  Ke každé službě připojte volitelné doplňky. Doplňky se zobrazují jako extras, které klienti vidí vedle základní ceny služby. Nové doplňky lze vytvářet přímo z nástroje pro sestavení nabídky bez opuštění formuláře.
+</Accordion>
+
+<Accordion title="Položky">
+  Přidejte jednorázové vlastní položky s definovaným množstvím a jednotkovou cenou. Položky jsou užitečné pro ad-hoc náklady, jako jsou poplatky za nastavení nebo jednorázové dodávky.
+</Accordion>
+
+<Accordion title="Sazby daní">
+  Uplatněte existující daňové sazby nebo vytvořte nové přímo z nabídky. Vyberte, zda je každá daň **K ceně** (přičtená k ceně) nebo **V ceně** (již zahrnuta). Daně jsou vypočteny na každou službu.
+</Accordion>
+
+### Smluvní podmínky
+
+Sekci Smluvní podmínky použijte pro přidání právního textu specifického pro nabídku. Zahrňte zásady zrušení, podmínky vrácení, práva k užívání a další podmínky relevantní pro angažmá. Tato sekce pomáhá zajistit, že obě strany rozumí svým závazkům před přijetím.
+
+### Nastavení
+
+Sekce Nastavení kontroluje, co se stane po odeslání nabídky.
+
+<CardGroup cols={2}>
+  <Card title="Akce po přijetí" icon="bolt">
+    Vyberte, co AgencyHandy udělá při přijetí nabídky: **Nic neprovedou** nebo **Automaticky vytvořit objednávku a fakturu**.
+  </Card>
+  <Card title="Připomínky" icon="bell">
+    Nakonfigurujte upomínková oznámení pro výzvu klientům, kteří do data vypršení platnosti neodpověděli.
+  </Card>
+  <Card title="Ochrana heslem" icon="lock">
+    Přidejte heslo k veřejnému odkazu nabídky, aby ji mohl zobrazit pouze zamýšlený příjemce.
+  </Card>
+  <Card title="Komentáře" icon="message">
+    Povolte klientům zanechávat komentáře ve veřejném zobrazení nabídky pro snadnější oboustrannou diskusi.
+  </Card>
+</CardGroup>
+
+## Odeslání nabídky
+
+Kdykoli během vytváření lze nabídku uložit jako **Koncept** nebo **Zobrazit náhled**. Když je připravena, kliknutím na **Odeslat** ji doručíte klientovi nebo leadu.
+
+Po odeslání:
+
+- Automaticky se vygeneruje veřejný odkaz
+- Stav nabídky se změní z **Koncept** na **Odesláno**
+- AgencyHandy sleduje, zda klient nabídku zobrazil
+
+Z nabídky akcí nabídky lze také nabídku znovu odeslat, stáhnout, sdílet veřejný odkaz, zobrazit komentáře nebo nabídku smazat.
+
+## Odeslání nabídky s konkrétním balíčkem
+
+Pokud chcete odeslat rychlou nabídku přímo vázanou na konkrétní balíček služby, použijte zkrácený formulář **Vytvořit nabídku**:
+
+<Steps>
+  <Step title="Otevřete sekci Nabídky">
+    Přejděte na **Nabídky** v levém postranním panelu a klikněte na **+ Vytvořit nabídku**.
+  </Step>
+  <Step title="Vyplňte formulář nabídky">
+    Zadejte **jméno klienta** a vyberte **službu**. Pokud má služba více balíčků, automaticky se zobrazí — vyberte příslušný.
+
+    Volitelně přiřaďte **manažera** k nabídce.
+  </Step>
+  <Step title="Přidejte detaily objednávky">
+    Napište **Stručný popis objednávky** (povinné) popisující, co klient obdrží. Připojte libovolné podpůrné soubory o velikosti až 1 GB.
+  </Step>
+  <Step title="Nastavte ceny a podmínky">
+    Potvrďte **typ ceny** (jednorázový nebo předplatné), nastavte **trvání**, **množství**, **rozpočet** a **měnu**. Přidejte libovolné **Smluvní podmínky** relevantní pro nabídku.
+  </Step>
+  <Step title="Vytvořte a odešlete">
+    Klikněte na **Vytvořit** pro finalizaci a odeslání nabídky klientovi. Nabídka se zobrazí jak ve vašem seznamu Odesláno, tak v sekci Přijato klienta.
+  </Step>
+</Steps>
+
+<Note>
+  Před kliknutím na Vytvořit zkontrolujte automaticky vyplněné ceny a trvání. Po odeslání může klient nabídku ze sekce Přijato přijmout, odmítnout nebo stáhnout.
+</Note>
+
+## Životní cyklus stavu nabídky
+
+| Stav | Význam |
+|--------|---------|
+| **Koncept** | Nabídka byla vytvořena, ale ještě nebyla odeslána. |
+| **Odesláno** | Nabídka byla doručena klientovi nebo leadu. |
+| **Čeká na vyřízení** | Klient nabídku zkontroloval a odeslal zpět k diskusi. |
+| **Přijato** | Některá ze stran formálně přijala podmínky nabídky. Objednávka je vytvořena automaticky, pokud je to nakonfigurováno. |
+| **Odmítnuto** | Některá ze stran nabídku odmítla. Odesílatel obdrží oznámení s důvodem. |
+
+## Přijetí nabídky
+
+Přijatou nabídku může přijmout buď agentura, nebo klient. Při přijetí AgencyHandy automaticky vytvoří objednávku (pokud je to nakonfigurováno v Nastavení).
+
+<Steps>
+  <Step title="Přejděte na Přijaté nabídky">
+    Klikněte na **Nabídky** v postranním panelu a vyberte záložku **Přijato**.
+  </Step>
+  <Step title="Otevřete nabídku">
+    Vyberte nabídku, kterou chcete přijmout, ze seznamu a zkontrolujte její detaily.
+  </Step>
+  <Step title="Klikněte na Přijmout">
+    Kliknutím na tlačítko **Přijmout** formálně přijměte nabídku. Stav se okamžitě aktualizuje a obě strany jsou informovány.
+  </Step>
+</Steps>
+
+<Note>
+  Pokud přijímá agentura, Super administrátoři a Administrátoři obdrží oznámení. Pokud přijímá klient, AgencyHandy informuje uživatele Super administrátora a Administrátora agentury.
+</Note>
+
+## Odmítnutí nabídky
+
+Pokud navrhované podmínky, ceny nebo rozsah neodpovídají vašim požadavkům, můžete nabídku odmítnout a uvést důvod.
+
+<Steps>
+  <Step title="Přejděte na Přijaté nabídky">
+    Přejděte na **Nabídky → Přijato**.
+  </Step>
+  <Step title="Vyberte a zkontrolujte nabídku">
+    Vyberte nabídku, kterou chcete odmítnout, a zkontrolujte její detaily.
+  </Step>
+  <Step title="Klikněte na Odmítnout">
+    Klikněte na **Odmítnout** a potvrďte své rozhodnutí. Odesílatel nabídky obdrží oznámení spolu s důvodem, který jste uvedli.
+  </Step>
+</Steps>
+
+<Warning>
+  Odmítnuté nabídky **nelze znovu odeslat**. Obě strany musí vytvořit novou nabídku pro obnovení jednání.
+</Warning>
+
+## Veřejné zobrazení nabídky
+
+Když nabídku odešlete, klienti obdrží odkaz na veřejné zobrazení, kde mohou:
+
+- Zkontrolovat všechny služby, ceny, balíčky a daně
+- Přijmout nebo odmítnout nabídku
+- Zanechat komentáře (pokud jsou komentáře povoleny)
+- Bezpečně přistupovat k nabídce pomocí hesla (pokud je povolena ochrana heslem)
+
+## Doplňující poznámky
+
+<Accordion title="Více e-mailů a leadů">
+  K jedné nabídce můžete přidat více e-mailových adres a jednu označit jako Primární kontakt. Nabídky fungují jak s registrovanými klienty, tak s neregistrovanými leady.
+</Accordion>
+
+<Accordion title="Automaticky generované objednávky a faktury">
+  Když nakonfigurujete sekci Nastavení na „Vytvořit objednávku a fakturu“ při přijetí, AgencyHandy automaticky vygeneruje propojenou objednávku a fakturu v okamžiku přijetí nabídky — není třeba žádných ručních kroků.
+</Accordion>
+
+<Accordion title="Sledování aktivity nabídky">
+  Každá nabídka obsahuje úplný přehled aktivity. Můžete vidět, kdy byla nabídka vytvořena, odeslána, zobrazena, přijata nebo odmítnuta — vše přímo v AgencyHandy.
+</Accordion>

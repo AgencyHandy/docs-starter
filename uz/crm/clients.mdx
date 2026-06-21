@@ -1,0 +1,218 @@
+---
+title: "Mijozlarni boshqarish: Profillar, Import va Konfiguratsiya"
+sidebarTitle: "Mijozlar"
+description: "AgencyHandy'da mijoz profillarini yarating va import qiling, buyurtmalar va hisob-fakturalarni kuzating, portal kirishini boshqaring va mijozlarni kategoriyalar bilan tartibga soling."
+---
+
+AgencyHandy CRM ning Mijozlar bo'limi istiqbol bosqichidan o'tgan har bir tashkilot yoki jismoniy shaxs uchun markazlashtirilgan xabdir. Bu yerda siz mijoz profillarini qo'lda yoki ommaviy ravishda yaratishingiz, aloqa ma'lumotlarini yangilashingiz, so'nggi buyurtmalar va hisob-fakturalarni kuzatishingiz, mijozlarni maxsus kategoriyalarga bo'lishingiz va portal kirishini nazorat qilishingiz mumkin — barchasi bitta ro'yxat ko'rinishidan.
+
+<Note>
+  Mijoz profillarini yaratish, tahrirlash, import qilish yoki konfiguratsiya qilish uchun **Super Admin** yoki **Admin** roliga ega bo'lishingiz kerak. Menejerlar mijoz tafsilotlari va faoliyat jurnallarini ko'rishi mumkin.
+</Note>
+
+## Mijoz profili yaratish
+
+Yangi mijozni ulashganingizda, AgencyHandy ulар uchun portal hisobini yaratadi va xavfsiz kirish taklifnomasini yuboradi.
+
+<Steps>
+  <Step title="Mijozlar bo'limiga o'ting">
+    AgencyHandy hisobingizga kiring, so'ng chap yon paneldagi **CRM** tugmasini bosing va **Mijozlar** yorlig'ini tanlang.
+  </Step>
+  <Step title="Yaratish formasini oching">
+    Yuqori o'ng burchakdagi **+ Mijoz yaratish** tugmasini bosing. Forma ochiladi.
+  </Step>
+  <Step title="Mijoz ma'lumotlarini kiriting">
+    Mijozning tafsilotlarini to'ldiring:
+
+    - **Ism / Familiya** *(majburiy)*
+    - **Elektron pochta** *(majburiy — portal taklifnomasini yuborish uchun ishlatiladi)*
+    - **Kompaniya nomi**
+    - **Telefon raqami**
+    - **Mamlakat, Shtat, Shahar, Pochta indeksi**
+    - **Kategoriya** — agar qo'llash mumkin bo'lsa, mavjud konfiguratsiya kategoriyasini tayinlang
+  </Step>
+  <Step title="Profilni saqlang">
+    **Yaratish** tugmasini bosing. Profil mijozlar ro'yxatingizga darhol qo'shiladi.
+  </Step>
+</Steps>
+
+<Note>
+  Profilni yaratgandan so'ng, mijoz xavfsiz kirish URL manzilini o'z ichiga olgan elektron xat oladi. Ushbu URL manzilni bosish ularning portal hisobini faollashtiradi va birinchi marta kirish imkonini beradi.
+</Note>
+
+## Mijozlarni CSV dan import qilish
+
+Agar boshqa platformadan ko'chib o'tayotgan bo'lsangiz yoki mavjud mijozlarning elektron jadvalingiz bo'lsa, ularning barchasini bir vaqtda import qilishingiz mumkin.
+
+<Steps>
+  <Step title="Import tugmasini bosing">
+    Mijozlar ro'yxatidan yuqori o'ng tomonda **Import** tugmasini bosing.
+  </Step>
+  <Step title="CSV faylingizni yuklang">
+    Faylingizni yuklash maydoniga sudrab tashlang yoki ko'rib tanlang. AgencyHandy quyidagi maydonlarni o'z ichiga olgan CSV fayllarini qabul qiladi:
+
+    - Mijoz nomi *(majburiy)*
+    - Elektron pochta *(majburiy)*
+    - Kompaniya nomi
+    - Mamlakat
+    - Shtat
+    - Shahar
+    - Pochta indeksi
+  </Step>
+  <Step title="Ustunlaringizni xaritalang">
+    AgencyHandy uning maydon nomlariga mos ustun nomlarini avtomatik aniqlaydi. Mos kelmaydigan ustunlar uchun ularni to'g'ri tizim maydonlariga qo'lda xaritalash uchun ochiladigan menyulardan foydalaning.
+  </Step>
+  <Step title="Ko'rib chiqing va tasdiqlang">
+    Ma'lumotlar saqlanishidan oldin formatlash muammolarini tutib qolish uchun ko'rinish jadvalini ko'rib chiqing.
+  </Step>
+  <Step title="Importni yakunlang">
+    **Saqlash** tugmasini bosing. Barcha yozuvlar muvaffaqiyatli import qilingandan so'ng tasdiqlash xabari paydo bo'ladi.
+  </Step>
+</Steps>
+
+<Tip>
+  Agar elektron jadval ustun sarlavhalaringiz AgencyHandy maydon nomlari bilan aynan mos kelsa (masalan, "email", "company name"), xaritalovchi avtomatik to'ldiriladi — qo'lda moslashtirish talab qilinmaydi.
+</Tip>
+
+## Mijozlarni eksport qilish
+
+Mijoz bazangizni zaxiralang yoki manfaatdor tomonlar bilan CSV yoki Excel formatida ulashing.
+
+<Steps>
+  <Step title="Eksport tugmasini bosing">
+    Mijozlar ro'yxatidan yuqori o'ng tomonda **Eksport** tugmasini bosing.
+  </Step>
+  <Step title="Eksportingizni moslashtiring">
+    Qaysi ustunlarni kiritishni tanlang — to'liq eksport uchun **Barcha ustunlar** ni tanlang yoki ism, aloqa ma'lumotlari, kompaniya yoki manzil kabi ma'lum maydonlarni tanlang.
+  </Step>
+  <Step title="Format tanlang">
+    Maqsadlangan foydalanishga qarab **CSV** yoki **XLSX** ni tanlang.
+  </Step>
+  <Step title="Faylni yuklab oling">
+    **Eksport** tugmasini bosing. Fayl yaratiladi va qurilmangizga yuklanadi. Mijoz ma'lumotlarini himoya qilish uchun uni xavfsiz saqlang.
+  </Step>
+</Steps>
+
+## Mijoz profilini tahrirlash
+
+<Steps>
+  <Step title="Mijozni tanlang">
+    Mijozlar ro'yxatida yangilash istagan mijoz yonidagi katakchani belgilang yoki profilini ochish uchun to'g'ridan-to'g'ri ismini bosing.
+  </Step>
+  <Step title="Tahrirlash rejimiga kiring">
+    Mijoz profili yuqori o'ng burchagidagi **Tahrirlash** tugmasini bosing. Tahrirlash formasi paydo bo'ladi.
+  </Step>
+  <Step title="Ma'lumotlarni yangilang">
+    Istalgan maydonni o'zgartiring — ism, elektron pochta, telefon, manzil, kompaniya yoki kategoriya.
+  </Step>
+  <Step title="O'zgarishlaringizni saqlang">
+    **Yangilash** tugmasini bosing. Tasdiqlash xabari profil muvaffaqiyatli saqlanganligini tasdiqlaydi.
+  </Step>
+</Steps>
+
+## Qidirish, saralash va filtrlash
+
+Mijozlar ro'yxati to'g'ri mijozni tez topish uchun bir nechta vositalarni taqdim etadi:
+
+<CardGroup cols={2}>
+  <Card title="Ism bo'yicha qidirish" icon="magnifying-glass">
+    Ro'yxatni darhol filtrlash uchun qidiruv paneliga mijoz ismini yozing.
+  </Card>
+  <Card title="Kompaniya bo'yicha filtrlash" icon="building">
+    Ro'yxatni muayyan kompaniya bilan bog'liq mijozlar bilan toraytiring.
+  </Card>
+  <Card title="Elektron pochta bo'yicha filtrlash" icon="envelope">
+    Ismini bilmasangiz, lekin elektron pochta manzilini bilsangiz, mijozni toping.
+  </Card>
+  <Card title="Holat bo'yicha filtrlash" icon="circle-check">
+    Faqat faol, nofaol yoki taklif yuborilgan mijozlarni ko'rsating.
+  </Card>
+  <Card title="Alifbo bo'yicha saralash" icon="arrow-down-a-z">
+    Tezkor havola uchun to'liq mijozlar ro'yxatini ism bo'yicha A–Z yoki Z–A tartibida saralang.
+  </Card>
+  <Card title="Kategoriya bo'yicha filtrlash" icon="tag">
+    Faqat muayyan konfiguratsiya kategoriyasiga tayinlangan mijozlarni ko'rsating.
+  </Card>
+</CardGroup>
+
+## Mijoz faoliyatini kuzatish
+
+Har bir mijoz profili ichida ushbu mijozning agentligingiz bilan muloqotining jonli manzarasini beradigan yorliqlarni topasiz:
+
+<Accordion title="So'nggi buyurtmalar">
+  Mijoz tomonidan berilgan barcha buyurtmalar tarixini ko'ring, shu jumladan xizmat nomi, paket, holat va sana. Bu CRM ni tark etmasdan ularning xarid tarixi haqida tezkor umumiy ma'lumot beradi.
+</Accordion>
+
+<Accordion title="So'nggi tiketlar">
+  Mijoz tomonidan yuborilgan barcha qo'llab-quvvatlash yoki xizmat tiketlarini ko'ring. Javoblarni ustuvorlashtirish va hech qanday so'rov e'tibordan chetda qolmasligini ta'minlash uchun ushbu ko'rinishdan foydalaning.
+</Accordion>
+
+<Accordion title="So'nggi hisob-fakturalar">
+  Mijoz uchun yaratilgan barcha hisob-fakturalar, shu jumladan to'lov holati jurnalini oching. Bu bir joyda to'lanmagan qoldiqlar va hisob-faktura tarixini nazorat qilishga yordam beradi.
+</Accordion>
+
+## Mijoz konfiguratsiyasi (Kategoriyalar)
+
+Mijoz konfiguratsiyasi mijozlar ro'yxatini segmentlash uchun rang kodlangan kategoriyalarni yaratish imkonini beradi — masalan, *Yuqori ustuvorlik*, *Doimiy mijoz* yoki *Kutish holatida*. Kategoriyalar mijozlar ro'yxatida filtr opsiyalari sifatida ko'rinadi, shunda siz to'g'ri guruhni darhol topishingiz mumkin.
+
+<Steps>
+  <Step title="Konfiguratsiyani oching">
+    Mijozlar bo'limidan **Konfiguratsiya** tugmasini bosing.
+  </Step>
+  <Step title="Yangi kategoriya yarating">
+    **+ Kategoriya yaratish** tugmasini bosing.
+  </Step>
+  <Step title="Kategoriya tafsilotlarini kiriting">
+    - **Kategoriya nomi** — noyob, tavsifli yorliq (masalan, *Korporativ mijozlar*)
+    - **Qisqa tavsif** — kategoriya maqsadini tushuntiradigan qisqa eslatma
+    - **Rang** — tezkor vizual tanib olish uchun alohida rang tanlang
+  </Step>
+  <Step title="Kategoriyani saqlang">
+    **Yaratish** tugmasini bosing. Kategoriya endi mijoz profillarini tahrirlaganda tayinlash uchun mavjud.
+  </Step>
+  <Step title="Kategoriyaga mijozlarni tayinlang">
+    Istalgan mijoz profilini oching, **Tahrirlash** tugmasini bosing, **Kategoriya** maydonini tanlang va tegishli kategoriyani tanlang. Saqlash uchun **Yangilash** tugmasini bosing.
+  </Step>
+</Steps>
+
+<Tip>
+  Kategoriyalar bo'ylab izchil rang konventsiyalaridan foydalaning — masalan, yuqori shoshilinchlik mijozlari uchun qizil va to'liq ulashilgan hisoblar uchun yashil — ro'yxatni bir qarashda ko'rib bo'ladigan qiling.
+</Tip>
+
+## Mijoz faoliyat jurnali
+
+Faoliyat jurnali mijozning portal hisobi uchun har bir kirish va chiqish hodisasini yozib oladi, bu esa ularning muloqoti haqida aniq audit izini beradi.
+
+**Jurnalni ko'rish uchun:**
+
+1. **Mijozlar** bo'limiga o'ting va muayyan mijozning profilini oching.
+2. Profilning yuqori navigatsiya panelida **Faoliyat jurnali** yorlig'ini bosing.
+3. Autentifikatsiya hodisalarining xronologik ro'yxatini ko'rib chiqing.
+
+**Jurnal ko'rsatadiganlar:**
+
+- Har bir **kirishning** aniq sanasi va vaqt belgisi
+- Har bir **chiqishning** aniq sanasi va vaqt belgisi
+- Barcha autentifikatsiya hodisalarining davom etuvchi tarixi
+
+Jurnal real vaqtda yangilanadi va tahrirlanishi yoki o'chirilishi mumkin emas. Mijozlar o'zlarining faoliyat jurnallariga kira olmaydi — bu faqat ma'muriy va muvofiqlik ko'rinishi uchun.
+
+<Note>
+  Hozirgi bosqichda faoliyat jurnali faqat autentifikatsiya hodisalarini (kirish va chiqish) qayd etadi. Portal ichida amalga oshirilgan harakatlar — masalan, buyurtmalarni ko'rish — hozircha bu yerda jurnallanmaydi.
+</Note>
+
+## Mijozga elektron xat yuborish
+
+AgencyHandy ni tark etmasdan to'g'ridan-to'g'ri profildan istalgan mijozga elektron xat yuborishingiz mumkin. Mijozning profilini oching va xabaringizni yozish uchun **Elektron pochta** opsiyasidan foydalaning. **Kimga** maydoni mijozning elektron pochta manzili bilan oldindan to'ldirilgan.
+
+## Mijozni taqlid qilish
+
+Adminlar mijozning portalda ko'rayotganini aynan ko'rish uchun mijoz hisobini taqlid qilishi mumkin — bu kirish muammolarini bartaraf etish yoki qo'llab-quvvatlash qo'ng'irog'i paytida jarayon bo'yicha mijozga yordam berishda foydali. Mijozning profili ichida **Taqlid qilish** opsiyasini qidiring.
+
+<Warning>
+  Taqlid qilishni faqat qo'llab-quvvatlash maqsadlari uchun ishlating. Mijozni taqlid qilib bajarilgan harakatlar ularning nomidan amalga oshiriladi va ularning hisobida aks etadi.
+</Warning>
+
+## Kompaniya hisoblar (B2B)
+
+Agar jismoniy shaxslar emas, biznes bilan ishlasangiz, istalgan mijoz profiliga **Kompaniya nomi** belgilash orqali kontaktlarni bir tashkilot ostida guruhlashingiz mumkin. Mijozlar ro'yxatini kompaniya bo'yicha filtrlash mumkin, bu esa berilgan hisobdagi barcha kontaktlarni birgalikda ko'rishni osonlashtiradi.

@@ -1,0 +1,290 @@
+---
+title: "Klientu portālu, piekļuves kontroles un nodokļu likmju pielāgošana"
+sidebarTitle: "Portāli"
+description: "Izveidojiet savu zīmolu klienta pierakstīšanās un reģistrācijas lapās, kontrolējiet sānjoslas redzamību pēc lomas un konfigurējiet nodokļu likmes rēķiniem un maksājumu apstrādei AgencyHandy."
+---
+
+AgencyHandy dod jums dziļu kontroli pār to, ko jūsu klienti redz un piedzīvo — no pirmās lapas, uz kuras viņi nokļūst, piesakoties, līdz tām sadaļām platformā, kurās viņi var navigēt pēc pieteikšanās. Šī lapa aptver četras savstarpēji saistītas konfigurācijas jomas: **Pierakstīšanās portāls**, **Reģistrācijas portāls**, **Sānjosla un piekļuves kontrole** un **Nodokļu likmes**. Kopā šie iestatījumi ļauj izveidot izsmalcinātu, lomai atbilstošu pieredzi katram jūsu darbvietas lietotājam.
+
+<Note>
+  Visiem šīs lapas iestatījumiem nepieciešama **Super administratora** vai **Administratora** piekļuve. Dodieties uz **Workspace Config** kreisajā sānjoslā, lai piekļūtu katrai sadaļai.
+</Note>
+
+---
+
+<Tabs>
+  <Tab title="Sign-in Portal">
+    ## Pierakstīšanās portāls
+
+    Pierakstīšanās portāls ir pieteikšanās lapa, ko jūsu klienti un komandas locekļi redz, piekļūstot jūsu AgencyHandy darbvietai. Tā pielāgošana nodrošina, ka pirmais iespaids, ko klienti gūst, pilnībā atbilst jūsu zīmolam — ar jūsu aģentūras attēliem, virsrakstu un ziņojumiem.
+
+    ### Ko varat pielāgot
+
+    | Elements    | Apraksts                                                    | Ierobežojums              |
+    |-------------|-------------------------------------------------------------|---------------------------|
+    | **Virsraksts** | Galvenais nosaukums, kas parādās pieteikšanās lapas augšpusē | Maks. 120 rakstzīmes      |
+    | **Attēls**  | Zīmolam atbilstoša fotogrāfija vai ilustrācija lapā         | PNG, JPG, JPEG — maks. 5 MB |
+    | **Apakšteksts** | Īss ziņojums zem pieteikšanās laukiem                  | Maks. 300 rakstzīmes      |
+
+    ### Pierakstīšanās portāla pielāgošanas soļi
+
+    <Steps>
+      <Step title="Atveriet Pierakstīšanās portāla iestatījumus">
+        Dodieties uz **Workspace Config** kreisajā navigācijā, pēc tam apakšizvēlnē atlasiet **Sign-in Portal**.
+      </Step>
+      <Step title="Ievadiet pielāgotu virsrakstu">
+        Laukā **Heading** ievadiet vēlamo virsrakstu. Saglabājiet to kodolīgu un atbilstošu — piemēram, _"Laipni lūdzam atpakaļ [Aģentūras nosaukums]"_ vai _"Jūsu klienta portāls."_ Maksimālais garums ir 120 rakstzīmes.
+      </Step>
+      <Step title="Augšupielādējiet zīmolam atbilstošu attēlu">
+        Noklikšķiniet uz augšupielādes apgabala vai velciet un nometiet attēla failu (PNG, JPG vai JPEG, maks. 5 MB), lai pievienotu vizuālu elementu pierakstīšanās lapai. Šis attēls parasti tiek rādīts blakus pieteikšanās veidlapai.
+
+        <Tip>
+          Izmantojiet augstas kvalitātes attēlu, kas pārstāv jūsu aģentūru — komandas fotogrāfiju, tīru zīmola ilustrāciju vai profesionālu fonu. Pārliecinieties, ka faila izmērs ir mazāks par 5 MB, lai izvairītos no augšupielādes kļūdām.
+        </Tip>
+      </Step>
+      <Step title="Pievienojiet apakštekstu">
+        Laukā **Subtext** uzrakstiet īsu ziņojumu, kas parādīsies zem pieteikšanās laukiem — piemēram, sveiciena piezīme, atbalsta kontakts vai īss sauklis. Saglabājiet to zem 300 rakstzīmēm.
+      </Step>
+      <Step title="Priekšskatiet un saglabājiet">
+        Pārskatiet pierakstīšanās lapas izkārtojumu, izmantojot priekšskatījumu. Kad esat apmierināts, noklikšķiniet uz **Save** (vai **Update**), lai lietotu izmaiņas. Izmaiņas stājas spēkā nekavējoties.
+      </Step>
+    </Steps>
+
+    ### Noklusējuma atiestatīšana
+
+    Noklikšķiniet uz **Reset Default Settings** Pierakstīšanās portāla lapā, lai noņemtu visas pielāgošanas un atjaunotu sākotnējo AgencyHandy pierakstīšanās lapu.
+
+    <Warning>
+      Atiestatīšana uz noklusējumu ir neatgriezeniska. Visi pielāgotie virsraksti, attēli un apakšteksti tiks neatgriezeniski noņemti. Noklikšķiniet uz **Cancel**, ja neesat pārliecināts — nesaglabātās izmaiņas tiks atmestas un pašreizējie saglabātie iestatījumi paliks neskartoti.
+    </Warning>
+
+    ### Labākā prakse
+
+    - Saglabājiet virsrakstu īsu un laipnu — klienti to redz pirms pieteikšanās, tāpēc padariet to nomierinošu.
+    - Izmantojiet profesionālu attēlu, kas pārstāv jūsu aģentūru. Izvairieties no vispārīgiem fotobankas attēliem, kas šķiet atrauti no jūsu zīmola.
+    - Pirms saglabāšanas priekšskatiet dažādos ekrāna izmēros, lai pārliecinātos, ka attēla un teksta izkārtojums izskatās pareizi.
+    - Ja attēls neizdodas augšupielādēt, apstipriniet, ka tas atbilst formāta (PNG, JPG, JPEG) un izmēra (mazāks par 5 MB) prasībām.
+  </Tab>
+
+  <Tab title="Sign-up Portal">
+    ## Reģistrācijas portāls
+
+    Reģistrācijas portāls ir reģistrācijas lapa, uz kuru nokļūst jauni klienti, veidojot kontu jūsu darbvietā. Tā pielāgošana rada konsekventu zīmolam atbilstošu pieredzi no pirmās mijiedarbības, kas potenciālajam klientam ir ar jūsu aģentūras platformu.
+
+    ### Ko varat pielāgot
+
+    | Elements    | Apraksts                                                       | Ierobežojums              |
+    |-------------|----------------------------------------------------------------|---------------------------|
+    | **Virsraksts** | Galvenais nosaukums reģistrācijas lapas augšpusē            | Maks. 120 rakstzīmes      |
+    | **Attēls**  | Zīmolam atbilstoša fotogrāfija vai ilustrācija lapā            | PNG, JPG, JPEG — maks. 5 MB |
+    | **Apakšteksts** | Īss ziņojums zem reģistrācijas laukiem                    | Maks. 300 rakstzīmes      |
+
+    ### Reģistrācijas portāla pielāgošanas soļi
+
+    <Steps>
+      <Step title="Atveriet Reģistrācijas portāla iestatījumus">
+        Dodieties uz **Workspace Config** kreisajā navigācijā, pēc tam apakšizvēlnē atlasiet **Sign-up Portal**.
+      </Step>
+      <Step title="Ievadiet pielāgotu virsrakstu">
+        Laukā **Heading** ievadiet virsrakstu, kas laipni uzņem jaunus klientus. Piemēram, _"Sāciet darbu ar [Aģentūras nosaukums]"_ vai _"Izveidojiet savu klienta kontu."_ Maks. 120 rakstzīmes.
+      </Step>
+      <Step title="Augšupielādējiet zīmolam atbilstošu attēlu">
+        Noklikšķiniet uz augšupielādes apgabala vai velciet un nometiet attēla failu (PNG, JPG vai JPEG, maks. 5 MB). Šis attēls tiek rādīts reģistrācijas lapā blakus reģistrācijas veidlapai.
+
+        <Tip>
+          Izmantojiet vienādu vizuālo stilu un krāsu paleti gan pierakstīšanās, gan reģistrācijas portālu attēlos, lai radītu vienotu pieredzi abās lapās.
+        </Tip>
+      </Step>
+      <Step title="Pievienojiet apakštekstu">
+        Laukā **Subtext** uzrakstiet īsu atbalsta ziņojumu — piemēram, norādījumus par to, ko sagaidīt pēc reģistrācijas, vai īsu vērtības piedāvājumu. Maks. 300 rakstzīmes.
+      </Step>
+      <Step title="Priekšskatiet un saglabājiet">
+        Pārskatiet reģistrācijas lapu, izmantojot priekšskatījuma opciju. Noklikšķiniet uz **Save** (vai **Update**), lai nekavējoties lietotu izmaiņas.
+      </Step>
+    </Steps>
+
+    ### Noklusējuma atiestatīšana
+
+    Noklikšķiniet uz **Reset Default Settings** Reģistrācijas portāla lapā, lai noņemtu visas pielāgošanas un atjaunotu sākotnējo AgencyHandy reģistrācijas lapu.
+
+    <Warning>
+      Šo darbību nevar atsaukt. Visi pielāgotie virsraksta, attēla un apakšteksta iestatījumi tiks neatgriezeniski dzēsti.
+    </Warning>
+
+    ### Labākā prakse
+
+    - Saskaņojiet reģistrācijas virsraksta toni ar jūsu vispārējo klientu komunikācijas stilu — profesionālu, draudzīgu vai abus.
+    - Saglabājiet apakštekstu fokusētu: pastāstiet jaunajiem klientiem, kas notiek pēc reģistrācijas (piemēram, _"Kad reģistrēsieties, mūsu komanda 24 stundu laikā nosūtīs jums sveiciena e-pastu."_).
+    - Pēc izmaiņu saglabāšanas pats pārbaudiet reģistrācijas procesu, lai apstiprinātu, ka lapa izskatās un uzvedas kā paredzēts.
+  </Tab>
+
+  <Tab title="Sidebar & Access">
+    ## Sānjosla un piekļuves kontrole
+
+    Sānjoslas un piekļuves iestatījumi ļauj kontrolēt tieši to, ko katras lietotāja lomas pārstāvis var redzēt kreisajā navigācijas izvēlnē. Varat pārdēvēt izvēlnes vienumus, lai tie atbilstu jūsu aģentūras terminoloģijai, nomainīt noklusējuma ikonas pret pielāgotām un pārslēgt jebkuras izvēlnes sadaļas redzamību katrai lomai. Rezultāts ir tīrāka, mērķtiecīgi veidota saskarne katram, kas piesakās.
+
+    ### Lomas, kuras var konfigurēt
+
+    - Klients
+    - Super administrators
+    - Administrators
+    - Vadītājs
+    - Izpildītājs
+    - Pielāgota (jebkuras pielāgotās lomas, ko esat izveidojis sadaļā Roles & Permissions)
+
+    ### Sānjoslas izvēlnes vienumu pielāgošanas soļi
+
+    <Steps>
+      <Step title="Atveriet Sānjoslas un piekļuves iestatījumus">
+        Dodieties uz **Workspace Config**, pēc tam iestatījumu izvēlnē atlasiet **Sidebar & Access**.
+      </Step>
+      <Step title="Noklikšķiniet uz Customize">
+        Noklikšķiniet uz pogas **Customize** paneļa augšpusē. Pilns pašreizējo sānjoslas izvēlnes vienumu saraksts parādās kategorijā **Main**.
+      </Step>
+      <Step title="Pārdēvējiet izvēlnes vienumu">
+        Noklikšķiniet uz jebkura izvēlnes vienuma teksta lauka un ievadiet jaunu nosaukumu. Piemēram, pārdēvējiet "Dashboard" par "Pārskats" vai "CRM" par "Kontakti". Noklikšķiniet uz **Save**, lai lietotu jauno nosaukumu.
+      </Step>
+      <Step title="Mainiet izvēlnes ikonu">
+        Noklikšķiniet uz ikonas blakus izvēlnes vienuma nosaukumam. Atveras uznirstošais logs ar ikonu opciju kopu — atlasiet no bibliotēkas vai augšupielādējiet pielāgotu 32×32 px attēlu, lai izmantotu savu zīmolam atbilstošo ikonu. Noklikšķiniet uz **Save**, lai lietotu.
+      </Step>
+    </Steps>
+
+    ### Uz lomu balstītas redzamības konfigurēšanas soļi
+
+    <Steps>
+      <Step title="Noklikšķiniet uz Edit Access">
+        Noklikšķiniet uz pogas **Edit Access** (blakus pogai **Customize**). Redzēsiet cilnes katrai pieejamajai lomai.
+      </Step>
+      <Step title="Atlasiet lomu">
+        Noklikšķiniet uz cilnes tai lomai, kuru vēlaties konfigurēt — piemēram, **Client**.
+      </Step>
+      <Step title="Pārslēdziet izvēlnes vienumu redzamību">
+        Katram uzskaitītajam izvēlnes vienumam izmantojiet pārslēgu, lai parādītu vai paslēptu to atlasītajai lomai. Piemēram, varat paslēpt **Invoices** un **Subscriptions** no klientiem, vienlaikus saglabājot tos redzamus administratoriem un vadītājiem.
+      </Step>
+      <Step title="Saglabājiet izmaiņas">
+        Noklikšķiniet uz **Save**. Atjauninātie redzamības iestatījumi stājas spēkā nekavējoties — lietotāji redz izmaiņas pēc nākamās lapas navigācijas vai atkārtotas pieteikšanās.
+      </Step>
+      <Step title="Atiestatiet uz noklusējumu, ja nepieciešams">
+        Noklikšķiniet uz **Reset to Default** jebkuras lomas cilnē, lai atjaunotu sākotnējos redzamības iestatījumus šai lomai.
+      </Step>
+    </Steps>
+
+    <Tip>
+      Tīra, minimāla sānjosla uzlabo klienta pieredzi. Rādot klientiem tikai to, kas viņiem nepieciešams — piemēram, **Dashboard**, **Orders** un **Messages** — samazina sajukumu un novērš nejaušu piekļuvi iekšēji paredzētajām sadaļām.
+    </Tip>
+
+    ### Lomu konfigurāciju piemēri
+
+    | Loma          | Ieteicamās redzamās sadaļas                                   |
+    |---------------|---------------------------------------------------------------|
+    | Klients       | Sākumlapa, Pasūtījumi, Ziņojumi, Rēķini (ja nepieciešams)    |
+    | Vadītājs      | CRM, Projekti, Laika uzskaite, Uzdevumi                       |
+    | Izpildītājs   | Sākumlapa, Uzdevumi, Projekti, Ziņojumi                       |
+    | Super administrators | Visas sadaļas (bez ierobežojumiem)                      |
+
+    ### Svarīgas piezīmes
+
+    - **Izmaiņas ir tūlītējas:** Lomu redzamības atjauninājumi stājas spēkā nekavējoties pēc lietotāju lapas atsvaidzināšanas vai atkārtotas pieteikšanās.
+    - **Visatļautākā loma uzvar:** Ja lietotājam ir vairākas lomas, prioritāte ir lomai ar plašāko piekļuvi.
+    - **Pielāgotās ikonas:** Augšupielādējiet 32×32 px attēlus, lai sānjoslā atbilstu jūsu aģentūras zīmola vizuālajiem elementiem.
+    - **Nosaukumu konsekvence:** Izmantojiet skaidras, konsekventas nosaukumu konvencijas, ko saprot visa komanda — izvairieties no saīsinājumiem vai iekšēja žargona, ko jauni komandas locekļi neatpazīs.
+  </Tab>
+
+  <Tab title="Tax Rates">
+    ## Nodokļu likmes
+
+    Nodokļu likmju funkcija ļauj izveidot, pārvaldīt un lietot nodokļu konfigurācijas visiem jūsu pakalpojumiem, abonementiem un rēķiniem. Varat iestatīt vairākus nodokļu veidus — PVN, GST, Pārdošanas nodoklis un citi — ar valstij un štatam specifiskām likmēm, atbalstu gan iekļaujošiem, gan neiekļaujošiem cenu modeļiem un automātisku piemērošanu maksājuma apstrādē, pamatojoties uz klienta atrašanās vietu.
+
+    <Note>
+      Tikai **Super administratori** un **Administratori** var izveidot, rediģēt vai dzēst nodokļu konfigurācijas.
+    </Note>
+
+    ### Nodokļu jēdzieni īsumā
+
+    | Jēdziens      | Definīcija                                                                                                       |
+    |---------------|------------------------------------------------------------------------------------------------------------------|
+    | **Neiekļaujošs** | Nodoklis tiek pievienots norādītajai cenai maksājuma apstrādē (piemēram, $100 + 10% nodoklis = $110 kopā)      |
+    | **Iekļaujošs** | Nodoklis jau ir iekļauts klientam rādītajā cenā (piemēram, $110 kopā jau ietver nodokli)                       |
+    | **Nodokļa ID** | Jūsu aģentūras uzņēmuma nodokļu identifikācijas numurs, kas rādīts rēķinos                                      |
+
+    ### 1. solis: Nodokļa likmes izveide
+
+    <Steps>
+      <Step title="Atveriet Nodokļu likmes">
+        Dodieties uz **Workspace Config**, pēc tam noklikšķiniet uz cilnes **Tax Rates**.
+      </Step>
+      <Step title="Noklikšķiniet uz + New Tax">
+        Noklikšķiniet uz pogas **+ New Tax**. Parādās veidlapa.
+      </Step>
+      <Step title="Aizpildiet nodokļa detaļas">
+        Aizpildiet šādus laukus:
+
+        - **Title / Tax Type** *(obligāts)*: Ievadiet aprakstošu nosaukumu, piemēram, Standarta PVN, Samazināts GST vai ASV Pārdošanas nodoklis. Maks. 255 rakstzīmes.
+        - **Tax ID** *(neobligāts)*: Jūsu aģentūras uzņēmuma nodokļu identifikācijas numurs. Maks. 20 rakstzīmes.
+        - **Home Country**: Atlasiet primāro valsti, uz kuru attiecas šis nodoklis.
+        - **Home Country General Tax Rate %** *(neobligāts)*: Noklusējuma likme jūsu mājas valstij.
+        - **Country-Specific Rates** *(neobligāts)*: Pievienojiet katrai valstij specifiskas likmes ar neobligātu štatu, pasta indeksu un procentiem. Tas ir noderīgi aģentūrām, kas apkalpo klientus vairākās nodokļu jurisdikcijās.
+      </Step>
+      <Step title="Iestatiet statusu">
+        Pārslēdziet nodokli uz **Active**, lai tas nekavējoties būtu pieejams lietošanai pakalpojumos un rēķinos. Iestatiet uz **Inactive**, lai saglabātu konfigurāciju, nepiemērojot to jauniem pirkumiem.
+      </Step>
+      <Step title="Saglabājiet">
+        Noklikšķiniet uz **Save**. Nodoklis parādās jūsu Nodokļu likmju sarakstā un ir pieejams saistīšanai ar pakalpojumiem.
+      </Step>
+    </Steps>
+
+    <Tip>
+      Nodokļu likmju procentos varat izmantot līdz 4 decimālzīmēm. 0% nodokļa likme ir derīga — izmantojiet to nulles likmes precēm vai atbilstības scenārijiem, kur nodoklis jāuzrāda, bet summa ir nulle.
+    </Tip>
+
+    ### 2. solis: Nodokļu saistīšana ar pakalpojumiem
+
+    <Steps>
+      <Step title="Atveriet pakalpojumu rediģēšanai">
+        Dodieties uz **Services** un izveidojiet jaunu pakalpojumu vai rediģējiet esošu.
+      </Step>
+      <Step title="Dodieties uz sadaļu Additional Info">
+        Pakalpojuma iestatīšanas vedņa 3. solī atveriet sadaļu Additional Info.
+      </Step>
+      <Step title="Pievienojiet nodokļus pakalpojumam">
+        Noklikšķiniet uz **Add Tax** un no konfigurētā saraksta atlasiet vienu vai vairākus nodokļu veidus. Izvēlieties, vai nodokļi tiek piemēroti kā **iekļaujoši** vai **neiekļaujoši** šim pakalpojumam. Šis iestatījums attiecas uz visiem saistītajiem nodokļiem pakalpojumā, ieskaitot iestatīšanas maksu un papildinājumus.
+      </Step>
+    </Steps>
+
+    ### 3. solis: Kā nodokļi tiek piemēroti
+
+    Nodokļus var piemērot **automātiski maksājuma apstrādē** vai **manuāli rēķinos**:
+
+    **Automātiski (maksājuma apstrādē)**
+    - Pakalpojumam piesaistītie nodokļi tiek automātiski aprēķināti, pamatojoties uz klienta norēķinu atrašanās vietu.
+    - Lai tiktu piemērots atrašanās vietai atbilstošs nodoklis, klientam maksājuma apstrādē jānorāda valsts, štats un pasta indekss.
+    - Stripe Indijas kontiem pilna atrašanās vietas informācija (valsts, štats, pasta indekss) ir obligāta.
+
+    **Manuāli (rēķinā)**
+    - Veidojot rēķinu manuāli, noklikšķiniet uz **Add Taxes**, lai izvēlētos piemērojamos nodokļus.
+    - Norēķinu adreses lauki tiek automātiski aizpildīti.
+    - **Tikai neiekļaujošus nodokļus** var piemērot manuāliem rēķiniem — iekļaujošie nodokļi netiek atbalstīti šajā plūsmā.
+
+    ### Nodokļa attēlojums rēķinā
+
+    Katrs rēķins, kurā iekļauts nodoklis, rāda šādas detaļas:
+
+    - **Nodokļa nosaukums** — jūsu ievadītā etiķete (piemēram, PVN, GST)
+    - **Nodokļa procents** — piemērotā likme (piemēram, 15%)
+    - **Nodokļa summa** — aprēķinātā iekasētā summa
+
+    ### Esošo nodokļu likmju pārvaldīšana
+
+    - **Rediģējiet nodokli:** Sarakstā noklikšķiniet uz nodokļa ieraksta, lai atjauninātu tā nosaukumu, likmi vai valsts noteikumus. Atjauninājumi attiecas tikai uz turpmākajiem rēķiniem un pirkumiem.
+    - **Dzēsiet nodokli:** Dzēstie nodokļi vairs netiek piemēroti jauniem pirkumiem vai abonementiem, bet esošie rēķini, kuros tie bija iekļauti, paliek neskartoti.
+    - **Deaktivizējiet nodokli:** Iestatiet nodokli uz **Inactive**, lai pārtrauktu tā piemērošanu jauniem pirkumiem, nedzēšot konfigurāciju.
+
+    ### Svarīgas piezīmes
+
+    - **Kuponu atlaides tiek piemērotas pirms nodokļa:** Kad klients izmanto atlaides kuponu, nodoklis tiek aprēķināts no atlaidei pakļautās cenas, nevis sākotnējās cenas.
+    - **Vairāki nodokļi vienam pakalpojumam:** Vienam pakalpojumam varat piesaistīt vairāk nekā vienu nodokli (piemēram, PVN + GST vienlaicīgi).
+    - **Nodoklis attiecas uz papildinājumiem un iestatīšanas maksu:** Ja jūsu pakalpojumam ir iestatīšanas maksa vai papildinājumi, nodoklis tiek piemērots arī tiem.
+    - **Klienta atrašanās vieta ir iepriekš aizpildīta:** Ja klientam profilā ir saglabāta norēķinu valsts un štats, šie lauki maksājuma apstrādē tiek iepriekš aizpildīti. Tomēr atrašanās vietas rediģēšana maksājuma apstrādē **neatjaunina** klienta profilu.
+    - **Štata noteikšana pēc pasta indeksa:** ASV klientiem sistēma var automātiski noteikt štatu pēc pasta indeksa un piemērot pareizo reģionālo nodokli, ja tas ir konfigurēts.
+  </Tab>
+</Tabs>

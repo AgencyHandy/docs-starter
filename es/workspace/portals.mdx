@@ -1,0 +1,290 @@
+---
+title: "Personalizar los portales de clientes, los controles de acceso y las tasas de impuestos"
+sidebarTitle: "Portales"
+description: "Aplique su marca a las páginas de inicio de sesión y registro de clientes, controle la visibilidad de la barra lateral por rol y configure las tasas de impuestos para facturas y pago en AgencyHandy."
+---
+
+AgencyHandy le brinda un control profundo sobre lo que sus clientes ven y experimentan: desde la primera página en la que aterrizan al iniciar sesión, hasta qué secciones de la plataforma pueden navegar después de iniciar sesión. Esta página cubre cuatro áreas de configuración interconectadas: el **portal de inicio de sesión**, el **portal de registro**, los **controles de barra lateral y acceso**, y las **tasas de impuestos**. En conjunto, estos ajustes le permiten crear una experiencia pulida y adecuada al rol de cada usuario en su espacio de trabajo.
+
+<Note>
+  Todos los ajustes de esta página requieren acceso de **Super Admin** o **Admin**. Vaya a **Workspace Config** en la barra lateral izquierda para acceder a cada sección.
+</Note>
+
+---
+
+<Tabs>
+  <Tab title="Portal de inicio de sesión">
+    ## Portal de inicio de sesión
+
+    El portal de inicio de sesión es la página de inicio de sesión que ven sus clientes y miembros del equipo cuando acceden a su espacio de trabajo de AgencyHandy. Personalizarlo garantiza que la primera impresión que tienen los clientes esté totalmente alineada con su marca, con las imágenes, el titular y la mensajería de su agencia.
+
+    ### Qué puede personalizar
+
+    | Elemento    | Descripción                                          | Límite                   |
+    |-------------|------------------------------------------------------|-------------------------|
+    | **Heading** | El título principal que se muestra en la parte superior de la página de inicio de sesión | Máximo 120 caracteres      |
+    | **Image**   | Una foto o ilustración con su marca que se muestra en la página    | PNG, JPG, JPEG — máximo 5 MB |
+    | **Subtext** | Un mensaje breve debajo de los campos de inicio de sesión               | Máximo 300 caracteres      |
+
+    ### Pasos para personalizar el portal de inicio de sesión
+
+    <Steps>
+      <Step title="Abra la configuración del portal de inicio de sesión">
+        Vaya a **Workspace Config** en la navegación izquierda y luego seleccione **Sign-in Portal** en el submenú.
+      </Step>
+      <Step title="Ingrese un titular personalizado">
+        Escriba el titular que desee en el campo **Heading**. Manténgalo conciso y relevante; por ejemplo, _"Bienvenido de nuevo a [Nombre de la agencia]"_ o _"Su portal de cliente."_ La longitud máxima es de 120 caracteres.
+      </Step>
+      <Step title="Suba una imagen con su marca">
+        Haga clic en el área de carga o arrastre y suelte un archivo de imagen (PNG, JPG o JPEG, máximo 5 MB) para agregar un elemento visual a la página de inicio de sesión. Esta imagen suele aparecer junto al formulario de inicio de sesión.
+
+        <Tip>
+          Use una imagen de alta calidad que represente a su agencia: una foto de su equipo, una ilustración de marca limpia o un fondo profesional. Asegúrese de que el tamaño del archivo sea inferior a 5 MB para evitar errores de carga.
+        </Tip>
+      </Step>
+      <Step title="Agregue texto secundario">
+        En el campo **Subtext**, escriba un mensaje breve para que aparezca debajo de los campos de inicio de sesión; por ejemplo, una nota de bienvenida, un contacto de soporte o un eslogan corto. Manténgalo por debajo de 300 caracteres.
+      </Step>
+      <Step title="Previsualice y guarde">
+        Revise el diseño de la página de inicio de sesión mediante la vista previa. Una vez que esté satisfecho, haga clic en **Save** (o **Update**) para aplicar los cambios. Los cambios surten efecto de inmediato.
+      </Step>
+    </Steps>
+
+    ### Restablecer los valores predeterminados
+
+    Haga clic en **Reset Default Settings** en la página del portal de inicio de sesión para eliminar todas las personalizaciones y restaurar la página de inicio de sesión original de AgencyHandy.
+
+    <Warning>
+      Restablecer los valores predeterminados es irreversible. Todos los titulares, imágenes y textos secundarios personalizados se eliminarán de forma permanente. Haga clic en **Cancel** si no está seguro: los cambios no guardados se descartan y la configuración guardada actual permanece intacta.
+    </Warning>
+
+    ### Mejores prácticas
+
+    - Mantenga el titular corto y acogedor: los clientes lo ven antes de iniciar sesión, así que hágalo tranquilizador.
+    - Use una imagen profesional que represente a su agencia. Evite fotos de stock genéricas que se sientan desconectadas de su marca.
+    - Previsualice en diferentes tamaños de pantalla antes de guardar para asegurarse de que el diseño de la imagen y el texto se vea correcto.
+    - Si la imagen no se sube, confirme que cumple con los requisitos de formato (PNG, JPG, JPEG) y tamaño (inferior a 5 MB).
+  </Tab>
+
+  <Tab title="Portal de registro">
+    ## Portal de registro
+
+    El portal de registro es la página de registro a la que llegan los nuevos clientes cuando crean una cuenta en su espacio de trabajo. Personalizarla crea una experiencia de marca consistente desde la primera interacción que un cliente potencial tiene con la plataforma de su agencia.
+
+    ### Qué puede personalizar
+
+    | Elemento    | Descripción                                           | Límite                    |
+    |-------------|-------------------------------------------------------|--------------------------|
+    | **Heading** | El título principal que se muestra en la parte superior de la página de registro | Máximo 120 caracteres     |
+    | **Image**   | Una foto o ilustración con su marca que se muestra en la página     | PNG, JPG, JPEG — máximo 5 MB |
+    | **Subtext** | Un mensaje breve debajo de los campos de registro         | Máximo 300 caracteres       |
+
+    ### Pasos para personalizar el portal de registro
+
+    <Steps>
+      <Step title="Abra la configuración del portal de registro">
+        Vaya a **Workspace Config** en la navegación izquierda y luego seleccione **Sign-up Portal** en el submenú.
+      </Step>
+      <Step title="Ingrese un titular personalizado">
+        Escriba un titular en el campo **Heading** que dé la bienvenida a los nuevos clientes. Por ejemplo, _"Comience con [Nombre de la agencia]"_ o _"Cree su cuenta de cliente."_ Máximo 120 caracteres.
+      </Step>
+      <Step title="Suba una imagen con su marca">
+        Haga clic en el área de carga o arrastre y suelte un archivo de imagen (PNG, JPG o JPEG, máximo 5 MB). Esta imagen se muestra en la página de registro junto al formulario de registro.
+
+        <Tip>
+          Use el mismo estilo visual y la misma paleta de colores en las imágenes de su portal de inicio de sesión y de registro para crear una experiencia cohesiva entre ambas páginas.
+        </Tip>
+      </Step>
+      <Step title="Agregue texto secundario">
+        Escriba un mensaje de apoyo breve en el campo **Subtext**; por ejemplo, instrucciones sobre qué esperar después de registrarse, o una breve propuesta de valor. Máximo 300 caracteres.
+      </Step>
+      <Step title="Previsualice y guarde">
+        Revise la página de registro mediante la opción de vista previa. Haga clic en **Save** (o **Update**) para aplicar los cambios de inmediato.
+      </Step>
+    </Steps>
+
+    ### Restablecer los valores predeterminados
+
+    Haga clic en **Reset Default Settings** en la página del portal de registro para eliminar todas las personalizaciones y restaurar la página de registro original de AgencyHandy.
+
+    <Warning>
+      Esta acción no se puede deshacer. Todas las configuraciones personalizadas de titular, imagen y texto secundario se borrarán de forma permanente.
+    </Warning>
+
+    ### Mejores prácticas
+
+    - Haga coincidir el tono del titular de registro con su estilo general de comunicación con los clientes: profesional, amigable o ambos.
+    - Mantenga el texto secundario enfocado: dígales a los nuevos clientes qué sucede después de registrarse (por ejemplo, _"Una vez que se registre, nuestro equipo le enviará un correo de bienvenida en un plazo de 24 horas."_).
+    - Pruebe el flujo de registro usted mismo después de guardar los cambios para confirmar que la página se ve y se comporta como se espera.
+  </Tab>
+
+  <Tab title="Barra lateral y acceso">
+    ## Controles de barra lateral y acceso
+
+    Los ajustes de barra lateral y acceso le permiten controlar exactamente lo que cada rol de usuario puede ver en el menú de navegación izquierdo. Puede renombrar los elementos del menú para que coincidan con la terminología de su agencia, intercambiar los iconos predeterminados por unos personalizados y alternar la visibilidad de cualquier sección del menú por rol. El resultado es una interfaz más limpia y diseñada a propósito para cada persona que inicia sesión.
+
+    ### Roles que puede configurar
+
+    - Cliente
+    - Super Admin
+    - Admin
+    - Manager
+    - Assignee
+    - Personalizado (cualquier rol personalizado que haya creado en Roles & Permissions)
+
+    ### Pasos para personalizar los elementos del menú de la barra lateral
+
+    <Steps>
+      <Step title="Abra la configuración de barra lateral y acceso">
+        Vaya a **Workspace Config** y luego seleccione **Sidebar & Access** en el menú de configuración.
+      </Step>
+      <Step title="Haga clic en Customize">
+        Haga clic en el botón **Customize** en la parte superior del panel. La lista completa de los elementos actuales del menú de la barra lateral aparece bajo la categoría **Main**.
+      </Step>
+      <Step title="Renombre un elemento del menú">
+        Haga clic en el campo de texto de cualquier elemento del menú y escriba la nueva etiqueta. Por ejemplo, renombre "Dashboard" a "Resumen" o "CRM" a "Contactos". Haga clic en **Save** para aplicar el nuevo nombre.
+      </Step>
+      <Step title="Cambie el icono de un menú">
+        Haga clic en el icono junto al nombre de un elemento del menú. Se abre una ventana emergente con un conjunto de opciones de iconos: seleccione uno de la biblioteca o suba una imagen personalizada de 32×32 px para usar su propio icono de marca. Haga clic en **Save** para aplicar.
+      </Step>
+    </Steps>
+
+    ### Pasos para configurar la visibilidad basada en roles
+
+    <Steps>
+      <Step title="Haga clic en Edit Access">
+        Haga clic en el botón **Edit Access** (junto al botón **Customize**). Verá pestañas para cada rol disponible.
+      </Step>
+      <Step title="Seleccione un rol">
+        Haga clic en la pestaña del rol que desea configurar; por ejemplo, **Client**.
+      </Step>
+      <Step title="Alterne la visibilidad de los elementos del menú">
+        Para cada elemento del menú listado, use el interruptor para mostrarlo u ocultarlo para el rol seleccionado. Por ejemplo, podría ocultar **Invoices** y **Subscriptions** a los clientes y mantenerlos visibles para los Admins y Managers.
+      </Step>
+      <Step title="Guarde sus cambios">
+        Haga clic en **Save**. La configuración de visibilidad actualizada surte efecto de inmediato: los usuarios ven los cambios en su próxima navegación de página o después de volver a iniciar sesión.
+      </Step>
+      <Step title="Restablezca los valores predeterminados si es necesario">
+        Haga clic en **Reset to Default** en la pestaña de cualquier rol para restaurar la configuración de visibilidad original de ese rol.
+      </Step>
+    </Steps>
+
+    <Tip>
+      Una barra lateral limpia y minimalista mejora la experiencia del cliente. Mostrar a los clientes solo lo que necesitan —como **Dashboard**, **Orders** y **Messages**— reduce la confusión y evita que tropiecen con secciones de uso interno.
+    </Tip>
+
+    ### Ejemplos de configuraciones de roles
+
+    | Rol         | Secciones visibles recomendadas                            |
+    |-------------|-----------------------------------------------------------|
+    | Cliente     | Dashboard, Orders, Messages, Invoices (si es necesario)   |
+    | Manager     | CRM, Projects, Timesheet, Tasks                           |
+    | Assignee    | Dashboard, Tasks, Projects, Messages                      |
+    | Super Admin | Todas las secciones (sin restricciones)                   |
+
+    ### Notas importantes
+
+    - **Los cambios son instantáneos:** las actualizaciones de visibilidad por rol se reflejan de inmediato después de que los usuarios actualicen o vuelvan a iniciar sesión.
+    - **Prevalece el rol más permisivo:** si un usuario tiene varios roles, prevalece el rol con el acceso más amplio.
+    - **Iconos personalizados:** suba imágenes de 32×32 px para que coincidan con los elementos visuales de la marca de su agencia en la barra lateral.
+    - **Consistencia de nombres:** use convenciones de nombres claras y consistentes que todo su equipo entienda; evite abreviaturas o jerga interna que los nuevos miembros del equipo no reconozcan.
+  </Tab>
+
+  <Tab title="Tasas de impuestos">
+    ## Tasas de impuestos
+
+    La función de tasas de impuestos le permite crear, administrar y aplicar configuraciones de impuestos en sus servicios, suscripciones y facturas. Puede configurar varios tipos de impuestos —IVA, GST, impuesto sobre las ventas y otros— con tasas específicas por país y por estado, soporte para modelos de precios tanto inclusivos como exclusivos, y aplicación automática en el pago según la ubicación del cliente.
+
+    <Note>
+      Solo los **Super Admins** y los **Admins** pueden crear, editar o eliminar configuraciones de impuestos.
+    </Note>
+
+    ### Conceptos de impuestos de un vistazo
+
+    | Concepto      | Definición                                                                                          |
+    |---------------|-----------------------------------------------------------------------------------------------------|
+    | **Exclusive** | El impuesto se agrega encima del precio indicado en el pago (por ejemplo, $100 + 10% de impuesto = $110 en total) |
+    | **Inclusive** | El impuesto ya está incluido en el precio que se muestra al cliente (por ejemplo, $110 en total ya incluye el impuesto) |
+    | **Tax ID**    | El número de identificación fiscal comercial de su agencia, que se muestra en las facturas          |
+
+    ### Paso 1: Crear una tasa de impuesto
+
+    <Steps>
+      <Step title="Abra las tasas de impuestos">
+        Vaya a **Workspace Config** y luego haga clic en la pestaña **Tax Rates**.
+      </Step>
+      <Step title="Haga clic en + New Tax">
+        Haga clic en el botón **+ New Tax**. Aparece un formulario.
+      </Step>
+      <Step title="Complete los detalles del impuesto">
+        Complete los siguientes campos:
+
+        - **Title / Tax Type** *(obligatorio)*: ingrese un nombre descriptivo, por ejemplo, IVA estándar, GST reducido o impuesto sobre las ventas de EE. UU. Máximo 255 caracteres.
+        - **Tax ID** *(opcional)*: el número de identificación fiscal comercial de su agencia. Máximo 20 caracteres.
+        - **Home Country**: seleccione el país principal al que se aplica este impuesto.
+        - **Home Country General Tax Rate %** *(opcional)*: la tasa predeterminada para su país de origen.
+        - **Country-Specific Rates** *(opcional)*: agregue tasas por país con estado, código postal y porcentaje opcionales. Esto es útil para agencias que atienden a clientes en múltiples jurisdicciones fiscales.
+      </Step>
+      <Step title="Establezca el estado">
+        Cambie el impuesto a **Active** para que esté disponible de inmediato para su uso en servicios y facturas. Establézcalo en **Inactive** para guardar la configuración sin aplicarla todavía a nuevas compras.
+      </Step>
+      <Step title="Guarde">
+        Haga clic en **Save**. El impuesto aparece en su lista de tasas de impuestos y ya está disponible para vincularlo a servicios.
+      </Step>
+    </Steps>
+
+    <Tip>
+      Puede admitir hasta 4 decimales en los porcentajes de las tasas de impuestos. Una tasa de impuesto del 0% es válida: úsela para artículos con tasa cero o escenarios de cumplimiento en los que el impuesto debe figurar pero asciende a cero.
+    </Tip>
+
+    ### Paso 2: Vincular impuestos a servicios
+
+    <Steps>
+      <Step title="Abra el servicio para editarlo">
+        Vaya a **Services** y cree un nuevo servicio o edite uno existente.
+      </Step>
+      <Step title="Vaya a la sección Additional Info">
+        Continúe hasta el Paso 3 (Additional Info) del asistente de configuración del servicio.
+      </Step>
+      <Step title="Agregue impuestos al servicio">
+        Haga clic en **Add Tax** y seleccione uno o más tipos de impuestos de su lista configurada. Elija si los impuestos se aplican como **inclusive** o **exclusive** para este servicio. Este ajuste se aplica a todos los impuestos vinculados al servicio, incluidas las tarifas de configuración y los complementos.
+      </Step>
+    </Steps>
+
+    ### Paso 3: Cómo se aplican los impuestos
+
+    Los impuestos se pueden aplicar **automáticamente durante el pago** o **manualmente en las facturas**:
+
+    **Automático (pago)**
+    - Los impuestos vinculados a un servicio se calculan automáticamente según la ubicación de facturación del cliente.
+    - El cliente debe proporcionar su país, estado y código postal en el pago para que se aplique el impuesto basado en la ubicación.
+    - Para las cuentas de Stripe en India, la información completa de ubicación (país, estado, código postal) es obligatoria.
+
+    **Manual (factura)**
+    - Al crear una factura manualmente, haga clic en **Add Taxes** para elegir qué impuestos aplicar.
+    - Los campos de dirección de facturación se completan automáticamente.
+    - **Solo los impuestos exclusivos** se pueden aplicar a las facturas manuales: los impuestos inclusivos no se admiten en este flujo.
+
+    ### Visualización de impuestos en la factura
+
+    Cada factura que incluye un impuesto muestra los siguientes detalles:
+
+    - **Tax Name**: la etiqueta que ingresó (por ejemplo, IVA, GST)
+    - **Tax Percentage**: la tasa aplicada (por ejemplo, 15%)
+    - **Tax Amount**: el monto calculado que se cobra
+
+    ### Administrar tasas de impuestos existentes
+
+    - **Editar un impuesto:** haga clic en la entrada del impuesto en la lista para actualizar su título, tasa o reglas de país. Las actualizaciones se aplican solo a facturas y compras futuras.
+    - **Eliminar un impuesto:** los impuestos eliminados ya no se aplican a nuevas compras o suscripciones, pero las facturas existentes que los incluían no se ven afectadas.
+    - **Desactivar un impuesto:** establezca un impuesto en **Inactive** para dejar de aplicarlo a nuevas compras sin eliminar la configuración.
+
+    ### Notas importantes
+
+    - **Los descuentos de cupones se aplican antes del impuesto:** cuando un cliente usa un cupón de descuento, el impuesto se calcula sobre el precio con descuento, no sobre el precio original.
+    - **Varios impuestos por servicio:** puede adjuntar más de un impuesto a un solo servicio (por ejemplo, IVA + GST simultáneamente).
+    - **El impuesto se aplica a los complementos y a las tarifas de configuración:** si su servicio tiene una tarifa de configuración o complementos, el impuesto también se aplica a esos montos.
+    - **La ubicación del cliente se completa previamente:** si un cliente tiene un país y estado de facturación guardados en su perfil, esos campos se completan previamente en el pago. Sin embargo, editar la ubicación durante el pago **no** actualiza el perfil del cliente.
+    - **Detección de estado basada en el código postal:** para los clientes de EE. UU., el sistema puede detectar automáticamente el estado a partir del código postal y aplicar el impuesto regional correcto si está configurado.
+  </Tab>
+</Tabs>

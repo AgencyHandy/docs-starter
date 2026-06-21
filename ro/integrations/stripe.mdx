@@ -1,0 +1,77 @@
+---
+title: "Conectați Stripe pentru a accepta plăți online în AgencyHandy"
+sidebarTitle: "Stripe"
+description: "Conectați contul Stripe la AgencyHandy pentru a trimite facturi și a colecta plăți online securizate de la clienți fără a părăsi platforma."
+---
+
+Integrarea Stripe din AgencyHandy vă permite să acceptați plăți cu cardul direct de la clienții dvs. prin facturile trimise în platformă. Odată conectat, clienții dvs. văd o pagină de finalizare a plății familiară găzduită de Stripe, iar statusul plății se sincronizează automat înapoi în AgencyHandy — fără reconciliere manuală necesară.
+
+<Note>
+  Doar rolurile **SuperAdmin** și **Admin** pot conecta sau gestiona integrarea Stripe. Trebuie să aveți, de asemenea, un cont Stripe verificat cu permisiunile corespunzătoare înainte de a începe.
+</Note>
+
+## Conectați Stripe
+
+<Steps>
+  <Step title="Deschideți setările integrării Stripe">
+    În bara laterală stângă, navigați la **Integrări → Integrare Stripe**.
+  </Step>
+
+  <Step title="Autorizați pe Stripe">
+    Faceți clic pe **Conectare Stripe**. Sunteți redirecționat la ecranul de autorizare al Stripe. Autentificați-vă în contul Stripe și faceți clic pe **Permiteți** pentru a acorda acces AgencyHandy. Odată aprobat, Stripe vă redirecționează automat înapoi în AgencyHandy.
+  </Step>
+
+  <Step title="Configurați preferințele de plată">
+    După redirecționare, configurați următoarele opțiuni:
+
+    - **Monedă** — alegeți moneda de facturare implicită pentru spațiul dvs. de lucru.
+    - **Metode de plată** — activați sau dezactivați tipurile de carduri (Visa, Mastercard etc.) acceptate de contul dvs. Stripe.
+    - **Preferințe de facturare** — setați opțional o cotă de taxă, un prefix de factură sau termeni de plată și date scadente implicite.
+  </Step>
+
+  <Step title="Salvați și confirmați">
+    Faceți clic pe **Salvare**. Un banner de confirmare apare când integrarea este activă. Stripe este acum conectat la spațiul dvs. de lucru și clienții dvs. pot plăti facturile online.
+  </Step>
+</Steps>
+
+## Testați integrarea
+
+Înainte de a trimite facturi reale, rulați un test rapid de la un capăt la altul pentru a confirma că conexiunea funcționează corect.
+
+<Steps>
+  <Step title="Creați o factură de test">
+    Creați o factură ciornă în AgencyHandy și atribuiți-i o sumă mică.
+  </Step>
+  <Step title="Trimiteți dvs. înșivă">
+    Trimiteți factura la propria adresă de e-mail sau la un membru de echipă care vă poate ajuta cu testul.
+  </Step>
+  <Step title="Finalizați o plată de test">
+    Deschideți link-ul facturii și finalizați plata folosind un card de test Stripe (ex. `4242 4242 4242 4242`) dacă contul dvs. Stripe este în modul de test, sau un card real în modul live.
+  </Step>
+  <Step title="Verificați actualizarea statusului">
+    Reveniți în AgencyHandy și confirmați că statusul facturii s-a schimbat în **Plătit**. Dacă da, integrarea dvs. funcționează corect.
+  </Step>
+</Steps>
+
+## Gestionați conexiunea Stripe
+
+Reveniți la **Integrări → Integrare Stripe** oricând pentru a:
+
+- **Actualiza setările de plată** — schimbați moneda, metodele de plată sau preferințele de facturare.
+- **Revizui statusul conexiunii** — verificați dacă Stripe este activ în prezent.
+- **Deconecta** — faceți clic pe **Deconectare** pentru a desface legătura cu contul Stripe. Colectarea plăților se întrerupe imediat până la reconectare.
+- **Reconecta** — faceți clic pe **Conectare Stripe** din nou și reautorizați pentru a restabili integrarea.
+
+<Warning>
+  Deconectarea Stripe întrerupe colectarea plăților pentru toate facturile restante. Clienții nu vor putea plăti online până când nu reconectați și reautorizați.
+</Warning>
+
+## Note suplimentare
+
+<Note>
+  AgencyHandy nu stochează niciodată datele dvs. de plată. Toate datele de plată sunt gestionate exclusiv de infrastructura securizată a Stripe.
+</Note>
+
+- **Un cont per spațiu de lucru** — puteți conecta un singur cont Stripe la fiecare spațiu de lucru AgencyHandy. Pentru a schimba conturile, deconectați-l pe cel curent mai întâi, apoi reconectați-vă cu noul cont.
+- **Statusul facturii în timp real** — toate facturile legate de Stripe continuă să reflecte actualizările de status în timp real primite direct de la Stripe.
+- **Monedă** — asigurați-vă că moneda configurată în AgencyHandy corespunde monedei activate în contul dvs. Stripe pentru a evita erorile de plată.

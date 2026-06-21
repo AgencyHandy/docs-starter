@@ -1,0 +1,162 @@
+---
+title: "Supportärenden — Hantera klientförfrågningar i AgencyHandy"
+sidebarTitle: "Supportärenden"
+description: "Skapa, redigera och hantera supportärenden i AgencyHandy för att spåra klientförfrågningar, ange prioriteringar, tilldela statusar och behålla en fullständig interaktionshistorik."
+---
+
+AgencyHandy's ärendefunktion ger din byrå ett strukturerat sätt att hantera klientförfrågningar, problem och önskemål. Istället för att låta frågor försvinna i e-posttrådar eller chattar finns varje supportförfrågan i ett ärende med ämne, prioritering, ansvarig och status — allt sökbart och spårbart från en instrumentpanel. Både ditt team och dina klienter kan skapa ärenden, och den fullständiga historiken för varje ärende bevaras så att inget faller mellan stolarna.
+
+## Åtkomst till ärendeinstrumentpanelen
+
+Klicka på **Ärenden** i den vänstra sidofältet för att öppna ärendeinstrumentpanelen. Härifrån kan du:
+
+- Skapa, redigera och radera ärenden
+- Söka ärenden efter **ämne**, **klientnamn** eller **order-ID**
+- Se ärendestatus och prioritering på ett ögonblick
+- Övervaka alla öppna, pausade och stängda ärenden inom byrån
+
+## Vad ärenden gör
+
+<CardGroup cols={3}>
+  <Card title="Hantering av supportförfrågningar" icon="headset">
+    Klienter och byråteamets medlemmar kan skicka in frågor, problem eller förfrågningar via ärendesystemet. Varje inlämning loggas och spåras.
+  </Card>
+  <Card title="Spårning av problemlösning" icon="circle-check">
+    Tilldela ärenden till teammedlemmar, ange prioriteringar och uppdatera statusar allteftersom arbetet fortskrider mot lösning. Alla hålls informerade.
+  </Card>
+  <Card title="Kommunikationshistorik" icon="clock-rotate-left">
+    Varje ärende upprätthåller en fullständig historik över åtgärder, uppdateringar och interaktioner. Granska tidigare kommunikation när som helst för kontext eller granskningsändamål.
+  </Card>
+</CardGroup>
+
+## Skapa ett ärende
+
+Både byråteamets medlemmar och klienter kan skapa ärenden. Processen för att skapa ärenden är densamma för båda.
+
+**Vem kan skapa ärenden:** Super Admin, Admin, PM och Klient.
+
+<Steps>
+  <Step title="Öppna ärendeinstrumentpanelen">
+    Klicka på **Ärenden** i det vänstra sidofältet.
+  </Step>
+  <Step title="Klicka på + Skapa ärende">
+    Klicka på knappen **+ Skapa ärende**. Ett formulär visas.
+  </Step>
+  <Step title="Välj klient">
+    Välj klientens namn från rullgardinslistan. Detta kopplar ärendet till rätt klientprofil.
+  </Step>
+  <Step title="Länka till en order (valfritt)">
+    Ange **order-ID** för att koppla ärendet till en specifik order. Detta är användbart vid fakturerings- eller projektrelaterade problem. Du kan också skapa ett ärende utan ett order-ID för allmänna förfrågningar.
+  </Step>
+  <Step title="Fyll i ärendedetaljer">
+    Fyll i följande fält:
+
+    | Fält | Beskrivning |
+    |-------|-------------|
+    | **Ämne** | En kort, beskrivande rubrik för ärendet |
+    | **Beskrivning** | En detaljerad förklaring av problemet eller förfrågan |
+    | **Ansvarigs namn** | Den teammedlem som ansvarar för att lösa detta ärende |
+    | **Prioritering** | Brådskande nivå: Högst, Hög, Normal, Låg eller Lägst |
+    | **Utfärdandedatum** | Datumet då ärendet skapades (registreras automatiskt) |
+    | **Status** | Aktuellt tillstånd: Öppen, Pausad eller Stängd |
+  </Step>
+  <Step title="Klicka på Skapa">
+    Klicka på **Skapa** för att spara ärendet. Det visas omedelbart i ärendeinstrumentpanelen.
+  </Step>
+</Steps>
+
+## Ärendestatusar
+
+Ärenden passerar tre statusar allteftersom arbetet fortskrider:
+
+| Status | Innebörd |
+|--------|---------|
+| **Öppen** | Ärendet har skickats in och arbetas aktivt med |
+| **Pausad** | Arbetet med ärendet är tillfälligt pausat, vanligtvis i väntan på mer information |
+| **Stängd** | Problemet har lösts och ärendet är arkiverat för referens |
+
+<Tip>
+  Använd statusen **Pausad** när du väntar på ett klientsvar eller ett externt beroende. Detta håller ärendet synligt utan att belamra den aktiva kön.
+</Tip>
+
+## Redigera ett ärende
+
+Byråteamets medlemmar kan när som helst uppdatera ärendedetaljer för att återspegla ny information, prioritetsändringar eller upplösningsuppdateringar.
+
+**Vem kan redigera ärenden:** Super Admin, Admin och PM. Klienter kan skapa ärenden men kan inte redigera dem.
+
+<Note>
+  Endast ärenden skapade från **byråsidan** kan redigeras. Ärenden inskickade av klienter kan inte ändras av klienten efter inlämning.
+</Note>
+
+<Steps>
+  <Step title="Öppna ärendeinstrumentpanelen">
+    Navigera till **Ärenden** i det vänstra sidofältet.
+  </Step>
+  <Step title="Välj ärendet att redigera">
+    Markera kryssrutan bredvid det ärende du vill redigera. Knappen **Redigera ärende** aktiveras.
+  </Step>
+  <Step title="Klicka på Redigera ärende">
+    Klicka på knappen **Redigera ärende**. Ärendeformuläret öppnas med alla befintliga detaljer förifyllda.
+  </Step>
+  <Step title="Gör dina ändringar">
+    Uppdatera eventuella fält som behöver ändras — beskrivningen, prioriteringen, den ansvarige, statusen eller andra detaljer.
+  </Step>
+  <Step title="Spara">
+    Klicka på **Spara** för att tillämpa dina ändringar. Ärendet uppdateras omedelbart i instrumentpanelen.
+  </Step>
+  <Step title="Kommunicera uppdateringar">
+    Om ändringen är betydande — till exempel en prioritetshöjning eller byte av ansvarig — meddela de relevanta teammedlemmarna så att de kan svara på lämpligt sätt.
+  </Step>
+</Steps>
+
+## Radera ett ärende
+
+Ta bort inaktuella eller onödiga ärenden för att hålla instrumentpanelen ren och relevant.
+
+**Vem kan radera ärenden:** Super Admin, Admin och PM.
+
+<Steps>
+  <Step title="Välj ärendet">
+    I ärendeinstrumentpanelen, markera kryssrutan bredvid det ärende du vill radera. Knappen **Radera** aktiveras.
+  </Step>
+  <Step title="Klicka på Radera">
+    Klicka på **Radera**. En bekräftelsedialog visas.
+  </Step>
+  <Step title="Bekräfta raderingen">
+    Bekräfta ditt beslut i dialogen. Ärendet tas bort permanent från systemet.
+  </Step>
+  <Step title="Verifiera borttagningen">
+    Kontrollera ärendelistan eller sök efter ärendet via ämne eller order-ID för att bekräfta att det inte längre finns.
+  </Step>
+</Steps>
+
+<Warning>
+  Radering av ett ärende är **permanent och kan inte ångras**. Innan du raderar, se till att all viktig kommunikation eller lösningstecken från ärendet har dokumenterats på annan plats.
+</Warning>
+
+## Söka och filtrera ärenden
+
+Använd sökfältet längst upp i ärendeinstrumentpanelen för att hitta ärenden snabbt. Du kan söka efter:
+
+- **Ämne** — ärendets rubrik
+- **Klientnamn** — alla ärenden från en specifik klient
+- **Order-ID** — alla ärenden kopplade till en specifik order
+
+## Bästa praxis för användning av ärenden
+
+<Accordion title="Ange prioritetsnivåer konsekvent">
+  Kom överens om en prioritetsskala med ditt team innan du börjar skapa ärenden. Om "Hög" betyder olika saker för olika personer bryter eskaleringsarbetsflöden samman. Använd Högst endast för problem som blockerar klientleveranser.
+</Accordion>
+
+<Accordion title="Länka ärenden till order när möjligt">
+  Att koppla ett ärende till ett order-ID gör det mycket lättare att spåra vilket klientproblem som påverkar vilket projekt. Detta hjälper också när du granskar tidigare ärenden för en specifik order.
+</Accordion>
+
+<Accordion title="Stäng ärenden omedelbart efter lösning">
+  När ett problem är löst, ändra statusen till **Stängd** direkt. Att lämna ärenden öppna efter lösning ökar din aktiva kö och gör det svårare att se genuint pågående arbete.
+</Accordion>
+
+<Accordion title="Använd Pausad-statusen för vänteperioder">
+  När du väntar på en klient eller tredje part, ange ärendet till **Pausad** istället för att lämna det Öppet. Detta ger ditt team en tydlig signal om att ingen åtgärd behövs tills ett svar anländer.
+</Accordion>

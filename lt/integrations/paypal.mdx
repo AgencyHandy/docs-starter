@@ -1,0 +1,70 @@
+---
+title: "Prijunkite PayPal saugiam klientų mokėjimų rinkimui"
+sidebarTitle: "PayPal"
+description: "Susiekite savo PayPal paskyrą su AgencyHandy ir leiskite klientams apmokėti sąskaitas faktūras naudojant patikimą, tarptautiniu mastu pripažintą PayPal mokėjimų platformą."
+---
+
+AgencyHandy integracijos su PayPal dėka jūsų klientai gali saugiai ir patogiai apmokėti sąskaitas faktūras be kredito kortelės. PayPal palaiko platų tarptautinių valiutų spektrą, todėl ši funkcija ypač naudinga agentūroms, kurių klientai yra kitose šalyse.
+
+<Note>
+  PayPal **negali** būti naudojamas papildomų pardavimų (upsell) mokėjimams dėl platformos lygio valiutos ir regioninių apribojimų. Papildomų pardavimų mokėjimams naudokite Stripe.
+</Note>
+
+<Note>
+  Tik **SuperAdmin** ir **Admin** vaidmenys gali prijungti arba valdyti PayPal integraciją. Prieš pradėdami, turite turėti aktyvią PayPal paskyrą.
+</Note>
+
+## Prijungti PayPal
+
+<Steps>
+  <Step title="Atidarykite PayPal integracijos nustatymus">
+    Prisijunkite prie AgencyHandy, tada kairiajame šoninėje juostoje eikite į **Integrations → PayPal Integration**.
+  </Step>
+
+  <Step title="Pradėkite prisijungimą">
+    Spustelėkite **Connect PayPal**. Būsite nukreipti į PayPal prisijungimo puslapį.
+  </Step>
+
+  <Step title="Suteikite prieigą AgencyHandy">
+    Prisijunkite prie savo PayPal paskyros ir peržiūrėkite prašomas teises. Spustelėkite **Allow** (arba **Grant**), kad suteiktumėte AgencyHandy prieigą prie savo paskyros.
+  </Step>
+
+  <Step title="Patvirtinkite prisijungimą">
+    Sėkmingai suteikus prieigą, PayPal jus nukreips atgal į AgencyHandy. Integracijos kortelėje pasirodys patvirtinimo pranešimas — **PayPal Connected**. Klientai dabar gali apmokėti sąskaitas faktūras naudodami PayPal.
+  </Step>
+</Steps>
+
+## Kaip klientai moka per PayPal
+
+Kai integracija yra aktyvi, bet kurioje išsiųstoje sąskaitoje faktūroje pasirodo mygtukas **Pay with PayPal**. Jūsų klientas paspaudžia mygtuką, prisijungia prie savo PayPal paskyros (arba moka kaip svečias, priklausomai nuo regiono) ir užbaigia mokėjimą. AgencyHandy automatiškai atnaujina sąskaitos faktūros būseną, kai PayPal patvirtina mokėjimą.
+
+## Palaikomos valiutos
+
+AgencyHandy palaiko šias valiutas PayPal mokėjimams:
+
+| Regionas | Valiutos |
+|---|---|
+| Amerikos žemynai | USD, CAD, BRL, MXN |
+| Europa | EUR, GBP, CHF, NOK, SEK, DKK, PLN, CZK, HUF |
+| Azijos ir Ramiojo vandenyno regionas | AUD, NZD, JPY, HKD, SGD, MYR, PHP, THB, TWD |
+| Vidurinioji rytai / Kita | ILS, CNY |
+
+<Warning>
+  Kai kurioms valiutoms taikomi apribojimai:
+  - **JPY** ir kelios kitos valiutos nepalaiko dešimtainių sumų — venkite sąskaitų faktūrų su trupmeninėmis sumomis.
+  - **BRL** galima naudoti tik Brazilijos PayPal paskyroms. Jei jūsų paskyra nėra Brazilijoje, BRL mokėjimai automatiškai konvertuojami į jūsų pagrindinę valiutą.
+  - Tam tikros valiutos prieinamos tik tos šalies paskyroms. Patikrinkite, ar jūsų paskyros saugojimo valiuta atitinka sąskaitos faktūros valiutą, kad išvengtumėte klaidų.
+</Warning>
+
+<Note>
+  PayPal taiko savo konvertavimo mokesčius ir skirtumus, kai vykdomas valiutos konvertavimas. Tai nekontroliuoja AgencyHandy.
+</Note>
+
+## Patikrinkite integraciją
+
+Prieš naudodami PayPal realiose klientų sąskaitose faktūrose, atlikite greitą patikrinimą:
+
+1. Sukurkite bandomąją sąskaitą faktūrą AgencyHandy naudodami [palaikomą valiutą](#palaikomos-valiutos).
+2. Išsiųskite sąskaitą faktūrą į antrinę PayPal paskyrą, kurią valdote jūs.
+3. Atlikite mokėjimą iš antrinės paskyros.
+4. Grįžkite į AgencyHandy ir patvirtinkite, kad sąskaitos faktūros būsena atnaujinta į **Paid** ir lėšos atsispindi jūsų PayPal paskyroje.

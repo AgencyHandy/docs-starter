@@ -1,0 +1,162 @@
+---
+title: "Facturation par abonnement et factures récurrentes dans AgencyHandy"
+sidebarTitle: "Abonnements"
+description: "Comment AgencyHandy gère la facturation récurrente par abonnement — factures automatisées, cycles de facturation, modes de paiement, annulations et liens de paiement Wise."
+---
+
+Le système de facturation par abonnement d'AgencyHandy vous permet d'automatiser l'ensemble du flux de revenus récurrents. Lorsqu'un client s'abonne à un service, la plateforme crée un ID d'abonnement, génère des commandes et émet des factures automatiquement à chaque cycle de facturation — qu'il soit quotidien, hebdomadaire, mensuel ou annuel. Vous restez aux commandes : vous pouvez consulter les détails des abonnements, suivre l'historique des paiements, gérer les paiements échoués et annuler des abonnements lorsque c'est nécessaire, le tout depuis AgencyHandy.
+
+## Comment fonctionne la facturation par abonnement
+
+Le cycle de vie d'un abonnement dans AgencyHandy suit six étapes clés.
+
+<Steps>
+  <Step title="Créer un service par abonnement">
+    Accédez à **Services** et cliquez sur **Create New Service**. Sélectionnez **Subscription** comme type de service.
+
+    Définissez :
+    - **Billing Cycle** — Quotidien, Hebdomadaire, Mensuel ou Annuel
+    - **Renewal Behavior** — Créer une nouvelle commande, Mettre à jour la commande existante, ou Conserver inchangé
+    - **Pricing & Payment Method** — PayPal, Stripe ou Manuel
+
+    Cliquez sur **Publish** pour rendre le service disponible.
+  </Step>
+  <Step title="Le client achète l'abonnement">
+    Le client sélectionne le service par abonnement, passe au paiement et choisit un mode de paiement.
+
+    AgencyHandy effectue automatiquement les actions suivantes :
+    - Crée un **ID d'abonnement**
+    - Génère une **commande**
+    - Émet une **facture**
+
+    Pour les paiements **PayPal ou Stripe**, la facture est marquée **Paid** instantanément. Pour le **paiement manuel**, la facture reste **Open** jusqu'à ce que l'agence confirme la réception.
+  </Step>
+  <Step title="Facturation récurrente automatisée">
+    À chaque date de renouvellement, AgencyHandy traite le paiement automatiquement (pour PayPal/Stripe) et génère la facture suivante.
+
+    Si le paiement réussit, la facture est marquée **Paid**. S'il échoue :
+    - La facture reste **Open**
+    - Le client reçoit une **notification de paiement échoué**
+    - L'agence reçoit une alerte pour réessayer ou demander des informations de paiement mises à jour
+  </Step>
+  <Step title="Gérer les abonnements actifs">
+    Accédez à **Subscription Management** dans la barre latérale gauche pour afficher tous les abonnements actifs et inactifs. Sélectionnez un abonnement pour voir tous ses détails.
+  </Step>
+  <Step title="Gérer les annulations">
+    Lorsque vous annulez un abonnement, vous pouvez choisir de :
+    - **Annuler complètement** — arrêter toute facturation et commande futures
+    - **Conserver la dernière commande active en cours** — laisser le client continuer à recevoir le service jusqu'à l'échéance de la période en cours
+
+    Pour supprimer entièrement un service, tous les abonnements actifs sur ce service doivent d'abord être annulés.
+  </Step>
+  <Step title="Notifications">
+    Le système envoie automatiquement :
+    - Des **rappels de renouvellement** avant la prochaine date de facturation
+    - Des **confirmations de paiement** après les prélèvements réussis
+    - Des **alertes de paiement échoué** au client et aux administrateurs de l'agence
+  </Step>
+</Steps>
+
+## Page de détails de l'abonnement
+
+La page de détails de l'abonnement vous donne une vue complète de tout abonnement individuel — du service et du forfait jusqu'à chaque facture et chaque entrée du journal d'événements.
+
+### Comment y accéder
+
+1. Accédez à **Subscriptions** dans la barre latérale gauche
+2. Cliquez sur n'importe quel abonnement de la liste pour ouvrir sa page de détails
+
+### Ce que vous pouvez voir
+
+<Tabs>
+  <Tab title="Informations sur l'abonnement">
+    - **Nom du service** et **nom du forfait**
+    - **Nom du client**
+    - **Cycle de facturation** (par exemple, Mensuel, Annuel)
+    - **Date de lancement** et **date de fin**
+    - **Statut** de l'abonnement (Actif ou Inactif)
+  </Tab>
+  <Tab title="Détails de paiement">
+    - **Frais d'abonnement**
+    - **Nombre total de paiements** effectués à ce jour
+    - **Mode de paiement** (Stripe, PayPal, Wise, virement bancaire manuel, etc.)
+    - **Date du prochain paiement**
+  </Tab>
+  <Tab title="Historique des commandes">
+    - **ID de commande**
+    - **Statut** (par exemple, Ongoing, Completed)
+    - **Date de lancement** et **date d'échéance** de chaque commande
+  </Tab>
+  <Tab title="Historique des factures">
+    - **ID de facture**
+    - **Montant**
+    - **Statut** (Open, Paid, etc.)
+    - **Date de paiement** et **date d'échéance**
+  </Tab>
+  <Tab title="Journaux d'événements">
+    Une piste d'audit chronologique de toutes les activités liées à l'abonnement — changements de statut, événements de paiement, annulations, et plus.
+  </Tab>
+</Tabs>
+
+<Note>
+  Un même abonnement peut avoir plusieurs commandes et factures liées. Les factures rattachées aux abonnements se mettent à jour dynamiquement lorsque les paiements sont reçus.
+</Note>
+
+## Prise en charge de Wise pour les factures d'abonnement manuelles
+
+Si vous encaissez des paiements internationaux, vous pouvez intégrer un **lien de paiement Wise** directement dans les factures d'abonnement. Cela offre aux clients un moyen pratique de payer sans avoir à configurer manuellement un virement bancaire.
+
+### Prérequis
+
+- Un compte AgencyHandy actif
+- Un **compte Wise** actif avec un lien de paiement valide généré
+
+### Étapes pour ajouter un lien Wise à une facture
+
+<Steps>
+  <Step title="Ouvrir la section Invoice">
+    Cliquez sur **Invoices** dans la barre latérale gauche, puis sur **+ Create Invoice**.
+  </Step>
+  <Step title="Sélectionner le client et la commande">
+    Choisissez le client dans la liste déroulante. Tous les ID de commande associés apparaîtront. Sélectionnez l'ID de commande pertinent et saisissez le montant et tous les éléments facturés.
+  </Step>
+  <Step title="Appliquer les remises et les taxes">
+    Ajoutez tout pourcentage de remise applicable, montant de remise, montant payé, montant dû et détails de TVA/taxe. Incluez l'adresse de facturation et les notes selon les besoins.
+  </Step>
+  <Step title="Ajouter le lien de paiement Wise">
+    Dans la section **Payment Method**, sélectionnez **Wise** comme option de paiement. Collez votre lien de paiement Wise dans le champ prévu à cet effet.
+  </Step>
+  <Step title="Enregistrer la facture">
+    Cliquez sur **Save** pour finaliser la facture. Le lien de paiement Wise apparaîtra dans la facture afin que le client puisse payer directement.
+  </Step>
+</Steps>
+
+<Tip>
+  Vérifiez toujours votre lien de paiement Wise et les totaux de la facture avant d'enregistrer. Assurez-vous que les détails de la commande, les remises et les informations fiscales sont exacts pour éviter les erreurs de facturation.
+</Tip>
+
+## Remarques importantes sur la facturation par abonnement
+
+<Accordion title="Qui peut annuler les abonnements ?">
+  Seuls les **Super Admins** et les **Admins** peuvent annuler des abonnements. Les clients ne peuvent pas annuler leurs propres abonnements — ils doivent demander l'annulation auprès de l'agence.
+</Accordion>
+
+<Accordion title="Les ID d'abonnement sont permanents">
+  Une fois un abonnement créé, son ID d'abonnement ne peut pas être modifié. Cela garantit un suivi cohérent tout au long de la durée de vie de l'abonnement.
+</Accordion>
+
+<Accordion title="Paiements échoués et création de commande">
+  Lorsqu'un paiement échoue, la facture reste Open et une nouvelle commande est créée pour la période échouée. Le statut de l'abonnement reste **Actif** jusqu'à ce qu'un administrateur réessaie manuellement le paiement ou annule l'abonnement.
+</Accordion>
+
+<Accordion title="Commandes à paiement manuel">
+  Si un client paie en dehors de Stripe ou PayPal (par exemple, par virement bancaire), l'administrateur doit marquer manuellement la facture comme **Paid** dans AgencyHandy. Le système ne le fait pas automatiquement pour les paiements manuels.
+</Accordion>
+
+<Accordion title="Tentatives de self-checkout non payées">
+  Si un client démarre un paiement d'abonnement mais ne le finalise pas, il reste dans le système en tant que **Lead** jusqu'à ce qu'il s'abonne avec succès.
+</Accordion>
+
+<Accordion title="Dates d'échéance des factures">
+  Les dates d'échéance des factures d'abonnement sont définies automatiquement en fonction du cycle de facturation que vous avez configuré (par exemple, les factures mensuelles sont dues un mois après la date de lancement).
+</Accordion>

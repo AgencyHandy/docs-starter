@@ -1,0 +1,201 @@
+---
+title: "API AgencyHandy: программное создание нового лида"
+sidebarTitle: "Создание лида"
+description: "Используйте API AgencyHandy для программного создания новых лидов, отправив POST-запрос на конечную точку bulk-lead с обязательными полями."
+---
+
+Конечная точка «Создание лида» позволяет программно добавлять новых лидов в ваше рабочее пространство AgencyHandy из любой внешней системы — веб-формы, CRM-системы, платформы автоматизации маркетинга или пользовательского скрипта. Лиды, созданные через эту конечную точку, немедленно появляются в вашей воронке продаж, как если бы они были добавлены вручную.
+
+<Note>
+  Перед использованием этой конечной точки выполните руководство [Начало работы](/ru/api/getting-started) для получения API-ключа и идентификатора компании. Вам также необходимо получить **идентификатор роли клиента**, который требуется при создании лида.
+</Note>
+
+## Предварительные требования
+
+- ✅ API-ключ, сгенерированный в разделе **Настройки рабочего пространства → API-ключ**
+- ✅ Идентификатор компании, полученный из `GET {{URL}}/accounts/companies`
+- ✅ Идентификатор роли клиента (см. Шаг 1 ниже)
+
+---
+
+## Шаг 1: Получите идентификатор роли клиента
+
+Перед созданием лида вам нужен идентификатор роли `client` в вашей компании.
+
+### Конечная точка
+
+```
+GET {{URL}}/roles?type=company
+```
+
+### Заголовки
+
+| Заголовок | Значение |
+|---|---|
+| `x-api-key` | Ваш API-ключ |
+| `companyid` | Ваш идентификатор компании |
+
+### Пример запроса
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/roles?type=company" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>"
+```
+
+### Пример ответа
+
+```json
+{
+  "roles": [
+    {
+      "_id": "6525994184e9ddd798534535",
+      "role": {
+        "_id": "6525994184e9ddd79853451e",
+        "responsibility": "",
+        "name": "client"
+      },
+      "company": "6525994184e9ddd79853450e",
+      "createdAt": "2023-10-10T18:34:41.567Z",
+      "updatedAt": "2024-10-01T07:28:48.340Z",
+      "__v": 0,
+      "type": "company"
+    }
+  ]
+}
+```
+
+Найдите запись, где `roles[0].role.name === "client"`, и извлеките **внешний** `_id` — это `roles[0]._id`, **а не** `roles[0].role._id`.
+
+```javascript
+const clientRoleId = roles.find(r => r.role.name === "client")._id;
+// e.g. "6525994184e9ddd798534535"
+```
+
+<Warning>
+  Используйте `roles[0]._id` (идентификатор сопоставления роли компании), **а не** `roles[0].role._id` (идентификатор определения роли). Использование неправильного идентификатора приведёт к сбою запроса на создание лида.
+</Warning>
+
+---
+
+## Шаг 2: Создайте нового лида
+
+### Конечная точка
+
+```
+POST {{URL}}/members/bulk-lead
+```
+
+### Заголовки
+
+| Заголовок | Значение |
+|---|---|
+| `x-api-key` | Ваш API-ключ |
+| `companyid` | Ваш идентификатор компании |
+| `Content-Type` | `application/json` |
+
+### Тело запроса
+
+Тело запроса представляет собой **массив JSON** — вы можете создать одного или нескольких лидов в одном вызове.
+
+<ParamField body="firstName" type="string" required>
+  Имя лида.
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  Фамилия лида.
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  Адрес электронной почты лида. Должен быть уникальным в пределах вашего рабочего пространства.
+</ParamField>
+
+<ParamField body="role" type="string" required>
+  Идентификатор роли клиента, полученный на Шаге 1 (т. е. `roles[0]._id`).
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  При создании лида должно быть установлено значение `false`. Установите `true` только при конвертации лида в полноценного клиента.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Статус лида в воронке продаж. Распространённые значения: `New`, `Contacted`, `Qualified`. По умолчанию используется `New`, если не указано.
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  Номер телефона лида.
+</ParamField>
+
+<ParamField body="source" type="string">
+  Источник привлечения лида. Примеры значений: `website`, `referral`, `social`.
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  Позиция (порядок) лида в столбце воронки продаж. По умолчанию `1`.
+</ParamField>
+
+### Пример запроса
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-lead" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "role": "6525994184e9ddd798534535",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+### Успешный ответ
+
+```json
+{
+  "message": "Lead created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  Строка подтверждения: `"Lead created successfully"`.
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  Массив созданных объектов лидов.
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  Уникальный идентификатор вновь созданного лида. Сохраните его, если вам нужно ссылаться на лида в последующих API-вызовах.
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  Полное имя лида (firstName + lastName).
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  Статус лида в воронке продаж в том виде, как он сохранён.
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  Название роли, назначенной участнику — будет `"client"`.
+</ResponseField>
+
+<Tip>
+  Вы можете передать несколько объектов лидов в массиве для создания нескольких лидов в одном API-вызове. Каждый объект должен содержать все обязательные поля с уникальным адресом электронной почты.
+</Tip>

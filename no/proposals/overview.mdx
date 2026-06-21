@@ -1,0 +1,217 @@
+---
+title: "Opprett og send tilbud til klienter i AgencyHandy"
+sidebarTitle: "Tilbud"
+description: "Bygg, tilpass og send profesjonelle tilbud i AgencyHandy — dekker tjenesteprisingg, pakker, klientaksept og automatisk ordreopprettelse."
+---
+
+AgencyHandy sitt tilbudsfunksjon gir deg en profesjonell, ende-til-ende arbeidsflyt for å gjøre henvendelser om til aktive prosjekter. Du kan bygge detaljerte tilbud med tjenester, pakker, tillegg, skatter og juridiske vilkår — og deretter sende dem til klienter eller leads direkte fra plattformen. Når en klient aksepterer, kan AgencyHandy automatisk opprette en ordre og faktura, og fjerne den manuelle frem-og-tilbake-kommunikasjonen som bremser avtaler.
+
+<Note>
+  Bare **superadministratorer** og **administratorer** kan opprette og sende tilbud. Prosjektledere kan se tilbud, men kan ikke sende dem.
+</Note>
+
+## Tilbudsdashbord
+
+For å åpne tilbudsdashbordet klikker du på **Tilbud** i venstre sidefelt. Dashbordet viser alle dine sendte og mottatte tilbud og viser:
+
+- **Status** — Utkast, Sendt, Akseptert eller Venter
+- **Opprettelsesdato**, **sendedato** og **utløpsdato**
+- **Visningsstatus** — om klienten har åpnet tilbudet
+- Handlingsmeny for å **redigere**, **sende**, **dele** eller **slette** hvert tilbud
+
+Du kan søke etter tilbud etter ID og filtrere eller sortere listen for å finne det du trenger raskt.
+
+## Opprette et tilbud
+
+Klikk **Opprett tilbud** for å åpne tilbudsbyggeren. Den er organisert i tre seksjoner: **Oversikt**, **Vilkår og betingelser** og **Oppsett**.
+
+### Oversikt
+
+Oversikt-seksjonen er der du bygger tilbudets innhold og prissetting.
+
+#### Tilbuds- og klientinformasjon
+
+Fyll inn følgende felt øverst i tilbudet:
+
+- **Tilbudsnavn** og **Tilbuds-ID**
+- **Klient eller lead** — støtter flere e-postadresser; merk én som Primær
+- **Selskapsnavn** og **Adresse** (land, delstat, by, postnummer, tilleggsdetaljer)
+- **Ansvarlig**, **Sendedato** og **Utløpsdato**
+
+#### Innholdsblokker
+
+Hver innholdsblokk bruker en innebygd redigerer slik at du kan tilpasse historien til hver klient:
+
+- **Introduksjon** — sett scenen og konteksten for engasjementet
+- **Om oss** — fremhev byråets kompetanse
+- **Hva du får** — definer omfang og leveranser tydelig
+- **Garanti** — beskriv eventuelle forsikringer eller forpliktelser
+
+#### Tilbud — tjenester, pakker, tillegg og skatter
+
+Tilbuds-seksjonen er der du konfigurerer prissetting.
+
+<Accordion title="Tjenester">
+  Legg til én eller flere tjenester i tilbudet. For hver tjeneste kan du:
+
+  - Velge en **pristype**: Engangsbetaling eller Abonnement
+  - Velge **tjenestevaluta** (forskjellige tjenester kan bruke forskjellige valutaer i samme tilbud)
+</Accordion>
+
+<Accordion title="Pakker">
+  Innen hver tjeneste legger du til eksisterende pakker eller oppretter nye på stedet. For hver pakke definerer du:
+
+  - Pakkenavn
+  - Mengde og pris per enhet
+  - Totalt beløp
+
+  Du kan fjerne pakker når som helst før sending.
+</Accordion>
+
+<Accordion title="Tillegg">
+  Knytt valgfrie tillegg til en tjeneste. Tillegg vises som ekstratjenester som klienter kan se ved siden av kjernetjenesteprisen. Du kan opprette nye tillegg direkte fra tilbudsbyggeren uten å forlate skjemaet.
+</Accordion>
+
+<Accordion title="Poster">
+  Legg til engangsposter med definert mengde og enhetspris. Poster er nyttige for ad hoc-kostnader som oppsettavgifter eller engangsleveranser.
+</Accordion>
+
+<Accordion title="Skattesatser">
+  Bruk eksisterende skattesatser eller opprett nye direkte fra tilbudet. Velg om hver skatt er **Eksklusiv** (lagt til på toppen av prisen) eller **Inklusiv** (allerede inkludert). Skatter beregnes per tjeneste.
+</Accordion>
+
+### Vilkår og betingelser
+
+Bruk seksjonen Vilkår og betingelser til å legge til tilbudsspesifikt juridisk språk. Inkluder kanselleringspolicyer, refusjonsvilkår, bruksrettigheter og andre betingelser som er relevante for engasjementet. Denne seksjonen bidrar til å sikre at begge parter forstår sine forpliktelser før aksept.
+
+### Oppsett
+
+Oppsett-seksjonen kontrollerer hva som skjer etter at tilbudet er sendt.
+
+<CardGroup cols={2}>
+  <Card title="Handling etter aksept" icon="bolt">
+    Velg hva AgencyHandy gjør når tilbudet aksepteres: **Gjør ingenting**, eller **Opprett ordre og faktura** automatisk.
+  </Card>
+  <Card title="Påminnelser" icon="bell">
+    Konfigurer påminnelsesvarsler for å minne klienter som ikke har svart innen utløpsdatoen.
+  </Card>
+  <Card title="Passordbeskyttelse" icon="lock">
+    Legg til et passord på den offentlige tilbudslenken slik at bare den tiltenkte mottakeren kan se det.
+  </Card>
+  <Card title="Kommentarer" icon="message">
+    Tillat klienter å legge igjen kommentarer på den offentlige tilbudsvisningen for enklere frem-og-tilbake-diskusjon.
+  </Card>
+</CardGroup>
+
+## Sende et tilbud
+
+Når som helst under opprettingen kan du lagre tilbudet som et **Utkast** eller **Forhåndsvise** det. Når det er klart, klikk **Send** for å levere det til klienten eller leadet.
+
+Etter sending:
+
+- En offentlig lenke genereres automatisk
+- Tilbudsstatusen oppdateres fra **Utkast** til **Sendt**
+- AgencyHandy sporer om klienten har sett tilbudet
+
+Fra tilbudets handlingsmeny kan du også sende på nytt, laste ned, dele den offentlige lenken, se kommentarer eller slette tilbudet.
+
+## Sende et tilbud med en bestemt pakke
+
+Hvis du vil sende et raskt tilbud knyttet direkte til en bestemt tjenestepakke, bruker du hurtigskjemaet **Opprett tilbud**:
+
+<Steps>
+  <Step title="Åpne Tilbud-seksjonen">
+    Naviger til **Tilbud** i venstre sidefelt og klikk **+ Opprett tilbud**.
+  </Step>
+  <Step title="Fyll ut tilbudsskjemaet">
+    Skriv inn **klientens navn** og velg **tjenesten**. Hvis tjenesten har flere pakker, vises de automatisk — velg den aktuelle.
+
+    Valgfritt, tildel en **leder** til tilbudet.
+  </Step>
+  <Step title="Legg til ordredetaljer">
+    Skriv en **Ordrebrifing** (obligatorisk) som beskriver hva klienten vil motta. Knytt eventuelle støttefiler opptil 1 GB.
+  </Step>
+  <Step title="Angi prissetting og vilkår">
+    Bekreft **pristypen** (engangsbetaling eller abonnement), angi **varighet**, **mengde**, **budsjett** og **valuta**. Legg til eventuelle **Vilkår og betingelser** som er relevante for tilbudet.
+  </Step>
+  <Step title="Opprett og send">
+    Klikk **Opprett** for å ferdigstille og sende tilbudet til klienten. Tilbudet vises i både din Sendt-liste og klientens Mottatt-seksjon.
+  </Step>
+</Steps>
+
+<Note>
+  Dobbeltsjekk den automatisk utfylte prissettingen og varigheten før du klikker Opprett. Når det er sendt, kan klienten akseptere, avvise eller laste ned tilbudet fra Mottatt-seksjonen sin.
+</Note>
+
+## Tilbudsstatusens livssyklus
+
+| Status | Betydning |
+|--------|---------|
+| **Utkast** | Tilbudet er opprettet, men ikke sendt ennå. |
+| **Sendt** | Tilbudet er levert til klienten eller leadet. |
+| **Venter** | Klienten har gjennomgått og sendt tilbudet tilbake for diskusjon. |
+| **Akseptert** | En av partene har formelt akseptert tilbudsvilkårene. En ordre opprettes automatisk hvis konfigurert. |
+| **Avvist** | En av partene har avvist tilbudet. Avsenderen mottar et varsel med begrunnelsen. |
+
+## Akseptere et tilbud
+
+Enten byrået eller klienten kan akseptere et mottatt tilbud. Når aksept skjer, oppretter AgencyHandy automatisk en ordre (hvis konfigurert i Oppsett).
+
+<Steps>
+  <Step title="Gå til Mottatte tilbud">
+    Klikk **Tilbud** i sidefeltet, og velg deretter **Mottatt**-fanen.
+  </Step>
+  <Step title="Åpne tilbudet">
+    Velg tilbudet du vil akseptere fra listen og gjennomgå detaljene.
+  </Step>
+  <Step title="Klikk Aksepter">
+    Klikk på **Aksepter**-knappen for å formelt akseptere tilbudet. Statusen oppdateres umiddelbart og begge parter varsles.
+  </Step>
+</Steps>
+
+<Note>
+  Hvis det er byrået som aksepterer, mottar superadministratorer og administratorer varsler. Hvis klienten aksepterer, varsler AgencyHandy byråets superadministrator- og administratorbrukere.
+</Note>
+
+## Avvise et tilbud
+
+Hvis de foreslåtte vilkårene, prissettingen eller omfanget ikke stemmer overens med dine krav, kan du avvise tilbudet og oppgi en begrunnelse.
+
+<Steps>
+  <Step title="Gå til Mottatte tilbud">
+    Naviger til **Tilbud → Mottatt**.
+  </Step>
+  <Step title="Velg og gjennomgå tilbudet">
+    Velg tilbudet du vil avvise og gjennomgå detaljene.
+  </Step>
+  <Step title="Klikk Avvis">
+    Klikk **Avvis** og bekreft beslutningen din. Tilbudsavsenderen mottar et varsel sammen med begrunnelsen du oppga.
+  </Step>
+</Steps>
+
+<Warning>
+  Avviste tilbud **kan ikke sendes på nytt**. Begge parter må opprette et nytt tilbud for å starte forhandlingene på nytt.
+</Warning>
+
+## Offentlig tilbudsvisning
+
+Når du sender et tilbud, mottar klienter en lenke til en offentlig visning der de kan:
+
+- Gjennomgå alle tjenester, prissetting, pakker og skatter
+- Akseptere eller avvise tilbudet
+- Legge igjen kommentarer (hvis kommentarer er aktivert)
+- Få tilgang til tilbudet sikkert med et passord (hvis passordbeskyttelse er aktivert)
+
+## Tilleggsnotater
+
+<Accordion title="Flere e-poster og leads">
+  Du kan legge til flere e-postadresser i ett enkelt tilbud og merke én som primærkontakt. Tilbud fungerer med både registrerte klienter og uregistrerte leads.
+</Accordion>
+
+<Accordion title="Automatisk genererte ordre og fakturaer">
+  Når du konfigurerer Oppsett-seksjonen til «Opprett ordre og faktura» ved aksept, genererer AgencyHandy automatisk den tilknyttede ordren og fakturaen i det øyeblikket et tilbud aksepteres — ingen manuelle trinn nødvendig.
+</Accordion>
+
+<Accordion title="Sporing av tilbudsaktivitet">
+  Hvert tilbud inkluderer et fullstendig aktivitetsspor. Du kan se når tilbudet ble opprettet, sendt, sett, akseptert eller avvist, alt fra inne i AgencyHandy.
+</Accordion>

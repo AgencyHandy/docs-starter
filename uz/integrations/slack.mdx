@@ -1,0 +1,69 @@
+---
+title: "Slack-ni ulang va AgencyHandy ogohlantirishlarini real vaqtda oling"
+sidebarTitle: "Slack"
+description: "Slack ish muhitingizni AgencyHandy bilan bog'lang, shunda buyurtma yangilanishlari, vazifa o'zgarishlari va tiket ogohlantirishlari avtomatik ravishda Slack kanaliga yuborilsin."
+---
+
+AgencyHandy-ning Slack integratsiyasi jamoangizni ilovalar o'rtasida almashinishni talab qilmasdan xabardor etib turadi. Ulanganidan so'ng, AgencyHandy vazifalar, buyurtmalar yoki boshqa ish muhiti faoliyatlari o'zgarganda tanlagan Slack kanalingizga avtomatik bildirishnomalar yuboradi — shunday qilib jamoangiz hamma narsadan real vaqtda xabardor bo'ladi.
+
+<Note>
+  Slack integratsiyasini faqat **SuperAdmin**, **Admin** va (integratsiya ruxsatnomalariga ega) **Manager** rollari ulashi yoki boshqarishi mumkin. Ulanishni tasdiqlash uchun Slack ish muhiti administrator huquqlariga ega bo'lishingiz kerak.
+</Note>
+
+## Slack-ni ulash
+
+<Steps>
+  <Step title="Integratsiyalarni oching">
+    Chap panelda **Integrations** tugmasini bosing.
+  </Step>
+
+  <Step title="Slack kartasini toping">
+    **Slack** kartasiga o'ting va **Connect** tugmasini bosing.
+  </Step>
+
+  <Step title="AgencyHandy-ni Slack-da tasdiqlang">
+    Slack tasdiqlash oynasi ochiladi. Agar Slack ish muhitingizga hali kirmagan bo'lsangiz, endi kiring. AgencyHandy so'ragan ruxsatlarni ko'rib chiqing va kirishga ruxsat berish uchun **Allow** tugmasini bosing.
+  </Step>
+
+  <Step title="Bildirishnoma kanalini tanlang">
+    Tasdiqdan so'ng, AgencyHandy bildirishnomalarini olishini xohlagan Slack kanalini tanlang. Ochiladigan ro'yxatdan kanal tanlang va tasdiqlash uchun **Save** tugmasini bosing.
+  </Step>
+
+  <Step title="Sozlamani tasdiqlang">
+    Slack kartasi **Connected** ko'rinishiga yangilanadi. AgencyHandy darhol tanlangan kanalga bildirishnomalar yuborishni boshlaydi.
+  </Step>
+</Steps>
+
+## Slack-ga qanday bildirishnomalar yuboriladi
+
+AgencyHandy quyidagi hodisalardan biri yuz berganda Slack xabari yuboradi:
+
+| Kategoriya | Bildirishnomani ishga tushiradigan hodisalar |
+|---|---|
+| **Vazifalar** | Vazifa yaratildi, yangilandi, tayinlandi yoki bajarildi |
+| **Buyurtmalar** | Buyurtma yaratildi yoki holati o'zgardi |
+| **Izohlar** | Vazifa yoki buyurtmaga yangi izoh qo'shildi |
+| **Fayl biriktirmalari** | Vazifaga fayl yoki biriktirma qo'shildi |
+| **Tiketlar** | Tiket yaratildi, tayinlandi yoki holati o'zgardi |
+
+Har bir Slack xabari quyidagilarni o'z ichiga oladi:
+
+- Vazifa, buyurtma yoki tiketning **nomi**
+- Xabarni ishga tushirgan **holat o'zgarishi** yoki harakat
+- AgencyHandy-dagi tegishli elementga **havola**
+
+Vazifaga fayl yoki biriktirma qo'shilganda, Slack xabari ushbu biriktirmaning ko'rinishini ham o'z ichiga oladi.
+
+<Tip>
+  Bildirishnomalarni tartibli saqlash va asosiy jamoa kanallarini to'ldirib yubormaslik uchun maxsus **#agency-handy-alerts** kanali (yoki shunga o'xshash) tanlang.
+</Tip>
+
+## Slack-ni uzish
+
+Bildirishnomalarni to'xtatish uchun **Integrations** ga qayting va Slack kartasidagi **Disconnect** tugmasini bosing. Barcha bildirishnomalar darhol to'xtatiladi.
+
+## Muhim eslatmalar
+
+- **Har bir ish muhiti uchun bitta ulanish** — har bir AgencyHandy ish muhitiga faqat bitta Slack ish muhitini ulash mumkin. Boshqa Slack ish muhitiga o'tish uchun mavjud ulanishni uzib, qayta ulang.
+- **Kanal ko'rinarliligi** — bildirishnomalar tanlangan Slack kanalidagi barcha foydalanuvchilarga ko'rinadi. Ulashiladigan ma'lumot darajasiga kanal mos kelishini tekshiring (masalan, mijozga oid buyurtma ma'lumotlarini ommaviy kanalga yuborishdan saqlaning).
+- **Qayta tasdiqlash** — agar Slack tokeningiz muddati tugasa yoki ruxsatlar o'zgarse, bildirishnomalarni tiklash uchun Integrations bo'limiga qayting va qayta ulang.

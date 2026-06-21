@@ -1,0 +1,217 @@
+---
+title: "Skapa och skicka offerter till klienter i AgencyHandy"
+sidebarTitle: "Offerter"
+description: "Bygg, anpassa och skicka professionella offerter i AgencyHandy — med tjänsteprissättning, paket, klientgodkännande och automatisk beställningsskapande."
+---
+
+AgencyHandy's offertfunktion ger dig ett professionellt, heltäckande arbetsflöde för att omvandla förfrågningar till aktiva projekt. Du kan bygga detaljerade offerter med tjänster, paket, tillägg, skatter och juridiska villkor — och sedan skicka dem till klienter eller leads direkt från plattformen. När en klient accepterar kan AgencyHandy automatiskt skapa en beställning och faktura, vilket eliminerar det manuella fram-och-tillbaka som bromsar affärer.
+
+<Note>
+  Endast **superadministratörer** och **administratörer** kan skapa och skicka offerter. Projektledare kan visa offerter men kan inte skicka dem.
+</Note>
+
+## Offertinstrumentpanel
+
+För att öppna offertinstrumentpanelen klickar du på **Proposals** i vänster sidopanel. Instrumentpanelen listar alla dina skickade och mottagna offerter och visar:
+
+- **Status** — Utkast, Skickat, Accepterat eller Väntande
+- **Skapandedatum**, **skickningsdatum** och **utgångsdatum**
+- **Visningsstatus** — om klienten har öppnat offerten
+- Åtgärdsmeny för att **redigera**, **skicka**, **dela** eller **ta bort** varje offert
+
+Du kan söka offerter efter ID och filtrera eller sortera listan för att snabbt hitta vad du behöver.
+
+## Skapa en offert
+
+Klicka på **Create Proposal** för att öppna offertbyggaren. Den är organiserad i tre avsnitt: **Overview**, **Terms & Conditions** och **Setup**.
+
+### Översikt
+
+Översiktsavsnittet är där du bygger offertens innehåll och prissättning.
+
+#### Offert- och klientinformation
+
+Fyll i följande fält längst upp i offerten:
+
+- **Proposal Name** och **Proposal ID**
+- **Client or Lead** — stöder flera e-postadresser; markera en som primär
+- **Company Name** och **Address** (land, delstat, stad, postnummer, ytterligare uppgifter)
+- **Assignee**, **Send Date** och **Expiry Date**
+
+#### Innehållsblock
+
+Varje innehållsblock använder en inbyggd redigerare så att du kan skräddarsy texten för varje klient:
+
+- **Introduction** — sätt scenen och kontexten för uppdraget
+- **About Us** — lyft fram din byrås expertis
+- **What You Get** — definiera omfattning och leveranser tydligt
+- **Guarantee** — beskriv eventuella garantier eller åtaganden
+
+#### Erbjudanden — tjänster, paket, tillägg och skatter
+
+Avsnittet Erbjudanden är där du konfigurerar prissättningen.
+
+<Accordion title="Tjänster">
+  Lägg till en eller flera tjänster i offerten. För varje tjänst kan du:
+
+  - Välja en **pristyp**: Engång eller Prenumeration
+  - Välja **tjänstvalutan** (olika tjänster kan använda olika valutor i samma offert)
+</Accordion>
+
+<Accordion title="Paket">
+  Inom varje tjänst lägger du till befintliga paket eller skapar nya direkt. För varje paket definierar du:
+
+  - Paketnamn
+  - Antal och pris per enhet
+  - Totalt belopp
+
+  Du kan ta bort paket när som helst innan offerten skickas.
+</Accordion>
+
+<Accordion title="Tillägg">
+  Bifoga valfria tillägg till valfri tjänst. Tillägg visas som extrafunktioner som klienter kan se tillsammans med kärnservicepriset. Du kan skapa nya tillägg direkt från offertbyggaren utan att lämna formuläret.
+</Accordion>
+
+<Accordion title="Poster">
+  Lägg till engångsposter med definierad kvantitet och enhetspris. Poster är användbara för ad hoc-kostnader som installationsavgifter eller engångsleveranser.
+</Accordion>
+
+<Accordion title="Skattesatser">
+  Tillämpa befintliga skattesatser eller skapa nya direkt från offerten. Välj om varje skatt är **Exklusiv** (läggs ovanpå priset) eller **Inklusiv** (redan inkluderad). Skatter beräknas per tjänst.
+</Accordion>
+
+### Villkor
+
+Använd avsnittet Villkor för att lägga till offertspecifikt juridiskt språk. Inkludera avbokningspolicyer, återbetalningsvillkor, användningsrättigheter och eventuella andra villkor som är relevanta för uppdraget. Det här avsnittet hjälper till att säkerställa att båda parter förstår sina skyldigheter innan godkännande.
+
+### Inställningar
+
+Inställningsavsnittet styr vad som händer efter att offerten har skickats.
+
+<CardGroup cols={2}>
+  <Card title="Åtgärd efter godkännande" icon="bolt">
+    Välj vad AgencyHandy gör när offerten godkänns: **Do Nothing**, eller **Create Order & Invoice** automatiskt.
+  </Card>
+  <Card title="Påminnelser" icon="bell">
+    Konfigurera påminnelseaviseringar för att puffa klienter som inte svarat innan utgångsdatumet.
+  </Card>
+  <Card title="Lösenordsskydd" icon="lock">
+    Lägg till ett lösenord till den offentliga offerttlänken så att bara den avsedda mottagaren kan se den.
+  </Card>
+  <Card title="Kommentarer" icon="message">
+    Tillåt klienter att lämna kommentarer på den offentliga offertvyn för enklare diskussion fram och tillbaka.
+  </Card>
+</CardGroup>
+
+## Skicka en offert
+
+När som helst under skapandet kan du spara offerten som ett **Utkast** eller **Förhandsgranska** den. När den är klar klickar du på **Send** för att leverera den till klienten eller leadet.
+
+Efter att ha skickat:
+
+- En offentlig länk genereras automatiskt
+- Offertstatusen uppdateras från **Draft** till **Sent**
+- AgencyHandy spårar om klienten har visat offerten
+
+Från offertens åtgärdsmeny kan du också skicka om, ladda ned, dela den offentliga länken, visa kommentarer eller ta bort offerten.
+
+## Skicka en offert med ett specifikt paket
+
+Om du vill skicka en snabb offert kopplad direkt till ett specifikt tjänstepaket, använder du genvägsformuläret **Create Proposal**:
+
+<Steps>
+  <Step title="Öppna offertavsnittet">
+    Navigera till **Proposals** i vänster sidopanel och klicka på **+ Create Proposal**.
+  </Step>
+  <Step title="Fyll i offertformuläret">
+    Ange **klientens namn** och välj **tjänsten**. Om tjänsten har flera paket visas de automatiskt — välj det lämpliga.
+
+    Tilldela eventuellt en **Chef** till offerten.
+  </Step>
+  <Step title="Lägg till beställningsuppgifter">
+    Skriv en **Order Brief** (obligatorisk) som beskriver vad klienten kommer att få. Bifoga eventuella stödfiler upp till 1 GB.
+  </Step>
+  <Step title="Ange prissättning och villkor">
+    Bekräfta **pristypen** (engång eller prenumeration), ange **löptid**, **antal**, **budget** och **valuta**. Lägg till eventuella **Villkor** som är relevanta för offerten.
+  </Step>
+  <Step title="Skapa och skicka">
+    Klicka på **Create** för att slutföra och skicka offerten till klienten. Offerten visas både i din lista över skickade och i klientens mottagna avsnitt.
+  </Step>
+</Steps>
+
+<Note>
+  Dubbelkolla den automatiskt ifyllda prissättningen och löptiden innan du klickar på Skapa. När den skickats kan klienten acceptera, avvisa eller ladda ned offerten från sitt mottagna avsnitt.
+</Note>
+
+## Offertstatusens livscykel
+
+| Status | Innebörd |
+|--------|---------|
+| **Draft** | Offerten har skapats men har inte skickats ännu. |
+| **Sent** | Offerten har levererats till klienten eller leadet. |
+| **Pending** | Klienten har granskat och skickat tillbaka offerten för diskussion. |
+| **Accepted** | Endera parten har formellt accepterat offertvillkoren. En beställning skapas automatiskt om detta är konfigurerat. |
+| **Rejected** | Endera parten har avvisat offerten. Avsändaren får en avisering med anledningen. |
+
+## Acceptera en offert
+
+Antingen byrån eller klienten kan acceptera en mottagen offert. När godkännandet sker skapar AgencyHandy automatiskt en beställning (om det är konfigurerat i Inställningar).
+
+<Steps>
+  <Step title="Gå till Mottagna offerter">
+    Klicka på **Proposals** i sidopanelen och välj sedan fliken **Received**.
+  </Step>
+  <Step title="Öppna offerten">
+    Välj offerten du vill acceptera från listan och granska dess uppgifter.
+  </Step>
+  <Step title="Klicka på Acceptera">
+    Klicka på knappen **Accept** för att formellt godkänna offerten. Statusen uppdateras omedelbart och båda parter meddelas.
+  </Step>
+</Steps>
+
+<Note>
+  Om byrån är den som accepterar får superadministratörer och administratörer aviseringar. Om klienten accepterar meddelar AgencyHandy byråns superadministratörs- och administratörsanvändare.
+</Note>
+
+## Avvisa en offert
+
+Om de föreslagna villkoren, prissättningen eller omfattningen inte uppfyller dina krav kan du avvisa offerten och ange en anledning.
+
+<Steps>
+  <Step title="Gå till Mottagna offerter">
+    Navigera till **Proposals → Received**.
+  </Step>
+  <Step title="Välj och granska offerten">
+    Välj offerten du vill avvisa och granska dess uppgifter.
+  </Step>
+  <Step title="Klicka på Avvisa">
+    Klicka på **Reject** och bekräfta ditt beslut. Offertavsändaren får en avisering tillsammans med anledningen du angav.
+  </Step>
+</Steps>
+
+<Warning>
+  Avvisade offerter **kan inte skickas om**. Båda parter måste skapa en ny offert för att återuppta förhandlingar.
+</Warning>
+
+## Offentlig offertvy
+
+När du skickar en offert får klienter en länk till en offentlig vy där de kan:
+
+- Granska alla tjänster, prissättning, paket och skatter
+- Acceptera eller avvisa offerten
+- Lämna kommentarer (om kommentarer är aktiverade)
+- Komma åt offerten säkert med ett lösenord (om lösenordsskydd är aktiverat)
+
+## Ytterligare anteckningar
+
+<Accordion title="Flera e-postadresser och leads">
+  Du kan lägga till flera e-postadresser till en enda offert och markera en som primär kontakt. Offerter fungerar med både registrerade klienter och oregistrerade leads.
+</Accordion>
+
+<Accordion title="Automatiskt genererade beställningar och fakturor">
+  När du konfigurerar avsnittet Inställningar till "Create Order & Invoice" vid godkännande genererar AgencyHandy automatiskt den länkade beställningen och fakturan i det ögonblick en offert accepteras — inga manuella steg krävs.
+</Accordion>
+
+<Accordion title="Spårning av offertaktivitet">
+  Varje offert inkluderar ett fullständigt aktivitetsspår. Du kan se när offerten skapades, skickades, visades, accepterades eller avvisades, allt inifrån AgencyHandy.
+</Accordion>

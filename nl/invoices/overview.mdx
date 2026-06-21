@@ -1,0 +1,100 @@
+---
+title: "Overzicht factuurbeheer voor AgencyHandy-bureaus"
+sidebarTitle: "Facturen"
+description: "Ontdek het facturatiesysteem van AgencyHandy — facturering, betalingsbeheer, terugkerende facturen, statussen, directe facturen en exports van financiële gegevens."
+---
+
+De factuurmodule van AgencyHandy geeft je bureau een volledig facturerings- en betalingsbeheersysteem binnen hetzelfde platform dat je gebruikt voor het beheren van klanten, orders en projecten. Je kunt professionele facturen aanmaken, deze per e-mail naar klanten sturen, de betaalstatus in realtime bijhouden, terugkerende facturering voor abonnementsdiensten automatiseren en je financiële gegevens exporteren wanneer je dat nodig hebt. Elke factuur wordt automatisch voorzien van het logo en adres van je bureau, zodat je communicatie consistent on-brand blijft.
+
+## Wie facturen kan aanmaken
+
+Alleen gebruikers met de volgende rollen kunnen facturen aanmaken en beheren:
+
+- **Super Admin**
+- **Admin**
+- **Projectmanager (PM)**
+
+Klanten kunnen facturen bekijken en downloaden, maar niet aanmaken of bewerken.
+
+## Factuurdashboard
+
+Om het Factuurdashboard te openen, klik je op **Facturen** in de linker zijbalk. Van hieruit kun je:
+
+- Facturen aanmaken, bewerken en verwijderen
+- Facturen zoeken op **klantnaam**, **order-ID** of **dienstnaam**
+- De factuurlijst filteren en sorteren
+- De factuurstatus in één oogopslag bekijken
+- Factuurinstellingen openen, inclusief prefixconfiguratie
+
+## Wat facturen doen
+
+<CardGroup cols={2}>
+  <Card title="Facturering & Invoicing" icon="file-invoice-dollar">
+    Maak professionele facturen aan en verstuur ze voor elke dienst of elk product dat je aan klanten levert, met volledige controle over bedragen, kortingen en vervaldatums.
+  </Card>
+  <Card title="Betalingsbeheer" icon="chart-line">
+    Volg of facturen zijn bekeken, betaald of achterstallig zijn. Het systeem registreert automatisch betaaldatums en nietigverklaringsdatums wanneer statuswijzigingen plaatsvinden.
+  </Card>
+  <Card title="Terugkerende facturering" icon="rotate">
+    Automatiseer het aanmaken van facturen voor abonnementsdiensten. AgencyHandy genereert en verstuurt terugkerende facturen bij elke factureringscyclus zonder handmatige tussenkomst.
+  </Card>
+  <Card title="Projectintegratie" icon="diagram-project">
+    Koppel facturen rechtstreeks aan orders en diensten zodat facturering altijd is verbonden aan het onderliggende werk. Factureerbare items kunnen nauwkeurig aan elke factuur worden toegevoegd.
+  </Card>
+</CardGroup>
+
+## Factuurstatussen
+
+Elke factuur doorloopt een gedefinieerde levenscyclus. Als je deze statussen begrijpt, kun je je debiteuren effectief beheren.
+
+| Status | Omschrijving |
+|--------|-------------|
+| **Concept** | De factuur is aangemaakt maar niet afgerond. Je kunt elk onderdeel bewerken. Zodra je klaar bent, rond je hem af door de status te wijzigen naar Open. Conceptfacturen die niet aan een abonnement zijn gekoppeld, kunnen worden verwijderd. |
+| **Open / Onbetaald** | De factuur is afgerond en wacht op betaling. Het bureau stuurt dit naar de klant, die het kan bekijken en betalen. Je kunt een Open factuur wijzigen naar Betaald, Nietig of Oninbaar. |
+| **Betaald** | De factuur is betaald. Het systeem registreert de betaaldatum automatisch wanneer je een factuur als Betaald markeert. |
+| **Nietig** | De factuur is geannuleerd. Het systeem registreert de nietigverklaringsdatum automatisch. |
+| **Oninbaar** | De klant zal waarschijnlijk niet betalen. Behandel dit als oninbare vordering in je boekhoudproces. |
+
+<Note>
+  Wanneer je een factuur naar een klant stuurt via de knop **Naar klant sturen**, verandert de status automatisch van **Concept** naar **Open**. Alleen het bureau kan de status wijzigen van Open naar Betaald, Nietig of Oninbaar.
+</Note>
+
+## Directe facturen (zonder order-ID)
+
+AgencyHandy ondersteunt **Directe facturen** — facturen die niet gekoppeld zijn aan een bestaande order. Dit is handig voor eenmalige facturering, ad-hocbetalingen of het factureren van contactpersonen die nog niet als klant in je systeem zijn geregistreerd.
+
+Belangrijkste mogelijkheden van Directe facturen:
+
+- Facturen versturen zonder een order-ID te selecteren
+- Elke bestaande klant factureren of **Onafhankelijk e-mailadres** gebruiken om naar elk e-mailadres te sturen
+- Items, belastingen en kortingen handmatig toevoegen
+- Onmiddellijk verzenden of opslaan als concept
+
+<Tip>
+  Gebruik Directe facturen wanneer je een klant snel wilt factureren voor werk dat geen formele order heeft in AgencyHandy, zoals spoedprojecten, adviesgesprekken of werk buiten de scope.
+</Tip>
+
+## Facturen exporteren
+
+Je kunt je factuurlijst exporteren voor gebruik in externe boekhoudprogramma's of voor archivering. De export bevat alle zichtbare kolommen: factuur-ID, klantnaam, dienst, bedragen, status en datums. Gebruik de exportoptie vanuit het Factuurdashboard.
+
+## Factuurinstellingen
+
+Configureer algemene factuurinstellingen via de knop **Instellingen** rechtsboven in het Factuurdashboard. Dit omvat:
+
+- **Factuurprefix** — pas het prefix aan dat voor elk factuurnummer verschijnt
+- **Herinneringssjablonen** — stel geautomatiseerde betalingsherinneringen in voor open facturen
+
+## Gerelateerde functies
+
+<CardGroup cols={3}>
+  <Card title="Factuur aanmaken" icon="plus" href="/nl/invoices/create-invoice">
+    Stapsgewijze handleiding voor het aanmaken, invullen en verzenden van een factuur.
+  </Card>
+  <Card title="Abonnementen" icon="rotate" href="/nl/invoices/subscriptions">
+    Hoe terugkerende facturering werkt en hoe je abonnementsfacturen beheert.
+  </Card>
+  <Card title="Ondersteuningstickets" icon="ticket" href="/nl/tickets/support-tickets">
+    Behandel vragen van klanten over facturering via het ondersteuningsticketssysteem.
+  </Card>
+</CardGroup>

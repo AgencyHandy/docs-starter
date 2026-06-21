@@ -1,0 +1,126 @@
+---
+title: "AgencyHandy Ishchi Maydoningizga Maxsus Domen Ulash"
+sidebarTitle: "Maxsus Domen"
+description: "DNS registratoringizda CNAME yozuvi qo'shish orqali o'zingizning pastki domeningizni (masalan, portal.yourcompany.com) AgencyHandy'ga ulang — kod talab qilinmaydi."
+---
+
+Odatda, AgencyHandy ishchi maydoningiz `agencyhandy.com` ostidagi pastki domendan foydalanib kirish mumkin. Maxsus domen ulash ushbu standart URL manzilini o'zingizning brendli manzilingiz bilan — masalan, `portal.youragency.com` — almashtirishga imkon beradi, bu esa mijozlarga ular tushgan birinchi sahifadan brendingizni mustahkamlaydigan muammosiz, professional tajriba beradi.
+
+<Note>
+  Faqat **Super Adminlar** va **Adminlar** maxsus domenni sozlay oladi. Ushbu sozlashni tugatish uchun domenge egalik qilishingiz va registratordagi DNS sozlamalariga kirish imkoniyatingiz bo'lishi kerak.
+</Note>
+
+---
+
+## Bu Qanday Ishlaydi
+
+AgencyHandy'ga maxsus domen qo'shsangiz, platforma sizga **CNAME yozuvi** beradi. Siz ushbu yozuvni registratordagi (GoDaddy, Namecheap, Cloudflare va boshqalar) domen DNS sozlamalariga qo'shasiz va DNS tarqalgandan so'ng AgencyHandy ulanishni tekshiradi.
+
+---
+
+## Bosqichma-Bosqich Sozlash
+
+<Steps>
+  <Step title="Maxsus Domen sozlamalarini oching">
+    AgencyHandy hisobingizga kiring. Chap panelda **Ishchi Maydon Konfiguratsiyasi** ga o'ting, keyin **Maxsus Domen** tugmasini bosing.
+  </Step>
+  <Step title="Maxsus domeningizni qo'shing">
+    **+ Maxsus Domen Qo'shish** tugmasini bosing. Paydo bo'lgan kiritish maydonida foydalanmoqchi bo'lgan pastki domenni kiriting — masalan, `portal.youragency.com`.
+
+    <Warning>
+      Pastki domen sifatida `www` **ishlatmang** (ya'ni, `www.youragency.com` dan saqlaning). `www` prefiksi konfiguratsiya ziddiyatlarini keltirib chiqarishi va muvaffaqiyatli tekshirishga to'sqinlik qilishi mumkin. Buning o'rniga `portal`, `client`, `app` yoki `hub` kabi boshqa pastki domendan foydalaning.
+    </Warning>
+  </Step>
+  <Step title="CNAME yozuvi ma'lumotlarini nusxa oling">
+    Domeningizni yuborganingizdan so'ng, AgencyHandy qo'shishingiz kerak bo'lgan DNS yozuvini ko'rsatadi:
+
+    | Maydon   | Qiymat                                          |
+    |---------|------------------------------------------------|
+    | **Tur**  | CNAME                                        |
+    | **Nom**  | Pastki domeningiz (masalan, `portal`)              |
+    | **Qiymat** | AgencyHandy tomonidan berilgan maqsad           |
+
+    Ushbu qiymatlarni diqqat bilan nusxa oling — ularni keyingi bosqichda kerak bo'ladi.
+  </Step>
+  <Step title="DNS registratoringizda CNAME yozuvini qo'shing">
+    Domen registratoringizning boshqaruv panelida (masalan, GoDaddy, Namecheap, Cloudflare) tizimga kiring. Domeningiz uchun DNS boshqaruvi bo'limiga o'ting va AgencyHandy'dan nusxa olingan Tur, Nom va Qiymatdan foydalanib CNAME yozuvini qo'shing.
+
+    Cloudflare uchun registratorga xos ko'rsatmalarni quyida ko'ring.
+  </Step>
+  <Step title="AgencyHandy'da domenni saqlang">
+    AgencyHandy'ga qayting va **Domenni Saqlash** tugmasini bosing. Holat dastlab **Uzilgan** ko'rinadi — bu DNS tarqalishi davomida kutilgan holat.
+  </Step>
+  <Step title="DNS tarqalishini kuting va tekshiring">
+    DNS o'zgarishlari, registratoringiz va TTL sozlamalaringizga qarab, global ravishda tarqalishi uchun bir necha daqiqadan **48 soatgacha** vaqt ketishi mumkin. Ulanish holatini tekshirish uchun vaqti-vaqti bilan **Yangilash** tugmasini bosing.
+
+    Tarqalish tugagandan so'ng, holat **Ulangan** ✅ ga o'zgaradi.
+  </Step>
+</Steps>
+
+<Warning>
+  DNS tarqalishi **48 soatgacha** davom etishi mumkin. Agar domeningiz 48 soatdan keyin ham **Uzilgan** ko'rinsa, CNAME yozuvi to'g'ri ekanligini va bir xil pastki domen uchun ziddiyatli DNS yozuvlari mavjud emasligini ikki marta tekshiring.
+</Warning>
+
+---
+
+## Cloudflare'ga Xos Ko'rsatmalar
+
+Agar domeningiz Cloudflare orqali boshqarilsa, to'g'ri sozlashingiz kerak bo'lgan muhim bitta sozlama mavjud:
+
+<Steps>
+  <Step title="Cloudflare'ga kiring va domeningizni tanlang">
+    [Cloudflare boshqaruv panelini](https://dash.cloudflare.com) oching va AgencyHandy'ga ulayotgan domenni bosing.
+  </Step>
+  <Step title="DNS sozlamalariga o'ting">
+    Domen sozlamalari panelining yuqori navigatsiyasida **DNS** yorlig'ini bosing.
+  </Step>
+  <Step title="CNAME yozuvini qo'shing">
+    **+ Yozuv Qo'shish** tugmasini bosing va maydonlarni to'ldiring:
+    - **Tur:** CNAME
+    - **Nom:** Pastki domeningiz (masalan, `portal`)
+    - **Maqsad/Kontent:** AgencyHandy tomonidan berilgan qiymat
+    - **TTL:** Dastlabki sozlash davomida **2 daqiqa** (yoki mavjud eng past opsiya) ga o'rnating
+  </Step>
+  <Step title="Cloudflare proksi-serverini o'chiring (muhim)">
+    **Proksi holati** ustunida, almashtirgich **Faqat DNS** ga o'rnatilganligiga ishonch hosil qiling (bulut belgisi to'q sariq emas, kulrang ko'rinishi kerak).
+
+    <Warning>
+      Agar Cloudflare proksi-serveri **yoqilgan** bo'lsa (to'q sariq bulut belgisi), CNAME yozuvi to'g'ri hal etilmaydi va AgencyHandy domeningizni tekshira olmaydi. Ulanish ishlashi uchun uni **Faqat DNS** ga o'rnatishingiz shart.
+    </Warning>
+  </Step>
+  <Step title="Yozuvni saqlang">
+    Barcha qiymatlarni aniqlik uchun ko'rib chiqing va **Saqlash** tugmasini bosing.
+  </Step>
+</Steps>
+
+<Tip>
+  CNAME yozuvingizning turli global mintaqalar bo'ylab tarqalishini kuzatish uchun [dnschecker.org](https://dnschecker.org) dan foydalaning. AgencyHandy ulanishni tasdiqlashini kutishdan oldin barcha mintaqalar bo'ylab yashil belgilarni izlang.
+</Tip>
+
+---
+
+## Ulanish Holatini Kuzatish
+
+Saqlashdan so'ng, holatni kuzatish uchun AgencyHandy'da **Ishchi Maydon Konfiguratsiyasi → Maxsus Domen** ga qayting:
+
+| Holat           | Ma'nosi                                                              |
+|------------------|----------------------------------------------------------------------|
+| **Uzilgan** | DNS yozuvi hali tarqalmagan yoki xato mavjud               |
+| **Ulangan**    | Domen tekshirilgan va faol — mijozlar maxsus URL orqali ishchi maydoningizga kira oladi |
+
+---
+
+## Maxsus Domenni Yangilash yoki O'chirish
+
+- **Domenni yangilash uchun:** Mavjud yozuvni o'chiring va yuqoridagi bir xil sozlash qadamlaridan foydalanib yangi domenni qo'shing.
+- **Domenni o'chirish uchun:** Maxsus Domen panelida domeningiz yonidagi **O'chirish** tugmasini bosing va o'chirishni tasdiqlang. Ishchi maydoningiz standart AgencyHandy URL manziliga qaytadi. Istalgan domenni istalgan vaqtda qayta qo'shishingiz mumkin.
+
+---
+
+## Muhim Eslatmalar
+
+- **Ildiz domen emas, pastki domen ishlating:** AgencyHandy maxsus domenlari pastki domenni talab qiladi (masalan, `portal.youragency.com`), ildiz/apex domenni emas (masalan, `youragency.com`).
+- **`www` dan saqlaning:** `www` pastki domeni tekshirish davomida muammolarga olib kelishi mumkin. Buning o'rniga maxsus pastki domen nomi ishlating.
+- **Aniq yozuvlar talab qilinadi:** CNAME Tur, Nom va Qiymatini AgencyHandy'da ko'rsatilganidek kiriting. Har qanday xato yoki yo'q belgi ulanishga to'sqinlik qiladi.
+- **Cloudflare proksi-serveri o'chirilishi shart:** AgencyHandy maxsus domen tekshiruvi uchun Cloudflare yozuvlarini doimo **Faqat DNS** ga o'rnating.
+- **Faqat admin kirishi:** Faqat Super Adminlar va Adminlar maxsus domen sozlamalarini qo'shish, o'zgartirish yoki o'chirish imkoniyatiga ega.

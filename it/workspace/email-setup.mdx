@@ -1,0 +1,188 @@
+---
+title: "Configura Email in Uscita, SMTP e Template Email"
+sidebarTitle: "Configurazione Email"
+description: "Configura un indirizzo email mittente personalizzato, connetti un server SMTP, aggiungi record DKIM/SPF per la consegnabilità e personalizza i template email in AgencyHandy."
+---
+
+La configurazione email di AgencyHandy ti permette di sostituire il mittente predefinito `noreply@agencyhandy.com` con il tuo indirizzo email con marchio, configurare un server SMTP dedicato per una consegna affidabile e personalizzare i template usati per le notifiche ai clienti, le fatture, le proposte e altro ancora. Impostare correttamente questi parametri garantisce che le tue email raggiungano la posta in arrivo dei clienti — e non la cartella spam — e che ogni messaggio rifletta l'identità della tua agenzia.
+
+<Note>
+  Solo i **Super Amministratori** e gli **Amministratori** possono configurare le impostazioni email. Vai su **Configurazione Workspace → Configurazione Email** per accedere a queste opzioni.
+</Note>
+
+---
+
+## Panoramica dei Componenti di Configurazione Email
+
+<CardGroup cols={2}>
+  <Card title="Indirizzo Email Personalizzato" icon="envelope">
+    Imposta il nome mittente e l'indirizzo email che i clienti vedono quando ricevono messaggi dal tuo workspace.
+  </Card>
+  <Card title="Record DKIM e SPF" icon="shield-check">
+    Aggiungi record DNS di autenticazione per dimostrare che le tue email sono legittime e impedire che vengano contrassegnate come spam.
+  </Card>
+  <Card title="Server SMTP" icon="server">
+    Connetti il tuo server di posta (es. Gmail, Outlook o un server di dominio personalizzato) per inviare tutte le email in uscita da AgencyHandy.
+  </Card>
+  <Card title="Template Email" icon="file-lines">
+    Personalizza il contenuto, le righe dell'oggetto e il branding per ogni email automatica che AgencyHandy invia ai clienti.
+  </Card>
+</CardGroup>
+
+---
+
+## Parte 1: Configurare un Indirizzo Email Personalizzato
+
+Prima di configurare l'email mittente, è necessario avere un dominio registrato con un servizio di email hosting. I provider più diffusi includono Google Workspace, Microsoft 365, Zoho Mail e Cloudflare Email Routing.
+
+<Steps>
+  <Step title="Registra un dominio e configura l'email hosting">
+    Se non l'hai ancora fatto, registra un dominio presso un registrar (es. GoDaddy, Namecheap, Cloudflare) e iscriviti a un provider di email hosting. Assicurati di poter creare e gestire indirizzi email su quel dominio (es. `hello@tuaagenzia.com`).
+  </Step>
+  <Step title="Vai a Configurazione Email in AgencyHandy">
+    Accedi ad AgencyHandy. Vai su **Configurazione Workspace** nella navigazione sinistra, poi clicca su **Configurazione Email**.
+  </Step>
+  <Step title="Inserisci il nome mittente e l'email">
+    Nel campo **Nome Mittente**, digita il nome che i clienti vedranno come mittente (es. `Supporto AgencyHandy` o il nome della tua agenzia). Nel campo **Email Mittente**, inserisci l'indirizzo email personalizzato (es. `hello@tuaagenzia.com`). Clicca su **Salva**.
+  </Step>
+  <Step title="Verifica il tuo indirizzo email">
+    AgencyHandy invia un link di verifica all'indirizzo email che hai inserito. Apri la tua casella di posta, trova il messaggio di verifica e clicca sul link per confermare la proprietà.
+  </Step>
+  <Step title="Configura i record DNS DKIM, SPF e DMARC">
+    Dopo aver salvato l'email mittente, AgencyHandy ti fornisce i record DNS da aggiungere:
+
+    - **Record SPF** (tipo TXT) — autorizza AgencyHandy a inviare email per conto del tuo dominio.
+    - **Record DKIM** (3 record CNAME) — aggiunge firme crittografiche alle email in uscita affinché i server riceventi possano verificarne l'autenticità.
+    - **Record DMARC** — definisce come i server destinatari devono gestire le email che non superano i controlli di autenticazione.
+
+    Aggiungi tutti questi record alle impostazioni DNS del tuo dominio presso il tuo registrar. Per i record CNAME DKIM, assicurati che lo **Stato del Proxy sia disabilitato** se utilizzi Cloudflare.
+  </Step>
+  <Step title="Conferma lo stato attivo">
+    Torna alla pagina di Configurazione Email in AgencyHandy. Una volta propagati tutti i record DNS (questo può richiedere da 2 minuti a 2 ore), lo stato dell'email si aggiorna da **In attesa** a mostrare un segno di spunta verde ✅. La tua email personalizzata è ora attiva.
+  </Step>
+</Steps>
+
+<Tip>
+  Usa [MXToolbox](https://mxtoolbox.com/DKIM.aspx) o il [Validatore DKIM di dmarcian](https://dmarcian.com/dkim-validator/) per verificare che i tuoi record DKIM siano configurati correttamente. Aggiorna periodicamente la pagina di Configurazione Email mentre aspetti la propagazione.
+</Tip>
+
+---
+
+## Parte 2: Configurare DKIM e SPF (Configurazione Autonoma)
+
+Se hai bisogno di generare o rigenerare i record DKIM e SPF in modo indipendente, segui questo percorso:
+
+**Configurazione Workspace → Email → Configurazione DKIM e SPF → Genera record DKIM e SPF.**
+
+Poi aggiungi i record al tuo DNS:
+
+| Tipo di Record | Tipo DNS | Cosa Configurare                                                                                      |
+|----------------|----------|-------------------------------------------------------------------------------------------------------|
+| SPF            | TXT      | Copia il **Nome** e il **Valore** da AgencyHandy e aggiungi un nuovo record TXT nel tuo DNS           |
+| DKIM (×3)      | CNAME    | Copia ogni coppia **Nome** e **Valore**; aggiungi 3 record CNAME separati con il proxy disabilitato   |
+
+<Note>
+  I record DKIM e SPF possono richiedere da **2 minuti a 2 ore** per propagarsi. Se lo stato mostra ancora "in attesa" dopo 2 ore, verifica che i record siano stati inseriti senza errori di battitura e che non esistano record in conflitto.
+</Note>
+
+---
+
+## Parte 3: Configurare SMTP
+
+SMTP (Simple Mail Transfer Protocol) ti consente di instradare tutte le email in uscita di AgencyHandy attraverso il tuo server di posta verificato, dandoti maggiore controllo sulla consegnabilità e sul branding.
+
+<Note>
+  Puoi utilizzare **Email con Dominio Personalizzato** oppure un **Provider Email SMTP** — non entrambi contemporaneamente. È possibile passare da uno all'altro in qualsiasi momento, ma sarà necessario reinserire la configurazione email quando si torna all'email personalizzata.
+</Note>
+
+<Steps>
+  <Step title="Apri le impostazioni del Server SMTP">
+    Vai su **Configurazione Workspace → Configurazione Email**, poi clicca su **Server SMTP**.
+  </Step>
+  <Step title="Passa al Provider SMTP (se necessario)">
+    Se hai già un'email personalizzata configurata, appare un popup di conferma che chiede se vuoi passare. Clicca su **Passa a SMTP** per procedere. Questo disabilita la configurazione email personalizzata esistente.
+  </Step>
+  <Step title="Inserisci le credenziali SMTP">
+    Compila i campi richiesti:
+
+    | Campo       | Valore Esempio         | Note                                                |
+    |-------------|------------------------|-----------------------------------------------------|
+    | Nome Host   | `smtp.gmail.com`       | L'indirizzo del server SMTP del tuo provider email  |
+    | Nome Utente | `tu@tuodominio.com`    | Il tuo indirizzo email completo                     |
+    | Password    | Password app           | Usa una password specifica per app (vedi sotto)     |
+    | Porta       | `465` o `587`          | 465 per SSL, 587 per TLS                            |
+    | TLS Auto    | Attiva/disattiva       | Opzionale — abilita l'aggiornamento TLS automatico  |
+
+    Clicca su **Salva** quando hai finito.
+  </Step>
+  <Step title="Genera una password app (esempio Gmail)">
+    Se stai utilizzando Gmail con l'autenticazione a 2 fattori abilitata (obbligatoria per le password app):
+
+    1. Vai su [myaccount.google.com/security](https://myaccount.google.com/security) e conferma che la verifica in 2 passaggi sia attiva.
+    2. Visita [myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords).
+    3. Clicca su **Seleziona app**, scegli **Posta** (o inserisci un nome personalizzato), poi clicca su **Seleziona dispositivo** e scegli la tua configurazione.
+    4. Clicca su **Crea** — Google genera una password app di 16 caratteri.
+    5. Copia la password e incollala nel campo **Password** nelle impostazioni SMTP di AgencyHandy.
+
+    <Warning>
+      Usa la **password app**, non la tua normale password dell'account Google. L'utilizzo della password normale fallirà se è abilitata la 2FA e potrebbe attivare avvisi di sicurezza.
+    </Warning>
+  </Step>
+  <Step title="Conferma la configurazione">
+    Dopo aver salvato, AgencyHandy mostra un messaggio di successo che conferma _"SMTP creato con successo."_ I dettagli del host, nome utente e porta salvati appaiono nella pagina delle impostazioni SMTP.
+  </Step>
+  <Step title="Testa la connessione SMTP">
+    Clicca sul pulsante **Test** e inserisci un indirizzo email destinatario. AgencyHandy invia un'email di test a quell'indirizzo. Controlla la posta in arrivo per il messaggio di conferma: _"Questa è una conferma che la configurazione email in Agency Handy funziona correttamente."_
+  </Step>
+</Steps>
+
+<Tip>
+  Solo una configurazione SMTP può essere attiva per workspace alla volta. Una volta configurato SMTP, tutte le email in uscita da AgencyHandy — fatture, proposte, notifiche dei task — verranno inviate tramite il tuo server SMTP.
+</Tip>
+
+---
+
+## Parte 4: Personalizzare i Template Email
+
+AgencyHandy include template predefiniti per ogni email automatica che invia. Puoi personalizzare ciascuno per adattarlo al tono del tuo brand e includere contenuti dinamici pertinenti.
+
+**I template disponibili includono:**
+- Registrazione Cliente
+- Invio Proposta
+- Revisione Task
+- Invio Fattura
+- Promemoria Fattura e Abbonamento
+- Notifiche Creazione Ticket
+
+<Steps>
+  <Step title="Apri i Template Email">
+    Vai su **Configurazione Workspace → Email**, poi seleziona **Template Email** dal sottomenu.
+  </Step>
+  <Step title="Seleziona un template da modificare">
+    Viene visualizzato l'elenco completo dei template disponibili. Clicca su qualsiasi template per aprire la sua pagina di configurazione.
+  </Step>
+  <Step title="Personalizza i campi del template">
+    Aggiorna i seguenti elementi secondo le necessità:
+    - **Email Mittente:** Scegli quale indirizzo email configurato invia questo template.
+    - **Oggetto:** Scrivi un oggetto chiaro e conciso.
+    - **Corpo:** Modifica il contenuto del messaggio per adattarlo al tono e alla comunicazione della tua agenzia.
+    - **Variabili Dinamiche:** Inserisci segnaposto come `{{client_name}}`, `{{company_name}}` o `{{invoice_id}}` per popolare automaticamente i dati specifici del cliente.
+    - **Link Social Media:** Aggiungi link ai profili social della tua agenzia per favorire il coinvolgimento.
+  </Step>
+  <Step title="Invia un'email di test">
+    Clicca su **Invia Test** per inviare un'anteprima del template alla tua casella di posta. Verifica la formattazione, il contenuto e che tutte le variabili dinamiche si risolvano correttamente.
+  </Step>
+  <Step title="Salva le modifiche">
+    Clicca su **Salva Modifiche** per applicare il template aggiornato. La nuova versione verrà utilizzata per tutte le future email automatiche corrispondenti a quel tipo di template.
+  </Step>
+</Steps>
+
+---
+
+## Note Importanti
+
+- **SMTP ed email personalizzata sono mutualmente esclusivi.** Solo un metodo può essere attivo alla volta per workspace.
+- **Reinserisci l'email al cambio.** Se passi da SMTP a una configurazione di email personalizzata, devi reinserire le credenziali della tua email personalizzata.
+- **Credenziali SMTP errate bloccano tutte le email in uscita.** Ricontrolla il nome host, la porta, il nome utente e la password se le email smettono di essere inviate dopo una modifica SMTP.
+- **La propagazione DKIM/SPF richiede tempo.** Attendi fino a 2 ore e aggiorna la pagina di Configurazione Email prima di concludere che c'è un errore.
+- **Le variabili dinamiche distinguono le maiuscole.** Usale esattamente come mostrato nell'editor del template per garantire che vengano popolate correttamente.

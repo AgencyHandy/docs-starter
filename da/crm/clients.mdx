@@ -1,0 +1,218 @@
+---
+title: "Klientadministration: Profiler, import og konfiguration"
+sidebarTitle: "Klienter"
+description: "Opret og importer klientprofiler i AgencyHandy, spor ordrer og fakturaer, administrer portaladgang, og organiser klienter med kategorier."
+---
+
+Sektionen Klienter i AgencyHandy's CRM er dit centrale knudepunkt for alle organisationer eller enkeltpersoner, der er gået forbi prospektfasen. Her kan du oprette klientprofiler manuelt eller i bulk, holde kontaktoplysninger opdateret, spore seneste ordrer og fakturaer, segmentere klienter i tilpassede kategorier og overvåge portaladgang — alt fra én listevisning.
+
+<Note>
+  Du skal have en rolle som **Super Admin** eller **Admin** for at oprette, redigere, importere eller konfigurere klientprofiler. Managers kan se klientoplysninger og aktivitetslogs.
+</Note>
+
+## Oprettelse af en klientprofil
+
+Når du onboarder en ny klient, opretter AgencyHandy en portalkonto til dem og sender en sikker logininvitation.
+
+<Steps>
+  <Step title="Naviger til Klienter">
+    Log ind på din AgencyHandy-konto, klik derefter på **CRM** i venstre sidebjælke og vælg fanen **Klienter**.
+  </Step>
+  <Step title="Åbn oprettelsesformularen">
+    Klik på **+ Opret klient** øverst til højre. En formular åbnes.
+  </Step>
+  <Step title="Indtast klientoplysninger">
+    Udfyld klientens oplysninger:
+
+    - **Fornavn / Efternavn** *(obligatorisk)*
+    - **E-mail** *(obligatorisk — bruges til at sende portalinvitationen)*
+    - **Firmanavn**
+    - **Telefonnummer**
+    - **Land, Stat, By, Postnummer**
+    - **Kategori** — tildel en eksisterende konfigurationskategori, hvis det er relevant
+  </Step>
+  <Step title="Gem profilen">
+    Klik på **Opret**. Profilen tilføjes øjeblikkeligt til din klientliste.
+  </Step>
+</Steps>
+
+<Note>
+  Når du har oprettet profilen, modtager klienten en e-mail med en sikker login-URL. Ved at klikke på den URL aktiveres deres portalkonto, og de kan logge ind for første gang.
+</Note>
+
+## Import af klienter fra CSV
+
+Hvis du migrerer fra en anden platform eller har et regneark med eksisterende klienter, kan du importere dem alle på én gang.
+
+<Steps>
+  <Step title="Klik på Importer">
+    Fra klientlisten klikker du på knappen **Importer** øverst til højre.
+  </Step>
+  <Step title="Upload din CSV-fil">
+    Træk og slip din fil på uploadområdet, eller klik for at gennemse og vælge den. AgencyHandy accepterer CSV-filer med følgende felter:
+
+    - Klientnavn *(påkrævet)*
+    - E-mail *(påkrævet)*
+    - Firmanavn
+    - Land
+    - Stat
+    - By
+    - Postnummer
+  </Step>
+  <Step title="Kortlæg dine kolonner">
+    AgencyHandy registrerer automatisk kolonnenavne, der matcher dets feltnavne. For eventuelle uoverensstemmende kolonner skal du bruge rullemenuerne til manuelt at kortlægge dem til de korrekte systemfelter.
+  </Step>
+  <Step title="Forhåndsvis og bekræft">
+    Gennemgå forhåndsvisningtabellen for at fange eventuelle formateringsproblemer, inden dataene gemmes.
+  </Step>
+  <Step title="Afslut importen">
+    Klik på **Gem**. En bekræftelsesbesked vises, når alle poster er importeret.
+  </Step>
+</Steps>
+
+<Tip>
+  Hvis dine regnearkskolonneoverskrifter nøjagtigt matcher AgencyHandy's feltnavne (f.eks. "email", "company name"), udfyldes mapperen automatisk — ingen manuel matchning er påkrævet.
+</Tip>
+
+## Eksport af klienter
+
+Sikkerhedskopiér din klientdatabase eller del den med interessenter ved at eksportere til CSV eller Excel.
+
+<Steps>
+  <Step title="Klik på Eksporter">
+    Fra klientlisten klikker du på knappen **Eksporter** øverst til højre.
+  </Step>
+  <Step title="Tilpas din eksport">
+    Vælg hvilke kolonner der skal inkluderes — vælg **Alle kolonner** for en komplet eksport, eller vælg specifikke felter som navn, kontaktoplysninger, firma eller adresse.
+  </Step>
+  <Step title="Vælg et format">
+    Vælg **CSV** eller **XLSX** afhængigt af dit tilsigtede brug.
+  </Step>
+  <Step title="Download filen">
+    Klik på **Eksporter**. Filen genereres og downloades til din enhed. Gem den sikkert for at beskytte klientdata.
+  </Step>
+</Steps>
+
+## Redigering af en klientprofil
+
+<Steps>
+  <Step title="Vælg klienten">
+    I klientlisten klikker du på afkrydsningsfeltet ved siden af den klient, du vil opdatere, eller klikker direkte på deres navn for at åbne deres profil.
+  </Step>
+  <Step title="Gå til redigeringstilstand">
+    Klik på knappen **Rediger** øverst til højre i klientprofilen. En redigeringsformular vises.
+  </Step>
+  <Step title="Opdater oplysningerne">
+    Ændr eventuelle felter — navn, e-mail, telefon, adresse, firma eller kategori.
+  </Step>
+  <Step title="Gem dine ændringer">
+    Klik på **Opdater**. En bekræftelsesbesked bekræfter, at profilen er gemt.
+  </Step>
+</Steps>
+
+## Søgning, sortering og filtrering
+
+Klientlisten giver dig flere værktøjer til hurtigt at finde den rigtige klient:
+
+<CardGroup cols={2}>
+  <Card title="Søg efter navn" icon="magnifying-glass">
+    Skriv en klients navn i søgefeltet for øjeblikkeligt at filtrere listen.
+  </Card>
+  <Card title="Filtrer efter firma" icon="building">
+    Indsnævr listen til klienter tilknyttet et bestemt firma.
+  </Card>
+  <Card title="Filtrer efter e-mail" icon="envelope">
+    Find en klient, når du kender deres e-mailadresse, men ikke deres navn.
+  </Card>
+  <Card title="Filtrer efter status" icon="circle-check">
+    Vis kun aktive, inaktive eller inviterede klienter.
+  </Card>
+  <Card title="Sortér alfabetisk" icon="arrow-down-a-z">
+    Sortér den fulde klientliste A–Å eller Å–A efter navn for hurtig reference.
+  </Card>
+  <Card title="Filtrer efter kategori" icon="tag">
+    Vis kun klienter tildelt en bestemt konfigurationskategori.
+  </Card>
+</CardGroup>
+
+## Sporing af klientaktivitet
+
+Inde i hver klientprofil finder du faner, der giver dig et live-billede af den pågældende klients engagement med dit bureau:
+
+<Accordion title="Seneste ordrer">
+  Se en historik over alle ordrer afgivet af klienten, herunder ydelsesnavn, pakke, status og dato. Dette giver dig et hurtigt overblik over deres indkøbshistorik uden at forlade CRM-systemet.
+</Accordion>
+
+<Accordion title="Seneste tickets">
+  Se alle support- eller servicetickets indsendt af klienten. Brug denne visning til at prioritere svar og sikre, at ingen anmodning falder igennem.
+</Accordion>
+
+<Accordion title="Seneste fakturaer">
+  Tilgå en log over alle fakturaer genereret for klienten, herunder betalingsstatus. Dette hjælper dig med at overvåge udestående saldi og fakturahistorik på ét sted.
+</Accordion>
+
+## Klientkonfiguration (kategorier)
+
+Klientkonfiguration lader dig oprette farvekodede kategorier til at segmentere din klientliste — for eksempel *Høj prioritet*, *Retainer* eller *I bero*. Kategorier vises som filterindstillinger på klientlisten, så du øjeblikkeligt kan finde den rette gruppe.
+
+<Steps>
+  <Step title="Åbn Konfiguration">
+    Fra sektionen Klienter klikker du på knappen **Konfiguration**.
+  </Step>
+  <Step title="Opret en ny kategori">
+    Klik på **+ Opret kategori**.
+  </Step>
+  <Step title="Indtast kategoridetaljer">
+    - **Kategorinavn** — en unik, beskrivende etiket (f.eks. *Virksomhedsklienter*)
+    - **Kort beskrivelse** — en kort note, der forklarer kategoriens formål
+    - **Farve** — vælg en tydelig farve for hurtig visuel genkendelse
+  </Step>
+  <Step title="Gem kategorien">
+    Klik på **Opret**. Kategorien er nu tilgængelig til at tildele ved redigering af klientprofiler.
+  </Step>
+  <Step title="Tildel klienter til kategorien">
+    Åbn en klientprofil, klik på **Rediger**, vælg feltet **Kategori**, og vælg den relevante kategori. Klik på **Opdater** for at gemme.
+  </Step>
+</Steps>
+
+<Tip>
+  Brug konsekvente farvekonventioner på tværs af kategorier — for eksempel rød for klienter med høj prioritet og grøn for fuldt onboardede konti — for at gøre listen let at scanne med et øjeblik.
+</Tip>
+
+## Klientaktivitetslog
+
+Aktivitetsloggen registrerer alle login- og logouthændelser for en klients portalkonto og giver dig et klart revisionssspor over deres engagement.
+
+**Sådan ser du loggen:**
+
+1. Gå til **Klienter**, og åbn en bestemt klients profil.
+2. Klik på fanen **Aktivitetslog** i profilens øverste navigationslinje.
+3. Gennemgå den kronologiske liste over godkendelseshændelser.
+
+**Hvad loggen viser:**
+
+- Nøjagtig dato og tidsstempel for hvert **login**
+- Nøjagtig dato og tidsstempel for hvert **logout**
+- En løbende historik over alle godkendelseshændelser
+
+Loggen opdateres i realtid og kan ikke redigeres eller slettes. Klienter har ikke adgang til deres egen aktivitetslog — den er kun til administrativt og compliance-brug.
+
+<Note>
+  På nuværende tidspunkt registrerer aktivitetsloggen kun godkendelseshændelser (login og logout). Handlinger foretaget inden for portalen — såsom visning af ordrer — logges endnu ikke her.
+</Note>
+
+## Afsendelse af e-mail til en klient
+
+Du kan sende en e-mail til enhver klient direkte fra deres profil uden at forlade AgencyHandy. Åbn klientens profil og brug indstillingen **E-mail** til at skrive din besked. Feltet **Til** er forudfyldt med klientens e-mailadresse.
+
+## Klientimitering
+
+Admins kan imitere en klientkonto for at se præcis, hvad klienten ser i deres portal — nyttigt til fejlfinding af adgangsproblemer eller til at guide en klient gennem en proces under et supportopkald. Se efter indstillingen **Imiter** inde i klientens profil.
+
+<Warning>
+  Brug imitering kun til supportformål. Alle handlinger foretaget under imitering af en klient udføres på deres vegne og afspejles i deres konto.
+</Warning>
+
+## Firmakonti (B2B)
+
+Hvis du arbejder med virksomheder frem for enkeltpersoner, kan du angive et **Firmanavn** på enhver klientprofil for at gruppere kontakter under den samme organisation. Klientlisten kan filtreres efter firma, hvilket gør det nemt at se alle kontakter hos en given konto samlet.

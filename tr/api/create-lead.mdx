@@ -1,0 +1,201 @@
+---
+title: "AgencyHandy API: Programatik Olarak Yeni Lead Oluşturun"
+sidebarTitle: "Lead Oluştur"
+description: "Gerekli alanlarla bulk-lead uç noktasına bir POST isteği göndererek AgencyHandy API'sini kullanarak programatik biçimde yeni lead'ler oluşturun."
+---
+
+Lead Oluştur uç noktası, harici herhangi bir sistemden — web formu, CRM, pazarlama otomasyon platformu veya özel bir komut dosyası — AgencyHandy çalışma alanınıza programatik olarak yeni lead'ler eklemenizi sağlar. Bu uç nokta aracılığıyla oluşturulan lead'ler, tıpkı manuel olarak eklenmiş gibi anında lead hattınızda görünür.
+
+<Note>
+  Bu uç noktayı kullanmadan önce API anahtarınızı ve Şirket Kimliğinizi edinmek için [Başlarken](/tr/api/getting-started) rehberini tamamlayın. Ayrıca lead oluştururken gerekli olan **Müşteri Rol Kimliğini** de almanız gerekmektedir.
+</Note>
+
+## Ön koşullar
+
+- ✅ **Çalışma Alanı Yapılandırması → API Anahtarı** bölümünden oluşturulan API anahtarı
+- ✅ `GET {{URL}}/accounts/companies` ile alınan Şirket Kimliği
+- ✅ Müşteri Rol Kimliği alındı (aşağıdaki 1. Adım'a bakın)
+
+---
+
+## 1. Adım: Müşteri Rol Kimliğini alın
+
+Lead oluşturmadan önce şirketinizdeki `client` rolünün Rol Kimliğine ihtiyacınız vardır.
+
+### Uç nokta
+
+```
+GET {{URL}}/roles?type=company
+```
+
+### Başlıklar
+
+| Başlık | Değer |
+|---|---|
+| `x-api-key` | API anahtarınız |
+| `companyid` | Şirket Kimliğiniz |
+
+### Örnek istek
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/roles?type=company" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>"
+```
+
+### Örnek yanıt
+
+```json
+{
+  "roles": [
+    {
+      "_id": "6525994184e9ddd798534535",
+      "role": {
+        "_id": "6525994184e9ddd79853451e",
+        "responsibility": "",
+        "name": "client"
+      },
+      "company": "6525994184e9ddd79853450e",
+      "createdAt": "2023-10-10T18:34:41.567Z",
+      "updatedAt": "2024-10-01T07:28:48.340Z",
+      "__v": 0,
+      "type": "company"
+    }
+  ]
+}
+```
+
+`roles[0].role.name === "client"` olan girişi bulun ve **dış** `_id`'yi çıkarın — bu `roles[0]._id`'dir, `roles[0].role._id` **değil**.
+
+```javascript
+const clientRoleId = roles.find(r => r.role.name === "client")._id;
+// e.g. "6525994184e9ddd798534535"
+```
+
+<Warning>
+  `roles[0]._id`'yi (şirket-rol eşleme kimliği) kullanın, `roles[0].role._id`'yi (rol tanım kimliği) **değil**. Yanlış kimlik kullanılması lead oluşturma isteğinin başarısız olmasına neden olur.
+</Warning>
+
+---
+
+## 2. Adım: Yeni lead oluşturun
+
+### Uç nokta
+
+```
+POST {{URL}}/members/bulk-lead
+```
+
+### Başlıklar
+
+| Başlık | Değer |
+|---|---|
+| `x-api-key` | API anahtarınız |
+| `companyid` | Şirket Kimliğiniz |
+| `Content-Type` | `application/json` |
+
+### İstek gövdesi
+
+İstek gövdesi bir **JSON dizisidir** — tek bir çağrıda bir veya daha fazla lead oluşturabilirsiniz.
+
+<ParamField body="firstName" type="string" required>
+  Lead'in adı.
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  Lead'in soyadı.
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  Lead'in e-posta adresi. Çalışma alanınızda benzersiz olmalıdır.
+</ParamField>
+
+<ParamField body="role" type="string" required>
+  1. Adım'da alınan Müşteri Rol Kimliği (yani `roles[0]._id`).
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  Lead oluştururken `false` olarak ayarlanmalıdır. Yalnızca bir lead'i tam müşteriye dönüştürürken `true` olarak ayarlayın.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Lead'in hattaki durumu. Yaygın değerler: `New`, `Contacted`, `Qualified`. Belirtilmezse varsayılan olarak `New` kullanılır.
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  Lead'in telefon numarası.
+</ParamField>
+
+<ParamField body="source" type="string">
+  Bu lead'i nasıl edindiğiniz. Örnek değerler: `website`, `referral`, `social`.
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  Lead'in hat sütunundaki konumu (sırası). Varsayılan olarak `1` kullanılır.
+</ParamField>
+
+### Örnek istek
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-lead" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "role": "6525994184e9ddd798534535",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+### Başarı yanıtı
+
+```json
+{
+  "message": "Lead created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  Onay dizesi: `"Lead created successfully"`.
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  Oluşturulan lead nesnelerinin dizisi.
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  Yeni oluşturulan lead'in benzersiz kimliği. Sonraki API çağrılarında lead'e başvurmanız gerekiyorsa bunu saklayın.
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  Lead'in tam adı (firstName + lastName).
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  Kaydedildiği şekliyle lead'in hat durumu.
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  Üyeye atanan rol adı — `"client"` olacaktır.
+</ResponseField>
+
+<Tip>
+  Tek bir API çağrısında birden fazla lead oluşturmak için diziye birden fazla lead nesnesi iletebilirsiniz. Her nesne, kendine özgü benzersiz e-posta adresiyle birlikte tüm zorunlu alanları içermelidir.
+</Tip>

@@ -1,0 +1,235 @@
+---
+title: "Izveidot, nosūtīt un pārvaldīt klientu rēķinus AgencyHandy"
+sidebarTitle: "Izveidot rēķinu"
+description: "Soli pa solim — rēķina izveide AgencyHandy: izvēlieties klientu, iestatiet summas, pievienojiet piezīmes, nosūtiet klientam un konfigurējiet maksājumu atgādinājumus."
+---
+
+Rēķina izveide AgencyHandy ir vienkāršs process, kas tieši sasaista jūsu norēķinus ar klientiem un pasūtījumiem. Jūs aizpildāt klientu, piesaistāt pasūtījumu, iestatāt summas, pievienojat piezīmes un nosūtāt — viss no vienas formas. Pēc nosūtīšanas varat izsekot maksājumu statusu, iestatīt automātiskus atgādinājumus un jebkurā laikā lejupielādēt rēķinu kā PDF.
+
+<Note>
+  Lai izveidotu rēķinus, jums jābūt **Super administratoram**, **Administratoram** vai **Projektu vadītājam**. Pirms rēķina ģenerēšanas jūsu darbvietā jābūt vismaz vienam klientam.
+</Note>
+
+## Rēķina prefiksa iestatījumi
+
+Pirms sākat veidot rēķinus, apsveriet iespēju konfigurēt rēķina prefiksu. Prefikss parādās pirms katra rēķina numura un palīdz identificēt rēķinus kā piederošus jūsu aģentūrai.
+
+<Steps>
+  <Step title="Atveriet rēķinu iestatījumus">
+    Rēķinu panelī noklikšķiniet uz pogas **Iestatījumi** augšējā labajā stūrī.
+  </Step>
+  <Step title="Iestatiet prefiksu">
+    Pārejiet uz lauku **Rēķina prefikss** un ievadiet vēlamo prefiksu (piemēram, `INV-` vai jūsu aģentūras iniciāļi).
+  </Step>
+  <Step title="Saglabāt">
+    Noklikšķiniet uz **Saglabāt**, lai piemērotu prefiksu visiem turpmākajiem rēķiniem.
+  </Step>
+</Steps>
+
+## Rēķina izveide
+
+<Steps>
+  <Step title="Atveriet rēķinu paneli">
+    Kreisajā sānjoslā noklikšķiniet uz **Rēķini**, lai atvērtu rēķinu paneli.
+  </Step>
+  <Step title="Sāciet jaunu rēķinu">
+    Noklikšķiniet uz **+ Izveidot rēķinu**. Tiks atvērta rēķina izveides forma.
+  </Step>
+  <Step title="Izvēlieties klientu">
+    Nolaižamajā sarakstā izvēlieties klienta vārdu. Tas ir obligāts lauks. Visi ar šo klientu saistītie pasūtījumu ID automātiski parādīsies nākamajā laukā.
+
+    Lai izveidotu **Tiešo rēķinu** (nav piesaistīts pasūtījumam), varat atstāt lauku Pasūtījuma ID tukšu vai atlasīt **Neatkarīgo e-pasta adresi**, lai izrakstītu rēķinu jebkurai e-pasta adresei ārpus klientu saraksta.
+  </Step>
+  <Step title="Atlasiet pasūtījuma ID">
+    Atlasiet konkrēto pasūtījuma ID, par kuru izrakstāt rēķinu. Tas sasaista rēķinu ar pareizo pasūtījumu sistēmā. Tiešiem rēķiniem izlaidiet šo lauku.
+  </Step>
+  <Step title="Ievadiet rēķina adresi">
+    Aizpildiet **Rēķina apmaksas adresi**:
+    - Valsts, Štats un Pilsēta
+    - Pasta indekss
+    - Ielas adrese (ja piemērojams)
+
+    Šī adrese parādās uz drukātā rēķina atbilstībai un skaidrībai.
+  </Step>
+  <Step title="Iestatiet pasūtījuma un finanšu datus">
+    Sadaļā **Pasūtījuma dati** ievadiet šādus datus:
+
+    | Lauks | Apraksts |
+    |-------|-------------|
+    | **Valūta** | Valūta, kādā vēlaties saņemt samaksu |
+    | **Pasūtījuma ID – Summa** | Ar pasūtījumu saistītā naudas vērtība |
+    | **Atlaide (%)** un **Atlaides summa** | Piemērojiet jebkādas piemērojamās atlaides |
+    | **Apmaksātā summa** | Jebkura summa, ko klients jau ir samaksājis |
+    | **Atlikušā summa** | Neapmaksātais atlikums |
+    | **Kopējā summa** | Pilnā apmaksājamā summa par pasūtījumu |
+
+    **Tiešajiem rēķiniem** noklikšķiniet uz **Pievienot pozīciju**, lai manuāli pievienotu pozīcijas. Ievadiet pozīcijas nosaukumu, daudzumu un cenu. Varat pievienot vairākas pozīcijas. Izmantojiet **+ Nodokļu likmes**, lai piemērotu vai izveidotu nodokļu likmes (ieskaitošas vai neieskaitošas).
+  </Step>
+  <Step title="Pievienojiet piezīmi (neobligāts)">
+    Laukā **Piezīme** pievienojiet jebkuru papildu kontekstu klientam — piemēram, maksājuma instrukcijas, projekta atsauces vai personīgu ziņojumu.
+  </Step>
+  <Step title="Pārskatiet informācijas paneli">
+    Labajā pusē esošais **Informācijas** panelis sniedz reāllaika kopsavilkumu par:
+
+    - Rēķina statusu (pēc noklusējuma Melnraksts)
+    - Klienta vārdu, uzņēmuma nosaukumu un adresi
+    - Rēķina apmaksas adresi
+    - Pakalpojuma nosaukumu un pasūtījuma ID
+    - Izveides datumu un apmaksas termiņu
+    - Kopējo summu
+
+    Rūpīgi pārskatiet visu pirms turpināšanas.
+  </Step>
+  <Step title="Nosūtiet klientam vai saglabājiet kā melnrakstu">
+    - Noklikšķiniet uz **Nosūtīt klientam**, lai nekavējoties nosūtītu rēķinu pa e-pastu. Statuss automātiski mainās no **Melnraksts** uz **Atvērts**.
+    - Noklikšķiniet uz **Saglabāt kā melnrakstu**, ja vēlaties to pabeigt vēlāk.
+  </Step>
+</Steps>
+
+<Note>
+  Aģentūras logotips un adrese tiek automātiski pievienoti rēķinam — katram rēķinam nav nepieciešams tos ievadīt manuāli.
+</Note>
+
+## Rēķina statusa pārejas
+
+Kad rēķins ir izveidots, tas seko noteiktai statusa plūsmai. Tikai aģentūra var pārvietot rēķinu starp statusiem.
+
+```
+Melnraksts → Atvērts (nosūtot klientam)
+Atvērts    → Apmaksāts       (saņemts maksājums)
+Atvērts    → Anulēts         (rēķins atcelts)
+Atvērts    → Neiekasējams    (parāds norakstīts)
+```
+
+<Warning>
+  Rēķinus var **rediģēt** tikai tad, kamēr tie atrodas statusā **Melnraksts**. Kad rēķins ir pārvietots uz Atvērts, to nevar rediģēt. Ja nepieciešams veikt izmaiņas, anulējiet rēķinu un izveidojiet jaunu.
+</Warning>
+
+## Rēķina rediģēšana
+
+Rēķinu var rediģēt tikai tad, kamēr tas atrodas statusā **Melnraksts**.
+
+<Steps>
+  <Step title="Atveriet rēķinu">
+    Rēķinu panelī atrodiet melnraksta rēķinu, kuru vēlaties rediģēt. Noklikšķiniet uz tā vai atzīmējiet tam blakus esošo izvēles rūtiņu.
+  </Step>
+  <Step title="Noklikšķiniet uz Rediģēt">
+    Darbību izvēlnē atlasiet opciju **Rediģēt**. Rēķina forma tiks atvērta ar visiem esošajiem datiem aizpildītiem.
+  </Step>
+  <Step title="Veiciet izmaiņas">
+    Atjauniniet jebkurus laukus — norēķinu datus, pakalpojumu aprakstus, daudzumus, summas vai maksājuma nosacījumus.
+  </Step>
+  <Step title="Saglabāt">
+    Noklikšķiniet uz **Saglabāt**, lai piemērotu izmaiņas.
+  </Step>
+</Steps>
+
+## Rēķina nosūtīšana klientam
+
+Ja saglabājāt rēķinu kā melnrakstu un vēlaties to nosūtīt vēlāk:
+
+<Steps>
+  <Step title="Atrodiet rēķinu">
+    Rēķinu panelī atrodiet melnraksta rēķinu, kuru vēlaties nosūtīt.
+  </Step>
+  <Step title="Noklikšķiniet uz Nosūtīt rēķinu">
+    Atveriet rēķinu un noklikšķiniet uz pogas **Nosūtīt rēķinu**. AgencyHandy piegādā rēķinu uz klienta reģistrēto e-pasta adresi.
+  </Step>
+  <Step title="Apstipriniet piegādi">
+    Pārbaudiet apstiprinājuma ziņojumu, lai verificētu, ka rēķins tika veiksmīgi nosūtīts. Rēķina statuss tiek atjaunināts uz **Atvērts**.
+  </Step>
+</Steps>
+
+<Note>
+  Ja rēķins atrodas statusā **Melnraksts** un atjaunināt pakalpojuma nosaukumu, jaunais nosaukums tiks atspoguļots rēķinā. Kad statuss mainās uz Atvērts, Apmaksāts, Neiekasējams vai Anulēts, pakalpojuma nosaukums rēķinā tiek bloķēts un netiks atjaunināts.
+</Note>
+
+## Rēķina lejupielāde un drukāšana
+
+Gan aģentūra, gan klients jebkurā laikā var lejupielādēt rēķinu.
+
+<Steps>
+  <Step title="Atveriet rēķinu">
+    Pārejiet uz rēķinu paneli un atlasiet rēķinu, kuru vēlaties lejupielādēt.
+  </Step>
+  <Step title="Piekļūstiet lejupielādei/drukāšanai">
+    Rēķina darbību izvēlnē noklikšķiniet uz opcijas **Lejupielādēt** vai **Drukāt**.
+  </Step>
+  <Step title="Izvēlieties formātu">
+    Atlasiet **PDF** lejupielādei vai izvēlieties printera iestatījumus fiziskai kopijai.
+  </Step>
+  <Step title="Saglabājiet vai drukājiet">
+    Saglabājiet failu savā ierīcē vai nosūtiet to uz printeri. Pēc drukāšanas arhivējiet rēķinu vai kopīgojiet to ar ieinteresētajām pusēm pēc vajadzības.
+  </Step>
+</Steps>
+
+## Atgādinājumu iestatīšana rēķiniem
+
+Rēķinu atgādinājumu funkcija ļauj automātiski paziņot klientiem par gaidāmajiem, nokavētajiem vai pārsniegtajiem rēķiniem, lai saņemtu samaksu laicīgi bez manuālas sekošanas.
+
+<Note>
+  Atgādinājumi darbojas tikai rēķiniem ar statusu **Atvērts** un iestatītu **apmaksas termiņu**.
+</Note>
+
+<Steps>
+  <Step title="Atveriet rēķinu iestatījumus">
+    Rēķinu paneļa augšējā labajā stūrī noklikšķiniet uz pogas **Iestatījumi**.
+  </Step>
+  <Step title="Pārejiet uz atgādinājumu iestatījumiem">
+    Ritiniet uz leju līdz kreisā paneļa sadaļas **Veidne** apakšai, pēc tam noklikšķiniet uz **Rediģēt**, lai atvērtu atgādinājumu konfigurācijas modāli.
+  </Step>
+  <Step title="Izvēlieties atgādinājuma veidu">
+    Atlasiet vienu no šiem:
+
+    - **Secīgais atgādinājums** — izveido atgādinājumu sēriju jūsu noteiktos intervālos
+    - **Nenosūtīt atgādinājumu** — atspējo atgādinājumus atlasītajiem rēķiniem
+  </Step>
+  <Step title="Konfigurējiet atgādinājuma datus">
+    Katram atgādinājumam secībā:
+    - Izvēlieties **atgādinājuma veidni** (piemēram, "Gaidāmā rēķina apmaksas atgādinājums")
+    - Iestatiet **atgādinājuma datumu** — piemēram, 3 dienas pirms vai pēc apmaksas termiņa
+    - Norādiet, vai tas tiek aktivizēts **pirms** vai **pēc** apmaksas termiņa
+  </Step>
+  <Step title="Pievienojiet vairāk atgādinājumu, ja nepieciešams">
+    Noklikšķiniet uz **+ Pievienot vēl vienu atgādinājumu**, lai izveidotu pilnu atgādinājumu secību. Noklikšķiniet uz pogas **Dzēst** blakus jebkuram atgādinājumam, lai to noņemtu.
+  </Step>
+  <Step title="Piemērojiet aktīvajiem rēķiniem (neobligāts)">
+    Atzīmējiet izvēles rūtiņu, lai **piemērotu šos atgādinājumu iestatījumus pašreiz aktīvajiem rēķiniem**, ja vēlaties, lai jaunā konfigurācija attiektos uz rēķiniem, kas jau atrodas statusā Atvērts.
+  </Step>
+  <Step title="Saglabāt">
+    Noklikšķiniet uz **Atjaunināt**, lai saglabātu un aktivizētu atgādinājumu grafiku.
+  </Step>
+</Steps>
+
+## Tiešie rēķini (bez pasūtījuma ID)
+
+Ja nepieciešams ātri izrakstīt rēķinu klientam, vispirms neveidojot pasūtījumu, izmantojiet tiešā rēķina darbplūsmu.
+
+<Steps>
+  <Step title="Sāciet jaunu rēķinu">
+    Pārejiet uz **Rēķini → Izveidot rēķinu**.
+  </Step>
+  <Step title="Izvēlieties saņēmēja veidu">
+    Atlasiet **Fiziska persona** vai **Uzņēmums** kā saņēmēja veidu.
+  </Step>
+  <Step title="Atlasiet vai ievadiet saņēmēju">
+    - Nolaižamajā sarakstā izvēlieties **esošu klientu**, vai
+    - Atlasiet **Neatkarīgo e-pasta adresi**, lai ievadītu jebkuru e-pasta adresi — pat tādu, kas nav reģistrēta kā klients
+  </Step>
+  <Step title="Atstājiet pasūtījuma ID tukšu">
+    Izlaidiet lauku Pasūtījuma ID. AgencyHandy izveido atsevišķu rēķinu, kas nav piesaistīts nevienam pasūtījumam.
+  </Step>
+  <Step title="Pievienojiet pozīcijas, nodokļus un atlaides">
+    Noklikšķiniet uz **Pievienot pozīciju**, lai pievienotu rindas pozīcijas ar nosaukumiem, daudzumiem un cenām. Pēc vajadzības piemērojiet nodokļu likmes un atlaides. Kopējā summa tiek atjaunināta automātiski.
+  </Step>
+  <Step title="Iestatiet rēķina adresi un piezīmes">
+    Ievadiet rēķina apmaksas adresi un pievienojiet klientam jebkādas piezīmes.
+  </Step>
+  <Step title="Nosūtiet vai saglabājiet">
+    Noklikšķiniet uz **Nosūtīt rēķinu**, lai to nekavējoties piegādātu, vai **Saglabāt kā melnrakstu**, lai vispirms to pārskatītu.
+  </Step>
+</Steps>
+
+<Tip>
+  Tiešie rēķini ir ideāli piemēroti steidzamiem pieprasījumiem, konsultāciju zvaniem vai jebkuriem darbiem, par kuriem nepieciešams izrakstīt rēķinu ārpus parastās pasūtījumu darbplūsmas. Atsevišķo rēķinu maksājumu izsekošana jāpārvalda manuāli.
+</Tip>

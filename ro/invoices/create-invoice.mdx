@@ -1,0 +1,235 @@
+---
+title: "Crearea, Trimiterea și Gestionarea Facturilor Clienților în AgencyHandy"
+sidebarTitle: "Creare Factură"
+description: "Ghid pas cu pas pentru crearea unei facturi în AgencyHandy — alege un client, setează sumele, adaugă note, trimite clientului și configurează memento-uri de plată."
+---
+
+Crearea unei facturi în AgencyHandy este un proces simplu care leagă facturarea direct de clienți și comenzi. Completezi clientul, asociezi comanda, setezi sumele, adaugi orice note și trimiți — totul dintr-un singur formular. Odată trimisă, poți urmări starea plăților, seta memento-uri automate și descărca factura ca PDF în orice moment.
+
+<Note>
+  Trebuie să fii **Super Admin**, **Admin** sau **PM** pentru a crea facturi. Cel puțin un client trebuie să existe în spațiul tău de lucru înainte de a putea genera o factură.
+</Note>
+
+## Setările Prefixului Facturii
+
+Înainte de a începe să creezi facturi, ia în considerare configurarea prefixului facturii. Prefixul apare înaintea fiecărui număr de factură și ajută la identificarea facturilor ca aparținând agenției tale.
+
+<Steps>
+  <Step title="Deschide Setările Facturii">
+    În Tabloul de Bord al Facturilor, apasă butonul **Settings** din colțul din dreapta sus.
+  </Step>
+  <Step title="Setează prefixul">
+    Navighează la câmpul **Invoice Prefix** și introdu prefixul dorit (de exemplu, `INV-` sau inițialele agenției tale).
+  </Step>
+  <Step title="Salvează">
+    Apasă **Save** pentru a aplica prefixul tuturor facturilor viitoare.
+  </Step>
+</Steps>
+
+## Crearea unei Facturi
+
+<Steps>
+  <Step title="Deschide Tabloul de Bord al Facturilor">
+    Apasă **Invoices** în bara laterală stângă pentru a deschide Tabloul de Bord al Facturilor.
+  </Step>
+  <Step title="Începe o factură nouă">
+    Apasă **+ Create Invoice**. Formularul de creare a facturii se va deschide.
+  </Step>
+  <Step title="Selectează clientul">
+    Alege numele clientului din lista derulantă. Acesta este un câmp obligatoriu. Toate ID-urile de Comandă asociate acelui client se vor popula automat în câmpul următor.
+
+    Pentru a crea o **Factură Directă** (nelinkată la o comandă), poți lăsa câmpul ID Comandă gol sau selecta **Independent Email** pentru a factura orice adresă de email din afara listei tale de clienți.
+  </Step>
+  <Step title="Selectează ID-ul Comenzii">
+    Selectează ID-ul specific al Comenzii pentru care facturezi. Aceasta leagă factura de comanda corectă din sistem. Pentru facturi directe, sari peste acest câmp.
+  </Step>
+  <Step title="Introdu adresa de facturare">
+    Completează **Adresa de Plată a Facturii**:
+    - Țara, Județul și Orașul
+    - Codul poștal
+    - Adresa stradală (dacă este cazul)
+
+    Această adresă apare pe factura tipărită pentru conformitate și claritate.
+  </Step>
+  <Step title="Setează detaliile comenzii și financiare">
+    Sub **Order Details**, introdu următoarele:
+
+    | Câmp | Descriere |
+    |-------|-------------|
+    | **Currency** | Moneda în care dorești să fii plătit |
+    | **Order ID – Amount** | Valoarea monetară asociată comenzii |
+    | **Discount (%)** și **Discount Amount** | Aplică orice reduceri aplicabile |
+    | **Paid Amount** | Orice sumă pe care clientul a plătit-o deja |
+    | **Due Amount** | Soldul restant rămas |
+    | **Total Amount** | Suma totală de plătit pentru comandă |
+
+    Pentru **Facturi Directe**, apasă **Add Item** pentru a adăuga articole de linie manual. Introdu numele articolului, cantitatea și prețul. Poți adăuga mai multe articole. Folosește **+ Tax Rates** pentru a aplica sau crea cote de taxă (incluzive sau exclusive).
+  </Step>
+  <Step title="Adaugă o notă (opțional)">
+    În câmpul **Note**, adaugă orice context suplimentar pentru client — de exemplu, instrucțiuni de plată, referințe la proiect sau un mesaj personal.
+  </Step>
+  <Step title="Revizuiește panoul de detalii">
+    Panoul **Details** din dreapta îți oferă un rezumat live al:
+
+    - Starea facturii (Draft implicit)
+    - Numele clientului, numele companiei și adresa
+    - Adresa de plată a facturii
+    - Numele serviciului și ID-ul comenzii
+    - Data creării și data scadenței
+    - Suma totală
+
+    Verifică totul cu atenție înainte de a continua.
+  </Step>
+  <Step title="Trimite clientului sau salvează ca ciornă">
+    - Apasă **Send to Client** pentru a trimite factura prin email imediat. Starea se schimbă automat din **Draft** în **Open**.
+    - Apasă **Save as Draft** dacă vrei să o finalizezi mai târziu.
+  </Step>
+</Steps>
+
+<Note>
+  Logo-ul și adresa agenției sunt adăugate automat la factură de sistem — nu trebuie să le introduci manual pe fiecare factură.
+</Note>
+
+## Tranzițiile de Stare ale Facturii
+
+Odată creată, o factură urmează un flux de stare definit. Doar agenția poate muta o factură între stări.
+
+```
+Draft → Open (când este trimisă clientului)
+Open  → Paid           (plata primită)
+Open  → Void           (factură anulată)
+Open  → Uncollectable  (datorie scoasă din evidențe)
+```
+
+<Warning>
+  Facturile pot fi **editate** doar în timp ce se află în starea **Draft**. Odată ce o factură este mutată în Open, nu o poți edita. Dacă trebuie să faci modificări, anulează factura și creează una nouă.
+</Warning>
+
+## Editarea unei Facturi
+
+Poți edita o factură doar în timp ce se află în starea **Draft**.
+
+<Steps>
+  <Step title="Deschide factura">
+    În Tabloul de Bord al Facturilor, găsește factura ciornă pe care vrei să o editezi. Apasă pe ea sau bifează căsuța de lângă ea.
+  </Step>
+  <Step title="Apasă Edit">
+    Selectează opțiunea **Edit** din meniul de acțiuni. Formularul facturii se va deschide cu toate detaliile existente precompletate.
+  </Step>
+  <Step title="Fă modificările">
+    Actualizează orice câmpuri — detalii de facturare, descrieri de servicii, cantități, sume sau termeni de plată.
+  </Step>
+  <Step title="Salvează">
+    Apasă **Save** pentru a aplica modificările.
+  </Step>
+</Steps>
+
+## Trimiterea unei Facturi către un Client
+
+Dacă ai salvat factura ca ciornă și vrei să o trimiți mai târziu:
+
+<Steps>
+  <Step title="Găsește factura">
+    În Tabloul de Bord al Facturilor, localizează factura ciornă pe care vrei să o trimiți.
+  </Step>
+  <Step title="Apasă Send Invoice">
+    Deschide factura și apasă butonul **Send Invoice**. AgencyHandy livrează factura la adresa de email a clientului din evidențe.
+  </Step>
+  <Step title="Confirmă livrarea">
+    Verifică mesajul de confirmare pentru a verifica că factura a fost trimisă cu succes. Starea facturii se actualizează la **Open**.
+  </Step>
+</Steps>
+
+<Note>
+  Dacă o factură se află în starea **Draft** și actualizezi numele serviciului, noul nume va fi reflectat în factură. Odată ce starea se schimbă în Open, Paid, Uncollectable sau Void, numele serviciului pe factură este blocat și nu se va actualiza.
+</Note>
+
+## Descărcarea și Tipărirea unei Facturi
+
+Atât agenția, cât și clientul pot descărca o factură în orice moment.
+
+<Steps>
+  <Step title="Deschide factura">
+    Mergi la Tabloul de Bord al Facturilor și selectează factura pe care vrei să o descarci.
+  </Step>
+  <Step title="Accesează descărcarea/tipărirea">
+    Apasă opțiunea **Download** sau **Print** din meniul de acțiuni al facturii.
+  </Step>
+  <Step title="Alege formatul">
+    Selectează **PDF** pentru descărcare sau alege setările imprimantei pentru o copie fizică.
+  </Step>
+  <Step title="Salvează sau tipărește">
+    Salvează fișierul pe dispozitivul tău sau trimite-l la imprimantă. După tipărire, arhivează factura sau distribuie-o părților interesate după caz.
+  </Step>
+</Steps>
+
+## Setarea Memento-urilor pe Facturi
+
+Funcția Memento Factură îți permite să notifici automat clienții despre facturile apropiate, scadente sau restante, astfel încât să fii plătit la timp fără urmărire manuală.
+
+<Note>
+  Memento-urile funcționează doar pe facturile cu starea **Open** și cu o **dată scadentă** setată.
+</Note>
+
+<Steps>
+  <Step title="Deschide Setările Facturii">
+    Apasă butonul **Settings** din partea dreaptă sus a Tabloului de Bord al Facturilor.
+  </Step>
+  <Step title="Navighează la setările de Memento">
+    Derulează până la sfârșitul secțiunii **Template** din panoul stâng, apoi apasă **Edit** pentru a deschide modalul de configurare a memento-urilor.
+  </Step>
+  <Step title="Alege un tip de memento">
+    Selectează una dintre următoarele:
+
+    - **Sequenced Reminder** — creează o serie de memento-uri la intervale pe care le definești
+    - **Don't Send Reminder** — dezactivează memento-urile pentru facturile selectate
+  </Step>
+  <Step title="Configurează detaliile memento-ului">
+    Pentru fiecare memento din secvență:
+    - Alege **șablonul de memento** (de exemplu, „Memento Plată Factură Viitoare“)
+    - Setează **data memento-ului** — de exemplu, cu 3 zile înainte sau după data scadenței
+    - Specifică dacă se declanșează **înainte** sau **după** data scadenței
+  </Step>
+  <Step title="Adaugă mai multe memento-uri dacă este necesar">
+    Apasă **+ Add Another Reminder** pentru a construi o secvență completă de memento-uri. Apasă butonul **Delete** de lângă orice memento pentru a-l elimina.
+  </Step>
+  <Step title="Aplică la facturile active (opțional)">
+    Bifează căsuța pentru a **aplica aceste setări de memento la facturile active în prezent** dacă vrei ca noua configurare să acopere facturile deja în starea Open.
+  </Step>
+  <Step title="Salvează">
+    Apasă **Update** pentru a salva și activa programul de memento-uri.
+  </Step>
+</Steps>
+
+## Facturi Directe (Fără un ID de Comandă)
+
+Când trebuie să facturezi rapid un client fără a crea mai întâi o comandă, folosește fluxul de lucru pentru Facturi Directe.
+
+<Steps>
+  <Step title="Începe o factură nouă">
+    Mergi la **Invoices → Create Invoice**.
+  </Step>
+  <Step title="Alege tipul destinatarului">
+    Selectează **Individual** sau **Company** ca tip de destinatar.
+  </Step>
+  <Step title="Selectează sau introdu destinatarul">
+    - Alege un **client existent** din lista derulantă, sau
+    - Selectează **Independent Email** pentru a tasta orice adresă de email — chiar și una neînregistrată ca client
+  </Step>
+  <Step title="Lasă câmpul ID Comandă gol">
+    Sari peste câmpul ID Comandă. AgencyHandy creează o factură independentă nelinkată de nicio comandă.
+  </Step>
+  <Step title="Adaugă articole, taxe și reduceri">
+    Apasă **Add Item** pentru a adăuga articole de linie cu nume, cantități și prețuri. Aplică cote de taxă și reduceri după cum este necesar. Totalul se actualizează automat.
+  </Step>
+  <Step title="Setează adresa de facturare și notele">
+    Introdu adresa de plată a facturii și adaugă orice note pentru client.
+  </Step>
+  <Step title="Trimite sau salvează">
+    Apasă **Send Invoice** pentru a livra imediat sau **Save as Draft** pentru a o revizui mai întâi.
+  </Step>
+</Steps>
+
+<Tip>
+  Facturile Directe sunt perfecte pentru solicitări urgente, consultații sau orice lucrare pentru care trebuie să facturezi în afara fluxului normal de comenzi. Urmărirea plăților pentru facturile independente trebuie gestionată manual.
+</Tip>

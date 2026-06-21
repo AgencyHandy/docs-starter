@@ -1,0 +1,91 @@
+---
+title: "Visão Geral de Encomendas: Gerir Trabalho para Clientes no AgencyHandy"
+sidebarTitle: "Visão Geral"
+description: "Entenda como funcionam as encomendas no AgencyHandy — estados, funções, detalhes de encomendas, encomendas manuais e add-ons para serviços não publicados."
+---
+
+As encomendas são a espinha dorsal operacional do AgencyHandy. Uma encomenda representa o pedido de um cliente por um serviço ou produto, e funciona como o workspace central onde a sua equipa acompanha o progresso, gere tarefas, troca feedback e entrega resultados. Quer um cliente faça uma encomenda através do seu catálogo de serviços publicados ou a sua equipa crie uma manualmente, cada encomenda segue o mesmo ciclo de vida estruturado que mantém a sua agência organizada e os seus clientes informados.
+
+## O Que Contém uma Encomenda
+
+Cada encomenda apresenta informações-chave de relance e dá aos membros da equipa um único lugar para coordenar o trabalho:
+
+| Campo | Descrição |
+|---|---|
+| **ID da Encomenda** | Identificador único gerado automaticamente para cada encomenda |
+| **Cliente** | O cliente a quem a encomenda pertence |
+| **Serviço** | O serviço a ser entregue |
+| **Gestor de Projeto (GP)** | O membro da equipa responsável pela entrega (opcional) |
+| **Orçamento** | Preço acordado para a encomenda |
+| **Data de Início** | Quando o trabalho começa |
+| **Data de Conclusão** | Prazo para conclusão da encomenda |
+| **Resumo da Encomenda** | Instruções do cliente, notas e ficheiros de referência anexados |
+| **Tarefas** | Unidades de trabalho discretas atribuídas a membros da equipa |
+| **Discussões** | Conversas em fio entre pessoal da agência e clientes |
+
+## Estados das Encomendas
+
+Cada encomenda percorre um conjunto fixo de estados. Não pode adicionar ou renomear estes estados.
+
+<Note>
+Apenas Super Admins, Admins e Gestores de Projeto podem alterar o estado de uma encomenda.
+</Note>
+
+| Estado | O Que Significa |
+|---|---|
+| **Pendente** | A encomenda foi criada e aguarda início do trabalho |
+| **Em Curso** | O trabalho ativo está em progresso |
+| **Em Revisão** | Os entregáveis foram submetidos e aguardam revisão do cliente ou interna |
+| **Concluída** | A encomenda foi totalmente entregue e aceite |
+| **Cancelada** | A encomenda foi cancelada e já não está ativa |
+
+## Acesso Baseado em Funções
+
+Diferentes funções no AgencyHandy têm capacidades diferentes dentro das encomendas:
+
+| Função | Pode Criar Encomendas | Pode Editar Encomendas | Pode Eliminar Encomendas | Pode Alterar Estado | Pode Adicionar Tarefas | Pode Adicionar Membros de Equipa |
+|---|---|---|---|---|---|---|
+| **Super Admin** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Admin** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Gestor de Projeto (GP)** | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ |
+| **Funcionário** | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| **Cliente** | ❌ | ❌ | ❌ | ❌ | ✅ (apenas pedido) | ❌ |
+
+<Tip>
+Os clientes podem enviar feedback e participar em discussões nas encomendas. Os funcionários atribuídos a uma encomenda podem ver e trabalhar em tarefas mas não podem gerir a encomenda em si.
+</Tip>
+
+## O Que Pode Fazer com Encomendas
+
+O AgencyHandy oferece-lhe um conjunto completo de ferramentas para gerir encomendas ao longo do seu ciclo de vida:
+
+- **Criar encomendas** para clientes — a partir de serviços publicados ou manualmente para serviços ainda em desenvolvimento
+- **Aceitar e rejeitar** encomendas submetidas por clientes, com a opção de fornecer um motivo ao rejeitar
+- **Ver detalhes da encomenda** incluindo progresso, membros da equipa atribuídos, datas de início e conclusão, orçamento e resumo
+- **Ordenar, filtrar e pesquisar** em todas as encomendas por ID, estado, nome do cliente ou outros critérios
+- **Adicionar tarefas** diretamente dentro de uma encomenda para acompanhar e atribuir unidades discretas de trabalho
+- **Iniciar discussões** para comunicar com clientes e membros da equipa em contexto
+
+## Encomendas Manuais para Serviços Não Publicados
+
+Não está limitado a criar encomendas apenas para serviços que publicou publicamente. Super Admins e Admins podem criar encomendas manuais para serviços não publicados — útil quando um serviço ainda está em desenvolvimento, temporariamente indisponível, ou está a ser oferecido a um cliente específico antes do seu lançamento oficial.
+
+Quando abre o formulário de criação de encomenda, o menu pendente **Serviço** mostra tanto serviços publicados como não publicados, para que possa selecionar o que se aplica. Todos os outros campos e fluxos de trabalho da encomenda funcionam da mesma forma que uma encomenda standard.
+
+## Add-Ons em Encomendas Manuais
+
+Ao construir uma encomenda manual, pode incluir **serviços add-on** para permitir que os clientes recebam pacotes personalizados além do serviço principal. Os add-ons devem ser criados com antecedência e associados ao serviço relevante na secção **Formulários** antes de aparecerem como opção no formulário de encomenda.
+
+<Note>
+A seleção de add-on só aparece no formulário de encomenda manual se pelo menos um add-on tiver sido ligado ao serviço selecionado. Se não o vir, verifique se o seu add-on está corretamente associado na configuração do serviço.
+</Note>
+
+Assim que um serviço com add-ons associados é selecionado, pode incluir esses add-ons antes de finalizar e submeter a encomenda.
+
+## Notificações
+
+O AgencyHandy notifica automaticamente as pessoas certas à medida que as encomendas avançam:
+
+- Quando uma encomenda é criada por um GP, Admin ou Super Admin, todos os Super Admins na sua empresa ganham acesso e o cliente recebe uma notificação de criação.
+- Quando um membro da equipa é adicionado a uma encomenda, esse membro recebe uma notificação.
+- Quando tarefas são criadas dentro de uma encomenda, o cliente recebe uma notificação.

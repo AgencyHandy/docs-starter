@@ -1,0 +1,162 @@
+---
+title: "Tilauslaskutus ja toistuvat laskut AgencyHandyssa"
+sidebarTitle: "Tilaukset"
+description: "Miten AgencyHandy käsittelee toistuvaa tilauslaskutusta — automaattiset laskut, laskutuskierrokset, maksutavat, peruutukset ja Wise-maksulinkit."
+---
+
+AgencyHandyn tilauslaskutusjärjestelmä antaa sinulle mahdollisuuden automatisoida koko toistuvan tuoton työnkulun. Kun asiakas tilaa palvelun, alusta luo tilauksen tunnuksen, luo tilauksia ja antaa laskut automaattisesti jokaisella laskutuskierroksella — olipa se päivittäinen, viikoittainen, kuukausittainen tai vuosittainen. Pysyt hallinnassa: voit tarkastella tilauksen tietoja, seurata maksurhistoriaa, käsitellä epäonnistuneita maksuja ja peruuttaa tilauksia tarvittaessa, kaikki AgencyHandyn sisällä.
+
+## Miten tilauslaskutus toimii
+
+Tilauksen elinkaari AgencyHandyssa noudattaa kuutta keskeistä vaihetta.
+
+<Steps>
+  <Step title="Luo tilauspohjainen palvelu">
+    Siirry **Palvelut**-kohtaan ja napsauta **Luo uusi palvelu**. Valitse palvelun tyypiksi **Tilaus**.
+
+    Määritä:
+    - **Laskutuskierto** — Päivittäinen, viikoittainen, kuukausittainen tai vuosittainen
+    - **Uusimiskäyttäytyminen** — Luo uusi tilaus, päivitä olemassa oleva tilaus tai pidä muuttumattomana
+    - **Hinnoittelu ja maksutapa** — PayPal, Stripe tai manuaalinen
+
+    Napsauta **Julkaise** tehdäksesi palvelun saataville.
+  </Step>
+  <Step title="Asiakas ostaa tilauksen">
+    Asiakas valitsee tilauspalvelun, siirtyy kassalle ja valitsee maksutavan.
+
+    AgencyHandy luo automaattisesti:
+    - **Tilauksen tunnuksen**
+    - **Tilauksen**
+    - **Laskun**
+
+    **PayPal- tai Stripe**-maksuissa lasku merkitään **Maksetuksi** välittömästi. **Manuaalisessa maksussa** lasku pysyy **Avoimena**, kunnes toimisto vahvistaa vastaanottamisen.
+  </Step>
+  <Step title="Automatisoitu toistuva laskutus">
+    Jokaisena uusimispäivänä AgencyHandy käsittelee maksun automaattisesti (PayPal/Stripe) ja luo seuraavan laskun.
+
+    Jos maksu onnistuu, lasku merkitään **Maksetuksi**. Jos se epäonnistuu:
+    - Lasku pysyy **Avoimena**
+    - Asiakas saa **Epäonnistuneen maksun ilmoituksen**
+    - Toimisto saa hälytyksen uudelleenyritystä tai päivitettyjen maksutietojen pyytämistä varten
+  </Step>
+  <Step title="Hallinnoi aktiivisia tilauksia">
+    Siirry vasemman sivupalkin **Tilausten hallinta** -kohtaan nähdäksesi kaikki aktiiviset ja ei-aktiiviset tilaukset. Valitse mikä tahansa tilaus nähdäksesi sen täydet tiedot.
+  </Step>
+  <Step title="Käsittele peruutukset">
+    Kun peruutat tilauksen, voit valita:
+    - **Peruuta kokonaan** — pysäytä kaikki tuleva laskutus ja tilaukset
+    - **Pidä viimeinen aktiivinen tilaus käynnissä** — anna asiakkaan jatkaa palvelun vastaanottamista nykyisen kauden määräaikaan asti
+
+    Poistaaksesi palvelun kokonaan, kaikki kyseisen palvelun aktiiviset tilaukset on peruutettava ensin.
+  </Step>
+  <Step title="Ilmoitukset">
+    Järjestelmä lähettää automaattisesti:
+    - **Uusimismuistutuksia** ennen seuraavaa laskutuspäivää
+    - **Maksuvahvistuksia** onnistuneiden veloitusten jälkeen
+    - **Epäonnistuneen maksun hälytyksiä** sekä asiakkaalle että toimiston admineille
+  </Step>
+</Steps>
+
+## Tilauksen tietosivü
+
+Tilauksen tietosivu antaa sinulle täydellisen kuvan mistä tahansa yksittäisestä tilauksesta — palvelusta ja paketista aina jokaiseen laskuun ja tapahtumalogimerkintään.
+
+### Pääsy
+
+1. Siirry vasemman sivupalkin **Tilaukset**-kohtaan
+2. Napsauta mitä tahansa tilausta luettelosta avataksesi sen tietosivun
+
+### Mitä voit nähdä
+
+<Tabs>
+  <Tab title="Tilauksen tiedot">
+    - **Palvelun nimi** ja **paketin nimi**
+    - **Asiakkaan nimi**
+    - **Laskutuskierto** (esim. kuukausittainen, vuosittainen)
+    - **Aloituspäivä** ja **päättymispäivä**
+    - Tilauksen **tila** (aktiivinen tai ei-aktiivinen)
+  </Tab>
+  <Tab title="Maksutiedot">
+    - **Tilausmaksu**
+    - **Maksujen kokonaismäärä** tähän mennessä
+    - **Maksutapa** (Stripe, PayPal, Wise, manuaalinen pankkisiirto jne.)
+    - **Seuraava maksupäivä**
+  </Tab>
+  <Tab title="Tilaushistoria">
+    - **Tilauksen tunnus**
+    - **Tila** (esim. Käynnissä, Valmis)
+    - **Aloituspäivä** ja **eräpäivä** jokaiselle tilaukselle
+  </Tab>
+  <Tab title="Laskuhistoria">
+    - **Laskun tunnus**
+    - **Summa**
+    - **Tila** (Avoin, Maksettu jne.)
+    - **Maksupäivä** ja **eräpäivä**
+  </Tab>
+  <Tab title="Tapahtumalogit">
+    Kronologinen auditoinnin jälki kaikista tilaukseen liittyvistä toiminnoista — tilamuutokset, maksutapahtumat, peruutukset ja muut.
+  </Tab>
+</Tabs>
+
+<Note>
+  Yhdellä tilauksella voi olla useita linkitettyjä tilauksia ja laskuja. Tilauksiin sidotut laskut päivittyvät dynaamisesti, kun maksuja vastaanotetaan.
+</Note>
+
+## Wise-tuki manuaalisille tilauslaskuille
+
+Jos kerää kansainvälisiä maksuja, voit upottaa **Wise-maksulinkin** suoraan tilauslaskuihin. Tämä antaa asiakkaille kätevän tavan maksaa ilman manuaalisen pankkisiirron järjestämistä.
+
+### Vaatimukset
+
+- Aktiivinen AgencyHandy-tili
+- Aktiivinen **Wise-tili**, jolla on luotu kelvollinen maksulinkki
+
+### Vaiheet Wise-linkin lisäämiseksi laskuun
+
+<Steps>
+  <Step title="Avaa Laskut-osio">
+    Napsauta vasemmassa sivupalkissa **Laskut** ja sitten **+ Luo lasku**.
+  </Step>
+  <Step title="Valitse asiakas ja tilaus">
+    Valitse asiakas pudotusvalikosta. Kaikki liittyvät tilausten tunnukset näkyvät. Valitse asiaankuuluva tilauksen tunnus ja syötä summa ja laskutettavat kohteet.
+  </Step>
+  <Step title="Sovella alennuksia ja veroja">
+    Lisää sovellettava alennusprosentti, alennussumma, maksettu summa, eräsumma ja ALV/vero-tiedot. Sisällytä laskutusosoite ja muistiinpanot tarpeen mukaan.
+  </Step>
+  <Step title="Lisää Wise-maksulinkki">
+    Valitse **Maksutapa**-osiossa **Wise** maksuvaihtoehdoksi. Liitä Wise-maksulinkkisi annettuun kenttään.
+  </Step>
+  <Step title="Tallenna lasku">
+    Napsauta **Tallenna** viimeistelläksesi laskun. Wise-maksulinkki näkyy laskussa, jotta asiakas voi maksaa suoraan.
+  </Step>
+</Steps>
+
+<Tip>
+  Tarkista aina Wise-maksulinkkisi ja laskun kokonaissummat ennen tallentamista. Varmista, että tilauksen tiedot, alennukset ja verotiedot ovat tarkkoja laskutusvirheiden välttämiseksi.
+</Tip>
+
+## Tärkeitä huomioita tilauslaskutuksesta
+
+<Accordion title="Kuka voi peruuttaa tilauksia?">
+  Vain **Super Adminit** ja **Adminit** voivat peruuttaa tilauksia. Asiakkaat eivät voi peruuttaa omia tilauksiaan — heidän on pyydettävä peruutusta toimiston kautta.
+</Accordion>
+
+<Accordion title="Tilausten tunnukset ovat pysyviä">
+  Kun tilaus on luotu, sen tilauksen tunnusta ei voi muokata. Tämä varmistaa johdonmukaisen seurannan koko tilauksen elinkaaren ajan.
+</Accordion>
+
+<Accordion title="Epäonnistuneet maksut ja tilausten luominen">
+  Kun maksu epäonnistuu, lasku pysyy Avoimena ja epäonnistuneelle kaudelle luodaan uusi tilaus. Tilauksen tila pysyy **Aktiivisena**, kunnes admin yrittää maksua uudelleen manuaalisesti tai peruuttaa tilauksen.
+</Accordion>
+
+<Accordion title="Manuaalisen maksun tilaukset">
+  Jos asiakas maksaa Stripen tai PayPalin ulkopuolella (esim. pankkisiirrolla), adminin on merkittävä lasku manuaalisesti **Maksetuksi** AgencyHandyssa. Järjestelmä ei tee tätä automaattisesti manuaalisten maksujen osalta.
+</Accordion>
+
+<Accordion title="Maksamattomat itsekassayritykset">
+  Jos asiakas aloittaa tilauksen kassalle siirtymisen mutta ei suorita maksua, hän jää järjestelmään **liidiksi** kunnes onnistuneesti tilaa.
+</Accordion>
+
+<Accordion title="Laskujen eräpäivät">
+  Tilauslaskujen eräpäivät asetetaan automaattisesti määrittämäsi laskutuskierron perusteella (esim. kuukausittaiset laskut erääntyvät kuukausi aloituspäivän jälkeen).
+</Accordion>

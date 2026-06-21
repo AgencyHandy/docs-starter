@@ -1,0 +1,260 @@
+---
+title: "Jak utworzyć usługę z pakietami, zadaniami i FAQ"
+sidebarTitle: "Utwórz usługę"
+description: "Przewodnik krok po kroku dotyczący tworzenia usługi w AgencyHandy: wybierz typ rozliczeń, skonfiguruj pakiety, ustaw domyślne zadania, dodaj FAQ i opublikuj."
+---
+
+Tworzenie usługi w AgencyHandy jest pierwszym krokiem do sprzedaży ofert Twojej agencji przez platformę. Jedna usługa może zawierać do pięciu pakietów cenowych, automatyczne domyślne zadania uruchamiane po złożeniu zamówienia, FAQ redukujące pytania przed zakupem, dołączone portfolio dla społecznego dowodu słuszności i opcjonalny formularz zgłoszeniowy — wszystko skonfigurowane w jednym miejscu przed publikacją.
+
+<Note>
+  Potrzebujesz roli **Super Administratora** lub **Administratora**, aby tworzyć usługi. Inne role wymagają jawnych uprawnień do usług, aby uzyskać dostęp do tej sekcji.
+</Note>
+
+<Steps>
+  <Step title="Wybierz typ usługi">
+    Otwórz **Usługi** z lewego paska bocznego i kliknij **+ Usługa**, aby rozpocząć nową pozycję.
+
+    Na górze strony wybierz swój model rozliczeń:
+
+    - **Usługa jednorazowa** — klient płaci jedną opłatę i jednorazowo otrzymuje produkt. Najlepsza dla projektów z jasno określonym zakresem: tworzenie stron internetowych, pakiety logo, audyty itp.
+    - **Usługa subskrypcyjna** — rozliczenie powtarza się automatycznie według zdefiniowanego harmonogramu. Najlepsza dla retainerów, ciągłych treści, zarządzanych usług lub planów utrzymania.
+
+    <Warning>
+      Typ usługi jest zablokowany po zapisaniu. Jeśli potrzebujesz innego modelu rozliczeń, utwórz nową usługę.
+    </Warning>
+  </Step>
+
+  <Step title="Dodaj szczegóły usługi">
+    Rozwiń sekcję **Szczegóły usługi** i wypełnij następujące pola:
+
+    **Nazwa usługi** *(obowiązkowa)*
+    W ten sposób usługa pojawia się dla klientów wszędzie na platformie — w katalogu, na fakturach i w obszarze roboczym zamówienia. Niech będzie jasna i opisowa.
+
+    **Przesyłanie mediów**
+    Prześlij jeden lub więcej obrazów podglądu, aby wizualnie reprezentować usługę. Wysokiej jakości obrazy zwiększają zaufanie klientów i wskaźniki konwersji.
+
+    **Opis usługi**
+    Napisz dokładne wyjaśnienie tego, co obejmuje usługa, dla kogo jest przeznaczona i czego klienci mogą się spodziewać. Użyj tej przestrzeni, aby wyróżnić swoją ofertę.
+
+    **Ustawienia podatkowe**
+    Wybierz, czy podatek jest **wliczony** (już uwzględniony w cenie) czy **doliczany** (dodawany do ceny przy kasie).
+
+    **Waluta**
+    Ustaw walutę dla wszystkich pakietów w tej usłudze. Wszystkie pakiety w jednej usłudze mają tę samą walutę.
+
+    <Tip>
+      Prześlij obrazy podglądu w proporcji 16:9, aby uzyskać najlepszą prezentację w portalu klienta.
+    </Tip>
+  </Step>
+
+  <Step title="Utwórz pakiety">
+    Rozwiń **Szczegóły pakietu** i kliknij **+ Nowy pakiet**, aby dodać pierwszy poziom cenowy. Możesz utworzyć do **5 pakietów** na usługę.
+
+    Dla każdego pakietu skonfiguruj następujące elementy:
+
+    **Nazwa pakietu** *(obowiązkowa)*
+    Nazwa, którą widzą klienci, taka jak *Podstawowy*, *Standardowy* lub *Premium*.
+
+    **Ikona pakietu** *(opcjonalna)*
+    Wybierz wbudowaną ikonę lub prześlij niestandardową. Przesyłane ikony muszą mieć rozmiar **32 × 32 piksele**.
+
+    **Media pakietu** *(opcjonalne)*
+    Prześlij obraz okładki specyficzny dla tego pakietu. Akceptowane formaty: PNG, JPG, JPEG. Maksymalny rozmiar pliku: **5 MB**. Maksymalnie 1 plik na pakiet. Zalecany stosunek: **16:9**.
+
+    **Krótki opis pakietu** *(opcjonalny)*
+    Jednowierszowe podsumowanie produktów tego pakietu. Maksymalnie **140 znaków**.
+
+    **Co jest wliczone** *(obowiązkowe)*
+    Wymień konkretne produkty zawarte w tym pakiecie. Możesz dodać do **15 pozycji** na pakiet. Każda pozycja powinna opisywać jeden konkretny produkt (np. *„5 wpisów na blog miesięcznie, do 1000 słów każdy”*).
+
+    <Tip>
+      Po utworzeniu wielu pakietów przeciągnij je, aby zmienić kolejność wyświetlania klientom. Oznacz jeden jako **Najpopularniejszy**, aby zwrócić uwagę na swój zalecany poziom.
+    </Tip>
+  </Step>
+
+  <Step title="Ustaw ceny i reguły dostawy">
+    Wewnątrz każdego pakietu ustaw główne pola cenowe i wszelkie opcjonalne kontrolki:
+
+    **Kwota** *(obowiązkowa)*
+    Cena, którą klient płaci za ten pakiet.
+
+    **Czas dostawy** *(obowiązkowy)*
+    Szacowana liczba dni na dostarczenie usługi po zakupie.
+
+    **Opcjonalne kontrolki cenowe:**
+
+    <Accordion title="Dodaj rabat">
+      Zastosuj procentową lub kwotową redukcję do ceny tego pakietu. Cena po rabacie wyświetla się klientom obok ceny pierwotnej, tworząc efektywny efekt promocyjny.
+    </Accordion>
+
+    <Accordion title="Dodaj okres próbny (tylko subskrypcja)">
+      Zaoferuj bezpłatny lub obniżony okres próbny przed rozpoczęciem regularnych rozliczeń subskrypcyjnych. Ta opcja jest dostępna tylko dla usług subskrypcyjnych.
+    </Accordion>
+
+    <Accordion title="Dodaj limit ilości">
+      Ogranicz liczbę jednostek, które klient może zakupić w jednej sesji kasy. Używaj tej opcji dla pakietów o ograniczonej dostępności lub usług z ograniczeniami pojemności.
+    </Accordion>
+
+    <Accordion title="Dodaj więcej szczegółów cenowych">
+      Rozdziel łączny koszt na poszczególne pozycje — na przykład pokazując *cena podstawowa + opłata konfiguracyjna + koszt jednostkowy*. Każda etykieta rozbicia obsługuje maksymalnie **20 znaków**.
+    </Accordion>
+
+    <Note>
+      Wszystkie wymagane pola (Kwota i Czas dostawy) muszą być wypełnione dla każdego pakietu przed opublikowaniem usługi.
+    </Note>
+  </Step>
+
+  <Step title="Dodaj domyślne zadania dla automatyzacji">
+    Każdy pakiet zawiera sekcję **Domyślne zadania**. Zadania zdefiniowane tutaj są automatycznie generowane w obszarze roboczym zamówienia w momencie zakupu tego pakietu przez klienta — bez potrzeby ręcznej konfiguracji po każdej sprzedaży.
+
+    Kliknij **+ Dodaj więcej**, aby otworzyć okno modalne tworzenia zadania. Dla każdego zadania możesz skonfigurować:
+
+    | Pole | Szczegóły |
+    |---|---|
+    | **Nazwa zadania** | Obowiązkowa; maksymalnie **160 znaków** |
+    | **Opis** | Szczegółowe instrukcje dla wykonawcy |
+    | **Wykonawca** | Członek zespołu odpowiedzialny za wykonanie tego zadania |
+    | **Załącznik** | Prześlij pliki referencyjne; akceptowane formaty: csv, odt, doc, docx, htm, html, pdf, ppt, pptx, txt, xls, xlsx, jpg, jpeg, png, gif, webp, svg, ai, mp4, mp3, wav, zip, rar; maks. rozmiar pliku **1 GB** na plik |
+    | **Etykieta** | Oznacz zadanie dla filtrowania i raportowania |
+    | **Status** | Początkowy status przy tworzeniu zadania |
+    | **Recenzja klienta** | Włącz, jeśli to zadanie wymaga zatwierdzenia przez klienta przed uznaniem za ukończone |
+
+    Dodaj tyle zadań, ile potrzeba, aby w pełni pokryć proces realizacji dla tego pakietu. Spójne domyślne zadania zapewniają, że każde zamówienie przebiega zgodnie z tym samym przepływem pracy kontroli jakości.
+
+    <Tip>
+      Mapuj domyślne zadania na swój wewnętrzny SOP. Na przykład pakiet *Zarządzanie mediami społecznościowymi* może automatycznie generować zadania takie jak *Projekt kalendarza treści*, *Zatwierdzenie przez klienta*, *Planowanie postów* i *Raport miesięczny*.
+    </Tip>
+  </Step>
+
+  <Step title="Dodaj FAQ i portfolio">
+    Rozwiń sekcję **Informacje dodatkowe**, aby dodać dwa opcjonalne, ale skuteczne elementy:
+
+    **Dołączanie portfolio**
+    Połącz kategorię portfolio z tą usługą, aby klienci mogli przeglądać odpowiednie przykłady Twojej dotychczasowej pracy bezpośrednio na liście usług. Możesz połączyć istniejącą kategorię portfolio lub stworzyć nową z tego ekranu.
+
+    **Często zadawane pytania (FAQ)**
+    Kliknij **+ Dodaj**, aby wstawić parę pytanie-odpowiedź. Dodaj tyle FAQ, ile jest istotnych — popularne tematy obejmują:
+
+    - Oryginalność treści i prawa
+    - Proces poprawek i informacji zwrotnych
+    - Granice zakresu i co *nie* jest wliczone
+    - Harmonogramy i rytm komunikacji
+    - Polityki płatności i zwrotów
+
+    Dobrze napisane FAQ redukują wymianę korespondencji przed zakupem i pomagają klientom samodzielnie ocenić dopasowanie.
+  </Step>
+
+  <Step title="Dołącz formularz zgłoszeniowy">
+    Formularz zgłoszeniowy zbiera informacje potrzebne od klienta przed rozpoczęciem pracy — na przykład wytyczne dotyczące marki, dane dostępowe, grupę docelową lub cele projektu.
+
+    - Kliknij **+ Utwórz nowy formularz zgłoszeniowy**, aby zbudować formularz od podstaw, lub wybierz istniejący formularz z listy rozwijanej.
+    - Jeśli ta usługa nie wymaga formularza zgłoszeniowego, kliknij **Pomiń**, aby ominąć tę sekcję.
+    - Kliknij **Aktualizuj**, aby zapisać wybór formularza zgłoszeniowego i kontynuować.
+
+    <Note>
+      Formularz zgłoszeniowy jest opcjonalny, ale zdecydowanie zalecany dla usług wymagających danych wejściowych specyficznych dla klienta przed rozpoczęciem realizacji.
+    </Note>
+  </Step>
+
+  <Step title="Opublikuj usługę">
+    Na dole edytora usług:
+
+    1. Przełącz **Opublikuj tę usługę** na pozycję WŁĄCZONE.
+    2. Kliknij **Zapisz** (lub **Aktualizuj usługę** podczas edytowania istniejącej usługi).
+
+    Po opublikowaniu usługa staje się natychmiast widoczna dla klientów w portalu. Jeśli pozostawisz przełącznik wyłączony, usługa zostaje zapisana jako wersja robocza i jest widoczna tylko dla Twojego zespołu.
+
+    <Tip>
+      Używaj trybu wersji roboczej, aby przygotować usługę z wyprzedzeniem i opublikować ją w momencie premiery — przydatne przy promocjach sezonowych lub ogłoszeniach nowej oferty.
+    </Tip>
+  </Step>
+</Steps>
+
+## Konfiguracja dodatków
+
+Dodatki to opcjonalne elementy, które klienci mogą wybrać przy kasie — na przykład *Ekspresowa dostawa*, *Dodatkowe poprawki* lub *Raport miesięczny*. Pozwalają Ci na upselling komplementarnych usług bez tworzenia zupełnie nowych pozycji.
+
+### Tworzenie dodatku
+
+<Steps>
+  <Step title="Otwórz Dodatki">
+    Przejdź do **Usługi** na pasku bocznym, kliknij przycisk **strzałki w dół** obok nagłówka Usługi i wybierz **Dodatki**.
+  </Step>
+  <Step title="Utwórz nowy dodatek">
+    Kliknij **+ Dodaj nowy dodatek** i wypełnij:
+
+    - **Nazwa dodatku**
+    - **Opis** — użyj edytora tekstu sformatowanego, aby jasno wyjaśnić, co zawiera dodatek
+    - **Typ cenowy** — wybierz *Jednorazowy* lub *Subskrypcyjny*
+    - **Szczegóły cenowe:**
+      - *Jednorazowy:* wprowadź kwotę i walutę
+      - *Subskrypcyjny:* ustaw interwał rozliczeniowy (np. co 1 miesiąc), opcjonalny limit cyklu rozliczeniowego, opłatę subskrypcyjną i walutę
+  </Step>
+  <Step title="Opublikuj i zapisz">
+    Przełącz **Publikuj** na WŁĄCZONE, a następnie kliknij **Utwórz**. Tylko opublikowane dodatki są widoczne podczas łączenia ich z formularzami zamówień.
+  </Step>
+</Steps>
+
+### Dołączanie dodatku do formularza zamówienia
+
+<Steps>
+  <Step title="Otwórz formularz zamówienia">
+    Przejdź do **Formularzy** i otwórz odpowiedni formularz zamówienia.
+  </Step>
+  <Step title="Wybierz usługę">
+    Wybierz usługę, do której chcesz dołączyć dodatek.
+  </Step>
+  <Step title="Dodaj dodatki">
+    Wybierz sekcję **Dodatki** z lewego panelu, a następnie wybierz dodatki, które chcesz powiązać z tą usługą.
+  </Step>
+  <Step title="Zapisz formularz">
+    Kliknij **Zapisz**. Klienci będą teraz widzieć wybrane dodatki jako opcjonalne elementy przy kasie.
+  </Step>
+</Steps>
+
+<Note>
+  Dodatki muszą używać tej samej waluty co usługa, do której są dołączone. Jeśli waluty się nie zgadzają, dodatek nie pojawi się na liście wyboru.
+</Note>
+
+### Zachowanie rozliczeniowe subskrypcyjnych dodatków
+
+Gdy cykle rozliczeniowe usługi i subskrypcyjnego dodatku różnią się, AgencyHandy automatycznie obsługuje nakładanie się:
+
+<Accordion title="Dodatek ma więcej cykli niż usługa">
+  Zarówno usługa, jak i dodatek są rozliczane razem przez czas trwania usługi. Po zakończeniu usługi dodatek kontynuuje rozliczenia samodzielnie przez pozostałe cykle.
+
+  **Przykład:** Usługa trwa 4 cykle, dodatek trwa 5 cykli → rozliczane razem przez 4 cykle, dodatek rozliczany samodzielnie przez 1 dodatkowy cykl.
+</Accordion>
+
+<Accordion title="Dodatek ma mniej cykli niż usługa">
+  Zarówno usługa, jak i dodatek są rozliczane razem przez czas trwania dodatku. Po zakończeniu dodatku usługa kontynuuje rozliczenia samodzielnie przez pozostałe cykle.
+
+  **Przykład:** Usługa trwa 5 cykli, dodatek trwa 3 cykle → rozliczane razem przez 3 cykle, usługa rozliczana samodzielnie przez 2 dodatkowe cykle.
+</Accordion>
+
+## Edytowanie usługi
+
+Po opublikowaniu usługi możesz zaktualizować dowolne pole bez przerywania istniejących zamówień.
+
+1. Przejdź do **Usług** i znajdź usługę, którą chcesz zaktualizować.
+2. Kliknij **menu z trzema kropkami** (⋮) po prawej stronie wiersza usługi.
+3. Wybierz **Edytuj**. Edytor usług otwiera się z wypełnionymi wszystkimi istniejącymi ustawieniami.
+4. Dokonaj zmian — zaktualizuj tytuł, opis, ceny, media, pakiety, zadania lub FAQ.
+5. Kliknij **Aktualizuj usługę**, aby zapisać.
+
+<Warning>
+  Zmiany w cenach pakietów lub czasie dostawy obowiązują tylko dla **nowych zamówień**. Istniejące zamówienia nie są retroaktywnie zmieniane.
+</Warning>
+
+## Tabela pól
+
+| Pole | Limit |
+|---|---|
+| Pakiety na usługę | Do 5 |
+| Produkty na pakiet (Co jest wliczone) | Do 15 |
+| Krótki opis pakietu | 140 znaków |
+| Rozmiar ikony pakietu | 32 × 32 px |
+| Rozmiar pliku mediów pakietu | 5 MB (PNG, JPG, JPEG) |
+| Nazwa zadania | 160 znaków |
+| Rozmiar pliku załącznika zadania | 1 GB na plik |
+| Etykieta rozbicia ceny | 20 znaków |

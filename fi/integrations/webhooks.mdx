@@ -1,0 +1,196 @@
+---
+title: "Webhook-hallinta: Luominen, testaaminen ja todentaminen"
+sidebarTitle: "Webhooks"
+description: "Määritä webhookit AgencyHandyssa lähettämään reaaliaikaisia tapahtumatietoja ulkoisiin järjestelmiin aina, kun tilaukset, tehtävät, laskut tai muut entiteetit muuttuvat."
+---
+
+Webhookit antavat AgencyHandyn lähettää tietoja ulkoisiin järjestelmiisi heti, kun jokin muuttuu — ilman kyselyä. Kun määritetty tapahtuma laukeaa (esimerkiksi tilaus päivitetään tai tukipyyntö luodaan), AgencyHandy lähettää HTTP POST -pyynnön JSON-hyötykuormalla määrittämääsi päätepiste-URL-osoitteeseen. Tämä tekee helpoksi pitää ulkoiset työkalut, kuten CRM-järjestelmät, laskutusjärjestelmät tai mukautetut dashboardit, synkronoituina AgencyHandy-työtilasi kanssa reaaliajassa.
+
+<Note>
+  Business Pro -suunnitelman työtilat tukevat enintään **30 000 webhook-tapahtumaa** laskutuskautta kohden. Tarkista suunnitelmasi rajoitukset ennen suurivolyymisten automaatioiden käyttöönottoa.
+</Note>
+
+## Tuetut tapahtumat
+
+Voit tilata webhookin mihin tahansa yhdistelmään seuraavista tapahtumista:
+
+| Kategoria | Tapahtumat |
+|---|---|
+| **Palvelu** | Luotu, päivitetty, poistettu |
+| **Tilaus** | Luotu, päivitetty, poistettu |
+| **Tehtävä** | Luotu, osoitettu, suoritettu, päivitetty |
+| **Lasku** | Tila muuttunut |
+| **Asiakas / Käyttäjä** | Uusi asiakas lisätty, asiakas/käyttäjä poistettu |
+| **Ehdotus** | Lähetetty, vastaanotettu, hyväksytty, hylätty |
+| **Tukipyyntö** | Luotu, osoitettu, tila muuttunut |
+| **Maksu** | Vastaanotettu, epäonnistunut |
+| **Palvelupaketti** | Luotu, päivitetty, poistettu |
+
+## Luo webhook
+
+<Steps>
+  <Step title="Siirry Webhook-hallintaan">
+    Siirry vasemmassa sivupalkissa kohtaan **Integrations → Webhooks Management**.
+  </Step>
+
+  <Step title="Todenna tunnuksesi">
+    Napsauta **Management**-painiketta todentaaksesi webhook-tunnuksesi. Tätä tunnusta käytetään lähtevien hyötykuormien allekirjoittamiseen, jotta voit varmistaa niiden olevan peräisin AgencyHandysta.
+  </Step>
+
+  <Step title="Luo uusi webhook">
+    Napsauta **Create New Webhook** avataksesi webhook-määrityslomakkeen.
+  </Step>
+
+  <Step title="Syötä päätepiste-URL">
+    Syötä **Endpoint URL** -kenttään ulkoisen järjestelmän URL-osoite, jonka tulee vastaanottaa webhook-tiedot. Tämän on oltava julkisesti saavutettava **POST**-päätepiste.
+  </Step>
+
+  <Step title="Valitse sisältötyyppi">
+    Valitse sisältötyypiksi **JSON**. AgencyHandy lähettää kaikki webhook-hyötykuormat muodossa `application/json`.
+  </Step>
+
+  <Step title="Valitse webhook-tapahtumat">
+    Valitse kaikki tapahtumat, joiden tulee käynnistää tämä webhook. Voit valita tapahtumia useista kategorioista — esimerkiksi **Order: Created** ja **Invoice: Status changed** voivat molemmat osoittaa samaan päätepisteeseen.
+  </Step>
+
+  <Step title="Aktivoi webhook">
+    Vaihda **Active**-valintanappula päälle. Kun webhook on aktiivinen, AgencyHandy toimittaa hyötykuormat kaikista valituista tapahtumista päätepisteellesi reaaliajassa.
+  </Step>
+
+  <Step title="Tallenna määritys">
+    Tarkista asetuksesi ja napsauta **Save**. Webhook näkyy luettelossa ja alkaa toimittaa tapahtumia välittömästi.
+  </Step>
+</Steps>
+
+## Testaa webhook
+
+Webhookin luomisen jälkeen lähetä testitiedot vahvistaaksesi, että päätepisteesi on saavutettavissa ja käsittelee tietoja oikein.
+
+<Steps>
+  <Step title="Avaa webhook">
+    Napsauta Webhooks Management -luettelossa webhookia, jonka haluat testata.
+  </Step>
+
+  <Step title="Napsauta Test Event">
+    Napsauta **Test Event** -painiketta webhookin tietosivulla.
+  </Step>
+
+  <Step title="Valitse testitapahtuma">
+    Valitse esimerkkitapahtuma webhookin määritettyjen tapahtumien luettelosta (esim. **Order: Created**).
+  </Step>
+
+  <Step title="Lähetä testitiedot">
+    Napsauta **Send**. AgencyHandy lähettää esimerkkihyötykuorman päätepiste-URL-osoitteeseesi.
+  </Step>
+
+  <Step title="Tarkista tulos">
+    Tarkista ulkoisesta järjestelmästäsi, että testitiedot saapuivat ja käsiteltiin odotetusti. Napsauta takaisin AgencyHandyssa webhookiin tarkastellaksesi sen **historiaa** — näet koko pyynnön, päätepisteesi palauttaman vastauksen ja voit toimittaa uudelleen minkä tahansa aiemman tapahtuman tarvittaessa.
+  </Step>
+</Steps>
+
+<Tip>
+  Käytä työkalua kuten [Webhook.site](https://webhook.site) tai [RequestBin](https://requestbin.com) väliaikaisena päätepisteenä asennuksen aikana tarkistaaksesi tarkan hyötykuorman rakenteen ennen todellisen järjestelmän kytkemistä.
+</Tip>
+
+## Todenna webhook-hyötykuormat
+
+Jokainen AgencyHandyn lähtevä webhook-pyyntö sisältää allekirjoitusotsikon, jota päätepisteesi voi käyttää varmistaakseen, että hyötykuorma on aito eikä sitä ole peukaloitu.
+
+### Allekirjoitusotsikko
+
+```
+x-ah-sig: <signature>
+```
+
+AgencyHandy lisää tämän otsikon jokaiseen webhook-pyyntöön. Pura arvo saapuvista pyynnöistä ja välitä se vahvistuspäätepisteelle.
+
+### Todenna webhook-allekirjoitus
+
+Lähetä seuraava pyyntö vahvistaaksesi, että hyötykuorma on aito:
+
+```
+POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature
+Content-Type: application/json
+```
+
+<ParamField body="webhookId" type="string" required>
+  Sen webhookin tunnus, joka vastaanotti tapahtuman. Löydät tämän webhookin tietosivulta AgencyHandyssa.
+</ParamField>
+
+<ParamField body="signature" type="string" required>
+  Saapuvan webhook-pyynnön `x-ah-sig`-otsikon arvo.
+</ParamField>
+
+<ParamField body="secret" type="string" required>
+  Webhookin tietosivulla AgencyHandyssa näkyvä webhook-salaisuus.
+</ParamField>
+
+<ParamField body="payload" type="object" required>
+  AgencyHandyn webhook-pyynnöstä vastaanotettu raaka JSON-runko.
+</ParamField>
+
+<CodeGroup>
+
+```javascript JavaScript
+const url = 'https://api.agencyhandy.com/api/v1/webhooks/verify-signature';
+
+const postData = {
+  webhookId: 'your_webhook_id',
+  signature: 'your_signature',   // value of x-ah-sig header
+  secret: 'your_webhook_secret',
+  payload: {},                   // the parsed JSON body from AgencyHandy
+};
+
+const response = await fetch(url, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(postData),
+});
+
+const data = await response.json();
+console.log(data); // { "verification_status": "SUCCESS" }
+```
+
+```bash cURL
+curl -X POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature \
+  -H "Content-Type: application/json" \
+  -d '{
+    "webhookId": "your_webhook_id",
+    "signature": "your_signature",
+    "secret": "your_webhook_secret",
+    "payload": {}
+  }'
+```
+
+</CodeGroup>
+
+**Vastaukset**
+
+<ResponseField name="verification_status" type="string">
+  `SUCCESS` kun allekirjoitus on kelvollinen. `FAILED` kun vahvistus epäonnistuu (HTTP 403).
+</ResponseField>
+
+```json Success (200)
+{
+  "verification_status": "SUCCESS"
+}
+```
+
+```json Failure (403)
+{
+  "type": "PermissionError",
+  "status": 403,
+  "verification_status": "FAILED"
+}
+```
+
+<Warning>
+  Pidä webhook-salaisuutesi luottamuksellisena. Kierrä sitä säännöllisesti ja päivitä vahvistuslogiikkasi välittömästi kierron jälkeen. Älä koskaan paljasta sitä asiakaspuolen koodissa tai julkisissa repositorioissa.
+</Warning>
+
+## Tärkeät huomiot
+
+- Päätepiste-URL-osoitteesi on oltava **julkisesti saavutettava HTTPS POST** -URL.
+- Jos päätepisteesi on tilapäisesti poissa käytöstä, tarkista webhookin historiaruutu AgencyHandyssa — voit **toimittaa uudelleen** minkä tahansa aiemman tapahtuman suoraan sieltä.
+- Seuraa säännöllisesti webhook-toimintaa havaitaksesi epäonnistuneet toimitukset tai luvattomat käyttöyritykset.
+- Toistuvasti epäonnistuvat webhookit voidaan keskeyttää AgencyHandyn toimesta — tarkista toimituslokit ongelmien havaitsemiseksi ajoissa.

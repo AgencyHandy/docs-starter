@@ -1,0 +1,201 @@
+---
+title: "AgencyHandy API: Opret en ny lead programmatisk"
+sidebarTitle: "Opret lead"
+description: "Brug AgencyHandy API til programmatisk at oprette nye leads ved at sende en POST-anmodning til bulk-lead-endpointet med de påkrævede felter."
+---
+
+Opret lead-endpointet lader dig programmatisk tilføje nye leads til dit AgencyHandy-workspace fra ethvert eksternt system — en webformular, et CRM, en marketingautomatiseringsplatform eller et brugerdefineret script. Leads oprettet via dette endpoint vises straks i din lead-pipeline, ligesom hvis de var tilføjet manuelt.
+
+<Note>
+  Inden du bruger dette endpoint, skal du fuldføre vejledningen [Kom godt i gang](/da/api/getting-started) for at hente din API-nøgle og dit Company ID. Du skal også hente dit **Client Role ID**, som er påkrævet ved oprettelse af en lead.
+</Note>
+
+## Forudsætninger
+
+- ✅ API-nøgle genereret fra **Workspace Config → API Key**
+- ✅ Company ID hentet fra `GET {{URL}}/accounts/companies`
+- ✅ Client Role ID hentet (se Trin 1 nedenfor)
+
+---
+
+## Trin 1: Hent Client Role ID
+
+Inden du opretter en lead, skal du bruge Role ID for `client`-rollen i dit bureau.
+
+### Endpoint
+
+```
+GET {{URL}}/roles?type=company
+```
+
+### Headers
+
+| Header | Værdi |
+|---|---|
+| `x-api-key` | Din API-nøgle |
+| `companyid` | Dit Company ID |
+
+### Eksempelanmodning
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/roles?type=company" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>"
+```
+
+### Eksempelsvar
+
+```json
+{
+  "roles": [
+    {
+      "_id": "6525994184e9ddd798534535",
+      "role": {
+        "_id": "6525994184e9ddd79853451e",
+        "responsibility": "",
+        "name": "client"
+      },
+      "company": "6525994184e9ddd79853450e",
+      "createdAt": "2023-10-10T18:34:41.567Z",
+      "updatedAt": "2024-10-01T07:28:48.340Z",
+      "__v": 0,
+      "type": "company"
+    }
+  ]
+}
+```
+
+Find den post, hvor `roles[0].role.name === "client"`, og udpak det **ydre** `_id` — det er `roles[0]._id`, **ikke** `roles[0].role._id`.
+
+```javascript
+const clientRoleId = roles.find(r => r.role.name === "client")._id;
+// e.g. "6525994184e9ddd798534535"
+```
+
+<Warning>
+  Brug `roles[0]._id` (bureau-rolle-tilknytnings-ID'et), **ikke** `roles[0].role._id` (rolle-definitions-ID'et). Brug af det forkerte ID medfører, at lead-oprettelsesanmodningen mislykkes.
+</Warning>
+
+---
+
+## Trin 2: Opret en ny lead
+
+### Endpoint
+
+```
+POST {{URL}}/members/bulk-lead
+```
+
+### Headers
+
+| Header | Værdi |
+|---|---|
+| `x-api-key` | Din API-nøgle |
+| `companyid` | Dit Company ID |
+| `Content-Type` | `application/json` |
+
+### Anmodningskrop
+
+Anmodningskroppen er et **JSON-array** — du kan oprette én eller flere leads i et enkelt kald.
+
+<ParamField body="firstName" type="string" required>
+  Leadens fornavn.
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  Leadens efternavn.
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  Leadens e-mailadresse. Skal være unik inden for dit workspace.
+</ParamField>
+
+<ParamField body="role" type="string" required>
+  Client Role ID hentet i Trin 1 (dvs. `roles[0]._id`).
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  Skal sættes til `false` ved oprettelse af en lead. Sæt til `true` kun når du konverterer en lead til en fuld klient.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Leadens pipeline-status. Almindelige værdier: `New`, `Contacted`, `Qualified`. Standardværdi er `New`, hvis udeladt.
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  Leadens telefonnummer.
+</ParamField>
+
+<ParamField body="source" type="string">
+  Hvordan du erhvervede denne lead. Eksempelværdier: `website`, `referral`, `social`.
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  Leadens position (rækkefølge) inden for pipeline-boardkolonnen. Standardværdi er `1`.
+</ParamField>
+
+### Eksempelanmodning
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-lead" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "role": "6525994184e9ddd798534535",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+### Succesfuldt svar
+
+```json
+{
+  "message": "Lead created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  Bekræftelsesstreng: `"Lead created successfully"`.
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  Array af oprettede lead-objekter.
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  Det unikke ID for den nyoprettede lead. Gem dette, hvis du skal referere til leaden i efterfølgende API-kald.
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  Leadens fulde navn (fornavn + efternavn).
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  Leadens pipeline-status som gemt.
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  Rollenavnet tildelt til medlemmet — vil være `"client"`.
+</ResponseField>
+
+<Tip>
+  Du kan sende flere lead-objekter i arrayet for at oprette flere leads i et enkelt API-kald. Hvert objekt skal inkludere alle påkrævede felter med sin egen unikke e-mailadresse.
+</Tip>

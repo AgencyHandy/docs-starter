@@ -1,0 +1,260 @@
+---
+title: "Palvelun luominen paketeilla, tehtävillä ja UKK:illa"
+sidebarTitle: "Luo palvelu"
+description: "Vaiheittainen opas AgencyHandy-palvelun rakentamiseen: valitse laskutustyyppi, määritä paketit, aseta oletusrehtävät, lisää UKK:t ja julkaise."
+---
+
+Palvelun luominen AgencyHandyssa on ensimmäinen askel toimistosi tarjousten myymiseen alustan kautta. Yksi palvelu voi sisältää enintään viisi hinnoittelupakettia, automaattiset oletusrehtävät, jotka käynnistyvät tilauksen yhteydessä, UKK:t vähentämään myynnin estiittelyjä, portfolion liittämisen sosiaalisen näytön vuoksi ja valinnaisen haastattelulomakkeen — kaikki määritetty yhdessä paikassa ennen julkaisua.
+
+<Note>
+  Tarvitset **pääylläpitäjän** tai **ylläpitäjän** roolin palvelujen luomiseen. Muut roolit vaativat eksplisiittiset palvelun käyttöoikeudet päästäkseen käsiksi tähän osioon.
+</Note>
+
+<Steps>
+  <Step title="Valitse palvelutyyppi">
+    Avaa vasemmasta sivupalkista **Palvelut** ja napsauta **+ Palvelu** aloittaaksesi uuden listauksen.
+
+    Sivun yläosassa valitse laskutusmallit:
+
+    - **Kertaluonteinen palvelu** — asiakas maksaa yksittäisen maksun ja saa toimituksen kerran. Parhaiten sopii projekteille, joilla on selkeä laajuus: verkkosivuston rakentaminen, logopaketteja, auditointeja jne.
+    - **Tilauspalvelu** — laskutus toistuu automaattisesti määrittämälläsi aikataululla. Parhaiten sopii sopimuksille, jatkuvalle sisällölle, hallinnoituille palveluille tai ylläpitosuunnitelmille.
+
+    <Warning>
+      Palvelutyyppi lukitaan tallentamisen jälkeen. Jos tarvitset eri laskutusmallin, luo uusi palvelu.
+    </Warning>
+  </Step>
+
+  <Step title="Lisää palvelun tiedot">
+    Laajenna **Palvelun tiedot** -osio ja täytä seuraavat kentät:
+
+    **Palvelun nimi** *(pakollinen)*
+    Näin palvelu näkyy asiakkaille kaikkialla alustalla — katalogissa, laskuissa ja tilauksen työtilassa. Tee siitä selkeä ja kuvaava.
+
+    **Median lataus**
+    Lataa yksi tai useampi esikatselukuva esittämään palvelua visuaalisesti. Laadukkaat kuvat lisäävät asiakkaiden luottamusta ja konversioprosentteja.
+
+    **Palvelun kuvaus**
+    Kirjoita perusteellinen selitys siitä, mitä palvelu sisältää, kenelle se on tarkoitettu ja mitä asiakkaat voivat odottaa. Käytä tätä tilaa erottautumaan tarjouksessasi.
+
+    **Veroasetukset**
+    Valitse, onko vero **sisäänrakennettu** (jo sisällytetty hintaan) vai **ulkopuolinen** (lisätään päälle kassalla).
+
+    **Valuutta**
+    Aseta valuutta kaikille tämän palvelun paketeille. Kaikki yhden palvelun paketit jakavat saman valuutan.
+
+    <Tip>
+      Lataa esikatselukuvat 16:9-kuvasuhteessa parhaan esityksen saamiseksi asiakasportaalissa.
+    </Tip>
+  </Step>
+
+  <Step title="Luo paketit">
+    Laajenna **Paketin tiedot** ja napsauta **+ Uusi paketti** lisätäksesi ensimmäisen hinnoittelutasosi. Voit luoda enintään **5 pakettia** per palvelu.
+
+    Määritä kullekin paketille seuraavat:
+
+    **Paketin nimi** *(pakollinen)*
+    Nimi, jonka asiakkaat näkevät, kuten *Perus*, *Vakio* tai *Premium*.
+
+    **Paketin kuvake** *(valinnainen)*
+    Valitse sisäänrakennettu kuvake tai lataa mukautettu. Ladattujen kuvakkeiden on oltava **32 × 32 pikseliä**.
+
+    **Paketin media** *(valinnainen)*
+    Lataa tälle paketille oma kansikuva. Hyväksytyt muodot: PNG, JPG, JPEG. Enimmäistiedostokoko: **5 MB**. Enintään 1 tiedosto per paketti. Suositeltu suhde: **16:9**.
+
+    **Paketin briiffi** *(valinnainen)*
+    Yksirivisinen yhteenveto tämän paketin toimituksista. Enintään **140 merkkiä**.
+
+    **Mitä sisältyy** *(pakollinen)*
+    Listaa tähän pakettiin sisältyvät toimitukset. Voit lisätä enintään **15 riviä** per paketti. Jokaisen luetelmakohdan tulee kuvata yhtä konkreettista toimitusta (esim. *"5 blogikirjoitusta kuukaudessa, enintään 1 000 sanaa kukin"*).
+
+    <Tip>
+      Kun olet luonut useita paketteja, vedä niitä järjestelläksesi niiden näyttöjärjestyksen asiakkaille. Merkitse yksi **Suosituin**-merkinnällä kiinnittääksesi huomion suosittelemasi tasoon.
+    </Tip>
+  </Step>
+
+  <Step title="Aseta hinnoittelu- ja toimitusnormit">
+    Aseta kullekin paketille ydinin hinnoittelukentät ja valinnaiset hallinnat:
+
+    **Summa** *(pakollinen)*
+    Hinta, jonka asiakas maksaa tästä paketista.
+
+    **Toimitusaika** *(pakollinen)*
+    Arvioitu päivien lukumäärä palvelun toimittamiseen oston jälkeen.
+
+    **Valinnaiset hinnoitteluhallintaominaisuudet:**
+
+    <Accordion title="Lisää alennus">
+      Sovella prosentti- tai kiinteän summan vähennystä tämän paketin hintaan. Alennettu hinta näkyy asiakkaille alkuperäisen hinnan rinnalla, luoden tehokkaan myynninedistämisvaikutuksen.
+    </Accordion>
+
+    <Accordion title="Lisää kokeilujakso (vain tilaukset)">
+      Tarjoa ilmainen tai alennettu kokeilujakso ennen säännöllisen tilauslaskutuksen alkamista. Tämä vaihtoehto on saatavilla vain tilaustyyppisissä palveluissa.
+    </Accordion>
+
+    <Accordion title="Lisää määrärajoitus">
+      Rajoita yksiköiden lukumäärää, jonka asiakas voi ostaa yhdessä kassaistunnossa. Käytä tätä rajoitetusti saatavilla oleville paketeille tai palveluille, joilla on kapasiteettirajoituksia.
+    </Accordion>
+
+    <Accordion title="Lisää lisää hintatietoja">
+      Erittele kokonaiskustannus yksittäisiin riveihin — esimerkiksi näyttämällä *perushinta + asennusmaksu + yksikkökohtainen hinta*. Jokainen erittelytunniste tukee enintään **20 merkkiä**.
+    </Accordion>
+
+    <Note>
+      Kaikki pakolliset kentät (Summa ja Toimitusaika) on täytettävä jokaiselle paketille ennen palvelun julkaisemista.
+    </Note>
+  </Step>
+
+  <Step title="Lisää oletusrehtävät automaatiota varten">
+    Jokaiseen pakettiin sisältyy **Oletusrehtävät**-osio. Tässä määritellyt tehtävät luodaan automaattisesti tilauksen työtilaan heti, kun asiakas ostaa tämän paketin — jokaisen myynnin jälkeen ei tarvita manuaalista asennusta.
+
+    Napsauta **+ Lisää** avataksesi tehtävien luontimodalin. Voit määrittää kullekin tehtävälle:
+
+    | Kenttä | Tiedot |
+    |---|---|
+    | **Tehtävän nimi** | Pakollinen; enintään **160 merkkiä** |
+    | **Kuvaus** | Yksityiskohtaiset ohjeet tehtävän suorittajalle |
+    | **Tehtävän suorittaja** | Tästä tehtävästä vastaava tiimin jäsen |
+    | **Liite** | Lataa viitetiedostoja; hyväksytyt muodot: csv, odt, doc, docx, htm, html, pdf, ppt, pptx, txt, xls, xlsx, jpg, jpeg, png, gif, webp, svg, ai, mp4, mp3, wav, zip, rar; enimmäistiedostokoko **1 GB** per tiedosto |
+    | **Etiketti** | Merkitse tehtävä suodatusta ja raportointia varten |
+    | **Tila** | Alkutila tehtävän luomisen yhteydessä |
+    | **Asiakkaan arviointi** | Ota käyttöön, jos tämä tehtävä vaatii asiakkaan hyväksynnän ennen kuin se katsotaan valmiiksi |
+
+    Lisää niin monta tehtävää kuin tarvitaan kattamaan tämän paketin toimitusprosessi kokonaan. Johdonmukaiset oletusrehtävät varmistavat, että jokainen tilaus noudattaa samaa laadunvarmistettua työnkulkua.
+
+    <Tip>
+      Kartoita oletusrehtäväsi sisäiseen SOP:iisi. Esimerkiksi *Sosiaalisen median hallinta* -paketti saattaa automaattisesti luoda tehtäviä kuten *Sisältökalenterin luonnos*, *Asiakkaan hyväksyntä*, *Julkaisujen ajoitus* ja *Kuukausiraportti*.
+    </Tip>
+  </Step>
+
+  <Step title="Lisää UKK:t ja portfolio">
+    Laajenna **Lisätiedot**-osio lisätäksesi kaksi valinnaista mutta vaikuttavaa elementtiä:
+
+    **Portfolion liittäminen**
+    Linkitä portfoliokategoria tähän palveluun, jotta asiakkaat voivat selata asiaankuuluvia näytteitä aiemmasta työstäsi suoraan palvelun listauksessa. Voit yhdistää olemassa olevan portfoliokategorian tai luoda uuden tältä näytöltä.
+
+    **Usein kysytyt kysymykset (UKK:t)**
+    Napsauta **+ Lisää** lisätäksesi kysymys-vastaus-parin. Lisää niin monta UKK:ta kuin on asiaankuuluvaa — yleisiä aiheita ovat:
+
+    - Sisällön omaperäisyys ja oikeudet
+    - Tarkistus- ja palauteprosessi
+    - Laajuusrajat ja mitä *ei* sisälly
+    - Aikataulut ja viestintätahti
+    - Maksu- ja palautuskäytännöt
+
+    Hyvin kirjoitetut UKK:t vähentävät edestakaisin käymistä ennen ostoa ja auttavat asiakkaita itsearvioimaan sopivuutensa.
+  </Step>
+
+  <Step title="Liitä haastattelulomake">
+    Haastattelulomake kerää asiakkaalta tarvitsemasi tiedot ennen työn aloittamista — esimerkiksi brändiohjeistukset, käyttöoikeudet, kohderyhmä tai projektin tavoitteet.
+
+    - Napsauta **+ Luo uusi haastattelulomake** rakentaaksesi lomakkeen alusta asti, tai valitse olemassa oleva lomake pudotusvalikosta.
+    - Jos tämä palvelu ei vaadi haastattelulomaketta, napsauta **Ohita** ohittaaksesi tämän osion.
+    - Napsauta **Päivitä** tallentaaksesi haastattelulomakkeen valintasi ja jatkaaksesi.
+
+    <Note>
+      Haastattelulomake on valinnainen, mutta vahvasti suositeltu palveluille, jotka vaativat asiakaskohtaisia syötteitä ennen toimituksen aloittamista.
+    </Note>
+  </Step>
+
+  <Step title="Julkaise palvelu">
+    Palvelueditorin alaosassa:
+
+    1. Vaihda **Julkaise tämä palvelu** PÄÄLLÄ-asentoon.
+    2. Napsauta **Tallenna** (tai **Päivitä palvelu**, jos muokkaat olemassa olevaa palvelua).
+
+    Julkaisemisen jälkeen palvelu tulee välittömästi asiakkaiden nähtäville portaalissa. Jos jätät kytkimen pois päältä, palvelu tallennetaan luonnoksena ja vain tiimisi näkee sen.
+
+    <Tip>
+      Käytä luonnostilaa valmistellaksesi palvelun etukäteen ja julkaise se käynnistyshetkellä — hyödyllistä kausiluonteisille kampanjoille tai uusien tarjousten ilmoituksille.
+    </Tip>
+  </Step>
+</Steps>
+
+## Lisäpalvelun asennus
+
+Lisäpalvelut ovat valinnaisia lisäosia, joita asiakkaat voivat valita kassalla — esimerkiksi *Kiireetoimitus*, *Ylimääräiset tarkistukset* tai *Kuukausiraportti*. Ne mahdollistavat täydentävien palvelujen lisämyynnin luomatta kokonaan uusia listauksia.
+
+### Lisäpalvelun luominen
+
+<Steps>
+  <Step title="Avaa Lisäpalvelut">
+    Siirry sivupalkissa kohtaan **Palvelut**, napsauta **Palvelut**-otsikon vieressä olevaa **alanuolipainiketta** ja valitse **Lisäpalvelut**.
+  </Step>
+  <Step title="Luo uusi lisäpalvelu">
+    Napsauta **+ Lisää uusi lisäpalvelu** ja täytä:
+
+    - **Lisäpalvelun nimi**
+    - **Kuvaus** — käytä rikastekstieditoria selittääksesi selkeästi, mitä lisäpalvelu sisältää
+    - **Hinnoittelutyyppi** — valitse *Kertaluonteinen* tai *Tilaus*
+    - **Hinnoittelutiedot:**
+      - *Kertaluonteinen:* syötä summa ja valuutta
+      - *Tilaus:* aseta laskutusväli (esim. joka 1 kuukausi), valinnainen laskutusjaksojen rajoitus, tilausmaksu ja valuutta
+  </Step>
+  <Step title="Julkaise ja tallenna">
+    Vaihda **Julkaise** PÄÄLLÄ-asentoon ja napsauta sitten **Luo**. Vain julkaistut lisäpalvelut ovat näkyvissä, kun niitä liitetään tilauslomakkeisiin.
+  </Step>
+</Steps>
+
+### Lisäpalvelun liittäminen tilauslomakkeeseen
+
+<Steps>
+  <Step title="Avaa tilauslomake">
+    Siirry kohtaan **Lomakkeet** ja avaa asiaankuuluva tilauslomake.
+  </Step>
+  <Step title="Valitse palvelu">
+    Valitse palvelu, johon haluat liittää lisäpalvelun.
+  </Step>
+  <Step title="Lisää lisäpalvelut">
+    Valitse vasemmasta paneelista **Lisäpalvelut**-osio ja valitse sitten lisäpalvelut, jotka haluat yhdistää tähän palveluun.
+  </Step>
+  <Step title="Tallenna lomake">
+    Napsauta **Tallenna**. Asiakkaat näkevät nyt valitut lisäpalvelut valinnaisina lisäosinä kassalla.
+  </Step>
+</Steps>
+
+<Note>
+  Lisäpalvelujen on käytettävä samaa valuuttaa kuin palvelun, johon ne liitetään. Jos valuutat eivät täsmää, lisäpalvelu ei näy valintalistassa.
+</Note>
+
+### Tilauslisäpalvelun laskutuskäyttäytyminen
+
+Kun palvelun ja tilauslisäpalvelun laskutusjaksot eroavat toisistaan, AgencyHandy käsittelee päällekkäisyyden automaattisesti:
+
+<Accordion title="Lisäpalvelulla on enemmän jaksoja kuin palvelulla">
+  Sekä palvelua että lisäpalvelua laskutetaan yhdessä palvelun keston ajan. Palvelun päättyessä lisäpalvelun laskutus jatkuu yksinään jäljellä olevien jaksojen ajan.
+
+  **Esimerkki:** Palvelu toimii 4 jaksoa, lisäpalvelu toimii 5 jaksoa → laskutetaan yhdessä 4 jaksoa, lisäpalvelu laskutetaan yksin 1 lisäjakson ajan.
+</Accordion>
+
+<Accordion title="Lisäpalvelulla on vähemmän jaksoja kuin palvelulla">
+  Sekä palvelua että lisäpalvelua laskutetaan yhdessä lisäpalvelun keston ajan. Lisäpalvelun päättyessä palvelun laskutus jatkuu yksinään jäljellä olevien jaksojen ajan.
+
+  **Esimerkki:** Palvelu toimii 5 jaksoa, lisäpalvelu toimii 3 jaksoa → laskutetaan yhdessä 3 jaksoa, palvelu laskutetaan yksin 2 lisäjakson ajan.
+</Accordion>
+
+## Palvelun muokkaaminen
+
+Julkaisun jälkeen voit päivittää mitä tahansa kenttää keskeyttämättä olemassa olevia tilauksia.
+
+1. Siirry kohtaan **Palvelut** ja etsi palvelu, jonka haluat päivittää.
+2. Napsauta palvelurivin oikealla puolella olevaa **kolmen pisteen valikkoa** (⋮).
+3. Valitse **Muokkaa**. Palvelueditori avautuu kaikkine olemassa olevine asetuksineen täytettynä.
+4. Tee muutoksesi — päivitä otsikko, kuvaus, hinnoittelu, media, paketit, tehtävät tai UKK:t.
+5. Napsauta **Päivitä palvelu** tallentaaksesi.
+
+<Warning>
+  Pakettien hinnoittelun tai toimitusajan muutokset tulevat voimaan **vain uusille tilauksille**. Olemassa olevia tilauksia ei muuteta taannehtivasti.
+</Warning>
+
+## Kenttien viite
+
+| Kenttä | Raja |
+|---|---|
+| Paketteja per palvelu | Enintään 5 |
+| Toimituksia per paketti (Mitä sisältyy) | Enintään 15 |
+| Paketin briiffi | 140 merkkiä |
+| Paketin kuvakkeen koko | 32 × 32 px |
+| Paketin mediatiedoston koko | 5 MB (PNG, JPG, JPEG) |
+| Tehtävän nimi | 160 merkkiä |
+| Tehtävän liitteen tiedostokoko | 1 GB per tiedosto |
+| Hinnan erittelytunniste | 20 merkkiä |

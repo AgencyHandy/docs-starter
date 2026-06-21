@@ -1,0 +1,126 @@
+---
+title: "Hubungkan Custom Domain ke Workspace AgencyHandy Anda"
+sidebarTitle: "Custom Domain"
+description: "Tautkan subdomain Anda sendiri (misalnya, portal.perusahaananda.com) ke AgencyHandy dengan menambahkan catatan CNAME di registrar DNS Anda — tanpa perlu coding."
+---
+
+Secara default, workspace AgencyHandy Anda dapat diakses di subdomain di bawah `agencyhandy.com`. Menghubungkan custom domain memungkinkan Anda mengganti URL default tersebut dengan alamat bermerek milik Anda sendiri — misalnya, `portal.agensianda.com` — memberikan klien pengalaman yang mulus dan profesional yang memperkuat merek Anda sejak halaman pertama yang mereka kunjungi.
+
+<Note>
+  Hanya **Super Admin** dan **Admin** yang dapat mengonfigurasi custom domain. Anda juga harus memiliki domain tersebut dan memiliki akses ke pengaturan DNS-nya di registrar Anda untuk menyelesaikan pengaturan ini.
+</Note>
+
+---
+
+## Cara Kerjanya
+
+Saat Anda menambahkan custom domain di AgencyHandy, platform menyediakan **catatan CNAME** untuk Anda. Anda menambahkan catatan tersebut ke pengaturan DNS domain Anda di registrar (GoDaddy, Namecheap, Cloudflare, dll.), dan AgencyHandy memverifikasi koneksi setelah DNS telah menyebar.
+
+---
+
+## Pengaturan Langkah demi Langkah
+
+<Steps>
+  <Step title="Buka pengaturan Custom Domain">
+    Masuk ke akun AgencyHandy Anda. Navigasikan ke **Workspace Config** di sidebar kiri, lalu klik **Custom Domain**.
+  </Step>
+  <Step title="Tambahkan custom domain Anda">
+    Klik tombol **+ Add Custom Domain**. Di kolom input yang muncul, masukkan subdomain yang ingin Anda gunakan — misalnya, `portal.agensianda.com`.
+
+    <Warning>
+      Jangan gunakan `www` sebagai subdomain Anda (yaitu, hindari `www.agensianda.com`). Awalan `www` dapat menyebabkan konflik konfigurasi dan mencegah verifikasi yang berhasil. Gunakan subdomain yang berbeda seperti `portal`, `client`, `app`, atau `hub`.
+    </Warning>
+  </Step>
+  <Step title="Salin detail catatan CNAME">
+    Setelah mengirimkan domain Anda, AgencyHandy menampilkan catatan DNS yang perlu Anda tambahkan:
+
+    | Kolom   | Nilai                                          |
+    |---------|------------------------------------------------|
+    | **Type**  | CNAME                                        |
+    | **Name**  | Subdomain Anda (misalnya, `portal`)          |
+    | **Value** | Target yang disediakan oleh AgencyHandy      |
+
+    Salin nilai-nilai ini dengan hati-hati — Anda akan membutuhkannya di langkah berikutnya.
+  </Step>
+  <Step title="Tambahkan catatan CNAME di registrar DNS Anda">
+    Masuk ke dashboard registrar domain Anda (misalnya, GoDaddy, Namecheap, Cloudflare). Navigasikan ke bagian manajemen DNS untuk domain Anda dan tambahkan catatan CNAME menggunakan Type, Name, dan Value yang disalin dari AgencyHandy.
+
+    Lihat panduan khusus registrar di bawah ini untuk Cloudflare.
+  </Step>
+  <Step title="Simpan domain di AgencyHandy">
+    Kembali ke AgencyHandy dan klik **Save Domain**. Status awalnya akan menampilkan **Disconnected** — ini adalah hal yang wajar selama DNS menyebar.
+  </Step>
+  <Step title="Tunggu penyebaran DNS dan verifikasi">
+    Perubahan DNS dapat memakan waktu dari beberapa menit hingga **hingga 48 jam** untuk menyebar secara global, tergantung pada registrar dan pengaturan TTL Anda. Klik **Refresh** secara berkala untuk memeriksa status koneksi.
+
+    Setelah penyebaran selesai, status berubah menjadi **Connected** ✅.
+  </Step>
+</Steps>
+
+<Warning>
+  Penyebaran DNS dapat memakan waktu hingga **48 jam**. Jika domain Anda masih menampilkan **Disconnected** setelah 48 jam, periksa kembali bahwa catatan CNAME sudah benar dan tidak ada catatan DNS yang berkonflik untuk subdomain yang sama.
+</Warning>
+
+---
+
+## Petunjuk Khusus Cloudflare
+
+Jika domain Anda dikelola melalui Cloudflare, ada satu pengaturan penting yang harus Anda konfigurasikan dengan benar:
+
+<Steps>
+  <Step title="Masuk ke Cloudflare dan pilih domain Anda">
+    Buka [dashboard Cloudflare](https://dash.cloudflare.com) Anda dan klik domain yang Anda hubungkan ke AgencyHandy.
+  </Step>
+  <Step title="Navigasikan ke pengaturan DNS">
+    Klik tab **DNS** di navigasi atas panel pengaturan domain.
+  </Step>
+  <Step title="Tambahkan catatan CNAME">
+    Klik **+ Add Record** dan isi kolom-kolomnya:
+    - **Type:** CNAME
+    - **Name:** Subdomain Anda (misalnya, `portal`)
+    - **Target/Content:** Nilai yang disediakan oleh AgencyHandy
+    - **TTL:** Atur ke **2 menit** (atau opsi terendah yang tersedia) selama pengaturan awal
+  </Step>
+  <Step title="Nonaktifkan proxy Cloudflare (penting)">
+    Di kolom **Proxy status**, pastikan tombol diatur ke **DNS only** (ikon awan harus tampak abu-abu, bukan oranye).
+
+    <Warning>
+      Jika proxy Cloudflare **diaktifkan** (ikon awan oranye), catatan CNAME tidak akan terselesaikan dengan benar dan AgencyHandy tidak dapat memverifikasi domain Anda. Anda harus mengaturnya ke **DNS Only** agar koneksi berfungsi.
+    </Warning>
+  </Step>
+  <Step title="Simpan catatan">
+    Periksa semua nilai untuk keakuratan dan klik **Save**.
+  </Step>
+</Steps>
+
+<Tip>
+  Gunakan [dnschecker.org](https://dnschecker.org) untuk memantau penyebaran catatan CNAME Anda di berbagai wilayah global. Cari tanda centang hijau di semua wilayah sebelum mengharapkan AgencyHandy mengonfirmasi koneksi.
+</Tip>
+
+---
+
+## Memantau Status Koneksi Anda
+
+Setelah menyimpan, kembali ke **Workspace Config → Custom Domain** di AgencyHandy untuk melacak status:
+
+| Status           | Arti                                                              |
+|------------------|----------------------------------------------------------------------|
+| **Disconnected** | Catatan DNS belum menyebar atau mengandung kesalahan               |
+| **Connected**    | Domain diverifikasi dan aktif — klien dapat mengakses workspace Anda melalui URL kustom |
+
+---
+
+## Memperbarui atau Menghapus Custom Domain
+
+- **Untuk memperbarui domain Anda:** Hapus entri yang ada dan tambahkan domain baru menggunakan langkah pengaturan yang sama di atas.
+- **Untuk menghapus domain Anda:** Klik tombol **Delete** di sebelah domain Anda di panel Custom Domain dan konfirmasi penghapusan. Workspace Anda akan kembali ke URL AgencyHandy default. Anda dapat menambahkan kembali domain apa pun kapan saja.
+
+---
+
+## Catatan Penting
+
+- **Gunakan subdomain, bukan root domain:** Custom domain AgencyHandy memerlukan subdomain (misalnya, `portal.agensianda.com`), bukan root/apex domain (misalnya, `agensianda.com`).
+- **Hindari `www`:** Subdomain `www` dapat menyebabkan masalah selama verifikasi. Gunakan nama subdomain kustom sebagai gantinya.
+- **Catatan yang tepat diperlukan:** Masukkan CNAME Type, Name, dan Value persis seperti yang ditampilkan di AgencyHandy. Typo atau karakter yang hilang mencegah koneksi.
+- **Proxy Cloudflare harus dinonaktifkan:** Selalu atur catatan Cloudflare ke **DNS Only** untuk verifikasi custom domain AgencyHandy.
+- **Akses hanya admin:** Hanya Super Admin dan Admin yang dapat menambahkan, memodifikasi, atau menghapus pengaturan custom domain.

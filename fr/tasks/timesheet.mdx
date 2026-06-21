@@ -1,0 +1,172 @@
+---
+title: "Suivi du temps et gestion des feuilles de temps dans AgencyHandy"
+sidebarTitle: "Feuille de temps"
+description: "Enregistrez du temps avec un minuteur en direct ou une saisie manuelle, filtrez les journaux de travail par tâche, membre ou service, et exportez les données de feuille de temps au format CSV ou XLSX dans AgencyHandy."
+---
+
+La fonctionnalité de feuille de temps d'AgencyHandy vous offre un panneau central pour suivre chaque heure que votre équipe consacre aux tâches. Vous pouvez démarrer un minuteur en direct sur n'importe quelle tâche, enregistrer du temps après coup avec une saisie manuelle, puis analyser les données par plage de dates, membre de l'équipe ou service. Lorsque vous devez établir un rapport de productivité ou facturer du temps, vous pouvez tout exporter au format CSV ou XLSX en quelques clics. C'est l'outil essentiel pour responsabiliser votre équipe et garantir l'exactitude de votre facturation au temps.
+
+## Qui peut utiliser les fonctionnalités de feuille de temps
+
+| Fonctionnalité | Super Admin | Admin | PM | Employee |
+|---------|:-----------:|:-----:|:--:|:--------:|
+| Voir ses propres journaux de temps | ✅ | ✅ | ✅ | ✅ |
+| Enregistrer du temps pour d'autres | ✅ | ✅ | ✅ | ❌ |
+| Modifier les saisies de temps | ✅ | ✅ | ✅ | ❌ |
+| Exporter les données de feuille de temps | ✅ | ✅ | ✅ | ❌ |
+
+<Note>
+  Les tâches doivent exister avant que du temps puisse y être suivi. Assurez-vous que les tâches sont créées au sein des commandes avant de tenter d'enregistrer du temps.
+</Note>
+
+## Consulter la feuille de temps
+
+<Steps>
+  <Step title="Ouvrir la feuille de temps">
+    Cliquez sur **Timesheet** dans la barre latérale gauche principale. Vous verrez un tableau répertoriant tous les journaux de temps de votre équipe.
+
+    Chaque ligne affiche la date, le membre de l'équipe, le nom de la tâche, le service, le temps enregistré et toute note attachée à la saisie.
+  </Step>
+</Steps>
+
+## Ajouter une saisie de temps
+
+Vous avez deux options pour enregistrer du temps : un minuteur en direct pour le travail en cours, ou une saisie manuelle pour le temps que vous avez déjà effectué.
+
+<Tabs>
+  <Tab title="Démarrer un minuteur">
+    <Steps>
+      <Step title="Sélectionner une tâche">
+        Dans la vue feuille de temps, trouvez ou sélectionnez la tâche sur laquelle vous êtes sur le point de travailler.
+      </Step>
+      <Step title="Cliquer sur Start Timer">
+        Cliquez sur **Start Timer** pour commencer à suivre le temps en temps réel. Le minuteur tourne jusqu'à ce que vous l'arrêtiez.
+      </Step>
+      <Step title="Arrêter une fois terminé">
+        Cliquez sur **Stop** lorsque vous terminez le travail. AgencyHandy enregistre automatiquement le temps écoulé sur la tâche sélectionnée.
+      </Step>
+    </Steps>
+
+    <Tip>
+      Utilisez le minuteur pour le travail en cours afin de garantir un suivi précis. Arrondir ou estimer manuellement le temps après coup est moins précis que de laisser le minuteur tourner.
+    </Tip>
+  </Tab>
+  <Tab title="Saisie manuelle">
+    <Steps>
+      <Step title="Cliquer sur + Add Entry">
+        Dans le panneau de feuille de temps, cliquez sur **+ Add Entry**. Un formulaire apparaîtra.
+      </Step>
+      <Step title="Renseigner les détails de la saisie">
+        - **Task** — sélectionnez la tâche à laquelle ce temps s'applique
+        - **Team Member** — attribuez le temps à la bonne personne (les Admins et Managers peuvent enregistrer pour d'autres)
+        - **Time Spent** — saisissez les heures et les minutes
+        - **Notes** — ajoutez tout contexte sur ce qui a été réalisé
+      </Step>
+      <Step title="Enregistrer">
+        Cliquez sur **Save** pour enregistrer la saisie. Elle apparaîtra immédiatement dans le tableau de la feuille de temps.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Filtrer par plage de dates
+
+Utilisez les filtres de date pour vous concentrer sur une période spécifique.
+
+<Steps>
+  <Step title="Ouvrir les filtres de date">
+    Cliquez sur les contrôles de filtre de date en haut à droite du panneau de feuille de temps.
+  </Step>
+  <Step title="Sélectionner une plage">
+    Choisissez parmi les plages prédéfinies :
+    - **Daily** — uniquement les journaux du jour
+    - **Weekly** — la semaine en cours
+    - **Monthly** — le mois en cours
+
+    Pour des projets plus longs ou des rapports historiques, sélectionnez une plage de dates **Custom** en saisissant une date de début et une date de fin.
+  </Step>
+  <Step title="Appliquer">
+    Cliquez sur **Apply** pour mettre à jour le tableau avec les journaux de la période sélectionnée.
+  </Step>
+</Steps>
+
+<Tip>
+  Filtrez avant d'exporter pour générer des rapports ciblés. Exporter l'intégralité de la feuille de temps non filtrée peut produire des fichiers très volumineux pour les agences actives.
+</Tip>
+
+## Regrouper les saisies
+
+Le regroupement réorganise la façon dont les lignes de la feuille de temps sont organisées sans supprimer de données. Il vous aide à lire et à analyser les journaux plus rapidement.
+
+<Steps>
+  <Step title="Ouvrir le menu déroulant Group By">
+    Cliquez sur le menu déroulant **Group By** près du haut du panneau de feuille de temps.
+  </Step>
+  <Step title="Sélectionner un regroupement">
+    Choisissez parmi les options suivantes :
+
+    | Option Group By | Ce qu'elle affiche |
+    |----------------|---------------|
+    | **Task Name** | Toutes les saisies de temps regroupées sous chaque tâche |
+    | **Team Member** | Toutes les saisies regroupées sous chaque personne |
+    | **Service → Task Name** | Saisies regroupées par service, puis ventilées par tâche au sein de chaque service |
+  </Step>
+</Steps>
+
+<Note>
+  Le regroupement est un changement purement visuel — il n'affecte ni les données sous-jacentes ni ce qui est exporté. Les exports incluent toujours toutes les lignes visibles.
+</Note>
+
+## Consulter les détails d'une tâche depuis la feuille de temps
+
+<Steps>
+  <Step title="Cliquer sur un nom de tâche">
+    Dans le tableau de la feuille de temps, cliquez sur n'importe quel **Task Name**. AgencyHandy vous redirige vers la page de détail complète de cette tâche.
+  </Step>
+  <Step title="Examiner le contexte de la tâche">
+    Sur la page de détail de la tâche, vous trouverez l'historique complet du journal de temps, les notes attachées, les assignés, le statut et d'autres informations au niveau de la tâche. Utilisez cette vue pour examiner les saisies ou vérifier le travail effectué.
+  </Step>
+</Steps>
+
+## Exporter les données de feuille de temps
+
+Exportez votre feuille de temps pour la paie, les rapports de facturation clients ou des outils externes de gestion de projet.
+
+<Steps>
+  <Step title="Appliquer d'abord les filtres (recommandé)">
+    Utilisez le filtre de plage de dates pour restreindre l'export à la période dont vous avez besoin. Cela garde le fichier ciblé et gérable.
+  </Step>
+  <Step title="Cliquer sur Export">
+    Cliquez sur le bouton **Export** en haut du panneau de feuille de temps.
+  </Step>
+  <Step title="Choisir un format">
+    Sélectionnez l'un des formats suivants :
+    - **CSV** — pour les outils de tableur comme Excel, Google Sheets ou les pipelines de données
+    - **XLSX** — pour des classeurs au format Excel avec la mise en forme des colonnes conservée
+  </Step>
+  <Step title="Télécharger le fichier">
+    Le fichier se télécharge automatiquement sur votre appareil. Chaque export inclut toutes les colonnes visibles : date, membre de l'équipe, nom de la tâche, service, temps enregistré et notes.
+  </Step>
+</Steps>
+
+<Warning>
+  Si l'export ne déclenche pas de téléchargement, le **bloqueur de fenêtres pop-up** de votre navigateur empêche peut-être le téléchargement du fichier. Désactivez le blocage des pop-up pour AgencyHandy et réessayez.
+</Warning>
+
+## Remarques supplémentaires
+
+<Accordion title="Minuteur vs saisie manuelle">
+  Le minuteur est idéal pour le travail actif en temps réel. Les saisies manuelles sont idéales lorsque vous avez oublié de démarrer le minuteur ou que vous devez enregistrer du temps rétroactivement. Les deux méthodes produisent des entrées de journal identiques dans le tableau de la feuille de temps.
+</Accordion>
+
+<Accordion title="Regroupement vs filtrage">
+  Les filtres **réduisent** les lignes affichées dans le tableau. Le regroupement **réorganise** les lignes déjà visibles. Vous pouvez appliquer les deux en même temps — filtrez sur une plage de dates, puis regroupez par membre de l'équipe pour voir les totaux de chaque personne sur cette période.
+</Accordion>
+
+<Accordion title="Les exports incluent toutes les colonnes visibles">
+  Chaque export capture l'état actuel du tableau visible : date, utilisateur, tâche, service, temps et notes. Si vous avez appliqué un paramètre de regroupement, l'export reflète également la structure de regroupement.
+</Accordion>
+
+<Accordion title="Plages personnalisées pour les données historiques">
+  Pour les projets de longue durée ou les revues trimestrielles, utilisez l'option de plage de dates personnalisée pour extraire des données historiques de feuille de temps au-delà des fenêtres prédéfinies quotidiennes/hebdomadaires/mensuelles.
+</Accordion>

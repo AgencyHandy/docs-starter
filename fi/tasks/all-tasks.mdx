@@ -1,0 +1,126 @@
+---
+title: "Kaikki tehtävät — keskitetty tehtävien hallinta AgencyHandyssa"
+sidebarTitle: "Kaikki tehtävät"
+description: "Käytä Kaikki tehtävät -sivua reaaliaikaiseen, roolien mukaan suodatettuun näkymään kaikista tehtävistä käynnissä olevissa ja tarkistuksessa olevissa tilauksissa — hakutoiminnolla, suodattimilla ja lajittelulla."
+---
+
+AgencyHandyn Kaikki tehtävät -sivu antaa sinulle yhden, keskitetyn näkymän kaikista tehtävistä, jotka kuuluvat toimistosi aktiivisiin työnkulkuihin. Sen sijaan, että etsisit yksittäisiä tilauksia, voit nähdä kaikki asiaankuuluvat tehtävät yhdessä paikassa, suodattaa ne vastuuhenkilön, prioriteetin tai päivämäärän mukaan ja tehdä muokkauksia suoraan luettelosta. Näkyvyys rajautuu automaattisesti roolisi mukaan — Super Adminit näkevät kaiken, Projektipäälliköt näkevät määritetyt tilauksensa, ja Työntekijät näkevät vain omat tehtävänsä.
+
+## Kaikki tehtävät -sivulle pääsy
+
+1. Kirjaudu AgencyHandy-tilillesi.
+2. Napsauta vasemmassa sivupalkissa **Tehtävät**.
+3. Valitse **Kaikki tehtävät** avataksesi keskitetyn tehtävien hallintapaneelin.
+
+<Note>
+  Kaikki tehtävät -sivu näyttää vain tehtävät tilauksista, jotka ovat **Käynnissä**- tai **Tarkistuksessa**-tilassa. Tehtävät, jotka liittyvät tilauksiin muissa tiloissa (esim. Valmis, Odottaa), eivät näy täällä.
+</Note>
+
+## Tehtävien näkyvyys roolin mukaan
+
+Se, mitä näet Kaikki tehtävät -sivulla, riippuu kokonaan roolistasi.
+
+| Rooli | Mitä he näkevät |
+|------|---------------|
+| **Super Admin / Admin** | Kaikki tehtävät kaikissa tilauksissa, tiimeissä ja tiloissa |
+| **Project Manager (PM)** | Vain tehtävät tilauksista, joissa heidät on määritetty hallitsijaksi |
+| **Työntekijä / Vastuuhenkilö** | Vain suoraan heille määritetyt tehtävät — vaikka tiimitoverit työskentelisivät samassa tilauksessa |
+
+<Tip>
+  Jos projektipäällikkö ei löydä tehtävää, jonka hän odottaa näkevänsä, varmista, että hänet on määritetty hallitsijaksi asiaankuuluvassa tilauksessa. Projektipäälliköt eivät näe tehtäviä, ellei heistä ole tehty kyseisen tilauksen määritettyä hallitsijaa.
+</Tip>
+
+## Milloin tehtävät näkyvät tällä sivulla
+
+Tehtävät näkyvät Kaikki tehtävät -sivulla, kun nämä ehdot täyttyvät:
+
+<CardGroup cols={2}>
+  <Card title="Tilaukset, jotka käynnistävät tehtävien näkyvyyden" icon="circle-check">
+    - Manuaaliset tilaukset (kertaluonteiset tai tilauspohjaiset) on luotu
+    - Luettelotilaukset Stripelä tai manuaalisilla maksutavoilla on tehty
+    - Toimisto on hyväksynyt tarjouksen
+  </Card>
+  <Card title="Tilaukset, jotka pitävät tehtävät piilossa" icon="eye-slash">
+    - Asiakkaan pyytämät tehtävät, joita toimisto ei ole vielä hyväksynyt
+    - Kokeilutilaukset, joita toimisto ei ole vielä hyväksynyt
+    - Tilaukset, joiden tila odottaa manuaalisen pankkimaksun vahvistusta
+  </Card>
+</CardGroup>
+
+## Hakeminen, suodattaminen ja lajittelu
+
+Kaikki tehtävät -sivulla on täydellinen joukko hallintatoimintoja, joiden avulla löydät tarkalleen tarvitsemasi.
+
+### Haku
+
+Käytä hakupalkkia tehtävien etsimiseen nimen, vastuuhenkilön tai liittyvän tilauksen mukaan. Tulokset päivittyvät reaaliajassa kirjoittaessasi.
+
+### Suodattimet
+
+Napsauta **Suodatin → + Lisää suodatin** avataksesi suodatinpaneelin. Voit yhdistää useita suodattimia tarkkoja tuloksia varten:
+
+| Suodatin | Mitä se tekee |
+|--------|--------------|
+| **Tilauksen tunnus** | Näytä tehtävät, jotka on linkitetty tiettyyn tilauksen numeroon |
+| **Vastuuhenkilö** | Näytä tietylle tiimin jäsenelle määritetyt tehtävät |
+| **Tila** | Suodata tehtävän edistymisen mukaan: Odottaa, Käynnissä, Tarkistuksessa, Valmis jne. |
+| **Prioriteetti** | Keskity korkean, keskitason tai matalan prioriteetin tehtäviin |
+| **Tunniste** | Rajaa tehtävien tunnisteiden tai kategorioiden mukaan |
+| **Aloituspäivä** | Näytä tehtävät, jotka alkavat tiettynä päivänä tai sen jälkeen |
+| **Päättymispäivä** | Näytä tehtävät, jotka erääntyvät tiettyyn päivämäärään mennessä |
+
+<Note>
+  Suodattimet ovat käytettävissä vain Kaikki tehtävät -sivulla. Ne pysyvät selainsessiosi aikana, mutta nollautuvat sivun päivityksen yhteydessä. Suodattimet vaikuttavat vain omaan näkymääsi eivätkä muuta sitä, mitä muut käyttäjät näkevät.
+</Note>
+
+Tyhjentääksesi kaikki suodattimet, napsauta **Tyhjennä suodattimet** palataksesi täyteen, suodattamattomaan luetteloon.
+
+### Lajittelu
+
+Lajittele tehtävälista seuraavien mukaan:
+- **Eräpäivä** — tuo esiin tehtävät, jotka lähestyvät tai ovat jo myöhässä
+- **Prioriteetti** — tuo kriittisimmät tehtävät ylös
+- **Luontiaika** — näytä äskettäin lisätyt tehtävät ensin
+
+### Navigointipolku
+
+Käytä sivun yläosassa olevaa navigointipolkua ylläpitääksesi kontekstin navigoidessasi alitehtävien, tehtäväluetteloiden ja ylätilausten välillä. Tämä on erityisen hyödyllistä porautuessasi tiettyyn tehtävään ja tarvittaessa palataksesi laajempaan luetteloon.
+
+## Tehtävien muokkaaminen
+
+Voit muokata tehtäviä Kaikki tehtävät -sivulla kahdella tavalla:
+
+<Tabs>
+  <Tab title="Inline-muokkaus">
+    Napsauta suoraan muokattavaan kenttään tehtävärivillä — kuten tilaan, vastuuhenkilöön tai eräpäivään — ja tee muutoksesi poistumatta luettelonäkymästä. Tämä on nopein vaihtoehto pikaisille päivityksille.
+  </Tab>
+  <Tab title="Ikkunamuokkaus">
+    Napsauta tehtävän nimeä avataksesi täydellisen tehtävän yksityiskohtaikkunan. Täältä voit päivittää kaikki tehtävän ominaisuudet, lisätä muistiinpanoja, tarkastella alitehtäviä ja nähdä täydellisen tehtävähistorian. Käytä tätä perusteellisempiin muokkauksiin tai kun tarvitset kontekstin.
+  </Tab>
+</Tabs>
+
+## Tehtävien poistamissäännöt
+
+Kaikki tehtävät -sivun tehtävät on sidottu suoraan ylätilauksiinsa.
+
+- Kun **tilaus poistetaan**, kaikki kyseiseen tilaukseen liittyvät tehtävät **poistetaan automaattisesti ja pysyvästi** Kaikki tehtävät -sivulta.
+- Tämä poistaminen vaikuttaa kaikkiin käyttäjärooleihin — kukaan ei pysty näkemään näitä tehtäviä tilauksen poistamisen jälkeen.
+- **Tilauksen poiston kautta poistetuille tehtäville ei ole palautusvaihtoehtoa**.
+
+<Warning>
+  Tilauksen poistaminen poistaa pysyvästi kaikki sen tehtävät. Varmista, että kaikki tärkeät tehtävähistoria- tai toimitettavien tuotteiden tietueet on tallennettu muualle ennen tilauksen poistamista.
+</Warning>
+
+## Lisähuomioita
+
+<Accordion title="Reaaliaikaiset päivitykset">
+  Muutokset tilauksiin, tehtävien määrityksiin tai tehtävien tiloihin näkyvät reaaliajassa Kaikki tehtävät -sivulla. Jos tiimitoveri päivittää tehtävän sinulla sivun ollessa auki, näet muutoksen ilman sivun päivittämistä.
+</Accordion>
+
+<Accordion title="Asiakkaan pyytämät tehtävät">
+  Asiakkaiden lähettämät tehtävät eivät näy Kaikki tehtävät -sivulla, ennen kuin toimisto hyväksyy ne nimenomaisesti. Hyväksymiseen asti nämä tehtävät pysyvät odottavassa tilassa eivätkä ole näkyvissä keskitetyssä näkymässä.
+</Accordion>
+
+<Accordion title="Tehtävät ja tilauksen tila">
+  Tehtävät näkyvät vain Käynnissä- tai Tarkistuksessa-tilassa olevien tilausten osalta. Jos tilaus siirtyy Valmiiksi tai se keskeytetään, sen tehtävät eivät enää näy täällä. Siirry tiettyyn tilaukseen nähdäksesi tehtävät, jotka liittyvät näiden tilojen ulkopuolella oleviin tilauksiin.
+</Accordion>

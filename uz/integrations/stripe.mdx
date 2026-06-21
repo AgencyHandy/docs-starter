@@ -1,0 +1,77 @@
+---
+title: "AgencyHandy'da onlayn to'lovlarni qabul qilish uchun Stripe'ni ulang"
+sidebarTitle: "Stripe"
+description: "Platforma ichida mijozlarga hisob-faktura yuborish va xavfsiz onlayn to'lovlarni to'plash uchun Stripe hisobingizni AgencyHandy'ga ulang."
+---
+
+AgencyHandy'ning Stripe integratsiyasi mijozlaringizdan platforma ichida yuboradigan hisob-fakturalar orqali to'g'ridan-to'g'ri karta to'lovlarini qabul qilish imkonini beradi. Ulanganidan so'ng, mijozlaringiz tanish Stripe tomonidan boshqariladigan to'lov sahifasini ko'radi va to'lov holati avtomatik ravishda AgencyHandy'ga sinxronlanadi — qo'lda solishtiruv talab etilmaydi.
+
+<Note>
+  Faqat **SuperAdmin** va **Admin** rollari Stripe integratsiyasini ulash yoki boshqarishi mumkin. Boshlashdan oldin tegishli ruxsatlar bilan tasdiqlangan Stripe hisobiga ega bo'lishingiz ham kerak.
+</Note>
+
+## Stripe'ni ulash
+
+<Steps>
+  <Step title="Stripe integratsiya sozlamalarini oching">
+    Chap panelda **Integratsiyalar → Stripe integratsiyasi** ga o'ting.
+  </Step>
+
+  <Step title="Stripe'da ruxsat bering">
+    **Stripe'ni ulash** tugmasini bosing. Stripe'ning ruxsat berish ekraniga yo'naltirilasiz. Stripe hisobingizga kiring va AgencyHandy'ga kirish berish uchun **Ruxsat berish** tugmasini bosing. Tasdiqlangandan so'ng, Stripe sizni avtomatik ravishda AgencyHandy'ga qayta yo'naltiradi.
+  </Step>
+
+  <Step title="To'lov afzalliklarini sozlang">
+    Yo'naltirilgandan so'ng, quyidagi opsiyalarni sozlang:
+
+    - **Valyuta** — ish maydoni uchun standart hisob-kitob valyutasini tanlang.
+    - **To'lov usullari** — Stripe hisobingiz tomonidan qo'llab-quvvatlangan karta turlarini (Visa, Mastercard va h.k.) yoqing yoki o'chiring.
+    - **Hisob-kitob afzalliklari** — ixtiyoriy ravishda soliq stavkasi, hisob-faktura prefiksi yoki standart to'lov shartlari va muddatlarni belgilang.
+  </Step>
+
+  <Step title="Saqlang va tasdiqlang">
+    **Saqlash** tugmasini bosing. Integratsiya faol bo'lganda tasdiqlash banneri paydo bo'ladi. Stripe endi ish maydoningizga ulanган va mijozlaringiz hisob-fakturalarni onlayn to'lashi mumkin.
+  </Step>
+</Steps>
+
+## Integratsiyani sinovdan o'tkazish
+
+Jonli hisob-fakturalar yuborishdan oldin ulanishning to'g'ri ishlayotganligini tasdiqlash uchun tezkor to'liq sinovni o'tkazing.
+
+<Steps>
+  <Step title="Sinov hisob-fakturasini yarating">
+    AgencyHandy ichida qoralama hisob-faktura yarating va unga kichik miqdor belgilang.
+  </Step>
+  <Step title="O'zingizga yuboring">
+    Hisob-fakturani o'z elektron pochta manzilingizga yoki sinov uchun yordam bera oladigan jamoa a'zosiga yuboring.
+  </Step>
+  <Step title="Sinov to'lovini amalga oshiring">
+    Hisob-faktura havolasini oching va Stripe hisobingiz sinov rejimida bo'lsa Stripe sinov kartasidan (masalan, `4242 4242 4242 4242`) yoki jonli rejimda haqiqiy kartadan foydalanib to'lovni yakunlang.
+  </Step>
+  <Step title="Holat yangilanishini tekshiring">
+    AgencyHandy'ga qaytib, hisob-faktura holatining **To'landi** ga o'zgarganligini tasdiqlang. Agar shunday bo'lsa, integratsiyangiz to'g'ri ishlayapti.
+  </Step>
+</Steps>
+
+## Stripe ulanishingizni boshqarish
+
+Istalgan vaqt **Integratsiyalar → Stripe integratsiyasi** ga qayting va:
+
+- **To'lov sozlamalarini yangilang** — valyuta, to'lov usullari yoki hisob-kitob afzalliklarini o'zgartiring.
+- **Ulanish holatin tekshiring** — Stripe hozirda faol yoki yo'qligini tekshiring.
+- **Uzib oling** — Stripe hisobingizni ajratish uchun **Uzib olish** tugmasini bosing. Qayta ulanganiingizga qadar to'lov yig'ish darhol to'xtatiladi.
+- **Qayta ulang** — integratsiyani tiklash uchun **Stripe'ni ulash** tugmasini yana bosing va qayta ruxsat bering.
+
+<Warning>
+  Stripe'ni uzib olish barcha kutilayotgan hisob-fakturalar uchun to'lov yig'ishni to'xtatadi. Qayta ulab, qayta ruxsat bermaguncha mijozlar onlayn to'lay olmaydi.
+</Warning>
+
+## Qo'shimcha eslatmalar
+
+<Note>
+  AgencyHandy to'lov ma'lumotlaringizni hech qachon saqlamaydi. Barcha to'lov ma'lumotlari faqat Stripe'ning xavfsiz infratuzilmasi tomonidan boshqariladi.
+</Note>
+
+- **Ish maydoni boshiga bitta hisob** — har bir AgencyHandy ish maydoniga faqat bitta Stripe hisobini ulash mumkin. Hisoblarni almashtirish uchun avval mavjudini uzib oling, so'ng yangi hisob bilan qayta ulang.
+- **Jonli hisob-faktura holati** — Stripe'ga ulangan barcha hisob-fakturalar to'g'ridan-to'g'ri Stripe'dan olingan real vaqt holat yangilanishlarini aks ettirishda davom etadi.
+- **Valyuta** — to'lov xatolarini oldini olish uchun AgencyHandy'da sozlangan valyuta Stripe hisobingizda yoqilgan valyutaga mos kelishiga ishonch hosil qiling.

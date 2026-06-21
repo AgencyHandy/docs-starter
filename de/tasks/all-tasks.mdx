@@ -1,0 +1,126 @@
+---
+title: "Alle Aufgaben – Zentrale Aufgabenverwaltung in AgencyHandy"
+sidebarTitle: "Alle Aufgaben"
+description: "Nutzen Sie die Seite 'Alle Aufgaben' für eine rollenbasierte Echtzeit-Ansicht aller Aufgaben über laufende und in Überprüfung befindliche Aufträge – mit Suche, Filtern und Sortierung."
+---
+
+Die Seite „Alle Aufgaben“ in AgencyHandy bietet Ihnen eine zentrale Übersicht über jede Aufgabe, die zu aktiven Workflows in Ihrer Agentur gehört. Anstatt in einzelnen Aufträgen zu suchen, sehen Sie alle relevanten Aufgaben an einem Ort, können sie nach Verantwortlichem, Priorität oder Datum filtern und direkt aus der Liste heraus bearbeiten. Die Sichtbarkeit ist automatisch auf Ihre Rolle beschränkt – Super Admins sehen alles, Manager sehen ihre zugewiesenen Aufträge und Mitarbeiter sehen nur ihre eigenen Aufgaben.
+
+## Zugriff auf die Seite „Alle Aufgaben“
+
+1. Melden Sie sich bei Ihrem AgencyHandy-Konto an.
+2. Klicken Sie in der linken Seitenleiste auf **Aufgaben**.
+3. Wählen Sie **Alle Aufgaben**, um das zentrale Aufgaben-Dashboard zu öffnen.
+
+<Note>
+  Die Seite „Alle Aufgaben“ zeigt nur Aufgaben aus Aufträgen an, die den Status **Laufend** oder **In Überprüfung** haben. Aufgaben, die mit Aufträgen in einem anderen Status verknüpft sind (z. B. Abgeschlossen, Ausstehend), erscheinen hier nicht.
+</Note>
+
+## Aufgabensichtbarkeit nach Rolle
+
+Was Sie auf der Seite „Alle Aufgaben“ sehen, hängt vollständig von Ihrer Rolle ab.
+
+| Rolle | Was sie sehen |
+|------|---------------|
+| **Super Admin / Admin** | Alle Aufgaben über jeden Auftrag, jedes Team und jeden Status hinweg |
+| **Projektmanager (PM)** | Nur Aufgaben aus Aufträgen, bei denen sie als Manager zugewiesen sind |
+| **Mitarbeiter / Zugewiesener** | Nur direkt ihnen zugewiesene Aufgaben – auch wenn Teamkollegen am selben Auftrag arbeiten |
+
+<Tip>
+  Wenn ein PM eine Aufgabe nicht finden kann, die er erwartet zu sehen, bestätigen Sie, dass er als Manager des relevanten Auftrags zugewiesen ist. PMs sehen keine Aufgaben, wenn sie nicht der zugewiesene Manager für diesen Auftrag sind.
+</Tip>
+
+## Wann Aufgaben auf dieser Seite erscheinen
+
+Aufgaben erscheinen auf der Seite „Alle Aufgaben“, wenn diese Bedingungen erfüllt sind:
+
+<CardGroup cols={2}>
+  <Card title="Aufträge, die Aufgabensichtbarkeit auslösen" icon="circle-check">
+    - Manuelle Aufträge (einmalig oder Abonnement) werden erstellt
+    - Katalogaufträge über Stripe oder manuelle Zahlungsmethoden werden aufgegeben
+    - Ein Angebot wird von der Agentur angenommen
+  </Card>
+  <Card title="Aufträge, die Aufgaben verborgen halten" icon="eye-slash">
+    - Von Kunden angeforderte Aufgaben, die die Agentur noch nicht angenommen hat
+    - Testaufträge, die die Agentur noch nicht angenommen hat
+    - Aufträge mit ausstehenden Status, die auf die Bestätigung einer manuellen Bankzahlung warten
+  </Card>
+</CardGroup>
+
+## Suchen, Filtern und Sortieren
+
+Die Seite „Alle Aufgaben“ enthält einen vollständigen Satz von Steuerelementen, mit denen Sie genau das finden, was Sie benötigen.
+
+### Suche
+
+Verwenden Sie die Suchleiste, um Aufgaben nach Name, Verantwortlichem oder zugehörigem Auftrag zu finden. Die Ergebnisse werden in Echtzeit aktualisiert, während Sie tippen.
+
+### Filter
+
+Klicken Sie auf **Filter → + Filter hinzufügen**, um das Filterpanel zu öffnen. Sie können mehrere Filter für präzise Ergebnisse kombinieren:
+
+| Filter | Funktion |
+|--------|--------------|
+| **Auftrags-ID** | Aufgaben anzeigen, die mit einer bestimmten Auftragsnummer verknüpft sind |
+| **Verantwortlicher** | Aufgaben anzeigen, die einem bestimmten Teammitglied zugewiesen sind |
+| **Status** | Nach Aufgabenfortschritt filtern: Ausstehend, In Bearbeitung, In Überprüfung, Erledigt usw. |
+| **Priorität** | Fokus auf Aufgaben mit hoher, mittlerer oder niedriger Priorität |
+| **Bezeichnung** | Nach Aufgabenbezeichnungen oder -kategorien einschränken |
+| **Startdatum** | Aufgaben anzeigen, die an oder nach einem bestimmten Datum beginnen |
+| **Enddatum** | Aufgaben anzeigen, die bis zu einem bestimmten Datum fällig sind |
+
+<Note>
+  Filter sind nur auf der Seite „Alle Aufgaben“ verfügbar. Sie bleiben während Ihrer Browsersitzung bestehen, werden aber bei der Seitenaktualisierung zurückgesetzt. Filter wirken sich nur auf Ihre Ansicht aus und ändern nicht, was andere Benutzer sehen.
+</Note>
+
+Um alle Filter zu löschen, klicken Sie auf **Filter löschen**, um zur vollständigen, ungefilterten Liste zurückzukehren.
+
+### Sortierung
+
+Sortieren Sie die Aufgabenliste nach:
+- **Fälligkeitsdatum** — bevorstehende oder bereits überfällige Aufgaben an die Oberfläche bringen
+- **Priorität** — die kritischsten Aufgaben nach oben bringen
+- **Erstellungszeit** — zuletzt hinzugefügte Aufgaben zuerst anzeigen
+
+### Breadcrumb-Navigation
+
+Verwenden Sie den Breadcrumb-Pfad oben auf der Seite, um den Kontext zu behalten, während Sie zwischen Unteraufgaben, Aufgabenlisten und übergeordneten Aufträgen navigieren. Dies ist besonders hilfreich, wenn Sie in eine bestimmte Aufgabe einsteigen und dann zur umfassenderen Liste zurückkehren müssen.
+
+## Aufgaben bearbeiten
+
+Sie können Aufgaben auf der Seite „Alle Aufgaben“ auf zwei Wegen ändern:
+
+<Tabs>
+  <Tab title="Inline-Bearbeitung">
+    Klicken Sie direkt in ein bearbeitbares Feld innerhalb der Aufgabenzeile – z. B. Status, Verantwortlicher oder Fälligkeitsdatum – und nehmen Sie Ihre Änderung vor, ohne die Listenansicht zu verlassen. Dies ist die schnellste Option für schnelle Aktualisierungen.
+  </Tab>
+  <Tab title="Modal-Bearbeitung">
+    Klicken Sie auf den Aufgabennamen, um das vollständige Aufgabendetail-Modal zu öffnen. Von hier aus können Sie alle Aufgabeneigenschaften aktualisieren, Notizen hinzufügen, Unteraufgaben anzeigen und den vollständigen Aufgabenverlauf einsehen. Verwenden Sie dies für gründlichere Bearbeitungen oder wenn Sie Kontext benötigen.
+  </Tab>
+</Tabs>
+
+## Regeln zum Löschen von Aufgaben
+
+Aufgaben auf der Seite „Alle Aufgaben“ sind direkt mit ihren übergeordneten Aufträgen verknüpft.
+
+- Wenn ein **Auftrag gelöscht** wird, werden alle mit diesem Auftrag verbundenen Aufgaben **automatisch und dauerhaft** von der Seite „Alle Aufgaben“ entfernt.
+- Diese Löschung betrifft alle Benutzerrollen – niemand kann diese Aufgaben nach dem Löschen des Auftrags noch sehen.
+- **Es gibt keine Wiederherstellungsoption** für Aufgaben, die durch das Löschen eines Auftrags gelöscht wurden.
+
+<Warning>
+  Das Löschen eines Auftrags entfernt dauerhaft alle seine Aufgaben. Stellen Sie sicher, dass wichtige Aufgabenverläufe oder Lieferobjekt-Aufzeichnungen anderweitig gespeichert werden, bevor Sie einen Auftrag löschen.
+</Warning>
+
+## Weitere Hinweise
+
+<Accordion title="Echtzeit-Updates">
+  Änderungen an Aufträgen, Aufgabenzuweisungen oder Aufgabenstatus werden auf der Seite „Alle Aufgaben“ in Echtzeit angezeigt. Wenn ein Teamkollege eine Aufgabe aktualisiert, während Sie die Seite geöffnet haben, sehen Sie die Änderung, ohne die Seite neu laden zu müssen.
+</Accordion>
+
+<Accordion title="Kundenseitig angeforderte Aufgaben">
+  Von Kunden eingereichte Aufgaben erscheinen erst dann auf der Seite „Alle Aufgaben“, wenn die Agentur sie explizit annimmt. Bis zur Annahme verbleiben diese Aufgaben in einem ausstehenden Status und sind in der zentralen Ansicht nicht sichtbar.
+</Accordion>
+
+<Accordion title="Aufgaben und Auftragsstatus">
+  Aufgaben erscheinen nur für Aufträge mit dem Status Laufend oder In Überprüfung. Wenn ein Auftrag auf Abgeschlossen wechselt oder pausiert wird, werden seine Aufgaben hier nicht mehr angezeigt. Navigieren Sie zum spezifischen Auftrag, um Aufgaben zu sehen, die mit Aufträgen außerhalb dieser Status verknüpft sind.
+</Accordion>

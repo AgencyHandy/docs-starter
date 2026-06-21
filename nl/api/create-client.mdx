@@ -1,0 +1,137 @@
+---
+title: "AgencyHandy API: Programmatisch een Nieuwe Klant Aanmaken"
+sidebarTitle: "Klant Aanmaken"
+description: "Voeg programmatisch nieuwe klanten toe aan uw AgencyHandy-werkruimte door te posten naar het bulk-client-eindpunt met naam, e-mail en contactgegevens."
+---
+
+Met het eindpunt Klant aanmaken kunt u klanten rechtstreeks vanuit een extern systeem toevoegen aan uw AgencyHandy-werkruimte. In tegenstelling tot leads zijn klanten volledig geonboardde contacten die kunnen worden toegewezen aan bestellingen, facturen en projecten. Gebruik dit eindpunt om nieuwe klanten te synchroniseren vanuit een CRM, onboardingformulier of een andere gegevensbron.
+
+<Note>
+  Voltooi voordat u dit eindpunt gebruikt de gids [Aan de Slag](/nl/api/getting-started) om uw API-sleutel en Bedrijfs-ID te verkrijgen. In tegenstelling tot het eindpunt Lead aanmaken vereist het aanmaken van een klant **geen** afzonderlijke stap voor het opzoeken van een Rol-ID.
+</Note>
+
+## Vereisten
+
+- ✅ API-sleutel gegenereerd vanuit **Werkruimteconfiguratie → API-sleutel**
+- ✅ Bedrijfs-ID opgehaald via `GET {{URL}}/accounts/companies`
+
+---
+
+## Eindpunt
+
+```
+POST {{URL}}/members/bulk-client
+```
+
+## Headers
+
+| Header | Waarde |
+|---|---|
+| `x-api-key` | Uw API-sleutel |
+| `companyId` | Uw Bedrijfs-ID |
+| `Content-Type` | `application/json` |
+
+## Verzoekbody
+
+De verzoekbody is een **JSON-array**. U kunt één of meer klanten aanmaken in één verzoek.
+
+<ParamField body="firstName" type="string" required>
+  De voornaam van de klant.
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  De achternaam van de klant.
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  Het e-mailadres van de klant. Moet uniek zijn binnen uw werkruimte.
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  Stel in op `false` voor een gloednieuwe klant. Stel in op `true` bij het converteren van een bestaande lead naar een klant.
+</ParamField>
+
+<ParamField body="status" type="string">
+  De status van de klant. Veelgebruikte waarden: `New`, `Active`. Standaard `New` indien weggelaten.
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  Het telefoonnummer van de klant.
+</ParamField>
+
+<ParamField body="source" type="string">
+  Hoe u deze klant heeft verkregen. Voorbeeldwaarden: `website`, `referral`, `social`.
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  De positie van de klant binnen de bordkolom. Standaard `1`.
+</ParamField>
+
+## Voorbeeldverzoek
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-client" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyId: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+## Succesantwoord
+
+```json
+{
+  "message": "Client created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  Bevestigingsreeks bij succes.
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  Array van aangemaakte klant-objecten.
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  Uniek ID van de nieuw aangemaakte klant. Gebruik dit ID bij het toewijzen van de klant aan bestellingen of facturen via de API.
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  De volledige naam van de klant (voornaam + achternaam).
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  De status van de klant zoals opgeslagen.
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  De rol toegewezen aan het lid — wordt `"client"`.
+</ResponseField>
+
+<Note>
+  De `companyId`-header voor dit eindpunt gebruikt een hoofdletter **I** in `Id` — `companyId` — in tegenstelling tot sommige andere eindpunten die `companyid` gebruiken (volledig kleine letters). Gebruik de exacte schrijfwijze zoals hierboven weergegeven om authenticatiefouten te vermijden.
+</Note>
+
+<Tip>
+  Geef meerdere klant-objecten door in de array om klanten in bulk aan te maken in één API-aanroep. Elk object moet een uniek `email`-adres hebben. Dubbele e-mailadressen veroorzaken een validatiefout voor dat item.
+</Tip>

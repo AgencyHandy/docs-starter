@@ -1,0 +1,211 @@
+---
+title: "Zarządzanie leadami: pipeline, e-mail i konwersja na klientów"
+sidebarTitle: "Leady"
+description: "Zarządzaj swoim pipeline sprzedażowym za pomocą tablicy Kanban — śledź etapy leadów, filtruj według agenta lub źródła, wysyłaj e-maile i konwertuj leady na klientów."
+---
+
+Sekcja Leady w CRM AgencyHandy zapewnia wizualną tablicę Kanban z funkcją przeciągania i upuszczania, umożliwiającą zarządzanie każdym potencjalnym klientem od pierwszego kontaktu do podpisania umowy. Każdy lead znajduje się na karcie, która przemieszcza się przez siedem predefiniowanych etapów pipeline'u, a Ty możesz filtrować, wyszukiwać, importować, eksportować, wysyłać e-maile i konwertować leady bez konieczności przełączania się na inne narzędzie.
+
+## Etapy pipeline'u
+
+Każdy utworzony lead zaczyna w etapie **Nowy** i może być przesuwany do przodu w miarę rozwoju relacji:
+
+| Etap | Co oznacza |
+|---|---|
+| **Nowy** | Lead właśnie trafił do pipeline'u |
+| **Skontaktowano** | Nawiązałeś kontakt co najmniej raz |
+| **Zakwalifikowany** | Lead spełnia Twoje kryteria docelowego klienta |
+| **W trakcie** | Trwają aktywne rozmowy |
+| **Oferta wysłana** | Formalna oferta została dostarczona |
+| **Negocjacje** | Omawiane są warunki |
+| **Klient** | Gotowy do konwersji na konto klienta |
+
+<Note>
+  Przeniesienie leada do etapu **Klient** na tablicy nie powoduje automatycznej konwersji — nadal musisz kliknąć **Konwertuj na klienta** wewnątrz karty leada, aby przenieść go do zakładki Klienci.
+</Note>
+
+## Tworzenie leada
+
+<Steps>
+  <Step title="Otwórz tablicę leadów">
+    Na lewym pasku bocznym kliknij **CRM**, a następnie wybierz zakładkę **Leady**. Tablica Kanban ładuje się ze wszystkimi istniejącymi etapami pipeline'u.
+  </Step>
+  <Step title="Kliknij Utwórz lead">
+    Wybierz przycisk **+ Utwórz lead** w prawym górnym rogu tablicy. Otwiera się formularz tworzenia.
+  </Step>
+  <Step title="Wypełnij szczegóły leada">
+    Uzupełnij pola poniżej. **Imię i nazwisko** oraz **E-mail** są obowiązkowe; wszystko inne jest opcjonalne, ale zalecane dla lepszego filtrowania i raportowania.
+
+    - **Imię / Nazwisko** *(obowiązkowe)*
+    - **E-mail** *(obowiązkowy)*
+    - **Nazwa firmy**
+    - **Kategoria**
+    - **Status** — ustawia początkowy etap Kanban (domyślnie Nowy)
+    - **Źródło** — np. Facebook, Strona internetowa *(maks. 50 znaków; tekst przekraczający limit jest skracany z podpowiedzią)*
+    - **Wartość leada** — szacowana wartość transakcji
+    - **Numer telefonu**
+    - **Strona internetowa**
+    - **Przypisany agent** — członek zespołu odpowiedzialny za tego leada
+    - **Ostatni kontakt** — data ostatniego kontaktu
+    - **Adres** — Kraj, Województwo/Stan, Miasto, Kod pocztowy
+    - **Załączniki** — pliki PDF, JPEG, PNG i tekstowe można podglądać bezpośrednio w oknie modalnym leada; nieobsługiwane formaty wymagają pobrania
+  </Step>
+  <Step title="Zapisz leada">
+    Kliknij **Utwórz**. Karta leada pojawia się w kolumnie **Nowy** na tablicy Kanban.
+  </Step>
+</Steps>
+
+<Tip>
+  Prześlij streszczenia PDF lub dokumenty ofertowe jako załączniki, aby Twój zespół mógł je przeglądać bez opuszczania okna modalnego leada.
+</Tip>
+
+## Śledzenie leadów na tablicy Kanban
+
+Gdy leady istnieją na tablicy, masz kilka sposobów pracy z nimi:
+
+- **Przeciągnij i upuść** — chwyć dowolną kartę leada i upuść ją w innej kolumnie etapu, aby odzwierciedlić jej aktualny status.
+- **Kliknij kartę** — otwiera okno modalne ze szczegółami leada, gdzie możesz edytować wszystkie pola, przeglądać notatki, sprawdzać dziennik aktywności, wysyłać e-mail lub konwertować na klienta.
+- **Drukuj szczegóły leada** — użyj przycisku **Drukuj** w prawym górnym rogu okna modalnego leada, aby wygenerować wydruk podsumowania.
+
+## Edytowanie leada
+
+Otwórz dowolną kartę leada i kliknij **Edytuj** (lub bezpośrednio zaktualizuj dane kontaktowe lub pola notatek widoczne w oknie modalnym). Zmiany są zapisywane natychmiast i rejestrowane w dzienniku aktywności.
+
+<Note>
+  Jeśli adres e-mail istnieje już zarówno jako klient, jak i lead, ten lead **nie może** zostać skonwertowany na klienta. Rozwiąż duplikat przed próbą konwersji.
+</Note>
+
+## Konwertowanie leada na klienta
+
+<Steps>
+  <Step title="Otwórz kartę leada">
+    Kliknij leada, którego chcesz awansować, na tablicy Kanban.
+  </Step>
+  <Step title="Kliknij Konwertuj na klienta">
+    Wybierz przycisk **Konwertuj na klienta** wewnątrz okna modalnego leada.
+  </Step>
+  <Step title="Potwierdź">
+    Pojawi się baner potwierdzenia: *„Lead został przeniesiony do zakładki Klienci.”* Karta znika z tablicy Kanban, a wszystkie notatki i historia leada są zachowane w nowym rekordzie klienta.
+  </Step>
+</Steps>
+
+## Filtrowanie i wyszukiwanie leadów
+
+Użyj paska narzędzi nad tablicą Kanban, aby zawęzić to, co widzisz:
+
+<CardGroup cols={2}>
+  <Card title="Pasek wyszukiwania" icon="magnifying-glass">
+    Wpisz imię lub adres e-mail, aby natychmiast wyświetlić pasujące leady we wszystkich etapach pipeline'u.
+  </Card>
+  <Card title="Przypisany agent" icon="user">
+    Filtruj tablicę, aby wyświetlać tylko leady przypisane do określonego członka zespołu.
+  </Card>
+  <Card title="Wartość leada" icon="dollar-sign">
+    Zawęź według szacowanej wielkości transakcji, aby priorytetyzować wartościowych potencjalnych klientów.
+  </Card>
+  <Card title="Data ostatniego kontaktu" icon="calendar">
+    Identyfikuj leady, które nie były niedawno kontaktowane i wymagają follow-upu.
+  </Card>
+  <Card title="Źródło" icon="signal">
+    Wyświetlaj tylko leady z określonego kanału, takiego jak Strona internetowa lub Facebook.
+  </Card>
+</CardGroup>
+
+## Wysyłanie e-maili do leadów
+
+Możesz pisać i wysyłać e-maile bezpośrednio z tablicy Kanban lub z wnętrza okna modalnego leada — bez potrzeby zewnętrznego klienta poczty e-mail.
+
+| Pole | Szczegóły |
+|---|---|
+| **Do** | Wstępnie wypełniony adresem e-mail leada |
+| **Temat** | Obowiązkowy; maksymalnie 250 znaków |
+| **Treść** | Edytor tekstu sformatowanego; maksymalnie 10 000 znaków |
+| **Załączniki** | Do 5 plików; łączny limit rozmiaru 25 MB |
+
+## Notatki
+
+Każdy lead zawiera dedykowaną sekcję **Notatki** wewnątrz okna modalnego ze szczegółami. Notatki można edytować i usuwać, a każda notatka wyświetla imię i nazwisko członka zespołu, który ją napisał, wraz ze znacznikiem czasu. Używaj notatek do rejestrowania podsumowań rozmów, preferencji klientów lub przypomnień o follow-upach, które może zobaczyć cały zespół.
+
+## Importowanie leadów
+
+Importuj istniejącą listę potencjalnych klientów do AgencyHandy hurtowo za pomocą pliku CSV lub Excel.
+
+<Steps>
+  <Step title="Otwórz okno dialogowe importu">
+    Na tablicy leadów kliknij przycisk **Importuj** w prawym górnym rogu.
+  </Step>
+  <Step title="Prześlij swój plik">
+    Przeciągnij i upuść lub przeglądaj w poszukiwaniu pliku CSV lub Excel. Plik musi zawierać co najmniej kolumny **Imię i nazwisko** i **E-mail**.
+  </Step>
+  <Step title="Mapuj kolumny">
+    Importer pokazuje maper kolumn. Dopasuj każdą kolumnę w swoim pliku do odpowiedniego pola AgencyHandy. Opcjonalne pola do mapowania to: Źródło, Wartość leada, Numer telefonu, Nazwa firmy i Adres.
+  </Step>
+  <Step title="Potwierdź i importuj">
+    Sprawdź tabelę podglądu, aby zweryfikować dokładność danych, a następnie kliknij **Potwierdź**, a potem **Zapisz**. Twoje leady pojawiają się na tablicy Kanban natychmiast.
+  </Step>
+</Steps>
+
+<Warning>
+  Leady z adresami e-mail, które już istnieją w zakładce Klienci, nie zostaną skonwertowane przez import — musisz ręcznie obsłużyć te duplikaty.
+</Warning>
+
+## Eksportowanie leadów
+
+Eksportuj dane pipeline'u do raportowania, kopii zapasowych lub integracji z innymi narzędziami.
+
+<Steps>
+  <Step title="Kliknij Eksportuj">
+    Wybierz przycisk **Eksportuj** z paska narzędzi leadów.
+  </Step>
+  <Step title="Wybierz kolumny">
+    Wybierz **Wszystkie kolumny**, aby wyeksportować każde pole, lub wybierz **Niestandardowe kolumny**, aby wybrać tylko potrzebne dane.
+  </Step>
+  <Step title="Wybierz format i pobierz">
+    Wybierz **CSV** lub **XLSX**, a następnie kliknij **Eksportuj**. Plik pobiera się na Twoje urządzenie.
+  </Step>
+</Steps>
+
+## Dziennik aktywności
+
+Każda zmiana dokonana w leadzie jest automatycznie rejestrowana w zakładce **Dziennik aktywności** wewnątrz okna modalnego leada.
+
+Dziennik rejestruje:
+
+- **Użytkownik** — który członek zespołu dokonał zmiany
+- **Szczegóły** — co się zmieniło, na przykład *„Status zmieniony z 'Nowy' na 'Skontaktowano'”*
+- Przesyłanie załączników, dodawanie notatek i edycje pól
+
+Dzienniki aktywności nie mogą być edytowane ani usuwane i są widoczne dla administratorów i menedżerów.
+
+## Automatyczne przypomnienia i zadania
+
+AgencyHandy wysyła automatyczne powiadomienia, gdy lead pozostaje nieaktywny w dowolnym etapie przez konfigurowalną liczbę dni — na przykład *„Skontaktuj się z [Imię leada].”* Kluczowe działania, takie jak wysłanie oferty, mogą również automatycznie generować zadania w menedżerze zadań, aby utrzymać proces realizacji na właściwym torze.
+
+## Webhooki dla zdarzeń leadów
+
+AgencyHandy wysyła zdarzenia webhook dla następujących akcji na leadach, umożliwiając połączenie z zewnętrznymi CRM-ami, narzędziami automatyzacji lub potokami danych:
+
+<Accordion title="Lead.Created">
+  Wyzwalany podczas tworzenia nowego leada. Payload zawiera: ID leada, status, źródło, przypisanego agenta i znaczniki czasu.
+</Accordion>
+
+<Accordion title="Lead.Updated">
+  Wyzwalany podczas aktualizacji dowolnego pola leada. Payload zawiera te same pola oraz podsumowanie tego, co się zmieniło.
+</Accordion>
+
+<Accordion title="Lead.Deleted">
+  Wyzwalany podczas usunięcia leada z systemu. Payload zawiera ID leada i znacznik czasu usunięcia.
+</Accordion>
+
+<Tip>
+  Skonfiguruj webhooki w **Ustawienia → Integracje → Webhooki**, aby zacząć otrzymywać zdarzenia leadów w czasie rzeczywistym w swoich zewnętrznych systemach.
+</Tip>
+
+## Metryki raportowania
+
+Śledź kondycję swojego pipeline'u za pomocą wbudowanych metryk raportowania:
+
+- Liczba leadów na etap
+- Wskaźniki konwersji z leada na klienta
+- Średni czas spędzany przez leada na każdym etapie
+- Najlepiej wypadający agenci według wolumenu konwersji

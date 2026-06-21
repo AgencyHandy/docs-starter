@@ -1,0 +1,126 @@
+---
+title: "Prijunkite individualų domeną prie savo AgencyHandy darbo erdvės"
+sidebarTitle: "Individualus domenas"
+description: "Susiekite savo subdomeną (pvz., portal.yourcompany.com) su AgencyHandy, pridėdami CNAME įrašą savo DNS registratoriuje — be programavimo."
+---
+
+Pagal numatytuosius nustatymus jūsų AgencyHandy darbo erdvė pasiekiama subdomenoje `agencyhandy.com`. Prijungus individualų domeną, galite pakeisti tą numatytąjį URL savo prekės ženklo adresu — pavyzdžiui, `portal.youragency.com` — suteikiant klientams sklandžią, profesionalią patirtį, sustiprindami savo prekės ženklą nuo pat pirmojo puslapio, kuriame jie atsiduria.
+
+<Note>
+  Tik **Super administratoriai** ir **Administratoriai** gali konfigūruoti individualų domeną. Taip pat turite turėti domeną ir prieigą prie jo DNS nustatymų savo registratoriuje, kad užbaigtumėte šią sąranką.
+</Note>
+
+---
+
+## Kaip tai veikia
+
+Kai AgencyHandy pridedas individualų domeną, platforma suteikia jums **CNAME įrašą**. Šį įrašą pridedas į domeno DNS nustatymus savo registratoriuje (GoDaddy, Namecheap, Cloudflare ir kt.), o AgencyHandy patvirtina ryšį, kai DNS išplatinamas.
+
+---
+
+## Nuoseklios sąrankos žingsniai
+
+<Steps>
+  <Step title="Atidarykite individualaus domeno nustatymus">
+    Prisijunkite prie savo AgencyHandy paskyros. Kairinėje šoninėje juostoje eikite į **Workspace Config**, tada spustelėkite **Custom Domain**.
+  </Step>
+  <Step title="Pridėkite savo individualų domeną">
+    Spustelėkite mygtuką **+ Add Custom Domain**. Pasirodžiusiame įvesties lauke įveskite norimą naudoti subdomeną — pavyzdžiui, `portal.youragency.com`.
+
+    <Warning>
+      **Nenaudokite** `www` kaip subdomenui (t. y. venkite `www.youragency.com`). Prefiksas `www` gali sukelti konfigūracijos konfliktus ir neleidžia sėkmingo patvirtinimo. Naudokite kitą subdomeną, pvz., `portal`, `client`, `app` arba `hub`.
+    </Warning>
+  </Step>
+  <Step title="Nukopijuokite CNAME įrašo duomenis">
+    Pateikus domeną, AgencyHandy rodo DNS įrašą, kurį reikia pridėti:
+
+    | Laukas    | Reikšmė                                           |
+    |-----------|---------------------------------------------------|
+    | **Tipas** | CNAME                                             |
+    | **Vardas** | Jūsų subdomenas (pvz., `portal`)                 |
+    | **Reikšmė** | AgencyHandy pateiktas tikslinis adresas         |
+
+    Atidžiai nukopijuokite šias reikšmes — jos reikalingos kitame žingsnyje.
+  </Step>
+  <Step title="Pridėkite CNAME įrašą savo DNS registratoriuje">
+    Prisijunkite prie savo domeno registratoriaus valdymo skydelio (pvz., GoDaddy, Namecheap, Cloudflare). Eikite į domeno DNS valdymo sekciją ir pridėkite CNAME įrašą naudodami iš AgencyHandy nukopijuotus Tipo, Vardo ir Reikšmės duomenis.
+
+    Žr. toliau pateiktus Cloudflare konkrečius nurodymus.
+  </Step>
+  <Step title="Išsaugokite domeną AgencyHandy">
+    Grįžkite į AgencyHandy ir spustelėkite **Save Domain**. Iš pradžių būsena rodys **Disconnected** — tai įprasta, kol DNS išplatinamas.
+  </Step>
+  <Step title="Palaukite DNS platinimo ir patvirtinkite">
+    DNS pakeitimai gali užtrukti nuo kelių minučių iki **48 valandų**, kol išplatinami globaliai, priklausomai nuo registratoriaus ir TTL nustatymų. Periodiškai spustelėkite **Refresh**, kad patikrintumėte ryšio būseną.
+
+    Baigus platinimą, būsena pasikeičia į **Connected** ✅.
+  </Step>
+</Steps>
+
+<Warning>
+  DNS platinimas gali užtrukti iki **48 valandų**. Jei domenas vis dar rodo **Disconnected** po 48 valandų, dar kartą patikrinkite, ar CNAME įrašas yra teisingas ir ar nėra prieštaraujančių DNS įrašų tam pačiam subdomenui.
+</Warning>
+
+---
+
+## Cloudflare konkrečios instrukcijos
+
+Jei jūsų domenas valdomas per Cloudflare, yra vienas svarbus nustatymas, kurį turite teisingai sukonfigūruoti:
+
+<Steps>
+  <Step title="Prisijunkite prie Cloudflare ir pasirinkite domeną">
+    Atidarykite savo [Cloudflare valdymo skydelį](https://dash.cloudflare.com) ir spustelėkite domeną, kurį prijungiate prie AgencyHandy.
+  </Step>
+  <Step title="Eikite į DNS nustatymus">
+    Domeno nustatymų skydelio viršutinėje navigacijoje spustelėkite skirtuką **DNS**.
+  </Step>
+  <Step title="Pridėkite CNAME įrašą">
+    Spustelėkite **+ Add Record** ir užpildykite laukus:
+    - **Type:** CNAME
+    - **Name:** Jūsų subdomenas (pvz., `portal`)
+    - **Target/Content:** AgencyHandy pateikta reikšmė
+    - **TTL:** Pradinės sąrankos metu nustatykite **2 minutes** (arba mažiausią galimą parinktį)
+  </Step>
+  <Step title="Išjunkite Cloudflare tarpinį serverį (svarbu)">
+    Stulpelyje **Proxy status** įsitikinkite, kad perjungiklis nustatytas į **DNS only** (debesies piktograma turėtų būti pilka, ne oranžinė).
+
+    <Warning>
+      Jei Cloudflare tarpinis serveris yra **įjungtas** (oranžinė debesies piktograma), CNAME įrašas nebus tinkamai išskleidžiamas ir AgencyHandy negalės patvirtinti jūsų domeno. Ryšiui veikti turite nustatyti jį į **DNS Only**.
+    </Warning>
+  </Step>
+  <Step title="Išsaugokite įrašą">
+    Patikrinkite visas reikšmes dėl tikslumo ir spustelėkite **Save**.
+  </Step>
+</Steps>
+
+<Tip>
+  Naudokite [dnschecker.org](https://dnschecker.org), kad stebėtumėte CNAME įrašo platinimą skirtinguose pasaulio regionuose. Prieš tikėdamiesi, kad AgencyHandy patvirtins ryšį, ieškokite žalių varnelių visuose regionuose.
+</Tip>
+
+---
+
+## Ryšio būsenos stebėjimas
+
+Po išsaugojimo grįžkite į **Workspace Config → Custom Domain** AgencyHandy, kad sektuate būseną:
+
+| Būsena           | Reikšmė                                                                          |
+|------------------|----------------------------------------------------------------------------------|
+| **Disconnected** | DNS įrašas dar neišplatintas arba yra klaida                                     |
+| **Connected**    | Domenas patvirtintas ir aktyvus — klientai gali pasiekti jūsų darbo erdvę per individualų URL |
+
+---
+
+## Individualaus domeno atnaujinimas arba pašalinimas
+
+- **Norėdami atnaujinti domeną:** ištrinkite esamą įrašą ir pridėkite naują domeną naudodami tuos pačius sąrankos žingsnius aukščiau.
+- **Norėdami ištrinti domeną:** individualaus domeno skydelyje spustelėkite mygtuką **Delete** šalia savo domeno ir patvirtinkite ištrynimą. Jūsų darbo erdvė grįš prie numatytojo AgencyHandy URL. Bet kada galite iš naujo pridėti bet kurį domeną.
+
+---
+
+## Svarbios pastabos
+
+- **Naudokite subdomeną, o ne pagrindinį domeną:** AgencyHandy individualūs domenai reikalauja subdomen (pvz., `portal.youragency.com`), o ne pagrindinio/šakninio domeno (pvz., `youragency.com`).
+- **Venkite `www`:** subdomenas `www` gali sukelti problemų patvirtinimo metu. Vietoje jo naudokite individualų subdomenų pavadinimą.
+- **Reikalingi tikslūs įrašai:** tiksliai kaip rodoma AgencyHandy įveskite CNAME Tipą, Vardą ir Reikšmę. Bet kokia rašybos klaida ar trūkstamas simbolis neleidžia ryšiui.
+- **Cloudflare tarpinis serveris turi būti išjungtas:** AgencyHandy individualaus domeno patvirtinimui visada nustatykite Cloudflare įrašus į **DNS Only**.
+- **Tik administratoriams:** tik Super administratoriai ir Administratoriai gali pridėti, keisti ar ištrinti individualaus domeno nustatymus.

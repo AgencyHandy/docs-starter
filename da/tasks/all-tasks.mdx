@@ -1,0 +1,126 @@
+---
+title: "Alle opgaver — Centraliseret opgavestyring i AgencyHandy"
+sidebarTitle: "Alle opgaver"
+description: "Brug siden Alle opgaver til en realtids, rollefiltreret visning af alle opgaver på tværs af igangværende og under-gennemgang-ordrer — med søgning, filtre og sortering."
+---
+
+Siden Alle opgaver i AgencyHandy giver dig en enkelt, centraliseret visning af alle opgaver, der tilhører aktive arbejdsgange på tværs af dit bureau. I stedet for at lede igennem individuelle ordrer kan du se alle relevante opgaver ét sted, filtrere dem efter ansvarlig, prioritet eller dato og foretage redigeringer direkte fra listen. Synlighed er automatisk afgrænset til din rolle — Super Admins ser alt, Managers ser deres tildelte ordrer, og medarbejdere ser kun deres egne opgaver.
+
+## Adgang til siden Alle opgaver
+
+1. Log ind på din AgencyHandy-konto.
+2. Klik på **Opgaver** i venstre sidepanel.
+3. Vælg **Alle opgaver** for at åbne det centraliserede opgave-dashboard.
+
+<Note>
+  Siden Alle opgaver viser kun opgaver fra ordrer med statussen **Igangværende** eller **Til gennemgang**. Opgaver knyttet til ordrer i en hvilken som helst anden tilstand (f.eks. Fuldført, Afventer) vises ikke her.
+</Note>
+
+## Opgavesynlighed efter rolle
+
+Hvad du ser på siden Alle opgaver afhænger helt af din rolle.
+
+| Rolle | Hvad de ser |
+|------|---------------|
+| **Super Admin / Admin** | Alle opgaver på tværs af alle ordrer, teams og statusser |
+| **Project Manager (PM)** | Kun opgaver fra ordrer, hvor de er tildelt som Manager |
+| **Medarbejder / Ansvarlig** | Kun opgaver direkte tildelt dem — selv hvis kolleger arbejder på den samme ordre |
+
+<Tip>
+  Hvis en PM ikke kan finde en opgave, de forventer at se, skal du bekræfte, at de er tildelt som Manager på den relevante ordre. PM'er ser ikke opgaver, medmindre de er den tildelte Manager for den pågældende ordre.
+</Tip>
+
+## Hvornår opgaver vises på denne side
+
+Opgaver vises på siden Alle opgaver, når disse betingelser er opfyldt:
+
+<CardGroup cols={2}>
+  <Card title="Ordrer der udløser opgavesynlighed" icon="circle-check">
+    - Manuelle ordrer (engangsbetaling eller abonnement) oprettes
+    - Katalogordrer via Stripe eller manuelle betalingsmetoder afgives
+    - Et tilbud accepteres af bureauet
+  </Card>
+  <Card title="Ordrer der holder opgaver skjult" icon="eye-slash">
+    - Klient-anmodede opgaver, som bureauet endnu ikke har accepteret
+    - Prøveordrer, som bureauet endnu ikke har accepteret
+    - Ordrer med afventende status, der afventer manuel bankbetalingsbekræftelse
+  </Card>
+</CardGroup>
+
+## Søgning, filtrering og sortering
+
+Siden Alle opgaver indeholder et komplet sæt kontrolelementer til at hjælpe dig med at finde præcis det, du har brug for.
+
+### Søgning
+
+Brug søgefeltet til at finde opgaver efter navn, ansvarlig eller relateret ordre. Resultater opdateres i realtid, mens du skriver.
+
+### Filtre
+
+Klik på **Filter → + Tilføj filter** for at åbne filterpanelet. Du kan kombinere flere filtre for præcise resultater:
+
+| Filter | Hvad det gør |
+|--------|--------------|
+| **Ordre-ID** | Vis opgaver knyttet til et specifikt ordrenummer |
+| **Ansvarlig** | Vis opgaver tildelt et bestemt teammedlem |
+| **Status** | Filtrer efter opgavefremskridt: Afventer, Igangværende, Til gennemgang, Udført osv. |
+| **Prioritet** | Fokusér på opgaver med Høj, Medium eller Lav prioritet |
+| **Etiket** | Indsnævr efter opgaveetiketter eller -kategorier |
+| **Startdato** | Vis opgaver der starter på eller efter en bestemt dato |
+| **Slutdato** | Vis opgaver der er forfaldne inden en bestemt dato |
+
+<Note>
+  Filtre er kun tilgængelige på siden Alle opgaver. De bevares i løbet af din browsersession, men nulstilles ved sideopdatering. Filtre påvirker kun din visning og ændrer ikke, hvad andre brugere ser.
+</Note>
+
+For at rydde alle filtre skal du klikke på **Ryd filtre** for at vende tilbage til den fulde, ufiltrerede liste.
+
+### Sortering
+
+Sortér opgavelisten efter:
+- **Forfaldsdato** — fremhæv opgaver, der nærmer sig eller allerede er forfaldne
+- **Prioritet** — bring de mest kritiske opgaver til toppen
+- **Oprettelsestidspunkt** — se senest tilføjede opgaver først
+
+### Brødkrummenavigation
+
+Brug brødkrummesporet øverst på siden til at bevare konteksten, mens du navigerer mellem underopgaver, opgavelister og overordnede ordrer. Dette er særligt nyttigt, når du dykker ned i en specifik opgave og derefter skal vende tilbage til den bredere liste.
+
+## Redigering af opgaver
+
+Du kan ændre opgaver på siden Alle opgaver på to måder:
+
+<Tabs>
+  <Tab title="Inline-redigering">
+    Klik direkte ind i et redigerbart felt i opgaverækken — såsom status, ansvarlig eller forfaldsdato — og foretag din ændring uden at forlade listevisningen. Dette er den hurtigste mulighed for hurtige opdateringer.
+  </Tab>
+  <Tab title="Modal-redigering">
+    Klik på opgavenavnet for at åbne den fulde opgavedetaljemodal. Herfra kan du opdatere alle opgaveegenskaber, tilføje bemærkninger, se underopgaver og se den komplette opgavehistorik. Brug dette til mere grundige redigeringer, eller når du har brug for kontekst.
+  </Tab>
+</Tabs>
+
+## Regler for sletning af opgaver
+
+Opgaver på siden Alle opgaver er direkte knyttet til deres overordnede ordrer.
+
+- Når en **ordre slettes**, fjernes alle opgaver tilknyttet den pågældende ordre **automatisk og permanent** fra siden Alle opgaver.
+- Denne sletning påvirker alle brugerroller — ingen vil kunne se disse opgaver efter at ordren er slettet.
+- **Der er ingen genopretningsindstilling** for opgaver slettet via ordresletning.
+
+<Warning>
+  Sletning af en ordre fjerner permanent alle dens opgaver. Sørg for, at al vigtig opgavehistorik eller leverbare poster gemmes et andet sted, inden du sletter en ordre.
+</Warning>
+
+## Yderligere bemærkninger
+
+<Accordion title="Realtidsopdateringer">
+  Ændringer af ordrer, opgavetildelinger eller opgavestatusser afspejles i realtid på siden Alle opgaver. Hvis en kollega opdaterer en opgave, mens du har siden åben, vil du se ændringen uden at skulle opdatere siden.
+</Accordion>
+
+<Accordion title="Klient-anmodede opgaver">
+  Opgaver indsendt af klienter vises ikke på siden Alle opgaver, før bureauet udtrykkeligt accepterer dem. Indtil de er accepteret, forbliver disse opgaver i en afventende tilstand og er ikke synlige i den centraliserede visning.
+</Accordion>
+
+<Accordion title="Opgaver og ordrestatus">
+  Opgaver vises kun for ordrer med statussen Igangværende eller Til gennemgang. Hvis en ordre flyttes til Fuldført eller sættes på pause, vises dens opgaver ikke længere her. Naviger til den specifikke ordre for at se opgaver knyttet til ordrer uden for disse statusser.
+</Accordion>

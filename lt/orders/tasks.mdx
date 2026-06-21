@@ -1,0 +1,240 @@
+---
+title: "Užduočių valdymas: darbo kūrimas ir sekimas užsakymuose"
+sidebarTitle: "Užduotys"
+description: "Kurkite, redaguokite ir valdykite užduotis užsakymuose — įskaitant laiko sekimą, failų atsiliepimus, kliento prašomas užduotis ir užduočių matomumą visuose užsakymuose."
+---
+
+Užduotys yra darbo vienetai, kurie paverčia užsakymą galutine pristatymu. Kiekviena užduotis yra konkrečiame užsakyme, gali būti paskirta komandos nariui ir seka savo būseną, terminus, priedus bei atsiliepimų giją. Šiame puslapyje paaiškinama, kaip kurti ir valdyti užduotis, kaip klientai gali prašyti užduočių, kaip veikia laiko sekimas ir failų atsiliepimai, bei kaip vienu metu peržiūrėti užduotis visuose užsakymuose.
+
+## Vaidmenų reikalavimai
+
+| Veiksmas | Kas gali atlikti |
+|---|---|
+| Kurti užduotis | Super administratorius, Administratorius, Projektų vadovas |
+| Redaguoti užduotis | Super administratorius, Administratorius, Projektų vadovas |
+| Ištrinti užduotis | Super administratorius, Administratorius, Projektų vadovas |
+| Peržiūrėti užduotis peržiūroje / atliktas | Super administratorius, Administratorius, Projektų vadovas, Klientas |
+| Siųsti ir atsakyti į atsiliepimus | Super administratorius, Administratorius, Projektų vadovas |
+| Registruoti laiką užduotyse | Visi paskirti naudotojai (Super administratoriai ir Administratoriai gali registruoti kitų vardu) |
+| Prašyti užduoties (klientas) | Klientas |
+| Patvirtinti / atmesti prašomas užduotis | Super administratorius, Administratorius |
+
+<Note>
+Darbuotojai, paskirti prie užsakymo, gali matyti užduotis, kurių būsena yra **Peržiūroje** arba **Atlikta**. Užduotys, kurių būsena **Vykdoma**, darbuotojams nėra matomos.
+</Note>
+
+## Kurti užduotį
+
+<Steps>
+  <Step title="Atidaryti užsakymą">
+    Kairiajame šoninėje juostoje pereikite į **Užsakymai** ir spustelėkite užsakymą, prie kurio norite pridėti užduotį.
+  </Step>
+
+  <Step title="Pridėti naują užduotį">
+    Užsakymo viduje slinkite į skyrių **Užduotys** ir spustelėkite **+ Pridėti naują užduotį**. Pasirodys užduoties kūrimo forma.
+  </Step>
+
+  <Step title="Užpildyti užduoties informaciją">
+    Užpildykite galimus laukus:
+
+    | Laukas | Pastabos |
+    |---|---|
+    | **Užduoties pavadinimas** | Aiškus, glaustas darbo elemento pavadinimas |
+    | **Aprašas** | Išsami aplinkybė, reikalavimai arba instrukcijos |
+    | **Atsakingas** | Komandos narys, atsakingas už užduoties atlikimą |
+    | **Žyma** | Kategorinis žymeklis užduotims organizuoti (pvz., Dizainas, Tekstas) |
+    | **Pradžios data** | Kada pradedamas darbas prie užduoties |
+    | **Terminas** | Kada užduotis turi būti baigta |
+    | **Reikalinga kliento peržiūra** | Žymimasis langelis, reikalaujantis kliento patvirtinimo prieš pažymint užduotį kaip atliktą — pagal numatytuosius nustatymus pažymėtas |
+    | **Priedai** | Nuorodos bylos arba papildomos medžiagos |
+  </Step>
+
+  <Step title="Išsaugoti užduotį">
+    Spustelėkite **Išsaugoti**, kad užduotis būtų sukurta. Klientas automatiškai gauna pranešimą, kad jo užsakyme pridėta nauja užduotis.
+  </Step>
+</Steps>
+
+<Tip>
+Kiekvienos naujos užduoties langelis **Reikalinga kliento peržiūra** pagal numatytuosius nustatymus yra pažymėtas. Jei užduotis yra grynai vidinė ir nereikalauja kliento patvirtinimo, galite ją atžymėti prieš išsaugodami.
+</Tip>
+
+## Užduočių būsenos
+
+Užduotys pereina per šias būsenas:
+
+- **Vykdoma** — užduotis yra dirbama (nematoma klientams ar darbuotojams)
+- **Peržiūroje** — užduotis pateikta peržiūrai; matoma klientams
+- **Atlikta** — užduotis patvirtinta ir baigta
+
+<Note>
+Kai klientas ar recenzentas atmeta užduotį iš **Peržiūroje**, jos būsena automatiškai grįžta į **Vykdoma**.
+</Note>
+
+## Užduoties modalas ir veiklos puslapis
+
+Spustelėjus bet kurią užduotį atidaromas **Užduoties modalas** — išsami peržiūra, kuri yra užduoties veiklos centras. Iš čia galite matyti ir valdyti:
+
+- Dabartinę būseną, atsakingą asmenį, pradžios datą ir terminą
+- Užduoties aprašą ir visus pridėtus failus
+- Visas atsiliepimų gijas ir atsakymus
+- Išsamų veiklos žurnalą, rodantį kiekvieną atnaujinimą, komentarą ir būsenos pakeitimą
+
+Visi prie užsakymo prisijungę asmenys — įskaitant klientus, kai kliento peržiūra įjungta — gali pasiekti užduoties modalą užduotims, kurias jie gali matyti.
+
+## Redaguoti užduotį
+
+Norėdami atnaujinti užduoties detalias po jos sukūrimo, atidarykite užduoties modalą ir keiskite reikiamus laukus (pavadinimą, aprašą, atsakingą asmenį, datas, žymą ar priedus). Išsaugokite pakeitimus, kad juos pritaikytumėte. Tik Super administratoriai, Administratoriai ir Projektų vadovai gali redaguoti užduotis.
+
+## Ištrinti užduotį
+
+Norėdami ištrinti užduotį, atidarykite ją ir naudokite trynimo parinktį užduoties veiksmų meniu. Ištrynimas yra negrįžtamas — visi susieti laiko įrašai ir failų versijos pašalinamos kartu su užduotimi.
+
+<Warning>
+Ištrynus užduotį, taip pat pašalinamos visos failų versijos ir susiję atsiliepimų komentarai. Šio veiksmo atšaukti negalima.
+</Warning>
+
+## Laiko sekimas
+
+AgencyHandy turi integruotą laiko sekimo sistemą, leidžiančią komandai registruoti valandas tiesiogiai prie užduočių — nereikia jokio išorinio įrankio.
+
+### Laikmačio paleidimas
+
+<Steps>
+  <Step title="Atidaryti užduotį">
+    Eikite į **Užsakymai → Užduotys** ir atidarykite užduotį, kuriai norite sekti laiką.
+  </Step>
+
+  <Step title="Paleisti laikmačio">
+    Spustelėkite **Paleisti laikmačio**. Laikmatis pradeda veikti ir rodo užduoties pavadinimą, realaus laiko praėjusį laiką ir bendrą užregistruotą laiką.
+  </Step>
+
+  <Step title="Pristabdyti arba sustabdyti baigus">
+    Spustelėkite **Pristabdyti laikmačio**, kad laikinai sustabdytumėte sekimą, arba **Sustabdyti laikmačio**, kad užbaigtumėte įrašą. Sustabdžius, patvirtinsite datą, pradžios laiką, pabaigos laiką, bendrą trukmę ir neprivalomą pastabą.
+  </Step>
+</Steps>
+
+<Note>
+Vienu metu gali veikti tik vienas aktyvus laikmatis. Paleidus naują laikmačio, bet koks esamas automatiškai pristabdomas.
+</Note>
+
+<Warning>
+Jei užduotis pažymėta kaip **Atlikta**, laikmatis išjungiamas. Norėdami iš naujo įjungti laiko registravimą, atverkite užduotį.
+</Warning>
+
+### Rankinis laiko įvedimas
+
+Jei reikia registruoti laiką atgaline data, spustelėkite **Rankinis laiko įvedimas** prie užduoties ir įveskite:
+
+- **Data**
+- **Pradžios ir pabaigos laikas** (arba **Trukmė** valandomis ir minutėmis)
+- **Pastabos** (neprivaloma)
+
+Keli naudotojai gali vienu metu registruoti laiką prie tos pačios užduoties. Super administratoriai ir Administratoriai gali kurti rankinius laiko įrašus bet kurio naudotojo vardu.
+
+### Darbo žurnalai
+
+Spustelėkite mygtuką **Darbo žurnalas** šalia laikmačio, kad pamatytumėte išsamų visų laiko įrašų sąrašą prie užduoties, įskaitant datą, pradžios/pabaigos laikus, bendrą aktyvų laiką ir visas pastabas. Administratoriai ir Super administratoriai gali ištrinti bet kurį įrašą; įprasti naudotojai gali trinti tik savo įrašus.
+
+### Tabeliai
+
+Kairiajame šoninėje juostoje pereikite į **Tabeliai**, kad gautumėte visų užregistruotų laikų peržiūrą visuose užsakymuose. Galite filtruoti pagal užduoties pavadinimą, užsakymo ID, atsakingą asmenį ar datų intervalą (dienos, savaitės, mėnesio), ir grupuoti rezultatus pagal komandos narį, paslaugos pavadinimą ar užduoties pavadinimą. Tabelių peržiūroje taip pat galite paleisti laikmačio arba pridėti rankinį įrašą.
+
+## Failų atsiliepimai
+
+AgencyHandy failų atsiliepimų sistema leidžia jums ir jūsų klientams palikti tikslius, vaizdinius komentarus dėl pristatymų — tiesiogiai užduočių viduje. Ji palaiko vaizdus, PDF, vaizdo įrašus ir gyvus tinklalapius su versijų valdymu ir srautinėmis diskusijomis.
+
+### Failo įkėlimas peržiūrai
+
+Atidarykite užduotį, skyriuje **Priedai** spustelėkite piktogramą **➕** ir įkelkite vaizdą, PDF, vaizdo įrašą arba įklijuokite gyvo tinklalapio URL.
+
+### Atsiliepimų palikimas pagal failo tipą
+
+**Vaizdai ir PDF**
+Atidarykite failą ir naudokite anotacijos įrankių juostą (Rodyklė, Linija, Stačiakampis, Paryškinimas), kad pažymėtumėte konkrečias sritis. Pasirinkite sritį, įveskite komentarą ir pasirinkite, ar juo dalintis su komanda, klientu ar abiem. Taip pat galite atšaukti arba pakartoti anotacijas ir keisti anotacijų spalvas.
+
+**Vaizdo įrašai**
+Atidarykite vaizdo įrašą ir pristabdykite jį tiksliai toje kadrų, kur taikomas jūsų atsiliepimas. Įveskite komentarą — vaizdo įrašas automatiškai pristabdomas rašant. Atsiliepimas pažymimas tuo momentu. Galite pašalinti laiko žymeklį, kad palikti bendrą komentarą.
+
+**Gyvi tinklalapiai**
+Naudodami mygtuką **➕** pridėkite svetainės URL prie užduoties, tada įdiekite AgencyHandy naršyklės plėtinį. Atidarykite svetainę **Peržiūros režimu** (interaktyvus) arba pereikite į **Peržiūros režimą**, kad padarytumėte ekrano kopiją ir anotacijas su piešimo, teksto ar figūrų įrankiais.
+
+### Komentarų veiksmai
+
+Prie kiekvieno komentaro yra trijų taškų meniu su parinktimis:
+
+- Redaguoti komentarą
+- Kopijuoti atsakymą
+- Ištrinti komentarą
+- Apriboti matomumą tik vidinei komandai
+
+### Atsiliepimų išsprendimas
+
+Spustelėkite mygtuko **✓** ant komentaro, kad jį pažymėtumėte kaip **Išspręstą**. Išspręsti komentarai lieka matomi kaip nuoroda ir gali būti iš naujo atidaryti. Gausite pranešimą, kai kitas asmuo išsprendžia jūsų palikto komentaro klausimą.
+
+### Failų versijos
+
+Spustelėkite **Įkelti naują versiją**, kad pridėtumėte pataisytą failą. Ankstesnės versijos ir jų atsiliepimai išsaugomi ir pasiekiami per versijų išskleidžiamąjį sąrašą. Atidarant senesnę versiją, AgencyHandy praneša, kad yra naujesnė versija.
+
+Kiekvieną failą galite pažymėti kaip **Reikia peržiūrėti** arba **Patvirtinta**, kad iš karto matytumėte peržiūros būseną.
+
+<Note>
+Klientai gali palikti atsiliepimus dėl failų tik tada, kai užduotyje įjungtas žymimasis langelis **Reikalinga kliento peržiūra**. Failų atsiliepimai pasiekiami tik užduočių ar užsakymų viduje — ne paslaugų kataloge ar profilio nuotraukose.
+</Note>
+
+## Kliento prašomos užduotys
+
+Klientai gali teikti užduočių prašymus iš savo portalo, suteikdami jiems struktūruotą būdą atskleisti papildomus poreikius neapeinant jūsų patvirtinimo proceso.
+
+### Kliento darbo eiga
+
+<Steps>
+  <Step title="Pasiekti prašymus">
+    Klientas spustelėja **Prašymai** Klientų portalo šoninėje juostoje — arba naudoja mygtuką **+ Prašyti užduoties** tiesiogiai užsakymo viduje.
+  </Step>
+
+  <Step title="Užpildyti prašymo formą">
+    Klientas nurodo:
+    - **Užsakymą** (privaloma — prašymai turi būti susieti su esamu užsakymu)
+    - **Užduoties pavadinimą** (privaloma)
+    - **Aprašą** (neprivaloma)
+    - **Priedus** (neprivaloma — iki 1 GB; formatai apima PDF, DOCX, JPG, PNG, MP4, ZIP ir kt.)
+    - **Pradžios ir pabaigos datas** (neprivaloma)
+  </Step>
+
+  <Step title="Pateikti prašymą">
+    Klientas spustelėja **Prašyti**. Užduotis jo portale pasirodo kaip **Laukiama**, o jūsų agentūra gauna pranešimą.
+  </Step>
+</Steps>
+
+### Agentūros darbo eiga
+
+<Steps>
+  <Step title="Peržiūrėti gaunamus prašymus">
+    Agentūros portalo šoninėje juostoje spustelėkite **Prašymai**. Visi laukiantys prašymai rodomi sąrašo peržiūroje. Galite filtruoti pagal klientą ar užsakymo ID, rūšiuoti abėcėlės tvarka ar pagal pateikimo datą ir naudoti **Nuostatas**, kad rodytumėte ar slėptumėte stulpelius.
+  </Step>
+
+  <Step title="Peržiūrėti prašymą">
+    Spustelėkite prašymą, kad perskaitytumėte aprašą ir peržiūrėtumėte priedus prieš priimdami sprendimą.
+  </Step>
+
+  <Step title="Patvirtinti arba atmesti">
+    Naudokite veiksmų mygtukus šalia kiekvieno prašymo, kad patvirtintumėte ar atmestumėte atskirai — arba naudokite viršutinio dešiniojo kampo masinius veiksmus, kad vienu metu patvirtintumėte ar atmestumėte visus prašymus.
+
+    - **Patvirtinti** prašymai tampa aktyviais užduotimis užsakyme ir vykdo įprastą užduočių darbo eigą.
+    - **Atmesti** prašymai lieka registruoti su **Atmesta** būsena ir nepridedami prie užsakymo.
+  </Step>
+</Steps>
+
+<Note>
+Klientai negali apeiti patvirtinimo žingsnio. Prašymui visada reikalingas agentūros veiksmas, kol jis tampa aktyvia užduotimi. Laukiantys prašymai lieka matomi tiek klientui, tiek agentūrai, kol priimamas sprendimas.
+</Note>
+
+## Visų užduočių peržiūra
+
+Be užduočių valdymo atskiruose užsakymuose, galite vienu ekranu peržiūrėti užduotis visuose užsakymuose. Kairiajame šoninėje juostoje pereikite į **Užduotys**, kad atidarytumėte puslapį **Visos užduotys**. Iš čia galite:
+
+- Matyti visas jums matomą užduotis, nepriklausomai nuo to, kuriam užsakymui jos priklauso
+- Filtruoti ir rūšiuoti pagal būseną, atsakingą asmenį, terminą ar užsakymą
+- Greitai nustatyti vėluojančius ar rizikingus elementus visoje jūsų darbo apimtyje
+
+Ši kelių užsakymų matomumo galimybė ypač naudinga Projektų vadovams ir Administratoriams, kuriems reikia subalansuoti komandos pajėgumą ir sekti pristatymo sveikatą agentūros lygiu.

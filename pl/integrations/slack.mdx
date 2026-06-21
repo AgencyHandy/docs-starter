@@ -1,0 +1,69 @@
+---
+title: "Połącz Slack, aby otrzymywać powiadomienia AgencyHandy w czasie rzeczywistym"
+sidebarTitle: "Slack"
+description: "Połącz swój obszar roboczy Slack z AgencyHandy, aby aktualizacje zamówień, zmiany zadań i alerty zgłoszeń były automatycznie publikowane w kanale Slack."
+---
+
+Integracja Slack w AgencyHandy pozwala Twojemu zespołowi być na bieżąco bez konieczności przełączania się między aplikacjami. Po połączeniu AgencyHandy automatycznie publikuje powiadomienia w wybranym kanale Slack za każdym razem, gdy zmieniają się zadania, zamówienia lub inne aktywności w przestrzeni roboczej — dzięki temu Twój zespół zawsze wie, co się dzieje w czasie rzeczywistym.
+
+<Note>
+  Tylko role **SuperAdmin**, **Admin** i **Manager** (z uprawnieniami do integracji) mogą łączyć integrację Slack lub nią zarządzać. Potrzebujesz uprawnień administratora obszaru roboczego Slack, aby autoryzować połączenie.
+</Note>
+
+## Połącz Slack
+
+<Steps>
+  <Step title="Otwórz Integracje">
+    Na lewym pasku bocznym kliknij **Integracje**.
+  </Step>
+
+  <Step title="Znajdź kartę Slack">
+    Przewiń do karty **Slack** i kliknij **Połącz**.
+  </Step>
+
+  <Step title="Autoryzuj AgencyHandy w Slack">
+    Otworzy się okno autoryzacji Slack. Jeśli nie jesteś jeszcze zalogowany do swojego obszaru roboczego Slack, zaloguj się teraz. Przejrzyj uprawnienia żądane przez AgencyHandy i kliknij **Zezwól**, aby przyznać dostęp.
+  </Step>
+
+  <Step title="Wybierz kanał powiadomień">
+    Po autoryzacji wybierz kanał Slack, w którym mają pojawiać się powiadomienia AgencyHandy. Wybierz kanał z listy rozwijanej i kliknij **Zapisz**, aby potwierdzić.
+  </Step>
+
+  <Step title="Potwierdź konfigurację">
+    Karta Slack aktualizuje się i wyświetla **Połączono**. AgencyHandy natychmiast rozpoczyna publikowanie powiadomień w wybranym kanale.
+  </Step>
+</Steps>
+
+## Jakie powiadomienia są wysyłane do Slack
+
+AgencyHandy publikuje wiadomość Slack za każdym razem, gdy wystąpi którekolwiek z następujących zdarzeń:
+
+| Kategoria | Zdarzenia wyzwalające powiadomienie |
+|---|---|
+| **Zadania** | Zadanie utworzone, zaktualizowane, przypisane lub ukończone |
+| **Zamówienia** | Zamówienie utworzone lub zmiana statusu |
+| **Komentarze** | Nowy komentarz dodany do zadania lub zamówienia |
+| **Załączniki plików** | Plik lub załącznik dodany do zadania |
+| **Zgłoszenia** | Zgłoszenie utworzone, przypisane lub zmiana statusu |
+
+Każda wiadomość Slack zawiera:
+
+- **Nazwę** zadania, zamówienia lub zgłoszenia
+- **Zmianę statusu** lub działanie, które wyzwoliło wiadomość
+- **Link** do odpowiedniego elementu w AgencyHandy
+
+Gdy plik lub załącznik zostanie dodany do zadania, wiadomość Slack zawiera również podgląd tego załącznika.
+
+<Tip>
+  Wybierz dedykowany kanał **#agencyhandy-alerty** (lub podobny), aby powiadomienia były zorganizowane i nie zaśmiecały głównych kanałów zespołu.
+</Tip>
+
+## Rozłącz Slack
+
+Aby zatrzymać powiadomienia, wróć do **Integracje** i kliknij **Rozłącz** na karcie Slack. Wszystkie powiadomienia zatrzymują się natychmiast.
+
+## Ważne uwagi
+
+- **Jeden obszar roboczy na połączenie** — możesz połączyć tylko jeden obszar roboczy Slack z każdą przestrzenią roboczą AgencyHandy. Aby przełączyć się na inny obszar roboczy Slack, rozłącz bieżący i połącz ponownie.
+- **Widoczność kanału** — powiadomienia są widoczne dla wszystkich w wybranym kanale Slack. Upewnij się, że kanał jest odpowiedni do poziomu udostępnianych szczegółów (np. unikaj publikowania wrażliwych danych zamówień klientów w publicznym kanale).
+- **Ponowna autoryzacja** — jeśli Twój token Slack wygaśnie lub uprawnienia ulegną zmianie, wróć do Integracje i połącz ponownie, aby przywrócić powiadomienia.

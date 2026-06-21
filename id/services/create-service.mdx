@@ -1,0 +1,260 @@
+---
+title: "Cara Membuat Layanan dengan Paket, Tugas, dan FAQ"
+sidebarTitle: "Buat Layanan"
+description: "Panduan langkah demi langkah untuk membangun layanan AgencyHandy: pilih tipe penagihan, konfigurasi paket, tetapkan tugas default, tambahkan FAQ, dan terbitkan."
+---
+
+Membuat layanan di AgencyHandy adalah langkah pertama untuk menjual penawaran agensi Anda melalui platform. Satu layanan dapat berisi hingga lima paket harga, tugas default otomatis yang dipicu saat pesanan ditempatkan, FAQ untuk mengurangi pertanyaan sebelum penjualan, lampiran portofolio untuk bukti sosial, dan formulir intake opsional — semuanya dikonfigurasi di satu tempat sebelum Anda menerbitkan.
+
+<Note>
+  Anda memerlukan peran **Super Admin** atau **Admin** untuk membuat layanan. Peran lain memerlukan izin layanan eksplisit untuk mengakses bagian ini.
+</Note>
+
+<Steps>
+  <Step title="Pilih tipe layanan">
+    Buka **Services** dari sidebar kiri dan klik **+ Service** untuk memulai daftar baru.
+
+    Di bagian atas halaman, pilih model penagihan Anda:
+
+    - **One-Time Service** — klien membayar biaya tunggal dan menerima hasil yang dapat dikirimkan sekali. Terbaik untuk proyek dengan ruang lingkup yang jelas: pembangunan situs web, paket logo, audit, dll.
+    - **Subscription Service** — penagihan berulang secara otomatis sesuai jadwal yang Anda tentukan. Terbaik untuk retainer, konten berkelanjutan, layanan terkelola, atau paket pemeliharaan.
+
+    <Warning>
+      Tipe layanan terkunci setelah Anda menyimpan. Jika Anda memerlukan model penagihan yang berbeda, buat layanan baru.
+    </Warning>
+  </Step>
+
+  <Step title="Tambahkan detail layanan">
+    Perluas bagian **Service Details** dan isi kolom berikut:
+
+    **Service Name** *(wajib)*
+    Ini adalah cara layanan muncul kepada klien di mana saja di platform — di katalog, pada invoice, dan di dalam workspace pesanan. Buat jelas dan deskriptif.
+
+    **Media Upload**
+    Unggah satu atau lebih gambar pratinjau untuk mewakili layanan secara visual. Gambar berkualitas tinggi meningkatkan kepercayaan klien dan tingkat konversi.
+
+    **Service Description**
+    Tulis penjelasan menyeluruh tentang apa yang termasuk dalam layanan, untuk siapa, dan apa yang dapat diharapkan klien. Gunakan ruang ini untuk membedakan penawaran Anda.
+
+    **Tax Settings**
+    Pilih apakah pajak **inklusif** (sudah termasuk dalam harga) atau **eksklusif** (ditambahkan di atas saat checkout).
+
+    **Currency**
+    Tetapkan mata uang untuk semua paket dalam layanan ini. Semua paket dalam satu layanan menggunakan mata uang yang sama.
+
+    <Tip>
+      Unggah gambar pratinjau dalam rasio 16:9 untuk presentasi terbaik di portal klien.
+    </Tip>
+  </Step>
+
+  <Step title="Buat paket">
+    Perluas **Package Details** dan klik **+ New Package** untuk menambahkan tingkatan harga pertama Anda. Anda dapat membuat hingga **5 paket** per layanan.
+
+    Untuk setiap paket, konfigurasi hal berikut:
+
+    **Package Name** *(wajib)*
+    Nama yang dilihat klien, seperti *Basic*, *Standard*, atau *Premium*.
+
+    **Package Icon** *(opsional)*
+    Pilih ikon bawaan atau unggah yang kustom. Ikon yang diunggah harus berukuran **32 × 32 piksel**.
+
+    **Package Media** *(opsional)*
+    Unggah gambar sampul khusus untuk paket ini. Format yang diterima: PNG, JPG, JPEG. Ukuran file maksimal: **5 MB**. Maksimal 1 file per paket. Rasio yang disarankan: **16:9**.
+
+    **Package Brief** *(opsional)*
+    Ringkasan satu baris hasil yang dapat dikirimkan dari paket ini. Maksimal **140 karakter**.
+
+    **What's Included** *(wajib)*
+    Daftarkan hasil yang dapat dikirimkan yang termasuk dalam paket ini. Anda dapat menambahkan hingga **15 item baris** per paket. Setiap poin harus mendeskripsikan satu hasil yang dapat dikirimkan secara konkret (misalnya, *"5 posting blog per bulan, hingga 1.000 kata masing-masing"*).
+
+    <Tip>
+      Setelah membuat beberapa paket, seret untuk mengubah urutan tampilannya kepada klien. Tandai satu sebagai **Most Popular** untuk menarik perhatian ke tingkatan yang Anda rekomendasikan.
+    </Tip>
+  </Step>
+
+  <Step title="Tetapkan aturan harga dan pengiriman">
+    Di dalam setiap paket, tetapkan kolom harga inti dan kontrol opsional apa pun:
+
+    **Amount** *(wajib)*
+    Harga yang dibayar klien untuk paket ini.
+
+    **Delivery Time** *(wajib)*
+    Estimasi jumlah hari untuk mengantarkan layanan setelah pembelian.
+
+    **Kontrol harga opsional:**
+
+    <Accordion title="Add Discount">
+      Terapkan pengurangan persentase atau jumlah tetap pada harga paket ini. Harga setelah diskon ditampilkan kepada klien di samping harga asli, menciptakan efek promosi yang efektif.
+    </Accordion>
+
+    <Accordion title="Add Trial Period (khusus langganan)">
+      Tawarkan percobaan gratis atau harga dikurangi sebelum penagihan langganan reguler dimulai. Opsi ini hanya tersedia pada layanan tipe berlangganan.
+    </Accordion>
+
+    <Accordion title="Add Quantity Limit">
+      Batasi jumlah unit yang dapat dibeli klien dalam satu sesi checkout. Gunakan ini untuk paket ketersediaan terbatas atau layanan dengan kendala kapasitas.
+    </Accordion>
+
+    <Accordion title="Add More Price Details">
+      Rincikan total biaya menjadi item baris individual — misalnya, menampilkan *harga dasar + biaya pengaturan + biaya per unit*. Setiap label rincian mendukung maksimal **20 karakter**.
+    </Accordion>
+
+    <Note>
+      Semua kolom yang diperlukan (Amount dan Delivery Time) harus dilengkapi untuk setiap paket sebelum Anda dapat menerbitkan layanan.
+    </Note>
+  </Step>
+
+  <Step title="Tambahkan tugas default untuk otomatisasi">
+    Setiap paket menyertakan bagian **Default Tasks**. Tugas yang ditentukan di sini secara otomatis dibuat di dalam workspace pesanan saat klien membeli paket ini — tidak perlu pengaturan manual setelah setiap penjualan.
+
+    Klik **+ Add More** untuk membuka modal pembuatan tugas. Untuk setiap tugas, Anda dapat mengonfigurasi:
+
+    | Kolom | Detail |
+    |---|---|
+    | **Task Name** | Wajib; maksimal **160 karakter** |
+    | **Description** | Instruksi terperinci untuk assignee |
+    | **Assignee** | Anggota tim yang bertanggung jawab menyelesaikan tugas ini |
+    | **Attachment** | Unggah file referensi; format yang diterima: csv, odt, doc, docx, htm, html, pdf, ppt, pptx, txt, xls, xlsx, jpg, jpeg, png, gif, webp, svg, ai, mp4, mp3, wav, zip, rar; ukuran file maks **1 GB** per file |
+    | **Label** | Tandai tugas untuk pemfilteran dan pelaporan |
+    | **Status** | Status awal saat tugas dibuat |
+    | **Client Review** | Aktifkan jika tugas ini memerlukan persetujuan klien sebelum dianggap selesai |
+
+    Tambahkan tugas sebanyak yang diperlukan untuk sepenuhnya mencakup proses pengiriman untuk paket ini. Tugas default yang konsisten memastikan setiap pesanan mengikuti alur kerja berkualitas yang sama.
+
+    <Tip>
+      Petakan tugas default Anda ke SOP internal Anda. Misalnya, paket *Social Media Management* mungkin secara otomatis membuat tugas seperti *Draf Kalender Konten*, *Persetujuan Klien*, *Jadwalkan Postingan*, dan *Laporan Bulanan*.
+    </Tip>
+  </Step>
+
+  <Step title="Tambahkan FAQ dan portofolio">
+    Perluas bagian **Additional Information** untuk menambahkan dua elemen opsional tetapi berdampak tinggi:
+
+    **Portfolio Attachment**
+    Tautkan kategori portofolio ke layanan ini sehingga klien dapat menelusuri sampel relevan dari pekerjaan Anda sebelumnya langsung di daftar layanan. Anda dapat menghubungkan kategori portofolio yang ada atau membuat yang baru dari layar ini.
+
+    **Frequently Asked Questions (FAQ)**
+    Klik **+ Add** untuk menyisipkan pasangan pertanyaan dan jawaban. Tambahkan FAQ sebanyak yang relevan — topik umum meliputi:
+
+    - Orisinalitas konten dan hak
+    - Proses revisi dan umpan balik
+    - Batas ruang lingkup dan apa yang *tidak* termasuk
+    - Jadwal dan frekuensi komunikasi
+    - Kebijakan pembayaran dan pengembalian dana
+
+    FAQ yang ditulis dengan baik mengurangi bolak-balik sebelum pembelian dan membantu klien mengevaluasi diri mereka sendiri.
+  </Step>
+
+  <Step title="Lampirkan formulir intake">
+    Formulir intake mengumpulkan informasi yang Anda butuhkan dari klien sebelum pekerjaan dimulai — misalnya, panduan merek, kredensial akses, target audiens, atau tujuan proyek.
+
+    - Klik **+ Create New Intake Form** untuk membuat formulir dari awal, atau pilih formulir yang ada dari dropdown.
+    - Jika layanan ini tidak memerlukan formulir intake, klik **Skip** untuk melewati bagian ini.
+    - Klik **Update** untuk menyimpan pilihan formulir intake Anda dan melanjutkan.
+
+    <Note>
+      Formulir intake bersifat opsional tetapi sangat disarankan untuk layanan yang memerlukan masukan spesifik klien sebelum pengiriman dapat dimulai.
+    </Note>
+  </Step>
+
+  <Step title="Terbitkan layanan">
+    Di bagian bawah editor layanan:
+
+    1. Aktifkan **Publish this Service** ke posisi ON.
+    2. Klik **Save** (atau **Update Service** jika mengedit layanan yang ada).
+
+    Setelah diterbitkan, layanan langsung terlihat oleh klien di portal. Jika Anda menonaktifkan toggle, layanan disimpan sebagai draft dan hanya terlihat oleh tim Anda.
+
+    <Tip>
+      Gunakan mode draft untuk menyiapkan layanan sebelumnya dan menerbitkannya saat peluncuran — berguna untuk promosi musiman atau pengumuman penawaran baru.
+    </Tip>
+  </Step>
+</Steps>
+
+## Pengaturan Add-On
+
+Add-on adalah ekstra opsional yang dapat dipilih klien saat checkout — misalnya, *Pengiriman Ekspres*, *Revisi Tambahan*, atau *Laporan Bulanan*. Mereka memungkinkan Anda melakukan upsell layanan pelengkap tanpa membuat daftar baru sepenuhnya.
+
+### Membuat Add-On
+
+<Steps>
+  <Step title="Buka Add-Ons">
+    Buka **Services** di sidebar, klik tombol **panah bawah** di sebelah judul Services, dan pilih **Add-Ons**.
+  </Step>
+  <Step title="Buat add-on baru">
+    Klik **+ Add New Add-on** dan isi:
+
+    - **Add-on Name**
+    - **Description** — gunakan editor teks kaya untuk menjelaskan dengan jelas apa yang termasuk dalam add-on
+    - **Pricing Type** — pilih *One-Time* atau *Subscription*
+    - **Pricing details:**
+      - *Sekali bayar:* masukkan jumlah dan mata uang
+      - *Berlangganan:* tetapkan interval penagihan (misalnya, setiap 1 bulan), batas siklus penagihan opsional, biaya langganan, dan mata uang
+  </Step>
+  <Step title="Terbitkan dan simpan">
+    Aktifkan **Publish** ke ON, lalu klik **Create**. Hanya add-on yang diterbitkan yang terlihat saat menghubungkannya ke formulir pesanan.
+  </Step>
+</Steps>
+
+### Melampirkan Add-On ke Formulir Pesanan
+
+<Steps>
+  <Step title="Buka formulir pesanan">
+    Buka **Forms** dan buka formulir pesanan yang relevan.
+  </Step>
+  <Step title="Pilih layanan">
+    Pilih layanan yang ingin Anda lampirkan add-on-nya.
+  </Step>
+  <Step title="Tambahkan add-on">
+    Pilih bagian **Add-ons** dari panel kiri, lalu pilih add-on yang ingin Anda kaitkan dengan layanan ini.
+  </Step>
+  <Step title="Simpan formulir">
+    Klik **Save**. Klien sekarang akan melihat add-on yang dipilih sebagai ekstra opsional saat checkout.
+  </Step>
+</Steps>
+
+<Note>
+  Add-on harus menggunakan mata uang yang sama dengan layanan yang dilampirkannya. Jika mata uang tidak cocok, add-on tidak akan muncul dalam daftar pilihan.
+</Note>
+
+### Perilaku Penagihan Add-On Berlangganan
+
+Ketika siklus penagihan layanan dan add-on berlangganan berbeda, AgencyHandy menangani tumpang tindih secara otomatis:
+
+<Accordion title="Add-on memiliki lebih banyak siklus daripada layanan">
+  Layanan dan add-on ditagih bersama selama durasi layanan. Setelah layanan berakhir, add-on terus ditagih sendiri untuk siklus yang tersisa.
+
+  **Contoh:** Layanan berjalan selama 4 siklus, add-on berjalan selama 5 siklus → ditagih bersama selama 4 siklus, add-on ditagih sendiri untuk 1 siklus tambahan.
+</Accordion>
+
+<Accordion title="Add-on memiliki lebih sedikit siklus daripada layanan">
+  Layanan dan add-on ditagih bersama selama durasi add-on. Setelah add-on berakhir, layanan terus ditagih sendiri untuk siklus yang tersisa.
+
+  **Contoh:** Layanan berjalan selama 5 siklus, add-on berjalan selama 3 siklus → ditagih bersama selama 3 siklus, layanan ditagih sendiri untuk 2 siklus tambahan.
+</Accordion>
+
+## Mengedit Layanan
+
+Setelah layanan diterbitkan, Anda dapat memperbarui kolom mana pun tanpa mengganggu pesanan yang ada.
+
+1. Buka **Services** dan temukan layanan yang ingin Anda perbarui.
+2. Klik **menu tiga titik** (⋮) di sisi kanan baris layanan.
+3. Pilih **Edit**. Editor layanan terbuka dengan semua pengaturan yang ada terisi.
+4. Lakukan perubahan Anda — perbarui judul, deskripsi, harga, media, paket, tugas, atau FAQ.
+5. Klik **Update Service** untuk menyimpan.
+
+<Warning>
+  Perubahan pada harga paket atau waktu pengiriman hanya berlaku untuk **pesanan baru**. Pesanan yang ada tidak terpengaruh secara retroaktif.
+</Warning>
+
+## Referensi Kolom
+
+| Kolom | Batas |
+|---|---|
+| Paket per layanan | Hingga 5 |
+| Hasil yang dapat dikirimkan per paket (What's Included) | Hingga 15 |
+| Package Brief | 140 karakter |
+| Ukuran ikon paket | 32 × 32 px |
+| Ukuran file media paket | 5 MB (PNG, JPG, JPEG) |
+| Nama tugas | 160 karakter |
+| Ukuran file lampiran tugas | 1 GB per file |
+| Label rincian harga | 20 karakter |

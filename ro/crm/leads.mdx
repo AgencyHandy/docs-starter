@@ -1,0 +1,211 @@
+---
+title: "Gestionați Leadurile: Pipeline, Email și Conversia în Clienți"
+sidebarTitle: "Leaduri"
+description: "Gestionați pipeline-ul de vânzări cu un board Kanban — urmăriți etapele leadurilor, filtrați după agent sau sursă, trimiteți emailuri și convertiți leadurile în clienți."
+---
+
+Secțiunea Leaduri din CRM-ul AgencyHandy vă oferă un board Kanban vizual, cu drag-and-drop, pentru a gestiona fiecare prospect de la primul contact până la semnarea contractului de client. Fiecare lead trăiește pe un card care parcurge șapte etape predefinite de pipeline și puteți filtra, căuta, importa, exporta, trimite emailuri și converti leaduri fără a trece vreodată la alt instrument.
+
+## Etapele Pipeline-ului
+
+Fiecare lead pe care îl creați începe în etapa **New** și poate fi mutat înainte pe măsură ce relația se dezvoltă:
+
+| Etapă | Ce înseamnă |
+|---|---|
+| **New** | Leadul tocmai a intrat în pipeline |
+| **Contacted** | Ați contactat cel puțin o dată |
+| **Qualified** | Leadul îndeplinește criteriile dvs. de client țintă |
+| **Working** | Conversații active în desfășurare |
+| **Proposal Sent** | O propunere formală a fost livrată |
+| **Negotiation** | Termenii sunt discutați |
+| **Client** | Gata de convertit într-un cont de client |
+
+<Note>
+  Mutarea unui lead la etapa **Client** pe board nu îl convertește automat — trebuie în continuare să faceți clic pe **Convert to Client** în interiorul cardului de lead pentru a-l muta în tab-ul Clienți.
+</Note>
+
+## Crearea unui Lead
+
+<Steps>
+  <Step title="Deschideți board-ul Leaduri">
+    Din bara laterală din stânga, faceți clic pe **CRM**, apoi selectați tab-ul **Leads**. Board-ul Kanban se încarcă cu toate etapele existente ale pipeline-ului dvs.
+  </Step>
+  <Step title="Faceți clic pe Create Lead">
+    Selectați butonul **+ Create Lead** din colțul din dreapta sus al board-ului. Se deschide un formular de creare.
+  </Step>
+  <Step title="Completați detaliile leadului">
+    Completați câmpurile de mai jos. **Name** și **Email** sunt obligatorii; tot restul este opțional, dar recomandat pentru o filtrare și raportare mai bune.
+
+    - **First Name / Last Name** *(obligatoriu)*
+    - **Email** *(obligatoriu)*
+    - **Company Name**
+    - **Category**
+    - **Status** — setează etapa inițială Kanban (implicit New)
+    - **Source** — de ex., Facebook, Website *(max 50 de caractere; textul dincolo de această limită este trunchiat cu un tooltip)*
+    - **Lead Value** — valoarea estimată a tranzacției
+    - **Phone Number**
+    - **Website**
+    - **Assigned Agent** — membrul echipei responsabil pentru acest lead
+    - **Last Interaction** — data celui mai recent contact
+    - **Address** — Țară, Stat, Oraș, Cod Poștal
+    - **Attachments** — PDF-urile, JPEG-urile, PNG-urile și fișierele text pot fi previzualizate direct în modalul leadului; formatele nesuportate solicită o descărcare
+  </Step>
+  <Step title="Salvați leadul">
+    Faceți clic pe **Create**. Cardul de lead apare în coloana **New** de pe board-ul Kanban.
+  </Step>
+</Steps>
+
+<Tip>
+  Încărcați brief-uri PDF sau documente de propunere ca atașamente astfel încât echipa dvs. să le poată revizui fără a părăsi modalul de lead.
+</Tip>
+
+## Urmărirea Leadurilor pe Board-ul Kanban
+
+Odată ce leadurile există pe board, aveți mai multe modalități de a lucra cu ele:
+
+- **Drag and drop** — apucați orice card de lead și plasați-l într-o coloană de etapă diferită pentru a reflecta starea sa actuală.
+- **Faceți clic pe un card** — deschide modalul de detalii al leadului unde puteți edita toate câmpurile, vizualiza notele, verifica jurnalul de activitate, trimite un email sau converti în client.
+- **Imprimați detaliile leadului** — utilizați butonul **Print** din colțul din dreapta sus al modalului de lead pentru a genera un rezumat imprimabil.
+
+## Editarea unui Lead
+
+Deschideți orice card de lead și faceți clic pe **Edit** (sau actualizați direct câmpurile de informații de contact sau notele afișate în modal). Modificările sunt salvate imediat și înregistrate în jurnalul de activitate.
+
+<Note>
+  Dacă o adresă de email există deja atât ca client, cât și ca lead, acel lead **nu poate** fi convertit în client. Rezolvați duplicatul înainte de a încerca conversia.
+</Note>
+
+## Convertirea unui Lead în Client
+
+<Steps>
+  <Step title="Deschideți cardul de lead">
+    Faceți clic pe leadul pe care doriți să îl promovați pe board-ul Kanban.
+  </Step>
+  <Step title="Faceți clic pe Convert to Client">
+    Selectați butonul **Convert to Client** din interiorul modalului de lead.
+  </Step>
+  <Step title="Confirmați">
+    Apare un banner de confirmare: *„Lead has moved to the Clients Tab.“* Cardul dispare de pe board-ul Kanban, iar toate notele și istoricul leadului sunt păstrate în noul record de client.
+  </Step>
+</Steps>
+
+## Filtrarea și Căutarea Leadurilor
+
+Utilizați bara de instrumente de deasupra board-ului Kanban pentru a restrânge ce vedeți:
+
+<CardGroup cols={2}>
+  <Card title="Bară de Căutare" icon="magnifying-glass">
+    Tastați un nume sau email pentru a găsi imediat leadurile potrivite din toate etapele pipeline-ului.
+  </Card>
+  <Card title="Agent Alocat" icon="user">
+    Filtrați board-ul pentru a afișa doar leadurile alocate unui anumit membru al echipei.
+  </Card>
+  <Card title="Valoarea Leadului" icon="dollar-sign">
+    Restrângeți după dimensiunea estimată a tranzacției pentru a prioritiza prospectele de mare valoare.
+  </Card>
+  <Card title="Data Ultimei Interacțiuni" icon="calendar">
+    Identificați leadurile care nu au fost contactate recent și necesită follow-up.
+  </Card>
+  <Card title="Sursă" icon="signal">
+    Vizualizați doar leadurile dintr-un anumit canal, cum ar fi Website sau Facebook.
+  </Card>
+</CardGroup>
+
+## Trimiterea de Emailuri către Leaduri
+
+Puteți compune și trimite emailuri direct de pe board-ul Kanban sau din interiorul unui modal de lead — nu este necesar un client de email extern.
+
+| Câmp | Detalii |
+|---|---|
+| **To** | Pre-completat cu adresa de email a leadului |
+| **Subject** | Obligatoriu; maximum 250 de caractere |
+| **Body** | Editor de text îmbogățit; maximum 10.000 de caractere |
+| **Attachments** | Până la 5 fișiere; limita totală de dimensiune 25 MB |
+
+## Note
+
+Fiecare lead include o secțiune dedicată **Notes** în interiorul modalului de detalii. Notele sunt editabile și ștergabile, iar fiecare notă afișează numele membrului echipei care a scris-o împreună cu un marcaj temporal. Utilizați notele pentru a înregistra rezumate ale apelurilor, preferințele clienților sau mementouri de follow-up pe care întreaga echipă le poate vedea.
+
+## Importul Leadurilor
+
+Aduceți o listă existentă de prospecți în AgencyHandy în vrac folosind un fișier CSV sau Excel.
+
+<Steps>
+  <Step title="Deschideți dialogul de Import">
+    Pe board-ul Leaduri, faceți clic pe butonul **Import** din colțul din dreapta sus.
+  </Step>
+  <Step title="Încărcați fișierul">
+    Trageți și plasați sau răsfoiți pentru fișierul dvs. CSV sau Excel. Fișierul trebuie să includă cel puțin o coloană **Name** și **Email**.
+  </Step>
+  <Step title="Mapați coloanele">
+    Importatorul afișează un mapper de coloane. Potriviți fiecare coloană din fișierul dvs. cu câmpul corespunzător din AgencyHandy. Câmpurile opționale care pot fi mapate includ: Source, Lead Value, Phone Number, Company Name și Address.
+  </Step>
+  <Step title="Confirmați și importați">
+    Revizuiți tabelul de previzualizare pentru a verifica acuratețea datelor, apoi faceți clic pe **Confirm** urmat de **Save**. Leadurile dvs. apar pe board-ul Kanban imediat.
+  </Step>
+</Steps>
+
+<Warning>
+  Leadurile cu adrese de email care există deja în tab-ul dvs. Clienți nu vor fi convertite prin import — trebuie să gestionați manual acele duplicate.
+</Warning>
+
+## Exportul Leadurilor
+
+Exportați datele pipeline-ului dvs. pentru raportare, backup-uri sau integrare cu alte instrumente.
+
+<Steps>
+  <Step title="Faceți clic pe Export">
+    Selectați butonul **Export** din bara de instrumente Leaduri.
+  </Step>
+  <Step title="Alegeți coloanele">
+    Selectați **All Columns** pentru a exporta toate câmpurile sau alegeți **Custom Columns** pentru a selecta doar datele de care aveți nevoie.
+  </Step>
+  <Step title="Selectați formatul și descărcați">
+    Alegeți **CSV** sau **XLSX**, apoi faceți clic pe **Export**. Fișierul se descarcă pe dispozitivul dvs.
+  </Step>
+</Steps>
+
+## Jurnal de Activitate
+
+Fiecare modificare adusă unui lead este înregistrată automat în tab-ul **Activity Log** din interiorul modalului de lead.
+
+Jurnalul înregistrează:
+
+- **User** — ce membru al echipei a efectuat modificarea
+- **Details** — ce s-a schimbat, de exemplu *„Status changed from 'New' to 'Contacted'“*
+- Încărcări de atașamente, adăugări de note și editări de câmpuri
+
+Jurnalele de activitate nu pot fi editate sau șterse și sunt vizibile pentru admini și manageri.
+
+## Mementouri Automate și Sarcini
+
+AgencyHandy trimite notificări automate când un lead a fost inactiv în orice etapă mai mult decât un număr configurabil de zile — de exemplu, *„Urmăriți [Numele Leadului].“* Acțiunile cheie, cum ar fi trimiterea unei propuneri, pot genera automat și sarcini în managerul de sarcini pentru a menține procesul de livrare pe drumul cel bun.
+
+## Webhook-uri pentru Evenimente de Lead
+
+AgencyHandy declanșează evenimente webhook pentru următoarele acțiuni de lead, permițându-vă să conectați CRM-uri externe, instrumente de automatizare sau pipeline-uri de date:
+
+<Accordion title="Lead.Created">
+  Declanșat când un nou lead este creat. Payload-ul include: ID-ul leadului, starea, sursa, agentul alocat și marcajele temporale.
+</Accordion>
+
+<Accordion title="Lead.Updated">
+  Declanșat când orice câmp al unui lead este actualizat. Payload-ul include aceleași câmpuri plus un rezumat al ce s-a schimbat.
+</Accordion>
+
+<Accordion title="Lead.Deleted">
+  Declanșat când un lead este șters din sistem. Payload-ul include ID-ul leadului și marcajul temporal al ștergerii.
+</Accordion>
+
+<Tip>
+  Configurați webhook-urile în **Settings → Integrations → Webhooks** pentru a începe să primiți evenimente de lead în timp real în sistemele dvs. externe.
+</Tip>
+
+## Metrici de Raportare
+
+Urmăriți sănătatea pipeline-ului dvs. cu metrici de raportare integrate:
+
+- Numărul de leaduri per etapă
+- Ratele de conversie din lead în client
+- Timpul mediu petrecut de un lead în fiecare etapă
+- Cei mai performanți agenți după volumul de conversii

@@ -1,0 +1,218 @@
+---
+title: "Klientu pārvaldība: profili, importēšana un konfigurācija"
+sidebarTitle: "Klienti"
+description: "Izveidojiet un importējiet klientu profilus AgencyHandy, izsekojiet pasūtījumus un rēķinus, pārvaldiet portāla piekļuvi un organizējiet klientus ar kategorijām."
+---
+
+AgencyHandy CRM sadaļa Klienti ir jūsu centrālais uzziņu centrs katrai organizācijai vai personai, kas ir pārgājusi tālāk par potenciālā klienta posmu. Šeit varat izveidot klientu profilus manuāli vai vairumā, uzturēt kontaktinformāciju aktuālu, izsekot nesenajiem pasūtījumiem un rēķiniem, segmentēt klientus pielāgotās kategorijās un uzraudzīt portāla piekļuvi — visu no vienas saraksta skata.
+
+<Note>
+  Lai izveidotu, rediģētu, importētu vai konfigurētu klientu profilus, jums nepieciešama **Super administratora** vai **Administratora** loma. Vadītāji var skatīt klientu detaļas un aktivitātes žurnālus.
+</Note>
+
+## Klienta profila izveide
+
+Kad pievienojat jaunu klientu, AgencyHandy izveido viņam portāla kontu un nosūta drošu pieteikšanās uzaicinājumu.
+
+<Steps>
+  <Step title="Dodieties uz Clients">
+    Piesakieties savā AgencyHandy kontā, pēc tam kreisajā sānjoslā noklikšķiniet uz **CRM** un atlasiet cilni **Clients**.
+  </Step>
+  <Step title="Atveriet izveides veidlapu">
+    Augšējā labajā stūrī noklikšķiniet uz **+ Create Client**. Atveras veidlapa.
+  </Step>
+  <Step title="Ievadiet klienta informāciju">
+    Aizpildiet klienta detaļas:
+
+    - **First Name / Last Name** *(obligāts)*
+    - **Email** *(obligāts — izmanto portāla uzaicinājuma nosūtīšanai)*
+    - **Company Name**
+    - **Phone Number**
+    - **Country, State, City, Zip Code**
+    - **Category** — piešķiriet esošu konfigurācijas kategoriju, ja piemērojams
+  </Step>
+  <Step title="Saglabājiet profilu">
+    Noklikšķiniet uz **Create**. Profils nekavējoties tiek pievienots jūsu klientu sarakstam.
+  </Step>
+</Steps>
+
+<Note>
+  Pēc profila izveides klients saņem e-pastu ar drošu pieteikšanās URL. Noklikšķinot uz šī URL, tiek aktivizēts viņa portāla konts un klients var pirmo reizi pieteikties.
+</Note>
+
+## Klientu importēšana no CSV
+
+Ja migrējat no citas platformas vai jums ir izklājlapa ar esošajiem klientiem, varat importēt tos visus vienlaikus.
+
+<Steps>
+  <Step title="Noklikšķiniet uz Import">
+    Klientu sarakstā noklikšķiniet uz pogas **Import** augšējā labajā pusē.
+  </Step>
+  <Step title="Augšupielādējiet CSV failu">
+    Velciet un nometiet failu uz augšupielādes apgabala vai noklikšķiniet, lai pārlūkotu un atlasītu to. AgencyHandy pieņem CSV failus, kas satur šādus laukus:
+
+    - Client Name *(obligāts)*
+    - Email *(obligāts)*
+    - Company Name
+    - Country
+    - State
+    - City
+    - Zip Code
+  </Step>
+  <Step title="Kartējiet kolonnas">
+    AgencyHandy automātiski nosaka kolonnu nosaukumus, kas atbilst tā lauku nosaukumiem. Jebkurām nesaskaņotajām kolonnām izmantojiet nolaižamās izvēlnes, lai manuāli kartētu tās uz pareizajiem sistēmas laukiem.
+  </Step>
+  <Step title="Priekšskatiet un apstipriniet">
+    Pārskatiet priekšskatījuma tabulu, lai pirms datu saglabāšanas atklātu formatēšanas problēmas.
+  </Step>
+  <Step title="Finalizējiet importēšanu">
+    Noklikšķiniet uz **Save**. Apstiprinājuma ziņojums parādās, kad visi ieraksti ir veiksmīgi importēti.
+  </Step>
+</Steps>
+
+<Tip>
+  Ja jūsu izklājlapas kolonnu galvenes precīzi atbilst AgencyHandy lauku nosaukumiem (piemēram, "email", "company name"), kartētājs tiek aizpildīts automātiski — manuāla saskaņošana nav nepieciešama.
+</Tip>
+
+## Klientu eksportēšana
+
+Dublējiet savu klientu datu bāzi vai kopīgojiet to ar ieinteresētajām pusēm, eksportējot uz CSV vai Excel.
+
+<Steps>
+  <Step title="Noklikšķiniet uz Export">
+    Klientu sarakstā noklikšķiniet uz pogas **Export** augšējā labajā pusē.
+  </Step>
+  <Step title="Pielāgojiet eksportu">
+    Izvēlieties, kuras kolonnas iekļaut — atlasiet **All Columns** pilnai eksportēšanai vai izvēlieties specifiskus laukus, piemēram, vārdu, kontaktinformāciju, uzņēmumu vai adresi.
+  </Step>
+  <Step title="Izvēlieties formātu">
+    Atlasiet **CSV** vai **XLSX** atkarībā no paredzētā izmantojuma.
+  </Step>
+  <Step title="Lejupielādējiet failu">
+    Noklikšķiniet uz **Export**. Fails tiek ģenerēts un lejupielādēts uz jūsu ierīci. Glabājiet to drošā vietā, lai aizsargātu klientu datus.
+  </Step>
+</Steps>
+
+## Klienta profila rediģēšana
+
+<Steps>
+  <Step title="Atlasiet klientu">
+    Klientu sarakstā noklikšķiniet uz izvēles rūtiņas blakus klientam, kuru vēlaties atjaunināt, vai noklikšķiniet tieši uz viņa vārda, lai atvērtu profilu.
+  </Step>
+  <Step title="Ievadiet rediģēšanas režīmu">
+    Klienta profila augšējā labajā stūrī noklikšķiniet uz pogas **Edit**. Parādās rediģēšanas veidlapa.
+  </Step>
+  <Step title="Atjauniniet informāciju">
+    Modificējiet jebkurus laukus — vārdu, e-pastu, tālruni, adresi, uzņēmumu vai kategoriju.
+  </Step>
+  <Step title="Saglabājiet izmaiņas">
+    Noklikšķiniet uz **Update**. Apstiprinājuma ziņojums apstiprina, ka profils ir veiksmīgi saglabāts.
+  </Step>
+</Steps>
+
+## Meklēšana, kārtošana un filtrēšana
+
+Klientu saraksts sniedz jums vairākus rīkus, lai ātri atrastu pareizo klientu:
+
+<CardGroup cols={2}>
+  <Card title="Meklēt pēc vārda" icon="magnifying-glass">
+    Meklēšanas joslā ievadiet klienta vārdu, lai nekavējoties filtrētu sarakstu.
+  </Card>
+  <Card title="Filtrēt pēc uzņēmuma" icon="building">
+    Sašauriniet sarakstu līdz klientiem, kas saistīti ar noteiktu uzņēmumu.
+  </Card>
+  <Card title="Filtrēt pēc e-pasta" icon="envelope">
+    Atrodiet klientu, ja zināt viņa e-pasta adresi, bet ne vārdu.
+  </Card>
+  <Card title="Filtrēt pēc statusa" icon="circle-check">
+    Rādīt tikai aktīvos, neaktīvos vai uzaicinātos klientus.
+  </Card>
+  <Card title="Kārtot alfabētiski" icon="arrow-down-a-z">
+    Kārtojiet pilnu klientu sarakstu A–Z vai Z–A pēc vārda ātrai uzziņai.
+  </Card>
+  <Card title="Filtrēt pēc kategorijas" icon="tag">
+    Rādīt tikai klientus, kas piešķirti noteiktai konfigurācijas kategorijai.
+  </Card>
+</CardGroup>
+
+## Klienta aktivitātes izsekošana
+
+Katrā klienta profilā atradīsiet cilnes, kas sniedz jums tiešraides priekšstatu par šī klienta iesaistīšanos ar jūsu aģentūru:
+
+<Accordion title="Recent Orders">
+  Skatiet visu klienta veikto pasūtījumu vēsturi, ieskaitot pakalpojuma nosaukumu, paketi, statusu un datumu. Tas sniedz ātru momentuzņēmumu par viņu pirkumu vēsturi, neatstājot CRM.
+</Accordion>
+
+<Accordion title="Recent Tickets">
+  Skatiet visus klienta iesniegtos atbalsta vai pakalpojuma pieteikumus. Izmantojiet šo skatu, lai noteiktu atbilžu prioritātes un nodrošinātu, ka neviens pieprasījums netiek aizmirsts.
+</Accordion>
+
+<Accordion title="Recent Invoices">
+  Piekļūstiet visu klientam ģenerēto rēķinu žurnālam, ieskaitot maksājuma statusu. Tas palīdz jums uzraudzīt neapmaksātos bilances un rēķinu vēsturi vienuviet.
+</Accordion>
+
+## Klientu konfigurācija (kategorijas)
+
+Klientu konfigurācija ļauj jums izveidot krāsās kodētas kategorijas klientu saraksta segmentēšanai — piemēram, *Augsta prioritāte*, *Ilgtermiņa klients* vai *Aizturēts*. Kategorijas parādās kā filtra opcijas klientu sarakstā, lai jūs varētu nekavējoties atrast pareizo grupu.
+
+<Steps>
+  <Step title="Atveriet konfigurāciju">
+    Sadaļā Clients noklikšķiniet uz pogas **Configuration**.
+  </Step>
+  <Step title="Izveidojiet jaunu kategoriju">
+    Noklikšķiniet uz **+ Create Category**.
+  </Step>
+  <Step title="Ievadiet kategorijas detaļas">
+    - **Category Name** — unikāla, aprakstīta etiķete (piemēram, *Uzņēmumu klienti*)
+    - **Short Description** — īsa piezīme, kas izskaidro kategorijas mērķi
+    - **Color** — izvēlieties atšķirīgu krāsu ātrai vizuālai atpazīšanai
+  </Step>
+  <Step title="Saglabājiet kategoriju">
+    Noklikšķiniet uz **Create**. Kategorija tagad ir pieejama piešķiršanai, rediģējot klientu profilus.
+  </Step>
+  <Step title="Piešķiriet klientus kategorijai">
+    Atveriet jebkuru klienta profilu, noklikšķiniet uz **Edit**, atlasiet lauku **Category** un izvēlieties atbilstošo kategoriju. Noklikšķiniet uz **Update**, lai saglabātu.
+  </Step>
+</Steps>
+
+<Tip>
+  Izmantojiet konsekventas krāsu konvencijas kategorijās — piemēram, sarkana augstpriorārajiem klientiem un zaļa pilnīgi ievadītajiem kontiem — lai padarītu sarakstu vizuāli uztveramu.
+</Tip>
+
+## Klienta aktivitātes žurnāls
+
+Aktivitātes žurnāls reģistrē katru pieteikšanās un atteikšanās notikumu klienta portāla kontā, sniedzot jums skaidru audita pierakstu par viņu iesaistīšanos.
+
+**Žurnāla skatīšanai:**
+
+1. Dodieties uz **Clients** un atveriet konkrēta klienta profilu.
+2. Profila augšējās navigācijas joslā noklikšķiniet uz cilnes **Activity Log**.
+3. Pārskatiet hronoloģisko autentifikācijas notikumu sarakstu.
+
+**Ko rāda žurnāls:**
+
+- Precīzs katras **pieteikšanās** datums un laikspiedols
+- Precīzs katras **atteikšanās** datums un laikspiedols
+- Visu autentifikācijas notikumu nepārtraukta vēsture
+
+Žurnāls tiek atjaunināts reāllaikā un nevar tikt rediģēts vai dzēsts. Klientiem nav piekļuves saviem aktivitātes žurnāliem — tas paredzēts tikai administratīvai un atbilstības redzamībai.
+
+<Note>
+  Šajā posmā aktivitātes žurnāls fiksē tikai autentifikācijas notikumus (pieteikšanās un atteikšanās). Darbības, kas veiktas portālā — piemēram, pasūtījumu skatīšana — vēl netiek reģistrētas šeit.
+</Note>
+
+## E-pasta sūtīšana klientam
+
+Varat nosūtīt e-pastu jebkuram klientam tieši no viņa profila, neatstājot AgencyHandy. Atveriet klienta profilu un izmantojiet opciju **Email**, lai veidotu ziņojumu. Lauks **To** ir iepriekš aizpildīts ar klienta e-pasta adresi.
+
+## Klienta uzdošanās
+
+Administratori var uzrādīties kā klienta konts, lai redzētu tieši to, ko klients redz savā portālā — noderīgi problēmu novēršanai ar piekļuvi vai klienta vadīšanai caur procesu atbalsta zvana laikā. Meklējiet opciju **Impersonate** klienta profilā.
+
+<Warning>
+  Izmantojiet uzdošanos tikai atbalsta nolūkiem. Jebkuras darbības, kas veiktas, uzdodoties par klientu, tiek veiktas viņa vārdā un tiks atspoguļotas viņa kontā.
+</Warning>
+
+## Uzņēmuma konti (B2B)
+
+Ja strādājat ar uzņēmumiem, nevis privātpersonām, varat iestatīt **Uzņēmuma nosaukumu** jebkurā klienta profilā, lai grupētu kontaktus vienā organizācijā. Klientu sarakstu var filtrēt pēc uzņēmuma, atvieglojot visu kontaktu skatīšanu noteiktā kontā kopā.

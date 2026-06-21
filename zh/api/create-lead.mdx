@@ -1,0 +1,201 @@
+---
+title: "AgencyHandy API：通过编程方式创建新潜在客户"
+sidebarTitle: "创建潜在客户"
+description: "使用 AgencyHandy API，通过向批量潜在客户端点发送 POST 请求并填写必填字段，以编程方式创建新的潜在客户。"
+---
+
+创建潜在客户端点允许您从任何外部系统 — 网页表单、CRM、营销自动化平台或自定义脚本 — 以编程方式向您的 AgencyHandy 工作区添加新的潜在客户。通过此端点创建的潜在客户将立即出现在您的潜在客户管道中，就像手动添加的一样。
+
+<Note>
+  使用此端点之前，请完成[入门指南](/zh/api/getting-started)以获取您的 API 密钥和公司 ID。您还需要获取**客户角色 ID**，这在创建潜在客户时是必需的。
+</Note>
+
+## 前提条件
+
+- ✅ 从 **工作区配置 → API 密钥** 生成的 API 密钥
+- ✅ 从 `GET {{URL}}/accounts/companies` 获取的公司 ID
+- ✅ 已获取客户角色 ID（见下方第一步）
+
+---
+
+## 第一步：获取客户角色 ID
+
+在创建潜在客户之前，您需要获取公司中 `client` 角色的角色 ID。
+
+### 端点
+
+```
+GET {{URL}}/roles?type=company
+```
+
+### 标头
+
+| 标头 | 值 |
+|---|---|
+| `x-api-key` | 您的 API 密钥 |
+| `companyid` | 您的公司 ID |
+
+### 示例请求
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/roles?type=company" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>"
+```
+
+### 示例响应
+
+```json
+{
+  "roles": [
+    {
+      "_id": "6525994184e9ddd798534535",
+      "role": {
+        "_id": "6525994184e9ddd79853451e",
+        "responsibility": "",
+        "name": "client"
+      },
+      "company": "6525994184e9ddd79853450e",
+      "createdAt": "2023-10-10T18:34:41.567Z",
+      "updatedAt": "2024-10-01T07:28:48.340Z",
+      "__v": 0,
+      "type": "company"
+    }
+  ]
+}
+```
+
+找到 `roles[0].role.name === "client"` 的条目，并提取**外层** `_id` — 即 `roles[0]._id`，**而非** `roles[0].role._id`。
+
+```javascript
+const clientRoleId = roles.find(r => r.role.name === "client")._id;
+// e.g. "6525994184e9ddd798534535"
+```
+
+<Warning>
+  请使用 `roles[0]._id`（公司-角色映射 ID），**而非** `roles[0].role._id`（角色定义 ID）。使用错误的 ID 会导致创建潜在客户请求失败。
+</Warning>
+
+---
+
+## 第二步：创建新的潜在客户
+
+### 端点
+
+```
+POST {{URL}}/members/bulk-lead
+```
+
+### 标头
+
+| 标头 | 值 |
+|---|---|
+| `x-api-key` | 您的 API 密钥 |
+| `companyid` | 您的公司 ID |
+| `Content-Type` | `application/json` |
+
+### 请求主体
+
+请求主体为 **JSON 数组** — 您可以在一次调用中创建一个或多个潜在客户。
+
+<ParamField body="firstName" type="string" required>
+  潜在客户的名字。
+</ParamField>
+
+<ParamField body="lastName" type="string" required>
+  潜在客户的姓氏。
+</ParamField>
+
+<ParamField body="email" type="string" required>
+  潜在客户的电子邮件地址。在您的工作区内必须唯一。
+</ParamField>
+
+<ParamField body="role" type="string" required>
+  在第一步中获取的客户角色 ID（即 `roles[0]._id`）。
+</ParamField>
+
+<ParamField body="isConvertedClient" type="boolean" required>
+  创建潜在客户时必须设置为 `false`。仅在将潜在客户转换为正式客户时才设置为 `true`。
+</ParamField>
+
+<ParamField body="status" type="string">
+  潜在客户的管道状态。常见值：`New`、`Contacted`、`Qualified`。若省略，默认为 `New`。
+</ParamField>
+
+<ParamField body="contactNo" type="string">
+  潜在客户的电话号码。
+</ParamField>
+
+<ParamField body="source" type="string">
+  获取此潜在客户的来源。示例值：`website`、`referral`、`social`。
+</ParamField>
+
+<ParamField body="positionInBoard" type="number">
+  潜在客户在管道看板列中的位置（顺序）。默认为 `1`。
+</ParamField>
+
+### 示例请求
+
+```bash cURL
+curl --request POST "https://api.agencyhandy.com/members/bulk-lead" \
+  --header "x-api-key: <YOUR_API_KEY>" \
+  --header "companyid: <YOUR_COMPANY_ID>" \
+  --header "Content-Type: application/json" \
+  --data '[
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "role": "6525994184e9ddd798534535",
+      "isConvertedClient": false,
+      "status": "New",
+      "contactNo": "1234567890",
+      "source": "website",
+      "positionInBoard": 1
+    }
+  ]'
+```
+
+### 成功响应
+
+```json
+{
+  "message": "Lead created successfully",
+  "createdMembers": [
+    {
+      "_id": "NEW_MEMBER_ID",
+      "name": "John Doe",
+      "status": "New",
+      "role": "client"
+    }
+  ]
+}
+```
+
+<ResponseField name="message" type="string">
+  确认字符串：`"Lead created successfully"`。
+</ResponseField>
+
+<ResponseField name="createdMembers" type="array">
+  已创建的潜在客户对象数组。
+</ResponseField>
+
+<ResponseField name="createdMembers[].\_id" type="string">
+  新创建潜在客户的唯一 ID。如果您需要在后续 API 调用中引用该潜在客户，请保存此 ID。
+</ResponseField>
+
+<ResponseField name="createdMembers[].name" type="string">
+  潜在客户的全名（名字 + 姓氏）。
+</ResponseField>
+
+<ResponseField name="createdMembers[].status" type="string">
+  存储的潜在客户管道状态。
+</ResponseField>
+
+<ResponseField name="createdMembers[].role" type="string">
+  分配给成员的角色名称 — 将为 `"client"`。
+</ResponseField>
+
+<Tip>
+  您可以在数组中传递多个潜在客户对象，以便在一次 API 调用中创建多个潜在客户。每个对象必须包含所有必填字段，并使用其自己的唯一电子邮件地址。
+</Tip>

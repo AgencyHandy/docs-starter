@@ -1,0 +1,136 @@
+---
+title: AgencyHandy 說明文件
+description: 學習如何在同一個平台上經營您的代理商、與客戶合作，以及透過 API 進行開發。
+mode: frame
+---
+
+<div data-product-guide-index className="flex w-full flex-col gap-8 max-w-5xl mx-auto px-4 md:px-8 lg:px-12 py-10 lg:gap-14 lg:py-16">
+  <div className="flex max-w-[560px] flex-col gap-2 self-center text-center">
+    <h1 className="text-[30px] font-medium leading-9 tracking-tight text-gray-900 dark:text-gray-50">
+      AgencyHandy 文件
+    </h1>
+    <p className="text-balance text-base leading-relaxed tracking-tight text-gray-600 dark:text-gray-400">
+      一切您所需要的資源，讓您經營代理商、為客戶提供優質體驗，並在 AgencyHandy 上進行開發。
+    </p>
+  </div>
+
+  <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+    <a
+      href="/zh-Hant/getting-started/introduction"
+      className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-5 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
+    >
+      <Icon icon="building" color="rgb(var(--primary))" size={20} className="shrink-0" />
+      <div className="flex flex-col gap-1">
+        <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">代理商專區</span>
+        <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+          設定您的工作區、管理客戶與訂單、發送發票，以及管理您的團隊。
+        </span>
+      </div>
+    </a>
+    <a
+      href="/zh-Hant/client/introduction"
+      className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-5 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
+    >
+      <Icon icon="user" color="rgb(var(--primary))" size={20} className="shrink-0" />
+      <div className="flex flex-col gap-1">
+        <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">客戶專區</span>
+        <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+          追蹤您的專案、審核提案、支付發票，並在您的入口網站中取得支援。
+        </span>
+      </div>
+    </a>
+    <a
+      href="/zh-Hant/api/getting-started"
+      className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-5 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
+    >
+      <Icon icon="code" color="rgb(var(--primary))" size={20} className="shrink-0" />
+      <div className="flex flex-col gap-1">
+        <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">API 參考文件</span>
+        <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+          產生 API 金鑰，並透過 REST API 自動化管理潛在客戶、客戶和訂單。
+        </span>
+      </div>
+    </a>
+  </div>
+
+  <hr className="border-0 border-t border-border" />
+
+  <div className="flex flex-col gap-4">
+    <h2 className="font-serif text-xl font-medium leading-normal text-gray-900 dark:text-gray-50">常見任務</h2>
+
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <a
+        href="/zh-Hant/crm/clients"
+        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
+      >
+        <Icon icon="user-plus" color="rgb(var(--primary))" size={18} className="shrink-0" />
+        <div className="flex flex-col gap-1">
+          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">新增客戶</span>
+          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+            建立客戶資料並邀請他們進入其入口網站。
+          </span>
+        </div>
+      </a>
+      <a
+        href="/zh-Hant/invoices/create-invoice"
+        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
+      >
+        <Icon icon="file-invoice" color="rgb(var(--primary))" size={18} className="shrink-0" />
+        <div className="flex flex-col gap-1">
+          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">發送發票</span>
+          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+            直接從 AgencyHandy 建立並發送專業發票。
+          </span>
+        </div>
+      </a>
+      <a
+        href="/zh-Hant/services/overview"
+        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
+      >
+        <Icon icon="package" color="rgb(var(--primary))" size={18} className="shrink-0" />
+        <div className="flex flex-col gap-1">
+          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">發布服務</span>
+          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+            建立服務套餐，讓客戶從您的目錄中下訂單。
+          </span>
+        </div>
+      </a>
+      <a
+        href="/zh-Hant/workspace/custom-domain"
+        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
+      >
+        <Icon icon="globe" color="rgb(var(--primary))" size={18} className="shrink-0" />
+        <div className="flex flex-col gap-1">
+          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">設定自訂網域</span>
+          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+            使用您自己的品牌網域為客戶入口網站進行白標設定。
+          </span>
+        </div>
+      </a>
+      <a
+        href="/zh-Hant/integrations/stripe"
+        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
+      >
+        <Icon icon="credit-card" color="rgb(var(--primary))" size={18} className="shrink-0" />
+        <div className="flex flex-col gap-1">
+          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">串接付款</span>
+          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+            設定 Stripe、PayPal 或銀行轉帳以接受線上付款。
+          </span>
+        </div>
+      </a>
+      <a
+        href="/zh-Hant/api/getting-started"
+        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
+      >
+        <Icon icon="code" color="rgb(var(--primary))" size={18} className="shrink-0" />
+        <div className="flex flex-col gap-1">
+          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">使用 API</span>
+          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+            產生 API 金鑰，開始建立潛在客戶、客戶和訂單。
+          </span>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

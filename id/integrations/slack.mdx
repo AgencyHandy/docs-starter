@@ -1,0 +1,69 @@
+---
+title: "Hubungkan Slack untuk Menerima Notifikasi AgencyHandy secara Real-Time"
+sidebarTitle: "Slack"
+description: "Tautkan workspace Slack Anda ke AgencyHandy agar pembaruan pesanan, perubahan tugas, dan notifikasi tiket dikirim ke saluran Slack secara otomatis."
+---
+
+Integrasi Slack AgencyHandy membuat tim Anda selalu mendapat informasi terkini tanpa harus berpindah antar aplikasi. Setelah terhubung, AgencyHandy mengirimkan notifikasi otomatis ke saluran Slack pilihan Anda setiap kali tugas, pesanan, atau aktivitas workspace lainnya berubah — sehingga tim Anda selalu mengetahui apa yang terjadi secara real-time.
+
+<Note>
+  Hanya peran **SuperAdmin**, **Admin**, dan **Manager** (dengan izin integrasi) yang dapat menghubungkan atau mengelola integrasi Slack. Anda memerlukan hak admin workspace Slack untuk mengotorisasi koneksi.
+</Note>
+
+## Hubungkan Slack
+
+<Steps>
+  <Step title="Buka Integrations">
+    Di bilah sisi kiri, klik **Integrations**.
+  </Step>
+
+  <Step title="Temukan kartu Slack">
+    Gulir ke kartu **Slack** dan klik **Connect**.
+  </Step>
+
+  <Step title="Otorisasi AgencyHandy di Slack">
+    Jendela otorisasi Slack terbuka. Jika Anda belum masuk ke workspace Slack, masuk sekarang. Tinjau izin yang diminta AgencyHandy dan klik **Allow** untuk memberikan akses.
+  </Step>
+
+  <Step title="Pilih saluran notifikasi">
+    Setelah otorisasi, pilih saluran Slack tempat Anda ingin notifikasi AgencyHandy muncul. Pilih saluran dari dropdown dan klik **Save** untuk mengonfirmasi.
+  </Step>
+
+  <Step title="Konfirmasi pengaturan">
+    Kartu Slack diperbarui menampilkan **Connected**. AgencyHandy segera mulai mengirimkan notifikasi ke saluran yang dipilih.
+  </Step>
+</Steps>
+
+## Notifikasi apa yang dikirim ke Slack
+
+AgencyHandy mengirimkan pesan Slack setiap kali salah satu peristiwa berikut terjadi:
+
+| Kategori | Peristiwa yang memicu notifikasi |
+|---|---|
+| **Tugas** | Tugas dibuat, diperbarui, ditetapkan, atau diselesaikan |
+| **Pesanan** | Pesanan dibuat atau status berubah |
+| **Komentar** | Komentar baru ditambahkan ke tugas atau pesanan |
+| **Lampiran file** | File atau lampiran ditambahkan ke tugas |
+| **Tiket** | Tiket dukungan dibuat, ditetapkan, atau status berubah |
+
+Setiap pesan Slack mencakup:
+
+- **Nama** tugas, pesanan, atau tiket dukungan
+- **Perubahan status** atau tindakan yang memicu pesan
+- **Tautan** kembali ke item yang relevan di AgencyHandy
+
+Ketika file atau lampiran ditambahkan ke tugas, pesan Slack juga menyertakan pratinjau lampiran tersebut.
+
+<Tip>
+  Pilih saluran **#agency-handy-alerts** khusus (atau sejenisnya) untuk menjaga notifikasi tetap terorganisir dan mencegahnya mengacaukan saluran utama tim Anda.
+</Tip>
+
+## Putuskan Slack
+
+Untuk menghentikan notifikasi, kembali ke **Integrations** dan klik **Disconnect** pada kartu Slack. Semua notifikasi berhenti segera.
+
+## Catatan penting
+
+- **Satu workspace per koneksi** — Anda hanya dapat menghubungkan satu workspace Slack ke setiap workspace AgencyHandy. Untuk beralih ke workspace Slack yang berbeda, putuskan koneksi yang ada dan hubungkan kembali.
+- **Visibilitas saluran** — notifikasi dapat dilihat oleh semua orang di saluran Slack yang dipilih. Pastikan saluran tersebut sesuai untuk tingkat detail yang dibagikan (misalnya, hindari memposting detail pesanan yang sensitif milik klien ke saluran publik).
+- **Otorisasi ulang** — jika token Slack Anda kedaluwarsa atau izin berubah, kembali ke Integrations dan hubungkan kembali untuk memulihkan notifikasi.

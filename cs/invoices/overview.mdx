@@ -1,0 +1,100 @@
+---
+title: "Přehled správy faktur pro agentury v AgencyHandy"
+sidebarTitle: "Faktury"
+description: "Prozkoumejte fakturační systém AgencyHandy — vystavování, sledování plateb, opakované faktury, stavy, přímé faktury a export finančních záznamů."
+---
+
+Funkce faktur v AgencyHandy poskytuje vaší agentuře kompletní systém pro správu vyúčtování a plateb v rámci stejné platformy, kterou používáte ke správě klientů, zakázek a projektů. Můžete vytvářet profesionální faktury, odesílat je klientům e-mailem, sledovat stav plateb v reálném čase, automatizovat opakované vyúčtování pro předplatné služby a kdykoli exportovat své finanční záznamy. Každá faktura je automaticky doplněna logem a adresou vaší agentury, takže vaše komunikace je konzistentně v souladu s firemní identitou.
+
+## Kdo může vytvářet faktury
+
+Faktury mohou vytvářet a spravovat pouze uživatelé s těmito rolemi:
+
+- **Super Admin**
+- **Admin**
+- **Projektový manažer (PM)**
+
+Klienti mohou faktury zobrazovat a stahovat, ale nemohou je vytvářet ani upravovat.
+
+## Dashboard faktur
+
+Kliknutím na **Faktury** v levém postranním panelu otevřete Dashboard faktur. Odtud můžete:
+
+- Vytvářet, upravovat a mazat faktury
+- Vyhledávat faktury podle **jména klienta**, **ID zakázky** nebo **názvu služby**
+- Filtrovat a řadit seznam faktur
+- Zobrazit stav faktur na první pohled
+- Přistupovat k nastavení faktur včetně konfigurace předpony
+
+## Co faktury umožňují
+
+<CardGroup cols={2}>
+  <Card title="Vyúčtování a fakturace" icon="file-invoice-dollar">
+    Vytvářejte a odesílejte profesionální faktury za jakoukoli službu nebo produkt, který dodáváte klientům, s plnou kontrolou nad částkami, slevami a termíny splatnosti.
+  </Card>
+  <Card title="Sledování plateb" icon="chart-line">
+    Sledujte, zda byly faktury zobrazeny, zaplaceny nebo jsou po splatnosti. Systém automaticky zaznamenává data platby a zrušení při změnách stavů.
+  </Card>
+  <Card title="Opakované vyúčtování" icon="rotate">
+    Automatizujte generování faktur pro předplatné služby. AgencyHandy generuje a doručuje opakované faktury v každém fakturačním cyklu bez manuálního zásahu.
+  </Card>
+  <Card title="Integrace s projekty" icon="diagram-project">
+    Propojte faktury přímo se zakázkami a službami, aby bylo vyúčtování vždy vázáno na podkladovou práci. Fakturovatelné položky lze přesně přidat ke každé faktuře.
+  </Card>
+</CardGroup>
+
+## Stavy faktur
+
+Každá faktura prochází definovaným životním cyklem. Pochopení těchto stavů vám pomáhá efektivně spravovat pohledávky.
+
+| Stav | Popis |
+|--------|-------------|
+| **Koncept** | Faktura byla vytvořena, ale není finalizována. Můžete upravit jakoukoli její část. Až bude připravena, finalizujte ji změnou stavu na Otevřeno. Koncepty faktur nevázané na předplatné lze smazat. |
+| **Otevřeno / Nezaplaceno** | Faktura je finalizována a čeká na platbu. Agentura ji odešle klientovi, který ji může zobrazit a zaplatit. Otevřenou fakturu lze změnit na Zaplaceno, Zrušeno nebo Nedobytné. |
+| **Zaplaceno** | Faktura byla zaplacena. Systém automaticky zaznamená datum platby, když fakturu označíte jako Zaplacenou. |
+| **Zrušeno** | Faktura byla stornována. Systém automaticky zaznamená datum zrušení. |
+| **Nedobytné** | Klient pravděpodobně nezaplatí. V procesu účetnictví to považujte za nedobytnou pohledávku. |
+
+<Note>
+  Když odešlete fakturu klientovi pomocí tlačítka **Odeslat klientovi**, stav se automaticky změní z **Koncept** na **Otevřeno**. Pouze agentura může změnit stav z Otevřeno na Zaplaceno, Zrušeno nebo Nedobytné.
+</Note>
+
+## Přímé faktury (bez ID zakázky)
+
+AgencyHandy podporuje **přímé faktury** — faktury, které nejsou propojeny s žádnou existující zakázkou. To je užitečné pro jednorázové vyúčtování, ad-hoc platby nebo fakturaci kontaktů, které ještě nejsou registrovány jako klienti ve vašem systému.
+
+Klíčové možnosti přímých faktur:
+
+- Odesílání faktur bez výběru ID zakázky
+- Fakturování libovolnému stávajícímu klientovi nebo použití **Nezávislého e-mailu** pro odeslání na jakoukoli e-mailovou adresu
+- Ruční přidávání položek, daní a slev
+- Okamžité odeslání nebo uložení jako koncept
+
+<Tip>
+  Přímé faktury použijte, když potřebujete rychle fakturovat klientovi za práci, která nemá formální zakázku v AgencyHandy, například spěchající projekty, konzultační hovory nebo práci nad rámec rozsahu.
+</Tip>
+
+## Export faktur
+
+Seznam faktur můžete exportovat pro použití v externích účetních nástrojích nebo pro archivaci. Export zahrnuje všechny viditelné sloupce: ID faktury, jméno klienta, službu, částky, stav a data. Možnost exportu je dostupná z Dashboardu faktur.
+
+## Nastavení faktur
+
+Globální nastavení faktur nakonfigurujte pomocí tlačítka **Nastavení** v pravém horním rohu Dashboardu faktur. Zahrnuje:
+
+- **Předpona faktury** — přizpůsobte předponu, která se zobrazuje před každým číslem faktury
+- **Šablony připomínek** — nastavte automatické připomínky plateb pro otevřené faktury
+
+## Související funkce
+
+<CardGroup cols={3}>
+  <Card title="Vytvořit fakturu" icon="plus" href="/cs/invoices/create-invoice">
+    Podrobný průvodce vytvářením, vyplňováním a odesíláním faktury.
+  </Card>
+  <Card title="Předplatné" icon="rotate" href="/cs/invoices/subscriptions">
+    Jak funguje opakované vyúčtování a jak spravovat faktury předplatného.
+  </Card>
+  <Card title="Podpora" icon="ticket" href="/cs/tickets/support-tickets">
+    Vyřizujte dotazy klientů k vyúčtování prostřednictvím systému podpory.
+  </Card>
+</CardGroup>

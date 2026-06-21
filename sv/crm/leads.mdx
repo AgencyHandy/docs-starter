@@ -1,0 +1,211 @@
+---
+title: "Hantera leads: pipeline, e-post och klientkonvertering"
+sidebarTitle: "Leads"
+description: "Hantera din säljpipeline med ett Kanban-bräde — spåra leadstadier, filtrera efter agent eller källa, skicka e-post och konvertera leads till klienter."
+---
+
+Leadsektionen i AgencyHandy's CRM ger dig ett visuellt, dra-och-släpp Kanban-bräde för att hantera varje prospekt från första kontakt till signerad klient. Varje lead finns på ett kort som rör sig genom sju fördefinierade pipelinestadier, och du kan filtrera, söka, importera, exportera, skicka e-post och konvertera leads utan att någonsin byta till ett annat verktyg.
+
+## Pipelinestadier
+
+Varje lead du skapar börjar i stadiet **New** och kan flyttas framåt när din relation utvecklas:
+
+| Stadium | Vad det betyder |
+|---|---|
+| **New** | Lead har just kommit in i pipelinen |
+| **Contacted** | Du har kontaktat dem minst en gång |
+| **Qualified** | Lead uppfyller dina målklientkriterier |
+| **Working** | Aktiva samtal pågår |
+| **Proposal Sent** | En formell offert har levererats |
+| **Negotiation** | Villkor diskuteras |
+| **Client** | Redo att konverteras till ett klientkonto |
+
+<Note>
+  Att flytta ett lead till stadiet **Client** på brädet konverterar det inte automatiskt — du måste fortfarande klicka på **Convert to Client** inuti leadkortet för att flytta det till fliken Klienter.
+</Note>
+
+## Skapa ett lead
+
+<Steps>
+  <Step title="Öppna Leads-brädet">
+    Klicka på **CRM** i vänster sidopanel och välj sedan fliken **Leads**. Kanban-brädet laddas med alla dina befintliga pipelinestadier.
+  </Step>
+  <Step title="Klicka på Skapa lead">
+    Välj knappen **+ Create Lead** längst upp till höger på brädet. Ett skapandeformulär öppnas.
+  </Step>
+  <Step title="Fyll i leaduppgifter">
+    Fyll i fälten nedan. **Name** och **Email** är obligatoriska; allt annat är valfritt men rekommenderas för bättre filtrering och rapportering.
+
+    - **First Name / Last Name** *(obligatoriskt)*
+    - **Email** *(obligatoriskt)*
+    - **Company Name**
+    - **Category**
+    - **Status** — anger det initiala Kanban-stadiet (standardvärde: New)
+    - **Source** — t.ex. Facebook, Webbplats *(max 50 tecken; text utöver detta trunkeras med ett verktygstips)*
+    - **Lead Value** — uppskattat affärsvärde
+    - **Phone Number**
+    - **Website**
+    - **Assigned Agent** — teammedlem ansvarig för det här leadet
+    - **Last Interaction** — datum för senaste kontakt
+    - **Address** — land, delstat, stad, postnummer
+    - **Attachments** — PDF-, JPEG-, PNG- och textfiler kan förhandsgranskas direkt i leadmodalen; format som inte stöds uppmanar till nedladdning istället
+  </Step>
+  <Step title="Spara leadet">
+    Klicka på **Create**. Leadkortet visas i kolumnen **New** på Kanban-brädet.
+  </Step>
+</Steps>
+
+<Tip>
+  Ladda upp PDF-brifar eller offertdokument som bilagor så att ditt team kan granska dem utan att lämna leadmodalen.
+</Tip>
+
+## Spåra leads på Kanban-brädet
+
+När leads finns på brädet har du flera sätt att arbeta med dem:
+
+- **Dra och släpp** — ta vilket leadkort som helst och släpp det i en annan stadiekolumn för att spegla dess aktuella status.
+- **Klicka på ett kort** — öppnar leaddetaljmodalen där du kan redigera alla fält, visa anteckningar, kontrollera aktivitetsloggen, skicka ett e-postmeddelande eller konvertera till en klient.
+- **Skriv ut leaduppgifter** — använd knappen **Print** i det övre högra hörnet av leadmodalen för att generera en utskriftsbar sammanfattning.
+
+## Redigera ett lead
+
+Öppna ett leadkort och klicka på **Edit** (eller uppdatera kontaktinformationen eller anteckningsfälten direkt i modalen). Ändringar sparas omedelbart och registreras i aktivitetsloggen.
+
+<Note>
+  Om en e-postadress redan finns som både en klient och ett lead, **kan** det leadet **inte** konverteras till en klient. Lös dubbletten innan du försöker konvertera.
+</Note>
+
+## Konvertera ett lead till en klient
+
+<Steps>
+  <Step title="Öppna leadkortet">
+    Klicka på det lead du vill befordra på Kanban-brädet.
+  </Step>
+  <Step title="Klicka på Konvertera till klient">
+    Välj knappen **Convert to Client** inuti leadmodalen.
+  </Step>
+  <Step title="Bekräfta">
+    En bekräftelsebanner visas: *"Lead has moved to the Clients Tab."* Kortet försvinner från Kanban-brädet och alla leadanteckningar och historik bevaras i den nya klientposten.
+  </Step>
+</Steps>
+
+## Filtrera och söka leads
+
+Använd verktygsfältet ovanför Kanban-brädet för att begränsa vad du ser:
+
+<CardGroup cols={2}>
+  <Card title="Sökfält" icon="magnifying-glass">
+    Skriv ett namn eller en e-postadress för att omedelbart visa matchande leads i alla pipelinestadier.
+  </Card>
+  <Card title="Tilldelad agent" icon="user">
+    Filtrera brädet för att endast visa leads tilldelade till en specifik teammedlem.
+  </Card>
+  <Card title="Leadvärde" icon="dollar-sign">
+    Begränsa efter uppskattad affärsstorlek för att prioritera högvärdiga prospekt.
+  </Card>
+  <Card title="Datum för senaste interaktion" icon="calendar">
+    Identifiera leads som inte har kontaktats nyligen och behöver uppföljning.
+  </Card>
+  <Card title="Källa" icon="signal">
+    Visa endast leads från en viss kanal, till exempel Webbplats eller Facebook.
+  </Card>
+</CardGroup>
+
+## Skicka e-post till leads
+
+Du kan skriva och skicka e-post direkt från Kanban-brädet eller inifrån en leadmodal — ingen extern e-postklient behövs.
+
+| Fält         | Uppgifter |
+|---|---|
+| **To**       | Förifyllt med leadets e-postadress |
+| **Subject**  | Obligatoriskt; maximalt 250 tecken |
+| **Body**     | RTF-redigerare; maximalt 10 000 tecken |
+| **Attachments** | Upp till 5 filer; total storleksgräns 25 MB |
+
+## Anteckningar
+
+Varje lead innehåller ett dedikerat **Notes**-avsnitt inuti detaljmodalen. Anteckningar är redigerbara och kan tas bort, och varje anteckning visar namnet på teammedlemmen som skrev den tillsammans med en tidsstämpel. Använd anteckningar för att logga samtalssammanfattningar, klientpreferenser eller uppföljningspåminnelser som hela teamet kan se.
+
+## Importera leads
+
+Ta in en befintlig prospektlista till AgencyHandy i bulk med hjälp av en CSV- eller Excel-fil.
+
+<Steps>
+  <Step title="Öppna importdialogen">
+    På Leads-brädet klickar du på knappen **Import** längst upp till höger.
+  </Step>
+  <Step title="Ladda upp din fil">
+    Dra och släpp eller bläddra efter din CSV- eller Excel-fil. Filen måste minst innehålla en kolumn för **Name** och **Email**.
+  </Step>
+  <Step title="Mappa kolumner">
+    Importverktyget visar en kolumnmappare. Matcha varje kolumn i din fil med motsvarande AgencyHandy-fält. Valfria mappningsbara fält inkluderar: Source, Lead Value, Phone Number, Company Name och Address.
+  </Step>
+  <Step title="Bekräfta och importera">
+    Granska förhandsgransknings-tabellen för att verifiera datanoggrannheten och klicka sedan på **Confirm** följt av **Save**. Dina leads visas på Kanban-brädet omedelbart.
+  </Step>
+</Steps>
+
+<Warning>
+  Leads med e-postadresser som redan finns i din flik Klienter konverteras inte via importen — du måste hantera dessa dubbletter manuellt.
+</Warning>
+
+## Exportera leads
+
+Exportera din pipelinedata för rapportering, säkerhetskopior eller integration med andra verktyg.
+
+<Steps>
+  <Step title="Klicka på Exportera">
+    Välj knappen **Export** från Leads-verktygsfältet.
+  </Step>
+  <Step title="Välj dina kolumner">
+    Välj **All Columns** för att exportera alla fält, eller välj **Custom Columns** för att bara välja de data du behöver.
+  </Step>
+  <Step title="Välj format och ladda ned">
+    Välj **CSV** eller **XLSX** och klicka sedan på **Export**. Filen laddas ned till din enhet.
+  </Step>
+</Steps>
+
+## Aktivitetslogg
+
+Varje ändring som görs i ett lead registreras automatiskt i fliken **Activity Log** inuti leadmodalen.
+
+Loggen registrerar:
+
+- **User** — vilken teammedlem som gjorde ändringen
+- **Details** — vad som ändrades, till exempel *"Status changed from 'New' to 'Contacted'"*
+- Bilageladdningar, anteckningstitillägg och fältredigeringar
+
+Aktivitetsloggar kan inte redigeras eller tas bort och är synliga för administratörer och chefer.
+
+## Automatiserade påminnelser och uppgifter
+
+AgencyHandy skickar automatiserade aviseringar när ett lead har legat inaktivt i något stadium längre än ett konfigurerbart antal dagar — till exempel *"Följ upp med [Leadnamn]."* Nyckelåtgärder som att skicka en offert kan också automatiskt generera uppgifter i uppgiftshanteraren för att hålla din leveransprocess på rätt spår.
+
+## Webhooks för leadhändelser
+
+AgencyHandy skickar webhook-händelser för följande leadåtgärder, vilket gör att du kan ansluta externa CRM-system, automatiseringsverktyg eller datapipelines:
+
+<Accordion title="Lead.Created">
+  Skickas när ett nytt lead skapas. Nyttolasten inkluderar: lead-ID, status, källa, tilldelad agent och tidsstämplar.
+</Accordion>
+
+<Accordion title="Lead.Updated">
+  Skickas när ett fält på ett lead uppdateras. Nyttolasten inkluderar samma fält plus en sammanfattning av vad som ändrades.
+</Accordion>
+
+<Accordion title="Lead.Deleted">
+  Skickas när ett lead tas bort från systemet. Nyttolasten inkluderar lead-ID och borttagningens tidsstämpel.
+</Accordion>
+
+<Tip>
+  Konfigurera webhooks i **Settings → Integrations → Webhooks** för att börja ta emot leadhändelser i realtid i dina externa system.
+</Tip>
+
+## Rapporteringsmått
+
+Spåra din pipelinehälsa med inbyggda rapporteringsmått:
+
+- Antal leads per stadium
+- Konverteringsfrekvens från lead till klient
+- Genomsnittlig tid ett lead tillbringar i varje stadium
+- Bäst presterande agenter efter konverteringsvolym

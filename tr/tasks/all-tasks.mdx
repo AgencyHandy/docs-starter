@@ -1,0 +1,126 @@
+---
+title: "Tüm Görevler — AgencyHandy'de Merkezi Görev Yönetimi"
+sidebarTitle: "Tüm Görevler"
+description: "Devam eden ve incelemede olan siparişlerdeki her görevi gerçek zamanlı, role göre filtrelenmiş görünümle görmek için Tüm Görevler sayfasını kullanın — arama, filtreler ve sıralama dahil."
+---
+
+AgencyHandy'deki Tüm Görevler sayfası, ajansınızdaki aktif iş akışlarına ait her görevi tek ve merkezi bir görünümde sunar. Tek tek siparişleri aramak yerine ilgili tüm görevleri tek bir yerde görebilir, atanan kişi, öncelik veya tarih bazında filtreleyebilir ve listeden doğrudan düzenleme yapabilirsiniz. Görünürlük, rolünüze göre otomatik olarak kapsamlandırılır — Süper Yöneticiler her şeyi görür, Yöneticiler atandıkları siparişleri görür, Çalışanlar ise yalnızca kendi görevlerini görür.
+
+## Tüm Görevler Sayfasına Erişim
+
+1. AgencyHandy hesabınıza giriş yapın.
+2. Sol kenar çubuğunda **Görevler**'e tıklayın.
+3. Merkezi görev dashboard'unu açmak için **Tüm Görevler**'i seçin.
+
+<Note>
+  Tüm Görevler sayfası yalnızca **Devam Ediyor** veya **İncelemede** durumundaki siparişlere ait görevleri gösterir. Başka bir durumda (ör. Tamamlandı, Beklemede) olan siparişlere bağlı görevler burada görünmez.
+</Note>
+
+## Role Göre Görev Görünürlüğü
+
+Tüm Görevler sayfasında gördükleriniz tamamen rolünüze bağlıdır.
+
+| Rol | Gördükleri |
+|------|---------------|
+| **Süper Yönetici / Yönetici** | Her sipariş, ekip ve durumdaki tüm görevler |
+| **Proje Yöneticisi (PM)** | Yalnızca Yönetici olarak atandıkları siparişlere ait görevler |
+| **Çalışan / Atanan** | Yalnızca doğrudan kendilerine atanmış görevler — aynı sipariş üzerinde çalışan iş arkadaşlarının görevleri dahil değil |
+
+<Tip>
+  Bir PM görmesini beklediği bir görevi bulamazsa, ilgili sipariş üzerinde Yönetici olarak atanıp atanmadığını kontrol edin. PM'ler, o sipariş için atanmış Yönetici olmadıkları sürece görevleri görmezler.
+</Tip>
+
+## Görevlerin Bu Sayfada Ne Zaman Görüneceği
+
+Görevler, şu koşullar sağlandığında Tüm Görevler sayfasında görünür:
+
+<CardGroup cols={2}>
+  <Card title="Görev görünürlüğünü tetikleyen siparişler" icon="circle-check">
+    - Manuel siparişler (tek seferlik veya abonelik) oluşturulur
+    - Stripe veya manuel ödeme yöntemleriyle katalog siparişleri verilir
+    - Bir teklif ajans tarafından kabul edilir
+  </Card>
+  <Card title="Görevleri gizli tutan siparişler" icon="eye-slash">
+    - Ajansın henüz kabul etmediği müşteri tarafından talep edilen görevler
+    - Ajansın henüz kabul etmediği deneme siparişleri
+    - Manuel banka ödemesi onayı bekleyen beklemedeki siparişler
+  </Card>
+</CardGroup>
+
+## Arama, Filtreleme ve Sıralama
+
+Tüm Görevler sayfası, tam olarak ihtiyacınız olanı bulmanıza yardımcı olacak eksiksiz bir kontrol seti içerir.
+
+### Arama
+
+Görevleri ada, atanan kişiye veya ilgili siparişe göre bulmak için arama çubuğunu kullanın. Sonuçlar siz yazdıkça gerçek zamanlı olarak güncellenir.
+
+### Filtreler
+
+Filtre panelini açmak için **Filtre → + Filtre Ekle**'ye tıklayın. Hassas sonuçlar için birden fazla filtre birleştirebilirsiniz:
+
+| Filtre | Ne Yapar |
+|--------|--------------|
+| **Sipariş Kimliği** | Belirli bir sipariş numarasına bağlı görevleri göster |
+| **Atanan Kişi** | Belirli bir ekip üyesine atanmış görevleri göster |
+| **Durum** | Görev ilerlemesine göre filtrele: Beklemede, Devam Ediyor, İncelemede, Tamamlandı vb. |
+| **Öncelik** | Yüksek, Orta veya Düşük öncelikli görevlere odaklan |
+| **Etiket** | Görev etiketlerine veya kategorilerine göre daralt |
+| **Başlangıç Tarihi** | Belirli bir tarihte veya sonrasında başlayan görevleri göster |
+| **Bitiş Tarihi** | Belirli bir tarihe kadar tamamlanması gereken görevleri göster |
+
+<Note>
+  Filtreler yalnızca Tüm Görevler sayfasında kullanılabilir. Tarayıcı oturumunuz süresince kalır ancak sayfa yenilenmesinde sıfırlanır. Filtreler yalnızca sizin görünümünüzü etkiler ve diğer kullanıcıların gördüklerini değiştirmez.
+</Note>
+
+Tüm filtreleri temizlemek için tam filtresiz listeye dönmek üzere **Filtreleri Temizle**'ye tıklayın.
+
+### Sıralama
+
+Görev listesini şuna göre sıralayın:
+- **Bitiş tarihi** — yaklaşan veya zaten gecikmiş görevleri öne çıkar
+- **Öncelik** — en kritik görevleri üste getirir
+- **Oluşturma zamanı** — yakın zamanda eklenen görevleri önce göster
+
+### Gezinme Yolu (Breadcrumb)
+
+Alt görevler, görev listeleri ve üst siparişler arasında gezinirken bağlamı korumak için sayfanın üst kısmındaki gezinme yolunu kullanın. Bu, belirli bir görevi incelediğinizde ve daha geniş listeye geri dönmeniz gerektiğinde özellikle kullanışlıdır.
+
+## Görev Düzenleme
+
+Tüm Görevler sayfasındaki görevleri iki şekilde değiştirebilirsiniz:
+
+<Tabs>
+  <Tab title="Satır İçi Düzenleme">
+    Görev satırındaki durum, atanan kişi veya bitiş tarihi gibi düzenlenebilir bir alana doğrudan tıklayın ve liste görünümünden ayrılmadan değişikliğinizi yapın. Bu, hızlı güncellemeler için en hızlı seçenektir.
+  </Tab>
+  <Tab title="Modal Düzenleme">
+    Tam görev detay modalını açmak için görev adına tıklayın. Buradan tüm görev özelliklerini güncelleyebilir, notlar ekleyebilir, alt görevleri görüntüleyebilir ve tam görev geçmişini görebilirsiniz. Daha kapsamlı düzenlemeler veya bağlam gerektiren durumlar için bunu kullanın.
+  </Tab>
+</Tabs>
+
+## Görev Silme Kuralları
+
+Tüm Görevler sayfasındaki görevler, doğrudan üst siparişleriyle bağlantılıdır.
+
+- Bir **sipariş silindiğinde**, o siparişle ilişkili tüm görevler Tüm Görevler sayfasından **otomatik ve kalıcı olarak kaldırılır**.
+- Bu silme işlemi tüm kullanıcı rollerini etkiler — sipariş silindikten sonra kimse bu görevleri göremez.
+- Sipariş silme yoluyla silinen görevler için **kurtarma seçeneği yoktur**.
+
+<Warning>
+  Bir siparişi silmek, tüm görevlerini kalıcı olarak kaldırır. Bir siparişi silmeden önce önemli görev geçmişlerinin veya teslim edilen ürün kayıtlarının başka bir yere kaydedildiğinden emin olun.
+</Warning>
+
+## Ek Notlar
+
+<Accordion title="Gerçek zamanlı güncellemeler">
+  Siparişlerdeki, görev atamalarındaki veya görev durumlarındaki değişiklikler Tüm Görevler sayfasında gerçek zamanlı olarak yansır. Bir iş arkadaşı siz sayfayı açıkken bir görevi güncellerse, sayfayı yenilemeden değişikliği görürsünüz.
+</Accordion>
+
+<Accordion title="Müşteri tarafından talep edilen görevler">
+  Müşteriler tarafından gönderilen görevler, ajans bunları açıkça kabul edene kadar Tüm Görevler sayfasında görünmez. Kabul edilene kadar bu görevler beklemede durumunda kalır ve merkezi görünümde görünmez.
+</Accordion>
+
+<Accordion title="Görevler ve sipariş durumu">
+  Görevler yalnızca Devam Ediyor veya İncelemede durumundaki siparişler için görünür. Bir sipariş Tamamlandı durumuna geçerse veya duraklatılırsa, görevleri artık burada gösterilmez. Bu durumların dışındaki siparişlere bağlı görevleri görüntülemek için ilgili siparişe gidin.
+</Accordion>

@@ -1,0 +1,114 @@
+---
+title: "API AgencyHandy: uwierzytelnianie i pierwsze kroki"
+sidebarTitle: "Pierwsze kroki"
+description: "Wygeneruj klucz API, znajdź swój identyfikator firmy i zacznij budować integracje z interfejsem REST API AgencyHandy dzięki temu przewodnikowi szybkiej konfiguracji."
+---
+
+API AgencyHandy umożliwia automatyzację tworzenia leadów, zarządzania klientami, aktualizacji zamówień i nie tylko — z dowolnego zewnętrznego systemu lub skryptu. Każde żądanie jest uwierzytelniane kluczem API generowanym z ustawień przestrzeni roboczej. Ten przewodnik przeprowadzi Cię przez proces uzyskania danych uwierzytelniających i wykonania pierwszego wywołania API.
+
+<Note>
+  Aby wygenerować klucz API, musisz być **SuperAdminem** lub **Adminem** w swojej przestrzeni roboczej AgencyHandy.
+</Note>
+
+## Bazowy adres URL
+
+Wszystkie żądania API są kierowane na adres:
+
+```
+https://api.agencyhandy.com
+```
+
+Zastąp `{{URL}}` tym bazowym adresem URL we wszystkich przykładowych żądaniach w dokumentacji API.
+
+## Krok 1: Wygeneruj klucz API
+
+<Steps>
+  <Step title="Otwórz konfigurację przestrzeni roboczej">
+    Przejdź do ustawień przestrzeni roboczej pod adresem:
+
+    ```
+    {{workspaceUrl}}/workspace-config?tab=api-key
+    ```
+
+    Otworzy się zakładka **Klucz API** w konfiguracji przestrzeni roboczej.
+  </Step>
+
+  <Step title="Wygeneruj i skopiuj klucz API">
+    Kliknij **Generuj** (lub **Wygeneruj ponownie**, jeśli klucz już istnieje). Skopiuj klucz API i przechowuj go bezpiecznie — traktuj go jak hasło. AgencyHandy nie wyświetli go ponownie po opuszczeniu strony.
+  </Step>
+</Steps>
+
+<Warning>
+  Ponowne wygenerowanie klucza API natychmiast unieważnia poprzedni klucz. Wszelkie istniejące integracje używające starego klucza przestaną działać, dopóki nie zaktualizujesz ich nowym kluczem.
+</Warning>
+
+## Krok 2: Pobierz identyfikator firmy
+
+Większość punktów końcowych API wymaga nagłówka `companyid`, który identyfikuje, której przestrzeni roboczej dotyczy żądanie. Użyj następującego punktu końcowego, aby pobrać swój identyfikator firmy.
+
+### Punkt końcowy
+
+```
+GET {{URL}}/accounts/companies
+```
+
+### Nagłówki
+
+| Nagłówek | Wartość |
+|---|---|
+| `x-api-key` | Twój klucz API |
+
+### Przykładowe żądanie
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/accounts/companies" \
+  --header "x-api-key: <YOUR_API_KEY>"
+```
+
+### Przykładowa odpowiedź
+
+```json
+{
+  "message": "Companies associated with API token.",
+  "companies": [
+    {
+      "_id": "6525994184e9ddd79853450e",
+      "name": "onethread123",
+      "logo": "",
+      "extraSmallLogo": "",
+      "largeLogo": ""
+    }
+  ]
+}
+```
+
+<Steps>
+  <Step title="Znajdź swój identyfikator firmy">
+    W odpowiedzi znajdź pole `_id` wewnątrz tablicy `companies`. To jest Twój **identyfikator firmy**.
+
+    ```javascript
+    const companyId = response.companies[0]._id;
+    // e.g. "6525994184e9ddd79853450e"
+    ```
+  </Step>
+
+  <Step title="Zapisz identyfikator firmy">
+    Zachowaj identyfikator firmy do użycia we wszystkich kolejnych żądaniach API. Przekazujesz go jako nagłówek `companyid`:
+
+    | Nagłówek | Wartość |
+    |---|---|
+    | `x-api-key` | Twój klucz API |
+    | `companyid` | Twój identyfikator firmy |
+  </Step>
+</Steps>
+
+## Podsumowanie uwierzytelniania
+
+Każde uwierzytelnione żądanie API wymaga co najmniej:
+
+```
+x-api-key: <YOUR_API_KEY>
+companyid: <YOUR_COMPANY_ID>
+```
+
+Mając klucz API i identyfikator firmy, jesteś gotowy do korzystania z pozostałej części API AgencyHandy. Przejdź do jednego z poniższych przewodników punktów końcowych.

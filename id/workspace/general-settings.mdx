@@ -1,0 +1,123 @@
+---
+title: "Konfigurasikan Pengaturan Umum Workspace AgencyHandy Anda"
+sidebarTitle: "Pengaturan Umum"
+description: "Atur nama workspace, unggah logo, tambahkan alamat agensi, dan pilih zona waktu yang tepat untuk mempersonalisasi workspace AgencyHandy Anda."
+---
+
+Halaman Pengaturan Umum adalah tempat pertama yang akan Anda kunjungi setelah masuk ke AgencyHandy. Di sini Anda dapat menetapkan identitas agensi di platform — mulai dari logo dan nama workspace hingga alamat fisik dan zona waktu. Setiap perubahan yang Anda buat di sini berlaku secara global di seluruh workspace untuk semua pengguna.
+
+<Note>
+  Hanya **Super Admin** dan **Admin** yang dapat mengakses dan memodifikasi pengaturan Workspace Config. Jika Anda tidak melihat opsi **Workspace Config** di navigasi kiri, hubungi Super Admin Anda untuk menyesuaikan izin peran Anda.
+</Note>
+
+## Mengakses Pengaturan Umum
+
+<Steps>
+  <Step title="Buka Workspace Config">
+    Masuk ke akun AgencyHandy Anda. Di menu navigasi kiri, klik **Workspace Config**.
+  </Step>
+  <Step title="Pilih Pengaturan Umum">
+    Klik **General Settings** dari submenu Workspace Config. Panel Pengaturan Umum terbuka di sebelah kanan.
+  </Step>
+</Steps>
+
+---
+
+## Mengunggah Logo Workspace Anda
+
+AgencyHandy mendukung tiga jenis logo yang berbeda, masing-masing ditampilkan di bagian antarmuka yang berbeda:
+
+| Jenis Logo        | Dimensi      | Tempat Ditampilkan                                |
+|------------------|-------------|--------------------------------------------------|
+| Logo Lingkaran   | 32 × 32 px  | Area profil dan elemen UI yang ringkas           |
+| Logo Favicon     | 16 × 16 px  | Ikon tab browser                                 |
+| Logo Persegi Panjang | 142 × 36 px | Header sidebar (menggantikan logo lingkaran jika diatur) |
+
+**Format yang didukung:** PNG, JPG, SVG
+
+<Steps>
+  <Step title="Klik Upload Logo">
+    Di bagian logo, klik tombol **Upload Logo** untuk jenis logo yang ingin Anda atur.
+  </Step>
+  <Step title="Pilih file gambar Anda">
+    Telusuri gambar di perangkat Anda. Pastikan file sesuai dengan dimensi yang diperlukan dan dalam format yang didukung.
+  </Step>
+  <Step title="Konfirmasi unggahan">
+    Pratinjau logo langsung diperbarui. Ulangi untuk setiap jenis logo sesuai kebutuhan.
+  </Step>
+</Steps>
+
+<Tip>
+  Mengunggah **Logo Persegi Panjang** akan menggantikan Logo Lingkaran di sidebar dan secara otomatis menyembunyikan teks nama workspace di sebelahnya. Logo persegi panjang juga menjadi logo utama yang digunakan di semua konteks lain di mana logo ditampilkan — meskipun logo lingkaran juga diunggah.
+</Tip>
+
+---
+
+## Mengatur Nama dan Alamat Workspace
+
+### Nama Workspace
+
+Masukkan nama agensi Anda di kolom **Workspace Name**. Nama ini:
+
+- Muncul di seluruh platform untuk identifikasi.
+- Digunakan dalam subdomain AgencyHandy default (misalnya, `namaanda.agencyhandy.com`).
+
+<Warning>
+  Mengubah nama workspace akan segera memperbarui subdomain default Anda. Jika Anda membagikan tautan subdomain default kepada klien, mereka akan membutuhkan URL yang diperbarui. Pertimbangkan untuk menyiapkan [custom domain](/id/workspace/custom-domain) untuk menghindari masalah ini.
+</Warning>
+
+### Alamat Workspace
+
+Masukkan alamat fisik lengkap agensi Anda di kolom **Workspace Address**. Alamat ini digunakan untuk representasi resmi pada faktur dan dokumen yang menghadap klien, jadi pastikan akurat dan terkini.
+
+---
+
+## Memilih Zona Waktu Anda
+
+<Steps>
+  <Step title="Buka dropdown Zona Waktu">
+    Gulir ke kolom **Time Zone** dan klik dropdown untuk memperluas daftar zona waktu.
+  </Step>
+  <Step title="Pilih zona waktu Anda">
+    Pilih zona waktu yang sesuai dengan lokasi operasi utama agensi Anda. Semua tenggat waktu tugas, notifikasi terjadwal, acara kalender, dan cap waktu di seluruh workspace didasarkan pada pengaturan ini.
+  </Step>
+</Steps>
+
+<Warning>
+  Pengaturan zona waktu yang salah menyebabkan kesalahan penjadwalan untuk tugas, rapat, dan tanggal jatuh tempo faktur. Periksa ulang pengaturan ini sebelum mengundang tim atau klien Anda.
+</Warning>
+
+---
+
+## Menyimpan Perubahan Anda
+
+Setelah mengisi atau memperbarui kolom apa pun, klik **Save Changes** di bagian bawah panel Pengaturan Umum. Semua pembaruan diterapkan secara global dan segera terlihat oleh setiap pengguna di workspace.
+
+---
+
+## Zona Berbahaya: Menghapus Workspace Anda
+
+Di bagian bawah panel Pengaturan Umum, terdapat bagian **Danger Zone** yang berisi tombol **Delete Workspace**.
+
+<Warning>
+  Menghapus workspace Anda bersifat **permanen dan tidak dapat dipulihkan**. Semua data — termasuk klien, pesanan, faktur, proyek, dan konfigurasi — akan terhapus secara permanen. Tidak ada opsi pemulihan. Hanya lanjutkan jika Anda benar-benar yakin.
+</Warning>
+
+---
+
+## Praktik Terbaik
+
+<CardGroup cols={2}>
+  <Card title="Verifikasi dimensi logo" icon="image">
+    Unggah logo dengan dimensi piksel yang direkomendasikan persis untuk mencegah peregangan, pemotongan, atau tampilan buram di seluruh platform.
+  </Card>
+  <Card title="Jaga branding tetap terkini" icon="paintbrush">
+    Perbarui logo dan alamat Anda setiap kali agensi melakukan rebranding atau pindah lokasi agar semua dokumen dan halaman yang menghadap klien tetap akurat.
+  </Card>
+  <Card title="Atur zona waktu terlebih dahulu" icon="clock">
+    Konfigurasikan zona waktu Anda sebelum membuat layanan, tugas, atau menjadwalkan apa pun untuk memastikan semua cap waktu selaras dengan benar sejak awal.
+  </Card>
+  <Card title="Batasi akses admin" icon="shield">
+    Hanya berikan peran Super Admin atau Admin kepada personel yang benar-benar perlu memodifikasi konfigurasi workspace, untuk mencegah perubahan yang tidak disengaja.
+  </Card>
+</CardGroup>

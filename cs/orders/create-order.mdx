@@ -1,0 +1,143 @@
+---
+title: "Jak vytvářet, upravovat a mazat zakázky v AgencyHandy"
+sidebarTitle: "Vytvořit zakázku"
+description: "Podrobný průvodce vytvářením, úpravou a mazáním zakázek v AgencyHandy — včetně požadavků na role, polí formuláře a přechodů stavů."
+---
+
+Vytvoření zakázky v AgencyHandy vám poskytuje strukturovaný pracovní prostor pro poskytování služby klientovi. Předem vyplníte klíčové údaje — klienta, službu, ceny, termíny a projektový brief — a vše ostatní, od úkolů po diskuse, vychází z tohoto jediného záznamu. Tato stránka vás provede vytvořením zakázky od začátku, její aktualizací, změnou stavu a smazáním, když již není potřeba.
+
+## Požadavky
+
+- Musíte být přihlášeni do AgencyHandy.
+- K vytváření nebo úpravě zakázek musíte mít roli **Super Admin**, **Admin** nebo **Projektový manažer**.
+- Zakázky mohou mazat pouze **Super Admini** a **Admini**.
+
+## Vytvoření nové zakázky
+
+<Steps>
+  <Step title="Přejděte do sekce Zakázky">
+    V levém postranním panelu vašeho dashboardu AgencyHandy klikněte na **Zakázky**.
+  </Step>
+
+  <Step title="Otevřete formulář pro vytvoření">
+    Klikněte na **+ Vytvořit novou zakázku** v pravém horním rohu. Zobrazí se formulář.
+  </Step>
+
+  <Step title="Vyplňte podrobnosti zakázky">
+    Vyplňte pole formuláře:
+
+    | Pole | Povinné | Poznámky |
+    |---|---|---|
+    | **Klient** | ✅ | Vyberte ze svého stávajícího seznamu klientů |
+    | **Služba** | ✅ | Zahrnuje publikované i nepublikované služby |
+    | **Projektový manažer** | ❌ | Volitelné; přiřaďte PM k řízení realizace |
+    | **Množství** | ✅ | Počet objednávaných jednotek |
+    | **Cena** | ✅ | Dohodnutý rozpočet pro zakázku |
+    | **Datum zahájení** | ✅ | Kdy práce začíná |
+    | **Datum dokončení** | ✅ | Termín dodání |
+    | **Brief zakázky** | ❌ | Pokyny, požadavky nebo referenční poznámky pro váš tým |
+    | **Přílohy** | ❌ | Podpůrné soubory relevantní pro zakázku |
+
+    <Tip>
+      Pokud má vybraná služba propojené doplňky (add-ons), zobrazí se ve formuláři sekce **Doplněk**. Před odesláním přidejte příslušné doplňky.
+    </Tip>
+  </Step>
+
+  <Step title="Zkontrolujte zadané údaje">
+    Pečlivě ověřte všechna pole — zejména klienta, službu, cenu a datum dokončení.
+  </Step>
+
+  <Step title="Odešlete zakázku">
+    Klikněte na **Vytvořit** pro dokončení zakázky. Po úspěšném vytvoření obdržíte potvrzovací zprávu.
+  </Step>
+</Steps>
+
+### Co se stane po vytvoření zakázky
+
+- Všichni Super Admini ve vaší společnosti automaticky získají přístup k nové zakázce.
+- Klient obdrží oznámení o vytvoření jeho zakázky.
+- Zakázka se zobrazí v seznamu **Zakázky** se stavem **Čekající**.
+
+## Úprava nebo aktualizace zakázky
+
+Zakázku můžete kdykoli aktualizovat — opravit podrobnosti, upravit ceny, změnit datum dokončení nebo vyhovět požadavkům klienta.
+
+<Note>
+K úpravě zakázky musíte být **Super Admin**, **Admin** nebo **Projektový manažer**.
+</Note>
+
+<Steps>
+  <Step title="Otevřete seznam zakázek">
+    Přejděte do sekce **Zakázky** v levém postranním panelu.
+  </Step>
+
+  <Step title="Vyberte zakázku k úpravě">
+    Najděte zakázku, kterou chcete aktualizovat, a zaškrtněte políčko vedle ní.
+  </Step>
+
+  <Step title="Aktivujte tlačítko úpravy">
+    V pravém horním rohu se zobrazí tlačítko **Upravit**. Klikněte na něj a otevřete podrobnosti zakázky v režimu úprav.
+  </Step>
+
+  <Step title="Upravte potřebná pole">
+    Aktualizujte pole, která je třeba změnit — údaje o klientovi, službu, ceny, termíny, brief nebo přiřazeného PM.
+  </Step>
+
+  <Step title="Uložte změny">
+    Klikněte na **Aktualizovat** pro uložení. Potvrzovací zpráva potvrdí úspěšnou aktualizaci.
+  </Step>
+</Steps>
+
+## Změna stavu zakázky
+
+Stav zakázky odráží, v jaké fázi se práce nachází ve vašem procesu realizace. AgencyHandy definuje pět pevných stavů — nelze je přidávat ani přejmenovávat.
+
+| Stav | Význam |
+|---|---|
+| **Čekající** | Vytvořeno, ještě nezahájeno |
+| **Probíhající** | Aktivně se pracuje |
+| **V revizi** | Odesláno ke kontrole; čeká na schválení |
+| **Dokončeno** | Dodáno a přijato |
+| **Zrušeno** | Již není aktivní |
+
+<Note>
+Stav zakázky mohou měnit pouze **Super Admini**, **Admini** a **Projektový manažeři**. Zaměstnanci a klienti nemohou stav měnit.
+</Note>
+
+Chcete-li aktualizovat stav, otevřete zakázku a použijte selektor stavu v horní části stránky s podrobnostmi zakázky. Z rozevíracího seznamu vyberte nový stav a potvrďte.
+
+## Smazání zakázky
+
+Smazáním zakázky ji trvale odstraníte ze systému. Tuto možnost použijte pouze tehdy, když je zakázka skutečně zastaralá — například pokud byla vytvořena omylem nebo je duplicitní.
+
+<Warning>
+Smazání zakázky je nevratné. Jakmile zakázku smažete, nelze ji obnovit. Postupujte opatrně.
+</Warning>
+
+<Note>
+Zakázky mohou mazat pouze **Super Admini** a **Admini**.
+</Note>
+
+<Steps>
+  <Step title="Přejděte do sekce Zakázky">
+    Klikněte na **Zakázky** v levém postranním panelu.
+  </Step>
+
+  <Step title="Najděte zakázku ke smazání">
+    Přejděte na požadovanou zakázku nebo ji vyhledejte v seznamu.
+  </Step>
+
+  <Step title="Zahajte mazání">
+    Klikněte na **ikonu koše** u příslušné zakázky.
+  </Step>
+
+  <Step title="Potvrďte smazání">
+    Zobrazí se potvrzovací výzva. Potvrďte trvalé smazání zakázky.
+  </Step>
+</Steps>
+
+Po smazání zkontrolujte zbývající zakázky a ujistěte se, že je vše v pořádku. Smazaný záznam se již nebude zobrazovat v žádném seznamu ani sestavě.
+
+## Přidání členů týmu do zakázky
+
+Super Admini, Admini a PM mohou kdykoli přidat zaměstnance do zakázky. Při přidání člena týmu obdrží daná osoba oznámení v aplikaci. Přiřazení zaměstnanci získají přehled o zakázce a jejích úkolech, ale nemohou zakázku spravovat (upravovat podrobnosti, měnit stav ani ji mazat).

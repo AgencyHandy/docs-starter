@@ -1,0 +1,235 @@
+---
+title: "Crear, enviar y gestionar facturas de clientes en AgencyHandy"
+sidebarTitle: "Crear factura"
+description: "Guía paso a paso para crear una factura en AgencyHandy: elija un cliente, defina importes, agregue notas, envíe al cliente y configure recordatorios de pago."
+---
+
+Crear una factura en AgencyHandy es un proceso sencillo que vincula su facturación directamente con los clientes y pedidos. Completa el cliente, vincula el pedido, define los importes, agrega cualquier nota y envía, todo desde un solo formulario. Una vez enviada, puede hacer seguimiento del estado de pago, configurar recordatorios automáticos y descargar la factura como PDF en cualquier momento.
+
+<Note>
+  Debe ser **Super Admin**, **Admin** o **PM** para crear facturas. Debe existir al menos un cliente en su espacio de trabajo antes de poder generar una factura.
+</Note>
+
+## Configuración del prefijo de factura
+
+Antes de empezar a crear facturas, considere configurar su prefijo de factura. El prefijo aparece antes de cada número de factura y ayuda a identificar las facturas como pertenecientes a su agencia.
+
+<Steps>
+  <Step title="Abra la configuración de facturas">
+    En el panel de facturas, haga clic en el botón **Settings** en la esquina superior derecha.
+  </Step>
+  <Step title="Defina su prefijo">
+    Vaya al campo **Invoice Prefix** e introduzca el prefijo que desee (por ejemplo, `INV-` o las iniciales de su agencia).
+  </Step>
+  <Step title="Guarde">
+    Haga clic en **Save** para aplicar el prefijo a todas las facturas futuras.
+  </Step>
+</Steps>
+
+## Crear una factura
+
+<Steps>
+  <Step title="Abra el panel de facturas">
+    Haga clic en **Invoices** en la barra lateral izquierda para abrir el panel de facturas.
+  </Step>
+  <Step title="Inicie una nueva factura">
+    Haga clic en **+ Create Invoice**. Se abrirá el formulario de creación de facturas.
+  </Step>
+  <Step title="Seleccione el cliente">
+    Elija el nombre del cliente en la lista desplegable. Este es un campo obligatorio. Todos los Order IDs asociados a ese cliente se completarán automáticamente en el siguiente campo.
+
+    Para crear una **Factura directa** (no vinculada a un pedido), puede dejar el campo Order ID vacío o seleccionar **Independent Email** para facturar a cualquier dirección de correo electrónico fuera de su lista de clientes.
+  </Step>
+  <Step title="Seleccione el Order ID">
+    Seleccione el Order ID específico que está facturando. Esto vincula la factura con el pedido correcto en el sistema. Para las facturas directas, omita este campo.
+  </Step>
+  <Step title="Introduzca la dirección de facturación">
+    Complete la **Bill Payment Address**:
+    - País, estado/provincia y ciudad
+    - Código postal
+    - Dirección (si corresponde)
+
+    Esta dirección aparece en la factura impresa para fines de cumplimiento y claridad.
+  </Step>
+  <Step title="Defina los detalles del pedido y financieros">
+    En **Order Details**, introduzca lo siguiente:
+
+    | Campo | Descripción |
+    |-------|-------------|
+    | **Currency** | La moneda en la que desea recibir el pago |
+    | **Order ID – Amount** | El valor monetario asociado al pedido |
+    | **Discount (%)** y **Discount Amount** | Aplique los descuentos correspondientes |
+    | **Paid Amount** | Cualquier importe que el cliente ya haya pagado |
+    | **Due Amount** | El saldo pendiente restante |
+    | **Total Amount** | El importe total a pagar del pedido |
+
+    Para las **Facturas directas**, haga clic en **Add Item** para agregar líneas de elementos manualmente. Introduzca el nombre, la cantidad y el precio del elemento. Puede agregar varios elementos. Use **+ Tax Rates** para aplicar o crear tasas de impuestos (inclusivas o exclusivas).
+  </Step>
+  <Step title="Agregue una nota (opcional)">
+    En el campo **Note**, agregue cualquier contexto adicional para el cliente; por ejemplo, instrucciones de pago, referencias del proyecto o un mensaje personal.
+  </Step>
+  <Step title="Revise el panel de detalles">
+    El panel **Details** del lado derecho le ofrece un resumen en vivo de:
+
+    - El estado de la factura (Draft por defecto)
+    - El nombre del cliente, el nombre de la empresa y la dirección
+    - La dirección de facturación
+    - El nombre del servicio y el Order ID
+    - La fecha de creación y la fecha de vencimiento
+    - El importe total
+
+    Revise todo cuidadosamente antes de continuar.
+  </Step>
+  <Step title="Envíe al cliente o guarde como borrador">
+    - Haga clic en **Send to Client** para enviar la factura por correo electrónico de inmediato. El estado cambia de **Draft** a **Open** automáticamente.
+    - Haga clic en **Save as Draft** si desea finalizarla más tarde.
+  </Step>
+</Steps>
+
+<Note>
+  El sistema agrega automáticamente el logotipo y la dirección de la agencia a la factura; no necesita introducirlos manualmente en cada factura.
+</Note>
+
+## Transiciones de estado de la factura
+
+Una vez creada una factura, sigue un flujo de estados definido. Solo la agencia puede mover una factura entre estados.
+
+```
+Draft → Open (when sent to client)
+Open  → Paid           (payment received)
+Open  → Void           (invoice canceled)
+Open  → Uncollectable  (debt written off)
+```
+
+<Warning>
+  Las facturas solo pueden **editarse** mientras están en estado **Draft**. Una vez que una factura pasa a Open, no puede editarla. Si necesita hacer cambios, anule la factura y cree una nueva.
+</Warning>
+
+## Editar una factura
+
+Solo puede editar una factura mientras está en estado **Draft**.
+
+<Steps>
+  <Step title="Abra la factura">
+    En el panel de facturas, busque la factura en borrador que desea editar. Haga clic en ella o marque la casilla junto a ella.
+  </Step>
+  <Step title="Haga clic en Edit">
+    Seleccione la opción **Edit** en el menú de acciones. El formulario de la factura se abrirá con todos los detalles existentes ya completados.
+  </Step>
+  <Step title="Realice sus cambios">
+    Actualice cualquier campo: datos de facturación, descripciones de servicios, cantidades, importes o términos de pago.
+  </Step>
+  <Step title="Guarde">
+    Haga clic en **Save** para aplicar sus cambios.
+  </Step>
+</Steps>
+
+## Enviar una factura a un cliente
+
+Si guardó la factura como borrador y desea enviarla más tarde:
+
+<Steps>
+  <Step title="Encuentre la factura">
+    En el panel de facturas, localice la factura en borrador que desea enviar.
+  </Step>
+  <Step title="Haga clic en Send Invoice">
+    Abra la factura y haga clic en el botón **Send Invoice**. AgencyHandy entrega la factura a la dirección de correo electrónico registrada del cliente.
+  </Step>
+  <Step title="Confirme la entrega">
+    Busque el mensaje de confirmación para verificar que la factura se envió correctamente. El estado de la factura se actualiza a **Open**.
+  </Step>
+</Steps>
+
+<Note>
+  Si una factura está en estado **Draft** y actualiza el nombre del servicio, el nuevo nombre se reflejará en la factura. Una vez que el estado cambia a Open, Paid, Uncollectable o Void, el nombre del servicio en la factura queda bloqueado y no se actualizará.
+</Note>
+
+## Descargar e imprimir una factura
+
+Tanto la agencia como el cliente pueden descargar una factura en cualquier momento.
+
+<Steps>
+  <Step title="Abra la factura">
+    Vaya al panel de facturas y seleccione la factura que desea descargar.
+  </Step>
+  <Step title="Acceda a descargar/imprimir">
+    Haga clic en la opción **Download** o **Print** en el menú de acciones de la factura.
+  </Step>
+  <Step title="Elija su formato">
+    Seleccione **PDF** para descargar o elija la configuración de su impresora para una copia física.
+  </Step>
+  <Step title="Guarde o imprima">
+    Guarde el archivo en su dispositivo o envíelo a la impresora. Después de imprimir, archive la factura o compártala con las partes interesadas según sea necesario.
+  </Step>
+</Steps>
+
+## Configurar recordatorios en las facturas
+
+La función de recordatorio de facturas le permite notificar automáticamente a los clientes sobre facturas próximas, vencidas o atrasadas para que le paguen a tiempo sin seguimiento manual.
+
+<Note>
+  Los recordatorios solo funcionan en facturas que tienen un estado **Open** y una **fecha de vencimiento** definida.
+</Note>
+
+<Steps>
+  <Step title="Abra la configuración de facturas">
+    Haga clic en el botón **Settings** en la parte superior derecha del panel de facturas.
+  </Step>
+  <Step title="Vaya a la configuración de recordatorios">
+    Desplácese hasta la parte inferior de la sección **Template** en el panel izquierdo, luego haga clic en **Edit** para abrir el modal de configuración de recordatorios.
+  </Step>
+  <Step title="Elija un tipo de recordatorio">
+    Seleccione una de las siguientes opciones:
+
+    - **Sequenced Reminder**: crea una serie de recordatorios en los intervalos que defina
+    - **Don't Send Reminder**: desactiva los recordatorios para las facturas seleccionadas
+  </Step>
+  <Step title="Configure los detalles del recordatorio">
+    Para cada recordatorio de la secuencia:
+    - Elija la **plantilla de recordatorio** (por ejemplo, "Upcoming Invoice Payment Reminder")
+    - Defina la **fecha de recordatorio**: por ejemplo, 3 días antes o después de la fecha de vencimiento
+    - Especifique si se activa **antes** o **después** de la fecha de vencimiento
+  </Step>
+  <Step title="Agregue más recordatorios si es necesario">
+    Haga clic en **+ Add Another Reminder** para construir una secuencia completa de recordatorios. Haga clic en el botón **Delete** junto a cualquier recordatorio para eliminarlo.
+  </Step>
+  <Step title="Aplique a las facturas activas (opcional)">
+    Marque la casilla para **aplicar esta configuración de recordatorios a las facturas actualmente activas** si desea que la nueva configuración cubra las facturas que ya están en estado Open.
+  </Step>
+  <Step title="Guarde">
+    Haga clic en **Update** para guardar y activar el calendario de recordatorios.
+  </Step>
+</Steps>
+
+## Facturas directas (sin ID de pedido)
+
+Cuando necesite facturar a un cliente rápidamente sin crear primero un pedido, use el flujo de trabajo de factura directa.
+
+<Steps>
+  <Step title="Inicie una nueva factura">
+    Vaya a **Invoices → Create Invoice**.
+  </Step>
+  <Step title="Elija el tipo de destinatario">
+    Seleccione **Individual** o **Company** como tipo de destinatario.
+  </Step>
+  <Step title="Seleccione o introduzca el destinatario">
+    - Elija un **cliente existente** en el menú desplegable, o
+    - Seleccione **Independent Email** para escribir cualquier dirección de correo electrónico, incluso una que no esté registrada como cliente
+  </Step>
+  <Step title="Deje el Order ID vacío">
+    Omita el campo Order ID. AgencyHandy crea una factura independiente no vinculada a ningún pedido.
+  </Step>
+  <Step title="Agregue elementos, impuestos y descuentos">
+    Haga clic en **Add Item** para agregar líneas de elementos con nombres, cantidades y precios. Aplique tasas de impuestos y descuentos según sea necesario. El total se actualiza automáticamente.
+  </Step>
+  <Step title="Defina la dirección de facturación y las notas">
+    Introduzca la dirección de facturación y agregue cualquier nota para el cliente.
+  </Step>
+  <Step title="Envíe o guarde">
+    Haga clic en **Send Invoice** para entregarla de inmediato, o en **Save as Draft** para revisarla primero.
+  </Step>
+</Steps>
+
+<Tip>
+  Las facturas directas son perfectas para solicitudes urgentes, llamadas de consultoría o cualquier trabajo que necesite facturar fuera del flujo de trabajo normal de pedidos. El seguimiento de pagos de las facturas independientes debe gestionarse manualmente.
+</Tip>

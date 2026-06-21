@@ -1,0 +1,70 @@
+---
+title: "Collega PayPal per la Raccolta Sicura dei Pagamenti dai Clienti"
+sidebarTitle: "PayPal"
+description: "Collega il tuo account PayPal ad AgencyHandy e consenti ai clienti di pagare le fatture utilizzando la piattaforma di pagamento affidabile e riconosciuta a livello globale di PayPal."
+---
+
+L'integrazione PayPal di AgencyHandy offre ai tuoi clienti un modo sicuro e familiare per pagare le fatture senza carta di credito. PayPal supporta un'ampia gamma di valute internazionali, rendendolo particolarmente utile per le agenzie con clienti al di fuori del proprio paese.
+
+<Note>
+  PayPal **non può** essere utilizzato per gli upsell a causa delle limitazioni di valuta e regionali a livello di piattaforma. Per i pagamenti di upsell, utilizza Stripe.
+</Note>
+
+<Note>
+  Solo i ruoli **SuperAdmin** e **Admin** possono connettere o gestire l'integrazione PayPal. È necessario avere un account PayPal attivo prima di iniziare.
+</Note>
+
+## Collega PayPal
+
+<Steps>
+  <Step title="Apri le impostazioni dell'Integrazione PayPal">
+    Accedi ad AgencyHandy, quindi vai su **Integrazioni → Integrazione PayPal** nella barra laterale sinistra.
+  </Step>
+
+  <Step title="Avvia la connessione">
+    Clicca su **Connetti PayPal**. Verrai reindirizzato alla pagina di accesso di PayPal.
+  </Step>
+
+  <Step title="Autorizza AgencyHandy">
+    Accedi al tuo account PayPal e verifica le autorizzazioni richieste. Clicca su **Consenti** (o **Concedi**) per autorizzare AgencyHandy ad accedere al tuo account.
+  </Step>
+
+  <Step title="Conferma la connessione">
+    Dopo l'autorizzazione avvenuta con successo, PayPal ti reindirizza ad AgencyHandy. Un messaggio di conferma — **PayPal Connesso** — appare sulla scheda di integrazione. I clienti possono ora pagare le fatture tramite PayPal.
+  </Step>
+</Steps>
+
+## Come i clienti pagano tramite PayPal
+
+Una volta attiva l'integrazione, un pulsante **Paga con PayPal** appare su qualsiasi fattura che invii. Il tuo cliente clicca sul pulsante, accede al proprio account PayPal (o paga come ospite a seconda della propria regione) e completa il pagamento. AgencyHandy aggiorna automaticamente lo stato della fattura quando il pagamento viene confermato da PayPal.
+
+## Valute supportate
+
+AgencyHandy supporta le seguenti valute per i pagamenti PayPal:
+
+| Regione | Valute |
+|---|---|
+| Americhe | USD, CAD, BRL, MXN |
+| Europa | EUR, GBP, CHF, NOK, SEK, DKK, PLN, CZK, HUF |
+| Asia-Pacifico | AUD, NZD, JPY, HKD, SGD, MYR, PHP, THB, TWD |
+| Medio Oriente / Altro | ILS, CNY |
+
+<Warning>
+  Alcune valute hanno delle restrizioni:
+  - **JPY** e alcune altre non supportano importi decimali — evita totali di fattura frazionari.
+  - **BRL** è disponibile solo per gli account PayPal brasiliani. Se il tuo account non è basato in Brasile, i pagamenti in BRL vengono automaticamente convertiti nella tua valuta principale.
+  - Alcune valute sono disponibili solo per account nazionali. Verifica che la valuta di detenzione del tuo account corrisponda alla valuta della fattura per evitare errori.
+</Warning>
+
+<Note>
+  PayPal applica le proprie commissioni di conversione e spread quando si verifica una conversione di valuta. Questi non sono controllati da AgencyHandy.
+</Note>
+
+## Testa l'integrazione
+
+Prima di utilizzare PayPal per le fatture reali dei clienti, esegui un test rapido:
+
+1. Crea una fattura di prova in AgencyHandy utilizzando una [valuta supportata](#supported-currencies).
+2. Invia la fattura a un account PayPal secondario che controlli.
+3. Completa il pagamento dall'account secondario.
+4. Torna ad AgencyHandy e verifica che lo stato della fattura sia aggiornato a **Pagato** e che i fondi siano visibili nel tuo account PayPal.

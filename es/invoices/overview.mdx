@@ -1,0 +1,100 @@
+---
+title: "Resumen de la gestión de facturas para agencias en AgencyHandy"
+sidebarTitle: "Facturas"
+description: "Explore el sistema de facturación de AgencyHandy: facturación, seguimiento de pagos, facturas recurrentes, estados, facturas directas y exportación de registros financieros."
+---
+
+La función de facturas de AgencyHandy ofrece a su agencia un sistema completo de gestión de facturación y pagos dentro de la misma plataforma que usa para gestionar clientes, pedidos y proyectos. Puede crear facturas profesionales, enviarlas a los clientes por correo electrónico, hacer seguimiento del estado de pago en tiempo real, automatizar la facturación recurrente de servicios por suscripción y exportar sus registros financieros cuando lo necesite. Cada factura se asocia automáticamente con el logotipo y la dirección de su agencia, manteniendo sus comunicaciones siempre coherentes con su marca.
+
+## Quién puede crear facturas
+
+Solo los usuarios con los siguientes roles pueden crear y gestionar facturas:
+
+- **Super Admin**
+- **Admin**
+- **Project Manager (PM)**
+
+Los clientes pueden ver y descargar facturas, pero no pueden crearlas ni editarlas.
+
+## Panel de facturas
+
+Para abrir el panel de facturas, haga clic en **Invoices** en la barra lateral izquierda. Desde aquí puede:
+
+- Crear, editar y eliminar facturas
+- Buscar facturas por **client name**, **order ID** o **service name**
+- Filtrar y ordenar la lista de facturas
+- Ver el estado de las facturas de un vistazo
+- Acceder a la configuración de facturas, incluida la configuración del prefijo
+
+## Qué hacen las facturas
+
+<CardGroup cols={2}>
+  <Card title="Facturación y emisión de facturas" icon="file-invoice-dollar">
+    Cree y envíe facturas profesionales para cualquier servicio o producto que entregue a los clientes, con control total sobre los importes, descuentos y fechas de vencimiento.
+  </Card>
+  <Card title="Seguimiento de pagos" icon="chart-line">
+    Supervise si las facturas se han visto, pagado o están vencidas. El sistema registra automáticamente las fechas de pago y de anulación a medida que cambian los estados.
+  </Card>
+  <Card title="Facturación recurrente" icon="rotate">
+    Automatice la generación de facturas para servicios por suscripción. AgencyHandy genera y entrega facturas recurrentes en cada ciclo de facturación sin intervención manual.
+  </Card>
+  <Card title="Integración con proyectos" icon="diagram-project">
+    Vincule las facturas directamente a pedidos y servicios para que la facturación esté siempre ligada al trabajo subyacente. Los elementos facturables pueden agregarse con precisión a cada factura.
+  </Card>
+</CardGroup>
+
+## Estados de las facturas
+
+Cada factura pasa por un ciclo de vida definido. Comprender estos estados le ayuda a gestionar sus cuentas por cobrar de forma eficaz.
+
+| Estado | Descripción |
+|--------|-------------|
+| **Draft** | La factura se ha creado pero no se ha finalizado. Puede editar cualquier parte de ella. Cuando esté lista, finalícela cambiando el estado a Open. Las facturas en borrador que no estén vinculadas a una suscripción pueden eliminarse. |
+| **Open / Unpaid** | La factura está finalizada y a la espera de pago. La agencia la envía al cliente, quien puede verla y pagarla. Puede cambiar una factura Open a Paid, Void o Uncollectable. |
+| **Paid** | La factura ha sido pagada. El sistema registra la fecha de pago automáticamente cuando marca una factura como Paid. |
+| **Void** | La factura ha sido cancelada. El sistema registra la fecha de anulación automáticamente. |
+| **Uncollectable** | Es poco probable que el cliente pague. Trate esto como una deuda incobrable en su proceso contable. |
+
+<Note>
+  Cuando envía una factura a un cliente usando el botón **Send to Client**, el estado cambia automáticamente de **Draft** a **Open**. Solo la agencia puede cambiar el estado de Open a Paid, Void o Uncollectable.
+</Note>
+
+## Facturas directas (sin ID de pedido)
+
+AgencyHandy admite **Facturas directas**: facturas que no están vinculadas a ningún pedido existente. Esto resulta útil para facturación puntual, pagos ad hoc o para facturar a contactos que aún no están registrados como clientes en su sistema.
+
+Capacidades clave de las facturas directas:
+
+- Enviar facturas sin seleccionar un Order ID
+- Facturar a cualquier cliente existente o usar **Independent Email** para enviar a cualquier dirección de correo electrónico
+- Agregar elementos, impuestos y descuentos manualmente
+- Enviar de inmediato o guardar como borrador
+
+<Tip>
+  Use las facturas directas cuando necesite facturar a un cliente rápidamente por un trabajo que no tiene un pedido formal en AgencyHandy, como proyectos urgentes, llamadas de consultoría o trabajos fuera del alcance.
+</Tip>
+
+## Exportar facturas
+
+Puede exportar su lista de facturas para usarla en herramientas contables externas o para llevar registros. La exportación incluye todas las columnas visibles: ID de factura, nombre del cliente, servicio, importes, estado y fechas. Acceda a la opción de exportación desde el panel de facturas.
+
+## Configuración de facturas
+
+Configure los ajustes globales de las facturas desde el botón **Settings** en la esquina superior derecha del panel de facturas. Esto incluye:
+
+- **Invoice prefix**: personalice el prefijo que aparece antes de cada número de factura
+- **Reminder templates**: configure recordatorios de pago automáticos para facturas abiertas
+
+## Funciones relacionadas
+
+<CardGroup cols={3}>
+  <Card title="Crear una factura" icon="plus" href="/es/invoices/create-invoice">
+    Guía paso a paso para crear, completar y enviar una factura.
+  </Card>
+  <Card title="Suscripciones" icon="rotate" href="/es/invoices/subscriptions">
+    Cómo funciona la facturación recurrente y cómo gestionar las facturas de suscripción.
+  </Card>
+  <Card title="Tickets de soporte" icon="ticket" href="/es/tickets/support-tickets">
+    Gestione las preguntas de facturación de los clientes a través del sistema de tickets de soporte.
+  </Card>
+</CardGroup>

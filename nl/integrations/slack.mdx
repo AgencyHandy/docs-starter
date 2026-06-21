@@ -1,0 +1,69 @@
+---
+title: "Verbind Slack om Real-Time AgencyHandy-meldingen te Ontvangen"
+sidebarTitle: "Slack"
+description: "Koppel uw Slack-werkruimte aan AgencyHandy zodat bestelling-updates, taakwijzigingen en ticketmeldingen automatisch naar een Slack-kanaal worden gestuurd."
+---
+
+De Slack-integratie van AgencyHandy houdt uw team op de hoogte zonder dat iemand tussen apps hoeft te wisselen. Eenmaal verbonden plaatst AgencyHandy automatische meldingen in het Slack-kanaal van uw keuze wanneer taken, bestellingen of andere werkruimte-activiteiten veranderen — zodat uw team altijd in real time weet wat er speelt.
+
+<Note>
+  Alleen **SuperAdmin**-, **Admin**- en **Manager**-rollen (met integratiemachtigingen) kunnen de Slack-integratie verbinden of beheren. U heeft beheerdersrechten voor de Slack-werkruimte nodig om de verbinding te autoriseren.
+</Note>
+
+## Slack verbinden
+
+<Steps>
+  <Step title="Open Integraties">
+    Klik in de linker zijbalk op **Integraties**.
+  </Step>
+
+  <Step title="Zoek de Slack-kaart">
+    Scroll naar de **Slack**-kaart en klik op **Verbinden**.
+  </Step>
+
+  <Step title="AgencyHandy autoriseren in Slack">
+    Er opent een Slack-autorisatievenster. Als u nog niet bent aangemeld bij uw Slack-werkruimte, doe dat dan nu. Bekijk de machtigingen die AgencyHandy aanvraagt en klik op **Toestaan** om toegang te verlenen.
+  </Step>
+
+  <Step title="Selecteer een meldingskanaal">
+    Kies na autorisatie het Slack-kanaal waar u AgencyHandy-meldingen wilt ontvangen. Selecteer een kanaal uit de vervolgkeuzelijst en klik op **Opslaan** om te bevestigen.
+  </Step>
+
+  <Step title="Bevestig de instelling">
+    De Slack-kaart wordt bijgewerkt en toont **Verbonden**. AgencyHandy begint onmiddellijk meldingen te plaatsen in het geselecteerde kanaal.
+  </Step>
+</Steps>
+
+## Welke meldingen worden naar Slack gestuurd
+
+AgencyHandy plaatst een Slack-bericht wanneer een van de volgende gebeurtenissen plaatsvindt:
+
+| Categorie | Gebeurtenissen die een melding activeren |
+|---|---|
+| **Taken** | Taak aangemaakt, bijgewerkt, toegewezen of voltooid |
+| **Bestellingen** | Bestelling aangemaakt of status gewijzigd |
+| **Opmerkingen** | Nieuwe opmerking toegevoegd aan een taak of bestelling |
+| **Bestandsbijlagen** | Bestand of bijlage toegevoegd aan een taak |
+| **Tickets** | Ticket aangemaakt, toegewezen of status gewijzigd |
+
+Elk Slack-bericht bevat:
+
+- De **naam** van de taak, bestelling of het ticket
+- De **statuswijziging** of actie die het bericht heeft geactiveerd
+- Een **koppeling** terug naar het betreffende item in AgencyHandy
+
+Wanneer een bestand of bijlage aan een taak wordt toegevoegd, bevat het Slack-bericht ook een voorbeeld van die bijlage.
+
+<Tip>
+  Kies een toegewijd **#agency-handy-meldingen**-kanaal (of vergelijkbaar) om meldingen georganiseerd te houden en te voorkomen dat ze uw belangrijkste teamkanalen vervuilen.
+</Tip>
+
+## Slack verbreken
+
+Om meldingen te stoppen, gaat u terug naar **Integraties** en klikt u op **Verbreken** op de Slack-kaart. Alle meldingen stoppen onmiddellijk.
+
+## Belangrijke opmerkingen
+
+- **Één werkruimte per verbinding** — u kunt slechts één Slack-werkruimte verbinden met elke AgencyHandy-werkruimte. Om over te schakelen naar een andere Slack-werkruimte, verbreekt u de huidige verbinding en maakt u opnieuw verbinding.
+- **Kanaalzichtbaarheid** — meldingen zijn zichtbaar voor iedereen in het geselecteerde Slack-kanaal. Zorg ervoor dat het kanaal geschikt is voor het detailniveau dat wordt gedeeld (bijv. vermijd het plaatsen van gevoelige klantbestelgegevens in een openbaar kanaal).
+- **Hernieuwde autorisatie** — als uw Slack-token verloopt of machtigingen wijzigen, gaat u terug naar Integraties en maakt u opnieuw verbinding om meldingen te herstellen.

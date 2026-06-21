@@ -1,0 +1,217 @@
+---
+title: "Buat dan Kirim Proposal kepada Klien di AgencyHandy"
+sidebarTitle: "Proposal"
+description: "Bangun, sesuaikan, dan kirim proposal profesional di AgencyHandy — mencakup harga layanan, paket, penerimaan klien, dan pembuatan pesanan otomatis."
+---
+
+Fitur Proposal AgencyHandy memberi Anda alur kerja profesional dari ujung ke ujung untuk mengubah pertanyaan menjadi proyek aktif. Anda dapat membangun proposal terperinci dengan layanan, paket, add-on, pajak, dan ketentuan hukum — kemudian mengirimkannya kepada klien atau lead langsung dari platform. Setelah klien menerima, AgencyHandy dapat secara otomatis membuat pesanan dan invoice, menghilangkan bolak-balik manual yang memperlambat kesepakatan.
+
+<Note>
+  Hanya **Super Admin** dan **Admin** yang dapat membuat dan mengirim proposal. Project Manager (PM) dapat melihat proposal tetapi tidak dapat mengirimnya.
+</Note>
+
+## Dashboard Proposal
+
+Untuk membuka Dashboard Proposal, klik **Proposals** di sidebar kiri. Dashboard mencantumkan semua proposal yang telah dikirim dan diterima serta menampilkan:
+
+- **Status** — Draft, Sent, Accepted, atau Pending
+- **Tanggal pembuatan**, **tanggal pengiriman**, dan **tanggal kedaluwarsa**
+- **Status tampilan** — apakah klien telah membuka proposal
+- Menu tindakan untuk **mengedit**, **mengirim**, **berbagi**, atau **menghapus** setiap proposal
+
+Anda dapat mencari proposal berdasarkan ID dan memfilter atau mengurutkan daftar untuk menemukan yang Anda butuhkan dengan cepat.
+
+## Membuat Proposal
+
+Klik **Create Proposal** untuk membuka pembuat proposal. Ini diorganisasi menjadi tiga bagian: **Overview**, **Terms & Conditions**, dan **Setup**.
+
+### Overview
+
+Bagian Overview adalah tempat Anda membangun konten dan harga proposal.
+
+#### Informasi Proposal & Klien
+
+Isi kolom berikut di bagian atas proposal:
+
+- **Proposal Name** dan **Proposal ID**
+- **Client or Lead** — mendukung beberapa alamat email; tandai satu sebagai Utama
+- **Company Name** dan **Address** (negara, negara bagian, kota, kode ZIP, detail tambahan)
+- **Assignee**, **Send Date**, dan **Expiry Date**
+
+#### Blok Konten
+
+Setiap blok konten menggunakan editor tertanam sehingga Anda dapat menyesuaikan narasi untuk setiap klien:
+
+- **Introduction** — tetapkan konteks dan latar belakang keterlibatan
+- **About Us** — soroti keahlian agensi Anda
+- **What You Get** — tentukan ruang lingkup dan hasil yang dapat dikirimkan dengan jelas
+- **Guarantee** — uraikan jaminan atau komitmen apa pun
+
+#### Penawaran — Layanan, Paket, Add-on & Pajak
+
+Bagian Penawaran adalah tempat Anda mengonfigurasi harga.
+
+<Accordion title="Services">
+  Tambahkan satu atau lebih layanan ke proposal. Untuk setiap layanan, Anda dapat:
+
+  - Memilih **tipe harga**: Sekali bayar atau Berlangganan
+  - Memilih **mata uang layanan** (layanan berbeda dapat menggunakan mata uang berbeda dalam proposal yang sama)
+</Accordion>
+
+<Accordion title="Packages">
+  Di dalam setiap layanan, tambahkan paket yang ada atau buat yang baru secara langsung. Untuk setiap paket, tentukan:
+
+  - Nama paket
+  - Kuantitas dan harga per unit
+  - Jumlah total
+
+  Anda dapat menghapus paket kapan saja sebelum pengiriman.
+</Accordion>
+
+<Accordion title="Add-ons">
+  Lampirkan add-on opsional ke layanan mana pun. Add-on muncul sebagai ekstra yang dapat dilihat klien di samping harga layanan inti. Anda dapat membuat add-on baru langsung dari pembuat proposal tanpa meninggalkan formulir.
+</Accordion>
+
+<Accordion title="Items">
+  Tambahkan item kustom sekali bayar dengan kuantitas dan harga per unit yang ditentukan. Item berguna untuk biaya ad-hoc seperti biaya pengaturan atau hasil yang dapat dikirimkan sekali.
+</Accordion>
+
+<Accordion title="Tax Rates">
+  Terapkan tarif pajak yang ada atau buat yang baru langsung dari proposal. Pilih apakah setiap pajak bersifat **Eksklusif** (ditambahkan di atas harga) atau **Inklusif** (sudah termasuk). Pajak dihitung per layanan.
+</Accordion>
+
+### Terms & Conditions
+
+Gunakan bagian Terms & Conditions untuk menambahkan bahasa hukum khusus proposal. Sertakan kebijakan pembatalan, ketentuan pengembalian dana, hak penggunaan, dan kondisi lain yang relevan dengan keterlibatan. Bagian ini membantu memastikan kedua belah pihak memahami kewajiban mereka sebelum penerimaan.
+
+### Setup
+
+Bagian Setup mengontrol apa yang terjadi setelah proposal dikirim.
+
+<CardGroup cols={2}>
+  <Card title="Tindakan Pasca-penerimaan" icon="bolt">
+    Pilih apa yang dilakukan AgencyHandy saat proposal diterima: **Do Nothing**, atau **Create Order & Invoice** secara otomatis.
+  </Card>
+  <Card title="Pengingat" icon="bell">
+    Konfigurasi notifikasi pengingat untuk mendorong klien yang belum merespons pada tanggal kedaluwarsa.
+  </Card>
+  <Card title="Perlindungan Kata Sandi" icon="lock">
+    Tambahkan kata sandi ke tautan proposal publik sehingga hanya penerima yang dituju yang dapat melihatnya.
+  </Card>
+  <Card title="Komentar" icon="message">
+    Izinkan klien meninggalkan komentar pada tampilan proposal publik untuk diskusi bolak-balik yang lebih mudah.
+  </Card>
+</CardGroup>
+
+## Mengirim Proposal
+
+Kapan saja selama pembuatan, Anda dapat menyimpan proposal sebagai **Draft** atau **Pratinjau**. Saat sudah siap, klik **Send** untuk mengirimkannya ke klien atau lead.
+
+Setelah pengiriman:
+
+- Tautan publik dibuat secara otomatis
+- Status proposal diperbarui dari **Draft** menjadi **Sent**
+- AgencyHandy melacak apakah klien telah melihat proposal
+
+Dari menu tindakan proposal Anda juga dapat mengirim ulang, mengunduh, berbagi tautan publik, melihat komentar, atau menghapus proposal.
+
+## Mengirim Proposal dengan Paket Tertentu
+
+Jika Anda ingin mengirim proposal cepat yang terkait langsung dengan paket layanan tertentu, gunakan formulir pintasan **Create Proposal**:
+
+<Steps>
+  <Step title="Buka bagian Proposal">
+    Buka **Proposals** di sidebar kiri dan klik **+ Create Proposal**.
+  </Step>
+  <Step title="Isi formulir proposal">
+    Masukkan **nama klien** dan pilih **layanan**. Jika layanan memiliki beberapa paket, paket tersebut akan muncul secara otomatis — pilih yang sesuai.
+
+    Secara opsional, tetapkan **Manajer** untuk proposal.
+  </Step>
+  <Step title="Tambahkan detail pesanan">
+    Tulis **Order Brief** (wajib) yang mendeskripsikan apa yang akan diterima klien. Lampirkan file pendukung hingga 1 GB.
+  </Step>
+  <Step title="Tetapkan harga dan ketentuan">
+    Konfirmasi **tipe harga** (sekali bayar atau berlangganan), tetapkan **durasi**, **kuantitas**, **anggaran**, dan **mata uang**. Tambahkan **Terms and Conditions** yang relevan dengan proposal.
+  </Step>
+  <Step title="Buat dan kirim">
+    Klik **Create** untuk menyelesaikan dan mengirim proposal ke klien. Proposal akan muncul di daftar Sent Anda dan bagian Received klien.
+  </Step>
+</Steps>
+
+<Note>
+  Periksa kembali harga dan durasi yang terisi otomatis sebelum mengklik Create. Setelah dikirim, klien dapat menerima, menolak, atau mengunduh proposal dari bagian Received mereka.
+</Note>
+
+## Siklus Hidup Status Proposal
+
+| Status | Artinya |
+|--------|---------|
+| **Draft** | Proposal telah dibuat tetapi belum dikirim. |
+| **Sent** | Proposal telah dikirimkan ke klien atau lead. |
+| **Pending** | Klien telah meninjau dan mengirim kembali proposal untuk diskusi. |
+| **Accepted** | Salah satu pihak telah secara resmi menerima ketentuan proposal. Pesanan dibuat secara otomatis jika dikonfigurasi. |
+| **Rejected** | Salah satu pihak telah menolak proposal. Pengirim menerima notifikasi beserta alasannya. |
+
+## Menerima Proposal
+
+Agensi atau klien dapat menerima proposal yang diterima. Saat penerimaan terjadi, AgencyHandy membuat pesanan secara otomatis (jika dikonfigurasi di Setup).
+
+<Steps>
+  <Step title="Buka proposal yang Diterima">
+    Klik **Proposals** di sidebar, lalu pilih tab **Received**.
+  </Step>
+  <Step title="Buka proposal">
+    Pilih proposal yang ingin Anda terima dari daftar dan tinjau detailnya.
+  </Step>
+  <Step title="Klik Accept">
+    Klik tombol **Accept** untuk secara resmi menerima proposal. Status diperbarui segera dan kedua belah pihak diberitahu.
+  </Step>
+</Steps>
+
+<Note>
+  Jika agensi yang menerima, Super Admin dan Admin menerima notifikasi. Jika klien yang menerima, AgencyHandy memberitahu pengguna Super Admin dan Admin agensi.
+</Note>
+
+## Menolak Proposal
+
+Jika ketentuan, harga, atau ruang lingkup yang diusulkan tidak sesuai dengan kebutuhan Anda, Anda dapat menolak proposal dan memberikan alasan.
+
+<Steps>
+  <Step title="Buka proposal yang Diterima">
+    Buka **Proposals → Received**.
+  </Step>
+  <Step title="Pilih dan tinjau proposal">
+    Pilih proposal yang ingin Anda tolak dan tinjau detailnya.
+  </Step>
+  <Step title="Klik Reject">
+    Klik **Reject** dan konfirmasi keputusan Anda. Pengirim proposal menerima notifikasi beserta alasan yang Anda berikan.
+  </Step>
+</Steps>
+
+<Warning>
+  Proposal yang ditolak **tidak dapat dikirim ulang**. Kedua belah pihak harus membuat proposal baru untuk memulai negosiasi kembali.
+</Warning>
+
+## Tampilan Proposal Publik
+
+Saat Anda mengirim proposal, klien menerima tautan ke tampilan publik di mana mereka dapat:
+
+- Meninjau semua layanan, harga, paket, dan pajak
+- Menerima atau menolak proposal
+- Meninggalkan komentar (jika komentar diaktifkan)
+- Mengakses proposal dengan aman menggunakan kata sandi (jika perlindungan kata sandi diaktifkan)
+
+## Catatan Tambahan
+
+<Accordion title="Beberapa email dan lead">
+  Anda dapat menambahkan beberapa alamat email ke satu proposal dan menandai satu sebagai kontak Utama. Proposal bekerja dengan klien terdaftar maupun lead yang belum terdaftar.
+</Accordion>
+
+<Accordion title="Pesanan dan invoice yang dibuat otomatis">
+  Saat Anda mengonfigurasi bagian Setup ke "Create Order & Invoice" pada penerimaan, AgencyHandy secara otomatis membuat pesanan dan invoice yang tertaut pada saat proposal diterima — tidak diperlukan langkah manual.
+</Accordion>
+
+<Accordion title="Pelacakan aktivitas proposal">
+  Setiap proposal menyertakan jejak aktivitas lengkap. Anda dapat melihat kapan proposal dibuat, dikirim, dilihat, diterima, atau ditolak, semuanya dari dalam AgencyHandy.
+</Accordion>

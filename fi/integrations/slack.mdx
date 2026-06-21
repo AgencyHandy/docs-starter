@@ -1,0 +1,69 @@
+---
+title: "Yhdistä Slack vastaanottaaksesi AgencyHandyn reaaliaikaiset ilmoitukset"
+sidebarTitle: "Slack"
+description: "Linkitä Slack-työtilasi AgencyHandyyn, jotta tilausten päivitykset, tehtävämuutokset ja tukipyyntöilmoitukset julkaistaan automaattisesti Slack-kanavalle."
+---
+
+AgencyHandyn Slack-integraatio pitää tiimisi ajan tasalla ilman, että kenenkään tarvitsee vaihtaa sovelluksesta toiseen. Kun yhteys on muodostettu, AgencyHandy lähettää automaattisia ilmoituksia valitsemallesi Slack-kanavalle aina, kun tehtävät, tilaukset tai muut työtilan toiminnot muuttuvat — joten tiimisi tietää aina mitä tapahtuu reaaliajassa.
+
+<Note>
+  Ainoastaan **SuperAdmin**-, **Admin**- ja **Manager**-roolit (joilla on integraatio-oikeudet) voivat yhdistää tai hallita Slack-integraatiota. Tarvitset Slack-työtilan järjestelmänvalvojan oikeudet yhteyden valtuuttamiseen.
+</Note>
+
+## Yhdistä Slack
+
+<Steps>
+  <Step title="Avaa Integrations">
+    Napsauta vasemmassa sivupalkissa **Integrations**.
+  </Step>
+
+  <Step title="Etsi Slack-kortti">
+    Vieritä kohtaan **Slack**-kortti ja napsauta **Connect**.
+  </Step>
+
+  <Step title="Valtuuta AgencyHandy Slackissa">
+    Slack-valtuutusikkuna avautuu. Jos et ole vielä kirjautunut Slack-työtilaan, kirjaudu nyt. Tarkista AgencyHandyn pyytämät käyttöoikeudet ja napsauta **Allow** myöntääksesi pääsyn.
+  </Step>
+
+  <Step title="Valitse ilmoituskanava">
+    Valtuutuksen jälkeen valitse Slack-kanava, jolle haluat AgencyHandyn ilmoitusten näkyvän. Valitse kanava pudotusvalikosta ja vahvista napsauttamalla **Save**.
+  </Step>
+
+  <Step title="Vahvista asennus">
+    Slack-kortti päivittyy näyttämään **Connected**. AgencyHandy alkaa välittömästi lähettää ilmoituksia valitulle kanavalle.
+  </Step>
+</Steps>
+
+## Mitä ilmoituksia lähetetään Slackiin
+
+AgencyHandy lähettää Slack-viestin aina, kun jokin seuraavista tapahtumista ilmenee:
+
+| Kategoria | Ilmoituksen käynnistävät tapahtumat |
+|---|---|
+| **Tehtävät** | Tehtävä luotu, päivitetty, osoitettu tai suoritettu |
+| **Tilaukset** | Tilaus luotu tai tila muuttunut |
+| **Kommentit** | Uusi kommentti lisätty tehtävään tai tilaukseen |
+| **Tiedostoliitteet** | Tiedosto tai liite lisätty tehtävään |
+| **Tukipyynnöt** | Tukipyyntö luotu, osoitettu tai tila muuttunut |
+
+Jokainen Slack-viesti sisältää:
+
+- Tehtävän, tilauksen tai tukipyynnön **nimen**
+- **Tilamuutoksen** tai toiminnon, joka käynnisti viestin
+- **Linkin** takaisin kyseiseen kohteeseen AgencyHandyssa
+
+Kun tehtävään lisätään tiedosto tai liite, Slack-viesti sisältää myös esikatselun kyseisestä liitteestä.
+
+<Tip>
+  Valitse erillinen **#agency-handy-alerts**-kanava (tai vastaava) pitääksesi ilmoitukset järjestyksessä ja estääksesi niitä tukkimasta päätiimikanaviasi.
+</Tip>
+
+## Katkaise Slack-yhteys
+
+Lopettaaksesi ilmoitukset, palaa kohtaan **Integrations** ja napsauta **Disconnect** Slack-kortissa. Kaikki ilmoitukset pysähtyvät välittömästi.
+
+## Tärkeät huomiot
+
+- **Yksi työtila per yhteys** — voit yhdistää vain yhden Slack-työtilan kuhunkin AgencyHandy-työtilaan. Vaihtaaksesi eri Slack-työtilaan, katkaise nykyinen yhteys ja muodosta uusi.
+- **Kanavan näkyvyys** — ilmoitukset näkyvät kaikille valitulla Slack-kanavalla. Varmista, että kanava sopii jaettavan tiedon yksityisyystasoon (esim. vältä asiakasarkaluonteisten tilausyksityiskohtien julkaisemista julkiselle kanavalle).
+- **Uudelleenvaltuutus** — jos Slack-tunnuksesi vanhenee tai käyttöoikeudet muuttuvat, palaa kohtaan Integrations ja muodosta yhteys uudelleen ilmoitusten palauttamiseksi.

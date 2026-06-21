@@ -1,0 +1,132 @@
+---
+title: "Gerenciar Membros e Funções da Equipe da Agência no AgencyHandy"
+sidebarTitle: "Gerenciar Equipe"
+description: "Convide membros da equipe por e-mail, atribua funções e permissões, altere funções de membros existentes e remova usuários do espaço de trabalho da sua agência no AgencyHandy."
+---
+
+O recurso de Equipes do AgencyHandy oferece uma forma segura e organizada de construir e gerenciar a força de trabalho da sua agência. Você convida membros por e-mail, atribui uma função que controla o que eles podem ver e fazer, e eles recebem um link de login seguro para concluir o processo de integração. À medida que sua equipe evolui, você pode atualizar funções a qualquer momento ou remover membros para manter o acesso restrito e relevante.
+
+## Acessando o Painel da Equipe
+
+Clique em **Equipes** na barra lateral esquerda para abrir o Painel da Equipe. Aqui você vê uma lista de todos os membros atuais da equipe junto com suas funções atribuídas. Nesta visualização você pode convidar novos membros, atualizar funções e remover pessoas do espaço de trabalho.
+
+## Funções no AgencyHandy
+
+O AgencyHandy possui cinco funções padrão, cada uma com níveis de permissão predefinidos. Quando você convida um membro da equipe, você atribui uma dessas funções. Você pode alterar a função de um membro a qualquer momento após sua entrada.
+
+| Função | Capacidades Típicas |
+|------|---------------------|
+| **Super Admin** | Acesso total a tudo — todas as configurações, todos os dados, todas as ações de gerenciamento de equipe |
+| **Admin** | Acesso amplo incluindo faturas, propostas, pedidos, gerenciamento de equipe e configurações |
+| **Gerente de Projetos (GP)** | Gerencia pedidos atribuídos a ele, visualiza tarefas de seus pedidos, pode convidar membros da equipe |
+| **Funcionário** | Limitado às tarefas diretamente atribuídas a ele; sem acesso a seções financeiras ou administrativas |
+
+<Note>
+  Somente **Super Admins** e **Admins** podem alterar funções ou excluir membros da equipe. GPs podem convidar novos membros, mas não podem alterar ou remover os existentes.
+</Note>
+
+## Convidando um Membro da Equipe
+
+<Steps>
+  <Step title="Abrir o Painel da Equipe">
+    Clique em **Equipes** na barra lateral esquerda.
+  </Step>
+  <Step title="Clicar em + Criar Equipe">
+    Clique no botão **+ Criar Equipe**. Um formulário de convite será exibido.
+  </Step>
+  <Step title="Inserir o endereço de e-mail">
+    Digite o endereço de e-mail da pessoa que deseja convidar. Este campo é obrigatório.
+  </Step>
+  <Step title="Atribuir uma função">
+    Selecione a função adequada no menu suspenso. Escolha com cuidado — isso determina o que o novo membro pode acessar a partir do seu primeiro login.
+  </Step>
+  <Step title="Enviar o convite">
+    Clique em **Convidar**. O AgencyHandy envia à pessoa convidada um e-mail com:
+    - Uma **URL de login segura** para o espaço de trabalho da sua agência
+    - Uma **senha gerada automaticamente** para usar no primeiro login
+  </Step>
+  <Step title="Membro conclui a integração">
+    O membro convidado segue o link no e-mail, faz login com as credenciais fornecidas e conclui o processo de integração. Uma vez que façam login, são adicionados ao espaço de trabalho da sua agência e podem começar a colaborar imediatamente.
+  </Step>
+</Steps>
+
+<Tip>
+  Peça ao novo membro da equipe que altere sua senha gerada automaticamente para algo seguro após o primeiro login.
+</Tip>
+
+## Definindo Funções para Membros da Equipe
+
+Você pode atribuir ou atualizar funções de duas formas: durante o convite ou depois que o membro já entrou.
+
+<Tabs>
+  <Tab title="Durante o Convite">
+    Ao preencher o formulário de convite, selecione a função no menu suspenso antes de clicar em **Convidar**. A função entra em vigor assim que o membro fizer login pela primeira vez.
+  </Tab>
+  <Tab title="Para Membros Existentes">
+    1. Vá para **Equipes** na barra lateral esquerda para abrir o Painel da Equipe.
+    2. Encontre o membro da equipe cuja função deseja alterar.
+    3. Clique no botão de **seta para baixo** à direita do nome dele.
+    4. Uma lista de nomes de funções padrão será exibida. Selecione a nova função.
+    5. A função é atualizada imediatamente — não é necessário salvar.
+  </Tab>
+</Tabs>
+
+<Warning>
+  Somente **Super Admins** e **Admins** podem alterar a função de um membro da equipe existente.
+</Warning>
+
+## Resumo das Permissões por Função
+
+Use esta tabela como referência rápida ao decidir qual função atribuir.
+
+| Recurso | Super Admin | Admin | GP | Funcionário |
+|---------|:-----------:|:-----:|:--:|:--------:|
+| Criar e enviar propostas | ✅ | ✅ | ❌ | ❌ |
+| Criar e gerenciar faturas | ✅ | ✅ | ✅ | ❌ |
+| Gerenciar todos os pedidos | ✅ | ✅ | Apenas atribuídos | ❌ |
+| Visualizar todas as tarefas | ✅ | ✅ | Apenas pedidos atribuídos | Apenas tarefas atribuídas |
+| Convidar membros da equipe | ✅ | ✅ | ✅ | ❌ |
+| Alterar funções / remover membros | ✅ | ✅ | ❌ | ❌ |
+| Acessar configurações de fatura e agência | ✅ | ✅ | ❌ | ❌ |
+| Cancelar assinaturas | ✅ | ✅ | ❌ | ❌ |
+| Exportar dados de planilha de horas | ✅ | ✅ | ✅ | ❌ |
+
+## Removendo um Membro da Equipe
+
+Quando alguém sai da sua agência ou não precisa mais de acesso, remova-o do espaço de trabalho para proteger seus dados.
+
+<Steps>
+  <Step title="Abrir o Painel da Equipe">
+    Navegue até **Equipes** na barra lateral esquerda.
+  </Step>
+  <Step title="Selecionar o membro a remover">
+    Marque a caixa de seleção ao lado do membro da equipe que deseja remover. O botão **Excluir** ficará ativo.
+  </Step>
+  <Step title="Clicar em Excluir">
+    Clique no botão **Excluir**. Um modal de confirmação será exibido.
+  </Step>
+  <Step title="Confirmar a remoção">
+    Confirme sua decisão. O AgencyHandy revoga imediatamente o acesso do membro ao espaço de trabalho e a todos os recursos associados.
+  </Step>
+  <Step title="Concluir as transferências necessárias">
+    Após a remoção, reatribua quaisquer tarefas ou pedidos abertos pelos quais o membro era responsável e atualize a documentação e permissões de acesso relevantes de acordo.
+  </Step>
+</Steps>
+
+<Warning>
+  Remover um membro da equipe **não pode ser desfeito**. O acesso dele é revogado permanentemente. Se precisar dar acesso à mesma pessoa novamente no futuro, você deve enviar um novo convite.
+</Warning>
+
+## Notas Adicionais
+
+<Accordion title="Integração segura por e-mail">
+  Cada convite é entregue por meio de uma URL de login segura. A pessoa convidada usa essa URL junto com uma senha gerada automaticamente para acessar a plataforma pela primeira vez. Isso garante que somente a pessoa pretendida obtenha acesso.
+</Accordion>
+
+<Accordion title="Alterações de função têm efeito imediato">
+  Quando você atualiza a função de um membro da equipe, a alteração é aplicada instantaneamente. Não há etapa de pendência ou confirmação — as novas permissões do membro estão ativas no próximo carregamento de página.
+</Accordion>
+
+<Accordion title="Membros da equipe e visibilidade de tarefas">
+  Um Funcionário pode ver apenas as tarefas que estão diretamente atribuídas a ele. Um GP pode ver apenas as tarefas dentro dos pedidos em que está atribuído como Gerente. Super Admins e Admins veem tudo. Tenha isso em mente ao atribuir funções para evitar confusão sobre tarefas ou pedidos que parecem estar faltando.
+</Accordion>

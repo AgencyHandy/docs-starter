@@ -1,0 +1,119 @@
+---
+title: "Autentificare în AgencyHandy: Accesează Dashboard-ul Agenției Tale"
+sidebarTitle: "Autentificare"
+description: "Ghid pas cu pas pentru autentificarea în AgencyHandy cu datele tale de acces sau prin Google SSO, menținerea sesiunii active și resetarea parolei în caz de uitare."
+---
+
+Autentificarea în AgencyHandy îți oferă acces imediat la spațiul de lucru al agenției tale — de la comenzile în așteptare și comunicările cu clienții, la sarcini, facturi și gestionarea echipei. Fiecare autentificare este legată de numele unic al spațiului tău de lucru, astfel încât AgencyHandy poate să te direcționeze către contul corect chiar dacă mai multe agenții folosesc aceeași adresă de email.
+
+<Note>
+  Ai nevoie de un cont AgencyHandy înregistrat înainte de a te putea autentifica. Dacă nu ai creat unul încă, urmează mai întâi ghidul de [Înregistrare](/ro/getting-started/sign-up).
+</Note>
+
+## Autentificare cu Email și Parolă
+
+<Steps>
+  <Step title="Accesează site-ul AgencyHandy">
+    Deschide [agencyhandy.com](https://www.agencyhandy.com/) în browser, apoi apasă butonul **Sign In** din navigarea de sus.
+  </Step>
+
+  <Step title="Introdu numele spațiului de lucru">
+    Tastează **Numele Spațiului de Lucru** ales la înregistrare. Acesta este identificatorul unic al agenției tale — numai litere mici, cifre și cratime. Apasă **Continue** pentru a trece la ecranul de credențiale.
+
+    <Tip>
+      Nu ești sigur de numele spațiului de lucru? Verifică emailul de confirmare primit la înregistrare — acesta face referire la URL-ul spațiului tău de lucru.
+    </Tip>
+  </Step>
+
+  <Step title="Introdu emailul și parola">
+    Furnizează **Email ID** și **Parola** asociate contului tău AgencyHandy.
+  </Step>
+
+  <Step title="Rămâi autentificat (opțional)">
+    Bifează căsuța **Keep Log In** dacă dorești ca AgencyHandy să îți rețină sesiunea pe acest dispozitiv. Cu această opțiune activată, nu va trebui să îți introduci din nou credențialele până când nu te deconectezi manual.
+
+    <Warning>
+      Evită activarea opțiunii **Keep Log In** pe computere partajate sau publice. Oricine are acces la acel dispozitiv va putea deschide spațiul tău de lucru fără a introduce o parolă.
+    </Warning>
+  </Step>
+
+  <Step title="Apasă Sign In">
+    Apasă butonul **Sign In**. AgencyHandy autentifică credențialele tale și te duce direct la Dashboard-ul Agenției.
+  </Step>
+</Steps>
+
+## Autentificare cu Google (SSO)
+
+AgencyHandy suportă Single Sign-On (SSO) prin Google, permițându-ți să eviți complet introducerea manuală a parolei.
+
+<Tabs>
+  <Tab title="Cum să folosești Google SSO">
+    <Steps>
+      <Step title="Accesează pagina de autentificare">
+        Navighează la [agencyhandy.com](https://www.agencyhandy.com/) și apasă **Sign In**.
+      </Step>
+      <Step title="Apasă 'Continue with Google'">
+        Pe ecranul de autentificare, apasă butonul **Continue with Google** în loc să introduci numele spațiului de lucru și parola.
+      </Step>
+      <Step title="Selectează contul tău Google">
+        Google te va solicita să alegi contul pe care dorești să îl folosești. Selectează contul a cărui adresă de email corespunde contului tău AgencyHandy.
+      </Step>
+      <Step title="Acordă permisiunile (dacă este solicitat)">
+        La prima autentificare cu Google, ți se poate cere să acorzi AgencyHandy acces la informațiile de bază ale profilului tău. Acceptă permisiunile pentru a continua.
+      </Step>
+      <Step title="Accesează dashboard-ul">
+        AgencyHandy verifică identitatea ta Google și te redirecționează automat la Dashboard-ul Agenției.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Cum funcționează conectarea contului">
+    Când te autentifici cu Google, AgencyHandy verifică dacă adresa de email Google corespunde unui cont existent:
+
+    - **Emailul există deja** — AgencyHandy te autentifică imediat în acel cont.
+    - **Emailul nu există** — AgencyHandy creează un cont nou folosind detaliile profilului tău Google.
+
+    Odată conectat, emailul tău Google devine identitatea principală de autentificare pentru acel spațiu de lucru. Poți în continuare să te autentifici cu emailul și parola dacă ai setat una.
+
+    <Note>
+      Sesiunea SSO se comportă ca o sesiune de autentificare standard. Te poți deconecta în orice moment, iar re-autentificarea cu Google este instantanee la vizita următoare.
+    </Note>
+  </Tab>
+  <Tab title="Note importante">
+    - Folosește **aceeași adresă de email** ca și contul tău AgencyHandy când te autentifici cu Google pentru a asigura o autentificare fără probleme.
+    - Dacă revoci accesul AgencyHandy în setările contului tău Google, autentificarea prin Google SSO va fi blocată. Folosește emailul și parola pentru a recăpăta accesul.
+    - Autentificarea Google urmează protocoalele de securitate proprii Google, inclusiv autentificarea în doi factori dacă o ai activată pe contul tău Google.
+    - Autentificarea bazată pe parolă rămâne disponibilă ca alternativă în orice moment.
+  </Tab>
+</Tabs>
+
+## Resetarea Parolei
+
+Dacă uiți parola, o poți reseta direct de pe pagina de autentificare fără a contacta asistența.
+
+<Steps>
+  <Step title="Apasă 'Forgot Password'">
+    Pe pagina de autentificare AgencyHandy, apasă linkul **Forgot Password** de sub câmpul parolei.
+  </Step>
+  <Step title="Introdu adresa de email înregistrată">
+    Tastează adresa de email asociată contului tău AgencyHandy și trimite formularul. AgencyHandy va trimite un email de resetare a parolei la acea adresă.
+  </Step>
+  <Step title="Copiază codul de verificare">
+    Deschide emailul de resetare din căsuța ta și copiază codul de verificare furnizat.
+  </Step>
+  <Step title="Lipește codul și continuă">
+    Revino la pagina de resetare AgencyHandy, lipește codul în câmpul de verificare și apasă **Continue**.
+  </Step>
+  <Step title="Creează și confirmă noua parolă">
+    Introdu noua parolă în câmpul **New Password** și rescrie-o în câmpul **Confirm Password**. Asigură-te că noua parolă îndeplinește aceleași cerințe ca parola originală:
+    - Cel puțin 8 caractere
+    - Cel puțin o literă majusculă, o literă minusculă, un număr și un caracter special
+    - Fără spații
+  </Step>
+  <Step title="Autentifică-te cu noua parolă">
+    Revino la pagina de autentificare, introdu numele spațiului de lucru și emailul, și autentifică-te folosind noua parolă.
+  </Step>
+</Steps>
+
+<Note>
+  Emailurile de resetare ajung uneori în folderele de spam sau junk. Dacă nu vezi emailul în câteva minute, verifică acolo înainte de a solicita altul.
+</Note>

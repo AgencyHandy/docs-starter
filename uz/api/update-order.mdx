@@ -1,0 +1,205 @@
+---
+title: "AgencyHandy API: PUT orqali mavjud buyurtmani yangilash"
+sidebarTitle: "Buyurtmani yangilash"
+description: "AgencyHandy API yordamida buyurtma tafsilotlarini yangilang, holatini o'zgartiring, loyiha menejerlarini qayta tayinlang va PUT so'rovi orqali mavjud buyurtmaga fayllar biriktiring."
+---
+
+Buyurtmani yangilash endpointi AgencyHandy-dagi mavjud buyurtmani (loyihani) o'zgartirish imkonini beradi — nomini, holatini, byudjetini, muddatini, tayinlangan menejerlarni va boshqalarni — bularning barchasini tashqi tizim yoki avtomatsiya skriptidan. Endpoint fayl biriktirmalarini ham qo'llab-quvvatlaydi, ular buyurtmaning tizim papkasiga qo'shib boriladi.
+
+<Note>
+  Ushbu endpointdan foydalanishdan oldin, API kaliti va Kompaniya ID sini olish uchun [Boshlash](/uz/api/getting-started) qo'llanmasini bajaring.
+</Note>
+
+<Warning>
+  Ushbu endpoint faqat `x-api-key` sarlavhasi o'rniga `Authorization: Bearer <token>` (kirgan a'zoning kirish tokeni) ishlatadi. Chaqiruvchingiz maqsadli kompaniyaning **tasdiqlangan a'zosi** sifatida autentifikatsiya qilinganligiga ishonch hosil qiling. Ruxsatsiz chaqiruvchilar `403 PermissionError` oladi.
+</Warning>
+
+## Oldindan talab qilinadigan shartlar
+
+- ✅ Tasdiqlangan ish muhiti a'zosi uchun to'g'ri **Bearer token**
+- ✅ `GET {{URL}}/accounts/companies` dan olingan **Kompaniya ID si**
+- ✅ Yangilamoqchi bo'lgan buyurtmaning **Buyurtma ID si** (Loyiha ID si, `pid`)
+
+---
+
+## Endpoint
+
+```
+PUT {{URL}}/orders?pid=<ORDER_ID>
+```
+
+**Content-Type:** `multipart/form-data` — fayllar biriktirilmagan bo'lsa ham serverning multipart tahlilchisini qondirish uchun shu formatdan foydalaning.
+
+## Sarlavhalar
+
+| Sarlavha | Majburiy | Tavsif |
+|---|---|---|
+| `Authorization` | Ha | `Bearer <ACCESS_TOKEN>` — kirgan a'zoning kirish tokeni. |
+| `companyid` | Ha | Buyurtma tegishli kompaniyaning Mongo ObjectId si. |
+| `clientid` | Ixtiyoriy | Real vaqtli mijoz socket ID si. Berilganda, bildirishnomalar uni o'z ichiga oladi. |
+
+## So'rov parametrlari
+
+<ParamField query="pid" type="string" required>
+  Yangilanadigan Buyurtma / Loyiha ID si. Bu so'rov satri parametri sifatida uzatiladi.
+</ParamField>
+
+## So'rov tanasi maydonlari
+
+<ParamField body="name" type="string">
+  Buyurtma sarlavhasini yangilaydi. Kamida 2 belgi.
+</ParamField>
+
+<ParamField body="status" type="string">
+  Buyurtmaning yangi holati. Quyidagilardan biri bo'lishi kerak: `Pending`, `Ongoing`, `Review`, `Completed`, `Cancelled`.
+
+  **Ruxsat etilgan o'tishlar:**
+  - `Review` faqat `Ongoing` yoki boshqa `Review` dan keyin kelishi mumkin. `Pending` dan to'g'ridan-to'g'ri `Review` ga o'tish `400 ValidationError` qaytaradi.
+  - `Completed` yoki `Cancelled` holatidagi buyurtmalar yangilanishi mumkin emas.
+  - Mijozlar `Pending` dan o'tib ketgan buyurtmani bekor qila olmaydi.
+</ParamField>
+
+<ParamField body="budget" type="number">
+  Umumiy byudjet miqdori. `≥ 0` bo'lishi shart. `currency` ham berilmasa buyurtmaning mavjud valyutasidan foydalanadi.
+</ParamField>
+
+<ParamField body="currency" type="string">
+  Byudjet uchun valyuta kodi. Misol: `USD`, `CAD`, `EUR`.
+</ParamField>
+
+<ParamField body="quantity" type="number">
+  Paket uchun sotib olingan birliklar soni. `≥ 1` bo'lishi shart.
+</ParamField>
+
+<ParamField body="deadline" type="string">
+  Buyurtmaning tugash sanasi uchun ISO 8601 sana satri. Misol: `"2025-12-31T00:00:00.000Z"`.
+</ParamField>
+
+<ParamField body="kickoffDate" type="string">
+  Loyiha boshlanish sanasi uchun ISO 8601 sana satri.
+</ParamField>
+
+<ParamField body="notes" type="string">
+  Jamoangizga ko'rinadigan ichki eslatmalar.
+</ParamField>
+
+<ParamField body="brief" type="string">
+  Mijoz topshirig'i yoki loyiha xulosasi.
+</ParamField>
+
+<ParamField body="assignedProjectManagers" type="array">
+  Ushbu buyurtmaga tayinlanadigan loyiha menejeri a'zo ID larining to'liq ro'yxati. Yangi ID lar jamoaga qo'shiladi; olib tashlangan ID lar o'chiriladi. Har bir ID bir xil kompaniya ichida `projectManager` roliga ega a'zoga tegishli bo'lishi kerak.
+</ParamField>
+
+<ParamField body="markTasksAsDone" type="boolean">
+  `status` `Completed` yoki `Cancelled` bo'lganda **majburiy**. `true` bo'lganda, holat o'zgarishidan so'ng buyurtmadagi barcha vazifalar bajarilgan deb belgilanadi. `false` bo'lganda, vazifalar joriy holatida qoladi.
+</ParamField>
+
+<ParamField body="rejectRequestedTasks" type="boolean">
+  Faqat `status` `Completed` yoki `Cancelled` bo'lganda ruxsat etiladi. `true` bo'lganda, holat yangilanishidan so'ng barcha kutilayotgan mijoz tomonidan so'ralgan vazifalar rad etiladi.
+</ParamField>
+
+<ParamField body="repeatCount" type="number">
+  Faqat takrorlanish chastotasini o'zgartirishda **obuna** buyurtmalari uchun talab qilinadi. `repeatDuration` bilan birgalikda ishlating.
+</ParamField>
+
+<ParamField body="repeatDuration" type="string">
+  Obuna buyurtmalari uchun `repeatCount` bilan birga talab qilinadi. Quyidagilardan biri: `day`, `week`, `month`, `year`.
+</ParamField>
+
+<ParamField body="billingCycleCount" type="number">
+  Takroriy hisob-kitob tsikllarini ixtiyoriy cheklash. Standart `0` (cheklovsiz).
+</ParamField>
+
+<ParamField body="billingCycleEvent" type="string">
+  Har bir hisob-kitob tsikli qanday boshqariladi. Quyidagilardan biri: `createOrderWithTask`, `noChange`.
+</ParamField>
+
+<ParamField body="files" type="file">
+  Nol yoki undan ko'p fayl biriktirmalari. Fayllar buyurtmaning tizim papkasiga qo'shiladi; mavjud fayllar hech qachon qayta yozilmaydi. `multipart/form-data` kodlashidan foydalaning va har bir faylni `files` maydoni ostida biriktiring.
+</ParamField>
+
+---
+
+## Namuna so'rov
+
+<CodeGroup>
+
+```bash cURL (no files)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "currency=USD" \
+  --form "quantity=1" \
+  --form "assignedProjectManagers[]=PROJECT_MANAGER_ID" \
+  --form "notes=Scope finalized with client." \
+  --form "brief=Launch-ready design refresh."
+```
+
+```bash cURL (with file)
+curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
+  --header "Authorization: Bearer <ACCESS_TOKEN>" \
+  --header "companyid: <COMPANY_ID>" \
+  --form "name=Website Redesign" \
+  --form "status=Review" \
+  --form "budget=12000" \
+  --form "repeatCount=3" \
+  --form "repeatDuration=month" \
+  --form "billingCycleEvent=createOrderWithTask" \
+  --form "files=@/path/to/creative-brief.pdf"
+```
+
+</CodeGroup>
+
+**Ekvivalent JSON yuklamasi** (fayllar yuborishda multipart forma yozuvlariga aylantiring):
+
+```json
+{
+  "name": "Website Redesign",
+  "status": "Review",
+  "budget": 12000,
+  "currency": "USD",
+  "quantity": 1,
+  "assignedProjectManagers": ["{{PROJECT_MANAGER_ID}}"],
+  "repeatCount": 3,
+  "repeatDuration": "month",
+  "billingCycleEvent": "createOrderWithTask",
+  "notes": "Scope finalized with client.",
+  "brief": "Launch-ready design refresh."
+}
+```
+
+---
+
+## Javoblar
+
+| HTTP Holati | Tavsif |
+|---|---|
+| `200 OK` | Yangilash muvaffaqiyatli bo'ldi. |
+| `400 ValidationError` | Noto'g'ri buyurtma ID si, bloklangan holat o'tishi yoki noto'g'ri shakllangan yuklamasida. Tegishli bo'lganda javob `fieldName` ni o'z ichiga oladi. |
+| `403 PermissionError` | Chaqiruvchi tasdiqlangan a'zo emas, kompaniya roliga ega emas, ish muhiti obunasi muddati tugagan yoki mijoz ruxsat etilmagan bekor qilishga harakat qildi. |
+| `500 Internal Server Error` | Qayta ishlanmagan istisno — server jurnallarini tekshiring. |
+
+### Muvaffaqiyatli javob
+
+```json
+{
+  "message": "Project has been updated"
+}
+```
+
+---
+
+## Biznes qoidalari va yon ta'sirlar
+
+- **Holat o'tishlari** cheklangan. `Review` faqat `Ongoing` yoki boshqa `Review` dan keyin kelishi mumkin. `Pending → Review` urinishi `400 ValidationError` qaytaradi.
+- Holatni `Pending` dan `Ongoing`, `Review` yoki `Completed` ga o'zgartirish buyurtmaning fayl papkasini faollashtiradi, shunday qilib yuklangan fayllar loyiha jamoasiga kirish mumkin bo'ladi.
+- `status` ni `Completed` yoki `Cancelled` ga o'rnatish `markTasksAsDone` ning `true` yoki `false` ga aniq o'rnatilishini **talab qiladi**.
+- `Review`, `Completed` yoki `Cancelled` ga holat o'zgarishlari avtomatik ravishda mijoz bildirishnomalarini ishga tushiradi:
+  - **Review** — ko'rib chiqish kerakligi haqida mijozni xabardor qiladi.
+  - **Completed** — mijozga `orderCompletion` bildirishnomasi yuboradi.
+  - **Cancelled** — mijozga `orderCancellation` bildirishnomasi yuboradi.
+- Har bir muvaffaqiyatli yangilanish ushbu hodisaga obuna qilingan faol webhookingiz bo'lsa, yangilangan buyurtma hujjati va biriktirma metadata bilan `ORDER.UPDATED` webhook hodisasini ishga tushiradi.

@@ -1,0 +1,123 @@
+---
+title: "Konfiguracja ogólnych ustawień workspace AgencyHandy"
+sidebarTitle: "Ustawienia ogólne"
+description: "Ustaw nazwę workspace, prześlij logo, dodaj adres agencji i wybierz prawidłową strefę czasową, aby spersonalizować workspace AgencyHandy."
+---
+
+Strona ustawień ogólnych to pierwsze miejsce, które odwiedzisz po zalogowaniu się do AgencyHandy. Pozwala Ci ustalić tożsamość Twojej agencji na platformie — od logo i nazwy workspace po adres fizyczny i strefę czasową. Każda zmiana dokonana tutaj ma zastosowanie globalnie w całym workspace dla wszystkich użytkowników.
+
+<Note>
+  Tylko **Super Administratorzy** i **Administratorzy** mogą uzyskiwać dostęp do ustawień konfiguracji workspace i je modyfikować. Jeśli nie widzisz opcji **Workspace Config** w lewej nawigacji, skontaktuj się z Super Administratorem w celu dostosowania uprawnień roli.
+</Note>
+
+## Dostęp do ustawień ogólnych
+
+<Steps>
+  <Step title="Otwórz Workspace Config">
+    Zaloguj się na konto AgencyHandy. W lewym menu nawigacyjnym kliknij **Workspace Config**.
+  </Step>
+  <Step title="Wybierz Ustawienia ogólne">
+    Kliknij **General Settings** w podmenu Workspace Config. Panel ustawień ogólnych otworzy się po prawej stronie.
+  </Step>
+</Steps>
+
+---
+
+## Przesyłanie logo workspace
+
+AgencyHandy obsługuje trzy odrębne typy logo, z których każde jest wyświetlane w innej części interfejsu:
+
+| Typ logo | Wymiary | Gdzie jest wyświetlane |
+|---|---|---|
+| Logo okrągłe | 32 × 32 px | Obszary profilowe i kompaktowe elementy interfejsu |
+| Logo favicon | 16 × 16 px | Ikona na karcie przeglądarki |
+| Logo prostokątne | 142 × 36 px | Nagłówek paska bocznego (zastępuje logo okrągłe, gdy jest ustawione) |
+
+**Obsługiwane formaty:** PNG, JPG, SVG
+
+<Steps>
+  <Step title="Kliknij Upload Logo">
+    W sekcji logo kliknij przycisk **Upload Logo** dla typu logo, który chcesz ustawić.
+  </Step>
+  <Step title="Wybierz plik obrazu">
+    Przejdź do obrazu na swoim urządzeniu. Upewnij się, że plik odpowiada wymaganym wymiarom i jest w obsługiwanym formacie.
+  </Step>
+  <Step title="Potwierdź przesyłanie">
+    Podgląd logo aktualizuje się natychmiast. Powtórz dla każdego typu logo według potrzeb.
+  </Step>
+</Steps>
+
+<Tip>
+  Przesłanie **logo prostokątnego** zastąpi logo okrągłe na pasku bocznym i automatycznie ukryje tekst nazwy workspace obok niego. Logo prostokątne staje się również podstawowym logo używanym we wszystkich innych kontekstach, w których jest wyświetlane logo — nawet jeśli logo okrągłe jest również przesłane.
+</Tip>
+
+---
+
+## Ustawianie nazwy i adresu workspace
+
+### Nazwa workspace
+
+Wpisz nazwę swojej agencji w polu **Workspace Name**. Ta nazwa:
+
+- Pojawia się w całej platformie do identyfikacji.
+- Jest używana w domyślnej subdomenie AgencyHandy (np. `twojanazwa.agencyhandy.com`).
+
+<Warning>
+  Zmiana nazwy workspace natychmiast aktualizuje Twoją domyślną subdomenę. Jeśli udostępniasz klientom link do domyślnej subdomeny, będą potrzebować zaktualizowanego adresu URL. Rozważ skonfigurowanie [własnej domeny](/pl/workspace/custom-domain), aby uniknąć tego problemu.
+</Warning>
+
+### Adres workspace
+
+Wpisz pełny adres fizyczny swojej agencji w polu **Workspace Address**. Ten adres jest używany do oficjalnej reprezentacji na fakturach i dokumentach skierowanych do klientów, więc upewnij się, że jest dokładny i aktualny.
+
+---
+
+## Wybór strefy czasowej
+
+<Steps>
+  <Step title="Otwórz listę rozwijania Time Zone">
+    Przewiń do pola **Time Zone** i kliknij listę rozwijania, aby rozwinąć listę stref czasowych.
+  </Step>
+  <Step title="Wybierz strefę czasową">
+    Wybierz strefę czasową odpowiadającą głównemu miejscu działalności Twojej agencji. Wszystkie terminy zadań, zaplanowane powiadomienia, wydarzenia w kalendarzu i znaczniki czasu w całym workspace są oparte na tym ustawieniu.
+  </Step>
+</Steps>
+
+<Warning>
+  Nieprawidłowe ustawienie strefy czasowej powoduje błędy harmonogramowania dla zadań, spotkań i terminów płatności faktur. Sprawdź dokładnie to ustawienie przed zaproszeniem zespołu lub klientów.
+</Warning>
+
+---
+
+## Zapisywanie zmian
+
+Po wypełnieniu lub aktualizacji dowolnych pól kliknij **Save Changes** na dole panelu ustawień ogólnych. Wszystkie aktualizacje są stosowane globalnie i są natychmiast widoczne dla każdego użytkownika w workspace.
+
+---
+
+## Strefa niebezpieczna: Usuwanie workspace
+
+Na dole panelu ustawień ogólnych znajduje się sekcja **Danger Zone** zawierająca przycisk **Delete Workspace**.
+
+<Warning>
+  Usunięcie workspace jest **trwałe i nieodwracalne**. Wszystkie dane — w tym klienci, zamówienia, faktury, projekty i konfiguracje — zostaną trwale usunięte. Nie ma możliwości odzyskania. Kontynuuj tylko wtedy, gdy jesteś w pełni pewny swojej decyzji.
+</Warning>
+
+---
+
+## Najlepsze praktyki
+
+<CardGroup cols={2}>
+  <Card title="Weryfikuj wymiary logo" icon="image">
+    Przesyłaj logo w dokładnie zalecanych wymiarach pikselowych, aby zapobiec rozciąganiu, przycinaniu lub rozmytemu wyświetlaniu na platformie.
+  </Card>
+  <Card title="Aktualizuj branding na bieżąco" icon="paintbrush">
+    Aktualizuj logo i adres za każdym razem, gdy agencja zmienia markę lub siedzibę, aby wszystkie dokumenty i strony skierowane do klientów były dokładne.
+  </Card>
+  <Card title="Najpierw ustaw strefę czasową" icon="clock">
+    Skonfiguruj strefę czasową przed tworzeniem usług, zadań lub planowaniem czegokolwiek, aby zapewnić prawidłowe wyrównanie wszystkich znaczników czasu od samego początku.
+  </Card>
+  <Card title="Ogranicz dostęp administratora" icon="shield">
+    Przyznawaj role Super Administratora lub Administratora wyłącznie pracownikom, którzy rzeczywiście muszą modyfikować konfiguracje workspace, aby zapobiec przypadkowym zmianom.
+  </Card>
+</CardGroup>

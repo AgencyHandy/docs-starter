@@ -1,0 +1,143 @@
+---
+title: "Come Creare, Modificare ed Eliminare Ordini in AgencyHandy"
+sidebarTitle: "Crea Ordine"
+description: "Guida passo passo per creare, modificare ed eliminare ordini in AgencyHandy — inclusi requisiti di ruolo, campi del modulo e transizioni di stato."
+---
+
+Creare un ordine in AgencyHandy ti offre un workspace strutturato per erogare un servizio a un cliente. Inserisci i dettagli principali fin dall'inizio — cliente, servizio, prezzi, date e un brief del progetto — e tutto il resto, dalle attività alle discussioni, fluisce da quel singolo record. Questa pagina ti guida nella creazione di un ordine da zero, nell'aggiornamento successivo, nel cambio di stato e nell'eliminazione quando non è più necessario.
+
+## Requisiti
+
+- Devi aver effettuato l'accesso ad AgencyHandy.
+- Devi avere un ruolo di **Super Admin**, **Admin** o **Project Manager** per creare o modificare ordini.
+- Solo i **Super Admin** e gli **Admin** possono eliminare ordini.
+
+## Crea un Nuovo Ordine
+
+<Steps>
+  <Step title="Vai a Ordini">
+    Nella barra laterale sinistra della dashboard di AgencyHandy, clicca su **Ordini**.
+  </Step>
+
+  <Step title="Apri il modulo di creazione">
+    Clicca su **+ Crea Nuovo Ordine** nell'angolo in alto a destra. Apparirà un modulo.
+  </Step>
+
+  <Step title="Compila i dettagli dell'ordine">
+    Completa i campi del modulo:
+
+    | Campo | Obbligatorio | Note |
+    |---|---|---|
+    | **Cliente** | ✅ | Seleziona dalla lista clienti esistente |
+    | **Servizio** | ✅ | Include sia i servizi pubblicati che quelli non pubblicati |
+    | **Project Manager** | ❌ | Facoltativo; assegna un PM responsabile della consegna |
+    | **Quantità** | ✅ | Numero di unità ordinate |
+    | **Prezzo** | ✅ | Budget concordato per l'ordine |
+    | **Data di Inizio** | ✅ | Quando inizia il lavoro |
+    | **Data di Scadenza** | ✅ | Scadenza di consegna |
+    | **Brief dell'Ordine** | ❌ | Istruzioni, requisiti o note di riferimento per il tuo team |
+    | **Allegati** | ❌ | File di supporto pertinenti all'ordine |
+
+    <Tip>
+      Se il servizio selezionato ha dei componenti aggiuntivi collegati, nella schermata apparirà una sezione **Add-On**. Includi eventuali componenti aggiuntivi pertinenti prima di inviare.
+    </Tip>
+  </Step>
+
+  <Step title="Verifica i dati inseriti">
+    Controlla attentamente tutti i campi — in particolare il cliente, il servizio, il prezzo e la data di scadenza.
+  </Step>
+
+  <Step title="Invia l'ordine">
+    Clicca su **Crea** per finalizzare l'ordine. Riceverai un messaggio di conferma una volta creato con successo.
+  </Step>
+</Steps>
+
+### Cosa Succede Dopo Aver Creato un Ordine
+
+- Tutti i Super Admin della tua azienda ottengono automaticamente l'accesso al nuovo ordine.
+- Il cliente riceve una notifica che il suo ordine è stato creato.
+- L'ordine appare nell'elenco **Ordini** con lo stato **In Attesa**.
+
+## Modifica o Aggiorna un Ordine
+
+Puoi aggiornare un ordine in qualsiasi momento per correggere i dettagli, modificare i prezzi, cambiare la data di scadenza o soddisfare le richieste del cliente.
+
+<Note>
+Devi essere un **Super Admin**, **Admin** o **Project Manager** per modificare un ordine.
+</Note>
+
+<Steps>
+  <Step title="Apri l'elenco degli Ordini">
+    Vai su **Ordini** nella barra laterale sinistra.
+  </Step>
+
+  <Step title="Seleziona l'ordine da modificare">
+    Individua l'ordine che vuoi aggiornare e spunta la casella di controllo accanto ad esso.
+  </Step>
+
+  <Step title="Attiva il pulsante di modifica">
+    Apparirà un pulsante **Modifica** nell'angolo in alto a destra. Cliccalo per aprire i dettagli dell'ordine in modalità di modifica.
+  </Step>
+
+  <Step title="Modifica i campi necessari">
+    Aggiorna i campi che devono essere modificati — dettagli del cliente, servizio, prezzi, date, brief o PM assegnato.
+  </Step>
+
+  <Step title="Salva le modifiche">
+    Clicca su **Aggiorna** per salvare. Un messaggio di conferma verificherà che l'aggiornamento è andato a buon fine.
+  </Step>
+</Steps>
+
+## Cambia lo Stato di un Ordine
+
+Lo stato dell'ordine riflette la fase in cui si trova un lavoro nella tua pipeline di consegna. AgencyHandy definisce cinque stati fissi — non è possibile aggiungerne o rinominarli.
+
+| Stato | Significato |
+|---|---|
+| **In Attesa** | Creato, non ancora iniziato |
+| **In Corso** | Attivamente in lavorazione |
+| **In Revisione** | Inviato per revisione; in attesa di accettazione |
+| **Completato** | Consegnato e accettato |
+| **Annullato** | Non più attivo |
+
+<Note>
+Solo i **Super Admin**, gli **Admin** e i **Project Manager** possono cambiare lo stato di un ordine. I dipendenti e i clienti non possono modificare lo stato.
+</Note>
+
+Per aggiornare lo stato, apri l'ordine e usa il selettore di stato in cima alla pagina di dettaglio dell'ordine. Seleziona il nuovo stato dal menu a tendina e conferma.
+
+## Elimina un Ordine
+
+L'eliminazione di un ordine lo rimuove definitivamente dal sistema. Utilizza questa funzione solo quando un ordine è veramente obsoleto — ad esempio, se è stato creato per errore o è un duplicato.
+
+<Warning>
+L'eliminazione di un ordine è irreversibile. Una volta eliminato, non può essere recuperato. Procedi con cautela.
+</Warning>
+
+<Note>
+Solo i **Super Admin** e gli **Admin** possono eliminare ordini.
+</Note>
+
+<Steps>
+  <Step title="Vai a Ordini">
+    Clicca su **Ordini** nella barra laterale sinistra.
+  </Step>
+
+  <Step title="Trova l'ordine da eliminare">
+    Scorri o cerca l'ordine che vuoi rimuovere dall'elenco.
+  </Step>
+
+  <Step title="Avvia l'eliminazione">
+    Clicca sull'**icona del cestino** associata all'ordine.
+  </Step>
+
+  <Step title="Conferma l'eliminazione">
+    Apparirà una richiesta di conferma. Conferma per eliminare definitivamente l'ordine.
+  </Step>
+</Steps>
+
+Dopo l'eliminazione, controlla gli ordini rimanenti per assicurarti che tutto sia in ordine. La voce eliminata non apparirà più in nessun elenco o report.
+
+## Aggiunta di Membri del Team a un Ordine
+
+Super Admin, Admin e PM possono aggiungere dipendenti a un ordine in qualsiasi momento. Quando viene aggiunto un membro del team, riceve una notifica in-app. I dipendenti assegnati ottengono visibilità sull'ordine e sulle sue attività, ma non possono gestire l'ordine stesso (modificare i dettagli, cambiare lo stato o eliminarlo).

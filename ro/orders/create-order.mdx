@@ -1,0 +1,143 @@
+---
+title: "Cum să creezi, editezi și ștergi comenzi în AgencyHandy"
+sidebarTitle: "Creare Comandă"
+description: "Ghid pas cu pas pentru crearea, editarea și ștergerea comenzilor în AgencyHandy — inclusiv cerințe de rol, câmpuri de formular și tranziții de stare."
+---
+
+Crearea unei comenzi în AgencyHandy îți oferă un spațiu de lucru structurat pentru livrarea unui serviciu către un client. Completezi detaliile esențiale de la început — client, serviciu, prețuri, date și un scurt rezumat al proiectului — iar tot ce urmează, de la sarcini la discuții, decurge din acel înregistrare unică. Această pagină te ghidează prin crearea unei comenzi de la zero, actualizarea acesteia ulterior, schimbarea stării și ștergerea ei când nu mai este necesară.
+
+## Cerințe
+
+- Trebuie să fii autentificat în AgencyHandy.
+- Trebuie să deții rolul de **Super Admin**, **Admin** sau **Project Manager** pentru a crea sau edita comenzi.
+- Doar **Super Adminii** și **Adminii** pot șterge comenzi.
+
+## Crearea unei Comenzi Noi
+
+<Steps>
+  <Step title="Navighează la Comenzi">
+    În bara laterală stângă a tabloului de bord AgencyHandy, apasă pe **Orders**.
+  </Step>
+
+  <Step title="Deschide formularul de creare">
+    Apasă **+ Create New Order** în colțul din dreapta sus. Va apărea un formular.
+  </Step>
+
+  <Step title="Completează detaliile comenzii">
+    Completează câmpurile din formular:
+
+    | Câmp | Obligatoriu | Note |
+    |---|---|---|
+    | **Client** | ✅ | Selectează din lista ta de clienți existenți |
+    | **Service** | ✅ | Include atât servicii publicate, cât și nepublicate |
+    | **Project Manager** | ❌ | Opțional; atribuie un PM responsabil de livrare |
+    | **Quantity** | ✅ | Numărul de unități comandate |
+    | **Price** | ✅ | Bugetul agreat pentru comandă |
+    | **Kick-off Date** | ✅ | Data la care începe lucrul |
+    | **Due Date** | ✅ | Termenul limită de livrare |
+    | **Order Brief** | ❌ | Instrucțiuni, cerințe sau note de referință pentru echipa ta |
+    | **Attachments** | ❌ | Fișiere suport relevante pentru comandă |
+
+    <Tip>
+      Dacă serviciul selectat are add-on-uri asociate, în formular va apărea o secțiune **Add-On**. Include add-on-urile relevante înainte de a trimite.
+    </Tip>
+  </Step>
+
+  <Step title="Verifică datele introduse">
+    Verifică din nou toate câmpurile pentru acuratețe — în special clientul, serviciul, prețul și data scadenței.
+  </Step>
+
+  <Step title="Trimite comanda">
+    Apasă **Create** pentru a finaliza comanda. Vei primi un mesaj de confirmare odată ce aceasta este creată cu succes.
+  </Step>
+</Steps>
+
+### Ce se Întâmplă după Crearea unei Comenzi
+
+- Toți Super Adminii din compania ta obțin automat acces la noua comandă.
+- Clientul primește o notificare că a fost creată comanda sa.
+- Comanda apare în lista **Orders** cu starea **Pending**.
+
+## Editarea sau Actualizarea unei Comenzi
+
+Poți actualiza o comandă în orice moment pentru a corecta detalii, ajusta prețurile, schimba data scadenței sau pentru a răspunde solicitărilor clientului.
+
+<Note>
+Trebuie să fii **Super Admin**, **Admin** sau **Project Manager** pentru a edita o comandă.
+</Note>
+
+<Steps>
+  <Step title="Deschide lista de Comenzi">
+    Navighează la **Orders** în bara laterală stângă.
+  </Step>
+
+  <Step title="Selectează comanda de editat">
+    Găsește comanda pe care vrei să o actualizezi și bifează căsuța de lângă ea.
+  </Step>
+
+  <Step title="Activează butonul de editare">
+    Un buton **Edit** va apărea în colțul din dreapta sus. Apasă pe el pentru a deschide detaliile comenzii în modul de editare.
+  </Step>
+
+  <Step title="Modifică câmpurile necesare">
+    Actualizează orice câmpuri care trebuie schimbate — detalii client, serviciu, prețuri, date, rezumat sau PM atribuit.
+  </Step>
+
+  <Step title="Salvează modificările">
+    Apasă **Update** pentru a salva. Un mesaj de confirmare va confirma că actualizarea a fost realizată cu succes.
+  </Step>
+</Steps>
+
+## Schimbarea Stării unei Comenzi
+
+Starea comenzii reflectă stadiul în care se află lucrarea în procesul tău de livrare. AgencyHandy definește cinci stări fixe — nu le poți adăuga sau redenumi.
+
+| Stare | Semnificație |
+|---|---|
+| **Pending** | Creată, nu a început încă |
+| **Ongoing** | Se lucrează activ la ea |
+| **In Review** | Trimisă pentru revizuire; în așteptarea acceptării |
+| **Complete** | Livrată și acceptată |
+| **Cancelled** | Nu mai este activă |
+
+<Note>
+Doar **Super Adminii**, **Adminii** și **Project Managerii** pot schimba starea unei comenzi. Angajații și clienții nu pot schimba starea.
+</Note>
+
+Pentru a actualiza starea, deschide comanda și folosește selectorul de stare din partea de sus a paginii de detalii ale comenzii. Selectează noua stare din meniul derulant și confirmă.
+
+## Ștergerea unei Comenzi
+
+Ștergerea unei comenzi o elimină permanent din sistem. Folosește această acțiune doar când o comandă este cu adevărat obsoletă — de exemplu, dacă a fost creată din greșeală sau este un duplicat.
+
+<Warning>
+Ștergerea comenzii este ireversibilă. Odată ce ștergi o comandă, aceasta nu mai poate fi recuperată. Procedează cu precauție.
+</Warning>
+
+<Note>
+Doar **Super Adminii** și **Adminii** pot șterge comenzi.
+</Note>
+
+<Steps>
+  <Step title="Navighează la Comenzi">
+    Apasă **Orders** în bara laterală stângă.
+  </Step>
+
+  <Step title="Găsește comanda de șters">
+    Derulează sau caută comanda pe care vrei să o elimini din listă.
+  </Step>
+
+  <Step title="Inițiază ștergerea">
+    Apasă **pictograma coș de gunoi** asociată comenzii.
+  </Step>
+
+  <Step title="Confirmă ștergerea">
+    Va apărea un prompt de confirmare. Confirmă pentru a șterge permanent comanda.
+  </Step>
+</Steps>
+
+După ștergere, revizuiește comenzile rămase pentru a te asigura că totul este în ordine. Înregistrarea ștearsă nu va mai apărea în nicio listă sau raport.
+
+## Adăugarea Membrilor Echipei la o Comandă
+
+Super Adminii, Adminii și PM-urile pot adăuga angajați la o comandă în orice moment. Când un membru al echipei este adăugat, acesta primește o notificare în aplicație. Angajații atribuiți obțin vizibilitate asupra comenzii și a sarcinilor sale, dar nu pot gestiona comanda în sine (edita detalii, schimba starea sau o șterge).

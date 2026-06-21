@@ -1,0 +1,162 @@
+---
+title: "Předplatné a opakované fakturace v AgencyHandy"
+sidebarTitle: "Předplatné"
+description: "Jak AgencyHandy zpracovává opakované fakturace předplatného — automatické faktury, fakturační cykly, platební metody, zrušení a platební odkazy Wise."
+---
+
+Systém předplatného v AgencyHandy vám umožňuje automatizovat celý pracovní postup opakujících se příjmů. Když si klient přihlásí odběr služby, platforma vytvoří ID předplatného, vygeneruje zakázky a automaticky vydá faktury v každém fakturačním cyklu — ať už denně, týdně, měsíčně nebo ročně. Zůstáváte v kontrole: můžete zobrazit podrobnosti předplatného, sledovat historii plateb, řešit neúspěšné platby a rušit předplatné dle potřeby — vše v rámci AgencyHandy.
+
+## Jak funguje fakturace předplatného
+
+Životní cyklus předplatného v AgencyHandy se skládá ze šesti klíčových fází.
+
+<Steps>
+  <Step title="Vytvoření služby s předplatným">
+    Přejděte na **Služby** a klikněte na **Vytvořit novou službu**. Jako typ služby vyberte **Předplatné**.
+
+    Definujte:
+    - **Fakturační cyklus** — Denní, Týdenní, Měsíční nebo Roční
+    - **Chování při obnově** — Vytvořit novou zakázku, Aktualizovat stávající zakázku nebo Ponechat beze změny
+    - **Ceny a platební metoda** — PayPal, Stripe nebo Ruční
+
+    Klikněte na **Publikovat** pro zpřístupnění služby.
+  </Step>
+  <Step title="Klient si zakoupí předplatné">
+    Klient vybere předplatnou službu, přejde k pokladně a zvolí platební metodu.
+
+    AgencyHandy automaticky:
+    - Vytvoří **ID předplatného**
+    - Vygeneruje **Zakázku**
+    - Vydá **Fakturu**
+
+    Pro platby přes **PayPal nebo Stripe** je faktura okamžitě označena jako **Zaplaceno**. Pro **Ruční platbu** zůstane faktura **Otevřena**, dokud agentura nepotvrdí přijetí.
+  </Step>
+  <Step title="Automatické opakované fakturace">
+    Ke každému datu obnovy AgencyHandy automaticky zpracuje platbu (pro PayPal/Stripe) a vygeneruje další fakturu.
+
+    Pokud platba proběhne úspěšně, faktura se označí jako **Zaplaceno**. Pokud selže:
+    - Faktura zůstane **Otevřena**
+    - Klient obdrží **Oznámení o neúspěšné platbě**
+    - Agentura obdrží upozornění pro opakování pokusu nebo žádost o aktualizované platební údaje
+  </Step>
+  <Step title="Správa aktivních předplatných">
+    Přejděte na **Správu předplatných** v levém postranním panelu a zobrazte všechna aktivní a neaktivní předplatná. Klikněte na libovolné předplatné pro zobrazení jeho úplných podrobností.
+  </Step>
+  <Step title="Zpracování zrušení">
+    Při rušení předplatného si můžete vybrat:
+    - **Úplné zrušení** — zastavte veškeré budoucí fakturace a zakázky
+    - **Ponechat poslední aktivní zakázku v chodu** — umožněte klientovi pokračovat v příjmu služby po zbývající dobu aktuálního období
+
+    Chcete-li zcela smazat službu, musí být nejprve zrušena všechna aktivní předplatná dané služby.
+  </Step>
+  <Step title="Oznámení">
+    Systém automaticky odesílá:
+    - **Připomínky obnovy** před dalším datem fakturace
+    - **Potvrzení platby** po úspěšném stržení
+    - **Upozornění na neúspěšnou platbu** klientovi i adminům agentury
+  </Step>
+</Steps>
+
+## Stránka podrobností předplatného
+
+Stránka podrobností předplatného vám poskytuje kompletní přehled o jakémkoli individuálním předplatném — od služby a balíčku až po každou fakturu a položku protokolu událostí.
+
+### Jak přistoupit
+
+1. Přejděte na **Předplatná** v levém postranním panelu
+2. Klikněte na libovolné předplatné ze seznamu pro otevření stránky s podrobnostmi
+
+### Co můžete vidět
+
+<Tabs>
+  <Tab title="Informace o předplatném">
+    - **Název služby** a **Název balíčku**
+    - **Jméno klienta**
+    - **Fakturační cyklus** (např. Měsíční, Roční)
+    - **Datum zahájení** a **Datum ukončení**
+    - **Stav** předplatného (Aktivní nebo Neaktivní)
+  </Tab>
+  <Tab title="Platební údaje">
+    - **Poplatek za předplatné**
+    - **Celkový počet plateb** provedených dosud
+    - **Platební metoda** (Stripe, PayPal, Wise, Ruční bankovní převod atd.)
+    - **Datum příští platby**
+  </Tab>
+  <Tab title="Historie zakázek">
+    - **ID zakázky**
+    - **Stav** (např. Probíhající, Dokončeno)
+    - **Datum zahájení** a **Datum splatnosti** pro každou zakázku
+  </Tab>
+  <Tab title="Historie faktur">
+    - **ID faktury**
+    - **Částka**
+    - **Stav** (Otevřeno, Zaplaceno atd.)
+    - **Datum platby** a **Datum splatnosti**
+  </Tab>
+  <Tab title="Protokoly událostí">
+    Chronologický auditní záznam všech aktivit souvisejících s předplatným — změny stavů, platební události, zrušení a další.
+  </Tab>
+</Tabs>
+
+<Note>
+  Jedno předplatné může mít propojeno více zakázek a faktur. Faktury vázané na předplatná se dynamicky aktualizují při přijetí plateb.
+</Note>
+
+## Podpora Wise pro ruční faktury předplatného
+
+Pokud vybíráte mezinárodní platby, můžete přímo do faktur předplatného vložit **platební odkaz Wise**. Klientům tak poskytnete pohodlný způsob platby bez nutnosti ručního nastavování bankovního převodu.
+
+### Požadavky
+
+- Aktivní účet AgencyHandy
+- Aktivní účet **Wise** s platným vygenerovaným platebním odkazem
+
+### Postup přidání odkazu Wise do faktury
+
+<Steps>
+  <Step title="Otevřete sekci Faktury">
+    Klikněte na **Faktury** v levém postranním panelu a poté klikněte na **+ Vytvořit fakturu**.
+  </Step>
+  <Step title="Vyberte klienta a zakázku">
+    Z rozevíracího seznamu vyberte klienta. Zobrazí se všechna související ID zakázek. Vyberte příslušné ID zakázky a zadejte částku a případné fakturované položky.
+  </Step>
+  <Step title="Použijte slevy a daně">
+    Přidejte případné procentuální slevy, výši slevy, zaplacenou částku, dlužnou částku a podrobnosti o DPH/dani. Dle potřeby zadejte fakturační adresu a poznámky.
+  </Step>
+  <Step title="Přidejte platební odkaz Wise">
+    V sekci **Platební metoda** vyberte jako platební možnost **Wise**. Vložte svůj platební odkaz Wise do příslušného pole.
+  </Step>
+  <Step title="Uložte fakturu">
+    Klikněte na **Uložit** pro finalizaci faktury. Platební odkaz Wise se zobrazí ve faktuře, takže klient může zaplatit přímo.
+  </Step>
+</Steps>
+
+<Tip>
+  Před uložením vždy zkontrolujte svůj platební odkaz Wise a celkové částky na faktuře. Ověřte správnost podrobností zakázky, slev a daňových informací, abyste se vyhnuli chybám ve fakturaci.
+</Tip>
+
+## Důležité poznámky k fakturaci předplatného
+
+<Accordion title="Kdo může rušit předplatná?">
+  Předplatná mohou rušit pouze **Super Admini** a **Admini**. Klienti nemohou rušit svá vlastní předplatná — musí požádat agenturu o zrušení.
+</Accordion>
+
+<Accordion title="ID předplatného jsou trvalá">
+  Jakmile je předplatné vytvořeno, jeho ID nelze upravit. To zajišťuje konzistentní sledování po celou dobu existence předplatného.
+</Accordion>
+
+<Accordion title="Neúspěšné platby a vytváření zakázek">
+  Když platba selže, faktura zůstane Otevřena a pro neúspěšné období se vytvoří nová zakázka. Stav předplatného zůstane **Aktivní**, dokud admin ručně nezopakuje pokus o platbu nebo nezruší předplatné.
+</Accordion>
+
+<Accordion title="Zakázky s ruční platbou">
+  Pokud klient platí mimo Stripe nebo PayPal (např. bankovním převodem), admin musí ručně označit fakturu jako **Zaplaceno** v AgencyHandy. Systém to pro ruční platby neprovede automaticky.
+</Accordion>
+
+<Accordion title="Nezaplacené pokusy o pokladnu">
+  Pokud klient zahájí pokladnu předplatného, ale platbu nedokončí, zůstane v systému jako **lead** (potenciální zákazník), dokud se úspěšně nepřihlásí k odběru.
+</Accordion>
+
+<Accordion title="Termíny splatnosti faktur">
+  Termíny splatnosti faktur předplatného jsou nastaveny automaticky na základě fakturačního cyklu, který jste nakonfigurovali (např. měsíční faktury jsou splatné jeden měsíc po datu zahájení).
+</Accordion>
