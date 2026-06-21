@@ -1,136 +1,39 @@
 ---
 title: AgencyHandy Dokumentation
-description: Erfahren Sie, wie Sie Ihre Agentur führen, mit Ihren Kunden zusammenarbeiten und die API nutzen — alles auf einer Plattform.
-mode: frame
+description: Alles, was Sie brauchen, um Ihre Agentur zu führen, Ihren Kunden ein hervorragendes Erlebnis zu bieten und auf AgencyHandy aufzubauen.
 ---
 
-<div data-product-guide-index className="flex w-full flex-col gap-8 max-w-5xl mx-auto px-4 md:px-8 lg:px-12 py-10 lg:gap-14 lg:py-16">
-  <div className="flex max-w-[560px] flex-col gap-2 self-center text-center">
-    <h1 className="text-[30px] font-medium leading-9 tracking-tight text-gray-900 dark:text-gray-50">
-      AgencyHandy Docs
-    </h1>
-    <p className="text-balance text-base leading-relaxed tracking-tight text-gray-600 dark:text-gray-400">
-      Alles, was Sie brauchen, um Ihre Agentur zu führen, Ihren Kunden ein hervorragendes Erlebnis zu bieten und auf AgencyHandy aufzubauen.
-    </p>
-  </div>
+<CardGroup cols={3}>
+  <Card title="Für Agenturen" icon="building" href="/de/getting-started/introduction">
+    Richten Sie Ihren Workspace ein, verwalten Sie Kunden und Aufträge, senden Sie Rechnungen und führen Sie Ihr Team.
+  </Card>
+  <Card title="Für Kunden" icon="user" href="/de/client/introduction">
+    Verfolgen Sie Ihre Projekte, genehmigen Sie Angebote, bezahlen Sie Rechnungen und erhalten Sie Support in Ihrem Portal.
+  </Card>
+  <Card title="API-Referenz" icon="code" href="/de/api/getting-started">
+    Generieren Sie einen API-Schlüssel und automatisieren Sie Leads, Kunden und Aufträge mit der REST-API.
+  </Card>
+</CardGroup>
 
-  <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-    <a
-      href="/de/getting-started/introduction"
-      className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-5 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-    >
-      <Icon icon="building" color="rgb(var(--primary))" size={20} className="shrink-0" />
-      <div className="flex flex-col gap-1">
-        <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Für Agenturen</span>
-        <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          Richten Sie Ihren Workspace ein, verwalten Sie Kunden und Aufträge, senden Sie Rechnungen und führen Sie Ihr Team.
-        </span>
-      </div>
-    </a>
-    <a
-      href="/de/client/introduction"
-      className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-5 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-    >
-      <Icon icon="user" color="rgb(var(--primary))" size={20} className="shrink-0" />
-      <div className="flex flex-col gap-1">
-        <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Für Kunden</span>
-        <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          Verfolgen Sie Ihre Projekte, genehmigen Sie Angebote, bezahlen Sie Rechnungen und erhalten Sie Support in Ihrem Portal.
-        </span>
-      </div>
-    </a>
-    <a
-      href="/de/api/getting-started"
-      className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-5 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-    >
-      <Icon icon="code" color="rgb(var(--primary))" size={20} className="shrink-0" />
-      <div className="flex flex-col gap-1">
-        <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">API-Referenz</span>
-        <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          Generieren Sie einen API-Schlüssel und automatisieren Sie Leads, Kunden und Aufträge mit der REST-API.
-        </span>
-      </div>
-    </a>
-  </div>
+## Häufige Aufgaben
 
-  <hr className="border-0 border-t border-border" />
-
-  <div className="flex flex-col gap-4">
-    <h2 className="font-serif text-xl font-medium leading-normal text-gray-900 dark:text-gray-50">Häufige Aufgaben</h2>
-
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-      <a
-        href="/de/crm/clients"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="user-plus" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Einen Kunden hinzufügen</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            Kundenprofile erstellen und sie zu ihrem Portal einladen.
-          </span>
-        </div>
-      </a>
-      <a
-        href="/de/invoices/create-invoice"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="file-invoice" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Eine Rechnung senden</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            Professionelle Rechnungen direkt aus AgencyHandy erstellen und versenden.
-          </span>
-        </div>
-      </a>
-      <a
-        href="/de/services/overview"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="package" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Eine Leistung veröffentlichen</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            Leistungspakete erstellen, die Kunden aus Ihrem Katalog bestellen können.
-          </span>
-        </div>
-      </a>
-      <a
-        href="/de/workspace/custom-domain"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="globe" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Eine eigene Domain einrichten</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            Versehen Sie Ihr Kundenportal mit Ihrem eigenen Markenauftritt und Ihrer eigenen Domain.
-          </span>
-        </div>
-      </a>
-      <a
-        href="/de/integrations/stripe"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="credit-card" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Zahlungen verbinden</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            Richten Sie Stripe, PayPal oder Banküberweisungen ein, um online bezahlt zu werden.
-          </span>
-        </div>
-      </a>
-      <a
-        href="/de/api/getting-started"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="code" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Die API nutzen</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            Generieren Sie einen API-Schlüssel und beginnen Sie, Leads, Kunden und Aufträge zu erstellen.
-          </span>
-        </div>
-      </a>
-    </div>
-  </div>
-</div>
+<CardGroup cols={2}>
+  <Card title="Einen Kunden hinzufügen" icon="user-plus" href="/de/crm/clients">
+    Kundenprofile erstellen und sie zu ihrem Portal einladen.
+  </Card>
+  <Card title="Eine Rechnung senden" icon="file-invoice" href="/de/invoices/create-invoice">
+    Professionelle Rechnungen direkt aus AgencyHandy erstellen und versenden.
+  </Card>
+  <Card title="Eine Leistung veröffentlichen" icon="package" href="/de/services/overview">
+    Leistungspakete erstellen, die Kunden aus Ihrem Katalog bestellen können.
+  </Card>
+  <Card title="Eine eigene Domain einrichten" icon="globe" href="/de/workspace/custom-domain">
+    Versehen Sie Ihr Kundenportal mit Ihrem eigenen Markenauftritt und Ihrer eigenen Domain.
+  </Card>
+  <Card title="Zahlungen verbinden" icon="credit-card" href="/de/integrations/stripe">
+    Richten Sie Stripe, PayPal oder Banküberweisungen ein, um online bezahlt zu werden.
+  </Card>
+  <Card title="Die API nutzen" icon="code" href="/de/api/getting-started">
+    Generieren Sie einen API-Schlüssel und beginnen Sie, Leads, Kunden und Aufträge zu erstellen.
+  </Card>
+</CardGroup>

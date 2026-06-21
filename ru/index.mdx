@@ -1,136 +1,39 @@
 ---
 title: Документация AgencyHandy
-description: Узнайте, как управлять агентством, работать с клиентами и использовать API — всё на одной платформе.
-mode: frame
+description: Всё необходимое для управления агентством, обеспечения качественного обслуживания клиентов и разработки на основе AgencyHandy.
 ---
 
-<div data-product-guide-index className="flex w-full flex-col gap-8 max-w-5xl mx-auto px-4 md:px-8 lg:px-12 py-10 lg:gap-14 lg:py-16">
-  <div className="flex max-w-[560px] flex-col gap-2 self-center text-center">
-    <h1 className="text-[30px] font-medium leading-9 tracking-tight text-gray-900 dark:text-gray-50">
-      Документация AgencyHandy
-    </h1>
-    <p className="text-balance text-base leading-relaxed tracking-tight text-gray-600 dark:text-gray-400">
-      Всё необходимое для управления агентством, обеспечения качественного обслуживания клиентов и разработки на основе AgencyHandy.
-    </p>
-  </div>
+<CardGroup cols={3}>
+  <Card title="Для агентства" icon="building" href="/ru/getting-started/introduction">
+    Настройте рабочее пространство, управляйте клиентами и заказами, отправляйте счета и руководите командой.
+  </Card>
+  <Card title="Для клиента" icon="user" href="/ru/client/introduction">
+    Отслеживайте проекты, утверждайте предложения, оплачивайте счета и получайте поддержку в своём портале.
+  </Card>
+  <Card title="Справочник API" icon="code" href="/ru/api/getting-started">
+    Создайте API-ключ и автоматизируйте работу с лидами, клиентами и заказами через REST API.
+  </Card>
+</CardGroup>
 
-  <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-    <a
-      href="/ru/getting-started/introduction"
-      className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-5 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-    >
-      <Icon icon="building" color="rgb(var(--primary))" size={20} className="shrink-0" />
-      <div className="flex flex-col gap-1">
-        <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Для агентства</span>
-        <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          Настройте рабочее пространство, управляйте клиентами и заказами, отправляйте счета и руководите командой.
-        </span>
-      </div>
-    </a>
-    <a
-      href="/ru/client/introduction"
-      className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-5 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-    >
-      <Icon icon="user" color="rgb(var(--primary))" size={20} className="shrink-0" />
-      <div className="flex flex-col gap-1">
-        <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Для клиента</span>
-        <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          Отслеживайте проекты, утверждайте предложения, оплачивайте счета и получайте поддержку в своём портале.
-        </span>
-      </div>
-    </a>
-    <a
-      href="/ru/api/getting-started"
-      className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-5 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-    >
-      <Icon icon="code" color="rgb(var(--primary))" size={20} className="shrink-0" />
-      <div className="flex flex-col gap-1">
-        <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Справочник API</span>
-        <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          Создайте API-ключ и автоматизируйте работу с лидами, клиентами и заказами через REST API.
-        </span>
-      </div>
-    </a>
-  </div>
+## Частые задачи
 
-  <hr className="border-0 border-t border-border" />
-
-  <div className="flex flex-col gap-4">
-    <h2 className="font-serif text-xl font-medium leading-normal text-gray-900 dark:text-gray-50">Частые задачи</h2>
-
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-      <a
-        href="/ru/crm/clients"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="user-plus" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Добавить клиента</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            Создайте профили клиентов и пригласите их на портал.
-          </span>
-        </div>
-      </a>
-      <a
-        href="/ru/invoices/create-invoice"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="file-invoice" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Отправить счёт</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            Создавайте и отправляйте профессиональные счета прямо из AgencyHandy.
-          </span>
-        </div>
-      </a>
-      <a
-        href="/ru/services/overview"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="package" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Опубликовать услугу</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            Создавайте пакеты услуг, которые клиенты могут заказать из вашего каталога.
-          </span>
-        </div>
-      </a>
-      <a
-        href="/ru/workspace/custom-domain"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="globe" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Настроить собственный домен</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            Добавьте white-label оформление клиентскому порталу с вашим собственным фирменным доменом.
-          </span>
-        </div>
-      </a>
-      <a
-        href="/ru/integrations/stripe"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="credit-card" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Подключить платежи</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            Настройте Stripe, PayPal или банковские переводы для получения онлайн-платежей.
-          </span>
-        </div>
-      </a>
-      <a
-        href="/ru/api/getting-started"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="code" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Использовать API</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            Создайте API-ключ и начните работу с лидами, клиентами и заказами.
-          </span>
-        </div>
-      </a>
-    </div>
-  </div>
-</div>
+<CardGroup cols={2}>
+  <Card title="Добавить клиента" icon="user-plus" href="/ru/crm/clients">
+    Создайте профили клиентов и пригласите их на портал.
+  </Card>
+  <Card title="Отправить счёт" icon="file-invoice" href="/ru/invoices/create-invoice">
+    Создавайте и отправляйте профессиональные счета прямо из AgencyHandy.
+  </Card>
+  <Card title="Опубликовать услугу" icon="package" href="/ru/services/overview">
+    Создавайте пакеты услуг, которые клиенты могут заказать из вашего каталога.
+  </Card>
+  <Card title="Настроить собственный домен" icon="globe" href="/ru/workspace/custom-domain">
+    Добавьте white-label оформление клиентскому порталу с вашим собственным фирменным доменом.
+  </Card>
+  <Card title="Подключить платежи" icon="credit-card" href="/ru/integrations/stripe">
+    Настройте Stripe, PayPal или банковские переводы для получения онлайн-платежей.
+  </Card>
+  <Card title="Использовать API" icon="code" href="/ru/api/getting-started">
+    Создайте API-ключ и начните работу с лидами, клиентами и заказами.
+  </Card>
+</CardGroup>

@@ -1,136 +1,39 @@
 ---
 title: AgencyHandy Documentatie
-description: Leer hoe u uw bureau beheert, met uw klanten werkt en op de API bouwt — allemaal vanuit één platform.
-mode: frame
+description: Alles wat u nodig heeft om uw bureau te runnen, uw klanten een geweldige ervaring te bieden en bovenop AgencyHandy te bouwen.
 ---
 
-<div data-product-guide-index className="flex w-full flex-col gap-8 max-w-5xl mx-auto px-4 md:px-8 lg:px-12 py-10 lg:gap-14 lg:py-16">
-  <div className="flex max-w-[560px] flex-col gap-2 self-center text-center">
-    <h1 className="text-[30px] font-medium leading-9 tracking-tight text-gray-900 dark:text-gray-50">
-      AgencyHandy Docs
-    </h1>
-    <p className="text-balance text-base leading-relaxed tracking-tight text-gray-600 dark:text-gray-400">
-      Alles wat u nodig heeft om uw bureau te runnen, uw klanten een geweldige ervaring te bieden en bovenop AgencyHandy te bouwen.
-    </p>
-  </div>
+<CardGroup cols={3}>
+  <Card title="Voor Bureau" icon="building" href="/nl/getting-started/introduction">
+    Stel uw workspace in, beheer klanten en opdrachten, stuur facturen en beheer uw team.
+  </Card>
+  <Card title="Voor Klant" icon="user" href="/nl/client/introduction">
+    Volg uw projecten, keur offertes goed, betaal facturen en ontvang ondersteuning in uw portaal.
+  </Card>
+  <Card title="API Referentie" icon="code" href="/nl/api/getting-started">
+    Genereer een API-sleutel en automatiseer leads, klanten en opdrachten met de REST API.
+  </Card>
+</CardGroup>
 
-  <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-    <a
-      href="/nl/getting-started/introduction"
-      className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-5 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-    >
-      <Icon icon="building" color="rgb(var(--primary))" size={20} className="shrink-0" />
-      <div className="flex flex-col gap-1">
-        <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Voor Bureau</span>
-        <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          Stel uw workspace in, beheer klanten en opdrachten, stuur facturen en beheer uw team.
-        </span>
-      </div>
-    </a>
-    <a
-      href="/nl/client/introduction"
-      className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-5 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-    >
-      <Icon icon="user" color="rgb(var(--primary))" size={20} className="shrink-0" />
-      <div className="flex flex-col gap-1">
-        <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Voor Klant</span>
-        <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          Volg uw projecten, keur offertes goed, betaal facturen en ontvang ondersteuning in uw portaal.
-        </span>
-      </div>
-    </a>
-    <a
-      href="/nl/api/getting-started"
-      className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-5 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-    >
-      <Icon icon="code" color="rgb(var(--primary))" size={20} className="shrink-0" />
-      <div className="flex flex-col gap-1">
-        <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">API Referentie</span>
-        <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          Genereer een API-sleutel en automatiseer leads, klanten en opdrachten met de REST API.
-        </span>
-      </div>
-    </a>
-  </div>
+## Veelvoorkomende taken
 
-  <hr className="border-0 border-t border-border" />
-
-  <div className="flex flex-col gap-4">
-    <h2 className="font-serif text-xl font-medium leading-normal text-gray-900 dark:text-gray-50">Veelvoorkomende taken</h2>
-
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-      <a
-        href="/nl/crm/clients"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="user-plus" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Een klant toevoegen</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            Maak klantprofielen aan en nodig ze uit voor hun portaal.
-          </span>
-        </div>
-      </a>
-      <a
-        href="/nl/invoices/create-invoice"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="file-invoice" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Een factuur versturen</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            Maak professionele facturen aan en stuur ze rechtstreeks vanuit AgencyHandy.
-          </span>
-        </div>
-      </a>
-      <a
-        href="/nl/services/overview"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="package" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Een dienst publiceren</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            Bouw dienstenpakketten die klanten kunnen bestellen via uw catalogus.
-          </span>
-        </div>
-      </a>
-      <a
-        href="/nl/workspace/custom-domain"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="globe" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Een eigen domein instellen</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            Geef uw klantportaal een white-label uitstraling met uw eigen merkdomein.
-          </span>
-        </div>
-      </a>
-      <a
-        href="/nl/integrations/stripe"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="credit-card" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Betalingen koppelen</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            Stel Stripe, PayPal of bankoverschrijvingen in om online betaald te worden.
-          </span>
-        </div>
-      </a>
-      <a
-        href="/nl/api/getting-started"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="code" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">De API gebruiken</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            Genereer een API-sleutel en begin met het aanmaken van leads, klanten en opdrachten.
-          </span>
-        </div>
-      </a>
-    </div>
-  </div>
-</div>
+<CardGroup cols={2}>
+  <Card title="Een klant toevoegen" icon="user-plus" href="/nl/crm/clients">
+    Maak klantprofielen aan en nodig ze uit voor hun portaal.
+  </Card>
+  <Card title="Een factuur versturen" icon="file-invoice" href="/nl/invoices/create-invoice">
+    Maak professionele facturen aan en stuur ze rechtstreeks vanuit AgencyHandy.
+  </Card>
+  <Card title="Een dienst publiceren" icon="package" href="/nl/services/overview">
+    Bouw dienstenpakketten die klanten kunnen bestellen via uw catalogus.
+  </Card>
+  <Card title="Een eigen domein instellen" icon="globe" href="/nl/workspace/custom-domain">
+    Geef uw klantportaal een white-label uitstraling met uw eigen merkdomein.
+  </Card>
+  <Card title="Betalingen koppelen" icon="credit-card" href="/nl/integrations/stripe">
+    Stel Stripe, PayPal of bankoverschrijvingen in om online betaald te worden.
+  </Card>
+  <Card title="De API gebruiken" icon="code" href="/nl/api/getting-started">
+    Genereer een API-sleutel en begin met het aanmaken van leads, klanten en opdrachten.
+  </Card>
+</CardGroup>

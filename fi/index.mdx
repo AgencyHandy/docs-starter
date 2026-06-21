@@ -1,136 +1,39 @@
 ---
 title: AgencyHandy Documentation
-description: Opi hallitsemaan toimistoasi, työskentelemään asiakkaidesi kanssa ja rakentamaan API:n päälle — kaikki yhdeltä alustalta.
-mode: frame
+description: Kaikki mitä tarvitset toimistosi pyörittämiseen, asiakkaidesi ensiluokkaisen kokemuksen tarjoamiseen ja AgencyHandyn päälle rakentamiseen.
 ---
 
-<div data-product-guide-index className="flex w-full flex-col gap-8 max-w-5xl mx-auto px-4 md:px-8 lg:px-12 py-10 lg:gap-14 lg:py-16">
-  <div className="flex max-w-[560px] flex-col gap-2 self-center text-center">
-    <h1 className="text-[30px] font-medium leading-9 tracking-tight text-gray-900 dark:text-gray-50">
-      AgencyHandy Docs
-    </h1>
-    <p className="text-balance text-base leading-relaxed tracking-tight text-gray-600 dark:text-gray-400">
-      Kaikki mitä tarvitset toimistosi pyörittämiseen, asiakkaidesi ensiluokkaisen kokemuksen tarjoamiseen ja AgencyHandyn päälle rakentamiseen.
-    </p>
-  </div>
+<CardGroup cols={3}>
+  <Card title="Toimistolle" icon="building" href="/fi/getting-started/introduction">
+    Määritä työtilasi, hallitse asiakkaita ja tilauksia, lähetä laskuja ja johda tiimiäsi.
+  </Card>
+  <Card title="Asiakkaalle" icon="user" href="/fi/client/introduction">
+    Seuraa projektejasi, hyväksy tarjouksia, maksa laskuja ja saa tukea portaalissasi.
+  </Card>
+  <Card title="API-viite" icon="code" href="/fi/api/getting-started">
+    Luo API-avain ja automatisoi liidejä, asiakkaita ja tilauksia REST API:n avulla.
+  </Card>
+</CardGroup>
 
-  <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-    <a
-      href="/fi/getting-started/introduction"
-      className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-5 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-    >
-      <Icon icon="building" color="rgb(var(--primary))" size={20} className="shrink-0" />
-      <div className="flex flex-col gap-1">
-        <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Toimistolle</span>
-        <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          Määritä työtilasi, hallitse asiakkaita ja tilauksia, lähetä laskuja ja johda tiimiäsi.
-        </span>
-      </div>
-    </a>
-    <a
-      href="/fi/client/introduction"
-      className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-5 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-    >
-      <Icon icon="user" color="rgb(var(--primary))" size={20} className="shrink-0" />
-      <div className="flex flex-col gap-1">
-        <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Asiakkaalle</span>
-        <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          Seuraa projektejasi, hyväksy tarjouksia, maksa laskuja ja saa tukea portaalissasi.
-        </span>
-      </div>
-    </a>
-    <a
-      href="/fi/api/getting-started"
-      className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-5 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-    >
-      <Icon icon="code" color="rgb(var(--primary))" size={20} className="shrink-0" />
-      <div className="flex flex-col gap-1">
-        <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">API-viite</span>
-        <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          Luo API-avain ja automatisoi liidejä, asiakkaita ja tilauksia REST API:n avulla.
-        </span>
-      </div>
-    </a>
-  </div>
+## Yleiset tehtävät
 
-  <hr className="border-0 border-t border-border" />
-
-  <div className="flex flex-col gap-4">
-    <h2 className="font-serif text-xl font-medium leading-normal text-gray-900 dark:text-gray-50">Yleiset tehtävät</h2>
-
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-      <a
-        href="/fi/crm/clients"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="user-plus" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Lisää asiakas</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            Luo asiakasprofiileja ja kutsu heidät portaaliinsa.
-          </span>
-        </div>
-      </a>
-      <a
-        href="/fi/invoices/create-invoice"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="file-invoice" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Lähetä lasku</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            Luo ja lähetä ammattimaisia laskuja suoraan AgencyHandystä.
-          </span>
-        </div>
-      </a>
-      <a
-        href="/fi/services/overview"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="package" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Julkaise palvelu</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            Rakenna palvelupaketteja, joita asiakkaat voivat tilata katalogistasi.
-          </span>
-        </div>
-      </a>
-      <a
-        href="/fi/workspace/custom-domain"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="globe" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Aseta mukautettu verkkotunnus</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            White-label-asiakasportaalisi omalla brändätyllä verkkotunnuksellasi.
-          </span>
-        </div>
-      </a>
-      <a
-        href="/fi/integrations/stripe"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="credit-card" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Yhdistä maksut</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            Määritä Stripe, PayPal tai pankkisiirto saadaksesi maksuja verkossa.
-          </span>
-        </div>
-      </a>
-      <a
-        href="/fi/api/getting-started"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="code" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Käytä API:a</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            Luo API-avain ja aloita liidien, asiakkaiden ja tilausten luominen.
-          </span>
-        </div>
-      </a>
-    </div>
-  </div>
-</div>
+<CardGroup cols={2}>
+  <Card title="Lisää asiakas" icon="user-plus" href="/fi/crm/clients">
+    Luo asiakasprofiileja ja kutsu heidät portaaliinsa.
+  </Card>
+  <Card title="Lähetä lasku" icon="file-invoice" href="/fi/invoices/create-invoice">
+    Luo ja lähetä ammattimaisia laskuja suoraan AgencyHandystä.
+  </Card>
+  <Card title="Julkaise palvelu" icon="package" href="/fi/services/overview">
+    Rakenna palvelupaketteja, joita asiakkaat voivat tilata katalogistasi.
+  </Card>
+  <Card title="Aseta mukautettu verkkotunnus" icon="globe" href="/fi/workspace/custom-domain">
+    White-label-asiakasportaalisi omalla brändätyllä verkkotunnuksellasi.
+  </Card>
+  <Card title="Yhdistä maksut" icon="credit-card" href="/fi/integrations/stripe">
+    Määritä Stripe, PayPal tai pankkisiirto saadaksesi maksuja verkossa.
+  </Card>
+  <Card title="Käytä API:a" icon="code" href="/fi/api/getting-started">
+    Luo API-avain ja aloita liidien, asiakkaiden ja tilausten luominen.
+  </Card>
+</CardGroup>

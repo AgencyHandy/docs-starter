@@ -6,6 +6,10 @@
 drafts/
 *.draft.mdx
 
+# Contributor docs (not published pages)
+AGENTS.md
+CLAUDE.md
+
 # Raw scraped source material (reference only, not published)
 sources/
 

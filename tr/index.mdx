@@ -1,136 +1,39 @@
 ---
 title: AgencyHandy Belgeleri
-description: Ajansınızı nasıl yöneteceğinizi, müşterilerinizle nasıl çalışacağınızı ve API üzerinde nasıl geliştirme yapacağınızı öğrenin — hepsi tek bir platformdan.
-mode: frame
+description: Ajansınızı yönetmek, müşterilerinize harika bir deneyim sunmak ve AgencyHandy üzerine geliştirme yapmak için ihtiyacınız olan her şey.
 ---
 
-<div data-product-guide-index className="flex w-full flex-col gap-8 max-w-5xl mx-auto px-4 md:px-8 lg:px-12 py-10 lg:gap-14 lg:py-16">
-  <div className="flex max-w-[560px] flex-col gap-2 self-center text-center">
-    <h1 className="text-[30px] font-medium leading-9 tracking-tight text-gray-900 dark:text-gray-50">
-      AgencyHandy Belgeleri
-    </h1>
-    <p className="text-balance text-base leading-relaxed tracking-tight text-gray-600 dark:text-gray-400">
-      Ajansınızı yönetmek, müşterilerinize harika bir deneyim sunmak ve AgencyHandy üzerine geliştirme yapmak için ihtiyacınız olan her şey.
-    </p>
-  </div>
+<CardGroup cols={3}>
+  <Card title="Ajans İçin" icon="building" href="/tr/getting-started/introduction">
+    Çalışma alanınızı kurun, müşterileri ve siparişleri yönetin, fatura gönderin ve ekibinizi yönetin.
+  </Card>
+  <Card title="Müşteri İçin" icon="user" href="/tr/client/introduction">
+    Projelerinizi takip edin, teklifleri onaylayın, faturaları ödeyin ve portalınızda destek alın.
+  </Card>
+  <Card title="API Referansı" icon="code" href="/api/getting-started">
+    Bir API anahtarı oluşturun ve REST API ile müşteri adaylarını, müşterileri ve siparişleri otomatikleştirin.
+  </Card>
+</CardGroup>
 
-  <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-    <a
-      href="/tr/getting-started/introduction"
-      className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-5 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-    >
-      <Icon icon="building" color="rgb(var(--primary))" size={20} className="shrink-0" />
-      <div className="flex flex-col gap-1">
-        <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Ajans İçin</span>
-        <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          Çalışma alanınızı kurun, müşterileri ve siparişleri yönetin, fatura gönderin ve ekibinizi yönetin.
-        </span>
-      </div>
-    </a>
-    <a
-      href="/tr/client/introduction"
-      className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-5 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-    >
-      <Icon icon="user" color="rgb(var(--primary))" size={20} className="shrink-0" />
-      <div className="flex flex-col gap-1">
-        <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Müşteri İçin</span>
-        <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          Projelerinizi takip edin, teklifleri onaylayın, faturaları ödeyin ve portalınızda destek alın.
-        </span>
-      </div>
-    </a>
-    <a
-      href="/api/getting-started"
-      className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-5 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-    >
-      <Icon icon="code" color="rgb(var(--primary))" size={20} className="shrink-0" />
-      <div className="flex flex-col gap-1">
-        <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">API Referansı</span>
-        <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          Bir API anahtarı oluşturun ve REST API ile müşteri adaylarını, müşterileri ve siparişleri otomatikleştirin.
-        </span>
-      </div>
-    </a>
-  </div>
+## Sık yapılan işlemler
 
-  <hr className="border-0 border-t border-border" />
-
-  <div className="flex flex-col gap-4">
-    <h2 className="font-serif text-xl font-medium leading-normal text-gray-900 dark:text-gray-50">Sık yapılan işlemler</h2>
-
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-      <a
-        href="/tr/crm/clients"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="user-plus" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Müşteri ekle</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            Müşteri profilleri oluşturun ve onları portallarına davet edin.
-          </span>
-        </div>
-      </a>
-      <a
-        href="/tr/invoices/create-invoice"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="file-invoice" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Fatura gönder</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            AgencyHandy üzerinden profesyonel faturalar oluşturun ve gönderin.
-          </span>
-        </div>
-      </a>
-      <a
-        href="/tr/services/overview"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="package" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Hizmet yayınla</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            Müşterilerin kataloğunuzdan sipariş verebileceği hizmet paketleri oluşturun.
-          </span>
-        </div>
-      </a>
-      <a
-        href="/tr/workspace/custom-domain"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="globe" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Özel alan adı ayarla</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            Müşteri portalınızı kendi markalı alan adınızla beyaz etiketleyin.
-          </span>
-        </div>
-      </a>
-      <a
-        href="/tr/integrations/stripe"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="credit-card" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Ödeme bağlantısı kur</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            Stripe, PayPal veya banka havalesi ile çevrimiçi ödeme almaya başlayın.
-          </span>
-        </div>
-      </a>
-      <a
-        href="/api/getting-started"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="code" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">API'yi kullan</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            Bir API anahtarı oluşturun ve müşteri adayları, müşteriler ve siparişler oluşturmaya başlayın.
-          </span>
-        </div>
-      </a>
-    </div>
-  </div>
-</div>
+<CardGroup cols={2}>
+  <Card title="Müşteri ekle" icon="user-plus" href="/tr/crm/clients">
+    Müşteri profilleri oluşturun ve onları portallarına davet edin.
+  </Card>
+  <Card title="Fatura gönder" icon="file-invoice" href="/tr/invoices/create-invoice">
+    AgencyHandy üzerinden profesyonel faturalar oluşturun ve gönderin.
+  </Card>
+  <Card title="Hizmet yayınla" icon="package" href="/tr/services/overview">
+    Müşterilerin kataloğunuzdan sipariş verebileceği hizmet paketleri oluşturun.
+  </Card>
+  <Card title="Özel alan adı ayarla" icon="globe" href="/tr/workspace/custom-domain">
+    Müşteri portalınızı kendi markalı alan adınızla beyaz etiketleyin.
+  </Card>
+  <Card title="Ödeme bağlantısı kur" icon="credit-card" href="/tr/integrations/stripe">
+    Stripe, PayPal veya banka havalesi ile çevrimiçi ödeme almaya başlayın.
+  </Card>
+  <Card title="API'yi kullan" icon="code" href="/api/getting-started">
+    Bir API anahtarı oluşturun ve müşteri adayları, müşteriler ve siparişler oluşturmaya başlayın.
+  </Card>
+</CardGroup>

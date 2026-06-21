@@ -1,136 +1,39 @@
 ---
 title: AgencyHandy 文档
-description: 了解如何运营您的代理机构、与客户协作，并基于 API 进行开发——一切尽在一个平台。
-mode: frame
+description: 运营代理机构、为客户提供优质体验，以及基于 AgencyHandy 进行开发所需的一切。
 ---
 
-<div data-product-guide-index className="flex w-full flex-col gap-8 max-w-5xl mx-auto px-4 md:px-8 lg:px-12 py-10 lg:gap-14 lg:py-16">
-  <div className="flex max-w-[560px] flex-col gap-2 self-center text-center">
-    <h1 className="text-[30px] font-medium leading-9 tracking-tight text-gray-900 dark:text-gray-50">
-      AgencyHandy 文档
-    </h1>
-    <p className="text-balance text-base leading-relaxed tracking-tight text-gray-600 dark:text-gray-400">
-      运营代理机构、为客户提供优质体验，以及基于 AgencyHandy 进行开发所需的一切。
-    </p>
-  </div>
+<CardGroup cols={3}>
+  <Card title="代理机构专区" icon="building" href="/zh/getting-started/introduction">
+    设置工作区、管理客户与订单、发送发票，并管理您的团队。
+  </Card>
+  <Card title="客户专区" icon="user" href="/zh/client/introduction">
+    在您的门户中跟踪项目、审批提案、支付发票并获取支持。
+  </Card>
+  <Card title="API 参考" icon="code" href="/zh/api/getting-started">
+    生成 API 密钥，通过 REST API 自动化管理潜在客户、客户与订单。
+  </Card>
+</CardGroup>
 
-  <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-    <a
-      href="/zh/getting-started/introduction"
-      className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-5 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-    >
-      <Icon icon="building" color="rgb(var(--primary))" size={20} className="shrink-0" />
-      <div className="flex flex-col gap-1">
-        <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">代理机构专区</span>
-        <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          设置工作区、管理客户与订单、发送发票，并管理您的团队。
-        </span>
-      </div>
-    </a>
-    <a
-      href="/zh/client/introduction"
-      className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-5 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-    >
-      <Icon icon="user" color="rgb(var(--primary))" size={20} className="shrink-0" />
-      <div className="flex flex-col gap-1">
-        <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">客户专区</span>
-        <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          在您的门户中跟踪项目、审批提案、支付发票并获取支持。
-        </span>
-      </div>
-    </a>
-    <a
-      href="/zh/api/getting-started"
-      className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-5 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-    >
-      <Icon icon="code" color="rgb(var(--primary))" size={20} className="shrink-0" />
-      <div className="flex flex-col gap-1">
-        <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">API 参考</span>
-        <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          生成 API 密钥，通过 REST API 自动化管理潜在客户、客户与订单。
-        </span>
-      </div>
-    </a>
-  </div>
+## 常见任务
 
-  <hr className="border-0 border-t border-border" />
-
-  <div className="flex flex-col gap-4">
-    <h2 className="font-serif text-xl font-medium leading-normal text-gray-900 dark:text-gray-50">常见任务</h2>
-
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-      <a
-        href="/zh/crm/clients"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="user-plus" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">添加客户</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            创建客户档案并邀请他们访问专属门户。
-          </span>
-        </div>
-      </a>
-      <a
-        href="/zh/invoices/create-invoice"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="file-invoice" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">发送发票</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            直接在 AgencyHandy 中创建并发送专业发票。
-          </span>
-        </div>
-      </a>
-      <a
-        href="/zh/services/overview"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="package" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">发布服务</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            构建服务套餐，供客户从您的目录中下单。
-          </span>
-        </div>
-      </a>
-      <a
-        href="/zh/workspace/custom-domain"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="globe" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">设置自定义域名</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            使用您自己的品牌域名为客户门户添加白标。
-          </span>
-        </div>
-      </a>
-      <a
-        href="/zh/integrations/stripe"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="credit-card" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">连接支付</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            设置 Stripe、PayPal 或银行转账以在线收款。
-          </span>
-        </div>
-      </a>
-      <a
-        href="/zh/api/getting-started"
-        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
-      >
-        <Icon icon="code" color="rgb(var(--primary))" size={18} className="shrink-0" />
-        <div className="flex flex-col gap-1">
-          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">使用 API</span>
-          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-            生成 API 密钥，开始创建潜在客户、客户与订单。
-          </span>
-        </div>
-      </a>
-    </div>
-  </div>
-</div>
+<CardGroup cols={2}>
+  <Card title="添加客户" icon="user-plus" href="/zh/crm/clients">
+    创建客户档案并邀请他们访问专属门户。
+  </Card>
+  <Card title="发送发票" icon="file-invoice" href="/zh/invoices/create-invoice">
+    直接在 AgencyHandy 中创建并发送专业发票。
+  </Card>
+  <Card title="发布服务" icon="package" href="/zh/services/overview">
+    构建服务套餐，供客户从您的目录中下单。
+  </Card>
+  <Card title="设置自定义域名" icon="globe" href="/zh/workspace/custom-domain">
+    使用您自己的品牌域名为客户门户添加白标。
+  </Card>
+  <Card title="连接支付" icon="credit-card" href="/zh/integrations/stripe">
+    设置 Stripe、PayPal 或银行转账以在线收款。
+  </Card>
+  <Card title="使用 API" icon="code" href="/zh/api/getting-started">
+    生成 API 密钥，开始创建潜在客户、客户与订单。
+  </Card>
+</CardGroup>
