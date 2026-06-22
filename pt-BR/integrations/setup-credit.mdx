@@ -1,0 +1,156 @@
+---
+title: "Como configurar crédito no AgencyHandy"
+sidebarTitle: "Crédito"
+description: "Ofereça serviços através de um sistema de crédito pré-pago: crie pacotes, defina taxas de conversão e permita que os clientes comprem e usem créditos em serviços e faturas."
+---
+
+Os créditos permitem que você ofereça serviços através de um sistema pré-pago. Você cria pacotes de créditos com um preço, define taxas de conversão que determinam quantos créditos uma unidade de moeda compra, e os clientes compram créditos antecipadamente. Quando um cliente faz um pedido de serviço ou paga uma fatura, o AgencyHandy converte o preço em créditos, deduz o valor necessário e registra cada transação em uma trilha de auditoria completa.
+
+## Como funcionam os créditos
+
+O sistema de créditos tem três componentes:
+
+- **Pacotes de créditos**: conjuntos de créditos que os clientes compram (por exemplo, 500 créditos por $50).
+- **Taxas de conversão**: regras que convertem o preço em moeda de um serviço em créditos (por exemplo, 1 USD = 10 créditos).
+- **Saldo de créditos**: os créditos disponíveis que um cliente pode gastar em serviços ou faturas.
+
+**Exemplo:** Um serviço custa $3,51 e a taxa de conversão é 1 USD = 10 créditos.
+
+`$3,51 × 10 = 35,1 créditos → arredondado para 36 créditos`
+
+O AgencyHandy sempre arredonda para o crédito inteiro mais próximo.
+
+## Ativar pagamentos por crédito
+
+Antes de os clientes poderem comprar ou usar créditos, você precisa ativar o recurso.
+
+<Steps>
+  <Step title="Navegar para Créditos">
+    Na barra lateral esquerda, vá para **Créditos**.
+  </Step>
+  <Step title="Ativar o botão">
+    Ative o botão **Permitir pagamento por crédito**.
+  </Step>
+</Steps>
+
+**Quando ativado**, os clientes podem:
+- Ver o widget de saldo de créditos no portal do cliente.
+- Acessar a página de Créditos e comprar pacotes.
+- Enviar solicitações de créditos.
+- Usar **Comprar com créditos** durante o checkout de serviços.
+- Usar **Pagar com créditos** nas faturas.
+
+**Quando desativado**, o widget de créditos e todas as opções de crédito ficam ocultos no portal do cliente. Os saldos de créditos existentes são mantidos e os clientes podem continuar usando outros métodos de pagamento.
+
+## Criar pacotes de créditos
+
+Os pacotes de créditos são o que os clientes compram para carregar créditos na conta deles.
+
+<Steps>
+  <Step title="Abrir configurações de pacotes de créditos">
+    Acesse **Créditos → Configurações → Pacotes de créditos**.
+  </Step>
+  <Step title="Adicionar um pacote">
+    Clique em **+ Pacote**.
+  </Step>
+  <Step title="Preencher os detalhes">
+    Insira um nome para o pacote, o número de créditos incluídos, a moeda e o preço.
+  </Step>
+  <Step title="Salvar">
+    Clique em **Criar**.
+  </Step>
+</Steps>
+
+## Gerenciar taxas de conversão
+
+As taxas de conversão determinam quantos créditos são necessários para um serviço com base no seu preço em moeda. Você pode definir uma taxa diferente por moeda.
+
+<Steps>
+  <Step title="Abrir configurações de taxas de conversão">
+    Acesse **Créditos → Configurações → Taxas de conversão**.
+  </Step>
+  <Step title="Adicionar uma taxa">
+    Clique em **+ Adicionar taxa de conversão**.
+  </Step>
+  <Step title="Configurar a taxa">
+    Selecione uma moeda e insira o número de créditos equivalente a uma unidade dessa moeda.
+  </Step>
+  <Step title="Salvar">
+    Clique em **Salvar**.
+  </Step>
+</Steps>
+
+**Taxas de exemplo:**
+
+| Moeda | Taxa |
+|-------|------|
+| USD | 1 USD = 10 créditos |
+| EUR | 1 EUR = 9 créditos |
+| GBP | 1 GBP = 12 créditos |
+
+<Note>
+  Só pode existir uma taxa de conversão ativa por moeda em qualquer momento.
+</Note>
+
+## Compras de créditos automáticas vs manuais
+
+A forma como os créditos são adicionados à conta de um cliente depende do método de pagamento utilizado.
+
+**Automático** (sem necessidade de aprovação):
+- Stripe
+- PayPal
+
+Os créditos são adicionados imediatamente após um pagamento bem-sucedido.
+
+**Manual** (requer aprovação da agência):
+- Transferência bancária
+- Criptomoeda
+
+Quando um cliente paga através de um método manual, é criada uma solicitação de crédito. Você precisa revisá-la e aprová-la antes de os créditos serem adicionados.
+
+## Gerenciar solicitações de créditos
+
+<Steps>
+  <Step title="Abrir solicitações de créditos">
+    Acesse **Faturamento → Créditos**.
+  </Step>
+  <Step title="Localizar solicitações pendentes">
+    Revise o nome do cliente, o valor do pagamento e o número de créditos solicitados.
+  </Step>
+  <Step title="Aprovar ou rejeitar">
+    Clique em **Aceitar** para adicionar os créditos, ou em **Rejeitar** para recusar.
+  </Step>
+</Steps>
+
+**Status das solicitações:**
+
+- **Pendente**: enviado e aguardando revisão.
+- **Aceito**: aprovado; os créditos foram adicionados ao saldo do cliente.
+- **Rejeitado**: recusado; nenhum crédito foi adicionado.
+
+## Ver créditos de um cliente
+
+<Steps>
+  <Step title="Abrir o perfil do cliente">
+    Acesse **Clientes** e clique no nome de um cliente.
+  </Step>
+  <Step title="Ir à aba Créditos">
+    Selecione a aba **Créditos**.
+  </Step>
+</Steps>
+
+A aba Créditos mostra o saldo disponível do cliente, o histórico completo de transações, o saldo acumulado e as referências de transações.
+
+## Entender as transações de créditos
+
+Cada atividade de crédito é registrada no histórico de transações do cliente.
+
+**Entrada**: créditos adicionados à conta:
+- Compra de pacote de créditos
+- Solicitação de crédito aprovada
+
+**Saída**: créditos deduzidos da conta:
+- Serviço comprado com créditos
+- Fatura paga com créditos
+
+Cada transação mostra a data, o tipo, a referência, o valor em créditos e o saldo acumulado, fornecendo uma trilha de auditoria completa.

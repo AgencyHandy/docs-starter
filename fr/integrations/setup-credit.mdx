@@ -1,0 +1,156 @@
+---
+title: "Comment configurer le crédit dans AgencyHandy"
+sidebarTitle: "Crédit"
+description: "Proposez des services via un système de crédit prépayé: créez des packages, définissez des taux de conversion et laissez les clients acheter et utiliser des crédits pour les services et les factures."
+---
+
+Les crédits vous permettent de proposer des services via un système prépayé. Vous créez des packages de crédits avec un prix, définissez des taux de conversion qui indiquent combien de crédits une unité monétaire peut acheter, et les clients achètent des crédits à l'avance. Lorsqu'un client commande un service ou règle une facture, AgencyHandy convertit le prix en crédits, déduit le montant requis et enregistre chaque transaction dans un journal complet.
+
+## Comment fonctionnent les crédits
+
+Le système de crédits comporte trois composants :
+
+- **Packages de crédits**: lots de crédits que les clients achètent (par exemple, 500 crédits pour 50 $).
+- **Taux de conversion**: règles qui convertissent le prix en devise d'un service en crédits (par exemple, 1 USD = 10 crédits).
+- **Solde de crédits**: les crédits disponibles qu'un client peut dépenser pour des services ou des factures.
+
+**Exemple :** Un service coûte 3,51 $ et le taux de conversion est 1 USD = 10 crédits.
+
+`3,51 $ × 10 = 35,1 crédits → arrondi à 36 crédits`
+
+AgencyHandy arrondit toujours au crédit entier supérieur.
+
+## Activer les paiements par crédit
+
+Avant que les clients puissent acheter ou utiliser des crédits, vous devez activer la fonctionnalité.
+
+<Steps>
+  <Step title="Accéder aux Crédits">
+    Dans la barre latérale gauche, allez dans **Crédits**.
+  </Step>
+  <Step title="Activer le bouton">
+    Activez le bouton **Autoriser le paiement par crédit**.
+  </Step>
+</Steps>
+
+**Quand activé**, les clients peuvent :
+- Voir leur widget de solde de crédits dans le portail client.
+- Accéder à la page Crédits et acheter des packages.
+- Soumettre des demandes de crédits.
+- Utiliser **Acheter avec des crédits** lors de la commande de services.
+- Utiliser **Payer avec des crédits** sur les factures.
+
+**Quand désactivé**, le widget de crédits et toutes les options de crédit sont masqués dans le portail client. Les soldes de crédits existants sont préservés et les clients peuvent toujours utiliser d'autres méthodes de paiement.
+
+## Créer des packages de crédits
+
+Les packages de crédits sont ce que les clients achètent pour charger des crédits sur leur compte.
+
+<Steps>
+  <Step title="Ouvrir les paramètres des packages de crédits">
+    Accédez à **Crédits → Paramètres → Packages de crédits**.
+  </Step>
+  <Step title="Ajouter un package">
+    Cliquez sur **+ Package**.
+  </Step>
+  <Step title="Remplir les détails">
+    Entrez un nom de package, le nombre de crédits inclus, la devise et le prix.
+  </Step>
+  <Step title="Enregistrer">
+    Cliquez sur **Créer**.
+  </Step>
+</Steps>
+
+## Gérer les taux de conversion
+
+Les taux de conversion déterminent combien de crédits sont nécessaires pour un service en fonction de son prix en devise. Vous pouvez définir un taux différent par devise.
+
+<Steps>
+  <Step title="Ouvrir les paramètres des taux de conversion">
+    Accédez à **Crédits → Paramètres → Taux de conversion**.
+  </Step>
+  <Step title="Ajouter un taux">
+    Cliquez sur **+ Ajouter un taux de conversion**.
+  </Step>
+  <Step title="Configurer le taux">
+    Sélectionnez une devise et entrez le nombre de crédits équivalant à une unité de cette devise.
+  </Step>
+  <Step title="Enregistrer">
+    Cliquez sur **Enregistrer**.
+  </Step>
+</Steps>
+
+**Exemples de taux :**
+
+| Devise | Taux |
+|--------|------|
+| USD | 1 USD = 10 crédits |
+| EUR | 1 EUR = 9 crédits |
+| GBP | 1 GBP = 12 crédits |
+
+<Note>
+  Un seul taux de conversion actif peut exister par devise à tout moment.
+</Note>
+
+## Achats de crédits automatiques vs manuels
+
+La façon dont les crédits sont ajoutés au compte d'un client dépend du mode de paiement utilisé.
+
+**Automatique** (aucune approbation requise) :
+- Stripe
+- PayPal
+
+Les crédits sont ajoutés immédiatement après un paiement réussi.
+
+**Manuel** (nécessite l'approbation de l'agence) :
+- Virement bancaire
+- Cryptomonnaie
+
+Lorsqu'un client paie via une méthode manuelle, une demande de crédit est créée. Vous devez l'examiner et l'approuver avant que les crédits ne soient ajoutés.
+
+## Gérer les demandes de crédits
+
+<Steps>
+  <Step title="Ouvrir les demandes de crédits">
+    Accédez à **Facturation → Crédits**.
+  </Step>
+  <Step title="Localiser les demandes en attente">
+    Examinez le nom du client, le montant du paiement et le nombre de crédits demandés.
+  </Step>
+  <Step title="Approuver ou rejeter">
+    Cliquez sur **Accepter** pour ajouter les crédits, ou sur **Rejeter** pour décliner.
+  </Step>
+</Steps>
+
+**Statuts des demandes :**
+
+- **En attente**: soumis et en attente d'examen.
+- **Accepté**: approuvé ; les crédits ont été ajoutés au solde du client.
+- **Rejeté**: refusé ; aucun crédit n'a été ajouté.
+
+## Consulter les crédits d'un client
+
+<Steps>
+  <Step title="Ouvrir le profil du client">
+    Accédez à **Clients** et cliquez sur le nom d'un client.
+  </Step>
+  <Step title="Aller à l'onglet Crédits">
+    Sélectionnez l'onglet **Crédits**.
+  </Step>
+</Steps>
+
+L'onglet Crédits affiche le solde disponible du client, l'historique complet des transactions, le solde cumulatif et les références de transaction.
+
+## Comprendre les transactions de crédits
+
+Chaque activité de crédit est enregistrée dans l'historique des transactions du client.
+
+**Entrée**: crédits ajoutés au compte :
+- Achat de package de crédits
+- Demande de crédit approuvée
+
+**Sortie**: crédits déduits du compte :
+- Service acheté avec des crédits
+- Facture payée avec des crédits
+
+Chaque transaction affiche la date, le type, la référence, le montant en crédits et le solde cumulatif, fournissant une piste d'audit complète.

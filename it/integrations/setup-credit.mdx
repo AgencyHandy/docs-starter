@@ -1,0 +1,156 @@
+---
+title: "Come configurare il credito in AgencyHandy"
+sidebarTitle: "Credito"
+description: "Offri servizi tramite un sistema di credito prepagato: crea pacchetti, imposta tassi di conversione e consenti ai clienti di acquistare e utilizzare crediti per servizi e fatture."
+---
+
+I crediti ti consentono di offrire servizi tramite un sistema prepagato. Crei pacchetti di crediti con un prezzo, imposti tassi di conversione che definiscono quanti crediti acquista un'unità di valuta, e i clienti acquistano crediti in anticipo. Quando un cliente ordina un servizio o paga una fattura, AgencyHandy converte il prezzo in crediti, deduce l'importo richiesto e registra ogni transazione in un registro completo.
+
+## Come funzionano i crediti
+
+Il sistema di crediti ha tre componenti:
+
+- **Pacchetti di crediti**: bundle di crediti che i clienti acquistano (ad esempio, 500 crediti per $50).
+- **Tassi di conversione**: regole che convertono il prezzo in valuta di un servizio in crediti (ad esempio, 1 USD = 10 crediti).
+- **Saldo crediti**: i crediti disponibili che un cliente può spendere per servizi o fatture.
+
+**Esempio:** Un servizio costa $3,51 e il tasso di conversione è 1 USD = 10 crediti.
+
+`$3,51 × 10 = 35,1 crediti → arrotondato a 36 crediti`
+
+AgencyHandy arrotonda sempre al credito intero più vicino.
+
+## Attivare i pagamenti con crediti
+
+Prima che i clienti possano acquistare o utilizzare crediti, devi attivare la funzione.
+
+<Steps>
+  <Step title="Navigare a Crediti">
+    Nella barra laterale sinistra, vai a **Crediti**.
+  </Step>
+  <Step title="Attivare il toggle">
+    Abilita il toggle **Consenti pagamento con credito**.
+  </Step>
+</Steps>
+
+**Quando attivato**, i clienti possono:
+- Vedere il widget del saldo crediti nel portale clienti.
+- Accedere alla pagina Crediti e acquistare pacchetti.
+- Inviare richieste di crediti.
+- Usare **Acquista con crediti** durante il checkout dei servizi.
+- Usare **Paga con crediti** sulle fatture.
+
+**Quando disattivato**, il widget crediti e tutte le opzioni di credito sono nascosti nel portale clienti. I saldi crediti esistenti vengono conservati e i clienti possono continuare a usare altri metodi di pagamento.
+
+## Creare pacchetti di crediti
+
+I pacchetti di crediti sono ciò che i clienti acquistano per caricare crediti sul loro account.
+
+<Steps>
+  <Step title="Aprire le impostazioni dei pacchetti di crediti">
+    Vai a **Crediti → Impostazioni → Pacchetti di crediti**.
+  </Step>
+  <Step title="Aggiungere un pacchetto">
+    Clicca su **+ Pacchetto**.
+  </Step>
+  <Step title="Compilare i dettagli">
+    Inserisci un nome per il pacchetto, il numero di crediti inclusi, la valuta e il prezzo.
+  </Step>
+  <Step title="Salvare">
+    Clicca su **Crea**.
+  </Step>
+</Steps>
+
+## Gestire i tassi di conversione
+
+I tassi di conversione determinano quanti crediti sono necessari per un servizio in base al suo prezzo in valuta. Puoi impostare un tasso diverso per ogni valuta.
+
+<Steps>
+  <Step title="Aprire le impostazioni dei tassi di conversione">
+    Vai a **Crediti → Impostazioni → Tassi di conversione**.
+  </Step>
+  <Step title="Aggiungere un tasso">
+    Clicca su **+ Aggiungi tasso di conversione**.
+  </Step>
+  <Step title="Configurare il tasso">
+    Seleziona una valuta e inserisci il numero di crediti equivalente a un'unità di quella valuta.
+  </Step>
+  <Step title="Salvare">
+    Clicca su **Salva**.
+  </Step>
+</Steps>
+
+**Tassi di esempio:**
+
+| Valuta | Tasso |
+|--------|-------|
+| USD | 1 USD = 10 crediti |
+| EUR | 1 EUR = 9 crediti |
+| GBP | 1 GBP = 12 crediti |
+
+<Note>
+  Per ogni valuta può esistere solo un tasso di conversione attivo alla volta.
+</Note>
+
+## Acquisti di crediti automatici vs manuali
+
+Il modo in cui i crediti vengono aggiunti all'account di un cliente dipende dal metodo di pagamento utilizzato.
+
+**Automatico** (nessuna approvazione richiesta):
+- Stripe
+- PayPal
+
+I crediti vengono aggiunti immediatamente dopo un pagamento riuscito.
+
+**Manuale** (richiede l'approvazione dell'agenzia):
+- Bonifico bancario
+- Criptovaluta
+
+Quando un cliente paga tramite un metodo manuale, viene creata una richiesta di credito. Devi esaminarla e approvarla prima che i crediti vengano aggiunti.
+
+## Gestire le richieste di crediti
+
+<Steps>
+  <Step title="Aprire le richieste di crediti">
+    Vai a **Fatturazione → Crediti**.
+  </Step>
+  <Step title="Individuare le richieste in sospeso">
+    Esamina il nome del cliente, l'importo del pagamento e il numero di crediti richiesti.
+  </Step>
+  <Step title="Approvare o rifiutare">
+    Clicca su **Accetta** per aggiungere i crediti, o su **Rifiuta** per declinare.
+  </Step>
+</Steps>
+
+**Stato delle richieste:**
+
+- **In sospeso**: inviata e in attesa di revisione.
+- **Accettata**: approvata; i crediti sono stati aggiunti al saldo del cliente.
+- **Rifiutata**: declinata; nessun credito è stato aggiunto.
+
+## Visualizzare i crediti di un cliente
+
+<Steps>
+  <Step title="Aprire il profilo del cliente">
+    Vai a **Clienti** e clicca sul nome di un cliente.
+  </Step>
+  <Step title="Andare alla scheda Crediti">
+    Seleziona la scheda **Crediti**.
+  </Step>
+</Steps>
+
+La scheda Crediti mostra il saldo disponibile del cliente, la cronologia completa delle transazioni, il saldo progressivo e i riferimenti delle transazioni.
+
+## Capire le transazioni di crediti
+
+Ogni attività di credito viene registrata nella cronologia delle transazioni del cliente.
+
+**Entrata**: crediti aggiunti all'account:
+- Acquisto di pacchetto di crediti
+- Richiesta di credito approvata
+
+**Uscita**: crediti dedotti dall'account:
+- Servizio acquistato con crediti
+- Fattura pagata con crediti
+
+Ogni transazione mostra la data, il tipo, il riferimento, l'importo in crediti e il saldo progressivo, fornendo un audit trail completo.

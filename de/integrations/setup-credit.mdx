@@ -1,0 +1,156 @@
+---
+title: "So richten Sie Guthaben in AgencyHandy ein"
+sidebarTitle: "Guthaben"
+description: "Bieten Sie Dienstleistungen über ein Vorauszahlungs-Guthabensystem an: erstellen Sie Pakete, legen Sie Umrechnungskurse fest und ermöglichen Sie Kunden, Guthaben für Dienste und Rechnungen zu kaufen und zu nutzen."
+---
+
+Mit Guthaben können Sie Dienstleistungen über ein Vorauszahlungssystem anbieten. Sie erstellen Guthabenpakete mit einem Preis, legen Umrechnungskurse fest, die bestimmen, wie viele Guthaben eine Währungseinheit kauft, und Kunden erwerben Guthaben im Voraus. Wenn ein Kunde einen Dienst bestellt oder eine Rechnung bezahlt, wandelt AgencyHandy den Preis in Guthaben um, zieht den erforderlichen Betrag ab und erfasst jede Transaktion in einem vollständigen Prüfpfad.
+
+## So funktioniert das Guthabensystem
+
+Das Guthabensystem hat drei Komponenten:
+
+- **Guthabenpakete**: Guthaben-Bündel, die Kunden kaufen (z. B. 500 Guthaben für 50 $).
+- **Umrechnungskurse**: Regeln, die den Währungspreis eines Dienstes in Guthaben umrechnen (z. B. 1 USD = 10 Guthaben).
+- **Guthabensaldo**: das verfügbare Guthaben, das ein Kunde für Dienste oder Rechnungen ausgeben kann.
+
+**Beispiel:** Ein Dienst kostet 3,51 $ und der Umrechnungskurs beträgt 1 USD = 10 Guthaben.
+
+`3,51 $ × 10 = 35,1 Guthaben → aufgerundet auf 36 Guthaben`
+
+AgencyHandy rundet immer auf das nächste ganze Guthaben auf.
+
+## Guthabenzahlungen aktivieren
+
+Bevor Kunden Guthaben kaufen oder nutzen können, müssen Sie die Funktion aktivieren.
+
+<Steps>
+  <Step title="Zu Guthaben navigieren">
+    Gehen Sie in der linken Seitenleiste zu **Guthaben**.
+  </Step>
+  <Step title="Schalter einschalten">
+    Aktivieren Sie den Schalter **Guthabenzahlung erlauben**.
+  </Step>
+</Steps>
+
+**Bei Aktivierung** können Kunden:
+- Ihr Guthaben-Widget im Kundenportal sehen.
+- Auf die Guthaben-Seite zugreifen und Pakete kaufen.
+- Guthabenanfragen einreichen.
+- **Mit Guthaben kaufen** beim Bestellen von Diensten verwenden.
+- **Mit Guthaben bezahlen** auf Rechnungen verwenden.
+
+**Bei Deaktivierung** werden das Guthaben-Widget und alle Guthabenoptionen im Kundenportal ausgeblendet. Bestehende Guthabensalden bleiben erhalten, und Kunden können weiterhin andere Zahlungsmethoden nutzen.
+
+## Guthabenpakete erstellen
+
+Guthabenpakete sind das, was Kunden kaufen, um Guthaben auf ihr Konto zu laden.
+
+<Steps>
+  <Step title="Guthabenpaket-Einstellungen öffnen">
+    Gehen Sie zu **Guthaben → Einstellungen → Guthabenpakete**.
+  </Step>
+  <Step title="Paket hinzufügen">
+    Klicken Sie auf **+ Paket**.
+  </Step>
+  <Step title="Details ausfüllen">
+    Geben Sie einen Paketnamen, die Anzahl der enthaltenen Guthaben, die Währung und den Preis ein.
+  </Step>
+  <Step title="Speichern">
+    Klicken Sie auf **Erstellen**.
+  </Step>
+</Steps>
+
+## Umrechnungskurse verwalten
+
+Umrechnungskurse bestimmen, wie viele Guthaben für einen Dienst basierend auf seinem Währungspreis erforderlich sind. Sie können pro Währung einen anderen Kurs festlegen.
+
+<Steps>
+  <Step title="Umrechnungskurs-Einstellungen öffnen">
+    Gehen Sie zu **Guthaben → Einstellungen → Umrechnungskurse**.
+  </Step>
+  <Step title="Kurs hinzufügen">
+    Klicken Sie auf **+ Umrechnungskurs hinzufügen**.
+  </Step>
+  <Step title="Kurs konfigurieren">
+    Wählen Sie eine Währung und geben Sie die Anzahl der Guthaben ein, die einer Einheit dieser Währung entsprechen.
+  </Step>
+  <Step title="Speichern">
+    Klicken Sie auf **Speichern**.
+  </Step>
+</Steps>
+
+**Beispielkurse:**
+
+| Währung | Kurs |
+|---------|------|
+| USD | 1 USD = 10 Guthaben |
+| EUR | 1 EUR = 9 Guthaben |
+| GBP | 1 GBP = 12 Guthaben |
+
+<Note>
+  Pro Währung kann jeweils nur ein aktiver Umrechnungskurs existieren.
+</Note>
+
+## Automatische vs. manuelle Guthabenkäufe
+
+Wie Guthaben dem Konto eines Kunden gutgeschrieben werden, hängt von der verwendeten Zahlungsmethode ab.
+
+**Automatisch** (keine Genehmigung erforderlich):
+- Stripe
+- PayPal
+
+Guthaben wird sofort nach erfolgreicher Zahlung gutgeschrieben.
+
+**Manuell** (erfordert Genehmigung der Agentur):
+- Banküberweisung
+- Kryptowährung
+
+Wenn ein Kunde über eine manuelle Methode zahlt, wird eine Guthabenanfrage erstellt. Sie müssen diese prüfen und genehmigen, bevor Guthaben hinzugefügt wird.
+
+## Guthabenanfragen verwalten
+
+<Steps>
+  <Step title="Guthabenanfragen öffnen">
+    Gehen Sie zu **Abrechnung → Guthaben**.
+  </Step>
+  <Step title="Ausstehende Anfragen suchen">
+    Prüfen Sie den Kundennamen, den Zahlungsbetrag und die Anzahl der angeforderten Guthaben.
+  </Step>
+  <Step title="Genehmigen oder ablehnen">
+    Klicken Sie auf **Annehmen**, um das Guthaben hinzuzufügen, oder auf **Ablehnen**, um abzulehnen.
+  </Step>
+</Steps>
+
+**Anfragestatus:**
+
+- **Ausstehend**: eingereicht und wartet auf Prüfung.
+- **Angenommen**: genehmigt; Guthaben wurde dem Saldo des Kunden hinzugefügt.
+- **Abgelehnt**: zurückgewiesen; kein Guthaben wurde hinzugefügt.
+
+## Kundenguthaben anzeigen
+
+<Steps>
+  <Step title="Kundenprofil öffnen">
+    Gehen Sie zu **Kunden** und klicken Sie auf den Namen eines Kunden.
+  </Step>
+  <Step title="Zur Registerkarte Guthaben wechseln">
+    Wählen Sie die Registerkarte **Guthaben**.
+  </Step>
+</Steps>
+
+Die Registerkarte Guthaben zeigt den verfügbaren Saldo des Kunden, den vollständigen Transaktionsverlauf, den laufenden Saldo und Transaktionsreferenzen.
+
+## Guthabentransaktionen verstehen
+
+Jede Guthabenaktivität wird im Transaktionsverlauf des Kunden erfasst.
+
+**Eingang**: dem Konto hinzugefügtes Guthaben:
+- Kauf eines Guthabenpakets
+- Genehmigte Guthabenanfrage
+
+**Ausgang**: vom Konto abgezogenes Guthaben:
+- Mit Guthaben gekaufter Dienst
+- Mit Guthaben bezahlte Rechnung
+
+Jede Transaktion zeigt Datum, Typ, Referenz, Guthabenbetrag und laufenden Saldo und bietet so einen vollständigen Prüfpfad.

@@ -1,0 +1,156 @@
+---
+title: "AgencyHandy'de Kredit Nasil Ayarlanir"
+sidebarTitle: "Kredit"
+description: "Hizmetleri on odemeli bir kredi sistemiyle sunun: paketler olusturun, donusum oranlari belirleyin ve musterilerin hizmetler ve faturalar icin kredi satin alip kullanmasina izin verin."
+---
+
+Credits enable you to offer services through a prepaid system. You create credit packages with a price, set conversion rates that define how many credits one unit of currency buys, and clients purchase credits in advance. When a client orders a service or pays an invoice, AgencyHandy converts the price into credits, deducts the required amount, and records every transaction in a complete audit trail.
+
+## How credits work
+
+The credit system has three components:
+
+- **Credit packages**: bundles of credits that clients purchase (for example, 500 credits for $50).
+- **Conversion rates**: rules that convert a service's currency price into credits (for example, 1 USD = 10 credits).
+- **Credit balance**: the credits available to a client to spend on services or invoices.
+
+**Example:** A service costs $3.51 and the conversion rate is 1 USD = 10 credits.
+
+`$3.51 × 10 = 35.1 credits → rounded up to 36 credits`
+
+AgencyHandy always rounds up to the nearest whole credit.
+
+## Enable credit payments
+
+Before clients can purchase or use credits, you must turn the feature on.
+
+<Steps>
+  <Step title="Navigate to Credits">
+    In the left sidebar, go to **Credits**.
+  </Step>
+  <Step title="Turn on the toggle">
+    Enable the **Allow Credit Payment** toggle.
+  </Step>
+</Steps>
+
+**When enabled**, clients can:
+- See their credit balance widget in the client portal.
+- Access the Credits page and purchase packages.
+- Submit credit requests.
+- Use **Buy with Credit** during service checkout.
+- Use **Pay with Credit** on invoices.
+
+**When disabled**, the credit widget and all credit options are hidden from the client portal. Existing credit balances are preserved, and clients can still use other payment methods.
+
+## Create credit packages
+
+Credit packages are what clients purchase to load credits onto their account.
+
+<Steps>
+  <Step title="Open Credit Packages settings">
+    Navigate to **Credits → Settings → Credit Packages**.
+  </Step>
+  <Step title="Add a package">
+    Click **+ Package**.
+  </Step>
+  <Step title="Fill in the details">
+    Enter a package name, the number of credits included, the currency, and the price.
+  </Step>
+  <Step title="Save">
+    Click **Create**.
+  </Step>
+</Steps>
+
+## Manage conversion rates
+
+Conversion rates determine how many credits are required for a service based on its currency price. You can set a different rate per currency.
+
+<Steps>
+  <Step title="Open Conversion Rates settings">
+    Navigate to **Credits → Settings → Conversion Rates**.
+  </Step>
+  <Step title="Add a rate">
+    Click **+ Add Conversion Rate**.
+  </Step>
+  <Step title="Configure the rate">
+    Select a currency and enter the number of credits equivalent to one unit of that currency.
+  </Step>
+  <Step title="Save">
+    Click **Save**.
+  </Step>
+</Steps>
+
+**Example rates:**
+
+| Currency | Rate |
+|----------|------|
+| USD | 1 USD = 10 credits |
+| EUR | 1 EUR = 9 credits |
+| GBP | 1 GBP = 12 credits |
+
+<Note>
+  Only one active conversion rate can exist per currency at any given time.
+</Note>
+
+## Automatic vs manual credit purchases
+
+How credits are added to a client's account depends on the payment method used.
+
+**Automatic** (no approval needed):
+- Stripe
+- PayPal
+
+Credits are added immediately after a successful payment.
+
+**Manual** (requires agency approval):
+- Bank Transfer
+- Cryptocurrency
+
+When a client pays via a manual method, a credit request is created. You must review and approve it before credits are added.
+
+## Manage credit requests
+
+<Steps>
+  <Step title="Open credit requests">
+    Navigate to **Billing → Credits**.
+  </Step>
+  <Step title="Locate pending requests">
+    Review the client name, payment amount, and number of credits requested.
+  </Step>
+  <Step title="Approve or reject">
+    Click **Accept** to add the credits, or **Reject** to decline.
+  </Step>
+</Steps>
+
+**Request statuses:**
+
+- **Pending**: submitted and awaiting review.
+- **Accepted**: approved; credits have been added to the client's balance.
+- **Rejected**: declined; no credits were added.
+
+## View client credits
+
+<Steps>
+  <Step title="Open the client profile">
+    Navigate to **Clients** and click on a client's name.
+  </Step>
+  <Step title="Go to the Credits tab">
+    Select the **Credits** tab.
+  </Step>
+</Steps>
+
+The Credits tab shows the client's available balance, full transaction history, running balance, and transaction references.
+
+## Understand credit transactions
+
+Every credit activity is recorded in the client's transaction history.
+
+**In**: credits added to the account:
+- Credit package purchase
+- Approved credit request
+
+**Out**: credits deducted from the account:
+- Service purchased using credits
+- Invoice paid using credits
+
+Each transaction shows the date, type, reference, credit amount, and running balance, providing a complete audit trail.

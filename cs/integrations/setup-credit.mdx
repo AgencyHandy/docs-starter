@@ -1,0 +1,156 @@
+---
+title: "Jak nastavit kredit v AgencyHandy"
+sidebarTitle: "Kredit"
+description: "Nabízejte služby prostřednictvím předplaceného kreditního systému: vytvářejte balíčky, nastavujte směnné kurzy a umožněte klientům kupovat a používat kredity na služby a faktury."
+---
+
+Kredity vám umožňují nabízet služby prostřednictvím předplaceného systému. Vytvoříte kreditní balíčky s cenou, nastavíte směnné kurzy, které určují, kolik kreditů koupí jedna měnová jednotka, a klienti si předem nakoupí kredity. Když klient objedná službu nebo zaplatí fakturu, AgencyHandy převede cenu na kredity, odečte požadovanou částku a každou transakci zaznamená v kompletním záznamu.
+
+## Jak fungují kredity
+
+Kreditní systém má tři součásti:
+
+- **Kreditní balíčky**: balíčky kreditů, které klienti kupují (např. 500 kreditů za 50 $).
+- **Směnné kurzy**: pravidla, která převádějí cenu služby v měně na kredity (např. 1 USD = 10 kreditů).
+- **Kreditní zůstatek**: dostupné kredity, které může klient utratit za služby nebo faktury.
+
+**Příklad:** Služba stojí 3,51 $ a směnný kurz je 1 USD = 10 kreditů.
+
+`3,51 $ × 10 = 35,1 kreditů → zaokrouhleno na 36 kreditů`
+
+AgencyHandy vždy zaokrouhluje nahoru na nejbližší celý kredit.
+
+## Aktivace kreditních plateb
+
+Než budou klienti moci kupovat nebo používat kredity, musíte funkci zapnout.
+
+<Steps>
+  <Step title="Přejít na Kredity">
+    V levém postranním panelu přejděte na **Kredity**.
+  </Step>
+  <Step title="Zapnout přepínač">
+    Aktivujte přepínač **Povolit kreditní platbu**.
+  </Step>
+</Steps>
+
+**Při aktivaci** mohou klienti:
+- Vidět widget kreditního zůstatku v klientském portálu.
+- Přistupovat na stránku Kredity a kupovat balíčky.
+- Odesílat žádosti o kredity.
+- Používat **Koupit za kredity** při objednávání služeb.
+- Používat **Zaplatit kredity** na fakturách.
+
+**Při deaktivaci** jsou widget kreditů a všechny kreditní možnosti skryty v klientském portálu. Stávající kreditní zůstatky jsou zachovány a klienti mohou nadále používat jiné platební metody.
+
+## Vytváření kreditních balíčků
+
+Kreditní balíčky jsou to, co klienti kupují, aby načetli kredity na svůj účet.
+
+<Steps>
+  <Step title="Otevřít nastavení kreditních balíčků">
+    Přejděte na **Kredity → Nastavení → Kreditní balíčky**.
+  </Step>
+  <Step title="Přidat balíček">
+    Klikněte na **+ Balíček**.
+  </Step>
+  <Step title="Vyplnit podrobnosti">
+    Zadejte název balíčku, počet zahrnutých kreditů, měnu a cenu.
+  </Step>
+  <Step title="Uložit">
+    Klikněte na **Vytvořit**.
+  </Step>
+</Steps>
+
+## Správa směnných kurzů
+
+Směnné kurzy určují, kolik kreditů je potřeba pro službu na základě její ceny v měně. Pro každou měnu můžete nastavit jiný kurz.
+
+<Steps>
+  <Step title="Otevřít nastavení směnných kurzů">
+    Přejděte na **Kredity → Nastavení → Směnné kurzy**.
+  </Step>
+  <Step title="Přidat kurz">
+    Klikněte na **+ Přidat směnný kurz**.
+  </Step>
+  <Step title="Nakonfigurovat kurz">
+    Vyberte měnu a zadejte počet kreditů odpovídající jedné jednotce této měny.
+  </Step>
+  <Step title="Uložit">
+    Klikněte na **Uložit**.
+  </Step>
+</Steps>
+
+**Příklady kurzů:**
+
+| Měna | Kurz |
+|------|------|
+| USD | 1 USD = 10 kreditů |
+| EUR | 1 EUR = 9 kreditů |
+| GBP | 1 GBP = 12 kreditů |
+
+<Note>
+  Pro každou měnu může v daný okamžik existovat pouze jeden aktivní směnný kurz.
+</Note>
+
+## Automatické vs. manuální nákupy kreditů
+
+Způsob přidávání kreditů na účet klienta závisí na použité platební metodě.
+
+**Automatické** (nevyžaduje schválení):
+- Stripe
+- PayPal
+
+Kredity jsou přidány okamžitě po úspěšné platbě.
+
+**Manuální** (vyžaduje schválení agentury):
+- Bankovní převod
+- Kryptoměna
+
+Když klient platí manuální metodou, je vytvořena žádost o kredit. Musíte ji zkontrolovat a schválit, než budou kredity přidány.
+
+## Správa žádostí o kredity
+
+<Steps>
+  <Step title="Otevřít žádosti o kredity">
+    Přejděte na **Fakturace → Kredity**.
+  </Step>
+  <Step title="Najít nevyřízené žádosti">
+    Zkontrolujte jméno klienta, výši platby a počet požadovaných kreditů.
+  </Step>
+  <Step title="Schválit nebo odmítnout">
+    Klikněte na **Přijmout** pro přidání kreditů, nebo na **Odmítnout** pro zamítnutí.
+  </Step>
+</Steps>
+
+**Stavy žádostí:**
+
+- **Čekající**: odesláno a čeká na kontrolu.
+- **Přijato**: schváleno; kredity byly přidány na klientský zůstatek.
+- **Odmítnuto**: zamítnuto; žádné kredity nebyly přidány.
+
+## Zobrazení kreditů klienta
+
+<Steps>
+  <Step title="Otevřít profil klienta">
+    Přejděte na **Klienti** a klikněte na jméno klienta.
+  </Step>
+  <Step title="Přejít na záložku Kredity">
+    Vyberte záložku **Kredity**.
+  </Step>
+</Steps>
+
+Záložka Kredity zobrazuje dostupný zůstatek klienta, kompletní historii transakcí, průběžný zůstatek a reference transakcí.
+
+## Porozumění kreditním transakcím
+
+Každá kreditní aktivita je zaznamenána v historii transakcí klienta.
+
+**Příchozí**: kredity přidané na účet:
+- Nákup kreditního balíčku
+- Schválená žádost o kredit
+
+**Odchozí**: kredity odečtené z účtu:
+- Služba zakoupená za kredity
+- Faktura zaplacená kredity
+
+Každá transakce zobrazuje datum, typ, referenci, výši kreditů a průběžný zůstatek, čímž poskytuje kompletní auditní stopu.
