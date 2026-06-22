@@ -162,7 +162,8 @@
                 "pages": [
                   "integrations/stripe",
                   "integrations/paypal",
-                  "integrations/other-payments"
+                  "integrations/other-payments",
+                  "integrations/setup-credit"
                 ]
               },
               {
@@ -201,6 +202,12 @@
                 "pages": [
                   "client/proposals",
                   "client/invoices-payments"
+                ]
+              },
+              {
+                "group": "Payments",
+                "pages": [
+                  "client/credits"
                 ]
               },
               {
@@ -360,7 +367,8 @@
                 "pages": [
                   "fr/integrations/stripe",
                   "fr/integrations/paypal",
-                  "fr/integrations/other-payments"
+                  "fr/integrations/other-payments",
+                  "fr/integrations/setup-credit"
                 ]
               },
               {
@@ -407,6 +415,12 @@
                 "pages": [
                   "fr/client/files-and-forms",
                   "fr/client/support-tickets"
+                ]
+              },
+              {
+                "group": "Paiements",
+                "pages": [
+                  "fr/client/credits"
                 ]
               }
             ]
@@ -558,7 +572,8 @@
                 "pages": [
                   "es/integrations/stripe",
                   "es/integrations/paypal",
-                  "es/integrations/other-payments"
+                  "es/integrations/other-payments",
+                  "es/integrations/setup-credit"
                 ]
               },
               {
@@ -605,6 +620,12 @@
                 "pages": [
                   "es/client/files-and-forms",
                   "es/client/support-tickets"
+                ]
+              },
+              {
+                "group": "Pagos",
+                "pages": [
+                  "es/client/credits"
                 ]
               }
             ]
@@ -756,7 +777,8 @@
                 "pages": [
                   "zh/integrations/stripe",
                   "zh/integrations/paypal",
-                  "zh/integrations/other-payments"
+                  "zh/integrations/other-payments",
+                  "zh/integrations/setup-credit"
                 ]
               },
               {
@@ -803,6 +825,12 @@
                 "pages": [
                   "zh/client/files-and-forms",
                   "zh/client/support-tickets"
+                ]
+              },
+              {
+                "group": "Payments",
+                "pages": [
+                  "zh/client/credits"
                 ]
               }
             ]
@@ -954,7 +982,8 @@
                 "pages": [
                   "zh-Hant/integrations/stripe",
                   "zh-Hant/integrations/paypal",
-                  "zh-Hant/integrations/other-payments"
+                  "zh-Hant/integrations/other-payments",
+                  "zh-Hant/integrations/setup-credit"
                 ]
               },
               {
@@ -1001,6 +1030,12 @@
                 "pages": [
                   "zh-Hant/client/files-and-forms",
                   "zh-Hant/client/support-tickets"
+                ]
+              },
+              {
+                "group": "Payments",
+                "pages": [
+                  "zh-Hant/client/credits"
                 ]
               }
             ]
@@ -1152,7 +1187,8 @@
                 "pages": [
                   "de/integrations/stripe",
                   "de/integrations/paypal",
-                  "de/integrations/other-payments"
+                  "de/integrations/other-payments",
+                  "de/integrations/setup-credit"
                 ]
               },
               {
@@ -1199,6 +1235,12 @@
                 "pages": [
                   "de/client/files-and-forms",
                   "de/client/support-tickets"
+                ]
+              },
+              {
+                "group": "Zahlungen",
+                "pages": [
+                  "de/client/credits"
                 ]
               }
             ]
@@ -1350,7 +1392,8 @@
                 "pages": [
                   "ko/integrations/stripe",
                   "ko/integrations/paypal",
-                  "ko/integrations/other-payments"
+                  "ko/integrations/other-payments",
+                  "ko/integrations/setup-credit"
                 ]
               },
               {
@@ -1397,6 +1440,12 @@
                 "pages": [
                   "ko/client/files-and-forms",
                   "ko/client/support-tickets"
+                ]
+              },
+              {
+                "group": "Payments",
+                "pages": [
+                  "ko/client/credits"
                 ]
               }
             ]
@@ -1548,7 +1597,8 @@
                 "pages": [
                   "cs/integrations/stripe",
                   "cs/integrations/paypal",
-                  "cs/integrations/other-payments"
+                  "cs/integrations/other-payments",
+                  "cs/integrations/setup-credit"
                 ]
               },
               {
@@ -1595,6 +1645,12 @@
                 "pages": [
                   "cs/client/files-and-forms",
                   "cs/client/support-tickets"
+                ]
+              },
+              {
+                "group": "Platby",
+                "pages": [
+                  "cs/client/credits"
                 ]
               }
             ]
@@ -1746,7 +1802,8 @@
                 "pages": [
                   "ja/integrations/stripe",
                   "ja/integrations/paypal",
-                  "ja/integrations/other-payments"
+                  "ja/integrations/other-payments",
+                  "ja/integrations/setup-credit"
                 ]
               },
               {
@@ -1793,6 +1850,12 @@
                 "pages": [
                   "ja/client/files-and-forms",
                   "ja/client/support-tickets"
+                ]
+              },
+              {
+                "group": "Payments",
+                "pages": [
+                  "ja/client/credits"
                 ]
               }
             ]
@@ -1944,7 +2007,8 @@
                 "pages": [
                   "it/integrations/stripe",
                   "it/integrations/paypal",
-                  "it/integrations/other-payments"
+                  "it/integrations/other-payments",
+                  "it/integrations/setup-credit"
                 ]
               },
               {
@@ -1991,6 +2055,12 @@
                 "pages": [
                   "it/client/files-and-forms",
                   "it/client/support-tickets"
+                ]
+              },
+              {
+                "group": "Pagamenti",
+                "pages": [
+                  "it/client/credits"
                 ]
               }
             ]
@@ -2142,7 +2212,8 @@
                 "pages": [
                   "lv/integrations/stripe",
                   "lv/integrations/paypal",
-                  "lv/integrations/other-payments"
+                  "lv/integrations/other-payments",
+                  "lv/integrations/setup-credit"
                 ]
               },
               {
@@ -2189,6 +2260,12 @@
                 "pages": [
                   "lv/client/files-and-forms",
                   "lv/client/support-tickets"
+                ]
+              },
+              {
+                "group": "Payments",
+                "pages": [
+                  "lv/client/credits"
                 ]
               }
             ]
@@ -2340,7 +2417,8 @@
                 "pages": [
                   "no/integrations/stripe",
                   "no/integrations/paypal",
-                  "no/integrations/other-payments"
+                  "no/integrations/other-payments",
+                  "no/integrations/setup-credit"
                 ]
               },
               {
@@ -2387,6 +2465,12 @@
                 "pages": [
                   "no/client/files-and-forms",
                   "no/client/support-tickets"
+                ]
+              },
+              {
+                "group": "Betalinger",
+                "pages": [
+                  "no/client/credits"
                 ]
               }
             ]
@@ -2538,7 +2622,8 @@
                 "pages": [
                   "ar/integrations/stripe",
                   "ar/integrations/paypal",
-                  "ar/integrations/other-payments"
+                  "ar/integrations/other-payments",
+                  "ar/integrations/setup-credit"
                 ]
               },
               {
@@ -2585,6 +2670,12 @@
                 "pages": [
                   "ar/client/files-and-forms",
                   "ar/client/support-tickets"
+                ]
+              },
+              {
+                "group": "Payments",
+                "pages": [
+                  "ar/client/credits"
                 ]
               }
             ]
@@ -2736,7 +2827,8 @@
                 "pages": [
                   "sv/integrations/stripe",
                   "sv/integrations/paypal",
-                  "sv/integrations/other-payments"
+                  "sv/integrations/other-payments",
+                  "sv/integrations/setup-credit"
                 ]
               },
               {
@@ -2783,6 +2875,12 @@
                 "pages": [
                   "sv/client/files-and-forms",
                   "sv/client/support-tickets"
+                ]
+              },
+              {
+                "group": "Betalningar",
+                "pages": [
+                  "sv/client/credits"
                 ]
               }
             ]
@@ -2934,7 +3032,8 @@
                 "pages": [
                   "da/integrations/stripe",
                   "da/integrations/paypal",
-                  "da/integrations/other-payments"
+                  "da/integrations/other-payments",
+                  "da/integrations/setup-credit"
                 ]
               },
               {
@@ -2981,6 +3080,12 @@
                 "pages": [
                   "da/client/files-and-forms",
                   "da/client/support-tickets"
+                ]
+              },
+              {
+                "group": "Betalinger",
+                "pages": [
+                  "da/client/credits"
                 ]
               }
             ]
@@ -3132,7 +3237,8 @@
                 "pages": [
                   "pl/integrations/stripe",
                   "pl/integrations/paypal",
-                  "pl/integrations/other-payments"
+                  "pl/integrations/other-payments",
+                  "pl/integrations/setup-credit"
                 ]
               },
               {
@@ -3179,6 +3285,12 @@
                 "pages": [
                   "pl/client/files-and-forms",
                   "pl/client/support-tickets"
+                ]
+              },
+              {
+                "group": "Payments",
+                "pages": [
+                  "pl/client/credits"
                 ]
               }
             ]
@@ -3330,7 +3442,8 @@
                 "pages": [
                   "nl/integrations/stripe",
                   "nl/integrations/paypal",
-                  "nl/integrations/other-payments"
+                  "nl/integrations/other-payments",
+                  "nl/integrations/setup-credit"
                 ]
               },
               {
@@ -3377,6 +3490,12 @@
                 "pages": [
                   "nl/client/files-and-forms",
                   "nl/client/support-tickets"
+                ]
+              },
+              {
+                "group": "Betalingen",
+                "pages": [
+                  "nl/client/credits"
                 ]
               }
             ]
@@ -3528,7 +3647,8 @@
                 "pages": [
                   "tr/integrations/stripe",
                   "tr/integrations/paypal",
-                  "tr/integrations/other-payments"
+                  "tr/integrations/other-payments",
+                  "tr/integrations/setup-credit"
                 ]
               },
               {
@@ -3575,6 +3695,12 @@
                 "pages": [
                   "tr/client/files-and-forms",
                   "tr/client/support-tickets"
+                ]
+              },
+              {
+                "group": "Payments",
+                "pages": [
+                  "tr/client/credits"
                 ]
               }
             ]
@@ -3726,7 +3852,8 @@
                 "pages": [
                   "uz/integrations/stripe",
                   "uz/integrations/paypal",
-                  "uz/integrations/other-payments"
+                  "uz/integrations/other-payments",
+                  "uz/integrations/setup-credit"
                 ]
               },
               {
@@ -3773,6 +3900,12 @@
                 "pages": [
                   "uz/client/files-and-forms",
                   "uz/client/support-tickets"
+                ]
+              },
+              {
+                "group": "Payments",
+                "pages": [
+                  "uz/client/credits"
                 ]
               }
             ]
@@ -3924,7 +4057,8 @@
                 "pages": [
                   "ru/integrations/stripe",
                   "ru/integrations/paypal",
-                  "ru/integrations/other-payments"
+                  "ru/integrations/other-payments",
+                  "ru/integrations/setup-credit"
                 ]
               },
               {
@@ -3971,6 +4105,12 @@
                 "pages": [
                   "ru/client/files-and-forms",
                   "ru/client/support-tickets"
+                ]
+              },
+              {
+                "group": "Payments",
+                "pages": [
+                  "ru/client/credits"
                 ]
               }
             ]
@@ -4122,7 +4262,8 @@
                 "pages": [
                   "pt/integrations/stripe",
                   "pt/integrations/paypal",
-                  "pt/integrations/other-payments"
+                  "pt/integrations/other-payments",
+                  "pt/integrations/setup-credit"
                 ]
               },
               {
@@ -4169,6 +4310,12 @@
                 "pages": [
                   "pt/client/files-and-forms",
                   "pt/client/support-tickets"
+                ]
+              },
+              {
+                "group": "Pagamentos",
+                "pages": [
+                  "pt/client/credits"
                 ]
               }
             ]
@@ -4320,7 +4467,8 @@
                 "pages": [
                   "pt-BR/integrations/stripe",
                   "pt-BR/integrations/paypal",
-                  "pt-BR/integrations/other-payments"
+                  "pt-BR/integrations/other-payments",
+                  "pt-BR/integrations/setup-credit"
                 ]
               },
               {
@@ -4367,6 +4515,12 @@
                 "pages": [
                   "pt-BR/client/files-and-forms",
                   "pt-BR/client/support-tickets"
+                ]
+              },
+              {
+                "group": "Pagamentos",
+                "pages": [
+                  "pt-BR/client/credits"
                 ]
               }
             ]
@@ -4518,7 +4672,8 @@
                 "pages": [
                   "id/integrations/stripe",
                   "id/integrations/paypal",
-                  "id/integrations/other-payments"
+                  "id/integrations/other-payments",
+                  "id/integrations/setup-credit"
                 ]
               },
               {
@@ -4565,6 +4720,12 @@
                 "pages": [
                   "id/client/files-and-forms",
                   "id/client/support-tickets"
+                ]
+              },
+              {
+                "group": "Pembayaran",
+                "pages": [
+                  "id/client/credits"
                 ]
               }
             ]
@@ -4716,7 +4877,8 @@
                 "pages": [
                   "fi/integrations/stripe",
                   "fi/integrations/paypal",
-                  "fi/integrations/other-payments"
+                  "fi/integrations/other-payments",
+                  "fi/integrations/setup-credit"
                 ]
               },
               {
@@ -4763,6 +4925,12 @@
                 "pages": [
                   "fi/client/files-and-forms",
                   "fi/client/support-tickets"
+                ]
+              },
+              {
+                "group": "Maksut",
+                "pages": [
+                  "fi/client/credits"
                 ]
               }
             ]
@@ -4914,7 +5082,8 @@
                 "pages": [
                   "ro/integrations/stripe",
                   "ro/integrations/paypal",
-                  "ro/integrations/other-payments"
+                  "ro/integrations/other-payments",
+                  "ro/integrations/setup-credit"
                 ]
               },
               {
@@ -4961,6 +5130,12 @@
                 "pages": [
                   "ro/client/files-and-forms",
                   "ro/client/support-tickets"
+                ]
+              },
+              {
+                "group": "Plati",
+                "pages": [
+                  "ro/client/credits"
                 ]
               }
             ]
