@@ -1,0 +1,176 @@
+---
+title: "إعداد Email to Ticket"
+sidebarTitle: "Email to Ticket"
+description: "حوّل رسائل العملاء المُعاد توجيهها تلقائياً إلى تذاكر دعم من خلال ربط صندوق بريد الدعم الخاص بك بعنوان إعادة التوجيه الخاص بمساحة عملك في AgencyHandy."
+---
+
+تحوّل ميزة **Email to Ticket** رسائل العملاء الإلكترونية تلقائياً إلى تذاكر دعم. بمجرد إعداد بريد الدعم الخاص بك لإعادة توجيه الرسائل الواردة إلى عنوان إعادة التوجيه الفريد الخاص بك في AgencyHandy، تُنشئ كل رسالة جديدة من عميل معروف تذكرة تلقائياً في مساحة عملك.
+
+<Note>
+  لا تُنشئ التذاكر تلقائياً إلا الرسائل المُرسلة من عناوين بريد العملاء الحاليين.
+</Note>
+
+---
+
+## الوصول إلى Email to Ticket
+
+<Steps>
+  <Step title="افتح Workspace Config">
+    سجّل الدخول إلى AgencyHandy. في شريط التنقل الأيسر، انقر فوق **Workspace Config**.
+  </Step>
+  <Step title="اختر Email to Ticket">
+    انقر فوق **Email to Ticket** من القائمة الفرعية لـ Workspace Config.
+  </Step>
+</Steps>
+
+من هذه الصفحة، يمكنك:
+
+- الحصول على عنوان إعادة التوجيه الفريد الخاص بك.
+- إعداد إعادة توجيه البريد الإلكتروني.
+- التحقق من إعداد إعادة التوجيه.
+- تفعيل إنشاء التذاكر التلقائي.
+- عرض تعليمات الإعداد لموفري البريد الإلكتروني المختلفين.
+
+![Email to Ticket settings page](/images/email-to-ticket/overview-page.png)
+<p style={{textAlign: 'center'}}>*صفحة إعدادات Email to Ticket*</p>
+
+---
+
+## عنوان إعادة التوجيه لمساحة عملك
+
+يُنشئ AgencyHandy عنوان بريد إلكتروني فريداً لإعادة التوجيه لكل مساحة عمل. يستقبل هذا العنوان الرسائل المُعاد توجيهها من صندوق بريد الدعم الخاص بك.
+
+<Steps>
+  <Step title="انسخ عنوان إعادة التوجيه الخاص بك">
+    انقر فوق **Copy** لنسخ عنوان إعادة التوجيه لمساحة عملك.
+  </Step>
+  <Step title="أضفه كوجهة لإعادة التوجيه">
+    أضف هذا العنوان كوجهة لإعادة التوجيه لدى موفر البريد الإلكتروني الخاص بك.
+  </Step>
+  <Step title="أكمل التحقق">
+    أكمل عملية التحقق من إعادة التوجيه التي يطلبها موفر خدمتك.
+  </Step>
+  <Step title="فعّل Auto-create Ticket">
+    بعد اكتمال التحقق، فعّل **Auto-create Ticket**.
+  </Step>
+</Steps>
+
+![Workspace forwarding address with Copy button](/images/email-to-ticket/forwarding-address-copy.png)
+<p style={{textAlign: 'center'}}>*عنوان إعادة توجيه مساحة العمل مع زر Copy*</p>
+
+<Tip>
+  عنوان إعادة التوجيه الخاص بك فريد لمساحة عملك ويبقى كما هو ما لم تُعِد إنشاءه.
+</Tip>
+
+---
+
+## إعداد إعادة توجيه البريد الإلكتروني
+
+لا يصل AgencyHandy إلى صندوق بريدك. يتم إعداد إعادة توجيه البريد الإلكتروني بالكامل لدى موفر البريد الإلكتروني الخاص بك.
+
+تتضمن صفحة Email to Ticket أدلة إعداد لـ:
+
+- Gmail
+- Outlook / Microsoft 365
+- Zoho Mail
+- cPanel / Hosting
+- موفرون آخرون يدعمون إعادة توجيه البريد الإلكتروني
+
+اختر موفر البريد الإلكتروني الخاص بك في صفحة Email to Ticket لعرض تعليمات الإعداد المناسبة.
+
+---
+
+## إعداد Gmail
+
+إذا كنت تستخدم Gmail، فاتبع هذه الخطوات.
+
+<Steps>
+  <Step title="افتح إعدادات إعادة التوجيه في Gmail">
+    في Gmail، انتقل إلى **Settings → See all settings → Forwarding and POP/IMAP**.
+
+    ![Gmail Forwarding and POP/IMAP settings tab](/images/email-to-ticket/gmail-forwarding-settings.png)
+    <p style={{textAlign: 'center'}}>*علامة تبويب Forwarding and POP/IMAP في إعدادات Gmail*</p>
+  </Step>
+  <Step title="أضف عنوان إعادة التوجيه الخاص بـ AgencyHandy">
+    انقر فوق **Add a forwarding address** ثم ألصق عنوان إعادة التوجيه الذي نسخته من AgencyHandy. يرسل Google رسالة تأكيد للتحقق من عنوان إعادة التوجيه. عد إلى AgencyHandy بعد حفظ عنوان إعادة التوجيه.
+
+    ![Gmail Add a forwarding address dialog](/images/email-to-ticket/gmail-add-forwarding-address.png)
+    <p style={{textAlign: 'center'}}>*مربع حوار Add a forwarding address في Gmail*</p>
+  </Step>
+  <Step title="إعادة توجيه الرسائل الواردة">
+    في Gmail:
+    - فعّل **Forward a copy of incoming mail**.
+    - اختر عنوان إعادة التوجيه الخاص بـ AgencyHandy.
+    - احفظ التغييرات.
+
+    ستُعاد توجيه جميع الرسائل المستقبلية التي يستقبلها صندوق بريد الدعم الخاص بك إلى AgencyHandy الآن.
+
+    ![Gmail Forward a copy of incoming mail option](/images/email-to-ticket/gmail-forward-incoming-mail.png)
+    <p style={{textAlign: 'center'}}>*خيار Forward a copy of incoming mail في Gmail*</p>
+  </Step>
+  <Step title="التحقق من عنوان إعادة التوجيه">
+    عد إلى **Workspace Config → Email to Ticket** وانقر فوق **I've added the address in Gmail**. ينتظر AgencyHandy رسالة التأكيد من Google ويكتشف تلقائياً رابط التأكيد أو رمز التحقق عند وصوله، وذلك في العادة خلال دقيقة إلى دقيقتين. بعد اكتمال التحقق، يصبح إعداد إعادة التوجيه جاهزاً.
+
+    ![Verifying the forwarding address in AgencyHandy](/images/email-to-ticket/gmail-verify-forwarding.png)
+    <p style={{textAlign: 'center'}}>*التحقق من عنوان إعادة التوجيه في AgencyHandy*</p>
+  </Step>
+</Steps>
+
+---
+
+## Auto-create Ticket
+
+بعد التحقق من إعادة التوجيه، فعّل مفتاح **Auto-create Ticket**.
+
+عند التفعيل:
+
+- كل رسالة مُعاد توجيهها من عميل حالي تُنشئ تذكرة دعم جديدة تلقائياً.
+- تتم مطابقة العملاء باستخدام عنوان بريدهم الإلكتروني.
+- تؤكد رسالة نجاح أن Email to Ticket نشط.
+
+![Auto-create Ticket toggle enabled](/images/email-to-ticket/auto-create-ticket-toggle.png)
+<p style={{textAlign: 'center'}}>*مفتاح Auto-create Ticket مُفعّل*</p>
+
+<Warning>
+  احتفظ بهذا الخيار معطلاً إلى أن يكتمل التحقق من إعادة التوجيه.
+</Warning>
+
+---
+
+## مساعد التأكيد
+
+بالنسبة لموفري البريد الإلكتروني المدعومين، يتضمن AgencyHandy مساعد تأكيد. بعد إضافة عنوان إعادة التوجيه لدى موفر البريد الإلكتروني الخاص بك:
+
+1. عد إلى صفحة Email to Ticket.
+2. انقر فوق زر التأكيد، مثل **I've added the address in Gmail**.
+3. انتظر بينما يتحقق AgencyHandy من رسالة التحقق من موفر الخدمة.
+4. بمجرد اكتشافها، يُكمل AgencyHandy عملية التحقق تلقائياً.
+
+يُزيل هذا الحاجة إلى استرجاع رسالة التحقق أو رمز التأكيد يدوياً.
+
+---
+
+## تحديث حالة التحقق
+
+إذا استغرق التحقق وقتاً أطول من المتوقع، انقر فوق **Refresh** للتحقق من رسائل التأكيد المُستلمة حديثاً.
+
+---
+
+## كيف تعمل Email to Ticket
+
+بمجرد إعداد Email to Ticket:
+
+1. يرسل العميل رسالة إلى عنوان بريد الدعم الخاص بك.
+2. يقوم موفر البريد الإلكتروني الخاص بك بإعادة توجيه نسخة من الرسالة تلقائياً إلى عنوان إعادة التوجيه الخاص بك في AgencyHandy.
+3. يتحقق AgencyHandy من عنوان بريد المُرسل.
+4. إذا تطابق المُرسل مع عميل حالي في مساحة عملك، يتم إنشاء تذكرة جديدة تلقائياً.
+
+---
+
+## ملاحظات
+
+- لا تُنشئ التذاكر تلقائياً إلا الرسائل من عناوين بريد العملاء الحاليين.
+- يتم تجاهل الرسائل من مُرسلين غير معروفين.
+- لكل مساحة عمل عنوان إعادة توجيه فريد خاص بها.
+- يستقبل AgencyHandy فقط النسخ المُعاد توجيهها من الرسائل. ولا يصل إلى صندوق بريدك مباشرة.
+- من المخطط دعم تسلسل ردود البريد الإلكتروني في إصدار مستقبلي.

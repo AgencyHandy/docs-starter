@@ -1,0 +1,176 @@
+---
+title: "Configurar o Email to Ticket"
+sidebarTitle: "Email to Ticket"
+description: "Converta automaticamente os e-mails encaminhados de clientes em tickets de suporte, conectando sua caixa de entrada de suporte ao endereço de encaminhamento do seu workspace AgencyHandy."
+---
+
+O recurso **Email to Ticket** converte automaticamente os e-mails dos clientes em tickets de suporte. Depois que seu e-mail de suporte for configurado para encaminhar os e-mails recebidos para o seu endereço de encaminhamento exclusivo do AgencyHandy, cada novo e-mail de um cliente reconhecido cria automaticamente um ticket no seu workspace.
+
+<Note>
+  Somente e-mails enviados de endereços de e-mail de clientes existentes criam tickets automaticamente.
+</Note>
+
+---
+
+## Acessando o Email to Ticket
+
+<Steps>
+  <Step title="Abra o Workspace Config">
+    Faça login no AgencyHandy. No menu de navegação à esquerda, clique em **Workspace Config**.
+  </Step>
+  <Step title="Selecione o Email to Ticket">
+    Clique em **Email to Ticket** no submenu do Workspace Config.
+  </Step>
+</Steps>
+
+Nesta página, você pode:
+
+- Obter seu endereço de encaminhamento exclusivo.
+- Configurar o encaminhamento de e-mail.
+- Verificar sua configuração de encaminhamento.
+- Ativar a criação automática de tickets.
+- Ver instruções de configuração para diferentes provedores de e-mail.
+
+![Email to Ticket settings page](/images/email-to-ticket/overview-page.png)
+<p style={{textAlign: 'center'}}>*Página de configurações do Email to Ticket*</p>
+
+---
+
+## O endereço de encaminhamento do seu workspace
+
+O AgencyHandy gera um endereço de e-mail de encaminhamento exclusivo para cada workspace. Esse endereço recebe os e-mails encaminhados da sua caixa de entrada de suporte.
+
+<Steps>
+  <Step title="Copie seu endereço de encaminhamento">
+    Clique em **Copy** para copiar o endereço de encaminhamento do seu workspace.
+  </Step>
+  <Step title="Adicione-o como destino de encaminhamento">
+    Adicione esse endereço como destino de encaminhamento no seu provedor de e-mail.
+  </Step>
+  <Step title="Conclua a verificação">
+    Conclua o processo de verificação de encaminhamento exigido pelo seu provedor.
+  </Step>
+  <Step title="Ative o Auto-create Ticket">
+    Depois que a verificação for concluída, ative o **Auto-create Ticket**.
+  </Step>
+</Steps>
+
+![Workspace forwarding address with Copy button](/images/email-to-ticket/forwarding-address-copy.png)
+<p style={{textAlign: 'center'}}>*Endereço de encaminhamento do workspace com o botão Copy*</p>
+
+<Tip>
+  Seu endereço de encaminhamento é exclusivo do seu workspace e permanece o mesmo, a menos que você o gere novamente.
+</Tip>
+
+---
+
+## Configurando o encaminhamento de e-mail
+
+O AgencyHandy não acessa sua caixa de correio. O encaminhamento de e-mail é configurado totalmente no seu provedor de e-mail.
+
+A página Email to Ticket inclui guias de configuração para:
+
+- Gmail
+- Outlook / Microsoft 365
+- Zoho Mail
+- cPanel / Hospedagem
+- Outros provedores que oferecem suporte a encaminhamento de e-mail
+
+Selecione seu provedor de e-mail na página Email to Ticket para ver as instruções de configuração apropriadas.
+
+---
+
+## Configuração do Gmail
+
+Se você usa o Gmail, siga estas etapas.
+
+<Steps>
+  <Step title="Abra as configurações de encaminhamento do Gmail">
+    No Gmail, vá para **Settings → See all settings → Forwarding and POP/IMAP**.
+
+    ![Gmail Forwarding and POP/IMAP settings tab](/images/email-to-ticket/gmail-forwarding-settings.png)
+    <p style={{textAlign: 'center'}}>*Aba de configurações Gmail Forwarding and POP/IMAP*</p>
+  </Step>
+  <Step title="Adicione o endereço de encaminhamento do AgencyHandy">
+    Clique em **Add a forwarding address** e cole o endereço de encaminhamento que você copiou do AgencyHandy. O Google envia um e-mail de confirmação para verificar o endereço de encaminhamento. Volte ao AgencyHandy depois de salvar o endereço de encaminhamento.
+
+    ![Gmail Add a forwarding address dialog](/images/email-to-ticket/gmail-add-forwarding-address.png)
+    <p style={{textAlign: 'center'}}>*Caixa de diálogo Gmail Add a forwarding address*</p>
+  </Step>
+  <Step title="Encaminhe e-mails recebidos">
+    No Gmail:
+    - Ative **Forward a copy of incoming mail**.
+    - Selecione seu endereço de encaminhamento do AgencyHandy.
+    - Salve suas alterações.
+
+    Todos os e-mails futuros recebidos na sua caixa de entrada de suporte agora são encaminhados para o AgencyHandy.
+
+    ![Gmail Forward a copy of incoming mail option](/images/email-to-ticket/gmail-forward-incoming-mail.png)
+    <p style={{textAlign: 'center'}}>*Opção Gmail Forward a copy of incoming mail*</p>
+  </Step>
+  <Step title="Verifique o endereço de encaminhamento">
+    Volte para **Workspace Config → Email to Ticket** e clique em **I've added the address in Gmail**. O AgencyHandy aguarda o e-mail de confirmação do Google e detecta automaticamente o link de confirmação ou o código de verificação quando ele chega, geralmente em um a dois minutos. Depois que a verificação for concluída, a configuração de encaminhamento estará pronta.
+
+    ![Verifying the forwarding address in AgencyHandy](/images/email-to-ticket/gmail-verify-forwarding.png)
+    <p style={{textAlign: 'center'}}>*Verificando o endereço de encaminhamento no AgencyHandy*</p>
+  </Step>
+</Steps>
+
+---
+
+## Auto-create Ticket
+
+Depois que o encaminhamento for verificado, ative a opção **Auto-create Ticket**.
+
+Quando ativado:
+
+- Cada e-mail encaminhado de um cliente existente cria automaticamente um novo ticket de suporte.
+- Os clientes são identificados pelo endereço de e-mail.
+- Uma mensagem de sucesso confirma que o Email to Ticket está ativo.
+
+![Auto-create Ticket toggle enabled](/images/email-to-ticket/auto-create-ticket-toggle.png)
+<p style={{textAlign: 'center'}}>*Opção Auto-create Ticket ativada*</p>
+
+<Warning>
+  Mantenha essa opção desativada até que a verificação de encaminhamento seja concluída.
+</Warning>
+
+---
+
+## Assistente de confirmação
+
+Para provedores de e-mail com suporte, o AgencyHandy inclui um assistente de confirmação. Depois de adicionar o endereço de encaminhamento no seu provedor de e-mail:
+
+1. Volte para a página Email to Ticket.
+2. Clique no botão de confirmação, como **I've added the address in Gmail**.
+3. Aguarde enquanto o AgencyHandy verifica o e-mail de verificação do provedor.
+4. Quando detectado, o AgencyHandy conclui automaticamente o processo de verificação.
+
+Isso elimina a necessidade de buscar manualmente o e-mail de verificação ou o código de confirmação.
+
+---
+
+## Atualizando o status de verificação
+
+Se a verificação estiver demorando mais do que o esperado, clique em **Refresh** para verificar se há novos e-mails de confirmação recebidos.
+
+---
+
+## Como o Email to Ticket funciona
+
+Depois que o Email to Ticket estiver configurado:
+
+1. Um cliente envia um e-mail para o seu endereço de e-mail de suporte.
+2. Seu provedor de e-mail encaminha automaticamente uma cópia do e-mail para o seu endereço de encaminhamento do AgencyHandy.
+3. O AgencyHandy verifica o endereço de e-mail do remetente.
+4. Se o remetente corresponder a um cliente existente no seu workspace, um novo ticket é criado automaticamente.
+
+---
+
+## Observações
+
+- Somente e-mails de endereços de clientes existentes criam tickets automaticamente.
+- E-mails de remetentes desconhecidos são ignorados.
+- Cada workspace tem seu próprio endereço de encaminhamento exclusivo.
+- O AgencyHandy recebe apenas cópias encaminhadas dos e-mails. Ele não acessa sua caixa de correio diretamente.
+- O encadeamento de respostas de e-mail está planejado para uma versão futura.

@@ -1,0 +1,176 @@
+---
+title: "Email to Ticket 설정하기"
+sidebarTitle: "Email to Ticket"
+description: "지원 수신함을 AgencyHandy 워크스페이스의 전달 주소에 연결하여 전달된 클라이언트 이메일을 자동으로 지원 티켓으로 전환하세요."
+---
+
+**Email to Ticket** 기능은 클라이언트 이메일을 자동으로 지원 티켓으로 변환합니다. 지원 이메일이 수신되는 메일을 고유한 AgencyHandy 전달 주소로 전달하도록 설정되면, 인식된 클라이언트가 보낸 모든 새 이메일이 워크스페이스에서 자동으로 티켓을 생성합니다.
+
+<Note>
+  기존 클라이언트 이메일 주소에서 발송된 이메일만 자동으로 티켓을 생성합니다.
+</Note>
+
+---
+
+## Email to Ticket 접근하기
+
+<Steps>
+  <Step title="Workspace Config 열기">
+    AgencyHandy에 로그인하세요. 왼쪽 탐색 메뉴에서 **Workspace Config**를 클릭하세요.
+  </Step>
+  <Step title="Email to Ticket 선택">
+    Workspace Config 하위 메뉴에서 **Email to Ticket**을 클릭하세요.
+  </Step>
+</Steps>
+
+이 페이지에서 다음을 수행할 수 있습니다:
+
+- 고유한 전달 주소를 확인하세요.
+- 이메일 전달을 설정하세요.
+- 전달 설정을 확인하세요.
+- 자동 티켓 생성을 활성화하세요.
+- 다양한 이메일 제공업체에 대한 설정 안내를 확인하세요.
+
+![Email to Ticket 설정 페이지](/images/email-to-ticket/overview-page.png)
+<p style={{textAlign: 'center'}}>*Email to Ticket 설정 페이지*</p>
+
+---
+
+## 워크스페이스 전달 주소
+
+AgencyHandy는 각 워크스페이스마다 고유한 전달용 이메일 주소를 생성합니다. 이 주소는 지원 수신함에서 전달된 이메일을 수신합니다.
+
+<Steps>
+  <Step title="전달 주소 복사">
+    **Copy**를 클릭하여 워크스페이스 전달 주소를 복사하세요.
+  </Step>
+  <Step title="전달 대상으로 추가">
+    이 주소를 이메일 제공업체의 전달 대상으로 추가하세요.
+  </Step>
+  <Step title="인증 완료">
+    제공업체에서 요구하는 전달 인증 절차를 완료하세요.
+  </Step>
+  <Step title="Auto-create Ticket 활성화">
+    인증이 완료되면 **Auto-create Ticket**을 활성화하세요.
+  </Step>
+</Steps>
+
+![Copy 버튼이 있는 워크스페이스 전달 주소](/images/email-to-ticket/forwarding-address-copy.png)
+<p style={{textAlign: 'center'}}>*Copy 버튼이 있는 워크스페이스 전달 주소*</p>
+
+<Tip>
+  전달 주소는 워크스페이스마다 고유하며, 재생성하지 않는 한 동일하게 유지됩니다.
+</Tip>
+
+---
+
+## 이메일 전달 설정하기
+
+AgencyHandy는 사용자의 메일함에 접근하지 않습니다. 이메일 전달은 전적으로 이메일 제공업체 내에서 설정됩니다.
+
+Email to Ticket 페이지에는 다음에 대한 설정 안내가 포함되어 있습니다:
+
+- Gmail
+- Outlook / Microsoft 365
+- Zoho Mail
+- cPanel / 호스팅
+- 이메일 전달을 지원하는 기타 제공업체
+
+Email to Ticket 페이지에서 사용 중인 이메일 제공업체를 선택하면 해당하는 설정 안내를 확인할 수 있습니다.
+
+---
+
+## Gmail 설정
+
+Gmail을 사용하는 경우 다음 단계를 따르세요.
+
+<Steps>
+  <Step title="Gmail 전달 설정 열기">
+    Gmail에서 **Settings → See all settings → Forwarding and POP/IMAP**으로 이동하세요.
+
+    ![Gmail Forwarding and POP/IMAP 설정 탭](/images/email-to-ticket/gmail-forwarding-settings.png)
+    <p style={{textAlign: 'center'}}>*Gmail Forwarding and POP/IMAP 설정 탭*</p>
+  </Step>
+  <Step title="AgencyHandy 전달 주소 추가">
+    **Add a forwarding address**를 클릭하고 AgencyHandy에서 복사한 전달 주소를 붙여넣으세요. Google이 전달 주소를 확인하기 위한 확인 이메일을 발송합니다. 전달 주소를 저장한 후 AgencyHandy로 돌아오세요.
+
+    ![Gmail Add a forwarding address 대화상자](/images/email-to-ticket/gmail-add-forwarding-address.png)
+    <p style={{textAlign: 'center'}}>*Gmail Add a forwarding address 대화상자*</p>
+  </Step>
+  <Step title="수신 이메일 전달">
+    Gmail에서:
+    - **Forward a copy of incoming mail**을 활성화하세요.
+    - AgencyHandy 전달 주소를 선택하세요.
+    - 변경 사항을 저장하세요.
+
+    이제부터 지원 수신함으로 수신되는 모든 향후 이메일이 AgencyHandy로 전달됩니다.
+
+    ![Gmail Forward a copy of incoming mail 옵션](/images/email-to-ticket/gmail-forward-incoming-mail.png)
+    <p style={{textAlign: 'center'}}>*Gmail Forward a copy of incoming mail 옵션*</p>
+  </Step>
+  <Step title="전달 주소 인증">
+    **Workspace Config → Email to Ticket**으로 돌아가서 **I've added the address in Gmail**을 클릭하세요. AgencyHandy는 Google의 확인 이메일을 기다리며, 이메일이 도착하면 확인 링크 또는 인증 코드를 자동으로 감지합니다. 일반적으로 1~2분 정도 소요됩니다. 인증이 완료되면 전달 설정이 준비됩니다.
+
+    ![AgencyHandy에서 전달 주소 인증하기](/images/email-to-ticket/gmail-verify-forwarding.png)
+    <p style={{textAlign: 'center'}}>*AgencyHandy에서 전달 주소 인증하기*</p>
+  </Step>
+</Steps>
+
+---
+
+## Auto-create Ticket
+
+전달이 인증된 후, **Auto-create Ticket** 토글을 활성화하세요.
+
+활성화되면:
+
+- 기존 클라이언트가 보낸 모든 전달 이메일이 자동으로 새 지원 티켓을 생성합니다.
+- 클라이언트는 이메일 주소를 기준으로 매칭됩니다.
+- Email to Ticket이 활성화되었음을 확인하는 성공 메시지가 표시됩니다.
+
+![활성화된 Auto-create Ticket 토글](/images/email-to-ticket/auto-create-ticket-toggle.png)
+<p style={{textAlign: 'center'}}>*활성화된 Auto-create Ticket 토글*</p>
+
+<Warning>
+  전달 인증이 완료되기 전까지는 이 옵션을 비활성화 상태로 유지하세요.
+</Warning>
+
+---
+
+## 확인 도우미
+
+지원되는 이메일 제공업체의 경우, AgencyHandy에는 확인 도우미가 포함되어 있습니다. 이메일 제공업체에 전달 주소를 추가한 후:
+
+1. Email to Ticket 페이지로 돌아가세요.
+2. **I've added the address in Gmail**과 같은 확인 버튼을 클릭하세요.
+3. AgencyHandy가 제공업체의 인증 이메일을 확인하는 동안 기다리세요.
+4. 감지되면 AgencyHandy가 인증 절차를 자동으로 완료합니다.
+
+이를 통해 인증 이메일이나 확인 코드를 수동으로 확인할 필요가 없어집니다.
+
+---
+
+## 인증 상태 새로고침
+
+인증이 예상보다 오래 걸리는 경우, **Refresh**를 클릭하여 새로 수신된 확인 이메일을 확인하세요.
+
+---
+
+## Email to Ticket 작동 방식
+
+Email to Ticket이 설정되면:
+
+1. 클라이언트가 지원 이메일 주소로 이메일을 발송합니다.
+2. 이메일 제공업체가 해당 이메일의 사본을 AgencyHandy 전달 주소로 자동 전달합니다.
+3. AgencyHandy가 발신자의 이메일 주소를 확인합니다.
+4. 발신자가 워크스페이스의 기존 클라이언트와 일치하면 새 티켓이 자동으로 생성됩니다.
+
+---
+
+## 참고 사항
+
+- 기존 클라이언트 이메일 주소에서 발송된 이메일만 자동으로 티켓을 생성합니다.
+- 알 수 없는 발신자의 이메일은 무시됩니다.
+- 각 워크스페이스는 고유한 전달 주소를 가집니다.
+- AgencyHandy는 전달된 이메일 사본만 수신하며, 메일함에 직접 접근하지 않습니다.
+- 이메일 답장 스레딩은 향후 릴리스에서 지원될 예정입니다.

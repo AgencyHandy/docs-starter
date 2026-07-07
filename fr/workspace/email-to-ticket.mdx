@@ -1,0 +1,176 @@
+---
+title: "Configurer Email to Ticket"
+sidebarTitle: "Email to Ticket"
+description: "Convertissez automatiquement les e-mails de clients transférés en tickets d'assistance en connectant votre boîte de réception d'assistance à l'adresse de transfert de votre espace de travail AgencyHandy."
+---
+
+La fonctionnalité **Email to Ticket** convertit automatiquement les e-mails des clients en tickets d'assistance. Une fois que votre e-mail d'assistance est configuré pour transférer les e-mails entrants vers votre adresse de transfert AgencyHandy unique, chaque nouvel e-mail provenant d'un client reconnu crée automatiquement un ticket dans votre espace de travail.
+
+<Note>
+  Seuls les e-mails envoyés depuis des adresses e-mail de clients existants créent automatiquement des tickets.
+</Note>
+
+---
+
+## Accéder à Email to Ticket
+
+<Steps>
+  <Step title="Ouvrez Workspace Config">
+    Connectez-vous à AgencyHandy. Dans le menu de navigation de gauche, cliquez sur **Workspace Config**.
+  </Step>
+  <Step title="Sélectionnez Email to Ticket">
+    Cliquez sur **Email to Ticket** dans le sous-menu Workspace Config.
+  </Step>
+</Steps>
+
+Depuis cette page, vous pouvez :
+
+- Obtenir votre adresse de transfert unique.
+- Configurer le transfert des e-mails.
+- Vérifier votre configuration de transfert.
+- Activer la création automatique de tickets.
+- Consulter les instructions de configuration pour différents fournisseurs de messagerie.
+
+![Page des paramètres Email to Ticket](/images/email-to-ticket/overview-page.png)
+<p style={{textAlign: 'center'}}>*Page des paramètres Email to Ticket*</p>
+
+---
+
+## Votre adresse de transfert d'espace de travail
+
+AgencyHandy génère une adresse e-mail de transfert unique pour chaque espace de travail. Cette adresse reçoit les e-mails transférés depuis votre boîte de réception d'assistance.
+
+<Steps>
+  <Step title="Copiez votre adresse de transfert">
+    Cliquez sur **Copy** pour copier l'adresse de transfert de votre espace de travail.
+  </Step>
+  <Step title="Ajoutez-la comme destination de transfert">
+    Ajoutez cette adresse comme destination de transfert chez votre fournisseur de messagerie.
+  </Step>
+  <Step title="Terminez la vérification">
+    Effectuez le processus de vérification du transfert requis par votre fournisseur.
+  </Step>
+  <Step title="Activez Auto-create Ticket">
+    Une fois la vérification terminée, activez **Auto-create Ticket**.
+  </Step>
+</Steps>
+
+![Adresse de transfert de l'espace de travail avec le bouton Copy](/images/email-to-ticket/forwarding-address-copy.png)
+<p style={{textAlign: 'center'}}>*Adresse de transfert de l'espace de travail avec le bouton Copy*</p>
+
+<Tip>
+  Votre adresse de transfert est propre à votre espace de travail et reste identique, sauf si vous la régénérez.
+</Tip>
+
+---
+
+## Configurer le transfert des e-mails
+
+AgencyHandy n'accède pas à votre boîte e-mail. Le transfert des e-mails est configuré entièrement au sein de votre fournisseur de messagerie.
+
+La page Email to Ticket comprend des guides de configuration pour :
+
+- Gmail
+- Outlook / Microsoft 365
+- Zoho Mail
+- cPanel / Hébergement
+- Autres fournisseurs prenant en charge le transfert des e-mails
+
+Sélectionnez votre fournisseur de messagerie sur la page Email to Ticket pour afficher les instructions de configuration correspondantes.
+
+---
+
+## Configuration de Gmail
+
+Si vous utilisez Gmail, suivez ces étapes.
+
+<Steps>
+  <Step title="Ouvrez les paramètres de transfert de Gmail">
+    Dans Gmail, allez dans **Settings → See all settings → Forwarding and POP/IMAP**.
+
+    ![Onglet des paramètres Forwarding and POP/IMAP de Gmail](/images/email-to-ticket/gmail-forwarding-settings.png)
+    <p style={{textAlign: 'center'}}>*Onglet des paramètres Forwarding and POP/IMAP de Gmail*</p>
+  </Step>
+  <Step title="Ajoutez l'adresse de transfert AgencyHandy">
+    Cliquez sur **Add a forwarding address** et collez l'adresse de transfert que vous avez copiée depuis AgencyHandy. Google envoie un e-mail de confirmation pour vérifier l'adresse de transfert. Revenez sur AgencyHandy une fois l'adresse de transfert enregistrée.
+
+    ![Boîte de dialogue Add a forwarding address de Gmail](/images/email-to-ticket/gmail-add-forwarding-address.png)
+    <p style={{textAlign: 'center'}}>*Boîte de dialogue Add a forwarding address de Gmail*</p>
+  </Step>
+  <Step title="Transférez les e-mails entrants">
+    Dans Gmail :
+    - Activez **Forward a copy of incoming mail**.
+    - Sélectionnez votre adresse de transfert AgencyHandy.
+    - Enregistrez vos modifications.
+
+    Tous les futurs e-mails reçus par votre boîte de réception d'assistance sont désormais transférés vers AgencyHandy.
+
+    ![Option Forward a copy of incoming mail de Gmail](/images/email-to-ticket/gmail-forward-incoming-mail.png)
+    <p style={{textAlign: 'center'}}>*Option Forward a copy of incoming mail de Gmail*</p>
+  </Step>
+  <Step title="Vérifiez l'adresse de transfert">
+    Retournez sur **Workspace Config → Email to Ticket** et cliquez sur **I've added the address in Gmail**. AgencyHandy attend l'e-mail de confirmation de Google et détecte automatiquement le lien de confirmation ou le code de vérification à son arrivée, généralement dans un délai d'une à deux minutes. Une fois la vérification terminée, la configuration du transfert est prête.
+
+    ![Vérification de l'adresse de transfert dans AgencyHandy](/images/email-to-ticket/gmail-verify-forwarding.png)
+    <p style={{textAlign: 'center'}}>*Vérification de l'adresse de transfert dans AgencyHandy*</p>
+  </Step>
+</Steps>
+
+---
+
+## Auto-create Ticket
+
+Une fois le transfert vérifié, activez le bouton **Auto-create Ticket**.
+
+Lorsqu'il est activé :
+
+- Chaque e-mail transféré provenant d'un client existant crée automatiquement un nouveau ticket d'assistance.
+- Les clients sont identifiés à l'aide de leur adresse e-mail.
+- Un message de réussite confirme qu'Email to Ticket est actif.
+
+![Bouton Auto-create Ticket activé](/images/email-to-ticket/auto-create-ticket-toggle.png)
+<p style={{textAlign: 'center'}}>*Bouton Auto-create Ticket activé*</p>
+
+<Warning>
+  Laissez cette option désactivée jusqu'à ce que la vérification du transfert soit terminée.
+</Warning>
+
+---
+
+## Assistant de confirmation
+
+Pour les fournisseurs de messagerie pris en charge, AgencyHandy inclut un assistant de confirmation. Après avoir ajouté l'adresse de transfert chez votre fournisseur de messagerie :
+
+1. Retournez sur la page Email to Ticket.
+2. Cliquez sur le bouton de confirmation, tel que **I've added the address in Gmail**.
+3. Attendez que AgencyHandy vérifie l'arrivée de l'e-mail de vérification du fournisseur.
+4. Une fois détecté, AgencyHandy termine automatiquement le processus de vérification.
+
+Cela évite d'avoir à récupérer manuellement l'e-mail de vérification ou le code de confirmation.
+
+---
+
+## Actualiser le statut de vérification
+
+Si la vérification prend plus de temps que prévu, cliquez sur **Refresh** pour vérifier les nouveaux e-mails de confirmation reçus.
+
+---
+
+## Comment fonctionne Email to Ticket
+
+Une fois Email to Ticket configuré :
+
+1. Un client envoie un e-mail à votre adresse e-mail d'assistance.
+2. Votre fournisseur de messagerie transfère automatiquement une copie de l'e-mail vers votre adresse de transfert AgencyHandy.
+3. AgencyHandy vérifie l'adresse e-mail de l'expéditeur.
+4. Si l'expéditeur correspond à un client existant dans votre espace de travail, un nouveau ticket est automatiquement créé.
+
+---
+
+## Remarques
+
+- Seuls les e-mails provenant d'adresses e-mail de clients existants créent automatiquement des tickets.
+- Les e-mails provenant d'expéditeurs inconnus sont ignorés.
+- Chaque espace de travail dispose de sa propre adresse de transfert unique.
+- AgencyHandy ne reçoit que des copies transférées des e-mails. Il n'accède pas directement à votre boîte e-mail.
+- Le suivi des fils de réponse par e-mail est prévu pour une prochaine version.

@@ -1,0 +1,176 @@
+---
+title: "Email to Ticket instellen"
+sidebarTitle: "Email to Ticket"
+description: "Zet doorgestuurde klant-e-mails automatisch om in supporttickets door je supportinbox te koppelen aan het doorstuuradres van je AgencyHandy-werkruimte."
+---
+
+De functie **Email to Ticket** zet klant-e-mails automatisch om in supporttickets. Zodra je support-e-mailadres is ingesteld om binnenkomende e-mails door te sturen naar je unieke AgencyHandy-doorstuuradres, maakt elke nieuwe e-mail van een herkende klant automatisch een ticket aan in je werkruimte.
+
+<Note>
+  Alleen e-mails die zijn verzonden vanaf bestaande klant-e-mailadressen maken automatisch tickets aan.
+</Note>
+
+---
+
+## Email to Ticket openen
+
+<Steps>
+  <Step title="Workspace Config openen">
+    Log in op AgencyHandy. Klik in het linkernavigatiemenu op **Workspace Config**.
+  </Step>
+  <Step title="Email to Ticket selecteren">
+    Klik op **Email to Ticket** in het Workspace Config-submenu.
+  </Step>
+</Steps>
+
+Vanaf deze pagina kun je:
+
+- Je unieke doorstuuradres ophalen.
+- E-mail doorsturen configureren.
+- Je doorstuurinstelling verifiëren.
+- Automatisch aanmaken van tickets inschakelen.
+- Installatie-instructies bekijken voor verschillende e-mailproviders.
+
+![Instellingenpagina van Email to Ticket](/images/email-to-ticket/overview-page.png)
+<p style={{textAlign: 'center'}}>*Instellingenpagina van Email to Ticket*</p>
+
+---
+
+## Het doorstuuradres van je werkruimte
+
+AgencyHandy genereert voor elke werkruimte een uniek doorstuur-e-mailadres. Dit adres ontvangt de doorgestuurde e-mails van je supportinbox.
+
+<Steps>
+  <Step title="Kopieer je doorstuuradres">
+    Klik op **Copy** om het doorstuuradres van je werkruimte te kopiëren.
+  </Step>
+  <Step title="Voeg het toe als doorstuurbestemming">
+    Voeg dit adres toe als doorstuurbestemming bij je e-mailprovider.
+  </Step>
+  <Step title="Voltooi de verificatie">
+    Voltooi het doorstuurverificatieproces dat door je provider wordt vereist.
+  </Step>
+  <Step title="Schakel Auto-create Ticket in">
+    Zodra de verificatie is voltooid, schakel je **Auto-create Ticket** in.
+  </Step>
+</Steps>
+
+![Doorstuuradres van de werkruimte met knop Copy](/images/email-to-ticket/forwarding-address-copy.png)
+<p style={{textAlign: 'center'}}>*Doorstuuradres van de werkruimte met knop Copy*</p>
+
+<Tip>
+  Je doorstuuradres is uniek voor je werkruimte en blijft hetzelfde, tenzij je het opnieuw genereert.
+</Tip>
+
+---
+
+## E-mail doorsturen instellen
+
+AgencyHandy heeft geen toegang tot je mailbox. E-mail doorsturen wordt volledig geconfigureerd binnen je e-mailprovider.
+
+De pagina Email to Ticket bevat installatiehandleidingen voor:
+
+- Gmail
+- Outlook / Microsoft 365
+- Zoho Mail
+- cPanel / Hosting
+- Andere providers die e-mail doorsturen ondersteunen
+
+Selecteer je e-mailprovider op de pagina Email to Ticket om de bijbehorende installatie-instructies te bekijken.
+
+---
+
+## Gmail instellen
+
+Als je Gmail gebruikt, volg dan deze stappen.
+
+<Steps>
+  <Step title="Open de doorstuurinstellingen van Gmail">
+    Ga in Gmail naar **Settings → See all settings → Forwarding and POP/IMAP**.
+
+    ![Tabblad Forwarding and POP/IMAP-instellingen van Gmail](/images/email-to-ticket/gmail-forwarding-settings.png)
+    <p style={{textAlign: 'center'}}>*Tabblad Forwarding and POP/IMAP-instellingen van Gmail*</p>
+  </Step>
+  <Step title="Voeg het AgencyHandy-doorstuuradres toe">
+    Klik op **Add a forwarding address** en plak het doorstuuradres dat je van AgencyHandy hebt gekopieerd. Google stuurt een bevestigingsmail om het doorstuuradres te verifiëren. Ga terug naar AgencyHandy nadat je het doorstuuradres hebt opgeslagen.
+
+    ![Dialoogvenster Add a forwarding address van Gmail](/images/email-to-ticket/gmail-add-forwarding-address.png)
+    <p style={{textAlign: 'center'}}>*Dialoogvenster Add a forwarding address van Gmail*</p>
+  </Step>
+  <Step title="Binnenkomende e-mails doorsturen">
+    In Gmail:
+    - Schakel **Forward a copy of incoming mail** in.
+    - Selecteer je AgencyHandy-doorstuuradres.
+    - Sla je wijzigingen op.
+
+    Alle toekomstige e-mails die je supportinbox ontvangt, worden nu doorgestuurd naar AgencyHandy.
+
+    ![Optie Forward a copy of incoming mail van Gmail](/images/email-to-ticket/gmail-forward-incoming-mail.png)
+    <p style={{textAlign: 'center'}}>*Optie Forward a copy of incoming mail van Gmail*</p>
+  </Step>
+  <Step title="Verifieer het doorstuuradres">
+    Ga terug naar **Workspace Config → Email to Ticket** en klik op **I've added the address in Gmail**. AgencyHandy wacht op de bevestigingsmail van Google en detecteert automatisch de bevestigingslink of verificatiecode zodra deze binnenkomt, meestal binnen één tot twee minuten. Zodra de verificatie is voltooid, is de doorstuurinstelling gereed.
+
+    ![Het doorstuuradres verifiëren in AgencyHandy](/images/email-to-ticket/gmail-verify-forwarding.png)
+    <p style={{textAlign: 'center'}}>*Het doorstuuradres verifiëren in AgencyHandy*</p>
+  </Step>
+</Steps>
+
+---
+
+## Auto-create Ticket
+
+Nadat het doorsturen is geverifieerd, schakel je de schakelaar **Auto-create Ticket** in.
+
+Wanneer dit is ingeschakeld:
+
+- Elke doorgestuurde e-mail van een bestaande klant maakt automatisch een nieuw supportticket aan.
+- Klanten worden gematcht op basis van hun e-mailadres.
+- Een succesbericht bevestigt dat Email to Ticket actief is.
+
+![Schakelaar Auto-create Ticket ingeschakeld](/images/email-to-ticket/auto-create-ticket-toggle.png)
+<p style={{textAlign: 'center'}}>*Schakelaar Auto-create Ticket ingeschakeld*</p>
+
+<Warning>
+  Laat deze optie uitgeschakeld totdat de doorstuurverificatie is voltooid.
+</Warning>
+
+---
+
+## Bevestigingshulp
+
+Voor ondersteunde e-mailproviders bevat AgencyHandy een bevestigingshulp. Nadat je het doorstuuradres bij je e-mailprovider hebt toegevoegd:
+
+1. Ga terug naar de pagina Email to Ticket.
+2. Klik op de bevestigingsknop, zoals **I've added the address in Gmail**.
+3. Wacht terwijl AgencyHandy controleert op de verificatiemail van de provider.
+4. Zodra deze is gedetecteerd, voltooit AgencyHandy het verificatieproces automatisch.
+
+Hierdoor hoef je de verificatiemail of bevestigingscode niet handmatig op te halen.
+
+---
+
+## Verificatiestatus vernieuwen
+
+Als de verificatie langer duurt dan verwacht, klik je op **Refresh** om te controleren op nieuw ontvangen bevestigingsmails.
+
+---
+
+## Hoe Email to Ticket werkt
+
+Zodra Email to Ticket is geconfigureerd:
+
+1. Een klant stuurt een e-mail naar je support-e-mailadres.
+2. Je e-mailprovider stuurt automatisch een kopie van de e-mail door naar je AgencyHandy-doorstuuradres.
+3. AgencyHandy verifieert het e-mailadres van de afzender.
+4. Als de afzender overeenkomt met een bestaande klant in je werkruimte, wordt automatisch een nieuw ticket aangemaakt.
+
+---
+
+## Opmerkingen
+
+- Alleen e-mails van bestaande klant-e-mailadressen maken automatisch tickets aan.
+- E-mails van onbekende afzenders worden genegeerd.
+- Elke werkruimte heeft zijn eigen unieke doorstuuradres.
+- AgencyHandy ontvangt alleen doorgestuurde kopieën van e-mails. Het heeft geen directe toegang tot je mailbox.
+- Threading van e-mailreacties staat gepland voor een toekomstige release.

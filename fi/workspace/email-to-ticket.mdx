@@ -1,0 +1,176 @@
+---
+title: "Määritä Email to Ticket"
+sidebarTitle: "Email to Ticket"
+description: "Muunna edelleenlähetetyt asiakassähköpostit automaattisesti tukitiketeiksi yhdistämällä tukisähköpostisi AgencyHandy-työtilasi edelleenlähetysosoitteeseen."
+---
+
+**Email to Ticket** -toiminto muuntaa asiakkaiden sähköpostit automaattisesti tukitiketeiksi. Kun tukisähköpostisi on määritetty edelleenlähettämään saapuvat sähköpostit yksilölliseen AgencyHandy-edelleenlähetysosoitteeseesi, jokainen uusi sähköposti tunnistetulta asiakkaalta luo automaattisesti tiketin työtilaasi.
+
+<Note>
+  Vain tunnistettujen asiakkaiden sähköpostiosoitteista lähetetyt sähköpostit luovat tiketteja automaattisesti.
+</Note>
+
+---
+
+## Email to Ticket -toiminnon avaaminen
+
+<Steps>
+  <Step title="Avaa Workspace Config">
+    Kirjaudu sisään AgencyHandyyn. Napsauta vasemman navigointivalikon **Workspace Config** -kohtaa.
+  </Step>
+  <Step title="Valitse Email to Ticket">
+    Napsauta **Email to Ticket** Workspace Config -alivalikosta.
+  </Step>
+</Steps>
+
+Tältä sivulta voit:
+
+- Hankkia yksilöllisen edelleenlähetysosoitteesi.
+- Määrittää sähköpostin edelleenlähetyksen.
+- Vahvistaa edelleenlähetysasetuksesi.
+- Ottaa käyttöön automaattisen tiketin luonnin.
+- Tarkastella eri sähköpostipalveluntarjoajien asennusohjeita.
+
+![Email to Ticket -asetussivu](/images/email-to-ticket/overview-page.png)
+<p style={{textAlign: 'center'}}>*Email to Ticket -asetussivu*</p>
+
+---
+
+## Työtilasi edelleenlähetysosoite
+
+AgencyHandy luo yksilöllisen edelleenlähetysosoitteen jokaiselle työtilalle. Tämä osoite vastaanottaa tukisähköpostistasi edelleenlähetetyt viestit.
+
+<Steps>
+  <Step title="Kopioi edelleenlähetysosoitteesi">
+    Napsauta **Copy** kopioidaksesi työtilasi edelleenlähetysosoitteen.
+  </Step>
+  <Step title="Lisää se edelleenlähetyskohteeksi">
+    Lisää tämä osoite edelleenlähetyskohteeksi sähköpostipalveluntarjoajassasi.
+  </Step>
+  <Step title="Viimeistele vahvistus">
+    Suorita loppuun palveluntarjoajasi vaatima edelleenlähetyksen vahvistusprosessi.
+  </Step>
+  <Step title="Ota käyttöön Auto-create Ticket">
+    Kun vahvistus on valmis, ota käyttöön **Auto-create Ticket**.
+  </Step>
+</Steps>
+
+![Työtilan edelleenlähetysosoite ja Copy-painike](/images/email-to-ticket/forwarding-address-copy.png)
+<p style={{textAlign: 'center'}}>*Työtilan edelleenlähetysosoite ja Copy-painike*</p>
+
+<Tip>
+  Edelleenlähetysosoitteesi on yksilöllinen työtilallesi ja pysyy samana, ellet luo sitä uudelleen.
+</Tip>
+
+---
+
+## Sähköpostin edelleenlähetyksen määrittäminen
+
+AgencyHandy ei pääse käsiksi postilaatikkoosi. Sähköpostin edelleenlähetys määritetään kokonaan sähköpostipalveluntarjoajassasi.
+
+Email to Ticket -sivu sisältää asennusoppaat seuraaville:
+
+- Gmail
+- Outlook / Microsoft 365
+- Zoho Mail
+- cPanel / Hosting
+- Muut palveluntarjoajat, jotka tukevat sähköpostin edelleenlähetystä
+
+Valitse sähköpostipalveluntarjoajasi Email to Ticket -sivulla nähdäksesi sitä vastaavat asennusohjeet.
+
+---
+
+## Gmail-asennus
+
+Jos käytät Gmailia, seuraa näitä vaiheita.
+
+<Steps>
+  <Step title="Avaa Gmailin edelleenlähetysasetukset">
+    Siirry Gmailissa kohtaan **Settings → See all settings → Forwarding and POP/IMAP**.
+
+    ![Gmailin Forwarding and POP/IMAP -asetusvälilehti](/images/email-to-ticket/gmail-forwarding-settings.png)
+    <p style={{textAlign: 'center'}}>*Gmailin Forwarding and POP/IMAP -asetusvälilehti*</p>
+  </Step>
+  <Step title="Lisää AgencyHandyn edelleenlähetysosoite">
+    Napsauta **Add a forwarding address** ja liitä AgencyHandystä kopioimasi edelleenlähetysosoite. Google lähettää vahvistussähköpostin edelleenlähetysosoitteen todentamiseksi. Palaa AgencyHandyyn tallennettuasi edelleenlähetysosoitteen.
+
+    ![Gmailin Add a forwarding address -valintaikkuna](/images/email-to-ticket/gmail-add-forwarding-address.png)
+    <p style={{textAlign: 'center'}}>*Gmailin Add a forwarding address -valintaikkuna*</p>
+  </Step>
+  <Step title="Edelleenlähetä saapuvat sähköpostit">
+    Tee Gmailissa seuraavat:
+    - Ota käyttöön **Forward a copy of incoming mail**.
+    - Valitse AgencyHandyn edelleenlähetysosoitteesi.
+    - Tallenna muutoksesi.
+
+    Kaikki tukisähköpostiisi vastaisuudessa saapuvat viestit edelleenlähetetään nyt AgencyHandyyn.
+
+    ![Gmailin Forward a copy of incoming mail -vaihtoehto](/images/email-to-ticket/gmail-forward-incoming-mail.png)
+    <p style={{textAlign: 'center'}}>*Gmailin Forward a copy of incoming mail -vaihtoehto*</p>
+  </Step>
+  <Step title="Vahvista edelleenlähetysosoite">
+    Palaa kohtaan **Workspace Config → Email to Ticket** ja napsauta **I've added the address in Gmail**. AgencyHandy odottaa Googlen vahvistussähköpostia ja tunnistaa automaattisesti vahvistuslinkin tai vahvistuskoodin sen saapuessa, tavallisesti yhdestä kahteen minuutissa. Kun vahvistus on valmis, edelleenlähetyksen määritys on valmis käytettäväksi.
+
+    ![Edelleenlähetysosoitteen vahvistaminen AgencyHandyssa](/images/email-to-ticket/gmail-verify-forwarding.png)
+    <p style={{textAlign: 'center'}}>*Edelleenlähetysosoitteen vahvistaminen AgencyHandyssa*</p>
+  </Step>
+</Steps>
+
+---
+
+## Auto-create Ticket
+
+Kun edelleenlähetys on vahvistettu, ota käyttöön **Auto-create Ticket** -kytkin.
+
+Kun käytössä:
+
+- Jokainen edelleenlähetetty sähköposti olemassa olevalta asiakkaalta luo automaattisesti uuden tukitiketin.
+- Asiakkaat tunnistetaan heidän sähköpostiosoitteensa perusteella.
+- Onnistumisviesti vahvistaa, että Email to Ticket on käytössä.
+
+![Auto-create Ticket -kytkin käytössä](/images/email-to-ticket/auto-create-ticket-toggle.png)
+<p style={{textAlign: 'center'}}>*Auto-create Ticket -kytkin käytössä*</p>
+
+<Warning>
+  Pidä tämä asetus pois käytöstä, kunnes edelleenlähetyksen vahvistus on suoritettu loppuun.
+</Warning>
+
+---
+
+## Vahvistusapuri
+
+Tuetuille sähköpostipalveluntarjoajille AgencyHandy sisältää vahvistusapurin. Kun olet lisännyt edelleenlähetysosoitteen sähköpostipalveluntarjoajassasi:
+
+1. Palaa Email to Ticket -sivulle.
+2. Napsauta vahvistuspainiketta, kuten **I've added the address in Gmail**.
+3. Odota, kun AgencyHandy tarkistaa palveluntarjoajan vahvistussähköpostia.
+4. Kun se on havaittu, AgencyHandy suorittaa vahvistusprosessin automaattisesti loppuun.
+
+Tämä poistaa tarpeen hakea vahvistussähköposti tai vahvistuskoodi manuaalisesti.
+
+---
+
+## Vahvistustilan päivittäminen
+
+Jos vahvistus kestää odotettua pidempään, napsauta **Refresh** tarkistaaksesi äskettäin saapuneet vahvistussähköpostit.
+
+---
+
+## Miten Email to Ticket toimii
+
+Kun Email to Ticket on määritetty:
+
+1. Asiakas lähettää sähköpostin tukisähköpostiosoitteeseesi.
+2. Sähköpostipalveluntarjoajasi edelleenlähettää automaattisesti kopion sähköpostista AgencyHandy-edelleenlähetysosoitteeseesi.
+3. AgencyHandy vahvistaa lähettäjän sähköpostiosoitteen.
+4. Jos lähettäjä vastaa olemassa olevaa asiakasta työtilassasi, uusi tiketti luodaan automaattisesti.
+
+---
+
+## Huomioita
+
+- Vain olemassa olevien asiakkaiden sähköpostiosoitteista lähetetyt sähköpostit luovat tiketteja automaattisesti.
+- Tuntemattomilta lähettäjiltä tulevat sähköpostit jätetään huomiotta.
+- Jokaisella työtilalla on oma yksilöllinen edelleenlähetysosoitteensa.
+- AgencyHandy vastaanottaa vain edelleenlähetettyjä kopioita sähköposteista. Se ei pääse käsiksi postilaatikkoosi suoraan.
+- Sähköpostivastausten ketjuttaminen on suunnitteilla tulevaan julkaisuun.

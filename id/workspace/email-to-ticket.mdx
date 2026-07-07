@@ -1,0 +1,176 @@
+---
+title: "Siapkan Email to Ticket"
+sidebarTitle: "Email to Ticket"
+description: "Ubah email klien yang diteruskan menjadi tiket dukungan secara otomatis dengan menghubungkan kotak masuk dukungan Anda ke alamat penerusan workspace AgencyHandy Anda."
+---
+
+Fitur **Email to Ticket** secara otomatis mengubah email klien menjadi tiket dukungan. Setelah email dukungan Anda dikonfigurasi untuk meneruskan email masuk ke alamat penerusan AgencyHandy unik Anda, setiap email baru dari klien yang dikenali secara otomatis membuat tiket di workspace Anda.
+
+<Note>
+  Hanya email yang dikirim dari alamat email klien yang sudah ada yang secara otomatis membuat tiket.
+</Note>
+
+---
+
+## Mengakses Email to Ticket
+
+<Steps>
+  <Step title="Buka Workspace Config">
+    Masuk ke AgencyHandy. Di menu navigasi kiri, klik **Workspace Config**.
+  </Step>
+  <Step title="Pilih Email to Ticket">
+    Klik **Email to Ticket** dari submenu Workspace Config.
+  </Step>
+</Steps>
+
+Dari halaman ini, Anda dapat:
+
+- Mendapatkan alamat penerusan unik Anda.
+- Mengonfigurasi penerusan email.
+- Memverifikasi pengaturan penerusan Anda.
+- Mengaktifkan pembuatan tiket otomatis.
+- Melihat instruksi pengaturan untuk berbagai penyedia email.
+
+![Halaman pengaturan Email to Ticket](/images/email-to-ticket/overview-page.png)
+<p style={{textAlign: 'center'}}>*Halaman pengaturan Email to Ticket*</p>
+
+---
+
+## Alamat penerusan workspace Anda
+
+AgencyHandy membuat alamat email penerusan unik untuk setiap workspace. Alamat ini menerima email yang diteruskan dari kotak masuk dukungan Anda.
+
+<Steps>
+  <Step title="Salin alamat penerusan Anda">
+    Klik **Copy** untuk menyalin alamat penerusan workspace Anda.
+  </Step>
+  <Step title="Tambahkan sebagai tujuan penerusan">
+    Tambahkan alamat ini sebagai tujuan penerusan di penyedia email Anda.
+  </Step>
+  <Step title="Selesaikan verifikasi">
+    Selesaikan proses verifikasi penerusan yang diminta oleh penyedia Anda.
+  </Step>
+  <Step title="Aktifkan Auto-create Ticket">
+    Setelah verifikasi selesai, aktifkan **Auto-create Ticket**.
+  </Step>
+</Steps>
+
+![Alamat penerusan workspace dengan tombol Copy](/images/email-to-ticket/forwarding-address-copy.png)
+<p style={{textAlign: 'center'}}>*Alamat penerusan workspace dengan tombol Copy*</p>
+
+<Tip>
+  Alamat penerusan Anda unik untuk workspace Anda dan tetap sama kecuali Anda membuatnya ulang.
+</Tip>
+
+---
+
+## Menyiapkan penerusan email
+
+AgencyHandy tidak mengakses kotak masuk Anda. Penerusan email dikonfigurasi sepenuhnya di dalam penyedia email Anda.
+
+Halaman Email to Ticket menyertakan panduan pengaturan untuk:
+
+- Gmail
+- Outlook / Microsoft 365
+- Zoho Mail
+- cPanel / Hosting
+- Penyedia lain yang mendukung penerusan email
+
+Pilih penyedia email Anda di halaman Email to Ticket untuk melihat instruksi pengaturan yang sesuai.
+
+---
+
+## Pengaturan Gmail
+
+Jika Anda menggunakan Gmail, ikuti langkah-langkah berikut.
+
+<Steps>
+  <Step title="Buka pengaturan penerusan Gmail">
+    Di Gmail, buka **Settings → See all settings → Forwarding and POP/IMAP**.
+
+    ![Tab pengaturan Forwarding and POP/IMAP di Gmail](/images/email-to-ticket/gmail-forwarding-settings.png)
+    <p style={{textAlign: 'center'}}>*Tab pengaturan Forwarding and POP/IMAP di Gmail*</p>
+  </Step>
+  <Step title="Tambahkan alamat penerusan AgencyHandy">
+    Klik **Add a forwarding address** dan tempelkan alamat penerusan yang Anda salin dari AgencyHandy. Google mengirim email konfirmasi untuk memverifikasi alamat penerusan tersebut. Kembali ke AgencyHandy setelah menyimpan alamat penerusan.
+
+    ![Dialog Add a forwarding address di Gmail](/images/email-to-ticket/gmail-add-forwarding-address.png)
+    <p style={{textAlign: 'center'}}>*Dialog Add a forwarding address di Gmail*</p>
+  </Step>
+  <Step title="Teruskan email masuk">
+    Di Gmail:
+    - Aktifkan **Forward a copy of incoming mail**.
+    - Pilih alamat penerusan AgencyHandy Anda.
+    - Simpan perubahan Anda.
+
+    Semua email mendatang yang diterima oleh kotak masuk dukungan Anda kini diteruskan ke AgencyHandy.
+
+    ![Opsi Forward a copy of incoming mail di Gmail](/images/email-to-ticket/gmail-forward-incoming-mail.png)
+    <p style={{textAlign: 'center'}}>*Opsi Forward a copy of incoming mail di Gmail*</p>
+  </Step>
+  <Step title="Verifikasi alamat penerusan">
+    Kembali ke **Workspace Config → Email to Ticket** dan klik **I've added the address in Gmail**. AgencyHandy menunggu email konfirmasi dari Google dan secara otomatis mendeteksi tautan konfirmasi atau kode verifikasi saat tiba, biasanya dalam satu hingga dua menit. Setelah verifikasi selesai, pengaturan penerusan siap digunakan.
+
+    ![Memverifikasi alamat penerusan di AgencyHandy](/images/email-to-ticket/gmail-verify-forwarding.png)
+    <p style={{textAlign: 'center'}}>*Memverifikasi alamat penerusan di AgencyHandy*</p>
+  </Step>
+</Steps>
+
+---
+
+## Auto-create Ticket
+
+Setelah penerusan diverifikasi, aktifkan sakelar **Auto-create Ticket**.
+
+Saat diaktifkan:
+
+- Setiap email yang diteruskan dari klien yang sudah ada secara otomatis membuat tiket dukungan baru.
+- Klien dicocokkan menggunakan alamat email mereka.
+- Pesan sukses mengonfirmasi bahwa Email to Ticket aktif.
+
+![Sakelar Auto-create Ticket diaktifkan](/images/email-to-ticket/auto-create-ticket-toggle.png)
+<p style={{textAlign: 'center'}}>*Sakelar Auto-create Ticket diaktifkan*</p>
+
+<Warning>
+  Biarkan opsi ini nonaktif sampai verifikasi penerusan selesai dilakukan.
+</Warning>
+
+---
+
+## Bantuan konfirmasi
+
+Untuk penyedia email yang didukung, AgencyHandy menyertakan bantuan konfirmasi. Setelah menambahkan alamat penerusan di penyedia email Anda:
+
+1. Kembali ke halaman Email to Ticket.
+2. Klik tombol konfirmasi, seperti **I've added the address in Gmail**.
+3. Tunggu selama AgencyHandy memeriksa email verifikasi dari penyedia.
+4. Setelah terdeteksi, AgencyHandy secara otomatis menyelesaikan proses verifikasi.
+
+Ini menghilangkan kebutuhan untuk mengambil email verifikasi atau kode konfirmasi secara manual.
+
+---
+
+## Menyegarkan status verifikasi
+
+Jika verifikasi memakan waktu lebih lama dari yang diharapkan, klik **Refresh** untuk memeriksa email konfirmasi yang baru diterima.
+
+---
+
+## Cara kerja Email to Ticket
+
+Setelah Email to Ticket dikonfigurasi:
+
+1. Klien mengirim email ke alamat email dukungan Anda.
+2. Penyedia email Anda secara otomatis meneruskan salinan email tersebut ke alamat penerusan AgencyHandy Anda.
+3. AgencyHandy memverifikasi alamat email pengirim.
+4. Jika pengirim cocok dengan klien yang sudah ada di workspace Anda, tiket baru secara otomatis dibuat.
+
+---
+
+## Catatan
+
+- Hanya email dari alamat email klien yang sudah ada yang secara otomatis membuat tiket.
+- Email dari pengirim yang tidak dikenal akan diabaikan.
+- Setiap workspace memiliki alamat penerusan uniknya sendiri.
+- AgencyHandy hanya menerima salinan email yang diteruskan. AgencyHandy tidak mengakses kotak masuk Anda secara langsung.
+- Threading balasan email direncanakan untuk rilis mendatang.

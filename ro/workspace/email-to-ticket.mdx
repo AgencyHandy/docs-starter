@@ -1,0 +1,176 @@
+---
+title: "Configurați Email to Ticket"
+sidebarTitle: "Email to Ticket"
+description: "Transformați automat e-mailurile redirecționate ale clienților în tichete de suport conectând căsuța dvs. de e-mail de suport la adresa de redirecționare a spațiului dvs. de lucru AgencyHandy."
+---
+
+Funcția **Email to Ticket** transformă automat e-mailurile clienților în tichete de suport. Odată ce e-mailul dvs. de suport este configurat să redirecționeze e-mailurile primite către adresa dvs. unică de redirecționare AgencyHandy, fiecare e-mail nou de la un client recunoscut creează automat un tichet în spațiul dvs. de lucru.
+
+<Note>
+  Doar e-mailurile trimise de la adrese de e-mail ale clienților existenți creează tichete automat.
+</Note>
+
+---
+
+## Accesarea Email to Ticket
+
+<Steps>
+  <Step title="Deschideți Workspace Config">
+    Conectați-vă la AgencyHandy. În meniul de navigare din stânga, faceți clic pe **Workspace Config**.
+  </Step>
+  <Step title="Selectați Email to Ticket">
+    Faceți clic pe **Email to Ticket** din submeniul Workspace Config.
+  </Step>
+</Steps>
+
+De pe această pagină, puteți:
+
+- Obține adresa dvs. unică de redirecționare.
+- Configura redirecționarea e-mailurilor.
+- Verifica setările de redirecționare.
+- Activa crearea automată a tichetelor.
+- Vizualiza instrucțiuni de configurare pentru diferiți furnizori de e-mail.
+
+![Pagina de setări Email to Ticket](/images/email-to-ticket/overview-page.png)
+<p style={{textAlign: 'center'}}>*Pagina de setări Email to Ticket*</p>
+
+---
+
+## Adresa de redirecționare a spațiului dvs. de lucru
+
+AgencyHandy generează o adresă de e-mail de redirecționare unică pentru fiecare spațiu de lucru. Această adresă primește e-mailurile redirecționate din căsuța dvs. de suport.
+
+<Steps>
+  <Step title="Copiați adresa dvs. de redirecționare">
+    Faceți clic pe **Copy** pentru a copia adresa de redirecționare a spațiului dvs. de lucru.
+  </Step>
+  <Step title="Adăugați-o ca destinație de redirecționare">
+    Adăugați această adresă ca destinație de redirecționare la furnizorul dvs. de e-mail.
+  </Step>
+  <Step title="Finalizați verificarea">
+    Finalizați procesul de verificare a redirecționării cerut de furnizorul dvs.
+  </Step>
+  <Step title="Activați Auto-create Ticket">
+    Odată finalizată verificarea, activați **Auto-create Ticket**.
+  </Step>
+</Steps>
+
+![Adresa de redirecționare a spațiului de lucru cu butonul Copy](/images/email-to-ticket/forwarding-address-copy.png)
+<p style={{textAlign: 'center'}}>*Adresa de redirecționare a spațiului de lucru cu butonul Copy*</p>
+
+<Tip>
+  Adresa dvs. de redirecționare este unică pentru spațiul dvs. de lucru și rămâne aceeași, cu excepția cazului în care o regenerați.
+</Tip>
+
+---
+
+## Configurarea redirecționării e-mailurilor
+
+AgencyHandy nu accesează căsuța dvs. de e-mail. Redirecționarea e-mailurilor se configurează integral în cadrul furnizorului dvs. de e-mail.
+
+Pagina Email to Ticket include ghiduri de configurare pentru:
+
+- Gmail
+- Outlook / Microsoft 365
+- Zoho Mail
+- cPanel / Hosting
+- Alți furnizori care acceptă redirecționarea e-mailurilor
+
+Selectați furnizorul dvs. de e-mail pe pagina Email to Ticket pentru a vizualiza instrucțiunile de configurare corespunzătoare.
+
+---
+
+## Configurare Gmail
+
+Dacă utilizați Gmail, urmați acești pași.
+
+<Steps>
+  <Step title="Deschideți setările de redirecționare din Gmail">
+    În Gmail, accesați **Settings → See all settings → Forwarding and POP/IMAP**.
+
+    ![Fila de setări Forwarding and POP/IMAP din Gmail](/images/email-to-ticket/gmail-forwarding-settings.png)
+    <p style={{textAlign: 'center'}}>*Fila de setări Forwarding and POP/IMAP din Gmail*</p>
+  </Step>
+  <Step title="Adăugați adresa de redirecționare AgencyHandy">
+    Faceți clic pe **Add a forwarding address** și inserați adresa de redirecționare pe care ați copiat-o din AgencyHandy. Google trimite un e-mail de confirmare pentru a verifica adresa de redirecționare. Reveniți la AgencyHandy după salvarea adresei de redirecționare.
+
+    ![Fereastra Add a forwarding address din Gmail](/images/email-to-ticket/gmail-add-forwarding-address.png)
+    <p style={{textAlign: 'center'}}>*Fereastra Add a forwarding address din Gmail*</p>
+  </Step>
+  <Step title="Redirecționați e-mailurile primite">
+    În Gmail:
+    - Activați **Forward a copy of incoming mail**.
+    - Selectați adresa dvs. de redirecționare AgencyHandy.
+    - Salvați modificările.
+
+    Toate e-mailurile viitoare primite de căsuța dvs. de suport sunt acum redirecționate către AgencyHandy.
+
+    ![Opțiunea Forward a copy of incoming mail din Gmail](/images/email-to-ticket/gmail-forward-incoming-mail.png)
+    <p style={{textAlign: 'center'}}>*Opțiunea Forward a copy of incoming mail din Gmail*</p>
+  </Step>
+  <Step title="Verificați adresa de redirecționare">
+    Reveniți la **Workspace Config → Email to Ticket** și faceți clic pe **I've added the address in Gmail**. AgencyHandy așteaptă e-mailul de confirmare de la Google și detectează automat linkul de confirmare sau codul de verificare la sosirea acestuia, de obicei în una până la două minute. Odată finalizată verificarea, configurarea redirecționării este pregătită.
+
+    ![Verificarea adresei de redirecționare în AgencyHandy](/images/email-to-ticket/gmail-verify-forwarding.png)
+    <p style={{textAlign: 'center'}}>*Verificarea adresei de redirecționare în AgencyHandy*</p>
+  </Step>
+</Steps>
+
+---
+
+## Auto-create Ticket
+
+După ce redirecționarea a fost verificată, activați comutatorul **Auto-create Ticket**.
+
+Când este activat:
+
+- Fiecare e-mail redirecționat de la un client existent creează automat un nou tichet de suport.
+- Clienții sunt identificați după adresa lor de e-mail.
+- Un mesaj de succes confirmă că Email to Ticket este activ.
+
+![Comutatorul Auto-create Ticket activat](/images/email-to-ticket/auto-create-ticket-toggle.png)
+<p style={{textAlign: 'center'}}>*Comutatorul Auto-create Ticket activat*</p>
+
+<Warning>
+  Păstrați această opțiune dezactivată până la finalizarea verificării redirecționării.
+</Warning>
+
+---
+
+## Asistent de confirmare
+
+Pentru furnizorii de e-mail acceptați, AgencyHandy include un asistent de confirmare. După ce adăugați adresa de redirecționare la furnizorul dvs. de e-mail:
+
+1. Reveniți la pagina Email to Ticket.
+2. Faceți clic pe butonul de confirmare, cum ar fi **I've added the address in Gmail**.
+3. Așteptați cât AgencyHandy verifică e-mailul de confirmare al furnizorului.
+4. Odată detectat, AgencyHandy finalizează automat procesul de verificare.
+
+Acest lucru elimină necesitatea de a prelua manual e-mailul de verificare sau codul de confirmare.
+
+---
+
+## Reîmprospătarea stării de verificare
+
+Dacă verificarea durează mai mult decât era de așteptat, faceți clic pe **Refresh** pentru a verifica dacă au fost primite e-mailuri de confirmare noi.
+
+---
+
+## Cum funcționează Email to Ticket
+
+Odată configurat Email to Ticket:
+
+1. Un client trimite un e-mail la adresa dvs. de e-mail de suport.
+2. Furnizorul dvs. de e-mail redirecționează automat o copie a e-mailului către adresa dvs. de redirecționare AgencyHandy.
+3. AgencyHandy verifică adresa de e-mail a expeditorului.
+4. Dacă expeditorul corespunde unui client existent în spațiul dvs. de lucru, un tichet nou este creat automat.
+
+---
+
+## Note
+
+- Doar e-mailurile de la adrese de e-mail ale clienților existenți creează tichete automat.
+- E-mailurile de la expeditori necunoscuți sunt ignorate.
+- Fiecare spațiu de lucru are propria sa adresă de redirecționare unică.
+- AgencyHandy primește doar copii redirecționate ale e-mailurilor. Nu accesează direct căsuța dvs. de e-mail.
+- Înlănțuirea răspunsurilor prin e-mail este planificată pentru o versiune viitoare.

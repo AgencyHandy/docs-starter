@@ -96,6 +96,7 @@
                   "workspace/appearance",
                   "workspace/custom-domain",
                   "workspace/email-setup",
+                  "workspace/email-to-ticket",
                   "workspace/portals"
                 ]
               },
@@ -301,6 +302,7 @@
                   "fr/workspace/appearance",
                   "fr/workspace/custom-domain",
                   "fr/workspace/email-setup",
+                  "fr/workspace/email-to-ticket",
                   "fr/workspace/portals"
                 ]
               },
@@ -506,6 +508,7 @@
                   "es/workspace/appearance",
                   "es/workspace/custom-domain",
                   "es/workspace/email-setup",
+                  "es/workspace/email-to-ticket",
                   "es/workspace/portals"
                 ]
               },
@@ -711,6 +714,7 @@
                   "zh/workspace/appearance",
                   "zh/workspace/custom-domain",
                   "zh/workspace/email-setup",
+                  "zh/workspace/email-to-ticket",
                   "zh/workspace/portals"
                 ]
               },
@@ -916,6 +920,7 @@
                   "zh-Hant/workspace/appearance",
                   "zh-Hant/workspace/custom-domain",
                   "zh-Hant/workspace/email-setup",
+                  "zh-Hant/workspace/email-to-ticket",
                   "zh-Hant/workspace/portals"
                 ]
               },
@@ -1121,6 +1126,7 @@
                   "de/workspace/appearance",
                   "de/workspace/custom-domain",
                   "de/workspace/email-setup",
+                  "de/workspace/email-to-ticket",
                   "de/workspace/portals"
                 ]
               },
@@ -1326,6 +1332,7 @@
                   "ko/workspace/appearance",
                   "ko/workspace/custom-domain",
                   "ko/workspace/email-setup",
+                  "ko/workspace/email-to-ticket",
                   "ko/workspace/portals"
                 ]
               },
@@ -1531,6 +1538,7 @@
                   "cs/workspace/appearance",
                   "cs/workspace/custom-domain",
                   "cs/workspace/email-setup",
+                  "cs/workspace/email-to-ticket",
                   "cs/workspace/portals"
                 ]
               },
@@ -1736,6 +1744,7 @@
                   "ja/workspace/appearance",
                   "ja/workspace/custom-domain",
                   "ja/workspace/email-setup",
+                  "ja/workspace/email-to-ticket",
                   "ja/workspace/portals"
                 ]
               },
@@ -1941,6 +1950,7 @@
                   "it/workspace/appearance",
                   "it/workspace/custom-domain",
                   "it/workspace/email-setup",
+                  "it/workspace/email-to-ticket",
                   "it/workspace/portals"
                 ]
               },
@@ -2146,6 +2156,7 @@
                   "lv/workspace/appearance",
                   "lv/workspace/custom-domain",
                   "lv/workspace/email-setup",
+                  "lv/workspace/email-to-ticket",
                   "lv/workspace/portals"
                 ]
               },
@@ -2351,6 +2362,7 @@
                   "no/workspace/appearance",
                   "no/workspace/custom-domain",
                   "no/workspace/email-setup",
+                  "no/workspace/email-to-ticket",
                   "no/workspace/portals"
                 ]
               },
@@ -2556,6 +2568,7 @@
                   "ar/workspace/appearance",
                   "ar/workspace/custom-domain",
                   "ar/workspace/email-setup",
+                  "ar/workspace/email-to-ticket",
                   "ar/workspace/portals"
                 ]
               },
@@ -2761,6 +2774,7 @@
                   "sv/workspace/appearance",
                   "sv/workspace/custom-domain",
                   "sv/workspace/email-setup",
+                  "sv/workspace/email-to-ticket",
                   "sv/workspace/portals"
                 ]
               },
@@ -2966,6 +2980,7 @@
                   "da/workspace/appearance",
                   "da/workspace/custom-domain",
                   "da/workspace/email-setup",
+                  "da/workspace/email-to-ticket",
                   "da/workspace/portals"
                 ]
               },
@@ -3171,6 +3186,7 @@
                   "pl/workspace/appearance",
                   "pl/workspace/custom-domain",
                   "pl/workspace/email-setup",
+                  "pl/workspace/email-to-ticket",
                   "pl/workspace/portals"
                 ]
               },
@@ -3376,6 +3392,7 @@
                   "nl/workspace/appearance",
                   "nl/workspace/custom-domain",
                   "nl/workspace/email-setup",
+                  "nl/workspace/email-to-ticket",
                   "nl/workspace/portals"
                 ]
               },
@@ -3581,6 +3598,7 @@
                   "tr/workspace/appearance",
                   "tr/workspace/custom-domain",
                   "tr/workspace/email-setup",
+                  "tr/workspace/email-to-ticket",
                   "tr/workspace/portals"
                 ]
               },
@@ -3786,6 +3804,7 @@
                   "uz/workspace/appearance",
                   "uz/workspace/custom-domain",
                   "uz/workspace/email-setup",
+                  "uz/workspace/email-to-ticket",
                   "uz/workspace/portals"
                 ]
               },
@@ -3991,6 +4010,7 @@
                   "ru/workspace/appearance",
                   "ru/workspace/custom-domain",
                   "ru/workspace/email-setup",
+                  "ru/workspace/email-to-ticket",
                   "ru/workspace/portals"
                 ]
               },
@@ -4196,6 +4216,7 @@
                   "pt/workspace/appearance",
                   "pt/workspace/custom-domain",
                   "pt/workspace/email-setup",
+                  "pt/workspace/email-to-ticket",
                   "pt/workspace/portals"
                 ]
               },
@@ -4401,6 +4422,7 @@
                   "pt-BR/workspace/appearance",
                   "pt-BR/workspace/custom-domain",
                   "pt-BR/workspace/email-setup",
+                  "pt-BR/workspace/email-to-ticket",
                   "pt-BR/workspace/portals"
                 ]
               },
@@ -4606,6 +4628,7 @@
                   "id/workspace/appearance",
                   "id/workspace/custom-domain",
                   "id/workspace/email-setup",
+                  "id/workspace/email-to-ticket",
                   "id/workspace/portals"
                 ]
               },
@@ -4811,6 +4834,7 @@
                   "fi/workspace/appearance",
                   "fi/workspace/custom-domain",
                   "fi/workspace/email-setup",
+                  "fi/workspace/email-to-ticket",
                   "fi/workspace/portals"
                 ]
               },
@@ -5016,6 +5040,7 @@
                   "ro/workspace/appearance",
                   "ro/workspace/custom-domain",
                   "ro/workspace/email-setup",
+                  "ro/workspace/email-to-ticket",
                   "ro/workspace/portals"
                 ]
               },

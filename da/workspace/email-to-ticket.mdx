@@ -1,0 +1,176 @@
+---
+title: "Konfigurer Email to Ticket"
+sidebarTitle: "Email to Ticket"
+description: "Konverter automatisk videresendte klient-e-mails til supporttickets ved at forbinde din supportindbakke til din AgencyHandy-workspaces videresendelsesadresse."
+---
+
+Funktionen **Email to Ticket** konverterer automatisk klient-e-mails til supporttickets. Når din support-e-mail er konfigureret til at videresende indgående e-mails til din unikke AgencyHandy-videresendelsesadresse, opretter hver ny e-mail fra en kendt klient automatisk en ticket i dit workspace.
+
+<Note>
+  Kun e-mails sendt fra eksisterende klienters e-mailadresser opretter automatisk tickets.
+</Note>
+
+---
+
+## Adgang til Email to Ticket
+
+<Steps>
+  <Step title="Åbn Workspace Config">
+    Log ind i AgencyHandy. Klik på **Workspace Config** i venstre navigationsmenu.
+  </Step>
+  <Step title="Vælg Email to Ticket">
+    Klik på **Email to Ticket** i undermenuen for Workspace Config.
+  </Step>
+</Steps>
+
+På denne side kan du:
+
+- Få din unikke videresendelsesadresse.
+- Konfigurere e-mailvideresendelse.
+- Bekræfte din videresendelsesopsætning.
+- Aktivere automatisk ticketoprettelse.
+- Se opsætningsvejledninger for forskellige e-mailudbydere.
+
+![Indstillingsside for Email to Ticket](/images/email-to-ticket/overview-page.png)
+<p style={{textAlign: 'center'}}>*Indstillingsside for Email to Ticket*</p>
+
+---
+
+## Dit workspaces videresendelsesadresse
+
+AgencyHandy genererer en unik videresendelsesadresse for hvert workspace. Denne adresse modtager videresendte e-mails fra din supportindbakke.
+
+<Steps>
+  <Step title="Kopiér din videresendelsesadresse">
+    Klik på **Copy** for at kopiere dit workspaces videresendelsesadresse.
+  </Step>
+  <Step title="Tilføj den som en videresendelsesdestination">
+    Tilføj denne adresse som en videresendelsesdestination hos din e-mailudbyder.
+  </Step>
+  <Step title="Gennemfør bekræftelsen">
+    Gennemfør den videresendelsesbekræftelsesproces, som din udbyder kræver.
+  </Step>
+  <Step title="Aktivér Auto-create Ticket">
+    Når bekræftelsen er gennemført, skal du aktivere **Auto-create Ticket**.
+  </Step>
+</Steps>
+
+![Workspaces videresendelsesadresse med Copy-knap](/images/email-to-ticket/forwarding-address-copy.png)
+<p style={{textAlign: 'center'}}>*Workspaces videresendelsesadresse med Copy-knap*</p>
+
+<Tip>
+  Din videresendelsesadresse er unik for dit workspace og forbliver den samme, medmindre du genererer den igen.
+</Tip>
+
+---
+
+## Opsætning af e-mailvideresendelse
+
+AgencyHandy tilgår ikke din mailboks. E-mailvideresendelse konfigureres udelukkende hos din e-mailudbyder.
+
+Siden Email to Ticket indeholder opsætningsvejledninger til:
+
+- Gmail
+- Outlook / Microsoft 365
+- Zoho Mail
+- cPanel / hosting
+- Andre udbydere, der understøtter e-mailvideresendelse
+
+Vælg din e-mailudbyder på siden Email to Ticket for at se den relevante opsætningsvejledning.
+
+---
+
+## Opsætning af Gmail
+
+Hvis du bruger Gmail, skal du følge disse trin.
+
+<Steps>
+  <Step title="Åbn Gmails videresendelsesindstillinger">
+    Gå i Gmail til **Settings → See all settings → Forwarding and POP/IMAP**.
+
+    ![Fanen Gmail Forwarding and POP/IMAP settings](/images/email-to-ticket/gmail-forwarding-settings.png)
+    <p style={{textAlign: 'center'}}>*Fanen Gmail Forwarding and POP/IMAP settings*</p>
+  </Step>
+  <Step title="Tilføj AgencyHandy-videresendelsesadressen">
+    Klik på **Add a forwarding address**, og indsæt den videresendelsesadresse, du har kopieret fra AgencyHandy. Google sender en bekræftelses-e-mail for at bekræfte videresendelsesadressen. Vend tilbage til AgencyHandy, når du har gemt videresendelsesadressen.
+
+    ![Gmail-dialogen Add a forwarding address](/images/email-to-ticket/gmail-add-forwarding-address.png)
+    <p style={{textAlign: 'center'}}>*Gmail-dialogen Add a forwarding address*</p>
+  </Step>
+  <Step title="Videresend indgående e-mails">
+    I Gmail:
+    - Aktivér **Forward a copy of incoming mail**.
+    - Vælg din AgencyHandy-videresendelsesadresse.
+    - Gem dine ændringer.
+
+    Alle fremtidige e-mails, som din supportindbakke modtager, videresendes nu til AgencyHandy.
+
+    ![Gmail-funktionen Forward a copy of incoming mail](/images/email-to-ticket/gmail-forward-incoming-mail.png)
+    <p style={{textAlign: 'center'}}>*Gmail-funktionen Forward a copy of incoming mail*</p>
+  </Step>
+  <Step title="Bekræft videresendelsesadressen">
+    Vend tilbage til **Workspace Config → Email to Ticket**, og klik på **I've added the address in Gmail**. AgencyHandy venter på Googles bekræftelses-e-mail og registrerer automatisk bekræftelseslinket eller verifikationskoden, når den ankommer, som regel inden for et til to minutter. Når bekræftelsen er gennemført, er videresendelsesopsætningen klar.
+
+    ![Bekræftelse af videresendelsesadressen i AgencyHandy](/images/email-to-ticket/gmail-verify-forwarding.png)
+    <p style={{textAlign: 'center'}}>*Bekræftelse af videresendelsesadressen i AgencyHandy*</p>
+  </Step>
+</Steps>
+
+---
+
+## Auto-create Ticket
+
+Når videresendelsen er bekræftet, skal du aktivere skifteknappen **Auto-create Ticket**.
+
+Når den er aktiveret:
+
+- Opretter hver videresendt e-mail fra en eksisterende klient automatisk en ny supportticket.
+- Klienter matches ud fra deres e-mailadresse.
+- En succesmeddelelse bekræfter, at Email to Ticket er aktiv.
+
+![Skifteknappen Auto-create Ticket aktiveret](/images/email-to-ticket/auto-create-ticket-toggle.png)
+<p style={{textAlign: 'center'}}>*Skifteknappen Auto-create Ticket aktiveret*</p>
+
+<Warning>
+  Lad denne indstilling være deaktiveret, indtil videresendelsesbekræftelsen er gennemført.
+</Warning>
+
+---
+
+## Bekræftelseshjælper
+
+For understøttede e-mailudbydere inkluderer AgencyHandy en bekræftelseshjælper. Når du har tilføjet videresendelsesadressen hos din e-mailudbyder:
+
+1. Vend tilbage til siden Email to Ticket.
+2. Klik på bekræftelsesknappen, f.eks. **I've added the address in Gmail**.
+3. Vent, mens AgencyHandy kontrollerer for udbyderens bekræftelses-e-mail.
+4. Når den registreres, gennemfører AgencyHandy automatisk bekræftelsesprocessen.
+
+Dette fjerner behovet for manuelt at hente bekræftelses-e-mailen eller bekræftelseskoden.
+
+---
+
+## Opdater bekræftelsesstatus
+
+Hvis bekræftelsen tager længere tid end forventet, skal du klikke på **Refresh** for at tjekke for nyligt modtagne bekræftelses-e-mails.
+
+---
+
+## Sådan fungerer Email to Ticket
+
+Når Email to Ticket er konfigureret:
+
+1. En klient sender en e-mail til din support-e-mailadresse.
+2. Din e-mailudbyder videresender automatisk en kopi af e-mailen til din AgencyHandy-videresendelsesadresse.
+3. AgencyHandy bekræfter afsenderens e-mailadresse.
+4. Hvis afsenderen matcher en eksisterende klient i dit workspace, oprettes der automatisk en ny ticket.
+
+---
+
+## Bemærkninger
+
+- Kun e-mails fra eksisterende klienters e-mailadresser opretter automatisk tickets.
+- E-mails fra ukendte afsendere ignoreres.
+- Hvert workspace har sin egen unikke videresendelsesadresse.
+- AgencyHandy modtager kun videresendte kopier af e-mails. Det tilgår ikke din mailboks direkte.
+- Trådning af e-mailsvar er planlagt til en fremtidig udgivelse.

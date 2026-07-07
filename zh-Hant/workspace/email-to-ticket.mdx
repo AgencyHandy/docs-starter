@@ -1,0 +1,176 @@
+---
+title: "設定 Email to Ticket"
+sidebarTitle: "Email to Ticket"
+description: "透過將您的支援收件匣連接到 AgencyHandy 工作區的轉寄地址，自動將轉寄的客戶電子郵件轉換為支援工單。"
+---
+
+**Email to Ticket** 功能會自動將客戶電子郵件轉換為支援工單。將您的支援電子郵件設定為將收到的郵件轉寄至您專屬的 AgencyHandy 轉寄地址後，來自已知客戶的每一封新郵件都會自動在您的工作區中建立一張工單。
+
+<Note>
+  只有從現有客戶電子郵件地址發送的郵件才會自動建立工單。
+</Note>
+
+---
+
+## 存取 Email to Ticket
+
+<Steps>
+  <Step title="開啟 Workspace Config">
+    登入 AgencyHandy。在左側導覽選單中，點擊 **Workspace Config**。
+  </Step>
+  <Step title="選擇 Email to Ticket">
+    從 Workspace Config 子選單中點擊 **Email to Ticket**。
+  </Step>
+</Steps>
+
+從此頁面，您可以:
+
+- 取得您專屬的轉寄地址。
+- 設定電子郵件轉寄。
+- 驗證您的轉寄設定。
+- 啟用自動建立工單功能。
+- 查看不同電子郵件服務提供商的設定說明。
+
+![Email to Ticket 設定頁面](/images/email-to-ticket/overview-page.png)
+<p style={{textAlign: 'center'}}>*Email to Ticket 設定頁面*</p>
+
+---
+
+## 您的工作區轉寄地址
+
+AgencyHandy 會為每個工作區生成一個專屬的轉寄電子郵件地址。此地址會接收來自您支援收件匣的轉寄郵件。
+
+<Steps>
+  <Step title="複製您的轉寄地址">
+    點擊 **Copy** 以複製您的工作區轉寄地址。
+  </Step>
+  <Step title="新增為轉寄目的地">
+    在您的電子郵件服務提供商中，將此地址新增為轉寄目的地。
+  </Step>
+  <Step title="完成驗證">
+    完成您服務提供商所需的轉寄驗證流程。
+  </Step>
+  <Step title="啟用 Auto-create Ticket">
+    驗證完成後，啟用 **Auto-create Ticket**。
+  </Step>
+</Steps>
+
+![帶有 Copy 按鈕的工作區轉寄地址](/images/email-to-ticket/forwarding-address-copy.png)
+<p style={{textAlign: 'center'}}>*帶有 Copy 按鈕的工作區轉寄地址*</p>
+
+<Tip>
+  您的轉寄地址是您工作區專屬的，除非您重新生成，否則會保持不變。
+</Tip>
+
+---
+
+## 設定電子郵件轉寄
+
+AgencyHandy 不會存取您的信箱。電子郵件轉寄完全在您的電子郵件服務提供商內設定。
+
+Email to Ticket 頁面包含以下服務的設定指南:
+
+- Gmail
+- Outlook / Microsoft 365
+- Zoho Mail
+- cPanel / 主機託管
+- 其他支援電子郵件轉寄的服務提供商
+
+在 Email to Ticket 頁面選擇您的電子郵件服務提供商，即可查看對應的設定說明。
+
+---
+
+## Gmail 設定
+
+如果您使用 Gmail，請依照以下步驟操作。
+
+<Steps>
+  <Step title="開啟 Gmail 轉寄設定">
+    在 Gmail 中，前往 **Settings → See all settings → Forwarding and POP/IMAP**。
+
+    ![Gmail Forwarding and POP/IMAP 設定分頁](/images/email-to-ticket/gmail-forwarding-settings.png)
+    <p style={{textAlign: 'center'}}>*Gmail Forwarding and POP/IMAP 設定分頁*</p>
+  </Step>
+  <Step title="新增 AgencyHandy 轉寄地址">
+    點擊 **Add a forwarding address**，並貼上您從 AgencyHandy 複製的轉寄地址。Google 會發送一封確認郵件以驗證該轉寄地址。儲存轉寄地址後，返回 AgencyHandy。
+
+    ![Gmail Add a forwarding address 對話框](/images/email-to-ticket/gmail-add-forwarding-address.png)
+    <p style={{textAlign: 'center'}}>*Gmail Add a forwarding address 對話框*</p>
+  </Step>
+  <Step title="轉寄收到的郵件">
+    在 Gmail 中:
+    - 啟用 **Forward a copy of incoming mail**。
+    - 選擇您的 AgencyHandy 轉寄地址。
+    - 儲存您的變更。
+
+    您支援收件匣未來收到的所有郵件現在都會轉寄至 AgencyHandy。
+
+    ![Gmail Forward a copy of incoming mail 選項](/images/email-to-ticket/gmail-forward-incoming-mail.png)
+    <p style={{textAlign: 'center'}}>*Gmail Forward a copy of incoming mail 選項*</p>
+  </Step>
+  <Step title="驗證轉寄地址">
+    返回 **Workspace Config → Email to Ticket**，然後點擊 **I've added the address in Gmail**。AgencyHandy 會等待 Google 的確認郵件，並在郵件送達後自動偵測確認連結或驗證碼，通常需要一到兩分鐘。驗證完成後，轉寄設定即已就緒。
+
+    ![在 AgencyHandy 中驗證轉寄地址](/images/email-to-ticket/gmail-verify-forwarding.png)
+    <p style={{textAlign: 'center'}}>*在 AgencyHandy 中驗證轉寄地址*</p>
+  </Step>
+</Steps>
+
+---
+
+## Auto-create Ticket
+
+轉寄驗證完成後，啟用 **Auto-create Ticket** 切換開關。
+
+啟用後:
+
+- 來自現有客戶的每一封轉寄郵件都會自動建立一張新的支援工單。
+- 系統會依據電子郵件地址比對客戶。
+- 成功訊息會確認 Email to Ticket 功能已啟用。
+
+![已啟用的 Auto-create Ticket 切換開關](/images/email-to-ticket/auto-create-ticket-toggle.png)
+<p style={{textAlign: 'center'}}>*已啟用的 Auto-create Ticket 切換開關*</p>
+
+<Warning>
+  在完成轉寄驗證之前，請保持此選項停用。
+</Warning>
+
+---
+
+## 確認輔助工具
+
+對於支援的電子郵件服務提供商，AgencyHandy 提供確認輔助工具。在您的電子郵件服務提供商中新增轉寄地址後:
+
+1. 返回 Email to Ticket 頁面。
+2. 點擊確認按鈕，例如 **I've added the address in Gmail**。
+3. 等待 AgencyHandy 檢查服務提供商發送的驗證郵件。
+4. 偵測到後，AgencyHandy 會自動完成驗證流程。
+
+這樣就不需要手動取得驗證郵件或確認碼。
+
+---
+
+## 重新整理驗證狀態
+
+如果驗證所需時間超出預期，請點擊 **Refresh** 以檢查是否收到新的確認郵件。
+
+---
+
+## Email to Ticket 的運作方式
+
+設定完 Email to Ticket 後:
+
+1. 客戶發送電子郵件至您的支援電子郵件地址。
+2. 您的電子郵件服務提供商會自動將該郵件的副本轉寄至您的 AgencyHandy 轉寄地址。
+3. AgencyHandy 會驗證寄件者的電子郵件地址。
+4. 如果寄件者與您工作區中的現有客戶相符，系統會自動建立一張新工單。
+
+---
+
+## 注意事項
+
+- 只有來自現有客戶電子郵件地址的郵件才會自動建立工單。
+- 來自未知寄件者的郵件會被忽略。
+- 每個工作區都有其專屬的轉寄地址。
+- AgencyHandy 只會接收轉寄的郵件副本，不會直接存取您的信箱。
+- 電子郵件回覆串接功能規劃於未來版本推出。

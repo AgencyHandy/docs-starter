@@ -1,0 +1,176 @@
+---
+title: "设置 Email to Ticket"
+sidebarTitle: "Email to Ticket"
+description: "通过将您的支持收件箱连接到 AgencyHandy 工作区转发地址，自动将转发的客户邮件转换为支持工单。"
+---
+
+**Email to Ticket** 功能会自动将客户邮件转换为支持工单。将您的支持邮箱配置为把收到的邮件转发至您专属的 AgencyHandy 转发地址后，来自已识别客户的每封新邮件都会自动在您的工作区中创建一张工单。
+
+<Note>
+  只有从现有客户邮箱地址发送的邮件才会自动创建工单。
+</Note>
+
+---
+
+## 访问 Email to Ticket
+
+<Steps>
+  <Step title="打开 Workspace Config">
+    登录 AgencyHandy。在左侧导航菜单中，点击**Workspace Config**。
+  </Step>
+  <Step title="选择 Email to Ticket">
+    在 Workspace Config 子菜单中点击**Email to Ticket**。
+  </Step>
+</Steps>
+
+在此页面中，您可以：
+
+- 获取您专属的转发地址。
+- 配置邮件转发。
+- 验证您的转发设置。
+- 启用自动创建工单。
+- 查看不同邮件提供商的设置说明。
+
+![Email to Ticket 设置页面](/images/email-to-ticket/overview-page.png)
+<p style={{textAlign: 'center'}}>*Email to Ticket 设置页面*</p>
+
+---
+
+## 您的工作区转发地址
+
+AgencyHandy 会为每个工作区生成一个专属的转发邮箱地址。该地址用于接收从您的支持收件箱转发而来的邮件。
+
+<Steps>
+  <Step title="复制您的转发地址">
+    点击**Copy**以复制您工作区的转发地址。
+  </Step>
+  <Step title="将其添加为转发目标地址">
+    在您的邮件提供商处将此地址添加为转发目标地址。
+  </Step>
+  <Step title="完成验证">
+    完成您的邮件提供商所要求的转发验证流程。
+  </Step>
+  <Step title="启用 Auto-create Ticket">
+    验证完成后，启用**Auto-create Ticket**。
+  </Step>
+</Steps>
+
+![带有 Copy 按钮的工作区转发地址](/images/email-to-ticket/forwarding-address-copy.png)
+<p style={{textAlign: 'center'}}>*带有 Copy 按钮的工作区转发地址*</p>
+
+<Tip>
+  您的转发地址专属于您的工作区，除非重新生成，否则保持不变。
+</Tip>
+
+---
+
+## 设置邮件转发
+
+AgencyHandy 不会访问您的邮箱。邮件转发完全在您的邮件提供商内部配置。
+
+Email to Ticket 页面包含以下邮件提供商的设置指南：
+
+- Gmail
+- Outlook / Microsoft 365
+- Zoho Mail
+- cPanel / 主机托管
+- 其他支持邮件转发的提供商
+
+在 Email to Ticket 页面选择您的邮件提供商，即可查看相应的设置说明。
+
+---
+
+## Gmail 设置
+
+如果您使用 Gmail，请按照以下步骤操作。
+
+<Steps>
+  <Step title="打开 Gmail 转发设置">
+    在 Gmail 中，依次进入**Settings → See all settings → Forwarding and POP/IMAP**。
+
+    ![Gmail 的 Forwarding and POP/IMAP 设置标签页](/images/email-to-ticket/gmail-forwarding-settings.png)
+    <p style={{textAlign: 'center'}}>*Gmail 的 Forwarding and POP/IMAP 设置标签页*</p>
+  </Step>
+  <Step title="添加 AgencyHandy 转发地址">
+    点击**Add a forwarding address**，粘贴您从 AgencyHandy 复制的转发地址。Google 会发送一封确认邮件以验证该转发地址。保存转发地址后，返回 AgencyHandy。
+
+    ![Gmail 的 Add a forwarding address 对话框](/images/email-to-ticket/gmail-add-forwarding-address.png)
+    <p style={{textAlign: 'center'}}>*Gmail 的 Add a forwarding address 对话框*</p>
+  </Step>
+  <Step title="转发收到的邮件">
+    在 Gmail 中：
+    - 启用**Forward a copy of incoming mail**。
+    - 选择您的 AgencyHandy 转发地址。
+    - 保存更改。
+
+    此后，您支持收件箱收到的所有邮件都会转发至 AgencyHandy。
+
+    ![Gmail 的 Forward a copy of incoming mail 选项](/images/email-to-ticket/gmail-forward-incoming-mail.png)
+    <p style={{textAlign: 'center'}}>*Gmail 的 Forward a copy of incoming mail 选项*</p>
+  </Step>
+  <Step title="验证转发地址">
+    返回**Workspace Config → Email to Ticket**，点击**I've added the address in Gmail**。AgencyHandy 会等待 Google 的确认邮件，并在邮件到达后自动检测确认链接或验证码，通常需要一到两分钟。验证完成后，转发设置即已就绪。
+
+    ![在 AgencyHandy 中验证转发地址](/images/email-to-ticket/gmail-verify-forwarding.png)
+    <p style={{textAlign: 'center'}}>*在 AgencyHandy 中验证转发地址*</p>
+  </Step>
+</Steps>
+
+---
+
+## Auto-create Ticket
+
+转发验证完成后，启用**Auto-create Ticket**开关。
+
+启用后：
+
+- 来自现有客户的每封转发邮件都会自动创建一张新的支持工单。
+- 系统会通过邮箱地址匹配客户。
+- 成功消息会确认 Email to Ticket 已启用。
+
+![已启用的 Auto-create Ticket 开关](/images/email-to-ticket/auto-create-ticket-toggle.png)
+<p style={{textAlign: 'center'}}>*已启用的 Auto-create Ticket 开关*</p>
+
+<Warning>
+  在转发验证完成之前，请保持此选项处于禁用状态。
+</Warning>
+
+---
+
+## 确认助手
+
+对于受支持的邮件提供商，AgencyHandy 提供了确认助手。在您的邮件提供商中添加转发地址后：
+
+1. 返回 Email to Ticket 页面。
+2. 点击确认按钮，例如**I've added the address in Gmail**。
+3. 等待 AgencyHandy 检查邮件提供商的验证邮件。
+4. 检测到后，AgencyHandy 会自动完成验证流程。
+
+这样您就无需手动查找验证邮件或确认码。
+
+---
+
+## 刷新验证状态
+
+如果验证所需时间超出预期，请点击**Refresh**以检查是否收到了新的确认邮件。
+
+---
+
+## Email to Ticket 的工作原理
+
+配置 Email to Ticket 后：
+
+1. 客户向您的支持邮箱地址发送邮件。
+2. 您的邮件提供商会自动将该邮件的副本转发至您的 AgencyHandy 转发地址。
+3. AgencyHandy 验证发件人的邮箱地址。
+4. 如果发件人与您工作区中的现有客户匹配，系统会自动创建一张新工单。
+
+---
+
+## 说明
+
+- 只有来自现有客户邮箱地址的邮件才会自动创建工单。
+- 来自未知发件人的邮件将被忽略。
+- 每个工作区都有自己专属的转发地址。
+- AgencyHandy 仅接收转发的邮件副本，不会直接访问您的邮箱。
+- 邮件回复串联功能计划在未来版本中推出。

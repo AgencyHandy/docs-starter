@@ -1,0 +1,176 @@
+---
+title: "Nastavení Email to Ticket"
+sidebarTitle: "Email to Ticket"
+description: "Automaticky převádějte přeposlané e-maily od klientů na tikety podpory propojením vaší podpůrné e-mailové schránky s adresou pro přeposílání ve vašem workspace AgencyHandy."
+---
+
+Funkce **Email to Ticket** automaticky převádí e-maily od klientů na tikety podpory. Jakmile je vaše podpůrná e-mailová adresa nastavena tak, aby přeposílala příchozí e-maily na vaši unikátní adresu pro přeposílání AgencyHandy, každý nový e-mail od rozpoznaného klienta automaticky vytvoří tiket ve vašem workspace.
+
+<Note>
+  Tikety se automaticky vytvářejí pouze z e-mailů odeslaných z existujících e-mailových adres klientů.
+</Note>
+
+---
+
+## Přístup k Email to Ticket
+
+<Steps>
+  <Step title="Otevřete Workspace Config">
+    Přihlaste se do AgencyHandy. V levém navigačním menu klikněte na **Workspace Config**.
+  </Step>
+  <Step title="Vyberte Email to Ticket">
+    Klikněte na **Email to Ticket** v podnabídce Workspace Config.
+  </Step>
+</Steps>
+
+Na této stránce můžete:
+
+- Získat svou unikátní adresu pro přeposílání.
+- Nakonfigurovat přeposílání e-mailů.
+- Ověřit nastavení přeposílání.
+- Povolit automatické vytváření tiketů.
+- Zobrazit návody na nastavení pro různé poskytovatele e-mailu.
+
+![Stránka nastavení Email to Ticket](/images/email-to-ticket/overview-page.png)
+<p style={{textAlign: 'center'}}>*Stránka nastavení Email to Ticket*</p>
+
+---
+
+## Adresa pro přeposílání vašeho workspace
+
+AgencyHandy generuje unikátní e-mailovou adresu pro přeposílání pro každý workspace. Tato adresa přijímá přeposlané e-maily z vaší podpůrné e-mailové schránky.
+
+<Steps>
+  <Step title="Zkopírujte svou adresu pro přeposílání">
+    Klikněte na **Copy** a zkopírujte adresu pro přeposílání vašeho workspace.
+  </Step>
+  <Step title="Přidejte ji jako cíl přeposílání">
+    Přidejte tuto adresu jako cíl přeposílání u svého poskytovatele e-mailu.
+  </Step>
+  <Step title="Dokončete ověření">
+    Dokončete proces ověření přeposílání požadovaný vaším poskytovatelem.
+  </Step>
+  <Step title="Povolte Auto-create Ticket">
+    Jakmile bude ověření dokončeno, povolte **Auto-create Ticket**.
+  </Step>
+</Steps>
+
+![Adresa pro přeposílání workspace s tlačítkem Copy](/images/email-to-ticket/forwarding-address-copy.png)
+<p style={{textAlign: 'center'}}>*Adresa pro přeposílání workspace s tlačítkem Copy*</p>
+
+<Tip>
+  Vaše adresa pro přeposílání je unikátní pro váš workspace a zůstává stejná, dokud ji znovu nevygenerujete.
+</Tip>
+
+---
+
+## Nastavení přeposílání e-mailů
+
+AgencyHandy nepřistupuje k vaší e-mailové schránce. Přeposílání e-mailů se konfiguruje výhradně u vašeho poskytovatele e-mailu.
+
+Stránka Email to Ticket obsahuje návody na nastavení pro:
+
+- Gmail
+- Outlook / Microsoft 365
+- Zoho Mail
+- cPanel / Hosting
+- Ostatní poskytovatele, kteří podporují přeposílání e-mailů
+
+Vyberte svého poskytovatele e-mailu na stránce Email to Ticket, abyste zobrazili příslušné instrukce k nastavení.
+
+---
+
+## Nastavení Gmailu
+
+Pokud používáte Gmail, postupujte podle těchto kroků.
+
+<Steps>
+  <Step title="Otevřete nastavení přeposílání v Gmailu">
+    V Gmailu přejděte na **Settings → See all settings → Forwarding and POP/IMAP**.
+
+    ![Karta nastavení Gmailu Forwarding and POP/IMAP](/images/email-to-ticket/gmail-forwarding-settings.png)
+    <p style={{textAlign: 'center'}}>*Karta nastavení Gmailu Forwarding and POP/IMAP*</p>
+  </Step>
+  <Step title="Přidejte adresu pro přeposílání AgencyHandy">
+    Klikněte na **Add a forwarding address** a vložte adresu pro přeposílání, kterou jste zkopírovali z AgencyHandy. Google odešle potvrzovací e-mail k ověření adresy pro přeposílání. Po uložení adresy pro přeposílání se vraťte do AgencyHandy.
+
+    ![Dialog Add a forwarding address v Gmailu](/images/email-to-ticket/gmail-add-forwarding-address.png)
+    <p style={{textAlign: 'center'}}>*Dialog Add a forwarding address v Gmailu*</p>
+  </Step>
+  <Step title="Přeposílejte příchozí e-maily">
+    V Gmailu:
+    - Povolte **Forward a copy of incoming mail**.
+    - Vyberte svou adresu pro přeposílání AgencyHandy.
+    - Uložte změny.
+
+    Všechny budoucí e-maily přijaté vaší podpůrnou e-mailovou schránkou jsou nyní přeposílány do AgencyHandy.
+
+    ![Možnost Forward a copy of incoming mail v Gmailu](/images/email-to-ticket/gmail-forward-incoming-mail.png)
+    <p style={{textAlign: 'center'}}>*Možnost Forward a copy of incoming mail v Gmailu*</p>
+  </Step>
+  <Step title="Ověřte adresu pro přeposílání">
+    Vraťte se na **Workspace Config → Email to Ticket** a klikněte na **I've added the address in Gmail**. AgencyHandy vyčká na potvrzovací e-mail od Googlu a po jeho doručení automaticky rozpozná potvrzovací odkaz nebo ověřovací kód, obvykle během jedné až dvou minut. Jakmile je ověření dokončeno, nastavení přeposílání je připraveno.
+
+    ![Ověřování adresy pro přeposílání v AgencyHandy](/images/email-to-ticket/gmail-verify-forwarding.png)
+    <p style={{textAlign: 'center'}}>*Ověřování adresy pro přeposílání v AgencyHandy*</p>
+  </Step>
+</Steps>
+
+---
+
+## Auto-create Ticket
+
+Jakmile je přeposílání ověřeno, povolte přepínač **Auto-create Ticket**.
+
+Po zapnutí:
+
+- Každý přeposlaný e-mail od existujícího klienta automaticky vytvoří nový tiket podpory.
+- Klienti jsou identifikováni podle své e-mailové adresy.
+- Zpráva o úspěchu potvrdí, že Email to Ticket je aktivní.
+
+![Zapnutý přepínač Auto-create Ticket](/images/email-to-ticket/auto-create-ticket-toggle.png)
+<p style={{textAlign: 'center'}}>*Zapnutý přepínač Auto-create Ticket*</p>
+
+<Warning>
+  Nechte tuto možnost vypnutou, dokud nebude dokončeno ověření přeposílání.
+</Warning>
+
+---
+
+## Pomůcka pro potvrzení
+
+Pro podporované poskytovatele e-mailu obsahuje AgencyHandy pomůcku pro potvrzení. Po přidání adresy pro přeposílání u vašeho poskytovatele e-mailu:
+
+1. Vraťte se na stránku Email to Ticket.
+2. Klikněte na tlačítko potvrzení, například **I've added the address in Gmail**.
+3. Vyčkejte, dokud AgencyHandy nezkontroluje ověřovací e-mail od poskytovatele.
+4. Jakmile je detekován, AgencyHandy automaticky dokončí proces ověření.
+
+Odpadá tak nutnost manuálně vyhledávat ověřovací e-mail nebo potvrzovací kód.
+
+---
+
+## Obnovení stavu ověření
+
+Pokud ověření trvá déle, než se očekávalo, klikněte na **Refresh** a zkontrolujte nově doručené potvrzovací e-maily.
+
+---
+
+## Jak funguje Email to Ticket
+
+Jakmile je Email to Ticket nakonfigurováno:
+
+1. Klient odešle e-mail na vaši podpůrnou e-mailovou adresu.
+2. Váš poskytovatel e-mailu automaticky přepošle kopii e-mailu na vaši adresu pro přeposílání AgencyHandy.
+3. AgencyHandy ověří e-mailovou adresu odesílatele.
+4. Pokud odesílatel odpovídá existujícímu klientovi ve vašem workspace, automaticky se vytvoří nový tiket.
+
+---
+
+## Poznámky
+
+- Tikety automaticky vytvářejí pouze e-maily z existujících e-mailových adres klientů.
+- E-maily od neznámých odesílatelů jsou ignorovány.
+- Každý workspace má svou vlastní unikátní adresu pro přeposílání.
+- AgencyHandy přijímá pouze přeposlané kopie e-mailů. Nepřistupuje přímo k vaší e-mailové schránce.
+- Vláknění odpovědí na e-maily je plánováno pro budoucí vydání.
