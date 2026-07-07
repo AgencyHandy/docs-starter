@@ -1,0 +1,176 @@
+---
+title: "Configurar Email to Ticket"
+sidebarTitle: "Email to Ticket"
+description: "Convierta automáticamente los correos de clientes reenviados en tickets de soporte conectando su bandeja de entrada de soporte a la dirección de reenvío de su espacio de trabajo de AgencyHandy."
+---
+
+La función **Email to Ticket** convierte automáticamente los correos de los clientes en tickets de soporte. Una vez que su correo de soporte esté configurado para reenviar los correos entrantes a su dirección de reenvío exclusiva de AgencyHandy, cada nuevo correo de un cliente reconocido crea automáticamente un ticket en su espacio de trabajo.
+
+<Note>
+  Solo los correos enviados desde direcciones de correo de clientes existentes crean tickets automáticamente.
+</Note>
+
+---
+
+## Acceder a Email to Ticket
+
+<Steps>
+  <Step title="Abra Workspace Config">
+    Inicie sesión en AgencyHandy. En el menú de navegación izquierdo, haga clic en **Workspace Config**.
+  </Step>
+  <Step title="Seleccione Email to Ticket">
+    Haga clic en **Email to Ticket** en el submenú de Workspace Config.
+  </Step>
+</Steps>
+
+Desde esta página, puede:
+
+- Obtener su dirección de reenvío exclusiva.
+- Configurar el reenvío de correos.
+- Verificar su configuración de reenvío.
+- Habilitar la creación automática de tickets.
+- Ver las instrucciones de configuración para diferentes proveedores de correo.
+
+![Página de configuración de Email to Ticket](/images/email-to-ticket/overview-page.png)
+<p style={{textAlign: 'center'}}>*Página de configuración de Email to Ticket*</p>
+
+---
+
+## Su dirección de reenvío del espacio de trabajo
+
+AgencyHandy genera una dirección de correo de reenvío exclusiva para cada espacio de trabajo. Esta dirección recibe los correos reenviados desde su bandeja de entrada de soporte.
+
+<Steps>
+  <Step title="Copie su dirección de reenvío">
+    Haga clic en **Copy** para copiar la dirección de reenvío de su espacio de trabajo.
+  </Step>
+  <Step title="Agréguela como destino de reenvío">
+    Agregue esta dirección como destino de reenvío en su proveedor de correo.
+  </Step>
+  <Step title="Complete la verificación">
+    Realice el proceso de verificación de reenvío requerido por su proveedor.
+  </Step>
+  <Step title="Habilite Auto-create Ticket">
+    Una vez completada la verificación, habilite **Auto-create Ticket**.
+  </Step>
+</Steps>
+
+![Dirección de reenvío del espacio de trabajo con el botón Copy](/images/email-to-ticket/forwarding-address-copy.png)
+<p style={{textAlign: 'center'}}>*Dirección de reenvío del espacio de trabajo con el botón Copy*</p>
+
+<Tip>
+  Su dirección de reenvío es exclusiva de su espacio de trabajo y permanece igual a menos que la regenere.
+</Tip>
+
+---
+
+## Configurar el reenvío de correos
+
+AgencyHandy no accede a su buzón de correo. El reenvío de correos se configura completamente dentro de su proveedor de correo.
+
+La página de Email to Ticket incluye guías de configuración para:
+
+- Gmail
+- Outlook / Microsoft 365
+- Zoho Mail
+- cPanel / Hosting
+- Otros proveedores que admitan el reenvío de correos
+
+Seleccione su proveedor de correo en la página de Email to Ticket para ver las instrucciones de configuración correspondientes.
+
+---
+
+## Configuración de Gmail
+
+Si usa Gmail, siga estos pasos.
+
+<Steps>
+  <Step title="Abra la configuración de reenvío de Gmail">
+    En Gmail, vaya a **Settings → See all settings → Forwarding and POP/IMAP**.
+
+    ![Pestaña de configuración Forwarding and POP/IMAP de Gmail](/images/email-to-ticket/gmail-forwarding-settings.png)
+    <p style={{textAlign: 'center'}}>*Pestaña de configuración Forwarding and POP/IMAP de Gmail*</p>
+  </Step>
+  <Step title="Agregue la dirección de reenvío de AgencyHandy">
+    Haga clic en **Add a forwarding address** y pegue la dirección de reenvío que copió de AgencyHandy. Google envía un correo de confirmación para verificar la dirección de reenvío. Vuelva a AgencyHandy después de guardar la dirección de reenvío.
+
+    ![Cuadro de diálogo Add a forwarding address de Gmail](/images/email-to-ticket/gmail-add-forwarding-address.png)
+    <p style={{textAlign: 'center'}}>*Cuadro de diálogo Add a forwarding address de Gmail*</p>
+  </Step>
+  <Step title="Reenvíe los correos entrantes">
+    En Gmail:
+    - Habilite **Forward a copy of incoming mail**.
+    - Seleccione su dirección de reenvío de AgencyHandy.
+    - Guarde sus cambios.
+
+    Todos los correos futuros que reciba su bandeja de entrada de soporte se reenviarán ahora a AgencyHandy.
+
+    ![Opción Forward a copy of incoming mail de Gmail](/images/email-to-ticket/gmail-forward-incoming-mail.png)
+    <p style={{textAlign: 'center'}}>*Opción Forward a copy of incoming mail de Gmail*</p>
+  </Step>
+  <Step title="Verifique la dirección de reenvío">
+    Vuelva a **Workspace Config → Email to Ticket** y haga clic en **I've added the address in Gmail**. AgencyHandy espera el correo de confirmación de Google y detecta automáticamente el enlace de confirmación o el código de verificación cuando llega, normalmente en uno o dos minutos. Una vez completada la verificación, la configuración de reenvío estará lista.
+
+    ![Verificación de la dirección de reenvío en AgencyHandy](/images/email-to-ticket/gmail-verify-forwarding.png)
+    <p style={{textAlign: 'center'}}>*Verificación de la dirección de reenvío en AgencyHandy*</p>
+  </Step>
+</Steps>
+
+---
+
+## Auto-create Ticket
+
+Una vez verificado el reenvío, active el interruptor **Auto-create Ticket**.
+
+Cuando está habilitado:
+
+- Cada correo reenviado de un cliente existente crea automáticamente un nuevo ticket de soporte.
+- Los clientes se identifican mediante su dirección de correo.
+- Un mensaje de éxito confirma que Email to Ticket está activo.
+
+![Interruptor Auto-create Ticket activado](/images/email-to-ticket/auto-create-ticket-toggle.png)
+<p style={{textAlign: 'center'}}>*Interruptor Auto-create Ticket activado*</p>
+
+<Warning>
+  Mantenga esta opción deshabilitada hasta que se haya completado la verificación del reenvío.
+</Warning>
+
+---
+
+## Asistente de confirmación
+
+Para los proveedores de correo compatibles, AgencyHandy incluye un asistente de confirmación. Después de agregar la dirección de reenvío en su proveedor de correo:
+
+1. Vuelva a la página de Email to Ticket.
+2. Haga clic en el botón de confirmación, como **I've added the address in Gmail**.
+3. Espere mientras AgencyHandy verifica si ha llegado el correo de verificación del proveedor.
+4. Una vez detectado, AgencyHandy completa automáticamente el proceso de verificación.
+
+Esto elimina la necesidad de recuperar manualmente el correo de verificación o el código de confirmación.
+
+---
+
+## Actualizar el estado de verificación
+
+Si la verificación está tardando más de lo esperado, haga clic en **Refresh** para comprobar si se han recibido nuevos correos de confirmación.
+
+---
+
+## Cómo funciona Email to Ticket
+
+Una vez configurado Email to Ticket:
+
+1. Un cliente envía un correo a su dirección de correo de soporte.
+2. Su proveedor de correo reenvía automáticamente una copia del correo a su dirección de reenvío de AgencyHandy.
+3. AgencyHandy verifica la dirección de correo del remitente.
+4. Si el remitente coincide con un cliente existente en su espacio de trabajo, se crea automáticamente un nuevo ticket.
+
+---
+
+## Notas
+
+- Solo los correos de direcciones de clientes existentes crean tickets automáticamente.
+- Los correos de remitentes desconocidos se ignoran.
+- Cada espacio de trabajo tiene su propia dirección de reenvío exclusiva.
+- AgencyHandy solo recibe copias reenviadas de los correos. No accede directamente a su buzón de correo.
+- El seguimiento de hilos de respuesta por correo está previsto para una futura versión.

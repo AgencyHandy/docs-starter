@@ -1,0 +1,176 @@
+---
+title: "Configura Email to Ticket"
+sidebarTitle: "Email to Ticket"
+description: "Converti automaticamente le email dei clienti inoltrate in ticket di supporto collegando la tua casella di posta di supporto all'indirizzo di inoltro del tuo workspace AgencyHandy."
+---
+
+La funzione **Email to Ticket** converte automaticamente le email dei clienti in ticket di supporto. Una volta che la tua email di supporto è configurata per inoltrare le email in arrivo al tuo indirizzo di inoltro univoco AgencyHandy, ogni nuova email da un cliente riconosciuto crea automaticamente un ticket nel tuo workspace.
+
+<Note>
+  Solo le email inviate da indirizzi email di clienti esistenti creano automaticamente ticket.
+</Note>
+
+---
+
+## Accesso a Email to Ticket
+
+<Steps>
+  <Step title="Apri Workspace Config">
+    Accedi ad AgencyHandy. Nel menu di navigazione a sinistra, clicca su **Workspace Config**.
+  </Step>
+  <Step title="Seleziona Email to Ticket">
+    Clicca su **Email to Ticket** dal sottomenu di Workspace Config.
+  </Step>
+</Steps>
+
+Da questa pagina puoi:
+
+- Ottenere il tuo indirizzo di inoltro univoco.
+- Configurare l'inoltro delle email.
+- Verificare la configurazione dell'inoltro.
+- Abilitare la creazione automatica dei ticket.
+- Visualizzare le istruzioni di configurazione per i diversi provider email.
+
+![Pagina delle impostazioni di Email to Ticket](/images/email-to-ticket/overview-page.png)
+<p style={{textAlign: 'center'}}>*Pagina delle impostazioni di Email to Ticket*</p>
+
+---
+
+## L'indirizzo di inoltro del tuo workspace
+
+AgencyHandy genera un indirizzo email di inoltro univoco per ogni workspace. Questo indirizzo riceve le email inoltrate dalla tua casella di posta di supporto.
+
+<Steps>
+  <Step title="Copia il tuo indirizzo di inoltro">
+    Clicca su **Copy** per copiare l'indirizzo di inoltro del tuo workspace.
+  </Step>
+  <Step title="Aggiungilo come destinazione di inoltro">
+    Aggiungi questo indirizzo come destinazione di inoltro nel tuo provider email.
+  </Step>
+  <Step title="Completa la verifica">
+    Completa il processo di verifica dell'inoltro richiesto dal tuo provider.
+  </Step>
+  <Step title="Abilita Auto-create Ticket">
+    Una volta completata la verifica, abilita **Auto-create Ticket**.
+  </Step>
+</Steps>
+
+![Indirizzo di inoltro del workspace con il pulsante Copy](/images/email-to-ticket/forwarding-address-copy.png)
+<p style={{textAlign: 'center'}}>*Indirizzo di inoltro del workspace con il pulsante Copy*</p>
+
+<Tip>
+  Il tuo indirizzo di inoltro è univoco per il tuo workspace e rimane invariato a meno che non venga rigenerato.
+</Tip>
+
+---
+
+## Configurare l'inoltro delle email
+
+AgencyHandy non accede alla tua casella di posta. L'inoltro delle email viene configurato interamente all'interno del tuo provider email.
+
+La pagina Email to Ticket include guide di configurazione per:
+
+- Gmail
+- Outlook / Microsoft 365
+- Zoho Mail
+- cPanel / Hosting
+- Altri provider che supportano l'inoltro delle email
+
+Seleziona il tuo provider email nella pagina Email to Ticket per visualizzare le istruzioni di configurazione appropriate.
+
+---
+
+## Configurazione di Gmail
+
+Se utilizzi Gmail, segui questi passaggi.
+
+<Steps>
+  <Step title="Apri le impostazioni di inoltro di Gmail">
+    In Gmail, vai su **Settings → See all settings → Forwarding and POP/IMAP**.
+
+    ![Scheda delle impostazioni di Gmail Forwarding and POP/IMAP](/images/email-to-ticket/gmail-forwarding-settings.png)
+    <p style={{textAlign: 'center'}}>*Scheda delle impostazioni di Gmail Forwarding and POP/IMAP*</p>
+  </Step>
+  <Step title="Aggiungi l'indirizzo di inoltro di AgencyHandy">
+    Clicca su **Add a forwarding address** e incolla l'indirizzo di inoltro che hai copiato da AgencyHandy. Google invia un'email di conferma per verificare l'indirizzo di inoltro. Torna su AgencyHandy dopo aver salvato l'indirizzo di inoltro.
+
+    ![Finestra di dialogo Add a forwarding address di Gmail](/images/email-to-ticket/gmail-add-forwarding-address.png)
+    <p style={{textAlign: 'center'}}>*Finestra di dialogo Add a forwarding address di Gmail*</p>
+  </Step>
+  <Step title="Inoltra le email in arrivo">
+    In Gmail:
+    - Abilita **Forward a copy of incoming mail**.
+    - Seleziona il tuo indirizzo di inoltro AgencyHandy.
+    - Salva le modifiche.
+
+    Tutte le email future ricevute dalla tua casella di posta di supporto vengono ora inoltrate ad AgencyHandy.
+
+    ![Opzione Forward a copy of incoming mail di Gmail](/images/email-to-ticket/gmail-forward-incoming-mail.png)
+    <p style={{textAlign: 'center'}}>*Opzione Forward a copy of incoming mail di Gmail*</p>
+  </Step>
+  <Step title="Verifica l'indirizzo di inoltro">
+    Torna su **Workspace Config → Email to Ticket** e clicca su **I've added the address in Gmail**. AgencyHandy attende l'email di conferma di Google e rileva automaticamente il link di conferma o il codice di verifica quando arriva, di solito entro uno o due minuti. Una volta completata la verifica, la configurazione dell'inoltro è pronta.
+
+    ![Verifica dell'indirizzo di inoltro in AgencyHandy](/images/email-to-ticket/gmail-verify-forwarding.png)
+    <p style={{textAlign: 'center'}}>*Verifica dell'indirizzo di inoltro in AgencyHandy*</p>
+  </Step>
+</Steps>
+
+---
+
+## Auto-create Ticket
+
+Dopo che l'inoltro è stato verificato, abilita l'interruttore **Auto-create Ticket**.
+
+Quando è abilitato:
+
+- Ogni email inoltrata da un cliente esistente crea automaticamente un nuovo ticket di supporto.
+- I clienti vengono associati in base al loro indirizzo email.
+- Un messaggio di successo confermerà che Email to Ticket è attivo.
+
+![Interruttore Auto-create Ticket abilitato](/images/email-to-ticket/auto-create-ticket-toggle.png)
+<p style={{textAlign: 'center'}}>*Interruttore Auto-create Ticket abilitato*</p>
+
+<Warning>
+  Mantieni questa opzione disabilitata finché la verifica dell'inoltro non sarà completata.
+</Warning>
+
+---
+
+## Assistente di conferma
+
+Per i provider email supportati, AgencyHandy include un assistente di conferma. Dopo aver aggiunto l'indirizzo di inoltro nel tuo provider email:
+
+1. Torna alla pagina Email to Ticket.
+2. Clicca sul pulsante di conferma, come **I've added the address in Gmail**.
+3. Attendi mentre AgencyHandy verifica la presenza dell'email di verifica del provider.
+4. Una volta rilevata, AgencyHandy completa automaticamente il processo di verifica.
+
+Questo elimina la necessità di recuperare manualmente l'email di verifica o il codice di conferma.
+
+---
+
+## Aggiorna lo stato di verifica
+
+Se la verifica richiede più tempo del previsto, clicca su **Refresh** per controllare la presenza di nuove email di conferma.
+
+---
+
+## Come funziona Email to Ticket
+
+Una volta configurato Email to Ticket:
+
+1. Un cliente invia un'email al tuo indirizzo email di supporto.
+2. Il tuo provider email inoltra automaticamente una copia dell'email al tuo indirizzo di inoltro AgencyHandy.
+3. AgencyHandy verifica l'indirizzo email del mittente.
+4. Se il mittente corrisponde a un cliente esistente nel tuo workspace, viene creato automaticamente un nuovo ticket.
+
+---
+
+## Note
+
+- Solo le email provenienti da indirizzi email di clienti esistenti creano ticket automaticamente.
+- Le email da mittenti sconosciuti vengono ignorate.
+- Ogni workspace ha il proprio indirizzo di inoltro univoco.
+- AgencyHandy riceve solo copie inoltrate delle email. Non accede direttamente alla tua casella di posta.
+- Il threading delle risposte email è previsto per una versione futura.

@@ -1,0 +1,176 @@
+---
+title: "Konfigurera Email to Ticket"
+sidebarTitle: "Email to Ticket"
+description: "Konvertera automatiskt vidarebefordrade klient-e-postmeddelanden till supportärenden genom att ansluta din supportinkorg till din AgencyHandy-arbetsytas vidarebefordringsadress."
+---
+
+Funktionen **Email to Ticket** konverterar automatiskt klient-e-postmeddelanden till supportärenden. När din support-e-post är konfigurerad att vidarebefordra inkommande e-postmeddelanden till din unika AgencyHandy-vidarebefordringsadress skapas automatiskt ett ärende i din arbetsyta för varje nytt e-postmeddelande från en känd klient.
+
+<Note>
+  Endast e-postmeddelanden som skickas från befintliga klienters e-postadresser skapar ärenden automatiskt.
+</Note>
+
+---
+
+## Åtkomst till Email to Ticket
+
+<Steps>
+  <Step title="Öppna Workspace Config">
+    Logga in på AgencyHandy. Klicka på **Workspace Config** i den vänstra navigeringsmenyn.
+  </Step>
+  <Step title="Välj Email to Ticket">
+    Klicka på **Email to Ticket** i undermenyn för Workspace Config.
+  </Step>
+</Steps>
+
+På den här sidan kan du:
+
+- Hämta din unika vidarebefordringsadress.
+- Konfigurera e-postvidarebefordring.
+- Verifiera din vidarebefordringskonfiguration.
+- Aktivera automatisk ärendeskapande.
+- Se konfigurationsinstruktioner för olika e-postleverantörer.
+
+![Inställningssida för Email to Ticket](/images/email-to-ticket/overview-page.png)
+<p style={{textAlign: 'center'}}>*Inställningssida för Email to Ticket*</p>
+
+---
+
+## Din arbetsytas vidarebefordringsadress
+
+AgencyHandy genererar en unik vidarebefordringsadress för varje arbetsyta. Den här adressen tar emot vidarebefordrade e-postmeddelanden från din supportinkorg.
+
+<Steps>
+  <Step title="Kopiera din vidarebefordringsadress">
+    Klicka på **Copy** för att kopiera din arbetsytas vidarebefordringsadress.
+  </Step>
+  <Step title="Lägg till den som en vidarebefordringsdestination">
+    Lägg till den här adressen som en vidarebefordringsdestination hos din e-postleverantör.
+  </Step>
+  <Step title="Slutför verifieringen">
+    Slutför den verifieringsprocess för vidarebefordring som krävs av din leverantör.
+  </Step>
+  <Step title="Aktivera Auto-create Ticket">
+    När verifieringen är klar aktiverar du **Auto-create Ticket**.
+  </Step>
+</Steps>
+
+![Arbetsytans vidarebefordringsadress med Copy-knapp](/images/email-to-ticket/forwarding-address-copy.png)
+<p style={{textAlign: 'center'}}>*Arbetsytans vidarebefordringsadress med Copy-knapp*</p>
+
+<Tip>
+  Din vidarebefordringsadress är unik för din arbetsyta och förblir densamma om du inte återskapar den.
+</Tip>
+
+---
+
+## Konfigurera e-postvidarebefordring
+
+AgencyHandy får inte åtkomst till din inkorg. E-postvidarebefordring konfigureras helt och hållet hos din e-postleverantör.
+
+Sidan Email to Ticket innehåller konfigurationsguider för:
+
+- Gmail
+- Outlook / Microsoft 365
+- Zoho Mail
+- cPanel / Webbhotell
+- Andra leverantörer som stöder e-postvidarebefordring
+
+Välj din e-postleverantör på sidan Email to Ticket för att se rätt konfigurationsinstruktioner.
+
+---
+
+## Konfigurera Gmail
+
+Om du använder Gmail följer du dessa steg.
+
+<Steps>
+  <Step title="Öppna Gmails vidarebefordringsinställningar">
+    I Gmail går du till **Settings → See all settings → Forwarding and POP/IMAP**.
+
+    ![Fliken Gmail Forwarding and POP/IMAP settings](/images/email-to-ticket/gmail-forwarding-settings.png)
+    <p style={{textAlign: 'center'}}>*Fliken Gmail Forwarding and POP/IMAP settings*</p>
+  </Step>
+  <Step title="Lägg till AgencyHandy-vidarebefordringsadressen">
+    Klicka på **Add a forwarding address** och klistra in den vidarebefordringsadress du kopierade från AgencyHandy. Google skickar ett bekräftelsemeddelande för att verifiera vidarebefordringsadressen. Återgå till AgencyHandy när du har sparat vidarebefordringsadressen.
+
+    ![Gmail-dialogen Add a forwarding address](/images/email-to-ticket/gmail-add-forwarding-address.png)
+    <p style={{textAlign: 'center'}}>*Gmail-dialogen Add a forwarding address*</p>
+  </Step>
+  <Step title="Vidarebefordra inkommande e-post">
+    I Gmail:
+    - Aktivera **Forward a copy of incoming mail**.
+    - Välj din AgencyHandy-vidarebefordringsadress.
+    - Spara dina ändringar.
+
+    Alla framtida e-postmeddelanden som tas emot av din supportinkorg vidarebefordras nu till AgencyHandy.
+
+    ![Alternativet Gmail Forward a copy of incoming mail](/images/email-to-ticket/gmail-forward-incoming-mail.png)
+    <p style={{textAlign: 'center'}}>*Alternativet Gmail Forward a copy of incoming mail*</p>
+  </Step>
+  <Step title="Verifiera vidarebefordringsadressen">
+    Återgå till **Workspace Config → Email to Ticket** och klicka på **I've added the address in Gmail**. AgencyHandy väntar på Googles bekräftelsemeddelande och identifierar automatiskt bekräftelselänken eller verifieringskoden när den kommer fram, vanligtvis inom en till två minuter. När verifieringen är klar är vidarebefordringskonfigurationen redo.
+
+    ![Verifiering av vidarebefordringsadressen i AgencyHandy](/images/email-to-ticket/gmail-verify-forwarding.png)
+    <p style={{textAlign: 'center'}}>*Verifiering av vidarebefordringsadressen i AgencyHandy*</p>
+  </Step>
+</Steps>
+
+---
+
+## Auto-create Ticket
+
+När vidarebefordringen har verifierats aktiverar du reglaget **Auto-create Ticket**.
+
+När det är aktiverat:
+
+- Skapar varje vidarebefordrat e-postmeddelande från en befintlig klient automatiskt ett nytt supportärende.
+- Matchas klienter med hjälp av deras e-postadress.
+- Ett bekräftelsemeddelande bekräftar att Email to Ticket är aktiv.
+
+![Reglaget Auto-create Ticket aktiverat](/images/email-to-ticket/auto-create-ticket-toggle.png)
+<p style={{textAlign: 'center'}}>*Reglaget Auto-create Ticket aktiverat*</p>
+
+<Warning>
+  Håll det här alternativet inaktiverat tills verifieringen av vidarebefordringen har slutförts.
+</Warning>
+
+---
+
+## Bekräftelsehjälp
+
+För e-postleverantörer som stöds innehåller AgencyHandy en bekräftelsehjälp. Efter att du har lagt till vidarebefordringsadressen hos din e-postleverantör:
+
+1. Återgå till sidan Email to Ticket.
+2. Klicka på bekräftelseknappen, till exempel **I've added the address in Gmail**.
+3. Vänta medan AgencyHandy kontrollerar om leverantörens verifieringsmeddelande har kommit.
+4. När det upptäcks slutför AgencyHandy automatiskt verifieringsprocessen.
+
+Detta tar bort behovet av att manuellt hämta verifieringsmeddelandet eller bekräftelsekoden.
+
+---
+
+## Uppdatera verifieringsstatus
+
+Om verifieringen tar längre tid än förväntat klickar du på **Refresh** för att se om nya bekräftelsemeddelanden har kommit in.
+
+---
+
+## Så fungerar Email to Ticket
+
+När Email to Ticket är konfigurerat:
+
+1. En klient skickar ett e-postmeddelande till din support-e-postadress.
+2. Din e-postleverantör vidarebefordrar automatiskt en kopia av e-postmeddelandet till din AgencyHandy-vidarebefordringsadress.
+3. AgencyHandy verifierar avsändarens e-postadress.
+4. Om avsändaren matchar en befintlig klient i din arbetsyta skapas automatiskt ett nytt ärende.
+
+---
+
+## Anteckningar
+
+- Endast e-postmeddelanden från befintliga klienters e-postadresser skapar ärenden automatiskt.
+- E-postmeddelanden från okända avsändare ignoreras.
+- Varje arbetsyta har sin egen unika vidarebefordringsadress.
+- AgencyHandy tar endast emot vidarebefordrade kopior av e-postmeddelanden. Den får inte direkt åtkomst till din inkorg.
+- Trådning av e-postsvar planeras för en framtida version.

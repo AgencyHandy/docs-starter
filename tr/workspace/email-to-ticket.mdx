@@ -1,0 +1,176 @@
+---
+title: "Email to Ticket'i Kurma"
+sidebarTitle: "Email to Ticket"
+description: "Destek gelen kutunuzu AgencyHandy çalışma alanı yönlendirme adresinize bağlayarak yönlendirilmiş müşteri e-postalarını otomatik olarak destek taleplerine dönüştürün."
+---
+
+**Email to Ticket** özelliği, müşteri e-postalarını otomatik olarak destek taleplerine dönüştürür. Destek e-postanız gelen e-postaları benzersiz AgencyHandy yönlendirme adresinize iletecek şekilde yapılandırıldığında, tanınan bir müşteriden gelen her yeni e-posta çalışma alanınızda otomatik olarak bir talep oluşturur.
+
+<Note>
+  Yalnızca mevcut müşteri e-posta adreslerinden gönderilen e-postalar otomatik olarak talep oluşturur.
+</Note>
+
+---
+
+## Email to Ticket'e Erişme
+
+<Steps>
+  <Step title="Workspace Config'i açın">
+    AgencyHandy'e giriş yapın. Sol gezinti menüsünde **Workspace Config**'e tıklayın.
+  </Step>
+  <Step title="Email to Ticket'i seçin">
+    Workspace Config alt menüsünden **Email to Ticket**'e tıklayın.
+  </Step>
+</Steps>
+
+Bu sayfadan şunları yapabilirsiniz:
+
+- Benzersiz yönlendirme adresinizi alın.
+- E-posta yönlendirmeyi yapılandırın.
+- Yönlendirme kurulumunuzu doğrulayın.
+- Otomatik talep oluşturmayı etkinleştirin.
+- Farklı e-posta sağlayıcıları için kurulum talimatlarını görüntüleyin.
+
+![Email to Ticket ayarları sayfası](/images/email-to-ticket/overview-page.png)
+<p style={{textAlign: 'center'}}>*Email to Ticket ayarları sayfası*</p>
+
+---
+
+## Çalışma Alanı Yönlendirme Adresiniz
+
+AgencyHandy her çalışma alanı için benzersiz bir yönlendirme e-posta adresi oluşturur. Bu adres, destek gelen kutunuzdan yönlendirilen e-postaları alır.
+
+<Steps>
+  <Step title="Yönlendirme adresinizi kopyalayın">
+    Çalışma alanı yönlendirme adresinizi kopyalamak için **Copy**'ye tıklayın.
+  </Step>
+  <Step title="Bunu bir yönlendirme hedefi olarak ekleyin">
+    Bu adresi e-posta sağlayıcınızda bir yönlendirme hedefi olarak ekleyin.
+  </Step>
+  <Step title="Doğrulamayı tamamlayın">
+    Sağlayıcınızın gerektirdiği yönlendirme doğrulama sürecini tamamlayın.
+  </Step>
+  <Step title="Auto-create Ticket'i etkinleştirin">
+    Doğrulama tamamlandığında **Auto-create Ticket**'i etkinleştirin.
+  </Step>
+</Steps>
+
+![Copy düğmesiyle çalışma alanı yönlendirme adresi](/images/email-to-ticket/forwarding-address-copy.png)
+<p style={{textAlign: 'center'}}>*Copy düğmesiyle çalışma alanı yönlendirme adresi*</p>
+
+<Tip>
+  Yönlendirme adresiniz çalışma alanınıza özgüdür ve yeniden oluşturmadığınız sürece aynı kalır.
+</Tip>
+
+---
+
+## E-posta Yönlendirmeyi Ayarlama
+
+AgencyHandy posta kutunuza erişmez. E-posta yönlendirme tamamen e-posta sağlayıcınız içinde yapılandırılır.
+
+Email to Ticket sayfası şunlar için kurulum kılavuzları içerir:
+
+- Gmail
+- Outlook / Microsoft 365
+- Zoho Mail
+- cPanel / Hosting
+- E-posta yönlendirmeyi destekleyen diğer sağlayıcılar
+
+Uygun kurulum talimatlarını görüntülemek için Email to Ticket sayfasında e-posta sağlayıcınızı seçin.
+
+---
+
+## Gmail Kurulumu
+
+Gmail kullanıyorsanız şu adımları izleyin.
+
+<Steps>
+  <Step title="Gmail yönlendirme ayarlarını açın">
+    Gmail'de **Settings → See all settings → Forwarding and POP/IMAP**'e gidin.
+
+    ![Gmail Forwarding and POP/IMAP ayarları sekmesi](/images/email-to-ticket/gmail-forwarding-settings.png)
+    <p style={{textAlign: 'center'}}>*Gmail Forwarding and POP/IMAP ayarları sekmesi*</p>
+  </Step>
+  <Step title="AgencyHandy yönlendirme adresini ekleyin">
+    **Add a forwarding address**'e tıklayın ve AgencyHandy'den kopyaladığınız yönlendirme adresini yapıştırın. Google, yönlendirme adresini doğrulamak için bir onay e-postası gönderir. Yönlendirme adresini kaydettikten sonra AgencyHandy'e geri dönün.
+
+    ![Gmail Add a forwarding address iletişim kutusu](/images/email-to-ticket/gmail-add-forwarding-address.png)
+    <p style={{textAlign: 'center'}}>*Gmail Add a forwarding address iletişim kutusu*</p>
+  </Step>
+  <Step title="Gelen e-postaları yönlendirin">
+    Gmail'de:
+    - **Forward a copy of incoming mail**'i etkinleştirin.
+    - AgencyHandy yönlendirme adresinizi seçin.
+    - Değişikliklerinizi kaydedin.
+
+    Destek gelen kutunuzun aldığı tüm gelecekteki e-postalar artık AgencyHandy'e yönlendirilir.
+
+    ![Gmail Forward a copy of incoming mail seçeneği](/images/email-to-ticket/gmail-forward-incoming-mail.png)
+    <p style={{textAlign: 'center'}}>*Gmail Forward a copy of incoming mail seçeneği*</p>
+  </Step>
+  <Step title="Yönlendirme adresini doğrulayın">
+    **Workspace Config → Email to Ticket**'e geri dönün ve **I've added the address in Gmail**'e tıklayın. AgencyHandy, Google'ın onay e-postasını bekler ve genellikle bir ile iki dakika içinde geldiğinde onay bağlantısını veya doğrulama kodunu otomatik olarak algılar. Doğrulama tamamlandığında yönlendirme kurulumu hazır olur.
+
+    ![AgencyHandy'de yönlendirme adresinin doğrulanması](/images/email-to-ticket/gmail-verify-forwarding.png)
+    <p style={{textAlign: 'center'}}>*AgencyHandy'de yönlendirme adresinin doğrulanması*</p>
+  </Step>
+</Steps>
+
+---
+
+## Auto-create Ticket
+
+Yönlendirme doğrulandıktan sonra **Auto-create Ticket** anahtarını etkinleştirin.
+
+Etkinleştirildiğinde:
+
+- Mevcut bir müşteriden yönlendirilen her e-posta otomatik olarak yeni bir destek talebi oluşturur.
+- Müşteriler e-posta adresleri kullanılarak eşleştirilir.
+- Bir başarı mesajı, Email to Ticket'in etkin olduğunu doğrular.
+
+![Auto-create Ticket anahtarı etkinleştirildi](/images/email-to-ticket/auto-create-ticket-toggle.png)
+<p style={{textAlign: 'center'}}>*Auto-create Ticket anahtarı etkinleştirildi*</p>
+
+<Warning>
+  Yönlendirme doğrulaması tamamlanana kadar bu seçeneği devre dışı tutun.
+</Warning>
+
+---
+
+## Onay Yardımcısı
+
+Desteklenen e-posta sağlayıcıları için AgencyHandy bir onay yardımcısı içerir. Yönlendirme adresini e-posta sağlayıcınıza ekledikten sonra:
+
+1. Email to Ticket sayfasına geri dönün.
+2. **I've added the address in Gmail** gibi onay düğmesine tıklayın.
+3. AgencyHandy sağlayıcının doğrulama e-postasını kontrol ederken bekleyin.
+4. Algılandığında AgencyHandy doğrulama sürecini otomatik olarak tamamlar.
+
+Bu, doğrulama e-postasını veya onay kodunu elle almanıza olan ihtiyacı ortadan kaldırır.
+
+---
+
+## Doğrulama Durumunu Yenileme
+
+Doğrulama beklenenden uzun sürüyorsa, yeni alınan onay e-postalarını kontrol etmek için **Refresh**'e tıklayın.
+
+---
+
+## Email to Ticket Nasıl Çalışır
+
+Email to Ticket yapılandırıldıktan sonra:
+
+1. Bir müşteri, destek e-posta adresinize bir e-posta gönderir.
+2. E-posta sağlayıcınız, e-postanın bir kopyasını otomatik olarak AgencyHandy yönlendirme adresinize iletir.
+3. AgencyHandy, gönderenin e-posta adresini doğrular.
+4. Gönderen, çalışma alanınızdaki mevcut bir müşteriyle eşleşirse otomatik olarak yeni bir talep oluşturulur.
+
+---
+
+## Notlar
+
+- Yalnızca mevcut müşteri e-posta adreslerinden gelen e-postalar otomatik olarak talep oluşturur.
+- Bilinmeyen gönderenlerden gelen e-postalar yok sayılır.
+- Her çalışma alanının kendine özgü benzersiz bir yönlendirme adresi vardır.
+- AgencyHandy yalnızca e-postaların yönlendirilen kopyalarını alır. Posta kutunuza doğrudan erişmez.
+- E-posta yanıt zincirleme (threading) özelliği gelecekteki bir sürüm için planlanmaktadır.

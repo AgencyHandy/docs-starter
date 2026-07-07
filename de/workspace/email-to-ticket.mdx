@@ -1,0 +1,176 @@
+---
+title: "Email to Ticket einrichten"
+sidebarTitle: "Email to Ticket"
+description: "Konvertieren Sie weitergeleitete Kunden-E-Mails automatisch in Support-Tickets, indem Sie Ihren Support-Posteingang mit der Weiterleitungsadresse Ihres AgencyHandy-Workspace verbinden."
+---
+
+Die Funktion **Email to Ticket** wandelt Kunden-E-Mails automatisch in Support-Tickets um. Sobald Ihre Support-E-Mail so konfiguriert ist, dass eingehende E-Mails an Ihre eindeutige AgencyHandy-Weiterleitungsadresse weitergeleitet werden, erstellt jede neue E-Mail eines erkannten Kunden automatisch ein Ticket in Ihrem Workspace.
+
+<Note>
+  Nur E-Mails, die von bestehenden Kunden-E-Mail-Adressen gesendet werden, erstellen automatisch Tickets.
+</Note>
+
+---
+
+## Zugriff auf Email to Ticket
+
+<Steps>
+  <Step title="Workspace Config öffnen">
+    Melden Sie sich bei AgencyHandy an. Klicken Sie im linken Navigationsmenü auf **Workspace Config**.
+  </Step>
+  <Step title="Email to Ticket auswählen">
+    Klicken Sie im Untermenü der Workspace Config auf **Email to Ticket**.
+  </Step>
+</Steps>
+
+Auf dieser Seite können Sie:
+
+- Ihre eindeutige Weiterleitungsadresse abrufen.
+- Die E-Mail-Weiterleitung konfigurieren.
+- Ihre Weiterleitungseinrichtung überprüfen.
+- Die automatische Ticket-Erstellung aktivieren.
+- Einrichtungsanleitungen für verschiedene E-Mail-Anbieter anzeigen.
+
+![Email-to-Ticket-Einstellungsseite](/images/email-to-ticket/overview-page.png)
+<p style={{textAlign: 'center'}}>*Email-to-Ticket-Einstellungsseite*</p>
+
+---
+
+## Ihre Workspace-Weiterleitungsadresse
+
+AgencyHandy generiert für jeden Workspace eine eindeutige Weiterleitungs-E-Mail-Adresse. Diese Adresse empfängt weitergeleitete E-Mails aus Ihrem Support-Posteingang.
+
+<Steps>
+  <Step title="Weiterleitungsadresse kopieren">
+    Klicken Sie auf **Copy**, um Ihre Workspace-Weiterleitungsadresse zu kopieren.
+  </Step>
+  <Step title="Als Weiterleitungsziel hinzufügen">
+    Fügen Sie diese Adresse als Weiterleitungsziel in Ihrem E-Mail-Anbieter hinzu.
+  </Step>
+  <Step title="Verifizierung abschließen">
+    Schließen Sie den von Ihrem Anbieter geforderten Weiterleitungs-Verifizierungsprozess ab.
+  </Step>
+  <Step title="Auto-create Ticket aktivieren">
+    Aktivieren Sie nach Abschluss der Verifizierung **Auto-create Ticket**.
+  </Step>
+</Steps>
+
+![Workspace-Weiterleitungsadresse mit Copy-Schaltfläche](/images/email-to-ticket/forwarding-address-copy.png)
+<p style={{textAlign: 'center'}}>*Workspace-Weiterleitungsadresse mit Copy-Schaltfläche*</p>
+
+<Tip>
+  Ihre Weiterleitungsadresse ist einzigartig für Ihren Workspace und bleibt unverändert, solange Sie sie nicht neu generieren.
+</Tip>
+
+---
+
+## E-Mail-Weiterleitung einrichten
+
+AgencyHandy greift nicht auf Ihr Postfach zu. Die E-Mail-Weiterleitung wird vollständig innerhalb Ihres E-Mail-Anbieters konfiguriert.
+
+Die Seite Email to Ticket enthält Einrichtungsanleitungen für:
+
+- Gmail
+- Outlook / Microsoft 365
+- Zoho Mail
+- cPanel / Hosting
+- Andere Anbieter, die E-Mail-Weiterleitung unterstützen
+
+Wählen Sie Ihren E-Mail-Anbieter auf der Seite Email to Ticket aus, um die passenden Einrichtungsanweisungen anzuzeigen.
+
+---
+
+## Gmail-Einrichtung
+
+Wenn Sie Gmail verwenden, folgen Sie diesen Schritten.
+
+<Steps>
+  <Step title="Gmail-Weiterleitungseinstellungen öffnen">
+    Gehen Sie in Gmail zu **Settings → See all settings → Forwarding and POP/IMAP**.
+
+    ![Gmail-Tab Forwarding and POP/IMAP](/images/email-to-ticket/gmail-forwarding-settings.png)
+    <p style={{textAlign: 'center'}}>*Gmail-Tab Forwarding and POP/IMAP*</p>
+  </Step>
+  <Step title="AgencyHandy-Weiterleitungsadresse hinzufügen">
+    Klicken Sie auf **Add a forwarding address** und fügen Sie die Weiterleitungsadresse ein, die Sie aus AgencyHandy kopiert haben. Google sendet eine Bestätigungs-E-Mail, um die Weiterleitungsadresse zu verifizieren. Kehren Sie nach dem Speichern der Weiterleitungsadresse zu AgencyHandy zurück.
+
+    ![Gmail-Dialog Add a forwarding address](/images/email-to-ticket/gmail-add-forwarding-address.png)
+    <p style={{textAlign: 'center'}}>*Gmail-Dialog Add a forwarding address*</p>
+  </Step>
+  <Step title="Eingehende E-Mails weiterleiten">
+    In Gmail:
+    - Aktivieren Sie **Forward a copy of incoming mail**.
+    - Wählen Sie Ihre AgencyHandy-Weiterleitungsadresse aus.
+    - Speichern Sie Ihre Änderungen.
+
+    Alle zukünftigen E-Mails, die Ihr Support-Posteingang empfängt, werden jetzt an AgencyHandy weitergeleitet.
+
+    ![Gmail-Option Forward a copy of incoming mail](/images/email-to-ticket/gmail-forward-incoming-mail.png)
+    <p style={{textAlign: 'center'}}>*Gmail-Option Forward a copy of incoming mail*</p>
+  </Step>
+  <Step title="Weiterleitungsadresse verifizieren">
+    Kehren Sie zu **Workspace Config → Email to Ticket** zurück und klicken Sie auf **I've added the address in Gmail**. AgencyHandy wartet auf die Bestätigungs-E-Mail von Google und erkennt den Bestätigungslink oder Verifizierungscode automatisch, sobald er eintrifft — üblicherweise innerhalb von ein bis zwei Minuten. Nach Abschluss der Verifizierung ist die Weiterleitungseinrichtung bereit.
+
+    ![Verifizierung der Weiterleitungsadresse in AgencyHandy](/images/email-to-ticket/gmail-verify-forwarding.png)
+    <p style={{textAlign: 'center'}}>*Verifizierung der Weiterleitungsadresse in AgencyHandy*</p>
+  </Step>
+</Steps>
+
+---
+
+## Auto-create Ticket
+
+Nachdem die Weiterleitung verifiziert wurde, aktivieren Sie den Schalter **Auto-create Ticket**.
+
+Wenn aktiviert:
+
+- Erstellt jede weitergeleitete E-Mail eines bestehenden Kunden automatisch ein neues Support-Ticket.
+- Werden Kunden anhand ihrer E-Mail-Adresse zugeordnet.
+- Bestätigt eine Erfolgsmeldung, dass Email to Ticket aktiv ist.
+
+![Aktivierter Schalter Auto-create Ticket](/images/email-to-ticket/auto-create-ticket-toggle.png)
+<p style={{textAlign: 'center'}}>*Aktivierter Schalter Auto-create Ticket*</p>
+
+<Warning>
+  Lassen Sie diese Option deaktiviert, bis die Weiterleitungsverifizierung abgeschlossen ist.
+</Warning>
+
+---
+
+## Bestätigungshilfe
+
+Für unterstützte E-Mail-Anbieter enthält AgencyHandy eine Bestätigungshilfe. Nachdem Sie die Weiterleitungsadresse in Ihrem E-Mail-Anbieter hinzugefügt haben:
+
+1. Kehren Sie zur Seite Email to Ticket zurück.
+2. Klicken Sie auf die Bestätigungsschaltfläche, z. B. **I've added the address in Gmail**.
+3. Warten Sie, während AgencyHandy nach der Verifizierungs-E-Mail des Anbieters sucht.
+4. Sobald sie erkannt wird, schließt AgencyHandy den Verifizierungsprozess automatisch ab.
+
+Dadurch entfällt die Notwendigkeit, die Verifizierungs-E-Mail oder den Bestätigungscode manuell abzurufen.
+
+---
+
+## Verifizierungsstatus aktualisieren
+
+Wenn die Verifizierung länger als erwartet dauert, klicken Sie auf **Refresh**, um nach neu eingegangenen Bestätigungs-E-Mails zu suchen.
+
+---
+
+## So funktioniert Email to Ticket
+
+Sobald Email to Ticket konfiguriert ist:
+
+1. Ein Kunde sendet eine E-Mail an Ihre Support-E-Mail-Adresse.
+2. Ihr E-Mail-Anbieter leitet automatisch eine Kopie der E-Mail an Ihre AgencyHandy-Weiterleitungsadresse weiter.
+3. AgencyHandy verifiziert die E-Mail-Adresse des Absenders.
+4. Wenn der Absender mit einem bestehenden Kunden in Ihrem Workspace übereinstimmt, wird automatisch ein neues Ticket erstellt.
+
+---
+
+## Hinweise
+
+- Nur E-Mails von bestehenden Kunden-E-Mail-Adressen erstellen automatisch Tickets.
+- E-Mails von unbekannten Absendern werden ignoriert.
+- Jeder Workspace hat seine eigene eindeutige Weiterleitungsadresse.
+- AgencyHandy empfängt nur weitergeleitete Kopien von E-Mails. Es greift nicht direkt auf Ihr Postfach zu.
+- E-Mail-Antwort-Threading ist für eine zukünftige Version geplant.

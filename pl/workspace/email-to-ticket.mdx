@@ -1,0 +1,176 @@
+---
+title: "Konfiguracja Email to Ticket"
+sidebarTitle: "Email to Ticket"
+description: "Automatycznie przekształcaj przekazane e-maile od klientów w zgłoszenia pomocy technicznej, łącząc swoją skrzynkę wsparcia z adresem przekazywania Twojego workspace AgencyHandy."
+---
+
+Funkcja **Email to Ticket** automatycznie przekształca e-maile od klientów w zgłoszenia pomocy technicznej. Gdy Twoja skrzynka wsparcia jest skonfigurowana do przekazywania przychodzących e-maili na Twój unikalny adres przekazywania AgencyHandy, każdy nowy e-mail od rozpoznanego klienta automatycznie tworzy zgłoszenie w Twoim workspace.
+
+<Note>
+  Tylko e-maile wysłane z adresów e-mail istniejących klientów automatycznie tworzą zgłoszenia.
+</Note>
+
+---
+
+## Dostęp do Email to Ticket
+
+<Steps>
+  <Step title="Otwórz Workspace Config">
+    Zaloguj się do AgencyHandy. W lewym menu nawigacyjnym kliknij **Workspace Config**.
+  </Step>
+  <Step title="Wybierz Email to Ticket">
+    Kliknij **Email to Ticket** w podmenu Workspace Config.
+  </Step>
+</Steps>
+
+Na tej stronie możesz:
+
+- Uzyskać swój unikalny adres przekazywania.
+- Skonfigurować przekazywanie e-maili.
+- Zweryfikować swoją konfigurację przekazywania.
+- Włączyć automatyczne tworzenie zgłoszeń.
+- Zobaczyć instrukcje konfiguracji dla różnych dostawców poczty e-mail.
+
+![Strona ustawień Email to Ticket](/images/email-to-ticket/overview-page.png)
+<p style={{textAlign: 'center'}}>*Strona ustawień Email to Ticket*</p>
+
+---
+
+## Adres przekazywania Twojego workspace
+
+AgencyHandy generuje unikalny adres przekazywania dla każdego workspace. Ten adres odbiera przekazane e-maile z Twojej skrzynki wsparcia.
+
+<Steps>
+  <Step title="Skopiuj swój adres przekazywania">
+    Kliknij **Copy**, aby skopiować adres przekazywania Twojego workspace.
+  </Step>
+  <Step title="Dodaj go jako miejsce przekazywania">
+    Dodaj ten adres jako miejsce przekazywania u swojego dostawcy poczty e-mail.
+  </Step>
+  <Step title="Zakończ weryfikację">
+    Zakończ proces weryfikacji przekazywania wymagany przez Twojego dostawcę.
+  </Step>
+  <Step title="Włącz Auto-create Ticket">
+    Po zakończeniu weryfikacji włącz **Auto-create Ticket**.
+  </Step>
+</Steps>
+
+![Adres przekazywania workspace z przyciskiem Copy](/images/email-to-ticket/forwarding-address-copy.png)
+<p style={{textAlign: 'center'}}>*Adres przekazywania workspace z przyciskiem Copy*</p>
+
+<Tip>
+  Twój adres przekazywania jest unikalny dla Twojego workspace i pozostaje taki sam, o ile go nie wygenerujesz ponownie.
+</Tip>
+
+---
+
+## Konfigurowanie przekazywania e-maili
+
+AgencyHandy nie ma dostępu do Twojej skrzynki pocztowej. Przekazywanie e-maili jest konfigurowane wyłącznie u Twojego dostawcy poczty e-mail.
+
+Strona Email to Ticket zawiera instrukcje konfiguracji dla:
+
+- Gmail
+- Outlook / Microsoft 365
+- Zoho Mail
+- cPanel / hostingu
+- Innych dostawców obsługujących przekazywanie e-maili
+
+Wybierz swojego dostawcę poczty e-mail na stronie Email to Ticket, aby zobaczyć odpowiednie instrukcje konfiguracji.
+
+---
+
+## Konfiguracja Gmail
+
+Jeśli używasz Gmaila, wykonaj poniższe kroki.
+
+<Steps>
+  <Step title="Otwórz ustawienia przekazywania w Gmailu">
+    W Gmailu przejdź do **Settings → See all settings → Forwarding and POP/IMAP**.
+
+    ![Karta ustawień Gmail Forwarding and POP/IMAP settings](/images/email-to-ticket/gmail-forwarding-settings.png)
+    <p style={{textAlign: 'center'}}>*Karta ustawień Gmail Forwarding and POP/IMAP settings*</p>
+  </Step>
+  <Step title="Dodaj adres przekazywania AgencyHandy">
+    Kliknij **Add a forwarding address** i wklej adres przekazywania skopiowany z AgencyHandy. Google wysyła e-mail potwierdzający w celu zweryfikowania adresu przekazywania. Wróć do AgencyHandy po zapisaniu adresu przekazywania.
+
+    ![Okno dialogowe Gmail Add a forwarding address](/images/email-to-ticket/gmail-add-forwarding-address.png)
+    <p style={{textAlign: 'center'}}>*Okno dialogowe Gmail Add a forwarding address*</p>
+  </Step>
+  <Step title="Przekazuj przychodzące e-maile">
+    W Gmailu:
+    - Włącz **Forward a copy of incoming mail**.
+    - Wybierz swój adres przekazywania AgencyHandy.
+    - Zapisz zmiany.
+
+    Wszystkie kolejne e-maile odbierane przez Twoją skrzynkę wsparcia będą teraz przekazywane do AgencyHandy.
+
+    ![Opcja Gmail Forward a copy of incoming mail](/images/email-to-ticket/gmail-forward-incoming-mail.png)
+    <p style={{textAlign: 'center'}}>*Opcja Gmail Forward a copy of incoming mail*</p>
+  </Step>
+  <Step title="Zweryfikuj adres przekazywania">
+    Wróć do **Workspace Config → Email to Ticket** i kliknij **I've added the address in Gmail**. AgencyHandy czeka na e-mail potwierdzający od Google i automatycznie wykrywa link potwierdzający lub kod weryfikacyjny po jego otrzymaniu, zwykle w ciągu jednej do dwóch minut. Po zakończeniu weryfikacji konfiguracja przekazywania jest gotowa.
+
+    ![Weryfikacja adresu przekazywania w AgencyHandy](/images/email-to-ticket/gmail-verify-forwarding.png)
+    <p style={{textAlign: 'center'}}>*Weryfikacja adresu przekazywania w AgencyHandy*</p>
+  </Step>
+</Steps>
+
+---
+
+## Auto-create Ticket
+
+Po zweryfikowaniu przekazywania włącz przełącznik **Auto-create Ticket**.
+
+Po włączeniu:
+
+- Każdy przekazany e-mail od istniejącego klienta automatycznie tworzy nowe zgłoszenie pomocy technicznej.
+- Klienci są dopasowywani na podstawie adresu e-mail.
+- Komunikat potwierdza, że Email to Ticket jest aktywne.
+
+![Włączony przełącznik Auto-create Ticket](/images/email-to-ticket/auto-create-ticket-toggle.png)
+<p style={{textAlign: 'center'}}>*Włączony przełącznik Auto-create Ticket*</p>
+
+<Warning>
+  Pozostaw tę opcję wyłączoną, dopóki weryfikacja przekazywania nie zostanie zakończona.
+</Warning>
+
+---
+
+## Pomocnik potwierdzenia
+
+Dla obsługiwanych dostawców poczty e-mail AgencyHandy zawiera pomocnika potwierdzenia. Po dodaniu adresu przekazywania u dostawcy poczty e-mail:
+
+1. Wróć do strony Email to Ticket.
+2. Kliknij przycisk potwierdzenia, taki jak **I've added the address in Gmail**.
+3. Poczekaj, aż AgencyHandy sprawdzi e-mail weryfikacyjny od dostawcy.
+4. Po wykryciu AgencyHandy automatycznie kończy proces weryfikacji.
+
+To eliminuje potrzebę ręcznego pobierania e-maila weryfikacyjnego lub kodu potwierdzającego.
+
+---
+
+## Odświeżanie statusu weryfikacji
+
+Jeśli weryfikacja trwa dłużej niż oczekiwano, kliknij **Refresh**, aby sprawdzić, czy nie nadeszły nowe e-maile potwierdzające.
+
+---
+
+## Jak działa Email to Ticket
+
+Po skonfigurowaniu Email to Ticket:
+
+1. Klient wysyła e-mail na Twój adres e-mail wsparcia.
+2. Twój dostawca poczty e-mail automatycznie przekazuje kopię e-maila na Twój adres przekazywania AgencyHandy.
+3. AgencyHandy weryfikuje adres e-mail nadawcy.
+4. Jeśli nadawca odpowiada istniejącemu klientowi w Twoim workspace, automatycznie tworzone jest nowe zgłoszenie.
+
+---
+
+## Uwagi
+
+- Tylko e-maile z adresów e-mail istniejących klientów automatycznie tworzą zgłoszenia.
+- E-maile od nieznanych nadawców są ignorowane.
+- Każdy workspace ma swój własny unikalny adres przekazywania.
+- AgencyHandy odbiera tylko przekazane kopie e-maili. Nie ma bezpośredniego dostępu do Twojej skrzynki pocztowej.
+- Wątkowanie odpowiedzi e-mail jest planowane w przyszłej wersji.

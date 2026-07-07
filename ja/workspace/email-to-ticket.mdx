@@ -1,0 +1,176 @@
+---
+title: "Email to Ticketの設定"
+sidebarTitle: "Email to Ticket"
+description: "サポート受信ボックスをAgencyHandyワークスペースの転送先アドレスに接続することで、転送されたクライアントメールを自動的にサポートチケットに変換します。"
+---
+
+**Email to Ticket**機能は、クライアントからのメールを自動的にサポートチケットに変換します。サポートメールが受信メールをAgencyHandyの一意の転送先アドレスに転送するよう設定されると、認識済みのクライアントからの新しいメールはすべて、ワークスペース内で自動的にチケットを作成します。
+
+<Note>
+  既存クライアントのメールアドレスから送信されたメールのみが、自動的にチケットを作成します。
+</Note>
+
+---
+
+## Email to Ticketへのアクセス
+
+<Steps>
+  <Step title="Workspace Configを開く">
+    AgencyHandyにログインします。左側のナビゲーションメニューで**Workspace Config**をクリックします。
+  </Step>
+  <Step title="Email to Ticketを選択する">
+    Workspace Configのサブメニューから**Email to Ticket**をクリックします。
+  </Step>
+</Steps>
+
+このページでは、以下のことができます：
+
+- 一意の転送先アドレスを取得する。
+- メール転送を設定する。
+- 転送設定を確認する。
+- チケットの自動作成を有効にする。
+- 各種メールプロバイダー向けの設定手順を確認する。
+
+![Email to Ticket設定ページ](/images/email-to-ticket/overview-page.png)
+<p style={{textAlign: 'center'}}>*Email to Ticket設定ページ*</p>
+
+---
+
+## ワークスペースの転送先アドレス
+
+AgencyHandyは、ワークスペースごとに一意の転送先メールアドレスを生成します。このアドレスは、サポート受信ボックスから転送されたメールを受信します。
+
+<Steps>
+  <Step title="転送先アドレスをコピーする">
+    **Copy**をクリックして、ワークスペースの転送先アドレスをコピーします。
+  </Step>
+  <Step title="転送先として追加する">
+    このアドレスを、お使いのメールプロバイダーで転送先として追加します。
+  </Step>
+  <Step title="確認を完了する">
+    プロバイダーが求める転送の確認手続きを完了します。
+  </Step>
+  <Step title="Auto-create Ticketを有効にする">
+    確認が完了したら、**Auto-create Ticket**を有効にします。
+  </Step>
+</Steps>
+
+![Copyボタン付きのワークスペース転送先アドレス](/images/email-to-ticket/forwarding-address-copy.png)
+<p style={{textAlign: 'center'}}>*Copyボタン付きのワークスペース転送先アドレス*</p>
+
+<Tip>
+  転送先アドレスはワークスペースごとに一意で、再生成しない限り変わりません。
+</Tip>
+
+---
+
+## メール転送の設定
+
+AgencyHandyはあなたのメールボックスにアクセスしません。メール転送は、すべてお使いのメールプロバイダー側で設定します。
+
+Email to Ticketページには、以下の設定ガイドが含まれています：
+
+- Gmail
+- Outlook / Microsoft 365
+- Zoho Mail
+- cPanel / Hosting
+- メール転送に対応するその他のプロバイダー
+
+Email to Ticketページでお使いのメールプロバイダーを選択すると、該当する設定手順が表示されます。
+
+---
+
+## Gmailの設定
+
+Gmailを使用している場合は、以下の手順に従ってください。
+
+<Steps>
+  <Step title="Gmailの転送設定を開く">
+    Gmailで**Settings → See all settings → Forwarding and POP/IMAP**に移動します。
+
+    ![GmailのForwarding and POP/IMAP設定タブ](/images/email-to-ticket/gmail-forwarding-settings.png)
+    <p style={{textAlign: 'center'}}>*GmailのForwarding and POP/IMAP設定タブ*</p>
+  </Step>
+  <Step title="AgencyHandyの転送先アドレスを追加する">
+    **Add a forwarding address**をクリックし、AgencyHandyからコピーした転送先アドレスを貼り付けます。Googleは転送先アドレスを確認するための確認メールを送信します。転送先アドレスを保存したら、AgencyHandyに戻ります。
+
+    ![GmailのAdd a forwarding addressダイアログ](/images/email-to-ticket/gmail-add-forwarding-address.png)
+    <p style={{textAlign: 'center'}}>*GmailのAdd a forwarding addressダイアログ*</p>
+  </Step>
+  <Step title="受信メールを転送する">
+    Gmailで:
+    - **Forward a copy of incoming mail**を有効にします。
+    - AgencyHandyの転送先アドレスを選択します。
+    - 変更を保存します。
+
+    これ以降、サポート受信ボックスが受け取るすべてのメールはAgencyHandyに転送されます。
+
+    ![GmailのForward a copy of incoming mailオプション](/images/email-to-ticket/gmail-forward-incoming-mail.png)
+    <p style={{textAlign: 'center'}}>*GmailのForward a copy of incoming mailオプション*</p>
+  </Step>
+  <Step title="転送先アドレスを確認する">
+    **Workspace Config → Email to Ticket**に戻り、**I've added the address in Gmail**をクリックします。AgencyHandyはGoogleからの確認メールを待ち、届いた時点で確認リンクまたは確認コードを自動的に検出します。通常1〜2分程度です。確認が完了すると、転送の設定は完了です。
+
+    ![AgencyHandyでの転送先アドレスの確認](/images/email-to-ticket/gmail-verify-forwarding.png)
+    <p style={{textAlign: 'center'}}>*AgencyHandyでの転送先アドレスの確認*</p>
+  </Step>
+</Steps>
+
+---
+
+## Auto-create Ticket
+
+転送が確認されたら、**Auto-create Ticket**トグルを有効にします。
+
+有効にすると:
+
+- 既存クライアントから転送された各メールは、自動的に新しいサポートチケットを作成します。
+- クライアントはメールアドレスによって照合されます。
+- Email to Ticketが有効であることを示す成功メッセージが表示されます。
+
+![Auto-create Ticketトグルが有効になっている状態](/images/email-to-ticket/auto-create-ticket-toggle.png)
+<p style={{textAlign: 'center'}}>*Auto-create Ticketトグルが有効になっている状態*</p>
+
+<Warning>
+  転送の確認が完了するまで、このオプションは無効のままにしておいてください。
+</Warning>
+
+---
+
+## 確認ヘルパー
+
+サポート対象のメールプロバイダーでは、AgencyHandyに確認ヘルパーが用意されています。メールプロバイダーで転送先アドレスを追加した後:
+
+1. Email to Ticketページに戻ります。
+2. **I've added the address in Gmail**などの確認ボタンをクリックします。
+3. AgencyHandyがプロバイダーの確認メールをチェックする間、待機します。
+4. 検出されると、AgencyHandyが確認プロセスを自動的に完了します。
+
+これにより、確認メールや確認コードを手動で取得する必要がなくなります。
+
+---
+
+## 確認ステータスの更新
+
+確認に予想以上の時間がかかっている場合は、**Refresh**をクリックして、新しく受信した確認メールを確認してください。
+
+---
+
+## Email to Ticketの仕組み
+
+Email to Ticketが設定されると:
+
+1. クライアントがサポートメールアドレスにメールを送信します。
+2. お使いのメールプロバイダーが、そのメールのコピーをAgencyHandyの転送先アドレスに自動的に転送します。
+3. AgencyHandyが送信者のメールアドレスを確認します。
+4. 送信者がワークスペース内の既存クライアントと一致する場合、新しいチケットが自動的に作成されます。
+
+---
+
+## 注意事項
+
+- 既存クライアントのメールアドレスからのメールのみが自動的にチケットを作成します。
+- 不明な送信者からのメールは無視されます。
+- 各ワークスペースには、それぞれ固有の転送先アドレスがあります。
+- AgencyHandyはメールの転送コピーのみを受信します。メールボックスに直接アクセスすることはありません。
+- メールの返信スレッド機能は、今後のリリースで予定されています。
