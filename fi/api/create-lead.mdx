@@ -4,198 +4,321 @@ sidebarTitle: "Luo liidi"
 description: "Käytä AgencyHandy API:a uusien liidien luomiseen ohjelmallisesti lähettämällä POST-pyyntö bulk-lead-päätepisteelle tarvittavilla kentillä."
 ---
 
-Luo liidi -päätepiste antaa sinun lisätä uusia liidejä AgencyHandy-työtilaan ohjelmallisesti mistä tahansa ulkoisesta järjestelmästä — verkkolomakkeesta, CRM-järjestelmästä, markkinoinnin automaatioalustasta tai mukautetusta skriptistä. Tämän päätepisteen kautta luodut liidit näkyvät liidiputkessasi välittömästi, aivan kuin ne olisi lisätty manuaalisesti.
+The Create Lead endpoint lets you programmatically add new leads to your AgencyHandy workspace from any external system — a web form, a CRM, a marketing automation platform, or a custom script. Leads created via this endpoint appear in your lead pipeline immediately, just as if they were added manually.
 
 <Note>
-  Ennen tämän päätepisteen käyttämistä, suorita [Aloittaminen](/fi/api/getting-started) -opas API-avaimen ja yritystunnuksen hankkimiseksi. Tarvitset myös **Client Role ID:n**, jota tarvitaan liidin luomisessa.
+  Before using this endpoint, complete the [Getting Started](/fi/api/getting-started) guide to obtain your API key. You do not need to send a company ID or role ID. AgencyHandy assigns the lead to the workspace client role automatically.
 </Note>
 
-## Edellytykset
+## Prerequisites
 
-- ✅ API-avain luotu kohdasta **Workspace Config → API Key**
-- ✅ Yritystunnus haettu kohteesta `GET {{URL}}/accounts/companies`
-- ✅ Client Role ID haettu (katso alla oleva Vaihe 1)
+- ✅ API key generated from **Workspace Config → API Key**
 
 ---
 
-## Vaihe 1: Hae Client Role ID
+## Create new leads
 
-Ennen liidin luomista tarvitset yrityksesi `client`-roolin Role ID:n.
-
-### Päätepiste
-
-```
-GET {{URL}}/roles?type=company
-```
-
-### Otsikot
-
-| Otsikko | Arvo |
-|---|---|
-| `x-api-key` | API-avaimesi |
-| `companyid` | Yritystunnuksesi |
-
-### Esimerkkipyyntö
-
-```bash cURL
-curl --request GET "https://api.agencyhandy.com/roles?type=company" \
-  --header "x-api-key: <YOUR_API_KEY>" \
-  --header "companyid: <YOUR_COMPANY_ID>"
-```
-
-### Esimerkkivastaus
-
-```json
-{
-  "roles": [
-    {
-      "_id": "6525994184e9ddd798534535",
-      "role": {
-        "_id": "6525994184e9ddd79853451e",
-        "responsibility": "",
-        "name": "client"
-      },
-      "company": "6525994184e9ddd79853450e",
-      "createdAt": "2023-10-10T18:34:41.567Z",
-      "updatedAt": "2024-10-01T07:28:48.340Z",
-      "__v": 0,
-      "type": "company"
-    }
-  ]
-}
-```
-
-Etsi merkintä, jossa `roles[0].role.name === "client"`, ja pura **ulompi** `_id` — eli `roles[0]._id`, **ei** `roles[0].role._id`.
-
-```javascript
-const clientRoleId = roles.find(r => r.role.name === "client")._id;
-// e.g. "6525994184e9ddd798534535"
-```
-
-<Warning>
-  Käytä `roles[0]._id`:tä (yritysroolin kartoitustunnus), **ei** `roles[0].role._id`:tä (roolimäärityksen tunnus). Väärän tunnuksen käyttäminen aiheuttaa liidin luontipyynnön epäonnistumisen.
-</Warning>
-
----
-
-## Vaihe 2: Luo uusi liidi
-
-### Päätepiste
+### Endpoint
 
 ```
 POST {{URL}}/members/bulk-lead
 ```
 
-### Otsikot
+### Headers
 
-| Otsikko | Arvo |
+| Header | Value |
 |---|---|
-| `x-api-key` | API-avaimesi |
-| `companyid` | Yritystunnuksesi |
+| `x-api-key` | Your API key |
 | `Content-Type` | `application/json` |
 
-### Pyynnön runko
+### Request body
 
-Pyynnön runko on **JSON-taulukko** — voit luoda yhden tai useamman liidin yhdellä kutsulla.
+The request body is a **JSON array** — you can create one or more leads in a single call.
 
-<ParamField body="firstName" type="string" required>
-  Liidin etunimi.
-</ParamField>
-
-<ParamField body="lastName" type="string" required>
-  Liidin sukunimi.
+<ParamField body="type" type="string" required>
+  The lead type. Allowed values: `individual`, `leadCompanyMember`.
 </ParamField>
 
 <ParamField body="email" type="string" required>
-  Liidin sähköpostiosoite. On oltava yksilöllinen työtilasi sisällä.
+  The lead's email address. It must be valid and should be unique within your workspace.
 </ParamField>
 
-<ParamField body="role" type="string" required>
-  Vaiheessa 1 haettu Client Role ID (eli `roles[0]._id`).
+<ParamField body="status" type="string" required>
+  The lead's pipeline status. Allowed values: `New`, `Contacted`, `Qualified`, `Working`, `Proposal Sent`, `Negotiation`.
 </ParamField>
 
-<ParamField body="isConvertedClient" type="boolean" required>
-  On asetettava `false`-arvoon liidin luomisen yhteydessä. Aseta `true`-arvoon vain, kun muunnat liidin täydeksi asiakkaaksi.
+<ParamField body="password" type="string">
+  Optional password for the lead. If provided, it must contain at least 8 characters, one uppercase letter, one lowercase letter, one number, and one special character.
 </ParamField>
 
-<ParamField body="status" type="string">
-  Liidin putkistatus. Yleiset arvot: `New`, `Contacted`, `Qualified`. Oletus on `New`, jos jätetään pois.
+<ParamField body="firstName" type="string">
+  The lead's first name. Optional.
+</ParamField>
+
+<ParamField body="lastName" type="string">
+  The lead's last name. Optional.
 </ParamField>
 
 <ParamField body="contactNo" type="string">
-  Liidin puhelinnumero.
+  The lead's phone number. Optional. Defaults to an empty string if omitted.
+</ParamField>
+
+<ParamField body="country" type="string">
+  The lead's country. Optional.
+</ParamField>
+
+<ParamField body="city" type="string">
+  The lead's city. Optional.
+</ParamField>
+
+<ParamField body="state" type="string">
+  The lead's state or region. Optional.
+</ParamField>
+
+<ParamField body="zipCode" type="string">
+  The lead's ZIP or postal code. Optional.
+</ParamField>
+
+<ParamField body="address" type="string">
+  The lead's address. Optional.
+</ParamField>
+
+<ParamField body="category" type="string[]">
+  Optional array of category or label IDs. Each ID must exist in the workspace.
+</ParamField>
+
+<ParamField body="companyName" type="string">
+  The lead's company name. Optional.
+</ParamField>
+
+<ParamField body="sendInvitationEmail" type="boolean">
+  Whether to send an invitation email. Optional. Defaults to `true`.
 </ParamField>
 
 <ParamField body="source" type="string">
-  Miten hankit tämän liidin. Esimerkkiarvot: `website`, `referral`, `social`.
+  How you acquired this lead. Optional. Example values: `website`, `referral`, `social`.
 </ParamField>
 
-<ParamField body="positionInBoard" type="number">
-  Liidin sijainti (järjestys) putkitaulun sarakkeessa. Oletus on `1`.
+<ParamField body="leadValue" type="string">
+  The estimated value of the lead. Optional.
 </ParamField>
 
-### Esimerkkipyyntö
+<ParamField body="website" type="string">
+  The lead's website. Optional.
+</ParamField>
+
+<ParamField body="agent" type="string">
+  Optional assigned agent ID.
+</ParamField>
+
+<ParamField body="lastContactedAt" type="string">
+  Optional date for when the lead was last contacted.
+</ParamField>
+
+<ParamField body="files" type="string[]">
+  Optional array of file IDs attached to the lead.
+</ParamField>
+
+<ParamField body="profileImage" type="string">
+  Optional profile image URL or file reference.
+</ParamField>
+
+<ParamField body="customFields" type="array">
+  Optional custom field responses for lead custom fields.
+</ParamField>
+
+<ParamField body="closedWonDealCurrency" type="string">
+  Optional currency code for a closed-won deal amount.
+</ParamField>
+
+<ParamField body="closedWonDealAmount" type="number">
+  Optional closed-won deal amount. Can be `null` or an empty string.
+</ParamField>
+
+<ParamField body="contactLastEngagementDate" type="string">
+  Optional date of the lead's last engagement.
+</ParamField>
+
+<ParamField body="contactLastEngagementType" type="string">
+  Optional last engagement type. Allowed values: `Email`, `Phone`, `One-to-One`, `Online Meeting`.
+</ParamField>
+
+<ParamField body="firstOutreachDate" type="string">
+  Optional date of the first outreach.
+</ParamField>
+
+<ParamField body="disqualificationReason" type="string">
+  Optional disqualification reason. Can be `null` or an empty string.
+</ParamField>
+
+<ParamField body="emailCount" type="number">
+  Optional email activity count. Can be `null` or an empty string.
+</ParamField>
+
+<ParamField body="lastActivityDate" type="string">
+  Optional date of the last activity.
+</ParamField>
+
+<ParamField body="meetingCount" type="number">
+  Optional meeting count. Can be `null` or an empty string.
+</ParamField>
+
+<ParamField body="messageThreadCount" type="number">
+  Optional message thread count. Can be `null` or an empty string.
+</ParamField>
+
+<ParamField body="outreachActivityCount" type="number">
+  Optional outreach activity count. Can be `null` or an empty string.
+</ParamField>
+
+<Warning>
+  Do not send `role`, `isConvertedClient`, or `positionInBoard`. The endpoint does not use those fields. Unknown fields are removed during validation.
+</Warning>
+
+### Full payload example
+
+Only `type`, `email`, and `status` are required. Every other field shown here is optional.
+
+```json
+[
+  {
+    "type": "individual",
+    "email": "john.doe@example.com",
+    "status": "New",
+    "password": "StrongPass1!",
+    "firstName": "John",
+    "lastName": "Doe",
+    "contactNo": "1234567890",
+    "country": "United States",
+    "city": "New York",
+    "state": "NY",
+    "zipCode": "10001",
+    "address": "123 Main Street",
+    "category": ["6525994184e9ddd798534535"],
+    "companyName": "Example Inc.",
+    "sendInvitationEmail": true,
+    "source": "website",
+    "leadValue": "2500",
+    "website": "https://example.com",
+    "agent": "6525994184e9ddd798534536",
+    "lastContactedAt": "2026-07-19T10:00:00.000Z",
+    "files": ["6525994184e9ddd798534537"],
+    "profileImage": "https://example.com/avatar.png",
+    "customFields": [
+      {
+        "_id": "6525994184e9ddd798534538",
+        "stringValue": "Interested in monthly services",
+        "numberValue": 2500,
+        "dateValue": "2026-07-19T00:00:00.000Z",
+        "booleanValue": true,
+        "arrayValue": [
+          {
+            "value": "paid-search",
+            "label": "Paid Search"
+          }
+        ],
+        "fileValue": [
+          {
+            "_id": "6525994184e9ddd798534539",
+            "link": "https://example.com/file.pdf",
+            "sizeInBytes": "102400",
+            "s3Key": "uploads/file.pdf",
+            "type": "application/pdf",
+            "company": "6525994184e9ddd798534540",
+            "isVersion": false
+          }
+        ]
+      }
+    ],
+    "closedWonDealCurrency": "USD",
+    "closedWonDealAmount": 2500,
+    "contactLastEngagementDate": "2026-07-19T10:00:00.000Z",
+    "contactLastEngagementType": "Email",
+    "firstOutreachDate": "2026-07-18T10:00:00.000Z",
+    "disqualificationReason": "",
+    "emailCount": 1,
+    "lastActivityDate": "2026-07-19T10:00:00.000Z",
+    "meetingCount": 0,
+    "messageThreadCount": 1,
+    "outreachActivityCount": 2
+  }
+]
+```
+
+### Example request
 
 ```bash cURL
 curl --request POST "https://api.agencyhandy.com/members/bulk-lead" \
   --header "x-api-key: <YOUR_API_KEY>" \
-  --header "companyid: <YOUR_COMPANY_ID>" \
   --header "Content-Type: application/json" \
   --data '[
     {
+      "type": "individual",
+      "email": "john.doe@example.com",
+      "status": "New",
       "firstName": "John",
       "lastName": "Doe",
-      "email": "john.doe@example.com",
-      "role": "6525994184e9ddd798534535",
-      "isConvertedClient": false,
-      "status": "New",
       "contactNo": "1234567890",
       "source": "website",
-      "positionInBoard": 1
+      "leadValue": "2500",
+      "website": "https://example.com",
+      "sendInvitationEmail": true
     }
   ]'
 ```
 
-### Onnistumisvastaus
+### Success response
 
 ```json
 {
-  "message": "Lead created successfully",
-  "createdMembers": [
-    {
-      "_id": "NEW_MEMBER_ID",
-      "name": "John Doe",
-      "status": "New",
-      "role": "client"
-    }
-  ]
+  "success": true,
+  "data": {
+    "addedLeads": [
+      {
+        "_id": "NEW_MEMBER_ID",
+        "type": "individual",
+        "email": "john.doe@example.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "name": "John Doe",
+        "status": "New",
+        "positionInBoard": 1,
+        "source": "website",
+        "leadValue": "2500",
+        "website": "https://example.com",
+        "isConvertedClient": false,
+        "isAccountVerified": true
+      }
+    ],
+    "notAddedLeads": []
+  }
 }
 ```
 
-<ResponseField name="message" type="string">
-  Vahvistusmerkkijono: `"Lead created successfully"`.
+<ResponseField name="success" type="boolean">
+  Indicates whether the request was processed successfully.
 </ResponseField>
 
-<ResponseField name="createdMembers" type="array">
-  Luotujen liidiobjektien taulukko.
+<ResponseField name="data.addedLeads" type="array">
+  Leads that were created successfully.
 </ResponseField>
 
-<ResponseField name="createdMembers[].\_id" type="string">
-  Äskettäin luodun liidin yksilöllinen tunnus. Tallenna tämä, jos sinun on viitattava liidiin myöhemmissä API-kutsuissa.
+<ResponseField name="data.addedLeads[].\_id" type="string">
+  The unique ID of the newly created lead. Store this if you need to reference the lead in subsequent API calls.
 </ResponseField>
 
-<ResponseField name="createdMembers[].name" type="string">
-  Liidin koko nimi (etunimi + sukunimi).
+<ResponseField name="data.addedLeads[].name" type="string">
+  The full name of the lead (firstName + lastName).
 </ResponseField>
 
-<ResponseField name="createdMembers[].status" type="string">
-  Liidin putkistatus tallennettuna.
+<ResponseField name="data.addedLeads[].status" type="string">
+  The pipeline status of the lead as stored.
 </ResponseField>
 
-<ResponseField name="createdMembers[].role" type="string">
-  Jäsenelle osoitettu roolin nimi — on `"client"`.
+<ResponseField name="data.notAddedLeads" type="array">
+  Leads that were not created. Each item includes the submitted `email`, a `reason`, and sometimes the existing lead object.
 </ResponseField>
 
 <Tip>
-  Voit välittää useita liidiobjekteja taulukossa luodaksesi useita liidejä yhdellä API-kutsulla. Jokaisella objektilla on oltava kaikki pakolliset kentät sekä oma yksilöllinen sähköpostiosoite.
+  You can pass up to 200 lead objects in the array. A valid request returns `201` when at least one lead is added, or `200` when all submitted leads are skipped, such as duplicates.
 </Tip>

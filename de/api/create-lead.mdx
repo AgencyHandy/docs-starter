@@ -4,198 +4,321 @@ sidebarTitle: "Lead erstellen"
 description: "Verwenden Sie die AgencyHandy-API, um neue Leads programmgesteuert zu erstellen, indem Sie eine POST-Anfrage an den Bulk-Lead-Endpunkt mit den erforderlichen Feldern senden."
 ---
 
-Der Endpunkt „Lead erstellen“ ermöglicht es Ihnen, neue Leads aus jedem externen System — einem Webformular, einem CRM, einer Marketing-Automatisierungsplattform oder einem benutzerdefinierten Skript — programmgesteuert zu Ihrem AgencyHandy-Workspace hinzuzufügen. Über diesen Endpunkt erstellte Leads erscheinen sofort in Ihrer Lead-Pipeline, genau wie wenn sie manuell hinzugefügt worden wären.
+The Create Lead endpoint lets you programmatically add new leads to your AgencyHandy workspace from any external system — a web form, a CRM, a marketing automation platform, or a custom script. Leads created via this endpoint appear in your lead pipeline immediately, just as if they were added manually.
 
 <Note>
-  Bevor Sie diesen Endpunkt verwenden, schließen Sie den Leitfaden [Erste Schritte](/de/api/getting-started) ab, um Ihren API-Schlüssel und Ihre Unternehmens-ID zu erhalten. Sie müssen außerdem Ihre **Kunden-Rollen-ID** abrufen, die beim Erstellen eines Leads erforderlich ist.
+  Before using this endpoint, complete the [Getting Started](/de/api/getting-started) guide to obtain your API key. You do not need to send a company ID or role ID. AgencyHandy assigns the lead to the workspace client role automatically.
 </Note>
 
-## Voraussetzungen
+## Prerequisites
 
-- ✅ API-Schlüssel generiert aus **Workspace-Konfiguration → API-Schlüssel**
-- ✅ Unternehmens-ID abgerufen aus `GET {{URL}}/accounts/companies`
-- ✅ Kunden-Rollen-ID abgerufen (siehe Schritt 1 unten)
+- ✅ API key generated from **Workspace Config → API Key**
 
 ---
 
-## Schritt 1: Kunden-Rollen-ID abrufen
+## Create new leads
 
-Bevor Sie einen Lead erstellen, benötigen Sie die Rollen-ID für die `client`-Rolle in Ihrem Unternehmen.
-
-### Endpunkt
-
-```
-GET {{URL}}/roles?type=company
-```
-
-### Header
-
-| Header | Wert |
-|---|---|
-| `x-api-key` | Ihr API-Schlüssel |
-| `companyid` | Ihre Unternehmens-ID |
-
-### Beispielanfrage
-
-```bash cURL
-curl --request GET "https://api.agencyhandy.com/roles?type=company" \
-  --header "x-api-key: <YOUR_API_KEY>" \
-  --header "companyid: <YOUR_COMPANY_ID>"
-```
-
-### Beispielantwort
-
-```json
-{
-  "roles": [
-    {
-      "_id": "6525994184e9ddd798534535",
-      "role": {
-        "_id": "6525994184e9ddd79853451e",
-        "responsibility": "",
-        "name": "client"
-      },
-      "company": "6525994184e9ddd79853450e",
-      "createdAt": "2023-10-10T18:34:41.567Z",
-      "updatedAt": "2024-10-01T07:28:48.340Z",
-      "__v": 0,
-      "type": "company"
-    }
-  ]
-}
-```
-
-Suchen Sie den Eintrag, bei dem `roles[0].role.name === "client"` gilt, und extrahieren Sie die **äußere** `_id` — das ist `roles[0]._id`, **nicht** `roles[0].role._id`.
-
-```javascript
-const clientRoleId = roles.find(r => r.role.name === "client")._id;
-// e.g. "6525994184e9ddd798534535"
-```
-
-<Warning>
-  Verwenden Sie `roles[0]._id` (die Unternehmensrollen-Zuordnungs-ID), **nicht** `roles[0].role._id` (die Rollendefinitions-ID). Die Verwendung der falschen ID führt dazu, dass die Lead-Erstellungsanfrage fehlschlägt.
-</Warning>
-
----
-
-## Schritt 2: Neuen Lead erstellen
-
-### Endpunkt
+### Endpoint
 
 ```
 POST {{URL}}/members/bulk-lead
 ```
 
-### Header
+### Headers
 
-| Header | Wert |
+| Header | Value |
 |---|---|
-| `x-api-key` | Ihr API-Schlüssel |
-| `companyid` | Ihre Unternehmens-ID |
+| `x-api-key` | Your API key |
 | `Content-Type` | `application/json` |
 
-### Anfrage-Body
+### Request body
 
-Der Anfrage-Body ist ein **JSON-Array** — Sie können einen oder mehrere Leads in einem einzigen Aufruf erstellen.
+The request body is a **JSON array** — you can create one or more leads in a single call.
 
-<ParamField body="firstName" type="string" required>
-  Der Vorname des Leads.
-</ParamField>
-
-<ParamField body="lastName" type="string" required>
-  Der Nachname des Leads.
+<ParamField body="type" type="string" required>
+  The lead type. Allowed values: `individual`, `leadCompanyMember`.
 </ParamField>
 
 <ParamField body="email" type="string" required>
-  Die E-Mail-Adresse des Leads. Muss innerhalb Ihres Workspaces eindeutig sein.
+  The lead's email address. It must be valid and should be unique within your workspace.
 </ParamField>
 
-<ParamField body="role" type="string" required>
-  Die in Schritt 1 abgerufene Kunden-Rollen-ID (d. h. `roles[0]._id`).
+<ParamField body="status" type="string" required>
+  The lead's pipeline status. Allowed values: `New`, `Contacted`, `Qualified`, `Working`, `Proposal Sent`, `Negotiation`.
 </ParamField>
 
-<ParamField body="isConvertedClient" type="boolean" required>
-  Muss beim Erstellen eines Leads auf `false` gesetzt werden. Nur auf `true` setzen, wenn ein Lead in einen vollständigen Kunden umgewandelt wird.
+<ParamField body="password" type="string">
+  Optional password for the lead. If provided, it must contain at least 8 characters, one uppercase letter, one lowercase letter, one number, and one special character.
 </ParamField>
 
-<ParamField body="status" type="string">
-  Der Pipeline-Status des Leads. Häufige Werte: `New`, `Contacted`, `Qualified`. Standardmäßig `New`, wenn nicht angegeben.
+<ParamField body="firstName" type="string">
+  The lead's first name. Optional.
+</ParamField>
+
+<ParamField body="lastName" type="string">
+  The lead's last name. Optional.
 </ParamField>
 
 <ParamField body="contactNo" type="string">
-  Die Telefonnummer des Leads.
+  The lead's phone number. Optional. Defaults to an empty string if omitted.
+</ParamField>
+
+<ParamField body="country" type="string">
+  The lead's country. Optional.
+</ParamField>
+
+<ParamField body="city" type="string">
+  The lead's city. Optional.
+</ParamField>
+
+<ParamField body="state" type="string">
+  The lead's state or region. Optional.
+</ParamField>
+
+<ParamField body="zipCode" type="string">
+  The lead's ZIP or postal code. Optional.
+</ParamField>
+
+<ParamField body="address" type="string">
+  The lead's address. Optional.
+</ParamField>
+
+<ParamField body="category" type="string[]">
+  Optional array of category or label IDs. Each ID must exist in the workspace.
+</ParamField>
+
+<ParamField body="companyName" type="string">
+  The lead's company name. Optional.
+</ParamField>
+
+<ParamField body="sendInvitationEmail" type="boolean">
+  Whether to send an invitation email. Optional. Defaults to `true`.
 </ParamField>
 
 <ParamField body="source" type="string">
-  Wie Sie diesen Lead gewonnen haben. Beispielwerte: `website`, `referral`, `social`.
+  How you acquired this lead. Optional. Example values: `website`, `referral`, `social`.
 </ParamField>
 
-<ParamField body="positionInBoard" type="number">
-  Die Position (Reihenfolge) des Leads in der Pipeline-Board-Spalte. Standardmäßig `1`.
+<ParamField body="leadValue" type="string">
+  The estimated value of the lead. Optional.
 </ParamField>
 
-### Beispielanfrage
+<ParamField body="website" type="string">
+  The lead's website. Optional.
+</ParamField>
+
+<ParamField body="agent" type="string">
+  Optional assigned agent ID.
+</ParamField>
+
+<ParamField body="lastContactedAt" type="string">
+  Optional date for when the lead was last contacted.
+</ParamField>
+
+<ParamField body="files" type="string[]">
+  Optional array of file IDs attached to the lead.
+</ParamField>
+
+<ParamField body="profileImage" type="string">
+  Optional profile image URL or file reference.
+</ParamField>
+
+<ParamField body="customFields" type="array">
+  Optional custom field responses for lead custom fields.
+</ParamField>
+
+<ParamField body="closedWonDealCurrency" type="string">
+  Optional currency code for a closed-won deal amount.
+</ParamField>
+
+<ParamField body="closedWonDealAmount" type="number">
+  Optional closed-won deal amount. Can be `null` or an empty string.
+</ParamField>
+
+<ParamField body="contactLastEngagementDate" type="string">
+  Optional date of the lead's last engagement.
+</ParamField>
+
+<ParamField body="contactLastEngagementType" type="string">
+  Optional last engagement type. Allowed values: `Email`, `Phone`, `One-to-One`, `Online Meeting`.
+</ParamField>
+
+<ParamField body="firstOutreachDate" type="string">
+  Optional date of the first outreach.
+</ParamField>
+
+<ParamField body="disqualificationReason" type="string">
+  Optional disqualification reason. Can be `null` or an empty string.
+</ParamField>
+
+<ParamField body="emailCount" type="number">
+  Optional email activity count. Can be `null` or an empty string.
+</ParamField>
+
+<ParamField body="lastActivityDate" type="string">
+  Optional date of the last activity.
+</ParamField>
+
+<ParamField body="meetingCount" type="number">
+  Optional meeting count. Can be `null` or an empty string.
+</ParamField>
+
+<ParamField body="messageThreadCount" type="number">
+  Optional message thread count. Can be `null` or an empty string.
+</ParamField>
+
+<ParamField body="outreachActivityCount" type="number">
+  Optional outreach activity count. Can be `null` or an empty string.
+</ParamField>
+
+<Warning>
+  Do not send `role`, `isConvertedClient`, or `positionInBoard`. The endpoint does not use those fields. Unknown fields are removed during validation.
+</Warning>
+
+### Full payload example
+
+Only `type`, `email`, and `status` are required. Every other field shown here is optional.
+
+```json
+[
+  {
+    "type": "individual",
+    "email": "john.doe@example.com",
+    "status": "New",
+    "password": "StrongPass1!",
+    "firstName": "John",
+    "lastName": "Doe",
+    "contactNo": "1234567890",
+    "country": "United States",
+    "city": "New York",
+    "state": "NY",
+    "zipCode": "10001",
+    "address": "123 Main Street",
+    "category": ["6525994184e9ddd798534535"],
+    "companyName": "Example Inc.",
+    "sendInvitationEmail": true,
+    "source": "website",
+    "leadValue": "2500",
+    "website": "https://example.com",
+    "agent": "6525994184e9ddd798534536",
+    "lastContactedAt": "2026-07-19T10:00:00.000Z",
+    "files": ["6525994184e9ddd798534537"],
+    "profileImage": "https://example.com/avatar.png",
+    "customFields": [
+      {
+        "_id": "6525994184e9ddd798534538",
+        "stringValue": "Interested in monthly services",
+        "numberValue": 2500,
+        "dateValue": "2026-07-19T00:00:00.000Z",
+        "booleanValue": true,
+        "arrayValue": [
+          {
+            "value": "paid-search",
+            "label": "Paid Search"
+          }
+        ],
+        "fileValue": [
+          {
+            "_id": "6525994184e9ddd798534539",
+            "link": "https://example.com/file.pdf",
+            "sizeInBytes": "102400",
+            "s3Key": "uploads/file.pdf",
+            "type": "application/pdf",
+            "company": "6525994184e9ddd798534540",
+            "isVersion": false
+          }
+        ]
+      }
+    ],
+    "closedWonDealCurrency": "USD",
+    "closedWonDealAmount": 2500,
+    "contactLastEngagementDate": "2026-07-19T10:00:00.000Z",
+    "contactLastEngagementType": "Email",
+    "firstOutreachDate": "2026-07-18T10:00:00.000Z",
+    "disqualificationReason": "",
+    "emailCount": 1,
+    "lastActivityDate": "2026-07-19T10:00:00.000Z",
+    "meetingCount": 0,
+    "messageThreadCount": 1,
+    "outreachActivityCount": 2
+  }
+]
+```
+
+### Example request
 
 ```bash cURL
 curl --request POST "https://api.agencyhandy.com/members/bulk-lead" \
   --header "x-api-key: <YOUR_API_KEY>" \
-  --header "companyid: <YOUR_COMPANY_ID>" \
   --header "Content-Type: application/json" \
   --data '[
     {
+      "type": "individual",
+      "email": "john.doe@example.com",
+      "status": "New",
       "firstName": "John",
       "lastName": "Doe",
-      "email": "john.doe@example.com",
-      "role": "6525994184e9ddd798534535",
-      "isConvertedClient": false,
-      "status": "New",
       "contactNo": "1234567890",
       "source": "website",
-      "positionInBoard": 1
+      "leadValue": "2500",
+      "website": "https://example.com",
+      "sendInvitationEmail": true
     }
   ]'
 ```
 
-### Erfolgsantwort
+### Success response
 
 ```json
 {
-  "message": "Lead created successfully",
-  "createdMembers": [
-    {
-      "_id": "NEW_MEMBER_ID",
-      "name": "John Doe",
-      "status": "New",
-      "role": "client"
-    }
-  ]
+  "success": true,
+  "data": {
+    "addedLeads": [
+      {
+        "_id": "NEW_MEMBER_ID",
+        "type": "individual",
+        "email": "john.doe@example.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "name": "John Doe",
+        "status": "New",
+        "positionInBoard": 1,
+        "source": "website",
+        "leadValue": "2500",
+        "website": "https://example.com",
+        "isConvertedClient": false,
+        "isAccountVerified": true
+      }
+    ],
+    "notAddedLeads": []
+  }
 }
 ```
 
-<ResponseField name="message" type="string">
-  Bestätigungszeichenfolge: `"Lead created successfully"`.
+<ResponseField name="success" type="boolean">
+  Indicates whether the request was processed successfully.
 </ResponseField>
 
-<ResponseField name="createdMembers" type="array">
-  Array der erstellten Lead-Objekte.
+<ResponseField name="data.addedLeads" type="array">
+  Leads that were created successfully.
 </ResponseField>
 
-<ResponseField name="createdMembers[].\_id" type="string">
-  Die eindeutige ID des neu erstellten Leads. Speichern Sie diese, wenn Sie den Lead in nachfolgenden API-Aufrufen referenzieren müssen.
+<ResponseField name="data.addedLeads[].\_id" type="string">
+  The unique ID of the newly created lead. Store this if you need to reference the lead in subsequent API calls.
 </ResponseField>
 
-<ResponseField name="createdMembers[].name" type="string">
-  Der vollständige Name des Leads (Vorname + Nachname).
+<ResponseField name="data.addedLeads[].name" type="string">
+  The full name of the lead (firstName + lastName).
 </ResponseField>
 
-<ResponseField name="createdMembers[].status" type="string">
-  Der gespeicherte Pipeline-Status des Leads.
+<ResponseField name="data.addedLeads[].status" type="string">
+  The pipeline status of the lead as stored.
 </ResponseField>
 
-<ResponseField name="createdMembers[].role" type="string">
-  Der dem Mitglied zugewiesene Rollenname — wird `"client"` sein.
+<ResponseField name="data.notAddedLeads" type="array">
+  Leads that were not created. Each item includes the submitted `email`, a `reason`, and sometimes the existing lead object.
 </ResponseField>
 
 <Tip>
-  Sie können mehrere Lead-Objekte im Array übergeben, um mehrere Leads in einem einzigen API-Aufruf zu erstellen. Jedes Objekt muss alle Pflichtfelder mit einer eigenen eindeutigen E-Mail-Adresse enthalten.
+  You can pass up to 200 lead objects in the array. A valid request returns `201` when at least one lead is added, or `200` when all submitted leads are skipped, such as duplicates.
 </Tip>
