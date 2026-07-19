@@ -4,134 +4,281 @@ sidebarTitle: "ক্লায়েন্ট তৈরি করুন"
 description: "নাম, ইমেইল এবং যোগাযোগের বিবরণ সহ bulk-client এন্ডপয়েন্টে পোস্ট করে আপনার AgencyHandy ওয়ার্কস্পেসে প্রোগ্রামেটিকভাবে নতুন ক্লায়েন্ট যোগ করুন।"
 ---
 
-Create Client এন্ডপয়েন্ট আপনাকে একটি বাহ্যিক সিস্টেম থেকে সরাসরি আপনার AgencyHandy ওয়ার্কস্পেসে ক্লায়েন্ট যোগ করতে দেয়। লিডের বিপরীতে, ক্লায়েন্টরা হল সম্পূর্ণরূপে অনবোর্ড করা যোগাযোগ যাদের অর্ডার, ইনভয়েস এবং প্রকল্পে নিয়োগ দেওয়া যায়। CRM, অনবোর্ডিং ফর্ম, বা অন্য যেকোনো ডেটা উৎস থেকে নতুন ক্লায়েন্ট সিঙ্ক করতে এই এন্ডপয়েন্ট ব্যবহার করুন।
+The Create Client endpoint lets you add clients directly to your AgencyHandy workspace from an external system. Unlike leads, clients are fully onboarded contacts who can be assigned to orders, invoices, and projects. Use this endpoint to sync new clients from a CRM, onboarding form, or any other data source.
 
 <Note>
-  এই এন্ডপয়েন্ট ব্যবহার করার আগে, আপনার API কী এবং Company ID পেতে [শুরু করা](/bn/api/getting-started) গাইড সম্পন্ন করুন। Create Lead এন্ডপয়েন্টের বিপরীতে, ক্লায়েন্ট তৈরিতে আলাদা Role ID লুকআপ ধাপের **প্রয়োজন নেই**।
+  Before using this endpoint, complete the [Getting Started](/bn/api/getting-started) guide to obtain your API key. You do not need to send a company ID or role ID. AgencyHandy assigns the client to the workspace client role automatically.
 </Note>
 
-## পূর্বশর্তসমূহ
+## Prerequisites
 
-- ✅ **Workspace Config → API Key** থেকে API কী তৈরি করা হয়েছে
-- ✅ `GET {{URL}}/accounts/companies` থেকে Company ID পুনরুদ্ধার করা হয়েছে
+- ✅ API key generated from **Workspace Config → API Key**
 
 ---
 
-## এন্ডপয়েন্ট
+## Endpoint
 
 ```
 POST {{URL}}/members/bulk-client
 ```
 
-## হেডার
+## Headers
 
-| হেডার | মান |
+| Header | Value |
 |---|---|
-| `x-api-key` | আপনার API কী |
-| `companyId` | আপনার Company ID |
+| `x-api-key` | Your API key |
 | `Content-Type` | `application/json` |
 
-## অনুরোধের বডি
+## Request body
 
-অনুরোধের বডি একটি **JSON অ্যারে**। আপনি একটি অনুরোধে এক বা একাধিক ক্লায়েন্ট তৈরি করতে পারেন।
+The request body is a **JSON array**. You can create one or more clients in a single request.
+
+<ParamField body="email" type="string" required>
+  The client's email address. It must be valid and should be unique within your workspace.
+</ParamField>
 
 <ParamField body="firstName" type="string" required>
-  ক্লায়েন্টের প্রথম নাম।
+  The client's first name.
 </ParamField>
 
 <ParamField body="lastName" type="string" required>
-  ক্লায়েন্টের শেষ নাম।
+  The client's last name.
 </ParamField>
 
-<ParamField body="email" type="string" required>
-  ক্লায়েন্টের ইমেইল ঠিকানা। আপনার ওয়ার্কস্পেসে অনন্য হতে হবে।
+<ParamField body="status" type="string" required>
+  The client's status. The only accepted value for this endpoint is `Client`.
 </ParamField>
 
-<ParamField body="isConvertedClient" type="boolean" required>
-  একেবারে নতুন ক্লায়েন্টের জন্য `false` সেট করুন। বিদ্যমান লিডকে ক্লায়েন্টে রূপান্তর করার সময় `true` সেট করুন।
-</ParamField>
-
-<ParamField body="status" type="string">
-  ক্লায়েন্টের স্ট্যাটাস। সাধারণ মান: `New`, `Active`। বাদ দিলে `New`-তে ডিফল্ট হয়।
+<ParamField body="password" type="string">
+  Optional password for the client. If provided, it must contain at least 8 characters, one uppercase letter, one lowercase letter, one number, and one special character.
 </ParamField>
 
 <ParamField body="contactNo" type="string">
-  ক্লায়েন্টের ফোন নম্বর।
+  The client's phone number. Optional. Defaults to an empty string if omitted.
+</ParamField>
+
+<ParamField body="country" type="string">
+  The client's country. Optional.
+</ParamField>
+
+<ParamField body="city" type="string">
+  The client's city. Optional.
+</ParamField>
+
+<ParamField body="state" type="string">
+  The client's state or region. Optional.
+</ParamField>
+
+<ParamField body="zipCode" type="string">
+  The client's ZIP or postal code. Optional.
+</ParamField>
+
+<ParamField body="address" type="string">
+  The client's address. Optional.
+</ParamField>
+
+<ParamField body="category" type="string[]">
+  Optional array of category or label IDs. Each ID must exist in the workspace.
+</ParamField>
+
+<ParamField body="companyName" type="string">
+  The client's company name. Optional.
+</ParamField>
+
+<ParamField body="sendInvitationEmail" type="boolean">
+  Whether to send an invitation email. Optional. Defaults to `true`.
 </ParamField>
 
 <ParamField body="source" type="string">
-  আপনি কীভাবে এই ক্লায়েন্ট পেয়েছেন। উদাহরণ মান: `website`, `referral`, `social`।
+  How you acquired this client. Optional. Example values: `website`, `referral`, `social`.
 </ParamField>
 
-<ParamField body="positionInBoard" type="number">
-  বোর্ড কলামের মধ্যে ক্লায়েন্টের অবস্থান। `1`-এ ডিফল্ট হয়।
+<ParamField body="leadValue" type="string">
+  The estimated value associated with the client. Optional.
 </ParamField>
 
-## উদাহরণ অনুরোধ
+<ParamField body="website" type="string">
+  The client's website. Optional.
+</ParamField>
+
+<ParamField body="agent" type="string">
+  Optional assigned agent ID.
+</ParamField>
+
+<ParamField body="lastContactedAt" type="string">
+  Optional date for when the client was last contacted.
+</ParamField>
+
+<ParamField body="files" type="string[]">
+  Optional array of file IDs attached to the client.
+</ParamField>
+
+<ParamField body="profileImage" type="string">
+  Optional profile image URL or file reference.
+</ParamField>
+
+<ParamField body="customFields" type="array">
+  Optional custom field responses for client custom fields.
+</ParamField>
+
+<Warning>
+  Do not send `companyId`, `role`, `isConvertedClient`, or `positionInBoard`. The endpoint does not use those request fields. Unknown fields are removed during validation.
+</Warning>
+
+## Full payload example
+
+Only `email`, `firstName`, `lastName`, and `status` are required. Every other field shown here is optional.
+
+```json
+[
+  {
+    "email": "john.doe@example.com",
+    "status": "Client",
+    "password": "StrongPass1!",
+    "firstName": "John",
+    "lastName": "Doe",
+    "contactNo": "1234567890",
+    "country": "United States",
+    "city": "New York",
+    "state": "NY",
+    "zipCode": "10001",
+    "address": "123 Main Street",
+    "category": ["6525994184e9ddd798534535"],
+    "companyName": "Example Inc.",
+    "sendInvitationEmail": true,
+    "source": "website",
+    "leadValue": "2500",
+    "website": "https://example.com",
+    "agent": "6525994184e9ddd798534536",
+    "lastContactedAt": "2026-07-19T10:00:00.000Z",
+    "files": ["6525994184e9ddd798534537"],
+    "profileImage": "https://example.com/avatar.png",
+    "customFields": [
+      {
+        "_id": "6525994184e9ddd798534538",
+        "stringValue": "Interested in monthly services",
+        "numberValue": 2500,
+        "dateValue": "2026-07-19T00:00:00.000Z",
+        "booleanValue": true,
+        "arrayValue": [
+          {
+            "value": "paid-search",
+            "label": "Paid Search"
+          }
+        ],
+        "fileValue": [
+          {
+            "_id": "6525994184e9ddd798534539",
+            "link": "https://example.com/file.pdf",
+            "sizeInBytes": "102400",
+            "s3Key": "uploads/file.pdf",
+            "type": "application/pdf",
+            "company": "6525994184e9ddd798534540",
+            "isVersion": false
+          }
+        ]
+      }
+    ]
+  }
+]
+```
+
+<ParamField body="customFields[]._id" type="string" required>
+  The custom field ID when sending a custom field response.
+</ParamField>
+
+<ParamField body="customFields[].stringValue" type="string">
+  Optional string response value.
+</ParamField>
+
+<ParamField body="customFields[].numberValue" type="number">
+  Optional number response value.
+</ParamField>
+
+<ParamField body="customFields[].dateValue" type="string">
+  Optional date response value.
+</ParamField>
+
+<ParamField body="customFields[].booleanValue" type="boolean">
+  Optional boolean response value.
+</ParamField>
+
+<ParamField body="customFields[].arrayValue" type="array">
+  Optional array response value. Each item can include `value` and `label`.
+</ParamField>
+
+<ParamField body="customFields[].fileValue" type="array">
+  Optional file response value. Each file item must include `_id`, `link`, `sizeInBytes`, `s3Key`, `type`, `company`, and `isVersion`.
+</ParamField>
+
+## Example request
 
 ```bash cURL
 curl --request POST "https://api.agencyhandy.com/members/bulk-client" \
   --header "x-api-key: <YOUR_API_KEY>" \
-  --header "companyId: <YOUR_COMPANY_ID>" \
   --header "Content-Type: application/json" \
   --data '[
     {
+      "email": "john.doe@example.com",
+      "status": "Client",
       "firstName": "John",
       "lastName": "Doe",
-      "email": "john.doe@example.com",
-      "isConvertedClient": false,
-      "status": "New",
       "contactNo": "1234567890",
       "source": "website",
-      "positionInBoard": 1
+      "sendInvitationEmail": true
     }
   ]'
 ```
 
-## সফলতার প্রতিক্রিয়া
+## Success response
 
 ```json
 {
-  "message": "Client created successfully",
-  "createdMembers": [
-    {
-      "_id": "NEW_MEMBER_ID",
-      "name": "John Doe",
-      "status": "New",
-      "role": "client"
-    }
-  ]
+  "success": true,
+  "data": {
+    "addedClients": [
+      {
+        "_id": "NEW_MEMBER_ID",
+        "email": "john.doe@example.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "name": "John Doe",
+        "status": "Client",
+        "source": "website",
+        "isConvertedClient": true,
+        "isAccountVerified": true,
+        "isApproved": true
+      }
+    ],
+    "notAddedClients": []
+  }
 }
 ```
 
-<ResponseField name="message" type="string">
-  সফলতায় নিশ্চিতকরণ স্ট্রিং।
+<ResponseField name="success" type="boolean">
+  Indicates whether at least one client was added.
 </ResponseField>
 
-<ResponseField name="createdMembers" type="array">
-  তৈরি ক্লায়েন্ট অবজেক্টের অ্যারে।
+<ResponseField name="data.addedClients" type="array">
+  Clients that were created, restored, or converted from existing leads.
 </ResponseField>
 
-<ResponseField name="createdMembers[].\_id" type="string">
-  নতুন তৈরি ক্লায়েন্টের অনন্য ID। API-এর মাধ্যমে ক্লায়েন্টকে অর্ডার বা ইনভয়েসে নিয়োগ দেওয়ার সময় এই ID ব্যবহার করুন।
+<ResponseField name="data.addedClients[].\_id" type="string">
+  Unique ID of the newly created client. Use this ID when assigning the client to orders or invoices via the API.
 </ResponseField>
 
-<ResponseField name="createdMembers[].name" type="string">
-  ক্লায়েন্টের পূর্ণ নাম (firstName + lastName)।
+<ResponseField name="data.addedClients[].name" type="string">
+  The full name of the client (firstName + lastName).
 </ResponseField>
 
-<ResponseField name="createdMembers[].status" type="string">
-  সংরক্ষিত ক্লায়েন্টের স্ট্যাটাস।
+<ResponseField name="data.addedClients[].status" type="string">
+  The status of the client as stored.
 </ResponseField>
 
-<ResponseField name="createdMembers[].role" type="string">
-  সদস্যকে বরাদ্দ ভূমিকা — `"client"` হবে।
+<ResponseField name="data.notAddedClients" type="array">
+  Clients that were not created. Each item includes the submitted `email` and a `reason`, such as `Client already exists` or `One or more category not found`.
 </ResponseField>
-
-<Note>
-  এই এন্ডপয়েন্টের `companyId` হেডার `Id`-তে বড় হাতের **I** ব্যবহার করে — `companyId` — কিছু অন্য এন্ডপয়েন্টের বিপরীতে যেগুলি `companyid` (সম্পূর্ণ ছোট হাতের) ব্যবহার করে। প্রমাণীকরণ ত্রুটি এড়াতে উপরে দেখানো সঠিক কেসিং ব্যবহার করুন।
-</Note>
 
 <Tip>
-  একটি একক API কলে বাল্ক-তৈরি ক্লায়েন্টের জন্য অ্যারেতে একাধিক ক্লায়েন্ট অবজেক্ট পাস করুন। প্রতিটি অবজেক্টে একটি অনন্য `email` ঠিকানা থাকতে হবে। ডুপ্লিকেট ইমেইল সেই এন্ট্রির জন্য একটি যাচাইকরণ ত্রুটি ঘটাবে।
+  You can pass up to 200 client objects in the array. If a submitted email belongs to an existing lead, AgencyHandy converts that lead into a client.
 </Tip>

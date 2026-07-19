@@ -4,134 +4,281 @@ sidebarTitle: "建立客戶"
 description: "透過向 bulk-client 端點傳送包含姓名、電子郵件及聯絡資訊的請求，以程式方式將新客戶新增至您的 AgencyHandy 工作區。"
 ---
 
-建立客戶端點讓您能夠從外部系統直接將客戶新增至您的 AgencyHandy 工作區。與潛在客戶不同，客戶是已完全建檔的聯絡人，可以被指派至訂單、發票和專案。使用此端點從 CRM、入職表單或任何其他資料來源同步新客戶。
+The Create Client endpoint lets you add clients directly to your AgencyHandy workspace from an external system. Unlike leads, clients are fully onboarded contacts who can be assigned to orders, invoices, and projects. Use this endpoint to sync new clients from a CRM, onboarding form, or any other data source.
 
 <Note>
-  使用此端點前，請先完成[入門指南](/zh-Hant/api/getting-started)以取得您的 API 金鑰和公司 ID。與建立潛在客戶端點不同，建立客戶**不需要**單獨的角色 ID 查詢步驟。
+  Before using this endpoint, complete the [Getting Started](/zh-Hant/api/getting-started) guide to obtain your API key. You do not need to send a company ID or role ID. AgencyHandy assigns the client to the workspace client role automatically.
 </Note>
 
-## 前置條件
+## Prerequisites
 
-- ✅ 從 **Workspace Config → API Key** 產生的 API 金鑰
-- ✅ 從 `GET {{URL}}/accounts/companies` 取得的公司 ID
+- ✅ API key generated from **Workspace Config → API Key**
 
 ---
 
-## 端點
+## Endpoint
 
 ```
 POST {{URL}}/members/bulk-client
 ```
 
-## 標頭
+## Headers
 
-| 標頭 | 值 |
+| Header | Value |
 |---|---|
-| `x-api-key` | 您的 API 金鑰 |
-| `companyId` | 您的公司 ID |
+| `x-api-key` | Your API key |
 | `Content-Type` | `application/json` |
 
-## 請求主體
+## Request body
 
-請求主體為 **JSON 陣列**。您可以在單次請求中建立一個或多個客戶。
+The request body is a **JSON array**. You can create one or more clients in a single request.
+
+<ParamField body="email" type="string" required>
+  The client's email address. It must be valid and should be unique within your workspace.
+</ParamField>
 
 <ParamField body="firstName" type="string" required>
-  客戶的名字。
+  The client's first name.
 </ParamField>
 
 <ParamField body="lastName" type="string" required>
-  客戶的姓氏。
+  The client's last name.
 </ParamField>
 
-<ParamField body="email" type="string" required>
-  客戶的電子郵件地址。在您的工作區內必須是唯一的。
+<ParamField body="status" type="string" required>
+  The client's status. The only accepted value for this endpoint is `Client`.
 </ParamField>
 
-<ParamField body="isConvertedClient" type="boolean" required>
-  全新客戶請設定為 `false`。將現有潛在客戶轉換為客戶時請設定為 `true`。
-</ParamField>
-
-<ParamField body="status" type="string">
-  客戶的狀態。常用值：`New`、`Active`。若省略則預設為 `New`。
+<ParamField body="password" type="string">
+  Optional password for the client. If provided, it must contain at least 8 characters, one uppercase letter, one lowercase letter, one number, and one special character.
 </ParamField>
 
 <ParamField body="contactNo" type="string">
-  客戶的電話號碼。
+  The client's phone number. Optional. Defaults to an empty string if omitted.
+</ParamField>
+
+<ParamField body="country" type="string">
+  The client's country. Optional.
+</ParamField>
+
+<ParamField body="city" type="string">
+  The client's city. Optional.
+</ParamField>
+
+<ParamField body="state" type="string">
+  The client's state or region. Optional.
+</ParamField>
+
+<ParamField body="zipCode" type="string">
+  The client's ZIP or postal code. Optional.
+</ParamField>
+
+<ParamField body="address" type="string">
+  The client's address. Optional.
+</ParamField>
+
+<ParamField body="category" type="string[]">
+  Optional array of category or label IDs. Each ID must exist in the workspace.
+</ParamField>
+
+<ParamField body="companyName" type="string">
+  The client's company name. Optional.
+</ParamField>
+
+<ParamField body="sendInvitationEmail" type="boolean">
+  Whether to send an invitation email. Optional. Defaults to `true`.
 </ParamField>
 
 <ParamField body="source" type="string">
-  您獲取此客戶的管道。範例值：`website`、`referral`、`social`。
+  How you acquired this client. Optional. Example values: `website`, `referral`, `social`.
 </ParamField>
 
-<ParamField body="positionInBoard" type="number">
-  客戶在看板欄位中的位置。預設為 `1`。
+<ParamField body="leadValue" type="string">
+  The estimated value associated with the client. Optional.
 </ParamField>
 
-## 範例請求
+<ParamField body="website" type="string">
+  The client's website. Optional.
+</ParamField>
+
+<ParamField body="agent" type="string">
+  Optional assigned agent ID.
+</ParamField>
+
+<ParamField body="lastContactedAt" type="string">
+  Optional date for when the client was last contacted.
+</ParamField>
+
+<ParamField body="files" type="string[]">
+  Optional array of file IDs attached to the client.
+</ParamField>
+
+<ParamField body="profileImage" type="string">
+  Optional profile image URL or file reference.
+</ParamField>
+
+<ParamField body="customFields" type="array">
+  Optional custom field responses for client custom fields.
+</ParamField>
+
+<Warning>
+  Do not send `companyId`, `role`, `isConvertedClient`, or `positionInBoard`. The endpoint does not use those request fields. Unknown fields are removed during validation.
+</Warning>
+
+## Full payload example
+
+Only `email`, `firstName`, `lastName`, and `status` are required. Every other field shown here is optional.
+
+```json
+[
+  {
+    "email": "john.doe@example.com",
+    "status": "Client",
+    "password": "StrongPass1!",
+    "firstName": "John",
+    "lastName": "Doe",
+    "contactNo": "1234567890",
+    "country": "United States",
+    "city": "New York",
+    "state": "NY",
+    "zipCode": "10001",
+    "address": "123 Main Street",
+    "category": ["6525994184e9ddd798534535"],
+    "companyName": "Example Inc.",
+    "sendInvitationEmail": true,
+    "source": "website",
+    "leadValue": "2500",
+    "website": "https://example.com",
+    "agent": "6525994184e9ddd798534536",
+    "lastContactedAt": "2026-07-19T10:00:00.000Z",
+    "files": ["6525994184e9ddd798534537"],
+    "profileImage": "https://example.com/avatar.png",
+    "customFields": [
+      {
+        "_id": "6525994184e9ddd798534538",
+        "stringValue": "Interested in monthly services",
+        "numberValue": 2500,
+        "dateValue": "2026-07-19T00:00:00.000Z",
+        "booleanValue": true,
+        "arrayValue": [
+          {
+            "value": "paid-search",
+            "label": "Paid Search"
+          }
+        ],
+        "fileValue": [
+          {
+            "_id": "6525994184e9ddd798534539",
+            "link": "https://example.com/file.pdf",
+            "sizeInBytes": "102400",
+            "s3Key": "uploads/file.pdf",
+            "type": "application/pdf",
+            "company": "6525994184e9ddd798534540",
+            "isVersion": false
+          }
+        ]
+      }
+    ]
+  }
+]
+```
+
+<ParamField body="customFields[]._id" type="string" required>
+  The custom field ID when sending a custom field response.
+</ParamField>
+
+<ParamField body="customFields[].stringValue" type="string">
+  Optional string response value.
+</ParamField>
+
+<ParamField body="customFields[].numberValue" type="number">
+  Optional number response value.
+</ParamField>
+
+<ParamField body="customFields[].dateValue" type="string">
+  Optional date response value.
+</ParamField>
+
+<ParamField body="customFields[].booleanValue" type="boolean">
+  Optional boolean response value.
+</ParamField>
+
+<ParamField body="customFields[].arrayValue" type="array">
+  Optional array response value. Each item can include `value` and `label`.
+</ParamField>
+
+<ParamField body="customFields[].fileValue" type="array">
+  Optional file response value. Each file item must include `_id`, `link`, `sizeInBytes`, `s3Key`, `type`, `company`, and `isVersion`.
+</ParamField>
+
+## Example request
 
 ```bash cURL
 curl --request POST "https://api.agencyhandy.com/members/bulk-client" \
   --header "x-api-key: <YOUR_API_KEY>" \
-  --header "companyId: <YOUR_COMPANY_ID>" \
   --header "Content-Type: application/json" \
   --data '[
     {
+      "email": "john.doe@example.com",
+      "status": "Client",
       "firstName": "John",
       "lastName": "Doe",
-      "email": "john.doe@example.com",
-      "isConvertedClient": false,
-      "status": "New",
       "contactNo": "1234567890",
       "source": "website",
-      "positionInBoard": 1
+      "sendInvitationEmail": true
     }
   ]'
 ```
 
-## 成功回應
+## Success response
 
 ```json
 {
-  "message": "Client created successfully",
-  "createdMembers": [
-    {
-      "_id": "NEW_MEMBER_ID",
-      "name": "John Doe",
-      "status": "New",
-      "role": "client"
-    }
-  ]
+  "success": true,
+  "data": {
+    "addedClients": [
+      {
+        "_id": "NEW_MEMBER_ID",
+        "email": "john.doe@example.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "name": "John Doe",
+        "status": "Client",
+        "source": "website",
+        "isConvertedClient": true,
+        "isAccountVerified": true,
+        "isApproved": true
+      }
+    ],
+    "notAddedClients": []
+  }
 }
 ```
 
-<ResponseField name="message" type="string">
-  成功時的確認字串。
+<ResponseField name="success" type="boolean">
+  Indicates whether at least one client was added.
 </ResponseField>
 
-<ResponseField name="createdMembers" type="array">
-  已建立的客戶物件陣列。
+<ResponseField name="data.addedClients" type="array">
+  Clients that were created, restored, or converted from existing leads.
 </ResponseField>
 
-<ResponseField name="createdMembers[].\_id" type="string">
-  新建立客戶的唯一 ID。透過 API 將客戶指派至訂單或發票時，請使用此 ID。
+<ResponseField name="data.addedClients[].\_id" type="string">
+  Unique ID of the newly created client. Use this ID when assigning the client to orders or invoices via the API.
 </ResponseField>
 
-<ResponseField name="createdMembers[].name" type="string">
-  客戶的全名（firstName + lastName）。
+<ResponseField name="data.addedClients[].name" type="string">
+  The full name of the client (firstName + lastName).
 </ResponseField>
 
-<ResponseField name="createdMembers[].status" type="string">
-  已儲存的客戶狀態。
+<ResponseField name="data.addedClients[].status" type="string">
+  The status of the client as stored.
 </ResponseField>
 
-<ResponseField name="createdMembers[].role" type="string">
-  指派給成員的角色 — 將為 `"client"`。
+<ResponseField name="data.notAddedClients" type="array">
+  Clients that were not created. Each item includes the submitted `email` and a `reason`, such as `Client already exists` or `One or more category not found`.
 </ResponseField>
-
-<Note>
-  此端點的 `companyId` 標頭使用大寫 **I** 的 `Id` — `companyId` — 與某些使用全小寫 `companyid` 的其他端點不同。請使用上方所示的確切大小寫，以避免驗證錯誤。
-</Note>
 
 <Tip>
-  在陣列中傳遞多個客戶物件，以在單次 API 呼叫中批量建立客戶。每個物件必須擁有唯一的 `email` 地址。重複的電子郵件將導致該條目產生驗證錯誤。
+  You can pass up to 200 client objects in the array. If a submitted email belongs to an existing lead, AgencyHandy converts that lead into a client.
 </Tip>

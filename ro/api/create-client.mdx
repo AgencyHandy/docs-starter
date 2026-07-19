@@ -4,16 +4,15 @@ sidebarTitle: "Creare Client"
 description: "Adăugați programatic clienți noi în spațiul dvs. de lucru AgencyHandy postând la endpoint-ul bulk-client cu numele, e-mailul și detaliile de contact."
 ---
 
-Endpoint-ul Creare Client vă permite să adăugați clienți direct în spațiul dvs. de lucru AgencyHandy dintr-un sistem extern. Spre deosebire de lead-uri, clienții sunt contacte complet integrate care pot fi atribuite comenzilor, facturilor și proiectelor. Utilizați acest endpoint pentru a sincroniza clienții noi dintr-un CRM, un formular de integrare sau orice altă sursă de date.
+The Create Client endpoint lets you add clients directly to your AgencyHandy workspace from an external system. Unlike leads, clients are fully onboarded contacts who can be assigned to orders, invoices, and projects. Use this endpoint to sync new clients from a CRM, onboarding form, or any other data source.
 
 <Note>
-  Înainte de a utiliza acest endpoint, parcurgeți ghidul [Noțiuni de bază](/ro/api/getting-started) pentru a obține cheia API și ID-ul companiei. Spre deosebire de endpoint-ul Creare Lead, crearea unui client **nu** necesită un pas separat de căutare a ID-ului rolului.
+  Before using this endpoint, complete the [Getting Started](/ro/api/getting-started) guide to obtain your API key. You do not need to send a company ID or role ID. AgencyHandy assigns the client to the workspace client role automatically.
 </Note>
 
-## Cerințe preliminare
+## Prerequisites
 
-- ✅ Cheie API generată din **Configurare spațiu de lucru → Cheie API**
-- ✅ ID companie recuperat din `GET {{URL}}/accounts/companies`
+- ✅ API key generated from **Workspace Config → API Key**
 
 ---
 
@@ -23,115 +22,263 @@ Endpoint-ul Creare Client vă permite să adăugați clienți direct în spațiu
 POST {{URL}}/members/bulk-client
 ```
 
-## Header-e
+## Headers
 
-| Header | Valoare |
+| Header | Value |
 |---|---|
-| `x-api-key` | Cheia dvs. API |
-| `companyId` | ID-ul companiei dvs. |
+| `x-api-key` | Your API key |
 | `Content-Type` | `application/json` |
 
-## Corpul solicitării
+## Request body
 
-Corpul solicitării este un **array JSON**. Puteți crea unul sau mai mulți clienți într-o singură solicitare.
+The request body is a **JSON array**. You can create one or more clients in a single request.
+
+<ParamField body="email" type="string" required>
+  The client's email address. It must be valid and should be unique within your workspace.
+</ParamField>
 
 <ParamField body="firstName" type="string" required>
-  Prenumele clientului.
+  The client's first name.
 </ParamField>
 
 <ParamField body="lastName" type="string" required>
-  Numele de familie al clientului.
+  The client's last name.
 </ParamField>
 
-<ParamField body="email" type="string" required>
-  Adresa de e-mail a clientului. Trebuie să fie unică în spațiul dvs. de lucru.
+<ParamField body="status" type="string" required>
+  The client's status. The only accepted value for this endpoint is `Client`.
 </ParamField>
 
-<ParamField body="isConvertedClient" type="boolean" required>
-  Setați la `false` pentru un client complet nou. Setați la `true` la conversia unui lead existent într-un client.
-</ParamField>
-
-<ParamField body="status" type="string">
-  Statusul clientului. Valori comune: `New`, `Active`. Implicit `New` dacă este omis.
+<ParamField body="password" type="string">
+  Optional password for the client. If provided, it must contain at least 8 characters, one uppercase letter, one lowercase letter, one number, and one special character.
 </ParamField>
 
 <ParamField body="contactNo" type="string">
-  Numărul de telefon al clientului.
+  The client's phone number. Optional. Defaults to an empty string if omitted.
+</ParamField>
+
+<ParamField body="country" type="string">
+  The client's country. Optional.
+</ParamField>
+
+<ParamField body="city" type="string">
+  The client's city. Optional.
+</ParamField>
+
+<ParamField body="state" type="string">
+  The client's state or region. Optional.
+</ParamField>
+
+<ParamField body="zipCode" type="string">
+  The client's ZIP or postal code. Optional.
+</ParamField>
+
+<ParamField body="address" type="string">
+  The client's address. Optional.
+</ParamField>
+
+<ParamField body="category" type="string[]">
+  Optional array of category or label IDs. Each ID must exist in the workspace.
+</ParamField>
+
+<ParamField body="companyName" type="string">
+  The client's company name. Optional.
+</ParamField>
+
+<ParamField body="sendInvitationEmail" type="boolean">
+  Whether to send an invitation email. Optional. Defaults to `true`.
 </ParamField>
 
 <ParamField body="source" type="string">
-  Cum ați achiziționat acest client. Exemple: `website`, `referral`, `social`.
+  How you acquired this client. Optional. Example values: `website`, `referral`, `social`.
 </ParamField>
 
-<ParamField body="positionInBoard" type="number">
-  Poziția clientului în coloana panoului. Implicit `1`.
+<ParamField body="leadValue" type="string">
+  The estimated value associated with the client. Optional.
 </ParamField>
 
-## Exemplu de solicitare
+<ParamField body="website" type="string">
+  The client's website. Optional.
+</ParamField>
+
+<ParamField body="agent" type="string">
+  Optional assigned agent ID.
+</ParamField>
+
+<ParamField body="lastContactedAt" type="string">
+  Optional date for when the client was last contacted.
+</ParamField>
+
+<ParamField body="files" type="string[]">
+  Optional array of file IDs attached to the client.
+</ParamField>
+
+<ParamField body="profileImage" type="string">
+  Optional profile image URL or file reference.
+</ParamField>
+
+<ParamField body="customFields" type="array">
+  Optional custom field responses for client custom fields.
+</ParamField>
+
+<Warning>
+  Do not send `companyId`, `role`, `isConvertedClient`, or `positionInBoard`. The endpoint does not use those request fields. Unknown fields are removed during validation.
+</Warning>
+
+## Full payload example
+
+Only `email`, `firstName`, `lastName`, and `status` are required. Every other field shown here is optional.
+
+```json
+[
+  {
+    "email": "john.doe@example.com",
+    "status": "Client",
+    "password": "StrongPass1!",
+    "firstName": "John",
+    "lastName": "Doe",
+    "contactNo": "1234567890",
+    "country": "United States",
+    "city": "New York",
+    "state": "NY",
+    "zipCode": "10001",
+    "address": "123 Main Street",
+    "category": ["6525994184e9ddd798534535"],
+    "companyName": "Example Inc.",
+    "sendInvitationEmail": true,
+    "source": "website",
+    "leadValue": "2500",
+    "website": "https://example.com",
+    "agent": "6525994184e9ddd798534536",
+    "lastContactedAt": "2026-07-19T10:00:00.000Z",
+    "files": ["6525994184e9ddd798534537"],
+    "profileImage": "https://example.com/avatar.png",
+    "customFields": [
+      {
+        "_id": "6525994184e9ddd798534538",
+        "stringValue": "Interested in monthly services",
+        "numberValue": 2500,
+        "dateValue": "2026-07-19T00:00:00.000Z",
+        "booleanValue": true,
+        "arrayValue": [
+          {
+            "value": "paid-search",
+            "label": "Paid Search"
+          }
+        ],
+        "fileValue": [
+          {
+            "_id": "6525994184e9ddd798534539",
+            "link": "https://example.com/file.pdf",
+            "sizeInBytes": "102400",
+            "s3Key": "uploads/file.pdf",
+            "type": "application/pdf",
+            "company": "6525994184e9ddd798534540",
+            "isVersion": false
+          }
+        ]
+      }
+    ]
+  }
+]
+```
+
+<ParamField body="customFields[]._id" type="string" required>
+  The custom field ID when sending a custom field response.
+</ParamField>
+
+<ParamField body="customFields[].stringValue" type="string">
+  Optional string response value.
+</ParamField>
+
+<ParamField body="customFields[].numberValue" type="number">
+  Optional number response value.
+</ParamField>
+
+<ParamField body="customFields[].dateValue" type="string">
+  Optional date response value.
+</ParamField>
+
+<ParamField body="customFields[].booleanValue" type="boolean">
+  Optional boolean response value.
+</ParamField>
+
+<ParamField body="customFields[].arrayValue" type="array">
+  Optional array response value. Each item can include `value` and `label`.
+</ParamField>
+
+<ParamField body="customFields[].fileValue" type="array">
+  Optional file response value. Each file item must include `_id`, `link`, `sizeInBytes`, `s3Key`, `type`, `company`, and `isVersion`.
+</ParamField>
+
+## Example request
 
 ```bash cURL
 curl --request POST "https://api.agencyhandy.com/members/bulk-client" \
   --header "x-api-key: <YOUR_API_KEY>" \
-  --header "companyId: <YOUR_COMPANY_ID>" \
   --header "Content-Type: application/json" \
   --data '[
     {
+      "email": "john.doe@example.com",
+      "status": "Client",
       "firstName": "John",
       "lastName": "Doe",
-      "email": "john.doe@example.com",
-      "isConvertedClient": false,
-      "status": "New",
       "contactNo": "1234567890",
       "source": "website",
-      "positionInBoard": 1
+      "sendInvitationEmail": true
     }
   ]'
 ```
 
-## Răspuns de succes
+## Success response
 
 ```json
 {
-  "message": "Client created successfully",
-  "createdMembers": [
-    {
-      "_id": "NEW_MEMBER_ID",
-      "name": "John Doe",
-      "status": "New",
-      "role": "client"
-    }
-  ]
+  "success": true,
+  "data": {
+    "addedClients": [
+      {
+        "_id": "NEW_MEMBER_ID",
+        "email": "john.doe@example.com",
+        "firstName": "John",
+        "lastName": "Doe",
+        "name": "John Doe",
+        "status": "Client",
+        "source": "website",
+        "isConvertedClient": true,
+        "isAccountVerified": true,
+        "isApproved": true
+      }
+    ],
+    "notAddedClients": []
+  }
 }
 ```
 
-<ResponseField name="message" type="string">
-  Șir de confirmare la succes.
+<ResponseField name="success" type="boolean">
+  Indicates whether at least one client was added.
 </ResponseField>
 
-<ResponseField name="createdMembers" type="array">
-  Array de obiecte client create.
+<ResponseField name="data.addedClients" type="array">
+  Clients that were created, restored, or converted from existing leads.
 </ResponseField>
 
-<ResponseField name="createdMembers[].\_id" type="string">
-  ID-ul unic al clientului creat recent. Utilizați acest ID la atribuirea clientului comenzilor sau facturilor prin API.
+<ResponseField name="data.addedClients[].\_id" type="string">
+  Unique ID of the newly created client. Use this ID when assigning the client to orders or invoices via the API.
 </ResponseField>
 
-<ResponseField name="createdMembers[].name" type="string">
-  Numele complet al clientului (firstName + lastName).
+<ResponseField name="data.addedClients[].name" type="string">
+  The full name of the client (firstName + lastName).
 </ResponseField>
 
-<ResponseField name="createdMembers[].status" type="string">
-  Statusul clientului așa cum este stocat.
+<ResponseField name="data.addedClients[].status" type="string">
+  The status of the client as stored.
 </ResponseField>
 
-<ResponseField name="createdMembers[].role" type="string">
-  Rolul atribuit membrului — va fi `"client"`.
+<ResponseField name="data.notAddedClients" type="array">
+  Clients that were not created. Each item includes the submitted `email` and a `reason`, such as `Client already exists` or `One or more category not found`.
 </ResponseField>
-
-<Note>
-  Header-ul `companyId` pentru acest endpoint utilizează un **I** majuscul în `Id` — `companyId` — spre deosebire de alte endpoint-uri care utilizează `companyid` (totul cu litere mici). Utilizați scrierea exactă prezentată mai sus pentru a evita erorile de autentificare.
-</Note>
 
 <Tip>
-  Transmiteți mai multe obiecte client în array pentru a crea în bloc clienți într-un singur apel API. Fiecare obiect trebuie să aibă o adresă `email` unică. E-mailurile duplicate vor cauza o eroare de validare pentru acea intrare.
+  You can pass up to 200 client objects in the array. If a submitted email belongs to an existing lead, AgencyHandy converts that lead into a client.
 </Tip>
