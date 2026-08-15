@@ -1,7 +1,7 @@
 ---
 title: "Connect Claude and Cursor to run AgencyHandy with MCP"
 sidebarTitle: "Claude & Cursor MCP"
-description: "Set up the AgencyHandy MCP package so you can ask Claude Desktop or Cursor to brief you, assign tickets, send invoices, and more — in plain language."
+description: "Set up AgencyHandy MCP so Claude or Cursor can brief you, assign work, investigate cash and delivery risk, and fill custom fields — in plain language."
 ---
 
 AgencyHandy's MCP connection lets you talk to **Claude** or **Cursor** in plain language and have them run everyday work in your AgencyHandy workspace — without opening every screen yourself.
@@ -9,7 +9,7 @@ AgencyHandy's MCP connection lets you talk to **Claude** or **Cursor** in plain 
 You stay in control. Claude and Cursor only act with the workspace API key you generate, and they ask you to confirm when a name matches more than one person.
 
 <Note>
-  You need a role that can open **Workspace Config** and manage **API keys** (typically **SuperAdmin** or **Admin**). You also need **Node.js 20+** installed on the computer where Claude Desktop or Cursor runs.
+  You need a role that can open **Workspace Config** and manage **API keys** (typically **SuperAdmin** or **Admin**). You also need **Node.js 20+** on the machine where Claude Desktop or Cursor runs. Use `npx -y agencyhandy-mcp@1` (latest is **1.7.1+**: owner insights, advanced context packs, hardened URL/path checks).
 </Note>
 
 ## Requirements
@@ -19,8 +19,7 @@ You stay in control. Claude and Cursor only act with the workspace API key you g
 | **Node.js** | Version **20** or newer (`node -v` to check) |
 | **Claude Desktop** or **Cursor** | One of these apps installed on your computer |
 | **AgencyHandy workspace** | Access to **Workspace Config** → **API Key** |
-
-The MCP package on npm is `agencyhandy-mcp`. Claude and Cursor run it with `npx -y agencyhandy-mcp@1`.
+| **MCP package** | `npx -y agencyhandy-mcp@1` (ships **1.7.1+** on the `1` tag) |
 
 ## Set up Claude or Cursor MCP
 
@@ -30,7 +29,7 @@ The MCP package on npm is `agencyhandy-mcp`. Claude and Cursor run it with `npx 
   </Step>
 
   <Step title="Generate a workspace API key">
-    Create a new workspace API key (or use one you already saved). Copy the key when it appears — AgencyHandy cannot show the full key again later.
+    Create a new workspace API key (or use one you already saved). Copy the key when it appears — AgencyHandy cannot show the full key again later. Keys are **JWTs**; placeholders like `test-key` are rejected.
   </Step>
 
   <Step title="Copy the MCP config">
@@ -43,32 +42,88 @@ The MCP package on npm is `agencyhandy-mcp`. Claude and Cursor run it with `npx 
     - **Cursor**: project or user `.mcp.json`
     - **Claude Desktop**: `claude_desktop_config.json`
 
-    Keep the `npx -y agencyhandy-mcp@1` command and your API key as generated.
+    Keep the `npx -y agencyhandy-mcp@1` command and your API key as generated. The backend URL should be **https** (http is only allowed for localhost during local testing).
   </Step>
 
   <Step title="Restart and try a prompt">
-    Fully quit and reopen **Cursor** or **Claude Desktop**. Then ask something simple, such as a morning briefing for your workspace.
+    Fully quit and reopen **Cursor** or **Claude Desktop**. Then ask something simple, such as a Monday pulse or morning briefing for your workspace.
   </Step>
 </Steps>
 
 <Tip>
-  If Claude or Cursor cannot find the MCP server, confirm **Node.js 20+** is installed and that you restarted the app after saving the config.
+  If Claude or Cursor cannot find the MCP server, confirm **Node.js 20+** is installed and that you restarted the app after saving the config. If the server exits immediately, check stderr for invalid URL/key messages — expired or placeholder keys fail fast.
 </Tip>
 
 ## Example prompts
 
-Use natural language. Prefer full names or emails when you assign work so the right person is selected.
+Ask like an owner: **spot the risk → dig into the record → take the next action**. Prefer full names or emails when assigning so the right person is selected.
+
+### Owner / money / pipeline
 
 | Goal | Example prompt |
 |---|---|
-| **Morning briefing** | “Give me a morning briefing: open tickets, unpaid invoices, and proposals waiting on clients.” |
-| **Assign a ticket** | “Assign the ticket about the Acme homepage redesign to Jordan Lee (jordan@agency.com).” |
-| **Send an invoice** | “Send invoice INV-1042 to the client by email.” |
-| **Create a lead** | “Create a lead for Nora Patel at Bright Studio, email nora@brightstudio.com.” |
-| **Lead + custom field** | “Create a lead for Nora Patel (nora@brightstudio.com) and set Industry to Agency software.” |
-| **Client + custom field** | “Create client Ada Lovelace (ada@acme.com) and set VIP to true.” |
-| **Update a field value** | “On lead nora@brightstudio.com, set Estimated budget to 12000.” |
-| **Mark an invoice paid** | “Mark invoice INV-1042 as paid.” |
+| **Monday pulse** | “What’s on fire this morning — cash overdue, proposals going cold, and work that’s slipping?” |
+| **Cash concentration** | “Who are our top 5 clients by open AR, and how much of that is past 30 / 60 / 90 days? Flag anyone who also looks churny.” |
+| **Collect next** | “Pick the single best invoice to chase today (biggest \$ at risk that isn’t brand new), open full context, then send it if it’s ready.” |
+| **Proposal triage** | “Which proposals are stale or expiring soon? For the worst one, summarize comments and tell me if we’re waiting on them or us.” |
+| **Pipeline hygiene** | “List proposals waiting on clients longer than two weeks — which ones should I bump this week vs write off?” |
+| **Lead quality mix** | “Segment leads by source and by Industry. Where are we getting volume but not converting status?” |
+| **Churn watchlist** | “Which clients look at risk — overdue invoices *and* quiet orders? Give me a short watchlist with why each scored high.” |
+| **At-risk deep dive** | “Take the highest churn-risk client: open their latest order and unpaid invoices, then tell me the one action that would reduce risk this week.” |
+
+### Delivery / assignment
+
+| Goal | Example prompt |
+|---|---|
+| **Smart assign** | “On the Acme website order, find the stuck task, recommend who should own it from the order team (not the busiest), then assign them.” |
+| **Ticket load balance** | “For the Acme homepage redesign ticket, who on the team has capacity vs already overloaded on this order — recommend and assign.” |
+| **Named assign** | “Assign the Acme homepage redesign ticket to Jordan Lee (jordan@agency.com).” |
+| **Order health** | “Full context on the Acme website order: open tasks, tickets, files, related invoices — what’s blocking delivery vs billing?” |
+| **Proposal readiness** | “Summarize the Bright Studio proposal: status, comments, linked service — are they ready to accept or stuck on a question?” |
+| **Invoice story** | “Explain INV-1042 end-to-end: amounts, due aging, linked order, and other open invoices for that client — should I nudge or escalate?” |
+
+### CRM / custom fields / actions
+
+| Goal | Example prompt |
+|---|---|
+| **Qualified lead in** | “Create lead Nora Patel at Bright Studio (nora@brightstudio.com), set Industry to Agency software and Estimated budget to 12000.” |
+| **VIP client in** | “Create client Ada Lovelace (ada@acme.com) and set VIP to true.” |
+| **Enrich existing** | “On lead nora@brightstudio.com, set Estimated budget to 12000 — use the existing field id, don’t create a duplicate.” |
+| **Close the loop** | “Mark INV-1042 paid, then refresh cash risk so I can see if that client drops off the top AR list.” |
+
+## Advanced context packs
+
+Claude should prefer these **context** tools instead of calling many small lookups. They return a short **summary**, **guidance**, and related sources.
+
+| Context pack | What you get | Best for |
+|---|---|---|
+| **Task** (`ah_task_context`) | Task details, comments, time entries, current assignees, **ranked people to assign** (order team / PM + workload on that order), linked order | “Who should do this?” / stuck delivery work |
+| **Ticket** (`ah_ticket_context`) | Same assignment help for tickets/issues | Support or client-facing issues |
+| **Order / project** (`ah_order_context` / `ah_project_context`) | Order summary, tasks, tickets, files, related invoices & subscriptions, prefix settings | Delivery health for one engagement |
+| **Proposal** (`ah_proposal_context`) | Commercial summary, comment thread, public view, linked service | Negotiation / accept readiness |
+| **Invoice** (`ah_invoice_context`) | Billing summary, public view, linked order, related invoices for the same client | Cash / overdue / billing questions |
+
+**Assignment flow (tasks & tickets)**
+
+1. Ask for context on the task or ticket (include the order/project when you know it).
+2. Claude reads `assignment.assignmentCandidates` and `assignment.advice`.
+3. It assigns with a real member id from that list (or resolves a name you gave — it will not invent ids).
+
+<Tip>
+  Passing the **order / project id** makes assignee suggestions much stronger (order team + PM + how many open items they already own on that order).
+</Tip>
+
+## Owner insights (workspace)
+
+These tools scan recent lists and return **heuristic** owner dashboards (not a full data warehouse). Always drill into a real id from the result. Shipped in **`agencyhandy-mcp@1.7+`** (current **1.7.1**).
+
+| Insight | Tool | What you get |
+|---|---|---|
+| **Cash / AR risk** | `ah_cash_risk` | Aging buckets (0–7 … 90+), total due, top clients by amount owed |
+| **Proposal pipeline** | `ah_proposal_pipeline` | Waiting-on-client, stale sent, expiring soon |
+| **Lead segmentation** | `ah_lead_segments` | Counts by status & source; optional breakout by a lead custom field name (e.g. Industry) |
+| **Client churn risk** | `ah_client_churn_risk` | Scored clients from overdue invoices + quiet orders (heuristic) |
+| **Morning snapshot** | `ah_dashboard_digest` | Open invoices, overdue work, new leads |
 
 ## Lead and client custom fields (MCP)
 
@@ -96,18 +151,19 @@ Always include a **full name** or **email** in the prompt when names might colli
 
 ## What works now vs not yet
 
-| Works now | Not available from MCP yet |
+| Works now (`agencyhandy-mcp@1.7.1+`) | Not available from MCP yet |
 |---|---|
-| Briefings and lookups across proposals, projects, tickets, and invoices | Replying in **client chat** from MCP |
-| Assign tickets and other team work | — |
-| Create leads and clients | — |
-| List, create, and fill **lead** / **client custom fields** | — |
+| Morning briefings and deep lookups (proposal, order, task, ticket, invoice context packs) | Replying in **client chat** from MCP |
+| **Recommend who to assign** on tasks/tickets (ranked candidates + workload), then assign | Full BI / warehouse-grade reporting |
+| **Cash risk**, **proposal pipeline aging**, **lead segments**, **client churn heuristics** | — |
+| Investigate orders / proposals / invoices with linked records | — |
+| Create leads and clients; list/create/fill **custom fields** | — |
 | Send invoices and mark invoices paid | — |
 
-MCP supports both reading your workspace and taking actions (create, assign, send, update) with your API key. Client chat replies are not exposed through MCP yet.
+MCP supports both reading your workspace and taking actions (create, assign, send, update) with your API key. Client chat replies are not exposed through MCP yet. Owner insights are sample-based heuristics — confirm before big decisions.
 
 ## Related
 
 - Generate keys and copy config in-app under **Workspace Config** → **API Key**
-- Package: [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) on npm (`npx -y agencyhandy-mcp@1`)
+- Package: [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) on npm — use `npx -y agencyhandy-mcp@1` (latest **1.7.1**)
 - [Lead Custom Fields](/crm/lead-custom-fields) · [Client Custom Fields](/crm/client-custom-fields)
