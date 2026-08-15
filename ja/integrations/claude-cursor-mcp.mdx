@@ -1,0 +1,90 @@
+---
+title: "Claude と Cursor を接続して MCP で AgencyHandy を操作する"
+sidebarTitle: "Claude & Cursor MCP"
+description: "AgencyHandy の MCP パッケージを設定し、Claude Desktop または Cursor に自然言語でブリーフィング、チケット割り当て、請求書送信などを依頼できるようにします。"
+---
+
+AgencyHandy の MCP 接続により、**Claude** または **Cursor** に自然言語で話しかけ、AgencyHandy ワークスペースの日常業務を実行できます — すべての画面を自分で開く必要はありません。
+
+操作の主導権はあなたにあります。Claude と Cursor は、あなたが生成したワークスペース API キーでのみ動作し、名前が複数人に一致する場合は確認を求めます。
+
+<Note>
+  **Workspace Config** を開き **API keys** を管理できるロール（通常は **SuperAdmin** または **Admin**）が必要です。Claude Desktop または Cursor を実行する PC には **Node.js 20+** も必要です。
+</Note>
+
+## 要件
+
+| 要件 | 詳細 |
+|---|---|
+| **Node.js** | バージョン **20** 以上（`node -v` で確認） |
+| **Claude Desktop** または **Cursor** | いずれかのアプリが PC にインストールされていること |
+| **AgencyHandy ワークスペース** | **Workspace Config** → **API Key** へのアクセス |
+
+npm 上の MCP パッケージは `agencyhandy-mcp` です。Claude と Cursor は `npx -y agencyhandy-mcp@1` で実行します。
+
+## Claude または Cursor MCP を設定する
+
+<Steps>
+  <Step title="Workspace Config を開く">
+    AgencyHandy で **Workspace Config**（会社設定）を開き、**API Key** タブに進みます。
+  </Step>
+
+  <Step title="ワークスペース API キーを生成">
+    新しいワークスペース API キーを作成（または保存済みのキーを使用）します。表示されたらコピーしてください — 後から完全なキーを再表示できません。
+  </Step>
+
+  <Step title="MCP 設定をコピー">
+    同じ **API Key** タブの Claude / Cursor MCP セットアップパネルで **Copy MCP config** をクリックし、キーとバックエンド URL を含む JSON を取得します。
+  </Step>
+
+  <Step title="Cursor または Claude Desktop に貼り付け">
+    設定を次に貼り付けます：
+
+    - **Cursor**：プロジェクトまたはユーザーの `.mcp.json`
+    - **Claude Desktop**：`claude_desktop_config.json`
+
+    生成された `npx -y agencyhandy-mcp@1` コマンドと API キーをそのまま保持します。
+  </Step>
+
+  <Step title="再起動してプロンプトを試す">
+    **Cursor** または **Claude Desktop** を完全に終了して開き直します。その後、ワークスペースの朝のブリーフィングなど簡単な依頼をしてください。
+  </Step>
+</Steps>
+
+<Tip>
+  Claude または Cursor が MCP サーバーを見つけられない場合は、**Node.js 20+** の導入と、設定保存後のアプリ再起動を確認してください。
+</Tip>
+
+## プロンプトの例
+
+自然言語を使います。作業を割り当てるときは、正しい人を選ぶためにフルネームまたはメールを優先してください。
+
+| 目的 | プロンプト例 |
+|---|---|
+| **朝のブリーフィング** | 「朝のブリーフィングをください：未解決チケット、未払い請求書、クライアント待ちの提案。」 |
+| **チケットを割り当て** | 「Acme ホームページ改修のチケットを Jordan Lee（jordan@agency.com）に割り当てて。」 |
+| **請求書を送信** | 「請求書 INV-1042 をメールでクライアントに送って。」 |
+| **リードを作成** | 「Bright Studio の Nora Patel（nora@brightstudio.com）のリードを作成して。」 |
+| **請求書を支払済みにする** | 「請求書 INV-1042 を paid にして。」 |
+
+## 同名の人が二人いる場合
+
+チームに Sara が二人いる場合、Claude はどちらを指すか確認します。ID を**捏造せず**、黙って推測もしません。
+
+名前が衝突しそうなときは、プロンプトに必ず**フルネーム**または**メール**を含めてください。
+
+## 今できること vs まだできないこと
+
+| 今できること | MCP では未対応 |
+|---|---|
+| 提案・プロジェクト・チケット・請求書のブリーフィングと検索 | MCP から **client chat** に返信する |
+| チケットやその他のチーム作業の割り当て | — |
+| リード作成 | — |
+| 請求書の送信と支払済み更新 | — |
+
+MCP は API キーでワークスペースの読み取りと操作（作成・割当・送信・更新）をサポートします。クライアントチャットの返信はまだ MCP 経由で公開されていません — その会話は AgencyHandy を使ってください。
+
+## 関連
+
+- アプリ内の **Workspace Config** → **API Key** でキーを生成し設定をコピー
+- パッケージ：npm の [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp)（`npx -y agencyhandy-mcp@1`）

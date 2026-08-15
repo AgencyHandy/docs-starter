@@ -48,7 +48,7 @@ STRUCTURE = [
         ("group_payments", "wallet", False,
          ["integrations/stripe", "integrations/paypal", "integrations/other-payments"]),
         ("group_integrations", "plug", False,
-         ["integrations/slack", "integrations/webhooks"]),
+         ["integrations/slack", "integrations/webhooks", "integrations/claude-cursor-mcp"]),
     ]),
     ("tab_for_client", [
         ("group_getting_started", "rocket", True,

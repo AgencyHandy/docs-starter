@@ -1,0 +1,90 @@
+---
+title: "Claude und Cursor verbinden, um AgencyHandy mit MCP zu steuern"
+sidebarTitle: "Claude & Cursor MCP"
+description: "Richten Sie das AgencyHandy-MCP-Paket ein, damit Sie Claude Desktop oder Cursor in Alltagssprache um Briefings, Ticket-Zuweisungen, Rechnungen und mehr bitten können."
+---
+
+Die MCP-Verbindung von AgencyHandy lässt Sie mit **Claude** oder **Cursor** in Alltagssprache sprechen und alltägliche Arbeit in Ihrem AgencyHandy-Workspace ausführen — ohne jeden Bildschirm selbst zu öffnen.
+
+Sie behalten die Kontrolle. Claude und Cursor handeln nur mit dem Workspace-API-Schlüssel, den Sie erzeugen, und fragen nach, wenn ein Name zu mehr als einer Person passt.
+
+<Note>
+  Sie brauchen eine Rolle, die **Workspace Config** öffnen und **API keys** verwalten kann (typisch **SuperAdmin** oder **Admin**). Außerdem brauchen Sie **Node.js 20+** auf dem Computer, auf dem Claude Desktop oder Cursor läuft.
+</Note>
+
+## Voraussetzungen
+
+| Anforderung | Details |
+|---|---|
+| **Node.js** | Version **20** oder neuer (`node -v` zum Prüfen) |
+| **Claude Desktop** oder **Cursor** | Eine dieser Apps auf Ihrem Computer installiert |
+| **AgencyHandy-Workspace** | Zugriff auf **Workspace Config** → **API Key** |
+
+Das MCP-Paket auf npm heißt `agencyhandy-mcp`. Claude und Cursor starten es mit `npx -y agencyhandy-mcp@1`.
+
+## Claude oder Cursor MCP einrichten
+
+<Steps>
+  <Step title="Workspace Config öffnen">
+    Öffnen Sie in AgencyHandy **Workspace Config** (Unternehmenseinstellungen) und gehen Sie zum Tab **API Key**.
+  </Step>
+
+  <Step title="Workspace-API-Schlüssel erzeugen">
+    Erstellen Sie einen neuen Workspace-API-Schlüssel (oder nutzen Sie einen bereits gespeicherten). Kopieren Sie den Schlüssel, wenn er erscheint — AgencyHandy kann den vollständigen Schlüssel später nicht erneut anzeigen.
+  </Step>
+
+  <Step title="MCP-Konfiguration kopieren">
+    Nutzen Sie auf demselben Tab **API Key** das Claude-/Cursor-MCP-Setup. Klicken Sie auf **Copy MCP config**, damit JSON Schlüssel und Backend-URL enthält.
+  </Step>
+
+  <Step title="In Cursor oder Claude Desktop einfügen">
+    Fügen Sie die Konfiguration ein in:
+
+    - **Cursor**: Projekt- oder Benutzer-`.mcp.json`
+    - **Claude Desktop**: `claude_desktop_config.json`
+
+    Behalten Sie den Befehl `npx -y agencyhandy-mcp@1` und Ihren API-Schlüssel wie erzeugt.
+  </Step>
+
+  <Step title="Neu starten und Prompt testen">
+    Beenden Sie **Cursor** oder **Claude Desktop** vollständig und öffnen Sie die App erneut. Fragen Sie dann etwas Einfaches, z. B. ein Morgen-Briefing für Ihren Workspace.
+  </Step>
+</Steps>
+
+<Tip>
+  Wenn Claude oder Cursor den MCP-Server nicht finden, prüfen Sie **Node.js 20+** und starten Sie die App nach dem Speichern der Konfiguration neu.
+</Tip>
+
+## Beispiel-Prompts
+
+Nutzen Sie natürliche Sprache. Bevorzugen Sie vollständige Namen oder E-Mails beim Zuweisen, damit die richtige Person gewählt wird.
+
+| Ziel | Beispiel-Prompt |
+|---|---|
+| **Morgen-Briefing** | „Gib mir ein Morgen-Briefing: offene Tickets, unbezahlte Rechnungen und Proposals, die auf Kunden warten.“ |
+| **Ticket zuweisen** | „Weise das Ticket zum Acme-Homepage-Redesign Jordan Lee (jordan@agency.com) zu.“ |
+| **Rechnung senden** | „Sende Rechnung INV-1042 per E-Mail an den Kunden.“ |
+| **Lead erstellen** | „Erstelle einen Lead für Nora Patel bei Bright Studio, E-Mail nora@brightstudio.com.“ |
+| **Rechnung als bezahlt markieren** | „Markiere Rechnung INV-1042 als paid.“ |
+
+## Wenn zwei Personen denselben Namen haben
+
+Wenn zwei Teammitglieder Sara heißen, fragt Claude nach, wen Sie meinen. Es **erfindet keine** IDs und rät nicht stillschweigend.
+
+Nehmen Sie immer einen **vollständigen Namen** oder eine **E-Mail** in den Prompt auf, wenn Namen kollidieren könnten.
+
+## Was jetzt funktioniert vs. noch nicht
+
+| Funktioniert jetzt | Noch nicht über MCP verfügbar |
+|---|---|
+| Briefings und Lookups zu Proposals, Projekten, Tickets und Rechnungen | Antworten im **client chat** über MCP |
+| Tickets und andere Teamaufgaben zuweisen | — |
+| Leads erstellen | — |
+| Rechnungen senden und als bezahlt markieren | — |
+
+MCP unterstützt das Lesen Ihres Workspaces und Aktionen (erstellen, zuweisen, senden, aktualisieren) mit Ihrem API-Schlüssel. Client-Chat-Antworten sind über MCP noch nicht verfügbar — nutzen Sie dafür AgencyHandy.
+
+## Verwandte Themen
+
+- Schlüssel erzeugen und Konfiguration in der App unter **Workspace Config** → **API Key** kopieren
+- Paket: [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) auf npm (`npx -y agencyhandy-mcp@1`)

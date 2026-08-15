@@ -1,0 +1,90 @@
+---
+title: "Yhdistä Claude ja Cursor käyttääksesi AgencyHandya MCP:llä"
+sidebarTitle: "Claude & Cursor MCP"
+description: "Määritä AgencyHandyn MCP-paketti, jotta voit pyytää Claude Desktopia tai Cursoria briefingiin, tikettien määritykseen, laskujen lähetykseen ja muuhun — arkikielellä."
+---
+
+AgencyHandyn MCP-yhteys antaa puhua **Claudelle** tai **Cursorille** arkikielellä ja suorittaa päivittäistä työtä AgencyHandy-työtilassa — ilman että avaat jokaista näyttöä itse.
+
+You stay in control. Claude and Cursor only act with the workspace API key you generate, and they ask you to confirm when a name matches more than one person.
+
+<Note>
+  You need a role that can open **Workspace Config** and manage **API keys** (typically **SuperAdmin** or **Admin**). You also need **Node.js 20+** installed on the computer where Claude Desktop or Cursor runs.
+</Note>
+
+## Vaatimukset
+
+| Requirement | Details |
+|---|---|
+| **Node.js** | Version **20** or newer (`node -v` to check) |
+| **Claude Desktop** or **Cursor** | One of these apps installed on your computer |
+| **AgencyHandy workspace** | Access to **Workspace Config** → **API Key** |
+
+The MCP package on npm is `agencyhandy-mcp`. Claude and Cursor run it with `npx -y agencyhandy-mcp@1`.
+
+## Määritä Claude tai Cursor MCP
+
+<Steps>
+  <Step title="Open Workspace Config">
+    In AgencyHandy, open **Workspace Config** (company settings), then go to the **API Key** tab.
+  </Step>
+
+  <Step title="Generate a workspace API key">
+    Create a new workspace API key (or use one you already saved). Copy the key when it appears — AgencyHandy cannot show the full key again later.
+  </Step>
+
+  <Step title="Copy the MCP config">
+    On the same **API Key** tab, use the Claude / Cursor MCP setup panel. Click **Copy MCP config** so the JSON includes your key and backend URL.
+  </Step>
+
+  <Step title="Paste into Cursor or Claude Desktop">
+    Paste the config into:
+
+    - **Cursor**: project or user `.mcp.json`
+    - **Claude Desktop**: `claude_desktop_config.json`
+
+    Keep the `npx -y agencyhandy-mcp@1` command and your API key as generated.
+  </Step>
+
+  <Step title="Restart and try a prompt">
+    Fully quit and reopen **Cursor** or **Claude Desktop**. Then ask something simple, such as a morning briefing for your workspace.
+  </Step>
+</Steps>
+
+<Tip>
+  If Claude or Cursor cannot find the MCP server, confirm **Node.js 20+** is installed and that you restarted the app after saving the config.
+</Tip>
+
+## Esimerkkipromptit
+
+Use natural language. Prefer full names or emails when you assign work so the right person is selected.
+
+| Goal | Example prompt |
+|---|---|
+| **Morning briefing** | “Give me a morning briefing: open tickets, unpaid invoices, and proposals waiting on clients.” |
+| **Assign a ticket** | “Assign the ticket about the Acme homepage redesign to Jordan Lee (jordan@agency.com).” |
+| **Send an invoice** | “Send invoice INV-1042 to the client by email.” |
+| **Create a lead** | “Create a lead for Nora Patel at Bright Studio, email nora@brightstudio.com.” |
+| **Mark an invoice paid** | “Mark invoice INV-1042 as paid.” |
+
+## Kun kahdella henkilöllä on sama nimi
+
+If two teammates are both named Sara, Claude will ask which one you mean. It does **not** invent IDs or guess silently.
+
+Always include a **full name** or **email** in the prompt when names might collide.
+
+## Mikä toimii nyt vs ei vielä
+
+| Works now | Not available from MCP yet |
+|---|---|
+| Briefings and lookups across proposals, projects, tickets, and invoices | Replying in **client chat** from MCP |
+| Assign tickets and other team work | — |
+| Create leads | — |
+| Send invoices and mark invoices paid | — |
+
+MCP supports both reading your workspace and taking actions (create, assign, send, update) with your API key. Client chat replies are not exposed through MCP yet — use AgencyHandy for those conversations.
+
+## Liittyvät
+
+- Generate keys and copy config in-app under **Workspace Config** → **API Key**
+- Package: [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) on npm (`npx -y agencyhandy-mcp@1`)

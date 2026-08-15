@@ -1,0 +1,90 @@
+---
+title: "Claude en Cursor koppelen om AgencyHandy met MCP te gebruiken"
+sidebarTitle: "Claude & Cursor MCP"
+description: "Stel het AgencyHandy MCP-pakket in zodat je Claude Desktop of Cursor in gewone taal om briefings, tickettoewijzingen, facturen en meer kunt vragen."
+---
+
+De MCP-verbinding van AgencyHandy laat je in gewone taal met **Claude** of **Cursor** praten en dagelijks werk in je AgencyHandy-werkruimte uitvoeren — zonder elk scherm zelf te openen.
+
+Jij blijft de baas. Claude en Cursor handelen alleen met de workspace-API-sleutel die je genereert, en vragen bevestiging als een naam bij meer dan één persoon past.
+
+<Note>
+  Je hebt een rol nodig die **Workspace Config** kan openen en **API keys** kan beheren (meestal **SuperAdmin** of **Admin**). Je hebt ook **Node.js 20+** nodig op de computer waar Claude Desktop of Cursor draait.
+</Note>
+
+## Vereisten
+
+| Vereiste | Details |
+|---|---|
+| **Node.js** | Versie **20** of nieuwer (`node -v` om te controleren) |
+| **Claude Desktop** of **Cursor** | Een van deze apps geïnstalleerd op je computer |
+| **AgencyHandy-werkruimte** | Toegang tot **Workspace Config** → **API Key** |
+
+Het MCP-pakket op npm is `agencyhandy-mcp`. Claude en Cursor starten het met `npx -y agencyhandy-mcp@1`.
+
+## Claude of Cursor MCP instellen
+
+<Steps>
+  <Step title="Workspace Config openen">
+    Open in AgencyHandy **Workspace Config** (bedrijfsinstellingen) en ga naar het tabblad **API Key**.
+  </Step>
+
+  <Step title="Een workspace-API-sleutel genereren">
+    Maak een nieuwe workspace-API-sleutel (of gebruik een opgeslagen sleutel). Kopieer de sleutel wanneer die verschijnt — AgencyHandy kan de volledige sleutel later niet opnieuw tonen.
+  </Step>
+
+  <Step title="MCP-config kopiëren">
+    Gebruik op hetzelfde tabblad **API Key** het Claude / Cursor MCP-setuppaneel. Klik op **Copy MCP config** zodat de JSON je sleutel en backend-URL bevat.
+  </Step>
+
+  <Step title="Plakken in Cursor of Claude Desktop">
+    Plak de config in:
+
+    - **Cursor**: project- of gebruikers-`.mcp.json`
+    - **Claude Desktop**: `claude_desktop_config.json`
+
+    Bewaar het commando `npx -y agencyhandy-mcp@1` en je API-sleutel zoals gegenereerd.
+  </Step>
+
+  <Step title="Herstarten en een prompt proberen">
+    Sluit **Cursor** of **Claude Desktop** volledig af en open opnieuw. Vraag daarna iets eenvoudigs, zoals een ochtendbriefing voor je werkruimte.
+  </Step>
+</Steps>
+
+<Tip>
+  Als Claude of Cursor de MCP-server niet vindt, controleer **Node.js 20+** en herstart de app nadat je de config hebt opgeslagen.
+</Tip>
+
+## Voorbeeldprompts
+
+Gebruik natuurlijke taal. Geef bij toewijzingen bij voorkeur volledige namen of e-mails zodat de juiste persoon wordt gekozen.
+
+| Doel | Voorbeeldprompt |
+|---|---|
+| **Ochtendbriefing** | “Geef me een ochtendbriefing: open tickets, onbetaalde facturen en voorstellen die op klanten wachten.” |
+| **Een ticket toewijzen** | “Wijs het ticket over de Acme-homepageredesign toe aan Jordan Lee (jordan@agency.com).” |
+| **Een factuur versturen** | “Stuur factuur INV-1042 per e-mail naar de klant.” |
+| **Een lead aanmaken** | “Maak een lead voor Nora Patel bij Bright Studio, e-mail nora@brightstudio.com.” |
+| **Een factuur als betaald markeren** | “Markeer factuur INV-1042 als paid.” |
+
+## Wanneer twee personen dezelfde naam hebben
+
+Als twee teamleden Sara heten, vraagt Claude wie je bedoelt. Het **verzint geen** ID’s en raadt niet in stilte.
+
+Neem altijd een **volledige naam** of **e-mail** op in de prompt wanneer namen kunnen botsen.
+
+## Wat nu werkt vs nog niet
+
+| Werkt nu | Nog niet beschikbaar via MCP |
+|---|---|
+| Briefings en lookups van voorstellen, projecten, tickets en facturen | Antwoorden in **client chat** via MCP |
+| Tickets en ander teamwerk toewijzen | — |
+| Leads aanmaken | — |
+| Facturen versturen en als betaald markeren | — |
+
+MCP ondersteunt het lezen van je werkruimte en acties (aanmaken, toewijzen, versturen, bijwerken) met je API-sleutel. Antwoorden in clientchat zijn via MCP nog niet beschikbaar — gebruik AgencyHandy voor die gesprekken.
+
+## Gerelateerd
+
+- Genereer sleutels en kopieer de config in de app onder **Workspace Config** → **API Key**
+- Pakket: [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) op npm (`npx -y agencyhandy-mcp@1`)
