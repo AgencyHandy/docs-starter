@@ -9,7 +9,7 @@ AgencyHandy's MCP connection lets you talk to **Claude** or **Cursor** in plain 
 You stay in control. Claude and Cursor only act with the workspace API key you generate, and they ask you to confirm when a name matches more than one person.
 
 <Note>
-  You need a role that can open **Workspace Config** and manage **API keys** (typically **SuperAdmin** or **Admin**). You also need **Node.js 20+** installed on the computer where Claude Desktop or Cursor runs. Use `agencyhandy-mcp@1` (**1.6+** for advanced context packs).
+  You need a role that can open **Workspace Config** and manage **API keys** (typically **SuperAdmin** or **Admin**). You also need **Node.js 20+** installed on the computer where Claude Desktop or Cursor runs. Use `agencyhandy-mcp@1` (**1.7+** for owner insights + advanced context packs).
 </Note>
 
 ## Requirements
@@ -19,7 +19,7 @@ You stay in control. Claude and Cursor only act with the workspace API key you g
 | **Node.js** | Version **20** or newer (`node -v` to check) |
 | **Claude Desktop** or **Cursor** | One of these apps installed on your computer |
 | **AgencyHandy workspace** | Access to **Workspace Config** → **API Key** |
-| **MCP package** | `npx -y agencyhandy-mcp@1` (advanced context from **1.6.0**) |
+| **MCP package** | `npx -y agencyhandy-mcp@1` (owner insights + context from **1.7.0**) |
 
 ## Set up Claude or Cursor MCP
 
@@ -62,6 +62,10 @@ Use natural language. Prefer full names or emails when you assign work so the ri
 |---|---|
 | **Morning briefing** | “Give me a morning briefing: open tickets, unpaid invoices, and proposals waiting on clients.” |
 | **Who should own this task?** | “Look at this task on the Acme order and recommend who to assign — then assign them.” |
+| **Cash at risk** | “Show our open invoice aging — who owes us the most and what’s overdue past 30 days?” |
+| **Proposal pipeline** | “Which proposals are stale or about to expire?” |
+| **Lead segments** | “Segment our leads by source and by Industry custom field.” |
+| **Client churn risk** | “Which clients look at risk of churning — overdue invoices or quiet for months?” |
 | **Assign a named person** | “Assign the ticket about the Acme homepage redesign to Jordan Lee (jordan@agency.com).” |
 | **Investigate an order** | “Give me full context on the Acme website order: open tasks, tickets, files, and related invoices.” |
 | **Investigate a proposal** | “Summarize proposal for Bright Studio: status, comments, and what happens if they accept.” |
@@ -94,6 +98,18 @@ Claude should prefer these **context** tools instead of calling many small looku
 <Tip>
   Passing the **order / project id** makes assignee suggestions much stronger (order team + PM + how many open items they already own on that order).
 </Tip>
+
+## Owner insights (workspace)
+
+These tools scan recent lists and return **heuristic** owner dashboards (not a full data warehouse). Always drill into a real id from the result.
+
+| Insight | Tool | What you get |
+|---|---|---|
+| **Cash / AR risk** | `ah_cash_risk` | Aging buckets (0–7 … 90+), total due, top clients by amount owed |
+| **Proposal pipeline** | `ah_proposal_pipeline` | Waiting-on-client, stale sent, expiring soon |
+| **Lead segmentation** | `ah_lead_segments` | Counts by status & source; optional breakout by a lead custom field name (e.g. Industry) |
+| **Client churn risk** | `ah_client_churn_risk` | Scored clients from overdue invoices + quiet orders (heuristic) |
+| **Morning snapshot** | `ah_dashboard_digest` | Open invoices, overdue work, new leads |
 
 ## Lead and client custom fields (MCP)
 
