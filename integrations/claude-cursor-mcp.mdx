@@ -56,26 +56,40 @@ You stay in control. Claude and Cursor only act with the workspace API key you g
 
 ## Example prompts
 
-Use natural language. Prefer full names or emails when you assign work so the right person is selected.
+Ask like an owner: **spot the risk → dig into the record → take the next action**. Prefer full names or emails when assigning so the right person is selected.
+
+### Owner / money / pipeline
 
 | Goal | Example prompt |
 |---|---|
-| **Morning briefing** | “Give me a morning briefing: open tickets, unpaid invoices, and proposals waiting on clients.” |
-| **Who should own this task?** | “Look at this task on the Acme order and recommend who to assign — then assign them.” |
-| **Cash at risk** | “Show our open invoice aging — who owes us the most and what’s overdue past 30 days?” |
-| **Proposal pipeline** | “Which proposals are stale or about to expire?” |
-| **Lead segments** | “Segment our leads by source and by Industry custom field.” |
-| **Client churn risk** | “Which clients look at risk of churning — overdue invoices or quiet for months?” |
-| **Assign a named person** | “Assign the ticket about the Acme homepage redesign to Jordan Lee (jordan@agency.com).” |
-| **Investigate an order** | “Give me full context on the Acme website order: open tasks, tickets, files, and related invoices.” |
-| **Investigate a proposal** | “Summarize proposal for Bright Studio: status, comments, and what happens if they accept.” |
-| **Investigate an invoice** | “Explain invoice INV-1042: amounts, status, linked order, and other open invoices for that client.” |
-| **Send an invoice** | “Send invoice INV-1042 to the client by email.” |
-| **Create a lead** | “Create a lead for Nora Patel at Bright Studio, email nora@brightstudio.com.” |
-| **Lead + custom field** | “Create a lead for Nora Patel (nora@brightstudio.com) and set Industry to Agency software.” |
-| **Client + custom field** | “Create client Ada Lovelace (ada@acme.com) and set VIP to true.” |
-| **Update a field value** | “On lead nora@brightstudio.com, set Estimated budget to 12000.” |
-| **Mark an invoice paid** | “Mark invoice INV-1042 as paid.” |
+| **Monday pulse** | “What’s on fire this morning — cash overdue, proposals going cold, and work that’s slipping?” |
+| **Cash concentration** | “Who are our top 5 clients by open AR, and how much of that is past 30 / 60 / 90 days? Flag anyone who also looks churny.” |
+| **Collect next** | “Pick the single best invoice to chase today (biggest \$ at risk that isn’t brand new), open full context, then send it if it’s ready.” |
+| **Proposal triage** | “Which proposals are stale or expiring soon? For the worst one, summarize comments and tell me if we’re waiting on them or us.” |
+| **Pipeline hygiene** | “List proposals waiting on clients longer than two weeks — which ones should I bump this week vs write off?” |
+| **Lead quality mix** | “Segment leads by source and by Industry. Where are we getting volume but not converting status?” |
+| **Churn watchlist** | “Which clients look at risk — overdue invoices *and* quiet orders? Give me a short watchlist with why each scored high.” |
+| **At-risk deep dive** | “Take the highest churn-risk client: open their latest order and unpaid invoices, then tell me the one action that would reduce risk this week.” |
+
+### Delivery / assignment
+
+| Goal | Example prompt |
+|---|---|
+| **Smart assign** | “On the Acme website order, find the stuck task, recommend who should own it from the order team (not the busiest), then assign them.” |
+| **Ticket load balance** | “For the Acme homepage redesign ticket, who on the team has capacity vs already overloaded on this order — recommend and assign.” |
+| **Named assign** | “Assign the Acme homepage redesign ticket to Jordan Lee (jordan@agency.com).” |
+| **Order health** | “Full context on the Acme website order: open tasks, tickets, files, related invoices — what’s blocking delivery vs billing?” |
+| **Proposal readiness** | “Summarize the Bright Studio proposal: status, comments, linked service — are they ready to accept or stuck on a question?” |
+| **Invoice story** | “Explain INV-1042 end-to-end: amounts, due aging, linked order, and other open invoices for that client — should I nudge or escalate?” |
+
+### CRM / custom fields / actions
+
+| Goal | Example prompt |
+|---|---|
+| **Qualified lead in** | “Create lead Nora Patel at Bright Studio (nora@brightstudio.com), set Industry to Agency software and Estimated budget to 12000.” |
+| **VIP client in** | “Create client Ada Lovelace (ada@acme.com) and set VIP to true.” |
+| **Enrich existing** | “On lead nora@brightstudio.com, set Estimated budget to 12000 — use the existing field id, don’t create a duplicate.” |
+| **Close the loop** | “Mark INV-1042 paid, then refresh cash risk so I can see if that client drops off the top AR list.” |
 
 ## Advanced context packs
 
@@ -137,17 +151,16 @@ Always include a **full name** or **email** in the prompt when names might colli
 
 ## What works now vs not yet
 
-| Works now (`agencyhandy-mcp@1.6+`) | Not available from MCP yet |
+| Works now (`agencyhandy-mcp@1.7+`) | Not available from MCP yet |
 |---|---|
 | Morning briefings and deep lookups (proposal, order, task, ticket, invoice context packs) | Replying in **client chat** from MCP |
-| **Recommend who to assign** on tasks/tickets (ranked candidates + workload), then assign | Portfolio analytics (churn scores, lead segmentation dashboards) |
-| Investigate orders: tasks, tickets, files, related invoices/subscriptions | — |
-| Investigate proposals: status, comments, public view, linked service | — |
-| Investigate invoices: amounts, linked order, related client invoices | — |
+| **Recommend who to assign** on tasks/tickets (ranked candidates + workload), then assign | Full BI / warehouse-grade reporting |
+| **Cash risk**, **proposal pipeline aging**, **lead segments**, **client churn heuristics** | — |
+| Investigate orders / proposals / invoices with linked records | — |
 | Create leads and clients; list/create/fill **custom fields** | — |
 | Send invoices and mark invoices paid | — |
 
-MCP supports both reading your workspace and taking actions (create, assign, send, update) with your API key. Client chat replies and workspace-wide churn/segmentation insights are not exposed as dedicated tools yet — use context packs and custom fields for per-record intelligence.
+MCP supports both reading your workspace and taking actions (create, assign, send, update) with your API key. Client chat replies are not exposed through MCP yet. Owner insights are sample-based heuristics — confirm before big decisions.
 
 ## Related
 
