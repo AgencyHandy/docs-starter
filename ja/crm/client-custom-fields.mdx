@@ -4,7 +4,6 @@ sidebarTitle: "クライアントカスタムフィールド"
 description: "Workspace Config でクライアント用カスタムフィールドを作成・管理し、契約条件、業種タグ、希望連絡手段など標準プロフィール以外のデータを保存します。"
 ---
 
-
 Client custom fields let you store extra information on each client profile — beyond name, email, company, and address. Define the fields once in **Workspace Config**, then fill them in on client profiles and keep them visible for the whole team.
 
 <Note>
@@ -15,6 +14,13 @@ Client custom fields let you store extra information on each client profile — 
 
 - Access to **Workspace Config** → **Custom Fields**
 - A plan that includes CRM custom fields for your workspace
+
+## How client custom fields work
+
+1. An admin creates a **definition** (name + type) with **Belongs to = Client**.
+2. That definition appears on every client profile in the workspace.
+3. Your team (or Claude/Cursor via MCP) fills a **value** on each client.
+4. Client and lead fields are separate catalogs. Reusing the name `Industry` on clients is fine even if leads already have `Industry` — they are two definitions with different ids.
 
 ## Create a client custom field
 
@@ -55,6 +61,19 @@ Client custom fields let you store extra information on each client profile — 
   Mirror important lead fields on the client side when you regularly convert prospects. That makes conversion mapping smoother.
 </Tip>
 
+## Duplicate field names
+
+AgencyHandy blocks a second **client** field with the same name (case and spacing ignored). Examples:
+
+| You try to create | Existing client field | Result |
+|---|---|---|
+| `VIP` | `VIP` | Not created — **Field already exists** |
+| `vip` | `VIP` | Not created (same name after normalize) |
+| `Preferred channel` | `preferred channel` | Not created |
+| `VIP` | Lead field `VIP` only | **Allowed** — lead and client catalogs are separate |
+
+If create is blocked for a duplicate, reuse the existing client field id from the list instead of creating another.
+
 ## Fill in values on a client
 
 <Steps>
@@ -70,6 +89,20 @@ Client custom fields let you store extra information on each client profile — 
     Complete the fields your workspace defined, then save. Values stay on the profile for orders, billing, and team handoffs.
   </Step>
 </Steps>
+
+## Use with Claude or Cursor (MCP)
+
+With [AgencyHandy MCP](/ja/integrations/claude-cursor-mcp) (`agencyhandy-mcp@1.5+`):
+
+1. List client definitions: `ah_custom_field_list` with type `client`.
+2. Fill by **definition id** (`ah_custom_field_set_values` or `customFields` on `ah_client_create`).
+3. To update an already-filled value, load the client with `ah_member_custom_fields` and prefer the existing value row id when present.
+
+Example prompts:
+
+- “List our client custom fields.”
+- “Create client Ada Lovelace and set VIP to true.”
+- “On client ada@acme.com, set Preferred channel to Slack.”
 
 ## Carry fields over from a lead
 
@@ -98,3 +131,4 @@ Client list views and CSV import focus on standard profile columns. Custom field
 - [Clients](/ja/crm/clients) — create, import, export, and portal access
 - [Lead Custom Fields](/ja/crm/lead-custom-fields) — fields on prospects before conversion
 - [Leads](/ja/crm/leads) — pipeline and convert to client
+- [Claude & Cursor MCP](/ja/integrations/claude-cursor-mcp) — fill fields from AI tools

@@ -4,7 +4,6 @@ sidebarTitle: "Campos personalizados de leads"
 description: "Crie e gira campos personalizados de leads no Workspace Config."
 ---
 
-
 Lead custom fields let you store extra information on each prospect — beyond name, email, company, and the default CRM fields. Define the fields once in **Workspace Config**, then fill them in on every lead card.
 
 <Note>
@@ -15,6 +14,13 @@ Lead custom fields let you store extra information on each prospect — beyond n
 
 - Access to **Workspace Config** → **Custom Fields**
 - A plan that includes CRM custom fields for your workspace
+
+## How lead custom fields work
+
+1. An admin creates a **definition** (name + type) with **Belongs to = Lead**.
+2. That definition appears on every lead profile in the workspace.
+3. Your team (or Claude/Cursor via MCP) fills a **value** on each lead.
+4. Lead and client fields are separate catalogs. A lead field named `Industry` does **not** automatically create a client field with the same name.
 
 ## Create a lead custom field
 
@@ -55,6 +61,19 @@ Lead custom fields let you store extra information on each prospect — beyond n
   Use names your sales team already uses in calls and spreadsheets. Consistent labels make filters and handoffs clearer.
 </Tip>
 
+## Duplicate field names
+
+AgencyHandy blocks a second **lead** field with the same name (case and spacing ignored). Examples:
+
+| You try to create | Existing lead field | Result |
+|---|---|---|
+| `Industry` | `Industry` | Not created — **Field already exists** |
+| `industry` | `Industry` | Not created (same name after normalize) |
+| `  Budget  ` | `budget` | Not created (whitespace normalized) |
+| `Industry` | Client field `Industry` only | **Allowed** — lead and client catalogs are separate |
+
+If create is blocked for a duplicate, use the existing field from the list (or via `ah_custom_field_list`) instead of creating another.
+
 ## Fill in values on a lead
 
 <Steps>
@@ -70,6 +89,23 @@ Lead custom fields let you store extra information on each prospect — beyond n
     Complete the fields your workspace defined, then save. Values stay with the lead through pipeline stages.
   </Step>
 </Steps>
+
+## Use with Claude or Cursor (MCP)
+
+With [AgencyHandy MCP](/pt/integrations/claude-cursor-mcp) (`agencyhandy-mcp@1.5+`):
+
+1. List lead definitions: ask Claude to list lead custom fields (`ah_custom_field_list`, type `lead`).
+2. Fill values by **definition id** — never invent ids.
+3. Create a lead and set fields in one step, or set values on an existing lead.
+4. To **update** a value later, open the member’s fields first (`ah_member_custom_fields`) and prefer the existing value row id when one is already filled.
+
+Example prompts:
+
+- “List our lead custom fields.”
+- “Create a lead for Nora at Bright Studio and set Industry to Agency software.”
+- “On lead nora@brightstudio.com, set Estimated budget to 12000.”
+
+Admins can also create definitions from MCP (`ah_custom_field_create`). Duplicate names return in `notCreatedCustomFields` with reason **Field already exists**.
 
 ## Convert a lead that has custom fields
 
@@ -93,3 +129,4 @@ From **Workspace Config** → **Custom Fields**:
 - [Leads](/pt/crm/leads) — pipeline, email, and conversion
 - [Client Custom Fields](/pt/crm/client-custom-fields) — fields that appear on client profiles
 - [Clients](/pt/crm/clients) — client list, import, and portal access
+- [Claude & Cursor MCP](/pt/integrations/claude-cursor-mcp) — fill fields from AI tools

@@ -65,7 +65,28 @@ Use natural language. Prefer full names or emails when you assign work so the ri
 | **Assign a ticket** | “Assign the ticket about the Acme homepage redesign to Jordan Lee (jordan@agency.com).” |
 | **Send an invoice** | “Send invoice INV-1042 to the client by email.” |
 | **Create a lead** | “Create a lead for Nora Patel at Bright Studio, email nora@brightstudio.com.” |
+| **Lead + custom field** | “Create a lead for Nora Patel (nora@brightstudio.com) and set Industry to Agency software.” |
+| **Client + custom field** | “Create client Ada Lovelace (ada@acme.com) and set VIP to true.” |
+| **Update a field value** | “On lead nora@brightstudio.com, set Estimated budget to 12000.” |
 | **Mark an invoice paid** | “Mark invoice INV-1042 as paid.” |
+
+## Lead and client custom fields (MCP)
+
+Custom fields are workspace definitions under **Workspace Config** → **Custom Fields**. Lead fields and client fields are **separate** lists.
+
+**Typical flow**
+
+1. List definitions (`ah_custom_field_list` with type `lead` or `client`) — copy the real `_id`.
+2. Fill values with `ah_custom_field_set_values`, or pass `customFields` when creating a lead/client.
+3. To change a value later, load the person with `ah_member_custom_fields` and prefer an existing filled-value id when one is returned.
+
+**Duplicate definitions**
+
+- Within **leads**, names must be unique (case and spacing ignored). Creating `Industry` again returns **Field already exists** and does not add a second lead field.
+- Within **clients**, the same rule applies.
+- The same display name **can** exist once on leads **and** once on clients — different owners, different ids. Always pick the id for the owner you mean (`lead` vs `client`).
+
+Never invent field ids. If a create is rejected as a duplicate, list fields and reuse the existing id.
 
 ## When two people share a name
 
@@ -83,7 +104,7 @@ Always include a **full name** or **email** in the prompt when names might colli
 | List, create, and fill **lead** / **client custom fields** | — |
 | Send invoices and mark invoices paid | — |
 
-MCP supports both reading your workspace and taking actions (create, assign, send, update) with your API key. Use `ah_custom_field_list` then `ah_custom_field_set_values` (or pass `customFields` on lead/client create). Client chat replies are not exposed through MCP yet.
+MCP supports both reading your workspace and taking actions (create, assign, send, update) with your API key. Client chat replies are not exposed through MCP yet.
 
 ## Related
 
