@@ -78,11 +78,12 @@ Always include a **full name** or **email** in the prompt when names might colli
 | Works now | Not available from MCP yet |
 |---|---|
 | Briefings and lookups across proposals, projects, tickets, and invoices | Replying in **client chat** from MCP |
-| Assign tickets and other team work | Filling **lead** or **client custom field** values |
-| Create leads | — |
+| Assign tickets and other team work | — |
+| Create leads and clients | — |
+| List, create, and fill **lead** / **client custom fields** | — |
 | Send invoices and mark invoices paid | — |
 
-MCP supports both reading your workspace and taking actions (create, assign, send, update) with your API key. Client chat replies and custom field values are not exposed through MCP yet — define fields in **Workspace Config** → **Custom Fields** and fill them on lead or client profiles in AgencyHandy.
+MCP supports both reading your workspace and taking actions (create, assign, send, update) with your API key. Use `ah_custom_field_list` then `ah_custom_field_set_values` (or pass `customFields` on lead/client create). Client chat replies are not exposed through MCP yet.
 
 ## Related
 
