@@ -1,7 +1,7 @@
 ---
 title: "Connect Claude and Cursor to run AgencyHandy with MCP"
 sidebarTitle: "Claude & Cursor MCP"
-description: "Set up the AgencyHandy MCP package so you can ask Claude Desktop or Cursor to brief you, assign tickets, send invoices, and more — in plain language."
+description: "Set up the AgencyHandy MCP package so you can ask Claude Desktop or Cursor to brief you, assign tickets, investigate orders and invoices, and fill custom fields — in plain language."
 ---
 
 AgencyHandy's MCP connection lets you talk to **Claude** or **Cursor** in plain language and have them run everyday work in your AgencyHandy workspace — without opening every screen yourself.
@@ -9,7 +9,7 @@ AgencyHandy's MCP connection lets you talk to **Claude** or **Cursor** in plain 
 You stay in control. Claude and Cursor only act with the workspace API key you generate, and they ask you to confirm when a name matches more than one person.
 
 <Note>
-  You need a role that can open **Workspace Config** and manage **API keys** (typically **SuperAdmin** or **Admin**). You also need **Node.js 20+** installed on the computer where Claude Desktop or Cursor runs.
+  You need a role that can open **Workspace Config** and manage **API keys** (typically **SuperAdmin** or **Admin**). You also need **Node.js 20+** installed on the computer where Claude Desktop or Cursor runs. Use `agencyhandy-mcp@1` (**1.6+** for advanced context packs).
 </Note>
 
 ## Requirements
@@ -19,8 +19,7 @@ You stay in control. Claude and Cursor only act with the workspace API key you g
 | **Node.js** | Version **20** or newer (`node -v` to check) |
 | **Claude Desktop** or **Cursor** | One of these apps installed on your computer |
 | **AgencyHandy workspace** | Access to **Workspace Config** → **API Key** |
-
-The MCP package on npm is `agencyhandy-mcp`. Claude and Cursor run it with `npx -y agencyhandy-mcp@1`.
+| **MCP package** | `npx -y agencyhandy-mcp@1` (advanced context from **1.6.0**) |
 
 ## Set up Claude or Cursor MCP
 
@@ -62,13 +61,39 @@ Use natural language. Prefer full names or emails when you assign work so the ri
 | Goal | Example prompt |
 |---|---|
 | **Morning briefing** | “Give me a morning briefing: open tickets, unpaid invoices, and proposals waiting on clients.” |
-| **Assign a ticket** | “Assign the ticket about the Acme homepage redesign to Jordan Lee (jordan@agency.com).” |
+| **Who should own this task?** | “Look at this task on the Acme order and recommend who to assign — then assign them.” |
+| **Assign a named person** | “Assign the ticket about the Acme homepage redesign to Jordan Lee (jordan@agency.com).” |
+| **Investigate an order** | “Give me full context on the Acme website order: open tasks, tickets, files, and related invoices.” |
+| **Investigate a proposal** | “Summarize proposal for Bright Studio: status, comments, and what happens if they accept.” |
+| **Investigate an invoice** | “Explain invoice INV-1042: amounts, status, linked order, and other open invoices for that client.” |
 | **Send an invoice** | “Send invoice INV-1042 to the client by email.” |
 | **Create a lead** | “Create a lead for Nora Patel at Bright Studio, email nora@brightstudio.com.” |
 | **Lead + custom field** | “Create a lead for Nora Patel (nora@brightstudio.com) and set Industry to Agency software.” |
 | **Client + custom field** | “Create client Ada Lovelace (ada@acme.com) and set VIP to true.” |
 | **Update a field value** | “On lead nora@brightstudio.com, set Estimated budget to 12000.” |
 | **Mark an invoice paid** | “Mark invoice INV-1042 as paid.” |
+
+## Advanced context packs
+
+Claude should prefer these **context** tools instead of calling many small lookups. They return a short **summary**, **guidance**, and related sources.
+
+| Context pack | What you get | Best for |
+|---|---|---|
+| **Task** (`ah_task_context`) | Task details, comments, time entries, current assignees, **ranked people to assign** (order team / PM + workload on that order), linked order | “Who should do this?” / stuck delivery work |
+| **Ticket** (`ah_ticket_context`) | Same assignment help for tickets/issues | Support or client-facing issues |
+| **Order / project** (`ah_order_context` / `ah_project_context`) | Order summary, tasks, tickets, files, related invoices & subscriptions, prefix settings | Delivery health for one engagement |
+| **Proposal** (`ah_proposal_context`) | Commercial summary, comment thread, public view, linked service | Negotiation / accept readiness |
+| **Invoice** (`ah_invoice_context`) | Billing summary, public view, linked order, related invoices for the same client | Cash / overdue / billing questions |
+
+**Assignment flow (tasks & tickets)**
+
+1. Ask for context on the task or ticket (include the order/project when you know it).
+2. Claude reads `assignment.assignmentCandidates` and `assignment.advice`.
+3. It assigns with a real member id from that list (or resolves a name you gave — it will not invent ids).
+
+<Tip>
+  Passing the **order / project id** makes assignee suggestions much stronger (order team + PM + how many open items they already own on that order).
+</Tip>
 
 ## Lead and client custom fields (MCP)
 
@@ -96,15 +121,17 @@ Always include a **full name** or **email** in the prompt when names might colli
 
 ## What works now vs not yet
 
-| Works now | Not available from MCP yet |
+| Works now (`agencyhandy-mcp@1.6+`) | Not available from MCP yet |
 |---|---|
-| Briefings and lookups across proposals, projects, tickets, and invoices | Replying in **client chat** from MCP |
-| Assign tickets and other team work | — |
-| Create leads and clients | — |
-| List, create, and fill **lead** / **client custom fields** | — |
+| Morning briefings and deep lookups (proposal, order, task, ticket, invoice context packs) | Replying in **client chat** from MCP |
+| **Recommend who to assign** on tasks/tickets (ranked candidates + workload), then assign | Portfolio analytics (churn scores, lead segmentation dashboards) |
+| Investigate orders: tasks, tickets, files, related invoices/subscriptions | — |
+| Investigate proposals: status, comments, public view, linked service | — |
+| Investigate invoices: amounts, linked order, related client invoices | — |
+| Create leads and clients; list/create/fill **custom fields** | — |
 | Send invoices and mark invoices paid | — |
 
-MCP supports both reading your workspace and taking actions (create, assign, send, update) with your API key. Client chat replies are not exposed through MCP yet.
+MCP supports both reading your workspace and taking actions (create, assign, send, update) with your API key. Client chat replies and workspace-wide churn/segmentation insights are not exposed as dedicated tools yet — use context packs and custom fields for per-record intelligence.
 
 ## Related
 
