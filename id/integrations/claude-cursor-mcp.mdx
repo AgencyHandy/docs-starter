@@ -1,0 +1,90 @@
+---
+title: "Hubungkan Claude dan Cursor untuk menjalankan AgencyHandy dengan MCP"
+sidebarTitle: "Claude & Cursor MCP"
+description: "Siapkan paket MCP AgencyHandy agar Anda dapat meminta Claude Desktop atau Cursor melakukan briefing, menugaskan tiket, mengirim invoice, dan lainnya — dalam bahasa sehari-hari."
+---
+
+Koneksi MCP AgencyHandy memungkinkan Anda berbicara dengan **Claude** atau **Cursor** dalam bahasa alami dan menjalankan pekerjaan harian di workspace AgencyHandy — tanpa membuka setiap layar sendiri.
+
+Anda tetap memegang kendali. Claude dan Cursor hanya bertindak dengan kunci API workspace yang Anda buat, dan meminta konfirmasi saat nama cocok dengan lebih dari satu orang.
+
+<Note>
+  Anda memerlukan peran yang dapat membuka **Workspace Config** dan mengelola **API keys** (biasanya **SuperAdmin** atau **Admin**). Anda juga memerlukan **Node.js 20+** di komputer tempat Claude Desktop atau Cursor berjalan.
+</Note>
+
+## Persyaratan
+
+| Persyaratan | Detail |
+|---|---|
+| **Node.js** | Versi **20** atau lebih baru (periksa dengan `node -v`) |
+| **Claude Desktop** atau **Cursor** | Salah satu aplikasi ini terpasang di komputer Anda |
+| **Workspace AgencyHandy** | Akses ke **Workspace Config** → **API Key** |
+
+Paket MCP di npm adalah `agencyhandy-mcp`. Claude dan Cursor menjalankannya dengan `npx -y agencyhandy-mcp@1`.
+
+## Siapkan Claude atau Cursor MCP
+
+<Steps>
+  <Step title="Buka Workspace Config">
+    Di AgencyHandy, buka **Workspace Config** (pengaturan perusahaan), lalu buka tab **API Key**.
+  </Step>
+
+  <Step title="Buat kunci API workspace">
+    Buat kunci API workspace baru (atau gunakan yang sudah disimpan). Salin kunci saat muncul — AgencyHandy tidak dapat menampilkan kunci lengkap lagi nanti.
+  </Step>
+
+  <Step title="Salin konfigurasi MCP">
+    Di tab **API Key** yang sama, gunakan panel setup Claude / Cursor MCP. Klik **Copy MCP config** agar JSON menyertakan kunci dan URL backend Anda.
+  </Step>
+
+  <Step title="Tempel ke Cursor atau Claude Desktop">
+    Tempel konfigurasi ke:
+
+    - **Cursor**: proyek atau pengguna `.mcp.json`
+    - **Claude Desktop**: `claude_desktop_config.json`
+
+    Pertahankan perintah `npx -y agencyhandy-mcp@1` dan kunci API seperti yang dihasilkan.
+  </Step>
+
+  <Step title="Mulai ulang dan coba prompt">
+    Keluar sepenuhnya lalu buka lagi **Cursor** atau **Claude Desktop**. Kemudian minta sesuatu yang sederhana, misalnya briefing pagi untuk workspace.
+  </Step>
+</Steps>
+
+<Tip>
+  Jika Claude atau Cursor tidak menemukan server MCP, pastikan **Node.js 20+** terpasang dan Anda memulai ulang aplikasi setelah menyimpan konfigurasi.
+</Tip>
+
+## Contoh prompt
+
+Gunakan bahasa alami. Utamakan nama lengkap atau email saat menugaskan pekerjaan agar orang yang tepat dipilih.
+
+| Tujuan | Contoh prompt |
+|---|---|
+| **Briefing pagi** | “Berikan briefing pagi: tiket terbuka, invoice belum dibayar, dan proposal menunggu klien.” |
+| **Tugaskan tiket** | “Tugaskan tiket redesign homepage Acme ke Jordan Lee (jordan@agency.com).” |
+| **Kirim invoice** | “Kirim invoice INV-1042 ke klien melalui email.” |
+| **Buat lead** | “Buat lead untuk Nora Patel di Bright Studio, email nora@brightstudio.com.” |
+| **Tandai invoice sebagai dibayar** | “Tandai invoice INV-1042 sebagai paid.” |
+
+## Ketika dua orang memiliki nama yang sama
+
+Jika dua rekan bernama Sara, Claude akan menanyakan yang mana yang Anda maksud. Ia **tidak membuat** ID dan tidak menebak diam-diam.
+
+Selalu sertakan **nama lengkap** atau **email** dalam prompt ketika nama mungkin bertabrakan.
+
+## Yang berfungsi sekarang vs belum
+
+| Berfungsi sekarang | Belum tersedia dari MCP |
+|---|---|
+| Briefing dan pencarian proposal, proyek, tiket, dan invoice | Membalas di **client chat** dari MCP |
+| Menugaskan tiket dan pekerjaan tim lainnya | — |
+| Membuat lead | — |
+| Mengirim invoice dan menandai sebagai dibayar | — |
+
+MCP mendukung membaca workspace dan tindakan (buat, tugaskan, kirim, perbarui) dengan kunci API Anda. Balasan chat klien belum diekspos melalui MCP — gunakan AgencyHandy untuk percakapan tersebut.
+
+## Terkait
+
+- Buat kunci dan salin konfigurasi di aplikasi pada **Workspace Config** → **API Key**
+- Paket: [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) di npm (`npx -y agencyhandy-mcp@1`)

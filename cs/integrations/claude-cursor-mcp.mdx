@@ -1,0 +1,90 @@
+---
+title: "Připojte Claude a Cursor pro ovládání AgencyHandy přes MCP"
+sidebarTitle: "Claude a Cursor MCP"
+description: "Nastavte balíček MCP AgencyHandy, abyste mohli Claude Desktop nebo Cursor požádat přirozeným jazykem o briefing, přiřazení ticketů, odeslání faktur a další."
+---
+
+MCP připojení AgencyHandy vám umožní mluvit s **Claude** nebo **Cursor** přirozeným jazykem a provádět každodenní práci v workspace AgencyHandy — aniž byste otevírali každou obrazovku sami.
+
+Kontrolu si ponecháte. Claude a Cursor jednají jen s API klíčem workspace, který vygenerujete, a požádají o potvrzení, když jméno sedí na více osob.
+
+<Note>
+  Potřebujete roli, která může otevřít **Workspace Config** a spravovat **API keys** (obvykle **SuperAdmin** nebo **Admin**). Na počítači, kde běží Claude Desktop nebo Cursor, potřebujete také **Node.js 20+**.
+</Note>
+
+## Požadavky
+
+| Požadavek | Podrobnosti |
+|---|---|
+| **Node.js** | Verze **20** nebo novější (zkontrolujte `node -v`) |
+| **Claude Desktop** nebo **Cursor** | Jedna z těchto aplikací nainstalovaná v počítači |
+| **Workspace AgencyHandy** | Přístup k **Workspace Config** → **API Key** |
+
+MCP balíček na npm je `agencyhandy-mcp`. Claude a Cursor jej spouští přes `npx -y agencyhandy-mcp@1`.
+
+## Nastavení Claude nebo Cursor MCP
+
+<Steps>
+  <Step title="Otevřít Workspace Config">
+    V AgencyHandy otevřete **Workspace Config** (nastavení společnosti) a přejděte na kartu **API Key**.
+  </Step>
+
+  <Step title="Vygenerovat API klíč workspace">
+    Vytvořte nový API klíč workspace (nebo použijte uložený). Zkopírujte klíč, až se zobrazí — AgencyHandy už později nemůže ukázat celý klíč znovu.
+  </Step>
+
+  <Step title="Zkopírovat MCP konfiguraci">
+    Na stejné kartě **API Key** použijte panel Claude / Cursor MCP. Klikněte na **Copy MCP config**, aby JSON obsahoval klíč a URL backendu.
+  </Step>
+
+  <Step title="Vložit do Cursor nebo Claude Desktop">
+    Vložte konfiguraci do:
+
+    - **Cursor**: projektový nebo uživatelský `.mcp.json`
+    - **Claude Desktop**: `claude_desktop_config.json`
+
+    Ponechte příkaz `npx -y agencyhandy-mcp@1` a API klíč tak, jak byly vygenerovány.
+  </Step>
+
+  <Step title="Restartovat a vyzkoušet prompt">
+    Úplně ukončete a znovu otevřete **Cursor** nebo **Claude Desktop**. Pak požádejte o něco jednoduchého, například ranní briefing workspace.
+  </Step>
+</Steps>
+
+<Tip>
+  Pokud Claude nebo Cursor nenajde MCP server, ověřte instalaci **Node.js 20+** a restart aplikace po uložení konfigurace.
+</Tip>
+
+## Příklady promptů
+
+Používejte přirozený jazyk. Při přiřazování práce preferujte celá jména nebo e-maily, aby byla vybrána správná osoba.
+
+| Cíl | Příklad promptu |
+|---|---|
+| **Ranní briefing** | „Dej mi ranní briefing: otevřené tickety, nezaplacené faktury a nabídky čekající na klienty.“ |
+| **Přiřadit ticket** | „Přiřaď ticket o redesignu homepage Acme Jordanu Lee (jordan@agency.com).“ |
+| **Odeslat fakturu** | „Pošli fakturu INV-1042 klientovi e-mailem.“ |
+| **Vytvořit lead** | „Vytvoř lead pro Noru Patel z Bright Studio, e-mail nora@brightstudio.com.“ |
+| **Označit fakturu jako zaplacenou** | „Označ fakturu INV-1042 jako paid.“ |
+
+## Když dvě osoby sdílejí stejné jméno
+
+Pokud se dvě kolegyně jmenují Sara, Claude se zeptá, kterou myslíte. **Nevymýšlí** ID a netipuje potichu.
+
+Do promptu vždy uveďte **celé jméno** nebo **e-mail**, když by se jména mohla srazit.
+
+## Co funguje teď vs ještě ne
+
+| Funguje teď | Zatím nedostupné přes MCP |
+|---|---|
+| Briefingy a vyhledávání nabídek, projektů, ticketů a faktur | Odpovídání v **client chat** přes MCP |
+| Přiřazování ticketů a jiné týmové práce | — |
+| Vytváření leadů | — |
+| Odesílání faktur a označení jako zaplacené | — |
+
+MCP podporuje čtení workspace a akce (vytvořit, přiřadit, odeslat, aktualizovat) s vaším API klíčem. Odpovědi v klientském chatu zatím přes MCP nejsou — pro tyto konverzace použijte AgencyHandy.
+
+## Související
+
+- Generujte klíče a kopírujte konfiguraci v aplikaci pod **Workspace Config** → **API Key**
+- Balíček: [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) na npm (`npx -y agencyhandy-mcp@1`)

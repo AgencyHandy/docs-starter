@@ -46,9 +46,9 @@ STRUCTURE = [
         ("group_account_billing", "credit-card", False,
          ["account/profile", "account/plans-pricing", "account/multiple-workspaces"]),
         ("group_payments", "wallet", False,
-         ["integrations/stripe", "integrations/paypal", "integrations/other-payments"]),
+         ["integrations/stripe", "integrations/paypal", "integrations/other-payments", "integrations/setup-credit"]),
         ("group_integrations", "plug", False,
-         ["integrations/slack", "integrations/webhooks"]),
+         ["integrations/slack", "integrations/webhooks", "integrations/claude-cursor-mcp"]),
     ]),
     ("tab_for_client", [
         ("group_getting_started", "rocket", True,

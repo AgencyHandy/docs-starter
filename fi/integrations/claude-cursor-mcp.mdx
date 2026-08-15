@@ -1,0 +1,90 @@
+---
+title: "Yhdistä Claude ja Cursor käyttääksesi AgencyHandya MCP:llä"
+sidebarTitle: "Claude & Cursor MCP"
+description: "Määritä AgencyHandy MCP-paketti, jotta voit pyytää Claude Desktopilta tai Cursorilta briffiä, tikettien määräämistä, laskujen lähettämistä ja muuta — arkikielellä."
+---
+
+AgencyHandyn MCP-yhteys antaa puhua **Claudelle** tai **Cursorille** arkikielellä ja suorittaa päivittäistä työtä AgencyHandy-työtilassa — avaamatta jokaista näyttöä itse.
+
+Sinä säilytät hallinnan. Claude ja Cursor toimivat vain generoimallasi työtilan API-avaimella ja pyytävät vahvistusta, kun nimi vastaa useampaa henkilöä.
+
+<Note>
+  Tarvitset roolin, joka voi avata **Workspace Config**in ja hallita **API keys** (yleensä **SuperAdmin** tai **Admin**). Tarvitset myös **Node.js 20+** tietokoneella, jossa Claude Desktop tai Cursor toimii.
+</Note>
+
+## Vaatimukset
+
+| Vaatimus | Tiedot |
+|---|---|
+| **Node.js** | Versio **20** tai uudempi (tarkista `node -v`) |
+| **Claude Desktop** tai **Cursor** | Jompikumpi sovellus asennettuna tietokoneellesi |
+| **AgencyHandy-työtila** | Pääsy: **Workspace Config** → **API Key** |
+
+npm:n MCP-paketti on `agencyhandy-mcp`. Claude ja Cursor suorittavat sen komennolla `npx -y agencyhandy-mcp@1`.
+
+## Claude- tai Cursor-MCP:n määritys
+
+<Steps>
+  <Step title="Avaa Workspace Config">
+    Avaa AgencyHandyssa **Workspace Config** (yritysasetukset) ja siirry **API Key** -välilehdelle.
+  </Step>
+
+  <Step title="Luo työtilan API-avain">
+    Luo uusi työtilan API-avain (tai käytä tallennettua). Kopioi avain, kun se näkyy — AgencyHandy ei voi näyttää täyttä avainta myöhemmin uudelleen.
+  </Step>
+
+  <Step title="Kopioi MCP-määritys">
+    Samalla **API Key** -välilehdellä käytä Claude / Cursor MCP -paneelia. Napsauta **Copy MCP config**, jotta JSON sisältää avaimesi ja backend-URL:n.
+  </Step>
+
+  <Step title="Liitä Cursoriin tai Claude Desktopiin">
+    Liitä määritys:
+
+    - **Cursor**: projektin tai käyttäjän `.mcp.json`
+    - **Claude Desktop**: `claude_desktop_config.json`
+
+    Pidä komento `npx -y agencyhandy-mcp@1` ja API-avain sellaisina kuin ne generoitiin.
+  </Step>
+
+  <Step title="Käynnistä uudelleen ja kokeile kehotetta">
+    Sulje **Cursor** tai **Claude Desktop** kokonaan ja avaa uudelleen. Pyydä sitten jotain yksinkertaista, esimerkiksi työtilan aamubriffiä.
+  </Step>
+</Steps>
+
+<Tip>
+  Jos Claude tai Cursor ei löydä MCP-palvelinta, varmista **Node.js 20+** ja käynnistä sovellus uudelleen määrityksen tallennuksen jälkeen.
+</Tip>
+
+## Esimerkkikehotteet
+
+Käytä luonnollista kieltä. Suosi täyttä nimeä tai sähköpostia työtä määrätessäsi, jotta oikea henkilö valitaan.
+
+| Tavoite | Esimerkkikehote |
+|---|---|
+| **Aamubrief** | “Anna aamubrief: avoimet tiketit, maksamattomat laskut ja asiakasta odottavat ehdotukset.” |
+| **Määrää tiketti** | “Määrää Acme-etusivun uudistuksen tiketti Jordan Leelle (jordan@agency.com).” |
+| **Lähetä lasku** | “Lähetä lasku INV-1042 asiakkaalle sähköpostilla.” |
+| **Luo liidi** | “Luo liidi Nora Patelille Bright Studiosta, sähköposti nora@brightstudio.com.” |
+| **Merkitse lasku maksetuksi** | “Merkitse lasku INV-1042 tilaan paid.” |
+
+## Kun kahdella henkilöllä on sama nimi
+
+Jos tiimissä on kaksi Saraa, Claude kysyy kumpaa tarkoitat. Se **ei keksi** ID:itä eikä arvaa hiljaa.
+
+Sisällytä kehotteeseen aina **koko nimi** tai **sähköposti**, kun nimet voivat törmätä.
+
+## Mikä toimii nyt vs ei vielä
+
+| Toimii nyt | Ei vielä saatavilla MCP:stä |
+|---|---|
+| Briefit ja haut ehdotuksille, projekteille, tiketeille ja laskuille | Vastaus **client chat**issa MCP:stä |
+| Tikettien ja muun tiimityön määrääminen | — |
+| Liidien luonti | — |
+| Laskujen lähetys ja maksetuksi merkintä | — |
+
+MCP tukee työtilan lukemista ja toimintoja (luo, määrää, lähetä, päivitä) API-avaimellasi. Asiakaschat-vastaukset eivät ole vielä MCP:n kautta — käytä AgencyHandya näihin keskusteluihin.
+
+## Aiheeseen liittyvää
+
+- Luo avaimia ja kopioi määritys sovelluksessa: **Workspace Config** → **API Key**
+- Paketti: [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) npm:ssä (`npx -y agencyhandy-mcp@1`)

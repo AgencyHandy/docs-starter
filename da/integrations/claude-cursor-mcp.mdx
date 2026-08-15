@@ -1,0 +1,90 @@
+---
+title: "Tilslut Claude og Cursor for at køre AgencyHandy med MCP"
+sidebarTitle: "Claude & Cursor MCP"
+description: "Konfigurer AgencyHandy MCP-pakken, så du kan bede Claude Desktop eller Cursor om briefing, ticket-tildeling, fakturaer m.m. — på almindeligt sprog."
+---
+
+AgencyHandys MCP-forbindelse lader dig tale med **Claude** eller **Cursor** på almindeligt sprog og udføre dagligt arbejde i dit AgencyHandy-arbejdsområde — uden at åbne hvert skærmbillede selv.
+
+Du bevarer kontrollen. Claude og Cursor handler kun med den API-nøgle til arbejdsområdet, du genererer, og beder dig bekræfte, når et navn matcher mere end én person.
+
+<Note>
+  Du skal have en rolle, der kan åbne **Workspace Config** og administrere **API keys** (typisk **SuperAdmin** eller **Admin**). Du skal også have **Node.js 20+** på computeren, hvor Claude Desktop eller Cursor kører.
+</Note>
+
+## Krav
+
+| Krav | Detaljer |
+|---|---|
+| **Node.js** | Version **20** eller nyere (`node -v` for at tjekke) |
+| **Claude Desktop** eller **Cursor** | En af disse apps installeret på din computer |
+| **AgencyHandy-arbejdsområde** | Adgang til **Workspace Config** → **API Key** |
+
+MCP-pakken på npm er `agencyhandy-mcp`. Claude og Cursor kører den med `npx -y agencyhandy-mcp@1`.
+
+## Konfigurer Claude eller Cursor MCP
+
+<Steps>
+  <Step title="Åbn Workspace Config">
+    I AgencyHandy skal du åbne **Workspace Config** (virksomhedsindstillinger) og gå til fanen **API Key**.
+  </Step>
+
+  <Step title="Generér en API-nøgle til arbejdsområdet">
+    Opret en ny API-nøgle til arbejdsområdet (eller brug en gemt). Kopiér nøglen, når den vises — AgencyHandy kan ikke vise den fulde nøgle igen senere.
+  </Step>
+
+  <Step title="Kopiér MCP-konfigurationen">
+    På samme fane **API Key** skal du bruge Claude / Cursor MCP-panelet. Klik på **Copy MCP config**, så JSON indeholder din nøgle og backend-URL.
+  </Step>
+
+  <Step title="Indsæt i Cursor eller Claude Desktop">
+    Indsæt konfigurationen i:
+
+    - **Cursor**: projekt- eller bruger-`.mcp.json`
+    - **Claude Desktop**: `claude_desktop_config.json`
+
+    Behold kommandoen `npx -y agencyhandy-mcp@1` og din API-nøgle som genereret.
+  </Step>
+
+  <Step title="Genstart og prøv en prompt">
+    Afslut helt og åbn **Cursor** eller **Claude Desktop** igen. Bed derefter om noget enkelt, f.eks. en morgenbriefing for arbejdsområdet.
+  </Step>
+</Steps>
+
+<Tip>
+  Hvis Claude eller Cursor ikke kan finde MCP-serveren, skal du bekræfte, at **Node.js 20+** er installeret, og at du genstartede appen efter at have gemt konfigurationen.
+</Tip>
+
+## Eksempelprompts
+
+Brug naturligt sprog. Foretræk fulde navne eller e-mails, når du tildeler arbejde, så den rigtige person vælges.
+
+| Mål | Eksempelprompt |
+|---|---|
+| **Morgenbriefing** | “Giv mig en morgenbriefing: åbne tickets, ubetalte fakturaer og forslag, der venter på kunder.” |
+| **Tildel en ticket** | “Tildel ticketen om Acme-hjemmesidens redesign til Jordan Lee (jordan@agency.com).” |
+| **Send en faktura** | “Send faktura INV-1042 til kunden via e-mail.” |
+| **Opret en lead** | “Opret en lead for Nora Patel hos Bright Studio, e-mail nora@brightstudio.com.” |
+| **Markér en faktura som betalt** | “Markér faktura INV-1042 som paid.” |
+
+## Når to personer har samme navn
+
+Hvis to teammedlemmer hedder Sara, spørger Claude, hvem du mener. Den **opfinder ikke** ID’er og gætter ikke i stilhed.
+
+Medtag altid et **fuldt navn** eller en **e-mail** i prompten, når navne kan kollidere.
+
+## Hvad der virker nu vs endnu ikke
+
+| Virker nu | Endnu ikke tilgængeligt via MCP |
+|---|---|
+| Briefinger og opslag på forslag, projekter, tickets og fakturaer | Svare i **client chat** via MCP |
+| Tildel tickets og andet teamarbejde | — |
+| Opret leads | — |
+| Send fakturaer og markér som betalte | — |
+
+MCP understøtter læsning af dit arbejdsområde og handlinger (opret, tildel, send, opdater) med din API-nøgle. Svar i klientchat er endnu ikke tilgængelige via MCP — brug AgencyHandy til de samtaler.
+
+## Relateret
+
+- Generér nøgler og kopiér konfigurationen i appen under **Workspace Config** → **API Key**
+- Pakke: [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) på npm (`npx -y agencyhandy-mcp@1`)

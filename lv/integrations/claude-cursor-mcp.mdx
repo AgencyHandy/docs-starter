@@ -1,0 +1,90 @@
+---
+title: "Savienojiet Claude un Cursor, lai vadītu AgencyHandy ar MCP"
+sidebarTitle: "Claude un Cursor MCP"
+description: "Iestatiet AgencyHandy MCP pakotni, lai dabiskā valodā lūgtu Claude Desktop vai Cursor briefingus, biļešu piešķiršanu, rēķinu sūtīšanu un vairāk."
+---
+
+AgencyHandy MCP savienojums ļauj runāt ar **Claude** vai **Cursor** ikdienas valodā un veikt ikdienas darbu AgencyHandy darba vietā — neatverot katru ekrānu pašam.
+
+Kontrole paliek jums. Claude un Cursor darbojas tikai ar darba vietas API atslēgu, ko ģenerējat, un lūdz apstiprinājumu, ja vārds atbilst vairākām personām.
+
+<Note>
+  Nepieciešama loma, kas var atvērt **Workspace Config** un pārvaldīt **API keys** (parasti **SuperAdmin** vai **Admin**). Nepieciešams arī **Node.js 20+** datorā, kurā darbojas Claude Desktop vai Cursor.
+</Note>
+
+## Prasības
+
+| Prasība | Detaļas |
+|---|---|
+| **Node.js** | Versija **20** vai jaunāka (pārbaudiet ar `node -v`) |
+| **Claude Desktop** vai **Cursor** | Viena no šīm lietotnēm instalēta datorā |
+| **AgencyHandy darba vieta** | Piekļuve **Workspace Config** → **API Key** |
+
+MCP pakotne npm ir `agencyhandy-mcp`. Claude un Cursor to palaiz ar `npx -y agencyhandy-mcp@1`.
+
+## Claude vai Cursor MCP iestatīšana
+
+<Steps>
+  <Step title="Atvērt Workspace Config">
+    AgencyHandy atveriet **Workspace Config** (uzņēmuma iestatījumi), pēc tam cilni **API Key**.
+  </Step>
+
+  <Step title="Ģenerēt darba vietas API atslēgu">
+    Izveidojiet jaunu darba vietas API atslēgu (vai izmantojiet saglabāto). Kopējiet atslēgu, kad tā parādās — AgencyHandy vēlāk nevarēs rādīt pilno atslēgu atkārtoti.
+  </Step>
+
+  <Step title="Kopēt MCP konfigurāciju">
+    Tajā pašā cilnē **API Key** izmantojiet Claude / Cursor MCP paneli. Noklikšķiniet **Copy MCP config**, lai JSON iekļautu atslēgu un backend URL.
+  </Step>
+
+  <Step title="Ielīmēt Cursor vai Claude Desktop">
+    Ielīmējiet konfigurāciju:
+
+    - **Cursor**: projekta vai lietotāja `.mcp.json`
+    - **Claude Desktop**: `claude_desktop_config.json`
+
+    Saglabājiet komandu `npx -y agencyhandy-mcp@1` un API atslēgu kā ģenerēts.
+  </Step>
+
+  <Step title="Restartēt un izmēģināt uzvedni">
+    Pilnībā aizveriet un atkal atveriet **Cursor** vai **Claude Desktop**. Pēc tam pajautājiet kaut ko vienkāršu, piemēram, rīta briefingu darba vietai.
+  </Step>
+</Steps>
+
+<Tip>
+  Ja Claude vai Cursor neatrod MCP serveri, apstipriniet, ka ir instalēts **Node.js 20+**, un restartējiet lietotni pēc konfigurācijas saglabāšanas.
+</Tip>
+
+## Uzvedņu piemēri
+
+Izmantojiet dabisku valodu. Piešķirot darbu, dodiet priekšroku pilniem vārdiem vai e-pastiem, lai tiktu izvēlēta īstā persona.
+
+| Mērķis | Uzvednes piemērs |
+|---|---|
+| **Rīta briefing** | “Dod man rīta briefingu: atvērtie ticketi, neapmaksātie rēķini un piedāvājumi, kas gaida klientus.” |
+| **Piešķirt ticketu** | “Piešķir Acme sākumlapas redesign ticketu Jordan Lee (jordan@agency.com).” |
+| **Nosūtīt rēķinu** | “Nosūti rēķinu INV-1042 klientam pa e-pastu.” |
+| **Izveidot lead** | “Izveido lead Nora Patel no Bright Studio, e-pasts nora@brightstudio.com.” |
+| **Atzīmēt rēķinu kā apmaksātu** | “Atzīmē rēķinu INV-1042 kā paid.” |
+
+## Kad divām personām ir viens vārds
+
+Ja komandā ir divas Sara, Claude jautās, kuru jūs domājat. Tas **neizdomā** ID un nekļūst klusībā.
+
+Vienmēr iekļaujiet **pilnu vārdu** vai **e-pastu** uzvednē, kad vārdi var sadurties.
+
+## Kas darbojas tagad vs vēl nē
+
+| Darbojas tagad | Vēl nav pieejams no MCP |
+|---|---|
+| Briefingi un meklēšana piedāvājumiem, projektiem, ticketiem un rēķiniem | Atbildēšana **client chat** no MCP |
+| Ticketu un cita komandas darba piešķiršana | — |
+| Lead izveide | — |
+| Rēķinu sūtīšana un atzīmēšana kā apmaksāti | — |
+
+MCP atbalsta darba vietas lasīšanu un darbības (izveidot, piešķirt, sūtīt, atjaunināt) ar jūsu API atslēgu. Klienta tērzēšanas atbildes vēl nav pieejamas caur MCP — izmantojiet AgencyHandy šīm sarunām.
+
+## Saistītais
+
+- Ģenerējiet atslēgas un kopējiet konfigurāciju lietotnē: **Workspace Config** → **API Key**
+- Pakotne: [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) npm (`npx -y agencyhandy-mcp@1`)

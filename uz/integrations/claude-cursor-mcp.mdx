@@ -1,0 +1,90 @@
+---
+title: "AgencyHandy’ni MCP bilan boshqarish uchun Claude va Cursor’ni ulang"
+sidebarTitle: "Claude va Cursor MCP"
+description: "Claude Desktop yoki Cursor’dan oddiy tilda brifing, ticket tayinlash, invoice yuborish va boshqalarni so‘rash uchun AgencyHandy MCP paketini sozlang."
+---
+
+AgencyHandy MCP ulanishi **Claude** yoki **Cursor** bilan oddiy tilda gaplashib, AgencyHandy ish maydonidagi kundalik ishlarni bajarishga imkon beradi — har bir ekranni o‘zingiz ochmasdan.
+
+Nazorat sizda qoladi. Claude va Cursor faqat siz yaratgan ish maydoni API kaliti bilan ishlaydi va ism bir nechta odamga mos kelganda tasdiqlashni so‘raydi.
+
+<Note>
+  **Workspace Config**ni ochib **API keys**ni boshqara oladigan rol kerak (odatda **SuperAdmin** yoki **Admin**). Claude Desktop yoki Cursor ishlaydigan kompyuterda **Node.js 20+** ham kerak.
+</Note>
+
+## Talablar
+
+| Talab | Tafsilotlar |
+|---|---|
+| **Node.js** | Versiya **20** yoki yangiroq (`node -v` bilan tekshiring) |
+| **Claude Desktop** yoki **Cursor** | Kompyuteringizda shu ilovalardan biri o‘rnatilgan bo‘lishi kerak |
+| **AgencyHandy ish maydoni** | **Workspace Config** → **API Key** ga kirish |
+
+npm’dagi MCP paketi `agencyhandy-mcp`. Claude va Cursor uni `npx -y agencyhandy-mcp@1` bilan ishga tushiradi.
+
+## Claude yoki Cursor MCP’ni sozlash
+
+<Steps>
+  <Step title="Workspace Config’ni oching">
+    AgencyHandy’da **Workspace Config**ni (kompaniya sozlamalari) oching, keyin **API Key** tabiga o‘ting.
+  </Step>
+
+  <Step title="Ish maydoni API kalitini yarating">
+    Yangi ish maydoni API kalitini yarating (yoki saqlanganini ishlating). Ko‘rinishi bilan nusxalang — AgencyHandy keyin to‘liq kalitni qayta ko‘rsata olmaydi.
+  </Step>
+
+  <Step title="MCP konfiguratsiyasini nusxalang">
+    Xuddi shu **API Key** tabida Claude / Cursor MCP panelidan foydalaning. JSON kalitingiz va backend URL’ni o‘z ichiga olishi uchun **Copy MCP config** tugmasini bosing.
+  </Step>
+
+  <Step title="Cursor yoki Claude Desktop’ga joylashtiring">
+    Konfiguratsiyani quyidagiga joylashtiring:
+
+    - **Cursor**: loyiha yoki foydalanuvchi `.mcp.json`
+    - **Claude Desktop**: `claude_desktop_config.json`
+
+    `npx -y agencyhandy-mcp@1` buyrug‘i va API kalitini yaratilganidek saqlang.
+  </Step>
+
+  <Step title="Qayta ishga tushiring va promptni sinab ko‘ring">
+    **Cursor** yoki **Claude Desktop**ni to‘liq yoping va qayta oching. Keyin ish maydoni uchun ertalabki brifing kabi oddiy narsa so‘rang.
+  </Step>
+</Steps>
+
+<Tip>
+  Agar Claude yoki Cursor MCP serverini topa olmasa, **Node.js 20+** o‘rnatilganini va konfiguratsiyani saqlagandan keyin ilovani qayta ishga tushirganingizni tekshiring.
+</Tip>
+
+## Namuna promptlar
+
+Tabiiy tildan foydalaning. Ish tayinlashda to‘g‘ri odamni tanlash uchun to‘liq ism yoki emailni afzal ko‘ring.
+
+| Maqsad | Namuna prompt |
+|---|---|
+| **Ertalabki brifing** | “Menga ertalabki brifing ber: ochiq ticketlar, to‘lanmagan invoice’lar va mijoz kutayotgan takliflar.” |
+| **Ticket tayinlash** | “Acme bosh sahifa redesign ticketini Jordan Lee’ga (jordan@agency.com) tayinla.” |
+| **Invoice yuborish** | “INV-1042 invoice’ni mijozga email orqali yubor.” |
+| **Lead yaratish** | “Bright Studio’dan Nora Patel uchun lead yarat, email nora@brightstudio.com.” |
+| **Invoice’ni to‘langan deb belgilash** | “INV-1042 invoice’ni paid deb belgilа.” |
+
+## Ikki kishi bir xil ismga ega bo‘lsa
+
+Jamoada ikkita Sara bo‘lsa, Claude qaysi birini nazarda tutayotganingizni so‘raydi. U ID **o‘ylab topmaydi** va jimlikda taxmin qilmaydi.
+
+Ismlar to‘qnashishi mumkin bo‘lsa, promptda doimo **to‘liq ism** yoki **email**ni kiriting.
+
+## Hozir ishlaydigan vs hali emas
+
+| Hozir ishlaydi | MCP orqali hali yo‘q |
+|---|---|
+| Taklif, loyiha, ticket va invoice’lar bo‘yicha brifing va qidiruv | MCP orqali **client chat**da javob berish |
+| Ticket va boshqa jamoa ishlarini tayinlash | — |
+| Lead yaratish | — |
+| Invoice yuborish va to‘langan deb belgilash | — |
+
+MCP API kalitingiz bilan ish maydonini o‘qish va amallar (yaratish, tayinlash, yuborish, yangilash)ni qo‘llab-quvvatlaydi. Mijoz chat javoblari hali MCP orqali ochilmagan — bu suhbatlar uchun AgencyHandy’dan foydalaning.
+
+## Bog‘liq
+
+- Ilovada **Workspace Config** → **API Key** ostida kalit yarating va konfiguratsiyani nusxalang
+- Paket: npm’dagi [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) (`npx -y agencyhandy-mcp@1`)

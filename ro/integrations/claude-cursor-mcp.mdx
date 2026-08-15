@@ -1,0 +1,90 @@
+---
+title: "Conectează Claude și Cursor pentru a folosi AgencyHandy cu MCP"
+sidebarTitle: "Claude și Cursor MCP"
+description: "Configurează pachetul MCP AgencyHandy ca să poți cere Claude Desktop sau Cursor un briefing, atribuiri de ticket, trimitere de facturi și altele — în limbaj natural."
+---
+
+Conexiunea MCP AgencyHandy vă permite să vorbiți cu **Claude** sau **Cursor** în limbaj natural și să rulați munca zilnică în workspace-ul AgencyHandy — fără să deschideți fiecare ecran singuri.
+
+Păstrați controlul. Claude și Cursor acționează doar cu cheia API a workspace-ului pe care o generați și cer confirmare când un nume corespunde mai multor persoane.
+
+<Note>
+  Aveți nevoie de un rol care poate deschide **Workspace Config** și gestiona **API keys** (de obicei **SuperAdmin** sau **Admin**). Aveți nevoie și de **Node.js 20+** pe computerul unde rulează Claude Desktop sau Cursor.
+</Note>
+
+## Cerințe
+
+| Cerință | Detalii |
+|---|---|
+| **Node.js** | Versiunea **20** sau mai nouă (verificați cu `node -v`) |
+| **Claude Desktop** sau **Cursor** | Una dintre aceste aplicații instalată pe computer |
+| **Workspace AgencyHandy** | Acces la **Workspace Config** → **API Key** |
+
+Pachetul MCP pe npm este `agencyhandy-mcp`. Claude și Cursor îl rulează cu `npx -y agencyhandy-mcp@1`.
+
+## Configurare Claude sau Cursor MCP
+
+<Steps>
+  <Step title="Deschide Workspace Config">
+    În AgencyHandy, deschideți **Workspace Config** (setările companiei), apoi fila **API Key**.
+  </Step>
+
+  <Step title="Generează o cheie API a workspace-ului">
+    Creați o cheie API nouă a workspace-ului (sau folosiți una salvată). Copiați cheia când apare — AgencyHandy nu va putea afișa din nou cheia completă ulterior.
+  </Step>
+
+  <Step title="Copiază configurația MCP">
+    În aceeași filă **API Key**, folosiți panoul Claude / Cursor MCP. Faceți clic pe **Copy MCP config** ca JSON-ul să includă cheia și URL-ul backend.
+  </Step>
+
+  <Step title="Lipește în Cursor sau Claude Desktop">
+    Lipiți configurația în:
+
+    - **Cursor**: proiect sau utilizator `.mcp.json`
+    - **Claude Desktop**: `claude_desktop_config.json`
+
+    Păstrați comanda `npx -y agencyhandy-mcp@1` și cheia API așa cum au fost generate.
+  </Step>
+
+  <Step title="Repornește și încearcă un prompt">
+    Închideți complet și redeschideți **Cursor** sau **Claude Desktop**. Apoi cereți ceva simplu, de exemplu un briefing de dimineață pentru workspace.
+  </Step>
+</Steps>
+
+<Tip>
+  Dacă Claude sau Cursor nu găsesc serverul MCP, confirmați că **Node.js 20+** este instalat și că ați repornit aplicația după salvarea configurației.
+</Tip>
+
+## Exemple de prompturi
+
+Folosiți limbaj natural. Preferă nume complete sau e-mailuri când atribuiți muncă, ca să fie selectată persoana potrivită.
+
+| Obiectiv | Exemplu de prompt |
+|---|---|
+| **Briefing de dimineață** | “Dă-mi un briefing de dimineață: ticket-uri deschise, facturi neplătite și propuneri care așteaptă clienții.” |
+| **Atribuie un ticket** | “Atribuie ticket-ul despre redesign-ul homepage Acme către Jordan Lee (jordan@agency.com).” |
+| **Trimite o factură** | “Trimite factura INV-1042 clientului pe e-mail.” |
+| **Creează un lead** | “Creează un lead pentru Nora Patel de la Bright Studio, e-mail nora@brightstudio.com.” |
+| **Marchează o factură ca plătită** | “Marchează factura INV-1042 ca paid.” |
+
+## Când două persoane au același nume
+
+Dacă două colege se numesc Sara, Claude întreabă pe care o intenționați. **Nu inventează** ID-uri și nu ghicește în tăcere.
+
+Includeți întotdeauna un **nume complet** sau un **e-mail** în prompt când numele se pot ciocni.
+
+## Ce funcționează acum vs încă nu
+
+| Funcționează acum | Încă indisponibil din MCP |
+|---|---|
+| Briefinguri și căutări pentru propuneri, proiecte, ticket-uri și facturi | Răspuns în **client chat** din MCP |
+| Atribuirea ticket-urilor și a altei munci de echipă | — |
+| Crearea de lead-uri | — |
+| Trimiterea facturilor și marcarea ca plătite | — |
+
+MCP permite citirea workspace-ului și acțiuni (creare, atribuire, trimitere, actualizare) cu cheia API. Răspunsurile din chat-ul client nu sunt încă expuse prin MCP — folosiți AgencyHandy pentru acele conversații.
+
+## Conexe
+
+- Generați chei și copiați configurația în aplicație la **Workspace Config** → **API Key**
+- Pachet: [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) pe npm (`npx -y agencyhandy-mcp@1`)

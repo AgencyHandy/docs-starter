@@ -1,0 +1,90 @@
+---
+title: "AgencyHandy’yi MCP ile kullanmak için Claude ve Cursor’ı bağlayın"
+sidebarTitle: "Claude ve Cursor MCP"
+description: "Claude Desktop veya Cursor’dan doğal dilde brifing, ticket atama, fatura gönderme ve daha fazlasını istemek için AgencyHandy MCP paketini kurun."
+---
+
+AgencyHandy’nin MCP bağlantısı, **Claude** veya **Cursor** ile doğal dilde konuşup AgencyHandy çalışma alanındaki günlük işleri çalıştırmanızı sağlar — her ekranı kendiniz açmadan.
+
+Kontrol sizde kalır. Claude ve Cursor yalnızca oluşturduğunuz çalışma alanı API anahtarıyla hareket eder ve bir ad birden fazla kişiyle eşleşirse onay ister.
+
+<Note>
+  **Workspace Config**’i açıp **API keys** yönetebilen bir role ihtiyacınız var (genellikle **SuperAdmin** veya **Admin**). Claude Desktop veya Cursor’ın çalıştığı bilgisayarda **Node.js 20+** da gerekir.
+</Note>
+
+## Gereksinimler
+
+| Gereksinim | Ayrıntılar |
+|---|---|
+| **Node.js** | Sürüm **20** veya daha yeni (`node -v` ile kontrol edin) |
+| **Claude Desktop** veya **Cursor** | Bilgisayarınızda bu uygulamalardan biri yüklü olmalı |
+| **AgencyHandy çalışma alanı** | **Workspace Config** → **API Key** erişimi |
+
+npm’deki MCP paketi `agencyhandy-mcp`’dir. Claude ve Cursor bunu `npx -y agencyhandy-mcp@1` ile çalıştırır.
+
+## Claude veya Cursor MCP’yi kurun
+
+<Steps>
+  <Step title="Workspace Config’i açın">
+    AgencyHandy’de **Workspace Config**’i (şirket ayarları) açın, ardından **API Key** sekmesine gidin.
+  </Step>
+
+  <Step title="Çalışma alanı API anahtarı oluşturun">
+    Yeni bir çalışma alanı API anahtarı oluşturun (veya kaydettiğiniz birini kullanın). Göründüğünde kopyalayın — AgencyHandy daha sonra tam anahtarı tekrar gösteremez.
+  </Step>
+
+  <Step title="MCP yapılandırmasını kopyalayın">
+    Aynı **API Key** sekmesinde Claude / Cursor MCP kurulum panelini kullanın. JSON’un anahtarınızı ve backend URL’sini içermesi için **Copy MCP config**’e tıklayın.
+  </Step>
+
+  <Step title="Cursor veya Claude Desktop’a yapıştırın">
+    Yapılandırmayı şuraya yapıştırın:
+
+    - **Cursor**: proje veya kullanıcı `.mcp.json`
+    - **Claude Desktop**: `claude_desktop_config.json`
+
+    `npx -y agencyhandy-mcp@1` komutunu ve API anahtarını üretildiği gibi bırakın.
+  </Step>
+
+  <Step title="Yeniden başlatın ve bir istem deneyin">
+    **Cursor** veya **Claude Desktop**’ı tamamen kapatıp yeniden açın. Ardından çalışma alanı için sabah brifingi gibi basit bir şey isteyin.
+  </Step>
+</Steps>
+
+<Tip>
+  Claude veya Cursor MCP sunucusunu bulamazsa **Node.js 20+** kurulu olduğunu ve yapılandırmayı kaydettikten sonra uygulamayı yeniden başlattığınızı doğrulayın.
+</Tip>
+
+## Örnek istemler
+
+Doğal dil kullanın. İş atarken doğru kişiyi seçmek için tam ad veya e-postayı tercih edin.
+
+| Hedef | Örnek istem |
+|---|---|
+| **Sabah brifingi** | “Bana bir sabah brifingi ver: açık ticket’lar, ödenmemiş faturalar ve müşteri bekleyen teklifler.” |
+| **Ticket ata** | “Acme ana sayfa yenileme ticket’ını Jordan Lee’ye (jordan@agency.com) ata.” |
+| **Fatura gönder** | “INV-1042 faturasını e-posta ile müşteriye gönder.” |
+| **Lead oluştur** | “Bright Studio’dan Nora Patel için lead oluştur, e-posta nora@brightstudio.com.” |
+| **Faturayı ödendi işaretle** | “INV-1042 faturasını paid olarak işaretle.” |
+
+## İki kişi aynı adı paylaştığında
+
+Ekipte iki Sara varsa Claude hangisini kastettiğinizi sorar. ID **uydurmaz** ve sessizce tahmin etmez.
+
+Adlar çakışabileceğinde istemde her zaman **tam ad** veya **e-posta** ekleyin.
+
+## Şimdi çalışan vs henüz değil
+
+| Şimdi çalışıyor | MCP’den henüz yok |
+|---|---|
+| Teklif, proje, ticket ve faturalarda brifing ve arama | MCP’den **client chat** yanıtı |
+| Ticket ve diğer ekip işlerini atama | — |
+| Lead oluşturma | — |
+| Fatura gönderme ve ödendi işaretleme | — |
+
+MCP, API anahtarınızla çalışma alanını okumayı ve eylemleri (oluştur, ata, gönder, güncelle) destekler. Müşteri sohbet yanıtları henüz MCP üzerinden açık değil — bu konuşmalar için AgencyHandy’yi kullanın.
+
+## İlgili
+
+- Uygulama içinde **Workspace Config** → **API Key** altında anahtar oluşturun ve yapılandırmayı kopyalayın
+- Paket: npm’de [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) (`npx -y agencyhandy-mcp@1`)

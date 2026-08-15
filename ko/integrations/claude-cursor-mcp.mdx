@@ -1,0 +1,90 @@
+---
+title: "Claude와 Cursor를 연결해 MCP로 AgencyHandy 사용하기"
+sidebarTitle: "Claude & Cursor MCP"
+description: "AgencyHandy MCP 패키지를 설정해 Claude Desktop 또는 Cursor에 자연어로 브리핑, 티켓 배정, 인보이스 발송 등을 요청하세요."
+---
+
+AgencyHandy MCP 연결을 사용하면 **Claude** 또는 **Cursor**에 자연어로 말해 AgencyHandy 워크스페이스의 일상 업무를 실행할 수 있습니다 — 화면을 일일이 열 필요가 없습니다.
+
+통제권은 항상 당신에게 있습니다. Claude와 Cursor는 생성한 워크스페이스 API 키로만 동작하며, 이름이 여러 사람과 일치하면 확인을 요청합니다.
+
+<Note>
+  **Workspace Config**를 열고 **API keys**를 관리할 수 있는 역할(**SuperAdmin** 또는 **Admin** 등)이 필요합니다. Claude Desktop 또는 Cursor가 실행되는 컴퓨터에는 **Node.js 20+**도 필요합니다.
+</Note>
+
+## 요구 사항
+
+| 요구 사항 | 세부 정보 |
+|---|---|
+| **Node.js** | 버전 **20** 이상 (`node -v`로 확인) |
+| **Claude Desktop** 또는 **Cursor** | 컴퓨터에 둘 중 하나의 앱 설치 |
+| **AgencyHandy 워크스페이스** | **Workspace Config** → **API Key** 접근 |
+
+npm의 MCP 패키지는 `agencyhandy-mcp`입니다. Claude와 Cursor는 `npx -y agencyhandy-mcp@1`로 실행합니다.
+
+## Claude 또는 Cursor MCP 설정
+
+<Steps>
+  <Step title="Workspace Config 열기">
+    AgencyHandy에서 **Workspace Config**(회사 설정)를 연 다음 **API Key** 탭으로 이동합니다.
+  </Step>
+
+  <Step title="워크스페이스 API 키 생성">
+    새 워크스페이스 API 키를 만들거나 저장해 둔 키를 사용하세요. 표시되면 바로 복사하세요 — 이후 전체 키를 다시 볼 수 없습니다.
+  </Step>
+
+  <Step title="MCP 구성 복사">
+    같은 **API Key** 탭의 Claude / Cursor MCP 설정 패널에서 **Copy MCP config**를 클릭해 키와 백엔드 URL이 포함된 JSON을 복사합니다.
+  </Step>
+
+  <Step title="Cursor 또는 Claude Desktop에 붙여넣기">
+    구성을 다음에 붙여넣으세요:
+
+    - **Cursor**: 프로젝트 또는 사용자 `.mcp.json`
+    - **Claude Desktop**: `claude_desktop_config.json`
+
+    생성된 `npx -y agencyhandy-mcp@1` 명령과 API 키를 그대로 유지하세요.
+  </Step>
+
+  <Step title="다시 시작하고 프롬프트 시도">
+    **Cursor** 또는 **Claude Desktop**을 완전히 종료한 뒤 다시 엽니다. 그런 다음 워크스페이스 모닝 브리핑처럼 간단한 요청을 해보세요.
+  </Step>
+</Steps>
+
+<Tip>
+  Claude 또는 Cursor가 MCP 서버를 찾지 못하면 **Node.js 20+** 설치 여부와 구성 저장 후 앱 재시작을 확인하세요.
+</Tip>
+
+## 예시 프롬프트
+
+자연어를 사용하세요. 작업을 배정할 때는 올바른 사람을 고르기 위해 전체 이름이나 이메일을 우선하세요.
+
+| 목표 | 예시 프롬프트 |
+|---|---|
+| **모닝 브리핑** | “모닝 브리핑 해줘: 열린 티켓, 미결제 인보이스, 고객 대기 중인 제안서.” |
+| **티켓 배정** | “Acme 홈페이지 리디자인 티켓을 Jordan Lee(jordan@agency.com)에게 배정해.” |
+| **인보이스 발송** | “인보이스 INV-1042를 이메일로 고객에게 보내.” |
+| **리드 생성** | “Bright Studio의 Nora Patel(nora@brightstudio.com) 리드를 만들어.” |
+| **인보이스 결제 완료 표시** | “인보이스 INV-1042를 paid로 표시해.” |
+
+## 이름이 같은 사람이 두 명일 때
+
+팀원 중 Sara가 두 명이면 Claude가 누구를 말하는지 묻습니다. ID를 **지어내지 않으며** 조용히 추측하지도 않습니다.
+
+이름이 겹칠 수 있으면 프롬프트에 항상 **전체 이름** 또는 **이메일**을 포함하세요.
+
+## 지금 되는 것 vs 아직 안 되는 것
+
+| 지금 가능 | MCP에서 아직 불가 |
+|---|---|
+| 제안서·프로젝트·티켓·인보이스 브리핑 및 조회 | MCP에서 **client chat** 답장 |
+| 티켓 및 기타 팀 작업 배정 | — |
+| 리드 생성 | — |
+| 인보이스 발송 및 결제 완료 표시 | — |
+
+MCP는 API 키로 워크스페이스를 읽고 작업(생성·배정·발송·업데이트)할 수 있습니다. 클라이언트 채팅 답장은 아직 MCP로 제공되지 않습니다 — 해당 대화는 AgencyHandy를 사용하세요.
+
+## 관련
+
+- 앱의 **Workspace Config** → **API Key**에서 키를 만들고 구성을 복사
+- 패키지: npm의 [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) (`npx -y agencyhandy-mcp@1`)

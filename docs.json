@@ -172,7 +172,8 @@
                 "icon": "plug",
                 "pages": [
                   "integrations/slack",
-                  "integrations/webhooks"
+                  "integrations/webhooks",
+                  "integrations/claude-cursor-mcp"
                 ]
               }
             ]
@@ -378,7 +379,8 @@
                 "icon": "plug",
                 "pages": [
                   "fr/integrations/slack",
-                  "fr/integrations/webhooks"
+                  "fr/integrations/webhooks",
+                  "fr/integrations/claude-cursor-mcp"
                 ]
               }
             ]
@@ -584,7 +586,8 @@
                 "icon": "plug",
                 "pages": [
                   "es/integrations/slack",
-                  "es/integrations/webhooks"
+                  "es/integrations/webhooks",
+                  "es/integrations/claude-cursor-mcp"
                 ]
               }
             ]
@@ -790,7 +793,8 @@
                 "icon": "plug",
                 "pages": [
                   "zh/integrations/slack",
-                  "zh/integrations/webhooks"
+                  "zh/integrations/webhooks",
+                  "zh/integrations/claude-cursor-mcp"
                 ]
               }
             ]
@@ -996,7 +1000,8 @@
                 "icon": "plug",
                 "pages": [
                   "zh-Hant/integrations/slack",
-                  "zh-Hant/integrations/webhooks"
+                  "zh-Hant/integrations/webhooks",
+                  "zh-Hant/integrations/claude-cursor-mcp"
                 ]
               }
             ]
@@ -1202,7 +1207,8 @@
                 "icon": "plug",
                 "pages": [
                   "de/integrations/slack",
-                  "de/integrations/webhooks"
+                  "de/integrations/webhooks",
+                  "de/integrations/claude-cursor-mcp"
                 ]
               }
             ]
@@ -1408,7 +1414,8 @@
                 "icon": "plug",
                 "pages": [
                   "ko/integrations/slack",
-                  "ko/integrations/webhooks"
+                  "ko/integrations/webhooks",
+                  "ko/integrations/claude-cursor-mcp"
                 ]
               }
             ]
@@ -1614,7 +1621,8 @@
                 "icon": "plug",
                 "pages": [
                   "cs/integrations/slack",
-                  "cs/integrations/webhooks"
+                  "cs/integrations/webhooks",
+                  "cs/integrations/claude-cursor-mcp"
                 ]
               }
             ]
@@ -1820,7 +1828,8 @@
                 "icon": "plug",
                 "pages": [
                   "ja/integrations/slack",
-                  "ja/integrations/webhooks"
+                  "ja/integrations/webhooks",
+                  "ja/integrations/claude-cursor-mcp"
                 ]
               }
             ]
@@ -2026,7 +2035,8 @@
                 "icon": "plug",
                 "pages": [
                   "it/integrations/slack",
-                  "it/integrations/webhooks"
+                  "it/integrations/webhooks",
+                  "it/integrations/claude-cursor-mcp"
                 ]
               }
             ]
@@ -2232,7 +2242,8 @@
                 "icon": "plug",
                 "pages": [
                   "lv/integrations/slack",
-                  "lv/integrations/webhooks"
+                  "lv/integrations/webhooks",
+                  "lv/integrations/claude-cursor-mcp"
                 ]
               }
             ]
@@ -2438,7 +2449,8 @@
                 "icon": "plug",
                 "pages": [
                   "no/integrations/slack",
-                  "no/integrations/webhooks"
+                  "no/integrations/webhooks",
+                  "no/integrations/claude-cursor-mcp"
                 ]
               }
             ]
@@ -2644,7 +2656,8 @@
                 "icon": "plug",
                 "pages": [
                   "ar/integrations/slack",
-                  "ar/integrations/webhooks"
+                  "ar/integrations/webhooks",
+                  "ar/integrations/claude-cursor-mcp"
                 ]
               }
             ]
@@ -2850,7 +2863,8 @@
                 "icon": "plug",
                 "pages": [
                   "sv/integrations/slack",
-                  "sv/integrations/webhooks"
+                  "sv/integrations/webhooks",
+                  "sv/integrations/claude-cursor-mcp"
                 ]
               }
             ]
@@ -3056,7 +3070,8 @@
                 "icon": "plug",
                 "pages": [
                   "da/integrations/slack",
-                  "da/integrations/webhooks"
+                  "da/integrations/webhooks",
+                  "da/integrations/claude-cursor-mcp"
                 ]
               }
             ]
@@ -3262,7 +3277,8 @@
                 "icon": "plug",
                 "pages": [
                   "pl/integrations/slack",
-                  "pl/integrations/webhooks"
+                  "pl/integrations/webhooks",
+                  "pl/integrations/claude-cursor-mcp"
                 ]
               }
             ]
@@ -3468,7 +3484,8 @@
                 "icon": "plug",
                 "pages": [
                   "nl/integrations/slack",
-                  "nl/integrations/webhooks"
+                  "nl/integrations/webhooks",
+                  "nl/integrations/claude-cursor-mcp"
                 ]
               }
             ]
@@ -3674,7 +3691,8 @@
                 "icon": "plug",
                 "pages": [
                   "tr/integrations/slack",
-                  "tr/integrations/webhooks"
+                  "tr/integrations/webhooks",
+                  "tr/integrations/claude-cursor-mcp"
                 ]
               }
             ]
@@ -3880,7 +3898,8 @@
                 "icon": "plug",
                 "pages": [
                   "uz/integrations/slack",
-                  "uz/integrations/webhooks"
+                  "uz/integrations/webhooks",
+                  "uz/integrations/claude-cursor-mcp"
                 ]
               }
             ]
@@ -4086,7 +4105,8 @@
                 "icon": "plug",
                 "pages": [
                   "ru/integrations/slack",
-                  "ru/integrations/webhooks"
+                  "ru/integrations/webhooks",
+                  "ru/integrations/claude-cursor-mcp"
                 ]
               }
             ]
@@ -4292,7 +4312,8 @@
                 "icon": "plug",
                 "pages": [
                   "pt/integrations/slack",
-                  "pt/integrations/webhooks"
+                  "pt/integrations/webhooks",
+                  "pt/integrations/claude-cursor-mcp"
                 ]
               }
             ]
@@ -4498,7 +4519,8 @@
                 "icon": "plug",
                 "pages": [
                   "pt-BR/integrations/slack",
-                  "pt-BR/integrations/webhooks"
+                  "pt-BR/integrations/webhooks",
+                  "pt-BR/integrations/claude-cursor-mcp"
                 ]
               }
             ]
@@ -4704,7 +4726,8 @@
                 "icon": "plug",
                 "pages": [
                   "id/integrations/slack",
-                  "id/integrations/webhooks"
+                  "id/integrations/webhooks",
+                  "id/integrations/claude-cursor-mcp"
                 ]
               }
             ]
@@ -4910,7 +4933,8 @@
                 "icon": "plug",
                 "pages": [
                   "fi/integrations/slack",
-                  "fi/integrations/webhooks"
+                  "fi/integrations/webhooks",
+                  "fi/integrations/claude-cursor-mcp"
                 ]
               }
             ]
@@ -5116,7 +5140,8 @@
                 "icon": "plug",
                 "pages": [
                   "ro/integrations/slack",
-                  "ro/integrations/webhooks"
+                  "ro/integrations/webhooks",
+                  "ro/integrations/claude-cursor-mcp"
                 ]
               }
             ]

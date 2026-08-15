@@ -1,0 +1,90 @@
+---
+title: "连接 Claude 和 Cursor，通过 MCP 操作 AgencyHandy"
+sidebarTitle: "Claude 与 Cursor MCP"
+description: "设置 AgencyHandy MCP 包，让你用自然语言让 Claude Desktop 或 Cursor 做晨报、分配工单、发送发票等。"
+---
+
+AgencyHandy 的 MCP 连接让你用自然语言与 **Claude** 或 **Cursor** 对话，并在 AgencyHandy 工作区中执行日常工作——无需自己打开每一个界面。
+
+控制权始终在你。Claude 和 Cursor 只会使用你生成的工作区 API 密钥操作，并在姓名匹配多人时请你确认。
+
+<Note>
+  你需要能打开 **Workspace Config** 并管理 **API keys** 的角色（通常为 **SuperAdmin** 或 **Admin**）。运行 Claude Desktop 或 Cursor 的电脑还需安装 **Node.js 20+**。
+</Note>
+
+## 要求
+
+| 要求 | 说明 |
+|---|---|
+| **Node.js** | 版本 **20** 或更高（用 `node -v` 检查） |
+| **Claude Desktop** 或 **Cursor** | 在你的电脑上安装其中一个应用 |
+| **AgencyHandy 工作区** | 可访问 **Workspace Config** → **API Key** |
+
+npm 上的 MCP 包名为 `agencyhandy-mcp`。Claude 和 Cursor 通过 `npx -y agencyhandy-mcp@1` 运行它。
+
+## 设置 Claude 或 Cursor MCP
+
+<Steps>
+  <Step title="打开 Workspace Config">
+    在 AgencyHandy 中打开 **Workspace Config**（公司设置），然后进入 **API Key** 选项卡。
+  </Step>
+
+  <Step title="生成工作区 API 密钥">
+    创建新的工作区 API 密钥（或使用已保存的密钥）。出现时请立即复制——之后 AgencyHandy 无法再次显示完整密钥。
+  </Step>
+
+  <Step title="复制 MCP 配置">
+    在同一 **API Key** 选项卡中，使用 Claude / Cursor MCP 设置面板。点击 **Copy MCP config**，使 JSON 包含你的密钥和后端 URL。
+  </Step>
+
+  <Step title="粘贴到 Cursor 或 Claude Desktop">
+    将配置粘贴到：
+
+    - **Cursor**：项目或用户 `.mcp.json`
+    - **Claude Desktop**：`claude_desktop_config.json`
+
+    保留生成的 `npx -y agencyhandy-mcp@1` 命令和 API 密钥。
+  </Step>
+
+  <Step title="重启并尝试提示">
+    完全退出并重新打开 **Cursor** 或 **Claude Desktop**。然后提出一个简单请求，例如工作区晨报。
+  </Step>
+</Steps>
+
+<Tip>
+  如果 Claude 或 Cursor 找不到 MCP 服务器，请确认已安装 **Node.js 20+**，并在保存配置后重启应用。
+</Tip>
+
+## 示例提示
+
+使用自然语言。分配工作时请尽量使用全名或邮箱，以便选中正确的人。
+
+| 目标 | 示例提示 |
+|---|---|
+| **晨报** | “给我一份晨报：未结工单、未付发票，以及等待客户的提案。” |
+| **分配工单** | “把 Acme 首页改版相关工单分配给 Jordan Lee（jordan@agency.com）。” |
+| **发送发票** | “通过邮件把发票 INV-1042 发送给客户。” |
+| **创建线索** | “为 Bright Studio 的 Nora Patel 创建线索，邮箱 nora@brightstudio.com。” |
+| **标记发票已付** | “将发票 INV-1042 标记为 paid。” |
+
+## 当两个人同名时
+
+如果两名同事都叫 Sara，Claude 会询问你指的是哪一位。它**不会编造** ID，也不会默默猜测。
+
+当姓名可能冲突时，请始终在提示中包含**全名**或**邮箱**。
+
+## 当前可用 vs 尚不可用
+
+| 当前可用 | MCP 尚不支持 |
+|---|---|
+| 提案、项目、工单和发票的晨报与查询 | 通过 MCP 在 **client chat** 中回复 |
+| 分配工单及其他团队工作 | — |
+| 创建线索 | — |
+| 发送发票并标记为已付 | — |
+
+MCP 支持使用你的 API 密钥读取工作区并执行操作（创建、分配、发送、更新）。客户端聊天回复尚未通过 MCP 开放——请在 AgencyHandy 中处理这些对话。
+
+## 相关
+
+- 在应用内 **Workspace Config** → **API Key** 生成密钥并复制配置
+- 包：npm 上的 [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp)（`npx -y agencyhandy-mcp@1`）
