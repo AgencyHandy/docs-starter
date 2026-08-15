@@ -1,90 +1,90 @@
 ---
-title: "Conectați Claude și Cursor pentru a folosi AgencyHandy cu MCP"
+title: "Conectează Claude și Cursor pentru a folosi AgencyHandy cu MCP"
 sidebarTitle: "Claude și Cursor MCP"
-description: "Configurați pachetul MCP AgencyHandy ca să cereți Claude Desktop sau Cursor un briefing, asignarea ticketelor, trimiterea facturilor și altele — în limbaj natural."
+description: "Configurează pachetul MCP AgencyHandy ca să poți cere Claude Desktop sau Cursor un briefing, atribuiri de ticket, trimitere de facturi și altele — în limbaj natural."
 ---
 
-Conexiunea MCP AgencyHandy vă permite să vorbiți cu **Claude** sau **Cursor** în limbaj natural și să rulați munca zilnică în workspace-ul AgencyHandy — fără să deschideți fiecare ecran.
+Conexiunea MCP AgencyHandy vă permite să vorbiți cu **Claude** sau **Cursor** în limbaj natural și să rulați munca zilnică în workspace-ul AgencyHandy — fără să deschideți fiecare ecran singuri.
 
-You stay in control. Claude and Cursor only act with the workspace API key you generate, and they ask you to confirm when a name matches more than one person.
+Păstrați controlul. Claude și Cursor acționează doar cu cheia API a workspace-ului pe care o generați și cer confirmare când un nume corespunde mai multor persoane.
 
 <Note>
-  You need a role that can open **Workspace Config** and manage **API keys** (typically **SuperAdmin** or **Admin**). You also need **Node.js 20+** installed on the computer where Claude Desktop or Cursor runs.
+  Aveți nevoie de un rol care poate deschide **Workspace Config** și gestiona **API keys** (de obicei **SuperAdmin** sau **Admin**). Aveți nevoie și de **Node.js 20+** pe computerul unde rulează Claude Desktop sau Cursor.
 </Note>
 
 ## Cerințe
 
-| Requirement | Details |
+| Cerință | Detalii |
 |---|---|
-| **Node.js** | Version **20** or newer (`node -v` to check) |
-| **Claude Desktop** or **Cursor** | One of these apps installed on your computer |
-| **AgencyHandy workspace** | Access to **Workspace Config** → **API Key** |
+| **Node.js** | Versiunea **20** sau mai nouă (verificați cu `node -v`) |
+| **Claude Desktop** sau **Cursor** | Una dintre aceste aplicații instalată pe computer |
+| **Workspace AgencyHandy** | Acces la **Workspace Config** → **API Key** |
 
-The MCP package on npm is `agencyhandy-mcp`. Claude and Cursor run it with `npx -y agencyhandy-mcp@1`.
+Pachetul MCP pe npm este `agencyhandy-mcp`. Claude și Cursor îl rulează cu `npx -y agencyhandy-mcp@1`.
 
-## Configurați Claude sau Cursor MCP
+## Configurare Claude sau Cursor MCP
 
 <Steps>
-  <Step title="Open Workspace Config">
-    In AgencyHandy, open **Workspace Config** (company settings), then go to the **API Key** tab.
+  <Step title="Deschide Workspace Config">
+    În AgencyHandy, deschideți **Workspace Config** (setările companiei), apoi fila **API Key**.
   </Step>
 
-  <Step title="Generate a workspace API key">
-    Create a new workspace API key (or use one you already saved). Copy the key when it appears — AgencyHandy cannot show the full key again later.
+  <Step title="Generează o cheie API a workspace-ului">
+    Creați o cheie API nouă a workspace-ului (sau folosiți una salvată). Copiați cheia când apare — AgencyHandy nu va putea afișa din nou cheia completă ulterior.
   </Step>
 
-  <Step title="Copy the MCP config">
-    On the same **API Key** tab, use the Claude / Cursor MCP setup panel. Click **Copy MCP config** so the JSON includes your key and backend URL.
+  <Step title="Copiază configurația MCP">
+    În aceeași filă **API Key**, folosiți panoul Claude / Cursor MCP. Faceți clic pe **Copy MCP config** ca JSON-ul să includă cheia și URL-ul backend.
   </Step>
 
-  <Step title="Paste into Cursor or Claude Desktop">
-    Paste the config into:
+  <Step title="Lipește în Cursor sau Claude Desktop">
+    Lipiți configurația în:
 
-    - **Cursor**: project or user `.mcp.json`
+    - **Cursor**: proiect sau utilizator `.mcp.json`
     - **Claude Desktop**: `claude_desktop_config.json`
 
-    Keep the `npx -y agencyhandy-mcp@1` command and your API key as generated.
+    Păstrați comanda `npx -y agencyhandy-mcp@1` și cheia API așa cum au fost generate.
   </Step>
 
-  <Step title="Restart and try a prompt">
-    Fully quit and reopen **Cursor** or **Claude Desktop**. Then ask something simple, such as a morning briefing for your workspace.
+  <Step title="Repornește și încearcă un prompt">
+    Închideți complet și redeschideți **Cursor** sau **Claude Desktop**. Apoi cereți ceva simplu, de exemplu un briefing de dimineață pentru workspace.
   </Step>
 </Steps>
 
 <Tip>
-  If Claude or Cursor cannot find the MCP server, confirm **Node.js 20+** is installed and that you restarted the app after saving the config.
+  Dacă Claude sau Cursor nu găsesc serverul MCP, confirmați că **Node.js 20+** este instalat și că ați repornit aplicația după salvarea configurației.
 </Tip>
 
 ## Exemple de prompturi
 
-Use natural language. Prefer full names or emails when you assign work so the right person is selected.
+Folosiți limbaj natural. Preferă nume complete sau e-mailuri când atribuiți muncă, ca să fie selectată persoana potrivită.
 
-| Goal | Example prompt |
+| Obiectiv | Exemplu de prompt |
 |---|---|
-| **Morning briefing** | “Give me a morning briefing: open tickets, unpaid invoices, and proposals waiting on clients.” |
-| **Assign a ticket** | “Assign the ticket about the Acme homepage redesign to Jordan Lee (jordan@agency.com).” |
-| **Send an invoice** | “Send invoice INV-1042 to the client by email.” |
-| **Create a lead** | “Create a lead for Nora Patel at Bright Studio, email nora@brightstudio.com.” |
-| **Mark an invoice paid** | “Mark invoice INV-1042 as paid.” |
+| **Briefing de dimineață** | “Dă-mi un briefing de dimineață: ticket-uri deschise, facturi neplătite și propuneri care așteaptă clienții.” |
+| **Atribuie un ticket** | “Atribuie ticket-ul despre redesign-ul homepage Acme către Jordan Lee (jordan@agency.com).” |
+| **Trimite o factură** | “Trimite factura INV-1042 clientului pe e-mail.” |
+| **Creează un lead** | “Creează un lead pentru Nora Patel de la Bright Studio, e-mail nora@brightstudio.com.” |
+| **Marchează o factură ca plătită** | “Marchează factura INV-1042 ca paid.” |
 
 ## Când două persoane au același nume
 
-If two teammates are both named Sara, Claude will ask which one you mean. It does **not** invent IDs or guess silently.
+Dacă două colege se numesc Sara, Claude întreabă pe care o intenționați. **Nu inventează** ID-uri și nu ghicește în tăcere.
 
-Always include a **full name** or **email** in the prompt when names might collide.
+Includeți întotdeauna un **nume complet** sau un **e-mail** în prompt când numele se pot ciocni.
 
 ## Ce funcționează acum vs încă nu
 
-| Works now | Not available from MCP yet |
+| Funcționează acum | Încă indisponibil din MCP |
 |---|---|
-| Briefings and lookups across proposals, projects, tickets, and invoices | Replying in **client chat** from MCP |
-| Assign tickets and other team work | — |
-| Create leads | — |
-| Send invoices and mark invoices paid | — |
+| Briefinguri și căutări pentru propuneri, proiecte, ticket-uri și facturi | Răspuns în **client chat** din MCP |
+| Atribuirea ticket-urilor și a altei munci de echipă | — |
+| Crearea de lead-uri | — |
+| Trimiterea facturilor și marcarea ca plătite | — |
 
-MCP supports both reading your workspace and taking actions (create, assign, send, update) with your API key. Client chat replies are not exposed through MCP yet — use AgencyHandy for those conversations.
+MCP permite citirea workspace-ului și acțiuni (creare, atribuire, trimitere, actualizare) cu cheia API. Răspunsurile din chat-ul client nu sunt încă expuse prin MCP — folosiți AgencyHandy pentru acele conversații.
 
 ## Conexe
 
-- Generate keys and copy config in-app under **Workspace Config** → **API Key**
-- Package: [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) on npm (`npx -y agencyhandy-mcp@1`)
+- Generați chei și copiați configurația în aplicație la **Workspace Config** → **API Key**
+- Pachet: [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) pe npm (`npx -y agencyhandy-mcp@1`)

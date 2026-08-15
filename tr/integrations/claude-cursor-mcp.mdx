@@ -1,90 +1,90 @@
 ---
-title: "AgencyHandy’yi MCP ile çalıştırmak için Claude ve Cursor’ı bağlayın"
+title: "AgencyHandy’yi MCP ile kullanmak için Claude ve Cursor’ı bağlayın"
 sidebarTitle: "Claude ve Cursor MCP"
-description: "AgencyHandy MCP paketini kurun; Claude Desktop veya Cursor’a doğal dilde brifing, ticket atama, fatura gönderme ve daha fazlasını isteyin."
+description: "Claude Desktop veya Cursor’dan doğal dilde brifing, ticket atama, fatura gönderme ve daha fazlasını istemek için AgencyHandy MCP paketini kurun."
 ---
 
-AgencyHandy’nin MCP bağlantısı, **Claude** veya **Cursor** ile doğal dilde konuşup AgencyHandy çalışma alanındaki günlük işleri çalıştırmanıza olanak tanır — her ekranı kendiniz açmadan.
+AgencyHandy’nin MCP bağlantısı, **Claude** veya **Cursor** ile doğal dilde konuşup AgencyHandy çalışma alanındaki günlük işleri çalıştırmanızı sağlar — her ekranı kendiniz açmadan.
 
-You stay in control. Claude and Cursor only act with the workspace API key you generate, and they ask you to confirm when a name matches more than one person.
+Kontrol sizde kalır. Claude ve Cursor yalnızca oluşturduğunuz çalışma alanı API anahtarıyla hareket eder ve bir ad birden fazla kişiyle eşleşirse onay ister.
 
 <Note>
-  You need a role that can open **Workspace Config** and manage **API keys** (typically **SuperAdmin** or **Admin**). You also need **Node.js 20+** installed on the computer where Claude Desktop or Cursor runs.
+  **Workspace Config**’i açıp **API keys** yönetebilen bir role ihtiyacınız var (genellikle **SuperAdmin** veya **Admin**). Claude Desktop veya Cursor’ın çalıştığı bilgisayarda **Node.js 20+** da gerekir.
 </Note>
 
 ## Gereksinimler
 
-| Requirement | Details |
+| Gereksinim | Ayrıntılar |
 |---|---|
-| **Node.js** | Version **20** or newer (`node -v` to check) |
-| **Claude Desktop** or **Cursor** | One of these apps installed on your computer |
-| **AgencyHandy workspace** | Access to **Workspace Config** → **API Key** |
+| **Node.js** | Sürüm **20** veya daha yeni (`node -v` ile kontrol edin) |
+| **Claude Desktop** veya **Cursor** | Bilgisayarınızda bu uygulamalardan biri yüklü olmalı |
+| **AgencyHandy çalışma alanı** | **Workspace Config** → **API Key** erişimi |
 
-The MCP package on npm is `agencyhandy-mcp`. Claude and Cursor run it with `npx -y agencyhandy-mcp@1`.
+npm’deki MCP paketi `agencyhandy-mcp`’dir. Claude ve Cursor bunu `npx -y agencyhandy-mcp@1` ile çalıştırır.
 
 ## Claude veya Cursor MCP’yi kurun
 
 <Steps>
-  <Step title="Open Workspace Config">
-    In AgencyHandy, open **Workspace Config** (company settings), then go to the **API Key** tab.
+  <Step title="Workspace Config’i açın">
+    AgencyHandy’de **Workspace Config**’i (şirket ayarları) açın, ardından **API Key** sekmesine gidin.
   </Step>
 
-  <Step title="Generate a workspace API key">
-    Create a new workspace API key (or use one you already saved). Copy the key when it appears — AgencyHandy cannot show the full key again later.
+  <Step title="Çalışma alanı API anahtarı oluşturun">
+    Yeni bir çalışma alanı API anahtarı oluşturun (veya kaydettiğiniz birini kullanın). Göründüğünde kopyalayın — AgencyHandy daha sonra tam anahtarı tekrar gösteremez.
   </Step>
 
-  <Step title="Copy the MCP config">
-    On the same **API Key** tab, use the Claude / Cursor MCP setup panel. Click **Copy MCP config** so the JSON includes your key and backend URL.
+  <Step title="MCP yapılandırmasını kopyalayın">
+    Aynı **API Key** sekmesinde Claude / Cursor MCP kurulum panelini kullanın. JSON’un anahtarınızı ve backend URL’sini içermesi için **Copy MCP config**’e tıklayın.
   </Step>
 
-  <Step title="Paste into Cursor or Claude Desktop">
-    Paste the config into:
+  <Step title="Cursor veya Claude Desktop’a yapıştırın">
+    Yapılandırmayı şuraya yapıştırın:
 
-    - **Cursor**: project or user `.mcp.json`
+    - **Cursor**: proje veya kullanıcı `.mcp.json`
     - **Claude Desktop**: `claude_desktop_config.json`
 
-    Keep the `npx -y agencyhandy-mcp@1` command and your API key as generated.
+    `npx -y agencyhandy-mcp@1` komutunu ve API anahtarını üretildiği gibi bırakın.
   </Step>
 
-  <Step title="Restart and try a prompt">
-    Fully quit and reopen **Cursor** or **Claude Desktop**. Then ask something simple, such as a morning briefing for your workspace.
+  <Step title="Yeniden başlatın ve bir istem deneyin">
+    **Cursor** veya **Claude Desktop**’ı tamamen kapatıp yeniden açın. Ardından çalışma alanı için sabah brifingi gibi basit bir şey isteyin.
   </Step>
 </Steps>
 
 <Tip>
-  If Claude or Cursor cannot find the MCP server, confirm **Node.js 20+** is installed and that you restarted the app after saving the config.
+  Claude veya Cursor MCP sunucusunu bulamazsa **Node.js 20+** kurulu olduğunu ve yapılandırmayı kaydettikten sonra uygulamayı yeniden başlattığınızı doğrulayın.
 </Tip>
 
-## Örnek promptlar
+## Örnek istemler
 
-Use natural language. Prefer full names or emails when you assign work so the right person is selected.
+Doğal dil kullanın. İş atarken doğru kişiyi seçmek için tam ad veya e-postayı tercih edin.
 
-| Goal | Example prompt |
+| Hedef | Örnek istem |
 |---|---|
-| **Morning briefing** | “Give me a morning briefing: open tickets, unpaid invoices, and proposals waiting on clients.” |
-| **Assign a ticket** | “Assign the ticket about the Acme homepage redesign to Jordan Lee (jordan@agency.com).” |
-| **Send an invoice** | “Send invoice INV-1042 to the client by email.” |
-| **Create a lead** | “Create a lead for Nora Patel at Bright Studio, email nora@brightstudio.com.” |
-| **Mark an invoice paid** | “Mark invoice INV-1042 as paid.” |
+| **Sabah brifingi** | “Bana bir sabah brifingi ver: açık ticket’lar, ödenmemiş faturalar ve müşteri bekleyen teklifler.” |
+| **Ticket ata** | “Acme ana sayfa yenileme ticket’ını Jordan Lee’ye (jordan@agency.com) ata.” |
+| **Fatura gönder** | “INV-1042 faturasını e-posta ile müşteriye gönder.” |
+| **Lead oluştur** | “Bright Studio’dan Nora Patel için lead oluştur, e-posta nora@brightstudio.com.” |
+| **Faturayı ödendi işaretle** | “INV-1042 faturasını paid olarak işaretle.” |
 
 ## İki kişi aynı adı paylaştığında
 
-If two teammates are both named Sara, Claude will ask which one you mean. It does **not** invent IDs or guess silently.
+Ekipte iki Sara varsa Claude hangisini kastettiğinizi sorar. ID **uydurmaz** ve sessizce tahmin etmez.
 
-Always include a **full name** or **email** in the prompt when names might collide.
+Adlar çakışabileceğinde istemde her zaman **tam ad** veya **e-posta** ekleyin.
 
-## Şimdi ne çalışıyor vs henüz değil
+## Şimdi çalışan vs henüz değil
 
-| Works now | Not available from MCP yet |
+| Şimdi çalışıyor | MCP’den henüz yok |
 |---|---|
-| Briefings and lookups across proposals, projects, tickets, and invoices | Replying in **client chat** from MCP |
-| Assign tickets and other team work | — |
-| Create leads | — |
-| Send invoices and mark invoices paid | — |
+| Teklif, proje, ticket ve faturalarda brifing ve arama | MCP’den **client chat** yanıtı |
+| Ticket ve diğer ekip işlerini atama | — |
+| Lead oluşturma | — |
+| Fatura gönderme ve ödendi işaretleme | — |
 
-MCP supports both reading your workspace and taking actions (create, assign, send, update) with your API key. Client chat replies are not exposed through MCP yet — use AgencyHandy for those conversations.
+MCP, API anahtarınızla çalışma alanını okumayı ve eylemleri (oluştur, ata, gönder, güncelle) destekler. Müşteri sohbet yanıtları henüz MCP üzerinden açık değil — bu konuşmalar için AgencyHandy’yi kullanın.
 
 ## İlgili
 
-- Generate keys and copy config in-app under **Workspace Config** → **API Key**
-- Package: [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) on npm (`npx -y agencyhandy-mcp@1`)
+- Uygulama içinde **Workspace Config** → **API Key** altında anahtar oluşturun ve yapılandırmayı kopyalayın
+- Paket: npm’de [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) (`npx -y agencyhandy-mcp@1`)

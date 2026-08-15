@@ -1,90 +1,90 @@
 ---
 title: "Tilslut Claude og Cursor for at køre AgencyHandy med MCP"
 sidebarTitle: "Claude & Cursor MCP"
-description: "Konfigurer AgencyHandys MCP-pakke, så du kan bede Claude Desktop eller Cursor om briefing, tildele tickets, sende fakturaer med mere — på almindeligt sprog."
+description: "Konfigurer AgencyHandy MCP-pakken, så du kan bede Claude Desktop eller Cursor om briefing, ticket-tildeling, fakturaer m.m. — på almindeligt sprog."
 ---
 
-AgencyHandys MCP-forbindelse lader dig tale med **Claude** eller **Cursor** på almindeligt sprog og køre dagligt arbejde i din AgencyHandy-workspace — uden at åbne hver skærm selv.
+AgencyHandys MCP-forbindelse lader dig tale med **Claude** eller **Cursor** på almindeligt sprog og udføre dagligt arbejde i dit AgencyHandy-arbejdsområde — uden at åbne hvert skærmbillede selv.
 
-You stay in control. Claude and Cursor only act with the workspace API key you generate, and they ask you to confirm when a name matches more than one person.
+Du bevarer kontrollen. Claude og Cursor handler kun med den API-nøgle til arbejdsområdet, du genererer, og beder dig bekræfte, når et navn matcher mere end én person.
 
 <Note>
-  You need a role that can open **Workspace Config** and manage **API keys** (typically **SuperAdmin** or **Admin**). You also need **Node.js 20+** installed on the computer where Claude Desktop or Cursor runs.
+  Du skal have en rolle, der kan åbne **Workspace Config** og administrere **API keys** (typisk **SuperAdmin** eller **Admin**). Du skal også have **Node.js 20+** på computeren, hvor Claude Desktop eller Cursor kører.
 </Note>
 
 ## Krav
 
-| Requirement | Details |
+| Krav | Detaljer |
 |---|---|
-| **Node.js** | Version **20** or newer (`node -v` to check) |
-| **Claude Desktop** or **Cursor** | One of these apps installed on your computer |
-| **AgencyHandy workspace** | Access to **Workspace Config** → **API Key** |
+| **Node.js** | Version **20** eller nyere (`node -v` for at tjekke) |
+| **Claude Desktop** eller **Cursor** | En af disse apps installeret på din computer |
+| **AgencyHandy-arbejdsområde** | Adgang til **Workspace Config** → **API Key** |
 
-The MCP package on npm is `agencyhandy-mcp`. Claude and Cursor run it with `npx -y agencyhandy-mcp@1`.
+MCP-pakken på npm er `agencyhandy-mcp`. Claude og Cursor kører den med `npx -y agencyhandy-mcp@1`.
 
 ## Konfigurer Claude eller Cursor MCP
 
 <Steps>
-  <Step title="Open Workspace Config">
-    In AgencyHandy, open **Workspace Config** (company settings), then go to the **API Key** tab.
+  <Step title="Åbn Workspace Config">
+    I AgencyHandy skal du åbne **Workspace Config** (virksomhedsindstillinger) og gå til fanen **API Key**.
   </Step>
 
-  <Step title="Generate a workspace API key">
-    Create a new workspace API key (or use one you already saved). Copy the key when it appears — AgencyHandy cannot show the full key again later.
+  <Step title="Generér en API-nøgle til arbejdsområdet">
+    Opret en ny API-nøgle til arbejdsområdet (eller brug en gemt). Kopiér nøglen, når den vises — AgencyHandy kan ikke vise den fulde nøgle igen senere.
   </Step>
 
-  <Step title="Copy the MCP config">
-    On the same **API Key** tab, use the Claude / Cursor MCP setup panel. Click **Copy MCP config** so the JSON includes your key and backend URL.
+  <Step title="Kopiér MCP-konfigurationen">
+    På samme fane **API Key** skal du bruge Claude / Cursor MCP-panelet. Klik på **Copy MCP config**, så JSON indeholder din nøgle og backend-URL.
   </Step>
 
-  <Step title="Paste into Cursor or Claude Desktop">
-    Paste the config into:
+  <Step title="Indsæt i Cursor eller Claude Desktop">
+    Indsæt konfigurationen i:
 
-    - **Cursor**: project or user `.mcp.json`
+    - **Cursor**: projekt- eller bruger-`.mcp.json`
     - **Claude Desktop**: `claude_desktop_config.json`
 
-    Keep the `npx -y agencyhandy-mcp@1` command and your API key as generated.
+    Behold kommandoen `npx -y agencyhandy-mcp@1` og din API-nøgle som genereret.
   </Step>
 
-  <Step title="Restart and try a prompt">
-    Fully quit and reopen **Cursor** or **Claude Desktop**. Then ask something simple, such as a morning briefing for your workspace.
+  <Step title="Genstart og prøv en prompt">
+    Afslut helt og åbn **Cursor** eller **Claude Desktop** igen. Bed derefter om noget enkelt, f.eks. en morgenbriefing for arbejdsområdet.
   </Step>
 </Steps>
 
 <Tip>
-  If Claude or Cursor cannot find the MCP server, confirm **Node.js 20+** is installed and that you restarted the app after saving the config.
+  Hvis Claude eller Cursor ikke kan finde MCP-serveren, skal du bekræfte, at **Node.js 20+** er installeret, og at du genstartede appen efter at have gemt konfigurationen.
 </Tip>
 
 ## Eksempelprompts
 
-Use natural language. Prefer full names or emails when you assign work so the right person is selected.
+Brug naturligt sprog. Foretræk fulde navne eller e-mails, når du tildeler arbejde, så den rigtige person vælges.
 
-| Goal | Example prompt |
+| Mål | Eksempelprompt |
 |---|---|
-| **Morning briefing** | “Give me a morning briefing: open tickets, unpaid invoices, and proposals waiting on clients.” |
-| **Assign a ticket** | “Assign the ticket about the Acme homepage redesign to Jordan Lee (jordan@agency.com).” |
-| **Send an invoice** | “Send invoice INV-1042 to the client by email.” |
-| **Create a lead** | “Create a lead for Nora Patel at Bright Studio, email nora@brightstudio.com.” |
-| **Mark an invoice paid** | “Mark invoice INV-1042 as paid.” |
+| **Morgenbriefing** | “Giv mig en morgenbriefing: åbne tickets, ubetalte fakturaer og forslag, der venter på kunder.” |
+| **Tildel en ticket** | “Tildel ticketen om Acme-hjemmesidens redesign til Jordan Lee (jordan@agency.com).” |
+| **Send en faktura** | “Send faktura INV-1042 til kunden via e-mail.” |
+| **Opret en lead** | “Opret en lead for Nora Patel hos Bright Studio, e-mail nora@brightstudio.com.” |
+| **Markér en faktura som betalt** | “Markér faktura INV-1042 som paid.” |
 
-## Når to personer deler et navn
+## Når to personer har samme navn
 
-If two teammates are both named Sara, Claude will ask which one you mean. It does **not** invent IDs or guess silently.
+Hvis to teammedlemmer hedder Sara, spørger Claude, hvem du mener. Den **opfinder ikke** ID’er og gætter ikke i stilhed.
 
-Always include a **full name** or **email** in the prompt when names might collide.
+Medtag altid et **fuldt navn** eller en **e-mail** i prompten, når navne kan kollidere.
 
 ## Hvad der virker nu vs endnu ikke
 
-| Works now | Not available from MCP yet |
+| Virker nu | Endnu ikke tilgængeligt via MCP |
 |---|---|
-| Briefings and lookups across proposals, projects, tickets, and invoices | Replying in **client chat** from MCP |
-| Assign tickets and other team work | — |
-| Create leads | — |
-| Send invoices and mark invoices paid | — |
+| Briefinger og opslag på forslag, projekter, tickets og fakturaer | Svare i **client chat** via MCP |
+| Tildel tickets og andet teamarbejde | — |
+| Opret leads | — |
+| Send fakturaer og markér som betalte | — |
 
-MCP supports both reading your workspace and taking actions (create, assign, send, update) with your API key. Client chat replies are not exposed through MCP yet — use AgencyHandy for those conversations.
+MCP understøtter læsning af dit arbejdsområde og handlinger (opret, tildel, send, opdater) med din API-nøgle. Svar i klientchat er endnu ikke tilgængelige via MCP — brug AgencyHandy til de samtaler.
 
 ## Relateret
 
-- Generate keys and copy config in-app under **Workspace Config** → **API Key**
-- Package: [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) on npm (`npx -y agencyhandy-mcp@1`)
+- Generér nøgler og kopiér konfigurationen i appen under **Workspace Config** → **API Key**
+- Pakke: [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) på npm (`npx -y agencyhandy-mcp@1`)
