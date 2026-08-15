@@ -1,7 +1,7 @@
 ---
 title: "Connect Claude and Cursor to run AgencyHandy with MCP"
 sidebarTitle: "Claude & Cursor MCP"
-description: "Set up the AgencyHandy MCP package so you can ask Claude Desktop or Cursor to brief you, assign tickets, investigate orders and invoices, and fill custom fields — in plain language."
+description: "Set up AgencyHandy MCP so Claude or Cursor can brief you, assign work, investigate cash and delivery risk, and fill custom fields — in plain language."
 ---
 
 AgencyHandy's MCP connection lets you talk to **Claude** or **Cursor** in plain language and have them run everyday work in your AgencyHandy workspace — without opening every screen yourself.
@@ -9,7 +9,7 @@ AgencyHandy's MCP connection lets you talk to **Claude** or **Cursor** in plain 
 You stay in control. Claude and Cursor only act with the workspace API key you generate, and they ask you to confirm when a name matches more than one person.
 
 <Note>
-  You need a role that can open **Workspace Config** and manage **API keys** (typically **SuperAdmin** or **Admin**). You also need **Node.js 20+** installed on the computer where Claude Desktop or Cursor runs. Use `agencyhandy-mcp@1` (**1.7+** for owner insights + advanced context packs).
+  You need a role that can open **Workspace Config** and manage **API keys** (typically **SuperAdmin** or **Admin**). You also need **Node.js 20+** on the machine where Claude Desktop or Cursor runs. Use `npx -y agencyhandy-mcp@1` (latest is **1.7.1+**: owner insights, advanced context packs, hardened URL/path checks).
 </Note>
 
 ## Requirements
@@ -19,7 +19,7 @@ You stay in control. Claude and Cursor only act with the workspace API key you g
 | **Node.js** | Version **20** or newer (`node -v` to check) |
 | **Claude Desktop** or **Cursor** | One of these apps installed on your computer |
 | **AgencyHandy workspace** | Access to **Workspace Config** → **API Key** |
-| **MCP package** | `npx -y agencyhandy-mcp@1` (owner insights + context from **1.7.0**) |
+| **MCP package** | `npx -y agencyhandy-mcp@1` (ships **1.7.1+** on the `1` tag) |
 
 ## Set up Claude or Cursor MCP
 
@@ -29,7 +29,7 @@ You stay in control. Claude and Cursor only act with the workspace API key you g
   </Step>
 
   <Step title="Generate a workspace API key">
-    Create a new workspace API key (or use one you already saved). Copy the key when it appears — AgencyHandy cannot show the full key again later.
+    Create a new workspace API key (or use one you already saved). Copy the key when it appears — AgencyHandy cannot show the full key again later. Keys are **JWTs**; placeholders like `test-key` are rejected.
   </Step>
 
   <Step title="Copy the MCP config">
@@ -42,16 +42,16 @@ You stay in control. Claude and Cursor only act with the workspace API key you g
     - **Cursor**: project or user `.mcp.json`
     - **Claude Desktop**: `claude_desktop_config.json`
 
-    Keep the `npx -y agencyhandy-mcp@1` command and your API key as generated.
+    Keep the `npx -y agencyhandy-mcp@1` command and your API key as generated. The backend URL should be **https** (http is only allowed for localhost during local testing).
   </Step>
 
   <Step title="Restart and try a prompt">
-    Fully quit and reopen **Cursor** or **Claude Desktop**. Then ask something simple, such as a morning briefing for your workspace.
+    Fully quit and reopen **Cursor** or **Claude Desktop**. Then ask something simple, such as a Monday pulse or morning briefing for your workspace.
   </Step>
 </Steps>
 
 <Tip>
-  If Claude or Cursor cannot find the MCP server, confirm **Node.js 20+** is installed and that you restarted the app after saving the config.
+  If Claude or Cursor cannot find the MCP server, confirm **Node.js 20+** is installed and that you restarted the app after saving the config. If the server exits immediately, check stderr for invalid URL/key messages — expired or placeholder keys fail fast.
 </Tip>
 
 ## Example prompts
@@ -115,7 +115,7 @@ Claude should prefer these **context** tools instead of calling many small looku
 
 ## Owner insights (workspace)
 
-These tools scan recent lists and return **heuristic** owner dashboards (not a full data warehouse). Always drill into a real id from the result.
+These tools scan recent lists and return **heuristic** owner dashboards (not a full data warehouse). Always drill into a real id from the result. Shipped in **`agencyhandy-mcp@1.7+`** (current **1.7.1**).
 
 | Insight | Tool | What you get |
 |---|---|---|
@@ -151,7 +151,7 @@ Always include a **full name** or **email** in the prompt when names might colli
 
 ## What works now vs not yet
 
-| Works now (`agencyhandy-mcp@1.7+`) | Not available from MCP yet |
+| Works now (`agencyhandy-mcp@1.7.1+`) | Not available from MCP yet |
 |---|---|
 | Morning briefings and deep lookups (proposal, order, task, ticket, invoice context packs) | Replying in **client chat** from MCP |
 | **Recommend who to assign** on tasks/tickets (ranked candidates + workload), then assign | Full BI / warehouse-grade reporting |
@@ -165,5 +165,5 @@ MCP supports both reading your workspace and taking actions (create, assign, sen
 ## Related
 
 - Generate keys and copy config in-app under **Workspace Config** → **API Key**
-- Package: [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) on npm (`npx -y agencyhandy-mcp@1`)
+- Package: [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) on npm — use `npx -y agencyhandy-mcp@1` (latest **1.7.1**)
 - [Lead Custom Fields](/crm/lead-custom-fields) · [Client Custom Fields](/crm/client-custom-fields)
