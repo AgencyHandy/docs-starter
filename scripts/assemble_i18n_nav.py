@@ -31,7 +31,7 @@ STRUCTURE = [
         ("group_workspace_setup", "settings", False,
          ["workspace/general-settings", "workspace/appearance",
           "workspace/custom-domain", "workspace/email-setup", "workspace/portals"]),
-        ("group_crm", "users", False, ["crm/leads", "crm/clients"]),
+        ("group_crm", "users", False, ["crm/leads", "crm/clients", "crm/lead-custom-fields", "crm/client-custom-fields"]),
         ("group_services_orders", "package", False,
          ["services/overview", "services/create-service", "orders/overview",
           "orders/create-order", "orders/tasks"]),
