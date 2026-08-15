@@ -1,0 +1,100 @@
+---
+title: "Client özel alanları: ekstra client ayrıntılarını izleyin"
+sidebarTitle: "Client özel alanları"
+description: "Workspace Config içinde client özel alanlarını oluşturun ve yönetin."
+---
+
+
+Client custom fields let you store extra information on each client profile — beyond name, email, company, and address. Define the fields once in **Workspace Config**, then fill them in on client profiles and keep them visible for the whole team.
+
+<Note>
+  Only **SuperAdmin** and **Admin** roles can create, edit, or delete custom field definitions. Team members with client access can fill in values on client profiles.
+</Note>
+
+## Before you start
+
+- Access to **Workspace Config** → **Custom Fields**
+- A plan that includes CRM custom fields for your workspace
+
+## Create a client custom field
+
+<Steps>
+  <Step title="Open Custom Fields">
+    Go to **Workspace Config** → **Custom Fields**.
+  </Step>
+
+  <Step title="Start a new field">
+    Click **Create Custom Field**.
+  </Step>
+
+  <Step title="Choose Client as the owner">
+    In **Belongs to**, select **Client**. The field will appear only on client profiles (not on leads or tasks).
+  </Step>
+
+  <Step title="Name the field and pick a type">
+    Enter a clear **name** (for example, `Contract renewal date` or `Preferred channel`). Choose a **type**:
+
+    | Type | Use for |
+    |---|---|
+    | **Text** | Free-form notes or short answers |
+    | **Number** | Seats, retainers, numeric scores |
+    | **Boolean** | Yes/no flags (for example, VIP) |
+    | **Dropdown (Single Select)** | One choice from a list |
+    | **Dropdown (Multi Select)** | Multiple choices from a list |
+    | **Attachment** | Contracts, NDAs, or other files |
+
+    For dropdown types, add the allowed **options**. Toggle **Required** if the field must be filled when creating or editing a client.
+  </Step>
+
+  <Step title="Save">
+    Click **Create**. The field appears in the Custom Fields list with belongs-to **Client**.
+  </Step>
+</Steps>
+
+<Tip>
+  Mirror important lead fields on the client side when you regularly convert prospects. That makes conversion mapping smoother.
+</Tip>
+
+## Fill in values on a client
+
+<Steps>
+  <Step title="Open a client">
+    Go to **CRM** → **Clients** and open a client profile.
+  </Step>
+
+  <Step title="Find Custom Fields">
+    In the client profile, open the section that shows **Custom Fields** (often under primary information or a dedicated block).
+  </Step>
+
+  <Step title="Enter values and save">
+    Complete the fields your workspace defined, then save. Values stay on the profile for orders, billing, and team handoffs.
+  </Step>
+</Steps>
+
+## Carry fields over from a lead
+
+When converting a lead to a client, you may be asked which **lead** custom fields to add or map onto the **client**.
+
+1. Create matching **Client** custom fields first if they do not exist yet.
+2. During conversion, select which lead fields to carry over.
+3. Confirm values on the new client profile after conversion.
+
+See [Lead Custom Fields](/tr/crm/lead-custom-fields) for defining lead-side fields.
+
+## Manage existing client fields
+
+From **Workspace Config** → **Custom Fields**:
+
+- **Search** or filter by name and belongs-to (**Client**)
+- **Edit** the field name, options, or required setting
+- **Delete** fields you no longer need (existing values on clients may be cleared — confirm before deleting)
+
+## Import and lists
+
+Client list views and CSV import focus on standard profile columns. Custom field definitions still live in **Workspace Config**; fill custom values on each profile (or after import) so data stays consistent.
+
+## Related
+
+- [Clients](/tr/crm/clients) — create, import, export, and portal access
+- [Lead Custom Fields](/tr/crm/lead-custom-fields) — fields on prospects before conversion
+- [Leads](/tr/crm/leads) — pipeline and convert to client

@@ -1,0 +1,94 @@
+---
+title: "Campos personalizados de leads: captura datos extra del prospecto"
+sidebarTitle: "Campos personalizados de leads"
+description: "Crea y gestiona campos personalizados para leads en Workspace Config para que tu equipo rastree industria, presupuesto, origen y otros datos más allá de los campos CRM predeterminados."
+---
+
+Los campos personalizados de leads te permiten guardar información adicional en cada prospecto — más allá del nombre, el correo, la empresa y los campos CRM predeterminados. Define los campos una vez en **Workspace Config** y complétalos en cada ficha de lead.
+
+<Note>
+  Solo los roles **SuperAdmin** y **Admin** pueden crear, editar o eliminar definiciones de campos personalizados. Los miembros del equipo con acceso a leads pueden rellenar valores en los perfiles de lead.
+</Note>
+
+## Antes de empezar
+
+- Acceso a **Workspace Config** → **Custom Fields**
+- Un plan que incluya campos personalizados de CRM para tu workspace
+
+## Crear un campo personalizado de lead
+
+<Steps>
+  <Step title="Abrir Custom Fields">
+    Ve a **Workspace Config** → **Custom Fields**.
+  </Step>
+
+  <Step title="Empezar un campo nuevo">
+    Haz clic en **Create Custom Field**.
+  </Step>
+
+  <Step title="Elegir Lead como propietario">
+    En **Belongs to**, selecciona **Lead**. El campo solo aparecerá en perfiles de lead (no en clients ni tasks).
+  </Step>
+
+  <Step title="Nombrar el campo y elegir un tipo">
+    Introduce un **nombre** claro (por ejemplo, `Industry` o `Estimated budget`). Elige un **tipo**:
+
+    | Tipo | Úsalo para |
+    |---|---|
+    | **Text** | Notas o respuestas cortas |
+    | **Number** | Presupuestos, puntuaciones, cantidades |
+    | **Boolean** | Indicadores sí/no |
+    | **Dropdown (Single Select)** | Una opción de una lista |
+    | **Dropdown (Multi Select)** | Varias opciones de una lista |
+    | **Attachment** | Archivos relacionados con el lead |
+
+    En los tipos desplegables, añade las **opciones** permitidas. Activa **Required** si el campo debe completarse al crear o editar un lead.
+  </Step>
+
+  <Step title="Guardar">
+    Haz clic en **Create**. El campo aparece en la lista Custom Fields con belongs-to **Lead**.
+  </Step>
+</Steps>
+
+<Tip>
+  Usa nombres que tu equipo de ventas ya emplee en llamadas y hojas de cálculo. Etiquetas coherentes facilitan filtros y traspasos.
+</Tip>
+
+## Rellenar valores en un lead
+
+<Steps>
+  <Step title="Abrir un lead">
+    Ve a **CRM** → **Leads** y abre una ficha de lead.
+  </Step>
+
+  <Step title="Abrir la pestaña Custom Fields">
+    En el detalle del lead, abre la sección o pestaña **Custom Fields**.
+  </Step>
+
+  <Step title="Introducir valores y guardar">
+    Completa los campos definidos por tu workspace y guarda. Los valores permanecen con el lead a lo largo del pipeline.
+  </Step>
+</Steps>
+
+## Convertir un lead con campos personalizados
+
+Al usar **Convert to Client**, AgencyHandy puede pedirte trasladar campos personalizados de lead que también deban existir en el client.
+
+- Si ya existen campos **client** equivalentes, mapea o copia valores durante la conversión.
+- Si un campo de lead no tiene equivalente de client, créalo primero en **Workspace Config** → **Custom Fields** (belongs to **Client**), o omite ese valor.
+
+Consulta [Campos personalizados de clients](/es/crm/client-custom-fields) para definir campos del lado client.
+
+## Gestionar campos de lead existentes
+
+Desde **Workspace Config** → **Custom Fields**:
+
+- **Busca** o filtra por nombre y belongs-to (**Lead**)
+- **Edita** el nombre, las opciones o si es obligatorio
+- **Elimina** campos que ya no necesites (los valores existentes en leads pueden borrarse — confirma antes de eliminar)
+
+## Relacionado
+
+- [Leads](/es/crm/leads) — pipeline, correo y conversión
+- [Campos personalizados de clients](/es/crm/client-custom-fields) — campos en perfiles de client
+- [Clients](/es/crm/clients) — lista de clients, importación y acceso al portal

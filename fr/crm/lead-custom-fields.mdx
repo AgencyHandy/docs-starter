@@ -1,0 +1,94 @@
+---
+title: "Champs personnalisés des leads : capturer des données prospects supplémentaires"
+sidebarTitle: "Champs personnalisés des leads"
+description: "Créez et gérez des champs personnalisés pour les leads dans Workspace Config afin que votre équipe suive le secteur, le budget, les détails de source et d’autres données au-delà des champs CRM par défaut."
+---
+
+Les champs personnalisés des leads vous permettent de stocker des informations supplémentaires sur chaque prospect — au-delà du nom, de l’e-mail, de l’entreprise et des champs CRM par défaut. Définissez les champs une fois dans **Workspace Config**, puis renseignez-les sur chaque fiche lead.
+
+<Note>
+  Seuls les rôles **SuperAdmin** et **Admin** peuvent créer, modifier ou supprimer les définitions de champs personnalisés. Les membres de l’équipe ayant accès aux leads peuvent renseigner les valeurs sur les fiches lead.
+</Note>
+
+## Avant de commencer
+
+- Accès à **Workspace Config** → **Custom Fields**
+- Une offre qui inclut les champs personnalisés CRM pour votre espace de travail
+
+## Créer un champ personnalisé lead
+
+<Steps>
+  <Step title="Ouvrir Custom Fields">
+    Allez dans **Workspace Config** → **Custom Fields**.
+  </Step>
+
+  <Step title="Démarrer un nouveau champ">
+    Cliquez sur **Create Custom Field**.
+  </Step>
+
+  <Step title="Choisir Lead comme propriétaire">
+    Dans **Belongs to**, sélectionnez **Lead**. Le champ n’apparaîtra que sur les fiches lead (pas sur les clients ni les tâches).
+  </Step>
+
+  <Step title="Nommer le champ et choisir un type">
+    Saisissez un **nom** clair (par exemple `Industry` ou `Estimated budget`). Choisissez un **type** :
+
+    | Type | Utilisation |
+    |---|---|
+    | **Text** | Notes libres ou réponses courtes |
+    | **Number** | Budgets, scores, quantités |
+    | **Boolean** | Indicateurs oui/non |
+    | **Dropdown (Single Select)** | Un choix dans une liste |
+    | **Dropdown (Multi Select)** | Plusieurs choix dans une liste |
+    | **Attachment** | Fichiers liés au lead |
+
+    Pour les types liste, ajoutez les **options** autorisées. Activez **Required** si le champ doit être renseigné à la création ou à l’édition d’un lead.
+  </Step>
+
+  <Step title="Enregistrer">
+    Cliquez sur **Create**. Le champ apparaît dans la liste Custom Fields avec belongs-to **Lead**.
+  </Step>
+</Steps>
+
+<Tip>
+  Utilisez les libellés déjà employés par votre équipe commerciale dans les appels et tableurs. Des noms cohérents clarifient les filtres et les passations.
+</Tip>
+
+## Renseigner les valeurs sur un lead
+
+<Steps>
+  <Step title="Ouvrir un lead">
+    Allez dans **CRM** → **Leads** et ouvrez une fiche lead.
+  </Step>
+
+  <Step title="Ouvrir l’onglet Custom Fields">
+    Dans le détail du lead, ouvrez la section ou l’onglet **Custom Fields**.
+  </Step>
+
+  <Step title="Saisir les valeurs et enregistrer">
+    Complétez les champs définis par votre espace de travail, puis enregistrez. Les valeurs restent avec le lead tout au long du pipeline.
+  </Step>
+</Steps>
+
+## Convertir un lead qui a des champs personnalisés
+
+Lorsque vous cliquez sur **Convert to Client**, AgencyHandy peut vous proposer de reporter les champs personnalisés lead qui doivent aussi exister côté client.
+
+- Si des champs **client** correspondants existent déjà, mappez ou copiez les valeurs pendant la conversion.
+- Si un champ lead n’a pas d’équivalent client, créez d’abord le champ client sous **Workspace Config** → **Custom Fields** (belongs to **Client**), ou ignorez cette valeur.
+
+Voir [Champs personnalisés des clients](/fr/crm/client-custom-fields) pour définir les champs côté client.
+
+## Gérer les champs lead existants
+
+Depuis **Workspace Config** → **Custom Fields** :
+
+- **Rechercher** ou filtrer par nom et belongs-to (**Lead**)
+- **Modifier** le nom, les options ou le caractère obligatoire
+- **Supprimer** les champs inutiles (les valeurs existantes sur les leads peuvent être effacées — confirmez avant de supprimer)
+
+## Ressources associées
+
+- [Leads](/fr/crm/leads) — pipeline, e-mail et conversion
+- [Champs personnalisés des clients](/fr/crm/client-custom-fields) — champs sur les fiches client
+- [Clients](/fr/crm/clients) — liste clients, import et accès portail

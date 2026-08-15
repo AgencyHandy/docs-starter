@@ -1,0 +1,95 @@
+---
+title: "Lead-Custom-Fields: Zusätzliche Prospect-Daten erfassen"
+sidebarTitle: "Lead-Custom-Fields"
+description: "Erstellen und verwalten Sie Custom Fields für Leads in Workspace Config, damit Ihr Team Branche, Budget, Quellen und weitere Daten über die Standard-CRM-Felder hinaus erfasst."
+---
+
+
+Lead custom fields let you store extra information on each prospect — beyond name, email, company, and the default CRM fields. Define the fields once in **Workspace Config**, then fill them in on every lead card.
+
+<Note>
+  Only **SuperAdmin** and **Admin** roles can create, edit, or delete custom field definitions. Team members with lead access can fill in values on lead profiles.
+</Note>
+
+## Before you start
+
+- Access to **Workspace Config** → **Custom Fields**
+- A plan that includes CRM custom fields for your workspace
+
+## Create a lead custom field
+
+<Steps>
+  <Step title="Open Custom Fields">
+    Go to **Workspace Config** → **Custom Fields**.
+  </Step>
+
+  <Step title="Start a new field">
+    Click **Create Custom Field**.
+  </Step>
+
+  <Step title="Choose Lead as the owner">
+    In **Belongs to**, select **Lead**. The field will appear only on lead profiles (not on clients or tasks).
+  </Step>
+
+  <Step title="Name the field and pick a type">
+    Enter a clear **name** (for example, `Industry` or `Estimated budget`). Choose a **type**:
+
+    | Type | Use for |
+    |---|---|
+    | **Text** | Free-form notes or short answers |
+    | **Number** | Budgets, scores, quantities |
+    | **Boolean** | Yes/no flags |
+    | **Dropdown (Single Select)** | One choice from a list |
+    | **Dropdown (Multi Select)** | Multiple choices from a list |
+    | **Attachment** | Files related to the lead |
+
+    For dropdown types, add the allowed **options**. Toggle **Required** if the field must be filled when creating or editing a lead.
+  </Step>
+
+  <Step title="Save">
+    Click **Create**. The field appears in the Custom Fields list with belongs-to **Lead**.
+  </Step>
+</Steps>
+
+<Tip>
+  Use names your sales team already uses in calls and spreadsheets. Consistent labels make filters and handoffs clearer.
+</Tip>
+
+## Fill in values on a lead
+
+<Steps>
+  <Step title="Open a lead">
+    Go to **CRM** → **Leads** and open a lead card.
+  </Step>
+
+  <Step title="Open the Custom Fields tab">
+    In the lead detail view, open the **Custom Fields** section or tab.
+  </Step>
+
+  <Step title="Enter values and save">
+    Complete the fields your workspace defined, then save. Values stay with the lead through pipeline stages.
+  </Step>
+</Steps>
+
+## Convert a lead that has custom fields
+
+When you **Convert to Client**, AgencyHandy can prompt you to carry over lead custom fields that should also exist on the client.
+
+- If matching **client** custom fields already exist, map or copy values during conversion.
+- If a lead field has no client equivalent, create the client field first under **Workspace Config** → **Custom Fields** (belongs to **Client**), or skip that value.
+
+See [Client Custom Fields](/de/crm/client-custom-fields) for defining client-side fields.
+
+## Manage existing lead fields
+
+From **Workspace Config** → **Custom Fields**:
+
+- **Search** or filter by name and belongs-to (**Lead**)
+- **Edit** the field name, options, or required setting
+- **Delete** fields you no longer need (existing values on leads may be cleared — confirm before deleting)
+
+## Related
+
+- [Leads](/de/crm/leads) — pipeline, email, and conversion
+- [Client Custom Fields](/de/crm/client-custom-fields) — fields that appear on client profiles
+- [Clients](/de/crm/clients) — client list, import, and portal access

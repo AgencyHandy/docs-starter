@@ -1,0 +1,99 @@
+---
+title: "Champs personnalisés des clients : suivre des détails clients supplémentaires"
+sidebarTitle: "Champs personnalisés des clients"
+description: "Créez et gérez des champs personnalisés pour les clients dans Workspace Config afin de capturer les termes contractuels, tags sectoriels, canaux préférés et autres données au-delà du profil par défaut."
+---
+
+Les champs personnalisés des clients vous permettent de stocker des informations supplémentaires sur chaque fiche client — au-delà du nom, de l’e-mail, de l’entreprise et de l’adresse. Définissez les champs une fois dans **Workspace Config**, puis renseignez-les sur les profils clients pour toute l’équipe.
+
+<Note>
+  Seuls les rôles **SuperAdmin** et **Admin** peuvent créer, modifier ou supprimer les définitions de champs personnalisés. Les membres de l’équipe ayant accès aux clients peuvent renseigner les valeurs sur les fiches client.
+</Note>
+
+## Avant de commencer
+
+- Accès à **Workspace Config** → **Custom Fields**
+- Une offre qui inclut les champs personnalisés CRM pour votre espace de travail
+
+## Créer un champ personnalisé client
+
+<Steps>
+  <Step title="Ouvrir Custom Fields">
+    Allez dans **Workspace Config** → **Custom Fields**.
+  </Step>
+
+  <Step title="Démarrer un nouveau champ">
+    Cliquez sur **Create Custom Field**.
+  </Step>
+
+  <Step title="Choisir Client comme propriétaire">
+    Dans **Belongs to**, sélectionnez **Client**. Le champ n’apparaîtra que sur les fiches client (pas sur les leads ni les tâches).
+  </Step>
+
+  <Step title="Nommer le champ et choisir un type">
+    Saisissez un **nom** clair (par exemple `Contract renewal date` ou `Preferred channel`). Choisissez un **type** :
+
+    | Type | Utilisation |
+    |---|---|
+    | **Text** | Notes libres ou réponses courtes |
+    | **Number** | Sièges, retainers, scores numériques |
+    | **Boolean** | Indicateurs oui/non (par exemple VIP) |
+    | **Dropdown (Single Select)** | Un choix dans une liste |
+    | **Dropdown (Multi Select)** | Plusieurs choix dans une liste |
+    | **Attachment** | Contrats, NDA ou autres fichiers |
+
+    Pour les types liste, ajoutez les **options** autorisées. Activez **Required** si le champ doit être renseigné à la création ou à l’édition d’un client.
+  </Step>
+
+  <Step title="Enregistrer">
+    Cliquez sur **Create**. Le champ apparaît dans la liste Custom Fields avec belongs-to **Client**.
+  </Step>
+</Steps>
+
+<Tip>
+  Reprenez les champs lead importants côté client lorsque vous convertissez souvent des prospects. La correspondance à la conversion est alors plus simple.
+</Tip>
+
+## Renseigner les valeurs sur un client
+
+<Steps>
+  <Step title="Ouvrir un client">
+    Allez dans **CRM** → **Clients** et ouvrez une fiche client.
+  </Step>
+
+  <Step title="Trouver Custom Fields">
+    Dans le profil client, ouvrez la section **Custom Fields** (souvent sous les informations principales ou un bloc dédié).
+  </Step>
+
+  <Step title="Saisir les valeurs et enregistrer">
+    Complétez les champs définis par votre espace de travail, puis enregistrez. Les valeurs restent sur le profil pour les commandes, la facturation et les passations.
+  </Step>
+</Steps>
+
+## Reporter les champs depuis un lead
+
+Lors de la conversion d’un lead en client, on peut vous demander quels champs personnalisés **lead** ajouter ou mapper sur le **client**.
+
+1. Créez d’abord les champs **Client** correspondants s’ils n’existent pas encore.
+2. Pendant la conversion, sélectionnez les champs lead à reporter.
+3. Vérifiez les valeurs sur la nouvelle fiche client après conversion.
+
+Voir [Champs personnalisés des leads](/fr/crm/lead-custom-fields) pour définir les champs côté lead.
+
+## Gérer les champs client existants
+
+Depuis **Workspace Config** → **Custom Fields** :
+
+- **Rechercher** ou filtrer par nom et belongs-to (**Client**)
+- **Modifier** le nom, les options ou le caractère obligatoire
+- **Supprimer** les champs inutiles (les valeurs existantes sur les clients peuvent être effacées — confirmez avant de supprimer)
+
+## Import et listes
+
+Les vues liste client et l’import CSV se concentrent sur les colonnes de profil standard. Les définitions de champs personnalisés restent dans **Workspace Config** ; renseignez les valeurs sur chaque profil (ou après import) pour garder des données cohérentes.
+
+## Ressources associées
+
+- [Clients](/fr/crm/clients) — création, import, export et accès portail
+- [Champs personnalisés des leads](/fr/crm/lead-custom-fields) — champs sur les prospects avant conversion
+- [Leads](/fr/crm/leads) — pipeline et conversion en client
