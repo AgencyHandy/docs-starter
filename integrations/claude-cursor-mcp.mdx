@@ -9,7 +9,7 @@ AgencyHandy's MCP connection lets you talk to **Claude** or **Cursor** in plain 
 You stay in control. Claude and Cursor only act with the workspace API key you generate, and they ask you to confirm when a name matches more than one person.
 
 <Note>
-  You need a role that can open **Workspace Config** and manage **API keys** (typically **SuperAdmin** or **Admin**). You also need **Node.js 20+** on the machine where Claude Desktop or Cursor runs. Use `npx -y agencyhandy-mcp@1` (latest is **1.7.1+**: owner insights, advanced context packs, hardened URL/path checks).
+  You need a role that can open **Workspace Config** and manage **API keys** (typically **SuperAdmin** or **Admin**). You also need **Node.js 20+** on the machine where Claude Desktop or Cursor runs. Use `npx -y agencyhandy-mcp@1` (latest is **1.7.2+**: owner insights, advanced context packs, API builder context for leads/orders/tasks/invoices/forms, hardened URL/path checks).
 </Note>
 
 ## Requirements
@@ -19,7 +19,7 @@ You stay in control. Claude and Cursor only act with the workspace API key you g
 | **Node.js** | Version **20** or newer (`node -v` to check) |
 | **Claude Desktop** or **Cursor** | One of these apps installed on your computer |
 | **AgencyHandy workspace** | Access to **Workspace Config** → **API Key** |
-| **MCP package** | `npx -y agencyhandy-mcp@1` (ships **1.7.1+** on the `1` tag) |
+| **MCP package** | `npx -y agencyhandy-mcp@1` (ships **1.7.2+** on the `1` tag) |
 
 ## Set up Claude or Cursor MCP
 
@@ -103,6 +103,23 @@ Claude should prefer these **context** tools instead of calling many small looku
 | **Proposal** (`ah_proposal_context`) | Commercial summary, comment thread, public view, linked service | Negotiation / accept readiness |
 | **Invoice** (`ah_invoice_context`) | Billing summary, public view, linked order, related invoices for the same client | Cash / overdue / billing questions |
 
+## API builder context (for custom MCP tools)
+
+If you build your **own** MCP tools against the AgencyHandy HTTP API (or Claude reads workspace resources), prefer the built-in resource **`ah://api-context`** (also inside **`ah://full-context`**). It documents path renames and easy mistakes for:
+
+| Area | What to remember |
+|---|---|
+| **Leads** | No `/leads` route — use `/members` + `bulk-lead` / `isConvertedClient=false`. Never call `PUT /accounts/update` without `accountId` (that updates the API-key owner). |
+| **Projects** | UI project = API `/orders` (not `/projects`). |
+| **Tasks / tickets** | Board tickets are tasks with `type=issue`. Status **ObjectId** on lists, **name** on updates. |
+| **Comments** | Task comments = `/comments`; proposal comments = `/quotation-comments`. Use `agencyComment` vs `clientComment` for visibility. |
+| **Labels** | Company labels use `create-for-company` / `suggest-by-company`. |
+| **Clients** | Live path is `/members` (not stale `/company/.../members` docs). |
+| **Invoices** | Named permissions (`getInvoice`, …); resend and public routes differ from status PUT. |
+| **Vouchers / forms / webhooks** | Admin CRUD vs public apply/respond/event-id rules — see `ah://api-context`. |
+
+Shipped in **`agencyhandy-mcp@1.7.2+`**.
+
 **Assignment flow (tasks & tickets)**
 
 1. Ask for context on the task or ticket (include the order/project when you know it).
@@ -115,7 +132,7 @@ Claude should prefer these **context** tools instead of calling many small looku
 
 ## Owner insights (workspace)
 
-These tools scan recent lists and return **heuristic** owner dashboards (not a full data warehouse). Always drill into a real id from the result. Shipped in **`agencyhandy-mcp@1.7+`** (current **1.7.1**).
+These tools scan recent lists and return **heuristic** owner dashboards (not a full data warehouse). Always drill into a real id from the result. Shipped in **`agencyhandy-mcp@1.7+`** (current **1.7.2**).
 
 | Insight | Tool | What you get |
 |---|---|---|
@@ -151,11 +168,12 @@ Always include a **full name** or **email** in the prompt when names might colli
 
 ## What works now vs not yet
 
-| Works now (`agencyhandy-mcp@1.7.1+`) | Not available from MCP yet |
+| Works now (`agencyhandy-mcp@1.7.2+`) | Not available from MCP yet |
 |---|---|
 | Morning briefings and deep lookups (proposal, order, task, ticket, invoice context packs) | Replying in **client chat** from MCP |
 | **Recommend who to assign** on tasks/tickets (ranked candidates + workload), then assign | Full BI / warehouse-grade reporting |
 | **Cash risk**, **proposal pipeline aging**, **lead segments**, **client churn heuristics** | — |
+| **API builder context** (`ah://api-context`) for leads, orders, tasks, comments, labels, clients, invoices, vouchers, forms | — |
 | Investigate orders / proposals / invoices with linked records | — |
 | Create leads and clients; list/create/fill **custom fields** | — |
 | Send invoices and mark invoices paid | — |
@@ -165,5 +183,5 @@ MCP supports both reading your workspace and taking actions (create, assign, sen
 ## Related
 
 - Generate keys and copy config in-app under **Workspace Config** → **API Key**
-- Package: [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) on npm — use `npx -y agencyhandy-mcp@1` (latest **1.7.1**)
+- Package: [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) on npm — use `npx -y agencyhandy-mcp@1` (latest **1.7.2**)
 - [Lead Custom Fields](/crm/lead-custom-fields) · [Client Custom Fields](/crm/client-custom-fields)
