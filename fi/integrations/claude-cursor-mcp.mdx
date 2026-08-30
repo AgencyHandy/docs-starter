@@ -1,28 +1,40 @@
 ---
 title: "Yhdistä Claude ja Cursor käyttääksesi AgencyHandya MCP:llä"
 sidebarTitle: "Claude & Cursor MCP"
-description: "Määritä AgencyHandy MCP-paketti, jotta voit pyytää Claude Desktopilta tai Cursorilta briffiä, tikettien määräämistä, laskujen lähettämistä ja muuta — arkikielellä."
+description: "Yhdistä Claude, Cursor tai pilvessä toimiva agentti AgencyHandyyn MCP:n avulla, niin se voi koota tilannekuvan, jakaa työtä, tutkia maksu- ja toimitusriskejä ja täyttää mukautettuja kenttiä — tavallisella kielellä."
 ---
 
 AgencyHandyn MCP-yhteys antaa puhua **Claudelle** tai **Cursorille** arkikielellä ja suorittaa päivittäistä työtä AgencyHandy-työtilassa — avaamatta jokaista näyttöä itse.
 
 Sinä säilytät hallinnan. Claude ja Cursor toimivat vain generoimallasi työtilan API-avaimella ja pyytävät vahvistusta, kun nimi vastaa useampaa henkilöä.
 
+## Kaksi tapaa yhdistää
+
+| Missä agenttisi toimii | Miten yhdistät | Käyttöönotto |
+|---|---|---|
+| **Omalla koneellasi** — Claude Desktop tai Cursor | Sovelluksen käynnistämä `agencyhandy-mcp`-paketti | **Claude- tai Cursor-MCP:n käyttöönotto** alla — vaatii Node.js 20+ |
+| **Pilvessä** — Cloudflare Workers, Vercel, n8n, isännöity Claude tai Cursor | Isännöity MCP-palvelimemme osoitteessa `https://mcp.agencyhandy.com/` | **Pilviagentin yhdistäminen** alla — ei asennettavaa |
+
+Molemmat käyttävät samaa työtilan API-avainta ja antavat agentille samat työkalut.
+
 <Note>
-  Tarvitset roolin, joka voi avata **Workspace Config**in ja hallita **API keys** (yleensä **SuperAdmin** tai **Admin**). Tarvitset myös **Node.js 20+** tietokoneella, jossa Claude Desktop tai Cursor toimii.
+  Tarvitset roolin, joka voi avata **Workspace Config** -näkymän ja hallita **API keys** -avaimia (yleensä **SuperAdmin** tai **Admin**). Paikallista käyttöönottoa varten tarvitset lisäksi **Node.js 20+** siinä koneessa, jossa Claude Desktop tai Cursor toimii — isännöity palvelin ei vaadi asennusta lainkaan.
 </Note>
 
 ## Vaatimukset
 
 | Vaatimus | Tiedot |
 |---|---|
-| **Node.js** | Versio **20** tai uudempi (tarkista `node -v`) |
-| **Claude Desktop** tai **Cursor** | Jompikumpi sovellus asennettuna tietokoneellesi |
-| **AgencyHandy-työtila** | Pääsy: **Workspace Config** → **API Key** |
+| **AgencyHandy-työtila** | Pääsy kohtaan **Workspace Config** → **API Key** |
+| **MCP-isäntä** | Claude Desktop tai Cursor koneellasi, tai mikä tahansa agentti, joka osaa kutsua MCP-palvelinta HTTP:n yli |
+| **Node.js** *(vain paikallinen käyttöönotto)* | Versio **20** tai uudempi (tarkista `node -v`) |
+| **MCP-paketti** *(vain paikallinen käyttöönotto)* | `npx -y agencyhandy-mcp@1` (tunniste `1` toimittaa **1.7.2+**) |
 
 npm:n MCP-paketti on `agencyhandy-mcp`. Claude ja Cursor suorittavat sen komennolla `npx -y agencyhandy-mcp@1`.
 
 ## Claude- tai Cursor-MCP:n määritys
+
+Käytä tätä, kun Claude Desktop tai Cursor toimii omalla koneellasi. Jos agenttisi toimii pilvessä, siirry kohtaan **Pilviagentin yhdistäminen**.
 
 <Steps>
   <Step title="Avaa Workspace Config">
@@ -53,6 +65,63 @@ npm:n MCP-paketti on `agencyhandy-mcp`. Claude ja Cursor suorittavat sen komenno
 
 <Tip>
   Jos Claude tai Cursor ei löydä MCP-palvelinta, varmista **Node.js 20+** ja käynnistä sovellus uudelleen määrityksen tallennuksen jälkeen.
+</Tip>
+
+## Pilviagentin yhdistäminen (isännöity palvelin)
+
+Jos agenttisi toimii paikassa, johon et voi asentaa pakettia — Cloudflare Workers, Vercelin funktiot, n8n tai isännöity Claude tai Cursor — osoita se MCP-palvelimeen, jota ylläpidämme puolestasi:
+
+```
+https://mcp.agencyhandy.com/
+```
+
+Mitään ei tarvitse asentaa eikä palvelinta ylläpitää. Todenna jokainen pyyntö samalla työtilan API-avaimella bearer-tokenina. Työtila luetaan avaimesta, joten jokainen käyttäjä yhdistää omallaan.
+
+**Cursor, Claude Code ja kaikki isännät, jotka lähettävät omia otsakkeita:**
+
+```json
+{
+  "mcpServers": {
+    "agency-handy": {
+      "url": "https://mcp.agencyhandy.com/",
+      "headers": {
+        "Authorization": "Bearer YOUR_API_KEY"
+      }
+    }
+  }
+}
+```
+
+**Claude Desktop** ei osaa lähettää omia otsakkeita — käytä siltana `mcp-remote`-työkalua:
+
+```json
+{
+  "mcpServers": {
+    "agency-handy": {
+      "command": "npx",
+      "args": [
+        "-y", "mcp-remote",
+        "https://mcp.agencyhandy.com/",
+        "--header", "Authorization:Bearer YOUR_API_KEY"
+      ]
+    }
+  }
+}
+```
+
+**Claude Code** komentoriviltä:
+
+```bash
+claude mcp add agency-handy --transport http https://mcp.agencyhandy.com/ \
+  --header "Authorization: Bearer YOUR_API_KEY"
+```
+
+<Note>
+  Osoite on **juuripolku** — `https://mcp.agencyhandy.com/`, ei `/mcp`. Tarkista palvelimen tavoitettavuus avaamalla `https://mcp.agencyhandy.com/health`.
+</Note>
+
+<Tip>
+  Rakennatko sen sijaan omaa integraatiota HTTP-rajapintaan? Lähetä pyyntöjesi mukana **`User-Agent`**-otsake. Jotkin ajoympäristöt — muun muassa Cloudflare Workersin `fetch()` — eivät lähetä sitä oletuksena, ja ilman otsaketta pyynnöt hylätään ennen kuin ne saapuvat rajapintaan.
 </Tip>
 
 ## Esimerkkikehotteet
@@ -87,6 +156,7 @@ MCP tukee työtilan lukemista ja toimintoja (luo, määrää, lähetä, päivit�
 ## Aiheeseen liittyvää
 
 - Luo avaimia ja kopioi määritys sovelluksessa: **Workspace Config** → **API Key**
+- Isännöity palvelin pilviagenteille: `https://mcp.agencyhandy.com/` (tilatarkistus osoitteessa `/health`)
 - Paketti: [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) npm:ssä (`npx -y agencyhandy-mcp@1`)
 
 <Note>

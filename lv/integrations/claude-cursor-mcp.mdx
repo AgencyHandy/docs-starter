@@ -1,28 +1,40 @@
 ---
 title: "Savienojiet Claude un Cursor, lai vadītu AgencyHandy ar MCP"
 sidebarTitle: "Claude un Cursor MCP"
-description: "Iestatiet AgencyHandy MCP pakotni, lai dabiskā valodā lūgtu Claude Desktop vai Cursor briefingus, biļešu piešķiršanu, rēķinu sūtīšanu un vairāk."
+description: "Savienojiet Claude, Cursor vai mākonī mitinātu aģentu ar AgencyHandy, izmantojot MCP, lai tas sniegtu pārskatu, piešķirtu darbus, izpētītu maksājumu un piegādes riskus un aizpildītu pielāgotos laukus — vienkāršā valodā."
 ---
 
 AgencyHandy MCP savienojums ļauj runāt ar **Claude** vai **Cursor** ikdienas valodā un veikt ikdienas darbu AgencyHandy darba vietā — neatverot katru ekrānu pašam.
 
 Kontrole paliek jums. Claude un Cursor darbojas tikai ar darba vietas API atslēgu, ko ģenerējat, un lūdz apstiprinājumu, ja vārds atbilst vairākām personām.
 
+## Divi savienošanās veidi
+
+| Kur darbojas jūsu aģents | Kā savienot | Iestatīšana |
+|---|---|---|
+| **Jūsu datorā** — Claude Desktop vai Cursor | Pakotne `agencyhandy-mcp`, ko palaiž lietotne | **Claude vai Cursor MCP iestatīšana** zemāk — nepieciešams Node.js 20+ |
+| **Mākonī** — Cloudflare Workers, Vercel, n8n, mitināts Claude vai Cursor | Mūsu mitinātais MCP serveris `https://mcp.agencyhandy.com/` | **Mākoņa aģenta savienošana** zemāk — nekas nav jāinstalē |
+
+Abi izmanto vienu un to pašu darbvietas API atslēgu un dod aģentam tos pašus rīkus.
+
 <Note>
-  Nepieciešama loma, kas var atvērt **Workspace Config** un pārvaldīt **API keys** (parasti **SuperAdmin** vai **Admin**). Nepieciešams arī **Node.js 20+** datorā, kurā darbojas Claude Desktop vai Cursor.
+  Nepieciešama loma, kas var atvērt **Workspace Config** un pārvaldīt **API keys** (parasti **SuperAdmin** vai **Admin**). Vietējai iestatīšanai vajadzīgs arī **Node.js 20+** datorā, kurā darbojas Claude Desktop vai Cursor — mitinātajam serverim instalēšana nav vajadzīga vispār.
 </Note>
 
 ## Prasības
 
 | Prasība | Detaļas |
 |---|---|
-| **Node.js** | Versija **20** vai jaunāka (pārbaudiet ar `node -v`) |
-| **Claude Desktop** vai **Cursor** | Viena no šīm lietotnēm instalēta datorā |
-| **AgencyHandy darba vieta** | Piekļuve **Workspace Config** → **API Key** |
+| **AgencyHandy darbvieta** | Piekļuve **Workspace Config** → **API Key** |
+| **MCP resursdators** | Claude Desktop vai Cursor jūsu datorā, vai jebkurš aģents, kas var izsaukt MCP serveri caur HTTP |
+| **Node.js** *(tikai vietējai iestatīšanai)* | Versija **20** vai jaunāka (pārbaudiet ar `node -v`) |
+| **MCP pakotne** *(tikai vietējai iestatīšanai)* | `npx -y agencyhandy-mcp@1` (birka `1` piegādā **1.7.2+**) |
 
 MCP pakotne npm ir `agencyhandy-mcp`. Claude un Cursor to palaiz ar `npx -y agencyhandy-mcp@1`.
 
 ## Claude vai Cursor MCP iestatīšana
+
+Izmantojiet šo ceļu, kad Claude Desktop vai Cursor darbojas jūsu pašu datorā. Ja aģents darbojas mākonī, dodieties uz **Mākoņa aģenta savienošana**.
 
 <Steps>
   <Step title="Atvērt Workspace Config">
@@ -53,6 +65,63 @@ MCP pakotne npm ir `agencyhandy-mcp`. Claude un Cursor to palaiz ar `npx -y agen
 
 <Tip>
   Ja Claude vai Cursor neatrod MCP serveri, apstipriniet, ka ir instalēts **Node.js 20+**, un restartējiet lietotni pēc konfigurācijas saglabāšanas.
+</Tip>
+
+## Mākoņa aģenta savienošana (mitināts serveris)
+
+Ja jūsu aģents darbojas vietā, kur nevar instalēt pakotni — Cloudflare Workers, Vercel funkcijas, n8n vai mitināts Claude vai Cursor — norādiet to uz MCP serveri, ko uzturam jūsu vietā:
+
+```
+https://mcp.agencyhandy.com/
+```
+
+Nekas nav jāinstalē un nav jāuztur serveris. Autentificējiet katru pieprasījumu ar to pašu darbvietas API atslēgu kā bearer marķieri. Darbvieta tiek nolasīta no atslēgas, tāpēc katrs lietotājs savienojas ar savu.
+
+**Cursor, Claude Code un jebkurš resursdators, kas sūta pielāgotas galvenes:**
+
+```json
+{
+  "mcpServers": {
+    "agency-handy": {
+      "url": "https://mcp.agencyhandy.com/",
+      "headers": {
+        "Authorization": "Bearer YOUR_API_KEY"
+      }
+    }
+  }
+}
+```
+
+**Claude Desktop** nevar sūtīt pielāgotas galvenes — izveidojiet tiltu ar `mcp-remote`:
+
+```json
+{
+  "mcpServers": {
+    "agency-handy": {
+      "command": "npx",
+      "args": [
+        "-y", "mcp-remote",
+        "https://mcp.agencyhandy.com/",
+        "--header", "Authorization:Bearer YOUR_API_KEY"
+      ]
+    }
+  }
+}
+```
+
+**Claude Code** no komandrindas:
+
+```bash
+claude mcp add agency-handy --transport http https://mcp.agencyhandy.com/ \
+  --header "Authorization: Bearer YOUR_API_KEY"
+```
+
+<Note>
+  Adrese ir **saknes ceļš** — `https://mcp.agencyhandy.com/`, nevis `/mcp`. Lai pārbaudītu, vai serveris atbild, atveriet `https://mcp.agencyhandy.com/health`.
+</Note>
+
+<Tip>
+  Vai tā vietā veidojat savu integrāciju ar HTTP API? Sūtiet pieprasījumiem līdzi **`User-Agent`** galveni. Dažas izpildvides — tostarp Cloudflare Workers `fetch()` — pēc noklusējuma to nesūta, un pieprasījumi bez tās tiek noraidīti, pirms sasniedz API.
 </Tip>
 
 ## Uzvedņu piemēri
@@ -92,4 +161,5 @@ MCP atbalsta darba vietas lasīšanu un darbības (izveidot, piešķirt, sūtīt
   Latest package on the `1` tag is **1.7.2+**. Claude can read **`ah://api-context`** (also inside **`ah://full-context`**) for API path gotchas: leads, projects/orders, tasks, comments, labels, clients, invoices, vouchers, and forms.
 </Note>
 
+- Mitināts serveris mākoņa aģentiem: `https://mcp.agencyhandy.com/` (stāvokļa pārbaude `/health`)
 - Pakotne: [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) npm (`npx -y agencyhandy-mcp@1`)

@@ -1,28 +1,40 @@
 ---
 title: "Claude와 Cursor를 연결해 MCP로 AgencyHandy 사용하기"
 sidebarTitle: "Claude & Cursor MCP"
-description: "AgencyHandy MCP 패키지를 설정해 Claude Desktop 또는 Cursor에 자연어로 브리핑, 티켓 배정, 인보이스 발송 등을 요청하세요."
+description: "Claude, Cursor 또는 클라우드에서 실행되는 에이전트를 MCP로 AgencyHandy에 연결해, 브리핑·업무 배정·미수금과 납기 리스크 조사·사용자 지정 필드 입력을 자연어로 처리하세요."
 ---
 
 AgencyHandy MCP 연결을 사용하면 **Claude** 또는 **Cursor**에 자연어로 말해 AgencyHandy 워크스페이스의 일상 업무를 실행할 수 있습니다 — 화면을 일일이 열 필요가 없습니다.
 
 통제권은 항상 당신에게 있습니다. Claude와 Cursor는 생성한 워크스페이스 API 키로만 동작하며, 이름이 여러 사람과 일치하면 확인을 요청합니다.
 
+## 연결하는 두 가지 방법
+
+| 에이전트 실행 위치 | 연결 방법 | 설정 |
+|---|---|---|
+| **내 컴퓨터** — Claude Desktop 또는 Cursor | 앱이 실행하는 `agencyhandy-mcp` 패키지 | 아래 **Claude 또는 Cursor MCP 설정** — Node.js 20+ 필요 |
+| **클라우드** — Cloudflare Workers, Vercel, n8n, 호스팅형 Claude 또는 Cursor | `https://mcp.agencyhandy.com/` 의 호스팅형 MCP 서버 | 아래 **클라우드 에이전트 연결** — 설치 불필요 |
+
+두 방법 모두 같은 워크스페이스 API 키를 사용하며 에이전트에 동일한 도구를 제공합니다.
+
 <Note>
-  **Workspace Config**를 열고 **API keys**를 관리할 수 있는 역할(**SuperAdmin** 또는 **Admin** 등)이 필요합니다. Claude Desktop 또는 Cursor가 실행되는 컴퓨터에는 **Node.js 20+**도 필요합니다.
+  **Workspace Config** 를 열고 **API keys** 를 관리할 수 있는 역할(보통 **SuperAdmin** 또는 **Admin**)이 필요합니다. 로컬 설정에서는 Claude Desktop 또는 Cursor가 실행되는 컴퓨터에 **Node.js 20+** 도 필요합니다. 호스팅형 서버는 설치가 전혀 필요 없습니다.
 </Note>
 
 ## 요구 사항
 
 | 요구 사항 | 세부 정보 |
 |---|---|
-| **Node.js** | 버전 **20** 이상 (`node -v`로 확인) |
-| **Claude Desktop** 또는 **Cursor** | 컴퓨터에 둘 중 하나의 앱 설치 |
-| **AgencyHandy 워크스페이스** | **Workspace Config** → **API Key** 접근 |
+| **AgencyHandy 워크스페이스** | **Workspace Config** → **API Key** 접근 권한 |
+| **MCP 호스트** | 컴퓨터의 Claude Desktop 또는 Cursor, 혹은 HTTP로 MCP 서버를 호출할 수 있는 모든 에이전트 |
+| **Node.js** *(로컬 설정 전용)* | 버전 **20** 이상 (`node -v` 로 확인) |
+| **MCP 패키지** *(로컬 설정 전용)* | `npx -y agencyhandy-mcp@1` (`1` 태그로 **1.7.2+** 제공) |
 
 npm의 MCP 패키지는 `agencyhandy-mcp`입니다. Claude와 Cursor는 `npx -y agencyhandy-mcp@1`로 실행합니다.
 
 ## Claude 또는 Cursor MCP 설정
+
+Claude Desktop 또는 Cursor를 내 컴퓨터에서 실행할 때 사용하세요. 에이전트가 클라우드에서 실행된다면 **클라우드 에이전트 연결** 로 건너뛰세요.
 
 <Steps>
   <Step title="Workspace Config 열기">
@@ -53,6 +65,63 @@ npm의 MCP 패키지는 `agencyhandy-mcp`입니다. Claude와 Cursor는 `npx -y 
 
 <Tip>
   Claude 또는 Cursor가 MCP 서버를 찾지 못하면 **Node.js 20+** 설치 여부와 구성 저장 후 앱 재시작을 확인하세요.
+</Tip>
+
+## 클라우드 에이전트 연결 (호스팅형 서버)
+
+패키지를 설치할 수 없는 환경에서 에이전트를 실행한다면 — Cloudflare Workers, Vercel 함수, n8n, 호스팅형 Claude나 Cursor — 저희가 운영하는 MCP 서버를 가리키도록 설정하세요:
+
+```
+https://mcp.agencyhandy.com/
+```
+
+설치할 것도, 유지할 서버도 없습니다. 같은 워크스페이스 API 키를 베어러 토큰으로 사용해 모든 요청을 인증하세요. 워크스페이스는 키에서 읽으므로 사용자마다 자신의 키로 연결합니다.
+
+**Cursor, Claude Code 및 사용자 지정 헤더를 보낼 수 있는 모든 호스트:**
+
+```json
+{
+  "mcpServers": {
+    "agency-handy": {
+      "url": "https://mcp.agencyhandy.com/",
+      "headers": {
+        "Authorization": "Bearer YOUR_API_KEY"
+      }
+    }
+  }
+}
+```
+
+**Claude Desktop** 은 사용자 지정 헤더를 보낼 수 없으므로 `mcp-remote` 로 연결합니다:
+
+```json
+{
+  "mcpServers": {
+    "agency-handy": {
+      "command": "npx",
+      "args": [
+        "-y", "mcp-remote",
+        "https://mcp.agencyhandy.com/",
+        "--header", "Authorization:Bearer YOUR_API_KEY"
+      ]
+    }
+  }
+}
+```
+
+명령줄에서 실행하는 **Claude Code**:
+
+```bash
+claude mcp add agency-handy --transport http https://mcp.agencyhandy.com/ \
+  --header "Authorization: Bearer YOUR_API_KEY"
+```
+
+<Note>
+  주소는 **루트 경로** 입니다 — `/mcp` 가 아니라 `https://mcp.agencyhandy.com/`. 서버가 응답하는지 확인하려면 `https://mcp.agencyhandy.com/health` 를 열어 보세요.
+</Note>
+
+<Tip>
+  대신 HTTP API로 직접 연동을 만들고 있나요? 요청에 **`User-Agent`** 헤더를 함께 보내세요. Cloudflare Workers의 `fetch()` 를 비롯한 일부 런타임은 기본적으로 이 헤더를 보내지 않으며, 헤더가 없는 요청은 API에 도달하기 전에 거부됩니다.
 </Tip>
 
 ## 예시 프롬프트
@@ -92,4 +161,5 @@ MCP는 API 키로 워크스페이스를 읽고 작업(생성·배정·발송·�
   Latest package on the `1` tag is **1.7.2+**. Claude can read **`ah://api-context`** (also inside **`ah://full-context`**) for API path gotchas: leads, projects/orders, tasks, comments, labels, clients, invoices, vouchers, and forms.
 </Note>
 
+- 클라우드 에이전트용 호스팅형 서버: `https://mcp.agencyhandy.com/` (상태 확인은 `/health`)
 - 패키지: npm의 [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) (`npx -y agencyhandy-mcp@1`)

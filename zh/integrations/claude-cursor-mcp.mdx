@@ -1,28 +1,40 @@
 ---
 title: "连接 Claude 和 Cursor，通过 MCP 操作 AgencyHandy"
 sidebarTitle: "Claude 与 Cursor MCP"
-description: "设置 AgencyHandy MCP 包，让你用自然语言让 Claude Desktop 或 Cursor 做晨报、分配工单、发送发票等。"
+description: "通过 MCP 将 Claude、Cursor 或云端托管的智能体连接到 AgencyHandy，用日常语言完成简报、分配工作、排查回款与交付风险以及填写自定义字段。"
 ---
 
 AgencyHandy 的 MCP 连接让你用自然语言与 **Claude** 或 **Cursor** 对话，并在 AgencyHandy 工作区中执行日常工作——无需自己打开每一个界面。
 
 控制权始终在你。Claude 和 Cursor 只会使用你生成的工作区 API 密钥操作，并在姓名匹配多人时请你确认。
 
+## 两种连接方式
+
+| 智能体运行位置 | 连接方式 | 设置 |
+|---|---|---|
+| **在你的电脑上** — Claude Desktop 或 Cursor | 由应用启动的 `agencyhandy-mcp` 包 | 见下方 **设置 Claude 或 Cursor MCP** — 需要 Node.js 20+ |
+| **在云端** — Cloudflare Workers、Vercel、n8n、托管的 Claude 或 Cursor | 我们托管的 MCP 服务器 `https://mcp.agencyhandy.com/` | 见下方 **连接云端智能体** — 无需安装 |
+
+两种方式使用同一个工作区 API 密钥，并为智能体提供相同的工具。
+
 <Note>
-  你需要能打开 **Workspace Config** 并管理 **API keys** 的角色（通常为 **SuperAdmin** 或 **Admin**）。运行 Claude Desktop 或 Cursor 的电脑还需安装 **Node.js 20+**。
+  你需要能够打开 **Workspace Config** 并管理 **API keys** 的角色（通常是 **SuperAdmin** 或 **Admin**）。本地方式还需要在运行 Claude Desktop 或 Cursor 的电脑上安装 **Node.js 20+**；托管服务器则完全无需安装。
 </Note>
 
 ## 要求
 
-| 要求 | 说明 |
+| 要求 | 详情 |
 |---|---|
-| **Node.js** | 版本 **20** 或更高（用 `node -v` 检查） |
-| **Claude Desktop** 或 **Cursor** | 在你的电脑上安装其中一个应用 |
 | **AgencyHandy 工作区** | 可访问 **Workspace Config** → **API Key** |
+| **一个 MCP 宿主** | 电脑上的 Claude Desktop 或 Cursor，或任何能通过 HTTP 调用 MCP 服务器的智能体 |
+| **Node.js** *(仅本地方式)* | 版本 **20** 或更高（用 `node -v` 查看） |
+| **MCP 包** *(仅本地方式)* | `npx -y agencyhandy-mcp@1`（`1` 标签提供 **1.7.2+**） |
 
 npm 上的 MCP 包名为 `agencyhandy-mcp`。Claude 和 Cursor 通过 `npx -y agencyhandy-mcp@1` 运行它。
 
 ## 设置 Claude 或 Cursor MCP
+
+当 Claude Desktop 或 Cursor 运行在你自己的电脑上时使用这种方式。如果智能体运行在云端，请直接跳到 **连接云端智能体**。
 
 <Steps>
   <Step title="打开 Workspace Config">
@@ -53,6 +65,63 @@ npm 上的 MCP 包名为 `agencyhandy-mcp`。Claude 和 Cursor 通过 `npx -y ag
 
 <Tip>
   如果 Claude 或 Cursor 找不到 MCP 服务器，请确认已安装 **Node.js 20+**，并在保存配置后重启应用。
+</Tip>
+
+## 连接云端智能体（托管服务器）
+
+如果你的智能体运行在无法安装软件包的环境中——Cloudflare Workers、Vercel 函数、n8n，或托管的 Claude、Cursor——请把它指向我们为你托管的 MCP 服务器：
+
+```
+https://mcp.agencyhandy.com/
+```
+
+无需安装，也不用维护服务器。用同一个工作区 API 密钥作为 bearer token 认证每个请求。工作区从密钥中读取，因此每位用户使用自己的密钥连接。
+
+**Cursor、Claude Code 以及任何可发送自定义请求头的宿主：**
+
+```json
+{
+  "mcpServers": {
+    "agency-handy": {
+      "url": "https://mcp.agencyhandy.com/",
+      "headers": {
+        "Authorization": "Bearer YOUR_API_KEY"
+      }
+    }
+  }
+}
+```
+
+**Claude Desktop** 无法发送自定义请求头，请用 `mcp-remote` 中转：
+
+```json
+{
+  "mcpServers": {
+    "agency-handy": {
+      "command": "npx",
+      "args": [
+        "-y", "mcp-remote",
+        "https://mcp.agencyhandy.com/",
+        "--header", "Authorization:Bearer YOUR_API_KEY"
+      ]
+    }
+  }
+}
+```
+
+命令行中的 **Claude Code**：
+
+```bash
+claude mcp add agency-handy --transport http https://mcp.agencyhandy.com/ \
+  --header "Authorization: Bearer YOUR_API_KEY"
+```
+
+<Note>
+  地址是**根路径** —— `https://mcp.agencyhandy.com/`，而不是 `/mcp`。要确认服务器可达，请打开 `https://mcp.agencyhandy.com/health`。
+</Note>
+
+<Tip>
+  如果你改为基于 HTTP API 自建集成，请在请求中发送 **`User-Agent`** 头。包括 Cloudflare Workers 的 `fetch()` 在内的一些运行时默认不发送该头，缺少它的请求会在到达 API 之前被拒绝。
 </Tip>
 
 ## 示例提示
@@ -92,4 +161,5 @@ MCP 支持使用你的 API 密钥读取工作区并执行操作（创建、分�
   Latest package on the `1` tag is **1.7.2+**. Claude can read **`ah://api-context`** (also inside **`ah://full-context`**) for API path gotchas: leads, projects/orders, tasks, comments, labels, clients, invoices, vouchers, and forms.
 </Note>
 
+- 面向云端智能体的托管服务器：`https://mcp.agencyhandy.com/`（健康检查在 `/health`）
 - 包：npm 上的 [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp)（`npx -y agencyhandy-mcp@1`）
