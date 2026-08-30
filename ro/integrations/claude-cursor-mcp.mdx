@@ -1,28 +1,40 @@
 ---
 title: "Conectează Claude și Cursor pentru a folosi AgencyHandy cu MCP"
 sidebarTitle: "Claude și Cursor MCP"
-description: "Configurează pachetul MCP AgencyHandy ca să poți cere Claude Desktop sau Cursor un briefing, atribuiri de ticket, trimitere de facturi și altele — în limbaj natural."
+description: "Conectează Claude, Cursor sau un agent găzduit în cloud la AgencyHandy prin MCP, ca să îți prezinte situația, să repartizeze munca, să investigheze riscurile de încasare și livrare și să completeze câmpuri personalizate — în limbaj obișnuit."
 ---
 
 Conexiunea MCP AgencyHandy vă permite să vorbiți cu **Claude** sau **Cursor** în limbaj natural și să rulați munca zilnică în workspace-ul AgencyHandy — fără să deschideți fiecare ecran singuri.
 
 Păstrați controlul. Claude și Cursor acționează doar cu cheia API a workspace-ului pe care o generați și cer confirmare când un nume corespunde mai multor persoane.
 
+## Două moduri de conectare
+
+| Unde rulează agentul tău | Cum îl conectezi | Configurare |
+|---|---|---|
+| **Pe calculatorul tău** — Claude Desktop sau Cursor | Pachetul `agencyhandy-mcp`, pornit de aplicație | **Configurarea MCP pentru Claude sau Cursor**, mai jos — necesită Node.js 20+ |
+| **În cloud** — Cloudflare Workers, Vercel, n8n, un Claude sau Cursor găzduit | Serverul nostru MCP găzduit la `https://mcp.agencyhandy.com/` | **Conectarea unui agent din cloud**, mai jos — nimic de instalat |
+
+Ambele folosesc aceeași cheie API a spațiului de lucru și oferă agentului aceleași instrumente.
+
 <Note>
-  Aveți nevoie de un rol care poate deschide **Workspace Config** și gestiona **API keys** (de obicei **SuperAdmin** sau **Admin**). Aveți nevoie și de **Node.js 20+** pe computerul unde rulează Claude Desktop sau Cursor.
+  Ai nevoie de un rol care poate deschide **Workspace Config** și gestiona **API keys** (de obicei **SuperAdmin** sau **Admin**). Pentru configurarea locală îți mai trebuie **Node.js 20+** pe calculatorul unde rulează Claude Desktop sau Cursor — serverul găzduit nu cere nicio instalare.
 </Note>
 
 ## Cerințe
 
 | Cerință | Detalii |
 |---|---|
-| **Node.js** | Versiunea **20** sau mai nouă (verificați cu `node -v`) |
-| **Claude Desktop** sau **Cursor** | Una dintre aceste aplicații instalată pe computer |
-| **Workspace AgencyHandy** | Acces la **Workspace Config** → **API Key** |
+| **Spațiu de lucru AgencyHandy** | Acces la **Workspace Config** → **API Key** |
+| **O gazdă MCP** | Claude Desktop sau Cursor pe calculatorul tău, ori orice agent care poate apela un server MCP prin HTTP |
+| **Node.js** *(doar configurarea locală)* | Versiunea **20** sau mai nouă (verifică `node -v`) |
+| **Pachetul MCP** *(doar configurarea locală)* | `npx -y agencyhandy-mcp@1` (eticheta `1` livrează **1.7.2+**) |
 
 Pachetul MCP pe npm este `agencyhandy-mcp`. Claude și Cursor îl rulează cu `npx -y agencyhandy-mcp@1`.
 
 ## Configurare Claude sau Cursor MCP
+
+Folosește această cale când Claude Desktop sau Cursor rulează pe calculatorul tău. Dacă agentul rulează în cloud, sari la **Conectarea unui agent din cloud**.
 
 <Steps>
   <Step title="Deschide Workspace Config">
@@ -53,6 +65,63 @@ Pachetul MCP pe npm este `agencyhandy-mcp`. Claude și Cursor îl rulează cu `n
 
 <Tip>
   Dacă Claude sau Cursor nu găsesc serverul MCP, confirmați că **Node.js 20+** este instalat și că ați repornit aplicația după salvarea configurației.
+</Tip>
+
+## Conectarea unui agent din cloud (server găzduit)
+
+Dacă agentul tău rulează undeva unde nu poți instala un pachet — Cloudflare Workers, funcții Vercel, n8n sau un Claude ori Cursor găzduit — îndreaptă-l către serverul MCP pe care îl găzduim pentru tine:
+
+```
+https://mcp.agencyhandy.com/
+```
+
+Nu ai nimic de instalat și niciun server de întreținut. Autentifică fiecare cerere cu aceeași cheie API a spațiului de lucru, ca bearer token. Spațiul de lucru se citește din cheie, așa că fiecare utilizator se conectează cu a lui.
+
+**Cursor, Claude Code și orice gazdă care trimite anteturi personalizate:**
+
+```json
+{
+  "mcpServers": {
+    "agency-handy": {
+      "url": "https://mcp.agencyhandy.com/",
+      "headers": {
+        "Authorization": "Bearer YOUR_API_KEY"
+      }
+    }
+  }
+}
+```
+
+**Claude Desktop** nu poate trimite anteturi personalizate — fă puntea cu `mcp-remote`:
+
+```json
+{
+  "mcpServers": {
+    "agency-handy": {
+      "command": "npx",
+      "args": [
+        "-y", "mcp-remote",
+        "https://mcp.agencyhandy.com/",
+        "--header", "Authorization:Bearer YOUR_API_KEY"
+      ]
+    }
+  }
+}
+```
+
+**Claude Code** din linia de comandă:
+
+```bash
+claude mcp add agency-handy --transport http https://mcp.agencyhandy.com/ \
+  --header "Authorization: Bearer YOUR_API_KEY"
+```
+
+<Note>
+  Adresa este **calea rădăcină** — `https://mcp.agencyhandy.com/`, nu `/mcp`. Ca să verifici că serverul răspunde, deschide `https://mcp.agencyhandy.com/health`.
+</Note>
+
+<Tip>
+  Îți construiești în schimb propria integrare peste API-ul HTTP? Trimite un antet **`User-Agent`** cu cererile tale. Unele medii de execuție — inclusiv `fetch()` din Cloudflare Workers — nu trimit niciunul implicit, iar cererile fără el sunt respinse înainte să ajungă la API.
 </Tip>
 
 ## Exemple de prompturi
@@ -92,4 +161,5 @@ MCP permite citirea workspace-ului și acțiuni (creare, atribuire, trimitere, a
   Latest package on the `1` tag is **1.7.2+**. Claude can read **`ah://api-context`** (also inside **`ah://full-context`**) for API path gotchas: leads, projects/orders, tasks, comments, labels, clients, invoices, vouchers, and forms.
 </Note>
 
+- Server găzduit pentru agenți din cloud: `https://mcp.agencyhandy.com/` (verificare la `/health`)
 - Pachet: [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) pe npm (`npx -y agencyhandy-mcp@1`)

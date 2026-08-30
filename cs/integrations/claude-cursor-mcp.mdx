@@ -1,28 +1,40 @@
 ---
 title: "Připojte Claude a Cursor pro ovládání AgencyHandy přes MCP"
 sidebarTitle: "Claude a Cursor MCP"
-description: "Nastavte balíček MCP AgencyHandy, abyste mohli Claude Desktop nebo Cursor požádat přirozeným jazykem o briefing, přiřazení ticketů, odeslání faktur a další."
+description: "Připojte Claude, Cursor nebo agenta běžícího v cloudu k AgencyHandy přes MCP, aby vám připravil přehled, přiřadil práci, prozkoumal rizika plateb a dodání a vyplnil vlastní pole — běžným jazykem."
 ---
 
 MCP připojení AgencyHandy vám umožní mluvit s **Claude** nebo **Cursor** přirozeným jazykem a provádět každodenní práci v workspace AgencyHandy — aniž byste otevírali každou obrazovku sami.
 
 Kontrolu si ponecháte. Claude a Cursor jednají jen s API klíčem workspace, který vygenerujete, a požádají o potvrzení, když jméno sedí na více osob.
 
+## Dva způsoby připojení
+
+| Kde váš agent běží | Jak se připojit | Nastavení |
+|---|---|---|
+| **Na vašem počítači** — Claude Desktop nebo Cursor | Balíček `agencyhandy-mcp`, který spouští aplikace | **Nastavení MCP pro Claude nebo Cursor** níže — vyžaduje Node.js 20+ |
+| **V cloudu** — Cloudflare Workers, Vercel, n8n, hostovaný Claude nebo Cursor | Náš hostovaný MCP server na `https://mcp.agencyhandy.com/` | **Připojení cloudového agenta** níže — není co instalovat |
+
+Oba způsoby používají stejný API klíč pracovního prostoru a dávají agentovi stejné nástroje.
+
 <Note>
-  Potřebujete roli, která může otevřít **Workspace Config** a spravovat **API keys** (obvykle **SuperAdmin** nebo **Admin**). Na počítači, kde běží Claude Desktop nebo Cursor, potřebujete také **Node.js 20+**.
+  Potřebujete roli, která může otevřít **Workspace Config** a spravovat **API keys** (obvykle **SuperAdmin** nebo **Admin**). Pro místní nastavení potřebujete také **Node.js 20+** na počítači, kde běží Claude Desktop nebo Cursor — hostovaný server nevyžaduje žádnou instalaci.
 </Note>
 
 ## Požadavky
 
 | Požadavek | Podrobnosti |
 |---|---|
-| **Node.js** | Verze **20** nebo novější (zkontrolujte `node -v`) |
-| **Claude Desktop** nebo **Cursor** | Jedna z těchto aplikací nainstalovaná v počítači |
-| **Workspace AgencyHandy** | Přístup k **Workspace Config** → **API Key** |
+| **Pracovní prostor AgencyHandy** | Přístup do **Workspace Config** → **API Key** |
+| **MCP hostitel** | Claude Desktop nebo Cursor na vašem počítači, případně jakýkoli agent, který umí zavolat MCP server přes HTTP |
+| **Node.js** *(jen místní nastavení)* | Verze **20** nebo novější (ověřte `node -v`) |
+| **MCP balíček** *(jen místní nastavení)* | `npx -y agencyhandy-mcp@1` (tag `1` dodává **1.7.2+**) |
 
 MCP balíček na npm je `agencyhandy-mcp`. Claude a Cursor jej spouští přes `npx -y agencyhandy-mcp@1`.
 
 ## Nastavení Claude nebo Cursor MCP
+
+Tuto cestu použijte, když Claude Desktop nebo Cursor běží na vašem počítači. Pokud agent běží v cloudu, přejděte na **Připojení cloudového agenta**.
 
 <Steps>
   <Step title="Otevřít Workspace Config">
@@ -53,6 +65,63 @@ MCP balíček na npm je `agencyhandy-mcp`. Claude a Cursor jej spouští přes `
 
 <Tip>
   Pokud Claude nebo Cursor nenajde MCP server, ověřte instalaci **Node.js 20+** a restart aplikace po uložení konfigurace.
+</Tip>
+
+## Připojení cloudového agenta (hostovaný server)
+
+Pokud váš agent běží tam, kde nemůžete nic instalovat — Cloudflare Workers, funkce Vercel, n8n nebo hostovaný Claude či Cursor — nasměrujte ho na MCP server, který pro vás provozujeme:
+
+```
+https://mcp.agencyhandy.com/
+```
+
+Není co instalovat ani jaký server udržovat. Každý požadavek ověřte stejným API klíčem pracovního prostoru jako bearer tokenem. Pracovní prostor se čte z klíče, takže každý uživatel se připojuje tím svým.
+
+**Cursor, Claude Code a každý hostitel, který posílá vlastní hlavičky:**
+
+```json
+{
+  "mcpServers": {
+    "agency-handy": {
+      "url": "https://mcp.agencyhandy.com/",
+      "headers": {
+        "Authorization": "Bearer YOUR_API_KEY"
+      }
+    }
+  }
+}
+```
+
+**Claude Desktop** neumí posílat vlastní hlavičky — přemostěte to pomocí `mcp-remote`:
+
+```json
+{
+  "mcpServers": {
+    "agency-handy": {
+      "command": "npx",
+      "args": [
+        "-y", "mcp-remote",
+        "https://mcp.agencyhandy.com/",
+        "--header", "Authorization:Bearer YOUR_API_KEY"
+      ]
+    }
+  }
+}
+```
+
+**Claude Code** z příkazové řádky:
+
+```bash
+claude mcp add agency-handy --transport http https://mcp.agencyhandy.com/ \
+  --header "Authorization: Bearer YOUR_API_KEY"
+```
+
+<Note>
+  Adresa je **kořenová cesta** — `https://mcp.agencyhandy.com/`, nikoli `/mcp`. Dostupnost serveru ověříte otevřením `https://mcp.agencyhandy.com/health`.
+</Note>
+
+<Tip>
+  Stavíte místo toho vlastní integraci nad HTTP API? Posílejte s požadavky hlavičku **`User-Agent`**. Některá běhová prostředí — včetně `fetch()` v Cloudflare Workers — ji ve výchozím stavu neposílají a požadavky bez ní jsou odmítnuty dřív, než dorazí k API.
 </Tip>
 
 ## Příklady promptů
@@ -92,4 +161,5 @@ MCP podporuje čtení workspace a akce (vytvořit, přiřadit, odeslat, aktualiz
   Latest package on the `1` tag is **1.7.2+**. Claude can read **`ah://api-context`** (also inside **`ah://full-context`**) for API path gotchas: leads, projects/orders, tasks, comments, labels, clients, invoices, vouchers, and forms.
 </Note>
 
+- Hostovaný server pro cloudové agenty: `https://mcp.agencyhandy.com/` (kontrola stavu na `/health`)
 - Balíček: [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) na npm (`npx -y agencyhandy-mcp@1`)

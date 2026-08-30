@@ -1,28 +1,40 @@
 ---
 title: "AgencyHandy’yi MCP ile kullanmak için Claude ve Cursor’ı bağlayın"
 sidebarTitle: "Claude ve Cursor MCP"
-description: "Claude Desktop veya Cursor’dan doğal dilde brifing, ticket atama, fatura gönderme ve daha fazlasını istemek için AgencyHandy MCP paketini kurun."
+description: "Claude'u, Cursor'ı veya bulutta çalışan bir aracıyı MCP ile AgencyHandy'ye bağlayın; günlük dille brifing alsın, iş atasın, tahsilat ve teslimat risklerini incelesin ve özel alanları doldursun."
 ---
 
 AgencyHandy’nin MCP bağlantısı, **Claude** veya **Cursor** ile doğal dilde konuşup AgencyHandy çalışma alanındaki günlük işleri çalıştırmanızı sağlar — her ekranı kendiniz açmadan.
 
 Kontrol sizde kalır. Claude ve Cursor yalnızca oluşturduğunuz çalışma alanı API anahtarıyla hareket eder ve bir ad birden fazla kişiyle eşleşirse onay ister.
 
+## Bağlanmanın iki yolu
+
+| Aracınız nerede çalışıyor | Nasıl bağlanır | Kurulum |
+|---|---|---|
+| **Bilgisayarınızda** — Claude Desktop veya Cursor | Uygulamanın başlattığı `agencyhandy-mcp` paketi | Aşağıdaki **Claude veya Cursor MCP kurulumu** — Node.js 20+ gerekir |
+| **Bulutta** — Cloudflare Workers, Vercel, n8n, barındırılan Claude veya Cursor | `https://mcp.agencyhandy.com/` adresindeki barındırılan MCP sunucumuz | Aşağıdaki **Bulut aracısı bağlama** — kurulum gerekmez |
+
+İkisi de aynı çalışma alanı API anahtarını kullanır ve aracıya aynı araçları verir.
+
 <Note>
-  **Workspace Config**’i açıp **API keys** yönetebilen bir role ihtiyacınız var (genellikle **SuperAdmin** veya **Admin**). Claude Desktop veya Cursor’ın çalıştığı bilgisayarda **Node.js 20+** da gerekir.
+  **Workspace Config** ekranını açabilen ve **API keys** yönetebilen bir role ihtiyacınız var (genellikle **SuperAdmin** veya **Admin**). Yerel kurulum için ayrıca Claude Desktop ya da Cursor'ın çalıştığı makinede **Node.js 20+** gerekir — barındırılan sunucu hiçbir kurulum istemez.
 </Note>
 
 ## Gereksinimler
 
 | Gereksinim | Ayrıntılar |
 |---|---|
-| **Node.js** | Sürüm **20** veya daha yeni (`node -v` ile kontrol edin) |
-| **Claude Desktop** veya **Cursor** | Bilgisayarınızda bu uygulamalardan biri yüklü olmalı |
 | **AgencyHandy çalışma alanı** | **Workspace Config** → **API Key** erişimi |
+| **Bir MCP ana uygulaması** | Bilgisayarınızdaki Claude Desktop veya Cursor ya da bir MCP sunucusunu HTTP üzerinden çağırabilen herhangi bir aracı |
+| **Node.js** *(yalnızca yerel kurulum)* | Sürüm **20** veya üzeri (`node -v` ile kontrol edin) |
+| **MCP paketi** *(yalnızca yerel kurulum)* | `npx -y agencyhandy-mcp@1` (`1` etiketi **1.7.2+** sürümünü verir) |
 
 npm’deki MCP paketi `agencyhandy-mcp`’dir. Claude ve Cursor bunu `npx -y agencyhandy-mcp@1` ile çalıştırır.
 
 ## Claude veya Cursor MCP’yi kurun
+
+Claude Desktop veya Cursor kendi bilgisayarınızda çalışıyorsa bu yolu izleyin. Aracınız bulutta çalışıyorsa **Bulut aracısı bağlama** bölümüne geçin.
 
 <Steps>
   <Step title="Workspace Config’i açın">
@@ -53,6 +65,63 @@ npm’deki MCP paketi `agencyhandy-mcp`’dir. Claude ve Cursor bunu `npx -y age
 
 <Tip>
   Claude veya Cursor MCP sunucusunu bulamazsa **Node.js 20+** kurulu olduğunu ve yapılandırmayı kaydettikten sonra uygulamayı yeniden başlattığınızı doğrulayın.
+</Tip>
+
+## Bulut aracısı bağlama (barındırılan sunucu)
+
+Aracınız paket kuramayacağınız bir yerde çalışıyorsa — Cloudflare Workers, Vercel fonksiyonları, n8n veya barındırılan Claude ya da Cursor — onu sizin için işlettiğimiz MCP sunucusuna yönlendirin:
+
+```
+https://mcp.agencyhandy.com/
+```
+
+Kurulacak bir şey ve ayakta tutulacak bir sunucu yok. Her isteği aynı çalışma alanı API anahtarıyla bearer token olarak doğrulayın. Çalışma alanı anahtardan okunur, böylece her kullanıcı kendi anahtarıyla bağlanır.
+
+**Cursor, Claude Code ve özel başlık gönderebilen tüm ana uygulamalar:**
+
+```json
+{
+  "mcpServers": {
+    "agency-handy": {
+      "url": "https://mcp.agencyhandy.com/",
+      "headers": {
+        "Authorization": "Bearer YOUR_API_KEY"
+      }
+    }
+  }
+}
+```
+
+**Claude Desktop** özel başlık gönderemez; `mcp-remote` ile köprü kurun:
+
+```json
+{
+  "mcpServers": {
+    "agency-handy": {
+      "command": "npx",
+      "args": [
+        "-y", "mcp-remote",
+        "https://mcp.agencyhandy.com/",
+        "--header", "Authorization:Bearer YOUR_API_KEY"
+      ]
+    }
+  }
+}
+```
+
+Komut satırından **Claude Code**:
+
+```bash
+claude mcp add agency-handy --transport http https://mcp.agencyhandy.com/ \
+  --header "Authorization: Bearer YOUR_API_KEY"
+```
+
+<Note>
+  Adres **kök yoldur** — `/mcp` değil, `https://mcp.agencyhandy.com/`. Sunucunun erişilebilir olduğunu görmek için `https://mcp.agencyhandy.com/health` adresini açın.
+</Note>
+
+<Tip>
+  Bunun yerine HTTP API üzerine kendi entegrasyonunuzu mu kuruyorsunuz? İsteklerinizle birlikte bir **`User-Agent`** başlığı gönderin. Cloudflare Workers'ın `fetch()` işlevi dahil bazı çalışma ortamları varsayılan olarak hiç göndermez ve bu başlık olmayan istekler API'ye ulaşmadan reddedilir.
 </Tip>
 
 ## Örnek istemler
@@ -92,4 +161,5 @@ MCP, API anahtarınızla çalışma alanını okumayı ve eylemleri (oluştur, a
   Latest package on the `1` tag is **1.7.2+**. Claude can read **`ah://api-context`** (also inside **`ah://full-context`**) for API path gotchas: leads, projects/orders, tasks, comments, labels, clients, invoices, vouchers, and forms.
 </Note>
 
+- Bulut aracıları için barındırılan sunucu: `https://mcp.agencyhandy.com/` (sağlık kontrolü `/health`)
 - Paket: npm’de [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) (`npx -y agencyhandy-mcp@1`)

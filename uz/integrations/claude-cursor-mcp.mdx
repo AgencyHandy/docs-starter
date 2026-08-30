@@ -1,28 +1,40 @@
 ---
 title: "AgencyHandy’ni MCP bilan boshqarish uchun Claude va Cursor’ni ulang"
 sidebarTitle: "Claude va Cursor MCP"
-description: "Claude Desktop yoki Cursor’dan oddiy tilda brifing, ticket tayinlash, invoice yuborish va boshqalarni so‘rash uchun AgencyHandy MCP paketini sozlang."
+description: "Claude, Cursor yoki bulutda ishlaydigan agentni MCP orqali AgencyHandy'ga ulang — u sizga qisqacha hisobot bersin, ishlarni taqsimlasin, to'lov va yetkazib berish xavflarini tekshirsin va maxsus maydonlarni to'ldirsin — oddiy til bilan."
 ---
 
 AgencyHandy MCP ulanishi **Claude** yoki **Cursor** bilan oddiy tilda gaplashib, AgencyHandy ish maydonidagi kundalik ishlarni bajarishga imkon beradi — har bir ekranni o‘zingiz ochmasdan.
 
 Nazorat sizda qoladi. Claude va Cursor faqat siz yaratgan ish maydoni API kaliti bilan ishlaydi va ism bir nechta odamga mos kelganda tasdiqlashni so‘raydi.
 
+## Ulanishning ikki yo'li
+
+| Agentingiz qayerda ishlaydi | Qanday ulanadi | Sozlash |
+|---|---|---|
+| **Kompyuteringizda** — Claude Desktop yoki Cursor | Ilova ishga tushiradigan `agencyhandy-mcp` paketi | Quyidagi **Claude yoki Cursor MCP'sini sozlash** — Node.js 20+ kerak |
+| **Bulutda** — Cloudflare Workers, Vercel, n8n, joylashtirilgan Claude yoki Cursor | `https://mcp.agencyhandy.com/` manzilidagi bizning MCP serverimiz | Quyidagi **Bulut agentini ulash** — hech narsa o'rnatilmaydi |
+
+Ikkalasi ham bir xil ish maydoni API kalitidan foydalanadi va agentga bir xil vositalarni beradi.
+
 <Note>
-  **Workspace Config**ni ochib **API keys**ni boshqara oladigan rol kerak (odatda **SuperAdmin** yoki **Admin**). Claude Desktop yoki Cursor ishlaydigan kompyuterda **Node.js 20+** ham kerak.
+  Sizga **Workspace Config** bo'limini ocha oladigan va **API keys** boshqara oladigan rol kerak (odatda **SuperAdmin** yoki **Admin**). Mahalliy sozlash uchun Claude Desktop yoki Cursor ishlaydigan kompyuterda **Node.js 20+** ham kerak — joylashtirilgan server esa umuman o'rnatishni talab qilmaydi.
 </Note>
 
 ## Talablar
 
 | Talab | Tafsilotlar |
 |---|---|
-| **Node.js** | Versiya **20** yoki yangiroq (`node -v` bilan tekshiring) |
-| **Claude Desktop** yoki **Cursor** | Kompyuteringizda shu ilovalardan biri o‘rnatilgan bo‘lishi kerak |
-| **AgencyHandy ish maydoni** | **Workspace Config** → **API Key** ga kirish |
+| **AgencyHandy ish maydoni** | **Workspace Config** → **API Key** bo'limiga kirish |
+| **MCP xosti** | Kompyuteringizdagi Claude Desktop yoki Cursor, yoki MCP serverini HTTP orqali chaqira oladigan istalgan agent |
+| **Node.js** *(faqat mahalliy sozlash)* | **20**-versiya yoki undan yangi (`node -v` bilan tekshiring) |
+| **MCP paketi** *(faqat mahalliy sozlash)* | `npx -y agencyhandy-mcp@1` (`1` tegi **1.7.2+** beradi) |
 
 npm’dagi MCP paketi `agencyhandy-mcp`. Claude va Cursor uni `npx -y agencyhandy-mcp@1` bilan ishga tushiradi.
 
 ## Claude yoki Cursor MCP’ni sozlash
+
+Claude Desktop yoki Cursor o'z kompyuteringizda ishlayotganda shu yo'ldan foydalaning. Agent bulutda ishlasa, **Bulut agentini ulash** bo'limiga o'ting.
 
 <Steps>
   <Step title="Workspace Config’ni oching">
@@ -53,6 +65,63 @@ npm’dagi MCP paketi `agencyhandy-mcp`. Claude va Cursor uni `npx -y agencyhand
 
 <Tip>
   Agar Claude yoki Cursor MCP serverini topa olmasa, **Node.js 20+** o‘rnatilganini va konfiguratsiyani saqlagandan keyin ilovani qayta ishga tushirganingizni tekshiring.
+</Tip>
+
+## Bulut agentini ulash (joylashtirilgan server)
+
+Agar agentingiz paket o'rnatib bo'lmaydigan joyda ishlasa — Cloudflare Workers, Vercel funksiyalari, n8n yoki joylashtirilgan Claude va Cursor — uni biz siz uchun yuritayotgan MCP serveriga yo'naltiring:
+
+```
+https://mcp.agencyhandy.com/
+```
+
+Hech narsa o'rnatilmaydi va hech qanday serverni ushlab turish kerak emas. Har bir so'rovni o'sha ish maydoni API kaliti bilan bearer token sifatida tasdiqlang. Ish maydoni kalitdan o'qiladi, shuning uchun har bir foydalanuvchi o'zinikida ulanadi.
+
+**Cursor, Claude Code va maxsus sarlavhalar yuboradigan har qanday xost:**
+
+```json
+{
+  "mcpServers": {
+    "agency-handy": {
+      "url": "https://mcp.agencyhandy.com/",
+      "headers": {
+        "Authorization": "Bearer YOUR_API_KEY"
+      }
+    }
+  }
+}
+```
+
+**Claude Desktop** maxsus sarlavhalar yubora olmaydi — `mcp-remote` orqali ko'prik quring:
+
+```json
+{
+  "mcpServers": {
+    "agency-handy": {
+      "command": "npx",
+      "args": [
+        "-y", "mcp-remote",
+        "https://mcp.agencyhandy.com/",
+        "--header", "Authorization:Bearer YOUR_API_KEY"
+      ]
+    }
+  }
+}
+```
+
+Buyruqlar satridan **Claude Code**:
+
+```bash
+claude mcp add agency-handy --transport http https://mcp.agencyhandy.com/ \
+  --header "Authorization: Bearer YOUR_API_KEY"
+```
+
+<Note>
+  Manzil **ildiz yo'l** — `/mcp` emas, `https://mcp.agencyhandy.com/`. Server javob berayotganini tekshirish uchun `https://mcp.agencyhandy.com/health` sahifasini oching.
+</Note>
+
+<Tip>
+  Buning o'rniga HTTP API ustida o'z integratsiyangizni qurayapsizmi? So'rovlaringiz bilan birga **`User-Agent`** sarlavhasini yuboring. Ba'zi muhitlar — jumladan Cloudflare Workers'ning `fetch()` funksiyasi — uni sukut bo'yicha yubormaydi va bu sarlavhasiz so'rovlar API'ga yetib bormasdan rad etiladi.
 </Tip>
 
 ## Namuna promptlar
@@ -92,4 +161,5 @@ MCP API kalitingiz bilan ish maydonini o‘qish va amallar (yaratish, tayinlash,
   Latest package on the `1` tag is **1.7.2+**. Claude can read **`ah://api-context`** (also inside **`ah://full-context`**) for API path gotchas: leads, projects/orders, tasks, comments, labels, clients, invoices, vouchers, and forms.
 </Note>
 
+- Bulut agentlari uchun joylashtirilgan server: `https://mcp.agencyhandy.com/` (holat tekshiruvi `/health`)
 - Paket: npm’dagi [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) (`npx -y agencyhandy-mcp@1`)

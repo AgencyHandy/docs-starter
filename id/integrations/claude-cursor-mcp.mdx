@@ -1,28 +1,40 @@
 ---
 title: "Hubungkan Claude dan Cursor untuk menjalankan AgencyHandy dengan MCP"
 sidebarTitle: "Claude & Cursor MCP"
-description: "Siapkan paket MCP AgencyHandy agar Anda dapat meminta Claude Desktop atau Cursor melakukan briefing, menugaskan tiket, mengirim invoice, dan lainnya — dalam bahasa sehari-hari."
+description: "Hubungkan Claude, Cursor, atau agen yang berjalan di cloud ke AgencyHandy lewat MCP agar bisa memberi ringkasan, menugaskan pekerjaan, menelusuri risiko tagihan dan pengiriman, serta mengisi kolom kustom — dengan bahasa sehari-hari."
 ---
 
 Koneksi MCP AgencyHandy memungkinkan Anda berbicara dengan **Claude** atau **Cursor** dalam bahasa alami dan menjalankan pekerjaan harian di workspace AgencyHandy — tanpa membuka setiap layar sendiri.
 
 Anda tetap memegang kendali. Claude dan Cursor hanya bertindak dengan kunci API workspace yang Anda buat, dan meminta konfirmasi saat nama cocok dengan lebih dari satu orang.
 
+## Dua cara menghubungkan
+
+| Tempat agen Anda berjalan | Cara menghubungkan | Penyiapan |
+|---|---|---|
+| **Di komputer Anda** — Claude Desktop atau Cursor | Paket `agencyhandy-mcp` yang dijalankan aplikasi | **Menyiapkan MCP Claude atau Cursor** di bawah — butuh Node.js 20+ |
+| **Di cloud** — Cloudflare Workers, Vercel, n8n, Claude atau Cursor terkelola | Server MCP terkelola kami di `https://mcp.agencyhandy.com/` | **Menghubungkan agen cloud** di bawah — tidak ada yang perlu dipasang |
+
+Keduanya memakai kunci API ruang kerja yang sama dan memberi agen perangkat yang sama.
+
 <Note>
-  Anda memerlukan peran yang dapat membuka **Workspace Config** dan mengelola **API keys** (biasanya **SuperAdmin** atau **Admin**). Anda juga memerlukan **Node.js 20+** di komputer tempat Claude Desktop atau Cursor berjalan.
+  Anda memerlukan peran yang bisa membuka **Workspace Config** dan mengelola **API keys** (biasanya **SuperAdmin** atau **Admin**). Untuk penyiapan lokal, Anda juga butuh **Node.js 20+** di komputer tempat Claude Desktop atau Cursor berjalan — server terkelola sama sekali tidak perlu dipasang.
 </Note>
 
 ## Persyaratan
 
 | Persyaratan | Detail |
 |---|---|
-| **Node.js** | Versi **20** atau lebih baru (periksa dengan `node -v`) |
-| **Claude Desktop** atau **Cursor** | Salah satu aplikasi ini terpasang di komputer Anda |
-| **Workspace AgencyHandy** | Akses ke **Workspace Config** → **API Key** |
+| **Ruang kerja AgencyHandy** | Akses ke **Workspace Config** → **API Key** |
+| **Host MCP** | Claude Desktop atau Cursor di komputer Anda, atau agen apa pun yang bisa memanggil server MCP lewat HTTP |
+| **Node.js** *(hanya penyiapan lokal)* | Versi **20** atau lebih baru (cek dengan `node -v`) |
+| **Paket MCP** *(hanya penyiapan lokal)* | `npx -y agencyhandy-mcp@1` (tag `1` memuat **1.7.2+**) |
 
 Paket MCP di npm adalah `agencyhandy-mcp`. Claude dan Cursor menjalankannya dengan `npx -y agencyhandy-mcp@1`.
 
 ## Siapkan Claude atau Cursor MCP
+
+Pakai cara ini bila Claude Desktop atau Cursor berjalan di komputer Anda sendiri. Bila agen berjalan di cloud, lompat ke **Menghubungkan agen cloud**.
 
 <Steps>
   <Step title="Buka Workspace Config">
@@ -53,6 +65,63 @@ Paket MCP di npm adalah `agencyhandy-mcp`. Claude dan Cursor menjalankannya deng
 
 <Tip>
   Jika Claude atau Cursor tidak menemukan server MCP, pastikan **Node.js 20+** terpasang dan Anda memulai ulang aplikasi setelah menyimpan konfigurasi.
+</Tip>
+
+## Menghubungkan agen cloud (server terkelola)
+
+Bila agen Anda berjalan di tempat yang tidak memungkinkan pemasangan paket — Cloudflare Workers, fungsi Vercel, n8n, atau Claude maupun Cursor terkelola — arahkan saja ke server MCP yang kami jalankan untuk Anda:
+
+```
+https://mcp.agencyhandy.com/
+```
+
+Tidak ada yang perlu dipasang dan tidak ada server yang harus dijaga. Autentikasi setiap permintaan dengan kunci API ruang kerja yang sama sebagai bearer token. Ruang kerja dibaca dari kunci itu, jadi setiap pengguna terhubung dengan kuncinya sendiri.
+
+**Cursor, Claude Code, dan host mana pun yang bisa mengirim header kustom:**
+
+```json
+{
+  "mcpServers": {
+    "agency-handy": {
+      "url": "https://mcp.agencyhandy.com/",
+      "headers": {
+        "Authorization": "Bearer YOUR_API_KEY"
+      }
+    }
+  }
+}
+```
+
+**Claude Desktop** tidak bisa mengirim header kustom, jadi jembatani dengan `mcp-remote`:
+
+```json
+{
+  "mcpServers": {
+    "agency-handy": {
+      "command": "npx",
+      "args": [
+        "-y", "mcp-remote",
+        "https://mcp.agencyhandy.com/",
+        "--header", "Authorization:Bearer YOUR_API_KEY"
+      ]
+    }
+  }
+}
+```
+
+**Claude Code** dari baris perintah:
+
+```bash
+claude mcp add agency-handy --transport http https://mcp.agencyhandy.com/ \
+  --header "Authorization: Bearer YOUR_API_KEY"
+```
+
+<Note>
+  Alamatnya adalah **jalur root** — `https://mcp.agencyhandy.com/`, bukan `/mcp`. Untuk memastikan server dapat dijangkau, buka `https://mcp.agencyhandy.com/health`.
+</Note>
+
+<Tip>
+  Sedang membangun integrasi sendiri di atas API HTTP? Kirimkan header **`User-Agent`** bersama permintaan Anda. Sebagian runtime — termasuk `fetch()` di Cloudflare Workers — tidak mengirimnya secara bawaan, dan permintaan tanpa header itu ditolak sebelum sampai ke API.
 </Tip>
 
 ## Contoh prompt
@@ -92,4 +161,5 @@ MCP mendukung membaca workspace dan tindakan (buat, tugaskan, kirim, perbarui) d
   Latest package on the `1` tag is **1.7.2+**. Claude can read **`ah://api-context`** (also inside **`ah://full-context`**) for API path gotchas: leads, projects/orders, tasks, comments, labels, clients, invoices, vouchers, and forms.
 </Note>
 
+- Server terkelola untuk agen cloud: `https://mcp.agencyhandy.com/` (cek kondisi di `/health`)
 - Paket: [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) di npm (`npx -y agencyhandy-mcp@1`)

@@ -1,28 +1,40 @@
 ---
 title: "Conecta Claude y Cursor para gestionar AgencyHandy con MCP"
 sidebarTitle: "Claude y Cursor MCP"
-description: "Configura el paquete MCP de AgencyHandy para pedir a Claude Desktop o Cursor un briefing, asignar tickets, enviar facturas y más — en lenguaje natural."
+description: "Conecta Claude, Cursor o un agente alojado en la nube a AgencyHandy con MCP para recibir informes, asignar trabajo, investigar riesgos de cobro y entrega y rellenar campos personalizados — en lenguaje natural."
 ---
 
 La conexión MCP de AgencyHandy te permite hablar con **Claude** o **Cursor** en lenguaje natural y que ejecuten el trabajo diario en tu espacio de trabajo AgencyHandy — sin abrir cada pantalla tú mismo.
 
 Tú mantienes el control. Claude y Cursor solo actúan con la clave API del workspace que generas, y te piden confirmación cuando un nombre coincide con más de una persona.
 
+## Dos formas de conectarse
+
+| Dónde se ejecuta tu agente | Cómo conectarlo | Configuración |
+|---|---|---|
+| **En tu ordenador** — Claude Desktop o Cursor | El paquete `agencyhandy-mcp`, iniciado por la aplicación | **Configurar Claude o Cursor MCP**, más abajo — requiere Node.js 20+ |
+| **En la nube** — Cloudflare Workers, Vercel, n8n, un Claude o Cursor alojado | Nuestro servidor MCP alojado en `https://mcp.agencyhandy.com/` | **Conectar un agente en la nube**, más abajo — nada que instalar |
+
+Ambas usan la misma clave API del espacio de trabajo y dan al agente las mismas herramientas.
+
 <Note>
-  Necesitas un rol que pueda abrir **Workspace Config** y gestionar **API keys** (normalmente **SuperAdmin** o **Admin**). También necesitas **Node.js 20+** en el equipo donde se ejecuta Claude Desktop o Cursor.
+  Necesitas un rol que pueda abrir **Workspace Config** y gestionar **API keys** (normalmente **SuperAdmin** o **Admin**). Para la instalación local también necesitas **Node.js 20+** en el equipo donde se ejecuta Claude Desktop o Cursor — el servidor alojado no requiere ninguna instalación.
 </Note>
 
 ## Requisitos
 
 | Requisito | Detalles |
 |---|---|
-| **Node.js** | Versión **20** o superior (`node -v` para comprobar) |
-| **Claude Desktop** o **Cursor** | Una de estas apps instalada en tu equipo |
-| **Workspace de AgencyHandy** | Acceso a **Workspace Config** → **API Key** |
+| **Espacio de trabajo de AgencyHandy** | Acceso a **Workspace Config** → **API Key** |
+| **Un host MCP** | Claude Desktop o Cursor en tu ordenador, o cualquier agente que pueda llamar a un servidor MCP por HTTP |
+| **Node.js** *(solo instalación local)* | Versión **20** o posterior (`node -v` para comprobarlo) |
+| **Paquete MCP** *(solo instalación local)* | `npx -y agencyhandy-mcp@1` (incluye **1.7.2+** en la etiqueta `1`) |
 
 El paquete MCP en npm es `agencyhandy-mcp`. Claude y Cursor lo ejecutan con `npx -y agencyhandy-mcp@1`.
 
 ## Configurar Claude o Cursor MCP
+
+Usa esta opción cuando Claude Desktop o Cursor se ejecuta en tu propio ordenador. Si tu agente corre en la nube, salta a **Conectar un agente en la nube**.
 
 <Steps>
   <Step title="Abrir Workspace Config">
@@ -53,6 +65,63 @@ El paquete MCP en npm es `agencyhandy-mcp`. Claude y Cursor lo ejecutan con `npx
 
 <Tip>
   Si Claude o Cursor no encuentran el servidor MCP, confirma que **Node.js 20+** está instalado y que reiniciaste la app después de guardar la config.
+</Tip>
+
+## Conectar un agente en la nube (servidor alojado)
+
+Si tu agente se ejecuta donde no puedes instalar un paquete — Cloudflare Workers, funciones de Vercel, n8n, o un Claude o Cursor alojado — apúntalo al servidor MCP que alojamos para ti:
+
+```
+https://mcp.agencyhandy.com/
+```
+
+No hay nada que instalar ni ningún servidor que mantener. Autentica cada petición con la misma clave API del espacio de trabajo como bearer token. El espacio de trabajo se lee de la clave, así que cada usuario se conecta con la suya.
+
+**Cursor, Claude Code y cualquier host que envíe cabeceras personalizadas:**
+
+```json
+{
+  "mcpServers": {
+    "agency-handy": {
+      "url": "https://mcp.agencyhandy.com/",
+      "headers": {
+        "Authorization": "Bearer YOUR_API_KEY"
+      }
+    }
+  }
+}
+```
+
+**Claude Desktop** no puede enviar cabeceras personalizadas, así que usa el puente `mcp-remote`:
+
+```json
+{
+  "mcpServers": {
+    "agency-handy": {
+      "command": "npx",
+      "args": [
+        "-y", "mcp-remote",
+        "https://mcp.agencyhandy.com/",
+        "--header", "Authorization:Bearer YOUR_API_KEY"
+      ]
+    }
+  }
+}
+```
+
+**Claude Code** desde la línea de comandos:
+
+```bash
+claude mcp add agency-handy --transport http https://mcp.agencyhandy.com/ \
+  --header "Authorization: Bearer YOUR_API_KEY"
+```
+
+<Note>
+  La dirección es la **raíz** — `https://mcp.agencyhandy.com/`, no `/mcp`. Para comprobar que el servidor responde, abre `https://mcp.agencyhandy.com/health`.
+</Note>
+
+<Tip>
+  ¿Estás construyendo tu propia integración contra la API HTTP? Envía una cabecera **`User-Agent`** en tus peticiones. Algunos entornos — incluido el `fetch()` de Cloudflare Workers — no envían ninguna por defecto, y las peticiones sin ella se rechazan antes de llegar a la API.
 </Tip>
 
 ## Ejemplos de prompts
@@ -92,4 +161,5 @@ MCP permite leer tu workspace y realizar acciones (crear, asignar, enviar, actua
   Latest package on the `1` tag is **1.7.2+**. Claude can read **`ah://api-context`** (also inside **`ah://full-context`**) for API path gotchas: leads, projects/orders, tasks, comments, labels, clients, invoices, vouchers, and forms.
 </Note>
 
+- Servidor alojado para agentes en la nube: `https://mcp.agencyhandy.com/` (comprobación en `/health`)
 - Paquete: [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) en npm (`npx -y agencyhandy-mcp@1`)

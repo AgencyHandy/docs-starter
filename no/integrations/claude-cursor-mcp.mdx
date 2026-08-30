@@ -1,28 +1,40 @@
 ---
 title: "Koble Claude og Cursor for å kjøre AgencyHandy med MCP"
 sidebarTitle: "Claude & Cursor MCP"
-description: "Sett opp AgencyHandy MCP-pakken slik at du kan be Claude Desktop eller Cursor om briefing, ticket-tildeling, fakturaer med mer — på vanlig språk."
+description: "Koble Claude, Cursor eller en skybasert agent til AgencyHandy med MCP, slik at den kan gi deg oversikt, fordele arbeid, undersøke betalings- og leveringsrisiko og fylle ut egendefinerte felter — på vanlig språk."
 ---
 
 AgencyHandys MCP-tilkobling lar deg snakke med **Claude** eller **Cursor** på vanlig språk og utføre daglig arbeid i AgencyHandy-arbeidsområdet — uten å åpne hver skjerm selv.
 
 Du beholder kontrollen. Claude og Cursor handler bare med API-nøkkelen for arbeidsområdet du genererer, og ber deg bekrefte når et navn matcher mer enn én person.
 
+## To måter å koble til på
+
+| Hvor agenten din kjører | Slik kobler du til | Oppsett |
+|---|---|---|
+| **På maskinen din** — Claude Desktop eller Cursor | Pakken `agencyhandy-mcp`, startet av appen | **Sett opp Claude eller Cursor MCP** nedenfor — krever Node.js 20+ |
+| **I skyen** — Cloudflare Workers, Vercel, n8n, en hostet Claude eller Cursor | Vår hostede MCP-server på `https://mcp.agencyhandy.com/` | **Koble til en skyagent** nedenfor — ingenting å installere |
+
+Begge bruker den samme API-nøkkelen for arbeidsområdet og gir agenten de samme verktøyene.
+
 <Note>
-  Du trenger en rolle som kan åpne **Workspace Config** og administrere **API keys** (vanligvis **SuperAdmin** eller **Admin**). Du trenger også **Node.js 20+** på datamaskinen der Claude Desktop eller Cursor kjører.
+  Du trenger en rolle som kan åpne **Workspace Config** og administrere **API keys** (vanligvis **SuperAdmin** eller **Admin**). For lokalt oppsett trenger du i tillegg **Node.js 20+** på maskinen der Claude Desktop eller Cursor kjører — den hostede serveren krever ingen installasjon i det hele tatt.
 </Note>
 
 ## Krav
 
 | Krav | Detaljer |
 |---|---|
-| **Node.js** | Versjon **20** eller nyere (`node -v` for å sjekke) |
-| **Claude Desktop** eller **Cursor** | En av disse appene installert på datamaskinen |
 | **AgencyHandy-arbeidsområde** | Tilgang til **Workspace Config** → **API Key** |
+| **En MCP-vert** | Claude Desktop eller Cursor på maskinen din, eller en hvilken som helst agent som kan kalle en MCP-server over HTTP |
+| **Node.js** *(kun lokalt oppsett)* | Versjon **20** eller nyere (sjekk med `node -v`) |
+| **MCP-pakke** *(kun lokalt oppsett)* | `npx -y agencyhandy-mcp@1` (taggen `1` leverer **1.7.2+**) |
 
 MCP-pakken på npm er `agencyhandy-mcp`. Claude og Cursor kjører den med `npx -y agencyhandy-mcp@1`.
 
 ## Sett opp Claude eller Cursor MCP
+
+Bruk denne veien når Claude Desktop eller Cursor kjører på din egen maskin. Kjører agenten i skyen, hopp videre til **Koble til en skyagent**.
 
 <Steps>
   <Step title="Åpne Workspace Config">
@@ -53,6 +65,63 @@ MCP-pakken på npm er `agencyhandy-mcp`. Claude og Cursor kjører den med `npx -
 
 <Tip>
   Hvis Claude eller Cursor ikke finner MCP-serveren, bekreft at **Node.js 20+** er installert og at du startet appen på nytt etter lagring av konfigurasjonen.
+</Tip>
+
+## Koble til en skyagent (hostet server)
+
+Hvis agenten din kjører et sted du ikke kan installere en pakke — Cloudflare Workers, Vercel-funksjoner, n8n eller en hostet Claude eller Cursor — pek den mot MCP-serveren vi drifter for deg:
+
+```
+https://mcp.agencyhandy.com/
+```
+
+Det er ingenting å installere og ingen server å holde i gang. Autentiser hver forespørsel med den samme API-nøkkelen for arbeidsområdet som bearer-token. Arbeidsområdet leses fra nøkkelen, så hver bruker kobler seg til med sin egen.
+
+**Cursor, Claude Code og alle verter som sender egne headere:**
+
+```json
+{
+  "mcpServers": {
+    "agency-handy": {
+      "url": "https://mcp.agencyhandy.com/",
+      "headers": {
+        "Authorization": "Bearer YOUR_API_KEY"
+      }
+    }
+  }
+}
+```
+
+**Claude Desktop** kan ikke sende egne headere — bruk `mcp-remote` som bro:
+
+```json
+{
+  "mcpServers": {
+    "agency-handy": {
+      "command": "npx",
+      "args": [
+        "-y", "mcp-remote",
+        "https://mcp.agencyhandy.com/",
+        "--header", "Authorization:Bearer YOUR_API_KEY"
+      ]
+    }
+  }
+}
+```
+
+**Claude Code** fra kommandolinjen:
+
+```bash
+claude mcp add agency-handy --transport http https://mcp.agencyhandy.com/ \
+  --header "Authorization: Bearer YOUR_API_KEY"
+```
+
+<Note>
+  Adressen er **rotstien** — `https://mcp.agencyhandy.com/`, ikke `/mcp`. Åpne `https://mcp.agencyhandy.com/health` for å sjekke at serveren svarer.
+</Note>
+
+<Tip>
+  Bygger du heller din egen integrasjon mot HTTP-API-et? Send med en **`User-Agent`**-header i forespørslene. Enkelte kjøretidsmiljøer — blant annet `fetch()` i Cloudflare Workers — sender ingen som standard, og forespørsler uten blir avvist før de når API-et.
 </Tip>
 
 ## Eksempelprompter
@@ -87,6 +156,7 @@ MCP støtter lesing av arbeidsområdet og handlinger (opprette, tildele, sende, 
 ## Relatert
 
 - Generer nøkler og kopier konfigurasjonen i appen under **Workspace Config** → **API Key**
+- Hostet server for skyagenter: `https://mcp.agencyhandy.com/` (helsesjekk på `/health`)
 - Pakke: [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) på npm (`npx -y agencyhandy-mcp@1`)
 
 <Note>

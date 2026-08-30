@@ -1,28 +1,40 @@
 ---
 title: "اربط Claude وCursor لتشغيل AgencyHandy عبر MCP"
 sidebarTitle: "Claude وCursor MCP"
-description: "أعد حزمة AgencyHandy MCP لتطلب من Claude Desktop أو Cursor موجزًا صباحيًا أو تعيين تذاكر أو إرسال فواتير والمزيد — بلغة طبيعية."
+description: "اربط Claude أو Cursor أو وكيلاً مستضافاً في السحابة بـ AgencyHandy عبر MCP ليقدّم لك ملخصات، ويوزّع المهام، ويحلّل مخاطر التحصيل والتسليم، ويملأ الحقول المخصصة — بلغة طبيعية."
 ---
 
 يتيح لك اتصال MCP في AgencyHandy التحدث إلى **Claude** أو **Cursor** بلغة طبيعية وتشغيل العمل اليومي في مساحة عمل AgencyHandy — دون فتح كل شاشة بنفسك.
 
 تبقى السيطرة لديك. يعمل Claude وCursor فقط بمفتاح API لمساحة العمل الذي تنشئه، ويطلبان التأكيد عندما يطابق الاسم أكثر من شخص.
 
+## طريقتان للاتصال
+
+| أين يعمل وكيلك | طريقة الاتصال | الإعداد |
+|---|---|---|
+| **على جهازك** — Claude Desktop أو Cursor | حزمة `agencyhandy-mcp` التي يشغّلها التطبيق | **إعداد MCP لـ Claude أو Cursor** أدناه — يتطلب Node.js 20+ |
+| **في السحابة** — Cloudflare Workers أو Vercel أو n8n أو Claude/Cursor مستضاف | خادم MCP المستضاف لدينا على `https://mcp.agencyhandy.com/` | **ربط وكيل سحابي** أدناه — لا شيء لتثبيته |
+
+كلتا الطريقتين تستخدمان مفتاح API نفسه لمساحة العمل وتمنحان الوكيل الأدوات نفسها.
+
 <Note>
-  تحتاج إلى دور يمكنه فتح **Workspace Config** وإدارة **API keys** (عادةً **SuperAdmin** أو **Admin**). تحتاج أيضًا إلى **Node.js 20+** على الجهاز الذي يشغّل Claude Desktop أو Cursor.
+  تحتاج إلى دور يمكنه فتح **Workspace Config** وإدارة **API keys** (عادةً **SuperAdmin** أو **Admin**). وللإعداد المحلي تحتاج أيضاً إلى **Node.js 20+** على الجهاز الذي يعمل عليه Claude Desktop أو Cursor — أما الخادم المستضاف فلا يتطلب أي تثبيت.
 </Note>
 
 ## المتطلبات
 
 | المتطلب | التفاصيل |
 |---|---|
-| **Node.js** | الإصدار **20** أو أحدث (تحقق بـ `node -v`) |
-| **Claude Desktop** أو **Cursor** | أحد هذين التطبيقين مثبت على جهازك |
-| **مساحة عمل AgencyHandy** | الوصول إلى **Workspace Config** → **API Key** |
+| **مساحة عمل AgencyHandy** | الوصول إلى **Workspace Config** ← **API Key** |
+| **مضيف MCP** | Claude Desktop أو Cursor على جهازك، أو أي وكيل يستطيع استدعاء خادم MCP عبر HTTP |
+| **Node.js** *(للإعداد المحلي فقط)* | الإصدار **20** أو أحدث (تحقق بـ `node -v`) |
+| **حزمة MCP** *(للإعداد المحلي فقط)* | `npx -y agencyhandy-mcp@1` (الوسم `1` يوفّر **1.7.2+**) |
 
 حزمة MCP على npm هي `agencyhandy-mcp`. يشغّلها Claude وCursor عبر `npx -y agencyhandy-mcp@1`.
 
 ## إعداد Claude أو Cursor MCP
+
+استخدم هذه الطريقة عندما يعمل Claude Desktop أو Cursor على جهازك. أما إذا كان وكيلك يعمل في السحابة، فانتقل إلى **ربط وكيل سحابي**.
 
 <Steps>
   <Step title="افتح Workspace Config">
@@ -53,6 +65,63 @@ description: "أعد حزمة AgencyHandy MCP لتطلب من Claude Desktop أ�
 
 <Tip>
   إذا لم يعثر Claude أو Cursor على خادم MCP، تأكد من تثبيت **Node.js 20+** وإعادة تشغيل التطبيق بعد حفظ الإعداد.
+</Tip>
+
+## ربط وكيل سحابي (خادم مستضاف)
+
+إذا كان وكيلك يعمل في مكان لا يمكنك تثبيت حزمة فيه — Cloudflare Workers أو دوال Vercel أو n8n أو Claude/Cursor مستضاف — فوجّهه إلى خادم MCP الذي نستضيفه لك:
+
+```
+https://mcp.agencyhandy.com/
+```
+
+لا شيء لتثبيته ولا خادم لتشغيله. وثّق كل طلب بمفتاح API نفسه لمساحة العمل بوصفه bearer token. تُقرأ مساحة العمل من المفتاح، لذا يتصل كل مستخدم بمفتاحه الخاص.
+
+**Cursor وClaude Code وأي مضيف يرسل ترويسات مخصصة:**
+
+```json
+{
+  "mcpServers": {
+    "agency-handy": {
+      "url": "https://mcp.agencyhandy.com/",
+      "headers": {
+        "Authorization": "Bearer YOUR_API_KEY"
+      }
+    }
+  }
+}
+```
+
+**Claude Desktop** لا يستطيع إرسال ترويسات مخصصة، لذا اربطه عبر `mcp-remote`:
+
+```json
+{
+  "mcpServers": {
+    "agency-handy": {
+      "command": "npx",
+      "args": [
+        "-y", "mcp-remote",
+        "https://mcp.agencyhandy.com/",
+        "--header", "Authorization:Bearer YOUR_API_KEY"
+      ]
+    }
+  }
+}
+```
+
+**Claude Code** من سطر الأوامر:
+
+```bash
+claude mcp add agency-handy --transport http https://mcp.agencyhandy.com/ \
+  --header "Authorization: Bearer YOUR_API_KEY"
+```
+
+<Note>
+  العنوان هو **المسار الجذر** — `https://mcp.agencyhandy.com/` وليس `/mcp`. للتأكد من أن الخادم يستجيب، افتح `https://mcp.agencyhandy.com/health`.
+</Note>
+
+<Tip>
+  هل تبني تكاملك الخاص عبر واجهة HTTP بدلاً من ذلك؟ أرسل ترويسة **`User-Agent`** مع طلباتك. بعض بيئات التشغيل — ومنها `fetch()` في Cloudflare Workers — لا ترسلها افتراضياً، والطلبات التي تخلو منها تُرفض قبل وصولها إلى الواجهة.
 </Tip>
 
 ## أمثلة على المطالبات
@@ -92,4 +161,5 @@ description: "أعد حزمة AgencyHandy MCP لتطلب من Claude Desktop أ�
   Latest package on the `1` tag is **1.7.2+**. Claude can read **`ah://api-context`** (also inside **`ah://full-context`**) for API path gotchas: leads, projects/orders, tasks, comments, labels, clients, invoices, vouchers, and forms.
 </Note>
 
+- خادم مستضاف للوكلاء السحابيين: `https://mcp.agencyhandy.com/` (فحص الحالة على `/health`)
 - الحزمة: [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) على npm (`npx -y agencyhandy-mcp@1`)
