@@ -17,9 +17,9 @@ For at åbne tilbudsdashboardet skal du klikke på **Tilbud** i venstre sidebjæ
 - **Status** — Kladde, Sendt, Accepteret eller Afventer
 - **Oprettelsesdato**, **afsendelsesdato** og **udløbsdato**
 - **Visningsstatus** — om klienten har åbnet tilbuddet
-- Handlingsmenu til at **redigere**, **sende**, **dele** eller **slette** hvert tilbud
+- Handlingsmenu til at **redigere**, **sende**, **dele**, **arkivere** eller **slette** hvert tilbud
 
-Du kan søge i tilbud efter ID og filtrere eller sortere listen for hurtigt at finde det, du har brug for.
+Du kan søge i tilbud efter ID og filtrere eller sortere listen for hurtigt at finde det, du har brug for. Brug skifteren **Aktive** / **Arkiverede** øverst på listen til at skifte mellem aktive tilbud og dem, du har arkiveret.
 
 ## Oprettelse af et tilbud
 
@@ -152,6 +152,7 @@ Hvis du vil sende et hurtigt tilbud direkte knyttet til en specifik ydelsespakke
 | **Afventer** | Klienten har gennemgået og sendt tilbuddet tilbage til diskussion. |
 | **Accepteret** | En af parterne har formelt accepteret tilbudsvilkårene. En ordre oprettes automatisk, hvis det er konfigureret. |
 | **Afvist** | En af parterne har afvist tilbuddet. Afsender modtager en notifikation med begrundelsen. |
+| **Arkiveret** | Du har trukket tilbuddet tilbage. Klienten kan ikke længere åbne eller acceptere det, og du kan gendanne det når som helst. |
 
 ## Accept af et tilbud
 
@@ -192,6 +193,30 @@ Hvis de foreslåede vilkår, prissætning eller omfang ikke matcher dine krav, k
 <Warning>
   Afviste tilbud **kan ikke gensendes**. Begge parter skal oprette et nyt tilbud for at genoptage forhandlingerne.
 </Warning>
+
+## Arkivering (tilbagetrækning) af et tilbud
+
+Hvis et tilbud, du har sendt, ikke længere er aktuelt, kan du arkivere det i stedet for at slette det. Arkivering trækker tilbuddet tilbage fra klienten, men bevarer det med alt dets indhold og historik i dit arbejdsområde.
+
+<Steps>
+  <Step title="Åbn handlingsmenuen">
+    Klik på **Tilbud** i sidebjælken. Klik på menuen **⋯** ud for det tilbud, du vil trække tilbage.
+  </Step>
+  <Step title="Klik på Arkivér">
+    Klik på **Arkivér**, og bekræft derefter i dialogboksen **Træk tilbud tilbage**.
+  </Step>
+  <Step title="Find det i visningen Arkiverede">
+    Tilbuddet forsvinder fra din aktive liste og flyttes til visningen **Arkiverede**, markeret med mærket **Arkiveret**.
+  </Step>
+</Steps>
+
+Når et tilbud er arkiveret, kan din klient ikke længere åbne, acceptere eller afvise det. Hvis klienten bruger sit link, får vedkommende en besked om, at tilbuddet ikke længere er tilgængeligt.
+
+For at hente det tilbage skal du skifte til visningen **Arkiverede**, åbne tilbuddets **⋯**-menu og klikke på **Fjern arkivering**. Tilbuddet vender tilbage til din aktive liste præcis, som det var, og din klient kan åbne det igen.
+
+<Note>
+  Du kan ikke arkivere et accepteret tilbud, fordi det allerede er blevet til en ordre.
+</Note>
 
 ## Offentlig tilbudsvisning
 

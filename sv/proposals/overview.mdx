@@ -17,9 +17,9 @@ För att öppna offertinstrumentpanelen klickar du på **Proposals** i vänster 
 - **Status** — Utkast, Skickat, Accepterat eller Väntande
 - **Skapandedatum**, **skickningsdatum** och **utgångsdatum**
 - **Visningsstatus** — om klienten har öppnat offerten
-- Åtgärdsmeny för att **redigera**, **skicka**, **dela** eller **ta bort** varje offert
+- Åtgärdsmeny för att **redigera**, **skicka**, **dela**, **arkivera** eller **ta bort** varje offert
 
-Du kan söka offerter efter ID och filtrera eller sortera listan för att snabbt hitta vad du behöver.
+Du kan söka offerter efter ID och filtrera eller sortera listan för att snabbt hitta vad du behöver. Använd växlaren **Active** / **Archived** högst upp i listan för att växla mellan aktiva offerter och de som du har arkiverat.
 
 ## Skapa en offert
 
@@ -152,6 +152,7 @@ Om du vill skicka en snabb offert kopplad direkt till ett specifikt tjänstepake
 | **Pending** | Klienten har granskat och skickat tillbaka offerten för diskussion. |
 | **Accepted** | Endera parten har formellt accepterat offertvillkoren. En beställning skapas automatiskt om detta är konfigurerat. |
 | **Rejected** | Endera parten har avvisat offerten. Avsändaren får en avisering med anledningen. |
+| **Archived** | Du har dragit tillbaka offerten. Klienten kan inte längre öppna eller acceptera den, och du kan återställa den när som helst. |
 
 ## Acceptera en offert
 
@@ -192,6 +193,30 @@ Om de föreslagna villkoren, prissättningen eller omfattningen inte uppfyller d
 <Warning>
   Avvisade offerter **kan inte skickas om**. Båda parter måste skapa en ny offert för att återuppta förhandlingar.
 </Warning>
+
+## Arkivera (dra tillbaka) en offert
+
+Om en offert du har skickat inte längre är aktuell kan du arkivera den i stället för att ta bort den. Arkivering drar tillbaka offerten från klienten men behåller den, med allt innehåll och all historik, i din arbetsyta.
+
+<Steps>
+  <Step title="Öppna åtgärdsmenyn">
+    Klicka på **Proposals** i sidopanelen. Klicka på menyn **⋯** på den offert du vill dra tillbaka.
+  </Step>
+  <Step title="Klicka på Archive">
+    Klicka på **Archive** och bekräfta sedan i dialogrutan **Withdraw proposal**.
+  </Step>
+  <Step title="Hitta den i vyn Archived">
+    Offerten försvinner från din aktiva lista och flyttas till vyn **Archived**, märkt med etiketten **Archived**.
+  </Step>
+</Steps>
+
+När en offert har arkiverats kan din klient inte längre öppna, acceptera eller avvisa den. Om klienten använder sin länk visas ett meddelande om att offerten inte längre är tillgänglig.
+
+För att återställa den växlar du till vyn **Archived**, öppnar offertens **⋯**-meny och klickar på **Unarchive**. Offerten återvänder till din aktiva lista precis som den var, och din klient kan öppna den igen.
+
+<Note>
+  Du kan inte arkivera en accepterad offert, eftersom den redan har blivit en beställning.
+</Note>
 
 ## Offentlig offertvy
 

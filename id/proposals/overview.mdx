@@ -17,9 +17,9 @@ Untuk membuka Dashboard Proposal, klik **Proposals** di sidebar kiri. Dashboard 
 - **Status** — Draft, Sent, Accepted, atau Pending
 - **Tanggal pembuatan**, **tanggal pengiriman**, dan **tanggal kedaluwarsa**
 - **Status tampilan** — apakah klien telah membuka proposal
-- Menu tindakan untuk **mengedit**, **mengirim**, **berbagi**, atau **menghapus** setiap proposal
+- Menu tindakan untuk **mengedit**, **mengirim**, **berbagi**, **mengarsipkan**, atau **menghapus** setiap proposal
 
-Anda dapat mencari proposal berdasarkan ID dan memfilter atau mengurutkan daftar untuk menemukan yang Anda butuhkan dengan cepat.
+Anda dapat mencari proposal berdasarkan ID dan memfilter atau mengurutkan daftar untuk menemukan yang Anda butuhkan dengan cepat. Gunakan toggle **Active** / **Archived** di bagian atas daftar untuk beralih antara proposal yang aktif dan proposal yang telah Anda arsipkan.
 
 ## Membuat Proposal
 
@@ -152,6 +152,7 @@ Jika Anda ingin mengirim proposal cepat yang terkait langsung dengan paket layan
 | **Pending** | Klien telah meninjau dan mengirim kembali proposal untuk diskusi. |
 | **Accepted** | Salah satu pihak telah secara resmi menerima ketentuan proposal. Pesanan dibuat secara otomatis jika dikonfigurasi. |
 | **Rejected** | Salah satu pihak telah menolak proposal. Pengirim menerima notifikasi beserta alasannya. |
+| **Archived** | Anda telah menarik proposal. Klien tidak dapat lagi membuka atau menerimanya, dan Anda dapat memulihkannya kapan saja. |
 
 ## Menerima Proposal
 
@@ -192,6 +193,30 @@ Jika ketentuan, harga, atau ruang lingkup yang diusulkan tidak sesuai dengan keb
 <Warning>
   Proposal yang ditolak **tidak dapat dikirim ulang**. Kedua belah pihak harus membuat proposal baru untuk memulai negosiasi kembali.
 </Warning>
+
+## Mengarsipkan (menarik) Proposal
+
+Jika proposal yang Anda kirim sudah tidak berlaku lagi, arsipkan proposal tersebut alih-alih menghapusnya. Pengarsipan menarik proposal dari klien, tetapi tetap menyimpannya, beserta seluruh konten dan riwayatnya, di workspace Anda.
+
+<Steps>
+  <Step title="Buka menu tindakan">
+    Klik **Proposals** di sidebar. Pada proposal yang ingin Anda tarik, klik menu **⋯**.
+  </Step>
+  <Step title="Klik Archive">
+    Klik **Archive**, lalu konfirmasi di dialog **Withdraw proposal**.
+  </Step>
+  <Step title="Temukan di tampilan Archived">
+    Proposal keluar dari daftar aktif Anda dan pindah ke tampilan **Archived**, ditandai dengan lencana **Archived**.
+  </Step>
+</Steps>
+
+Setelah proposal diarsipkan, klien Anda tidak dapat lagi membuka, menerima, atau menolaknya. Jika mereka membuka tautannya, mereka akan melihat pesan bahwa proposal tersebut sudah tidak tersedia.
+
+Untuk mengembalikannya, beralihlah ke tampilan **Archived**, buka menu **⋯** proposal, lalu klik **Unarchive**. Proposal kembali ke daftar aktif Anda persis seperti sebelumnya, dan klien Anda dapat membukanya lagi.
+
+<Note>
+  Anda tidak dapat mengarsipkan proposal yang sudah diterima, karena proposal tersebut sudah menjadi pesanan.
+</Note>
 
 ## Tampilan Proposal Publik
 

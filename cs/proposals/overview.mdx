@@ -17,9 +17,9 @@ Pro otevření přehledu nabídek klikněte na **Nabídky** v levém postranním
 - **Stav** — Koncept, Odesláno, Přijato nebo Čeká na vyřízení
 - **Datum vytvoření**, **datum odeslání** a **datum vypršení platnosti**
 - **Stav zobrazení** — zda klient nabídku otevřel
-- Nabídka akcí pro **úpravy**, **odeslání**, **sdílení** nebo **smazání** každé nabídky
+- Nabídka akcí pro **úpravy**, **odeslání**, **sdílení**, **archivaci** nebo **smazání** každé nabídky
 
-Nabídky lze prohledávat podle ID a seznam filtrovat nebo řadit pro rychlé nalezení potřebného.
+Nabídky lze prohledávat podle ID a seznam filtrovat nebo řadit pro rychlé nalezení potřebného. Přepínačem **Aktivní** / **Archivované** v horní části seznamu přepínáte mezi aktivními nabídkami a těmi, které jste archivovali.
 
 ## Vytvoření nabídky
 
@@ -152,6 +152,7 @@ Pokud chcete odeslat rychlou nabídku přímo vázanou na konkrétní balíček 
 | **Čeká na vyřízení** | Klient nabídku zkontroloval a odeslal zpět k diskusi. |
 | **Přijato** | Některá ze stran formálně přijala podmínky nabídky. Objednávka je vytvořena automaticky, pokud je to nakonfigurováno. |
 | **Odmítnuto** | Některá ze stran nabídku odmítla. Odesílatel obdrží oznámení s důvodem. |
+| **Archivováno** | Nabídku jste stáhli. Klient ji již nemůže otevřít ani přijmout a vy ji můžete kdykoli obnovit. |
 
 ## Přijetí nabídky
 
@@ -192,6 +193,30 @@ Pokud navrhované podmínky, ceny nebo rozsah neodpovídají vašim požadavkům
 <Warning>
   Odmítnuté nabídky **nelze znovu odeslat**. Obě strany musí vytvořit novou nabídku pro obnovení jednání.
 </Warning>
+
+## Archivace (stažení) nabídky
+
+Pokud odeslaná nabídka už neplatí, archivujte ji místo smazání. Archivace stáhne nabídku od klienta, ale ponechá ji i s veškerým obsahem a historií ve vašem pracovním prostoru.
+
+<Steps>
+  <Step title="Otevřete nabídku akcí">
+    Klikněte na **Nabídky** v postranním panelu. U nabídky, kterou chcete stáhnout, klikněte na menu **⋯**.
+  </Step>
+  <Step title="Klikněte na Archivovat">
+    Klikněte na **Archivovat** a potvrďte volbu v dialogu **Stáhnout nabídku**.
+  </Step>
+  <Step title="Najděte ji v zobrazení Archivované">
+    Nabídka zmizí z vašeho aktivního seznamu a přesune se do zobrazení **Archivované**, kde je označena štítkem **Archivováno**.
+  </Step>
+</Steps>
+
+Po archivaci nabídky ji klient již nemůže otevřít, přijmout ani odmítnout. Pokud použije svůj odkaz, zobrazí se mu zpráva, že nabídka již není k dispozici.
+
+Chcete-li nabídku obnovit, přepněte do zobrazení **Archivované**, otevřete u nabídky menu **⋯** a klikněte na **Zrušit archivaci**. Nabídka se vrátí do vašeho aktivního seznamu přesně v původní podobě a klient ji může znovu otevřít.
+
+<Note>
+  Přijatou nabídku nelze archivovat, protože se z ní již stala objednávka.
+</Note>
 
 ## Veřejné zobrazení nabídky
 

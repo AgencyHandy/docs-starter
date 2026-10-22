@@ -17,9 +17,9 @@ Lai atvērtu Piedāvājumu paneli, kreisajā sānjoslā noklikšķiniet uz **Pro
 - **Statusu** — Melnraksts, Nosūtīts, Pieņemts vai Gaida
 - **Izveides datumu**, **nosūtīšanas datumu** un **derīguma datumu**
 - **Skatīšanas statusu** — vai klients ir atvēris piedāvājumu
-- Darbību izvēlni, lai **rediģētu**, **nosūtītu**, **kopīgotu** vai **dzēstu** katru piedāvājumu
+- Darbību izvēlni, lai **rediģētu**, **nosūtītu**, **kopīgotu**, **arhivētu** vai **dzēstu** katru piedāvājumu
 
-Varat meklēt piedāvājumus pēc ID un filtrēt vai kārtot sarakstu, lai ātri atrastu nepieciešamo.
+Varat meklēt piedāvājumus pēc ID un filtrēt vai kārtot sarakstu, lai ātri atrastu nepieciešamo. Izmantojiet pārslēgu **Active** / **Archived** saraksta augšdaļā, lai pārslēgtos starp aktīvajiem piedāvājumiem un tiem, kurus esat arhivējis.
 
 ## Piedāvājuma izveide
 
@@ -152,6 +152,7 @@ Ja vēlaties nosūtīt ātru piedāvājumu, kas tieši saistīts ar konkrētu pa
 | **Pending** | Klients ir pārskatījis un nosūtījis piedāvājumu atpakaļ apspriešanai. |
 | **Accepted** | Kāda no pusēm ir formāli pieņēmusi piedāvājuma nosacījumus. Pasūtījums tiek izveidots automātiski, ja tas ir konfigurēts. |
 | **Rejected** | Kāda no pusēm ir noraidījusi piedāvājumu. Sūtītājs saņem paziņojumu ar iemeslu. |
+| **Archived** | Jūs esat atsaucis piedāvājumu. Klients to vairs nevar atvērt vai pieņemt, un jūs varat to atjaunot jebkurā laikā. |
 
 ## Piedāvājuma pieņemšana
 
@@ -192,6 +193,30 @@ Ja piedāvātie nosacījumi, cenas vai apjoms neatbilst jūsu prasībām, varat 
 <Warning>
   Noraidītos piedāvājumus **nevar nosūtīt atkārtoti**. Abām pusēm jāizveido jauns piedāvājums, lai atsāktu sarunas.
 </Warning>
+
+## Piedāvājuma arhivēšana (atsaukšana)
+
+Ja nosūtītais piedāvājums vairs nav aktuāls, arhivējiet to, nevis dzēsiet. Arhivēšana atsauc piedāvājumu no klienta, bet saglabā to ar visu saturu un vēsturi jūsu darbvietā.
+
+<Steps>
+  <Step title="Atveriet darbību izvēlni">
+    Sānjoslā noklikšķiniet uz **Proposals**. Pie piedāvājuma, kuru vēlaties atsaukt, noklikšķiniet uz izvēlnes **⋯**.
+  </Step>
+  <Step title="Noklikšķiniet uz Archive">
+    Noklikšķiniet uz **Archive**, pēc tam apstipriniet dialoglodziņā **Withdraw proposal**.
+  </Step>
+  <Step title="Atrodiet to skatā Archived">
+    Piedāvājums pazūd no jūsu aktīvā saraksta un tiek pārvietots uz skatu **Archived**, kur tas ir atzīmēts ar emblēmu **Archived**.
+  </Step>
+</Steps>
+
+Kad piedāvājums ir arhivēts, klients to vairs nevar atvērt, pieņemt vai noraidīt. Ja klients izmanto savu saiti, tiek parādīts ziņojums, ka piedāvājums vairs nav pieejams.
+
+Lai to atjaunotu, pārslēdzieties uz skatu **Archived**, atveriet piedāvājuma izvēlni **⋯** un noklikšķiniet uz **Unarchive**. Piedāvājums atgriežas jūsu aktīvajā sarakstā tieši tāds, kāds tas bija, un klients to atkal var atvērt.
+
+<Note>
+  Pieņemtu piedāvājumu nevar arhivēt, jo tas jau ir kļuvis par pasūtījumu.
+</Note>
 
 ## Publiskais piedāvājuma skats
 

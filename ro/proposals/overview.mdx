@@ -17,9 +17,9 @@ Pentru a deschide Tabloul de Bord al Propunerilor, faceți clic pe **Proposals**
 - **Status** — Ciornă, Trimisă, Acceptată sau În Așteptare
 - **Data creării**, **data trimiterii** și **data expirării**
 - **Starea vizualizării** — dacă clientul a deschis propunerea
-- Meniu de acțiuni pentru **editarea**, **trimiterea**, **partajarea** sau **ștergerea** fiecărei propuneri
+- Meniu de acțiuni pentru **editarea**, **trimiterea**, **partajarea**, **arhivarea** sau **ștergerea** fiecărei propuneri
 
-Puteți căuta propuneri după ID și filtra sau sorta lista pentru a găsi rapid ceea ce aveți nevoie.
+Puteți căuta propuneri după ID și filtra sau sorta lista pentru a găsi rapid ceea ce aveți nevoie. Folosiți comutatorul **Active** / **Archived** din partea de sus a listei pentru a trece de la propunerile active la cele pe care le-ați arhivat și invers.
 
 ## Crearea unei Propuneri
 
@@ -152,6 +152,7 @@ Dacă doriți să trimiteți rapid o propunere legată direct de un pachet de se
 | **Pending** | Clientul a revizuit și a retrimis propunerea pentru discuție. |
 | **Accepted** | Oricare dintre părți a acceptat formal termenii propunerii. O comandă este creată automat dacă a fost configurată. |
 | **Rejected** | Oricare dintre părți a respins propunerea. Expeditorul primește o notificare cu motivul. |
+| **Archived** | Ați retras propunerea. Clientul nu o mai poate deschide sau accepta, iar dvs. o puteți restaura oricând. |
 
 ## Acceptarea unei Propuneri
 
@@ -192,6 +193,30 @@ Dacă termenii, prețurile sau scopul propus nu corespund cerințelor dvs., pute
 <Warning>
   Propunerile respinse **nu pot fi retrimise**. Ambele părți trebuie să creeze o propunere nouă pentru a reporni negocierile.
 </Warning>
+
+## Arhivarea (retragerea) unei Propuneri
+
+Dacă o propunere pe care ați trimis-o nu mai este de actualitate, arhivați-o în loc să o ștergeți. Arhivarea retrage propunerea de la client, dar o păstrează, cu tot conținutul și istoricul ei, în spațiul dvs. de lucru.
+
+<Steps>
+  <Step title="Deschideți meniul de acțiuni">
+    Faceți clic pe **Proposals** în bara laterală. La propunerea pe care doriți să o retrageți, faceți clic pe meniul **⋯**.
+  </Step>
+  <Step title="Faceți clic pe Archive">
+    Faceți clic pe **Archive**, apoi confirmați în dialogul **Withdraw proposal**.
+  </Step>
+  <Step title="Găsiți-o în vizualizarea Archived">
+    Propunerea dispare din lista activă și se mută în vizualizarea **Archived**, marcată cu insigna **Archived**.
+  </Step>
+</Steps>
+
+Odată ce o propunere este arhivată, clientul dvs. nu o mai poate deschide, accepta sau respinge. Dacă folosește linkul primit, vede un mesaj că propunerea nu mai este disponibilă.
+
+Pentru a o readuce, treceți la vizualizarea **Archived**, deschideți meniul **⋯** al propunerii și faceți clic pe **Unarchive**. Propunerea revine în lista activă exact așa cum era, iar clientul o poate deschide din nou.
+
+<Note>
+  Nu puteți arhiva o propunere acceptată, deoarece a devenit deja o comandă.
+</Note>
 
 ## Vizualizarea Publică a Propunerii
 
