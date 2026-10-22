@@ -17,9 +17,9 @@ Para abrir o Painel de Propostas, clique em **Propostas** na barra lateral esque
 - **Status** — Rascunho, Enviada, Aceita ou Pendente
 - **Data de criação**, **data de envio** e **data de expiração**
 - **Status de visualização** — se o cliente abriu a proposta
-- Menu de ações para **editar**, **enviar**, **compartilhar** ou **excluir** cada proposta
+- Menu de ações para **editar**, **enviar**, **compartilhar**, **arquivar** ou **excluir** cada proposta
 
-Você pode pesquisar propostas por ID e filtrar ou ordenar a lista para encontrar rapidamente o que precisa.
+Você pode pesquisar propostas por ID e filtrar ou ordenar a lista para encontrar rapidamente o que precisa. Use o seletor **Ativas** / **Arquivadas** no topo da lista para alternar entre as propostas em andamento e as que você arquivou.
 
 ## Criando uma Proposta
 
@@ -152,6 +152,7 @@ Se quiser enviar uma proposta rápida vinculada diretamente a um pacote de servi
 | **Pendente** | O cliente revisou e devolveu a proposta para discussão. |
 | **Aceita** | Uma das partes aceitou formalmente os termos da proposta. Um pedido é criado automaticamente se configurado. |
 | **Rejeitada** | Uma das partes rejeitou a proposta. O remetente recebe uma notificação com o motivo. |
+| **Arquivada** | Você retirou a proposta. O cliente não pode mais abri-la nem aceitá-la, e você pode restaurá-la a qualquer momento. |
 
 ## Aceitando uma Proposta
 
@@ -192,6 +193,30 @@ Se os termos, preços ou escopo propostos não atenderem aos seus requisitos, vo
 <Warning>
   Propostas rejeitadas **não podem ser reenviadas**. Ambas as partes devem criar uma nova proposta para reiniciar as negociações.
 </Warning>
+
+## Arquivando (retirando) uma Proposta
+
+Se uma proposta que você enviou não estiver mais de pé, arquive-a em vez de excluí-la. Arquivar retira a proposta do cliente, mas a mantém, com todo o conteúdo e histórico, no seu workspace.
+
+<Steps>
+  <Step title="Abra o menu de ações">
+    Clique em **Propostas** na barra lateral. Na proposta que deseja retirar, clique no menu **⋯**.
+  </Step>
+  <Step title="Clique em Arquivar">
+    Clique em **Arquivar** e confirme na caixa de diálogo **Retirar proposta**.
+  </Step>
+  <Step title="Encontre-a na visualização Arquivadas">
+    A proposta sai da sua lista ativa e vai para a visualização **Arquivadas**, marcada com o selo **Arquivada**.
+  </Step>
+</Steps>
+
+Depois que uma proposta é arquivada, seu cliente não pode mais abri-la, aceitá-la nem rejeitá-la. Se ele usar o link, verá uma mensagem informando que a proposta não está mais disponível.
+
+Para restaurá-la, mude para a visualização **Arquivadas**, abra o menu **⋯** da proposta e clique em **Desarquivar**. A proposta volta para a sua lista ativa exatamente como estava, e seu cliente pode abri-la novamente.
+
+<Note>
+  Não é possível arquivar uma proposta aceita, pois ela já se tornou um pedido.
+</Note>
 
 ## Visualização Pública da Proposta
 

@@ -17,9 +17,9 @@ Para abrir el panel de propuestas, haga clic en **Proposals** en la barra latera
 - **Estado**: Draft, Sent, Accepted o Pending
 - **Fecha de creación**, **fecha de envío** y **fecha de vencimiento**
 - **Estado de visualización**: si el cliente ha abierto la propuesta
-- Menú de acciones para **editar**, **enviar**, **compartir** o **eliminar** cada propuesta
+- Menú de acciones para **editar**, **enviar**, **compartir**, **archivar** o **eliminar** cada propuesta
 
-Puede buscar propuestas por ID y filtrar u ordenar la lista para encontrar rápidamente lo que necesita.
+Puede buscar propuestas por ID y filtrar u ordenar la lista para encontrar rápidamente lo que necesita. Use el selector **Active** / **Archived** en la parte superior de la lista para alternar entre las propuestas activas y las que ha archivado.
 
 ## Crear una propuesta
 
@@ -152,6 +152,7 @@ Si desea enviar una propuesta rápida vinculada directamente a un paquete de ser
 | **Pending** | El cliente ha revisado y devuelto la propuesta para su discusión. |
 | **Accepted** | Cualquiera de las partes ha aceptado formalmente los términos de la propuesta. Se crea un pedido automáticamente si está configurado. |
 | **Rejected** | Cualquiera de las partes ha rechazado la propuesta. El remitente recibe una notificación con el motivo. |
+| **Archived** | Usted ha retirado la propuesta. El cliente ya no puede abrirla ni aceptarla, y puede restaurarla en cualquier momento. |
 
 ## Aceptar una propuesta
 
@@ -192,6 +193,30 @@ Si los términos, precios o alcance propuestos no coinciden con sus requisitos, 
 <Warning>
   Las propuestas rechazadas **no se pueden reenviar**. Ambas partes deben crear una nueva propuesta para reiniciar las negociaciones.
 </Warning>
+
+## Archivar (retirar) una propuesta
+
+Si una propuesta que envió ya no está vigente, archívela en lugar de eliminarla. Al archivarla, la propuesta se retira para el cliente, pero se conserva en su espacio de trabajo con todo su contenido e historial.
+
+<Steps>
+  <Step title="Abra el menú de acciones">
+    Haga clic en **Proposals** en la barra lateral. En la propuesta que desea retirar, haga clic en el menú **⋯**.
+  </Step>
+  <Step title="Haga clic en Archive">
+    Haga clic en **Archive** y luego confirme en el cuadro de diálogo **Withdraw proposal**.
+  </Step>
+  <Step title="Encuéntrela en la vista Archived">
+    La propuesta sale de su lista activa y pasa a la vista **Archived**, marcada con una insignia **Archived**.
+  </Step>
+</Steps>
+
+Una vez archivada la propuesta, su cliente ya no puede abrirla, aceptarla ni rechazarla. Si usa su enlace, verá un mensaje que indica que la propuesta ya no está disponible.
+
+Para recuperarla, cambie a la vista **Archived**, abra el menú **⋯** de la propuesta y haga clic en **Unarchive**. La propuesta vuelve a su lista activa exactamente como estaba, y su cliente puede abrirla de nuevo.
+
+<Note>
+  No puede archivar una propuesta aceptada, porque ya se ha convertido en un pedido.
+</Note>
 
 ## Vista pública de la propuesta
 

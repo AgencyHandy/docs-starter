@@ -17,9 +17,9 @@ Pour ouvrir le tableau de bord des propositions, cliquez sur **Proposals** dans 
 - **Statut** — Draft, Sent, Accepted ou Pending
 - **Date de création**, **date d'envoi** et **date d'expiration**
 - **Statut de consultation** — si le client a ouvert la proposition
-- Un menu d'action pour **modifier**, **envoyer**, **partager** ou **supprimer** chaque proposition
+- Un menu d'action pour **modifier**, **envoyer**, **partager**, **archiver** ou **supprimer** chaque proposition
 
-Vous pouvez rechercher les propositions par ID et filtrer ou trier la liste pour trouver rapidement ce dont vous avez besoin.
+Vous pouvez rechercher les propositions par ID et filtrer ou trier la liste pour trouver rapidement ce dont vous avez besoin. Utilisez le sélecteur **Active** / **Archived** en haut de la liste pour basculer entre les propositions actives et celles que vous avez archivées.
 
 ## Créer une proposition
 
@@ -152,6 +152,7 @@ Si vous souhaitez envoyer une proposition rapide directement liée à un forfait
 | **Pending** | Le client a examiné et renvoyé la proposition pour discussion. |
 | **Accepted** | L'une des parties a formellement accepté les conditions de la proposition. Une commande est créée automatiquement si configuré. |
 | **Rejected** | L'une des parties a rejeté la proposition. L'expéditeur reçoit une notification avec le motif. |
+| **Archived** | Vous avez retiré la proposition. Le client ne peut plus l'ouvrir ni l'accepter, et vous pouvez la restaurer à tout moment. |
 
 ## Accepter une proposition
 
@@ -192,6 +193,30 @@ Si les conditions, la tarification ou la portée proposées ne correspondent pas
 <Warning>
   Les propositions rejetées **ne peuvent pas être renvoyées**. Les deux parties doivent créer une nouvelle proposition pour relancer les négociations.
 </Warning>
+
+## Archiver (retirer) une proposition
+
+Si une proposition que vous avez envoyée n'est plus d'actualité, archivez-la au lieu de la supprimer. L'archivage retire la proposition au client, mais la conserve dans votre espace de travail avec tout son contenu et son historique.
+
+<Steps>
+  <Step title="Ouvrez le menu d'action">
+    Cliquez sur **Proposals** dans la barre latérale. Sur la proposition que vous souhaitez retirer, cliquez sur le menu **⋯**.
+  </Step>
+  <Step title="Cliquez sur Archive">
+    Cliquez sur **Archive**, puis confirmez dans la boîte de dialogue **Withdraw proposal**.
+  </Step>
+  <Step title="Retrouvez-la dans la vue Archived">
+    La proposition quitte votre liste active et passe dans la vue **Archived**, signalée par un badge **Archived**.
+  </Step>
+</Steps>
+
+Une fois la proposition archivée, votre client ne peut plus l'ouvrir, l'accepter ni la rejeter. S'il utilise son lien, il voit un message indiquant que la proposition n'est plus disponible.
+
+Pour la restaurer, passez à la vue **Archived**, ouvrez le menu **⋯** de la proposition et cliquez sur **Unarchive**. La proposition revient dans votre liste active exactement comme elle était, et votre client peut de nouveau l'ouvrir.
+
+<Note>
+  Vous ne pouvez pas archiver une proposition acceptée, car elle est déjà devenue une commande.
+</Note>
 
 ## Vue publique de la proposition
 

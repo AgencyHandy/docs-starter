@@ -17,9 +17,9 @@ Um das Angebots-Dashboard zu öffnen, klicken Sie in der linken Seitenleiste auf
 - **Status** — Entwurf, Gesendet, Akzeptiert oder Ausstehend
 - **Erstellungsdatum**, **Sendedatum** und **Ablaufdatum**
 - **Ansichtsstatus** — ob der Kunde das Angebot geöffnet hat
-- Aktionsmenü zum **Bearbeiten**, **Senden**, **Teilen** oder **Löschen** jedes Angebots
+- Aktionsmenü zum **Bearbeiten**, **Senden**, **Teilen**, **Archivieren** oder **Löschen** jedes Angebots
 
-Sie können Angebote nach ID durchsuchen sowie die Liste filtern und sortieren, um schnell zu finden, was Sie benötigen.
+Sie können Angebote nach ID durchsuchen sowie die Liste filtern und sortieren, um schnell zu finden, was Sie benötigen. Mit dem Umschalter **Aktiv** / **Archiviert** oben in der Liste wechseln Sie zwischen aktiven und archivierten Angeboten.
 
 ## Angebot erstellen
 
@@ -152,6 +152,7 @@ Wenn Sie schnell ein Angebot senden möchten, das direkt an ein bestimmtes Diens
 | **Ausstehend** | Der Kunde hat das Angebot geprüft und zur Diskussion zurückgesendet. |
 | **Akzeptiert** | Eine der Parteien hat die Angebotsbedingungen formal akzeptiert. Ein Auftrag wird automatisch erstellt, sofern konfiguriert. |
 | **Abgelehnt** | Eine der Parteien hat das Angebot abgelehnt. Der Absender erhält eine Benachrichtigung mit dem Grund. |
+| **Archiviert** | Sie haben das Angebot zurückgezogen. Der Kunde kann es nicht mehr öffnen oder akzeptieren, und Sie können es jederzeit wiederherstellen. |
 
 ## Angebot akzeptieren
 
@@ -192,6 +193,30 @@ Wenn die vorgeschlagenen Bedingungen, Preise oder der Umfang nicht Ihren Anforde
 <Warning>
   Abgelehnte Angebote **können nicht erneut gesendet werden**. Beide Parteien müssen ein neues Angebot erstellen, um Verhandlungen neu zu starten.
 </Warning>
+
+## Angebot archivieren (zurückziehen)
+
+Wenn ein gesendetes Angebot nicht mehr gilt, archivieren Sie es, statt es zu löschen. Durch das Archivieren wird das Angebot gegenüber dem Kunden zurückgezogen, bleibt aber mit allen Inhalten und dem Verlauf in Ihrem Workspace erhalten.
+
+<Steps>
+  <Step title="Aktionsmenü öffnen">
+    Klicken Sie in der Seitenleiste auf **Angebote**. Klicken Sie beim Angebot, das Sie zurückziehen möchten, auf das Menü **⋯**.
+  </Step>
+  <Step title="Auf Archivieren klicken">
+    Klicken Sie auf **Archivieren** und bestätigen Sie anschließend im Dialog **Angebot zurückziehen**.
+  </Step>
+  <Step title="In der Ansicht Archiviert finden">
+    Das Angebot verschwindet aus Ihrer aktiven Liste und wird in die Ansicht **Archiviert** verschoben, gekennzeichnet mit einem **Archiviert**-Badge.
+  </Step>
+</Steps>
+
+Sobald ein Angebot archiviert ist, kann Ihr Kunde es nicht mehr öffnen, akzeptieren oder ablehnen. Ruft er seinen Link auf, sieht er eine Meldung, dass das Angebot nicht mehr verfügbar ist.
+
+Um es wiederherzustellen, wechseln Sie zur Ansicht **Archiviert**, öffnen Sie das Menü **⋯** des Angebots und klicken Sie auf **Archivierung aufheben**. Das Angebot kehrt unverändert in Ihre aktive Liste zurück, und Ihr Kunde kann es wieder öffnen.
+
+<Note>
+  Ein akzeptiertes Angebot können Sie nicht archivieren, da daraus bereits ein Auftrag geworden ist.
+</Note>
 
 ## Öffentliche Angebotsansicht
 

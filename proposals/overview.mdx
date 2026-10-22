@@ -17,9 +17,9 @@ To open the Proposal Dashboard, click **Proposals** in the left sidebar. The das
 - **Status** — Draft, Sent, Accepted, or Pending
 - **Creation date**, **send date**, and **expiry date**
 - **View status** — whether the client has opened the proposal
-- Action menu to **edit**, **send**, **share**, or **delete** each proposal
+- Action menu to **edit**, **send**, **share**, **archive**, or **delete** each proposal
 
-You can search proposals by ID and filter or sort the list to find what you need quickly.
+You can search proposals by ID and filter or sort the list to find what you need quickly. Use the **Active** / **Archived** toggle at the top of the list to switch between live proposals and the ones you've archived.
 
 ## Creating a Proposal
 
@@ -152,6 +152,7 @@ If you want to send a quick proposal tied directly to a specific service package
 | **Pending** | The client has reviewed and sent the proposal back for discussion. |
 | **Accepted** | Either party has formally accepted the proposal terms. An order is created automatically if configured. |
 | **Rejected** | Either party has rejected the proposal. The sender receives a notification with the reason. |
+| **Archived** | You've withdrawn the proposal. The client can no longer open or accept it, and you can restore it at any time. |
 
 ## Accepting a Proposal
 
@@ -192,6 +193,30 @@ If the proposed terms, pricing, or scope don't match your requirements, you can 
 <Warning>
   Rejected proposals **cannot be re-sent**. Both parties must create a new proposal to restart negotiations.
 </Warning>
+
+## Archiving (withdrawing) a proposal
+
+If a proposal you sent is no longer on the table, archive it instead of deleting it. Archiving withdraws the proposal from the client but keeps it, with all its content and history, in your workspace.
+
+<Steps>
+  <Step title="Open the action menu">
+    Click **Proposals** in the sidebar. On the proposal you want to withdraw, click the **⋯** menu.
+  </Step>
+  <Step title="Click Archive">
+    Click **Archive**, then confirm in the **Withdraw proposal** dialog.
+  </Step>
+  <Step title="Find it in the Archived view">
+    The proposal leaves your active list and moves to the **Archived** view, marked with an **Archived** badge.
+  </Step>
+</Steps>
+
+Once a proposal is archived, your client can no longer open, accept, or reject it. If they use their link, they see a message that the proposal is no longer available.
+
+To bring it back, switch to the **Archived** view, open the proposal's **⋯** menu, and click **Unarchive**. The proposal returns to your active list exactly as it was, and your client can open it again.
+
+<Note>
+  You can't archive an accepted proposal, because it has already become an order.
+</Note>
 
 ## Public Proposal View
 

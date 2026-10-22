@@ -17,9 +17,9 @@ Per aprire il Dashboard Proposte, clicca su **Proposte** nella barra laterale si
 - **Stato** — Bozza, Inviata, Accettata o In Attesa
 - **Data di creazione**, **data di invio** e **data di scadenza**
 - **Stato visualizzazione** — se il cliente ha aperto la proposta
-- Menu azioni per **modificare**, **inviare**, **condividere** o **eliminare** ogni proposta
+- Menu azioni per **modificare**, **inviare**, **condividere**, **archiviare** o **eliminare** ogni proposta
 
-Puoi cercare proposte per ID e filtrare o ordinare l'elenco per trovare rapidamente ciò di cui hai bisogno.
+Puoi cercare proposte per ID e filtrare o ordinare l'elenco per trovare rapidamente ciò di cui hai bisogno. Usa il selettore **Attive** / **Archiviate** in cima all'elenco per passare dalle proposte attive a quelle che hai archiviato.
 
 ## Creazione di una Proposta
 
@@ -152,6 +152,7 @@ Se vuoi inviare una proposta rapida collegata direttamente a uno specifico pacch
 | **In Attesa** | Il cliente ha esaminato e rimandato la proposta per la discussione. |
 | **Accettata** | Una delle parti ha formalmente accettato i termini della proposta. Un ordine viene creato automaticamente se configurato. |
 | **Rifiutata** | Una delle parti ha rifiutato la proposta. Il mittente riceve una notifica con il motivo. |
+| **Archiviata** | Hai ritirato la proposta. Il cliente non può più aprirla né accettarla, e puoi ripristinarla in qualsiasi momento. |
 
 ## Accettazione di una Proposta
 
@@ -192,6 +193,30 @@ Se i termini, i prezzi o l'ambito proposti non corrispondono ai tuoi requisiti, 
 <Warning>
   Le proposte rifiutate **non possono essere inviate nuovamente**. Entrambe le parti devono creare una nuova proposta per ricominciare le trattative.
 </Warning>
+
+## Archiviazione (Ritiro) di una Proposta
+
+Se una proposta che hai inviato non è più valida, archiviala invece di eliminarla. L'archiviazione ritira la proposta dal cliente ma la conserva, con tutti i suoi contenuti e la sua cronologia, nel tuo workspace.
+
+<Steps>
+  <Step title="Apri il menu azioni">
+    Clicca su **Proposte** nella barra laterale. Sulla proposta che vuoi ritirare, clicca sul menu **⋯**.
+  </Step>
+  <Step title="Clicca su Archivia">
+    Clicca su **Archivia**, poi conferma nella finestra di dialogo **Ritira proposta**.
+  </Step>
+  <Step title="Trovala nella vista Archiviate">
+    La proposta esce dal tuo elenco attivo e passa alla vista **Archiviate**, contrassegnata dal badge **Archiviata**.
+  </Step>
+</Steps>
+
+Una volta archiviata la proposta, il cliente non può più aprirla, accettarla o rifiutarla. Se usa il suo link, vede un messaggio che indica che la proposta non è più disponibile.
+
+Per ripristinarla, passa alla vista **Archiviate**, apri il menu **⋯** della proposta e clicca su **Annulla archiviazione**. La proposta torna nel tuo elenco attivo esattamente com'era e il cliente può aprirla di nuovo.
+
+<Note>
+  Non puoi archiviare una proposta accettata, perché è già diventata un ordine.
+</Note>
 
 ## Vista Pubblica della Proposta
 

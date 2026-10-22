@@ -17,9 +17,9 @@ Aby otworzyć Panel ofert, kliknij **Oferty** w lewym pasku bocznym. Panel zawie
 - **Status** — Wersja robocza, Wysłana, Zaakceptowana lub Oczekująca
 - **Data utworzenia**, **data wysłania** i **data wygaśnięcia**
 - **Status wyświetlenia** — czy klient otworzył ofertę
-- Menu akcji umożliwiające **edycję**, **wysłanie**, **udostępnienie** lub **usunięcie** każdej oferty
+- Menu akcji umożliwiające **edycję**, **wysłanie**, **udostępnienie**, **archiwizację** lub **usunięcie** każdej oferty
 
-Możesz wyszukiwać oferty według ID oraz filtrować lub sortować listę, aby szybko znaleźć to, czego potrzebujesz.
+Możesz wyszukiwać oferty według ID oraz filtrować lub sortować listę, aby szybko znaleźć to, czego potrzebujesz. Użyj przełącznika **Aktywne** / **Zarchiwizowane** u góry listy, aby przełączać się między aktywnymi ofertami a tymi, które zostały zarchiwizowane.
 
 ## Tworzenie oferty
 
@@ -152,6 +152,7 @@ Jeśli chcesz szybko wysłać ofertę powiązaną bezpośrednio z określonym pa
 | **Oczekująca** | Klient zapoznał się z ofertą i odesłał ją do omówienia. |
 | **Zaakceptowana** | Jedna ze stron formalnie zaakceptowała warunki oferty. Zamówienie jest tworzone automatycznie, jeśli zostało skonfigurowane. |
 | **Odrzucona** | Jedna ze stron odrzuciła ofertę. Nadawca otrzymuje powiadomienie z podaniem przyczyny. |
+| **Zarchiwizowana** | Wycofałeś ofertę. Klient nie może już jej otworzyć ani zaakceptować, a Ty możesz ją przywrócić w dowolnym momencie. |
 
 ## Akceptowanie oferty
 
@@ -192,6 +193,30 @@ Jeśli proponowane warunki, ceny lub zakres nie spełniają Twoich wymagań, mo�
 <Warning>
   Odrzuconych ofert **nie można ponownie wysłać**. Obie strony muszą stworzyć nową ofertę, aby wznowić negocjacje.
 </Warning>
+
+## Archiwizowanie (wycofywanie) oferty
+
+Jeśli wysłana oferta jest już nieaktualna, zarchiwizuj ją zamiast usuwać. Archiwizacja wycofuje ofertę od klienta, ale zachowuje ją w Twoim obszarze roboczym wraz z całą treścią i historią.
+
+<Steps>
+  <Step title="Otwórz menu akcji">
+    Kliknij **Oferty** w pasku bocznym. Przy ofercie, którą chcesz wycofać, kliknij menu **⋯**.
+  </Step>
+  <Step title="Kliknij Archiwizuj">
+    Kliknij **Archiwizuj**, a następnie potwierdź w oknie **Wycofaj ofertę**.
+  </Step>
+  <Step title="Znajdź ją w widoku Zarchiwizowane">
+    Oferta znika z listy aktywnych i trafia do widoku **Zarchiwizowane**, oznaczona plakietką **Zarchiwizowana**.
+  </Step>
+</Steps>
+
+Po zarchiwizowaniu oferty klient nie może jej już otworzyć, zaakceptować ani odrzucić. Jeśli skorzysta ze swojego linku, zobaczy komunikat, że oferta nie jest już dostępna.
+
+Aby ją przywrócić, przełącz się na widok **Zarchiwizowane**, otwórz menu **⋯** oferty i kliknij **Przywróć z archiwum**. Oferta wraca na listę aktywnych dokładnie w takiej postaci, w jakiej była, a klient może ją ponownie otworzyć.
+
+<Note>
+  Nie można zarchiwizować zaakceptowanej oferty, ponieważ stała się już zamówieniem.
+</Note>
 
 ## Publiczny widok oferty
 

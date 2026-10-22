@@ -17,9 +17,9 @@ Teklif Panosunu açmak için sol kenar çubuğundaki **Teklifler**'e tıklayın.
 - **Durum** — Taslak, Gönderildi, Kabul Edildi veya Beklemede
 - **Oluşturma tarihi**, **gönderme tarihi** ve **son kullanma tarihi**
 - **Görüntüleme durumu** — müşterinin teklifi açıp açmadığı
-- Her teklife **düzenleme**, **gönderme**, **paylaşma** veya **silme** işlemleri için eylem menüsü
+- Her teklife **düzenleme**, **gönderme**, **paylaşma**, **arşivleme** veya **silme** işlemleri için eylem menüsü
 
-Teklifleri kimliğe göre arayabilir ve ihtiyaç duyduğunuzu hızlıca bulmak için listeyi filtreleyip sıralayabilirsiniz.
+Teklifleri kimliğe göre arayabilir ve ihtiyaç duyduğunuzu hızlıca bulmak için listeyi filtreleyip sıralayabilirsiniz. Etkin teklifler ile arşivlediğiniz teklifler arasında geçiş yapmak için listenin üst kısmındaki **Etkin** / **Arşivlenmiş** geçiş düğmesini kullanın.
 
 ## Teklif Oluşturma
 
@@ -152,6 +152,7 @@ Doğrudan belirli bir hizmet paketine bağlı hızlı bir teklif göndermek isti
 | **Beklemede** | Müşteri inceledi ve teklifi tartışmak için geri gönderdi. |
 | **Kabul Edildi** | Her iki taraftan biri teklif koşullarını resmi olarak kabul etti. Yapılandırılmışsa otomatik olarak sipariş oluşturulur. |
 | **Reddedildi** | Her iki taraftan biri teklifi reddetti. Gönderen, gerekçesiyle birlikte bildirim alır. |
+| **Arşivlendi** | Teklifi geri çektiniz. Müşteri artık teklifi açamaz veya kabul edemez; teklifi istediğiniz zaman geri yükleyebilirsiniz. |
 
 ## Teklif Kabul Etme
 
@@ -192,6 +193,30 @@ Ajans veya müşterinin her ikisi de alınan bir teklifi kabul edebilir. Kabul g
 <Warning>
   Reddedilen teklifler **yeniden gönderilemez**. Her iki tarafın da müzakereyi yeniden başlatmak için yeni bir teklif oluşturması gerekir.
 </Warning>
+
+## Teklifi Arşivleme (Geri Çekme)
+
+Gönderdiğiniz bir teklif artık geçerli değilse, silmek yerine arşivleyin. Arşivleme teklifi müşteriden geri çeker, ancak tüm içeriği ve geçmişiyle birlikte çalışma alanınızda saklar.
+
+<Steps>
+  <Step title="Eylem menüsünü açın">
+    Kenar çubuğunda **Teklifler**'e tıklayın. Geri çekmek istediğiniz teklifte **⋯** menüsüne tıklayın.
+  </Step>
+  <Step title="Arşivle'ye tıklayın">
+    **Arşivle**'ye tıklayın, ardından **Teklifi geri çek** iletişim kutusunda onaylayın.
+  </Step>
+  <Step title="Arşivlenmiş görünümünde bulun">
+    Teklif etkin listenizden çıkar ve **Arşivlendi** rozetiyle işaretlenmiş olarak **Arşivlenmiş** görünümüne taşınır.
+  </Step>
+</Steps>
+
+Bir teklif arşivlendiğinde müşteriniz artık onu açamaz, kabul edemez veya reddedemez. Müşteri bağlantısını kullanırsa teklifin artık mevcut olmadığını belirten bir mesaj görür.
+
+Teklifi geri getirmek için **Arşivlenmiş** görünümüne geçin, teklifin **⋯** menüsünü açın ve **Arşivden çıkar**'a tıklayın. Teklif etkin listenize tam olarak önceki hâliyle döner ve müşteriniz onu yeniden açabilir.
+
+<Note>
+  Kabul edilmiş bir teklifi arşivleyemezsiniz, çünkü o teklif zaten bir siparişe dönüşmüştür.
+</Note>
 
 ## Genel Teklif Görünümü
 
