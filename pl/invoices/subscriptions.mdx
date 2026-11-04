@@ -102,6 +102,60 @@ Strona szczegółów subskrypcji daje Ci pełny obraz dowolnej indywidualnej sub
   Jedna subskrypcja może mieć wiele powiązanych zleceń i faktur. Faktury powiązane z subskrypcjami aktualizują się dynamicznie po otrzymaniu płatności.
 </Note>
 
+## Zmiana planu
+
+Za pomocą **Change plan** przeniesiesz aktywną subskrypcję na inny pakiet, ilość lub cenę. Zmiana planu jest dostępna tylko dla subskrypcji w Stripe.
+
+<Steps>
+  <Step title="Otwórz okno dialogowe">
+    Otwórz stronę szczegółów subskrypcji i kliknij **Change plan**.
+  </Step>
+  <Step title="Wybierz nowy pakiet">
+    W sekcji **New package** wybierz pakiet i ustaw **Quantity**. Pakiety są pogrupowane według usługi, a bieżący jest oznaczony jako **(current)**.
+  </Step>
+  <Step title="Wybierz, kiedy zmiana ma zacząć obowiązywać">
+    W sekcji **When should it take effect?** wybierz:
+    - **Immediately** — przy przejściu na droższy pakiet od razu pobierana jest proporcjonalna różnica za resztę bieżącego cyklu. Przy przejściu na tańszy pakiet nic nie jest pobierane i nie powstaje żaden kredyt.
+    - **At the next renewal** — teraz nic nie jest pobierane. Nowa cena obowiązuje od następnej daty rozliczenia.
+
+    Jeśli pakiet ma stałą liczbę cykli, wybierz też sposób liczenia **Remaining term**.
+  </Step>
+  <Step title="Sprawdź podsumowanie i zastosuj zmianę">
+    Przejrzyj **Summary**, a następnie kliknij **Change plan now** lub **Schedule change**.
+  </Step>
+</Steps>
+
+Zaplanowana zmiana jest widoczna jako komunikat u góry okna dialogowego, z nowym pakietem, datą oraz usługą i ceną niestandardową, jeśli się zmieniają. Aby ją cofnąć przed odnowieniem, kliknij **Cancel change**.
+
+### Przejście na inną usługę
+
+Możesz przenieść subskrypcję na pakiet innej usługi w tej samej przestrzeni roboczej. Pakiet tej usługi musi mieć tę samą walutę i ten sam cykl rozliczeniowy co bieżąca subskrypcja. Niepasujące pakiety są widoczne, ale nie można ich wybrać.
+
+Gdy wybierzesz pakiet innej usługi, okno dialogowe pokaże komunikat **Ta subskrypcja zostanie przeniesiona do** z nazwą usługi.
+
+![Okno Change plan z pakietami pogrupowanymi według usługi](/images/subscriptions/change-plan-packages.png)
+
+Po zmianie:
+
+- Subskrypcja i jej przyszłe zamówienia należą do nowej usługi.
+- Istniejące zadania pozostają bez zmian. Domyślne zadania nowej usługi nie są dodawane.
+
+### Ustawianie ceny niestandardowej
+
+Zaznacz **Cena niestandardowa**, aby zamiast ceny pakietu naliczać własną cenę za jednostkę. Możesz podać do 2 miejsc po przecinku, a w walutach bez części dziesiętnych, takich jak JPY, tylko liczby całkowite.
+
+![Pole Cena niestandardowa w oknie Change plan](/images/subscriptions/change-plan-custom-price.png)
+
+Stripe pobiera cenę niestandardową. Kolejne odnowienia ją zachowują, dopóki ponownie nie zmienisz planu bez ceny niestandardowej. **Summary** pokazuje pozycje **Cena niestandardowa za jednostkę** i **Usługa**.
+
+![Podsumowanie zmiany planu z ceną niestandardową i nową usługą](/images/subscriptions/change-plan-summary.png)
+
+### Ograniczenia
+
+- Zmiana planu działa tylko dla subskrypcji w Stripe.
+- Zmiana cyklu rozliczeniowego nie jest obsługiwana. Na przykład nie możesz przenieść subskrypcji miesięcznej na pakiet roczny.
+- Subskrypcja zawiera jeden pakiet. Aby rozliczać kilka pozycji w jednej subskrypcji, użyj [dodatków do usług](/pl/services/create-service).
+
 ## Obsługa Wise dla ręcznych faktur subskrypcji
 
 Jeśli pobierasz płatności międzynarodowe, możesz osadzić **link płatności Wise** bezpośrednio w fakturach subskrypcji. Daje to klientom wygodny sposób płatności bez konieczności ręcznego konfigurowania przelewu bankowego.

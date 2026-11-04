@@ -102,6 +102,60 @@ La page de détails de l'abonnement vous donne une vue complète de tout abonnem
   Un même abonnement peut avoir plusieurs commandes et factures liées. Les factures rattachées aux abonnements se mettent à jour dynamiquement lorsque les paiements sont reçus.
 </Note>
 
+## Changer de plan
+
+Utilisez **Change plan** pour passer un abonnement actif à un autre forfait, une autre quantité ou un autre prix. Les changements de plan ne sont disponibles que pour les abonnements Stripe.
+
+<Steps>
+  <Step title="Ouvrez la boîte de dialogue">
+    Ouvrez la page de détails de l'abonnement et cliquez sur **Change plan**.
+  </Step>
+  <Step title="Choisissez le nouveau forfait">
+    Sous **New package**, sélectionnez un forfait et définissez la **Quantity**. Les forfaits sont regroupés par service, et le forfait actuel est marqué **(current)**.
+  </Step>
+  <Step title="Choisissez quand le changement s'applique">
+    Sous **When should it take effect?**, choisissez :
+    - **Immediately** — une montée en gamme facture immédiatement la différence au prorata pour le reste du cycle en cours. Une baisse de gamme ne facture rien et n'émet aucun avoir.
+    - **At the next renewal** — rien n'est facturé maintenant. Le nouveau prix s'applique à partir de la prochaine date de facturation.
+
+    Si le forfait comporte un nombre fixe de cycles, choisissez aussi comment la **Remaining term** est comptée.
+  </Step>
+  <Step title="Vérifiez le récapitulatif et appliquez">
+    Consultez le **Summary**, puis cliquez sur **Change plan now** ou **Schedule change**.
+  </Step>
+</Steps>
+
+Un changement planifié s'affiche sous forme d'avis en haut de la boîte de dialogue, avec le nouveau forfait, la date, ainsi que le service et le prix personnalisé lorsqu'ils changent. Pour l'annuler avant le renouvellement, cliquez sur **Cancel change**.
+
+### Passer à un autre service
+
+Vous pouvez transférer un abonnement vers un forfait d'un autre service du même espace de travail. Le forfait de l'autre service doit utiliser la même devise et le même cycle de facturation que l'abonnement actuel. Les forfaits qui ne correspondent pas sont affichés mais ne peuvent pas être sélectionnés.
+
+Lorsque vous choisissez un forfait d'un autre service, la boîte de dialogue affiche **Cet abonnement passera à** suivi du nom du service.
+
+![Boîte de dialogue Change plan avec les forfaits regroupés par service](/images/subscriptions/change-plan-packages.png)
+
+Après le changement :
+
+- L'abonnement et ses futures commandes appartiennent au nouveau service.
+- Les tâches existantes restent inchangées. Les tâches par défaut du nouveau service ne sont pas ajoutées.
+
+### Définir un prix personnalisé
+
+Cochez **Prix personnalisé** pour facturer votre propre prix unitaire au lieu du prix du forfait. Vous pouvez saisir jusqu'à 2 décimales, ou des nombres entiers pour les devises sans décimales comme le JPY.
+
+![Champ de prix personnalisé dans la boîte de dialogue Change plan](/images/subscriptions/change-plan-custom-price.png)
+
+Stripe facture le prix personnalisé. Les renouvellements suivants le conservent jusqu'à ce que vous changiez à nouveau de plan sans prix personnalisé. Le **Summary** affiche le **Prix personnalisé par unité** et le **Service**.
+
+![Récapitulatif du changement de plan avec le prix personnalisé et le nouveau service](/images/subscriptions/change-plan-summary.png)
+
+### Limites
+
+- Les changements de plan ne fonctionnent qu'avec les abonnements Stripe.
+- Le changement de cycle de facturation n'est pas pris en charge. Par exemple, vous ne pouvez pas passer d'un abonnement mensuel à un forfait annuel.
+- Un abonnement ne contient qu'un seul forfait. Pour facturer plusieurs éléments sur un même abonnement, utilisez les [add-ons de service](/fr/services/create-service).
+
 ## Prise en charge de Wise pour les factures d'abonnement manuelles
 
 Si vous encaissez des paiements internationaux, vous pouvez intégrer un **lien de paiement Wise** directement dans les factures d'abonnement. Cela offre aux clients un moyen pratique de payer sans avoir à configurer manuellement un virement bancaire.

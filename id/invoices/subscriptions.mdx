@@ -102,6 +102,60 @@ Halaman Detail Langganan memberi Anda gambaran lengkap tentang langganan individ
   Satu langganan dapat memiliki beberapa order dan invoice yang terhubung. Invoice yang terkait dengan langganan diperbarui secara dinamis saat pembayaran diterima.
 </Note>
 
+## Mengubah paket langganan
+
+Gunakan **Change plan** untuk memindahkan langganan aktif ke paket, jumlah, atau harga lain. Perubahan paket hanya tersedia untuk langganan Stripe.
+
+<Steps>
+  <Step title="Buka dialog">
+    Buka halaman detail langganan dan klik **Change plan**.
+  </Step>
+  <Step title="Pilih paket baru">
+    Di **New package**, pilih paket dan atur **Quantity**. Paket dikelompokkan berdasarkan layanan, dan paket saat ini ditandai **(current)**.
+  </Step>
+  <Step title="Pilih kapan perubahan berlaku">
+    Di **When should it take effect?**, pilih:
+    - **Immediately** — peningkatan paket langsung menagih selisih prorata untuk sisa siklus saat ini. Penurunan paket tidak menagih apa pun dan tidak memberikan kredit.
+    - **At the next renewal** — tidak ada tagihan sekarang. Harga baru berlaku mulai tanggal penagihan berikutnya.
+
+    Jika paket memiliki jumlah siklus tetap, pilih juga cara menghitung **Remaining term**.
+  </Step>
+  <Step title="Periksa ringkasan dan terapkan">
+    Tinjau **Summary**, lalu klik **Change plan now** atau **Schedule change**.
+  </Step>
+</Steps>
+
+Perubahan terjadwal tampil sebagai pemberitahuan di bagian atas dialog, berisi paket baru, tanggal, serta layanan dan harga khusus jika keduanya berubah. Untuk membatalkannya sebelum perpanjangan, klik **Cancel change**.
+
+### Beralih ke layanan lain
+
+Anda dapat memindahkan langganan ke paket dari layanan lain di workspace yang sama. Paket layanan tersebut harus menggunakan mata uang dan siklus penagihan yang sama dengan langganan saat ini. Paket yang tidak cocok tetap ditampilkan, tetapi tidak dapat dipilih.
+
+Saat Anda memilih paket dari layanan lain, dialog menampilkan **Langganan ini akan dipindahkan ke** beserta nama layanannya.
+
+![Dialog Change plan dengan paket yang dikelompokkan berdasarkan layanan](/images/subscriptions/change-plan-packages.png)
+
+Setelah perubahan:
+
+- Langganan dan pesanan berikutnya menjadi milik layanan baru.
+- Tugas yang sudah ada tetap seperti semula. Tugas default dari layanan baru tidak ditambahkan.
+
+### Menetapkan harga khusus
+
+Centang **Harga khusus** untuk menagih harga per unit Anda sendiri, bukan harga paket. Anda dapat memasukkan hingga 2 angka desimal, atau hanya bilangan bulat untuk mata uang tanpa desimal seperti JPY.
+
+![Kolom Harga khusus di dialog Change plan](/images/subscriptions/change-plan-custom-price.png)
+
+Stripe menagih harga khusus tersebut. Perpanjangan berikutnya tetap memakainya sampai Anda mengubah paket lagi tanpa harga khusus. **Summary** menampilkan **Harga khusus per unit** dan **Layanan**.
+
+![Ringkasan perubahan paket dengan harga khusus dan layanan baru](/images/subscriptions/change-plan-summary.png)
+
+### Batasan
+
+- Perubahan paket hanya berfungsi untuk langganan Stripe.
+- Mengubah siklus penagihan tidak didukung. Misalnya, Anda tidak dapat memindahkan langganan bulanan ke paket tahunan.
+- Satu langganan berisi satu paket. Untuk menagih beberapa item dalam satu langganan, gunakan [add-on layanan](/id/services/create-service).
+
 ## Dukungan Wise untuk Invoice Langganan Manual
 
 Jika Anda menerima pembayaran internasional, Anda dapat menyematkan **tautan pembayaran Wise** langsung ke dalam invoice langganan. Ini memberi klien cara yang mudah untuk membayar tanpa perlu menyiapkan transfer bank secara manual.

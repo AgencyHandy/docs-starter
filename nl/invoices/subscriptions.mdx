@@ -102,6 +102,60 @@ De pagina Abonnementsdetails geeft je een volledig beeld van elk individueel abo
   Een enkel abonnement kan meerdere gekoppelde orders en facturen hebben. Facturen die aan abonnementen zijn gekoppeld, worden dynamisch bijgewerkt wanneer betalingen worden ontvangen.
 </Note>
 
+## Abonnement wijzigen
+
+Met **Change plan** zet u een actief abonnement over naar een ander pakket, een ander aantal of een andere prijs. Abonnementswijzigingen zijn alleen beschikbaar voor Stripe-abonnementen.
+
+<Steps>
+  <Step title="Open het dialoogvenster">
+    Open de detailpagina van het abonnement en klik op **Change plan**.
+  </Step>
+  <Step title="Kies het nieuwe pakket">
+    Selecteer onder **New package** een pakket en stel de **Quantity** in. Pakketten zijn gegroepeerd per dienst en het huidige pakket is gemarkeerd met **(current)**.
+  </Step>
+  <Step title="Kies wanneer het ingaat">
+    Kies onder **When should it take effect?**:
+    - **Immediately** — bij een upgrade wordt het naar rato berekende verschil voor de rest van de huidige cyclus direct in rekening gebracht. Een downgrade kost niets en levert geen tegoed op.
+    - **At the next renewal** — er wordt nu niets in rekening gebracht. De nieuwe prijs gaat in op de volgende factuurdatum.
+
+    Heeft het pakket een vast aantal cycli, kies dan ook hoe de **Remaining term** wordt geteld.
+  </Step>
+  <Step title="Controleer de samenvatting en pas toe">
+    Bekijk de **Summary** en klik op **Change plan now** of **Schedule change**.
+  </Step>
+</Steps>
+
+Een geplande wijziging verschijnt als melding bovenaan het dialoogvenster, met het nieuwe pakket, de datum en de dienst en aangepaste prijs als die veranderen. Klik op **Cancel change** om de wijziging vóór de verlenging ongedaan te maken.
+
+### Overstappen naar een andere dienst
+
+U kunt een abonnement overzetten naar een pakket van een andere dienst in dezelfde workspace. Het pakket van de andere dienst moet dezelfde valuta en factuurcyclus hebben als het huidige abonnement. Pakketten die niet overeenkomen, worden getoond maar kunnen niet worden geselecteerd.
+
+Kiest u een pakket van een andere dienst, dan toont het dialoogvenster **Dit abonnement wordt verplaatst naar** en de naam van de dienst.
+
+![Dialoogvenster Change plan met pakketten gegroepeerd per dienst](/images/subscriptions/change-plan-packages.png)
+
+Na de wijziging:
+
+- Horen het abonnement en de toekomstige bestellingen bij de nieuwe dienst.
+- Blijven bestaande taken zoals ze zijn. De standaardtaken van de nieuwe dienst worden niet toegevoegd.
+
+### Een aangepaste prijs instellen
+
+Selecteer **Aangepaste prijs** om een eigen prijs per eenheid te rekenen in plaats van de pakketprijs. U kunt maximaal 2 decimalen invoeren, of hele getallen voor valuta zonder decimalen zoals JPY.
+
+![Veld voor de aangepaste prijs in het dialoogvenster Change plan](/images/subscriptions/change-plan-custom-price.png)
+
+Stripe rekent de aangepaste prijs. Latere verlengingen behouden die prijs totdat u het abonnement opnieuw wijzigt zonder aangepaste prijs. De **Summary** toont de **Aangepaste prijs per eenheid** en de **Dienst**.
+
+![Samenvatting met de aangepaste prijs en de nieuwe dienst](/images/subscriptions/change-plan-summary.png)
+
+### Beperkingen
+
+- Abonnementswijzigingen werken alleen voor Stripe-abonnementen.
+- De factuurcyclus wijzigen wordt niet ondersteund. U kunt bijvoorbeeld een maandabonnement niet overzetten naar een jaarpakket.
+- Een abonnement bevat één pakket. Gebruik [add-ons voor diensten](/nl/services/create-service) om meerdere items op één abonnement te factureren.
+
 ## Wise-ondersteuning voor handmatige abonnementsfacturen
 
 Als je internationale betalingen incasseert, kun je een **Wise-betalingslink** rechtstreeks in abonnementsfacturen insluiten. Dit geeft klanten een handige manier om te betalen zonder handmatig een bankoverschrijving in te stellen.

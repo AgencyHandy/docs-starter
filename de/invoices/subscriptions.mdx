@@ -102,6 +102,60 @@ Die Abonnement-Detailseite gibt Ihnen ein vollständiges Bild eines einzelnen Ab
   Ein einzelnes Abonnement kann mehrere verknüpfte Aufträge und Rechnungen haben. Mit Abonnements verknüpfte Rechnungen werden dynamisch aktualisiert, wenn Zahlungen eingehen.
 </Note>
 
+## Plan ändern
+
+Mit **Change plan** stellen Sie ein aktives Abonnement auf ein anderes Paket, eine andere Menge oder einen anderen Preis um. Planänderungen sind nur für Stripe-Abonnements verfügbar.
+
+<Steps>
+  <Step title="Dialog öffnen">
+    Öffnen Sie die Detailseite des Abonnements und klicken Sie auf **Change plan**.
+  </Step>
+  <Step title="Neues Paket auswählen">
+    Wählen Sie unter **New package** ein Paket aus und legen Sie die **Quantity** fest. Die Pakete sind nach Leistung gruppiert, das aktuelle ist mit **(current)** markiert.
+  </Step>
+  <Step title="Zeitpunkt wählen">
+    Wählen Sie unter **When should it take effect?**:
+    - **Immediately** – bei einem Upgrade wird die anteilige Differenz für den Rest des aktuellen Zyklus sofort berechnet. Ein Downgrade kostet nichts und erzeugt keine Gutschrift.
+    - **At the next renewal** – jetzt wird nichts berechnet. Der neue Preis gilt ab dem nächsten Abrechnungsdatum.
+
+    Hat das Paket eine feste Anzahl von Zyklen, wählen Sie außerdem, wie die **Remaining term** gezählt wird.
+  </Step>
+  <Step title="Zusammenfassung prüfen und anwenden">
+    Prüfen Sie die **Summary** und klicken Sie dann auf **Change plan now** oder **Schedule change**.
+  </Step>
+</Steps>
+
+Eine geplante Änderung erscheint als Hinweis oben im Dialog, mit dem neuen Paket, dem Datum sowie der Leistung und dem individuellen Preis, falls sich diese ändern. Um sie vor der Verlängerung rückgängig zu machen, klicken Sie auf **Cancel change**.
+
+### Zu einer anderen Leistung wechseln
+
+Sie können ein Abonnement auf ein Paket einer anderen Leistung im selben Workspace umstellen. Das Paket der anderen Leistung muss dieselbe Währung und denselben Abrechnungszyklus wie das aktuelle Abonnement haben. Nicht passende Pakete werden angezeigt, lassen sich aber nicht auswählen.
+
+Wählen Sie ein Paket einer anderen Leistung, zeigt der Dialog **Dieses Abonnement wechselt zu** und den Namen der Leistung.
+
+![Dialog Change plan mit nach Leistung gruppierten Paketen](/images/subscriptions/change-plan-packages.png)
+
+Nach der Änderung gilt:
+
+- Das Abonnement und seine künftigen Bestellungen gehören zur neuen Leistung.
+- Vorhandene Aufgaben bleiben unverändert. Die Standardaufgaben der neuen Leistung werden nicht hinzugefügt.
+
+### Individuellen Preis festlegen
+
+Aktivieren Sie **Individueller Preis**, um statt des Paketpreises einen eigenen Preis pro Einheit zu berechnen. Sie können bis zu 2 Nachkommastellen eingeben, bei Währungen ohne Nachkommastellen wie JPY nur ganze Zahlen.
+
+![Feld für den individuellen Preis im Dialog Change plan](/images/subscriptions/change-plan-custom-price.png)
+
+Stripe berechnet den individuellen Preis. Spätere Verlängerungen behalten ihn bei, bis Sie den Plan erneut ohne individuellen Preis ändern. Die **Summary** zeigt den **Individueller Preis pro Einheit** und die **Leistung**.
+
+![Zusammenfassung mit individuellem Preis und neuer Leistung](/images/subscriptions/change-plan-summary.png)
+
+### Einschränkungen
+
+- Planänderungen funktionieren nur für Stripe-Abonnements.
+- Der Abrechnungszyklus lässt sich nicht ändern. Sie können zum Beispiel ein monatliches Abonnement nicht auf ein jährliches Paket umstellen.
+- Ein Abonnement enthält ein Paket. Um mehrere Positionen über ein Abonnement abzurechnen, verwenden Sie [Leistungs-Add-ons](/de/services/create-service).
+
 ## Wise-Unterstützung für manuelle Abonnementrechnungen
 
 Wenn Sie internationale Zahlungen akzeptieren, können Sie einen **Wise-Zahlungslink** direkt in Abonnementrechnungen einbetten. Dies gibt Kunden eine bequeme Möglichkeit zu zahlen, ohne manuell eine Banküberweisung einrichten zu müssen.

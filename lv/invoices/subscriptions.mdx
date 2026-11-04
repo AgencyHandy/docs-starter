@@ -102,6 +102,60 @@ Abonementa datu lapa sniedz pilnīgu priekšstatu par jebkuru atsevišķu abonem
   Vienam abonementam var būt vairāki piesaistīti pasūtījumi un rēķini. Rēķini, kas piesaistīti abonementiem, tiek dinamiski atjaunināti, saņemot maksājumus.
 </Note>
 
+## Plāna maiņa
+
+Ar **Change plan** varat pārcelt aktīvu abonementu uz citu paketi, daudzumu vai cenu. Plāna maiņa pieejama tikai Stripe abonementiem.
+
+<Steps>
+  <Step title="Atveriet dialogu">
+    Atveriet abonementa datu lapu un noklikšķiniet uz **Change plan**.
+  </Step>
+  <Step title="Izvēlieties jauno paketi">
+    Sadaļā **New package** atlasiet paketi un iestatiet **Quantity**. Paketes ir grupētas pēc pakalpojuma, un pašreizējā ir atzīmēta ar **(current)**.
+  </Step>
+  <Step title="Izvēlieties, kad izmaiņas stāsies spēkā">
+    Sadaļā **When should it take effect?** izvēlieties:
+    - **Immediately** — pārejot uz dārgāku paketi, uzreiz tiek iekasēta proporcionālā starpība par atlikušo pašreizējo ciklu. Pārejot uz lētāku paketi, nekas netiek iekasēts un kredīts netiek piešķirts.
+    - **At the next renewal** — tagad nekas netiek iekasēts. Jaunā cena sāk darboties no nākamā norēķinu datuma.
+
+    Ja paketei ir noteikts ciklu skaits, izvēlieties arī, kā tiek skaitīts **Remaining term**.
+  </Step>
+  <Step title="Pārbaudiet kopsavilkumu un piemērojiet">
+    Pārskatiet **Summary** un noklikšķiniet uz **Change plan now** vai **Schedule change**.
+  </Step>
+</Steps>
+
+Ieplānotās izmaiņas tiek rādītas kā paziņojums dialoga augšdaļā ar jauno paketi, datumu, kā arī pakalpojumu un pielāgoto cenu, ja tās mainās. Lai tās atsauktu pirms atjaunošanas, noklikšķiniet uz **Cancel change**.
+
+### Pāreja uz citu pakalpojumu
+
+Abonementu varat pārcelt uz cita pakalpojuma paketi tajā pašā darbvietā. Šī pakalpojuma paketei jābūt tajā pašā valūtā un ar to pašu norēķinu ciklu kā pašreizējam abonementam. Paketes, kas neatbilst, ir redzamas, taču tās nevar atlasīt.
+
+Ja izvēlaties paketi no cita pakalpojuma, dialogā redzams **Šis abonements tiks pārcelts uz** un pakalpojuma nosaukums.
+
+![Dialogs Change plan ar paketēm, kas grupētas pēc pakalpojuma](/images/subscriptions/change-plan-packages.png)
+
+Pēc izmaiņām:
+
+- Abonements un tā turpmākie pasūtījumi pieder jaunajam pakalpojumam.
+- Esošie uzdevumi paliek nemainīti. Jaunā pakalpojuma noklusējuma uzdevumi netiek pievienoti.
+
+### Pielāgotas cenas iestatīšana
+
+Atzīmējiet **Pielāgota cena**, lai paketes cenas vietā iekasētu savu vienības cenu. Varat ievadīt līdz 2 decimāldaļām, bet valūtām bez decimāldaļām, piemēram, JPY, tikai veselus skaitļus.
+
+![Lauks Pielāgota cena dialogā Change plan](/images/subscriptions/change-plan-custom-price.png)
+
+Stripe iekasē pielāgoto cenu. Turpmākās atjaunošanas to saglabā, līdz atkal maināt plānu bez pielāgotas cenas. Sadaļā **Summary** redzams **Pielāgota vienības cena** un **Pakalpojums**.
+
+![Plāna maiņas kopsavilkums ar pielāgoto cenu un jauno pakalpojumu](/images/subscriptions/change-plan-summary.png)
+
+### Ierobežojumi
+
+- Plāna maiņa darbojas tikai Stripe abonementiem.
+- Norēķinu cikla maiņa netiek atbalstīta. Piemēram, ikmēneša abonementu nevar pārcelt uz gada paketi.
+- Abonementā ir viena pakete. Lai vienā abonementā iekasētu par vairākām pozīcijām, izmantojiet [pakalpojumu papildinājumus](/lv/services/create-service).
+
 ## Wise atbalsts manuālo abonementu rēķiniem
 
 Ja iekasējat starptautiskus maksājumus, varat tieši abonementu rēķinos iegult **Wise maksājumu saiti**. Tas klientiem nodrošina ērtus maksājumus bez nepieciešamības manuāli iestatīt bankas pārskaitījumu.

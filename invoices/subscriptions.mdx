@@ -102,6 +102,60 @@ The Subscription Details page gives you a complete picture of any individual sub
   A single subscription can have multiple linked orders and invoices. Invoices tied to subscriptions update dynamically when payments are received.
 </Note>
 
+## Change plan
+
+Use **Change plan** to move an active subscription to a different package, quantity, or price. Plan changes are available for Stripe subscriptions only.
+
+<Steps>
+  <Step title="Open the dialog">
+    Open the subscription's details page and click **Change plan**.
+  </Step>
+  <Step title="Pick the new package">
+    Under **New package**, select a package and set the **Quantity**. Packages are grouped by service, and the current one is marked **(current)**.
+  </Step>
+  <Step title="Choose when it takes effect">
+    Under **When should it take effect?**, choose:
+    - **Immediately** — an upgrade charges the prorated difference for the rest of the current cycle now. A downgrade charges nothing and issues no credit.
+    - **At the next renewal** — nothing is charged now. The new price starts on the next billing date.
+
+    If the package has a fixed number of cycles, also choose how the **Remaining term** is counted.
+  </Step>
+  <Step title="Check the summary and apply">
+    Review the **Summary**, then click **Change plan now** or **Schedule change**.
+  </Step>
+</Steps>
+
+A scheduled change shows as a notice at the top of the dialog, with the new package, the date, and the service and custom price when they change. To undo it before the renewal, click **Cancel change**.
+
+### Switch to another service
+
+You can move a subscription to a package of another service in the same workspace. The other service's package must use the same currency and billing cycle as the current subscription. Packages that don't match are shown but can't be selected.
+
+When you pick a package from another service, the dialog shows **This subscription will move to** and the service name.
+
+![Change plan dialog with packages grouped by service](/images/subscriptions/change-plan-packages.png)
+
+After the change:
+
+- The subscription and its future orders belong to the new service.
+- Existing tasks stay as they are. The new service's default tasks are not added.
+
+### Set a custom price
+
+Select **Custom price** to bill your own price per unit instead of the package price. You can enter up to 2 decimals, or whole numbers for zero-decimal currencies such as JPY.
+
+![Custom price field in the Change plan dialog](/images/subscriptions/change-plan-custom-price.png)
+
+Stripe charges the custom price. Later renewals keep it until you change the plan again without a custom price. The **Summary** shows the **Custom price per unit** and the **Service**.
+
+![Change plan summary with the custom price and the new service](/images/subscriptions/change-plan-summary.png)
+
+### Limits
+
+- Plan changes work for Stripe subscriptions only.
+- Changing the billing cycle isn't supported. For example, you can't move a monthly subscription to a yearly package.
+- A subscription holds one package. To bill for several items on one subscription, use [service add-ons](/services/create-service).
+
 ## Wise Support for Manual Subscription Invoices
 
 If you collect international payments, you can embed a **Wise payment link** directly into subscription invoices. This gives clients a convenient way to pay without needing to set up a bank transfer manually.

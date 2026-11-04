@@ -102,6 +102,60 @@ Pagina de Detalii ale Abonamentului îți oferă o imagine completă a oricărui
   Un singur abonament poate avea mai multe comenzi și facturi asociate. Facturile legate de abonamente se actualizează dinamic când sunt primite plățile.
 </Note>
 
+## Schimbarea planului
+
+Folosește **Change plan** pentru a muta un abonament activ pe alt pachet, altă cantitate sau alt preț. Schimbările de plan sunt disponibile doar pentru abonamentele Stripe.
+
+<Steps>
+  <Step title="Deschide fereastra de dialog">
+    Deschide pagina de detalii a abonamentului și dă clic pe **Change plan**.
+  </Step>
+  <Step title="Alege noul pachet">
+    La **New package**, selectează un pachet și setează **Quantity**. Pachetele sunt grupate pe servicii, iar cel actual este marcat cu **(current)**.
+  </Step>
+  <Step title="Alege când se aplică schimbarea">
+    La **When should it take effect?**, alege:
+    - **Immediately** — un upgrade încasează acum diferența proporțională pentru restul ciclului curent. Un downgrade nu încasează nimic și nu emite niciun credit.
+    - **At the next renewal** — nu se încasează nimic acum. Noul preț începe de la următoarea dată de facturare.
+
+    Dacă pachetul are un număr fix de cicluri, alege și cum se calculează **Remaining term**.
+  </Step>
+  <Step title="Verifică rezumatul și aplică">
+    Verifică **Summary**, apoi dă clic pe **Change plan now** sau **Schedule change**.
+  </Step>
+</Steps>
+
+O schimbare programată apare ca notificare în partea de sus a ferestrei, cu noul pachet, data și, dacă se schimbă, serviciul și prețul personalizat. Pentru a o anula înainte de reînnoire, dă clic pe **Cancel change**.
+
+### Trecerea la alt serviciu
+
+Poți muta un abonament pe un pachet al altui serviciu din același spațiu de lucru. Pachetul celuilalt serviciu trebuie să folosească aceeași monedă și același ciclu de facturare ca abonamentul actual. Pachetele care nu se potrivesc sunt afișate, dar nu pot fi selectate.
+
+Când alegi un pachet al altui serviciu, fereastra afișează **Acest abonament va fi mutat la** urmat de numele serviciului.
+
+![Fereastra Change plan cu pachetele grupate pe servicii](/images/subscriptions/change-plan-packages.png)
+
+După schimbare:
+
+- Abonamentul și comenzile sale viitoare aparțin noului serviciu.
+- Sarcinile existente rămân neschimbate. Sarcinile implicite ale noului serviciu nu sunt adăugate.
+
+### Setarea unui preț personalizat
+
+Bifează **Preț personalizat** pentru a factura propriul preț pe unitate în locul prețului pachetului. Poți introduce cel mult 2 zecimale sau numere întregi pentru monedele fără zecimale, cum ar fi JPY.
+
+![Câmpul de preț personalizat în fereastra Change plan](/images/subscriptions/change-plan-custom-price.png)
+
+Stripe încasează prețul personalizat. Reînnoirile ulterioare îl păstrează până când schimbi din nou planul fără preț personalizat. **Summary** afișează **Preț personalizat pe unitate** și **Serviciu**.
+
+![Rezumatul schimbării de plan cu prețul personalizat și noul serviciu](/images/subscriptions/change-plan-summary.png)
+
+### Limite
+
+- Schimbările de plan funcționează doar pentru abonamentele Stripe.
+- Schimbarea ciclului de facturare nu este acceptată. De exemplu, nu poți muta un abonament lunar pe un pachet anual.
+- Un abonament conține un singur pachet. Pentru a factura mai multe elemente pe același abonament, folosește [add-on-urile serviciului](/ro/services/create-service).
+
 ## Suport Wise pentru Facturi de Abonament cu Plată Manuală
 
 Dacă colectezi plăți internaționale, poți încorpora un **link de plată Wise** direct în facturile de abonament. Aceasta oferă clienților o modalitate convenabilă de a plăti fără a fi nevoie să configureze manual un transfer bancar.

@@ -102,6 +102,60 @@ Sidan för prenumerationsuppgifter ger dig en fullständig bild av varje enskild
   En enskild prenumeration kan ha flera kopplade beställningar och fakturor. Fakturor kopplade till prenumerationer uppdateras dynamiskt när betalningar tas emot.
 </Note>
 
+## Byt plan
+
+Använd **Change plan** för att flytta en aktiv prenumeration till ett annat paket, en annan kvantitet eller ett annat pris. Planbyten är bara tillgängliga för Stripe-prenumerationer.
+
+<Steps>
+  <Step title="Öppna dialogrutan">
+    Öppna prenumerationens detaljsida och klicka på **Change plan**.
+  </Step>
+  <Step title="Välj det nya paketet">
+    Välj ett paket under **New package** och ange **Quantity**. Paketen är grupperade per tjänst, och det nuvarande är markerat med **(current)**.
+  </Step>
+  <Step title="Välj när ändringen gäller">
+    Under **When should it take effect?** väljer du:
+    - **Immediately** – vid en uppgradering debiteras den proportionella skillnaden för resten av den aktuella perioden direkt. En nedgradering kostar ingenting och ger ingen kredit.
+    - **At the next renewal** – ingenting debiteras nu. Det nya priset gäller från nästa faktureringsdatum.
+
+    Om paketet har ett fast antal perioder väljer du också hur **Remaining term** räknas.
+  </Step>
+  <Step title="Kontrollera sammanfattningen och tillämpa">
+    Granska **Summary** och klicka sedan på **Change plan now** eller **Schedule change**.
+  </Step>
+</Steps>
+
+En schemalagd ändring visas som ett meddelande högst upp i dialogrutan, med det nya paketet, datumet och tjänsten och det anpassade priset när de ändras. Klicka på **Cancel change** för att ångra den före förnyelsen.
+
+### Byt till en annan tjänst
+
+Du kan flytta en prenumeration till ett paket i en annan tjänst i samma workspace. Den andra tjänstens paket måste ha samma valuta och faktureringsperiod som den nuvarande prenumerationen. Paket som inte matchar visas men kan inte väljas.
+
+När du väljer ett paket från en annan tjänst visar dialogrutan **Den här prenumerationen flyttas till** och tjänstens namn.
+
+![Dialogrutan Change plan med paket grupperade per tjänst](/images/subscriptions/change-plan-packages.png)
+
+Efter ändringen:
+
+- Prenumerationen och dess framtida beställningar tillhör den nya tjänsten.
+- Befintliga uppgifter finns kvar som de är. Den nya tjänstens standarduppgifter läggs inte till.
+
+### Ange ett anpassat pris
+
+Markera **Anpassat pris** för att fakturera ditt eget pris per enhet i stället för paketpriset. Du kan ange upp till 2 decimaler, eller heltal för valutor utan decimaler som JPY.
+
+![Fältet för anpassat pris i dialogrutan Change plan](/images/subscriptions/change-plan-custom-price.png)
+
+Stripe debiterar det anpassade priset. Senare förnyelser behåller det tills du byter plan igen utan anpassat pris. **Summary** visar **Anpassat pris per enhet** och **Tjänst**.
+
+![Sammanfattning med det anpassade priset och den nya tjänsten](/images/subscriptions/change-plan-summary.png)
+
+### Begränsningar
+
+- Planbyten fungerar bara för Stripe-prenumerationer.
+- Det går inte att byta faktureringsperiod. Du kan till exempel inte flytta en månadsprenumeration till ett årspaket.
+- En prenumeration innehåller ett paket. Använd [tillägg för tjänster](/sv/services/create-service) för att fakturera flera poster på en prenumeration.
+
 ## Wise-stöd för manuella prenumerationsfakturor
 
 Om du tar emot internationella betalningar kan du bädda in en **Wise-betalningslänk** direkt i prenumerationsfakturor. Detta ger klienter ett bekvämt sätt att betala utan att behöva ange en banköverföring manuellt.
