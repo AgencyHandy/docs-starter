@@ -102,6 +102,60 @@ A página de Detalhes da Assinatura oferece um panorama completo de qualquer ass
   Uma única assinatura pode ter vários pedidos e faturas vinculados. As faturas relacionadas a assinaturas são atualizadas dinamicamente quando os pagamentos são recebidos.
 </Note>
 
+## Alterar o plano
+
+Use **Change plan** para mudar uma assinatura ativa para outro pacote, outra quantidade ou outro preço. As alterações de plano estão disponíveis apenas para assinaturas do Stripe.
+
+<Steps>
+  <Step title="Abra a caixa de diálogo">
+    Abra a página de detalhes da assinatura e clique em **Change plan**.
+  </Step>
+  <Step title="Escolha o novo pacote">
+    Em **New package**, selecione um pacote e defina a **Quantity**. Os pacotes são agrupados por serviço, e o atual aparece marcado como **(current)**.
+  </Step>
+  <Step title="Escolha quando a alteração vale">
+    Em **When should it take effect?**, escolha:
+    - **Immediately**: um upgrade cobra agora a diferença proporcional pelo restante do ciclo atual. Um downgrade não cobra nada e não gera crédito.
+    - **At the next renewal**: nada é cobrado agora. O novo preço começa na próxima data de cobrança.
+
+    Se o pacote tiver um número fixo de ciclos, escolha também como o **Remaining term** é contado.
+  </Step>
+  <Step title="Confira o resumo e aplique">
+    Confira o **Summary** e clique em **Change plan now** ou **Schedule change**.
+  </Step>
+</Steps>
+
+Uma alteração agendada aparece como aviso no topo da caixa de diálogo, com o novo pacote, a data e, quando mudam, o serviço e o preço personalizado. Para desfazê-la antes da renovação, clique em **Cancel change**.
+
+### Mudar para outro serviço
+
+Você pode mover uma assinatura para um pacote de outro serviço do mesmo workspace. O pacote do outro serviço precisa usar a mesma moeda e o mesmo ciclo de cobrança da assinatura atual. Pacotes incompatíveis aparecem na lista, mas não podem ser selecionados.
+
+Ao escolher um pacote de outro serviço, a caixa de diálogo mostra **Esta assinatura será movida para** seguido do nome do serviço.
+
+![Caixa de diálogo Change plan com pacotes agrupados por serviço](/images/subscriptions/change-plan-packages.png)
+
+Depois da alteração:
+
+- A assinatura e os pedidos futuros passam a pertencer ao novo serviço.
+- As tarefas existentes continuam como estão. As tarefas padrão do novo serviço não são adicionadas.
+
+### Definir um preço personalizado
+
+Marque **Preço personalizado** para cobrar seu próprio preço por unidade em vez do preço do pacote. Você pode informar até 2 casas decimais, ou números inteiros em moedas sem casas decimais, como o JPY.
+
+![Campo de preço personalizado na caixa de diálogo Change plan](/images/subscriptions/change-plan-custom-price.png)
+
+O Stripe cobra o preço personalizado. As renovações seguintes mantêm esse preço até você alterar o plano novamente sem preço personalizado. O **Summary** mostra o **Preço personalizado por unidade** e o **Serviço**.
+
+![Resumo da alteração de plano com o preço personalizado e o novo serviço](/images/subscriptions/change-plan-summary.png)
+
+### Limites
+
+- As alterações de plano funcionam apenas com assinaturas do Stripe.
+- Não é possível mudar o ciclo de cobrança. Por exemplo, você não pode mudar uma assinatura mensal para um pacote anual.
+- Uma assinatura tem um único pacote. Para cobrar vários itens na mesma assinatura, use os [add-ons de serviço](/pt-BR/services/create-service).
+
 ## Suporte ao Wise para Faturas de Assinatura Manual
 
 Se você coleta pagamentos internacionais, pode incorporar um **link de pagamento Wise** diretamente nas faturas de assinatura. Isso oferece aos clientes uma forma conveniente de pagar sem precisar configurar uma transferência bancária manualmente.

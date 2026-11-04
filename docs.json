@@ -138,7 +138,8 @@
                   "teams/manage-team",
                   "tasks/all-tasks",
                   "tasks/timesheet",
-                  "tickets/support-tickets"
+                  "tickets/support-tickets",
+                  "chats/client-chats"
                 ]
               },
               {
@@ -219,7 +220,8 @@
                 "icon": "life-buoy",
                 "pages": [
                   "client/files-and-forms",
-                  "client/support-tickets"
+                  "client/support-tickets",
+                  "client/chat"
                 ]
               }
             ]
@@ -347,7 +349,8 @@
                   "fr/teams/manage-team",
                   "fr/tasks/all-tasks",
                   "fr/tasks/timesheet",
-                  "fr/tickets/support-tickets"
+                  "fr/tickets/support-tickets",
+                  "fr/chats/client-chats"
                 ]
               },
               {
@@ -422,7 +425,8 @@
                 "icon": "life-buoy",
                 "pages": [
                   "fr/client/files-and-forms",
-                  "fr/client/support-tickets"
+                  "fr/client/support-tickets",
+                  "fr/client/chat"
                 ]
               },
               {
@@ -556,7 +560,8 @@
                   "es/teams/manage-team",
                   "es/tasks/all-tasks",
                   "es/tasks/timesheet",
-                  "es/tickets/support-tickets"
+                  "es/tickets/support-tickets",
+                  "es/chats/client-chats"
                 ]
               },
               {
@@ -631,7 +636,8 @@
                 "icon": "life-buoy",
                 "pages": [
                   "es/client/files-and-forms",
-                  "es/client/support-tickets"
+                  "es/client/support-tickets",
+                  "es/client/chat"
                 ]
               },
               {
@@ -765,7 +771,8 @@
                   "zh/teams/manage-team",
                   "zh/tasks/all-tasks",
                   "zh/tasks/timesheet",
-                  "zh/tickets/support-tickets"
+                  "zh/tickets/support-tickets",
+                  "zh/chats/client-chats"
                 ]
               },
               {
@@ -840,7 +847,8 @@
                 "icon": "life-buoy",
                 "pages": [
                   "zh/client/files-and-forms",
-                  "zh/client/support-tickets"
+                  "zh/client/support-tickets",
+                  "zh/client/chat"
                 ]
               },
               {
@@ -974,7 +982,8 @@
                   "zh-Hant/teams/manage-team",
                   "zh-Hant/tasks/all-tasks",
                   "zh-Hant/tasks/timesheet",
-                  "zh-Hant/tickets/support-tickets"
+                  "zh-Hant/tickets/support-tickets",
+                  "zh-Hant/chats/client-chats"
                 ]
               },
               {
@@ -1049,7 +1058,8 @@
                 "icon": "life-buoy",
                 "pages": [
                   "zh-Hant/client/files-and-forms",
-                  "zh-Hant/client/support-tickets"
+                  "zh-Hant/client/support-tickets",
+                  "zh-Hant/client/chat"
                 ]
               },
               {
@@ -1183,7 +1193,8 @@
                   "de/teams/manage-team",
                   "de/tasks/all-tasks",
                   "de/tasks/timesheet",
-                  "de/tickets/support-tickets"
+                  "de/tickets/support-tickets",
+                  "de/chats/client-chats"
                 ]
               },
               {
@@ -1258,7 +1269,8 @@
                 "icon": "life-buoy",
                 "pages": [
                   "de/client/files-and-forms",
-                  "de/client/support-tickets"
+                  "de/client/support-tickets",
+                  "de/client/chat"
                 ]
               },
               {
@@ -1392,7 +1404,8 @@
                   "ko/teams/manage-team",
                   "ko/tasks/all-tasks",
                   "ko/tasks/timesheet",
-                  "ko/tickets/support-tickets"
+                  "ko/tickets/support-tickets",
+                  "ko/chats/client-chats"
                 ]
               },
               {
@@ -1467,7 +1480,8 @@
                 "icon": "life-buoy",
                 "pages": [
                   "ko/client/files-and-forms",
-                  "ko/client/support-tickets"
+                  "ko/client/support-tickets",
+                  "ko/client/chat"
                 ]
               },
               {
@@ -1601,7 +1615,8 @@
                   "cs/teams/manage-team",
                   "cs/tasks/all-tasks",
                   "cs/tasks/timesheet",
-                  "cs/tickets/support-tickets"
+                  "cs/tickets/support-tickets",
+                  "cs/chats/client-chats"
                 ]
               },
               {
@@ -1676,7 +1691,8 @@
                 "icon": "life-buoy",
                 "pages": [
                   "cs/client/files-and-forms",
-                  "cs/client/support-tickets"
+                  "cs/client/support-tickets",
+                  "cs/client/chat"
                 ]
               },
               {
@@ -1810,7 +1826,8 @@
                   "ja/teams/manage-team",
                   "ja/tasks/all-tasks",
                   "ja/tasks/timesheet",
-                  "ja/tickets/support-tickets"
+                  "ja/tickets/support-tickets",
+                  "ja/chats/client-chats"
                 ]
               },
               {
@@ -1885,7 +1902,8 @@
                 "icon": "life-buoy",
                 "pages": [
                   "ja/client/files-and-forms",
-                  "ja/client/support-tickets"
+                  "ja/client/support-tickets",
+                  "ja/client/chat"
                 ]
               },
               {
@@ -2019,7 +2037,8 @@
                   "it/teams/manage-team",
                   "it/tasks/all-tasks",
                   "it/tasks/timesheet",
-                  "it/tickets/support-tickets"
+                  "it/tickets/support-tickets",
+                  "it/chats/client-chats"
                 ]
               },
               {
@@ -2094,7 +2113,8 @@
                 "icon": "life-buoy",
                 "pages": [
                   "it/client/files-and-forms",
-                  "it/client/support-tickets"
+                  "it/client/support-tickets",
+                  "it/client/chat"
                 ]
               },
               {
@@ -2228,7 +2248,8 @@
                   "lv/teams/manage-team",
                   "lv/tasks/all-tasks",
                   "lv/tasks/timesheet",
-                  "lv/tickets/support-tickets"
+                  "lv/tickets/support-tickets",
+                  "lv/chats/client-chats"
                 ]
               },
               {
@@ -2303,7 +2324,8 @@
                 "icon": "life-buoy",
                 "pages": [
                   "lv/client/files-and-forms",
-                  "lv/client/support-tickets"
+                  "lv/client/support-tickets",
+                  "lv/client/chat"
                 ]
               },
               {
@@ -2437,7 +2459,8 @@
                   "no/teams/manage-team",
                   "no/tasks/all-tasks",
                   "no/tasks/timesheet",
-                  "no/tickets/support-tickets"
+                  "no/tickets/support-tickets",
+                  "no/chats/client-chats"
                 ]
               },
               {
@@ -2512,7 +2535,8 @@
                 "icon": "life-buoy",
                 "pages": [
                   "no/client/files-and-forms",
-                  "no/client/support-tickets"
+                  "no/client/support-tickets",
+                  "no/client/chat"
                 ]
               },
               {
@@ -2646,7 +2670,8 @@
                   "ar/teams/manage-team",
                   "ar/tasks/all-tasks",
                   "ar/tasks/timesheet",
-                  "ar/tickets/support-tickets"
+                  "ar/tickets/support-tickets",
+                  "ar/chats/client-chats"
                 ]
               },
               {
@@ -2721,7 +2746,8 @@
                 "icon": "life-buoy",
                 "pages": [
                   "ar/client/files-and-forms",
-                  "ar/client/support-tickets"
+                  "ar/client/support-tickets",
+                  "ar/client/chat"
                 ]
               },
               {
@@ -2855,7 +2881,8 @@
                   "sv/teams/manage-team",
                   "sv/tasks/all-tasks",
                   "sv/tasks/timesheet",
-                  "sv/tickets/support-tickets"
+                  "sv/tickets/support-tickets",
+                  "sv/chats/client-chats"
                 ]
               },
               {
@@ -2930,7 +2957,8 @@
                 "icon": "life-buoy",
                 "pages": [
                   "sv/client/files-and-forms",
-                  "sv/client/support-tickets"
+                  "sv/client/support-tickets",
+                  "sv/client/chat"
                 ]
               },
               {
@@ -3064,7 +3092,8 @@
                   "da/teams/manage-team",
                   "da/tasks/all-tasks",
                   "da/tasks/timesheet",
-                  "da/tickets/support-tickets"
+                  "da/tickets/support-tickets",
+                  "da/chats/client-chats"
                 ]
               },
               {
@@ -3139,7 +3168,8 @@
                 "icon": "life-buoy",
                 "pages": [
                   "da/client/files-and-forms",
-                  "da/client/support-tickets"
+                  "da/client/support-tickets",
+                  "da/client/chat"
                 ]
               },
               {
@@ -3273,7 +3303,8 @@
                   "pl/teams/manage-team",
                   "pl/tasks/all-tasks",
                   "pl/tasks/timesheet",
-                  "pl/tickets/support-tickets"
+                  "pl/tickets/support-tickets",
+                  "pl/chats/client-chats"
                 ]
               },
               {
@@ -3348,7 +3379,8 @@
                 "icon": "life-buoy",
                 "pages": [
                   "pl/client/files-and-forms",
-                  "pl/client/support-tickets"
+                  "pl/client/support-tickets",
+                  "pl/client/chat"
                 ]
               },
               {
@@ -3482,7 +3514,8 @@
                   "nl/teams/manage-team",
                   "nl/tasks/all-tasks",
                   "nl/tasks/timesheet",
-                  "nl/tickets/support-tickets"
+                  "nl/tickets/support-tickets",
+                  "nl/chats/client-chats"
                 ]
               },
               {
@@ -3557,7 +3590,8 @@
                 "icon": "life-buoy",
                 "pages": [
                   "nl/client/files-and-forms",
-                  "nl/client/support-tickets"
+                  "nl/client/support-tickets",
+                  "nl/client/chat"
                 ]
               },
               {
@@ -3691,7 +3725,8 @@
                   "tr/teams/manage-team",
                   "tr/tasks/all-tasks",
                   "tr/tasks/timesheet",
-                  "tr/tickets/support-tickets"
+                  "tr/tickets/support-tickets",
+                  "tr/chats/client-chats"
                 ]
               },
               {
@@ -3766,7 +3801,8 @@
                 "icon": "life-buoy",
                 "pages": [
                   "tr/client/files-and-forms",
-                  "tr/client/support-tickets"
+                  "tr/client/support-tickets",
+                  "tr/client/chat"
                 ]
               },
               {
@@ -3900,7 +3936,8 @@
                   "uz/teams/manage-team",
                   "uz/tasks/all-tasks",
                   "uz/tasks/timesheet",
-                  "uz/tickets/support-tickets"
+                  "uz/tickets/support-tickets",
+                  "uz/chats/client-chats"
                 ]
               },
               {
@@ -3975,7 +4012,8 @@
                 "icon": "life-buoy",
                 "pages": [
                   "uz/client/files-and-forms",
-                  "uz/client/support-tickets"
+                  "uz/client/support-tickets",
+                  "uz/client/chat"
                 ]
               },
               {
@@ -4109,7 +4147,8 @@
                   "ru/teams/manage-team",
                   "ru/tasks/all-tasks",
                   "ru/tasks/timesheet",
-                  "ru/tickets/support-tickets"
+                  "ru/tickets/support-tickets",
+                  "ru/chats/client-chats"
                 ]
               },
               {
@@ -4184,7 +4223,8 @@
                 "icon": "life-buoy",
                 "pages": [
                   "ru/client/files-and-forms",
-                  "ru/client/support-tickets"
+                  "ru/client/support-tickets",
+                  "ru/client/chat"
                 ]
               },
               {
@@ -4318,7 +4358,8 @@
                   "pt/teams/manage-team",
                   "pt/tasks/all-tasks",
                   "pt/tasks/timesheet",
-                  "pt/tickets/support-tickets"
+                  "pt/tickets/support-tickets",
+                  "pt/chats/client-chats"
                 ]
               },
               {
@@ -4393,7 +4434,8 @@
                 "icon": "life-buoy",
                 "pages": [
                   "pt/client/files-and-forms",
-                  "pt/client/support-tickets"
+                  "pt/client/support-tickets",
+                  "pt/client/chat"
                 ]
               },
               {
@@ -4527,7 +4569,8 @@
                   "pt-BR/teams/manage-team",
                   "pt-BR/tasks/all-tasks",
                   "pt-BR/tasks/timesheet",
-                  "pt-BR/tickets/support-tickets"
+                  "pt-BR/tickets/support-tickets",
+                  "pt-BR/chats/client-chats"
                 ]
               },
               {
@@ -4602,7 +4645,8 @@
                 "icon": "life-buoy",
                 "pages": [
                   "pt-BR/client/files-and-forms",
-                  "pt-BR/client/support-tickets"
+                  "pt-BR/client/support-tickets",
+                  "pt-BR/client/chat"
                 ]
               },
               {
@@ -4736,7 +4780,8 @@
                   "id/teams/manage-team",
                   "id/tasks/all-tasks",
                   "id/tasks/timesheet",
-                  "id/tickets/support-tickets"
+                  "id/tickets/support-tickets",
+                  "id/chats/client-chats"
                 ]
               },
               {
@@ -4811,7 +4856,8 @@
                 "icon": "life-buoy",
                 "pages": [
                   "id/client/files-and-forms",
-                  "id/client/support-tickets"
+                  "id/client/support-tickets",
+                  "id/client/chat"
                 ]
               },
               {
@@ -4945,7 +4991,8 @@
                   "fi/teams/manage-team",
                   "fi/tasks/all-tasks",
                   "fi/tasks/timesheet",
-                  "fi/tickets/support-tickets"
+                  "fi/tickets/support-tickets",
+                  "fi/chats/client-chats"
                 ]
               },
               {
@@ -5020,7 +5067,8 @@
                 "icon": "life-buoy",
                 "pages": [
                   "fi/client/files-and-forms",
-                  "fi/client/support-tickets"
+                  "fi/client/support-tickets",
+                  "fi/client/chat"
                 ]
               },
               {
@@ -5154,7 +5202,8 @@
                   "ro/teams/manage-team",
                   "ro/tasks/all-tasks",
                   "ro/tasks/timesheet",
-                  "ro/tickets/support-tickets"
+                  "ro/tickets/support-tickets",
+                  "ro/chats/client-chats"
                 ]
               },
               {
@@ -5229,7 +5278,8 @@
                 "icon": "life-buoy",
                 "pages": [
                   "ro/client/files-and-forms",
-                  "ro/client/support-tickets"
+                  "ro/client/support-tickets",
+                  "ro/client/chat"
                 ]
               },
               {

@@ -102,6 +102,60 @@ Abonnementsdetaljsiden gir deg et komplett bilde av ethvert enkelt abonnement �
   Et enkelt abonnement kan ha flere tilknyttede bestillinger og fakturaer. Fakturaer knyttet til abonnementer oppdateres dynamisk når betalinger mottas.
 </Note>
 
+## Bytt plan
+
+Bruk **Change plan** for å flytte et aktivt abonnement til en annen pakke, et annet antall eller en annen pris. Planbytte er bare tilgjengelig for Stripe-abonnementer.
+
+<Steps>
+  <Step title="Åpne dialogen">
+    Åpne detaljsiden for abonnementet, og klikk på **Change plan**.
+  </Step>
+  <Step title="Velg den nye pakken">
+    Velg en pakke under **New package**, og angi **Quantity**. Pakkene er gruppert etter tjeneste, og den nåværende er merket med **(current)**.
+  </Step>
+  <Step title="Velg når endringen gjelder fra">
+    Velg under **When should it take effect?**:
+    - **Immediately** – ved en oppgradering belastes den forholdsmessige differansen for resten av gjeldende periode med en gang. En nedgradering koster ingenting og gir ingen kreditt.
+    - **At the next renewal** – ingenting belastes nå. Den nye prisen gjelder fra neste faktureringsdato.
+
+    Hvis pakken har et fast antall perioder, velger du også hvordan **Remaining term** telles.
+  </Step>
+  <Step title="Sjekk oppsummeringen og bruk endringen">
+    Se gjennom **Summary**, og klikk deretter på **Change plan now** eller **Schedule change**.
+  </Step>
+</Steps>
+
+En planlagt endring vises som et varsel øverst i dialogen, med den nye pakken, datoen og tjenesten og den egendefinerte prisen når de endres. Klikk på **Cancel change** for å angre den før fornyelsen.
+
+### Bytt til en annen tjeneste
+
+Du kan flytte et abonnement til en pakke i en annen tjeneste i det samme arbeidsområdet. Pakken i den andre tjenesten må ha samme valuta og faktureringsperiode som det nåværende abonnementet. Pakker som ikke passer, vises, men kan ikke velges.
+
+Når du velger en pakke fra en annen tjeneste, viser dialogen **Dette abonnementet flyttes til** og navnet på tjenesten.
+
+![Dialogen Change plan med pakker gruppert etter tjeneste](/images/subscriptions/change-plan-packages.png)
+
+Etter endringen:
+
+- Abonnementet og fremtidige bestillinger hører til den nye tjenesten.
+- Eksisterende oppgaver blir værende som de er. Standardoppgavene til den nye tjenesten legges ikke til.
+
+### Angi en egendefinert pris
+
+Kryss av for **Egendefinert pris** for å fakturere din egen pris per enhet i stedet for pakkeprisen. Du kan angi opptil 2 desimaler, eller hele tall for valutaer uten desimaler, som JPY.
+
+![Feltet for egendefinert pris i dialogen Change plan](/images/subscriptions/change-plan-custom-price.png)
+
+Stripe belaster den egendefinerte prisen. Senere fornyelser beholder den til du bytter plan igjen uten egendefinert pris. **Summary** viser **Egendefinert pris per enhet** og **Tjeneste**.
+
+![Oppsummering med den egendefinerte prisen og den nye tjenesten](/images/subscriptions/change-plan-summary.png)
+
+### Begrensninger
+
+- Planbytte fungerer bare for Stripe-abonnementer.
+- Det er ikke mulig å endre faktureringsperioden. Du kan for eksempel ikke flytte et månedlig abonnement til en årlig pakke.
+- Et abonnement inneholder én pakke. Bruk [tillegg for tjenester](/no/services/create-service) for å fakturere flere poster på ett abonnement.
+
 ## Wise-støtte for manuelle abonnementsfakturaer
 
 Hvis du samler inn internasjonale betalinger, kan du legge inn en **Wise-betalingslenke** direkte i abonnementsfakturaer. Dette gir klienter en praktisk betalingsmåte uten å måtte sette opp en bankoverføring manuelt.

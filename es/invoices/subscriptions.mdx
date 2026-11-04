@@ -102,6 +102,60 @@ La página de detalles de la suscripción le ofrece una visión completa de cual
   Una sola suscripción puede tener varios pedidos y facturas vinculados. Las facturas asociadas a suscripciones se actualizan dinámicamente cuando se reciben los pagos.
 </Note>
 
+## Cambiar de plan
+
+Use **Change plan** para pasar una suscripción activa a otro paquete, otra cantidad u otro precio. Los cambios de plan solo están disponibles para suscripciones de Stripe.
+
+<Steps>
+  <Step title="Abra el cuadro de diálogo">
+    Abra la página de detalles de la suscripción y haga clic en **Change plan**.
+  </Step>
+  <Step title="Elija el nuevo paquete">
+    En **New package**, seleccione un paquete y defina la **Quantity**. Los paquetes se agrupan por servicio y el actual aparece marcado como **(current)**.
+  </Step>
+  <Step title="Elija cuándo se aplica">
+    En **When should it take effect?**, elija:
+    - **Immediately**: una mejora cobra ahora la diferencia prorrateada por el resto del ciclo actual. Una reducción no cobra nada ni emite ningún crédito.
+    - **At the next renewal**: no se cobra nada ahora. El nuevo precio empieza en la próxima fecha de facturación.
+
+    Si el paquete tiene un número fijo de ciclos, elija también cómo se cuenta el **Remaining term**.
+  </Step>
+  <Step title="Revise el resumen y aplique el cambio">
+    Revise el **Summary** y haga clic en **Change plan now** o **Schedule change**.
+  </Step>
+</Steps>
+
+Un cambio programado aparece como aviso en la parte superior del cuadro de diálogo, con el nuevo paquete, la fecha y, si cambian, el servicio y el precio personalizado. Para deshacerlo antes de la renovación, haga clic en **Cancel change**.
+
+### Cambiar a otro servicio
+
+Puede mover una suscripción a un paquete de otro servicio del mismo espacio de trabajo. El paquete del otro servicio debe usar la misma moneda y el mismo ciclo de facturación que la suscripción actual. Los paquetes que no coinciden se muestran, pero no se pueden seleccionar.
+
+Al elegir un paquete de otro servicio, el cuadro de diálogo muestra **Esta suscripción pasará a** y el nombre del servicio.
+
+![Cuadro de diálogo Change plan con los paquetes agrupados por servicio](/images/subscriptions/change-plan-packages.png)
+
+Después del cambio:
+
+- La suscripción y sus pedidos futuros pertenecen al nuevo servicio.
+- Las tareas existentes se mantienen. No se añaden las tareas predeterminadas del nuevo servicio.
+
+### Definir un precio personalizado
+
+Marque **Precio personalizado** para cobrar su propio precio por unidad en lugar del precio del paquete. Puede introducir hasta 2 decimales, o números enteros en monedas sin decimales como el JPY.
+
+![Campo de precio personalizado en el cuadro de diálogo Change plan](/images/subscriptions/change-plan-custom-price.png)
+
+Stripe cobra el precio personalizado. Las renovaciones posteriores lo mantienen hasta que vuelva a cambiar el plan sin precio personalizado. El **Summary** muestra el **Precio personalizado por unidad** y el **Servicio**.
+
+![Resumen del cambio de plan con el precio personalizado y el nuevo servicio](/images/subscriptions/change-plan-summary.png)
+
+### Límites
+
+- Los cambios de plan solo funcionan con suscripciones de Stripe.
+- No se admite cambiar el ciclo de facturación. Por ejemplo, no puede pasar una suscripción mensual a un paquete anual.
+- Una suscripción contiene un solo paquete. Para cobrar varios elementos en una misma suscripción, use los [complementos de servicio](/es/services/create-service).
+
 ## Compatibilidad con Wise para facturas de suscripción manuales
 
 Si recibe pagos internacionales, puede incrustar un **enlace de pago de Wise** directamente en las facturas de suscripción. Esto les da a los clientes una forma cómoda de pagar sin necesidad de configurar una transferencia bancaria manualmente.

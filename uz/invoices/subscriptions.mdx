@@ -102,6 +102,60 @@ Obuna Tafsilotlari sahifasi har bir individual obunaning to'liq rasmini beradi �
   Bitta obunada bir nechta bog'liq buyurtmalar va hisob-fakturalar bo'lishi mumkin. Obunalarga bog'liq hisob-fakturalar to'lovlar qabul qilinganda dinamik ravishda yangilanadi.
 </Note>
 
+## Rejani o'zgartirish
+
+**Change plan** yordamida faol obunani boshqa paket, miqdor yoki narxga o'tkazishingiz mumkin. Rejani o'zgartirish faqat Stripe obunalari uchun mavjud.
+
+<Steps>
+  <Step title="Oynani oching">
+    Obuna tafsilotlari sahifasini oching va **Change plan** tugmasini bosing.
+  </Step>
+  <Step title="Yangi paketni tanlang">
+    **New package** qismida paketni tanlang va **Quantity** ni belgilang. Paketlar xizmatlar bo'yicha guruhlangan, joriy paket **(current)** deb belgilangan.
+  </Step>
+  <Step title="O'zgarish qachon kuchga kirishini tanlang">
+    **When should it take effect?** qismida tanlang:
+    - **Immediately** — qimmatroq paketga o'tilganda joriy davrning qolgan qismi uchun mutanosib farq darhol undiriladi. Arzonroq paketga o'tilganda hech narsa undirilmaydi va kredit berilmaydi.
+    - **At the next renewal** — hozir hech narsa undirilmaydi. Yangi narx keyingi to'lov sanasidan boshlanadi.
+
+    Agar paketda davrlar soni belgilangan bo'lsa, **Remaining term** qanday hisoblanishini ham tanlang.
+  </Step>
+  <Step title="Xulosani tekshiring va qo'llang">
+    **Summary** ni ko'rib chiqing, so'ng **Change plan now** yoki **Schedule change** tugmasini bosing.
+  </Step>
+</Steps>
+
+Rejalashtirilgan o'zgarish oyna yuqorisida bildirishnoma sifatida ko'rinadi: yangi paket, sana, shuningdek xizmat va maxsus narx o'zgarsa, ular ham. Yangilanishdan oldin uni bekor qilish uchun **Cancel change** tugmasini bosing.
+
+### Boshqa xizmatga o'tish
+
+Obunani shu ish maydonidagi boshqa xizmatning paketiga o'tkazishingiz mumkin. Bu paket joriy obuna bilan bir xil valyuta va bir xil to'lov davriga ega bo'lishi kerak. Mos kelmaydigan paketlar ko'rinadi, lekin ularni tanlab bo'lmaydi.
+
+Boshqa xizmat paketini tanlasangiz, oynada **Ushbu obuna ... ga o'tkaziladi** xabari xizmat nomi bilan ko'rsatiladi.
+
+![Paketlar xizmatlar bo'yicha guruhlangan Change plan oynasi](/images/subscriptions/change-plan-packages.png)
+
+O'zgarishdan keyin:
+
+- Obuna va uning kelgusi buyurtmalari yangi xizmatga tegishli bo'ladi.
+- Mavjud vazifalar o'zgarmaydi. Yangi xizmatning standart vazifalari qo'shilmaydi.
+
+### Maxsus narx belgilash
+
+Paket narxi o'rniga birlik uchun o'z narxingizni undirish uchun **Maxsus narx** belgisini qo'ying. Kasr qismi bilan 2 xonagacha kiritishingiz mumkin, JPY kabi kasrsiz valyutalar uchun esa faqat butun sonlar.
+
+![Change plan oynasidagi Maxsus narx maydoni](/images/subscriptions/change-plan-custom-price.png)
+
+Stripe maxsus narxni undiradi. Keyingi yangilanishlar uni saqlab qoladi, toki siz rejani maxsus narxsiz qayta o'zgartirmaguningizcha. **Summary** da **Birlik uchun maxsus narx** va **Xizmat** ko'rsatiladi.
+
+![Maxsus narx va yangi xizmat ko'rsatilgan reja o'zgarishi xulosasi](/images/subscriptions/change-plan-summary.png)
+
+### Cheklovlar
+
+- Rejani o'zgartirish faqat Stripe obunalari uchun ishlaydi.
+- To'lov davrini o'zgartirish qo'llab-quvvatlanmaydi. Masalan, oylik obunani yillik paketga o'tkaza olmaysiz.
+- Obunada bitta paket bo'ladi. Bitta obunada bir nechta pozitsiya uchun hisob yuborish uchun [xizmat qo'shimchalaridan](/uz/services/create-service) foydalaning.
+
 ## Qo'lda Obuna Hisob-Fakturalari Uchun Wise Qo'llab-Quvvatlash
 
 Agar xalqaro to'lovlarni yig'sangiz, obuna hisob-fakturalariga to'g'ridan-to'g'ri **Wise to'lov havolasini** kirita olasiz. Bu mijozlarga qo'lda bank o'tkazmasini o'rnatmasdan to'lash uchun qulay usul beradi.

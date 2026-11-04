@@ -102,6 +102,60 @@ Abonnementsdetaljesiden giver dig et komplet billede af ethvert individuelt abon
   Et enkelt abonnement kan have flere tilknyttede ordrer og fakturaer. Fakturaer knyttet til abonnementer opdateres dynamisk, når betalinger modtages.
 </Note>
 
+## Skift plan
+
+Brug **Change plan** til at flytte et aktivt abonnement til en anden pakke, et andet antal eller en anden pris. Planskift er kun tilgængelige for Stripe-abonnementer.
+
+<Steps>
+  <Step title="Åbn dialogen">
+    Åbn abonnementets detaljeside, og klik på **Change plan**.
+  </Step>
+  <Step title="Vælg den nye pakke">
+    Vælg en pakke under **New package**, og angiv **Quantity**. Pakkerne er grupperet efter ydelse, og den nuværende er markeret med **(current)**.
+  </Step>
+  <Step title="Vælg hvornår ændringen træder i kraft">
+    Vælg under **When should it take effect?**:
+    - **Immediately** – ved en opgradering opkræves den forholdsmæssige forskel for resten af den aktuelle periode med det samme. En nedgradering koster intet og giver ingen kredit.
+    - **At the next renewal** – der opkræves intet nu. Den nye pris gælder fra næste faktureringsdato.
+
+    Hvis pakken har et fast antal perioder, skal du også vælge, hvordan **Remaining term** tælles.
+  </Step>
+  <Step title="Tjek oversigten, og anvend ændringen">
+    Gennemgå **Summary**, og klik derefter på **Change plan now** eller **Schedule change**.
+  </Step>
+</Steps>
+
+En planlagt ændring vises som en meddelelse øverst i dialogen med den nye pakke, datoen samt ydelsen og den tilpassede pris, når de ændres. Klik på **Cancel change** for at fortryde den før fornyelsen.
+
+### Skift til en anden ydelse
+
+Du kan flytte et abonnement til en pakke under en anden ydelse i det samme workspace. Den anden ydelses pakke skal bruge samme valuta og faktureringsperiode som det nuværende abonnement. Pakker, der ikke passer, vises, men kan ikke vælges.
+
+Når du vælger en pakke fra en anden ydelse, viser dialogen **Dette abonnement flyttes til** og ydelsens navn.
+
+![Dialogen Change plan med pakker grupperet efter ydelse](/images/subscriptions/change-plan-packages.png)
+
+Efter ændringen:
+
+- Abonnementet og dets fremtidige ordrer hører til den nye ydelse.
+- Eksisterende opgaver forbliver uændrede. Den nye ydelses standardopgaver bliver ikke tilføjet.
+
+### Angiv en tilpasset pris
+
+Markér **Tilpasset pris** for at opkræve din egen pris pr. enhed i stedet for pakkeprisen. Du kan angive op til 2 decimaler eller hele tal for valutaer uden decimaler som JPY.
+
+![Feltet til tilpasset pris i dialogen Change plan](/images/subscriptions/change-plan-custom-price.png)
+
+Stripe opkræver den tilpassede pris. Senere fornyelser beholder den, indtil du skifter plan igen uden en tilpasset pris. **Summary** viser **Tilpasset pris pr. enhed** og **Tjeneste**.
+
+![Oversigt med den tilpassede pris og den nye ydelse](/images/subscriptions/change-plan-summary.png)
+
+### Begrænsninger
+
+- Planskift fungerer kun for Stripe-abonnementer.
+- Det er ikke muligt at ændre faktureringsperioden. Du kan for eksempel ikke flytte et månedligt abonnement til en årlig pakke.
+- Et abonnement indeholder én pakke. Brug [tilføjelser til ydelser](/da/services/create-service) for at fakturere flere poster på ét abonnement.
+
 ## Wise-understøttelse for manuelle abonnementsfakturaer
 
 Hvis du opkræver internationale betalinger, kan du integrere et **Wise-betalingslink** direkte i abonnementsfakturaer. Dette giver klienter en bekvem måde at betale på uden at skulle opsætte en bankoverførsel manuelt.

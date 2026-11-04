@@ -102,6 +102,60 @@ La pagina Dettagli Abbonamento ti offre un quadro completo di qualsiasi abboname
   Un singolo abbonamento può avere più ordini e fatture collegati. Le fatture collegate agli abbonamenti si aggiornano dinamicamente quando vengono ricevuti i pagamenti.
 </Note>
 
+## Cambiare piano
+
+Usa **Change plan** per passare un abbonamento attivo a un altro pacchetto, a un'altra quantità o a un altro prezzo. I cambi di piano sono disponibili solo per gli abbonamenti Stripe.
+
+<Steps>
+  <Step title="Apri la finestra di dialogo">
+    Apri la pagina dei dettagli dell'abbonamento e fai clic su **Change plan**.
+  </Step>
+  <Step title="Scegli il nuovo pacchetto">
+    In **New package**, seleziona un pacchetto e imposta la **Quantity**. I pacchetti sono raggruppati per servizio e quello attuale è contrassegnato come **(current)**.
+  </Step>
+  <Step title="Scegli quando applicare il cambio">
+    In **When should it take effect?**, scegli:
+    - **Immediately**: un upgrade addebita subito la differenza proporzionale per il resto del ciclo corrente. Un downgrade non addebita nulla e non emette alcun credito.
+    - **At the next renewal**: non viene addebitato nulla ora. Il nuovo prezzo parte dalla prossima data di fatturazione.
+
+    Se il pacchetto ha un numero fisso di cicli, scegli anche come viene conteggiato il **Remaining term**.
+  </Step>
+  <Step title="Controlla il riepilogo e applica">
+    Controlla il **Summary**, poi fai clic su **Change plan now** o **Schedule change**.
+  </Step>
+</Steps>
+
+Un cambio programmato compare come avviso nella parte superiore della finestra, con il nuovo pacchetto, la data e, se cambiano, il servizio e il prezzo personalizzato. Per annullarlo prima del rinnovo, fai clic su **Cancel change**.
+
+### Passare a un altro servizio
+
+Puoi spostare un abbonamento su un pacchetto di un altro servizio dello stesso workspace. Il pacchetto dell'altro servizio deve usare la stessa valuta e lo stesso ciclo di fatturazione dell'abbonamento attuale. I pacchetti non compatibili vengono mostrati ma non possono essere selezionati.
+
+Quando scegli un pacchetto di un altro servizio, la finestra mostra **Questo abbonamento passerà a** seguito dal nome del servizio.
+
+![Finestra Change plan con i pacchetti raggruppati per servizio](/images/subscriptions/change-plan-packages.png)
+
+Dopo il cambio:
+
+- L'abbonamento e i suoi ordini futuri appartengono al nuovo servizio.
+- I task esistenti restano invariati. I task predefiniti del nuovo servizio non vengono aggiunti.
+
+### Impostare un prezzo personalizzato
+
+Seleziona **Prezzo personalizzato** per addebitare un tuo prezzo unitario al posto del prezzo del pacchetto. Puoi inserire fino a 2 decimali, oppure numeri interi per le valute senza decimali come lo JPY.
+
+![Campo del prezzo personalizzato nella finestra Change plan](/images/subscriptions/change-plan-custom-price.png)
+
+Stripe addebita il prezzo personalizzato. I rinnovi successivi lo mantengono finché non cambi di nuovo piano senza un prezzo personalizzato. Il **Summary** mostra il **Prezzo personalizzato per unità** e il **Servizio**.
+
+![Riepilogo del cambio di piano con il prezzo personalizzato e il nuovo servizio](/images/subscriptions/change-plan-summary.png)
+
+### Limiti
+
+- I cambi di piano funzionano solo con gli abbonamenti Stripe.
+- Il cambio del ciclo di fatturazione non è supportato. Ad esempio, non puoi passare un abbonamento mensile a un pacchetto annuale.
+- Un abbonamento contiene un solo pacchetto. Per fatturare più voci sullo stesso abbonamento, usa gli [add-on del servizio](/it/services/create-service).
+
 ## Supporto Wise per le Fatture di Abbonamento Manuale
 
 Se gestisci pagamenti internazionali, puoi incorporare un **link di pagamento Wise** direttamente nelle fatture di abbonamento. Questo offre ai clienti un modo conveniente per pagare senza dover configurare manualmente un bonifico bancario.

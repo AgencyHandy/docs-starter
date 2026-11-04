@@ -102,6 +102,60 @@ Tilauksen tietosivu antaa sinulle täydellisen kuvan mistä tahansa yksittäises
   Yhdellä tilauksella voi olla useita linkitettyjä tilauksia ja laskuja. Tilauksiin sidotut laskut päivittyvät dynaamisesti, kun maksuja vastaanotetaan.
 </Note>
 
+## Paketin vaihtaminen
+
+**Change plan** -toiminnolla siirrät aktiivisen tilauksen toiseen pakettiin, toiseen määrään tai toiseen hintaan. Paketin vaihto on käytettävissä vain Stripe-tilauksille.
+
+<Steps>
+  <Step title="Avaa valintaikkuna">
+    Avaa tilauksen tietosivu ja napsauta **Change plan**.
+  </Step>
+  <Step title="Valitse uusi paketti">
+    Valitse paketti kohdassa **New package** ja aseta **Quantity**. Paketit on ryhmitelty palveluittain, ja nykyinen paketti on merkitty tekstillä **(current)**.
+  </Step>
+  <Step title="Valitse, milloin muutos tulee voimaan">
+    Valitse kohdassa **When should it take effect?**:
+    - **Immediately** – korotuksessa veloitetaan heti suhteutettu erotus nykyisen jakson loppuun asti. Alennus ei maksa mitään eikä siitä anneta hyvitystä.
+    - **At the next renewal** – nyt ei veloiteta mitään. Uusi hinta tulee voimaan seuraavana laskutuspäivänä.
+
+    Jos paketissa on kiinteä määrä jaksoja, valitse myös, miten **Remaining term** lasketaan.
+  </Step>
+  <Step title="Tarkista yhteenveto ja ota muutos käyttöön">
+    Tarkista **Summary** ja napsauta sitten **Change plan now** tai **Schedule change**.
+  </Step>
+</Steps>
+
+Ajastettu muutos näkyy ilmoituksena valintaikkunan yläosassa. Ilmoituksessa näkyvät uusi paketti, päivämäärä sekä palvelu ja mukautettu hinta, jos ne muuttuvat. Voit perua muutoksen ennen uusimista napsauttamalla **Cancel change**.
+
+### Vaihto toiseen palveluun
+
+Voit siirtää tilauksen saman työtilan toisen palvelun pakettiin. Toisen palvelun paketin valuutan ja laskutusjakson on oltava samat kuin nykyisessä tilauksessa. Sopimattomat paketit näytetään, mutta niitä ei voi valita.
+
+Kun valitset paketin toisesta palvelusta, valintaikkunassa näkyy **Tämä tilaus siirtyy palveluun** ja palvelun nimi.
+
+![Change plan -valintaikkuna, jossa paketit on ryhmitelty palveluittain](/images/subscriptions/change-plan-packages.png)
+
+Muutoksen jälkeen:
+
+- Kestotilaus ja sen tulevat tilaukset kuuluvat uudelle palvelulle.
+- Olemassa olevat tehtävät säilyvät ennallaan. Uuden palvelun oletustehtäviä ei lisätä.
+
+### Mukautetun hinnan asettaminen
+
+Valitse **Mukautettu hinta**, jos haluat laskuttaa oman yksikköhinnan paketin hinnan sijaan. Voit antaa enintään 2 desimaalia tai kokonaislukuja valuutoille, joissa ei ole desimaaleja, kuten JPY.
+
+![Mukautetun hinnan kenttä Change plan -valintaikkunassa](/images/subscriptions/change-plan-custom-price.png)
+
+Stripe veloittaa mukautetun hinnan. Myöhemmät uusimiset säilyttävät sen, kunnes vaihdat paketin uudelleen ilman mukautettua hintaa. **Summary** näyttää kohdat **Mukautettu yksikköhinta** ja **Palvelu**.
+
+![Yhteenveto, jossa näkyvät mukautettu hinta ja uusi palvelu](/images/subscriptions/change-plan-summary.png)
+
+### Rajoitukset
+
+- Paketin vaihto toimii vain Stripe-tilauksille.
+- Laskutusjakson vaihtamista ei tueta. Et voi esimerkiksi siirtää kuukausitilausta vuosipakettiin.
+- Tilauksessa on yksi paketti. Jos haluat laskuttaa useita kohteita yhdellä tilauksella, käytä [palvelujen lisäosia](/fi/services/create-service).
+
 ## Wise-tuki manuaalisille tilauslaskuille
 
 Jos kerää kansainvälisiä maksuja, voit upottaa **Wise-maksulinkin** suoraan tilauslaskuihin. Tämä antaa asiakkaille kätevän tavan maksaa ilman manuaalisen pankkisiirron järjestämistä.

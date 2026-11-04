@@ -102,6 +102,60 @@ Abonelik Ayrıntıları sayfası, hizmetten ve paketten her faturaya ve olay gü
   Tek bir aboneliğin birden fazla bağlı siparişi ve faturası olabilir. Aboneliklere bağlı faturalar, ödemeler alındığında dinamik olarak güncellenir.
 </Note>
 
+## Plan değiştirme
+
+Etkin bir aboneliği farklı bir pakete, miktara veya fiyata taşımak için **Change plan** seçeneğini kullanın. Plan değişiklikleri yalnızca Stripe abonelikleri için kullanılabilir.
+
+<Steps>
+  <Step title="İletişim kutusunu açın">
+    Aboneliğin ayrıntılar sayfasını açın ve **Change plan** seçeneğine tıklayın.
+  </Step>
+  <Step title="Yeni paketi seçin">
+    **New package** altında bir paket seçin ve **Quantity** değerini ayarlayın. Paketler hizmete göre gruplanır ve mevcut paket **(current)** ile işaretlenir.
+  </Step>
+  <Step title="Ne zaman geçerli olacağını seçin">
+    **When should it take effect?** altında şunlardan birini seçin:
+    - **Immediately** — yükseltmede, mevcut döngünün kalan süresi için orantılı fark hemen tahsil edilir. Düşürmede ücret alınmaz ve kredi verilmez.
+    - **At the next renewal** — şimdi hiçbir ücret alınmaz. Yeni fiyat bir sonraki fatura tarihinde başlar.
+
+    Paketin sabit sayıda döngüsü varsa **Remaining term** değerinin nasıl hesaplanacağını da seçin.
+  </Step>
+  <Step title="Özeti kontrol edip uygulayın">
+    **Summary** bölümünü inceleyin, ardından **Change plan now** veya **Schedule change** seçeneğine tıklayın.
+  </Step>
+</Steps>
+
+Planlanmış bir değişiklik, iletişim kutusunun üst kısmında bir bildirim olarak görünür. Bildirimde yeni paket ve tarih, değişiyorsa hizmet ve özel fiyat da yer alır. Yenilemeden önce geri almak için **Cancel change** seçeneğine tıklayın.
+
+### Başka bir hizmete geçme
+
+Bir aboneliği aynı çalışma alanındaki başka bir hizmetin paketine taşıyabilirsiniz. Diğer hizmetin paketi, mevcut abonelikle aynı para birimini ve fatura döngüsünü kullanmalıdır. Uyumlu olmayan paketler gösterilir ancak seçilemez.
+
+Başka bir hizmetten paket seçtiğinizde, iletişim kutusunda **Bu abonelik (hizmet adı) hizmetine taşınacak** notu görünür.
+
+![Paketlerin hizmete göre gruplandığı Change plan iletişim kutusu](/images/subscriptions/change-plan-packages.png)
+
+Değişiklikten sonra:
+
+- Abonelik ve gelecekteki siparişleri yeni hizmete ait olur.
+- Mevcut görevler olduğu gibi kalır. Yeni hizmetin varsayılan görevleri eklenmez.
+
+### Özel fiyat belirleme
+
+Paket fiyatı yerine kendi birim fiyatınızı faturalandırmak için **Özel fiyat** seçeneğini işaretleyin. En fazla 2 ondalık basamak girebilirsiniz; JPY gibi ondalıksız para birimlerinde yalnızca tam sayı girilebilir.
+
+![Change plan iletişim kutusundaki Özel fiyat alanı](/images/subscriptions/change-plan-custom-price.png)
+
+Stripe özel fiyatı tahsil eder. Sonraki yenilemeler, planı özel fiyat olmadan yeniden değiştirene kadar bu fiyatı korur. **Summary** bölümünde **Birim başına özel fiyat** ve **Hizmet** gösterilir.
+
+![Özel fiyatı ve yeni hizmeti gösteren plan değişikliği özeti](/images/subscriptions/change-plan-summary.png)
+
+### Sınırlar
+
+- Plan değişiklikleri yalnızca Stripe aboneliklerinde çalışır.
+- Fatura döngüsünü değiştirme desteklenmez. Örneğin, aylık bir aboneliği yıllık bir pakete taşıyamazsınız.
+- Bir abonelik tek bir paket içerir. Tek bir abonelikte birden fazla kalemi faturalandırmak için [hizmet eklentilerini](/tr/services/create-service) kullanın.
+
 ## Manuel Abonelik Faturaları İçin Wise Desteği
 
 Uluslararası ödemeler topluyorsanız doğrudan abonelik faturalarına bir **Wise ödeme bağlantısı** ekleyebilirsiniz. Bu, müşterilere manuel olarak banka havalesi ayarlamak zorunda kalmadan ödeme yapmaları için uygun bir yol sağlar.

@@ -102,6 +102,60 @@ Stránka podrobností předplatného vám poskytuje kompletní přehled o jakém
   Jedno předplatné může mít propojeno více zakázek a faktur. Faktury vázané na předplatná se dynamicky aktualizují při přijetí plateb.
 </Note>
 
+## Změna plánu
+
+Pomocí **Change plan** převedete aktivní předplatné na jiný balíček, množství nebo cenu. Změny plánu jsou k dispozici jen pro předplatná přes Stripe.
+
+<Steps>
+  <Step title="Otevřete dialog">
+    Otevřete stránku podrobností předplatného a klikněte na **Change plan**.
+  </Step>
+  <Step title="Vyberte nový balíček">
+    V části **New package** vyberte balíček a nastavte **Quantity**. Balíčky jsou seskupené podle služby a aktuální je označen **(current)**.
+  </Step>
+  <Step title="Zvolte, kdy se změna projeví">
+    V části **When should it take effect?** zvolte:
+    - **Immediately** — při přechodu na vyšší balíček se hned účtuje poměrný rozdíl za zbytek aktuálního cyklu. Při přechodu na nižší balíček se nic neúčtuje a nevzniká žádný kredit.
+    - **At the next renewal** — teď se nic neúčtuje. Nová cena platí od příštího data fakturace.
+
+    Pokud má balíček pevný počet cyklů, zvolte také, jak se počítá **Remaining term**.
+  </Step>
+  <Step title="Zkontrolujte souhrn a změnu použijte">
+    Projděte **Summary** a klikněte na **Change plan now** nebo **Schedule change**.
+  </Step>
+</Steps>
+
+Naplánovaná změna se zobrazí jako upozornění v horní části dialogu s novým balíčkem, datem a také službou a vlastní cenou, pokud se mění. Chcete-li ji před obnovením vrátit, klikněte na **Cancel change**.
+
+### Přechod na jinou službu
+
+Předplatné můžete převést na balíček jiné služby ve stejném pracovním prostoru. Balíček jiné služby musí mít stejnou měnu a stejný fakturační cyklus jako aktuální předplatné. Balíčky, které neodpovídají, se zobrazí, ale nelze je vybrat.
+
+Když vyberete balíček z jiné služby, dialog zobrazí **Toto předplatné se přesune do** a název služby.
+
+![Dialog Change plan s balíčky seskupenými podle služby](/images/subscriptions/change-plan-packages.png)
+
+Po změně:
+
+- Předplatné a jeho budoucí objednávky patří k nové službě.
+- Stávající úkoly zůstanou beze změny. Výchozí úkoly nové služby se nepřidají.
+
+### Nastavení vlastní ceny
+
+Zaškrtněte **Vlastní cena** a místo ceny balíčku účtujte vlastní cenu za jednotku. Můžete zadat až 2 desetinná místa, u měn bez desetinných míst, jako je JPY, jen celá čísla.
+
+![Pole Vlastní cena v dialogu Change plan](/images/subscriptions/change-plan-custom-price.png)
+
+Stripe účtuje vlastní cenu. Další obnovení si ji ponechají, dokud plán znovu nezměníte bez vlastní ceny. **Summary** zobrazuje **Vlastní cena za jednotku** a **Služba**.
+
+![Souhrn změny plánu s vlastní cenou a novou službou](/images/subscriptions/change-plan-summary.png)
+
+### Omezení
+
+- Změny plánu fungují jen pro předplatná přes Stripe.
+- Změna fakturačního cyklu není podporována. Měsíční předplatné například nemůžete převést na roční balíček.
+- Předplatné obsahuje jeden balíček. Chcete-li v jednom předplatném účtovat více položek, použijte [doplňky služeb](/cs/services/create-service).
+
 ## Podpora Wise pro ruční faktury předplatného
 
 Pokud vybíráte mezinárodní platby, můžete přímo do faktur předplatného vložit **platební odkaz Wise**. Klientům tak poskytnete pohodlný způsob platby bez nutnosti ručního nastavování bankovního převodu.
