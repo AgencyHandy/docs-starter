@@ -163,7 +163,7 @@ AgencyHandy includes pre-built templates for every automated email it sends. You
   </Step>
   <Step title="Customize the template fields">
     Update the following as needed:
-    - **Sender Email:** Choose which configured email address sends this template.
+    - **Sender Email:** Choose which address sends this template. The list always includes **Default sender**, followed by every verified sender email from Email Setup. Without a custom email or SMTP, keep **Default sender**: the template goes out from `noreply@agencyhandy.com` (or from your primary verified sender once you add one), and you can still edit and save the subject and body. Only the default sender and verified addresses can be chosen; you cannot type another From address. When SMTP is connected, the sender is locked to your SMTP From address.
     - **Subject:** Write a clear, concise subject line.
     - **Body:** Edit the message content to match your agency's tone and messaging.
     - **Dynamic Variables:** Insert placeholders like `{{client_name}}`, `{{company_name}}`, or `{{invoice_id}}` to auto-populate client-specific data.
