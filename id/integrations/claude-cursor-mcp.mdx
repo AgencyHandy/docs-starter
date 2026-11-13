@@ -28,7 +28,7 @@ Keduanya memakai kunci API ruang kerja yang sama dan memberi agen perangkat yang
 | **Ruang kerja AgencyHandy** | Akses ke **Workspace Config** → **API Key** |
 | **Host MCP** | Claude Desktop atau Cursor di komputer Anda, atau agen apa pun yang bisa memanggil server MCP lewat HTTP |
 | **Node.js** *(hanya penyiapan lokal)* | Versi **20** atau lebih baru (cek dengan `node -v`) |
-| **Paket MCP** *(hanya penyiapan lokal)* | `npx -y agencyhandy-mcp@1` (tag `1` memuat **1.7.2+**) |
+| **Paket MCP** *(hanya penyiapan lokal)* | `npx -y agencyhandy-mcp@1` (tag `1` memuat **1.17.0**) |
 
 Paket MCP di npm adalah `agencyhandy-mcp`. Claude dan Cursor menjalankannya dengan `npx -y agencyhandy-mcp@1`.
 
@@ -181,7 +181,7 @@ MCP mendukung membaca workspace dan tindakan (buat, tugaskan, kirim, perbarui) d
 - Buat kunci dan salin konfigurasi di aplikasi pada **Workspace Config** → **API Key**
 
 <Note>
-  Latest package on the `1` tag is **1.7.2+**. Claude can read **`ah://api-context`** (also inside **`ah://full-context`**) for API path gotchas: leads, projects/orders, tasks, comments, labels, clients, invoices, vouchers, and forms.
+  Latest package on the `1` tag is **1.17.0**. Claude can read **`ah://api-context`** (also inside **`ah://full-context`**) for API path gotchas: leads, projects/orders, tasks, comments, labels, clients, invoices, vouchers, and forms.
 </Note>
 
 - Server terkelola untuk agen cloud: `https://mcp.agencyhandy.com/` (cek kondisi di `/health`)

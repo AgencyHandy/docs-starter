@@ -28,7 +28,7 @@ description: "اربط Claude أو Cursor أو وكيلاً مستضافاً ف�
 | **مساحة عمل AgencyHandy** | الوصول إلى **Workspace Config** ← **API Key** |
 | **مضيف MCP** | Claude Desktop أو Cursor على جهازك، أو أي وكيل يستطيع استدعاء خادم MCP عبر HTTP |
 | **Node.js** *(للإعداد المحلي فقط)* | الإصدار **20** أو أحدث (تحقق بـ `node -v`) |
-| **حزمة MCP** *(للإعداد المحلي فقط)* | `npx -y agencyhandy-mcp@1` (الوسم `1` يوفّر **1.7.2+**) |
+| **حزمة MCP** *(للإعداد المحلي فقط)* | `npx -y agencyhandy-mcp@1` (الوسم `1` يوفّر **1.17.0**) |
 
 حزمة MCP على npm هي `agencyhandy-mcp`. يشغّلها Claude وCursor عبر `npx -y agencyhandy-mcp@1`.
 
@@ -181,7 +181,7 @@ claude mcp add agency-handy --transport http https://mcp.agencyhandy.com/ \
 - أنشئ المفاتيح وانسخ الإعداد داخل التطبيق من **Workspace Config** → **API Key**
 
 <Note>
-  Latest package on the `1` tag is **1.7.2+**. Claude can read **`ah://api-context`** (also inside **`ah://full-context`**) for API path gotchas: leads, projects/orders, tasks, comments, labels, clients, invoices, vouchers, and forms.
+  Latest package on the `1` tag is **1.17.0**. Claude can read **`ah://api-context`** (also inside **`ah://full-context`**) for API path gotchas: leads, projects/orders, tasks, comments, labels, clients, invoices, vouchers, and forms.
 </Note>
 
 - خادم مستضاف للوكلاء السحابيين: `https://mcp.agencyhandy.com/` (فحص الحالة على `/health`)

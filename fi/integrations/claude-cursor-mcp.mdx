@@ -28,7 +28,7 @@ Molemmat käyttävät samaa työtilan API-avainta ja antavat agentille samat ty�
 | **AgencyHandy-työtila** | Pääsy kohtaan **Workspace Config** → **API Key** |
 | **MCP-isäntä** | Claude Desktop tai Cursor koneellasi, tai mikä tahansa agentti, joka osaa kutsua MCP-palvelinta HTTP:n yli |
 | **Node.js** *(vain paikallinen käyttöönotto)* | Versio **20** tai uudempi (tarkista `node -v`) |
-| **MCP-paketti** *(vain paikallinen käyttöönotto)* | `npx -y agencyhandy-mcp@1` (tunniste `1` toimittaa **1.7.2+**) |
+| **MCP-paketti** *(vain paikallinen käyttöönotto)* | `npx -y agencyhandy-mcp@1` (tunniste `1` toimittaa **1.17.0**) |
 
 npm:n MCP-paketti on `agencyhandy-mcp`. Claude ja Cursor suorittavat sen komennolla `npx -y agencyhandy-mcp@1`.
 
@@ -183,6 +183,6 @@ MCP tukee työtilan lukemista ja toimintoja (luo, määrää, lähetä, päivit�
 - Paketti: [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) npm:ssä (`npx -y agencyhandy-mcp@1`)
 
 <Note>
-  Latest package on the `1` tag is **1.7.2+**. Claude can read **`ah://api-context`** (also inside **`ah://full-context`**) for API path gotchas: leads, projects/orders, tasks, comments, labels, clients, invoices, vouchers, and forms.
+  Latest package on the `1` tag is **1.17.0**. Claude can read **`ah://api-context`** (also inside **`ah://full-context`**) for API path gotchas: leads, projects/orders, tasks, comments, labels, clients, invoices, vouchers, and forms.
 </Note>
 

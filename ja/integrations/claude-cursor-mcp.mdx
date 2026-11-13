@@ -28,7 +28,7 @@ AgencyHandy の MCP 接続により、**Claude** または **Cursor** に自然�
 | **AgencyHandy ワークスペース** | **Workspace Config** → **API Key** へのアクセス |
 | **MCP ホスト** | パソコン上の Claude Desktop や Cursor、または HTTP で MCP サーバーを呼び出せるエージェント |
 | **Node.js** *(ローカル設定のみ)* | バージョン **20** 以降（`node -v` で確認） |
-| **MCP パッケージ** *(ローカル設定のみ)* | `npx -y agencyhandy-mcp@1`（`1` タグで **1.7.2+** を配信） |
+| **MCP パッケージ** *(ローカル設定のみ)* | `npx -y agencyhandy-mcp@1`（`1` タグで **1.17.0** を配信） |
 
 npm 上の MCP パッケージは `agencyhandy-mcp` です。Claude と Cursor は `npx -y agencyhandy-mcp@1` で実行します。
 
@@ -181,7 +181,7 @@ MCP は API キーでワークスペースの読み取りと操作（作成・�
 - アプリ内の **Workspace Config** → **API Key** でキーを生成し設定をコピー
 
 <Note>
-  Latest package on the `1` tag is **1.7.2+**. Claude can read **`ah://api-context`** (also inside **`ah://full-context`**) for API path gotchas: leads, projects/orders, tasks, comments, labels, clients, invoices, vouchers, and forms.
+  Latest package on the `1` tag is **1.17.0**. Claude can read **`ah://api-context`** (also inside **`ah://full-context`**) for API path gotchas: leads, projects/orders, tasks, comments, labels, clients, invoices, vouchers, and forms.
 </Note>
 
 - クラウドエージェント向けホスト型サーバー: `https://mcp.agencyhandy.com/`（ヘルスチェックは `/health`）
