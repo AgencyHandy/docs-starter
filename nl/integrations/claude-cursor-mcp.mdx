@@ -142,6 +142,29 @@ Als twee teamleden Sara heten, vraagt Claude wie je bedoelt. Het **verzint geen*
 
 Neem altijd een **volledige naam** of **e-mail** op in de prompt wanneer namen kunnen botsen.
 
+## Klantcredits, weergaven van bestelformulieren en klantbedrijven
+
+Beschikbaar in **`agencyhandy-mcp@1.17.0`**. Dit zijn ook de tools die **Handy**, de assistent in de app, gebruikt.
+
+| Behoefte | Tool | Wat het doet |
+|---|---|---|
+| Credits van een klant | `ah_client_credits_get` | Saldo, opgeslagen tarief in credits per uur, het aantal uren dat het saldo dekt, maandelijkse credits, recente geschiedenis |
+| Credits toevoegen of aftrekken | `ah_client_credits_adjust` | Voegt gratis credits toe of trekt ze af (geen aankoop), of **uren** × het credits-per-uurtarief van de klant; de klant ziet de notitie in de eigen creditgeschiedenis |
+| Maandelijkse credits | `ah_client_credit_allowance_set` / `ah_client_credit_allowance_stop` | **Aanvullen tot** N credits (ongebruikte credits stapelen niet op) of N credits **toevoegen** (die worden meegenomen), op een dag van de maand die je kiest |
+| Wie een bestelformulier heeft geopend | `ah_order_form_views` | Weergaven per bestelformulier, laatst bekeken, formulieren die niemand heeft geopend (alleen bezoeken van klanten) |
+| Partner in meerdere bedrijven | `ah_client_company_add_member` / `ah_client_company_members` | Bestaande klanten aan een klantbedrijf toevoegen; de leden van een bedrijf tonen of alle bedrijven waar één klant bij hoort |
+
+**Voorbeeldprompts**
+
+- *„Trek 2 uur marketingwerk af van de credits van Elizabeth, tegen 120 credits per uur.”*
+- *„Geef Acme elke maand op de 1e 360 credits, aangevuld tot 360.”*
+- *„Welke bestelformulieren heeft niemand geopend?”*
+- *„Voeg de partner toe aan de klantbedrijven Apple en Samsung.”*
+
+<Note>
+  In **Handy** wachten het toevoegen of aftrekken van credits en het instellen van maandelijkse credits altijd op je goedkeuring, en alleen een **Superbeheerder** of **Beheerder** kan goedkeuren. Creditwijzigingen kun je niet ongedaan maken vanuit de chat; Handy biedt in plaats daarvan aan de tegenovergestelde correctie te maken.
+</Note>
+
 ## Wat nu werkt vs nog niet
 
 | Werkt nu | Nog niet beschikbaar via MCP |

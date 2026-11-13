@@ -142,6 +142,29 @@ Jamoada ikkita Sara bo‘lsa, Claude qaysi birini nazarda tutayotganingizni so�
 
 Ismlar to‘qnashishi mumkin bo‘lsa, promptda doimo **to‘liq ism** yoki **email**ni kiriting.
 
+## Mijoz kreditlari, buyurtma formasi ko‘rishlari va mijoz kompaniyalari
+
+**`agencyhandy-mcp@1.17.0`** versiyasida chiqdi. Ilova ichidagi yordamchi **Handy** ham aynan shulardan foydalanadi.
+
+| Ehtiyoj | Vosita | Nima qiladi |
+|---|---|---|
+| Mijoz kreditlari | `ah_client_credits_get` | Balans, saqlangan soatiga kredit stavkasi, balans qoplaydigan soatlar, oylik kreditlar, so‘nggi tarix |
+| Kredit qo‘shish yoki ayirish | `ah_client_credits_adjust` | Kreditlarni bepul (xaridsiz) qo‘shadi yoki ayiradi, yoki **soatlar** × mijozning soatiga kredit stavkasi; mijoz izohni o‘z kredit tarixida ko‘radi |
+| Oylik kreditlar | `ah_client_credit_allowance_set` / `ah_client_credit_allowance_stop` | Siz tanlagan oy kunida N kreditgacha **to‘ldiradi** (ishlatilmaganlari to‘planib qolmaydi) yoki N kredit **qo‘shadi** (ular keyingi oyga o‘tadi) |
+| Buyurtma formasini kim ochgan | `ah_order_form_views` | Har bir buyurtma formasi bo‘yicha ko‘rishlar, oxirgi ko‘rish, hech kim ochmagan formalar (faqat mijoz tashriflari) |
+| Bir nechta kompaniyadagi hamkor | `ah_client_company_add_member` / `ah_client_company_members` | Mavjud mijozlarni mijoz kompaniyasiga qo‘shadi; kompaniya a’zolarini yoki bitta mijoz a’zo bo‘lgan barcha kompaniyalarni ko‘rsatadi |
+
+**Namuna so‘rovlar**
+
+- *«Elizabethning kreditlaridan soatiga 120 kredit hisobida 2 soatlik marketing ishini ayir.»*
+- *«Acme’ga har oyning 1-sanasida 360 kreditgacha to‘ldirib, 360 kredit ber.»*
+- *«Qaysi buyurtma formalarini hech kim ochmagan?»*
+- *«Hamkorni Apple va Samsung mijoz kompaniyalariga qo‘sh.»*
+
+<Note>
+  **Handy**’da kredit qo‘shish yoki ayirish va oylik kreditlarni sozlash har doim sizning tasdig‘ingizni kutadi va faqat **Super Admin** yoki **Admin** tasdiqlay oladi. Kredit o‘zgarishlarini chatdan bekor qilib bo‘lmaydi; buning o‘rniga Handy teskari tuzatish kiritishni taklif qiladi.
+</Note>
+
 ## Hozir ishlaydigan vs hali emas
 
 | Hozir ishlaydi | MCP orqali hali yo‘q |

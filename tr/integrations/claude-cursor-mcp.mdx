@@ -142,6 +142,29 @@ Ekipte iki Sara varsa Claude hangisini kastettiğinizi sorar. ID **uydurmaz** ve
 
 Adlar çakışabileceğinde istemde her zaman **tam ad** veya **e-posta** ekleyin.
 
+## Müşteri kredileri, sipariş formu görüntülemeleri ve müşteri şirketleri
+
+**`agencyhandy-mcp@1.17.0`** ile geldi. Uygulama içi asistan **Handy** de bunları kullanır.
+
+| İhtiyaç | Araç | Ne yapar |
+|---|---|---|
+| Bir müşterinin kredileri | `ah_client_credits_get` | Bakiye, kayıtlı saat başına kredi oranı, bakiyenin karşıladığı saat, aylık krediler, son geçmiş |
+| Kredi ekleme veya düşme | `ah_client_credits_adjust` | Ücretsiz kredi ekler veya düşer (satın alma yok) ya da **saat** × müşterinin saat başına kredi oranı kadar; müşteri notu kendi kredi geçmişinde görür |
+| Aylık krediler | `ah_client_credit_allowance_set` / `ah_client_credit_allowance_stop` | Seçtiğiniz ayın gününde N krediye **tamamlar** (kullanılmayanlar birikmez) veya N kredi **ekler** (sonraki aya devreder) |
+| Sipariş formunu kim açtı | `ah_order_form_views` | Sipariş formu başına görüntülemeler, son görüntülenme, kimsenin açmadığı formlar (yalnızca müşteri ziyaretleri) |
+| Birkaç şirketteki iş ortağı | `ah_client_company_add_member` / `ah_client_company_members` | Mevcut müşterileri bir müşteri şirketine ekler; bir şirketin üyelerini veya bir müşterinin dahil olduğu tüm şirketleri listeler |
+
+**Örnek istemler**
+
+- *"Elizabeth'in kredilerinden saati 120 krediden 2 saatlik pazarlama işini düş."*
+- *"Acme'ye her ayın 1'inde 360'a tamamlayarak 360 kredi ver."*
+- *"Hangi sipariş formlarını kimse açmadı?"*
+- *"İş ortağını Apple ve Samsung müşteri şirketlerine ekle."*
+
+<Note>
+  **Handy**'de kredi ekleme veya düşme ve aylık kredi ayarlama her zaman onayınızı bekler ve yalnızca bir **Süper Yönetici** veya **Yönetici** onaylayabilir. Kredi değişiklikleri sohbetten geri alınamaz; Handy bunun yerine ters yönde bir düzeltme yapmayı önerir.
+</Note>
+
 ## Şimdi çalışan vs henüz değil
 
 | Şimdi çalışıyor | MCP’den henüz yok |

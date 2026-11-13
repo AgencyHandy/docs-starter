@@ -142,6 +142,29 @@ Si deux collègues s’appellent toutes les deux Sara, Claude demandera laquelle
 
 Incluez toujours un **nom complet** ou un **e-mail** dans l’invite lorsque les noms peuvent entrer en collision.
 
+## Crédits clients, consultations des formulaires de commande et sociétés clientes
+
+Disponible depuis **`agencyhandy-mcp@1.17.0`**. **Handy**, l'assistant intégré à l'application, utilise également ces outils.
+
+| Besoin | Outil | Ce qu'il fait |
+|---|---|---|
+| Les crédits d'un client | `ah_client_credits_get` | Solde, taux de crédits par heure enregistré, heures couvertes par le solde, crédits mensuels, historique récent |
+| Ajouter ou déduire des crédits | `ah_client_credits_adjust` | Ajoute ou déduit des crédits gratuitement (sans achat), ou des **heures** × le taux de crédits par heure du client ; le client voit la note dans son historique de crédits |
+| Crédits mensuels | `ah_client_credit_allowance_set` / `ah_client_credit_allowance_stop` | **Compléter jusqu'à** N crédits (les crédits inutilisés ne s'accumulent pas) ou **ajouter** N crédits (ils sont reportés), le jour du mois de votre choix |
+| Qui a ouvert un formulaire de commande | `ah_order_form_views` | Consultations par formulaire de commande, dernière consultation, formulaires que personne n'a ouverts (visites des clients uniquement) |
+| Partenaire dans plusieurs sociétés | `ah_client_company_add_member` / `ah_client_company_members` | Ajoute des clients existants à une société cliente ; liste les membres d'une société ou toutes les sociétés dont un client fait partie |
+
+**Exemples de prompts**
+
+- *« Déduis 2 heures de travail marketing des crédits d'Elizabeth à 120 crédits de l'heure. »*
+- *« Donne à Acme 360 crédits chaque mois le 1er, en complétant jusqu'à 360. »*
+- *« Quels formulaires de commande n'ont été ouverts par personne ? »*
+- *« Ajoute le partenaire aux sociétés clientes Apple et Samsung. »*
+
+<Note>
+  Dans **Handy**, l'ajout ou la déduction de crédits et la configuration des crédits mensuels attendent toujours votre approbation, et seul un **super administrateur** ou un **administrateur** peut approuver. Les modifications de crédits ne peuvent pas être annulées depuis le chat ; Handy propose plutôt d'effectuer l'ajustement inverse.
+</Note>
+
 ## Ce qui fonctionne maintenant vs pas encore
 
 | Fonctionne maintenant | Pas encore disponible via MCP |

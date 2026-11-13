@@ -142,6 +142,29 @@ Jeśli dwie osoby w zespole nazywają się Sara, Claude zapyta, o którą chodzi
 
 Zawsze podawaj **pełne imię i nazwisko** lub **e-mail** w prompcie, gdy imiona mogą się kolidować.
 
+## Kredyty klientów, wyświetlenia formularzy zamówień i firmy klienckie
+
+Dostępne od **`agencyhandy-mcp@1.17.0`**. Z tych samych narzędzi korzysta **Handy**, asystent w aplikacji.
+
+| Potrzeba | Narzędzie | Co robi |
+|---|---|---|
+| Kredyty klienta | `ah_client_credits_get` | Saldo, zapisana stawka kredytów za godzinę, liczba godzin pokrywanych przez saldo, kredyty miesięczne, ostatnia historia |
+| Dodawanie lub odejmowanie kredytów | `ah_client_credits_adjust` | Dodaje lub odejmuje kredyty bezpłatnie (bez zakupu) albo jako **godziny** × stawka kredytów za godzinę klienta; klient widzi notatkę w swojej historii kredytów |
+| Kredyty miesięczne | `ah_client_credit_allowance_set` / `ah_client_credit_allowance_stop` | **Uzupełnia do** N kredytów (niewykorzystane się nie kumulują) lub **dodaje** N kredytów (przechodzą na kolejny miesiąc), w wybranym dniu miesiąca |
+| Kto otworzył formularz zamówienia | `ah_order_form_views` | Wyświetlenia każdego formularza zamówienia, ostatnie wyświetlenie, formularze, których nikt nie otworzył (tylko wizyty klientów) |
+| Partner w kilku firmach | `ah_client_company_add_member` / `ah_client_company_members` | Dodaje istniejących klientów do firmy klienckiej; wyświetla członków firmy lub wszystkie firmy, do których należy dany klient |
+
+**Przykładowe prompty**
+
+- *„Odejmij 2 godziny pracy marketingowej z kredytów Elizabeth po 120 kredytów za godzinę.”*
+- *„Dawaj Acme 360 kredytów co miesiąc 1. dnia, uzupełniając do 360.”*
+- *„Których formularzy zamówień nikt nie otworzył?”*
+- *„Dodaj partnera do firm klienckich Apple i Samsung.”*
+
+<Note>
+  W **Handy** dodawanie i odejmowanie kredytów oraz ustawianie kredytów miesięcznych zawsze czeka na Twoją akceptację, a zatwierdzić może tylko **Super Administrator** lub **Administrator**. Zmian kredytów nie można cofnąć z czatu; Handy zaproponuje w zamian korektę w przeciwną stronę.
+</Note>
+
 ## Co działa teraz vs jeszcze nie
 
 | Działa teraz | Jeszcze niedostępne w MCP |

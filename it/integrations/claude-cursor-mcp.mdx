@@ -142,6 +142,29 @@ Se due colleghe si chiamano entrambe Sara, Claude chiede a quale ti riferisci. *
 
 Includi sempre un **nome completo** o un’**email** nel prompt quando i nomi possono entrare in conflitto.
 
+## Crediti dei clienti, visualizzazioni dei moduli d'ordine e aziende cliente
+
+Disponibile in **`agencyhandy-mcp@1.17.0`**. Sono gli stessi strumenti usati da **Handy**, l'assistente integrato nell'app.
+
+| Esigenza | Strumento | Cosa fa |
+|---|---|---|
+| I crediti di un cliente | `ah_client_credits_get` | Saldo, tariffa crediti per ora salvata, ore coperte dal saldo, crediti mensili, cronologia recente |
+| Aggiungere o detrarre crediti | `ah_client_credits_adjust` | Aggiunge o detrae crediti gratuitamente (senza acquisto), oppure **ore** × la tariffa crediti per ora del cliente; il cliente vede la nota nella sua cronologia crediti |
+| Crediti mensili | `ah_client_credit_allowance_set` / `ah_client_credit_allowance_stop` | **Ricarica fino a** N crediti (quelli non usati non si accumulano) oppure **aggiungi** N crediti (vengono riportati), nel giorno del mese che scegli |
+| Chi ha aperto un modulo d'ordine | `ah_order_form_views` | Visualizzazioni per modulo d'ordine, ultima visualizzazione, moduli che nessuno ha aperto (solo visite dei clienti) |
+| Partner in più aziende | `ah_client_company_add_member` / `ah_client_company_members` | Aggiunge clienti esistenti a un'azienda cliente; elenca i membri di un'azienda o tutte le aziende di cui fa parte un cliente |
+
+**Esempi di prompt**
+
+- *"Detrai 2 ore di lavoro di marketing dai crediti di Elizabeth a 120 crediti l'ora."*
+- *"Dai ad Acme 360 crediti ogni mese il giorno 1, ricaricando fino a 360."*
+- *"Quali moduli d'ordine non ha aperto nessuno?"*
+- *"Aggiungi il partner alle aziende cliente Apple e Samsung."*
+
+<Note>
+  In **Handy**, l'aggiunta o la detrazione di crediti e l'impostazione dei crediti mensili attendono sempre la tua approvazione, e solo un **super amministratore** o un **amministratore** può approvare. Le modifiche ai crediti non si possono annullare dalla chat; Handy propone invece di fare la rettifica opposta.
+</Note>
+
 ## Cosa funziona ora vs non ancora
 
 | Funziona ora | Non ancora disponibile da MCP |

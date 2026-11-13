@@ -142,6 +142,29 @@ Hvis to teammedlemmer heter Sara, spør Claude hvem du mener. Den **finner ikke 
 
 Ta alltid med et **fullt navn** eller en **e-post** i prompten når navn kan kollidere.
 
+## Kundekreditter, visninger av orderskjemaer og kundeselskaper
+
+Tilgjengelig i **`agencyhandy-mcp@1.17.0`**. Det er også disse verktøyene **Handy**, assistenten i appen, bruker.
+
+| Behov | Verktøy | Hva det gjør |
+|---|---|---|
+| En kundes kreditter | `ah_client_credits_get` | Saldo, lagret sats for kreditter per time, timer saldoen dekker, månedlige kreditter, nylig historikk |
+| Legge til eller trekke fra kreditter | `ah_client_credits_adjust` | Legger til eller trekker fra kreditter gratis (uten kjøp), eller **timer** × kundens sats for kreditter per time; kunden ser notatet i kreditthistorikken sin |
+| Månedlige kreditter | `ah_client_credit_allowance_set` / `ah_client_credit_allowance_stop` | **Fyll opp til** N kreditter (ubrukte hoper seg ikke opp) eller **legg til** N kreditter (de overføres), på en dag i måneden du velger |
+| Hvem som åpnet et orderskjema | `ah_order_form_views` | Visninger per orderskjema, siste visning, skjemaer ingen har åpnet (bare kundebesøk) |
+| Partner i flere selskaper | `ah_client_company_add_member` / `ah_client_company_members` | Legger til eksisterende kunder i et kundeselskap; viser medlemmene i et selskap eller alle selskapene én kunde er med i |
+
+**Eksempelprompter**
+
+- *«Trekk 2 timer markedsføringsarbeid fra Elizabeths kreditter med 120 kreditter i timen.»*
+- *«Gi Acme 360 kreditter hver måned den 1., fylt opp til 360.»*
+- *«Hvilke orderskjemaer har ingen åpnet?»*
+- *«Legg til partneren i kundeselskapene Apple og Samsung.»*
+
+<Note>
+  I **Handy** venter det å legge til eller trekke fra kreditter og å sette opp månedlige kreditter alltid på godkjenningen din, og bare en **superadministrator** eller **administrator** kan godkjenne. Kredittendringer kan ikke angres fra chatten; Handy tilbyr i stedet å gjøre den motsatte justeringen.
+</Note>
+
 ## Hva som fungerer nå vs ennå ikke
 
 | Fungerer nå | Ikke tilgjengelig via MCP ennå |
