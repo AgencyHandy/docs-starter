@@ -141,6 +141,85 @@ Wenn ein Kunde über eine manuelle Methode zahlt, wird eine Guthabenanfrage erst
 
 Die Registerkarte Guthaben zeigt den verfügbaren Saldo des Kunden, den vollständigen Transaktionsverlauf, den laufenden Saldo und Transaktionsreferenzen.
 
+## Credits hinzufügen oder abziehen
+
+Administratoren und Super-Administratoren können dem Guthaben eines Kunden kostenlos Credits hinzufügen oder davon abziehen. Nutzen Sie das, um einen Bonus zu vergeben, Arbeit im Rahmen einer Tauschvereinbarung zu verbuchen oder ein Guthaben zu korrigieren.
+
+<Steps>
+  <Step title="Öffnen Sie die Registerkarte Guthaben des Kunden">
+    Gehen Sie zu **Kunden**, klicken Sie auf den Namen des Kunden und wählen Sie die Registerkarte **Guthaben**.
+  </Step>
+  <Step title="Klicken Sie auf Credits anpassen">
+    Klicken Sie neben dem Guthaben auf **Credits anpassen**.
+  </Step>
+  <Step title="Wählen Sie Credits hinzufügen oder Credits abziehen">
+    Beim Abziehen zeigt der Dialog das aktuelle Guthaben des Kunden an.
+  </Step>
+  <Step title="Geben Sie den Betrag ein">
+    Wählen Sie unter **Einheit** die Option **Credits**, um eine ganze Zahl an Credits einzugeben, oder **Stunden**, um Stunden (bis zu 2 Dezimalstellen) und **Credits pro Stunde** einzugeben. Im Stundenmodus wird der umgerechnete Betrag während der Eingabe angezeigt, zum Beispiel 2 Stunden × 120 Credits pro Stunde = 240 Credits.
+  </Step>
+  <Step title="Fügen Sie eine Notiz hinzu (optional)">
+    Geben Sie bis zu 280 Zeichen ein, zum Beispiel „3 Stunden Marketing, Oktober“. Die Notiz erscheint im Credit-Verlauf.
+  </Step>
+  <Step title="Bestätigen Sie">
+    Klicken Sie auf **Credits hinzufügen** oder **Credits abziehen**.
+  </Step>
+</Steps>
+
+<Note>
+  Der Satz für Credits pro Stunde wird für jeden Kunden gespeichert und beim nächsten Mal, wenn Sie **Stunden** wählen, vorausgefüllt.
+</Note>
+
+<Warning>
+  Ein Abzug kann das Guthaben nie unter null bringen. Ist der Betrag höher als das aktuelle Guthaben, zeigt der Dialog **Das ist mehr als das aktuelle Guthaben** an und der Abzug wird nicht gespeichert („Not enough credits“).
+</Warning>
+
+## Jeden Monat Credits vergeben
+
+**Monatliche Credits** fügen einem Kunden automatisch am selben Tag jedes Monats Credits hinzu. Das eignet sich für Retainer und Tauschvereinbarungen. Nur Administratoren und Super-Administratoren können sie einrichten.
+
+<Steps>
+  <Step title="Öffnen Sie Monatliche Credits">
+    Klicken Sie auf der Registerkarte **Guthaben** des Kunden neben dem Guthaben auf **Monatliche Credits**.
+  </Step>
+  <Step title="Legen Sie Betrag und Tag fest">
+    Geben Sie die **Credits pro Monat** und den **Tag des Monats** (1–28) ein.
+  </Step>
+  <Step title="Wählen Sie die Art der Vergabe">
+    Wählen Sie unter **Art der Vergabe** einen der beiden Modi (siehe Tabelle unten).
+  </Step>
+  <Step title="Fügen Sie eine Notiz hinzu (optional)">
+    Die Notiz wird bei jeder Zeile mit monatlichen Credits im Credit-Verlauf angezeigt.
+  </Step>
+  <Step title="Aktivieren und speichern">
+    Stellen Sie sicher, dass der Zeitplan eingeschaltet ist (**Aktiv**), und klicken Sie dann auf **Speichern**.
+  </Step>
+</Steps>
+
+| Modus | Was jeden Monat passiert |
+|-------|--------------------------|
+| **Diesen Betrag jeden Monat hinzufügen** | Der Betrag wird dem Guthaben hinzugefügt. Ungenutzte Credits bleiben erhalten. |
+| **Jeden Monat auf diesen Betrag auffüllen** | Das Guthaben wird wieder auf den Betrag aufgefüllt. Ungenutzte Credits werden nicht übertragen, und es wird nichts hinzugefügt, wenn das Guthaben den Betrag bereits erreicht oder übersteigt. |
+
+Nach dem Speichern zeigt die Registerkarte Guthaben den Zeitplan (zum Beispiel „Monatlich: 360 Credits am 1. des Monats“), das nächste Ausführungsdatum und die letzte Vergabe.
+
+- Credits werden automatisch hinzugefügt. Sie müssen jeden Monat nichts tun.
+- Wird ein geplanter Monat verpasst, werden seine Credits einmal hinzugefügt, wenn der Zeitplan das nächste Mal läuft, niemals mehrfach.
+- Solange der Workspace oder der Kunde inaktiv ist, werden keine Credits hinzugefügt.
+- Zum Beenden öffnen Sie **Monatliche Credits**, schalten den Zeitplan aus und klicken auf **Speichern**. Künftige Vergaben werden gestoppt; bereits hinzugefügte Credits bleiben im Guthaben.
+
+### Beispiel: eine monatliche Tauschvereinbarung
+
+Sie vereinbaren, jeden Monat 3 Stunden Arbeit zu 120 Credits pro Stunde zu tauschen.
+
+1. Stellen Sie **Monatliche Credits** auf 360 Credits pro Monat am Tag 1 mit **Jeden Monat auf diesen Betrag auffüllen** ein. Wählen Sie stattdessen **Diesen Betrag jeden Monat hinzufügen**, wenn ungenutzte Stunden übertragen werden sollen.
+2. Während Sie die Arbeit erledigen, klicken Sie auf **Credits anpassen**, wählen **Credits abziehen** und **Stunden** und geben die aufgewendete Zeit ein, zum Beispiel 1,5 Stunden zu 120 Credits pro Stunde (180 Credits), mit einer Notiz wie „Texte für die Startseite, November“.
+3. Der Kunde sieht jeden Abzug mit den Stunden und Ihrer Notiz auf seiner Guthaben-Seite.
+
+<Note>
+  Credits verfallen nie. Credits, die Sie hinzufügen, die gekauft oder monatlich vergeben werden, bleiben im Guthaben, bis sie ausgegeben oder abgezogen werden.
+</Note>
+
 ## Guthabentransaktionen verstehen
 
 Jede Guthabenaktivität wird im Transaktionsverlauf des Kunden erfasst.
@@ -154,3 +233,10 @@ Jede Guthabenaktivität wird im Transaktionsverlauf des Kunden erfasst.
 - Mit Guthaben bezahlte Rechnung
 
 Jede Transaktion zeigt Datum, Typ, Referenz, Guthabenbetrag und laufenden Saldo und bietet so einen vollständigen Prüfpfad.
+
+**Credits, die Sie manuell hinzufügen oder abziehen, sowie monatliche Credits** erscheinen im selben Verlauf mit einer Referenz, die ihre Herkunft zeigt:
+
+- **Hinzugefügt von** *Name* oder **Abgezogen von** *Name*: Ein Teammitglied hat **Credits anpassen** verwendet.
+- **Monatliche Credits**: vom monatlichen Zeitplan hinzugefügt.
+
+Wurde der Betrag in Stunden eingegeben, zeigt die Zeile auch die Stunden und den Satz (zum Beispiel „2 h × 120/h“), gefolgt von Ihrer Notiz. Kunden sehen diese Zeilen samt Notiz auf ihrer Guthaben-Seite, und Exporte des Credit-Verlaufs enthalten die Notiz.

@@ -165,6 +165,85 @@ When a client pays via a manual method, a credit request is created. You must re
 
 The Credits tab shows the client's available balance, full transaction history, running balance, and transaction references.
 
+## Add or deduct credits
+
+Admins and super admins can add credits to a client's balance or deduct credits from it, free of charge. Use it to give a bonus, record work done under a barter agreement, or correct a balance.
+
+<Steps>
+  <Step title="Open the client's Credits tab">
+    Navigate to **Clients**, click the client's name, and select the **Credits** tab.
+  </Step>
+  <Step title="Click Adjust credits">
+    Next to the balance, click **Adjust credits**.
+  </Step>
+  <Step title="Choose Add credits or Deduct credits">
+    When you deduct, the dialog shows the client's current balance.
+  </Step>
+  <Step title="Enter the amount">
+    Under **Unit**, choose **Credits** to enter a whole number of credits, or **Hours** to enter hours (up to 2 decimals) and **Credits per hour**. In Hours mode the converted amount shows as you type, for example 2 hours × 120 credits per hour = 240 credits.
+  </Step>
+  <Step title="Add a note (optional)">
+    Enter up to 280 characters, for example "3 hours of marketing, October". The note appears in the credit history.
+  </Step>
+  <Step title="Confirm">
+    Click **Add credits** or **Deduct credits**.
+  </Step>
+</Steps>
+
+<Note>
+  The credits-per-hour rate is remembered for each client and pre-filled the next time you choose **Hours**.
+</Note>
+
+<Warning>
+  A deduction can never take the balance below zero. If the amount is more than the current balance, the dialog shows **This is more than the current balance** and the deduction is not saved ("Not enough credits").
+</Warning>
+
+## Give credits every month
+
+**Monthly credits** add credits to a client automatically on the same day every month, which suits retainers and barter agreements. Only admins and super admins can set them up.
+
+<Steps>
+  <Step title="Open Monthly credits">
+    On the client's **Credits** tab, click **Monthly credits** next to the balance.
+  </Step>
+  <Step title="Set the amount and day">
+    Enter the **Credits per month** and the **Day of month** (1–28).
+  </Step>
+  <Step title="Choose how credits are given">
+    Pick one of the two modes in **How credits are given** (see the table below).
+  </Step>
+  <Step title="Add a note (optional)">
+    The note is shown on every monthly credit row in the credit history.
+  </Step>
+  <Step title="Turn it on and save">
+    Make sure the schedule is turned on (**Active**), then click **Save**.
+  </Step>
+</Steps>
+
+| Mode | What happens each month |
+|------|-------------------------|
+| **Add this amount every month** | The amount is added to the balance. Unused credits roll over. |
+| **Top up to this amount every month** | The balance is brought back up to the amount. Unused credits don't roll over, and nothing is added if the balance is already at or above it. |
+
+Once saved, the Credits tab shows the schedule (for example "Monthly: 360 credits on day 1"), the next run date, and the last grant.
+
+- Credits are added automatically. You don't need to do anything each month.
+- If a scheduled month is missed, its credits are added once when the schedule runs again, never more than once.
+- No credits are added while the workspace or the client is inactive.
+- To stop, open **Monthly credits**, turn the schedule off, and click **Save**. Future grants stop; credits already added stay on the balance.
+
+### Example: a monthly barter agreement
+
+You agree to trade 3 hours of work every month at 120 credits per hour.
+
+1. Set **Monthly credits** to 360 credits per month on day 1 with **Top up to this amount every month**. Choose **Add this amount every month** instead if unused hours should carry over.
+2. As you do the work, click **Adjust credits**, choose **Deduct credits** and **Hours**, and enter the time spent, for example 1.5 hours at 120 credits per hour (180 credits), with a note such as "Homepage copy, November".
+3. The client sees each deduction, with the hours and your note, on their Credits page.
+
+<Note>
+  Credits never expire. Credits you add, buy, or grant monthly stay on the balance until they are spent or deducted.
+</Note>
+
 ## Understand credit transactions
 
 Every credit activity is recorded in the client's transaction history.
@@ -178,6 +257,13 @@ Every credit activity is recorded in the client's transaction history.
 - Invoice paid using credits
 
 Each transaction shows the date, type, reference, credit amount, and running balance, providing a complete audit trail.
+
+**Credits you add or deduct by hand, and monthly credits**, appear in the same history with a reference that shows where they came from:
+
+- **Added by** *name* or **Deducted by** *name*: a team member used **Adjust credits**.
+- **Monthly credits**: added by the monthly schedule.
+
+When the amount was entered in hours, the row also shows the hours and rate (for example "2 h × 120/h"), followed by your note. Clients see these rows, including the note, on their Credits page, and exports of the credit history include the note.
 
 ## Frequently Asked Questions
 
@@ -218,5 +304,17 @@ Each transaction shows the date, type, reference, credit amount, and running bal
 
   <Accordion title="Why don't clients see the Pay with Credit option on invoices?">
     The agency may have disabled credit payments, or the client may not have sufficient credits available to cover the invoice amount.
+  </Accordion>
+
+  <Accordion title="Can I give a client credits without a payment?">
+    Yes. Admins and super admins can use **Adjust credits** on the client's **Credits** tab to add or deduct credits free of charge, or set up **Monthly credits** to add them automatically every month.
+  </Accordion>
+
+  <Accordion title="Can a deduction make a balance negative?">
+    No. You can't deduct more credits than the client currently has.
+  </Accordion>
+
+  <Accordion title="Do credits expire?">
+    No. Credits stay on the balance until they are spent or deducted.
   </Accordion>
 </AccordionGroup>

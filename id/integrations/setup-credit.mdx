@@ -4,153 +4,239 @@ sidebarTitle: "Kredit"
 description: "Tawarkan layanan melalui sistem kredit prabayar: buat paket, tetapkan nilai tukar, dan biarkan klien membeli serta menggunakan kredit untuk layanan dan faktur."
 ---
 
-Credits enable you to offer services through a prepaid system. You create credit packages with a price, set conversion rates that define how many credits one unit of currency buys, and clients purchase credits in advance. When a client orders a service or pays an invoice, AgencyHandy converts the price into credits, deducts the required amount, and records every transaction in a complete audit trail.
+Kredit memungkinkan Anda menawarkan layanan melalui sistem prabayar. Anda membuat paket kredit dengan harga tertentu, menetapkan nilai tukar yang menentukan berapa banyak kredit yang dapat dibeli dengan satu unit mata uang, lalu klien membeli kredit di muka. Saat klien memesan layanan atau membayar faktur, AgencyHandy mengonversi harga menjadi kredit, memotong jumlah yang diperlukan, dan mencatat setiap transaksi dalam riwayat audit yang lengkap.
 
-## How credits work
+## Cara kerja kredit
 
-The credit system has three components:
+Sistem kredit memiliki tiga komponen:
 
-- **Credit packages**: bundles of credits that clients purchase (for example, 500 credits for $50).
-- **Conversion rates**: rules that convert a service's currency price into credits (for example, 1 USD = 10 credits).
-- **Credit balance**: the credits available to a client to spend on services or invoices.
+- **Paket kredit**: kumpulan kredit yang dibeli klien (misalnya, 500 kredit seharga $50).
+- **Nilai tukar**: aturan yang mengonversi harga layanan dalam mata uang menjadi kredit (misalnya, 1 USD = 10 kredit).
+- **Saldo kredit**: kredit yang tersedia bagi klien untuk digunakan pada layanan atau faktur.
 
-**Example:** A service costs $3.51 and the conversion rate is 1 USD = 10 credits.
+**Contoh:** Sebuah layanan berharga $3,51 dan nilai tukarnya 1 USD = 10 kredit.
 
-`$3.51 × 10 = 35.1 credits → rounded up to 36 credits`
+`$3,51 × 10 = 35,1 kredit → dibulatkan ke atas menjadi 36 kredit`
 
-AgencyHandy always rounds up to the nearest whole credit.
+AgencyHandy selalu membulatkan ke atas ke kredit utuh terdekat.
 
-## Enable credit payments
+## Aktifkan pembayaran kredit
 
-Before clients can purchase or use credits, you must turn the feature on.
+Sebelum klien dapat membeli atau menggunakan kredit, Anda harus mengaktifkan fitur ini.
 
 <Steps>
-  <Step title="Navigate to Credits">
-    In the left sidebar, go to **Credits**.
+  <Step title="Buka Credits">
+    Di sidebar kiri, buka **Credits**.
   </Step>
-  <Step title="Turn on the toggle">
-    Enable the **Allow Credit Payment** toggle.
+  <Step title="Aktifkan toggle">
+    Aktifkan toggle **Allow Credit Payment**.
   </Step>
 </Steps>
 
-**When enabled**, clients can:
-- See their credit balance widget in the client portal.
-- Access the Credits page and purchase packages.
-- Submit credit requests.
-- Use **Buy with Credit** during service checkout.
-- Use **Pay with Credit** on invoices.
+**Saat diaktifkan**, klien dapat:
+- Melihat widget saldo kredit mereka di portal klien.
+- Membuka halaman Credits dan membeli paket.
+- Mengirim permintaan kredit.
+- Menggunakan **Buy with Credit** saat checkout layanan.
+- Menggunakan **Pay with Credit** pada faktur.
 
-**When disabled**, the credit widget and all credit options are hidden from the client portal. Existing credit balances are preserved, and clients can still use other payment methods.
+**Saat dinonaktifkan**, widget kredit dan semua opsi kredit disembunyikan dari portal klien. Saldo kredit yang ada tetap tersimpan, dan klien masih dapat menggunakan metode pembayaran lain.
 
-## Create credit packages
+## Buat paket kredit
 
-Credit packages are what clients purchase to load credits onto their account.
+Paket kredit adalah yang dibeli klien untuk mengisi kredit ke akun mereka.
 
 <Steps>
-  <Step title="Open Credit Packages settings">
-    Navigate to **Credits → Settings → Credit Packages**.
+  <Step title="Buka pengaturan Paket Kredit">
+    Buka **Credits → Pengaturan → Paket Kredit**.
   </Step>
-  <Step title="Add a package">
-    Click **+ Package**.
+  <Step title="Tambahkan paket">
+    Klik **+ Paket**.
   </Step>
-  <Step title="Fill in the details">
-    Enter a package name, the number of credits included, the currency, and the price.
+  <Step title="Isi detailnya">
+    Masukkan nama paket, jumlah kredit yang disertakan, mata uang, dan harga.
   </Step>
-  <Step title="Save">
-    Click **Create**.
+  <Step title="Simpan">
+    Klik **Buat**.
   </Step>
 </Steps>
 
-## Manage conversion rates
+## Kelola nilai tukar
 
-Conversion rates determine how many credits are required for a service based on its currency price. You can set a different rate per currency.
+Nilai tukar menentukan berapa banyak kredit yang diperlukan untuk sebuah layanan berdasarkan harganya dalam mata uang. Anda dapat menetapkan nilai yang berbeda untuk setiap mata uang.
 
 <Steps>
-  <Step title="Open Conversion Rates settings">
-    Navigate to **Credits → Settings → Conversion Rates**.
+  <Step title="Buka pengaturan Conversion Rates">
+    Buka **Credits → Pengaturan → Conversion Rates**.
   </Step>
-  <Step title="Add a rate">
-    Click **+ Add Conversion Rate**.
+  <Step title="Tambahkan nilai tukar">
+    Klik **+ Add Conversion Rate**.
   </Step>
-  <Step title="Configure the rate">
-    Select a currency and enter the number of credits equivalent to one unit of that currency.
+  <Step title="Atur nilai tukar">
+    Pilih mata uang dan masukkan jumlah kredit yang setara dengan satu unit mata uang tersebut.
   </Step>
-  <Step title="Save">
-    Click **Save**.
+  <Step title="Simpan">
+    Klik **Simpan**.
   </Step>
 </Steps>
 
-**Example rates:**
+**Contoh nilai tukar:**
 
-| Currency | Rate |
+| Mata uang | Nilai |
 |----------|------|
-| USD | 1 USD = 10 credits |
-| EUR | 1 EUR = 9 credits |
-| GBP | 1 GBP = 12 credits |
+| USD | 1 USD = 10 kredit |
+| EUR | 1 EUR = 9 kredit |
+| GBP | 1 GBP = 12 kredit |
 
 <Note>
-  Only one active conversion rate can exist per currency at any given time.
+  Hanya boleh ada satu nilai tukar aktif per mata uang pada satu waktu.
 </Note>
 
-## Automatic vs manual credit purchases
+## Pembelian kredit otomatis vs manual
 
-How credits are added to a client's account depends on the payment method used.
+Cara kredit ditambahkan ke akun klien bergantung pada metode pembayaran yang digunakan.
 
-**Automatic** (no approval needed):
+**Otomatis** (tanpa persetujuan):
 - Stripe
 - PayPal
 
-Credits are added immediately after a successful payment.
+Kredit langsung ditambahkan setelah pembayaran berhasil.
 
-**Manual** (requires agency approval):
-- Bank Transfer
-- Cryptocurrency
+**Manual** (memerlukan persetujuan agensi):
+- Transfer Bank
+- Kripto
 
-When a client pays via a manual method, a credit request is created. You must review and approve it before credits are added.
+Saat klien membayar dengan metode manual, permintaan kredit dibuat. Anda harus meninjau dan menyetujuinya sebelum kredit ditambahkan.
 
-## Manage credit requests
+## Kelola permintaan kredit
 
 <Steps>
-  <Step title="Open credit requests">
-    Navigate to **Billing → Credits**.
+  <Step title="Buka permintaan kredit">
+    Buka **Billing → Credits**.
   </Step>
-  <Step title="Locate pending requests">
-    Review the client name, payment amount, and number of credits requested.
+  <Step title="Temukan permintaan yang tertunda">
+    Tinjau nama klien, jumlah pembayaran, dan jumlah kredit yang diminta.
   </Step>
-  <Step title="Approve or reject">
-    Click **Accept** to add the credits, or **Reject** to decline.
+  <Step title="Setujui atau tolak">
+    Klik **Terima** untuk menambahkan kredit, atau **Tolak** untuk menolaknya.
   </Step>
 </Steps>
 
-**Request statuses:**
+**Status permintaan:**
 
-- **Pending**: submitted and awaiting review.
-- **Accepted**: approved; credits have been added to the client's balance.
-- **Rejected**: declined; no credits were added.
+- **Tertunda**: sudah dikirim dan menunggu peninjauan.
+- **Diterima**: disetujui; kredit sudah ditambahkan ke saldo klien.
+- **Ditolak**: ditolak; tidak ada kredit yang ditambahkan.
 
-## View client credits
+## Lihat kredit klien
 
 <Steps>
-  <Step title="Open the client profile">
-    Navigate to **Clients** and click on a client's name.
+  <Step title="Buka profil klien">
+    Buka **Klien** dan klik nama klien.
   </Step>
-  <Step title="Go to the Credits tab">
-    Select the **Credits** tab.
+  <Step title="Buka tab Credits">
+    Pilih tab **Credits**.
   </Step>
 </Steps>
 
-The Credits tab shows the client's available balance, full transaction history, running balance, and transaction references.
+Tab Credits menampilkan saldo klien yang tersedia, riwayat transaksi lengkap, saldo berjalan, dan referensi transaksi.
 
-## Understand credit transactions
+## Tambah atau kurangi kredit
 
-Every credit activity is recorded in the client's transaction history.
+Admin dan super admin dapat menambahkan kredit ke saldo klien atau mengurangi kredit dari saldo tersebut tanpa biaya. Gunakan fitur ini untuk memberi bonus, mencatat pekerjaan yang dilakukan dalam perjanjian barter, atau mengoreksi saldo.
 
-**In**: credits added to the account:
-- Credit package purchase
-- Approved credit request
+<Steps>
+  <Step title="Buka tab Credits klien">
+    Buka **Klien**, klik nama klien, lalu pilih tab **Credits**.
+  </Step>
+  <Step title="Klik Sesuaikan kredit">
+    Di sebelah saldo, klik **Sesuaikan kredit**.
+  </Step>
+  <Step title="Pilih Tambah kredit atau Kurangi kredit">
+    Saat Anda mengurangi kredit, dialog menampilkan saldo klien saat ini.
+  </Step>
+  <Step title="Masukkan jumlah">
+    Di bagian **Satuan**, pilih **Credits** untuk memasukkan jumlah kredit dalam bilangan bulat, atau **Jam** untuk memasukkan jam (maksimal 2 desimal) dan **Kredit per jam**. Dalam mode Jam, jumlah hasil konversi muncul saat Anda mengetik, misalnya 2 jam × 120 kredit per jam = 240 kredit.
+  </Step>
+  <Step title="Tambahkan catatan (opsional)">
+    Masukkan hingga 280 karakter, misalnya “3 jam pemasaran, Oktober”. Catatan ini muncul di riwayat kredit.
+  </Step>
+  <Step title="Konfirmasi">
+    Klik **Tambah kredit** atau **Kurangi kredit**.
+  </Step>
+</Steps>
 
-**Out**: credits deducted from the account:
-- Service purchased using credits
-- Invoice paid using credits
+<Note>
+  Tarif kredit per jam disimpan untuk setiap klien dan terisi otomatis saat Anda memilih **Jam** berikutnya.
+</Note>
 
-Each transaction shows the date, type, reference, credit amount, and running balance, providing a complete audit trail.
+<Warning>
+  Pengurangan tidak akan pernah membuat saldo di bawah nol. Jika jumlahnya melebihi saldo saat ini, dialog menampilkan **Ini melebihi saldo saat ini** dan pengurangan tidak disimpan (“Not enough credits”).
+</Warning>
+
+## Beri kredit setiap bulan
+
+**Kredit bulanan** menambahkan kredit ke klien secara otomatis pada tanggal yang sama setiap bulan, cocok untuk retainer dan perjanjian barter. Hanya admin dan super admin yang dapat mengaturnya.
+
+<Steps>
+  <Step title="Buka Kredit bulanan">
+    Di tab **Credits** klien, klik **Kredit bulanan** di sebelah saldo.
+  </Step>
+  <Step title="Atur jumlah dan tanggal">
+    Masukkan **Kredit per bulan** dan **Tanggal** (1–28).
+  </Step>
+  <Step title="Pilih cara kredit diberikan">
+    Pilih salah satu dari dua mode di **Cara kredit diberikan** (lihat tabel di bawah).
+  </Step>
+  <Step title="Tambahkan catatan (opsional)">
+    Catatan ditampilkan pada setiap baris kredit bulanan di riwayat kredit.
+  </Step>
+  <Step title="Aktifkan dan simpan">
+    Pastikan jadwal aktif (**Aktif**), lalu klik **Simpan**.
+  </Step>
+</Steps>
+
+| Mode | Yang terjadi setiap bulan |
+|------|-------------------------|
+| **Tambahkan jumlah ini setiap bulan** | Jumlah tersebut ditambahkan ke saldo. Kredit yang tidak terpakai terbawa ke bulan berikutnya. |
+| **Isi ulang hingga jumlah ini setiap bulan** | Saldo dikembalikan hingga jumlah tersebut. Kredit yang tidak terpakai tidak terbawa, dan tidak ada yang ditambahkan jika saldo sudah sama atau lebih besar. |
+
+Setelah disimpan, tab Credits menampilkan jadwal (misalnya “Bulanan: 360 kredit pada tanggal 1”), tanggal jalan berikutnya, dan pemberian terakhir.
+
+- Kredit ditambahkan secara otomatis. Anda tidak perlu melakukan apa pun setiap bulan.
+- Jika satu bulan terjadwal terlewat, kreditnya ditambahkan satu kali saat jadwal berjalan lagi, tidak pernah lebih dari sekali.
+- Tidak ada kredit yang ditambahkan selama workspace atau klien tidak aktif.
+- Untuk menghentikan, buka **Kredit bulanan**, nonaktifkan jadwal, lalu klik **Simpan**. Pemberian berikutnya berhenti; kredit yang sudah ditambahkan tetap ada di saldo.
+
+### Contoh: perjanjian barter bulanan
+
+Anda sepakat menukar 3 jam kerja setiap bulan dengan tarif 120 kredit per jam.
+
+1. Atur **Kredit bulanan** menjadi 360 kredit per bulan pada tanggal 1 dengan **Isi ulang hingga jumlah ini setiap bulan**. Pilih **Tambahkan jumlah ini setiap bulan** jika jam yang tidak terpakai harus terbawa.
+2. Saat mengerjakan pekerjaan, klik **Sesuaikan kredit**, pilih **Kurangi kredit** dan **Jam**, lalu masukkan waktu yang digunakan, misalnya 1,5 jam dengan 120 kredit per jam (180 kredit), dengan catatan seperti “Teks halaman beranda, November”.
+3. Klien melihat setiap pengurangan, beserta jam dan catatan Anda, di halaman Credits mereka.
+
+<Note>
+  Kredit tidak pernah kedaluwarsa. Kredit yang Anda tambahkan, yang dibeli, atau yang diberikan setiap bulan tetap ada di saldo sampai digunakan atau dikurangi.
+</Note>
+
+## Memahami transaksi kredit
+
+Setiap aktivitas kredit dicatat dalam riwayat transaksi klien.
+
+**In**: kredit yang ditambahkan ke akun:
+- Pembelian paket kredit
+- Permintaan kredit yang disetujui
+
+**Out**: kredit yang dipotong dari akun:
+- Layanan yang dibeli dengan kredit
+- Faktur yang dibayar dengan kredit
+
+Setiap transaksi menampilkan tanggal, jenis, referensi, jumlah kredit, dan saldo berjalan, sehingga riwayat auditnya lengkap.
+
+**Kredit yang Anda tambahkan atau kurangi secara manual, serta kredit bulanan**, muncul di riwayat yang sama dengan referensi yang menunjukkan asalnya:
+
+- **Ditambahkan oleh** *nama* atau **Dikurangi oleh** *nama*: anggota tim menggunakan **Sesuaikan kredit**.
+- **Kredit bulanan**: ditambahkan oleh jadwal bulanan.
+
+Jika jumlahnya dimasukkan dalam jam, baris tersebut juga menampilkan jam dan tarif (misalnya “2 h × 120/h”), diikuti catatan Anda. Klien melihat baris-baris ini, termasuk catatannya, di halaman Credits mereka, dan ekspor riwayat kredit menyertakan catatan tersebut.

@@ -1,156 +1,242 @@
 ---
-title: "Kak nastroit kredit v AgencyHandy"
-sidebarTitle: "Kredit"
-description: "Predlagayte uslugi cherez sistemu predoplachennykh kreditov: sozdavayte pakety, ustanavlivayte kursy konversii i pozvolyayte klientam pokupat i ispolzovat kredity dlya uslug i schetov."
+title: "Как настроить кредиты в AgencyHandy"
+sidebarTitle: "Кредиты"
+description: "Предлагайте услуги через систему предоплаченных кредитов: создавайте пакеты, задавайте курсы конвертации и позвольте клиентам покупать кредиты и тратить их на услуги и счета."
 ---
 
-Credits enable you to offer services through a prepaid system. You create credit packages with a price, set conversion rates that define how many credits one unit of currency buys, and clients purchase credits in advance. When a client orders a service or pays an invoice, AgencyHandy converts the price into credits, deducts the required amount, and records every transaction in a complete audit trail.
+Кредиты позволяют предлагать услуги по предоплате. Вы создаёте пакеты кредитов с ценой, задаёте курсы конвертации, определяющие, сколько кредитов покупает одна единица валюты, а клиенты покупают кредиты заранее. Когда клиент заказывает услугу или оплачивает счёт, AgencyHandy пересчитывает цену в кредиты, списывает нужное количество и записывает каждую операцию в полную историю.
 
-## How credits work
+## Как работают кредиты
 
-The credit system has three components:
+Система кредитов состоит из трёх элементов:
 
-- **Credit packages**: bundles of credits that clients purchase (for example, 500 credits for $50).
-- **Conversion rates**: rules that convert a service's currency price into credits (for example, 1 USD = 10 credits).
-- **Credit balance**: the credits available to a client to spend on services or invoices.
+- **Пакеты кредитов**: наборы кредитов, которые покупают клиенты (например, 500 кредитов за 50 USD).
+- **Курсы конвертации**: правила пересчёта цены услуги в валюте в кредиты (например, 1 USD = 10 кредитов).
+- **Баланс кредитов**: кредиты, которые клиент может потратить на услуги или счета.
 
-**Example:** A service costs $3.51 and the conversion rate is 1 USD = 10 credits.
+**Пример:** услуга стоит 3,51 USD, курс конвертации — 1 USD = 10 кредитов.
 
 `$3.51 × 10 = 35.1 credits → rounded up to 36 credits`
 
-AgencyHandy always rounds up to the nearest whole credit.
+AgencyHandy всегда округляет вверх до ближайшего целого кредита.
 
-## Enable credit payments
+## Включение оплаты кредитами
 
-Before clients can purchase or use credits, you must turn the feature on.
+Прежде чем клиенты смогут покупать или использовать кредиты, нужно включить эту функцию.
 
 <Steps>
-  <Step title="Navigate to Credits">
-    In the left sidebar, go to **Credits**.
+  <Step title="Перейдите в Кредиты">
+    На левой боковой панели перейдите в **Кредиты**.
   </Step>
-  <Step title="Turn on the toggle">
-    Enable the **Allow Credit Payment** toggle.
+  <Step title="Включите переключатель">
+    Включите переключатель **Разрешить оплату кредитами**.
   </Step>
 </Steps>
 
-**When enabled**, clients can:
-- See their credit balance widget in the client portal.
-- Access the Credits page and purchase packages.
-- Submit credit requests.
-- Use **Buy with Credit** during service checkout.
-- Use **Pay with Credit** on invoices.
+**Когда функция включена**, клиенты могут:
+- Видеть виджет баланса кредитов в клиентском портале.
+- Открывать страницу Кредиты и покупать пакеты.
+- Отправлять запросы на кредиты.
+- Использовать **Купить за кредиты** при оформлении услуги.
+- Использовать **Оплатить кредитами** в счетах.
 
-**When disabled**, the credit widget and all credit options are hidden from the client portal. Existing credit balances are preserved, and clients can still use other payment methods.
+**Когда функция выключена**, виджет кредитов и все варианты с кредитами скрыты в клиентском портале. Существующие балансы сохраняются, и клиенты по-прежнему могут использовать другие способы оплаты.
 
-## Create credit packages
+## Создание пакетов кредитов
 
-Credit packages are what clients purchase to load credits onto their account.
+Пакеты кредитов — это то, что клиенты покупают, чтобы пополнить счёт кредитами.
 
 <Steps>
-  <Step title="Open Credit Packages settings">
-    Navigate to **Credits → Settings → Credit Packages**.
+  <Step title="Откройте настройки пакетов кредитов">
+    Перейдите в **Кредиты → Настройки → Пакеты кредитов**.
   </Step>
-  <Step title="Add a package">
-    Click **+ Package**.
+  <Step title="Добавьте пакет">
+    Нажмите **+ Пакет**.
   </Step>
-  <Step title="Fill in the details">
-    Enter a package name, the number of credits included, the currency, and the price.
+  <Step title="Заполните данные">
+    Введите название пакета, количество кредитов в нём, валюту и цену.
   </Step>
-  <Step title="Save">
-    Click **Create**.
+  <Step title="Сохраните">
+    Нажмите **Создать**.
   </Step>
 </Steps>
 
-## Manage conversion rates
+## Управление курсами конвертации
 
-Conversion rates determine how many credits are required for a service based on its currency price. You can set a different rate per currency.
+Курсы конвертации определяют, сколько кредитов требуется для услуги исходя из её цены в валюте. Для каждой валюты можно задать свой курс.
 
 <Steps>
-  <Step title="Open Conversion Rates settings">
-    Navigate to **Credits → Settings → Conversion Rates**.
+  <Step title="Откройте настройки курсов конвертации">
+    Перейдите в **Кредиты → Настройки → Курсы конвертации**.
   </Step>
-  <Step title="Add a rate">
-    Click **+ Add Conversion Rate**.
+  <Step title="Добавьте курс">
+    Нажмите **+ Добавить курс конвертации**.
   </Step>
-  <Step title="Configure the rate">
-    Select a currency and enter the number of credits equivalent to one unit of that currency.
+  <Step title="Настройте курс">
+    Выберите валюту и введите количество кредитов, равное одной единице этой валюты.
   </Step>
-  <Step title="Save">
-    Click **Save**.
+  <Step title="Сохраните">
+    Нажмите **Сохранить**.
   </Step>
 </Steps>
 
-**Example rates:**
+**Примеры курсов:**
 
-| Currency | Rate |
+| Валюта | Курс |
 |----------|------|
-| USD | 1 USD = 10 credits |
-| EUR | 1 EUR = 9 credits |
-| GBP | 1 GBP = 12 credits |
+| USD | 1 USD = 10 кредитов |
+| EUR | 1 EUR = 9 кредитов |
+| GBP | 1 GBP = 12 кредитов |
 
 <Note>
-  Only one active conversion rate can exist per currency at any given time.
+  Для одной валюты одновременно может действовать только один активный курс конвертации.
 </Note>
 
-## Automatic vs manual credit purchases
+## Автоматическая и ручная покупка кредитов
 
-How credits are added to a client's account depends on the payment method used.
+Способ зачисления кредитов на счёт клиента зависит от используемого способа оплаты.
 
-**Automatic** (no approval needed):
+**Автоматически** (без подтверждения):
 - Stripe
 - PayPal
 
-Credits are added immediately after a successful payment.
+Кредиты зачисляются сразу после успешной оплаты.
 
-**Manual** (requires agency approval):
-- Bank Transfer
-- Cryptocurrency
+**Вручную** (требуется подтверждение агентства):
+- Банковский перевод
+- Криптовалюта
 
-When a client pays via a manual method, a credit request is created. You must review and approve it before credits are added.
+Когда клиент платит вручную, создаётся запрос на кредиты. Вы должны проверить и подтвердить его, прежде чем кредиты будут зачислены.
 
-## Manage credit requests
+## Управление запросами на кредиты
 
 <Steps>
-  <Step title="Open credit requests">
-    Navigate to **Billing → Credits**.
+  <Step title="Откройте запросы на кредиты">
+    Перейдите в **Выставление счетов → Кредиты**.
   </Step>
-  <Step title="Locate pending requests">
-    Review the client name, payment amount, and number of credits requested.
+  <Step title="Найдите ожидающие запросы">
+    Проверьте имя клиента, сумму платежа и количество запрошенных кредитов.
   </Step>
-  <Step title="Approve or reject">
-    Click **Accept** to add the credits, or **Reject** to decline.
+  <Step title="Подтвердите или отклоните">
+    Нажмите **Принять**, чтобы зачислить кредиты, или **Отклонить**, чтобы отказать.
   </Step>
 </Steps>
 
-**Request statuses:**
+**Статусы запросов:**
 
-- **Pending**: submitted and awaiting review.
-- **Accepted**: approved; credits have been added to the client's balance.
-- **Rejected**: declined; no credits were added.
+- **В ожидании**: отправлен и ждёт проверки.
+- **Принято**: подтверждён; кредиты зачислены на баланс клиента.
+- **Отклонено**: отклонён; кредиты не зачислены.
 
-## View client credits
+## Просмотр кредитов клиента
 
 <Steps>
-  <Step title="Open the client profile">
-    Navigate to **Clients** and click on a client's name.
+  <Step title="Откройте профиль клиента">
+    Перейдите в **Клиенты** и нажмите на имя клиента.
   </Step>
-  <Step title="Go to the Credits tab">
-    Select the **Credits** tab.
+  <Step title="Перейдите на вкладку Кредиты">
+    Выберите вкладку **Кредиты**.
   </Step>
 </Steps>
 
-The Credits tab shows the client's available balance, full transaction history, running balance, and transaction references.
+Вкладка Кредиты показывает доступный баланс клиента, полную историю операций, текущий остаток и ссылки на операции.
 
-## Understand credit transactions
+## Начисление и списание кредитов
 
-Every credit activity is recorded in the client's transaction history.
+Администраторы и суперадминистраторы могут бесплатно начислять кредиты на баланс клиента или списывать их. Это удобно, чтобы дать бонус, учесть работу по бартерному соглашению или исправить баланс.
 
-**In**: credits added to the account:
-- Credit package purchase
-- Approved credit request
+<Steps>
+  <Step title="Откройте вкладку Кредиты клиента">
+    Перейдите в **Клиенты**, нажмите на имя клиента и выберите вкладку **Кредиты**.
+  </Step>
+  <Step title="Нажмите Изменить кредиты">
+    Рядом с балансом нажмите **Изменить кредиты**.
+  </Step>
+  <Step title="Выберите Начислить кредиты или Списать кредиты">
+    При списании окно показывает текущий баланс клиента.
+  </Step>
+  <Step title="Укажите количество">
+    В поле **Единица** выберите **Кредиты**, чтобы ввести целое число кредитов, или **Часы**, чтобы ввести количество часов (не более 2 знаков после запятой) и **Кредитов в час**. В режиме часов пересчитанная сумма отображается прямо при вводе, например 2 часа × 120 кредитов в час = 240 кредитов.
+  </Step>
+  <Step title="Добавьте заметку (необязательно)">
+    Введите до 280 символов, например «3 часа маркетинга, октябрь». Заметка отображается в истории кредитов.
+  </Step>
+  <Step title="Подтвердите">
+    Нажмите **Начислить кредиты** или **Списать кредиты**.
+  </Step>
+</Steps>
 
-**Out**: credits deducted from the account:
-- Service purchased using credits
-- Invoice paid using credits
+<Note>
+  Ставка кредитов в час запоминается для каждого клиента и подставляется автоматически, когда вы в следующий раз выберете **Часы**.
+</Note>
 
-Each transaction shows the date, type, reference, credit amount, and running balance, providing a complete audit trail.
+<Warning>
+  Списание никогда не опускает баланс ниже нуля. Если сумма больше текущего баланса, окно показывает **Это больше текущего баланса**, и списание не сохраняется («Not enough credits»).
+</Warning>
+
+## Кредиты каждый месяц
+
+**Ежемесячные кредиты** автоматически начисляют клиенту кредиты в один и тот же день каждого месяца. Это подходит для абонементов и бартерных соглашений. Настраивать их могут только администраторы и суперадминистраторы.
+
+<Steps>
+  <Step title="Откройте Ежемесячные кредиты">
+    На вкладке **Кредиты** клиента нажмите **Ежемесячные кредиты** рядом с балансом.
+  </Step>
+  <Step title="Укажите количество и день">
+    Введите **Кредитов в месяц** и **День месяца** (1–28).
+  </Step>
+  <Step title="Выберите способ начисления">
+    В поле **Способ начисления** выберите один из двух режимов (см. таблицу ниже).
+  </Step>
+  <Step title="Добавьте заметку (необязательно)">
+    Заметка отображается в каждой строке ежемесячных кредитов в истории кредитов.
+  </Step>
+  <Step title="Включите и сохраните">
+    Убедитесь, что расписание включено (**Активна**), и нажмите **Сохранить**.
+  </Step>
+</Steps>
+
+| Режим | Что происходит каждый месяц |
+|------|-------------------------|
+| **Начислять эту сумму каждый месяц** | Сумма добавляется к балансу. Неиспользованные кредиты переносятся. |
+| **Пополнять до этой суммы каждый месяц** | Баланс пополняется до этой суммы. Неиспользованные кредиты не переносятся, а если баланс уже равен этой сумме или больше, ничего не начисляется. |
+
+После сохранения вкладка Кредиты показывает расписание (например, «Ежемесячно: 360 кредитов, 1-го числа»), дату следующего запуска и последнее начисление.
+
+- Кредиты начисляются автоматически. Каждый месяц ничего делать не нужно.
+- Если запланированный месяц пропущен, его кредиты начисляются один раз при следующем запуске расписания и никогда повторно.
+- Пока рабочее пространство или клиент неактивны, кредиты не начисляются.
+- Чтобы остановить расписание, откройте **Ежемесячные кредиты**, выключите его и нажмите **Сохранить**. Будущие начисления прекратятся; уже начисленные кредиты останутся на балансе.
+
+### Пример: ежемесячное бартерное соглашение
+
+Вы договорились обменивать 3 часа работы в месяц по ставке 120 кредитов в час.
+
+1. Настройте **Ежемесячные кредиты**: 360 кредитов в месяц, 1-го числа, режим **Пополнять до этой суммы каждый месяц**. Если неиспользованные часы должны переноситься, выберите вместо этого **Начислять эту сумму каждый месяц**.
+2. По мере выполнения работы нажимайте **Изменить кредиты**, выбирайте **Списать кредиты** и **Часы** и вводите затраченное время, например 1,5 часа по 120 кредитов в час (180 кредитов), с заметкой вроде «Тексты для главной страницы, ноябрь».
+3. Клиент видит каждое списание с часами и вашей заметкой на своей странице Кредиты.
+
+<Note>
+  Кредиты не сгорают. Кредиты, которые вы начисляете, которые покупаются или начисляются ежемесячно, остаются на балансе, пока их не потратят или не спишут.
+</Note>
+
+## Операции с кредитами
+
+Каждое действие с кредитами записывается в историю операций клиента.
+
+**Приход**: кредиты, зачисленные на счёт:
+- Покупка пакета кредитов
+- Подтверждённый запрос на кредиты
+
+**Расход**: кредиты, списанные со счёта:
+- Услуга, купленная за кредиты
+- Счёт, оплаченный кредитами
+
+Каждая операция показывает дату, тип, ссылку, количество кредитов и текущий остаток, образуя полную историю изменений.
+
+**Кредиты, начисленные или списанные вручную, и ежемесячные кредиты** отображаются в той же истории со ссылкой, которая показывает их источник:
+
+- **Начислил(а)** *имя* или **Списал(а)** *имя*: участник команды воспользовался функцией **Изменить кредиты**.
+- **Ежемесячные кредиты**: начислено по ежемесячному расписанию.
+
+Если сумма вводилась в часах, строка также показывает часы и ставку (например, «2 ч × 120/ч»), а затем вашу заметку. Клиенты видят эти строки вместе с заметкой на своей странице Кредиты, а экспорт истории кредитов включает заметку.

@@ -141,6 +141,85 @@ Quando un cliente paga tramite un metodo manuale, viene creata una richiesta di 
 
 La scheda Crediti mostra il saldo disponibile del cliente, la cronologia completa delle transazioni, il saldo progressivo e i riferimenti delle transazioni.
 
+## Aggiungere o detrarre crediti
+
+Gli amministratori e i super amministratori possono aggiungere crediti al saldo di un cliente o detrarli, senza costi. Usa questa funzione per dare un bonus, registrare il lavoro svolto nell'ambito di un accordo di scambio (baratto) o correggere un saldo.
+
+<Steps>
+  <Step title="Apri la scheda Crediti del cliente">
+    Vai a **Clienti**, clicca sul nome del cliente e seleziona la scheda **Crediti**.
+  </Step>
+  <Step title="Clicca su Regola crediti">
+    Accanto al saldo, clicca su **Regola crediti**.
+  </Step>
+  <Step title="Scegli Aggiungi crediti o Detrai crediti">
+    Quando detrai, la finestra mostra il saldo attuale del cliente.
+  </Step>
+  <Step title="Inserisci l'importo">
+    In **Unità**, scegli **Crediti** per inserire un numero intero di crediti, oppure **Ore** per inserire le ore (fino a 2 decimali) e i **Crediti per ora**. In modalità Ore l'importo convertito viene mostrato mentre scrivi, ad esempio 2 ore × 120 crediti per ora = 240 crediti.
+  </Step>
+  <Step title="Aggiungi una nota (facoltativo)">
+    Inserisci fino a 280 caratteri, ad esempio "3 ore di marketing, ottobre". La nota compare nella cronologia dei crediti.
+  </Step>
+  <Step title="Conferma">
+    Clicca su **Aggiungi crediti** o **Detrai crediti**.
+  </Step>
+</Steps>
+
+<Note>
+  La tariffa in crediti per ora viene memorizzata per ogni cliente e precompilata la volta successiva in cui scegli **Ore**.
+</Note>
+
+<Warning>
+  Una detrazione non può mai portare il saldo sotto zero. Se l'importo supera il saldo attuale, la finestra mostra **Supera il saldo attuale** e la detrazione non viene salvata ("Not enough credits").
+</Warning>
+
+## Assegnare crediti ogni mese
+
+I **Crediti mensili** aggiungono automaticamente crediti a un cliente lo stesso giorno di ogni mese: ideale per contratti ricorrenti (retainer) e accordi di scambio. Solo gli amministratori e i super amministratori possono configurarli.
+
+<Steps>
+  <Step title="Apri Crediti mensili">
+    Nella scheda **Crediti** del cliente, clicca su **Crediti mensili** accanto al saldo.
+  </Step>
+  <Step title="Imposta importo e giorno">
+    Inserisci i **Crediti al mese** e il **Giorno del mese** (1–28).
+  </Step>
+  <Step title="Scegli la modalità di assegnazione">
+    Seleziona una delle due modalità in **Modalità di assegnazione** (vedi la tabella qui sotto).
+  </Step>
+  <Step title="Aggiungi una nota (facoltativo)">
+    La nota viene mostrata su ogni riga di crediti mensili nella cronologia dei crediti.
+  </Step>
+  <Step title="Attiva e salva">
+    Assicurati che la pianificazione sia attivata (**Attivo**), poi clicca su **Salva**.
+  </Step>
+</Steps>
+
+| Modalità | Cosa succede ogni mese |
+|----------|------------------------|
+| **Aggiungi questo importo ogni mese** | L'importo viene aggiunto al saldo. I crediti non usati si accumulano. |
+| **Ricarica fino a questo importo ogni mese** | Il saldo viene riportato all'importo. I crediti non usati non si accumulano e non viene aggiunto nulla se il saldo ha già raggiunto o superato l'importo. |
+
+Dopo il salvataggio, la scheda Crediti mostra la pianificazione (ad esempio "Mensile: 360 crediti il giorno 1"), la data della prossima esecuzione e l'ultima assegnazione.
+
+- I crediti vengono aggiunti automaticamente. Non devi fare nulla ogni mese.
+- Se un mese pianificato viene saltato, i suoi crediti vengono aggiunti una sola volta alla successiva esecuzione, mai più di una volta.
+- Non vengono aggiunti crediti finché il workspace o il cliente è inattivo.
+- Per interrompere, apri **Crediti mensili**, disattiva la pianificazione e clicca su **Salva**. Le assegnazioni future si fermano; i crediti già aggiunti restano nel saldo.
+
+### Esempio: un accordo di scambio mensile
+
+Concordi di scambiare 3 ore di lavoro al mese a 120 crediti per ora.
+
+1. Imposta **Crediti mensili** a 360 crediti al mese il giorno 1 con **Ricarica fino a questo importo ogni mese**. Scegli invece **Aggiungi questo importo ogni mese** se le ore non usate devono accumularsi.
+2. Man mano che svolgi il lavoro, clicca su **Regola crediti**, scegli **Detrai crediti** e **Ore** e inserisci il tempo impiegato, ad esempio 1,5 ore a 120 crediti per ora (180 crediti), con una nota come "Testi della homepage, novembre".
+3. Il cliente vede ogni detrazione, con le ore e la tua nota, nella sua pagina Crediti.
+
+<Note>
+  I crediti non scadono mai. I crediti che aggiungi, acquistati o assegnati ogni mese restano nel saldo finché non vengono spesi o detratti.
+</Note>
+
 ## Capire le transazioni di crediti
 
 Ogni attività di credito viene registrata nella cronologia delle transazioni del cliente.
@@ -154,3 +233,10 @@ Ogni attività di credito viene registrata nella cronologia delle transazioni de
 - Fattura pagata con crediti
 
 Ogni transazione mostra la data, il tipo, il riferimento, l'importo in crediti e il saldo progressivo, fornendo un audit trail completo.
+
+**I crediti che aggiungi o detrai manualmente e i crediti mensili** compaiono nella stessa cronologia con un riferimento che ne indica l'origine:
+
+- **Aggiunto da** *nome* o **Detratto da** *nome*: un membro del team ha usato **Regola crediti**.
+- **Crediti mensili**: aggiunti dalla pianificazione mensile.
+
+Quando l'importo è stato inserito in ore, la riga mostra anche le ore e la tariffa (ad esempio "2 h × 120/h"), seguite dalla tua nota. I clienti vedono queste righe, nota compresa, nella loro pagina Crediti, e le esportazioni della cronologia dei crediti includono la nota.

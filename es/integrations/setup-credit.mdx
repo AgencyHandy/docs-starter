@@ -141,6 +141,85 @@ Cuando un cliente paga mediante un método manual, se crea una solicitud de cré
 
 La pestaña Créditos muestra el saldo disponible del cliente, el historial completo de transacciones, el saldo acumulado y las referencias de transacciones.
 
+## Añadir o descontar créditos
+
+Los administradores y superadministradores pueden añadir créditos al saldo de un cliente o descontarlos, sin coste. Úselo para dar una bonificación, registrar el trabajo realizado dentro de un acuerdo de intercambio (trueque) o corregir un saldo.
+
+<Steps>
+  <Step title="Abra la pestaña Créditos del cliente">
+    Vaya a **Clientes**, haga clic en el nombre del cliente y seleccione la pestaña **Créditos**.
+  </Step>
+  <Step title="Haga clic en Ajustar créditos">
+    Junto al saldo, haga clic en **Ajustar créditos**.
+  </Step>
+  <Step title="Elija Añadir créditos o Descontar créditos">
+    Al descontar, el cuadro de diálogo muestra el saldo actual del cliente.
+  </Step>
+  <Step title="Introduzca la cantidad">
+    En **Unidad**, elija **Créditos** para introducir un número entero de créditos, u **Horas** para introducir horas (hasta 2 decimales) y **Créditos por hora**. En el modo Horas, la cantidad convertida se muestra mientras escribe, por ejemplo 2 horas × 120 créditos por hora = 240 créditos.
+  </Step>
+  <Step title="Añada una nota (opcional)">
+    Introduzca hasta 280 caracteres, por ejemplo «3 horas de marketing, octubre». La nota aparece en el historial de créditos.
+  </Step>
+  <Step title="Confirme">
+    Haga clic en **Añadir créditos** o **Descontar créditos**.
+  </Step>
+</Steps>
+
+<Note>
+  La tarifa de créditos por hora se guarda para cada cliente y se rellena automáticamente la próxima vez que elija **Horas**.
+</Note>
+
+<Warning>
+  Un descuento nunca puede dejar el saldo por debajo de cero. Si la cantidad supera el saldo actual, el cuadro de diálogo muestra **Supera el saldo actual** y el descuento no se guarda («Not enough credits»).
+</Warning>
+
+## Dar créditos cada mes
+
+Los **Créditos mensuales** añaden créditos a un cliente automáticamente el mismo día de cada mes, algo ideal para igualas (retainers) y acuerdos de intercambio. Solo los administradores y superadministradores pueden configurarlos.
+
+<Steps>
+  <Step title="Abra Créditos mensuales">
+    En la pestaña **Créditos** del cliente, haga clic en **Créditos mensuales** junto al saldo.
+  </Step>
+  <Step title="Defina la cantidad y el día">
+    Introduzca los **Créditos por mes** y el **Día del mes** (1–28).
+  </Step>
+  <Step title="Elija cómo se otorgan los créditos">
+    Elija uno de los dos modos en **Cómo se otorgan los créditos** (consulte la tabla siguiente).
+  </Step>
+  <Step title="Añada una nota (opcional)">
+    La nota se muestra en cada fila de créditos mensuales del historial de créditos.
+  </Step>
+  <Step title="Actívelo y guarde">
+    Asegúrese de que la programación está activada (**Activo**) y haga clic en **Guardar**.
+  </Step>
+</Steps>
+
+| Modo | Qué ocurre cada mes |
+|------|---------------------|
+| **Añadir esta cantidad cada mes** | La cantidad se suma al saldo. Los créditos no usados se acumulan. |
+| **Recargar hasta esta cantidad cada mes** | El saldo vuelve a subir hasta la cantidad. Los créditos no usados no se acumulan y no se añade nada si el saldo ya alcanza o supera esa cantidad. |
+
+Una vez guardada, la pestaña Créditos muestra la programación (por ejemplo «Mensual: 360 créditos el día 1»), la fecha de la próxima ejecución y la última asignación.
+
+- Los créditos se añaden automáticamente. No tiene que hacer nada cada mes.
+- Si se pierde un mes programado, sus créditos se añaden una sola vez cuando la programación vuelve a ejecutarse, nunca más de una vez.
+- No se añaden créditos mientras el espacio de trabajo o el cliente están inactivos.
+- Para detenerlo, abra **Créditos mensuales**, desactive la programación y haga clic en **Guardar**. Las asignaciones futuras se detienen; los créditos ya añadidos permanecen en el saldo.
+
+### Ejemplo: un acuerdo de intercambio mensual
+
+Acuerda intercambiar 3 horas de trabajo cada mes a 120 créditos por hora.
+
+1. Configure **Créditos mensuales** en 360 créditos por mes el día 1 con **Recargar hasta esta cantidad cada mes**. Elija **Añadir esta cantidad cada mes** si las horas no usadas deben acumularse.
+2. A medida que realiza el trabajo, haga clic en **Ajustar créditos**, elija **Descontar créditos** y **Horas**, e introduzca el tiempo dedicado, por ejemplo 1,5 horas a 120 créditos por hora (180 créditos), con una nota como «Textos de la página de inicio, noviembre».
+3. El cliente ve cada descuento, con las horas y su nota, en su página Créditos.
+
+<Note>
+  Los créditos nunca caducan. Los créditos que añade, compra o asigna cada mes permanecen en el saldo hasta que se gastan o se descuentan.
+</Note>
+
 ## Entender las transacciones de créditos
 
 Cada actividad de crédito se registra en el historial de transacciones del cliente.
@@ -154,3 +233,10 @@ Cada actividad de crédito se registra en el historial de transacciones del clie
 - Factura pagada con créditos
 
 Cada transacción muestra la fecha, el tipo, la referencia, el importe en créditos y el saldo acumulado, proporcionando un registro de auditoría completo.
+
+**Los créditos que añade o descuenta manualmente, y los créditos mensuales**, aparecen en el mismo historial con una referencia que indica su origen:
+
+- **Añadido por** *nombre* o **Descontado por** *nombre*: un miembro del equipo usó **Ajustar créditos**.
+- **Créditos mensuales**: añadidos por la programación mensual.
+
+Cuando la cantidad se introdujo en horas, la fila también muestra las horas y la tarifa (por ejemplo «2 h × 120/h»), seguidas de su nota. Los clientes ven estas filas, incluida la nota, en su página Créditos, y las exportaciones del historial de créditos incluyen la nota.

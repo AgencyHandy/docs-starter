@@ -4,153 +4,239 @@ sidebarTitle: "Kredit"
 description: "Xizmatlarni oldindan to'lov kredit tizimi orqali taqdim eting: paketlar yarating, almashuv kurslarini belgilang va mijozlar xizmatlar va hisob-fakturalar uchun kredit sotib olishi va ishlatishiga imkon bering."
 ---
 
-Credits enable you to offer services through a prepaid system. You create credit packages with a price, set conversion rates that define how many credits one unit of currency buys, and clients purchase credits in advance. When a client orders a service or pays an invoice, AgencyHandy converts the price into credits, deducts the required amount, and records every transaction in a complete audit trail.
+Kreditlar xizmatlarni oldindan to‘lov tizimi orqali taklif qilish imkonini beradi. Siz narxi belgilangan kredit paketlarini yaratasiz, bir valyuta birligi necha kreditga teng ekanini belgilaydigan almashuv kurslarini sozlaysiz, mijozlar esa kreditlarni oldindan sotib oladi. Mijoz xizmat buyurtma qilganda yoki hisob-fakturani to‘laganda, AgencyHandy narxni kreditga aylantiradi, kerakli miqdorni ayiradi va har bir tranzaksiyani to‘liq audit tarixida qayd etadi.
 
-## How credits work
+## Kreditlar qanday ishlaydi
 
-The credit system has three components:
+Kredit tizimi uch qismdan iborat:
 
-- **Credit packages**: bundles of credits that clients purchase (for example, 500 credits for $50).
-- **Conversion rates**: rules that convert a service's currency price into credits (for example, 1 USD = 10 credits).
-- **Credit balance**: the credits available to a client to spend on services or invoices.
+- **Kredit paketlari**: mijozlar sotib oladigan kredit to‘plamlari (masalan, 50 $ ga 500 kredit).
+- **Almashuv kurslari**: xizmatning valyutadagi narxini kreditga aylantiradigan qoidalar (masalan, 1 USD = 10 kredit).
+- **Kredit balansi**: mijoz xizmatlar yoki hisob-fakturalar uchun sarflashi mumkin bo‘lgan kreditlar.
 
-**Example:** A service costs $3.51 and the conversion rate is 1 USD = 10 credits.
+**Misol:** xizmat 3,51 $ turadi va almashuv kursi 1 USD = 10 kredit.
 
 `$3.51 × 10 = 35.1 credits → rounded up to 36 credits`
 
-AgencyHandy always rounds up to the nearest whole credit.
+AgencyHandy har doim eng yaqin butun kreditgacha yuqoriga yaxlitlaydi.
 
-## Enable credit payments
+## Kredit bilan to‘lovni yoqish
 
-Before clients can purchase or use credits, you must turn the feature on.
+Mijozlar kredit sotib olishi yoki ishlatishi uchun avval bu funksiyani yoqishingiz kerak.
 
 <Steps>
-  <Step title="Navigate to Credits">
-    In the left sidebar, go to **Credits**.
+  <Step title="Credits bo‘limiga o‘ting">
+    Chap panelda **Credits** bo‘limiga o‘ting.
   </Step>
-  <Step title="Turn on the toggle">
-    Enable the **Allow Credit Payment** toggle.
+  <Step title="Kalitni yoqing">
+    **Allow Credit Payment** kalitini yoqing.
   </Step>
 </Steps>
 
-**When enabled**, clients can:
-- See their credit balance widget in the client portal.
-- Access the Credits page and purchase packages.
-- Submit credit requests.
-- Use **Buy with Credit** during service checkout.
-- Use **Pay with Credit** on invoices.
+**Yoqilganda** mijozlar:
+- Mijoz portalida kredit balansi vidjetini ko‘radi.
+- Kreditlar sahifasiga kirib, paketlar sotib oladi.
+- Kredit so‘rovlarini yuboradi.
+- Xizmatni rasmiylashtirishda **Buy with Credit** dan foydalanadi.
+- Hisob-fakturalarda **Pay with Credit** dan foydalanadi.
 
-**When disabled**, the credit widget and all credit options are hidden from the client portal. Existing credit balances are preserved, and clients can still use other payment methods.
+**O‘chirilganda** kredit vidjeti va barcha kredit imkoniyatlari mijoz portalida yashiriladi. Mavjud kredit balanslari saqlanib qoladi va mijozlar boshqa to‘lov usullaridan foydalanishda davom etishi mumkin.
 
-## Create credit packages
+## Kredit paketlarini yaratish
 
-Credit packages are what clients purchase to load credits onto their account.
+Kredit paketlari — mijozlar hisobiga kredit yuklash uchun sotib oladigan narsa.
 
 <Steps>
-  <Step title="Open Credit Packages settings">
-    Navigate to **Credits → Settings → Credit Packages**.
+  <Step title="Kredit paketlari sozlamalarini oching">
+    **Credits → Sozlamalar → Kredit paketlari** bo‘limiga o‘ting.
   </Step>
-  <Step title="Add a package">
-    Click **+ Package**.
+  <Step title="Paket qo‘shing">
+    **+ Paket** tugmasini bosing.
   </Step>
-  <Step title="Fill in the details">
-    Enter a package name, the number of credits included, the currency, and the price.
+  <Step title="Ma’lumotlarni kiriting">
+    Paket nomi, kiritilgan kreditlar soni, valyuta va narxni kiriting.
   </Step>
-  <Step title="Save">
-    Click **Create**.
+  <Step title="Saqlang">
+    **Yaratish** tugmasini bosing.
   </Step>
 </Steps>
 
-## Manage conversion rates
+## Almashuv kurslarini boshqarish
 
-Conversion rates determine how many credits are required for a service based on its currency price. You can set a different rate per currency.
+Almashuv kurslari xizmatning valyutadagi narxiga qarab qancha kredit kerakligini belgilaydi. Har bir valyuta uchun alohida kurs belgilashingiz mumkin.
 
 <Steps>
-  <Step title="Open Conversion Rates settings">
-    Navigate to **Credits → Settings → Conversion Rates**.
+  <Step title="Almashuv kurslari sozlamalarini oching">
+    **Credits → Sozlamalar → Conversion Rates** bo‘limiga o‘ting.
   </Step>
-  <Step title="Add a rate">
-    Click **+ Add Conversion Rate**.
+  <Step title="Kurs qo‘shing">
+    **+ Add Conversion Rate** tugmasini bosing.
   </Step>
-  <Step title="Configure the rate">
-    Select a currency and enter the number of credits equivalent to one unit of that currency.
+  <Step title="Kursni sozlang">
+    Valyutani tanlang va shu valyutaning bir birligiga teng kreditlar sonini kiriting.
   </Step>
-  <Step title="Save">
-    Click **Save**.
+  <Step title="Saqlang">
+    **Saqlash** tugmasini bosing.
   </Step>
 </Steps>
 
-**Example rates:**
+**Kurs misollari:**
 
-| Currency | Rate |
+| Valyuta | Kurs |
 |----------|------|
-| USD | 1 USD = 10 credits |
-| EUR | 1 EUR = 9 credits |
-| GBP | 1 GBP = 12 credits |
+| USD | 1 USD = 10 kredit |
+| EUR | 1 EUR = 9 kredit |
+| GBP | 1 GBP = 12 kredit |
 
 <Note>
-  Only one active conversion rate can exist per currency at any given time.
+  Har bir valyuta uchun bir vaqtning o‘zida faqat bitta faol almashuv kursi bo‘lishi mumkin.
 </Note>
 
-## Automatic vs manual credit purchases
+## Avtomatik va qo‘lda kredit xaridlari
 
-How credits are added to a client's account depends on the payment method used.
+Kreditlarning mijoz hisobiga qanday qo‘shilishi ishlatilgan to‘lov usuliga bog‘liq.
 
-**Automatic** (no approval needed):
+**Avtomatik** (tasdiq talab qilinmaydi):
 - Stripe
 - PayPal
 
-Credits are added immediately after a successful payment.
+Kreditlar muvaffaqiyatli to‘lovdan so‘ng darhol qo‘shiladi.
 
-**Manual** (requires agency approval):
-- Bank Transfer
-- Cryptocurrency
+**Qo‘lda** (agentlik tasdig‘i talab qilinadi):
+- Bank o‘tkazmasi
+- Kriptovalyuta
 
-When a client pays via a manual method, a credit request is created. You must review and approve it before credits are added.
+Mijoz qo‘lda to‘lov usuli bilan to‘laganda kredit so‘rovi yaratiladi. Kreditlar qo‘shilishidan oldin uni ko‘rib chiqib, tasdiqlashingiz kerak.
 
-## Manage credit requests
+## Kredit so‘rovlarini boshqarish
 
 <Steps>
-  <Step title="Open credit requests">
-    Navigate to **Billing → Credits**.
+  <Step title="Kredit so‘rovlarini oching">
+    **Billing → Credits** bo‘limiga o‘ting.
   </Step>
-  <Step title="Locate pending requests">
-    Review the client name, payment amount, and number of credits requested.
+  <Step title="Kutilayotgan so‘rovlarni toping">
+    Mijoz nomi, to‘lov summasi va so‘ralgan kreditlar sonini ko‘rib chiqing.
   </Step>
-  <Step title="Approve or reject">
-    Click **Accept** to add the credits, or **Reject** to decline.
+  <Step title="Tasdiqlang yoki rad eting">
+    Kreditlarni qo‘shish uchun **Qabul qilish**, rad etish uchun **Rad etish** tugmasini bosing.
   </Step>
 </Steps>
 
-**Request statuses:**
+**So‘rov holatlari:**
 
-- **Pending**: submitted and awaiting review.
-- **Accepted**: approved; credits have been added to the client's balance.
-- **Rejected**: declined; no credits were added.
+- **Kutilmoqda**: yuborilgan va ko‘rib chiqilishini kutmoqda.
+- **Qabul qilindi**: tasdiqlangan; kreditlar mijoz balansiga qo‘shilgan.
+- **Rad etildi**: rad etilgan; kreditlar qo‘shilmagan.
 
-## View client credits
+## Mijoz kreditlarini ko‘rish
 
 <Steps>
-  <Step title="Open the client profile">
-    Navigate to **Clients** and click on a client's name.
+  <Step title="Mijoz profilini oching">
+    **Mijozlar** bo‘limiga o‘ting va mijoz nomini bosing.
   </Step>
-  <Step title="Go to the Credits tab">
-    Select the **Credits** tab.
+  <Step title="Credits yorlig‘iga o‘ting">
+    **Credits** yorlig‘ini tanlang.
   </Step>
 </Steps>
 
-The Credits tab shows the client's available balance, full transaction history, running balance, and transaction references.
+Credits yorlig‘ida mijozning mavjud balansi, to‘liq tranzaksiyalar tarixi, joriy balans va tranzaksiya havolalari ko‘rsatiladi.
 
-## Understand credit transactions
+## Kredit qo‘shish yoki ayirish
 
-Every credit activity is recorded in the client's transaction history.
+Administratorlar va super administratorlar mijoz balansiga bepul kredit qo‘shishi yoki undan kredit ayirishi mumkin. Bundan bonus berish, barter kelishuvi bo‘yicha bajarilgan ishni qayd etish yoki balansni to‘g‘rilash uchun foydalaning.
 
-**In**: credits added to the account:
-- Credit package purchase
-- Approved credit request
+<Steps>
+  <Step title="Mijozning Credits yorlig‘ini oching">
+    **Mijozlar** bo‘limiga o‘ting, mijoz nomini bosing va **Credits** yorlig‘ini tanlang.
+  </Step>
+  <Step title="Kreditlarni sozlash tugmasini bosing">
+    Balans yonidagi **Kreditlarni sozlash** tugmasini bosing.
+  </Step>
+  <Step title="Kredit qo‘shish yoki Kredit ayirish ni tanlang">
+    Ayirishda oynada mijozning joriy balansi ko‘rsatiladi.
+  </Step>
+  <Step title="Miqdorni kiriting">
+    **Birlik** ostida butun sonli kredit kiritish uchun **Credits** ni yoki soatlarni (2 kasr xonagacha) va **Soatiga kredit** ni kiritish uchun **Soat** ni tanlang. Soat rejimida aylantirilgan miqdor yozayotganingizda ko‘rinadi, masalan 2 soat × soatiga 120 kredit = 240 kredit.
+  </Step>
+  <Step title="Izoh qo‘shing (ixtiyoriy)">
+    280 belgigacha kiriting, masalan «3 soat marketing, oktabr». Izoh kredit tarixida ko‘rinadi.
+  </Step>
+  <Step title="Tasdiqlang">
+    **Kredit qo‘shish** yoki **Kredit ayirish** tugmasini bosing.
+  </Step>
+</Steps>
 
-**Out**: credits deducted from the account:
-- Service purchased using credits
-- Invoice paid using credits
+<Note>
+  Soatiga kredit stavkasi har bir mijoz uchun eslab qolinadi va keyingi safar **Soat** ni tanlaganingizda oldindan to‘ldiriladi.
+</Note>
 
-Each transaction shows the date, type, reference, credit amount, and running balance, providing a complete audit trail.
+<Warning>
+  Ayirish balansni hech qachon noldan pastga tushira olmaydi. Agar miqdor joriy balansdan ko‘p bo‘lsa, oynada **Bu joriy balansdan ko‘p** ko‘rsatiladi va ayirish saqlanmaydi («Not enough credits»).
+</Warning>
+
+## Har oy kredit berish
+
+**Oylik kreditlar** har oyning bir xil kunida mijozga avtomatik kredit qo‘shadi. Bu doimiy shartnomalar (retainer) va barter kelishuvlari uchun qulay. Ularni faqat administratorlar va super administratorlar sozlay oladi.
+
+<Steps>
+  <Step title="Oylik kreditlarni oching">
+    Mijozning **Credits** yorlig‘ida balans yonidagi **Oylik kreditlar** tugmasini bosing.
+  </Step>
+  <Step title="Miqdor va kunni belgilang">
+    **Oyiga kreditlar** va **Oy kuni** (1–28) ni kiriting.
+  </Step>
+  <Step title="Kredit berish usulini tanlang">
+    **Kredit berish usuli** dagi ikki rejimdan birini tanlang (quyidagi jadvalga qarang).
+  </Step>
+  <Step title="Izoh qo‘shing (ixtiyoriy)">
+    Izoh kredit tarixidagi har bir oylik kredit qatorida ko‘rsatiladi.
+  </Step>
+  <Step title="Yoqing va saqlang">
+    Jadval yoqilganiga ishonch hosil qiling (**Faol**), so‘ng **Saqlash** tugmasini bosing.
+  </Step>
+</Steps>
+
+| Rejim | Har oy nima bo‘ladi |
+|------|-------------------------|
+| **Har oy shu miqdorni qo‘shish** | Miqdor balansga qo‘shiladi. Ishlatilmagan kreditlar keyingi oyga o‘tadi. |
+| **Har oy shu miqdorgacha to‘ldirish** | Balans shu miqdorgacha qayta to‘ldiriladi. Ishlatilmagan kreditlar o‘tkazilmaydi va balans shu miqdorga teng yoki undan ko‘p bo‘lsa, hech narsa qo‘shilmaydi. |
+
+Saqlangandan so‘ng Credits yorlig‘ida jadval (masalan «Oylik: har oyning 1-kuni 360 kredit»), keyingi ishga tushish sanasi va oxirgi berilgan kredit ko‘rsatiladi.
+
+- Kreditlar avtomatik qo‘shiladi. Har oy hech narsa qilishingiz shart emas.
+- Agar rejalashtirilgan oy o‘tkazib yuborilsa, uning kreditlari jadval qayta ishga tushganda bir marta qo‘shiladi, hech qachon bir martadan ko‘p emas.
+- Ish maydoni yoki mijoz faol bo‘lmagan paytda kredit qo‘shilmaydi.
+- To‘xtatish uchun **Oylik kreditlar** ni oching, jadvalni o‘chiring va **Saqlash** tugmasini bosing. Kelgusi kreditlar berilmaydi; allaqachon qo‘shilgan kreditlar balansda qoladi.
+
+### Misol: oylik barter kelishuvi
+
+Siz har oy soatiga 120 kredit stavkasida 3 soatlik ishni almashishga kelishasiz.
+
+1. **Oylik kreditlar** ni 1-kunda oyiga 360 kreditga **Har oy shu miqdorgacha to‘ldirish** bilan sozlang. Ishlatilmagan soatlar keyingi oyga o‘tishi kerak bo‘lsa, uning o‘rniga **Har oy shu miqdorni qo‘shish** ni tanlang.
+2. Ishni bajarar ekansiz, **Kreditlarni sozlash** tugmasini bosing, **Kredit ayirish** va **Soat** ni tanlang va sarflangan vaqtni kiriting, masalan soatiga 120 kreditdan 1,5 soat (180 kredit), «Bosh sahifa matni, noyabr» kabi izoh bilan.
+3. Mijoz har bir ayirishni soatlar va izohingiz bilan birga o‘zining Kreditlar sahifasida ko‘radi.
+
+<Note>
+  Kreditlarning muddati hech qachon tugamaydi. Siz qo‘shgan, sotib olingan yoki har oy berilgan kreditlar sarflanguncha yoki ayirilguncha balansda qoladi.
+</Note>
+
+## Kredit tranzaksiyalarini tushunish
+
+Har bir kredit amali mijozning tranzaksiyalar tarixida qayd etiladi.
+
+**In**: hisobga qo‘shilgan kreditlar:
+- Kredit paketini sotib olish
+- Tasdiqlangan kredit so‘rovi
+
+**Out**: hisobdan ayirilgan kreditlar:
+- Kredit bilan sotib olingan xizmat
+- Kredit bilan to‘langan hisob-faktura
+
+Har bir tranzaksiyada sana, tur, havola, kredit miqdori va joriy balans ko‘rsatiladi, bu esa to‘liq audit tarixini ta’minlaydi.
+
+**Qo‘lda qo‘shilgan yoki ayirilgan kreditlar va oylik kreditlar** xuddi shu tarixda qayerdan kelganini ko‘rsatuvchi havola bilan paydo bo‘ladi:
+
+- *ism* **qo‘shdi** yoki *ism* **ayirdi**: jamoa a’zosi **Kreditlarni sozlash** dan foydalangan.
+- **Oylik kreditlar**: oylik jadval orqali qo‘shilgan.
+
+Miqdor soatlarda kiritilgan bo‘lsa, qatorda soatlar va stavka (masalan «2 h × 120/h») hamda izohingiz ham ko‘rsatiladi. Mijozlar bu qatorlarni, izoh bilan birga, o‘zlarining Kreditlar sahifasida ko‘radi, kredit tarixini eksport qilganda esa izoh ham kiritiladi.

@@ -4,153 +4,239 @@ sidebarTitle: "Luotto"
 description: "Tarjoa palveluita ennakkomaksu-luottojärjestelmän kautta: luo paketteja, aseta muuntokursseja ja anna asiakkaiden ostaa ja käyttää luottoja palveluihin ja laskuihin."
 ---
 
-Credits enable you to offer services through a prepaid system. You create credit packages with a price, set conversion rates that define how many credits one unit of currency buys, and clients purchase credits in advance. When a client orders a service or pays an invoice, AgencyHandy converts the price into credits, deducts the required amount, and records every transaction in a complete audit trail.
+Krediittien avulla voit tarjota palveluita ennakkomaksujärjestelmän kautta. Luot hinnoiteltuja krediittipaketteja, asetat muuntokurssit, jotka määrittävät, kuinka monta krediittiä yksi valuuttayksikkö ostaa, ja asiakkaat ostavat krediittejä etukäteen. Kun asiakas tilaa palvelun tai maksaa laskun, AgencyHandy muuntaa hinnan krediiteiksi, vähentää tarvittavan määrän ja kirjaa jokaisen tapahtuman täydelliseen tapahtumahistoriaan.
 
-## How credits work
+## Näin krediitit toimivat
 
-The credit system has three components:
+Krediittijärjestelmässä on kolme osaa:
 
-- **Credit packages**: bundles of credits that clients purchase (for example, 500 credits for $50).
-- **Conversion rates**: rules that convert a service's currency price into credits (for example, 1 USD = 10 credits).
-- **Credit balance**: the credits available to a client to spend on services or invoices.
+- **Krediittipaketit**: krediittinippuja, joita asiakkaat ostavat (esimerkiksi 500 krediittiä 50 dollarilla).
+- **Muuntokurssit**: säännöt, jotka muuntavat palvelun valuuttahinnan krediiteiksi (esimerkiksi 1 USD = 10 krediittiä).
+- **Krediittisaldo**: asiakkaan käytettävissä olevat krediitit, joilla hän voi maksaa palveluita tai laskuja.
 
-**Example:** A service costs $3.51 and the conversion rate is 1 USD = 10 credits.
+**Esimerkki:** Palvelu maksaa 3,51 dollaria ja muuntokurssi on 1 USD = 10 krediittiä.
 
-`$3.51 × 10 = 35.1 credits → rounded up to 36 credits`
+`3,51 $ × 10 = 35,1 krediittiä → pyöristetään ylöspäin 36 krediittiin`
 
-AgencyHandy always rounds up to the nearest whole credit.
+AgencyHandy pyöristää aina ylöspäin lähimpään kokonaiseen krediittiin.
 
-## Enable credit payments
+## Ota krediittimaksut käyttöön
 
-Before clients can purchase or use credits, you must turn the feature on.
+Ennen kuin asiakkaat voivat ostaa tai käyttää krediittejä, sinun on otettava ominaisuus käyttöön.
 
 <Steps>
-  <Step title="Navigate to Credits">
-    In the left sidebar, go to **Credits**.
+  <Step title="Siirry kohtaan Credits">
+    Siirry vasemmassa sivupalkissa kohtaan **Credits**.
   </Step>
-  <Step title="Turn on the toggle">
-    Enable the **Allow Credit Payment** toggle.
+  <Step title="Ota kytkin käyttöön">
+    Ota käyttöön **Allow Credit Payment** -kytkin.
   </Step>
 </Steps>
 
-**When enabled**, clients can:
-- See their credit balance widget in the client portal.
-- Access the Credits page and purchase packages.
-- Submit credit requests.
-- Use **Buy with Credit** during service checkout.
-- Use **Pay with Credit** on invoices.
+**Kun ominaisuus on käytössä**, asiakkaat voivat:
+- Nähdä krediittisaldowidgetinsä asiakasportaalissa.
+- Avata Credits-sivun ja ostaa paketteja.
+- Lähettää krediittipyyntöjä.
+- Käyttää vaihtoehtoa **Buy with Credit** palvelun kassalla.
+- Käyttää vaihtoehtoa **Pay with Credit** laskuissa.
 
-**When disabled**, the credit widget and all credit options are hidden from the client portal. Existing credit balances are preserved, and clients can still use other payment methods.
+**Kun ominaisuus on pois käytöstä**, krediittiwidget ja kaikki krediittivaihtoehdot piilotetaan asiakasportaalista. Olemassa olevat krediittisaldot säilyvät, ja asiakkaat voivat edelleen käyttää muita maksutapoja.
 
-## Create credit packages
+## Luo krediittipaketteja
 
-Credit packages are what clients purchase to load credits onto their account.
+Krediittipaketit ovat se, mitä asiakkaat ostavat ladatakseen krediittejä tililleen.
 
 <Steps>
-  <Step title="Open Credit Packages settings">
-    Navigate to **Credits → Settings → Credit Packages**.
+  <Step title="Avaa krediittipakettien asetukset">
+    Siirry kohtaan **Credits → Asetukset → Krediittipaketit**.
   </Step>
-  <Step title="Add a package">
-    Click **+ Package**.
+  <Step title="Lisää paketti">
+    Napsauta **+ Paketti**.
   </Step>
-  <Step title="Fill in the details">
-    Enter a package name, the number of credits included, the currency, and the price.
+  <Step title="Täytä tiedot">
+    Anna paketin nimi, sisältyvien krediittien määrä, valuutta ja hinta.
   </Step>
-  <Step title="Save">
-    Click **Create**.
+  <Step title="Tallenna">
+    Napsauta **Luo**.
   </Step>
 </Steps>
 
-## Manage conversion rates
+## Hallitse muuntokursseja
 
-Conversion rates determine how many credits are required for a service based on its currency price. You can set a different rate per currency.
+Muuntokurssit määrittävät, kuinka monta krediittiä palveluun tarvitaan sen valuuttahinnan perusteella. Voit asettaa eri kurssin kullekin valuutalle.
 
 <Steps>
-  <Step title="Open Conversion Rates settings">
-    Navigate to **Credits → Settings → Conversion Rates**.
+  <Step title="Avaa muuntokurssien asetukset">
+    Siirry kohtaan **Credits → Asetukset → Conversion Rates**.
   </Step>
-  <Step title="Add a rate">
-    Click **+ Add Conversion Rate**.
+  <Step title="Lisää kurssi">
+    Napsauta **+ Add Conversion Rate**.
   </Step>
-  <Step title="Configure the rate">
-    Select a currency and enter the number of credits equivalent to one unit of that currency.
+  <Step title="Määritä kurssi">
+    Valitse valuutta ja anna krediittien määrä, joka vastaa yhtä kyseisen valuutan yksikköä.
   </Step>
-  <Step title="Save">
-    Click **Save**.
+  <Step title="Tallenna">
+    Napsauta **Tallenna**.
   </Step>
 </Steps>
 
-**Example rates:**
+**Esimerkkikursseja:**
 
-| Currency | Rate |
+| Valuutta | Kurssi |
 |----------|------|
-| USD | 1 USD = 10 credits |
-| EUR | 1 EUR = 9 credits |
-| GBP | 1 GBP = 12 credits |
+| USD | 1 USD = 10 krediittiä |
+| EUR | 1 EUR = 9 krediittiä |
+| GBP | 1 GBP = 12 krediittiä |
 
 <Note>
-  Only one active conversion rate can exist per currency at any given time.
+  Kullakin valuutalla voi olla kerrallaan vain yksi aktiivinen muuntokurssi.
 </Note>
 
-## Automatic vs manual credit purchases
+## Automaattiset ja manuaaliset krediittiostot
 
-How credits are added to a client's account depends on the payment method used.
+Se, miten krediitit lisätään asiakkaan tilille, riippuu käytetystä maksutavasta.
 
-**Automatic** (no approval needed):
+**Automaattinen** (ei vaadi hyväksyntää):
 - Stripe
 - PayPal
 
-Credits are added immediately after a successful payment.
+Krediitit lisätään heti onnistuneen maksun jälkeen.
 
-**Manual** (requires agency approval):
-- Bank Transfer
-- Cryptocurrency
+**Manuaalinen** (vaatii toimiston hyväksynnän):
+- Pankkisiirto
+- Kryptovaluutta
 
-When a client pays via a manual method, a credit request is created. You must review and approve it before credits are added.
+Kun asiakas maksaa manuaalisella tavalla, luodaan krediittipyyntö. Sinun on tarkistettava ja hyväksyttävä se ennen kuin krediitit lisätään.
 
-## Manage credit requests
+## Hallitse krediittipyyntöjä
 
 <Steps>
-  <Step title="Open credit requests">
-    Navigate to **Billing → Credits**.
+  <Step title="Avaa krediittipyynnöt">
+    Siirry kohtaan **Billing → Credits**.
   </Step>
-  <Step title="Locate pending requests">
-    Review the client name, payment amount, and number of credits requested.
+  <Step title="Etsi odottavat pyynnöt">
+    Tarkista asiakkaan nimi, maksun summa ja pyydettyjen krediittien määrä.
   </Step>
-  <Step title="Approve or reject">
-    Click **Accept** to add the credits, or **Reject** to decline.
+  <Step title="Hyväksy tai hylkää">
+    Napsauta **Hyväksy** lisätäksesi krediitit tai **Hylkää** hylätäksesi pyynnön.
   </Step>
 </Steps>
 
-**Request statuses:**
+**Pyyntöjen tilat:**
 
-- **Pending**: submitted and awaiting review.
-- **Accepted**: approved; credits have been added to the client's balance.
-- **Rejected**: declined; no credits were added.
+- **Odottaa**: lähetetty ja odottaa tarkistusta.
+- **Hyväksytty**: hyväksytty; krediitit on lisätty asiakkaan saldoon.
+- **Hylätty**: hylätty; krediittejä ei lisätty.
 
-## View client credits
+## Näytä asiakkaan krediitit
 
 <Steps>
-  <Step title="Open the client profile">
-    Navigate to **Clients** and click on a client's name.
+  <Step title="Avaa asiakasprofiili">
+    Siirry kohtaan **Asiakkaat** ja napsauta asiakkaan nimeä.
   </Step>
-  <Step title="Go to the Credits tab">
-    Select the **Credits** tab.
+  <Step title="Siirry Credits-välilehdelle">
+    Valitse **Credits**-välilehti.
   </Step>
 </Steps>
 
-The Credits tab shows the client's available balance, full transaction history, running balance, and transaction references.
+Credits-välilehdellä näkyvät asiakkaan käytettävissä oleva saldo, koko tapahtumahistoria, juokseva saldo ja tapahtumien viitteet.
 
-## Understand credit transactions
+## Lisää tai vähennä krediittejä
 
-Every credit activity is recorded in the client's transaction history.
+Ylläpitäjät ja pääylläpitäjät voivat lisätä krediittejä asiakkaan saldoon tai vähentää niitä siitä veloituksetta. Voit käyttää tätä bonuksen antamiseen, vaihtokauppasopimuksen mukaisen työn kirjaamiseen tai saldon korjaamiseen.
 
-**In**: credits added to the account:
-- Credit package purchase
-- Approved credit request
+<Steps>
+  <Step title="Avaa asiakkaan Credits-välilehti">
+    Siirry kohtaan **Asiakkaat**, napsauta asiakkaan nimeä ja valitse **Credits**-välilehti.
+  </Step>
+  <Step title="Napsauta Säädä krediittejä">
+    Napsauta saldon vieressä **Säädä krediittejä**.
+  </Step>
+  <Step title="Valitse Lisää krediittejä tai Vähennä krediittejä">
+    Kun vähennät krediittejä, ikkunassa näkyy asiakkaan nykyinen saldo.
+  </Step>
+  <Step title="Anna määrä">
+    Valitse kohdassa **Yksikkö** joko **Credits**, jos haluat antaa kokonaisen krediittimäärän, tai **Tunnit**, jos haluat antaa tunnit (enintään 2 desimaalia) ja **Krediittejä tunnissa**. Tunnit-tilassa muunnettu määrä näkyy kirjoittaessasi, esimerkiksi 2 tuntia × 120 krediittiä tunnissa = 240 krediittiä.
+  </Step>
+  <Step title="Lisää huomautus (valinnainen)">
+    Kirjoita enintään 280 merkkiä, esimerkiksi ”3 tuntia markkinointia, lokakuu”. Huomautus näkyy krediittihistoriassa.
+  </Step>
+  <Step title="Vahvista">
+    Napsauta **Lisää krediittejä** tai **Vähennä krediittejä**.
+  </Step>
+</Steps>
 
-**Out**: credits deducted from the account:
-- Service purchased using credits
-- Invoice paid using credits
+<Note>
+  Tuntihinta krediitteinä tallennetaan asiakaskohtaisesti, ja se täytetään valmiiksi, kun valitset seuraavan kerran **Tunnit**.
+</Note>
 
-Each transaction shows the date, type, reference, credit amount, and running balance, providing a complete audit trail.
+<Warning>
+  Vähennys ei voi koskaan viedä saldoa alle nollan. Jos määrä on suurempi kuin nykyinen saldo, ikkunassa näkyy **Tämä ylittää nykyisen saldon**, eikä vähennystä tallenneta (”Not enough credits”).
+</Warning>
+
+## Anna krediittejä joka kuukausi
+
+**Kuukausittaiset krediitit** lisäävät asiakkaalle krediittejä automaattisesti samana päivänä joka kuukausi, mikä sopii kuukausisopimuksiin ja vaihtokauppasopimuksiin. Vain ylläpitäjät ja pääylläpitäjät voivat ottaa ne käyttöön.
+
+<Steps>
+  <Step title="Avaa Kuukausittaiset krediitit">
+    Napsauta asiakkaan **Credits**-välilehdellä saldon vieressä **Kuukausittaiset krediitit**.
+  </Step>
+  <Step title="Aseta määrä ja päivä">
+    Anna **Krediittejä kuukaudessa** ja **Kuukauden päivä** (1–28).
+  </Step>
+  <Step title="Valitse, miten krediitit annetaan">
+    Valitse jompikumpi kohdan **Miten krediitit annetaan** tiloista (katso alla oleva taulukko).
+  </Step>
+  <Step title="Lisää huomautus (valinnainen)">
+    Huomautus näkyy jokaisella kuukausittaisten krediittien rivillä krediittihistoriassa.
+  </Step>
+  <Step title="Ota käyttöön ja tallenna">
+    Varmista, että aikataulu on käytössä (**Aktiivinen**), ja napsauta **Tallenna**.
+  </Step>
+</Steps>
+
+| Tila | Mitä joka kuukausi tapahtuu |
+|------|-------------------------|
+| **Lisää tämä määrä joka kuukausi** | Määrä lisätään saldoon. Käyttämättömät krediitit siirtyvät seuraavaan kuukauteen. |
+| **Täydennä tähän määrään joka kuukausi** | Saldo nostetaan takaisin tähän määrään. Käyttämättömät krediitit eivät siirry, eikä mitään lisätä, jos saldo on jo vähintään tämän suuruinen. |
+
+Tallennuksen jälkeen Credits-välilehdellä näkyvät aikataulu (esimerkiksi ”Kuukausittain: 360 krediittiä kuun 1. päivä”), seuraava ajopäivä ja viimeisin lisäys.
+
+- Krediitit lisätään automaattisesti. Sinun ei tarvitse tehdä mitään joka kuukausi.
+- Jos aikataulun mukainen kuukausi jää väliin, sen krediitit lisätään kerran, kun aikataulu ajetaan seuraavan kerran, eikä koskaan useammin kuin kerran.
+- Krediittejä ei lisätä, kun työtila tai asiakas ei ole aktiivinen.
+- Lopettaaksesi avaa **Kuukausittaiset krediitit**, poista aikataulu käytöstä ja napsauta **Tallenna**. Tulevat lisäykset loppuvat; jo lisätyt krediitit jäävät saldoon.
+
+### Esimerkki: kuukausittainen vaihtokauppasopimus
+
+Sovit vaihtavasi 3 tuntia työtä joka kuukausi hintaan 120 krediittiä tunnissa.
+
+1. Aseta **Kuukausittaiset krediitit** arvoon 360 krediittiä kuukaudessa kuun 1. päivänä tilalla **Täydennä tähän määrään joka kuukausi**. Valitse sen sijaan **Lisää tämä määrä joka kuukausi**, jos käyttämättömien tuntien pitää siirtyä eteenpäin.
+2. Kun teet työtä, napsauta **Säädä krediittejä**, valitse **Vähennä krediittejä** ja **Tunnit** ja anna käytetty aika, esimerkiksi 1,5 tuntia hintaan 120 krediittiä tunnissa (180 krediittiä), ja huomautus kuten ”Etusivun tekstit, marraskuu”.
+3. Asiakas näkee jokaisen vähennyksen tunteineen ja huomautuksineen omalla Credits-sivullaan.
+
+<Note>
+  Krediitit eivät vanhene koskaan. Lisäämäsi, ostetut tai kuukausittain annetut krediitit pysyvät saldossa, kunnes ne käytetään tai vähennetään.
+</Note>
+
+## Ymmärrä krediittitapahtumat
+
+Jokainen krediittitapahtuma kirjataan asiakkaan tapahtumahistoriaan.
+
+**In**: tilille lisätyt krediitit:
+- Krediittipaketin osto
+- Hyväksytty krediittipyyntö
+
+**Out**: tililtä vähennetyt krediitit:
+- Krediiteillä ostettu palvelu
+- Krediiteillä maksettu lasku
+
+Jokaisessa tapahtumassa näkyvät päivämäärä, tyyppi, viite, krediittimäärä ja juokseva saldo, joten tapahtumahistoria on täydellinen.
+
+**Itse lisäämäsi tai vähentämäsi krediitit sekä kuukausittaiset krediitit** näkyvät samassa historiassa, ja niiden viitteestä näkee, mistä ne ovat peräisin:
+
+- **Lisännyt** *nimi* tai **Vähentänyt** *nimi*: tiimin jäsen käytti toimintoa **Säädä krediittejä**.
+- **Kuukausittaiset krediitit**: lisätty kuukausittaisen aikataulun mukaan.
+
+Jos määrä annettiin tunteina, rivillä näkyvät myös tunnit ja hinta (esimerkiksi ”2 h × 120/h”) sekä huomautuksesi. Asiakkaat näkevät nämä rivit huomautuksineen omalla Credits-sivullaan, ja krediittihistorian vienneissä on mukana huomautus.

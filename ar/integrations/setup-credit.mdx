@@ -4,153 +4,239 @@ sidebarTitle: "الرصيد"
 description: "قدم الخدمات عبر نظام رصيد مدفوع مسبقاً: أنشئ الحزم وحدد معدلات التحويل واسمح للعملاء بشراء الرصيد واستخدامه في الخدمات والفواتير."
 ---
 
-Credits enable you to offer services through a prepaid system. You create credit packages with a price, set conversion rates that define how many credits one unit of currency buys, and clients purchase credits in advance. When a client orders a service or pays an invoice, AgencyHandy converts the price into credits, deducts the required amount, and records every transaction in a complete audit trail.
+يتيح لك الرصيد تقديم الخدمات عبر نظام دفع مسبق. تنشئ باقات رصيد بسعر محدد، وتضبط معدلات تحويل تحدد عدد وحدات الرصيد التي تشتريها وحدة واحدة من العملة، ويشتري العملاء الرصيد مقدمًا. عندما يطلب العميل خدمة أو يدفع فاتورة، يحوّل AgencyHandy السعر إلى رصيد، ويخصم المقدار المطلوب، ويسجّل كل معاملة في سجل تدقيق كامل.
 
-## How credits work
+## كيف يعمل الرصيد
 
-The credit system has three components:
+يتكون نظام الرصيد من ثلاثة عناصر:
 
-- **Credit packages**: bundles of credits that clients purchase (for example, 500 credits for $50).
-- **Conversion rates**: rules that convert a service's currency price into credits (for example, 1 USD = 10 credits).
-- **Credit balance**: the credits available to a client to spend on services or invoices.
+- **باقات الرصيد**: مجموعات من الرصيد يشتريها العملاء (مثلًا 500 رصيد مقابل 50 دولارًا).
+- **معدلات التحويل**: قواعد تحوّل سعر الخدمة بالعملة إلى رصيد (مثلًا 1 USD = 10 رصيد).
+- **رصيد العميل**: الرصيد المتاح للعميل لإنفاقه على الخدمات أو الفواتير.
 
-**Example:** A service costs $3.51 and the conversion rate is 1 USD = 10 credits.
+**مثال:** تكلفة الخدمة 3.51 دولار ومعدل التحويل 1 USD = 10 رصيد.
 
 `$3.51 × 10 = 35.1 credits → rounded up to 36 credits`
 
-AgencyHandy always rounds up to the nearest whole credit.
+يقرّب AgencyHandy دائمًا إلى أقرب رصيد صحيح للأعلى.
 
-## Enable credit payments
+## تفعيل الدفع بالرصيد
 
-Before clients can purchase or use credits, you must turn the feature on.
+قبل أن يتمكن العملاء من شراء الرصيد أو استخدامه، يجب تشغيل هذه الميزة.
 
 <Steps>
-  <Step title="Navigate to Credits">
-    In the left sidebar, go to **Credits**.
+  <Step title="انتقل إلى الرصيد">
+    في الشريط الجانبي الأيسر، انتقل إلى **Credits**.
   </Step>
-  <Step title="Turn on the toggle">
-    Enable the **Allow Credit Payment** toggle.
+  <Step title="شغّل المفتاح">
+    فعّل مفتاح **Allow Credit Payment**.
   </Step>
 </Steps>
 
-**When enabled**, clients can:
-- See their credit balance widget in the client portal.
-- Access the Credits page and purchase packages.
-- Submit credit requests.
-- Use **Buy with Credit** during service checkout.
-- Use **Pay with Credit** on invoices.
+**عند التفعيل**، يمكن للعملاء:
+- رؤية أداة رصيدهم في بوابة العميل.
+- فتح صفحة الرصيد وشراء الباقات.
+- إرسال طلبات الرصيد.
+- استخدام **Buy with Credit** أثناء الدفع للخدمة.
+- استخدام **Pay with Credit** في الفواتير.
 
-**When disabled**, the credit widget and all credit options are hidden from the client portal. Existing credit balances are preserved, and clients can still use other payment methods.
+**عند التعطيل**، تُخفى أداة الرصيد وجميع خيارات الرصيد من بوابة العميل. تبقى الأرصدة الحالية محفوظة، ويمكن للعملاء الاستمرار في استخدام طرق الدفع الأخرى.
 
-## Create credit packages
+## إنشاء باقات الرصيد
 
-Credit packages are what clients purchase to load credits onto their account.
+باقات الرصيد هي ما يشتريه العملاء لإضافة رصيد إلى حساباتهم.
 
 <Steps>
-  <Step title="Open Credit Packages settings">
-    Navigate to **Credits → Settings → Credit Packages**.
+  <Step title="افتح إعدادات باقات الرصيد">
+    انتقل إلى **Credits ← الإعدادات ← باقات الرصيد**.
   </Step>
-  <Step title="Add a package">
-    Click **+ Package**.
+  <Step title="أضف باقة">
+    انقر على **+ Package**.
   </Step>
-  <Step title="Fill in the details">
-    Enter a package name, the number of credits included, the currency, and the price.
+  <Step title="املأ التفاصيل">
+    أدخل اسم الباقة وعدد وحدات الرصيد المضمنة والعملة والسعر.
   </Step>
-  <Step title="Save">
-    Click **Create**.
+  <Step title="احفظ">
+    انقر على **إنشاء**.
   </Step>
 </Steps>
 
-## Manage conversion rates
+## إدارة معدلات التحويل
 
-Conversion rates determine how many credits are required for a service based on its currency price. You can set a different rate per currency.
+تحدد معدلات التحويل عدد وحدات الرصيد المطلوبة لخدمة ما بناءً على سعرها بالعملة. يمكنك تعيين معدل مختلف لكل عملة.
 
 <Steps>
-  <Step title="Open Conversion Rates settings">
-    Navigate to **Credits → Settings → Conversion Rates**.
+  <Step title="افتح إعدادات معدلات التحويل">
+    انتقل إلى **Credits ← الإعدادات ← Conversion Rates**.
   </Step>
-  <Step title="Add a rate">
-    Click **+ Add Conversion Rate**.
+  <Step title="أضف معدلًا">
+    انقر على **+ Add Conversion Rate**.
   </Step>
-  <Step title="Configure the rate">
-    Select a currency and enter the number of credits equivalent to one unit of that currency.
+  <Step title="اضبط المعدل">
+    اختر عملة وأدخل عدد وحدات الرصيد التي تعادل وحدة واحدة من تلك العملة.
   </Step>
-  <Step title="Save">
-    Click **Save**.
+  <Step title="احفظ">
+    انقر على **حفظ**.
   </Step>
 </Steps>
 
-**Example rates:**
+**أمثلة على المعدلات:**
 
-| Currency | Rate |
+| العملة | المعدل |
 |----------|------|
-| USD | 1 USD = 10 credits |
-| EUR | 1 EUR = 9 credits |
-| GBP | 1 GBP = 12 credits |
+| USD | 1 USD = 10 رصيد |
+| EUR | 1 EUR = 9 رصيد |
+| GBP | 1 GBP = 12 رصيد |
 
 <Note>
-  Only one active conversion rate can exist per currency at any given time.
+  لا يمكن أن يوجد سوى معدل تحويل نشط واحد لكل عملة في أي وقت.
 </Note>
 
-## Automatic vs manual credit purchases
+## شراء الرصيد تلقائيًا مقابل يدويًا
 
-How credits are added to a client's account depends on the payment method used.
+تعتمد طريقة إضافة الرصيد إلى حساب العميل على طريقة الدفع المستخدمة.
 
-**Automatic** (no approval needed):
+**تلقائي** (لا يحتاج إلى موافقة):
 - Stripe
 - PayPal
 
-Credits are added immediately after a successful payment.
+يُضاف الرصيد فور نجاح الدفع.
 
-**Manual** (requires agency approval):
-- Bank Transfer
-- Cryptocurrency
+**يدوي** (يتطلب موافقة الوكالة):
+- التحويل البنكي
+- العملات المشفرة
 
-When a client pays via a manual method, a credit request is created. You must review and approve it before credits are added.
+عندما يدفع العميل بطريقة يدوية، يُنشأ طلب رصيد. يجب عليك مراجعته والموافقة عليه قبل إضافة الرصيد.
 
-## Manage credit requests
+## إدارة طلبات الرصيد
 
 <Steps>
-  <Step title="Open credit requests">
-    Navigate to **Billing → Credits**.
+  <Step title="افتح طلبات الرصيد">
+    انتقل إلى **الفواتير ← Credits**.
   </Step>
-  <Step title="Locate pending requests">
-    Review the client name, payment amount, and number of credits requested.
+  <Step title="حدد الطلبات المعلقة">
+    راجع اسم العميل ومبلغ الدفع وعدد وحدات الرصيد المطلوبة.
   </Step>
-  <Step title="Approve or reject">
-    Click **Accept** to add the credits, or **Reject** to decline.
+  <Step title="وافق أو ارفض">
+    انقر على **قبول** لإضافة الرصيد، أو **رفض** لرفض الطلب.
   </Step>
 </Steps>
 
-**Request statuses:**
+**حالات الطلب:**
 
-- **Pending**: submitted and awaiting review.
-- **Accepted**: approved; credits have been added to the client's balance.
-- **Rejected**: declined; no credits were added.
+- **معلق**: تم إرساله وينتظر المراجعة.
+- **مقبول**: تمت الموافقة عليه وأُضيف الرصيد إلى رصيد العميل.
+- **مرفوض**: تم رفضه ولم يُضف أي رصيد.
 
-## View client credits
+## عرض رصيد العميل
 
 <Steps>
-  <Step title="Open the client profile">
-    Navigate to **Clients** and click on a client's name.
+  <Step title="افتح ملف العميل">
+    انتقل إلى **العملاء** وانقر على اسم العميل.
   </Step>
-  <Step title="Go to the Credits tab">
-    Select the **Credits** tab.
+  <Step title="انتقل إلى علامة تبويب الرصيد">
+    اختر علامة التبويب **الرصيد**.
   </Step>
 </Steps>
 
-The Credits tab shows the client's available balance, full transaction history, running balance, and transaction references.
+تعرض علامة تبويب الرصيد الرصيد المتاح للعميل وسجل المعاملات الكامل والرصيد الجاري ومراجع المعاملات.
 
-## Understand credit transactions
+## إضافة الرصيد أو خصمه
 
-Every credit activity is recorded in the client's transaction history.
+يمكن للمسؤولين والمسؤولين الرئيسيين إضافة رصيد إلى حساب العميل أو خصمه منه مجانًا. استخدم ذلك لمنح مكافأة، أو لتسجيل عمل تم بموجب اتفاقية مقايضة، أو لتصحيح الرصيد.
 
-**In**: credits added to the account:
-- Credit package purchase
-- Approved credit request
+<Steps>
+  <Step title="افتح علامة تبويب Credits الخاصة بالعميل">
+    انتقل إلى **العملاء**، وانقر على اسم العميل، ثم اختر علامة التبويب **Credits**.
+  </Step>
+  <Step title="انقر على تعديل الأرصدة">
+    بجوار الرصيد، انقر على **تعديل الأرصدة**.
+  </Step>
+  <Step title="اختر إضافة أرصدة أو خصم أرصدة">
+    عند الخصم، تعرض النافذة الرصيد الحالي للعميل.
+  </Step>
+  <Step title="أدخل المقدار">
+    ضمن **الوحدة**، اختر **Credits** لإدخال عدد صحيح من الرصيد، أو **الساعات** لإدخال عدد الساعات (حتى منزلتين عشريتين) و**الأرصدة لكل ساعة**. في وضع الساعات يظهر المقدار المحوَّل أثناء الكتابة، مثلًا ساعتان × 120 رصيدًا للساعة = 240 رصيدًا.
+  </Step>
+  <Step title="أضف ملاحظة (اختياري)">
+    أدخل حتى 280 حرفًا، مثل «3 ساعات تسويق، أكتوبر». تظهر الملاحظة في سجل الرصيد.
+  </Step>
+  <Step title="أكّد">
+    انقر على **إضافة أرصدة** أو **خصم أرصدة**.
+  </Step>
+</Steps>
 
-**Out**: credits deducted from the account:
-- Service purchased using credits
-- Invoice paid using credits
+<Note>
+  يُحفَظ سعر الأرصدة لكل ساعة لكل عميل ويُملأ مسبقًا في المرة التالية التي تختار فيها **الساعات**.
+</Note>
 
-Each transaction shows the date, type, reference, credit amount, and running balance, providing a complete audit trail.
+<Warning>
+  لا يمكن للخصم أن يجعل الرصيد أقل من صفر. إذا كان المقدار أكبر من الرصيد الحالي، تعرض النافذة **هذا أكثر من الرصيد الحالي** ولا يُحفَظ الخصم («Not enough credits»).
+</Warning>
+
+## منح الرصيد كل شهر
+
+تضيف **الأرصدة الشهرية** رصيدًا إلى العميل تلقائيًا في اليوم نفسه من كل شهر، وهي مناسبة لعقود الاشتراك الثابت واتفاقيات المقايضة. لا يمكن إعدادها إلا للمسؤولين والمسؤولين الرئيسيين.
+
+<Steps>
+  <Step title="افتح الأرصدة الشهرية">
+    في علامة التبويب **Credits** الخاصة بالعميل، انقر على **الأرصدة الشهرية** بجوار الرصيد.
+  </Step>
+  <Step title="حدّد المقدار واليوم">
+    أدخل **الأرصدة شهريًا** و**يوم الشهر** (1–28).
+  </Step>
+  <Step title="اختر طريقة منح الرصيد">
+    اختر أحد الوضعين في **طريقة المنح** (انظر الجدول أدناه).
+  </Step>
+  <Step title="أضف ملاحظة (اختياري)">
+    تظهر الملاحظة في كل صف من صفوف الرصيد الشهري في سجل الرصيد.
+  </Step>
+  <Step title="فعّله واحفظ">
+    تأكد من تشغيل الجدولة (**نشط**)، ثم انقر على **حفظ**.
+  </Step>
+</Steps>
+
+| الوضع | ما يحدث كل شهر |
+|------|-------------------------|
+| **أضف هذا المقدار كل شهر** | يُضاف المقدار إلى الرصيد. يُرحَّل الرصيد غير المستخدم. |
+| **أكمل حتى هذا المقدار كل شهر** | يُعاد الرصيد إلى هذا المقدار. لا يُرحَّل الرصيد غير المستخدم، ولا يُضاف شيء إذا كان الرصيد مساويًا للمقدار أو أكبر منه. |
+
+بعد الحفظ، تعرض علامة التبويب Credits الجدولة (مثل «شهريًا: 360 رصيد في اليوم 1»)، وتاريخ التشغيل التالي، وآخر منح.
+
+- يُضاف الرصيد تلقائيًا. لا تحتاج إلى فعل أي شيء كل شهر.
+- إذا فات شهر مجدول، يُضاف رصيده مرة واحدة عند تشغيل الجدولة مجددًا، وليس أكثر من مرة أبدًا.
+- لا يُضاف أي رصيد ما دامت مساحة العمل أو العميل غير نشطين.
+- للإيقاف، افتح **الأرصدة الشهرية**، وأوقف الجدولة، ثم انقر على **حفظ**. تتوقف عمليات المنح المستقبلية، ويبقى الرصيد المضاف سابقًا في الحساب.
+
+### مثال: اتفاقية مقايضة شهرية
+
+تتفق على مقايضة 3 ساعات عمل كل شهر بسعر 120 رصيدًا للساعة.
+
+1. اضبط **الأرصدة الشهرية** على 360 رصيدًا شهريًا في اليوم 1 مع **أكمل حتى هذا المقدار كل شهر**. واختر **أضف هذا المقدار كل شهر** بدلًا من ذلك إذا كان يجب ترحيل الساعات غير المستخدمة.
+2. أثناء إنجاز العمل، انقر على **تعديل الأرصدة**، واختر **خصم أرصدة** و**الساعات**، وأدخل الوقت المستغرق، مثل 1.5 ساعة بسعر 120 رصيدًا للساعة (180 رصيدًا)، مع ملاحظة مثل «نصوص الصفحة الرئيسية، نوفمبر».
+3. يرى العميل كل خصم، مع الساعات وملاحظتك، في صفحة الرصيد الخاصة به.
+
+<Note>
+  لا تنتهي صلاحية الرصيد أبدًا. يبقى الرصيد الذي تضيفه أو يُشترى أو يُمنح شهريًا في الحساب حتى يُنفَق أو يُخصم.
+</Note>
+
+## فهم معاملات الرصيد
+
+يُسجَّل كل نشاط للرصيد في سجل معاملات العميل.
+
+**In**: رصيد أُضيف إلى الحساب:
+- شراء باقة رصيد
+- طلب رصيد تمت الموافقة عليه
+
+**Out**: رصيد خُصم من الحساب:
+- خدمة تم شراؤها بالرصيد
+- فاتورة تم دفعها بالرصيد
+
+تعرض كل معاملة التاريخ والنوع والمرجع ومقدار الرصيد والرصيد الجاري، ما يوفر سجل تدقيق كاملًا.
+
+**الرصيد الذي تضيفه أو تخصمه يدويًا، والأرصدة الشهرية**، تظهر في السجل نفسه مع مرجع يوضح مصدرها:
+
+- **أضافه** *الاسم* أو **خصمه** *الاسم*: استخدم أحد أعضاء الفريق **تعديل الأرصدة**.
+- **الأرصدة الشهرية**: أُضيفت بواسطة الجدولة الشهرية.
+
+إذا أُدخل المقدار بالساعات، يعرض الصف أيضًا الساعات والسعر (مثل «2 h × 120/h») تليه ملاحظتك. يرى العملاء هذه الصفوف، بما فيها الملاحظة، في صفحة الرصيد الخاصة بهم، وتتضمن عمليات تصدير سجل الرصيد الملاحظة.
