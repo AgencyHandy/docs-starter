@@ -4,153 +4,239 @@ sidebarTitle: "Kredīts"
 description: "Piedāvājiet pakalpojumus, izmantojot priekšapmaksas kredītu sistēmu: veidojiet paketes, iestatiet konvertācijas kursus un ļaujiet klientiem pirkt un izmantot kredītus pakalpojumiem un rēķiniem."
 ---
 
-Credits enable you to offer services through a prepaid system. You create credit packages with a price, set conversion rates that define how many credits one unit of currency buys, and clients purchase credits in advance. When a client orders a service or pays an invoice, AgencyHandy converts the price into credits, deducts the required amount, and records every transaction in a complete audit trail.
+Kredīti ļauj piedāvāt pakalpojumus, izmantojot priekšapmaksas sistēmu. Jūs izveidojat kredītu paketes ar cenu, iestatāt konvertācijas kursus, kas nosaka, cik kredītu var nopirkt par vienu valūtas vienību, un klienti iegādājas kredītus iepriekš. Kad klients pasūta pakalpojumu vai apmaksā rēķinu, AgencyHandy pārvērš cenu kredītos, atskaita nepieciešamo summu un reģistrē katru darījumu pilnā audita vēsturē.
 
-## How credits work
+## Kā darbojas kredīti
 
-The credit system has three components:
+Kredītu sistēmai ir trīs sastāvdaļas:
 
-- **Credit packages**: bundles of credits that clients purchase (for example, 500 credits for $50).
-- **Conversion rates**: rules that convert a service's currency price into credits (for example, 1 USD = 10 credits).
-- **Credit balance**: the credits available to a client to spend on services or invoices.
+- **Kredītu paketes**: kredītu komplekti, ko klienti iegādājas (piemēram, 500 kredīti par 50 $).
+- **Konvertācijas kursi**: noteikumi, kas pārvērš pakalpojuma cenu valūtā kredītos (piemēram, 1 USD = 10 kredīti).
+- **Kredītu atlikums**: kredīti, ko klients var tērēt pakalpojumiem vai rēķiniem.
 
-**Example:** A service costs $3.51 and the conversion rate is 1 USD = 10 credits.
+**Piemērs:** pakalpojums maksā 3,51 $, un konvertācijas kurss ir 1 USD = 10 kredīti.
 
 `$3.51 × 10 = 35.1 credits → rounded up to 36 credits`
 
-AgencyHandy always rounds up to the nearest whole credit.
+AgencyHandy vienmēr noapaļo uz augšu līdz tuvākajam veselajam kredītam.
 
-## Enable credit payments
+## Iespējot kredītu maksājumus
 
-Before clients can purchase or use credits, you must turn the feature on.
+Pirms klienti var iegādāties vai izmantot kredītus, jums jāieslēdz šī funkcija.
 
 <Steps>
-  <Step title="Navigate to Credits">
-    In the left sidebar, go to **Credits**.
+  <Step title="Atveriet sadaļu Kredīti">
+    Kreisajā sānjoslā atveriet **Credits**.
   </Step>
-  <Step title="Turn on the toggle">
-    Enable the **Allow Credit Payment** toggle.
+  <Step title="Ieslēdziet slēdzi">
+    Ieslēdziet slēdzi **Allow Credit Payment**.
   </Step>
 </Steps>
 
-**When enabled**, clients can:
-- See their credit balance widget in the client portal.
-- Access the Credits page and purchase packages.
-- Submit credit requests.
-- Use **Buy with Credit** during service checkout.
-- Use **Pay with Credit** on invoices.
+**Kad funkcija ir ieslēgta**, klienti var:
+- redzēt sava kredītu atlikuma logrīku klienta portālā;
+- atvērt lapu Credits un iegādāties paketes;
+- iesniegt kredītu pieprasījumus;
+- pakalpojuma noformēšanā izmantot **Buy with Credit**;
+- rēķiniem izmantot **Pay with Credit**.
 
-**When disabled**, the credit widget and all credit options are hidden from the client portal. Existing credit balances are preserved, and clients can still use other payment methods.
+**Kad funkcija ir izslēgta**, kredītu logrīks un visas kredītu iespējas klienta portālā ir paslēptas. Esošie kredītu atlikumi tiek saglabāti, un klienti joprojām var izmantot citas maksājumu metodes.
 
-## Create credit packages
+## Izveidot kredītu paketes
 
-Credit packages are what clients purchase to load credits onto their account.
+Kredītu paketes ir tas, ko klienti iegādājas, lai papildinātu savu kontu ar kredītiem.
 
 <Steps>
-  <Step title="Open Credit Packages settings">
-    Navigate to **Credits → Settings → Credit Packages**.
+  <Step title="Atveriet kredītu pakešu iestatījumus">
+    Atveriet **Credits → Settings → Credit Packages**.
   </Step>
-  <Step title="Add a package">
-    Click **+ Package**.
+  <Step title="Pievienojiet paketi">
+    Noklikšķiniet uz **+ Package**.
   </Step>
-  <Step title="Fill in the details">
-    Enter a package name, the number of credits included, the currency, and the price.
+  <Step title="Aizpildiet informāciju">
+    Ievadiet paketes nosaukumu, iekļauto kredītu skaitu, valūtu un cenu.
   </Step>
-  <Step title="Save">
-    Click **Create**.
+  <Step title="Saglabājiet">
+    Noklikšķiniet uz **Create**.
   </Step>
 </Steps>
 
-## Manage conversion rates
+## Pārvaldīt konvertācijas kursus
 
-Conversion rates determine how many credits are required for a service based on its currency price. You can set a different rate per currency.
+Konvertācijas kursi nosaka, cik kredītu nepieciešams pakalpojumam, ņemot vērā tā cenu valūtā. Katrai valūtai varat iestatīt atšķirīgu kursu.
 
 <Steps>
-  <Step title="Open Conversion Rates settings">
-    Navigate to **Credits → Settings → Conversion Rates**.
+  <Step title="Atveriet konvertācijas kursu iestatījumus">
+    Atveriet **Credits → Settings → Conversion Rates**.
   </Step>
-  <Step title="Add a rate">
-    Click **+ Add Conversion Rate**.
+  <Step title="Pievienojiet kursu">
+    Noklikšķiniet uz **+ Add Conversion Rate**.
   </Step>
-  <Step title="Configure the rate">
-    Select a currency and enter the number of credits equivalent to one unit of that currency.
+  <Step title="Konfigurējiet kursu">
+    Izvēlieties valūtu un ievadiet kredītu skaitu, kas atbilst vienai šīs valūtas vienībai.
   </Step>
-  <Step title="Save">
-    Click **Save**.
+  <Step title="Saglabājiet">
+    Noklikšķiniet uz **Save**.
   </Step>
 </Steps>
 
-**Example rates:**
+**Kursu piemēri:**
 
-| Currency | Rate |
+| Valūta | Kurss |
 |----------|------|
-| USD | 1 USD = 10 credits |
-| EUR | 1 EUR = 9 credits |
-| GBP | 1 GBP = 12 credits |
+| USD | 1 USD = 10 kredīti |
+| EUR | 1 EUR = 9 kredīti |
+| GBP | 1 GBP = 12 kredīti |
 
 <Note>
-  Only one active conversion rate can exist per currency at any given time.
+  Katrai valūtai vienlaikus var būt tikai viens aktīvs konvertācijas kurss.
 </Note>
 
-## Automatic vs manual credit purchases
+## Automātiski un manuāli kredītu pirkumi
 
-How credits are added to a client's account depends on the payment method used.
+Tas, kā kredīti tiek pievienoti klienta kontam, ir atkarīgs no izmantotās maksājumu metodes.
 
-**Automatic** (no approval needed):
+**Automātiski** (apstiprinājums nav nepieciešams):
 - Stripe
 - PayPal
 
-Credits are added immediately after a successful payment.
+Kredīti tiek pievienoti uzreiz pēc veiksmīga maksājuma.
 
-**Manual** (requires agency approval):
-- Bank Transfer
-- Cryptocurrency
+**Manuāli** (nepieciešams aģentūras apstiprinājums):
+- Bankas pārskaitījums
+- Kriptovalūta
 
-When a client pays via a manual method, a credit request is created. You must review and approve it before credits are added.
+Kad klients maksā ar manuālu metodi, tiek izveidots kredītu pieprasījums. Jums tas jāpārskata un jāapstiprina, pirms kredīti tiek pievienoti.
 
-## Manage credit requests
+## Pārvaldīt kredītu pieprasījumus
 
 <Steps>
-  <Step title="Open credit requests">
-    Navigate to **Billing → Credits**.
+  <Step title="Atveriet kredītu pieprasījumus">
+    Atveriet **Billing → Credits**.
   </Step>
-  <Step title="Locate pending requests">
-    Review the client name, payment amount, and number of credits requested.
+  <Step title="Atrodiet gaidošos pieprasījumus">
+    Pārskatiet klienta vārdu, maksājuma summu un pieprasīto kredītu skaitu.
   </Step>
-  <Step title="Approve or reject">
-    Click **Accept** to add the credits, or **Reject** to decline.
+  <Step title="Apstipriniet vai noraidiet">
+    Noklikšķiniet uz **Accept**, lai pievienotu kredītus, vai uz **Reject**, lai noraidītu.
   </Step>
 </Steps>
 
-**Request statuses:**
+**Pieprasījumu statusi:**
 
-- **Pending**: submitted and awaiting review.
-- **Accepted**: approved; credits have been added to the client's balance.
-- **Rejected**: declined; no credits were added.
+- **Pending**: iesniegts un gaida pārskatīšanu.
+- **Accepted**: apstiprināts; kredīti ir pievienoti klienta atlikumam.
+- **Rejected**: noraidīts; kredīti netika pievienoti.
 
-## View client credits
+## Skatīt klienta kredītus
 
 <Steps>
-  <Step title="Open the client profile">
-    Navigate to **Clients** and click on a client's name.
+  <Step title="Atveriet klienta profilu">
+    Atveriet **Klienti** un noklikšķiniet uz klienta vārda.
   </Step>
-  <Step title="Go to the Credits tab">
-    Select the **Credits** tab.
+  <Step title="Atveriet cilni Kredīti">
+    Izvēlieties cilni **Credits**.
   </Step>
 </Steps>
 
-The Credits tab shows the client's available balance, full transaction history, running balance, and transaction references.
+Cilnē Credits redzams klienta pieejamais atlikums, pilna darījumu vēsture, mainīgais atlikums un darījumu atsauces.
 
-## Understand credit transactions
+## Pievienot vai atskaitīt kredītus
 
-Every credit activity is recorded in the client's transaction history.
+Administratori un superadministratori var bez maksas pievienot kredītus klienta atlikumam vai atskaitīt tos no tā. Izmantojiet to, lai piešķirtu bonusu, reģistrētu bartera līguma ietvaros paveikto darbu vai labotu atlikumu.
 
-**In**: credits added to the account:
-- Credit package purchase
-- Approved credit request
+<Steps>
+  <Step title="Atveriet klienta cilni Kredīti">
+    Atveriet **Klienti**, noklikšķiniet uz klienta vārda un izvēlieties cilni **Credits**.
+  </Step>
+  <Step title="Noklikšķiniet uz Pielāgot kredītus">
+    Blakus atlikumam noklikšķiniet uz **Pielāgot kredītus**.
+  </Step>
+  <Step title="Izvēlieties Pievienot kredītus vai Atskaitīt kredītus">
+    Atskaitot dialoglodziņā tiek parādīts klienta pašreizējais atlikums.
+  </Step>
+  <Step title="Ievadiet summu">
+    Sadaļā **Vienība** izvēlieties **Kredīti**, lai ievadītu veselu kredītu skaitu, vai **Stundas**, lai ievadītu stundas (līdz 2 decimāldaļām) un **Kredīti stundā**. Režīmā Stundas pārrēķinātā summa tiek rādīta rakstīšanas laikā, piemēram, 2 stundas × 120 kredīti stundā = 240 kredīti.
+  </Step>
+  <Step title="Pievienojiet piezīmi (nav obligāti)">
+    Ievadiet līdz 280 rakstzīmēm, piemēram, „3 mārketinga stundas, oktobris”. Piezīme tiek rādīta kredītu vēsturē.
+  </Step>
+  <Step title="Apstipriniet">
+    Noklikšķiniet uz **Pievienot kredītus** vai **Atskaitīt kredītus**.
+  </Step>
+</Steps>
 
-**Out**: credits deducted from the account:
-- Service purchased using credits
-- Invoice paid using credits
+<Note>
+  Kredītu stundas likme tiek saglabāta katram klientam un automātiski aizpildīta nākamreiz, kad izvēlaties **Stundas**.
+</Note>
 
-Each transaction shows the date, type, reference, credit amount, and running balance, providing a complete audit trail.
+<Warning>
+  Atskaitījums nekad nevar samazināt atlikumu zem nulles. Ja summa ir lielāka par pašreizējo atlikumu, dialoglodziņā tiek parādīts **Tas ir vairāk nekā pašreizējais atlikums**, un atskaitījums netiek saglabāts („Not enough credits”).
+</Warning>
+
+## Piešķirt kredītus katru mēnesi
+
+**Ikmēneša kredīti** automātiski pievieno kredītus klientam katra mēneša vienā un tajā pašā dienā, kas ir ērti abonementa un bartera līgumiem. Tos var iestatīt tikai administratori un superadministratori.
+
+<Steps>
+  <Step title="Atveriet Ikmēneša kredīti">
+    Klienta cilnē **Credits** blakus atlikumam noklikšķiniet uz **Ikmēneša kredīti**.
+  </Step>
+  <Step title="Iestatiet summu un dienu">
+    Ievadiet **Kredīti mēnesī** un **Mēneša diena** (1–28).
+  </Step>
+  <Step title="Izvēlieties, kā tiek piešķirti kredīti">
+    Laukā **Kā tiek piešķirti kredīti** izvēlieties vienu no diviem režīmiem (skatiet tabulu zemāk).
+  </Step>
+  <Step title="Pievienojiet piezīmi (nav obligāti)">
+    Piezīme tiek rādīta katrā ikmēneša kredītu rindā kredītu vēsturē.
+  </Step>
+  <Step title="Ieslēdziet un saglabājiet">
+    Pārliecinieties, ka grafiks ir ieslēgts (**Aktīvs**), un noklikšķiniet uz **Saglabāt**.
+  </Step>
+</Steps>
+
+| Režīms | Kas notiek katru mēnesi |
+|------|-------------------------|
+| **Katru mēnesi pievienot šo summu** | Summa tiek pievienota atlikumam. Neizmantotie kredīti tiek pārnesti. |
+| **Katru mēnesi papildināt līdz šai summai** | Atlikums tiek atjaunots līdz šai summai. Neizmantotie kredīti netiek pārnesti, un nekas netiek pievienots, ja atlikums jau ir vienāds ar summu vai lielāks. |
+
+Pēc saglabāšanas cilnē Credits redzams grafiks (piemēram, „Ik mēnesi: 360 kredīti, 1. datumā”), nākamās izpildes datums un pēdējā piešķiršana.
+
+- Kredīti tiek pievienoti automātiski. Katru mēnesi jums nekas nav jādara.
+- Ja kāds ieplānotais mēnesis tiek izlaists, tā kredīti tiek pievienoti vienu reizi, kad grafiks izpildās atkal, nekad vairāk kā vienu reizi.
+- Kamēr darbvieta vai klients ir neaktīvs, kredīti netiek pievienoti.
+- Lai apturētu, atveriet **Ikmēneša kredīti**, izslēdziet grafiku un noklikšķiniet uz **Saglabāt**. Turpmākās piešķiršanas tiek apturētas; jau pievienotie kredīti paliek atlikumā.
+
+### Piemērs: ikmēneša bartera līgums
+
+Jūs vienojaties katru mēnesi apmainīt 3 darba stundas ar likmi 120 kredīti stundā.
+
+1. Iestatiet **Ikmēneša kredīti** uz 360 kredītiem mēnesī 1. datumā ar režīmu **Katru mēnesi papildināt līdz šai summai**. Ja neizmantotajām stundām jāpārnesas, izvēlieties **Katru mēnesi pievienot šo summu**.
+2. Darba gaitā noklikšķiniet uz **Pielāgot kredītus**, izvēlieties **Atskaitīt kredītus** un **Stundas** un ievadiet patērēto laiku, piemēram, 1,5 stundas ar 120 kredītiem stundā (180 kredīti), ar piezīmi, piemēram, „Sākumlapas teksts, novembris”.
+3. Klients savā lapā Credits redz katru atskaitījumu ar stundām un jūsu piezīmi.
+
+<Note>
+  Kredītiem nav derīguma termiņa. Pievienotie, nopirktie vai ik mēnesi piešķirtie kredīti paliek atlikumā, līdz tie tiek iztērēti vai atskaitīti.
+</Note>
+
+## Izprast kredītu darījumus
+
+Katra kredītu darbība tiek reģistrēta klienta darījumu vēsturē.
+
+**In**: kontam pievienotie kredīti:
+- Kredītu paketes pirkums
+- Apstiprināts kredītu pieprasījums
+
+**Out**: no konta atskaitītie kredīti:
+- Ar kredītiem iegādāts pakalpojums
+- Ar kredītiem apmaksāts rēķins
+
+Katram darījumam redzams datums, veids, atsauce, kredītu summa un mainīgais atlikums, nodrošinot pilnu audita vēsturi.
+
+**Manuāli pievienotie vai atskaitītie kredīti, kā arī ikmēneša kredīti** parādās tajā pašā vēsturē ar atsauci, kas norāda to izcelsmi:
+
+- **Pievienoja** *vārds* vai **Atskaitīja** *vārds*: komandas dalībnieks izmantoja **Pielāgot kredītus**.
+- **Ikmēneša kredīti**: pievienoti ar ikmēneša grafiku.
+
+Ja summa tika ievadīta stundās, rindā redzamas arī stundas un likme (piemēram, „2 h × 120/h”), kam seko jūsu piezīme. Klienti šīs rindas, ieskaitot piezīmi, redz savā lapā Credits, un kredītu vēstures eksportos ir iekļauta piezīme.

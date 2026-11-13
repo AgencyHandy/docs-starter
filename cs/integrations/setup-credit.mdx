@@ -141,6 +141,85 @@ Když klient platí manuální metodou, je vytvořena žádost o kredit. Musíte
 
 Záložka Kredity zobrazuje dostupný zůstatek klienta, kompletní historii transakcí, průběžný zůstatek a reference transakcí.
 
+## Přidání nebo odečtení kreditů
+
+Administrátoři a superadministrátoři mohou zdarma přidat kredity na zůstatek klienta nebo je z něj odečíst. Využijete to pro bonus, pro zaznamenání práce v rámci barterové dohody nebo pro opravu zůstatku.
+
+<Steps>
+  <Step title="Otevřete záložku Kredity u klienta">
+    Přejděte na **Klienti**, klikněte na jméno klienta a vyberte záložku **Kredity**.
+  </Step>
+  <Step title="Klikněte na Upravit kredity">
+    Vedle zůstatku klikněte na **Upravit kredity**.
+  </Step>
+  <Step title="Zvolte Přidat kredity nebo Odečíst kredity">
+    Při odečítání dialog zobrazí aktuální zůstatek klienta.
+  </Step>
+  <Step title="Zadejte množství">
+    V části **Jednotka** zvolte **Kredity** a zadejte celé číslo kreditů, nebo **Hodiny** a zadejte počet hodin (nejvýše 2 desetinná místa) a **Kreditů za hodinu**. V režimu hodin se přepočtené množství zobrazuje už během psaní, například 2 hodiny × 120 kreditů za hodinu = 240 kreditů.
+  </Step>
+  <Step title="Přidejte poznámku (nepovinné)">
+    Zadejte až 280 znaků, například „3 hodiny marketingu, říjen“. Poznámka se zobrazí v historii kreditů.
+  </Step>
+  <Step title="Potvrďte">
+    Klikněte na **Přidat kredity** nebo **Odečíst kredity**.
+  </Step>
+</Steps>
+
+<Note>
+  Sazba kreditů za hodinu se ukládá pro každého klienta zvlášť a příště, když zvolíte **Hodiny**, je předvyplněná.
+</Note>
+
+<Warning>
+  Odečtení nikdy nemůže snížit zůstatek pod nulu. Pokud je množství vyšší než aktuální zůstatek, dialog zobrazí **To je více než aktuální zůstatek** a odečtení se neuloží („Not enough credits“).
+</Warning>
+
+## Kredity každý měsíc
+
+**Měsíční kredity** přidávají klientovi kredity automaticky každý měsíc ve stejný den. Hodí se pro paušály a barterové dohody. Nastavit je mohou jen administrátoři a superadministrátoři.
+
+<Steps>
+  <Step title="Otevřete Měsíční kredity">
+    Na záložce **Kredity** u klienta klikněte vedle zůstatku na **Měsíční kredity**.
+  </Step>
+  <Step title="Nastavte množství a den">
+    Zadejte **Kreditů za měsíc** a **Den v měsíci** (1–28).
+  </Step>
+  <Step title="Zvolte způsob přidělení">
+    V poli **Způsob přidělení** vyberte jeden ze dvou režimů (viz tabulka níže).
+  </Step>
+  <Step title="Přidejte poznámku (nepovinné)">
+    Poznámka se zobrazí u každého řádku měsíčních kreditů v historii kreditů.
+  </Step>
+  <Step title="Zapněte a uložte">
+    Ujistěte se, že je plán zapnutý (**Aktivní**), a klikněte na **Uložit**.
+  </Step>
+</Steps>
+
+| Režim | Co se stane každý měsíc |
+|------|-------------------------|
+| **Každý měsíc přidat tuto částku** | Částka se přičte k zůstatku. Nevyužité kredity se převádějí. |
+| **Každý měsíc doplnit na tuto částku** | Zůstatek se doplní zpět na tuto částku. Nevyužité kredity se nepřevádějí a pokud je zůstatek stejný nebo vyšší, nic se nepřidá. |
+
+Po uložení záložka Kredity zobrazuje plán (například „Měsíčně: 360 kreditů, 1. den“), datum dalšího spuštění a poslední přidělení.
+
+- Kredity se přidávají automaticky. Každý měsíc nemusíte nic dělat.
+- Pokud se naplánovaný měsíc vynechá, jeho kredity se přidají jednou při dalším spuštění plánu, nikdy vícekrát.
+- Dokud je pracovní prostor nebo klient neaktivní, žádné kredity se nepřidávají.
+- Chcete-li plán zastavit, otevřete **Měsíční kredity**, vypněte plán a klikněte na **Uložit**. Další přidělení se zastaví; již přidané kredity na zůstatku zůstanou.
+
+### Příklad: měsíční barterová dohoda
+
+Dohodnete se na výměně 3 hodin práce měsíčně za 120 kreditů za hodinu.
+
+1. Nastavte **Měsíční kredity** na 360 kreditů měsíčně, 1. den, s režimem **Každý měsíc doplnit na tuto částku**. Pokud se nevyužité hodiny mají převádět, zvolte místo toho **Každý měsíc přidat tuto částku**.
+2. Během práce klikněte na **Upravit kredity**, zvolte **Odečíst kredity** a **Hodiny** a zadejte odpracovaný čas, například 1,5 hodiny za 120 kreditů za hodinu (180 kreditů), s poznámkou jako „Texty na úvodní stránku, listopad“.
+3. Klient vidí každé odečtení, včetně hodin a vaší poznámky, na své stránce Kredity.
+
+<Note>
+  Kredity nikdy nevyprší. Kredity, které přidáte, klient koupí nebo dostane měsíčně, zůstávají na zůstatku, dokud nejsou utraceny nebo odečteny.
+</Note>
+
 ## Porozumění kreditním transakcím
 
 Každá kreditní aktivita je zaznamenána v historii transakcí klienta.
@@ -154,3 +233,10 @@ Každá kreditní aktivita je zaznamenána v historii transakcí klienta.
 - Faktura zaplacená kredity
 
 Každá transakce zobrazuje datum, typ, referenci, výši kreditů a průběžný zůstatek, čímž poskytuje kompletní auditní stopu.
+
+**Kredity, které ručně přidáte nebo odečtete, a měsíční kredity** se zobrazují ve stejné historii s referencí, která ukazuje jejich původ:
+
+- **Přidal(a)** *jméno* nebo **Odečetl(a)** *jméno*: člen týmu použil **Upravit kredity**.
+- **Měsíční kredity**: přidáno měsíčním plánem.
+
+Pokud bylo množství zadáno v hodinách, řádek zobrazí i hodiny a sazbu (například „2 h × 120/h“) a za nimi vaši poznámku. Klienti tyto řádky včetně poznámky vidí na své stránce Kredity a exporty historie kreditů poznámku obsahují.

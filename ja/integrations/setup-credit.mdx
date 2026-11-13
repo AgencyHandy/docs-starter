@@ -4,153 +4,239 @@ sidebarTitle: "クレジット"
 description: "プリペイドクレジットシステムでサービスを提供しましょう: パッケージを作成し、換算レートを設定し、クライアントがサービスや請求書にクレジットを購入・使用できるようにします。"
 ---
 
-Credits enable you to offer services through a prepaid system. You create credit packages with a price, set conversion rates that define how many credits one unit of currency buys, and clients purchase credits in advance. When a client orders a service or pays an invoice, AgencyHandy converts the price into credits, deducts the required amount, and records every transaction in a complete audit trail.
+クレジットを使うと、前払い制でサービスを提供できます。価格付きのクレジットパッケージを作成し、通貨 1 単位で何クレジット購入できるかを決める換算レートを設定すると、クライアントは事前にクレジットを購入します。クライアントがサービスを注文したり請求書を支払ったりすると、AgencyHandy は価格をクレジットに換算して必要な分を差し引き、すべての取引を完全な監査記録として残します。
 
-## How credits work
+## クレジットの仕組み
 
-The credit system has three components:
+クレジットシステムは 3 つの要素で構成されています。
 
-- **Credit packages**: bundles of credits that clients purchase (for example, 500 credits for $50).
-- **Conversion rates**: rules that convert a service's currency price into credits (for example, 1 USD = 10 credits).
-- **Credit balance**: the credits available to a client to spend on services or invoices.
+- **クレジットパッケージ**: クライアントが購入するクレジットのまとまり（例: 500 クレジットで $50）。
+- **換算レート**: サービスの通貨建て価格をクレジットに換算するルール（例: 1 USD = 10 クレジット）。
+- **クレジット残高**: クライアントがサービスや請求書に使えるクレジット。
 
-**Example:** A service costs $3.51 and the conversion rate is 1 USD = 10 credits.
+**例:** サービスの価格が $3.51 で、換算レートが 1 USD = 10 クレジットの場合。
 
 `$3.51 × 10 = 35.1 credits → rounded up to 36 credits`
 
-AgencyHandy always rounds up to the nearest whole credit.
+AgencyHandy は常に整数のクレジットに切り上げます。
 
-## Enable credit payments
+## クレジット支払いを有効にする
 
-Before clients can purchase or use credits, you must turn the feature on.
+クライアントがクレジットを購入・使用できるようにするには、まず機能を有効にする必要があります。
 
 <Steps>
-  <Step title="Navigate to Credits">
-    In the left sidebar, go to **Credits**.
+  <Step title="クレジットに移動">
+    左サイドバーで **Credits** に移動します。
   </Step>
-  <Step title="Turn on the toggle">
-    Enable the **Allow Credit Payment** toggle.
+  <Step title="トグルをオンにする">
+    **Allow Credit Payment** トグルを有効にします。
   </Step>
 </Steps>
 
-**When enabled**, clients can:
-- See their credit balance widget in the client portal.
-- Access the Credits page and purchase packages.
-- Submit credit requests.
-- Use **Buy with Credit** during service checkout.
-- Use **Pay with Credit** on invoices.
+**有効にすると**、クライアントは次のことができます。
+- クライアントポータルでクレジット残高ウィジェットを確認する。
+- クレジットページを開き、パッケージを購入する。
+- クレジットリクエストを送信する。
+- サービスのチェックアウトで **Buy with Credit** を使う。
+- 請求書で **Pay with Credit** を使う。
 
-**When disabled**, the credit widget and all credit options are hidden from the client portal. Existing credit balances are preserved, and clients can still use other payment methods.
+**無効にすると**、クレジットウィジェットとすべてのクレジットオプションがクライアントポータルから非表示になります。既存のクレジット残高は保持され、クライアントは引き続き他の支払い方法を利用できます。
 
-## Create credit packages
+## クレジットパッケージを作成する
 
-Credit packages are what clients purchase to load credits onto their account.
+クレジットパッケージは、クライアントがアカウントにクレジットをチャージするために購入するものです。
 
 <Steps>
-  <Step title="Open Credit Packages settings">
-    Navigate to **Credits → Settings → Credit Packages**.
+  <Step title="クレジットパッケージの設定を開く">
+    **Credits → 設定 → クレジットパッケージ** に移動します。
   </Step>
-  <Step title="Add a package">
-    Click **+ Package**.
+  <Step title="パッケージを追加">
+    **+ Package** をクリックします。
   </Step>
-  <Step title="Fill in the details">
-    Enter a package name, the number of credits included, the currency, and the price.
+  <Step title="詳細を入力">
+    パッケージ名、含まれるクレジット数、通貨、価格を入力します。
   </Step>
-  <Step title="Save">
-    Click **Create**.
+  <Step title="保存">
+    **作成** をクリックします。
   </Step>
 </Steps>
 
-## Manage conversion rates
+## 換算レートを管理する
 
-Conversion rates determine how many credits are required for a service based on its currency price. You can set a different rate per currency.
+換算レートは、サービスの通貨建て価格に応じて必要なクレジット数を決めます。通貨ごとに異なるレートを設定できます。
 
 <Steps>
-  <Step title="Open Conversion Rates settings">
-    Navigate to **Credits → Settings → Conversion Rates**.
+  <Step title="換算レートの設定を開く">
+    **Credits → 設定 → Conversion Rates** に移動します。
   </Step>
-  <Step title="Add a rate">
-    Click **+ Add Conversion Rate**.
+  <Step title="レートを追加">
+    **+ Add Conversion Rate** をクリックします。
   </Step>
-  <Step title="Configure the rate">
-    Select a currency and enter the number of credits equivalent to one unit of that currency.
+  <Step title="レートを設定">
+    通貨を選択し、その通貨 1 単位に相当するクレジット数を入力します。
   </Step>
-  <Step title="Save">
-    Click **Save**.
+  <Step title="保存">
+    **保存** をクリックします。
   </Step>
 </Steps>
 
-**Example rates:**
+**レートの例:**
 
-| Currency | Rate |
+| 通貨 | レート |
 |----------|------|
-| USD | 1 USD = 10 credits |
-| EUR | 1 EUR = 9 credits |
-| GBP | 1 GBP = 12 credits |
+| USD | 1 USD = 10 クレジット |
+| EUR | 1 EUR = 9 クレジット |
+| GBP | 1 GBP = 12 クレジット |
 
 <Note>
-  Only one active conversion rate can exist per currency at any given time.
+  1 つの通貨につき、有効な換算レートは同時に 1 つだけです。
 </Note>
 
-## Automatic vs manual credit purchases
+## 自動と手動のクレジット購入
 
-How credits are added to a client's account depends on the payment method used.
+クライアントのアカウントにクレジットが追加される方法は、使用した支払い方法によって異なります。
 
-**Automatic** (no approval needed):
+**自動**（承認不要）:
 - Stripe
 - PayPal
 
-Credits are added immediately after a successful payment.
+支払いが完了すると、すぐにクレジットが追加されます。
 
-**Manual** (requires agency approval):
-- Bank Transfer
-- Cryptocurrency
+**手動**（エージェンシーの承認が必要）:
+- 銀行振込
+- 暗号資産
 
-When a client pays via a manual method, a credit request is created. You must review and approve it before credits are added.
+クライアントが手動の方法で支払うと、クレジットリクエストが作成されます。クレジットが追加される前に、内容を確認して承認する必要があります。
 
-## Manage credit requests
+## クレジットリクエストを管理する
 
 <Steps>
-  <Step title="Open credit requests">
-    Navigate to **Billing → Credits**.
+  <Step title="クレジットリクエストを開く">
+    **請求 → Credits** に移動します。
   </Step>
-  <Step title="Locate pending requests">
-    Review the client name, payment amount, and number of credits requested.
+  <Step title="保留中のリクエストを確認">
+    クライアント名、支払額、リクエストされたクレジット数を確認します。
   </Step>
-  <Step title="Approve or reject">
-    Click **Accept** to add the credits, or **Reject** to decline.
+  <Step title="承認または拒否">
+    **承諾** をクリックするとクレジットが追加され、**拒否** をクリックすると却下されます。
   </Step>
 </Steps>
 
-**Request statuses:**
+**リクエストのステータス:**
 
-- **Pending**: submitted and awaiting review.
-- **Accepted**: approved; credits have been added to the client's balance.
-- **Rejected**: declined; no credits were added.
+- **保留中**: 送信済みで、確認待ちです。
+- **承諾済み**: 承認され、クライアントの残高にクレジットが追加されました。
+- **拒否済み**: 却下され、クレジットは追加されていません。
 
-## View client credits
+## クライアントのクレジットを確認する
 
 <Steps>
-  <Step title="Open the client profile">
-    Navigate to **Clients** and click on a client's name.
+  <Step title="クライアントのプロフィールを開く">
+    **クライアント** に移動し、クライアント名をクリックします。
   </Step>
-  <Step title="Go to the Credits tab">
-    Select the **Credits** tab.
+  <Step title="クレジットタブを開く">
+    **クレジット** タブを選択します。
   </Step>
 </Steps>
 
-The Credits tab shows the client's available balance, full transaction history, running balance, and transaction references.
+クレジットタブには、クライアントの利用可能な残高、取引履歴のすべて、累計残高、取引の参照情報が表示されます。
 
-## Understand credit transactions
+## クレジットを追加・差し引く
 
-Every credit activity is recorded in the client's transaction history.
+管理者とスーパー管理者は、クライアントの残高にクレジットを無料で追加したり、残高から差し引いたりできます。ボーナスの付与、バーター契約で行った作業の記録、残高の修正などに使えます。
 
-**In**: credits added to the account:
-- Credit package purchase
-- Approved credit request
+<Steps>
+  <Step title="クライアントのクレジットタブを開く">
+    **クライアント** に移動し、クライアント名をクリックして **クレジット** タブを選択します。
+  </Step>
+  <Step title="クレジットを調整をクリック">
+    残高の横にある **クレジットを調整** をクリックします。
+  </Step>
+  <Step title="クレジットを追加またはクレジットを差し引くを選ぶ">
+    差し引く場合、ダイアログにクライアントの現在の残高が表示されます。
+  </Step>
+  <Step title="数量を入力する">
+    **単位** で **クレジット** を選ぶとクレジット数（整数）を、**時間** を選ぶと時間数（小数点以下 2 桁まで）と **1 時間あたりのクレジット** を入力できます。時間モードでは、入力に合わせて換算後の数量が表示されます。例: 2 時間 × 1 時間あたり 120 クレジット = 240 クレジット。
+  </Step>
+  <Step title="メモを追加する（任意）">
+    280 文字まで入力できます。例: 「10 月のマーケティング 3 時間」。メモはクレジット履歴に表示されます。
+  </Step>
+  <Step title="確定する">
+    **クレジットを追加** または **クレジットを差し引く** をクリックします。
+  </Step>
+</Steps>
 
-**Out**: credits deducted from the account:
-- Service purchased using credits
-- Invoice paid using credits
+<Note>
+  1 時間あたりのクレジットはクライアントごとに記憶され、次に **時間** を選んだときに自動入力されます。
+</Note>
 
-Each transaction shows the date, type, reference, credit amount, and running balance, providing a complete audit trail.
+<Warning>
+  差し引きによって残高がゼロ未満になることはありません。数量が現在の残高を超える場合、ダイアログに **現在の残高を超えています** と表示され、差し引きは保存されません（「Not enough credits」）。
+</Warning>
+
+## 毎月クレジットを付与する
+
+**毎月のクレジット** は、毎月同じ日にクライアントへ自動でクレジットを追加します。リテーナー契約やバーター契約に便利です。設定できるのは管理者とスーパー管理者のみです。
+
+<Steps>
+  <Step title="毎月のクレジットを開く">
+    クライアントの **クレジット** タブで、残高の横にある **毎月のクレジット** をクリックします。
+  </Step>
+  <Step title="数量と日付を設定する">
+    **月あたりのクレジット** と **付与日**（1〜28）を入力します。
+  </Step>
+  <Step title="付与方法を選ぶ">
+    **付与方法** で 2 つのモードのどちらかを選びます（下の表を参照）。
+  </Step>
+  <Step title="メモを追加する（任意）">
+    メモは、クレジット履歴の毎月のクレジットの各行に表示されます。
+  </Step>
+  <Step title="オンにして保存する">
+    スケジュールがオン（**有効**）になっていることを確認し、**保存** をクリックします。
+  </Step>
+</Steps>
+
+| モード | 毎月の動作 |
+|------|-------------------------|
+| **毎月この数を追加** | 指定した数が残高に追加されます。未使用のクレジットは繰り越されます。 |
+| **毎月この数まで補充** | 残高が指定した数まで戻されます。未使用のクレジットは繰り越されず、残高がすでにその数以上の場合は何も追加されません。 |
+
+保存すると、クレジットタブにスケジュール（例: 「毎月 1 日に 360 クレジット」）、次回の実行日、前回の付与が表示されます。
+
+- クレジットは自動で追加されます。毎月何かをする必要はありません。
+- 予定していた月の付与が実行されなかった場合、次にスケジュールが実行されたときに 1 回だけ追加されます。重複して追加されることはありません。
+- ワークスペースまたはクライアントが無効の間は、クレジットは追加されません。
+- 停止するには、**毎月のクレジット** を開いてスケジュールをオフにし、**保存** をクリックします。今後の付与は止まり、すでに追加されたクレジットは残高に残ります。
+
+### 例: 毎月のバーター契約
+
+1 時間あたり 120 クレジットで、毎月 3 時間分の作業を交換する契約を結んだとします。
+
+1. **毎月のクレジット** を毎月 1 日に 360 クレジット、**毎月この数まで補充** に設定します。未使用の時間を繰り越す場合は、代わりに **毎月この数を追加** を選びます。
+2. 作業を行うたびに **クレジットを調整** をクリックし、**クレジットを差し引く** と **時間** を選んで作業時間を入力します。例: 1.5 時間 × 1 時間あたり 120 クレジット（180 クレジット）、メモは「11 月 ホームページの文章」など。
+3. クライアントは、差し引きのたびに時間数とメモをクレジットページで確認できます。
+
+<Note>
+  クレジットに有効期限はありません。追加、購入、毎月付与されたクレジットは、使用されるか差し引かれるまで残高に残ります。
+</Note>
+
+## クレジット取引を理解する
+
+すべてのクレジットの動きは、クライアントの取引履歴に記録されます。
+
+**In**: アカウントに追加されたクレジット:
+- クレジットパッケージの購入
+- 承認されたクレジットリクエスト
+
+**Out**: アカウントから差し引かれたクレジット:
+- クレジットで購入したサービス
+- クレジットで支払った請求書
+
+各取引には日付、種類、参照情報、クレジット数、累計残高が表示され、完全な監査記録となります。
+
+**手動で追加・差し引いたクレジットと毎月のクレジット** も同じ履歴に表示され、どこから来たかを示す参照情報が付きます。
+
+- *名前* **が追加** または *名前* **が差し引き**: チームメンバーが **クレジットを調整** を使いました。
+- **毎月のクレジット**: 毎月のスケジュールによって追加されました。
+
+数量を時間で入力した場合、その行には時間数とレート（例: 「2 h × 120/h」）とメモも表示されます。クライアントはこれらの行をメモも含めて自分のクレジットページで確認でき、クレジット履歴のエクスポートにもメモが含まれます。

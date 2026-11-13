@@ -4,153 +4,239 @@ sidebarTitle: "Krediet"
 description: "Bied diensten aan via een vooruitbetaald kredietsysteem: maak pakketten aan, stel conversiekoersen in en laat klanten krediet kopen en gebruiken voor diensten en facturen."
 ---
 
-Credits enable you to offer services through a prepaid system. You create credit packages with a price, set conversion rates that define how many credits one unit of currency buys, and clients purchase credits in advance. When a client orders a service or pays an invoice, AgencyHandy converts the price into credits, deducts the required amount, and records every transaction in a complete audit trail.
+Met credits biedt u diensten aan via een prepaid systeem. U maakt creditpakketten met een prijs, stelt omrekeningskoersen in die bepalen hoeveel credits één eenheid valuta oplevert, en klanten kopen vooraf credits. Wanneer een klant een dienst bestelt of een factuur betaalt, rekent AgencyHandy de prijs om naar credits, trekt het benodigde aantal af en legt elke transactie vast in een volledig audittrail.
 
-## How credits work
+## Zo werken credits
 
-The credit system has three components:
+Het creditsysteem bestaat uit drie onderdelen:
 
-- **Credit packages**: bundles of credits that clients purchase (for example, 500 credits for $50).
-- **Conversion rates**: rules that convert a service's currency price into credits (for example, 1 USD = 10 credits).
-- **Credit balance**: the credits available to a client to spend on services or invoices.
+- **Creditpakketten**: bundels credits die klanten kopen (bijvoorbeeld 500 credits voor $50).
+- **Omrekeningskoersen**: regels die de prijs van een dienst in valuta omrekenen naar credits (bijvoorbeeld 1 USD = 10 credits).
+- **Creditsaldo**: de credits die een klant kan besteden aan diensten of facturen.
 
-**Example:** A service costs $3.51 and the conversion rate is 1 USD = 10 credits.
+**Voorbeeld:** Een dienst kost $3,51 en de omrekeningskoers is 1 USD = 10 credits.
 
-`$3.51 × 10 = 35.1 credits → rounded up to 36 credits`
+`$3,51 × 10 = 35,1 credits → naar boven afgerond op 36 credits`
 
-AgencyHandy always rounds up to the nearest whole credit.
+AgencyHandy rondt altijd naar boven af op de dichtstbijzijnde hele credit.
 
-## Enable credit payments
+## Creditbetalingen inschakelen
 
-Before clients can purchase or use credits, you must turn the feature on.
+Voordat klanten credits kunnen kopen of gebruiken, moet u de functie inschakelen.
 
 <Steps>
-  <Step title="Navigate to Credits">
-    In the left sidebar, go to **Credits**.
+  <Step title="Ga naar Credits">
+    Ga in de linkerzijbalk naar **Credits**.
   </Step>
-  <Step title="Turn on the toggle">
-    Enable the **Allow Credit Payment** toggle.
+  <Step title="Zet de schakelaar aan">
+    Schakel **Allow Credit Payment** in.
   </Step>
 </Steps>
 
-**When enabled**, clients can:
-- See their credit balance widget in the client portal.
-- Access the Credits page and purchase packages.
-- Submit credit requests.
-- Use **Buy with Credit** during service checkout.
-- Use **Pay with Credit** on invoices.
+**Wanneer ingeschakeld** kunnen klanten:
+- Hun creditsaldo-widget in het klantportaal zien.
+- De Credits-pagina openen en pakketten kopen.
+- Creditaanvragen indienen.
+- **Buy with Credit** gebruiken bij het afrekenen van een dienst.
+- **Pay with Credit** gebruiken bij facturen.
 
-**When disabled**, the credit widget and all credit options are hidden from the client portal. Existing credit balances are preserved, and clients can still use other payment methods.
+**Wanneer uitgeschakeld** worden de creditwidget en alle creditopties verborgen in het klantportaal. Bestaande creditsaldi blijven behouden en klanten kunnen nog steeds andere betaalmethoden gebruiken.
 
-## Create credit packages
+## Creditpakketten maken
 
-Credit packages are what clients purchase to load credits onto their account.
+Creditpakketten zijn wat klanten kopen om credits op hun account te zetten.
 
 <Steps>
-  <Step title="Open Credit Packages settings">
-    Navigate to **Credits → Settings → Credit Packages**.
+  <Step title="Open de instellingen voor Kredietpakketten">
+    Ga naar **Credits → Instellingen → Kredietpakketten**.
   </Step>
-  <Step title="Add a package">
-    Click **+ Package**.
+  <Step title="Voeg een pakket toe">
+    Klik op **+ Pakket**.
   </Step>
-  <Step title="Fill in the details">
-    Enter a package name, the number of credits included, the currency, and the price.
+  <Step title="Vul de gegevens in">
+    Voer een pakketnaam, het aantal inbegrepen credits, de valuta en de prijs in.
   </Step>
-  <Step title="Save">
-    Click **Create**.
+  <Step title="Opslaan">
+    Klik op **Creëren**.
   </Step>
 </Steps>
 
-## Manage conversion rates
+## Omrekeningskoersen beheren
 
-Conversion rates determine how many credits are required for a service based on its currency price. You can set a different rate per currency.
+Omrekeningskoersen bepalen hoeveel credits nodig zijn voor een dienst op basis van de prijs in valuta. U kunt per valuta een andere koers instellen.
 
 <Steps>
-  <Step title="Open Conversion Rates settings">
-    Navigate to **Credits → Settings → Conversion Rates**.
+  <Step title="Open de instellingen voor Conversion Rates">
+    Ga naar **Credits → Instellingen → Conversion Rates**.
   </Step>
-  <Step title="Add a rate">
-    Click **+ Add Conversion Rate**.
+  <Step title="Voeg een koers toe">
+    Klik op **+ Add Conversion Rate**.
   </Step>
-  <Step title="Configure the rate">
-    Select a currency and enter the number of credits equivalent to one unit of that currency.
+  <Step title="Stel de koers in">
+    Selecteer een valuta en voer het aantal credits in dat gelijk is aan één eenheid van die valuta.
   </Step>
-  <Step title="Save">
-    Click **Save**.
+  <Step title="Opslaan">
+    Klik op **Opslaan**.
   </Step>
 </Steps>
 
-**Example rates:**
+**Voorbeeldkoersen:**
 
-| Currency | Rate |
+| Valuta | Koers |
 |----------|------|
 | USD | 1 USD = 10 credits |
 | EUR | 1 EUR = 9 credits |
 | GBP | 1 GBP = 12 credits |
 
 <Note>
-  Only one active conversion rate can exist per currency at any given time.
+  Er kan per valuta maar één actieve omrekeningskoers tegelijk bestaan.
 </Note>
 
-## Automatic vs manual credit purchases
+## Automatische versus handmatige aankopen van credits
 
-How credits are added to a client's account depends on the payment method used.
+Hoe credits aan het account van een klant worden toegevoegd, hangt af van de gebruikte betaalmethode.
 
-**Automatic** (no approval needed):
+**Automatisch** (geen goedkeuring nodig):
 - Stripe
 - PayPal
 
-Credits are added immediately after a successful payment.
+Credits worden direct na een geslaagde betaling toegevoegd.
 
-**Manual** (requires agency approval):
-- Bank Transfer
-- Cryptocurrency
+**Handmatig** (goedkeuring door het bureau vereist):
+- Bankoverschrijving
+- Cryptovaluta
 
-When a client pays via a manual method, a credit request is created. You must review and approve it before credits are added.
+Wanneer een klant via een handmatige methode betaalt, wordt een creditaanvraag aangemaakt. U moet deze beoordelen en goedkeuren voordat de credits worden toegevoegd.
 
-## Manage credit requests
+## Creditaanvragen beheren
 
 <Steps>
-  <Step title="Open credit requests">
-    Navigate to **Billing → Credits**.
+  <Step title="Open de creditaanvragen">
+    Ga naar **Billing → Credits**.
   </Step>
-  <Step title="Locate pending requests">
-    Review the client name, payment amount, and number of credits requested.
+  <Step title="Zoek openstaande aanvragen">
+    Controleer de naam van de klant, het betaalde bedrag en het aantal aangevraagde credits.
   </Step>
-  <Step title="Approve or reject">
-    Click **Accept** to add the credits, or **Reject** to decline.
+  <Step title="Goedkeuren of afwijzen">
+    Klik op **Accepteren** om de credits toe te voegen of op **Afwijzen** om de aanvraag te weigeren.
   </Step>
 </Steps>
 
-**Request statuses:**
+**Status van aanvragen:**
 
-- **Pending**: submitted and awaiting review.
-- **Accepted**: approved; credits have been added to the client's balance.
-- **Rejected**: declined; no credits were added.
+- **In afwachting**: ingediend en wacht op beoordeling.
+- **Geaccepteerd**: goedgekeurd; de credits zijn aan het saldo van de klant toegevoegd.
+- **Afgewezen**: geweigerd; er zijn geen credits toegevoegd.
 
-## View client credits
+## Credits van een klant bekijken
 
 <Steps>
-  <Step title="Open the client profile">
-    Navigate to **Clients** and click on a client's name.
+  <Step title="Open het klantprofiel">
+    Ga naar **Klanten** en klik op de naam van een klant.
   </Step>
-  <Step title="Go to the Credits tab">
-    Select the **Credits** tab.
+  <Step title="Ga naar het tabblad Credits">
+    Selecteer het tabblad **Credits**.
   </Step>
 </Steps>
 
-The Credits tab shows the client's available balance, full transaction history, running balance, and transaction references.
+Het tabblad Credits toont het beschikbare saldo van de klant, de volledige transactiegeschiedenis, het lopende saldo en de transactiereferenties.
 
-## Understand credit transactions
+## Credits toevoegen of aftrekken
 
-Every credit activity is recorded in the client's transaction history.
+Beheerders en superbeheerders kunnen kosteloos credits aan het saldo van een klant toevoegen of ervan aftrekken. Gebruik dit om een bonus te geven, werk onder een ruilovereenkomst vast te leggen of een saldo te corrigeren.
 
-**In**: credits added to the account:
-- Credit package purchase
-- Approved credit request
+<Steps>
+  <Step title="Open het tabblad Credits van de klant">
+    Ga naar **Klanten**, klik op de naam van de klant en selecteer het tabblad **Credits**.
+  </Step>
+  <Step title="Klik op Credits aanpassen">
+    Klik naast het saldo op **Credits aanpassen**.
+  </Step>
+  <Step title="Kies Credits toevoegen of Credits aftrekken">
+    Wanneer u aftrekt, toont het venster het huidige saldo van de klant.
+  </Step>
+  <Step title="Voer het aantal in">
+    Kies onder **Eenheid** voor **Credits** om een heel aantal credits in te voeren, of voor **Uren** om uren (maximaal 2 decimalen) en **Credits per uur** in te voeren. In de modus Uren ziet u het omgerekende aantal terwijl u typt, bijvoorbeeld 2 uur × 120 credits per uur = 240 credits.
+  </Step>
+  <Step title="Voeg een opmerking toe (optioneel)">
+    Voer maximaal 280 tekens in, bijvoorbeeld „3 uur marketing, oktober”. De opmerking verschijnt in de creditgeschiedenis.
+  </Step>
+  <Step title="Bevestig">
+    Klik op **Credits toevoegen** of **Credits aftrekken**.
+  </Step>
+</Steps>
 
-**Out**: credits deducted from the account:
-- Service purchased using credits
-- Invoice paid using credits
+<Note>
+  Het aantal credits per uur wordt per klant onthouden en vooraf ingevuld wanneer u de volgende keer **Uren** kiest.
+</Note>
 
-Each transaction shows the date, type, reference, credit amount, and running balance, providing a complete audit trail.
+<Warning>
+  Een aftrekking kan het saldo nooit onder nul brengen. Als het aantal hoger is dan het huidige saldo, toont het venster **Dit is meer dan het huidige saldo** en wordt de aftrekking niet opgeslagen („Not enough credits”).
+</Warning>
+
+## Elke maand credits geven
+
+**Maandelijkse credits** voegen automatisch op dezelfde dag van elke maand credits toe aan een klant. Dat is handig voor retainers en ruilovereenkomsten. Alleen beheerders en superbeheerders kunnen dit instellen.
+
+<Steps>
+  <Step title="Open Maandelijkse credits">
+    Klik op het tabblad **Credits** van de klant naast het saldo op **Maandelijkse credits**.
+  </Step>
+  <Step title="Stel het aantal en de dag in">
+    Voer **Credits per maand** en **Dag van de maand** (1–28) in.
+  </Step>
+  <Step title="Kies hoe credits worden gegeven">
+    Kies een van de twee modi onder **Hoe credits worden gegeven** (zie de tabel hieronder).
+  </Step>
+  <Step title="Voeg een opmerking toe (optioneel)">
+    De opmerking verschijnt bij elke regel met maandelijkse credits in de creditgeschiedenis.
+  </Step>
+  <Step title="Zet het aan en sla op">
+    Zorg dat de planning is ingeschakeld (**Actief**) en klik op **Opslaan**.
+  </Step>
+</Steps>
+
+| Modus | Wat er elke maand gebeurt |
+|------|-------------------------|
+| **Dit bedrag elke maand toevoegen** | Het aantal wordt bij het saldo opgeteld. Ongebruikte credits blijven staan. |
+| **Elke maand aanvullen tot dit bedrag** | Het saldo wordt weer aangevuld tot dit aantal. Ongebruikte credits worden niet overgedragen, en er wordt niets toegevoegd als het saldo al gelijk aan of hoger dan dit aantal is. |
+
+Na het opslaan toont het tabblad Credits de planning (bijvoorbeeld „Maandelijks: 360 credits op dag 1”), de volgende uitvoerdatum en de laatste toekenning.
+
+- Credits worden automatisch toegevoegd. U hoeft elke maand niets te doen.
+- Als een geplande maand wordt gemist, worden de credits daarvan één keer toegevoegd wanneer de planning weer wordt uitgevoerd, nooit vaker.
+- Er worden geen credits toegevoegd zolang de werkruimte of de klant inactief is.
+- Om te stoppen opent u **Maandelijkse credits**, zet u de planning uit en klikt u op **Opslaan**. Toekomstige toekenningen stoppen; credits die al zijn toegevoegd, blijven op het saldo staan.
+
+### Voorbeeld: een maandelijkse ruilovereenkomst
+
+U spreekt af om elke maand 3 uur werk te ruilen tegen 120 credits per uur.
+
+1. Stel **Maandelijkse credits** in op 360 credits per maand op dag 1 met **Elke maand aanvullen tot dit bedrag**. Kies in plaats daarvan **Dit bedrag elke maand toevoegen** als ongebruikte uren moeten blijven staan.
+2. Wanneer u het werk uitvoert, klikt u op **Credits aanpassen**, kiest u **Credits aftrekken** en **Uren** en voert u de bestede tijd in, bijvoorbeeld 1,5 uur tegen 120 credits per uur (180 credits), met een opmerking zoals „Teksten homepage, november”.
+3. De klant ziet elke aftrekking, met de uren en uw opmerking, op zijn Credits-pagina.
+
+<Note>
+  Credits verlopen nooit. Credits die u toevoegt, die worden gekocht of die maandelijks worden toegekend, blijven op het saldo staan tot ze worden besteed of afgetrokken.
+</Note>
+
+## Credittransacties begrijpen
+
+Elke creditactiviteit wordt vastgelegd in de transactiegeschiedenis van de klant.
+
+**In**: credits die aan het account zijn toegevoegd:
+- Aankoop van een creditpakket
+- Goedgekeurde creditaanvraag
+
+**Out**: credits die van het account zijn afgetrokken:
+- Dienst gekocht met credits
+- Factuur betaald met credits
+
+Elke transactie toont de datum, het type, de referentie, het aantal credits en het lopende saldo, zodat u een volledig audittrail hebt.
+
+**Credits die u handmatig toevoegt of aftrekt, en maandelijkse credits**, verschijnen in dezelfde geschiedenis met een referentie die laat zien waar ze vandaan komen:
+
+- **Toegevoegd door** *naam* of **Afgetrokken door** *naam*: een teamlid heeft **Credits aanpassen** gebruikt.
+- **Maandelijkse credits**: toegevoegd door de maandelijkse planning.
+
+Als het aantal in uren is ingevoerd, toont de regel ook de uren en het tarief (bijvoorbeeld „2 h × 120/h”), gevolgd door uw opmerking. Klanten zien deze regels, inclusief de opmerking, op hun Credits-pagina, en exports van de creditgeschiedenis bevatten de opmerking.

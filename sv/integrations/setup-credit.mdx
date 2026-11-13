@@ -4,153 +4,239 @@ sidebarTitle: "Kredit"
 description: "Erbjud tjänster via ett förbetalat kreditsystem: skapa paket, ange konverteringskurser och låt kunder köpa och använda krediter för tjänster och fakturor."
 ---
 
-Credits enable you to offer services through a prepaid system. You create credit packages with a price, set conversion rates that define how many credits one unit of currency buys, and clients purchase credits in advance. When a client orders a service or pays an invoice, AgencyHandy converts the price into credits, deducts the required amount, and records every transaction in a complete audit trail.
+Med krediter kan du erbjuda tjänster via ett förbetalt system. Du skapar kreditpaket med ett pris, anger konverteringskurser som avgör hur många krediter en valutaenhet köper, och klienter köper krediter i förväg. När en klient beställer en tjänst eller betalar en faktura räknar AgencyHandy om priset till krediter, drar av det belopp som krävs och registrerar varje transaktion i en fullständig historik.
 
-## How credits work
+## Så fungerar krediter
 
-The credit system has three components:
+Kreditsystemet har tre delar:
 
-- **Credit packages**: bundles of credits that clients purchase (for example, 500 credits for $50).
-- **Conversion rates**: rules that convert a service's currency price into credits (for example, 1 USD = 10 credits).
-- **Credit balance**: the credits available to a client to spend on services or invoices.
+- **Kreditpaket**: paket med krediter som klienter köper (till exempel 500 krediter för 50 $).
+- **Konverteringskurser**: regler som räknar om en tjänsts pris i valuta till krediter (till exempel 1 USD = 10 krediter).
+- **Kreditsaldo**: de krediter som en klient har att använda för tjänster eller fakturor.
 
-**Example:** A service costs $3.51 and the conversion rate is 1 USD = 10 credits.
+**Exempel:** En tjänst kostar 3,51 $ och konverteringskursen är 1 USD = 10 krediter.
 
-`$3.51 × 10 = 35.1 credits → rounded up to 36 credits`
+`$3.51 × 10 = 35.1 krediter → avrundas uppåt till 36 krediter`
 
-AgencyHandy always rounds up to the nearest whole credit.
+AgencyHandy avrundar alltid uppåt till närmaste hela kredit.
 
-## Enable credit payments
+## Aktivera kreditbetalningar
 
-Before clients can purchase or use credits, you must turn the feature on.
+Innan klienter kan köpa eller använda krediter måste du slå på funktionen.
 
 <Steps>
-  <Step title="Navigate to Credits">
-    In the left sidebar, go to **Credits**.
+  <Step title="Gå till Credits">
+    Gå till **Credits** i det vänstra sidofältet.
   </Step>
-  <Step title="Turn on the toggle">
-    Enable the **Allow Credit Payment** toggle.
+  <Step title="Slå på reglaget">
+    Aktivera reglaget **Allow Credit Payment**.
   </Step>
 </Steps>
 
-**When enabled**, clients can:
-- See their credit balance widget in the client portal.
-- Access the Credits page and purchase packages.
-- Submit credit requests.
-- Use **Buy with Credit** during service checkout.
-- Use **Pay with Credit** on invoices.
+**När funktionen är på** kan klienter:
+- Se sin kreditsaldowidget i klientportalen.
+- Öppna Credits-sidan och köpa paket.
+- Skicka kreditförfrågningar.
+- Använda **Buy with Credit** i tjänstens kassa.
+- Använda **Pay with Credit** på fakturor.
 
-**When disabled**, the credit widget and all credit options are hidden from the client portal. Existing credit balances are preserved, and clients can still use other payment methods.
+**När funktionen är av** döljs kreditwidgeten och alla kreditalternativ i klientportalen. Befintliga kreditsaldon behålls och klienter kan fortfarande använda andra betalningsmetoder.
 
-## Create credit packages
+## Skapa kreditpaket
 
-Credit packages are what clients purchase to load credits onto their account.
+Kreditpaket är det som klienter köper för att fylla på krediter på sitt konto.
 
 <Steps>
-  <Step title="Open Credit Packages settings">
-    Navigate to **Credits → Settings → Credit Packages**.
+  <Step title="Öppna inställningarna för kreditpaket">
+    Gå till **Credits → Inställningar → Kreditpaket**.
   </Step>
-  <Step title="Add a package">
-    Click **+ Package**.
+  <Step title="Lägg till ett paket">
+    Klicka på **+ Paket**.
   </Step>
-  <Step title="Fill in the details">
-    Enter a package name, the number of credits included, the currency, and the price.
+  <Step title="Fyll i uppgifterna">
+    Ange ett paketnamn, antalet krediter som ingår, valutan och priset.
   </Step>
-  <Step title="Save">
-    Click **Create**.
+  <Step title="Spara">
+    Klicka på **Skapa**.
   </Step>
 </Steps>
 
-## Manage conversion rates
+## Hantera konverteringskurser
 
-Conversion rates determine how many credits are required for a service based on its currency price. You can set a different rate per currency.
+Konverteringskurser avgör hur många krediter som krävs för en tjänst utifrån dess pris i valuta. Du kan ange en egen kurs för varje valuta.
 
 <Steps>
-  <Step title="Open Conversion Rates settings">
-    Navigate to **Credits → Settings → Conversion Rates**.
+  <Step title="Öppna inställningarna för konverteringskurser">
+    Gå till **Credits → Inställningar → Conversion Rates**.
   </Step>
-  <Step title="Add a rate">
-    Click **+ Add Conversion Rate**.
+  <Step title="Lägg till en kurs">
+    Klicka på **+ Add Conversion Rate**.
   </Step>
-  <Step title="Configure the rate">
-    Select a currency and enter the number of credits equivalent to one unit of that currency.
+  <Step title="Konfigurera kursen">
+    Välj en valuta och ange hur många krediter som motsvarar en enhet av den valutan.
   </Step>
-  <Step title="Save">
-    Click **Save**.
+  <Step title="Spara">
+    Klicka på **Spara**.
   </Step>
 </Steps>
 
-**Example rates:**
+**Exempel på kurser:**
 
-| Currency | Rate |
-|----------|------|
-| USD | 1 USD = 10 credits |
-| EUR | 1 EUR = 9 credits |
-| GBP | 1 GBP = 12 credits |
+| Valuta | Kurs |
+|--------|------|
+| USD | 1 USD = 10 krediter |
+| EUR | 1 EUR = 9 krediter |
+| GBP | 1 GBP = 12 krediter |
 
 <Note>
-  Only one active conversion rate can exist per currency at any given time.
+  Det kan bara finnas en aktiv konverteringskurs per valuta åt gången.
 </Note>
 
-## Automatic vs manual credit purchases
+## Automatiska och manuella kreditköp
 
-How credits are added to a client's account depends on the payment method used.
+Hur krediter läggs till på en klients konto beror på vilken betalningsmetod som används.
 
-**Automatic** (no approval needed):
+**Automatiska** (inget godkännande krävs):
 - Stripe
 - PayPal
 
-Credits are added immediately after a successful payment.
+Krediterna läggs till direkt efter en lyckad betalning.
 
-**Manual** (requires agency approval):
-- Bank Transfer
-- Cryptocurrency
+**Manuella** (kräver byråns godkännande):
+- Banköverföring
+- Kryptovaluta
 
-When a client pays via a manual method, a credit request is created. You must review and approve it before credits are added.
+När en klient betalar med en manuell metod skapas en kreditförfrågan. Du måste granska och godkänna den innan krediterna läggs till.
 
-## Manage credit requests
+## Hantera kreditförfrågningar
 
 <Steps>
-  <Step title="Open credit requests">
-    Navigate to **Billing → Credits**.
+  <Step title="Öppna kreditförfrågningar">
+    Gå till **Fakturering → Credits**.
   </Step>
-  <Step title="Locate pending requests">
-    Review the client name, payment amount, and number of credits requested.
+  <Step title="Hitta väntande förfrågningar">
+    Granska klientens namn, betalningsbeloppet och antalet begärda krediter.
   </Step>
-  <Step title="Approve or reject">
-    Click **Accept** to add the credits, or **Reject** to decline.
+  <Step title="Godkänn eller avvisa">
+    Klicka på **Acceptera** för att lägga till krediterna eller på **Avvisa** för att neka.
   </Step>
 </Steps>
 
-**Request statuses:**
+**Status för förfrågningar:**
 
-- **Pending**: submitted and awaiting review.
-- **Accepted**: approved; credits have been added to the client's balance.
-- **Rejected**: declined; no credits were added.
+- **Väntande**: skickad och väntar på granskning.
+- **Accepterad**: godkänd; krediterna har lagts till på klientens saldo.
+- **Avvisad**: nekad; inga krediter har lagts till.
 
-## View client credits
+## Visa en klients krediter
 
 <Steps>
-  <Step title="Open the client profile">
-    Navigate to **Clients** and click on a client's name.
+  <Step title="Öppna klientprofilen">
+    Gå till **Klienter** och klicka på en klients namn.
   </Step>
-  <Step title="Go to the Credits tab">
-    Select the **Credits** tab.
+  <Step title="Gå till fliken Credits">
+    Välj fliken **Credits**.
   </Step>
 </Steps>
 
-The Credits tab shows the client's available balance, full transaction history, running balance, and transaction references.
+Fliken Credits visar klientens tillgängliga saldo, fullständig transaktionshistorik, löpande saldo och transaktionsreferenser.
 
-## Understand credit transactions
+## Lägg till eller dra av krediter
 
-Every credit activity is recorded in the client's transaction history.
+Administratörer och superadministratörer kan lägga till krediter på en klients saldo eller dra av krediter från det, utan kostnad. Använd det för att ge en bonus, registrera arbete som utförts inom ett bytesavtal eller rätta ett saldo.
 
-**In**: credits added to the account:
-- Credit package purchase
-- Approved credit request
+<Steps>
+  <Step title="Öppna klientens Credits-flik">
+    Gå till **Klienter**, klicka på klientens namn och välj fliken **Credits**.
+  </Step>
+  <Step title="Klicka på Justera krediter">
+    Klicka på **Justera krediter** bredvid saldot.
+  </Step>
+  <Step title="Välj Lägg till krediter eller Dra av krediter">
+    När du drar av visar dialogrutan klientens aktuella saldo.
+  </Step>
+  <Step title="Ange beloppet">
+    Under **Enhet** väljer du **Credits** för att ange ett heltal krediter, eller **Timmar** för att ange timmar (upp till 2 decimaler) och **Krediter per timme**. I timläget visas det omräknade beloppet medan du skriver, till exempel 2 timmar × 120 krediter per timme = 240 krediter.
+  </Step>
+  <Step title="Lägg till en anteckning (valfritt)">
+    Skriv upp till 280 tecken, till exempel ”3 timmar marknadsföring, oktober”. Anteckningen visas i kredithistoriken.
+  </Step>
+  <Step title="Bekräfta">
+    Klicka på **Lägg till krediter** eller **Dra av krediter**.
+  </Step>
+</Steps>
 
-**Out**: credits deducted from the account:
-- Service purchased using credits
-- Invoice paid using credits
+<Note>
+  Kursen för krediter per timme sparas för varje klient och fylls i automatiskt nästa gång du väljer **Timmar**.
+</Note>
 
-Each transaction shows the date, type, reference, credit amount, and running balance, providing a complete audit trail.
+<Warning>
+  Ett avdrag kan aldrig göra saldot negativt. Om beloppet är större än det aktuella saldot visar dialogrutan **Det är mer än det aktuella saldot** och avdraget sparas inte (”Not enough credits”).
+</Warning>
+
+## Ge krediter varje månad
+
+**Månatliga krediter** lägger automatiskt till krediter hos en klient samma dag varje månad, vilket passar för retainers och bytesavtal. Endast administratörer och superadministratörer kan ställa in dem.
+
+<Steps>
+  <Step title="Öppna Månatliga krediter">
+    Klicka på **Månatliga krediter** bredvid saldot på klientens flik **Credits**.
+  </Step>
+  <Step title="Ange belopp och dag">
+    Ange **Krediter per månad** och **Dag i månaden** (1–28).
+  </Step>
+  <Step title="Välj hur krediter ges">
+    Välj ett av de två lägena under **Hur krediter ges** (se tabellen nedan).
+  </Step>
+  <Step title="Lägg till en anteckning (valfritt)">
+    Anteckningen visas på varje rad med månatliga krediter i kredithistoriken.
+  </Step>
+  <Step title="Aktivera och spara">
+    Kontrollera att schemat är påslaget (**Aktiv**) och klicka sedan på **Spara**.
+  </Step>
+</Steps>
+
+| Läge | Vad som händer varje månad |
+|------|----------------------------|
+| **Lägg till detta belopp varje månad** | Beloppet läggs till på saldot. Oanvända krediter förs över. |
+| **Fyll på till detta belopp varje månad** | Saldot fylls på upp till beloppet. Oanvända krediter förs inte över, och inget läggs till om saldot redan är lika med eller över beloppet. |
+
+När schemat har sparats visar fliken Credits schemat (till exempel ”Månatligen: 360 krediter den 1:e”), nästa körningsdatum och den senaste tilldelningen.
+
+- Krediterna läggs till automatiskt. Du behöver inte göra något varje månad.
+- Om en schemalagd månad missas läggs dess krediter till en gång när schemat körs igen, aldrig mer än en gång.
+- Inga krediter läggs till medan arbetsytan eller klienten är inaktiv.
+- För att stoppa öppnar du **Månatliga krediter**, stänger av schemat och klickar på **Spara**. Framtida tilldelningar upphör; krediter som redan lagts till ligger kvar på saldot.
+
+### Exempel: ett månatligt bytesavtal
+
+Du kommer överens om att byta 3 timmars arbete varje månad till 120 krediter per timme.
+
+1. Ställ in **Månatliga krediter** på 360 krediter per månad den 1:a med **Fyll på till detta belopp varje månad**. Välj i stället **Lägg till detta belopp varje månad** om oanvända timmar ska föras över.
+2. När du utför arbetet klickar du på **Justera krediter**, väljer **Dra av krediter** och **Timmar** och anger tiden, till exempel 1,5 timmar à 120 krediter per timme (180 krediter), med en anteckning som ”Texter till startsidan, november”.
+3. Klienten ser varje avdrag, med timmarna och din anteckning, på sin Credits-sida.
+
+<Note>
+  Krediter förfaller aldrig. Krediter som du lägger till, som köps eller som ges månadsvis ligger kvar på saldot tills de används eller dras av.
+</Note>
+
+## Förstå kredittransaktioner
+
+All kreditaktivitet registreras i klientens transaktionshistorik.
+
+**In**: krediter som lagts till på kontot:
+- Köp av kreditpaket
+- Godkänd kreditförfrågan
+
+**Out**: krediter som dragits av från kontot:
+- Tjänst köpt med krediter
+- Faktura betald med krediter
+
+Varje transaktion visar datum, typ, referens, kreditbelopp och löpande saldo, vilket ger en fullständig historik.
+
+**Krediter som du lägger till eller drar av manuellt, och månatliga krediter**, visas i samma historik med en referens som visar var de kommer ifrån:
+
+- **Tillagd av** *namn* eller **Avdragen av** *namn*: en teammedlem använde **Justera krediter**.
+- **Månatliga krediter**: tillagda av det månatliga schemat.
+
+När beloppet angavs i timmar visar raden även timmar och kurs (till exempel ”2 h × 120/h”), följt av din anteckning. Klienter ser dessa rader, inklusive anteckningen, på sin Credits-sida, och exporter av kredithistoriken innehåller anteckningen.

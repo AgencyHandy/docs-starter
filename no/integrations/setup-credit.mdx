@@ -4,153 +4,239 @@ sidebarTitle: "Kreditt"
 description: "Tilby tjenester via et forhåndsbetalt kredittssystem: lag pakker, sett konverteringsrater og la klienter kjøpe og bruke kreditter på tjenester og fakturaer."
 ---
 
-Credits enable you to offer services through a prepaid system. You create credit packages with a price, set conversion rates that define how many credits one unit of currency buys, and clients purchase credits in advance. When a client orders a service or pays an invoice, AgencyHandy converts the price into credits, deducts the required amount, and records every transaction in a complete audit trail.
+Med kreditter kan du tilby tjenester gjennom et forhåndsbetalt system. Du oppretter kredittpakker med en pris, angir konverteringsrater som bestemmer hvor mange kreditter én valutaenhet kjøper, og kunder kjøper kreditter på forhånd. Når en kunde bestiller en tjeneste eller betaler en faktura, regner AgencyHandy om prisen til kreditter, trekker fra beløpet som kreves, og registrerer hver transaksjon i en fullstendig historikk.
 
-## How credits work
+## Slik fungerer kreditter
 
-The credit system has three components:
+Kredittsystemet har tre deler:
 
-- **Credit packages**: bundles of credits that clients purchase (for example, 500 credits for $50).
-- **Conversion rates**: rules that convert a service's currency price into credits (for example, 1 USD = 10 credits).
-- **Credit balance**: the credits available to a client to spend on services or invoices.
+- **Kredittpakker**: pakker med kreditter som kunder kjøper (for eksempel 500 kreditter for 50 $).
+- **Konverteringsrater**: regler som regner om en tjenestes pris i valuta til kreditter (for eksempel 1 USD = 10 kreditter).
+- **Kredittsaldo**: kredittene en kunde har tilgjengelig til tjenester eller fakturaer.
 
-**Example:** A service costs $3.51 and the conversion rate is 1 USD = 10 credits.
+**Eksempel:** En tjeneste koster 3,51 $, og konverteringsraten er 1 USD = 10 kreditter.
 
-`$3.51 × 10 = 35.1 credits → rounded up to 36 credits`
+`$3.51 × 10 = 35.1 kreditter → rundes opp til 36 kreditter`
 
-AgencyHandy always rounds up to the nearest whole credit.
+AgencyHandy runder alltid opp til nærmeste hele kreditt.
 
-## Enable credit payments
+## Aktiver kredittbetalinger
 
-Before clients can purchase or use credits, you must turn the feature on.
+Før kunder kan kjøpe eller bruke kreditter, må du slå på funksjonen.
 
 <Steps>
-  <Step title="Navigate to Credits">
-    In the left sidebar, go to **Credits**.
+  <Step title="Gå til Credits">
+    Gå til **Credits** i venstre sidefelt.
   </Step>
-  <Step title="Turn on the toggle">
-    Enable the **Allow Credit Payment** toggle.
+  <Step title="Slå på bryteren">
+    Aktiver bryteren **Allow Credit Payment**.
   </Step>
 </Steps>
 
-**When enabled**, clients can:
-- See their credit balance widget in the client portal.
-- Access the Credits page and purchase packages.
-- Submit credit requests.
-- Use **Buy with Credit** during service checkout.
-- Use **Pay with Credit** on invoices.
+**Når funksjonen er på**, kan kunder:
+- Se kredittsaldo-widgeten sin i kundeportalen.
+- Åpne Credits-siden og kjøpe pakker.
+- Sende kredittforespørsler.
+- Bruke **Buy with Credit** i tjenestens kasse.
+- Bruke **Pay with Credit** på fakturaer.
 
-**When disabled**, the credit widget and all credit options are hidden from the client portal. Existing credit balances are preserved, and clients can still use other payment methods.
+**Når funksjonen er av**, skjules kreditt-widgeten og alle kredittalternativer i kundeportalen. Eksisterende kredittsaldoer beholdes, og kunder kan fortsatt bruke andre betalingsmåter.
 
-## Create credit packages
+## Opprett kredittpakker
 
-Credit packages are what clients purchase to load credits onto their account.
+Kredittpakker er det kunder kjøper for å fylle kreditter på kontoen sin.
 
 <Steps>
-  <Step title="Open Credit Packages settings">
-    Navigate to **Credits → Settings → Credit Packages**.
+  <Step title="Åpne innstillingene for kredittpakker">
+    Gå til **Credits → Innstillinger → Kredittpakker**.
   </Step>
-  <Step title="Add a package">
-    Click **+ Package**.
+  <Step title="Legg til en pakke">
+    Klikk på **+ Pakke**.
   </Step>
-  <Step title="Fill in the details">
-    Enter a package name, the number of credits included, the currency, and the price.
+  <Step title="Fyll inn opplysningene">
+    Angi et pakkenavn, antall kreditter som er inkludert, valutaen og prisen.
   </Step>
-  <Step title="Save">
-    Click **Create**.
+  <Step title="Lagre">
+    Klikk på **Opprett**.
   </Step>
 </Steps>
 
-## Manage conversion rates
+## Administrer konverteringsrater
 
-Conversion rates determine how many credits are required for a service based on its currency price. You can set a different rate per currency.
+Konverteringsrater bestemmer hvor mange kreditter en tjeneste krever ut fra prisen i valuta. Du kan angi en egen rate for hver valuta.
 
 <Steps>
-  <Step title="Open Conversion Rates settings">
-    Navigate to **Credits → Settings → Conversion Rates**.
+  <Step title="Åpne innstillingene for konverteringsrater">
+    Gå til **Credits → Innstillinger → Conversion Rates**.
   </Step>
-  <Step title="Add a rate">
-    Click **+ Add Conversion Rate**.
+  <Step title="Legg til en rate">
+    Klikk på **+ Add Conversion Rate**.
   </Step>
-  <Step title="Configure the rate">
-    Select a currency and enter the number of credits equivalent to one unit of that currency.
+  <Step title="Konfigurer raten">
+    Velg en valuta, og angi antall kreditter som tilsvarer én enhet av valutaen.
   </Step>
-  <Step title="Save">
-    Click **Save**.
+  <Step title="Lagre">
+    Klikk på **Lagre**.
   </Step>
 </Steps>
 
-**Example rates:**
+**Eksempler på rater:**
 
-| Currency | Rate |
-|----------|------|
-| USD | 1 USD = 10 credits |
-| EUR | 1 EUR = 9 credits |
-| GBP | 1 GBP = 12 credits |
+| Valuta | Rate |
+|--------|------|
+| USD | 1 USD = 10 kreditter |
+| EUR | 1 EUR = 9 kreditter |
+| GBP | 1 GBP = 12 kreditter |
 
 <Note>
-  Only one active conversion rate can exist per currency at any given time.
+  Det kan bare finnes én aktiv konverteringsrate per valuta om gangen.
 </Note>
 
-## Automatic vs manual credit purchases
+## Automatiske og manuelle kredittkjøp
 
-How credits are added to a client's account depends on the payment method used.
+Hvordan kreditter legges til på en kundes konto, avhenger av betalingsmåten som brukes.
 
-**Automatic** (no approval needed):
+**Automatisk** (ingen godkjenning nødvendig):
 - Stripe
 - PayPal
 
-Credits are added immediately after a successful payment.
+Kredittene legges til umiddelbart etter en vellykket betaling.
 
-**Manual** (requires agency approval):
-- Bank Transfer
-- Cryptocurrency
+**Manuelt** (krever godkjenning fra byrået):
+- Bankoverføring
+- Kryptovaluta
 
-When a client pays via a manual method, a credit request is created. You must review and approve it before credits are added.
+Når en kunde betaler med en manuell metode, opprettes en kredittforespørsel. Du må gå gjennom og godkjenne den før kredittene legges til.
 
-## Manage credit requests
+## Administrer kredittforespørsler
 
 <Steps>
-  <Step title="Open credit requests">
-    Navigate to **Billing → Credits**.
+  <Step title="Åpne kredittforespørsler">
+    Gå til **Fakturering → Credits**.
   </Step>
-  <Step title="Locate pending requests">
-    Review the client name, payment amount, and number of credits requested.
+  <Step title="Finn ventende forespørsler">
+    Se gjennom kundens navn, betalingsbeløpet og antall kreditter som er forespurt.
   </Step>
-  <Step title="Approve or reject">
-    Click **Accept** to add the credits, or **Reject** to decline.
+  <Step title="Godkjenn eller avvis">
+    Klikk på **Aksepter** for å legge til kredittene, eller på **Avvis** for å avslå.
   </Step>
 </Steps>
 
-**Request statuses:**
+**Status for forespørsler:**
 
-- **Pending**: submitted and awaiting review.
-- **Accepted**: approved; credits have been added to the client's balance.
-- **Rejected**: declined; no credits were added.
+- **Venter**: sendt og venter på gjennomgang.
+- **Akseptert**: godkjent; kredittene er lagt til kundens saldo.
+- **Avvist**: avslått; ingen kreditter er lagt til.
 
-## View client credits
+## Se en kundes kreditter
 
 <Steps>
-  <Step title="Open the client profile">
-    Navigate to **Clients** and click on a client's name.
+  <Step title="Åpne kundeprofilen">
+    Gå til **Kunder**, og klikk på en kundes navn.
   </Step>
-  <Step title="Go to the Credits tab">
-    Select the **Credits** tab.
+  <Step title="Gå til fanen Credits">
+    Velg fanen **Credits**.
   </Step>
 </Steps>
 
-The Credits tab shows the client's available balance, full transaction history, running balance, and transaction references.
+Fanen Credits viser kundens tilgjengelige saldo, fullstendig transaksjonshistorikk, løpende saldo og transaksjonsreferanser.
 
-## Understand credit transactions
+## Legg til eller trekk fra kreditter
 
-Every credit activity is recorded in the client's transaction history.
+Administratorer og superadministratorer kan legge til kreditter på en kundes saldo eller trekke kreditter fra den, uten kostnad. Bruk det til å gi en bonus, registrere arbeid utført under en byttehandelsavtale eller korrigere en saldo.
 
-**In**: credits added to the account:
-- Credit package purchase
-- Approved credit request
+<Steps>
+  <Step title="Åpne kundens Credits-fane">
+    Gå til **Kunder**, klikk på kundens navn, og velg fanen **Credits**.
+  </Step>
+  <Step title="Klikk på Juster kreditter">
+    Klikk på **Juster kreditter** ved siden av saldoen.
+  </Step>
+  <Step title="Velg Legg til kreditter eller Trekk fra kreditter">
+    Når du trekker fra, viser dialogboksen kundens gjeldende saldo.
+  </Step>
+  <Step title="Angi beløpet">
+    Under **Enhet** velger du **Credits** for å angi et helt antall kreditter, eller **Timer** for å angi timer (opptil 2 desimaler) og **Kreditter per time**. I timemodus vises det omregnede beløpet mens du skriver, for eksempel 2 timer × 120 kreditter per time = 240 kreditter.
+  </Step>
+  <Step title="Legg til et notat (valgfritt)">
+    Skriv opptil 280 tegn, for eksempel «3 timer markedsføring, oktober». Notatet vises i kreditthistorikken.
+  </Step>
+  <Step title="Bekreft">
+    Klikk på **Legg til kreditter** eller **Trekk fra kreditter**.
+  </Step>
+</Steps>
 
-**Out**: credits deducted from the account:
-- Service purchased using credits
-- Invoice paid using credits
+<Note>
+  Satsen for kreditter per time huskes for hver kunde og fylles ut automatisk neste gang du velger **Timer**.
+</Note>
 
-Each transaction shows the date, type, reference, credit amount, and running balance, providing a complete audit trail.
+<Warning>
+  Et trekk kan aldri gjøre saldoen negativ. Hvis beløpet er større enn gjeldende saldo, viser dialogboksen **Dette er mer enn gjeldende saldo**, og trekket lagres ikke («Not enough credits»).
+</Warning>
+
+## Gi kreditter hver måned
+
+**Månedlige kreditter** legger automatisk til kreditter hos en kunde på samme dag hver måned, noe som passer for retaineravtaler og byttehandelsavtaler. Bare administratorer og superadministratorer kan sette dem opp.
+
+<Steps>
+  <Step title="Åpne Månedlige kreditter">
+    Klikk på **Månedlige kreditter** ved siden av saldoen på kundens fane **Credits**.
+  </Step>
+  <Step title="Angi beløp og dag">
+    Angi **Kreditter per måned** og **Dag i måneden** (1–28).
+  </Step>
+  <Step title="Velg hvordan kredittene gis">
+    Velg én av de to modusene under **Slik gis kredittene** (se tabellen nedenfor).
+  </Step>
+  <Step title="Legg til et notat (valgfritt)">
+    Notatet vises på hver rad med månedlige kreditter i kreditthistorikken.
+  </Step>
+  <Step title="Slå på og lagre">
+    Kontroller at planen er slått på (**Aktiv**), og klikk deretter på **Lagre**.
+  </Step>
+</Steps>
+
+| Modus | Hva som skjer hver måned |
+|-------|--------------------------|
+| **Legg til dette beløpet hver måned** | Beløpet legges til saldoen. Ubrukte kreditter overføres. |
+| **Fyll opp til dette beløpet hver måned** | Saldoen fylles opp til beløpet. Ubrukte kreditter overføres ikke, og ingenting legges til hvis saldoen allerede er lik eller over beløpet. |
+
+Når planen er lagret, viser fanen Credits planen (for eksempel «Månedlig: 360 kreditter den 1.»), neste kjøringsdato og den siste tildelingen.
+
+- Kredittene legges til automatisk. Du trenger ikke å gjøre noe hver måned.
+- Hvis en planlagt måned blir hoppet over, legges kredittene for den til én gang når planen kjører igjen, aldri mer enn én gang.
+- Ingen kreditter legges til mens arbeidsområdet eller kunden er inaktiv.
+- For å stoppe åpner du **Månedlige kreditter**, slår av planen og klikker på **Lagre**. Fremtidige tildelinger stopper; kreditter som allerede er lagt til, blir værende på saldoen.
+
+### Eksempel: en månedlig byttehandelsavtale
+
+Dere avtaler å bytte 3 timers arbeid hver måned til 120 kreditter per time.
+
+1. Sett **Månedlige kreditter** til 360 kreditter per måned den 1. med **Fyll opp til dette beløpet hver måned**. Velg i stedet **Legg til dette beløpet hver måned** hvis ubrukte timer skal overføres.
+2. Når du utfører arbeidet, klikker du på **Juster kreditter**, velger **Trekk fra kreditter** og **Timer** og angir tiden du har brukt, for eksempel 1,5 timer à 120 kreditter per time (180 kreditter), med et notat som «Tekster til forsiden, november».
+3. Kunden ser hvert trekk, med timene og notatet ditt, på sin Credits-side.
+
+<Note>
+  Kreditter utløper aldri. Kreditter som du legger til, som kjøpes, eller som gis månedlig, blir værende på saldoen til de brukes eller trekkes fra.
+</Note>
+
+## Forstå kreditt-transaksjoner
+
+All kredittaktivitet registreres i kundens transaksjonshistorikk.
+
+**In**: kreditter lagt til på kontoen:
+- Kjøp av kredittpakke
+- Godkjent kredittforespørsel
+
+**Out**: kreditter trukket fra kontoen:
+- Tjeneste kjøpt med kreditter
+- Faktura betalt med kreditter
+
+Hver transaksjon viser dato, type, referanse, kredittbeløp og løpende saldo, slik at du har en fullstendig historikk.
+
+**Kreditter som du legger til eller trekker fra manuelt, og månedlige kreditter**, vises i samme historikk med en referanse som viser hvor de kommer fra:
+
+- **Lagt til av** *navn* eller **Trukket fra av** *navn*: et teammedlem brukte **Juster kreditter**.
+- **Månedlige kreditter**: lagt til av den månedlige planen.
+
+Når beløpet ble angitt i timer, viser raden også timer og sats (for eksempel «2 h × 120/h»), etterfulgt av notatet ditt. Kunder ser disse radene, inkludert notatet, på sin Credits-side, og eksporter av kreditthistorikken inneholder notatet.

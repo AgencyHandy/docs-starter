@@ -1,156 +1,242 @@
 ---
-title: "Jak skonfigurować kredyt w AgencyHandy"
-sidebarTitle: "Kredyt"
-description: "Oferuj usługi za pośrednictwem systemu kredytów przedpłaconych: twórz pakiety, ustalaj kursy przeliczeniowe i pozwól klientom kupować i używać kredytów na usługi i faktury."
+title: "Jak skonfigurować kredyty w AgencyHandy"
+sidebarTitle: "Kredyty"
+description: "Oferuj usługi w systemie przedpłaconych kredytów: twórz pakiety, ustalaj kursy przeliczeniowe i pozwól klientom kupować kredyty oraz wydawać je na usługi i faktury."
 ---
 
-Credits enable you to offer services through a prepaid system. You create credit packages with a price, set conversion rates that define how many credits one unit of currency buys, and clients purchase credits in advance. When a client orders a service or pays an invoice, AgencyHandy converts the price into credits, deducts the required amount, and records every transaction in a complete audit trail.
+Kredyty pozwalają oferować usługi w systemie przedpłaconym. Tworzysz pakiety kredytów z ceną, ustalasz kursy przeliczeniowe określające, ile kredytów kupuje jedna jednostka waluty, a klienci kupują kredyty z wyprzedzeniem. Gdy klient zamawia usługę lub płaci fakturę, AgencyHandy przelicza cenę na kredyty, odejmuje wymaganą ilość i zapisuje każdą transakcję w pełnej historii.
 
-## How credits work
+## Jak działają kredyty
 
-The credit system has three components:
+System kredytów składa się z trzech elementów:
 
-- **Credit packages**: bundles of credits that clients purchase (for example, 500 credits for $50).
-- **Conversion rates**: rules that convert a service's currency price into credits (for example, 1 USD = 10 credits).
-- **Credit balance**: the credits available to a client to spend on services or invoices.
+- **Pakiety kredytów**: zestawy kredytów, które kupują klienci (na przykład 500 kredytów za 50 USD).
+- **Kursy przeliczeniowe**: reguły przeliczające cenę usługi w walucie na kredyty (na przykład 1 USD = 10 kredytów).
+- **Saldo kredytów**: kredyty, które klient może wydać na usługi lub faktury.
 
-**Example:** A service costs $3.51 and the conversion rate is 1 USD = 10 credits.
+**Przykład:** Usługa kosztuje 3,51 USD, a kurs przeliczeniowy wynosi 1 USD = 10 kredytów.
 
 `$3.51 × 10 = 35.1 credits → rounded up to 36 credits`
 
-AgencyHandy always rounds up to the nearest whole credit.
+AgencyHandy zawsze zaokrągla w górę do najbliższego pełnego kredytu.
 
-## Enable credit payments
+## Włączanie płatności kredytami
 
-Before clients can purchase or use credits, you must turn the feature on.
+Zanim klienci będą mogli kupować lub używać kredytów, musisz włączyć tę funkcję.
 
 <Steps>
-  <Step title="Navigate to Credits">
-    In the left sidebar, go to **Credits**.
+  <Step title="Przejdź do Kredytów">
+    Na lewym pasku bocznym przejdź do **Kredyty**.
   </Step>
-  <Step title="Turn on the toggle">
-    Enable the **Allow Credit Payment** toggle.
+  <Step title="Włącz przełącznik">
+    Włącz przełącznik **Zezwalaj na płatność kredytami**.
   </Step>
 </Steps>
 
-**When enabled**, clients can:
-- See their credit balance widget in the client portal.
-- Access the Credits page and purchase packages.
-- Submit credit requests.
-- Use **Buy with Credit** during service checkout.
-- Use **Pay with Credit** on invoices.
+**Gdy funkcja jest włączona**, klienci mogą:
+- Widzieć widżet salda kredytów w portalu klienta.
+- Otwierać stronę Kredyty i kupować pakiety.
+- Wysyłać prośby o kredyty.
+- Używać opcji **Kup za kredyty** przy zamawianiu usługi.
+- Używać opcji **Zapłać kredytami** przy fakturach.
 
-**When disabled**, the credit widget and all credit options are hidden from the client portal. Existing credit balances are preserved, and clients can still use other payment methods.
+**Gdy funkcja jest wyłączona**, widżet kredytów i wszystkie opcje kredytowe są ukryte w portalu klienta. Istniejące salda kredytów są zachowane, a klienci nadal mogą korzystać z innych metod płatności.
 
-## Create credit packages
+## Tworzenie pakietów kredytów
 
-Credit packages are what clients purchase to load credits onto their account.
+Pakiety kredytów to to, co klienci kupują, aby doładować konto kredytami.
 
 <Steps>
-  <Step title="Open Credit Packages settings">
-    Navigate to **Credits → Settings → Credit Packages**.
+  <Step title="Otwórz ustawienia pakietów kredytów">
+    Przejdź do **Kredyty → Ustawienia → Pakiety kredytów**.
   </Step>
-  <Step title="Add a package">
-    Click **+ Package**.
+  <Step title="Dodaj pakiet">
+    Kliknij **+ Pakiet**.
   </Step>
-  <Step title="Fill in the details">
-    Enter a package name, the number of credits included, the currency, and the price.
+  <Step title="Uzupełnij szczegóły">
+    Wpisz nazwę pakietu, liczbę zawartych kredytów, walutę i cenę.
   </Step>
-  <Step title="Save">
-    Click **Create**.
+  <Step title="Zapisz">
+    Kliknij **Utwórz**.
   </Step>
 </Steps>
 
-## Manage conversion rates
+## Zarządzanie kursami przeliczeniowymi
 
-Conversion rates determine how many credits are required for a service based on its currency price. You can set a different rate per currency.
+Kursy przeliczeniowe określają, ile kredytów potrzeba na usługę na podstawie jej ceny w walucie. Dla każdej waluty możesz ustawić inny kurs.
 
 <Steps>
-  <Step title="Open Conversion Rates settings">
-    Navigate to **Credits → Settings → Conversion Rates**.
+  <Step title="Otwórz ustawienia kursów przeliczeniowych">
+    Przejdź do **Kredyty → Ustawienia → Kursy przeliczeniowe**.
   </Step>
-  <Step title="Add a rate">
-    Click **+ Add Conversion Rate**.
+  <Step title="Dodaj kurs">
+    Kliknij **+ Dodaj kurs przeliczeniowy**.
   </Step>
-  <Step title="Configure the rate">
-    Select a currency and enter the number of credits equivalent to one unit of that currency.
+  <Step title="Skonfiguruj kurs">
+    Wybierz walutę i wpisz liczbę kredytów odpowiadającą jednej jednostce tej waluty.
   </Step>
-  <Step title="Save">
-    Click **Save**.
+  <Step title="Zapisz">
+    Kliknij **Zapisz**.
   </Step>
 </Steps>
 
-**Example rates:**
+**Przykładowe kursy:**
 
-| Currency | Rate |
+| Waluta | Kurs |
 |----------|------|
-| USD | 1 USD = 10 credits |
-| EUR | 1 EUR = 9 credits |
-| GBP | 1 GBP = 12 credits |
+| USD | 1 USD = 10 kredytów |
+| EUR | 1 EUR = 9 kredytów |
+| GBP | 1 GBP = 12 kredytów |
 
 <Note>
-  Only one active conversion rate can exist per currency at any given time.
+  Dla jednej waluty może w danym momencie istnieć tylko jeden aktywny kurs przeliczeniowy.
 </Note>
 
-## Automatic vs manual credit purchases
+## Automatyczne i ręczne zakupy kredytów
 
-How credits are added to a client's account depends on the payment method used.
+Sposób dodawania kredytów do konta klienta zależy od użytej metody płatności.
 
-**Automatic** (no approval needed):
+**Automatycznie** (bez zatwierdzania):
 - Stripe
 - PayPal
 
-Credits are added immediately after a successful payment.
+Kredyty są dodawane natychmiast po udanej płatności.
 
-**Manual** (requires agency approval):
-- Bank Transfer
-- Cryptocurrency
+**Ręcznie** (wymaga zatwierdzenia przez agencję):
+- Przelew bankowy
+- Kryptowaluta
 
-When a client pays via a manual method, a credit request is created. You must review and approve it before credits are added.
+Gdy klient płaci metodą ręczną, tworzona jest prośba o kredyty. Musisz ją sprawdzić i zatwierdzić, zanim kredyty zostaną dodane.
 
-## Manage credit requests
+## Zarządzanie prośbami o kredyty
 
 <Steps>
-  <Step title="Open credit requests">
-    Navigate to **Billing → Credits**.
+  <Step title="Otwórz prośby o kredyty">
+    Przejdź do **Fakturowanie → Kredyty**.
   </Step>
-  <Step title="Locate pending requests">
-    Review the client name, payment amount, and number of credits requested.
+  <Step title="Znajdź oczekujące prośby">
+    Sprawdź nazwę klienta, kwotę płatności i liczbę żądanych kredytów.
   </Step>
-  <Step title="Approve or reject">
-    Click **Accept** to add the credits, or **Reject** to decline.
+  <Step title="Zatwierdź lub odrzuć">
+    Kliknij **Zaakceptuj**, aby dodać kredyty, lub **Odrzuć**, aby odmówić.
   </Step>
 </Steps>
 
-**Request statuses:**
+**Statusy próśb:**
 
-- **Pending**: submitted and awaiting review.
-- **Accepted**: approved; credits have been added to the client's balance.
-- **Rejected**: declined; no credits were added.
+- **Oczekujące**: wysłana i czeka na sprawdzenie.
+- **Zaakceptowane**: zatwierdzona; kredyty zostały dodane do salda klienta.
+- **Odrzucone**: odrzucona; nie dodano żadnych kredytów.
 
-## View client credits
+## Wyświetlanie kredytów klienta
 
 <Steps>
-  <Step title="Open the client profile">
-    Navigate to **Clients** and click on a client's name.
+  <Step title="Otwórz profil klienta">
+    Przejdź do **Klienci** i kliknij nazwę klienta.
   </Step>
-  <Step title="Go to the Credits tab">
-    Select the **Credits** tab.
+  <Step title="Przejdź do karty Kredyty">
+    Wybierz kartę **Kredyty**.
   </Step>
 </Steps>
 
-The Credits tab shows the client's available balance, full transaction history, running balance, and transaction references.
+Karta Kredyty pokazuje dostępne saldo klienta, pełną historię transakcji, saldo bieżące i odniesienia transakcji.
 
-## Understand credit transactions
+## Dodawanie i odejmowanie kredytów
 
-Every credit activity is recorded in the client's transaction history.
+Administratorzy i superadministratorzy mogą bezpłatnie dodawać kredyty do salda klienta lub je z niego odejmować. Przydaje się to przy przyznawaniu bonusu, rozliczaniu pracy w ramach umowy barterowej albo korekcie salda.
 
-**In**: credits added to the account:
-- Credit package purchase
-- Approved credit request
+<Steps>
+  <Step title="Otwórz kartę Kredyty klienta">
+    Przejdź do **Klienci**, kliknij nazwę klienta i wybierz kartę **Kredyty**.
+  </Step>
+  <Step title="Kliknij Dostosuj kredyty">
+    Obok salda kliknij **Dostosuj kredyty**.
+  </Step>
+  <Step title="Wybierz Dodaj kredyty lub Odejmij kredyty">
+    Przy odejmowaniu okno pokazuje bieżące saldo klienta.
+  </Step>
+  <Step title="Wpisz ilość">
+    W polu **Jednostka** wybierz **Kredyty**, aby wpisać całkowitą liczbę kredytów, albo **Godziny**, aby wpisać liczbę godzin (maksymalnie 2 miejsca po przecinku) i **Kredyty za godzinę**. W trybie godzin przeliczona wartość pojawia się w trakcie wpisywania, na przykład 2 godziny × 120 kredytów za godzinę = 240 kredytów.
+  </Step>
+  <Step title="Dodaj notatkę (opcjonalnie)">
+    Wpisz do 280 znaków, na przykład „3 godziny marketingu, październik”. Notatka pojawi się w historii kredytów.
+  </Step>
+  <Step title="Potwierdź">
+    Kliknij **Dodaj kredyty** lub **Odejmij kredyty**.
+  </Step>
+</Steps>
 
-**Out**: credits deducted from the account:
-- Service purchased using credits
-- Invoice paid using credits
+<Note>
+  Stawka kredytów za godzinę jest zapamiętywana dla każdego klienta i wypełniana automatycznie, gdy następnym razem wybierzesz **Godziny**.
+</Note>
 
-Each transaction shows the date, type, reference, credit amount, and running balance, providing a complete audit trail.
+<Warning>
+  Odjęcie kredytów nigdy nie obniży salda poniżej zera. Jeśli wartość przekracza bieżące saldo, okno pokazuje **To więcej niż bieżące saldo** i odjęcie nie zostaje zapisane („Not enough credits”).
+</Warning>
+
+## Kredyty co miesiąc
+
+**Kredyty miesięczne** dodają klientowi kredyty automatycznie tego samego dnia każdego miesiąca, co sprawdza się przy abonamentach i umowach barterowych. Mogą je skonfigurować tylko administratorzy i superadministratorzy.
+
+<Steps>
+  <Step title="Otwórz Kredyty miesięczne">
+    Na karcie **Kredyty** klienta kliknij **Kredyty miesięczne** obok salda.
+  </Step>
+  <Step title="Ustaw ilość i dzień">
+    Wpisz **Kredyty na miesiąc** i **Dzień miesiąca** (1–28).
+  </Step>
+  <Step title="Wybierz sposób przyznawania">
+    W polu **Sposób przyznawania** wybierz jeden z dwóch trybów (zobacz tabelę poniżej).
+  </Step>
+  <Step title="Dodaj notatkę (opcjonalnie)">
+    Notatka jest widoczna przy każdym wierszu kredytów miesięcznych w historii kredytów.
+  </Step>
+  <Step title="Włącz i zapisz">
+    Upewnij się, że harmonogram jest włączony (**Aktywny**), a następnie kliknij **Zapisz**.
+  </Step>
+</Steps>
+
+| Tryb | Co dzieje się każdego miesiąca |
+|------|-------------------------|
+| **Dodawaj tę kwotę co miesiąc** | Kwota jest dodawana do salda. Niewykorzystane kredyty przechodzą na kolejny miesiąc. |
+| **Uzupełniaj do tej kwoty co miesiąc** | Saldo jest uzupełniane z powrotem do tej kwoty. Niewykorzystane kredyty nie przechodzą dalej, a jeśli saldo jest równe tej kwocie lub wyższe, nic nie jest dodawane. |
+
+Po zapisaniu karta Kredyty pokazuje harmonogram (na przykład „Co miesiąc: 360 kredytów, dnia 1”), datę następnego uruchomienia i ostatnie przyznanie.
+
+- Kredyty są dodawane automatycznie. Nie musisz nic robić co miesiąc.
+- Jeśli zaplanowany miesiąc zostanie pominięty, jego kredyty zostaną dodane raz przy następnym uruchomieniu harmonogramu, nigdy więcej niż raz.
+- Kredyty nie są dodawane, gdy przestrzeń robocza lub klient jest nieaktywny.
+- Aby zatrzymać harmonogram, otwórz **Kredyty miesięczne**, wyłącz go i kliknij **Zapisz**. Kolejne przyznania zostaną wstrzymane; już dodane kredyty pozostaną na saldzie.
+
+### Przykład: miesięczna umowa barterowa
+
+Umawiasz się na wymianę 3 godzin pracy miesięcznie po 120 kredytów za godzinę.
+
+1. Ustaw **Kredyty miesięczne** na 360 kredytów miesięcznie, dnia 1, z trybem **Uzupełniaj do tej kwoty co miesiąc**. Jeśli niewykorzystane godziny mają przechodzić dalej, wybierz zamiast tego **Dodawaj tę kwotę co miesiąc**.
+2. W miarę wykonywania pracy kliknij **Dostosuj kredyty**, wybierz **Odejmij kredyty** i **Godziny** i wpisz przepracowany czas, na przykład 1,5 godziny po 120 kredytów za godzinę (180 kredytów), z notatką typu „Teksty na stronę główną, listopad”.
+3. Klient widzi każde odjęcie, wraz z godzinami i Twoją notatką, na swojej stronie Kredyty.
+
+<Note>
+  Kredyty nigdy nie wygasają. Kredyty dodane przez Ciebie, kupione lub przyznane co miesiąc pozostają na saldzie, dopóki nie zostaną wykorzystane lub odjęte.
+</Note>
+
+## Transakcje kredytowe
+
+Każda operacja na kredytach jest zapisywana w historii transakcji klienta.
+
+**Wpływ**: kredyty dodane do konta:
+- Zakup pakietu kredytów
+- Zatwierdzona prośba o kredyty
+
+**Wypływ**: kredyty odjęte z konta:
+- Usługa kupiona za kredyty
+- Faktura opłacona kredytami
+
+Każda transakcja pokazuje datę, typ, odniesienie, liczbę kredytów i saldo bieżące, tworząc pełną historię zmian.
+
+**Kredyty dodane lub odjęte ręcznie oraz kredyty miesięczne** pojawiają się w tej samej historii z odniesieniem wskazującym ich źródło:
+
+- **Dodane przez:** *imię i nazwisko* lub **Odjęte przez:** *imię i nazwisko*: członek zespołu użył opcji **Dostosuj kredyty**.
+- **Kredyty miesięczne**: dodane przez harmonogram miesięczny.
+
+Jeśli ilość wpisano w godzinach, wiersz pokazuje też godziny i stawkę (na przykład „2 h × 120/h”), a po nich Twoją notatkę. Klienci widzą te wiersze, łącznie z notatką, na swojej stronie Kredyty, a eksporty historii kredytów zawierają notatkę.

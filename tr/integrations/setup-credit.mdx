@@ -1,156 +1,242 @@
 ---
-title: "AgencyHandy'de Kredit Nasil Ayarlanir"
-sidebarTitle: "Kredit"
-description: "Hizmetleri on odemeli bir kredi sistemiyle sunun: paketler olusturun, donusum oranlari belirleyin ve musterilerin hizmetler ve faturalar icin kredi satin alip kullanmasina izin verin."
+title: "AgencyHandy'de Kredi Nasıl Ayarlanır"
+sidebarTitle: "Kredi"
+description: "Hizmetleri ön ödemeli bir kredi sistemiyle sunun: paketler oluşturun, dönüşüm oranları belirleyin ve müşterilerin hizmetler ve faturalar için kredi satın alıp kullanmasına izin verin."
 ---
 
-Credits enable you to offer services through a prepaid system. You create credit packages with a price, set conversion rates that define how many credits one unit of currency buys, and clients purchase credits in advance. When a client orders a service or pays an invoice, AgencyHandy converts the price into credits, deducts the required amount, and records every transaction in a complete audit trail.
+Krediler, hizmetleri ön ödemeli bir sistemle sunmanızı sağlar. Fiyatı belirlenmiş kredi paketleri oluşturur, bir para birimi biriminin kaç kredi aldığını belirleyen dönüşüm oranları ayarlarsınız; müşteriler de kredileri önceden satın alır. Bir müşteri hizmet sipariş ettiğinde veya fatura ödediğinde AgencyHandy fiyatı krediye çevirir, gereken miktarı düşer ve her işlemi eksiksiz bir denetim kaydına işler.
 
-## How credits work
+## Krediler nasıl çalışır
 
-The credit system has three components:
+Kredi sistemi üç bileşenden oluşur:
 
-- **Credit packages**: bundles of credits that clients purchase (for example, 500 credits for $50).
-- **Conversion rates**: rules that convert a service's currency price into credits (for example, 1 USD = 10 credits).
-- **Credit balance**: the credits available to a client to spend on services or invoices.
+- **Kredi paketleri**: müşterilerin satın aldığı kredi paketleri (örneğin 50 $ karşılığında 500 kredi).
+- **Dönüşüm oranları**: bir hizmetin para birimindeki fiyatını krediye çeviren kurallar (örneğin 1 USD = 10 kredi).
+- **Kredi bakiyesi**: müşterinin hizmetlere veya faturalara harcayabileceği krediler.
 
-**Example:** A service costs $3.51 and the conversion rate is 1 USD = 10 credits.
+**Örnek:** Bir hizmet 3,51 $ tutarında ve dönüşüm oranı 1 USD = 10 kredi.
 
 `$3.51 × 10 = 35.1 credits → rounded up to 36 credits`
 
-AgencyHandy always rounds up to the nearest whole credit.
+AgencyHandy her zaman en yakın tam krediye yukarı yuvarlar.
 
-## Enable credit payments
+## Kredi ile ödemeyi etkinleştirme
 
-Before clients can purchase or use credits, you must turn the feature on.
+Müşterilerin kredi satın alabilmesi veya kullanabilmesi için önce bu özelliği açmanız gerekir.
 
 <Steps>
-  <Step title="Navigate to Credits">
-    In the left sidebar, go to **Credits**.
+  <Step title="Credits bölümüne gidin">
+    Sol kenar çubuğunda **Credits** bölümüne gidin.
   </Step>
-  <Step title="Turn on the toggle">
-    Enable the **Allow Credit Payment** toggle.
+  <Step title="Anahtarı açın">
+    **Allow Credit Payment** anahtarını etkinleştirin.
   </Step>
 </Steps>
 
-**When enabled**, clients can:
-- See their credit balance widget in the client portal.
-- Access the Credits page and purchase packages.
-- Submit credit requests.
-- Use **Buy with Credit** during service checkout.
-- Use **Pay with Credit** on invoices.
+**Etkinleştirildiğinde** müşteriler şunları yapabilir:
+- Müşteri portalında kredi bakiyesi bileşenini görebilir.
+- Krediler sayfasına erişip paket satın alabilir.
+- Kredi talepleri gönderebilir.
+- Hizmet ödemesinde **Buy with Credit** seçeneğini kullanabilir.
+- Faturalarda **Pay with Credit** seçeneğini kullanabilir.
 
-**When disabled**, the credit widget and all credit options are hidden from the client portal. Existing credit balances are preserved, and clients can still use other payment methods.
+**Devre dışı bırakıldığında** kredi bileşeni ve tüm kredi seçenekleri müşteri portalında gizlenir. Mevcut kredi bakiyeleri korunur ve müşteriler diğer ödeme yöntemlerini kullanmaya devam edebilir.
 
-## Create credit packages
+## Kredi paketleri oluşturma
 
-Credit packages are what clients purchase to load credits onto their account.
+Kredi paketleri, müşterilerin hesaplarına kredi yüklemek için satın aldığı paketlerdir.
 
 <Steps>
-  <Step title="Open Credit Packages settings">
-    Navigate to **Credits → Settings → Credit Packages**.
+  <Step title="Kredi Paketleri ayarlarını açın">
+    **Credits → Ayarlar → Kredi Paketleri** bölümüne gidin.
   </Step>
-  <Step title="Add a package">
-    Click **+ Package**.
+  <Step title="Paket ekleyin">
+    **+ Paket** öğesine tıklayın.
   </Step>
-  <Step title="Fill in the details">
-    Enter a package name, the number of credits included, the currency, and the price.
+  <Step title="Ayrıntıları doldurun">
+    Paket adını, dahil edilen kredi sayısını, para birimini ve fiyatı girin.
   </Step>
-  <Step title="Save">
-    Click **Create**.
+  <Step title="Kaydedin">
+    **Oluştur** öğesine tıklayın.
   </Step>
 </Steps>
 
-## Manage conversion rates
+## Dönüşüm oranlarını yönetme
 
-Conversion rates determine how many credits are required for a service based on its currency price. You can set a different rate per currency.
+Dönüşüm oranları, bir hizmet için para birimindeki fiyatına göre kaç kredi gerektiğini belirler. Her para birimi için farklı bir oran belirleyebilirsiniz.
 
 <Steps>
-  <Step title="Open Conversion Rates settings">
-    Navigate to **Credits → Settings → Conversion Rates**.
+  <Step title="Dönüşüm oranları ayarlarını açın">
+    **Credits → Ayarlar → Conversion Rates** bölümüne gidin.
   </Step>
-  <Step title="Add a rate">
-    Click **+ Add Conversion Rate**.
+  <Step title="Oran ekleyin">
+    **+ Add Conversion Rate** öğesine tıklayın.
   </Step>
-  <Step title="Configure the rate">
-    Select a currency and enter the number of credits equivalent to one unit of that currency.
+  <Step title="Oranı yapılandırın">
+    Bir para birimi seçin ve o para biriminin bir birimine denk gelen kredi sayısını girin.
   </Step>
-  <Step title="Save">
-    Click **Save**.
+  <Step title="Kaydedin">
+    **Kaydet** öğesine tıklayın.
   </Step>
 </Steps>
 
-**Example rates:**
+**Örnek oranlar:**
 
-| Currency | Rate |
+| Para birimi | Oran |
 |----------|------|
-| USD | 1 USD = 10 credits |
-| EUR | 1 EUR = 9 credits |
-| GBP | 1 GBP = 12 credits |
+| USD | 1 USD = 10 kredi |
+| EUR | 1 EUR = 9 kredi |
+| GBP | 1 GBP = 12 kredi |
 
 <Note>
-  Only one active conversion rate can exist per currency at any given time.
+  Her para birimi için aynı anda yalnızca bir etkin dönüşüm oranı bulunabilir.
 </Note>
 
-## Automatic vs manual credit purchases
+## Otomatik ve manuel kredi satın alımları
 
-How credits are added to a client's account depends on the payment method used.
+Kredilerin müşteri hesabına nasıl ekleneceği kullanılan ödeme yöntemine bağlıdır.
 
-**Automatic** (no approval needed):
+**Otomatik** (onay gerekmez):
 - Stripe
 - PayPal
 
-Credits are added immediately after a successful payment.
+Krediler başarılı bir ödemeden hemen sonra eklenir.
 
-**Manual** (requires agency approval):
-- Bank Transfer
-- Cryptocurrency
+**Manuel** (ajans onayı gerekir):
+- Banka havalesi
+- Kripto para
 
-When a client pays via a manual method, a credit request is created. You must review and approve it before credits are added.
+Müşteri manuel bir yöntemle ödeme yaptığında bir kredi talebi oluşturulur. Krediler eklenmeden önce talebi incelemeniz ve onaylamanız gerekir.
 
-## Manage credit requests
+## Kredi taleplerini yönetme
 
 <Steps>
-  <Step title="Open credit requests">
-    Navigate to **Billing → Credits**.
+  <Step title="Kredi taleplerini açın">
+    **Billing → Credits** bölümüne gidin.
   </Step>
-  <Step title="Locate pending requests">
-    Review the client name, payment amount, and number of credits requested.
+  <Step title="Bekleyen talepleri bulun">
+    Müşteri adını, ödeme tutarını ve talep edilen kredi sayısını inceleyin.
   </Step>
-  <Step title="Approve or reject">
-    Click **Accept** to add the credits, or **Reject** to decline.
+  <Step title="Onaylayın veya reddedin">
+    Kredileri eklemek için **Kabul et**, reddetmek için **Reddet** öğesine tıklayın.
   </Step>
 </Steps>
 
-**Request statuses:**
+**Talep durumları:**
 
-- **Pending**: submitted and awaiting review.
-- **Accepted**: approved; credits have been added to the client's balance.
-- **Rejected**: declined; no credits were added.
+- **Beklemede**: gönderildi ve incelenmeyi bekliyor.
+- **Kabul Edildi**: onaylandı; krediler müşterinin bakiyesine eklendi.
+- **Reddedildi**: reddedildi; kredi eklenmedi.
 
-## View client credits
+## Müşteri kredilerini görüntüleme
 
 <Steps>
-  <Step title="Open the client profile">
-    Navigate to **Clients** and click on a client's name.
+  <Step title="Müşteri profilini açın">
+    **Müşteriler** bölümüne gidin ve bir müşterinin adına tıklayın.
   </Step>
-  <Step title="Go to the Credits tab">
-    Select the **Credits** tab.
+  <Step title="Credits sekmesine gidin">
+    **Credits** sekmesini seçin.
   </Step>
 </Steps>
 
-The Credits tab shows the client's available balance, full transaction history, running balance, and transaction references.
+Credits sekmesi müşterinin kullanılabilir bakiyesini, tüm işlem geçmişini, güncel bakiyeyi ve işlem referanslarını gösterir.
 
-## Understand credit transactions
+## Kredi ekleme veya düşme
 
-Every credit activity is recorded in the client's transaction history.
+Yöneticiler ve süper yöneticiler bir müşterinin bakiyesine ücretsiz kredi ekleyebilir veya bakiyesinden kredi düşebilir. Bunu bonus vermek, bir takas anlaşması kapsamında yapılan işi kaydetmek veya bir bakiyeyi düzeltmek için kullanın.
 
-**In**: credits added to the account:
-- Credit package purchase
-- Approved credit request
+<Steps>
+  <Step title="Müşterinin Credits sekmesini açın">
+    **Müşteriler** bölümüne gidin, müşterinin adına tıklayın ve **Credits** sekmesini seçin.
+  </Step>
+  <Step title="Kredileri düzenle’ye tıklayın">
+    Bakiyenin yanında **Kredileri düzenle** öğesine tıklayın.
+  </Step>
+  <Step title="Kredi ekle veya Kredi düş seçin">
+    Kredi düşerken pencere müşterinin mevcut bakiyesini gösterir.
+  </Step>
+  <Step title="Miktarı girin">
+    **Birim** altında tam sayı kredi girmek için **Credits** seçeneğini veya saat (en fazla 2 ondalık) ve **Saat başına kredi** girmek için **Saat** seçeneğini seçin. Saat modunda dönüştürülen miktar siz yazarken görünür; örneğin 2 saat × saat başına 120 kredi = 240 kredi.
+  </Step>
+  <Step title="Not ekleyin (isteğe bağlı)">
+    En fazla 280 karakter girin; örneğin "3 saat pazarlama, Ekim". Not kredi geçmişinde görünür.
+  </Step>
+  <Step title="Onaylayın">
+    **Kredi ekle** veya **Kredi düş** öğesine tıklayın.
+  </Step>
+</Steps>
 
-**Out**: credits deducted from the account:
-- Service purchased using credits
-- Invoice paid using credits
+<Note>
+  Saat başına kredi oranı her müşteri için hatırlanır ve bir sonraki **Saat** seçiminizde önceden doldurulur.
+</Note>
 
-Each transaction shows the date, type, reference, credit amount, and running balance, providing a complete audit trail.
+<Warning>
+  Bir düşüm bakiyeyi asla sıfırın altına indiremez. Miktar mevcut bakiyeden fazlaysa pencere **Bu, mevcut bakiyeden fazla** uyarısını gösterir ve düşüm kaydedilmez ("Not enough credits").
+</Warning>
+
+## Her ay kredi verme
+
+**Aylık krediler**, müşteriye her ayın aynı gününde otomatik olarak kredi ekler; bu, sabit ücretli anlaşmalar (retainer) ve takas anlaşmaları için uygundur. Yalnızca yöneticiler ve süper yöneticiler bunu ayarlayabilir.
+
+<Steps>
+  <Step title="Aylık krediler’i açın">
+    Müşterinin **Credits** sekmesinde bakiyenin yanındaki **Aylık krediler** öğesine tıklayın.
+  </Step>
+  <Step title="Miktarı ve günü belirleyin">
+    **Aylık kredi** ve **Ayın günü** (1–28) değerlerini girin.
+  </Step>
+  <Step title="Kredilerin veriliş şeklini seçin">
+    **Kredilerin veriliş şekli** altındaki iki moddan birini seçin (aşağıdaki tabloya bakın).
+  </Step>
+  <Step title="Not ekleyin (isteğe bağlı)">
+    Not, kredi geçmişindeki her aylık kredi satırında gösterilir.
+  </Step>
+  <Step title="Açın ve kaydedin">
+    Planın açık olduğundan (**Aktif**) emin olun, ardından **Kaydet** öğesine tıklayın.
+  </Step>
+</Steps>
+
+| Mod | Her ay ne olur |
+|------|-------------------------|
+| **Her ay bu miktarı ekle** | Miktar bakiyeye eklenir. Kullanılmayan krediler devreder. |
+| **Her ay bu miktara tamamla** | Bakiye bu miktara geri tamamlanır. Kullanılmayan krediler devretmez; bakiye zaten bu miktarda veya üzerindeyse hiçbir şey eklenmez. |
+
+Kaydedildikten sonra Credits sekmesi planı (örneğin "Aylık: ayın 1. günü 360 kredi"), bir sonraki çalışma tarihini ve son verilen krediyi gösterir.
+
+- Krediler otomatik olarak eklenir. Her ay bir şey yapmanız gerekmez.
+- Planlanan bir ay kaçırılırsa, o ayın kredileri plan yeniden çalıştığında bir kez eklenir; asla birden fazla kez eklenmez.
+- Çalışma alanı veya müşteri etkin değilken kredi eklenmez.
+- Durdurmak için **Aylık krediler** öğesini açın, planı kapatın ve **Kaydet** öğesine tıklayın. Gelecekteki krediler durur; önceden eklenen krediler bakiyede kalır.
+
+### Örnek: aylık takas anlaşması
+
+Her ay saat başına 120 kredi karşılığında 3 saatlik iş takası yapmayı kabul ediyorsunuz.
+
+1. **Aylık krediler** öğesini ayın 1. günü için aylık 360 kredi ve **Her ay bu miktara tamamla** olarak ayarlayın. Kullanılmayan saatlerin devretmesi gerekiyorsa bunun yerine **Her ay bu miktarı ekle** seçeneğini seçin.
+2. İşi yaptıkça **Kredileri düzenle** öğesine tıklayın, **Kredi düş** ve **Saat** seçeneklerini seçin ve harcanan süreyi girin; örneğin saat başına 120 krediden 1,5 saat (180 kredi), "Ana sayfa metni, Kasım" gibi bir notla.
+3. Müşteri her düşümü, saatler ve notunuzla birlikte kendi Krediler sayfasında görür.
+
+<Note>
+  Kredilerin süresi asla dolmaz. Eklediğiniz, satın alınan veya aylık verilen krediler harcanana ya da düşülene kadar bakiyede kalır.
+</Note>
+
+## Kredi işlemlerini anlama
+
+Her kredi hareketi müşterinin işlem geçmişine kaydedilir.
+
+**In**: hesaba eklenen krediler:
+- Kredi paketi satın alımı
+- Onaylanan kredi talebi
+
+**Out**: hesaptan düşülen krediler:
+- Kredi ile satın alınan hizmet
+- Kredi ile ödenen fatura
+
+Her işlem tarihi, türü, referansı, kredi miktarını ve güncel bakiyeyi göstererek eksiksiz bir denetim kaydı sağlar.
+
+**Elle eklediğiniz veya düştüğünüz krediler ve aylık krediler**, aynı geçmişte nereden geldiklerini gösteren bir referansla görünür:
+
+- *ad* **tarafından eklendi** veya *ad* **tarafından düşüldü**: bir ekip üyesi **Kredileri düzenle** özelliğini kullandı.
+- **Aylık krediler**: aylık plan tarafından eklendi.
+
+Miktar saat olarak girildiyse satırda saatler ve oran da (örneğin "2 h × 120/h") ve ardından notunuz gösterilir. Müşteriler bu satırları, not dahil, kendi Krediler sayfalarında görür; kredi geçmişi dışa aktarımları da notu içerir.

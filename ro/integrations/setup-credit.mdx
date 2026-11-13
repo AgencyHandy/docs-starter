@@ -1,156 +1,242 @@
 ---
-title: "Cum sa configurati creditul in AgencyHandy"
+title: "Cum să configurați creditul în AgencyHandy"
 sidebarTitle: "Credit"
-description: "Oferiti servicii printr-un sistem de credit platit in avans: creati pachete, stabiliti rate de conversie si permiteti clientilor sa cumpere si sa foloseasca credite pentru servicii si facturi."
+description: "Oferiți servicii printr-un sistem de credit plătit în avans: creați pachete, stabiliți rate de conversie și permiteți clienților să cumpere și să folosească credite pentru servicii și facturi."
 ---
 
-Credits enable you to offer services through a prepaid system. You create credit packages with a price, set conversion rates that define how many credits one unit of currency buys, and clients purchase credits in advance. When a client orders a service or pays an invoice, AgencyHandy converts the price into credits, deducts the required amount, and records every transaction in a complete audit trail.
+Creditele vă permit să oferiți servicii printr-un sistem plătit în avans. Creați pachete de credite cu un preț, stabiliți rate de conversie care definesc câte credite cumpără o unitate de monedă, iar clienții cumpără credite în avans. Când un client comandă un serviciu sau plătește o factură, AgencyHandy convertește prețul în credite, scade suma necesară și înregistrează fiecare tranzacție într-un istoric complet de audit.
 
-## How credits work
+## Cum funcționează creditele
 
-The credit system has three components:
+Sistemul de credite are trei componente:
 
-- **Credit packages**: bundles of credits that clients purchase (for example, 500 credits for $50).
-- **Conversion rates**: rules that convert a service's currency price into credits (for example, 1 USD = 10 credits).
-- **Credit balance**: the credits available to a client to spend on services or invoices.
+- **Pachete de credite**: seturi de credite pe care clienții le cumpără (de exemplu, 500 de credite pentru 50 $).
+- **Rate de conversie**: reguli care convertesc prețul unui serviciu dintr-o monedă în credite (de exemplu, 1 USD = 10 credite).
+- **Sold de credite**: creditele de care dispune un client pentru servicii sau facturi.
 
-**Example:** A service costs $3.51 and the conversion rate is 1 USD = 10 credits.
+**Exemplu:** un serviciu costă 3,51 $, iar rata de conversie este 1 USD = 10 credite.
 
 `$3.51 × 10 = 35.1 credits → rounded up to 36 credits`
 
-AgencyHandy always rounds up to the nearest whole credit.
+AgencyHandy rotunjește întotdeauna în sus la cel mai apropiat credit întreg.
 
-## Enable credit payments
+## Activați plățile cu credite
 
-Before clients can purchase or use credits, you must turn the feature on.
+Înainte ca clienții să poată cumpăra sau folosi credite, trebuie să activați funcția.
 
 <Steps>
-  <Step title="Navigate to Credits">
-    In the left sidebar, go to **Credits**.
+  <Step title="Accesați Credite">
+    În bara laterală stângă, accesați **Credits**.
   </Step>
-  <Step title="Turn on the toggle">
-    Enable the **Allow Credit Payment** toggle.
+  <Step title="Activați comutatorul">
+    Activați comutatorul **Allow Credit Payment**.
   </Step>
 </Steps>
 
-**When enabled**, clients can:
-- See their credit balance widget in the client portal.
-- Access the Credits page and purchase packages.
-- Submit credit requests.
-- Use **Buy with Credit** during service checkout.
-- Use **Pay with Credit** on invoices.
+**Când funcția este activă**, clienții pot:
+- vedea widgetul cu soldul de credite în portalul clientului;
+- accesa pagina Credits și cumpăra pachete;
+- trimite cereri de credite;
+- folosi **Buy with Credit** la finalizarea comenzii unui serviciu;
+- folosi **Pay with Credit** pentru facturi.
 
-**When disabled**, the credit widget and all credit options are hidden from the client portal. Existing credit balances are preserved, and clients can still use other payment methods.
+**Când funcția este dezactivată**, widgetul și toate opțiunile de credit sunt ascunse în portalul clientului. Soldurile existente se păstrează, iar clienții pot folosi în continuare alte metode de plată.
 
-## Create credit packages
+## Creați pachete de credite
 
-Credit packages are what clients purchase to load credits onto their account.
+Pachetele de credite sunt ceea ce cumpără clienții pentru a-și încărca contul cu credite.
 
 <Steps>
-  <Step title="Open Credit Packages settings">
-    Navigate to **Credits → Settings → Credit Packages**.
+  <Step title="Deschideți setările pachetelor de credite">
+    Accesați **Credits → Settings → Credit Packages**.
   </Step>
-  <Step title="Add a package">
-    Click **+ Package**.
+  <Step title="Adăugați un pachet">
+    Faceți clic pe **+ Package**.
   </Step>
-  <Step title="Fill in the details">
-    Enter a package name, the number of credits included, the currency, and the price.
+  <Step title="Completați detaliile">
+    Introduceți numele pachetului, numărul de credite incluse, moneda și prețul.
   </Step>
-  <Step title="Save">
-    Click **Create**.
+  <Step title="Salvați">
+    Faceți clic pe **Create**.
   </Step>
 </Steps>
 
-## Manage conversion rates
+## Gestionați ratele de conversie
 
-Conversion rates determine how many credits are required for a service based on its currency price. You can set a different rate per currency.
+Ratele de conversie stabilesc câte credite sunt necesare pentru un serviciu, în funcție de prețul acestuia în monedă. Puteți seta o rată diferită pentru fiecare monedă.
 
 <Steps>
-  <Step title="Open Conversion Rates settings">
-    Navigate to **Credits → Settings → Conversion Rates**.
+  <Step title="Deschideți setările ratelor de conversie">
+    Accesați **Credits → Settings → Conversion Rates**.
   </Step>
-  <Step title="Add a rate">
-    Click **+ Add Conversion Rate**.
+  <Step title="Adăugați o rată">
+    Faceți clic pe **+ Add Conversion Rate**.
   </Step>
-  <Step title="Configure the rate">
-    Select a currency and enter the number of credits equivalent to one unit of that currency.
+  <Step title="Configurați rata">
+    Selectați o monedă și introduceți numărul de credite echivalent cu o unitate din acea monedă.
   </Step>
-  <Step title="Save">
-    Click **Save**.
+  <Step title="Salvați">
+    Faceți clic pe **Save**.
   </Step>
 </Steps>
 
-**Example rates:**
+**Exemple de rate:**
 
-| Currency | Rate |
+| Monedă | Rată |
 |----------|------|
-| USD | 1 USD = 10 credits |
-| EUR | 1 EUR = 9 credits |
-| GBP | 1 GBP = 12 credits |
+| USD | 1 USD = 10 credite |
+| EUR | 1 EUR = 9 credite |
+| GBP | 1 GBP = 12 credite |
 
 <Note>
-  Only one active conversion rate can exist per currency at any given time.
+  Pentru fiecare monedă poate exista o singură rată de conversie activă la un moment dat.
 </Note>
 
-## Automatic vs manual credit purchases
+## Cumpărări de credite automate și manuale
 
-How credits are added to a client's account depends on the payment method used.
+Modul în care creditele sunt adăugate în contul clientului depinde de metoda de plată folosită.
 
-**Automatic** (no approval needed):
+**Automat** (fără aprobare):
 - Stripe
 - PayPal
 
-Credits are added immediately after a successful payment.
+Creditele sunt adăugate imediat după o plată reușită.
 
-**Manual** (requires agency approval):
-- Bank Transfer
-- Cryptocurrency
+**Manual** (necesită aprobarea agenției):
+- Transfer bancar
+- Criptomonedă
 
-When a client pays via a manual method, a credit request is created. You must review and approve it before credits are added.
+Când un client plătește printr-o metodă manuală, se creează o cerere de credite. Trebuie să o verificați și să o aprobați înainte ca creditele să fie adăugate.
 
-## Manage credit requests
+## Gestionați cererile de credite
 
 <Steps>
-  <Step title="Open credit requests">
-    Navigate to **Billing → Credits**.
+  <Step title="Deschideți cererile de credite">
+    Accesați **Billing → Credits**.
   </Step>
-  <Step title="Locate pending requests">
-    Review the client name, payment amount, and number of credits requested.
+  <Step title="Găsiți cererile în așteptare">
+    Verificați numele clientului, suma plătită și numărul de credite solicitate.
   </Step>
-  <Step title="Approve or reject">
-    Click **Accept** to add the credits, or **Reject** to decline.
+  <Step title="Aprobați sau respingeți">
+    Faceți clic pe **Accept** pentru a adăuga creditele sau pe **Reject** pentru a refuza.
   </Step>
 </Steps>
 
-**Request statuses:**
+**Statusurile cererilor:**
 
-- **Pending**: submitted and awaiting review.
-- **Accepted**: approved; credits have been added to the client's balance.
-- **Rejected**: declined; no credits were added.
+- **Pending**: trimisă și în așteptarea verificării.
+- **Accepted**: aprobată; creditele au fost adăugate la soldul clientului.
+- **Rejected**: refuzată; nu au fost adăugate credite.
 
-## View client credits
+## Vizualizați creditele clientului
 
 <Steps>
-  <Step title="Open the client profile">
-    Navigate to **Clients** and click on a client's name.
+  <Step title="Deschideți profilul clientului">
+    Accesați **Clienți** și faceți clic pe numele unui client.
   </Step>
-  <Step title="Go to the Credits tab">
-    Select the **Credits** tab.
+  <Step title="Accesați fila Credite">
+    Selectați fila **Credits**.
   </Step>
 </Steps>
 
-The Credits tab shows the client's available balance, full transaction history, running balance, and transaction references.
+Fila Credits afișează soldul disponibil al clientului, istoricul complet al tranzacțiilor, soldul curent și referințele tranzacțiilor.
 
-## Understand credit transactions
+## Adăugați sau scădeți credite
 
-Every credit activity is recorded in the client's transaction history.
+Administratorii și super-administratorii pot adăuga gratuit credite la soldul unui client sau pot scădea credite din acesta. Folosiți această opțiune pentru a acorda un bonus, pentru a înregistra munca făcută în cadrul unui acord de barter sau pentru a corecta un sold.
 
-**In**: credits added to the account:
-- Credit package purchase
-- Approved credit request
+<Steps>
+  <Step title="Deschideți fila Credite a clientului">
+    Accesați **Clienți**, faceți clic pe numele clientului și selectați fila **Credits**.
+  </Step>
+  <Step title="Faceți clic pe Ajustează creditele">
+    Lângă sold, faceți clic pe **Ajustează creditele**.
+  </Step>
+  <Step title="Alegeți Adaugă credite sau Scade credite">
+    Când scădeți credite, dialogul afișează soldul curent al clientului.
+  </Step>
+  <Step title="Introduceți suma">
+    La **Unitate**, alegeți **Credite** pentru a introduce un număr întreg de credite sau **Ore** pentru a introduce ore (cel mult 2 zecimale) și **Credite pe oră**. În modul Ore, suma convertită apare pe măsură ce scrieți, de exemplu 2 ore × 120 de credite pe oră = 240 de credite.
+  </Step>
+  <Step title="Adăugați o notă (opțional)">
+    Introduceți cel mult 280 de caractere, de exemplu „3 ore de marketing, octombrie”. Nota apare în istoricul creditelor.
+  </Step>
+  <Step title="Confirmați">
+    Faceți clic pe **Adaugă credite** sau **Scade credite**.
+  </Step>
+</Steps>
 
-**Out**: credits deducted from the account:
-- Service purchased using credits
-- Invoice paid using credits
+<Note>
+  Rata de credite pe oră este reținută pentru fiecare client și completată automat data viitoare când alegeți **Ore**.
+</Note>
 
-Each transaction shows the date, type, reference, credit amount, and running balance, providing a complete audit trail.
+<Warning>
+  O scădere nu poate duce niciodată soldul sub zero. Dacă suma este mai mare decât soldul curent, dialogul afișează **Depășește soldul curent**, iar scăderea nu este salvată („Not enough credits”).
+</Warning>
+
+## Acordați credite în fiecare lună
+
+**Creditele lunare** adaugă automat credite unui client în aceeași zi a fiecărei luni, ceea ce se potrivește abonamentelor și acordurilor de barter. Doar administratorii și super-administratorii le pot configura.
+
+<Steps>
+  <Step title="Deschideți Credite lunare">
+    În fila **Credits** a clientului, faceți clic pe **Credite lunare** lângă sold.
+  </Step>
+  <Step title="Setați suma și ziua">
+    Introduceți **Credite pe lună** și **Ziua lunii** (1–28).
+  </Step>
+  <Step title="Alegeți modul de acordare">
+    La **Modul de acordare**, alegeți unul dintre cele două moduri (vedeți tabelul de mai jos).
+  </Step>
+  <Step title="Adăugați o notă (opțional)">
+    Nota apare pe fiecare rând de credite lunare din istoricul creditelor.
+  </Step>
+  <Step title="Activați și salvați">
+    Asigurați-vă că programul este activat (**Activ**), apoi faceți clic pe **Salvează**.
+  </Step>
+</Steps>
+
+| Mod | Ce se întâmplă în fiecare lună |
+|------|-------------------------|
+| **Adaugă această sumă în fiecare lună** | Suma este adăugată la sold. Creditele nefolosite se reportează. |
+| **Completează până la această sumă în fiecare lună** | Soldul este readus la această sumă. Creditele nefolosite nu se reportează și nu se adaugă nimic dacă soldul este deja egal cu suma sau mai mare. |
+
+După salvare, fila Credits afișează programul (de exemplu „Lunar: 360 de credite în ziua 1”), data următoarei rulări și ultima acordare.
+
+- Creditele sunt adăugate automat. Nu trebuie să faceți nimic în fiecare lună.
+- Dacă o lună programată este omisă, creditele ei sunt adăugate o singură dată la următoarea rulare a programului, niciodată de mai multe ori.
+- Nu se adaugă credite cât timp spațiul de lucru sau clientul este inactiv.
+- Pentru a opri, deschideți **Credite lunare**, dezactivați programul și faceți clic pe **Salvează**. Acordările viitoare se opresc; creditele deja adăugate rămân în sold.
+
+### Exemplu: un acord lunar de barter
+
+Conveniți să schimbați 3 ore de muncă pe lună la 120 de credite pe oră.
+
+1. Setați **Credite lunare** la 360 de credite pe lună, în ziua 1, cu **Completează până la această sumă în fiecare lună**. Alegeți în schimb **Adaugă această sumă în fiecare lună** dacă orele nefolosite trebuie reportate.
+2. Pe măsură ce lucrați, faceți clic pe **Ajustează creditele**, alegeți **Scade credite** și **Ore** și introduceți timpul lucrat, de exemplu 1,5 ore la 120 de credite pe oră (180 de credite), cu o notă precum „Texte pagina principală, noiembrie”.
+3. Clientul vede fiecare scădere, cu orele și nota dvs., pe pagina sa Credits.
+
+<Note>
+  Creditele nu expiră. Creditele pe care le adăugați, le cumpărați sau le acordați lunar rămân în sold până când sunt cheltuite sau scăzute.
+</Note>
+
+## Înțelegeți tranzacțiile cu credite
+
+Fiecare activitate legată de credite este înregistrată în istoricul tranzacțiilor clientului.
+
+**In**: credite adăugate în cont:
+- Cumpărarea unui pachet de credite
+- Cerere de credite aprobată
+
+**Out**: credite scăzute din cont:
+- Serviciu cumpărat cu credite
+- Factură plătită cu credite
+
+Fiecare tranzacție afișează data, tipul, referința, numărul de credite și soldul curent, oferind un istoric complet de audit.
+
+**Creditele adăugate sau scăzute manual, precum și creditele lunare**, apar în același istoric, cu o referință care arată de unde provin:
+
+- **Adăugat de** *nume* sau **Scăzut de** *nume*: un membru al echipei a folosit **Ajustează creditele**.
+- **Credite lunare**: adăugate de programul lunar.
+
+Când suma a fost introdusă în ore, rândul afișează și orele și rata (de exemplu „2 h × 120/h”), urmate de nota dvs. Clienții văd aceste rânduri, inclusiv nota, pe pagina lor Credits, iar exporturile istoricului creditelor includ nota.

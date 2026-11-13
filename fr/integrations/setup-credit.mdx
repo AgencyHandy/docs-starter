@@ -141,6 +141,85 @@ Lorsqu'un client paie via une méthode manuelle, une demande de crédit est cré
 
 L'onglet Crédits affiche le solde disponible du client, l'historique complet des transactions, le solde cumulatif et les références de transaction.
 
+## Ajouter ou déduire des crédits
+
+Les administrateurs et super administrateurs peuvent ajouter des crédits au solde d'un client ou en déduire, sans frais. Utilisez cette option pour offrir un bonus, enregistrer le travail effectué dans le cadre d'un accord d'échange (troc) ou corriger un solde.
+
+<Steps>
+  <Step title="Ouvrez l'onglet Crédits du client">
+    Accédez à **Clients**, cliquez sur le nom du client et sélectionnez l'onglet **Crédits**.
+  </Step>
+  <Step title="Cliquez sur Ajuster les crédits">
+    À côté du solde, cliquez sur **Ajuster les crédits**.
+  </Step>
+  <Step title="Choisissez Ajouter des crédits ou Déduire des crédits">
+    Lorsque vous déduisez des crédits, la fenêtre affiche le solde actuel du client.
+  </Step>
+  <Step title="Saisissez le montant">
+    Sous **Unité**, choisissez **Crédits** pour saisir un nombre entier de crédits, ou **Heures** pour saisir un nombre d'heures (jusqu'à 2 décimales) et des **Crédits par heure**. En mode Heures, le montant converti s'affiche pendant la saisie, par exemple 2 heures × 120 crédits par heure = 240 crédits.
+  </Step>
+  <Step title="Ajoutez une note (facultatif)">
+    Saisissez jusqu'à 280 caractères, par exemple « 3 heures de marketing, octobre ». La note apparaît dans l'historique des crédits.
+  </Step>
+  <Step title="Confirmez">
+    Cliquez sur **Ajouter des crédits** ou **Déduire des crédits**.
+  </Step>
+</Steps>
+
+<Note>
+  Le taux de crédits par heure est mémorisé pour chaque client et prérempli la prochaine fois que vous choisissez **Heures**.
+</Note>
+
+<Warning>
+  Une déduction ne peut jamais faire passer le solde sous zéro. Si le montant dépasse le solde actuel, la fenêtre affiche **C'est plus que le solde actuel** et la déduction n'est pas enregistrée (« Not enough credits »).
+</Warning>
+
+## Attribuer des crédits chaque mois
+
+Les **Crédits mensuels** ajoutent automatiquement des crédits à un client le même jour chaque mois, ce qui convient aux forfaits récurrents (retainers) et aux accords d'échange. Seuls les administrateurs et super administrateurs peuvent les configurer.
+
+<Steps>
+  <Step title="Ouvrez Crédits mensuels">
+    Dans l'onglet **Crédits** du client, cliquez sur **Crédits mensuels** à côté du solde.
+  </Step>
+  <Step title="Définissez le montant et le jour">
+    Saisissez les **Crédits par mois** et le **Jour du mois** (1–28).
+  </Step>
+  <Step title="Choisissez le mode d'attribution">
+    Sélectionnez l'un des deux modes dans **Mode d'attribution** (voir le tableau ci-dessous).
+  </Step>
+  <Step title="Ajoutez une note (facultatif)">
+    La note s'affiche sur chaque ligne de crédits mensuels dans l'historique des crédits.
+  </Step>
+  <Step title="Activez et sauvegardez">
+    Vérifiez que la planification est activée (**Actif**), puis cliquez sur **Sauvegarder**.
+  </Step>
+</Steps>
+
+| Mode | Ce qui se passe chaque mois |
+|------|-----------------------------|
+| **Ajouter ce montant chaque mois** | Le montant est ajouté au solde. Les crédits inutilisés sont reportés. |
+| **Recharger jusqu'à ce montant chaque mois** | Le solde est ramené à ce montant. Les crédits inutilisés ne sont pas reportés, et rien n'est ajouté si le solde atteint déjà ce montant ou le dépasse. |
+
+Une fois la planification sauvegardée, l'onglet Crédits affiche le calendrier (par exemple « Mensuel : 360 crédits le 1 du mois »), la date de la prochaine exécution et la dernière attribution.
+
+- Les crédits sont ajoutés automatiquement. Vous n'avez rien à faire chaque mois.
+- Si un mois planifié est manqué, ses crédits sont ajoutés une seule fois lors de la prochaine exécution, jamais plusieurs fois.
+- Aucun crédit n'est ajouté tant que l'espace de travail ou le client est inactif.
+- Pour arrêter, ouvrez **Crédits mensuels**, désactivez la planification et cliquez sur **Sauvegarder**. Les attributions futures s'arrêtent ; les crédits déjà ajoutés restent sur le solde.
+
+### Exemple : un accord d'échange mensuel
+
+Vous convenez d'échanger 3 heures de travail chaque mois à 120 crédits par heure.
+
+1. Configurez les **Crédits mensuels** sur 360 crédits par mois, le jour 1, avec **Recharger jusqu'à ce montant chaque mois**. Choisissez plutôt **Ajouter ce montant chaque mois** si les heures inutilisées doivent être reportées.
+2. Au fur et à mesure du travail, cliquez sur **Ajuster les crédits**, choisissez **Déduire des crédits** et **Heures**, puis saisissez le temps passé, par exemple 1,5 heure à 120 crédits par heure (180 crédits), avec une note comme « Textes de la page d'accueil, novembre ».
+3. Le client voit chaque déduction, avec les heures et votre note, sur sa page Crédits.
+
+<Note>
+  Les crédits n'expirent jamais. Les crédits que vous ajoutez, achetés ou attribués chaque mois restent sur le solde jusqu'à ce qu'ils soient dépensés ou déduits.
+</Note>
+
 ## Comprendre les transactions de crédits
 
 Chaque activité de crédit est enregistrée dans l'historique des transactions du client.
@@ -154,3 +233,10 @@ Chaque activité de crédit est enregistrée dans l'historique des transactions 
 - Facture payée avec des crédits
 
 Chaque transaction affiche la date, le type, la référence, le montant en crédits et le solde cumulatif, fournissant une piste d'audit complète.
+
+**Les crédits que vous ajoutez ou déduisez manuellement, ainsi que les crédits mensuels**, apparaissent dans le même historique avec une référence qui indique leur origine :
+
+- **Ajouté par** *nom* ou **Déduit par** *nom* : un membre de l'équipe a utilisé **Ajuster les crédits**.
+- **Crédits mensuels** : ajoutés par la planification mensuelle.
+
+Lorsque le montant a été saisi en heures, la ligne affiche aussi les heures et le taux (par exemple « 2 h × 120/h »), suivis de votre note. Les clients voient ces lignes, note comprise, sur leur page Crédits, et les exports de l'historique des crédits incluent la note.

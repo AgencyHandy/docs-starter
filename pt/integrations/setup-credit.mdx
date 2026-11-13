@@ -141,6 +141,85 @@ Quando um cliente paga através de um método manual, é criado um pedido de cr�
 
 O separador Créditos mostra o saldo disponível do cliente, o historial completo de transações, o saldo acumulado e as referências de transações.
 
+## Adicionar ou deduzir créditos
+
+Administradores e superadministradores podem adicionar créditos ao saldo de um cliente ou deduzi-los, sem custo. Utilize esta opção para dar um bónus, registar o trabalho feito num acordo de permuta ou corrigir um saldo.
+
+<Steps>
+  <Step title="Abra o separador Créditos do cliente">
+    Aceda a **Clientes**, clique no nome do cliente e selecione o separador **Créditos**.
+  </Step>
+  <Step title="Clique em Ajustar créditos">
+    Ao lado do saldo, clique em **Ajustar créditos**.
+  </Step>
+  <Step title="Escolha Adicionar créditos ou Deduzir créditos">
+    Ao deduzir, a janela mostra o saldo atual do cliente.
+  </Step>
+  <Step title="Informe o valor">
+    Em **Unidade**, escolha **Créditos** para informar um número inteiro de créditos, ou **Horas** para informar horas (até 2 casas decimais) e **Créditos por hora**. No modo Horas, o valor convertido aparece enquanto escreve, por exemplo 2 horas × 120 créditos por hora = 240 créditos.
+  </Step>
+  <Step title="Adicione uma nota (opcional)">
+    Escreva até 280 caracteres, por exemplo "3 horas de marketing, outubro". A nota aparece no histórico de créditos.
+  </Step>
+  <Step title="Confirme">
+    Clique em **Adicionar créditos** ou **Deduzir créditos**.
+  </Step>
+</Steps>
+
+<Note>
+  A taxa de créditos por hora é guardada para cada cliente e é preenchida automaticamente da próxima vez que escolher **Horas**.
+</Note>
+
+<Warning>
+  Uma dedução nunca pode deixar o saldo abaixo de zero. Se o valor for maior que o saldo atual, a janela mostra **Isto é mais do que o saldo atual** e a dedução não é guardada ("Not enough credits").
+</Warning>
+
+## Dar créditos todos os meses
+
+Os **Créditos mensais** adicionam créditos a um cliente automaticamente no mesmo dia de cada mês, o que é ideal para contratos recorrentes (retainers) e acordos de permuta. Apenas administradores e superadministradores podem configurá-los.
+
+<Steps>
+  <Step title="Abra Créditos mensais">
+    No separador **Créditos** do cliente, clique em **Créditos mensais** ao lado do saldo.
+  </Step>
+  <Step title="Defina o valor e o dia">
+    Informe os **Créditos por mês** e o **Dia do mês** (1–28).
+  </Step>
+  <Step title="Escolha como os créditos são concedidos">
+    Escolha um dos dois modos em **Como os créditos são concedidos** (veja a tabela abaixo).
+  </Step>
+  <Step title="Adicione uma nota (opcional)">
+    A nota aparece em cada linha de créditos mensais no histórico de créditos.
+  </Step>
+  <Step title="Ative e guarde">
+    Verifique se o agendamento está ativado (**Ativo**) e clique em **Salvar**.
+  </Step>
+</Steps>
+
+| Modo | O que acontece a cada mês |
+|------|---------------------------|
+| **Adicionar este valor todos os meses** | O valor é somado ao saldo. Créditos não usados acumulam. |
+| **Completar até este valor todos os meses** | O saldo volta a subir até o valor. Créditos não usados não acumulam, e nada é adicionado se o saldo já estiver igual ou acima do valor. |
+
+Depois de guardar, o separador Créditos mostra o agendamento (por exemplo "Mensal: 360 créditos no dia 1"), a data da próxima execução e a última concessão.
+
+- Os créditos são adicionados automaticamente. Não precisa de fazer nada todos os meses.
+- Se um mês agendado for perdido, os créditos dele são adicionados uma única vez quando o agendamento voltar a ser executado, nunca mais de uma vez.
+- Nenhum crédito é adicionado enquanto o workspace ou o cliente estiver inativo.
+- Para parar, abra **Créditos mensais**, desative o agendamento e clique em **Salvar**. As concessões futuras param; os créditos já adicionados continuam no saldo.
+
+### Exemplo: um acordo de permuta mensal
+
+Combina trocar 3 horas de trabalho por mês a 120 créditos por hora.
+
+1. Configure **Créditos mensais** com 360 créditos por mês no dia 1 e **Completar até este valor todos os meses**. Escolha **Adicionar este valor todos os meses** se as horas não usadas devem acumular.
+2. À medida que faz o trabalho, clique em **Ajustar créditos**, escolha **Deduzir créditos** e **Horas** e informe o tempo gasto, por exemplo 1,5 horas a 120 créditos por hora (180 créditos), com uma nota como "Textos da página inicial, novembro".
+3. O cliente vê cada dedução, com as horas e a sua nota, na página Créditos.
+
+<Note>
+  Os créditos nunca expiram. Os créditos que adiciona, comprados ou concedidos mensalmente ficam no saldo até serem gastos ou deduzidos.
+</Note>
+
 ## Compreender as transações de créditos
 
 Cada atividade de crédito é registada no historial de transações do cliente.
@@ -154,3 +233,10 @@ Cada atividade de crédito é registada no historial de transações do cliente.
 - Fatura paga com créditos
 
 Cada transação mostra a data, o tipo, a referência, o valor em créditos e o saldo acumulado, proporcionando uma trilha de auditoria completa.
+
+**Os créditos que adiciona ou deduz manualmente e os créditos mensais** aparecem no mesmo histórico com uma referência que mostra a origem:
+
+- **Adicionado por** *nome* ou **Deduzido por** *nome*: um membro da equipa usou **Ajustar créditos**.
+- **Créditos mensais**: adicionados pelo agendamento mensal.
+
+Quando o valor foi informado em horas, a linha também mostra as horas e a taxa (por exemplo "2 h × 120/h"), seguidas da sua nota. Os clientes veem essas linhas, incluindo a nota, na página Créditos, e as exportações do histórico de créditos incluem a nota.
