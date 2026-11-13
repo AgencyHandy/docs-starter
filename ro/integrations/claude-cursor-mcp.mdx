@@ -142,6 +142,29 @@ Dacă două colege se numesc Sara, Claude întreabă pe care o intenționați. *
 
 Includeți întotdeauna un **nume complet** sau un **e-mail** în prompt când numele se pot ciocni.
 
+## Credite client, vizualizări ale formularelor de comandă și companii client
+
+Disponibil în **`agencyhandy-mcp@1.17.0`**. Acestea sunt și instrumentele pe care le folosește **Handy**, asistentul din aplicație.
+
+| Nevoie | Instrument | Ce face |
+|---|---|---|
+| Creditele unui client | `ah_client_credits_get` | Sold, rata salvată de credite pe oră, orele acoperite de sold, credite lunare, istoric recent |
+| Adăugare sau scădere de credite | `ah_client_credits_adjust` | Adaugă sau scade credite gratuit (fără achiziție) ori **ore** × rata de credite pe oră a clientului; clientul vede nota în istoricul său de credite |
+| Credite lunare | `ah_client_credit_allowance_set` / `ah_client_credit_allowance_stop` | **Completează până la** N credite (cele nefolosite nu se adună) sau **adaugă** N credite (se reportează), într-o zi a lunii aleasă de dvs. |
+| Cine a deschis un formular de comandă | `ah_order_form_views` | Vizualizări pe formular de comandă, ultima vizualizare, formulare pe care nu le-a deschis nimeni (doar vizitele clienților) |
+| Partener în mai multe companii | `ah_client_company_add_member` / `ah_client_company_members` | Adaugă clienți existenți într-o companie client; listează membrii unei companii sau toate companiile din care face parte un client |
+
+**Exemple de prompturi**
+
+- *„Scade 2 ore de lucru de marketing din creditele lui Elizabeth, la 120 de credite pe oră.”*
+- *„Dă-i companiei Acme 360 de credite în fiecare lună, pe 1, completând până la 360.”*
+- *„Ce formulare de comandă nu a deschis nimeni?”*
+- *„Adaugă partenerul în companiile client Apple și Samsung.”*
+
+<Note>
+  În **Handy**, adăugarea sau scăderea de credite și setarea creditelor lunare așteaptă întotdeauna aprobarea dvs. și doar un **Super Admin** sau **Admin** poate aproba. Modificările de credite nu pot fi anulate din chat; în schimb, Handy se oferă să facă ajustarea inversă.
+</Note>
+
 ## Ce funcționează acum vs încă nu
 
 | Funcționează acum | Încă indisponibil din MCP |

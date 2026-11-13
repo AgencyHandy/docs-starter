@@ -142,6 +142,29 @@ Ja komandā ir divas Sara, Claude jautās, kuru jūs domājat. Tas **neizdomā**
 
 Vienmēr iekļaujiet **pilnu vārdu** vai **e-pastu** uzvednē, kad vārdi var sadurties.
 
+## Klientu kredīti, pasūtījumu veidlapu skatījumi un klientu uzņēmumi
+
+Pieejams **`agencyhandy-mcp@1.17.0`**. Šos rīkus izmanto arī **Handy**, lietotnes asistents.
+
+| Vajadzība | Rīks | Ko tas dara |
+|---|---|---|
+| Klienta kredīti | `ah_client_credits_get` | Atlikums, saglabātā kredītu likme stundā, stundas, ko sedz atlikums, ikmēneša kredīti, nesenā vēsture |
+| Pievienot vai atskaitīt kredītus | `ah_client_credits_adjust` | Bez maksas (bez pirkuma) pievieno vai atskaita kredītus vai **stundas** × klienta kredītu likme stundā; klients redz piezīmi savā kredītu vēsturē |
+| Ikmēneša kredīti | `ah_client_credit_allowance_set` / `ah_client_credit_allowance_stop` | **Papildināt līdz** N kredītiem (neizmantotie neuzkrājas) vai **pievienot** N kredītus (tie pāriet uz nākamo mēnesi) jūsu izvēlētā mēneša dienā |
+| Kas atvēra pasūtījumu veidlapu | `ah_order_form_views` | Skatījumi katrai pasūtījumu veidlapai, pēdējais skatījums, veidlapas, ko neviens nav atvēris (tikai klientu apmeklējumi) |
+| Partneris vairākos uzņēmumos | `ah_client_company_add_member` / `ah_client_company_members` | Pievieno esošus klientus klientu uzņēmumam; parāda uzņēmuma dalībniekus vai visus uzņēmumus, kuros ir klients |
+
+**Uzvedņu piemēri**
+
+- *"Atskaiti no Elizabeth kredītiem 2 stundas mārketinga darba pēc likmes 120 kredīti stundā."*
+- *"Piešķir Acme 360 kredītus katru mēnesi 1. datumā, papildinot līdz 360."*
+- *"Kuras pasūtījumu veidlapas neviens nav atvēris?"*
+- *"Pievieno partneri klientu uzņēmumiem Apple un Samsung."*
+
+<Note>
+  **Handy** kredītu pievienošana vai atskaitīšana un ikmēneša kredītu iestatīšana vienmēr gaida jūsu apstiprinājumu, un apstiprināt var tikai **superadministrators** vai **administrators**. Kredītu izmaiņas nevar atsaukt no tērzēšanas; tā vietā Handy piedāvā veikt pretēju korekciju.
+</Note>
+
 ## Kas darbojas tagad vs vēl nē
 
 | Darbojas tagad | Vēl nav pieejams no MCP |

@@ -142,6 +142,29 @@ Wenn zwei Teammitglieder Sara heißen, fragt Claude nach, wen Sie meinen. Es **e
 
 Nehmen Sie immer einen **vollständigen Namen** oder eine **E-Mail** in den Prompt auf, wenn Namen kollidieren könnten.
 
+## Kunden-Credits, Aufrufe von Auftragsformularen und Kundenunternehmen
+
+Verfügbar ab **`agencyhandy-mcp@1.17.0`**. Diese Tools nutzt auch **Handy**, der Assistent in der App.
+
+| Bedarf | Tool | Was es tut |
+|---|---|---|
+| Credits eines Kunden | `ah_client_credits_get` | Guthaben, gespeicherter Satz an Credits pro Stunde, vom Guthaben abgedeckte Stunden, monatliche Credits, letzte Buchungen |
+| Credits hinzufügen oder abziehen | `ah_client_credits_adjust` | Fügt Credits kostenlos (ohne Kauf) hinzu oder zieht sie ab, oder **Stunden** × den Credits-pro-Stunde-Satz des Kunden; der Kunde sieht die Notiz in seinem Credit-Verlauf |
+| Monatliche Credits | `ah_client_credit_allowance_set` / `ah_client_credit_allowance_stop` | **Auffüllen auf** N Credits (ungenutzte sammeln sich nicht an) oder N Credits **hinzufügen** (sie werden übertragen), an einem Tag des Monats Ihrer Wahl |
+| Wer ein Auftragsformular geöffnet hat | `ah_order_form_views` | Aufrufe pro Auftragsformular, letzter Aufruf, Formulare, die niemand geöffnet hat (nur Kundenbesuche) |
+| Partner in mehreren Unternehmen | `ah_client_company_add_member` / `ah_client_company_members` | Fügt bestehende Kunden einem Kundenunternehmen hinzu; listet die Mitglieder eines Unternehmens oder alle Unternehmen, denen ein Kunde angehört |
+
+**Beispiel-Prompts**
+
+- *„Zieh 2 Stunden Marketingarbeit von Elizabeths Credits ab, zu 120 Credits pro Stunde.“*
+- *„Gib Acme jeden Monat am 1. 360 Credits und fülle dabei auf 360 auf.“*
+- *„Welche Auftragsformulare hat noch niemand geöffnet?“*
+- *„Füge den Partner zu den Kundenunternehmen Apple und Samsung hinzu.“*
+
+<Note>
+  In **Handy** warten das Hinzufügen oder Abziehen von Credits und das Festlegen monatlicher Credits immer auf Ihre Freigabe, und nur ein **Super-Administrator** oder **Administrator** kann freigeben. Credit-Änderungen lassen sich im Chat nicht rückgängig machen; Handy bietet stattdessen eine Gegenbuchung an.
+</Note>
+
 ## Was jetzt funktioniert vs. noch nicht
 
 | Funktioniert jetzt | Noch nicht über MCP verfügbar |

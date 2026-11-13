@@ -142,6 +142,29 @@ Jika dua rekan bernama Sara, Claude akan menanyakan yang mana yang Anda maksud. 
 
 Selalu sertakan **nama lengkap** atau **email** dalam prompt ketika nama mungkin bertabrakan.
 
+## Kredit klien, kunjungan formulir pesanan, dan perusahaan klien
+
+Tersedia di **`agencyhandy-mcp@1.17.0`**. Alat-alat ini juga yang digunakan **Handy**, asisten di dalam aplikasi.
+
+| Kebutuhan | Alat | Fungsinya |
+|---|---|---|
+| Kredit klien | `ah_client_credits_get` | Saldo, tarif kredit per jam yang tersimpan, jumlah jam yang dicakup saldo, kredit bulanan, riwayat terbaru |
+| Menambah atau mengurangi kredit | `ah_client_credits_adjust` | Menambah atau mengurangi kredit secara gratis (tanpa pembelian), atau **jam** × tarif kredit per jam klien; klien melihat catatannya di riwayat kredit mereka |
+| Kredit bulanan | `ah_client_credit_allowance_set` / `ah_client_credit_allowance_stop` | **Isi hingga** N kredit (kredit yang tidak terpakai tidak menumpuk) atau **tambahkan** N kredit (terbawa ke bulan berikutnya), pada tanggal yang Anda pilih setiap bulan |
+| Siapa yang membuka formulir pesanan | `ah_order_form_views` | Kunjungan per formulir pesanan, terakhir dilihat, formulir yang belum dibuka siapa pun (hanya kunjungan klien) |
+| Mitra di beberapa perusahaan | `ah_client_company_add_member` / `ah_client_company_members` | Menambahkan klien yang sudah ada ke perusahaan klien; menampilkan anggota sebuah perusahaan atau semua perusahaan tempat seorang klien tergabung |
+
+**Contoh prompt**
+
+- *“Kurangi 2 jam pekerjaan marketing dari kredit Elizabeth dengan tarif 120 kredit per jam.”*
+- *“Beri Acme 360 kredit setiap bulan pada tanggal 1, diisi hingga 360.”*
+- *“Formulir pesanan mana yang belum dibuka siapa pun?”*
+- *“Tambahkan mitra ke perusahaan klien Apple dan Samsung.”*
+
+<Note>
+  Di **Handy**, menambah atau mengurangi kredit dan mengatur kredit bulanan selalu menunggu persetujuan Anda, dan hanya **Super Admin** atau **Admin** yang dapat menyetujuinya. Perubahan kredit tidak dapat dibatalkan dari chat; sebagai gantinya Handy menawarkan penyesuaian kebalikannya.
+</Note>
+
 ## Yang berfungsi sekarang vs belum
 
 | Berfungsi sekarang | Belum tersedia dari MCP |

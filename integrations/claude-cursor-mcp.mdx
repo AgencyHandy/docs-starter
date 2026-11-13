@@ -234,6 +234,29 @@ If two teammates are both named Sara, Claude will ask which one you mean. It doe
 
 Always include a **full name** or **email** in the prompt when names might collide.
 
+## Client credits, order form views and client companies
+
+Shipped in **`agencyhandy-mcp@1.17.0`**. These are also what **Handy**, the in-app assistant, uses.
+
+| Need | Tool | What it does |
+|---|---|---|
+| A client's credits | `ah_client_credits_get` | Balance, saved credits-per-hour rate, hours the balance covers, monthly credits, recent history |
+| Add or deduct credits | `ah_client_credits_adjust` | Add or deduct credits for free (no purchase), or **hours** × the client's credits-per-hour rate; the client sees the note in their credit history |
+| Monthly credits | `ah_client_credit_allowance_set` / `ah_client_credit_allowance_stop` | **Top up to** N credits (unused ones don't pile up) or **add** N credits (they roll over), on a day of the month you choose |
+| Who opened an order form | `ah_order_form_views` | Views per order form, last viewed, forms nobody opened (client visits only) |
+| Partner in several companies | `ah_client_company_add_member` / `ah_client_company_members` | Add existing clients to a client company; list a company's members or every company one client is in |
+
+**Example prompts**
+
+- *"Deduct 2 hours of marketing work from Elizabeth's credits at 120 credits an hour."*
+- *"Give Acme 360 credits every month on the 1st, topping up to 360."*
+- *"Which order forms has nobody opened?"*
+- *"Add the partner to the Apple and Samsung client companies."*
+
+<Note>
+  In **Handy**, adding or deducting credits and setting monthly credits always wait for your approval, and only a **Super Admin** or **Admin** can approve. Credit changes can't be undone from chat; Handy offers to make the opposite adjustment instead.
+</Note>
+
 ## What works now vs not yet
 
 | Works now (`agencyhandy-mcp@1.7.2+`) | Not available from MCP yet |
@@ -252,5 +275,5 @@ MCP supports both reading your workspace and taking actions (create, assign, sen
 
 - Generate keys and copy config in-app under **Workspace Config** → **API Key**
 - Hosted server for cloud agents: `https://mcp.agencyhandy.com/` (health check at `/health`)
-- Package: [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) on npm — use `npx -y agencyhandy-mcp@1` (latest **1.7.2**)
+- Package: [`agencyhandy-mcp`](https://www.npmjs.com/package/agencyhandy-mcp) on npm — use `npx -y agencyhandy-mcp@1` (latest **1.17.0**)
 - [Lead Custom Fields](/crm/lead-custom-fields) · [Client Custom Fields](/crm/client-custom-fields)

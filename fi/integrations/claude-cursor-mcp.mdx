@@ -142,6 +142,29 @@ Jos tiimissä on kaksi Saraa, Claude kysyy kumpaa tarkoitat. Se **ei keksi** ID:
 
 Sisällytä kehotteeseen aina **koko nimi** tai **sähköposti**, kun nimet voivat törmätä.
 
+## Asiakkaiden krediitit, tilauslomakkeiden katselut ja asiakasyritykset
+
+Julkaistu versiossa **`agencyhandy-mcp@1.17.0`**. Näitä käyttää myös **Handy**, sovelluksen sisäinen avustaja.
+
+| Tarve | Työkalu | Mitä se tekee |
+|---|---|---|
+| Asiakkaan krediitit | `ah_client_credits_get` | Saldo, tallennettu krediittiä tunnissa -hinta, kuinka monta tuntia saldo kattaa, kuukausittaiset krediitit, viimeaikainen historia |
+| Krediittien lisääminen tai vähentäminen | `ah_client_credits_adjust` | Lisää tai vähentää krediittejä veloituksetta (ei ostoa) tai **tunteina** × asiakkaan krediittiä tunnissa -hinta; asiakas näkee huomautuksen krediittihistoriassaan |
+| Kuukausittaiset krediitit | `ah_client_credit_allowance_set` / `ah_client_credit_allowance_stop` | **Täydentää** N krediittiin (käyttämättömät eivät kasaudu) tai **lisää** N krediittiä (ne siirtyvät seuraavaan kuukauteen) valitsemanasi kuukauden päivänä |
+| Kuka avasi tilauslomakkeen | `ah_order_form_views` | Katselut tilauslomakkeittain, viimeisin katselu, lomakkeet, joita kukaan ei ole avannut (vain asiakkaiden käynnit) |
+| Kumppani useassa yrityksessä | `ah_client_company_add_member` / `ah_client_company_members` | Lisää olemassa olevia asiakkaita asiakasyritykseen; listaa yrityksen jäsenet tai kaikki yritykset, joihin yksi asiakas kuuluu |
+
+**Esimerkkikehotteita**
+
+- *”Vähennä Elizabethin krediiteistä 2 tuntia markkinointityötä hintaan 120 krediittiä tunnissa.”*
+- *”Anna Acmelle 360 krediittiä joka kuukauden 1. päivä niin, että saldo täydennetään 360:een.”*
+- *”Mitä tilauslomakkeita kukaan ei ole avannut?”*
+- *”Lisää kumppani asiakasyrityksiin Apple ja Samsung.”*
+
+<Note>
+  **Handy**-avustajassa krediittien lisääminen tai vähentäminen ja kuukausittaisten krediittien asettaminen odottavat aina hyväksyntääsi, ja vain **pääylläpitäjä** tai **ylläpitäjä** voi hyväksyä ne. Krediittimuutoksia ei voi perua chatista; Handy tarjoutuu sen sijaan tekemään vastakkaisen korjauksen.
+</Note>
+
 ## Mikä toimii nyt vs ei vielä
 
 | Toimii nyt | Ei vielä saatavilla MCP:stä |

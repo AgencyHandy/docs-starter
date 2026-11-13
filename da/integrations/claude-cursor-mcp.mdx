@@ -142,6 +142,29 @@ Hvis to teammedlemmer hedder Sara, spørger Claude, hvem du mener. Den **opfinde
 
 Medtag altid et **fuldt navn** eller en **e-mail** i prompten, når navne kan kollidere.
 
+## Klientkreditter, visninger af ordreformularer og klientfirmaer
+
+Leveret i **`agencyhandy-mcp@1.17.0`**. Det er også disse værktøjer, **Handy**, assistenten i appen, bruger.
+
+| Behov | Værktøj | Hvad det gør |
+|---|---|---|
+| En klients kreditter | `ah_client_credits_get` | Saldo, gemt sats for kreditter pr. time, antal timer saldoen dækker, månedlige kreditter, seneste historik |
+| Tilføj eller fratræk kreditter | `ah_client_credits_adjust` | Tilføj eller fratræk kreditter gratis (uden køb), eller **timer** × klientens sats for kreditter pr. time; klienten ser noten i sin kredithistorik |
+| Månedlige kreditter | `ah_client_credit_allowance_set` / `ah_client_credit_allowance_stop` | **Fyld op til** N kreditter (ubrugte hober sig ikke op) eller **tilføj** N kreditter (de overføres), på en dag i måneden, du vælger |
+| Hvem har åbnet en ordreformular | `ah_order_form_views` | Visninger pr. ordreformular, seneste visning, formularer, som ingen har åbnet (kun klientbesøg) |
+| Partner i flere firmaer | `ah_client_company_add_member` / `ah_client_company_members` | Tilføj eksisterende klienter til et klientfirma; vis et firmas medlemmer eller alle de firmaer, én klient hører til |
+
+**Eksempler på prompts**
+
+- *„Fratræk 2 timers marketingarbejde fra Elizabeths kreditter til 120 kreditter i timen.“*
+- *„Giv Acme 360 kreditter hver måned den 1., fyldt op til 360.“*
+- *„Hvilke ordreformularer har ingen åbnet?“*
+- *„Tilføj partneren til klientfirmaerne Apple og Samsung.“*
+
+<Note>
+  I **Handy** venter tilføjelse og fratræk af kreditter samt opsætning af månedlige kreditter altid på din godkendelse, og kun en **Super Admin** eller **Admin** kan godkende. Kreditændringer kan ikke fortrydes fra chatten; Handy tilbyder i stedet at foretage den modsatte justering.
+</Note>
+
 ## Hvad der virker nu vs endnu ikke
 
 | Virker nu | Endnu ikke tilgængeligt via MCP |

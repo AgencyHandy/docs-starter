@@ -142,6 +142,29 @@ Om två teammedlemmar heter Sara frågar Claude vilken du menar. Den **hittar in
 
 Inkludera alltid ett **fullständigt namn** eller en **e-postadress** i prompten när namn kan krocka.
 
+## Klientkrediter, visningar av orderformulär och klientföretag
+
+Levereras i **`agencyhandy-mcp@1.17.0`**. Det är också dessa verktyg som **Handy**, assistenten i appen, använder.
+
+| Behov | Verktyg | Vad det gör |
+|---|---|---|
+| En klients krediter | `ah_client_credits_get` | Saldo, sparad kurs för krediter per timme, hur många timmar saldot räcker till, månatliga krediter, senaste historik |
+| Lägga till eller dra av krediter | `ah_client_credits_adjust` | Lägg till eller dra av krediter gratis (inget köp), eller **timmar** × klientens kurs för krediter per timme; klienten ser anteckningen i sin kredithistorik |
+| Månatliga krediter | `ah_client_credit_allowance_set` / `ah_client_credit_allowance_stop` | **Fyll på till** N krediter (oanvända krediter samlas inte på hög) eller **lägg till** N krediter (de förs över), på en dag i månaden som du väljer |
+| Vem som har öppnat ett orderformulär | `ah_order_form_views` | Visningar per orderformulär, senaste visning, formulär som ingen har öppnat (endast klientbesök) |
+| Partner i flera företag | `ah_client_company_add_member` / `ah_client_company_members` | Lägg till befintliga klienter i ett klientföretag; lista ett företags medlemmar eller alla företag som en klient tillhör |
+
+**Exempelpromptar**
+
+- *“Dra av 2 timmars marknadsföringsarbete från Elizabeths krediter, 120 krediter per timme.”*
+- *“Ge Acme 360 krediter varje månad den 1:a, påfyllt till 360.”*
+- *“Vilka orderformulär har ingen öppnat?”*
+- *“Lägg till partnern i klientföretagen Apple och Samsung.”*
+
+<Note>
+  I **Handy** väntar tillägg och avdrag av krediter samt inställning av månatliga krediter alltid på ditt godkännande, och bara en **superadministratör** eller **administratör** kan godkänna. Kreditändringar kan inte ångras från chatten; Handy erbjuder sig i stället att göra motsatt justering.
+</Note>
+
 ## Vad som fungerar nu vs ännu inte
 
 | Fungerar nu | Inte tillgängligt via MCP ännu |

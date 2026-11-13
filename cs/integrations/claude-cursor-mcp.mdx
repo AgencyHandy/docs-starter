@@ -142,6 +142,29 @@ Pokud se dvě kolegyně jmenují Sara, Claude se zeptá, kterou myslíte. **Nevy
 
 Do promptu vždy uveďte **celé jméno** nebo **e-mail**, když by se jména mohla srazit.
 
+## Kredity klientů, zobrazení objednávkových formulářů a klientské společnosti
+
+K dispozici od **`agencyhandy-mcp@1.17.0`**. Tytéž nástroje používá i **Handy**, asistent v aplikaci.
+
+| Potřeba | Nástroj | Co dělá |
+|---|---|---|
+| Kredity klienta | `ah_client_credits_get` | Zůstatek, uložená sazba kreditů za hodinu, počet hodin, které zůstatek pokryje, měsíční kredity, nedávná historie |
+| Přidání nebo odečtení kreditů | `ah_client_credits_adjust` | Přidá nebo odečte kredity zdarma (bez nákupu), nebo **hodiny** × sazba kreditů za hodinu daného klienta; klient vidí poznámku ve své historii kreditů |
+| Měsíční kredity | `ah_client_credit_allowance_set` / `ah_client_credit_allowance_stop` | **Doplnit na** N kreditů (nevyužité se nehromadí) nebo **přidat** N kreditů (převádějí se), ve zvolený den v měsíci |
+| Kdo otevřel objednávkový formulář | `ah_order_form_views` | Zobrazení podle objednávkového formuláře, poslední zobrazení, formuláře, které nikdo neotevřel (jen návštěvy klientů) |
+| Partner v několika společnostech | `ah_client_company_add_member` / `ah_client_company_members` | Přidá stávající klienty do klientské společnosti; vypíše členy společnosti nebo všechny společnosti, do kterých klient patří |
+
+**Příklady promptů**
+
+- *„Odečti z kreditů Elizabeth 2 hodiny marketingové práce při sazbě 120 kreditů za hodinu.“*
+- *„Dávej Acme každý měsíc 1. dne 360 kreditů s doplněním na 360.“*
+- *„Které objednávkové formuláře nikdo neotevřel?“*
+- *„Přidej partnera do klientských společností Apple a Samsung.“*
+
+<Note>
+  V **Handy** přidání nebo odečtení kreditů a nastavení měsíčních kreditů vždy čeká na vaše schválení a schválit je může jen **superadministrátor** nebo **administrátor**. Změny kreditů nelze vrátit z chatu; Handy místo toho nabídne opačnou úpravu.
+</Note>
+
 ## Co funguje teď vs ještě ne
 
 | Funguje teď | Zatím nedostupné přes MCP |

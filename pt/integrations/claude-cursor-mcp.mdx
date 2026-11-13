@@ -142,6 +142,29 @@ Se duas colegas se chamam Sara, o Claude pergunta a qual se refere. **Não inven
 
 Inclua sempre um **nome completo** ou **e-mail** no prompt quando os nomes puderem colidir.
 
+## Créditos de clientes, visualizações de formulários de encomenda e empresas clientes
+
+Disponível em **`agencyhandy-mcp@1.17.0`**. São também estas as ferramentas que o **Handy**, o assistente da aplicação, utiliza.
+
+| Necessidade | Ferramenta | O que faz |
+|---|---|---|
+| Créditos de um cliente | `ah_client_credits_get` | Saldo, taxa de créditos por hora guardada, horas que o saldo cobre, créditos mensais, histórico recente |
+| Adicionar ou deduzir créditos | `ah_client_credits_adjust` | Adiciona ou deduz créditos gratuitamente (sem compra), ou **horas** × a taxa de créditos por hora do cliente; o cliente vê a nota no seu histórico de créditos |
+| Créditos mensais | `ah_client_credit_allowance_set` / `ah_client_credit_allowance_stop` | **Repor até** N créditos (os não utilizados não se acumulam) ou **adicionar** N créditos (transitam para o mês seguinte), num dia do mês à sua escolha |
+| Quem abriu um formulário de encomenda | `ah_order_form_views` | Visualizações por formulário de encomenda, última visualização, formulários que ninguém abriu (apenas visitas de clientes) |
+| Parceiro em várias empresas | `ah_client_company_add_member` / `ah_client_company_members` | Adiciona clientes existentes a uma empresa cliente; lista os membros de uma empresa ou todas as empresas a que um cliente pertence |
+
+**Exemplos de prompts**
+
+- *"Deduz 2 horas de trabalho de marketing dos créditos da Elizabeth, a 120 créditos por hora."*
+- *"Dá à Acme 360 créditos todos os meses no dia 1, repondo até 360."*
+- *"Que formulários de encomenda ninguém abriu?"*
+- *"Adiciona o parceiro às empresas clientes Apple e Samsung."*
+
+<Note>
+  No **Handy**, adicionar ou deduzir créditos e definir créditos mensais aguarda sempre a sua aprovação, e só um **Super Admin** ou **Admin** pode aprovar. As alterações de créditos não podem ser anuladas a partir do chat; em vez disso, o Handy propõe fazer o ajuste inverso.
+</Note>
+
 ## O que funciona agora vs ainda não
 
 | Funciona agora | Ainda não disponível no MCP |
