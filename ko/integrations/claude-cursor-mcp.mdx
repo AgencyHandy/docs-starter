@@ -28,7 +28,7 @@ AgencyHandy MCP 연결을 사용하면 **Claude** 또는 **Cursor**에 자연어
 | **AgencyHandy 워크스페이스** | **Workspace Config** → **API Key** 접근 권한 |
 | **MCP 호스트** | 컴퓨터의 Claude Desktop 또는 Cursor, 혹은 HTTP로 MCP 서버를 호출할 수 있는 모든 에이전트 |
 | **Node.js** *(로컬 설정 전용)* | 버전 **20** 이상 (`node -v` 로 확인) |
-| **MCP 패키지** *(로컬 설정 전용)* | `npx -y agencyhandy-mcp@1` (`1` 태그로 **1.7.2+** 제공) |
+| **MCP 패키지** *(로컬 설정 전용)* | `npx -y agencyhandy-mcp@1` (`1` 태그로 **1.17.0** 제공) |
 
 npm의 MCP 패키지는 `agencyhandy-mcp`입니다. Claude와 Cursor는 `npx -y agencyhandy-mcp@1`로 실행합니다.
 
@@ -181,7 +181,7 @@ MCP는 API 키로 워크스페이스를 읽고 작업(생성·배정·발송·�
 - 앱의 **Workspace Config** → **API Key**에서 키를 만들고 구성을 복사
 
 <Note>
-  Latest package on the `1` tag is **1.7.2+**. Claude can read **`ah://api-context`** (also inside **`ah://full-context`**) for API path gotchas: leads, projects/orders, tasks, comments, labels, clients, invoices, vouchers, and forms.
+  Latest package on the `1` tag is **1.17.0**. Claude can read **`ah://api-context`** (also inside **`ah://full-context`**) for API path gotchas: leads, projects/orders, tasks, comments, labels, clients, invoices, vouchers, and forms.
 </Note>
 
 - 클라우드 에이전트용 호스팅형 서버: `https://mcp.agencyhandy.com/` (상태 확인은 `/health`)

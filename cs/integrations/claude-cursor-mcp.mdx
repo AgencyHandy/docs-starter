@@ -28,7 +28,7 @@ Oba způsoby používají stejný API klíč pracovního prostoru a dávají age
 | **Pracovní prostor AgencyHandy** | Přístup do **Workspace Config** → **API Key** |
 | **MCP hostitel** | Claude Desktop nebo Cursor na vašem počítači, případně jakýkoli agent, který umí zavolat MCP server přes HTTP |
 | **Node.js** *(jen místní nastavení)* | Verze **20** nebo novější (ověřte `node -v`) |
-| **MCP balíček** *(jen místní nastavení)* | `npx -y agencyhandy-mcp@1` (tag `1` dodává **1.7.2+**) |
+| **MCP balíček** *(jen místní nastavení)* | `npx -y agencyhandy-mcp@1` (tag `1` dodává **1.17.0**) |
 
 MCP balíček na npm je `agencyhandy-mcp`. Claude a Cursor jej spouští přes `npx -y agencyhandy-mcp@1`.
 
@@ -181,7 +181,7 @@ MCP podporuje čtení workspace a akce (vytvořit, přiřadit, odeslat, aktualiz
 - Generujte klíče a kopírujte konfiguraci v aplikaci pod **Workspace Config** → **API Key**
 
 <Note>
-  Latest package on the `1` tag is **1.7.2+**. Claude can read **`ah://api-context`** (also inside **`ah://full-context`**) for API path gotchas: leads, projects/orders, tasks, comments, labels, clients, invoices, vouchers, and forms.
+  Latest package on the `1` tag is **1.17.0**. Claude can read **`ah://api-context`** (also inside **`ah://full-context`**) for API path gotchas: leads, projects/orders, tasks, comments, labels, clients, invoices, vouchers, and forms.
 </Note>
 
 - Hostovaný server pro cloudové agenty: `https://mcp.agencyhandy.com/` (kontrola stavu na `/health`)

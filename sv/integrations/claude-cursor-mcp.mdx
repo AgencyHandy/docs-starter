@@ -28,7 +28,7 @@ Båda använder samma API-nyckel för arbetsytan och ger agenten samma verktyg.
 | **AgencyHandy-arbetsyta** | Åtkomst till **Workspace Config** → **API Key** |
 | **En MCP-värd** | Claude Desktop eller Cursor på din dator, eller vilken agent som helst som kan anropa en MCP-server över HTTP |
 | **Node.js** *(endast lokal uppsättning)* | Version **20** eller senare (kontrollera med `node -v`) |
-| **MCP-paket** *(endast lokal uppsättning)* | `npx -y agencyhandy-mcp@1` (taggen `1` levererar **1.7.2+**) |
+| **MCP-paket** *(endast lokal uppsättning)* | `npx -y agencyhandy-mcp@1` (taggen `1` levererar **1.17.0**) |
 
 MCP-paketet på npm är `agencyhandy-mcp`. Claude och Cursor kör det med `npx -y agencyhandy-mcp@1`.
 
@@ -181,7 +181,7 @@ MCP stöder läsning av arbetsytan och åtgärder (skapa, tilldela, skicka, uppd
 - Generera nycklar och kopiera konfigurationen i appen under **Workspace Config** → **API Key**
 
 <Note>
-  Latest package on the `1` tag is **1.7.2+**. Claude can read **`ah://api-context`** (also inside **`ah://full-context`**) for API path gotchas: leads, projects/orders, tasks, comments, labels, clients, invoices, vouchers, and forms.
+  Latest package on the `1` tag is **1.17.0**. Claude can read **`ah://api-context`** (also inside **`ah://full-context`**) for API path gotchas: leads, projects/orders, tasks, comments, labels, clients, invoices, vouchers, and forms.
 </Note>
 
 - Hostad server för molnagenter: `https://mcp.agencyhandy.com/` (hälsokontroll på `/health`)

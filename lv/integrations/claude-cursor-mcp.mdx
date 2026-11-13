@@ -28,7 +28,7 @@ Abi izmanto vienu un to pašu darbvietas API atslēgu un dod aģentam tos pašus
 | **AgencyHandy darbvieta** | Piekļuve **Workspace Config** → **API Key** |
 | **MCP resursdators** | Claude Desktop vai Cursor jūsu datorā, vai jebkurš aģents, kas var izsaukt MCP serveri caur HTTP |
 | **Node.js** *(tikai vietējai iestatīšanai)* | Versija **20** vai jaunāka (pārbaudiet ar `node -v`) |
-| **MCP pakotne** *(tikai vietējai iestatīšanai)* | `npx -y agencyhandy-mcp@1` (birka `1` piegādā **1.7.2+**) |
+| **MCP pakotne** *(tikai vietējai iestatīšanai)* | `npx -y agencyhandy-mcp@1` (birka `1` piegādā **1.17.0**) |
 
 MCP pakotne npm ir `agencyhandy-mcp`. Claude un Cursor to palaiz ar `npx -y agencyhandy-mcp@1`.
 
@@ -181,7 +181,7 @@ MCP atbalsta darba vietas lasīšanu un darbības (izveidot, piešķirt, sūtīt
 - Ģenerējiet atslēgas un kopējiet konfigurāciju lietotnē: **Workspace Config** → **API Key**
 
 <Note>
-  Latest package on the `1` tag is **1.7.2+**. Claude can read **`ah://api-context`** (also inside **`ah://full-context`**) for API path gotchas: leads, projects/orders, tasks, comments, labels, clients, invoices, vouchers, and forms.
+  Latest package on the `1` tag is **1.17.0**. Claude can read **`ah://api-context`** (also inside **`ah://full-context`**) for API path gotchas: leads, projects/orders, tasks, comments, labels, clients, invoices, vouchers, and forms.
 </Note>
 
 - Mitināts serveris mākoņa aģentiem: `https://mcp.agencyhandy.com/` (stāvokļa pārbaude `/health`)

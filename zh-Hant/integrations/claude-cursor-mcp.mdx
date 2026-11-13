@@ -28,7 +28,7 @@ AgencyHandy 的 MCP 連線讓你用自然語言與 **Claude** 或 **Cursor** 對
 | **AgencyHandy 工作區** | 可存取 **Workspace Config** → **API Key** |
 | **一個 MCP 主機** | 電腦上的 Claude Desktop 或 Cursor，或任何能透過 HTTP 呼叫 MCP 伺服器的代理 |
 | **Node.js** *(僅本地方式)* | 版本 **20** 或以上（用 `node -v` 檢查） |
-| **MCP 套件** *(僅本地方式)* | `npx -y agencyhandy-mcp@1`（`1` 標籤提供 **1.7.2+**） |
+| **MCP 套件** *(僅本地方式)* | `npx -y agencyhandy-mcp@1`（`1` 標籤提供 **1.17.0**） |
 
 npm 上的 MCP 套件名稱為 `agencyhandy-mcp`。Claude 與 Cursor 透過 `npx -y agencyhandy-mcp@1` 執行它。
 
@@ -181,7 +181,7 @@ MCP 支援使用你的 API 金鑰讀取工作區並執行動作（建立、指�
 - 在應用程式內 **Workspace Config** → **API Key** 產生金鑰並複製設定
 
 <Note>
-  Latest package on the `1` tag is **1.7.2+**. Claude can read **`ah://api-context`** (also inside **`ah://full-context`**) for API path gotchas: leads, projects/orders, tasks, comments, labels, clients, invoices, vouchers, and forms.
+  Latest package on the `1` tag is **1.17.0**. Claude can read **`ah://api-context`** (also inside **`ah://full-context`**) for API path gotchas: leads, projects/orders, tasks, comments, labels, clients, invoices, vouchers, and forms.
 </Note>
 
 - 供雲端代理使用的託管伺服器：`https://mcp.agencyhandy.com/`（健康檢查在 `/health`）

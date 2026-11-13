@@ -28,7 +28,7 @@ Ambele folosesc aceeași cheie API a spațiului de lucru și oferă agentului ac
 | **Spațiu de lucru AgencyHandy** | Acces la **Workspace Config** → **API Key** |
 | **O gazdă MCP** | Claude Desktop sau Cursor pe calculatorul tău, ori orice agent care poate apela un server MCP prin HTTP |
 | **Node.js** *(doar configurarea locală)* | Versiunea **20** sau mai nouă (verifică `node -v`) |
-| **Pachetul MCP** *(doar configurarea locală)* | `npx -y agencyhandy-mcp@1` (eticheta `1` livrează **1.7.2+**) |
+| **Pachetul MCP** *(doar configurarea locală)* | `npx -y agencyhandy-mcp@1` (eticheta `1` livrează **1.17.0**) |
 
 Pachetul MCP pe npm este `agencyhandy-mcp`. Claude și Cursor îl rulează cu `npx -y agencyhandy-mcp@1`.
 
@@ -181,7 +181,7 @@ MCP permite citirea workspace-ului și acțiuni (creare, atribuire, trimitere, a
 - Generați chei și copiați configurația în aplicație la **Workspace Config** → **API Key**
 
 <Note>
-  Latest package on the `1` tag is **1.7.2+**. Claude can read **`ah://api-context`** (also inside **`ah://full-context`**) for API path gotchas: leads, projects/orders, tasks, comments, labels, clients, invoices, vouchers, and forms.
+  Latest package on the `1` tag is **1.17.0**. Claude can read **`ah://api-context`** (also inside **`ah://full-context`**) for API path gotchas: leads, projects/orders, tasks, comments, labels, clients, invoices, vouchers, and forms.
 </Note>
 
 - Server găzduit pentru agenți din cloud: `https://mcp.agencyhandy.com/` (verificare la `/health`)

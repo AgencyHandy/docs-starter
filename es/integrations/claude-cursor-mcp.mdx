@@ -28,7 +28,7 @@ Ambas usan la misma clave API del espacio de trabajo y dan al agente las mismas 
 | **Espacio de trabajo de AgencyHandy** | Acceso a **Workspace Config** → **API Key** |
 | **Un host MCP** | Claude Desktop o Cursor en tu ordenador, o cualquier agente que pueda llamar a un servidor MCP por HTTP |
 | **Node.js** *(solo instalación local)* | Versión **20** o posterior (`node -v` para comprobarlo) |
-| **Paquete MCP** *(solo instalación local)* | `npx -y agencyhandy-mcp@1` (incluye **1.7.2+** en la etiqueta `1`) |
+| **Paquete MCP** *(solo instalación local)* | `npx -y agencyhandy-mcp@1` (incluye **1.17.0** en la etiqueta `1`) |
 
 El paquete MCP en npm es `agencyhandy-mcp`. Claude y Cursor lo ejecutan con `npx -y agencyhandy-mcp@1`.
 
@@ -181,7 +181,7 @@ MCP permite leer tu workspace y realizar acciones (crear, asignar, enviar, actua
 - Genera claves y copia la config en la app en **Workspace Config** → **API Key**
 
 <Note>
-  Latest package on the `1` tag is **1.7.2+**. Claude can read **`ah://api-context`** (also inside **`ah://full-context`**) for API path gotchas: leads, projects/orders, tasks, comments, labels, clients, invoices, vouchers, and forms.
+  Latest package on the `1` tag is **1.17.0**. Claude can read **`ah://api-context`** (also inside **`ah://full-context`**) for API path gotchas: leads, projects/orders, tasks, comments, labels, clients, invoices, vouchers, and forms.
 </Note>
 
 - Servidor alojado para agentes en la nube: `https://mcp.agencyhandy.com/` (comprobación en `/health`)
