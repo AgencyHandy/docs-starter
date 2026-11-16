@@ -16,15 +16,16 @@ Puteți abona un webhook la orice combinație de evenimente de mai jos:
 
 | Categorie | Evenimente |
 |---|---|
-| **Serviciu** | Creat, Actualizat, Șters |
-| **Comandă** | Creată, Actualizată, Ștearsă |
-| **Sarcină** | Creată, Atribuită, Finalizată, Actualizată |
-| **Factură** | Status modificat |
-| **Client / Utilizator** | Client nou adăugat, Client/utilizator șters |
-| **Propunere** | Trimisă, Primită, Acceptată, Respinsă |
-| **Tichet** | Creat, Atribuit, Status modificat |
-| **Plată** | Primită, Eșuată |
-| **Pachet de servicii** | Creat, Actualizat, Șters |
+| **Serviciu** | `SERVICE.CREATED`, `SERVICE.UPDATED`, `SERVICE.DELETED` |
+| **Comandă** | `ORDER.CREATED`, `ORDER.UPDATED`, `ORDER.DELETED`, `ORDER.INTAKE_SUBMITTED` |
+| **Sarcină** | `TASK.CREATED`, `TASK.ASSIGNED`, `TASK.COMPLETED`, `TASK.UPDATED` |
+| **Factură** | `INVOICE.STATUS.CHANGED` |
+| **Client / Utilizator** | `CLIENT.ADDED`, `CLIENT.UPDATED`, `CLIENT.DELETED` |
+| **Propunere** | `PROPOSAL.SENT`, `PROPOSAL.RECEIVED`, `PROPOSAL.ACCEPTED`, `PROPOSAL.REJECTED` |
+| **Tichet** | `TICKET.CREATED`, `TICKET.ASSIGNED`, `TICKET.STATUS.CHANGED` |
+| **Plată** | `PAYMENT.RECEIVED`, `PAYMENT.FAILED` |
+| **Lead** | `LEAD.ADDED`, `LEAD.UPDATED`, `LEAD.DELETED` |
+| **Form** | `PUBLIC_FORM.CREATED`, `PUBLIC_FORM.UPDATED`, `PUBLIC_FORM.SHARED`, `FORM.DELETED`, `PUBLIC_FORM.RESPONSE.CREATED`, `PUBLIC_FORM.RESPONSE.UPDATED`, `PUBLIC_FORM.RESPONSE.DELETED` |
 
 ## Creați un webhook
 

@@ -16,15 +16,16 @@ Webhook AgencyHandy-কে কোনো পোলিং ছাড়াই ম�
 
 | বিভাগ | ইভেন্টসমূহ |
 |---|---|
-| **সার্ভিস** | তৈরি, আপডেট, মুছে ফেলা |
-| **অর্ডার** | তৈরি, আপডেট, মুছে ফেলা |
-| **টাস্ক** | তৈরি, বরাদ্দ, সম্পন্ন, আপডেট |
-| **ইনভয়েস** | স্ট্যাটাস পরিবর্তন |
-| **ক্লায়েন্ট / ব্যবহারকারী** | নতুন ক্লায়েন্ট যোগ, ক্লায়েন্ট/ব্যবহারকারী মুছে ফেলা |
-| **প্রপোজাল** | পাঠানো, প্রাপ্ত, গৃহীত, প্রত্যাখ্যাত |
-| **টিকেট** | তৈরি, বরাদ্দ, স্ট্যাটাস পরিবর্তন |
-| **পেমেন্ট** | প্রাপ্ত, ব্যর্থ |
-| **সার্ভিস প্যাকেজ** | তৈরি, আপডেট, মুছে ফেলা |
+| **সার্ভিস** | `SERVICE.CREATED`, `SERVICE.UPDATED`, `SERVICE.DELETED` |
+| **অর্ডার** | `ORDER.CREATED`, `ORDER.UPDATED`, `ORDER.DELETED`, `ORDER.INTAKE_SUBMITTED` |
+| **টাস্ক** | `TASK.CREATED`, `TASK.ASSIGNED`, `TASK.COMPLETED`, `TASK.UPDATED` |
+| **ইনভয়েস** | `INVOICE.STATUS.CHANGED` |
+| **ক্লায়েন্ট / ব্যবহারকারী** | `CLIENT.ADDED`, `CLIENT.UPDATED`, `CLIENT.DELETED` |
+| **প্রপোজাল** | `PROPOSAL.SENT`, `PROPOSAL.RECEIVED`, `PROPOSAL.ACCEPTED`, `PROPOSAL.REJECTED` |
+| **টিকেট** | `TICKET.CREATED`, `TICKET.ASSIGNED`, `TICKET.STATUS.CHANGED` |
+| **পেমেন্ট** | `PAYMENT.RECEIVED`, `PAYMENT.FAILED` |
+| **Lead** | `LEAD.ADDED`, `LEAD.UPDATED`, `LEAD.DELETED` |
+| **Form** | `PUBLIC_FORM.CREATED`, `PUBLIC_FORM.UPDATED`, `PUBLIC_FORM.SHARED`, `FORM.DELETED`, `PUBLIC_FORM.RESPONSE.CREATED`, `PUBLIC_FORM.RESPONSE.UPDATED`, `PUBLIC_FORM.RESPONSE.DELETED` |
 
 ## একটি webhook তৈরি করুন
 

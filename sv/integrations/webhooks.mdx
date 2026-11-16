@@ -16,15 +16,16 @@ Du kan prenumerera en webhook på valfri kombination av följande händelser:
 
 | Kategori | Händelser |
 |---|---|
-| **Tjänst** | Skapad, Uppdaterad, Borttagen |
-| **Beställning** | Skapad, Uppdaterad, Borttagen |
-| **Uppgift** | Skapad, Tilldelad, Slutförd, Uppdaterad |
-| **Faktura** | Status ändrad |
-| **Klient / Användare** | Ny klient tillagd, Klient/användare borttagen |
-| **Offert** | Skickad, Mottagen, Accepterad, Avvisad |
-| **Ärende** | Skapat, Tilldelat, Status ändrad |
-| **Betalning** | Mottagen, Misslyckad |
-| **Tjänstepaket** | Skapat, Uppdaterat, Borttaget |
+| **Tjänst** | `SERVICE.CREATED`, `SERVICE.UPDATED`, `SERVICE.DELETED` |
+| **Beställning** | `ORDER.CREATED`, `ORDER.UPDATED`, `ORDER.DELETED`, `ORDER.INTAKE_SUBMITTED` |
+| **Uppgift** | `TASK.CREATED`, `TASK.ASSIGNED`, `TASK.COMPLETED`, `TASK.UPDATED` |
+| **Faktura** | `INVOICE.STATUS.CHANGED` |
+| **Klient / Användare** | `CLIENT.ADDED`, `CLIENT.UPDATED`, `CLIENT.DELETED` |
+| **Offert** | `PROPOSAL.SENT`, `PROPOSAL.RECEIVED`, `PROPOSAL.ACCEPTED`, `PROPOSAL.REJECTED` |
+| **Ärende** | `TICKET.CREATED`, `TICKET.ASSIGNED`, `TICKET.STATUS.CHANGED` |
+| **Betalning** | `PAYMENT.RECEIVED`, `PAYMENT.FAILED` |
+| **Lead** | `LEAD.ADDED`, `LEAD.UPDATED`, `LEAD.DELETED` |
+| **Form** | `PUBLIC_FORM.CREATED`, `PUBLIC_FORM.UPDATED`, `PUBLIC_FORM.SHARED`, `FORM.DELETED`, `PUBLIC_FORM.RESPONSE.CREATED`, `PUBLIC_FORM.RESPONSE.UPDATED`, `PUBLIC_FORM.RESPONSE.DELETED` |
 
 ## Skapa en webhook
 

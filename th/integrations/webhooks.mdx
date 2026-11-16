@@ -16,15 +16,16 @@ Webhook ให้ AgencyHandy ส่งข้อมูลไปยังระ�
 
 | หมวดหมู่ | เหตุการณ์ |
 |---|---|
-| **บริการ (Service)** | สร้าง อัปเดต ลบ |
-| **ออเดอร์ (Order)** | สร้าง อัปเดต ลบ |
-| **งาน (Task)** | สร้าง มอบหมาย เสร็จสิ้น อัปเดต |
-| **ใบแจ้งหนี้ (Invoice)** | สถานะเปลี่ยนแปลง |
-| **ลูกค้า / ผู้ใช้ (Client / User)** | เพิ่มลูกค้าใหม่ ลบลูกค้า/ผู้ใช้ |
-| **ใบเสนอราคา (Proposal)** | ส่ง รับ ยอมรับ ปฏิเสธ |
-| **ตั๋ว (Ticket)** | สร้าง มอบหมาย สถานะเปลี่ยนแปลง |
-| **การชำระเงิน (Payment)** | รับสำเร็จ ล้มเหลว |
-| **แพ็กเกจบริการ (Service Package)** | สร้าง อัปเดต ลบ |
+| **บริการ (Service)** | `SERVICE.CREATED`, `SERVICE.UPDATED`, `SERVICE.DELETED` |
+| **ออเดอร์ (Order)** | `ORDER.CREATED`, `ORDER.UPDATED`, `ORDER.DELETED`, `ORDER.INTAKE_SUBMITTED` |
+| **งาน (Task)** | `TASK.CREATED`, `TASK.ASSIGNED`, `TASK.COMPLETED`, `TASK.UPDATED` |
+| **ใบแจ้งหนี้ (Invoice)** | `INVOICE.STATUS.CHANGED` |
+| **ลูกค้า / ผู้ใช้ (Client / User)** | `CLIENT.ADDED`, `CLIENT.UPDATED`, `CLIENT.DELETED` |
+| **ใบเสนอราคา (Proposal)** | `PROPOSAL.SENT`, `PROPOSAL.RECEIVED`, `PROPOSAL.ACCEPTED`, `PROPOSAL.REJECTED` |
+| **ตั๋ว (Ticket)** | `TICKET.CREATED`, `TICKET.ASSIGNED`, `TICKET.STATUS.CHANGED` |
+| **การชำระเงิน (Payment)** | `PAYMENT.RECEIVED`, `PAYMENT.FAILED` |
+| **Lead** | `LEAD.ADDED`, `LEAD.UPDATED`, `LEAD.DELETED` |
+| **Form** | `PUBLIC_FORM.CREATED`, `PUBLIC_FORM.UPDATED`, `PUBLIC_FORM.SHARED`, `FORM.DELETED`, `PUBLIC_FORM.RESPONSE.CREATED`, `PUBLIC_FORM.RESPONSE.UPDATED`, `PUBLIC_FORM.RESPONSE.DELETED` |
 
 ## สร้าง webhook
 

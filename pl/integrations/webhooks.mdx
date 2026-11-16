@@ -16,15 +16,16 @@ Możesz subskrybować webhook do dowolnej kombinacji następujących zdarzeń:
 
 | Kategoria | Zdarzenia |
 |---|---|
-| **Usługa** | Utworzona, zaktualizowana, usunięta |
-| **Zamówienie** | Utworzone, zaktualizowane, usunięte |
-| **Zadanie** | Utworzone, przypisane, ukończone, zaktualizowane |
-| **Faktura** | Zmiana statusu |
-| **Klient / Użytkownik** | Nowy klient dodany, klient/użytkownik usunięty |
-| **Propozycja** | Wysłana, odebrana, zaakceptowana, odrzucona |
-| **Zgłoszenie** | Utworzone, przypisane, zmiana statusu |
-| **Płatność** | Odebrana, nieudana |
-| **Pakiet usług** | Utworzony, zaktualizowany, usunięty |
+| **Usługa** | `SERVICE.CREATED`, `SERVICE.UPDATED`, `SERVICE.DELETED` |
+| **Zamówienie** | `ORDER.CREATED`, `ORDER.UPDATED`, `ORDER.DELETED`, `ORDER.INTAKE_SUBMITTED` |
+| **Zadanie** | `TASK.CREATED`, `TASK.ASSIGNED`, `TASK.COMPLETED`, `TASK.UPDATED` |
+| **Faktura** | `INVOICE.STATUS.CHANGED` |
+| **Klient / Użytkownik** | `CLIENT.ADDED`, `CLIENT.UPDATED`, `CLIENT.DELETED` |
+| **Propozycja** | `PROPOSAL.SENT`, `PROPOSAL.RECEIVED`, `PROPOSAL.ACCEPTED`, `PROPOSAL.REJECTED` |
+| **Zgłoszenie** | `TICKET.CREATED`, `TICKET.ASSIGNED`, `TICKET.STATUS.CHANGED` |
+| **Płatność** | `PAYMENT.RECEIVED`, `PAYMENT.FAILED` |
+| **Lead** | `LEAD.ADDED`, `LEAD.UPDATED`, `LEAD.DELETED` |
+| **Form** | `PUBLIC_FORM.CREATED`, `PUBLIC_FORM.UPDATED`, `PUBLIC_FORM.SHARED`, `FORM.DELETED`, `PUBLIC_FORM.RESPONSE.CREATED`, `PUBLIC_FORM.RESPONSE.UPDATED`, `PUBLIC_FORM.RESPONSE.DELETED` |
 
 ## Utwórz webhook
 

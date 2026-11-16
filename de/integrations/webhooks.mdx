@@ -16,15 +16,16 @@ Sie können einen Webhook für jede Kombination der folgenden Ereignisse abonnie
 
 | Kategorie | Ereignisse |
 |---|---|
-| **Service** | Erstellt, Aktualisiert, Gelöscht |
-| **Bestellung** | Erstellt, Aktualisiert, Gelöscht |
-| **Aufgabe** | Erstellt, Zugewiesen, Abgeschlossen, Aktualisiert |
-| **Rechnung** | Status geändert |
-| **Kunde / Benutzer** | Neuer Kunde hinzugefügt, Kunde/Benutzer gelöscht |
-| **Angebot** | Gesendet, Empfangen, Akzeptiert, Abgelehnt |
-| **Ticket** | Erstellt, Zugewiesen, Status geändert |
-| **Zahlung** | Empfangen, Fehlgeschlagen |
-| **Service-Paket** | Erstellt, Aktualisiert, Gelöscht |
+| **Service** | `SERVICE.CREATED`, `SERVICE.UPDATED`, `SERVICE.DELETED` |
+| **Bestellung** | `ORDER.CREATED`, `ORDER.UPDATED`, `ORDER.DELETED`, `ORDER.INTAKE_SUBMITTED` |
+| **Aufgabe** | `TASK.CREATED`, `TASK.ASSIGNED`, `TASK.COMPLETED`, `TASK.UPDATED` |
+| **Rechnung** | `INVOICE.STATUS.CHANGED` |
+| **Kunde / Benutzer** | `CLIENT.ADDED`, `CLIENT.UPDATED`, `CLIENT.DELETED` |
+| **Angebot** | `PROPOSAL.SENT`, `PROPOSAL.RECEIVED`, `PROPOSAL.ACCEPTED`, `PROPOSAL.REJECTED` |
+| **Ticket** | `TICKET.CREATED`, `TICKET.ASSIGNED`, `TICKET.STATUS.CHANGED` |
+| **Zahlung** | `PAYMENT.RECEIVED`, `PAYMENT.FAILED` |
+| **Lead** | `LEAD.ADDED`, `LEAD.UPDATED`, `LEAD.DELETED` |
+| **Form** | `PUBLIC_FORM.CREATED`, `PUBLIC_FORM.UPDATED`, `PUBLIC_FORM.SHARED`, `FORM.DELETED`, `PUBLIC_FORM.RESPONSE.CREATED`, `PUBLIC_FORM.RESPONSE.UPDATED`, `PUBLIC_FORM.RESPONSE.DELETED` |
 
 ## Einen Webhook erstellen
 

@@ -16,15 +16,16 @@ description: "Настройте вебхуки в AgencyHandy для перед
 
 | Категория | События |
 |---|---|
-| **Услуга** | Создана, Обновлена, Удалена |
-| **Заказ** | Создан, Обновлён, Удалён |
-| **Задача** | Создана, Назначена, Выполнена, Обновлена |
-| **Счёт** | Статус изменён |
-| **Клиент / Пользователь** | Добавлен новый клиент, Клиент/пользователь удалён |
-| **Предложение** | Отправлено, Получено, Принято, Отклонено |
-| **Тикет** | Создан, Назначен, Статус изменён |
-| **Платёж** | Получен, Не выполнен |
-| **Пакет услуг** | Создан, Обновлён, Удалён |
+| **Услуга** | `SERVICE.CREATED`, `SERVICE.UPDATED`, `SERVICE.DELETED` |
+| **Заказ** | `ORDER.CREATED`, `ORDER.UPDATED`, `ORDER.DELETED`, `ORDER.INTAKE_SUBMITTED` |
+| **Задача** | `TASK.CREATED`, `TASK.ASSIGNED`, `TASK.COMPLETED`, `TASK.UPDATED` |
+| **Счёт** | `INVOICE.STATUS.CHANGED` |
+| **Клиент / Пользователь** | `CLIENT.ADDED`, `CLIENT.UPDATED`, `CLIENT.DELETED` |
+| **Предложение** | `PROPOSAL.SENT`, `PROPOSAL.RECEIVED`, `PROPOSAL.ACCEPTED`, `PROPOSAL.REJECTED` |
+| **Тикет** | `TICKET.CREATED`, `TICKET.ASSIGNED`, `TICKET.STATUS.CHANGED` |
+| **Платёж** | `PAYMENT.RECEIVED`, `PAYMENT.FAILED` |
+| **Lead** | `LEAD.ADDED`, `LEAD.UPDATED`, `LEAD.DELETED` |
+| **Form** | `PUBLIC_FORM.CREATED`, `PUBLIC_FORM.UPDATED`, `PUBLIC_FORM.SHARED`, `FORM.DELETED`, `PUBLIC_FORM.RESPONSE.CREATED`, `PUBLIC_FORM.RESPONSE.UPDATED`, `PUBLIC_FORM.RESPONSE.DELETED` |
 
 ## Создание вебхука
 

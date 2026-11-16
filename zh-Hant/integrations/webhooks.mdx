@@ -16,15 +16,16 @@ Webhook 讓 AgencyHandy 能在發生變更的瞬間將資料推送至您的外�
 
 | 類別 | 事件 |
 |---|---|
-| **服務** | 已建立、已更新、已刪除 |
-| **訂單** | 已建立、已更新、已刪除 |
-| **任務** | 已建立、已指派、已完成、已更新 |
-| **發票** | 狀態已變更 |
-| **客戶 / 使用者** | 新客戶已新增、客戶/使用者已刪除 |
-| **提案** | 已傳送、已收到、已接受、已拒絕 |
-| **工單** | 已建立、已指派、狀態已變更 |
-| **付款** | 已收到、已失敗 |
-| **服務套件** | 已建立、已更新、已刪除 |
+| **服務** | `SERVICE.CREATED`, `SERVICE.UPDATED`, `SERVICE.DELETED` |
+| **訂單** | `ORDER.CREATED`, `ORDER.UPDATED`, `ORDER.DELETED`, `ORDER.INTAKE_SUBMITTED` |
+| **任務** | `TASK.CREATED`, `TASK.ASSIGNED`, `TASK.COMPLETED`, `TASK.UPDATED` |
+| **發票** | `INVOICE.STATUS.CHANGED` |
+| **客戶 / 使用者** | `CLIENT.ADDED`, `CLIENT.UPDATED`, `CLIENT.DELETED` |
+| **提案** | `PROPOSAL.SENT`, `PROPOSAL.RECEIVED`, `PROPOSAL.ACCEPTED`, `PROPOSAL.REJECTED` |
+| **工單** | `TICKET.CREATED`, `TICKET.ASSIGNED`, `TICKET.STATUS.CHANGED` |
+| **付款** | `PAYMENT.RECEIVED`, `PAYMENT.FAILED` |
+| **Lead** | `LEAD.ADDED`, `LEAD.UPDATED`, `LEAD.DELETED` |
+| **Form** | `PUBLIC_FORM.CREATED`, `PUBLIC_FORM.UPDATED`, `PUBLIC_FORM.SHARED`, `FORM.DELETED`, `PUBLIC_FORM.RESPONSE.CREATED`, `PUBLIC_FORM.RESPONSE.UPDATED`, `PUBLIC_FORM.RESPONSE.DELETED` |
 
 ## 建立 webhook
 

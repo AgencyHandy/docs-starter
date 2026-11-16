@@ -16,15 +16,16 @@ U kunt een webhook abonneren op elke combinatie van de volgende gebeurtenissen:
 
 | Categorie | Gebeurtenissen |
 |---|---|
-| **Dienst** | Aangemaakt, Bijgewerkt, Verwijderd |
-| **Bestelling** | Aangemaakt, Bijgewerkt, Verwijderd |
-| **Taak** | Aangemaakt, Toegewezen, Voltooid, Bijgewerkt |
-| **Factuur** | Status gewijzigd |
-| **Klant / Gebruiker** | Nieuwe klant toegevoegd, Klant/gebruiker verwijderd |
-| **Voorstel** | Verstuurd, Ontvangen, Geaccepteerd, Afgewezen |
-| **Ticket** | Aangemaakt, Toegewezen, Status gewijzigd |
-| **Betaling** | Ontvangen, Mislukt |
-| **Servicepakket** | Aangemaakt, Bijgewerkt, Verwijderd |
+| **Dienst** | `SERVICE.CREATED`, `SERVICE.UPDATED`, `SERVICE.DELETED` |
+| **Bestelling** | `ORDER.CREATED`, `ORDER.UPDATED`, `ORDER.DELETED`, `ORDER.INTAKE_SUBMITTED` |
+| **Taak** | `TASK.CREATED`, `TASK.ASSIGNED`, `TASK.COMPLETED`, `TASK.UPDATED` |
+| **Factuur** | `INVOICE.STATUS.CHANGED` |
+| **Klant / Gebruiker** | `CLIENT.ADDED`, `CLIENT.UPDATED`, `CLIENT.DELETED` |
+| **Voorstel** | `PROPOSAL.SENT`, `PROPOSAL.RECEIVED`, `PROPOSAL.ACCEPTED`, `PROPOSAL.REJECTED` |
+| **Ticket** | `TICKET.CREATED`, `TICKET.ASSIGNED`, `TICKET.STATUS.CHANGED` |
+| **Betaling** | `PAYMENT.RECEIVED`, `PAYMENT.FAILED` |
+| **Lead** | `LEAD.ADDED`, `LEAD.UPDATED`, `LEAD.DELETED` |
+| **Form** | `PUBLIC_FORM.CREATED`, `PUBLIC_FORM.UPDATED`, `PUBLIC_FORM.SHARED`, `FORM.DELETED`, `PUBLIC_FORM.RESPONSE.CREATED`, `PUBLIC_FORM.RESPONSE.UPDATED`, `PUBLIC_FORM.RESPONSE.DELETED` |
 
 ## Een webhook aanmaken
 

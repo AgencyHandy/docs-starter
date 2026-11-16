@@ -16,15 +16,16 @@ Voit tilata webhookin mihin tahansa yhdistelmään seuraavista tapahtumista:
 
 | Kategoria | Tapahtumat |
 |---|---|
-| **Palvelu** | Luotu, päivitetty, poistettu |
-| **Tilaus** | Luotu, päivitetty, poistettu |
-| **Tehtävä** | Luotu, osoitettu, suoritettu, päivitetty |
-| **Lasku** | Tila muuttunut |
-| **Asiakas / Käyttäjä** | Uusi asiakas lisätty, asiakas/käyttäjä poistettu |
-| **Ehdotus** | Lähetetty, vastaanotettu, hyväksytty, hylätty |
-| **Tukipyyntö** | Luotu, osoitettu, tila muuttunut |
-| **Maksu** | Vastaanotettu, epäonnistunut |
-| **Palvelupaketti** | Luotu, päivitetty, poistettu |
+| **Palvelu** | `SERVICE.CREATED`, `SERVICE.UPDATED`, `SERVICE.DELETED` |
+| **Tilaus** | `ORDER.CREATED`, `ORDER.UPDATED`, `ORDER.DELETED`, `ORDER.INTAKE_SUBMITTED` |
+| **Tehtävä** | `TASK.CREATED`, `TASK.ASSIGNED`, `TASK.COMPLETED`, `TASK.UPDATED` |
+| **Lasku** | `INVOICE.STATUS.CHANGED` |
+| **Asiakas / Käyttäjä** | `CLIENT.ADDED`, `CLIENT.UPDATED`, `CLIENT.DELETED` |
+| **Ehdotus** | `PROPOSAL.SENT`, `PROPOSAL.RECEIVED`, `PROPOSAL.ACCEPTED`, `PROPOSAL.REJECTED` |
+| **Tukipyyntö** | `TICKET.CREATED`, `TICKET.ASSIGNED`, `TICKET.STATUS.CHANGED` |
+| **Maksu** | `PAYMENT.RECEIVED`, `PAYMENT.FAILED` |
+| **Lead** | `LEAD.ADDED`, `LEAD.UPDATED`, `LEAD.DELETED` |
+| **Form** | `PUBLIC_FORM.CREATED`, `PUBLIC_FORM.UPDATED`, `PUBLIC_FORM.SHARED`, `FORM.DELETED`, `PUBLIC_FORM.RESPONSE.CREATED`, `PUBLIC_FORM.RESPONSE.UPDATED`, `PUBLIC_FORM.RESPONSE.DELETED` |
 
 ## Luo webhook
 

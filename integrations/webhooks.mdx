@@ -12,19 +12,53 @@ Webhooks let AgencyHandy push data to your external systems the moment something
 
 ## Supported events
 
-You can subscribe a webhook to any combination of the following events:
+You can subscribe a webhook to any combination of the following events. The `type` field of every payload carries the exact event name shown here.
 
 | Category | Events |
 |---|---|
-| **Service** | Created, Updated, Deleted |
-| **Order** | Created, Updated, Deleted |
-| **Task** | Created, Assigned, Completed, Updated |
-| **Invoice** | Status changed |
-| **Client / User** | New client added, Client/user deleted |
-| **Proposal** | Sent, Received, Accepted, Rejected |
-| **Ticket** | Created, Assigned, Status changed |
-| **Payment** | Received, Failed |
-| **Service Package** | Created, Updated, Deleted |
+| **Service** | `SERVICE.CREATED`, `SERVICE.UPDATED`, `SERVICE.DELETED` |
+| **Order** | `ORDER.CREATED`, `ORDER.UPDATED`, `ORDER.DELETED`, `ORDER.INTAKE_SUBMITTED` |
+| **Task** | `TASK.CREATED`, `TASK.ASSIGNED`, `TASK.COMPLETED`, `TASK.UPDATED` |
+| **Invoice** | `INVOICE.STATUS.CHANGED` |
+| **Client / User** | `CLIENT.ADDED`, `CLIENT.UPDATED`, `CLIENT.DELETED` |
+| **Proposal** | `PROPOSAL.SENT`, `PROPOSAL.RECEIVED`, `PROPOSAL.ACCEPTED`, `PROPOSAL.REJECTED` |
+| **Ticket** | `TICKET.CREATED`, `TICKET.ASSIGNED`, `TICKET.STATUS.CHANGED` |
+| **Payment** | `PAYMENT.RECEIVED`, `PAYMENT.FAILED` |
+| **Lead** | `LEAD.ADDED`, `LEAD.UPDATED`, `LEAD.DELETED` |
+| **Form** | `PUBLIC_FORM.CREATED`, `PUBLIC_FORM.UPDATED`, `PUBLIC_FORM.SHARED`, `FORM.DELETED`, `PUBLIC_FORM.RESPONSE.CREATED`, `PUBLIC_FORM.RESPONSE.UPDATED`, `PUBLIC_FORM.RESPONSE.DELETED` |
+
+<Note>
+  There is no separate subscription renewal or subscription cancellation event. Subscription payments arrive as `PAYMENT.RECEIVED` or `PAYMENT.FAILED`, with `data.paymentType` set to `subscription` and the subscription in `data.orderSubscription`.
+</Note>
+
+## Payload format
+
+Every event is an HTTP `POST` with a JSON body in the same envelope:
+
+```json
+{
+  "id": "evt_01HZS0ECR7TAQXEFXGWDFG9ETY",
+  "type": "PAYMENT.RECEIVED",
+  "data": {
+    "_id": "662781fbf1a54e9cc9adbe99",
+    "client": "662781f8f1a54e9cc9adbe80",
+    "project": "6662cd305ceaa9cba6b24ad1",
+    "currency": "USD",
+    "amountTotal": 123,
+    "amountPaid": 123,
+    "status": "paid",
+    "paymentType": "subscription",
+    "orderSubscription": { "_id": "66278201f1a54e9cc9adbeae", "nextPayment": "2024-04-24T09:40:17.950Z" },
+    "paidDate": "2024-04-23T09:40:26.547Z"
+  }
+}
+```
+
+- `id` is unique per event. Use it to ignore a delivery you have already processed.
+- `type` is the event name from the table above.
+- `data` is the record the event is about (the order, invoice, client, task and so on). Use **Test Event** on a webhook to receive a full sample payload for the events you subscribed to.
+
+Each request carries the headers `Content-Type`, `X-AH-Sig` (the signature, see below) and `User-Agent: AH-Webhook/<version>`.
 
 ## Create a webhook
 
@@ -193,4 +227,4 @@ curl -X POST https://api.agencyhandy.com/api/v1/webhooks/verify-signature \
 - Your endpoint URL must be a **publicly accessible HTTPS POST** URL.
 - If your endpoint is temporarily unavailable, check the webhook's history panel in AgencyHandy — you can **redeliver** any past event directly from there.
 - Regularly monitor webhook activity to detect failed deliveries or unauthorized access attempts.
-- Webhooks that fail repeatedly may be paused by AgencyHandy — review delivery logs to catch issues early.
+- A delivery that fails with a server error, a timeout, `408` or `429` is retried up to 5 times with increasing delays. A `4xx` response (other than `408` and `429`), an unknown host or an invalid TLS certificate is not retried. Every attempt is listed in the webhook history.

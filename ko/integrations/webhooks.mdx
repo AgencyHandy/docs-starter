@@ -16,15 +16,16 @@ description: "AgencyHandy에서 웹훅을 설정하여 주문, 태스크, 인보
 
 | 카테고리 | 이벤트 |
 |---|---|
-| **서비스** | 생성, 업데이트, 삭제 |
-| **주문** | 생성, 업데이트, 삭제 |
-| **태스크** | 생성, 배정, 완료, 업데이트 |
-| **인보이스** | 상태 변경 |
-| **클라이언트 / 사용자** | 새 클라이언트 추가, 클라이언트/사용자 삭제 |
-| **제안서** | 전송, 수신, 수락, 거절 |
-| **티켓** | 생성, 배정, 상태 변경 |
-| **결제** | 수신, 실패 |
-| **서비스 패키지** | 생성, 업데이트, 삭제 |
+| **서비스** | `SERVICE.CREATED`, `SERVICE.UPDATED`, `SERVICE.DELETED` |
+| **주문** | `ORDER.CREATED`, `ORDER.UPDATED`, `ORDER.DELETED`, `ORDER.INTAKE_SUBMITTED` |
+| **태스크** | `TASK.CREATED`, `TASK.ASSIGNED`, `TASK.COMPLETED`, `TASK.UPDATED` |
+| **인보이스** | `INVOICE.STATUS.CHANGED` |
+| **클라이언트 / 사용자** | `CLIENT.ADDED`, `CLIENT.UPDATED`, `CLIENT.DELETED` |
+| **제안서** | `PROPOSAL.SENT`, `PROPOSAL.RECEIVED`, `PROPOSAL.ACCEPTED`, `PROPOSAL.REJECTED` |
+| **티켓** | `TICKET.CREATED`, `TICKET.ASSIGNED`, `TICKET.STATUS.CHANGED` |
+| **결제** | `PAYMENT.RECEIVED`, `PAYMENT.FAILED` |
+| **Lead** | `LEAD.ADDED`, `LEAD.UPDATED`, `LEAD.DELETED` |
+| **Form** | `PUBLIC_FORM.CREATED`, `PUBLIC_FORM.UPDATED`, `PUBLIC_FORM.SHARED`, `FORM.DELETED`, `PUBLIC_FORM.RESPONSE.CREATED`, `PUBLIC_FORM.RESPONSE.UPDATED`, `PUBLIC_FORM.RESPONSE.DELETED` |
 
 ## 웹훅 생성
 

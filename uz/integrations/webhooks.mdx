@@ -16,15 +16,16 @@ Webhookni quyidagi hodisalarning istalgan kombinatsiyasiga obuna qilishingiz mum
 
 | Kategoriya | Hodisalar |
 |---|---|
-| **Xizmat** | Yaratildi, Yangilandi, O'chirildi |
-| **Buyurtma** | Yaratildi, Yangilandi, O'chirildi |
-| **Vazifa** | Yaratildi, Tayinlandi, Bajarildi, Yangilandi |
-| **Hisob-faktura** | Holati o'zgardi |
-| **Mijoz / Foydalanuvchi** | Yangi mijoz qo'shildi, Mijoz/foydalanuvchi o'chirildi |
-| **Taklif** | Yuborildi, Olindi, Qabul qilindi, Rad etildi |
-| **Tiket** | Yaratildi, Tayinlandi, Holati o'zgardi |
-| **To'lov** | Olindi, Muvaffaqiyatsiz |
-| **Xizmat paketi** | Yaratildi, Yangilandi, O'chirildi |
+| **Xizmat** | `SERVICE.CREATED`, `SERVICE.UPDATED`, `SERVICE.DELETED` |
+| **Buyurtma** | `ORDER.CREATED`, `ORDER.UPDATED`, `ORDER.DELETED`, `ORDER.INTAKE_SUBMITTED` |
+| **Vazifa** | `TASK.CREATED`, `TASK.ASSIGNED`, `TASK.COMPLETED`, `TASK.UPDATED` |
+| **Hisob-faktura** | `INVOICE.STATUS.CHANGED` |
+| **Mijoz / Foydalanuvchi** | `CLIENT.ADDED`, `CLIENT.UPDATED`, `CLIENT.DELETED` |
+| **Taklif** | `PROPOSAL.SENT`, `PROPOSAL.RECEIVED`, `PROPOSAL.ACCEPTED`, `PROPOSAL.REJECTED` |
+| **Tiket** | `TICKET.CREATED`, `TICKET.ASSIGNED`, `TICKET.STATUS.CHANGED` |
+| **To'lov** | `PAYMENT.RECEIVED`, `PAYMENT.FAILED` |
+| **Lead** | `LEAD.ADDED`, `LEAD.UPDATED`, `LEAD.DELETED` |
+| **Form** | `PUBLIC_FORM.CREATED`, `PUBLIC_FORM.UPDATED`, `PUBLIC_FORM.SHARED`, `FORM.DELETED`, `PUBLIC_FORM.RESPONSE.CREATED`, `PUBLIC_FORM.RESPONSE.UPDATED`, `PUBLIC_FORM.RESPONSE.DELETED` |
 
 ## Webhook yaratish
 

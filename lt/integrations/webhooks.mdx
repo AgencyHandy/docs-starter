@@ -16,15 +16,16 @@ Webhook galima prenumeruoti bet kokiam šių įvykių deriniui:
 
 | Kategorija | Įvykiai |
 |---|---|
-| **Paslauga** | Sukurta, atnaujinta, ištrinta |
-| **Užsakymas** | Sukurtas, atnaujintas, ištrintas |
-| **Užduotis** | Sukurta, priskirta, užbaigta, atnaujinta |
-| **Sąskaita faktūra** | Pakeista būsena |
-| **Klientas / Naudotojas** | Pridėtas naujas klientas, klientas/naudotojas ištrintas |
-| **Pasiūlymas** | Išsiųstas, gautas, priimtas, atmestas |
-| **Bilietas** | Sukurtas, priskirtas, pakeista būsena |
-| **Mokėjimas** | Gautas, nepavykęs |
-| **Paslaugų paketas** | Sukurtas, atnaujintas, ištrintas |
+| **Paslauga** | `SERVICE.CREATED`, `SERVICE.UPDATED`, `SERVICE.DELETED` |
+| **Užsakymas** | `ORDER.CREATED`, `ORDER.UPDATED`, `ORDER.DELETED`, `ORDER.INTAKE_SUBMITTED` |
+| **Užduotis** | `TASK.CREATED`, `TASK.ASSIGNED`, `TASK.COMPLETED`, `TASK.UPDATED` |
+| **Sąskaita faktūra** | `INVOICE.STATUS.CHANGED` |
+| **Klientas / Naudotojas** | `CLIENT.ADDED`, `CLIENT.UPDATED`, `CLIENT.DELETED` |
+| **Pasiūlymas** | `PROPOSAL.SENT`, `PROPOSAL.RECEIVED`, `PROPOSAL.ACCEPTED`, `PROPOSAL.REJECTED` |
+| **Bilietas** | `TICKET.CREATED`, `TICKET.ASSIGNED`, `TICKET.STATUS.CHANGED` |
+| **Mokėjimas** | `PAYMENT.RECEIVED`, `PAYMENT.FAILED` |
+| **Lead** | `LEAD.ADDED`, `LEAD.UPDATED`, `LEAD.DELETED` |
+| **Form** | `PUBLIC_FORM.CREATED`, `PUBLIC_FORM.UPDATED`, `PUBLIC_FORM.SHARED`, `FORM.DELETED`, `PUBLIC_FORM.RESPONSE.CREATED`, `PUBLIC_FORM.RESPONSE.UPDATED`, `PUBLIC_FORM.RESPONSE.DELETED` |
 
 ## Sukurti webhook
 
