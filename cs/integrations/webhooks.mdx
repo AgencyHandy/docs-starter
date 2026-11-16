@@ -16,15 +16,16 @@ Webhook lze přihlásit k odběru libovolné kombinace následujících událost
 
 | Kategorie | Události |
 |---|---|
-| **Služba** | Vytvořena, aktualizována, smazána |
-| **Objednávka** | Vytvořena, aktualizována, smazána |
-| **Úkol** | Vytvořen, přiřazen, dokončen, aktualizován |
-| **Faktura** | Změněn stav |
-| **Klient / Uživatel** | Přidán nový klient, klient/uživatel smazán |
-| **Návrh** | Odeslán, přijat, schválen, zamítnut |
-| **Tiket** | Vytvořen, přiřazen, změněn stav |
-| **Platba** | Přijata, neúspěšná |
-| **Servisní balíček** | Vytvořen, aktualizován, smazán |
+| **Služba** | `SERVICE.CREATED`, `SERVICE.UPDATED`, `SERVICE.DELETED` |
+| **Objednávka** | `ORDER.CREATED`, `ORDER.UPDATED`, `ORDER.DELETED`, `ORDER.INTAKE_SUBMITTED` |
+| **Úkol** | `TASK.CREATED`, `TASK.ASSIGNED`, `TASK.COMPLETED`, `TASK.UPDATED` |
+| **Faktura** | `INVOICE.STATUS.CHANGED` |
+| **Klient / Uživatel** | `CLIENT.ADDED`, `CLIENT.UPDATED`, `CLIENT.DELETED` |
+| **Návrh** | `PROPOSAL.SENT`, `PROPOSAL.RECEIVED`, `PROPOSAL.ACCEPTED`, `PROPOSAL.REJECTED` |
+| **Tiket** | `TICKET.CREATED`, `TICKET.ASSIGNED`, `TICKET.STATUS.CHANGED` |
+| **Platba** | `PAYMENT.RECEIVED`, `PAYMENT.FAILED` |
+| **Lead** | `LEAD.ADDED`, `LEAD.UPDATED`, `LEAD.DELETED` |
+| **Form** | `PUBLIC_FORM.CREATED`, `PUBLIC_FORM.UPDATED`, `PUBLIC_FORM.SHARED`, `FORM.DELETED`, `PUBLIC_FORM.RESPONSE.CREATED`, `PUBLIC_FORM.RESPONSE.UPDATED`, `PUBLIC_FORM.RESPONSE.DELETED` |
 
 ## Vytvoření webhooku
 

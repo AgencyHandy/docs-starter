@@ -16,15 +16,16 @@ description: "أعدّ webhooks في AgencyHandy لدفع بيانات الأح�
 
 | الفئة | الأحداث |
 |---|---|
-| **الخدمة** | الإنشاء، التحديث، الحذف |
-| **الطلب** | الإنشاء، التحديث، الحذف |
-| **المهمة** | الإنشاء، التعيين، الإكمال، التحديث |
-| **الفاتورة** | تغيير الحالة |
-| **العميل / المستخدم** | إضافة عميل جديد، حذف عميل/مستخدم |
-| **العرض** | الإرسال، الاستلام، القبول، الرفض |
-| **التذكرة** | الإنشاء، التعيين، تغيير الحالة |
-| **الدفع** | الاستلام، الفشل |
-| **حزمة الخدمة** | الإنشاء، التحديث، الحذف |
+| **الخدمة** | `SERVICE.CREATED`, `SERVICE.UPDATED`, `SERVICE.DELETED` |
+| **الطلب** | `ORDER.CREATED`, `ORDER.UPDATED`, `ORDER.DELETED`, `ORDER.INTAKE_SUBMITTED` |
+| **المهمة** | `TASK.CREATED`, `TASK.ASSIGNED`, `TASK.COMPLETED`, `TASK.UPDATED` |
+| **الفاتورة** | `INVOICE.STATUS.CHANGED` |
+| **العميل / المستخدم** | `CLIENT.ADDED`, `CLIENT.UPDATED`, `CLIENT.DELETED` |
+| **العرض** | `PROPOSAL.SENT`, `PROPOSAL.RECEIVED`, `PROPOSAL.ACCEPTED`, `PROPOSAL.REJECTED` |
+| **التذكرة** | `TICKET.CREATED`, `TICKET.ASSIGNED`, `TICKET.STATUS.CHANGED` |
+| **الدفع** | `PAYMENT.RECEIVED`, `PAYMENT.FAILED` |
+| **Lead** | `LEAD.ADDED`, `LEAD.UPDATED`, `LEAD.DELETED` |
+| **Form** | `PUBLIC_FORM.CREATED`, `PUBLIC_FORM.UPDATED`, `PUBLIC_FORM.SHARED`, `FORM.DELETED`, `PUBLIC_FORM.RESPONSE.CREATED`, `PUBLIC_FORM.RESPONSE.UPDATED`, `PUBLIC_FORM.RESPONSE.DELETED` |
 
 ## إنشاء webhook
 

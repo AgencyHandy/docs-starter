@@ -16,15 +16,16 @@ Webhookها به AgencyHandy امکان می‌دهند داده‌ها را د�
 
 | دسته‌بندی | رویدادها |
 |---|---|
-| **سرویس** | ایجاد، به‌روزرسانی، حذف |
-| **سفارش** | ایجاد، به‌روزرسانی، حذف |
-| **وظیفه** | ایجاد، اختصاص، تکمیل، به‌روزرسانی |
-| **فاکتور** | تغییر وضعیت |
-| **مشتری / کاربر** | افزودن مشتری جدید، حذف مشتری/کاربر |
-| **پروپوزال** | ارسال، دریافت، پذیرش، رد |
-| **تیکت** | ایجاد، اختصاص، تغییر وضعیت |
-| **پرداخت** | دریافت، ناموفق |
-| **بسته سرویس** | ایجاد، به‌روزرسانی، حذف |
+| **سرویس** | `SERVICE.CREATED`, `SERVICE.UPDATED`, `SERVICE.DELETED` |
+| **سفارش** | `ORDER.CREATED`, `ORDER.UPDATED`, `ORDER.DELETED`, `ORDER.INTAKE_SUBMITTED` |
+| **وظیفه** | `TASK.CREATED`, `TASK.ASSIGNED`, `TASK.COMPLETED`, `TASK.UPDATED` |
+| **فاکتور** | `INVOICE.STATUS.CHANGED` |
+| **مشتری / کاربر** | `CLIENT.ADDED`, `CLIENT.UPDATED`, `CLIENT.DELETED` |
+| **پروپوزال** | `PROPOSAL.SENT`, `PROPOSAL.RECEIVED`, `PROPOSAL.ACCEPTED`, `PROPOSAL.REJECTED` |
+| **تیکت** | `TICKET.CREATED`, `TICKET.ASSIGNED`, `TICKET.STATUS.CHANGED` |
+| **پرداخت** | `PAYMENT.RECEIVED`, `PAYMENT.FAILED` |
+| **Lead** | `LEAD.ADDED`, `LEAD.UPDATED`, `LEAD.DELETED` |
+| **Form** | `PUBLIC_FORM.CREATED`, `PUBLIC_FORM.UPDATED`, `PUBLIC_FORM.SHARED`, `FORM.DELETED`, `PUBLIC_FORM.RESPONSE.CREATED`, `PUBLIC_FORM.RESPONSE.UPDATED`, `PUBLIC_FORM.RESPONSE.DELETED` |
 
 ## ایجاد یک webhook
 

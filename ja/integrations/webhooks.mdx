@@ -16,15 +16,16 @@ Webhookにより、AgencyHandyは変更が発生した瞬間に外部システ�
 
 | カテゴリ | イベント |
 |---|---|
-| **サービス** | 作成、更新、削除 |
-| **注文** | 作成、更新、削除 |
-| **タスク** | 作成、割り当て、完了、更新 |
-| **請求書** | ステータス変更 |
-| **クライアント / ユーザー** | 新しいクライアントの追加、クライアント/ユーザーの削除 |
-| **提案書** | 送信、受信、承認、却下 |
-| **チケット** | 作成、割り当て、ステータス変更 |
-| **支払い** | 受信、失敗 |
-| **サービスパッケージ** | 作成、更新、削除 |
+| **サービス** | `SERVICE.CREATED`, `SERVICE.UPDATED`, `SERVICE.DELETED` |
+| **注文** | `ORDER.CREATED`, `ORDER.UPDATED`, `ORDER.DELETED`, `ORDER.INTAKE_SUBMITTED` |
+| **タスク** | `TASK.CREATED`, `TASK.ASSIGNED`, `TASK.COMPLETED`, `TASK.UPDATED` |
+| **請求書** | `INVOICE.STATUS.CHANGED` |
+| **クライアント / ユーザー** | `CLIENT.ADDED`, `CLIENT.UPDATED`, `CLIENT.DELETED` |
+| **提案書** | `PROPOSAL.SENT`, `PROPOSAL.RECEIVED`, `PROPOSAL.ACCEPTED`, `PROPOSAL.REJECTED` |
+| **チケット** | `TICKET.CREATED`, `TICKET.ASSIGNED`, `TICKET.STATUS.CHANGED` |
+| **支払い** | `PAYMENT.RECEIVED`, `PAYMENT.FAILED` |
+| **Lead** | `LEAD.ADDED`, `LEAD.UPDATED`, `LEAD.DELETED` |
+| **Form** | `PUBLIC_FORM.CREATED`, `PUBLIC_FORM.UPDATED`, `PUBLIC_FORM.SHARED`, `FORM.DELETED`, `PUBLIC_FORM.RESPONSE.CREATED`, `PUBLIC_FORM.RESPONSE.UPDATED`, `PUBLIC_FORM.RESPONSE.DELETED` |
 
 ## Webhookを作成する
 

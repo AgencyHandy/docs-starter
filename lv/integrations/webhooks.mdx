@@ -16,15 +16,16 @@ Tīmekļa āķi var abonēt jebkuru šādu notikumu kombināciju:
 
 | Kategorija | Notikumi |
 |---|---|
-| **Pakalpojums** | Izveidots, atjaunināts, dzēsts |
-| **Pasūtījums** | Izveidots, atjaunināts, dzēsts |
-| **Uzdevums** | Izveidots, piešķirts, pabeigts, atjaunināts |
-| **Rēķins** | Statuss mainīts |
-| **Klients / Lietotājs** | Jauns klients pievienots, klients/lietotājs dzēsts |
-| **Priekšlikums** | Nosūtīts, saņemts, pieņemts, noraidīts |
-| **Atbalsta pieprasījums** | Izveidots, piešķirts, statuss mainīts |
-| **Maksājums** | Saņemts, neizdevies |
-| **Pakalpojuma pakotne** | Izveidota, atjaunināta, dzēsta |
+| **Pakalpojums** | `SERVICE.CREATED`, `SERVICE.UPDATED`, `SERVICE.DELETED` |
+| **Pasūtījums** | `ORDER.CREATED`, `ORDER.UPDATED`, `ORDER.DELETED`, `ORDER.INTAKE_SUBMITTED` |
+| **Uzdevums** | `TASK.CREATED`, `TASK.ASSIGNED`, `TASK.COMPLETED`, `TASK.UPDATED` |
+| **Rēķins** | `INVOICE.STATUS.CHANGED` |
+| **Klients / Lietotājs** | `CLIENT.ADDED`, `CLIENT.UPDATED`, `CLIENT.DELETED` |
+| **Priekšlikums** | `PROPOSAL.SENT`, `PROPOSAL.RECEIVED`, `PROPOSAL.ACCEPTED`, `PROPOSAL.REJECTED` |
+| **Atbalsta pieprasījums** | `TICKET.CREATED`, `TICKET.ASSIGNED`, `TICKET.STATUS.CHANGED` |
+| **Maksājums** | `PAYMENT.RECEIVED`, `PAYMENT.FAILED` |
+| **Lead** | `LEAD.ADDED`, `LEAD.UPDATED`, `LEAD.DELETED` |
+| **Form** | `PUBLIC_FORM.CREATED`, `PUBLIC_FORM.UPDATED`, `PUBLIC_FORM.SHARED`, `FORM.DELETED`, `PUBLIC_FORM.RESPONSE.CREATED`, `PUBLIC_FORM.RESPONSE.UPDATED`, `PUBLIC_FORM.RESPONSE.DELETED` |
 
 ## Izveidot tīmekļa āķi
 

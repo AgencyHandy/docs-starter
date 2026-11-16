@@ -16,15 +16,16 @@ Webhook-ийг дараах үйл явдлуудын аль ч хослолд �
 
 | Ангилал | Үйл явдлууд |
 |---|---|
-| **Үйлчилгээ** | Үүсгэгдсэн, Шинэчлэгдсэн, Устгагдсан |
-| **Захиалга** | Үүсгэгдсэн, Шинэчлэгдсэн, Устгагдсан |
-| **Даалгавар** | Үүсгэгдсэн, Хуваарилагдсан, Гүйцэтгэгдсэн, Шинэчлэгдсэн |
-| **Нэхэмжлэл** | Статус өөрчлөгдсөн |
-| **Клиент / Хэрэглэгч** | Шинэ клиент нэмэгдсэн, Клиент/хэрэглэгч устгагдсан |
-| **Санал** | Илгээгдсэн, Хүлээн авсан, Зөвшөөрсөн, Татгалзсан |
-| **Тасалбар** | Үүсгэгдсэн, Хуваарилагдсан, Статус өөрчлөгдсөн |
-| **Төлбөр** | Хүлээн авсан, Амжилтгүй болсон |
-| **Үйлчилгээний багц** | Үүсгэгдсэн, Шинэчлэгдсэн, Устгагдсан |
+| **Үйлчилгээ** | `SERVICE.CREATED`, `SERVICE.UPDATED`, `SERVICE.DELETED` |
+| **Захиалга** | `ORDER.CREATED`, `ORDER.UPDATED`, `ORDER.DELETED`, `ORDER.INTAKE_SUBMITTED` |
+| **Даалгавар** | `TASK.CREATED`, `TASK.ASSIGNED`, `TASK.COMPLETED`, `TASK.UPDATED` |
+| **Нэхэмжлэл** | `INVOICE.STATUS.CHANGED` |
+| **Клиент / Хэрэглэгч** | `CLIENT.ADDED`, `CLIENT.UPDATED`, `CLIENT.DELETED` |
+| **Санал** | `PROPOSAL.SENT`, `PROPOSAL.RECEIVED`, `PROPOSAL.ACCEPTED`, `PROPOSAL.REJECTED` |
+| **Тасалбар** | `TICKET.CREATED`, `TICKET.ASSIGNED`, `TICKET.STATUS.CHANGED` |
+| **Төлбөр** | `PAYMENT.RECEIVED`, `PAYMENT.FAILED` |
+| **Lead** | `LEAD.ADDED`, `LEAD.UPDATED`, `LEAD.DELETED` |
+| **Form** | `PUBLIC_FORM.CREATED`, `PUBLIC_FORM.UPDATED`, `PUBLIC_FORM.SHARED`, `FORM.DELETED`, `PUBLIC_FORM.RESPONSE.CREATED`, `PUBLIC_FORM.RESPONSE.UPDATED`, `PUBLIC_FORM.RESPONSE.DELETED` |
 
 ## Webhook үүсгэх
 
