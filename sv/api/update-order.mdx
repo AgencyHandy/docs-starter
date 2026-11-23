@@ -7,17 +7,16 @@ description: "Använd AgencyHandy API för att uppdatera beställningsdetaljer, 
 Endpointen Uppdatera beställning låter dig ändra en befintlig beställning (projekt) i AgencyHandy — ändra dess namn, status, budget, tidslinje, tilldelade chefer och mer — allt från ett externt system eller automationsskript. Endpointen stöder även bifogade filer, som läggs till i beställningens systemmapp.
 
 <Note>
-  Innan du använder denna endpoint, slutför guiden [Kom igång](/sv/api/getting-started) för att skaffa din API-nyckel och ditt företags-ID.
+  Innan du använder den här endpointen, gå igenom guiden [Kom igång](/sv/api/getting-started) för att få din API-nyckel.
 </Note>
 
 <Warning>
-  Denna endpoint använder `Authorization: Bearer <token>` (en inloggad medlems åtkomsttoken) snarare än bara `x-api-key`-huvudet. Se till att din anropare är autentiserad som en **godkänd medlem** i målföretaget. Obehöriga anropare får ett `403 PermissionError`.
+  Begäran körs som den medlem som skapade API-nyckeln, så den medlemmen måste vara en **godkänd medlem** i arbetsytan med behörighet att uppdatera ordrar. Annars returnerar endpointen `403 PermissionError`.
 </Warning>
 
 ## Förutsättningar
 
-- ✅ En giltig **Bearer-token** för en godkänd arbetsytemedlem
-- ✅ **Företags-ID** hämtat från `GET {{URL}}/accounts/companies`
+- ✅ En **API-nyckel** för arbetsytan (se [Kom igång](/sv/api/getting-started))
 - ✅ **Beställnings-ID** (Projekt-ID, `pid`) för den beställning du vill uppdatera
 
 ---
@@ -34,8 +33,8 @@ PUT {{URL}}/orders?pid=<ORDER_ID>
 
 | Huvud | Obligatorisk | Beskrivning |
 |---|---|---|
-| `Authorization` | Ja | `Bearer <ACCESS_TOKEN>` — den inloggade medlemmens åtkomsttoken. |
-| `companyid` | Ja | Mongo ObjectId för det företag som beställningen tillhör. |
+| `x-api-key` | Ja | Din API-nyckel. |
+| `companyid` | Valfritt | Ditt arbetsyte-ID. Om det skickas måste det matcha API-nyckelns arbetsyta, annars avvisas begäran med `403`. |
 | `clientid` | Valfritt | Realtidsklientens socket-ID. När det anges inkluderas det i aviseringar. |
 
 ## Frågeparametrar
@@ -126,9 +125,8 @@ PUT {{URL}}/orders?pid=<ORDER_ID>
 <CodeGroup>
 
 ```bash cURL (no files)
-curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
-  --header "Authorization: Bearer <ACCESS_TOKEN>" \
-  --header "companyid: <COMPANY_ID>" \
+curl --request PUT "https://api.agencyhandy.com/api/v1/orders?pid=ORDER_ID_HERE" \
+  --header "x-api-key: <YOUR_API_KEY>" \
   --form "name=Website Redesign" \
   --form "status=Review" \
   --form "budget=12000" \
@@ -140,9 +138,8 @@ curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
 ```
 
 ```bash cURL (with file)
-curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
-  --header "Authorization: Bearer <ACCESS_TOKEN>" \
-  --header "companyid: <COMPANY_ID>" \
+curl --request PUT "https://api.agencyhandy.com/api/v1/orders?pid=ORDER_ID_HERE" \
+  --header "x-api-key: <YOUR_API_KEY>" \
   --form "name=Website Redesign" \
   --form "status=Review" \
   --form "budget=12000" \

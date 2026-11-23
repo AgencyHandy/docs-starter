@@ -1,10 +1,10 @@
 ---
 title: "AgencyHandy API: Autentikasi dan Memulai"
 sidebarTitle: "Memulai"
-description: "Buat API key, cari Company ID Anda, dan mulai membangun integrasi dengan AgencyHandy REST API menggunakan panduan pengaturan cepat ini."
+description: "Buat kunci API, lakukan panggilan pertama Anda, dan mulai membangun integrasi dengan REST API AgencyHandy melalui panduan penyiapan cepat ini."
 ---
 
-API AgencyHandy memungkinkan Anda mengotomatiskan pembuatan lead, manajemen klien, pembaruan pesanan, dan banyak lagi dari sistem atau skrip eksternal mana pun. Setiap permintaan diautentikasi dengan API key yang Anda buat dari pengaturan workspace. Panduan ini memandu Anda mendapatkan kredensial dan melakukan panggilan API pertama Anda.
+API AgencyHandy memungkinkan Anda mengotomatiskan pembuatan lead, manajemen klien, pembaruan pesanan, dan lainnya dari sistem eksternal atau skrip mana pun. Setiap permintaan diautentikasi dengan kunci API yang Anda buat dari pengaturan workspace. Panduan ini memandu Anda membuat kunci dan melakukan panggilan API pertama.
 
 <Note>
   Anda harus menjadi **SuperAdmin** atau **Admin** di workspace AgencyHandy Anda untuk membuat API key.
@@ -15,7 +15,7 @@ API AgencyHandy memungkinkan Anda mengotomatiskan pembuatan lead, manajemen klie
 Semua permintaan API dibuat ke:
 
 ```
-https://api.agencyhandy.com
+https://api.agencyhandy.com/api/v1
 ```
 
 Ganti `{{URL}}` dengan URL dasar ini di semua contoh permintaan di seluruh dokumentasi API.
@@ -42,9 +42,9 @@ Ganti `{{URL}}` dengan URL dasar ini di semua contoh permintaan di seluruh dokum
   Membuat ulang API key Anda segera membatalkan key sebelumnya. Integrasi yang ada menggunakan key lama akan berhenti berfungsi sampai Anda memperbaruinya dengan key baru.
 </Warning>
 
-## Langkah 2: Ambil Company ID Anda
+## Langkah 2: Lakukan panggilan pertama Anda
 
-Sebagian besar endpoint API memerlukan header `companyid` yang mengidentifikasi workspace mana yang menjadi target permintaan. Gunakan endpoint berikut untuk mengambil Company ID Anda.
+Kirim kunci API Anda di header `x-api-key`. Kunci ini milik satu workspace, sehingga API membaca workspace dari kunci dan Anda tidak perlu mengirim ID perusahaan. Panggilan ini mengembalikan ID workspace milik kunci dan workspace yang terhubung dengannya:
 
 ### Endpoint
 
@@ -61,7 +61,7 @@ GET {{URL}}/accounts/companies
 ### Contoh permintaan
 
 ```bash cURL
-curl --request GET "https://api.agencyhandy.com/accounts/companies" \
+curl --request GET "https://api.agencyhandy.com/api/v1/accounts/companies" \
   --header "x-api-key: <YOUR_API_KEY>"
 ```
 
@@ -69,7 +69,8 @@ curl --request GET "https://api.agencyhandy.com/accounts/companies" \
 
 ```json
 {
-  "message": "Companies associated with API token.",
+  "message": "Companies accosiated with API token.",
+  "companyId": "6525994184e9ddd79853450e",
   "companies": [
     {
       "_id": "6525994184e9ddd79853450e",
@@ -82,33 +83,25 @@ curl --request GET "https://api.agencyhandy.com/accounts/companies" \
 }
 ```
 
-<Steps>
-  <Step title="Temukan Company ID Anda">
-    Dalam respons, temukan kolom `_id` di dalam array `companies`. Ini adalah **Company ID** Anda.
-
-    ```javascript
-    const companyId = response.companies[0]._id;
-    // e.g. "6525994184e9ddd79853450e"
-    ```
-  </Step>
-
-  <Step title="Simpan Company ID">
-    Simpan Company ID untuk digunakan di semua permintaan API berikutnya. Anda akan meneruskannya sebagai header `companyid`:
-
-    | Header | Nilai |
-    |---|---|
-    | `x-api-key` | API key Anda |
-    | `companyid` | Company ID Anda |
-  </Step>
-</Steps>
+`companyId` adalah workspace tempat kunci API Anda berada. `companies` juga mencantumkan workspace induk atau sub-workspace yang terhubung; kunci API hanya berfungsi untuk workspace-nya sendiri, jadi buat kunci terpisah di setiap workspace yang ingin Anda otomatiskan.
 
 ## Ringkasan autentikasi
 
-Setiap permintaan API yang terautentikasi memerlukan minimal:
+Setiap permintaan terautentikasi hanya memerlukan kunci API Anda:
 
 ```
 x-api-key: <YOUR_API_KEY>
-companyid: <YOUR_COMPANY_ID>
 ```
 
-Dengan API key dan Company ID di tangan, Anda siap menggunakan sisa API AgencyHandy. Lanjutkan ke salah satu panduan endpoint di bawah ini.
+- **URL dasar:** setiap path diawali dengan `https://api.agencyhandy.com/api/v1`. Memanggil `https://api.agencyhandy.com/accounts/companies` tanpa `/api/v1` mengembalikan `404 API not found`.
+- **Header `companyid` (opsional):** contoh lama mengirim `companyid: <YOUR_COMPANY_ID>`. Anda boleh tetap mengirimnya, tetapi harus berupa ID workspace milik kunci tersebut. ID yang berbeda ditolak dengan `403 PermissionError`.
+- **`Authorization: Bearer <YOUR_API_KEY>`** juga berfungsi jika alat Anda hanya bisa mengirim token bearer. Kirim kunci hanya di satu header, bukan keduanya.
+- **`401 Invalid API key (jwt malformed)`** berarti nilainya bukan kunci lengkap: salin seluruh kunci saat Anda membuatnya (daftar Kunci API hanya menampilkan lima karakter terakhir). **`401 Invalid api token`** berarti kunci telah dihapus.
+- Setiap panggilan berjalan dengan izin anggota yang membuat kunci.
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/api/v1/members" \
+  --header "x-api-key: <YOUR_API_KEY>"
+```
+
+Dengan kunci API Anda, Anda siap menggunakan bagian lain dari API AgencyHandy. Lanjutkan ke salah satu panduan endpoint di bawah.

@@ -1,10 +1,10 @@
 ---
 title: "AgencyHandy API: autentifikavimas ir darbo pradžia"
 sidebarTitle: "Darbo pradžia"
-description: "Sugeneruokite API raktą, sužinokite savo įmonės ID ir pradėkite kurti integracijas su AgencyHandy REST API naudodamiesi šiuo greito paleidimo vadovu."
+description: "Sugeneruokite API raktą, atlikite pirmąjį iškvietimą ir pradėkite kurti integracijas su AgencyHandy REST API naudodamiesi šiuo greito nustatymo vadovu."
 ---
 
-AgencyHandy API leidžia automatizuoti potencialių klientų (lead) kūrimą, klientų valdymą, užsakymų atnaujinimus ir dar daugiau iš bet kurios išorinės sistemos ar scenarijaus. Kiekviena užklausa autentifikuojama API raktu, kurį generuojate savo darbo srities nustatymuose. Šis vadovas padės jums gauti kredencialus ir atlikti pirmąjį API kvietimą.
+AgencyHandy API leidžia automatizuoti potencialių klientų kūrimą, klientų valdymą, užsakymų atnaujinimus ir kt. iš bet kokios išorinės sistemos ar scenarijaus. Kiekviena užklausa autentifikuojama API raktu, kurį sugeneruojate savo darbo srities nustatymuose. Šis vadovas padės sugeneruoti raktą ir atlikti pirmąjį API iškvietimą.
 
 <Note>
   Norint sugeneruoti API raktą, jūsų AgencyHandy darbo srityje turite turėti **SuperAdmin** arba **Admin** vaidmenį.
@@ -15,7 +15,7 @@ AgencyHandy API leidžia automatizuoti potencialių klientų (lead) kūrimą, kl
 Visos API užklausos siunčiamos į:
 
 ```
-https://api.agencyhandy.com
+https://api.agencyhandy.com/api/v1
 ```
 
 Visuose pavyzdiniuose užklausose visoje API dokumentacijoje pakeiskite `{{URL}}` šiuo baziniu URL.
@@ -42,9 +42,9 @@ Visuose pavyzdiniuose užklausose visoje API dokumentacijoje pakeiskite `{{URL}}
   Regeneravus API raktą, ankstesnis raktas iš karto panaikinamas. Visos esamos integracijos, naudojančios seną raktą, nustos veikti, kol neatnaujinsite jų nauju raktu.
 </Warning>
 
-## 2 žingsnis: Gaukite savo įmonės ID
+## 2 veiksmas: atlikite pirmąjį iškvietimą
 
-Daugumoje API galutinių taškų reikalinga `companyid` antraštė, nurodanti, kuri darbo sritis yra užklausos tikslas. Naudokite šį galutinį tašką savo įmonės ID gavimui.
+Siųskite savo API raktą antraštėje `x-api-key`. Raktas priklauso vienai darbo sričiai, todėl API nuskaito darbo sritį iš rakto ir jums nereikia siųsti įmonės ID. Šis iškvietimas grąžina rakto darbo srities ID ir su ja susietas darbo sritis:
 
 ### Galinis taškas
 
@@ -61,7 +61,7 @@ GET {{URL}}/accounts/companies
 ### Pavyzdinė užklausa
 
 ```bash cURL
-curl --request GET "https://api.agencyhandy.com/accounts/companies" \
+curl --request GET "https://api.agencyhandy.com/api/v1/accounts/companies" \
   --header "x-api-key: <YOUR_API_KEY>"
 ```
 
@@ -69,7 +69,8 @@ curl --request GET "https://api.agencyhandy.com/accounts/companies" \
 
 ```json
 {
-  "message": "Companies associated with API token.",
+  "message": "Companies accosiated with API token.",
+  "companyId": "6525994184e9ddd79853450e",
   "companies": [
     {
       "_id": "6525994184e9ddd79853450e",
@@ -82,33 +83,25 @@ curl --request GET "https://api.agencyhandy.com/accounts/companies" \
 }
 ```
 
-<Steps>
-  <Step title="Raskite savo įmonės ID">
-    Atsakyme raskite lauką `_id` masyve `companies`. Tai yra jūsų **įmonės ID**.
-
-    ```javascript
-    const companyId = response.companies[0]._id;
-    // e.g. "6525994184e9ddd79853450e"
-    ```
-  </Step>
-
-  <Step title="Išsaugokite įmonės ID">
-    Išsaugokite įmonės ID naudojimui visose vėlesnėse API užklausose. Jį perduosite kaip `companyid` antraštę:
-
-    | Antraštė | Reikšmė |
-    |---|---|
-    | `x-api-key` | Jūsų API raktas |
-    | `companyid` | Jūsų įmonės ID |
-  </Step>
-</Steps>
+`companyId` yra darbo sritis, kuriai priklauso jūsų API raktas. `companies` taip pat išvardija susietas pagrindines ar antrines darbo sritis; API raktas veikia tik savo darbo srityje, todėl sukurkite atskirą raktą kiekvienoje darbo srityje, kurią norite automatizuoti.
 
 ## Autentifikavimo santrauka
 
-Kiekvienai autentifikuotai API užklausai reikalingas bent minimumas:
+Kiekvienai autentifikuotai užklausai reikia tik jūsų API rakto:
 
 ```
 x-api-key: <YOUR_API_KEY>
-companyid: <YOUR_COMPANY_ID>
 ```
 
-Turėdami API raktą ir įmonės ID, esate pasiruošę naudoti likusią AgencyHandy API. Tęskite su vienu iš toliau pateiktų galutinių taškų vadovų.
+- **Bazinis URL:** kiekvienas kelias prasideda `https://api.agencyhandy.com/api/v1`. Iškvietus `https://api.agencyhandy.com/accounts/companies` be `/api/v1`, grąžinama `404 API not found`.
+- **Antraštė `companyid` (neprivaloma):** senesni pavyzdžiai siunčia `companyid: <YOUR_COMPANY_ID>`. Galite ją toliau siųsti, tačiau tai turi būti paties rakto darbo srities ID. Kitas ID atmetamas su `403 PermissionError`.
+- **`Authorization: Bearer <YOUR_API_KEY>`** taip pat veikia, jei jūsų įrankis gali siųsti tik bearer prieigos raktą. Raktą siųskite tik vienoje antraštėje, ne abiejose.
+- **`401 Invalid API key (jwt malformed)`** reiškia, kad reikšmė nėra visas raktas: generuodami nukopijuokite visą raktą (API raktų sąraše rodomi tik paskutiniai penki simboliai). **`401 Invalid api token`** reiškia, kad raktas buvo ištrintas.
+- Kiekvienas iškvietimas vykdomas su rakto sukūrusio nario teisėmis.
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/api/v1/members" \
+  --header "x-api-key: <YOUR_API_KEY>"
+```
+
+Turėdami API raktą, galite naudoti likusią AgencyHandy API dalį. Tęskite su vienu iš toliau pateiktų galinių taškų vadovų.

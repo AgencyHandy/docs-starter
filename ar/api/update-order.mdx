@@ -7,17 +7,16 @@ description: "استخدم واجهة برمجة تطبيقات AgencyHandy لت
 تتيح لك نقطة نهاية تحديث الطلب تعديل طلب (مشروع) موجود في AgencyHandy — تغيير اسمه وحالته وميزانيته والجدول الزمني والمديرين المعيّنين والمزيد — كل ذلك من نظام خارجي أو سكريبت أتمتة. تدعم النقطة النهائية أيضًا مرفقات الملفات، التي تُضاف إلى مجلد النظام الخاص بالطلب.
 
 <Note>
-  قبل استخدام هذه النقطة النهائية، أكمل دليل [البدء السريع](/ar/api/getting-started) للحصول على مفتاح API ومعرّف الشركة.
+  قبل استخدام نقطة النهاية هذه، أكمل دليل [البدء السريع](/ar/api/getting-started) للحصول على مفتاح API الخاص بك.
 </Note>
 
 <Warning>
-  تستخدم هذه النقطة النهائية `Authorization: Bearer <token>` (رمز وصول عضو مسجّل) بدلًا من ترويسة `x-api-key` فحسب. تأكد من أن المُستدعي مُصادَق عليه كـ **عضو معتمد** في الشركة المستهدفة. يتلقى المُستدعيون غير المصرح لهم خطأ `403 PermissionError`.
+  يُنفَّذ الطلب بصفة العضو الذي أنشأ مفتاح API، لذا يجب أن يكون هذا العضو **عضوًا معتمدًا** في مساحة العمل ولديه صلاحية تحديث الطلبات. وإلا فستعيد نقطة النهاية `403 PermissionError`.
 </Warning>
 
 ## المتطلبات الأساسية
 
-- ✅ **رمز Bearer** صالح لعضو مساحة عمل معتمد
-- ✅ **معرّف الشركة** المسترد من `GET {{URL}}/accounts/companies`
+- ✅ **مفتاح API** لمساحة العمل (راجع [البدء السريع](/ar/api/getting-started))
 - ✅ **معرّف الطلب** (معرّف المشروع، `pid`) للطلب الذي تريد تحديثه
 
 ---
@@ -34,8 +33,8 @@ PUT {{URL}}/orders?pid=<ORDER_ID>
 
 | الترويسة | مطلوبة | الوصف |
 |---|---|---|
-| `Authorization` | نعم | `Bearer <ACCESS_TOKEN>` — رمز وصول العضو المسجّل. |
-| `companyid` | نعم | معرّف Mongo ObjectId للشركة التي ينتمي إليها الطلب. |
+| `x-api-key` | نعم | مفتاح API الخاص بك. |
+| `companyid` | اختياري | معرّف مساحة العمل الخاصة بك. إذا أُرسل، فيجب أن يطابق مساحة عمل مفتاح API، وإلا يُرفض الطلب مع `403`. |
 | `clientid` | اختياري | معرّف مقبس العميل في الوقت الفعلي. عند توفيره، تتضمنه الإشعارات. |
 
 ## معاملات الاستعلام
@@ -126,9 +125,8 @@ PUT {{URL}}/orders?pid=<ORDER_ID>
 <CodeGroup>
 
 ```bash cURL (no files)
-curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
-  --header "Authorization: Bearer <ACCESS_TOKEN>" \
-  --header "companyid: <COMPANY_ID>" \
+curl --request PUT "https://api.agencyhandy.com/api/v1/orders?pid=ORDER_ID_HERE" \
+  --header "x-api-key: <YOUR_API_KEY>" \
   --form "name=Website Redesign" \
   --form "status=Review" \
   --form "budget=12000" \
@@ -140,9 +138,8 @@ curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
 ```
 
 ```bash cURL (with file)
-curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
-  --header "Authorization: Bearer <ACCESS_TOKEN>" \
-  --header "companyid: <COMPANY_ID>" \
+curl --request PUT "https://api.agencyhandy.com/api/v1/orders?pid=ORDER_ID_HERE" \
+  --header "x-api-key: <YOUR_API_KEY>" \
   --form "name=Website Redesign" \
   --form "status=Review" \
   --form "budget=12000" \

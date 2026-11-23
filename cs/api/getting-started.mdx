@@ -1,10 +1,10 @@
 ---
 title: "AgencyHandy API: Ověřování a první kroky"
 sidebarTitle: "Začínáme"
-description: "Vygenerujte API klíč, zjistěte své ID společnosti a začněte budovat integrace s REST API AgencyHandy pomocí tohoto průvodce rychlým nastavením."
+description: "Vygenerujte klíč API, proveďte své první volání a začněte vytvářet integrace s REST API AgencyHandy pomocí tohoto rychlého průvodce nastavením."
 ---
 
-API AgencyHandy umožňuje automatizovat vytváření leadů, správu klientů, aktualizace objednávek a další operace z libovolného externího systému nebo skriptu. Každý požadavek je ověřen pomocí API klíče, který vygenerujete v nastavení workspace. Tento průvodce vás provede získáním přihlašovacích údajů a prvním voláním API.
+API AgencyHandy vám umožňuje automatizovat vytváření leadů, správu klientů, aktualizace objednávek a další činnosti z libovolného externího systému nebo skriptu. Každý požadavek je ověřen klíčem API, který vygenerujete v nastavení svého pracovního prostoru. Tento průvodce vás provede vygenerováním klíče a provedením prvního volání API.
 
 <Note>
   Chcete-li vygenerovat API klíč, musíte být **SuperAdmin** nebo **Admin** ve svém workspace AgencyHandy.
@@ -15,7 +15,7 @@ API AgencyHandy umožňuje automatizovat vytváření leadů, správu klientů, 
 Všechny požadavky API jsou zasílány na:
 
 ```
-https://api.agencyhandy.com
+https://api.agencyhandy.com/api/v1
 ```
 
 Ve všech ukázkových požadavcích v dokumentaci API nahraďte `{{URL}}` touto základní URL.
@@ -42,9 +42,9 @@ Ve všech ukázkových požadavcích v dokumentaci API nahraďte `{{URL}}` touto
   Opětovné vygenerování API klíče okamžitě zneplatní předchozí klíč. Všechny stávající integrace používající starý klíč přestanou fungovat, dokud je neaktualizujete novým klíčem.
 </Warning>
 
-## Krok 2: Získejte ID společnosti
+## Krok 2: Proveďte své první volání
 
-Většina API endpointů vyžaduje hlavičku `companyid`, která identifikuje, na který workspace požadavek cílí. Pomocí následujícího endpointu získáte své ID společnosti.
+Odešlete svůj klíč API v hlavičce `x-api-key`. Klíč patří jednomu pracovnímu prostoru, takže API zjistí pracovní prostor z klíče a nemusíte posílat ID společnosti. Toto volání vrátí ID pracovního prostoru klíče a pracovní prostory, které jsou s ním propojeny:
 
 ### Endpoint
 
@@ -61,7 +61,7 @@ GET {{URL}}/accounts/companies
 ### Ukázkový požadavek
 
 ```bash cURL
-curl --request GET "https://api.agencyhandy.com/accounts/companies" \
+curl --request GET "https://api.agencyhandy.com/api/v1/accounts/companies" \
   --header "x-api-key: <YOUR_API_KEY>"
 ```
 
@@ -69,7 +69,8 @@ curl --request GET "https://api.agencyhandy.com/accounts/companies" \
 
 ```json
 {
-  "message": "Companies associated with API token.",
+  "message": "Companies accosiated with API token.",
+  "companyId": "6525994184e9ddd79853450e",
   "companies": [
     {
       "_id": "6525994184e9ddd79853450e",
@@ -82,33 +83,25 @@ curl --request GET "https://api.agencyhandy.com/accounts/companies" \
 }
 ```
 
-<Steps>
-  <Step title="Vyhledejte své ID společnosti">
-    V odpovědi najděte pole `_id` uvnitř pole `companies`. Toto je vaše **ID společnosti**.
-
-    ```javascript
-    const companyId = response.companies[0]._id;
-    // e.g. "6525994184e9ddd79853450e"
-    ```
-  </Step>
-
-  <Step title="Uložte ID společnosti">
-    Uložte ID společnosti pro použití ve všech následných požadavcích API. Budete jej předávat jako hlavičku `companyid`:
-
-    | Hlavička | Hodnota |
-    |---|---|
-    | `x-api-key` | Váš API klíč |
-    | `companyid` | Vaše ID společnosti |
-  </Step>
-</Steps>
+`companyId` je pracovní prostor, ke kterému váš klíč API patří. `companies` také uvádí všechny nadřazené nebo podřízené pracovní prostory, které jsou s ním propojeny; klíč API funguje jen pro svůj vlastní pracovní prostor, proto vytvořte samostatný klíč v každém pracovním prostoru, který chcete automatizovat.
 
 ## Souhrn ověřování
 
-Každý ověřený požadavek API vyžaduje minimálně:
+Každý ověřený požadavek potřebuje pouze váš klíč API:
 
 ```
 x-api-key: <YOUR_API_KEY>
-companyid: <YOUR_COMPANY_ID>
 ```
 
-S API klíčem a ID společnosti jste připraveni používat zbytek API AgencyHandy. Pokračujte na jeden z níže uvedených průvodců endpointy.
+- **Základní URL:** každá cesta začíná `https://api.agencyhandy.com/api/v1`. Volání `https://api.agencyhandy.com/accounts/companies` bez `/api/v1` vrátí `404 API not found`.
+- **Hlavička `companyid` (volitelná):** starší příklady posílají `companyid: <YOUR_COMPANY_ID>`. Můžete ji dál posílat, ale musí to být ID vlastního pracovního prostoru klíče. Jiné ID je odmítnuto s `403 PermissionError`.
+- **`Authorization: Bearer <YOUR_API_KEY>`** funguje také, pokud váš nástroj umí odeslat pouze bearer token. Klíč posílejte pouze v jedné hlavičce, ne v obou.
+- **`401 Invalid API key (jwt malformed)`** znamená, že hodnota není celý klíč: při generování zkopírujte celý klíč (seznam klíčů API zobrazuje jen posledních pět znaků). **`401 Invalid api token`** znamená, že klíč byl smazán.
+- Každé volání se provádí s oprávněními člena, který klíč vytvořil.
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/api/v1/members" \
+  --header "x-api-key: <YOUR_API_KEY>"
+```
+
+S vaším klíčem API jste připraveni používat zbytek API AgencyHandy. Pokračujte jedním z následujících průvodců koncovými body.

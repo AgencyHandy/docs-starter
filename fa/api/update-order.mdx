@@ -7,17 +7,16 @@ description: "از API AgencyHandy برای به‌روزرسانی جزئیات
 endpoint به‌روزرسانی سفارش به شما امکان می‌دهد یک سفارش (پروژه) موجود در AgencyHandy را تغییر دهید — نام، وضعیت، بودجه، جدول زمانی، مدیران اختصاص‌یافته و موارد دیگر — همه از یک سیستم خارجی یا اسکریپت اتوماسیون. این endpoint همچنین از پیوست فایل پشتیبانی می‌کند که به پوشه سیستم سفارش اضافه می‌شود.
 
 <Note>
-  پیش از استفاده از این endpoint، راهنمای [شروع به کار](/fa/api/getting-started) را تکمیل کنید تا API key و Company ID خود را دریافت کنید.
+  پیش از استفاده از این نقطه پایانی، راهنمای [شروع به کار](/fa/api/getting-started) را کامل کنید تا کلید API خود را دریافت کنید.
 </Note>
 
 <Warning>
-  این endpoint از `Authorization: Bearer <token>` (توکن دسترسی یک عضو وارد شده) به‌جای هدر `x-api-key` استفاده می‌کند. مطمئن شوید فراخواننده شما به‌عنوان یک **عضو تأییدشده** شرکت هدف احراز هویت شده است. فراخوانندگان غیرمجاز خطای `403 PermissionError` دریافت می‌کنند.
+  درخواست به‌عنوان عضوی که کلید API را ساخته اجرا می‌شود، بنابراین آن عضو باید **عضو تأییدشده** فضای کاری با مجوز به‌روزرسانی سفارش‌ها باشد. در غیر این صورت نقطه پایانی `403 PermissionError` برمی‌گرداند.
 </Warning>
 
 ## پیش‌نیازها
 
-- ✅ یک **Bearer token** معتبر برای یک عضو تأییدشده فضای کاری
-- ✅ **Company ID** دریافت‌شده از `GET {{URL}}/accounts/companies`
+- ✅ یک **کلید API** فضای کاری (به [شروع به کار](/fa/api/getting-started) مراجعه کنید)
 - ✅ **Order ID** (Project ID، `pid`) سفارشی که می‌خواهید به‌روز کنید
 
 ---
@@ -34,8 +33,8 @@ PUT {{URL}}/orders?pid=<ORDER_ID>
 
 | هدر | الزامی | توضیحات |
 |---|---|---|
-| `Authorization` | بله | `Bearer <ACCESS_TOKEN>` — توکن دسترسی عضو وارد شده. |
-| `companyid` | بله | Mongo ObjectId شرکتی که سفارش به آن تعلق دارد. |
+| `x-api-key` | بله | کلید API شما. |
+| `companyid` | اختیاری | شناسه فضای کاری شما. در صورت ارسال، باید با فضای کاری کلید API مطابقت داشته باشد، در غیر این صورت درخواست با `403` رد می‌شود. |
 | `clientid` | اختیاری | شناسه سوکت لحظه‌ای مشتری. در صورت ارائه، اعلان‌ها آن را شامل می‌شوند. |
 
 ## پارامترهای کوئری
@@ -126,9 +125,8 @@ PUT {{URL}}/orders?pid=<ORDER_ID>
 <CodeGroup>
 
 ```bash cURL (no files)
-curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
-  --header "Authorization: Bearer <ACCESS_TOKEN>" \
-  --header "companyid: <COMPANY_ID>" \
+curl --request PUT "https://api.agencyhandy.com/api/v1/orders?pid=ORDER_ID_HERE" \
+  --header "x-api-key: <YOUR_API_KEY>" \
   --form "name=Website Redesign" \
   --form "status=Review" \
   --form "budget=12000" \
@@ -140,9 +138,8 @@ curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
 ```
 
 ```bash cURL (with file)
-curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
-  --header "Authorization: Bearer <ACCESS_TOKEN>" \
-  --header "companyid: <COMPANY_ID>" \
+curl --request PUT "https://api.agencyhandy.com/api/v1/orders?pid=ORDER_ID_HERE" \
+  --header "x-api-key: <YOUR_API_KEY>" \
   --form "name=Website Redesign" \
   --form "status=Review" \
   --form "budget=12000" \

@@ -7,17 +7,16 @@ description: "Käytä AgencyHandy API:a tilauksen tietojen päivittämiseen, til
 Päivitä tilaus -päätepiste antaa sinun muokata olemassa olevaa tilausta (projektia) AgencyHandyssa — muuttaa sen nimeä, tilaa, budjettia, aikataulua, osoitettuja päälliköitä ja paljon muuta — kaikki ulkoisesta järjestelmästä tai automaatioskriptistä. Päätepiste tukee myös tiedostoliitteitä, jotka lisätään tilauksen järjestelmäkansioon.
 
 <Note>
-  Ennen tämän päätepisteen käyttämistä, suorita [Aloittaminen](/fi/api/getting-started) -opas API-avaimen ja yritystunnuksen hankkimiseksi.
+  Ennen tämän päätepisteen käyttöä käy läpi opas [Aloittaminen](/fi/api/getting-started) saadaksesi API-avaimesi.
 </Note>
 
 <Warning>
-  Tämä päätepiste käyttää `Authorization: Bearer <token>` -otsikkoa (kirjautuneen jäsenen käyttöoikeustunnus) pelkän `x-api-key`-otsikon sijaan. Varmista, että kutsujasi on todennettu kohdeyhtiön **hyväksyttynä jäsenenä**. Luvattomat kutsujat saavat `403 PermissionError` -virheen.
+  Pyyntö suoritetaan API-avaimen luoneena jäsenenä, joten jäsenen on oltava työtilan **hyväksytty jäsen**, jolla on oikeus päivittää tilauksia. Muuten päätepiste palauttaa `403 PermissionError`.
 </Warning>
 
 ## Edellytykset
 
-- ✅ Voimassa oleva **Bearer-tunnus** hyväksytylle työtilan jäsenelle
-- ✅ **Yritystunnus** haettu kohteesta `GET {{URL}}/accounts/companies`
+- ✅ Työtilan **API-avain** (katso [Aloittaminen](/fi/api/getting-started))
 - ✅ Päivitettävän tilauksen **tilauksen tunnus** (Project ID, `pid`)
 
 ---
@@ -34,8 +33,8 @@ PUT {{URL}}/orders?pid=<ORDER_ID>
 
 | Otsikko | Pakollinen | Kuvaus |
 |---|---|---|
-| `Authorization` | Kyllä | `Bearer <ACCESS_TOKEN>` — kirjautuneen jäsenen käyttöoikeustunnus. |
-| `companyid` | Kyllä | Tilauksen omistavan yrityksen Mongo ObjectId. |
+| `x-api-key` | Kyllä | API-avaimesi. |
+| `companyid` | Valinnainen | Työtilasi tunnus. Jos se lähetetään, sen on vastattava API-avaimen työtilaa, muuten pyyntö hylätään virheellä `403`. |
 | `clientid` | Valinnainen | Reaaliaikainen asiakkaan socket-tunnus. Kun annettu, ilmoitukset sisältävät sen. |
 
 ## Kyselyparametrit
@@ -126,9 +125,8 @@ PUT {{URL}}/orders?pid=<ORDER_ID>
 <CodeGroup>
 
 ```bash cURL (no files)
-curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
-  --header "Authorization: Bearer <ACCESS_TOKEN>" \
-  --header "companyid: <COMPANY_ID>" \
+curl --request PUT "https://api.agencyhandy.com/api/v1/orders?pid=ORDER_ID_HERE" \
+  --header "x-api-key: <YOUR_API_KEY>" \
   --form "name=Website Redesign" \
   --form "status=Review" \
   --form "budget=12000" \
@@ -140,9 +138,8 @@ curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
 ```
 
 ```bash cURL (with file)
-curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
-  --header "Authorization: Bearer <ACCESS_TOKEN>" \
-  --header "companyid: <COMPANY_ID>" \
+curl --request PUT "https://api.agencyhandy.com/api/v1/orders?pid=ORDER_ID_HERE" \
+  --header "x-api-key: <YOUR_API_KEY>" \
   --form "name=Website Redesign" \
   --form "status=Review" \
   --form "budget=12000" \

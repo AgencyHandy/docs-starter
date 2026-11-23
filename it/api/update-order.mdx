@@ -7,17 +7,16 @@ description: "Usa l'API AgencyHandy per aggiornare i dettagli degli ordini, camb
 L'endpoint Aggiorna Ordine ti consente di modificare un ordine (progetto) esistente in AgencyHandy — cambiarne il nome, lo stato, il budget, la tempistica, i manager assegnati e altro ancora — tutto da un sistema esterno o uno script di automazione. L'endpoint supporta anche gli allegati file, che vengono aggiunti alla cartella di sistema dell'ordine.
 
 <Note>
-  Prima di utilizzare questo endpoint, completa la guida [Getting Started](/it/api/getting-started) per ottenere la tua chiave API e l'ID Azienda.
+  Prima di usare questo endpoint, completa la guida [Getting Started](/it/api/getting-started) per ottenere la tua chiave API.
 </Note>
 
 <Warning>
-  Questo endpoint usa `Authorization: Bearer <token>` (il token di accesso di un membro autenticato) anziché solo l'header `x-api-key`. Assicurati che il tuo chiamante sia autenticato come **membro approvato** dell'azienda di destinazione. I chiamanti non autorizzati ricevono un `403 PermissionError`.
+  La richiesta viene eseguita come il membro che ha creato la chiave API, quindi quel membro deve essere un **membro approvato** del workspace con il permesso di aggiornare gli ordini. In caso contrario l'endpoint restituisce `403 PermissionError`.
 </Warning>
 
 ## Prerequisiti
 
-- ✅ Un **token Bearer** valido per un membro approvato del workspace
-- ✅ **ID Azienda** recuperato da `GET {{URL}}/accounts/companies`
+- ✅ Una **chiave API** del workspace (vedi [Getting Started](/it/api/getting-started))
 - ✅ L'**ID Ordine** (ID Progetto, `pid`) dell'ordine che vuoi aggiornare
 
 ---
@@ -34,8 +33,8 @@ PUT {{URL}}/orders?pid=<ORDER_ID>
 
 | Header | Obbligatorio | Descrizione |
 |---|---|---|
-| `Authorization` | Sì | `Bearer <ACCESS_TOKEN>` — il token di accesso del membro autenticato. |
-| `companyid` | Sì | ObjectId Mongo dell'azienda a cui appartiene l'ordine. |
+| `x-api-key` | Sì | La tua chiave API. |
+| `companyid` | Opzionale | L'ID del tuo workspace. Se inviato, deve corrispondere al workspace della chiave API, altrimenti la richiesta viene rifiutata con `403`. |
 | `clientid` | Opzionale | ID socket client in tempo reale. Se fornito, le notifiche lo includono. |
 
 ## Parametri di query
@@ -126,9 +125,8 @@ PUT {{URL}}/orders?pid=<ORDER_ID>
 <CodeGroup>
 
 ```bash cURL (no files)
-curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
-  --header "Authorization: Bearer <ACCESS_TOKEN>" \
-  --header "companyid: <COMPANY_ID>" \
+curl --request PUT "https://api.agencyhandy.com/api/v1/orders?pid=ORDER_ID_HERE" \
+  --header "x-api-key: <YOUR_API_KEY>" \
   --form "name=Website Redesign" \
   --form "status=Review" \
   --form "budget=12000" \
@@ -140,9 +138,8 @@ curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
 ```
 
 ```bash cURL (with file)
-curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
-  --header "Authorization: Bearer <ACCESS_TOKEN>" \
-  --header "companyid: <COMPANY_ID>" \
+curl --request PUT "https://api.agencyhandy.com/api/v1/orders?pid=ORDER_ID_HERE" \
+  --header "x-api-key: <YOUR_API_KEY>" \
   --form "name=Website Redesign" \
   --form "status=Review" \
   --form "budget=12000" \

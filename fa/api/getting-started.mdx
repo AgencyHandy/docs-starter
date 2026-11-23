@@ -1,10 +1,10 @@
 ---
 title: "API AgencyHandy: احراز هویت و شروع به کار"
 sidebarTitle: "شروع به کار"
-description: "یک API key تولید کنید، Company ID خود را پیدا کنید و با این راهنمای سریع راه‌اندازی، اولین فراخوانی API خود را در برابر REST API AgencyHandy انجام دهید."
+description: "یک کلید API بسازید، اولین فراخوانی خود را انجام دهید و با این راهنمای راه‌اندازی سریع، ساخت یکپارچه‌سازی با REST API AgencyHandy را آغاز کنید."
 ---
 
-API AgencyHandy به شما امکان می‌دهد ایجاد لید، مدیریت مشتری، به‌روزرسانی سفارش و موارد دیگر را از هر سیستم یا اسکریپت خارجی خودکار کنید. هر درخواست با یک API key احراز هویت می‌شود که از تنظیمات فضای کاری خود تولید می‌کنید. این راهنما شما را در مراحل دریافت اعتبارنامه‌ها و انجام اولین فراخوانی API راهنمایی می‌کند.
+API AgencyHandy به شما امکان می‌دهد ایجاد سرنخ، مدیریت مشتریان، به‌روزرسانی سفارش‌ها و موارد دیگر را از هر سیستم یا اسکریپت خارجی خودکار کنید. هر درخواست با یک کلید API که از تنظیمات فضای کاری خود می‌سازید احراز هویت می‌شود. این راهنما شما را در ساخت کلید و انجام اولین فراخوانی API همراهی می‌کند.
 
 <Note>
   برای تولید API key باید **SuperAdmin** یا **Admin** در فضای کاری AgencyHandy خود باشید.
@@ -15,7 +15,7 @@ API AgencyHandy به شما امکان می‌دهد ایجاد لید، مدی�
 تمام درخواست‌های API به آدرس زیر ارسال می‌شوند:
 
 ```
-https://api.agencyhandy.com
+https://api.agencyhandy.com/api/v1
 ```
 
 در تمام درخواست‌های نمونه در مستندات API، `{{URL}}` را با این آدرس پایه جایگزین کنید.
@@ -42,9 +42,9 @@ https://api.agencyhandy.com
   تولید مجدد API key، کلید قبلی را فوری غیرفعال می‌کند. هر یکپارچه‌سازی موجود که از کلید قدیمی استفاده می‌کند تا زمانی که آن را با کلید جدید به‌روز نکنید از کار می‌افتد.
 </Warning>
 
-## مرحله ۲: دریافت Company ID
+## مرحله ۲: اولین فراخوانی خود را انجام دهید
 
-اکثر endpointهای API به یک هدر `companyid` نیاز دارند که مشخص می‌کند درخواست به کدام فضای کاری تعلق دارد. از endpoint زیر برای دریافت Company ID استفاده کنید.
+کلید API خود را در سرآیند `x-api-key` ارسال کنید. کلید متعلق به یک فضای کاری است، بنابراین API فضای کاری را از روی کلید می‌خواند و لازم نیست شناسه شرکت را ارسال کنید. این فراخوانی شناسه فضای کاری کلید و فضاهای کاری متصل به آن را برمی‌گرداند:
 
 ### Endpoint
 
@@ -61,7 +61,7 @@ GET {{URL}}/accounts/companies
 ### درخواست نمونه
 
 ```bash cURL
-curl --request GET "https://api.agencyhandy.com/accounts/companies" \
+curl --request GET "https://api.agencyhandy.com/api/v1/accounts/companies" \
   --header "x-api-key: <YOUR_API_KEY>"
 ```
 
@@ -69,7 +69,8 @@ curl --request GET "https://api.agencyhandy.com/accounts/companies" \
 
 ```json
 {
-  "message": "Companies associated with API token.",
+  "message": "Companies accosiated with API token.",
+  "companyId": "6525994184e9ddd79853450e",
   "companies": [
     {
       "_id": "6525994184e9ddd79853450e",
@@ -82,33 +83,25 @@ curl --request GET "https://api.agencyhandy.com/accounts/companies" \
 }
 ```
 
-<Steps>
-  <Step title="پیدا کردن Company ID">
-    در پاسخ، فیلد `_id` داخل آرایه `companies` را پیدا کنید. این **Company ID** شماست.
-
-    ```javascript
-    const companyId = response.companies[0]._id;
-    // e.g. "6525994184e9ddd79853450e"
-    ```
-  </Step>
-
-  <Step title="ذخیره Company ID">
-    Company ID را برای استفاده در تمام درخواست‌های API بعدی ذخیره کنید. آن را به‌عنوان هدر `companyid` ارسال خواهید کرد:
-
-    | هدر | مقدار |
-    |---|---|
-    | `x-api-key` | API key شما |
-    | `companyid` | Company ID شما |
-  </Step>
-</Steps>
+`companyId` فضای کاری‌ای است که کلید API شما به آن تعلق دارد. `companies` همچنین فضاهای کاری والد یا زیرمجموعه متصل به آن را فهرست می‌کند؛ کلید API فقط برای فضای کاری خودش کار می‌کند، پس در هر فضای کاری که می‌خواهید خودکار کنید یک کلید جداگانه بسازید.
 
 ## خلاصه احراز هویت
 
-هر درخواست API احراز هویت‌شده حداقل به موارد زیر نیاز دارد:
+هر درخواست احراز هویت‌شده فقط به کلید API شما نیاز دارد:
 
 ```
 x-api-key: <YOUR_API_KEY>
-companyid: <YOUR_COMPANY_ID>
 ```
 
-با داشتن API key و Company ID، آماده استفاده از بقیه API AgencyHandy هستید. به یکی از راهنماهای endpoint زیر ادامه دهید.
+- **نشانی URL پایه:** هر مسیر با `https://api.agencyhandy.com/api/v1` شروع می‌شود. فراخوانی `https://api.agencyhandy.com/accounts/companies` بدون `/api/v1` خطای `404 API not found` برمی‌گرداند.
+- **سرآیند `companyid` (اختیاری):** مثال‌های قدیمی‌تر `companyid: <YOUR_COMPANY_ID>` را ارسال می‌کنند. می‌توانید همچنان آن را ارسال کنید، اما باید شناسه فضای کاری خود کلید باشد. شناسه متفاوت با `403 PermissionError` رد می‌شود.
+- اگر ابزار شما فقط می‌تواند توکن bearer ارسال کند، **`Authorization: Bearer <YOUR_API_KEY>`** نیز کار می‌کند. کلید را فقط در یک سرآیند ارسال کنید، نه در هر دو.
+- **`401 Invalid API key (jwt malformed)`** یعنی مقدار، کلید کامل نیست: هنگام ساخت کلید، آن را به‌طور کامل کپی کنید (فهرست کلیدهای API فقط پنج نویسه آخر را نشان می‌دهد). **`401 Invalid api token`** یعنی کلید حذف شده است.
+- هر فراخوانی با مجوزهای عضوی که کلید را ساخته اجرا می‌شود.
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/api/v1/members" \
+  --header "x-api-key: <YOUR_API_KEY>"
+```
+
+با کلید API خود آماده‌اید از بقیه API AgencyHandy استفاده کنید. به یکی از راهنماهای نقطه پایانی زیر ادامه دهید.

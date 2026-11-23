@@ -7,17 +7,16 @@ description: "Naudokite AgencyHandy API, kad per PUT užklausą atnaujintumėte 
 Užsakymo atnaujinimo (Update Order) galinis taškas leidžia modifikuoti esamą AgencyHandy užsakymą (projektą) — keisti jo pavadinimą, būseną, biudžetą, terminus, priskirtus vadovus ir kt. — iš išorinės sistemos ar automatizavimo scenarijaus. Galinis taškas taip pat palaiko failų priedus, kurie pridedami prie užsakymo sistemos aplanko.
 
 <Note>
-  Prieš naudodami šį galutinį tašką, užbaikite vadovą [Darbo pradžia](/lt/api/getting-started), kad gautumėte savo API raktą ir įmonės ID.
+  Prieš naudodami šį galinį tašką, atlikite vadovą [Darbo pradžia](/lt/api/getting-started), kad gautumėte savo API raktą.
 </Note>
 
 <Warning>
-  Šiame galutiniame taške naudojamas `Authorization: Bearer <token>` (prisijungusio nario prieigos raktas), o ne vien `x-api-key` antraštė. Įsitikinkite, kad skambinantysis autentifikuotas kaip **patvirtintas narys** tikslinėje įmonėje. Neįgalioti skambinantieji gaus `403 PermissionError`.
+  Užklausa vykdoma kaip API raktą sukūręs narys, todėl šis narys turi būti darbo srities **patvirtintas narys**, turintis teisę atnaujinti užsakymus. Kitaip galinis taškas grąžina `403 PermissionError`.
 </Warning>
 
 ## Išankstiniai reikalavimai
 
-- ✅ Galiojantis **Bearer raktas** patvirtintam darbo srities nariui
-- ✅ **Įmonės ID** gautas iš `GET {{URL}}/accounts/companies`
+- ✅ Darbo srities **API raktas** (žr. [Darbo pradžia](/lt/api/getting-started))
 - ✅ **Užsakymo ID** (projekto ID, `pid`) užsakymo, kurį norite atnaujinti
 
 ---
@@ -34,8 +33,8 @@ PUT {{URL}}/orders?pid=<ORDER_ID>
 
 | Antraštė | Privaloma | Aprašas |
 |---|---|---|
-| `Authorization` | Taip | `Bearer <ACCESS_TOKEN>` — prisijungusio nario prieigos raktas. |
-| `companyid` | Taip | Mongo ObjectId įmonės, kuriai priklauso užsakymas. |
+| `x-api-key` | Taip | Jūsų API raktas. |
+| `companyid` | Neprivaloma | Jūsų darbo srities ID. Jei siunčiamas, jis turi atitikti API rakto darbo sritį, kitaip užklausa atmetama su `403`. |
 | `clientid` | Neprivaloma | Realaus laiko kliento lizdo ID. Kai pateikiamas, pranešimai jį apima. |
 
 ## Užklausos parametrai
@@ -126,9 +125,8 @@ PUT {{URL}}/orders?pid=<ORDER_ID>
 <CodeGroup>
 
 ```bash cURL (no files)
-curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
-  --header "Authorization: Bearer <ACCESS_TOKEN>" \
-  --header "companyid: <COMPANY_ID>" \
+curl --request PUT "https://api.agencyhandy.com/api/v1/orders?pid=ORDER_ID_HERE" \
+  --header "x-api-key: <YOUR_API_KEY>" \
   --form "name=Website Redesign" \
   --form "status=Review" \
   --form "budget=12000" \
@@ -140,9 +138,8 @@ curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
 ```
 
 ```bash cURL (with file)
-curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
-  --header "Authorization: Bearer <ACCESS_TOKEN>" \
-  --header "companyid: <COMPANY_ID>" \
+curl --request PUT "https://api.agencyhandy.com/api/v1/orders?pid=ORDER_ID_HERE" \
+  --header "x-api-key: <YOUR_API_KEY>" \
   --form "name=Website Redesign" \
   --form "status=Review" \
   --form "budget=12000" \

@@ -1,10 +1,10 @@
 ---
 title: "AgencyHandy API：認証と入門ガイド"
 sidebarTitle: "入門ガイド"
-description: "APIキーを生成し、会社IDを確認して、このクイックセットアップガイドでAgencyHandy REST APIを使ったインテグレーション構築を始めましょう。"
+description: "APIキーを生成し、最初の呼び出しを行い、このクイックセットアップガイドでAgencyHandy REST APIとの連携構築を始めましょう。"
 ---
 
-AgencyHandy APIを使用すると、外部のシステムやスクリプトからリードの作成、クライアント管理、注文の更新などを自動化できます。すべてのリクエストは、ワークスペース設定から生成するAPIキーで認証されます。このガイドでは、認証情報の取得から最初のAPI呼び出しまでの手順を説明します。
+AgencyHandy APIを使用すると、リード作成、クライアント管理、注文の更新などを、外部システムやスクリプトから自動化できます。すべてのリクエストは、ワークスペース設定から生成するAPIキーで認証されます。このガイドでは、キーの生成から最初のAPI呼び出しまでを説明します。
 
 <Note>
   APIキーを生成するには、AgencyHandyワークスペースの**SuperAdmin**または**Admin**である必要があります。
@@ -15,7 +15,7 @@ AgencyHandy APIを使用すると、外部のシステムやスクリプトか�
 すべてのAPIリクエストは以下に対して行います：
 
 ```
-https://api.agencyhandy.com
+https://api.agencyhandy.com/api/v1
 ```
 
 APIドキュメント全体のサンプルリクエストでは、`{{URL}}`をこのベースURLに置き換えてください。
@@ -42,9 +42,9 @@ APIドキュメント全体のサンプルリクエストでは、`{{URL}}`を�
   APIキーを再生成すると、以前のキーは即座に無効になります。古いキーを使用している既存のインテグレーションは、新しいキーで更新するまで機能しなくなります。
 </Warning>
 
-## ステップ2：会社IDを取得する
+## ステップ2：最初の呼び出しを行う
 
-ほとんどのAPIエンドポイントでは、リクエストがどのワークスペースを対象としているかを識別する`companyid`ヘッダーが必要です。以下のエンドポイントを使用して会社IDを取得します。
+APIキーを `x-api-key` ヘッダーで送信します。キーは1つのワークスペースに紐づいているため、APIはキーからワークスペースを判別し、会社IDを送信する必要はありません。この呼び出しは、キーのワークスペースIDと、それにリンクされたワークスペースを返します：
 
 ### エンドポイント
 
@@ -61,7 +61,7 @@ GET {{URL}}/accounts/companies
 ### リクエスト例
 
 ```bash cURL
-curl --request GET "https://api.agencyhandy.com/accounts/companies" \
+curl --request GET "https://api.agencyhandy.com/api/v1/accounts/companies" \
   --header "x-api-key: <YOUR_API_KEY>"
 ```
 
@@ -69,7 +69,8 @@ curl --request GET "https://api.agencyhandy.com/accounts/companies" \
 
 ```json
 {
-  "message": "Companies associated with API token.",
+  "message": "Companies accosiated with API token.",
+  "companyId": "6525994184e9ddd79853450e",
   "companies": [
     {
       "_id": "6525994184e9ddd79853450e",
@@ -82,33 +83,25 @@ curl --request GET "https://api.agencyhandy.com/accounts/companies" \
 }
 ```
 
-<Steps>
-  <Step title="会社IDを確認する">
-    レスポンスの`companies`配列内の`_id`フィールドを見つけます。これがあなたの**会社ID**です。
-
-    ```javascript
-    const companyId = response.companies[0]._id;
-    // e.g. "6525994184e9ddd79853450e"
-    ```
-  </Step>
-
-  <Step title="会社IDを保存する">
-    会社IDをすべての後続APIリクエストで使用できるように保存します。`companyid`ヘッダーとして渡します：
-
-    | ヘッダー | 値 |
-    |---|---|
-    | `x-api-key` | あなたのAPIキー |
-    | `companyid` | あなたの会社ID |
-  </Step>
-</Steps>
+`companyId` は、APIキーが属するワークスペースです。`companies` には、リンクされている親ワークスペースやサブワークスペースも含まれます。APIキーは自身のワークスペースでのみ機能するため、自動化したいワークスペースごとに別々のキーを作成してください。
 
 ## 認証の概要
 
-すべての認証済みAPIリクエストには、最低限以下が必要です：
+認証されるすべてのリクエストに必要なのは、APIキーだけです：
 
 ```
 x-api-key: <YOUR_API_KEY>
-companyid: <YOUR_COMPANY_ID>
 ```
 
-APIキーと会社IDが揃えば、AgencyHandy APIの残りの部分を使用する準備が整いました。以下のエンドポイントガイドのいずれかに進んでください。
+- **ベースURL：** すべてのパスは `https://api.agencyhandy.com/api/v1` で始まります。`/api/v1` なしで `https://api.agencyhandy.com/accounts/companies` を呼び出すと `404 API not found` が返されます。
+- **`companyid` ヘッダー（任意）：** 以前の例では `companyid: <YOUR_COMPANY_ID>` を送信していました。引き続き送信できますが、キー自身のワークスペースIDである必要があります。異なるIDは `403 PermissionError` で拒否されます。
+- ツールがベアラートークンしか送信できない場合は、**`Authorization: Bearer <YOUR_API_KEY>`** も使用できます。キーは一方のヘッダーのみで送信し、両方では送信しないでください。
+- **`401 Invalid API key (jwt malformed)`** は、値がキー全体ではないことを意味します。生成時にキー全体をコピーしてください（APIキー一覧には末尾5文字のみ表示されます）。**`401 Invalid api token`** は、キーが削除されたことを意味します。
+- 各呼び出しは、キーを作成したメンバーの権限で実行されます。
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/api/v1/members" \
+  --header "x-api-key: <YOUR_API_KEY>"
+```
+
+APIキーがあれば、AgencyHandy APIの残りの機能を利用できます。以下のエンドポイントガイドのいずれかに進んでください。

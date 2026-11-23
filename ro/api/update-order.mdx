@@ -7,17 +7,16 @@ description: "Utilizați API-ul AgencyHandy pentru a actualiza detaliile comenzi
 Endpoint-ul Actualizare Comandă vă permite să modificați o comandă (proiect) existentă în AgencyHandy — schimbați numele, statusul, bugetul, termenul limită, managerii atribuiți și multe altele — totul dintr-un sistem extern sau script de automatizare. Endpoint-ul acceptă și atașamente de fișiere, care sunt adăugate în folderul de sistem al comenzii.
 
 <Note>
-  Înainte de a utiliza acest endpoint, parcurgeți ghidul [Noțiuni de bază](/ro/api/getting-started) pentru a obține cheia API și ID-ul companiei.
+  Înainte de a folosi acest endpoint, parcurge ghidul [Noțiuni de bază](/ro/api/getting-started) pentru a obține cheia ta API.
 </Note>
 
 <Warning>
-  Acest endpoint utilizează `Authorization: Bearer <token>` (token-ul de acces al unui membru autentificat) mai degrabă decât doar header-ul `x-api-key`. Asigurați-vă că apelantul este autentificat ca **membru aprobat** al companiei vizate. Apelantii neautorizați primesc o eroare `403 PermissionError`.
+  Cererea rulează ca membrul care a creat cheia API, deci acel membru trebuie să fie un **membru aprobat** al spațiului de lucru, cu permisiunea de a actualiza comenzile. Altfel, endpoint-ul returnează `403 PermissionError`.
 </Warning>
 
 ## Cerințe preliminare
 
-- ✅ Un **Bearer token** valid pentru un membru aprobat al spațiului de lucru
-- ✅ **ID-ul companiei** recuperat din `GET {{URL}}/accounts/companies`
+- ✅ O **cheie API** a spațiului de lucru (vezi [Noțiuni de bază](/ro/api/getting-started))
 - ✅ **ID-ul comenzii** (ID proiect, `pid`) al comenzii pe care doriți să o actualizați
 
 ---
@@ -34,8 +33,8 @@ PUT {{URL}}/orders?pid=<ORDER_ID>
 
 | Header | Obligatoriu | Descriere |
 |---|---|---|
-| `Authorization` | Da | `Bearer <ACCESS_TOKEN>` — token-ul de acces al membrului autentificat. |
-| `companyid` | Da | Mongo ObjectId al companiei căreia îi aparține comanda. |
+| `x-api-key` | Da | Cheia ta API. |
+| `companyid` | Opțional | ID-ul spațiului tău de lucru. Dacă este trimis, trebuie să corespundă spațiului de lucru al cheii API, altfel cererea este refuzată cu `403`. |
 | `clientid` | Opțional | ID socket în timp real al clientului. Când este furnizat, notificările îl includ. |
 
 ## Parametri de interogare
@@ -126,9 +125,8 @@ PUT {{URL}}/orders?pid=<ORDER_ID>
 <CodeGroup>
 
 ```bash cURL (no files)
-curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
-  --header "Authorization: Bearer <ACCESS_TOKEN>" \
-  --header "companyid: <COMPANY_ID>" \
+curl --request PUT "https://api.agencyhandy.com/api/v1/orders?pid=ORDER_ID_HERE" \
+  --header "x-api-key: <YOUR_API_KEY>" \
   --form "name=Website Redesign" \
   --form "status=Review" \
   --form "budget=12000" \
@@ -140,9 +138,8 @@ curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
 ```
 
 ```bash cURL (with file)
-curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
-  --header "Authorization: Bearer <ACCESS_TOKEN>" \
-  --header "companyid: <COMPANY_ID>" \
+curl --request PUT "https://api.agencyhandy.com/api/v1/orders?pid=ORDER_ID_HERE" \
+  --header "x-api-key: <YOUR_API_KEY>" \
   --form "name=Website Redesign" \
   --form "status=Review" \
   --form "budget=12000" \

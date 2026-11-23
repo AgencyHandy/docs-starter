@@ -1,10 +1,10 @@
 ---
 title: "AgencyHandy API: Authenticatie en Aan de Slag"
 sidebarTitle: "Aan de Slag"
-description: "Genereer een API-sleutel, zoek uw Bedrijfs-ID op en begin met het bouwen van integraties met de AgencyHandy REST API met behulp van deze snelle installatiegids."
+description: "Genereer een API-sleutel, doe je eerste aanroep en begin met het bouwen van integraties met de AgencyHandy REST API met deze snelstartgids."
 ---
 
-Met de AgencyHandy API kunt u het aanmaken van leads, klantbeheer, bestelling-updates en meer automatiseren vanuit elk extern systeem of script. Elk verzoek wordt geauthenticeerd met een API-sleutel die u genereert vanuit uw werkruimte-instellingen. Deze gids leidt u door het verkrijgen van uw inloggegevens en het uitvoeren van uw eerste API-aanroep.
+Met de AgencyHandy API kun je het aanmaken van leads, klantbeheer, orderupdates en meer automatiseren vanuit elk extern systeem of script. Elk verzoek wordt geauthenticeerd met een API-sleutel die je genereert in de instellingen van je workspace. Deze gids leidt je door het genereren van je sleutel en het doen van je eerste API-aanroep.
 
 <Note>
   U moet **SuperAdmin** of **Admin** zijn in uw AgencyHandy-werkruimte om een API-sleutel te genereren.
@@ -15,7 +15,7 @@ Met de AgencyHandy API kunt u het aanmaken van leads, klantbeheer, bestelling-up
 Alle API-verzoeken worden gedaan naar:
 
 ```
-https://api.agencyhandy.com
+https://api.agencyhandy.com/api/v1
 ```
 
 Vervang `{{URL}}` door deze basis-URL in alle voorbeeldverzoeken in de API-documentatie.
@@ -42,9 +42,9 @@ Vervang `{{URL}}` door deze basis-URL in alle voorbeeldverzoeken in de API-docum
   Het opnieuw genereren van uw API-sleutel maakt de vorige sleutel onmiddellijk ongeldig. Bestaande integraties die de oude sleutel gebruiken, werken niet meer totdat u ze bijwerkt met de nieuwe sleutel.
 </Warning>
 
-## Stap 2: Haal uw Bedrijfs-ID op
+## Stap 2: Doe je eerste aanroep
 
-De meeste API-eindpunten vereisen een `companyid`-header die aangeeft op welke werkruimte het verzoek is gericht. Gebruik het volgende eindpunt om uw Bedrijfs-ID op te halen.
+Stuur je API-sleutel mee in de `x-api-key`-header. De sleutel hoort bij één workspace, dus de API leest de workspace uit de sleutel en je hoeft geen bedrijfs-ID mee te sturen. Deze aanroep geeft de workspace-ID van de sleutel terug en de workspaces die eraan gekoppeld zijn:
 
 ### Eindpunt
 
@@ -61,7 +61,7 @@ GET {{URL}}/accounts/companies
 ### Voorbeeldverzoek
 
 ```bash cURL
-curl --request GET "https://api.agencyhandy.com/accounts/companies" \
+curl --request GET "https://api.agencyhandy.com/api/v1/accounts/companies" \
   --header "x-api-key: <YOUR_API_KEY>"
 ```
 
@@ -69,7 +69,8 @@ curl --request GET "https://api.agencyhandy.com/accounts/companies" \
 
 ```json
 {
-  "message": "Companies associated with API token.",
+  "message": "Companies accosiated with API token.",
+  "companyId": "6525994184e9ddd79853450e",
   "companies": [
     {
       "_id": "6525994184e9ddd79853450e",
@@ -82,33 +83,25 @@ curl --request GET "https://api.agencyhandy.com/accounts/companies" \
 }
 ```
 
-<Steps>
-  <Step title="Zoek uw Bedrijfs-ID op">
-    Zoek in het antwoord het veld `_id` binnen de array `companies`. Dit is uw **Bedrijfs-ID**.
-
-    ```javascript
-    const companyId = response.companies[0]._id;
-    // bijv. "6525994184e9ddd79853450e"
-    ```
-  </Step>
-
-  <Step title="Bewaar de Bedrijfs-ID">
-    Sla de Bedrijfs-ID op voor gebruik in alle volgende API-verzoeken. U geeft deze door als de `companyid`-header:
-
-    | Header | Waarde |
-    |---|---|
-    | `x-api-key` | Uw API-sleutel |
-    | `companyid` | Uw Bedrijfs-ID |
-  </Step>
-</Steps>
+`companyId` is de workspace waartoe je API-sleutel behoort. `companies` toont ook alle bovenliggende of onderliggende workspaces die eraan gekoppeld zijn; een API-sleutel werkt alleen voor zijn eigen workspace, dus maak een aparte sleutel aan in elke workspace die je wilt automatiseren.
 
 ## Samenvatting authenticatie
 
-Elk geauthenticeerd API-verzoek vereist minimaal:
+Elk geauthenticeerd verzoek heeft alleen je API-sleutel nodig:
 
 ```
 x-api-key: <YOUR_API_KEY>
-companyid: <YOUR_COMPANY_ID>
 ```
 
-Met uw API-sleutel en Bedrijfs-ID bij de hand bent u klaar om de rest van de AgencyHandy API te gebruiken. Ga verder naar een van de eindpuntgidsen hieronder.
+- **Basis-URL:** elk pad begint met `https://api.agencyhandy.com/api/v1`. Een aanroep naar `https://api.agencyhandy.com/accounts/companies` zonder `/api/v1` geeft `404 API not found` terug.
+- **`companyid`-header (optioneel):** oudere voorbeelden sturen `companyid: <YOUR_COMPANY_ID>` mee. Je kunt dit blijven doen, maar het moet de eigen workspace-ID van de sleutel zijn. Een andere ID wordt geweigerd met `403 PermissionError`.
+- **`Authorization: Bearer <YOUR_API_KEY>`** werkt ook als je tool alleen een bearer-token kan versturen. Stuur de sleutel in één header, niet in beide.
+- **`401 Invalid API key (jwt malformed)`** betekent dat de waarde niet de volledige sleutel is: kopieer de hele sleutel wanneer je hem genereert (de lijst met API-sleutels toont alleen de laatste vijf tekens). **`401 Invalid api token`** betekent dat de sleutel is verwijderd.
+- Elke aanroep wordt uitgevoerd met de rechten van het lid dat de sleutel heeft aangemaakt.
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/api/v1/members" \
+  --header "x-api-key: <YOUR_API_KEY>"
+```
+
+Met je API-sleutel kun je de rest van de AgencyHandy API gebruiken. Ga verder met een van de onderstaande endpointgidsen.

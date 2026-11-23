@@ -1,10 +1,10 @@
 ---
 title: "AgencyHandy API: Authentifizierung und Erste Schritte"
 sidebarTitle: "Erste Schritte"
-description: "Generieren Sie einen API-Schlüssel, ermitteln Sie Ihre Unternehmens-ID und beginnen Sie mit der Entwicklung von Integrationen gegen die AgencyHandy REST-API mit diesem Schnellstart-Leitfaden."
+description: "Generieren Sie einen API-Schlüssel, führen Sie Ihren ersten Aufruf aus und beginnen Sie mit der Entwicklung von Integrationen gegen die AgencyHandy REST-API mit diesem Schnellstart-Leitfaden."
 ---
 
-Die AgencyHandy-API ermöglicht es Ihnen, die Lead-Erstellung, Kundenverwaltung, Bestellaktualisierungen und mehr aus jedem externen System oder Skript heraus zu automatisieren. Jede Anfrage wird mit einem API-Schlüssel authentifiziert, den Sie aus Ihren Workspace-Einstellungen generieren. Dieser Leitfaden führt Sie durch die Beschaffung Ihrer Zugangsdaten und die Durchführung Ihres ersten API-Aufrufs.
+Die AgencyHandy-API ermöglicht es Ihnen, die Lead-Erstellung, Kundenverwaltung, Bestellaktualisierungen und mehr aus jedem externen System oder Skript heraus zu automatisieren. Jede Anfrage wird mit einem API-Schlüssel authentifiziert, den Sie aus Ihren Workspace-Einstellungen generieren. Dieser Leitfaden führt Sie durch die Generierung Ihres Schlüssels und die Durchführung Ihres ersten API-Aufrufs.
 
 <Note>
   Sie müssen **SuperAdmin** oder **Admin** in Ihrem AgencyHandy-Workspace sein, um einen API-Schlüssel zu generieren.
@@ -15,7 +15,7 @@ Die AgencyHandy-API ermöglicht es Ihnen, die Lead-Erstellung, Kundenverwaltung,
 Alle API-Anfragen werden an folgende Adresse gestellt:
 
 ```
-https://api.agencyhandy.com
+https://api.agencyhandy.com/api/v1
 ```
 
 Ersetzen Sie `{{URL}}` durch diese Basis-URL in allen Beispielanfragen in der API-Dokumentation.
@@ -42,9 +42,9 @@ Ersetzen Sie `{{URL}}` durch diese Basis-URL in allen Beispielanfragen in der AP
   Das Neu-Generieren Ihres API-Schlüssels macht den vorherigen Schlüssel sofort ungültig. Alle bestehenden Integrationen, die den alten Schlüssel verwenden, funktionieren nicht mehr, bis Sie sie mit dem neuen Schlüssel aktualisieren.
 </Warning>
 
-## Schritt 2: Unternehmens-ID abrufen
+## Schritt 2: Ersten Aufruf ausführen
 
-Die meisten API-Endpunkte erfordern einen `companyid`-Header, der angibt, welchen Workspace die Anfrage betrifft. Verwenden Sie den folgenden Endpunkt, um Ihre Unternehmens-ID abzurufen.
+Senden Sie Ihren API-Schlüssel im `x-api-key`-Header. Der Schlüssel gehört zu einem Workspace, daher liest die API den Workspace aus dem Schlüssel und Sie müssen keine Unternehmens-ID senden. Dieser Aufruf gibt die Workspace-ID des Schlüssels und die damit verknüpften Workspaces zurück:
 
 ### Endpunkt
 
@@ -61,7 +61,7 @@ GET {{URL}}/accounts/companies
 ### Beispielanfrage
 
 ```bash cURL
-curl --request GET "https://api.agencyhandy.com/accounts/companies" \
+curl --request GET "https://api.agencyhandy.com/api/v1/accounts/companies" \
   --header "x-api-key: <YOUR_API_KEY>"
 ```
 
@@ -69,7 +69,8 @@ curl --request GET "https://api.agencyhandy.com/accounts/companies" \
 
 ```json
 {
-  "message": "Companies associated with API token.",
+  "message": "Companies accosiated with API token.",
+  "companyId": "6525994184e9ddd79853450e",
   "companies": [
     {
       "_id": "6525994184e9ddd79853450e",
@@ -82,33 +83,25 @@ curl --request GET "https://api.agencyhandy.com/accounts/companies" \
 }
 ```
 
-<Steps>
-  <Step title="Unternehmens-ID ermitteln">
-    Suchen Sie in der Antwort das `_id`-Feld innerhalb des `companies`-Arrays. Dies ist Ihre **Unternehmens-ID**.
-
-    ```javascript
-    const companyId = response.companies[0]._id;
-    // e.g. "6525994184e9ddd79853450e"
-    ```
-  </Step>
-
-  <Step title="Unternehmens-ID speichern">
-    Speichern Sie die Unternehmens-ID für die Verwendung in allen nachfolgenden API-Anfragen. Sie übergeben sie als `companyid`-Header:
-
-    | Header | Wert |
-    |---|---|
-    | `x-api-key` | Ihr API-Schlüssel |
-    | `companyid` | Ihre Unternehmens-ID |
-  </Step>
-</Steps>
+`companyId` ist der Workspace, zu dem Ihr API-Schlüssel gehört. `companies` listet außerdem alle verknüpften übergeordneten Workspaces oder Unter-Workspaces auf; ein API-Schlüssel funktioniert nur für seinen eigenen Workspace. Erstellen Sie daher in jedem Workspace, den Sie automatisieren möchten, einen eigenen Schlüssel.
 
 ## Authentifizierungsübersicht
 
-Jede authentifizierte API-Anfrage erfordert mindestens:
+Jede authentifizierte Anfrage benötigt nur Ihren API-Schlüssel:
 
 ```
 x-api-key: <YOUR_API_KEY>
-companyid: <YOUR_COMPANY_ID>
 ```
 
-Mit Ihrem API-Schlüssel und Ihrer Unternehmens-ID sind Sie bereit, die restliche AgencyHandy-API zu verwenden. Fahren Sie mit einem der folgenden Endpunkt-Leitfäden fort.
+- **Basis-URL:** Jeder Pfad beginnt mit `https://api.agencyhandy.com/api/v1`. Ein Aufruf von `https://api.agencyhandy.com/accounts/companies` ohne `/api/v1` liefert `404 API not found`.
+- **`companyid`-Header (optional):** Ältere Beispiele senden `companyid: <YOUR_COMPANY_ID>`. Sie können ihn weiterhin senden, er muss aber die Workspace-ID des Schlüssels sein. Eine abweichende ID wird mit `403 PermissionError` abgelehnt.
+- **`Authorization: Bearer <YOUR_API_KEY>`** funktioniert ebenfalls, wenn Ihr Tool nur ein Bearer-Token senden kann. Senden Sie den Schlüssel nur in einem Header, nicht in beiden.
+- **`401 Invalid API key (jwt malformed)`** bedeutet, dass der Wert nicht der vollständige Schlüssel ist: Kopieren Sie den gesamten Schlüssel, wenn Sie ihn generieren (die Liste der API-Schlüssel zeigt nur die letzten fünf Zeichen). **`401 Invalid api token`** bedeutet, dass der Schlüssel gelöscht wurde.
+- Jeder Aufruf wird mit den Berechtigungen des Mitglieds ausgeführt, das den Schlüssel erstellt hat.
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/api/v1/members" \
+  --header "x-api-key: <YOUR_API_KEY>"
+```
+
+Mit Ihrem API-Schlüssel sind Sie bereit, die restliche AgencyHandy-API zu verwenden. Fahren Sie mit einem der folgenden Endpunkt-Leitfäden fort.

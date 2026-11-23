@@ -7,17 +7,16 @@ description: "Verwenden Sie die AgencyHandy-API, um Bestelldetails zu aktualisie
 Der Endpunkt „Bestellung aktualisieren“ ermöglicht es Ihnen, eine bestehende Bestellung (Projekt) in AgencyHandy zu ändern — Name, Status, Budget, Zeitplan, zugewiesene Manager und mehr — alles aus einem externen System oder Automatisierungsskript heraus. Der Endpunkt unterstützt auch Dateianhänge, die dem Systemordner der Bestellung hinzugefügt werden.
 
 <Note>
-  Bevor Sie diesen Endpunkt verwenden, schließen Sie den Leitfaden [Erste Schritte](/de/api/getting-started) ab, um Ihren API-Schlüssel und Ihre Unternehmens-ID zu erhalten.
+  Bevor Sie diesen Endpunkt verwenden, schließen Sie den Leitfaden [Erste Schritte](/de/api/getting-started) ab, um Ihren API-Schlüssel zu erhalten.
 </Note>
 
 <Warning>
-  Dieser Endpunkt verwendet `Authorization: Bearer <token>` (das Zugriffstoken eines angemeldeten Mitglieds) anstatt nur den `x-api-key`-Header. Stellen Sie sicher, dass Ihr Aufrufer als **genehmigtes Mitglied** des Zielunternehmens authentifiziert ist. Nicht autorisierte Aufrufer erhalten einen `403 PermissionError`.
+  Die Anfrage wird als das Mitglied ausgeführt, das den API-Schlüssel erstellt hat. Dieses Mitglied muss daher ein **genehmigtes Mitglied** des Workspace mit der Berechtigung zum Aktualisieren von Bestellungen sein. Andernfalls gibt der Endpunkt `403 PermissionError` zurück.
 </Warning>
 
 ## Voraussetzungen
 
-- ✅ Ein gültiges **Bearer-Token** für ein genehmigtes Workspace-Mitglied
-- ✅ **Unternehmens-ID** abgerufen aus `GET {{URL}}/accounts/companies`
+- ✅ Ein Workspace-**API-Schlüssel** (siehe [Erste Schritte](/de/api/getting-started))
 - ✅ Die **Bestell-ID** (Projekt-ID, `pid`) der Bestellung, die Sie aktualisieren möchten
 
 ---
@@ -34,8 +33,8 @@ PUT {{URL}}/orders?pid=<ORDER_ID>
 
 | Header | Erforderlich | Beschreibung |
 |---|---|---|
-| `Authorization` | Ja | `Bearer <ACCESS_TOKEN>` — das Zugriffstoken des angemeldeten Mitglieds. |
-| `companyid` | Ja | Mongo ObjectId des Unternehmens, zu dem die Bestellung gehört. |
+| `x-api-key` | Ja | Ihr API-Schlüssel. |
+| `companyid` | Optional | Ihre Workspace-ID. Falls angegeben, muss sie mit dem Workspace des API-Schlüssels übereinstimmen, sonst wird die Anfrage mit `403` abgelehnt. |
 | `clientid` | Optional | Echtzeit-Client-Socket-ID. Wenn angegeben, werden Benachrichtigungen damit versehen. |
 
 ## Abfrageparameter
@@ -126,9 +125,8 @@ PUT {{URL}}/orders?pid=<ORDER_ID>
 <CodeGroup>
 
 ```bash cURL (no files)
-curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
-  --header "Authorization: Bearer <ACCESS_TOKEN>" \
-  --header "companyid: <COMPANY_ID>" \
+curl --request PUT "https://api.agencyhandy.com/api/v1/orders?pid=ORDER_ID_HERE" \
+  --header "x-api-key: <YOUR_API_KEY>" \
   --form "name=Website Redesign" \
   --form "status=Review" \
   --form "budget=12000" \
@@ -140,9 +138,8 @@ curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
 ```
 
 ```bash cURL (with file)
-curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
-  --header "Authorization: Bearer <ACCESS_TOKEN>" \
-  --header "companyid: <COMPANY_ID>" \
+curl --request PUT "https://api.agencyhandy.com/api/v1/orders?pid=ORDER_ID_HERE" \
+  --header "x-api-key: <YOUR_API_KEY>" \
   --form "name=Website Redesign" \
   --form "status=Review" \
   --form "budget=12000" \

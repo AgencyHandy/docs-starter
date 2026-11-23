@@ -1,10 +1,10 @@
 ---
 title: "AgencyHandy API: Authentication and Getting Started"
 sidebarTitle: "Getting Started"
-description: "Generate an API key, look up your Company ID, and start building integrations against the AgencyHandy REST API with this quick setup guide."
+description: "Generate an API key, make your first call, and start building integrations against the AgencyHandy REST API with this quick setup guide."
 ---
 
-The AgencyHandy API lets you automate lead creation, client management, order updates, and more from any external system or script. Every request is authenticated with an API key that you generate from your workspace settings. This guide walks you through obtaining your credentials and making your first API call.
+The AgencyHandy API lets you automate lead creation, client management, order updates, and more from any external system or script. Every request is authenticated with an API key that you generate from your workspace settings. This guide walks you through generating your key and making your first API call.
 
 <Note>
   You must be a **SuperAdmin** or **Admin** on your AgencyHandy workspace to generate an API key.
@@ -15,7 +15,7 @@ The AgencyHandy API lets you automate lead creation, client management, order up
 All API requests are made to:
 
 ```
-https://api.agencyhandy.com
+https://api.agencyhandy.com/api/v1
 ```
 
 Replace `{{URL}}` with this base URL in all example requests throughout the API documentation.
@@ -42,9 +42,9 @@ Replace `{{URL}}` with this base URL in all example requests throughout the API 
   Regenerating your API key immediately invalidates the previous key. Any existing integrations using the old key will stop working until you update them with the new key.
 </Warning>
 
-## Step 2: Retrieve your Company ID
+## Step 2: Make your first call
 
-Most API endpoints require a `companyid` header that identifies which workspace the request targets. Use the following endpoint to fetch your Company ID.
+Send your API key in the `x-api-key` header. The key belongs to one workspace, so the API reads the workspace from the key and you do not need to send a Company ID. This call returns the key's workspace ID and the workspaces linked to it:
 
 ### Endpoint
 
@@ -61,7 +61,7 @@ GET {{URL}}/accounts/companies
 ### Example request
 
 ```bash cURL
-curl --request GET "https://api.agencyhandy.com/accounts/companies" \
+curl --request GET "https://api.agencyhandy.com/api/v1/accounts/companies" \
   --header "x-api-key: <YOUR_API_KEY>"
 ```
 
@@ -69,7 +69,8 @@ curl --request GET "https://api.agencyhandy.com/accounts/companies" \
 
 ```json
 {
-  "message": "Companies associated with API token.",
+  "message": "Companies accosiated with API token.",
+  "companyId": "6525994184e9ddd79853450e",
   "companies": [
     {
       "_id": "6525994184e9ddd79853450e",
@@ -82,33 +83,25 @@ curl --request GET "https://api.agencyhandy.com/accounts/companies" \
 }
 ```
 
-<Steps>
-  <Step title="Locate your Company ID">
-    In the response, find the `_id` field inside the `companies` array. This is your **Company ID**.
-
-    ```javascript
-    const companyId = response.companies[0]._id;
-    // e.g. "6525994184e9ddd79853450e"
-    ```
-  </Step>
-
-  <Step title="Store the Company ID">
-    Save the Company ID for use in all subsequent API requests. You will pass it as the `companyid` header:
-
-    | Header | Value |
-    |---|---|
-    | `x-api-key` | Your API key |
-    | `companyid` | Your Company ID |
-  </Step>
-</Steps>
+`companyId` is the workspace your API key belongs to. `companies` also lists any parent or sub-workspaces linked to it; an API key only works for its own workspace, so create a separate key in each workspace you want to automate.
 
 ## Authentication summary
 
-Every authenticated API request requires at minimum:
+Every authenticated request needs only your API key:
 
 ```
 x-api-key: <YOUR_API_KEY>
-companyid: <YOUR_COMPANY_ID>
 ```
 
-With your API key and Company ID in hand, you are ready to use the rest of the AgencyHandy API. Continue to one of the endpoint guides below.
+- **Base URL:** every path starts with `https://api.agencyhandy.com/api/v1`. Calling `https://api.agencyhandy.com/accounts/companies` without `/api/v1` returns `404 API not found`.
+- **`companyid` header (optional):** older examples send `companyid: <YOUR_COMPANY_ID>`. You can keep sending it, but it must be the key's own workspace ID. A different ID is refused with `403 PermissionError`.
+- **`Authorization: Bearer <YOUR_API_KEY>`** also works if your tool can only send a bearer token. Send the key in one header only, not both.
+- **`401 Invalid API key (jwt malformed)`** means the value is not the full key: copy the whole key when you generate it (the API Key list only shows its last five characters). **`401 Invalid api token`** means the key was deleted.
+- Each call runs with the permissions of the member who created the key.
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/api/v1/members" \
+  --header "x-api-key: <YOUR_API_KEY>"
+```
+
+With your API key in hand, you are ready to use the rest of the AgencyHandy API. Continue to one of the endpoint guides below.

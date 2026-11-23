@@ -7,17 +7,16 @@ description: "Pomocí API AgencyHandy aktualizujte detaily objednávky, změňte
 Endpoint pro aktualizaci objednávky umožňuje upravit existující objednávku (projekt) v AgencyHandy — změnit její název, stav, rozpočet, časový plán, přiřazené manažery a další — vše z externího systému nebo automatizačního skriptu. Endpoint také podporuje přílohy souborů, které jsou připojeny do systémové složky objednávky.
 
 <Note>
-  Před použitím tohoto endpointu dokončete průvodce [Začínáme](/cs/api/getting-started) a získejte svůj API klíč a ID společnosti.
+  Před použitím tohoto koncového bodu dokončete průvodce [Začínáme](/cs/api/getting-started), abyste získali svůj klíč API.
 </Note>
 
 <Warning>
-  Tento endpoint používá `Authorization: Bearer <token>` (přístupový token přihlášeného člena) namísto pouhé hlavičky `x-api-key`. Ujistěte se, že volající je ověřen jako **schválený člen** cílové společnosti. Neoprávnění volající obdrží odpověď `403 PermissionError`.
+  Požadavek se provádí jako člen, který vytvořil klíč API, takže tento člen musí být **schváleným členem** pracovního prostoru s oprávněním aktualizovat objednávky. Jinak koncový bod vrátí `403 PermissionError`.
 </Warning>
 
 ## Předpoklady
 
-- ✅ Platný **Bearer token** pro schváleného člena workspace
-- ✅ **ID společnosti** získané z `GET {{URL}}/accounts/companies`
+- ✅ **Klíč API** pracovního prostoru (viz [Začínáme](/cs/api/getting-started))
 - ✅ **ID objednávky** (ID projektu, `pid`) objednávky, kterou chcete aktualizovat
 
 ---
@@ -34,8 +33,8 @@ PUT {{URL}}/orders?pid=<ORDER_ID>
 
 | Hlavička | Povinné | Popis |
 |---|---|---|
-| `Authorization` | Ano | `Bearer <ACCESS_TOKEN>` — přístupový token přihlášeného člena. |
-| `companyid` | Ano | Mongo ObjectId společnosti, ke které objednávka patří. |
+| `x-api-key` | Ano | Váš klíč API. |
+| `companyid` | Volitelné | ID vašeho pracovního prostoru. Pokud je odesláno, musí odpovídat pracovnímu prostoru klíče API, jinak je požadavek odmítnut s `403`. |
 | `clientid` | Volitelné | ID socketu klienta v reálném čase. Pokud je zadáno, oznámení jej budou obsahovat. |
 
 ## Parametry dotazu
@@ -126,9 +125,8 @@ PUT {{URL}}/orders?pid=<ORDER_ID>
 <CodeGroup>
 
 ```bash cURL (no files)
-curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
-  --header "Authorization: Bearer <ACCESS_TOKEN>" \
-  --header "companyid: <COMPANY_ID>" \
+curl --request PUT "https://api.agencyhandy.com/api/v1/orders?pid=ORDER_ID_HERE" \
+  --header "x-api-key: <YOUR_API_KEY>" \
   --form "name=Website Redesign" \
   --form "status=Review" \
   --form "budget=12000" \
@@ -140,9 +138,8 @@ curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
 ```
 
 ```bash cURL (with file)
-curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
-  --header "Authorization: Bearer <ACCESS_TOKEN>" \
-  --header "companyid: <COMPANY_ID>" \
+curl --request PUT "https://api.agencyhandy.com/api/v1/orders?pid=ORDER_ID_HERE" \
+  --header "x-api-key: <YOUR_API_KEY>" \
   --form "name=Website Redesign" \
   --form "status=Review" \
   --form "budget=12000" \

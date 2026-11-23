@@ -1,10 +1,10 @@
 ---
 title: "AgencyHandy API: Kimlik Doğrulama ve Başlangıç"
 sidebarTitle: "Başlarken"
-description: "Bu hızlı kurulum rehberiyle bir API anahtarı oluşturun, Şirket Kimliğinizi öğrenin ve AgencyHandy REST API'sine karşı entegrasyonlar geliştirmeye başlayın."
+description: "Bir API anahtarı oluşturun, ilk çağrınızı yapın ve bu hızlı kurulum kılavuzuyla AgencyHandy REST API'sine karşı entegrasyonlar geliştirmeye başlayın."
 ---
 
-AgencyHandy API, herhangi bir harici sistemden veya komut dosyasından lead oluşturmayı, müşteri yönetimini, sipariş güncellemelerini ve daha fazlasını otomatikleştirmenizi sağlar. Her istek, çalışma alanı ayarlarınızdan oluşturduğunuz bir API anahtarıyla doğrulanır. Bu rehber, kimlik bilgilerinizi edinme ve ilk API çağrınızı yapma adımlarını anlatır.
+AgencyHandy API'si, potansiyel müşteri oluşturma, müşteri yönetimi, sipariş güncellemeleri ve daha fazlasını herhangi bir harici sistemden veya betikten otomatikleştirmenizi sağlar. Her istek, çalışma alanı ayarlarınızdan oluşturduğunuz bir API anahtarıyla doğrulanır. Bu kılavuz, anahtarınızı oluşturmanızda ve ilk API çağrınızı yapmanızda size yol gösterir.
 
 <Note>
   API anahtarı oluşturabilmek için AgencyHandy çalışma alanınızda **SuperAdmin** veya **Admin** olmanız gerekir.
@@ -15,7 +15,7 @@ AgencyHandy API, herhangi bir harici sistemden veya komut dosyasından lead olu�
 Tüm API istekleri şu adrese yapılır:
 
 ```
-https://api.agencyhandy.com
+https://api.agencyhandy.com/api/v1
 ```
 
 API belgelerindeki tüm örnek isteklerde `{{URL}}` ifadesini bu temel URL ile değiştirin.
@@ -42,9 +42,9 @@ API belgelerindeki tüm örnek isteklerde `{{URL}}` ifadesini bu temel URL ile d
   API anahtarını yeniden oluşturmak, önceki anahtarı hemen geçersiz kılar. Eski anahtarı kullanan mevcut entegrasyonlar, yeni anahtarla güncellenene kadar çalışmayı durduracaktır.
 </Warning>
 
-## 2. Adım: Şirket Kimliğinizi alın
+## Adım 2: İlk çağrınızı yapın
 
-Çoğu API uç noktası, isteğin hangi çalışma alanını hedeflediğini belirten bir `companyid` başlığı gerektirir. Şirket Kimliğinizi almak için aşağıdaki uç noktayı kullanın.
+API anahtarınızı `x-api-key` başlığında gönderin. Anahtar tek bir çalışma alanına aittir; bu nedenle API çalışma alanını anahtardan okur ve bir Şirket Kimliği göndermeniz gerekmez. Bu çağrı, anahtarın çalışma alanı kimliğini ve ona bağlı çalışma alanlarını döndürür:
 
 ### Uç nokta
 
@@ -61,7 +61,7 @@ GET {{URL}}/accounts/companies
 ### Örnek istek
 
 ```bash cURL
-curl --request GET "https://api.agencyhandy.com/accounts/companies" \
+curl --request GET "https://api.agencyhandy.com/api/v1/accounts/companies" \
   --header "x-api-key: <YOUR_API_KEY>"
 ```
 
@@ -69,7 +69,8 @@ curl --request GET "https://api.agencyhandy.com/accounts/companies" \
 
 ```json
 {
-  "message": "Companies associated with API token.",
+  "message": "Companies accosiated with API token.",
+  "companyId": "6525994184e9ddd79853450e",
   "companies": [
     {
       "_id": "6525994184e9ddd79853450e",
@@ -82,33 +83,25 @@ curl --request GET "https://api.agencyhandy.com/accounts/companies" \
 }
 ```
 
-<Steps>
-  <Step title="Şirket Kimliğinizi bulun">
-    Yanıtta `companies` dizisinin içindeki `_id` alanını bulun. Bu sizin **Şirket Kimliğinizdir**.
-
-    ```javascript
-    const companyId = response.companies[0]._id;
-    // e.g. "6525994184e9ddd79853450e"
-    ```
-  </Step>
-
-  <Step title="Şirket Kimliğini saklayın">
-    Şirket Kimliğini sonraki tüm API isteklerinde kullanmak üzere kaydedin. `companyid` başlığı olarak ileteceksiniz:
-
-    | Başlık | Değer |
-    |---|---|
-    | `x-api-key` | API anahtarınız |
-    | `companyid` | Şirket Kimliğiniz |
-  </Step>
-</Steps>
+`companyId`, API anahtarınızın ait olduğu çalışma alanıdır. `companies` ayrıca ona bağlı üst veya alt çalışma alanlarını da listeler; bir API anahtarı yalnızca kendi çalışma alanı için geçerlidir, bu yüzden otomatikleştirmek istediğiniz her çalışma alanında ayrı bir anahtar oluşturun.
 
 ## Kimlik doğrulama özeti
 
-Her kimlik doğrulamalı API isteği en az şunları gerektirir:
+Kimliği doğrulanmış her istek yalnızca API anahtarınızı gerektirir:
 
 ```
 x-api-key: <YOUR_API_KEY>
-companyid: <YOUR_COMPANY_ID>
 ```
 
-API anahtarınız ve Şirket Kimliğiniz elinizde olduğunda, AgencyHandy API'sinin geri kalanını kullanmaya hazırsınız. Aşağıdaki uç nokta rehberlerinden birine devam edin.
+- **Temel URL:** her yol `https://api.agencyhandy.com/api/v1` ile başlar. `https://api.agencyhandy.com/accounts/companies` adresini `/api/v1` olmadan çağırmak `404 API not found` döndürür.
+- **`companyid` başlığı (isteğe bağlı):** eski örnekler `companyid: <YOUR_COMPANY_ID>` gönderir. Göndermeye devam edebilirsiniz, ancak anahtarın kendi çalışma alanı kimliği olmalıdır. Farklı bir kimlik `403 PermissionError` ile reddedilir.
+- Aracınız yalnızca bearer belirteci gönderebiliyorsa **`Authorization: Bearer <YOUR_API_KEY>`** da çalışır. Anahtarı yalnızca tek bir başlıkta gönderin, ikisinde birden değil.
+- **`401 Invalid API key (jwt malformed)`**, değerin anahtarın tamamı olmadığı anlamına gelir: anahtarı oluştururken tamamını kopyalayın (API Anahtarı listesi yalnızca son beş karakteri gösterir). **`401 Invalid api token`**, anahtarın silindiği anlamına gelir.
+- Her çağrı, anahtarı oluşturan üyenin izinleriyle çalışır.
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/api/v1/members" \
+  --header "x-api-key: <YOUR_API_KEY>"
+```
+
+API anahtarınızla AgencyHandy API'sinin geri kalanını kullanmaya hazırsınız. Aşağıdaki uç nokta kılavuzlarından birine devam edin.

@@ -7,17 +7,16 @@ description: "Gunakan AgencyHandy API untuk memperbarui detail pesanan, mengubah
 Endpoint Update Order memungkinkan Anda memodifikasi pesanan (proyek) yang ada di AgencyHandy — mengubah nama, status, anggaran, timeline, manajer yang ditetapkan, dan banyak lagi — semuanya dari sistem eksternal atau skrip otomasi. Endpoint ini juga mendukung lampiran file, yang ditambahkan ke folder sistem pesanan.
 
 <Note>
-  Sebelum menggunakan endpoint ini, selesaikan panduan [Memulai](/id/api/getting-started) untuk mendapatkan API key dan Company ID Anda.
+  Sebelum menggunakan endpoint ini, selesaikan panduan [Memulai](/id/api/getting-started) untuk mendapatkan kunci API Anda.
 </Note>
 
 <Warning>
-  Endpoint ini menggunakan `Authorization: Bearer <token>` (token akses anggota yang masuk) dan bukan hanya header `x-api-key`. Pastikan pemanggil Anda diautentikasi sebagai **anggota yang disetujui** dari perusahaan target. Pemanggil yang tidak sah menerima `403 PermissionError`.
+  Permintaan berjalan sebagai anggota yang membuat kunci API, sehingga anggota tersebut harus menjadi **anggota yang disetujui** di workspace dengan izin memperbarui pesanan. Jika tidak, endpoint mengembalikan `403 PermissionError`.
 </Warning>
 
 ## Prasyarat
 
-- ✅ **Bearer token** yang valid untuk anggota workspace yang disetujui
-- ✅ **Company ID** yang diambil dari `GET {{URL}}/accounts/companies`
+- ✅ **Kunci API** workspace (lihat [Memulai](/id/api/getting-started))
 - ✅ **Order ID** (Project ID, `pid`) dari pesanan yang ingin Anda perbarui
 
 ---
@@ -34,8 +33,8 @@ PUT {{URL}}/orders?pid=<ORDER_ID>
 
 | Header | Diperlukan | Deskripsi |
 |---|---|---|
-| `Authorization` | Ya | `Bearer <ACCESS_TOKEN>` — token akses anggota yang masuk. |
-| `companyid` | Ya | Mongo ObjectId dari perusahaan yang pesanannya dimiliki. |
+| `x-api-key` | Ya | Kunci API Anda. |
+| `companyid` | Opsional | ID workspace Anda. Jika dikirim, harus cocok dengan workspace kunci API, atau permintaan ditolak dengan `403`. |
 | `clientid` | Opsional | ID socket klien real-time. Jika disediakan, notifikasi menyertakannya. |
 
 ## Parameter kueri
@@ -126,9 +125,8 @@ PUT {{URL}}/orders?pid=<ORDER_ID>
 <CodeGroup>
 
 ```bash cURL (no files)
-curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
-  --header "Authorization: Bearer <ACCESS_TOKEN>" \
-  --header "companyid: <COMPANY_ID>" \
+curl --request PUT "https://api.agencyhandy.com/api/v1/orders?pid=ORDER_ID_HERE" \
+  --header "x-api-key: <YOUR_API_KEY>" \
   --form "name=Website Redesign" \
   --form "status=Review" \
   --form "budget=12000" \
@@ -140,9 +138,8 @@ curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
 ```
 
 ```bash cURL (with file)
-curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
-  --header "Authorization: Bearer <ACCESS_TOKEN>" \
-  --header "companyid: <COMPANY_ID>" \
+curl --request PUT "https://api.agencyhandy.com/api/v1/orders?pid=ORDER_ID_HERE" \
+  --header "x-api-key: <YOUR_API_KEY>" \
   --form "name=Website Redesign" \
   --form "status=Review" \
   --form "budget=12000" \
