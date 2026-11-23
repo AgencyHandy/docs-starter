@@ -15,7 +15,7 @@ AgencyHandy API를 사용하면 외부 시스템이나 스크립트에서 리드
 모든 API 요청은 다음 주소로 이루어집니다:
 
 ```
-https://api.agencyhandy.com
+https://api.agencyhandy.com/api/v1
 ```
 
 API 문서 전체의 모든 예시 요청에서 `{{URL}}`을 이 기본 URL로 대체하세요.
@@ -61,7 +61,7 @@ GET {{URL}}/accounts/companies
 ### 요청 예시
 
 ```bash cURL
-curl --request GET "https://api.agencyhandy.com/accounts/companies" \
+curl --request GET "https://api.agencyhandy.com/api/v1/accounts/companies" \
   --header "x-api-key: <YOUR_API_KEY>"
 ```
 

@@ -15,7 +15,7 @@ Die AgencyHandy-API ermöglicht es Ihnen, die Lead-Erstellung, Kundenverwaltung,
 Alle API-Anfragen werden an folgende Adresse gestellt:
 
 ```
-https://api.agencyhandy.com
+https://api.agencyhandy.com/api/v1
 ```
 
 Ersetzen Sie `{{URL}}` durch diese Basis-URL in allen Beispielanfragen in der API-Dokumentation.
@@ -61,7 +61,7 @@ GET {{URL}}/accounts/companies
 ### Beispielanfrage
 
 ```bash cURL
-curl --request GET "https://api.agencyhandy.com/accounts/companies" \
+curl --request GET "https://api.agencyhandy.com/api/v1/accounts/companies" \
   --header "x-api-key: <YOUR_API_KEY>"
 ```
 

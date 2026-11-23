@@ -126,9 +126,8 @@ PUT {{URL}}/orders?pid=<ORDER_ID>
 <CodeGroup>
 
 ```bash cURL (no files)
-curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
-  --header "Authorization: Bearer <ACCESS_TOKEN>" \
-  --header "companyid: <COMPANY_ID>" \
+curl --request PUT "https://api.agencyhandy.com/api/v1/orders?pid=ORDER_ID_HERE" \
+  --header "x-api-key: <YOUR_API_KEY>" \
   --form "name=Website Redesign" \
   --form "status=Review" \
   --form "budget=12000" \
@@ -140,9 +139,8 @@ curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
 ```
 
 ```bash cURL (with file)
-curl --request PUT "https://api.agencyhandy.com/orders?pid=ORDER_ID_HERE" \
-  --header "Authorization: Bearer <ACCESS_TOKEN>" \
-  --header "companyid: <COMPANY_ID>" \
+curl --request PUT "https://api.agencyhandy.com/api/v1/orders?pid=ORDER_ID_HERE" \
+  --header "x-api-key: <YOUR_API_KEY>" \
   --form "name=Website Redesign" \
   --form "status=Review" \
   --form "budget=12000" \

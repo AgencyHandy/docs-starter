@@ -15,7 +15,7 @@ AgencyHandy API:n avulla voit automatisoida liidien luomista, asiakashallintaa, 
 Kaikki API-pyynnöt tehdään osoitteeseen:
 
 ```
-https://api.agencyhandy.com
+https://api.agencyhandy.com/api/v1
 ```
 
 Korvaa `{{URL}}` tällä perus-URL:lla kaikissa API-dokumentaation esimerkkipyynnöissä.
@@ -61,7 +61,7 @@ GET {{URL}}/accounts/companies
 ### Esimerkkipyyntö
 
 ```bash cURL
-curl --request GET "https://api.agencyhandy.com/accounts/companies" \
+curl --request GET "https://api.agencyhandy.com/api/v1/accounts/companies" \
   --header "x-api-key: <YOUR_API_KEY>"
 ```
 

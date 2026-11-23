@@ -15,7 +15,7 @@ AgencyHandy API, herhangi bir harici sistemden veya komut dosyasından lead olu�
 Tüm API istekleri şu adrese yapılır:
 
 ```
-https://api.agencyhandy.com
+https://api.agencyhandy.com/api/v1
 ```
 
 API belgelerindeki tüm örnek isteklerde `{{URL}}` ifadesini bu temel URL ile değiştirin.
@@ -61,7 +61,7 @@ GET {{URL}}/accounts/companies
 ### Örnek istek
 
 ```bash cURL
-curl --request GET "https://api.agencyhandy.com/accounts/companies" \
+curl --request GET "https://api.agencyhandy.com/api/v1/accounts/companies" \
   --header "x-api-key: <YOUR_API_KEY>"
 ```
 
