@@ -1,10 +1,10 @@
 ---
 title: "AgencyHandy API: Todentaminen ja aloittaminen"
 sidebarTitle: "Aloittaminen"
-description: "Luo API-avain, hae yritystunnuksesi ja aloita integraatioiden rakentaminen AgencyHandy REST API:a vastaan tämän pikaoppaan avulla."
+description: "Luo API-avain, tee ensimmäinen kutsusi ja aloita integraatioiden rakentaminen AgencyHandyn REST-rajapintaa vasten tämän pika-aloitusoppaan avulla."
 ---
 
-AgencyHandy API:n avulla voit automatisoida liidien luomista, asiakashallintaa, tilausten päivityksiä ja paljon muuta mistä tahansa ulkoisesta järjestelmästä tai skriptistä. Jokainen pyyntö todennetaan API-avaimella, jonka luot työtilasi asetuksista. Tämä opas opastaa sinua tunnistetietojen hankkimisessa ja ensimmäisen API-kutsun tekemisessä.
+AgencyHandyn API:n avulla voit automatisoida liidien luonnin, asiakashallinnan, tilauspäivitykset ja paljon muuta mistä tahansa ulkoisesta järjestelmästä tai skriptistä. Jokainen pyyntö todennetaan API-avaimella, jonka luot työtilasi asetuksissa. Tämä opas neuvoo avaimen luomisessa ja ensimmäisen API-kutsun tekemisessä.
 
 <Note>
   Sinun on oltava AgencyHandy-työtilasi **SuperAdmin** tai **Admin** luodaksesi API-avaimen.
@@ -42,9 +42,9 @@ Korvaa `{{URL}}` tällä perus-URL:lla kaikissa API-dokumentaation esimerkkipyyn
   API-avaimen uudelleenluominen mitätöi edellisen avaimen välittömästi. Kaikki vanhan avaimen käyttävät integraatiot lakkaavat toimimasta, kunnes päivität ne uudella avaimella.
 </Warning>
 
-## Vaihe 2: Hae yritystunnuksesi
+## Vaihe 2: Tee ensimmäinen kutsusi
 
-Useimmat API-päätepisteet vaativat `companyid`-otsikon, joka tunnistaa, minkä työtilan pyyntö kohdistuu. Käytä seuraavaa päätepistettä yritystunnuksesi hakemiseen.
+Lähetä API-avaimesi `x-api-key`-otsakkeessa. Avain kuuluu yhdelle työtilalle, joten API lukee työtilan avaimesta eikä sinun tarvitse lähettää yritystunnusta. Tämä kutsu palauttaa avaimen työtilan tunnuksen ja siihen linkitetyt työtilat:
 
 ### Päätepiste
 
@@ -69,7 +69,8 @@ curl --request GET "https://api.agencyhandy.com/api/v1/accounts/companies" \
 
 ```json
 {
-  "message": "Companies associated with API token.",
+  "message": "Companies accosiated with API token.",
+  "companyId": "6525994184e9ddd79853450e",
   "companies": [
     {
       "_id": "6525994184e9ddd79853450e",
@@ -82,33 +83,25 @@ curl --request GET "https://api.agencyhandy.com/api/v1/accounts/companies" \
 }
 ```
 
-<Steps>
-  <Step title="Paikanna yritystunnuksesi">
-    Vastauksessa etsi `_id`-kenttä `companies`-taulukon sisältä. Tämä on **yritystunnuksesi**.
-
-    ```javascript
-    const companyId = response.companies[0]._id;
-    // e.g. "6525994184e9ddd79853450e"
-    ```
-  </Step>
-
-  <Step title="Tallenna yritystunnus">
-    Tallenna yritystunnus käytettäväksi kaikissa myöhemmissä API-pyynnöissä. Välität sen `companyid`-otsikkona:
-
-    | Otsikko | Arvo |
-    |---|---|
-    | `x-api-key` | API-avaimesi |
-    | `companyid` | Yritystunnuksesi |
-  </Step>
-</Steps>
+`companyId` on työtila, johon API-avaimesi kuuluu. `companies` listaa myös siihen linkitetyt ylä- tai alatyötilat; API-avain toimii vain omassa työtilassaan, joten luo erillinen avain jokaiseen työtilaan, jonka haluat automatisoida.
 
 ## Todentamisen yhteenveto
 
-Jokainen todennettu API-pyyntö vaatii vähintään:
+Jokainen todennettu pyyntö tarvitsee vain API-avaimesi:
 
 ```
 x-api-key: <YOUR_API_KEY>
-companyid: <YOUR_COMPANY_ID>
 ```
 
-API-avaimen ja yritystunnuksen kanssa olet valmis käyttämään muuta AgencyHandy API:a. Jatka johonkin alla olevista päätepisteoppaista.
+- **Perus-URL:** jokainen polku alkaa osoitteella `https://api.agencyhandy.com/api/v1`. Kutsu osoitteeseen `https://api.agencyhandy.com/accounts/companies` ilman `/api/v1` palauttaa `404 API not found`.
+- **`companyid`-otsake (valinnainen):** vanhemmat esimerkit lähettävät `companyid: <YOUR_COMPANY_ID>`. Voit jatkaa sen lähettämistä, mutta sen on oltava avaimen oman työtilan tunnus. Eri tunnus hylätään virheellä `403 PermissionError`.
+- **`Authorization: Bearer <YOUR_API_KEY>`** toimii myös, jos työkalusi voi lähettää vain bearer-tunnuksen. Lähetä avain vain yhdessä otsakkeessa, älä molemmissa.
+- **`401 Invalid API key (jwt malformed)`** tarkoittaa, että arvo ei ole koko avain: kopioi koko avain, kun luot sen (API-avainluettelo näyttää vain sen viisi viimeistä merkkiä). **`401 Invalid api token`** tarkoittaa, että avain on poistettu.
+- Jokainen kutsu suoritetaan avaimen luoneen jäsenen oikeuksilla.
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/api/v1/members" \
+  --header "x-api-key: <YOUR_API_KEY>"
+```
+
+API-avaimellasi voit käyttää muuta AgencyHandyn API:a. Jatka johonkin alla olevista päätepisteoppaista.

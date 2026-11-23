@@ -7,17 +7,16 @@ description: "Użyj API AgencyHandy, aby aktualizować szczegóły zamówienia, 
 Punkt końcowy aktualizacji zamówienia umożliwia modyfikację istniejącego zamówienia (projektu) w AgencyHandy — zmianę nazwy, statusu, budżetu, harmonogramu, przypisanych kierowników i wiele więcej — wszystko z zewnętrznego systemu lub skryptu automatyzacji. Punkt końcowy obsługuje również załączniki plików, które są dołączane do folderu systemowego zamówienia.
 
 <Note>
-  Przed użyciem tego punktu końcowego ukończ przewodnik [Pierwsze kroki](/pl/api/getting-started), aby uzyskać klucz API i identyfikator firmy.
+  Przed użyciem tego punktu końcowego ukończ przewodnik [Pierwsze kroki](/pl/api/getting-started), aby uzyskać swój klucz API.
 </Note>
 
 <Warning>
-  Ten punkt końcowy używa `Authorization: Bearer <token>` (tokenu dostępu zalogowanego członka) zamiast samego nagłówka `x-api-key`. Upewnij się, że wywołujący jest uwierzytelniony jako **zatwierdzony członek** docelowej firmy. Nieautoryzowani wywołujący otrzymują `403 PermissionError`.
+  Żądanie jest wykonywane jako członek, który utworzył klucz API, więc ten członek musi być **zatwierdzonym członkiem** obszaru roboczego z uprawnieniem do aktualizowania zamówień. W przeciwnym razie punkt końcowy zwraca `403 PermissionError`.
 </Warning>
 
 ## Wymagania wstępne
 
-- ✅ Prawidłowy **token Bearer** dla zatwierdzonego członka przestrzeni roboczej
-- ✅ **Identyfikator firmy** pobrany z `GET {{URL}}/accounts/companies`
+- ✅ **Klucz API** obszaru roboczego (zobacz [Pierwsze kroki](/pl/api/getting-started))
 - ✅ **Identyfikator zamówienia** (identyfikator projektu, `pid`) zamówienia, które chcesz zaktualizować
 
 ---
@@ -34,8 +33,8 @@ PUT {{URL}}/orders?pid=<ORDER_ID>
 
 | Nagłówek | Wymagany | Opis |
 |---|---|---|
-| `Authorization` | Tak | `Bearer <ACCESS_TOKEN>` — token dostępu zalogowanego członka. |
-| `companyid` | Tak | Identyfikator ObjectId Mongo firmy, do której należy zamówienie. |
+| `x-api-key` | Tak | Twój klucz API. |
+| `companyid` | Opcjonalny | Identyfikator Twojego obszaru roboczego. Jeśli zostanie wysłany, musi odpowiadać obszarowi roboczemu klucza API, w przeciwnym razie żądanie zostanie odrzucone z `403`. |
 | `clientid` | Opcjonalny | Identyfikator gniazda klienta w czasie rzeczywistym. Gdy podany, powiadomienia go zawierają. |
 
 ## Parametry zapytania

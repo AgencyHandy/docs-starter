@@ -7,17 +7,16 @@ description: "AgencyHandy API yordamida buyurtma tafsilotlarini yangilang, holat
 Buyurtmani yangilash endpointi AgencyHandy-dagi mavjud buyurtmani (loyihani) o'zgartirish imkonini beradi — nomini, holatini, byudjetini, muddatini, tayinlangan menejerlarni va boshqalarni — bularning barchasini tashqi tizim yoki avtomatsiya skriptidan. Endpoint fayl biriktirmalarini ham qo'llab-quvvatlaydi, ular buyurtmaning tizim papkasiga qo'shib boriladi.
 
 <Note>
-  Ushbu endpointdan foydalanishdan oldin, API kaliti va Kompaniya ID sini olish uchun [Boshlash](/uz/api/getting-started) qo'llanmasini bajaring.
+  Ushbu endpoint'dan foydalanishdan oldin API kalitingizni olish uchun [Boshlash](/uz/api/getting-started) qo'llanmasini bajaring.
 </Note>
 
 <Warning>
-  Ushbu endpoint faqat `x-api-key` sarlavhasi o'rniga `Authorization: Bearer <token>` (kirgan a'zoning kirish tokeni) ishlatadi. Chaqiruvchingiz maqsadli kompaniyaning **tasdiqlangan a'zosi** sifatida autentifikatsiya qilinganligiga ishonch hosil qiling. Ruxsatsiz chaqiruvchilar `403 PermissionError` oladi.
+  So'rov API kalitini yaratgan a'zo sifatida bajariladi, shuning uchun bu a'zo workspace'ning buyurtmalarni yangilash ruxsatiga ega **tasdiqlangan a'zosi** bo'lishi kerak. Aks holda endpoint `403 PermissionError` qaytaradi.
 </Warning>
 
 ## Oldindan talab qilinadigan shartlar
 
-- ✅ Tasdiqlangan ish muhiti a'zosi uchun to'g'ri **Bearer token**
-- ✅ `GET {{URL}}/accounts/companies` dan olingan **Kompaniya ID si**
+- ✅ Workspace **API kaliti** ([Boshlash](/uz/api/getting-started) bo'limiga qarang)
 - ✅ Yangilamoqchi bo'lgan buyurtmaning **Buyurtma ID si** (Loyiha ID si, `pid`)
 
 ---
@@ -34,8 +33,8 @@ PUT {{URL}}/orders?pid=<ORDER_ID>
 
 | Sarlavha | Majburiy | Tavsif |
 |---|---|---|
-| `Authorization` | Ha | `Bearer <ACCESS_TOKEN>` — kirgan a'zoning kirish tokeni. |
-| `companyid` | Ha | Buyurtma tegishli kompaniyaning Mongo ObjectId si. |
+| `x-api-key` | Ha | API kalitingiz. |
+| `companyid` | Ixtiyoriy | Workspace ID'ingiz. Yuborilsa, API kalitining workspace'iga mos bo'lishi kerak, aks holda so'rov `403` bilan rad etiladi. |
 | `clientid` | Ixtiyoriy | Real vaqtli mijoz socket ID si. Berilganda, bildirishnomalar uni o'z ichiga oladi. |
 
 ## So'rov parametrlari

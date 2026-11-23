@@ -7,17 +7,16 @@ description: "Use la API de AgencyHandy para actualizar los detalles de un pedid
 El endpoint Update Order le permite modificar un pedido (proyecto) existente en AgencyHandy — cambiar su nombre, estado, presupuesto, cronograma, gestores asignados y más — todo desde un sistema externo o un script de automatización. El endpoint también admite archivos adjuntos, que se agregan a la carpeta del sistema del pedido.
 
 <Note>
-  Antes de usar este endpoint, complete la guía [Getting Started](/es/api/getting-started) para obtener su clave de API y su Company ID.
+  Antes de usar este endpoint, completa la guía [Getting Started](/es/api/getting-started) para obtener tu clave de API.
 </Note>
 
 <Warning>
-  Este endpoint usa `Authorization: Bearer <token>` (el token de acceso de un miembro con sesión iniciada) en lugar de solo el encabezado `x-api-key`. Asegúrese de que quien realiza la llamada esté autenticado como un **miembro aprobado** de la empresa de destino. Las llamadas no autorizadas reciben un `403 PermissionError`.
+  La solicitud se ejecuta como el miembro que creó la clave de API, por lo que ese miembro debe ser un **miembro aprobado** del espacio de trabajo con permiso para actualizar pedidos. De lo contrario, el endpoint devuelve `403 PermissionError`.
 </Warning>
 
 ## Requisitos previos
 
-- ✅ Un **Bearer token** válido de un miembro aprobado del espacio de trabajo
-- ✅ **Company ID** obtenido de `GET {{URL}}/accounts/companies`
+- ✅ Una **clave de API** del espacio de trabajo (consulta [Getting Started](/es/api/getting-started))
 - ✅ El **Order ID** (Project ID, `pid`) del pedido que desea actualizar
 
 ---
@@ -34,8 +33,8 @@ PUT {{URL}}/orders?pid=<ORDER_ID>
 
 | Encabezado | Requerido | Descripción |
 |---|---|---|
-| `Authorization` | Sí | `Bearer <ACCESS_TOKEN>` — el token de acceso del miembro con sesión iniciada. |
-| `companyid` | Sí | El ObjectId de Mongo de la empresa a la que pertenece el pedido. |
+| `x-api-key` | Sí | Tu clave de API. |
+| `companyid` | Opcional | El ID de tu espacio de trabajo. Si se envía, debe coincidir con el espacio de trabajo de la clave de API; de lo contrario, la solicitud se rechaza con `403`. |
 | `clientid` | Opcional | El ID del socket del cliente en tiempo real. Cuando se proporciona, las notificaciones lo incluyen. |
 
 ## Parámetros de consulta

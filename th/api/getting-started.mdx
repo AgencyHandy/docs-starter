@@ -1,10 +1,10 @@
 ---
 title: "AgencyHandy API: การยืนยันตัวตนและการเริ่มต้นใช้งาน"
 sidebarTitle: "Getting Started"
-description: "สร้าง API key ค้นหา Company ID และเริ่มสร้างการผสานรวมกับ AgencyHandy REST API ด้วยคู่มือการตั้งค่าเบื้องต้นนี้"
+description: "สร้างคีย์ API ทำการเรียกครั้งแรก และเริ่มสร้างการเชื่อมต่อกับ REST API ของ AgencyHandy ด้วยคู่มือตั้งค่าอย่างรวดเร็วนี้"
 ---
 
-AgencyHandy API ช่วยให้คุณสามารถอัตโนมัติการสร้าง lead การจัดการลูกค้า การอัปเดตออเดอร์ และอื่นๆ อีกมากมายจากระบบภายนอกหรือสคริปต์ใดก็ได้ ทุกคำขอต้องยืนยันตัวตนด้วย API key ที่คุณสร้างจากการตั้งค่า workspace คู่มือนี้จะแนะนำคุณผ่านขั้นตอนการรับข้อมูลรับรองและการเรียก API ครั้งแรก
+API ของ AgencyHandy ช่วยให้คุณทำงานอัตโนมัติ เช่น การสร้างลีด การจัดการลูกค้า การอัปเดตคำสั่งซื้อ และอื่น ๆ จากระบบภายนอกหรือสคริปต์ใดก็ได้ ทุกคำขอจะยืนยันตัวตนด้วยคีย์ API ที่คุณสร้างจากการตั้งค่าเวิร์กสเปซ คู่มือนี้จะพาคุณสร้างคีย์และทำการเรียก API ครั้งแรก
 
 <Note>
   คุณต้องเป็น **SuperAdmin** หรือ **Admin** บน AgencyHandy workspace ของคุณเพื่อสร้าง API key
@@ -42,9 +42,9 @@ https://api.agencyhandy.com/api/v1
   การสร้าง API key ใหม่จะทำให้ key เดิมหมดความถูกต้องทันที การผสานรวมที่มีอยู่ทั้งหมดที่ใช้ key เก่าจะหยุดทำงานจนกว่าคุณจะอัปเดตด้วย key ใหม่
 </Warning>
 
-## ขั้นตอนที่ 2: ดึงข้อมูล Company ID ของคุณ
+## ขั้นตอนที่ 2: ทำการเรียกครั้งแรก
 
-endpoint API ส่วนใหญ่ต้องการ header `companyid` ที่ระบุว่า workspace ใดที่คำขอกำหนดเป้าหมาย ใช้ endpoint ต่อไปนี้เพื่อดึงข้อมูล Company ID ของคุณ
+ส่งคีย์ API ของคุณในเฮดเดอร์ `x-api-key` คีย์เป็นของเวิร์กสเปซเดียว API จึงอ่านเวิร์กสเปซจากคีย์ และคุณไม่จำเป็นต้องส่งรหัสบริษัท การเรียกนี้จะส่งคืนรหัสเวิร์กสเปซของคีย์และเวิร์กสเปซที่เชื่อมโยงกับคีย์นั้น:
 
 ### Endpoint
 
@@ -69,7 +69,8 @@ curl --request GET "https://api.agencyhandy.com/api/v1/accounts/companies" \
 
 ```json
 {
-  "message": "Companies associated with API token.",
+  "message": "Companies accosiated with API token.",
+  "companyId": "6525994184e9ddd79853450e",
   "companies": [
     {
       "_id": "6525994184e9ddd79853450e",
@@ -82,33 +83,25 @@ curl --request GET "https://api.agencyhandy.com/api/v1/accounts/companies" \
 }
 ```
 
-<Steps>
-  <Step title="ค้นหา Company ID ของคุณ">
-    ในการตอบสนอง ค้นหาช่อง `_id` ภายในอาร์เรย์ `companies` นี่คือ **Company ID** ของคุณ
-
-    ```javascript
-    const companyId = response.companies[0]._id;
-    // e.g. "6525994184e9ddd79853450e"
-    ```
-  </Step>
-
-  <Step title="บันทึก Company ID">
-    บันทึก Company ID เพื่อใช้ในคำขอ API ถัดไปทั้งหมด คุณจะส่งมันเป็น header `companyid`:
-
-    | Header | Value |
-    |---|---|
-    | `x-api-key` | API key ของคุณ |
-    | `companyid` | Company ID ของคุณ |
-  </Step>
-</Steps>
+`companyId` คือเวิร์กสเปซที่คีย์ API ของคุณเป็นเจ้าของ `companies` ยังแสดงรายการเวิร์กสเปซหลักหรือเวิร์กสเปซย่อยที่เชื่อมโยงอยู่ คีย์ API ใช้ได้กับเวิร์กสเปซของตัวเองเท่านั้น ดังนั้นให้สร้างคีย์แยกในแต่ละเวิร์กสเปซที่คุณต้องการทำให้เป็นอัตโนมัติ
 
 ## สรุปการยืนยันตัวตน
 
-คำขอ API ที่ต้องยืนยันตัวตนทุกรายการต้องมีอย่างน้อย:
+ทุกคำขอที่ยืนยันตัวตนต้องใช้เพียงคีย์ API ของคุณ:
 
 ```
 x-api-key: <YOUR_API_KEY>
-companyid: <YOUR_COMPANY_ID>
 ```
 
-เมื่อมี API key และ Company ID ในมือแล้ว คุณพร้อมที่จะใช้งาน AgencyHandy API ส่วนที่เหลือ ดำเนินการต่อไปยังคู่มือ endpoint ด้านล่าง
+- **Base URL:** ทุกเส้นทางขึ้นต้นด้วย `https://api.agencyhandy.com/api/v1` การเรียก `https://api.agencyhandy.com/accounts/companies` โดยไม่มี `/api/v1` จะส่งคืน `404 API not found`
+- **เฮดเดอร์ `companyid` (ไม่บังคับ):** ตัวอย่างรุ่นเก่าส่ง `companyid: <YOUR_COMPANY_ID>` คุณยังส่งต่อไปได้ แต่ต้องเป็นรหัสเวิร์กสเปซของคีย์เอง รหัสอื่นจะถูกปฏิเสธด้วย `403 PermissionError`
+- **`Authorization: Bearer <YOUR_API_KEY>`** ก็ใช้ได้เช่นกัน หากเครื่องมือของคุณส่งได้เฉพาะโทเค็น bearer ให้ส่งคีย์ในเฮดเดอร์เดียวเท่านั้น ไม่ใช่ทั้งสอง
+- **`401 Invalid API key (jwt malformed)`** หมายความว่าค่าที่ส่งไม่ใช่คีย์ฉบับเต็ม: ให้คัดลอกคีย์ทั้งหมดตอนที่สร้าง (รายการคีย์ API แสดงเพียงห้าตัวอักษรสุดท้าย) **`401 Invalid api token`** หมายความว่าคีย์ถูกลบแล้ว
+- ทุกการเรียกทำงานด้วยสิทธิ์ของสมาชิกที่สร้างคีย์
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/api/v1/members" \
+  --header "x-api-key: <YOUR_API_KEY>"
+```
+
+เมื่อมีคีย์ API แล้ว คุณก็พร้อมใช้งาน API ส่วนที่เหลือของ AgencyHandy ไปต่อที่คู่มือเอนด์พอยต์ด้านล่างได้เลย

@@ -7,17 +7,16 @@ description: "Izmantojiet AgencyHandy API, lai atjauninātu pasūtījuma detaļa
 Pasūtījuma atjaunināšanas galapunkts ļauj modificēt esošu pasūtījumu (projektu) AgencyHandy — mainīt tā nosaukumu, statusu, budžetu, laika grafiku, piešķirtos vadītājus un daudz ko citu — visu no ārējas sistēmas vai automatizācijas skripta. Galapunkts atbalsta arī failu pielikumus, kas tiek pievienoti pasūtījuma sistēmas mapei.
 
 <Note>
-  Pirms šī galapunkta izmantošanas izpildiet rokasgrāmatu [Darba sākšana](/lv/api/getting-started), lai iegūtu API atslēgu un uzņēmuma ID.
+  Pirms šī galapunkta izmantošanas izpildiet rokasgrāmatu [Darba sākšana](/lv/api/getting-started), lai iegūtu savu API atslēgu.
 </Note>
 
 <Warning>
-  Šis galapunkts izmanto `Authorization: Bearer <token>` (pierakstījušā dalībnieka piekļuves tokenu), nevis tikai `x-api-key` galveni. Pārliecinieties, ka izsaucējs ir autentificēts kā **apstiprināts dalībnieks** mērķa uzņēmumā. Neautorizēti izsaucēji saņem `403 PermissionError`.
+  Pieprasījums tiek izpildīts kā dalībnieks, kurš izveidoja API atslēgu, tāpēc šim dalībniekam jābūt darbvietas **apstiprinātam dalībniekam** ar atļauju atjaunināt pasūtījumus. Pretējā gadījumā galapunkts atgriež `403 PermissionError`.
 </Warning>
 
 ## Priekšnosacījumi
 
-- ✅ Derīgs **Bearer tokens** apstiprinātam darbvietas dalībniekam
-- ✅ **Uzņēmuma ID** iegūts no `GET {{URL}}/accounts/companies`
+- ✅ Darbvietas **API atslēga** (skatiet [Darba sākšana](/lv/api/getting-started))
 - ✅ **Pasūtījuma ID** (projekta ID, `pid`) atjaunināmajam pasūtījumam
 
 ---
@@ -34,8 +33,8 @@ PUT {{URL}}/orders?pid=<ORDER_ID>
 
 | Galvene | Obligāts | Apraksts |
 |---|---|---|
-| `Authorization` | Jā | `Bearer <ACCESS_TOKEN>` — pierakstījušā dalībnieka piekļuves tokens. |
-| `companyid` | Jā | Uzņēmuma Mongo ObjectId, kuram pieder pasūtījums. |
+| `x-api-key` | Jā | Jūsu API atslēga. |
+| `companyid` | Neobligāts | Jūsu darbvietas ID. Ja tas tiek nosūtīts, tam jāatbilst API atslēgas darbvietai, citādi pieprasījums tiek noraidīts ar `403`. |
 | `clientid` | Neobligāts | Reāllaika klienta ligzdas ID. Ja norādīts, paziņojumi to iekļauj. |
 
 ## Vaicājuma parametri

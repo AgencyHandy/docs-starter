@@ -7,17 +7,16 @@ description: "ใช้ AgencyHandy API เพื่ออัปเดตรา�
 endpoint Update Order ให้คุณแก้ไขออเดอร์ (โปรเจกต์) ที่มีอยู่ใน AgencyHandy ได้ — เปลี่ยนชื่อ สถานะ งบประมาณ ไทม์ไลน์ ผู้จัดการที่มอบหมาย และอื่นๆ — ทั้งหมดจากระบบภายนอกหรือสคริปต์อัตโนมัติ endpoint ยังรองรับไฟล์แนบซึ่งจะถูกเพิ่มไปยังโฟลเดอร์ระบบของออเดอร์
 
 <Note>
-  ก่อนใช้ endpoint นี้ ให้ทำคู่มือ [Getting Started](/th/api/getting-started) ให้เสร็จสิ้นเพื่อรับ API key และ Company ID ของคุณ
+  ก่อนใช้เอนด์พอยต์นี้ ให้อ่านคู่มือ [Getting Started](/th/api/getting-started) ให้เสร็จเพื่อรับคีย์ API ของคุณ
 </Note>
 
 <Warning>
-  endpoint นี้ใช้ `Authorization: Bearer <token>` (access token ของสมาชิกที่ลงชื่อเข้าใช้) แทนที่จะใช้เพียง header `x-api-key` ตรวจสอบให้แน่ใจว่าผู้เรียกได้รับการยืนยันตัวตนในฐานะ **สมาชิกที่ได้รับอนุมัติ** ของบริษัทเป้าหมาย ผู้เรียกที่ไม่ได้รับอนุญาตจะได้รับ `403 PermissionError`
+  คำขอทำงานในฐานะสมาชิกที่สร้างคีย์ API สมาชิกคนนั้นจึงต้องเป็น **สมาชิกที่ได้รับอนุมัติ** ของเวิร์กสเปซและมีสิทธิ์อัปเดตคำสั่งซื้อ มิฉะนั้นเอนด์พอยต์จะส่งคืน `403 PermissionError`
 </Warning>
 
 ## ข้อกำหนดเบื้องต้น
 
-- ✅ **Bearer token** ที่ถูกต้องสำหรับสมาชิก workspace ที่ได้รับอนุมัติ
-- ✅ **Company ID** ที่ดึงมาจาก `GET {{URL}}/accounts/companies`
+- ✅ **คีย์ API** ของเวิร์กสเปซ (ดู [Getting Started](/th/api/getting-started))
 - ✅ **Order ID** (Project ID, `pid`) ของออเดอร์ที่คุณต้องการอัปเดต
 
 ---
@@ -34,8 +33,8 @@ PUT {{URL}}/orders?pid=<ORDER_ID>
 
 | Header | จำเป็น | คำอธิบาย |
 |---|---|---|
-| `Authorization` | ใช่ | `Bearer <ACCESS_TOKEN>` — access token ของสมาชิกที่ลงชื่อเข้าใช้ |
-| `companyid` | ใช่ | Mongo ObjectId ของบริษัทที่ออเดอร์นั้นอยู่ |
+| `x-api-key` | ใช่ | คีย์ API ของคุณ |
+| `companyid` | ไม่บังคับ | รหัสเวิร์กสเปซของคุณ หากส่งมา ต้องตรงกับเวิร์กสเปซของคีย์ API มิฉะนั้นคำขอจะถูกปฏิเสธด้วย `403` |
 | `clientid` | ไม่บังคับ | Real-time client socket ID เมื่อระบุ การแจ้งเตือนจะรวม ID นี้ด้วย |
 
 ## Query parameters

@@ -1,10 +1,10 @@
 ---
 title: "AgencyHandy API: 인증 및 시작하기"
 sidebarTitle: "시작하기"
-description: "API 키를 생성하고, 회사 ID를 조회하고, 이 빠른 설정 가이드를 통해 AgencyHandy REST API를 사용한 연동을 시작하세요."
+description: "API 키를 생성하고, 첫 호출을 실행하고, 이 빠른 설정 가이드로 AgencyHandy REST API와의 연동 개발을 시작하세요."
 ---
 
-AgencyHandy API를 사용하면 외부 시스템이나 스크립트에서 리드 생성, 클라이언트 관리, 주문 업데이트 등을 자동화할 수 있습니다. 모든 요청은 워크스페이스 설정에서 생성한 API 키로 인증됩니다. 이 가이드는 자격 증명을 얻고 첫 번째 API 호출을 수행하는 방법을 안내합니다.
+AgencyHandy API를 사용하면 리드 생성, 클라이언트 관리, 주문 업데이트 등을 모든 외부 시스템이나 스크립트에서 자동화할 수 있습니다. 모든 요청은 워크스페이스 설정에서 생성한 API 키로 인증됩니다. 이 가이드는 키를 생성하고 첫 API 호출을 실행하는 과정을 안내합니다.
 
 <Note>
   API 키를 생성하려면 AgencyHandy 워크스페이스의 **슈퍼관리자** 또는 **관리자**여야 합니다.
@@ -42,9 +42,9 @@ API 문서 전체의 모든 예시 요청에서 `{{URL}}`을 이 기본 URL로 �
   API 키를 재생성하면 이전 키가 즉시 무효화됩니다. 이전 키를 사용하는 기존 연동은 새 키로 업데이트할 때까지 작동이 중단됩니다.
 </Warning>
 
-## 2단계: 회사 ID 조회
+## 2단계: 첫 호출 실행하기
 
-대부분의 API 엔드포인트는 요청이 어느 워크스페이스를 대상으로 하는지 식별하는 `companyid` 헤더가 필요합니다. 다음 엔드포인트를 사용하여 회사 ID를 가져옵니다.
+API 키를 `x-api-key` 헤더에 담아 보내세요. 키는 하나의 워크스페이스에 속하므로 API가 키에서 워크스페이스를 확인하며, 회사 ID를 보낼 필요가 없습니다. 이 호출은 키의 워크스페이스 ID와 그에 연결된 워크스페이스를 반환합니다:
 
 ### 엔드포인트
 
@@ -69,7 +69,8 @@ curl --request GET "https://api.agencyhandy.com/api/v1/accounts/companies" \
 
 ```json
 {
-  "message": "Companies associated with API token.",
+  "message": "Companies accosiated with API token.",
+  "companyId": "6525994184e9ddd79853450e",
   "companies": [
     {
       "_id": "6525994184e9ddd79853450e",
@@ -82,33 +83,25 @@ curl --request GET "https://api.agencyhandy.com/api/v1/accounts/companies" \
 }
 ```
 
-<Steps>
-  <Step title="회사 ID 찾기">
-    응답에서 `companies` 배열 내의 `_id` 필드를 찾습니다. 이것이 **회사 ID**입니다.
-
-    ```javascript
-    const companyId = response.companies[0]._id;
-    // e.g. "6525994184e9ddd79853450e"
-    ```
-  </Step>
-
-  <Step title="회사 ID 저장">
-    이후의 모든 API 요청에서 사용하기 위해 회사 ID를 저장합니다. `companyid` 헤더로 전달합니다:
-
-    | 헤더 | 값 |
-    |---|---|
-    | `x-api-key` | API 키 |
-    | `companyid` | 회사 ID |
-  </Step>
-</Steps>
+`companyId`는 API 키가 속한 워크스페이스입니다. `companies`에는 연결된 상위 또는 하위 워크스페이스도 나열됩니다. API 키는 자신의 워크스페이스에서만 작동하므로 자동화하려는 각 워크스페이스에서 별도의 키를 생성하세요.
 
 ## 인증 요약
 
-모든 인증된 API 요청에는 최소한 다음이 필요합니다:
+인증된 모든 요청에는 API 키만 필요합니다:
 
 ```
 x-api-key: <YOUR_API_KEY>
-companyid: <YOUR_COMPANY_ID>
 ```
 
-API 키와 회사 ID를 확보했다면 AgencyHandy API의 나머지 부분을 사용할 준비가 되었습니다. 아래 엔드포인트 가이드 중 하나로 계속 진행하세요.
+- **기본 URL:** 모든 경로는 `https://api.agencyhandy.com/api/v1`로 시작합니다. `/api/v1` 없이 `https://api.agencyhandy.com/accounts/companies`를 호출하면 `404 API not found`가 반환됩니다.
+- **`companyid` 헤더(선택):** 이전 예제에서는 `companyid: <YOUR_COMPANY_ID>`를 보냈습니다. 계속 보내도 되지만 키 자체의 워크스페이스 ID여야 합니다. 다른 ID는 `403 PermissionError`로 거부됩니다.
+- 도구가 베어러 토큰만 보낼 수 있다면 **`Authorization: Bearer <YOUR_API_KEY>`**도 사용할 수 있습니다. 키는 한 헤더로만 보내고, 둘 다 보내지 마세요.
+- **`401 Invalid API key (jwt malformed)`**는 값이 전체 키가 아니라는 뜻입니다. 키를 생성할 때 전체를 복사하세요(API 키 목록에는 마지막 다섯 글자만 표시됩니다). **`401 Invalid api token`**은 키가 삭제되었다는 뜻입니다.
+- 각 호출은 키를 만든 멤버의 권한으로 실행됩니다.
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/api/v1/members" \
+  --header "x-api-key: <YOUR_API_KEY>"
+```
+
+API 키가 있으면 AgencyHandy API의 나머지 기능을 사용할 준비가 된 것입니다. 아래 엔드포인트 가이드 중 하나로 이동하세요.

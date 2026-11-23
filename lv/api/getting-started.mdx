@@ -1,10 +1,10 @@
 ---
 title: "AgencyHandy API: autentifikācija un darba sākšana"
 sidebarTitle: "Darba sākšana"
-description: "Ģenerējiet API atslēgu, uzziniet savu uzņēmuma ID un sāciet veidot integrācijas ar AgencyHandy REST API, izmantojot šo ātro iestatīšanas rokasgrāmatu."
+description: "Izveidojiet API atslēgu, veiciet pirmo izsaukumu un sāciet veidot integrācijas ar AgencyHandy REST API, izmantojot šo ātrās iestatīšanas rokasgrāmatu."
 ---
 
-AgencyHandy API ļauj automatizēt potenciālo klientu (lead) izveidi, klientu pārvaldību, pasūtījumu atjauninājumus un daudz ko citu no jebkuras ārējas sistēmas vai skripta. Katrs pieprasījums tiek autentificēts ar API atslēgu, ko ģenerējat no darbvietas iestatījumiem. Šī rokasgrāmata palīdzēs jums iegūt akreditācijas datus un veikt pirmo API izsaukumu.
+AgencyHandy API ļauj automatizēt potenciālo klientu izveidi, klientu pārvaldību, pasūtījumu atjauninājumus un citas darbības no jebkuras ārējās sistēmas vai skripta. Katrs pieprasījums tiek autentificēts ar API atslēgu, ko izveidojat savas darbvietas iestatījumos. Šī rokasgrāmata palīdzēs izveidot atslēgu un veikt pirmo API izsaukumu.
 
 <Note>
   Lai ģenerētu API atslēgu, jums jābūt **SuperAdmin** vai **Admin** savā AgencyHandy darbvietā.
@@ -42,9 +42,9 @@ Aizstājiet `{{URL}}` ar šo bāzes URL visos API dokumentācijas piemēru piepr
   API atslēgas reģenerēšana nekavējoties padara iepriekšējo atslēgu nederīgu. Esošās integrācijas, kas izmanto veco atslēgu, pārstās darboties, līdz tās atjaunināsiet ar jauno atslēgu.
 </Warning>
 
-## 2. darbība: iegūt uzņēmuma ID
+## 2. solis: veiciet pirmo izsaukumu
 
-Lielākajai daļai API galapunktu ir nepieciešama `companyid` galvene, kas identificē, kura darbvieta ir pieprasījuma mērķis. Izmantojiet šādu galapunktu, lai iegūtu savu uzņēmuma ID.
+Nosūtiet savu API atslēgu galvenē `x-api-key`. Atslēga pieder vienai darbvietai, tāpēc API nolasa darbvietu no atslēgas un jums nav jānosūta uzņēmuma ID. Šis izsaukums atgriež atslēgas darbvietas ID un ar to saistītās darbvietas:
 
 ### Galapunkts
 
@@ -69,7 +69,8 @@ curl --request GET "https://api.agencyhandy.com/api/v1/accounts/companies" \
 
 ```json
 {
-  "message": "Companies associated with API token.",
+  "message": "Companies accosiated with API token.",
+  "companyId": "6525994184e9ddd79853450e",
   "companies": [
     {
       "_id": "6525994184e9ddd79853450e",
@@ -82,33 +83,25 @@ curl --request GET "https://api.agencyhandy.com/api/v1/accounts/companies" \
 }
 ```
 
-<Steps>
-  <Step title="Atrodiet savu uzņēmuma ID">
-    Atbildē atrodiet lauku `_id` masīvā `companies`. Tas ir jūsu **uzņēmuma ID**.
-
-    ```javascript
-    const companyId = response.companies[0]._id;
-    // e.g. "6525994184e9ddd79853450e"
-    ```
-  </Step>
-
-  <Step title="Saglabājiet uzņēmuma ID">
-    Saglabājiet uzņēmuma ID izmantošanai visos turpmākajos API pieprasījumos. Jūs to nodosiet kā `companyid` galveni:
-
-    | Galvene | Vērtība |
-    |---|---|
-    | `x-api-key` | Jūsu API atslēga |
-    | `companyid` | Jūsu uzņēmuma ID |
-  </Step>
-</Steps>
+`companyId` ir darbvieta, kurai pieder jūsu API atslēga. `companies` uzskaita arī saistītās vecākdarbvietas vai apakšdarbvietas; API atslēga darbojas tikai savai darbvietai, tāpēc izveidojiet atsevišķu atslēgu katrā darbvietā, ko vēlaties automatizēt.
 
 ## Autentifikācijas kopsavilkums
 
-Katram autentificētam API pieprasījumam nepieciešams vismaz:
+Katram autentificētam pieprasījumam nepieciešama tikai jūsu API atslēga:
 
 ```
 x-api-key: <YOUR_API_KEY>
-companyid: <YOUR_COMPANY_ID>
 ```
 
-Ar API atslēgu un uzņēmuma ID rokās esat gatavs izmantot pārējo AgencyHandy API. Turpiniet ar kādu no tālāk norādītajām galapunktu rokasgrāmatām.
+- **Bāzes URL:** katrs ceļš sākas ar `https://api.agencyhandy.com/api/v1`. Izsaucot `https://api.agencyhandy.com/accounts/companies` bez `/api/v1`, tiek atgriezts `404 API not found`.
+- **Galvene `companyid` (neobligāta):** vecāki piemēri sūta `companyid: <YOUR_COMPANY_ID>`. Varat to turpināt sūtīt, taču tam jābūt pašas atslēgas darbvietas ID. Cits ID tiek noraidīts ar `403 PermissionError`.
+- **`Authorization: Bearer <YOUR_API_KEY>`** darbojas arī tad, ja jūsu rīks var nosūtīt tikai bearer pilnvaru. Sūtiet atslēgu tikai vienā galvenē, nevis abās.
+- **`401 Invalid API key (jwt malformed)`** nozīmē, ka vērtība nav pilnā atslēga: kopējiet visu atslēgu, kad to izveidojat (API atslēgu saraksts rāda tikai pēdējās piecas rakstzīmes). **`401 Invalid api token`** nozīmē, ka atslēga ir izdzēsta.
+- Katrs izsaukums tiek izpildīts ar tā dalībnieka atļaujām, kurš izveidoja atslēgu.
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/api/v1/members" \
+  --header "x-api-key: <YOUR_API_KEY>"
+```
+
+Ar savu API atslēgu varat izmantot pārējo AgencyHandy API. Turpiniet ar kādu no tālāk norādītajām galapunktu rokasgrāmatām.

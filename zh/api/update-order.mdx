@@ -7,17 +7,16 @@ description: "使用 AgencyHandy API 通过 PUT 请求更新订单详情、变�
 更新订单端点允许您从外部系统或自动化脚本修改 AgencyHandy 中的现有订单（项目） — 更改其名称、状态、预算、时间表、分配的经理等。该端点还支持文件附件，附件将被追加到订单的系统文件夹中。
 
 <Note>
-  使用此端点之前，请完成[入门指南](/zh/api/getting-started)以获取您的 API 密钥和公司 ID。
+  使用此端点之前，请先完成[入门指南](/zh/api/getting-started)指南以获取您的 API 密钥。
 </Note>
 
 <Warning>
-  此端点使用 `Authorization: Bearer <token>`（已登录成员的访问令牌），而非仅使用 `x-api-key` 标头。请确保您的调用方已作为目标公司的**已批准成员**完成身份验证。未授权的调用方将收到 `403 PermissionError`。
+  请求以创建 API 密钥的成员身份运行，因此该成员必须是工作区中具有更新订单权限的**已批准成员**。否则，端点将返回 `403 PermissionError`。
 </Warning>
 
 ## 前提条件
 
-- ✅ 已批准工作区成员的有效 **Bearer 令牌**
-- ✅ 从 `GET {{URL}}/accounts/companies` 获取的**公司 ID**
+- ✅ 工作区的 **API 密钥**（参见[入门指南](/zh/api/getting-started)）
 - ✅ 您要更新的订单的**订单 ID**（项目 ID，`pid`）
 
 ---
@@ -34,8 +33,8 @@ PUT {{URL}}/orders?pid=<ORDER_ID>
 
 | 标头 | 必填 | 说明 |
 |---|---|---|
-| `Authorization` | 是 | `Bearer <ACCESS_TOKEN>` — 已登录成员的访问令牌。 |
-| `companyid` | 是 | 订单所属公司的 Mongo ObjectId。 |
+| `x-api-key` | 是 | 您的 API 密钥。 |
+| `companyid` | 可选 | 您的工作区 ID。如果发送，必须与 API 密钥所属的工作区一致，否则请求将被拒绝并返回 `403`。 |
 | `clientid` | 可选 | 实时客户端 socket ID。提供后，通知将包含此 ID。 |
 
 ## 查询参数

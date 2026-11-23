@@ -7,17 +7,16 @@ description: "Utilisez l'API AgencyHandy pour mettre à jour les détails d'une 
 Le point de terminaison Update Order vous permet de modifier une commande (projet) existante dans AgencyHandy — changer son nom, son statut, son budget, son calendrier, ses responsables assignés et plus encore — le tout depuis un système externe ou un script d'automatisation. Le point de terminaison prend également en charge les pièces jointes, qui sont ajoutées au dossier système de la commande.
 
 <Note>
-  Avant d'utiliser ce point de terminaison, suivez le guide [Getting Started](/fr/api/getting-started) pour obtenir votre clé API et votre Company ID.
+  Avant d'utiliser ce point de terminaison, consultez le guide [Getting Started](/fr/api/getting-started) pour obtenir votre clé API.
 </Note>
 
 <Warning>
-  Ce point de terminaison utilise `Authorization: Bearer <token>` (le jeton d'accès d'un membre connecté) plutôt que le seul en-tête `x-api-key`. Assurez-vous que l'appelant est authentifié en tant que **membre approuvé** de l'entreprise cible. Les appelants non autorisés reçoivent une erreur `403 PermissionError`.
+  La requête s'exécute en tant que membre qui a créé la clé API ; ce membre doit donc être un **membre approuvé** de l'espace de travail, autorisé à mettre à jour les commandes. Sinon, le point de terminaison renvoie `403 PermissionError`.
 </Warning>
 
 ## Prérequis
 
-- ✅ Un **Bearer token** valide pour un membre approuvé de l'espace de travail
-- ✅ **Company ID** récupéré depuis `GET {{URL}}/accounts/companies`
+- ✅ Une **clé API** de l'espace de travail (voir [Getting Started](/fr/api/getting-started))
 - ✅ L'**Order ID** (Project ID, `pid`) de la commande que vous souhaitez mettre à jour
 
 ---
@@ -34,8 +33,8 @@ PUT {{URL}}/orders?pid=<ORDER_ID>
 
 | En-tête | Requis | Description |
 |---|---|---|
-| `Authorization` | Oui | `Bearer <ACCESS_TOKEN>` — le jeton d'accès du membre connecté. |
-| `companyid` | Oui | ObjectId Mongo de l'entreprise à laquelle appartient la commande. |
+| `x-api-key` | Oui | Votre clé API. |
+| `companyid` | Facultatif | L'ID de votre espace de travail. S'il est envoyé, il doit correspondre à l'espace de travail de la clé API, sinon la requête est refusée avec `403`. |
 | `clientid` | Facultatif | ID de socket client en temps réel. Lorsqu'il est fourni, les notifications l'incluent. |
 
 ## Paramètres de requête

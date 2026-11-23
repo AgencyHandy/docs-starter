@@ -7,17 +7,16 @@ description: "Gebruik de AgencyHandy API om bestellingdetails bij te werken, de 
 Met het eindpunt Bestelling bijwerken kunt u een bestaande bestelling (project) in AgencyHandy aanpassen — naam, status, budget, tijdlijn, toegewezen managers en meer wijzigen — allemaal vanuit een extern systeem of automatiseringsscript. Het eindpunt ondersteunt ook bestandsbijlagen, die worden toegevoegd aan de systeemmap van de bestelling.
 
 <Note>
-  Voltooi voordat u dit eindpunt gebruikt de gids [Aan de Slag](/nl/api/getting-started) om uw API-sleutel en Bedrijfs-ID te verkrijgen.
+  Voordat je dit endpoint gebruikt, doorloop je de gids [Aan de Slag](/nl/api/getting-started) om je API-sleutel te verkrijgen.
 </Note>
 
 <Warning>
-  Dit eindpunt gebruikt `Authorization: Bearer <token>` (het toegangstoken van een aangemeld lid) in plaats van alleen de `x-api-key`-header. Zorg ervoor dat uw aanroeper is geauthenticeerd als een **goedgekeurd lid** van het doelbedrijf. Niet-geautoriseerde aanroepers ontvangen een `403 PermissionError`.
+  Het verzoek wordt uitgevoerd als het lid dat de API-sleutel heeft aangemaakt. Dat lid moet dus een **goedgekeurd lid** van de workspace zijn met toestemming om orders bij te werken. Anders geeft het endpoint `403 PermissionError` terug.
 </Warning>
 
 ## Vereisten
 
-- ✅ Een geldig **Bearer-token** voor een goedgekeurd werkruimtelid
-- ✅ **Bedrijfs-ID** opgehaald via `GET {{URL}}/accounts/companies`
+- ✅ Een workspace-**API-sleutel** (zie [Aan de Slag](/nl/api/getting-started))
 - ✅ Het **Bestelling-ID** (Project-ID, `pid`) van de bestelling die u wilt bijwerken
 
 ---
@@ -34,8 +33,8 @@ PUT {{URL}}/orders?pid=<ORDER_ID>
 
 | Header | Vereist | Beschrijving |
 |---|---|---|
-| `Authorization` | Ja | `Bearer <ACCESS_TOKEN>` — het toegangstoken van het aangemelde lid. |
-| `companyid` | Ja | Mongo ObjectId van het bedrijf waartoe de bestelling behoort. |
+| `x-api-key` | Ja | Je API-sleutel. |
+| `companyid` | Optioneel | Je workspace-ID. Indien meegestuurd, moet deze overeenkomen met de workspace van de API-sleutel, anders wordt het verzoek geweigerd met `403`. |
 | `clientid` | Optioneel | Real-time client socket-ID. Wanneer opgegeven, worden meldingen hiermee inclusief. |
 
 ## Queryparameters

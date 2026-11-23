@@ -7,17 +7,16 @@ description: "AgencyHandy API'sini kullanarak PUT isteği aracılığıyla mevcu
 Siparişi Güncelle uç noktası, AgencyHandy'deki mevcut bir siparişi (projeyi) harici bir sistem veya otomasyon komut dosyasından değiştirmenizi sağlar — adını, durumunu, bütçesini, zaman çizelgesini, atanan yöneticileri ve daha fazlasını güncelleyebilirsiniz. Uç nokta ayrıca dosya eklerini de destekler; eklenen dosyalar siparişin sistem klasörüne eklenir.
 
 <Note>
-  Bu uç noktayı kullanmadan önce API anahtarınızı ve Şirket Kimliğinizi edinmek için [Başlarken](/tr/api/getting-started) rehberini tamamlayın.
+  Bu uç noktayı kullanmadan önce API anahtarınızı almak için [Başlarken](/tr/api/getting-started) kılavuzunu tamamlayın.
 </Note>
 
 <Warning>
-  Bu uç nokta yalnızca `x-api-key` başlığı yerine `Authorization: Bearer <token>` (giriş yapmış bir üyenin erişim token'ı) kullanır. Çağrı yapanın hedef şirketin **onaylı bir üyesi** olarak kimliği doğrulanmış olduğundan emin olun. Yetkisiz çağrı yapanlar `403 PermissionError` alır.
+  İstek, API anahtarını oluşturan üye olarak çalışır; bu nedenle o üyenin çalışma alanının siparişleri güncelleme izni olan **onaylı bir üyesi** olması gerekir. Aksi halde uç nokta `403 PermissionError` döndürür.
 </Warning>
 
 ## Ön koşullar
 
-- ✅ Onaylı bir çalışma alanı üyesi için geçerli **Bearer token**
-- ✅ `GET {{URL}}/accounts/companies` ile alınan **Şirket Kimliği**
+- ✅ Bir çalışma alanı **API anahtarı** ([Başlarken](/tr/api/getting-started) bölümüne bakın)
 - ✅ Güncellemek istediğiniz siparişin **Sipariş Kimliği** (Proje Kimliği, `pid`)
 
 ---
@@ -34,8 +33,8 @@ PUT {{URL}}/orders?pid=<ORDER_ID>
 
 | Başlık | Zorunlu | Açıklama |
 |---|---|---|
-| `Authorization` | Evet | `Bearer <ACCESS_TOKEN>` — giriş yapmış üyenin erişim token'ı. |
-| `companyid` | Evet | Siparişin ait olduğu şirketin Mongo ObjectId'si. |
+| `x-api-key` | Evet | API anahtarınız. |
+| `companyid` | İsteğe bağlı | Çalışma alanı kimliğiniz. Gönderilirse API anahtarının çalışma alanıyla eşleşmelidir, aksi halde istek `403` ile reddedilir. |
 | `clientid` | İsteğe bağlı | Gerçek zamanlı istemci soket kimliği. Sağlandığında bildirimler bunu içerir. |
 
 ## Sorgu parametreleri

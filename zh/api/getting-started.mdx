@@ -1,10 +1,10 @@
 ---
 title: "AgencyHandy API：身份验证与入门指南"
 sidebarTitle: "入门指南"
-description: "生成 API 密钥、查找您的公司 ID，并通过本快速设置指南开始基于 AgencyHandy REST API 构建集成。"
+description: "生成 API 密钥，发起第一次调用，并通过本快速设置指南开始构建与 AgencyHandy REST API 的集成。"
 ---
 
-AgencyHandy API 允许您从任何外部系统或脚本自动化潜在客户创建、客户管理、订单更新等操作。每个请求都通过您从工作区设置中生成的 API 密钥进行身份验证。本指南将引导您获取凭据并完成第一次 API 调用。
+AgencyHandy API 让您可以通过任何外部系统或脚本自动化创建潜在客户、管理客户、更新订单等操作。每个请求都使用您在工作区设置中生成的 API 密钥进行身份验证。本指南将引导您生成密钥并发起第一次 API 调用。
 
 <Note>
   您必须是 AgencyHandy 工作区的**超级管理员**或**管理员**才能生成 API 密钥。
@@ -42,9 +42,9 @@ https://api.agencyhandy.com/api/v1
   重新生成 API 密钥会立即使之前的密钥失效。任何使用旧密钥的现有集成将停止工作，直到您用新密钥更新它们。
 </Warning>
 
-## 第二步：获取您的公司 ID
+## 第 2 步：发起第一次调用
 
-大多数 API 端点需要一个 `companyid` 标头来标识请求目标工作区。使用以下端点获取您的公司 ID。
+在 `x-api-key` 请求头中发送您的 API 密钥。密钥属于一个工作区，因此 API 会从密钥中读取工作区，您无需发送公司 ID。此调用会返回该密钥的工作区 ID 以及与之关联的工作区：
 
 ### 端点
 
@@ -69,7 +69,8 @@ curl --request GET "https://api.agencyhandy.com/api/v1/accounts/companies" \
 
 ```json
 {
-  "message": "Companies associated with API token.",
+  "message": "Companies accosiated with API token.",
+  "companyId": "6525994184e9ddd79853450e",
   "companies": [
     {
       "_id": "6525994184e9ddd79853450e",
@@ -82,33 +83,25 @@ curl --request GET "https://api.agencyhandy.com/api/v1/accounts/companies" \
 }
 ```
 
-<Steps>
-  <Step title="找到您的公司 ID">
-    在响应中，找到 `companies` 数组内的 `_id` 字段。这就是您的**公司 ID**。
-
-    ```javascript
-    const companyId = response.companies[0]._id;
-    // e.g. "6525994184e9ddd79853450e"
-    ```
-  </Step>
-
-  <Step title="存储公司 ID">
-    保存公司 ID 以便在所有后续 API 请求中使用。您需要将其作为 `companyid` 标头传递：
-
-    | 标头 | 值 |
-    |---|---|
-    | `x-api-key` | 您的 API 密钥 |
-    | `companyid` | 您的公司 ID |
-  </Step>
-</Steps>
+`companyId` 是您的 API 密钥所属的工作区。`companies` 还会列出与之关联的任何父工作区或子工作区；API 密钥仅适用于其自身的工作区，因此请在每个需要自动化的工作区中分别创建密钥。
 
 ## 身份验证摘要
 
-每个经过身份验证的 API 请求至少需要：
+每个经过身份验证的请求只需要您的 API 密钥：
 
 ```
 x-api-key: <YOUR_API_KEY>
-companyid: <YOUR_COMPANY_ID>
 ```
 
-获得 API 密钥和公司 ID 后，您就可以使用 AgencyHandy API 的其余功能了。请继续查看以下端点指南。
+- **基础 URL：** 每个路径都以 `https://api.agencyhandy.com/api/v1` 开头。不带 `/api/v1` 调用 `https://api.agencyhandy.com/accounts/companies` 会返回 `404 API not found`。
+- **`companyid` 请求头（可选）：** 较早的示例会发送 `companyid: <YOUR_COMPANY_ID>`。您可以继续发送，但它必须是该密钥自身的工作区 ID。不同的 ID 会被拒绝并返回 `403 PermissionError`。
+- 如果您的工具只能发送 Bearer 令牌，**`Authorization: Bearer <YOUR_API_KEY>`** 同样有效。只在一个请求头中发送密钥，不要同时在两个请求头中发送。
+- **`401 Invalid API key (jwt malformed)`** 表示该值不是完整的密钥：生成时请复制整个密钥（API 密钥列表只显示最后五个字符）。**`401 Invalid api token`** 表示该密钥已被删除。
+- 每次调用都以创建该密钥的成员的权限运行。
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/api/v1/members" \
+  --header "x-api-key: <YOUR_API_KEY>"
+```
+
+有了 API 密钥，您就可以使用 AgencyHandy API 的其余功能了。请继续阅读下面的任一端点指南。

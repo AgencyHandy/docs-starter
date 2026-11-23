@@ -7,17 +7,16 @@ description: "Bruk AgencyHandy API til å oppdatere bestillingsdetaljer, endre s
 Oppdater bestilling-endepunktet lar deg endre en eksisterende bestilling (prosjekt) i AgencyHandy — endre navn, status, budsjett, tidslinje, tilordnede prosjektledere og mer — alt fra et eksternt system eller automatiseringsskript. Endepunktet støtter også filvedlegg, som legges til i bestillingens systemmappe.
 
 <Note>
-  Før du bruker dette endepunktet, fullfør guiden [Kom i gang](/no/api/getting-started) for å hente API-nøkkelen og bedrifts-ID-en din.
+  Før du bruker dette endepunktet, fullfør guiden [Kom i gang](/no/api/getting-started) for å få API-nøkkelen din.
 </Note>
 
 <Warning>
-  Dette endepunktet bruker `Authorization: Bearer <token>` (et innlogget medlems tilgangstoken) i stedet for bare `x-api-key`-overskriften. Sørg for at kalleren er autentisert som et **godkjent medlem** av målbedriften. Uautoriserte kallere mottar en `403 PermissionError`.
+  Forespørselen kjøres som medlemmet som opprettet API-nøkkelen, så dette medlemmet må være et **godkjent medlem** av arbeidsområdet med tillatelse til å oppdatere bestillinger. Ellers returnerer endepunktet `403 PermissionError`.
 </Warning>
 
 ## Forutsetninger
 
-- ✅ Et gyldig **Bearer-token** for et godkjent arbeidsområdemedlem
-- ✅ **Bedrifts-ID** hentet fra `GET {{URL}}/accounts/companies`
+- ✅ En **API-nøkkel** for arbeidsområdet (se [Kom i gang](/no/api/getting-started))
 - ✅ **Bestillings-ID-en** (Prosjekt-ID, `pid`) til bestillingen du vil oppdatere
 
 ---
@@ -34,8 +33,8 @@ PUT {{URL}}/orders?pid=<ORDER_ID>
 
 | Overskrift | Påkrevd | Beskrivelse |
 |---|---|---|
-| `Authorization` | Ja | `Bearer <ACCESS_TOKEN>` — det innloggede medlemmets tilgangstoken. |
-| `companyid` | Ja | Mongo ObjectId for bedriften bestillingen tilhører. |
+| `x-api-key` | Ja | API-nøkkelen din. |
+| `companyid` | Valgfritt | Arbeidsområde-ID-en din. Hvis den sendes, må den samsvare med API-nøkkelens arbeidsområde, ellers avvises forespørselen med `403`. |
 | `clientid` | Valgfritt | Sanntids klient-socket-ID. Når angitt, inkluderes den i varsler. |
 
 ## Spørringsparametere

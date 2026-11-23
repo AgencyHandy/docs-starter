@@ -1,10 +1,10 @@
 ---
 title: "AgencyHandy API: Autentifikatsiya va Boshlash"
 sidebarTitle: "Boshlash"
-description: "API kalitini yarating, Kompaniya ID sini toping va ushbu tezkor qo'llanma yordamida AgencyHandy REST API bilan integratsiyalar qurishni boshlang."
+description: "API kalitini yarating, birinchi chaqiruvingizni bajaring va ushbu tezkor sozlash qo'llanmasi yordamida AgencyHandy REST API bilan integratsiyalar yaratishni boshlang."
 ---
 
-AgencyHandy API istalgan tashqi tizim yoki skriptdan lead yaratish, mijozlarni boshqarish, buyurtmalarni yangilash va boshqa ko'plab ishlarni avtomatlashtirishga imkon beradi. Har bir so'rov ish muhiti sozlamalaridan yaratgan API kaliti bilan autentifikatsiya qilinadi. Ushbu qo'llanma sizni hisob ma'lumotlarini olish va birinchi API chaqiruvini amalga oshirishda yo'llab-boradi.
+AgencyHandy API lidlar yaratish, mijozlarni boshqarish, buyurtmalarni yangilash va boshqa ishlarni istalgan tashqi tizim yoki skriptdan avtomatlashtirish imkonini beradi. Har bir so'rov workspace sozlamalaringizdan yaratgan API kaliti bilan autentifikatsiya qilinadi. Ushbu qo'llanma kalitni yaratish va birinchi API chaqiruvini bajarishda yordam beradi.
 
 <Note>
   API kalitini yaratish uchun AgencyHandy ish muhitida **SuperAdmin** yoki **Admin** bo'lishingiz shart.
@@ -42,9 +42,9 @@ API hujjatlaridagi barcha namuna so'rovlarda `{{URL}}` ni ushbu asosiy URL bilan
   API kalitini qayta yaratish oldingi kalitni darhol bekor qiladi. Eski kalitdan foydalanadigan mavjud integratsiyalar yangi kalit bilan yangilanmaguncha ishlashni to'xtatadi.
 </Warning>
 
-## 2-qadam: Kompaniya ID sini oling
+## 2-qadam: Birinchi chaqiruvingizni bajaring
 
-Ko'pgina API endpointlari so'rov qaysi ish muhitiga qaratilganligini ko'rsatuvchi `companyid` sarlavhasini talab qiladi. Kompaniya ID sini olish uchun quyidagi endpointdan foydalaning.
+API kalitingizni `x-api-key` sarlavhasida yuboring. Kalit bitta workspace'ga tegishli, shuning uchun API workspace'ni kalitdan o'qiydi va kompaniya ID'sini yuborishingiz shart emas. Bu chaqiruv kalitning workspace ID'sini va unga bog'langan workspace'larni qaytaradi:
 
 ### Endpoint
 
@@ -69,7 +69,8 @@ curl --request GET "https://api.agencyhandy.com/api/v1/accounts/companies" \
 
 ```json
 {
-  "message": "Companies associated with API token.",
+  "message": "Companies accosiated with API token.",
+  "companyId": "6525994184e9ddd79853450e",
   "companies": [
     {
       "_id": "6525994184e9ddd79853450e",
@@ -82,33 +83,25 @@ curl --request GET "https://api.agencyhandy.com/api/v1/accounts/companies" \
 }
 ```
 
-<Steps>
-  <Step title="Kompaniya ID sini toping">
-    Javobda `companies` massivi ichidagi `_id` maydonini toping. Bu sizning **Kompaniya ID** ingiz.
-
-    ```javascript
-    const companyId = response.companies[0]._id;
-    // e.g. "6525994184e9ddd79853450e"
-    ```
-  </Step>
-
-  <Step title="Kompaniya ID sini saqlang">
-    Kompaniya ID sini keyingi barcha API so'rovlarida ishlatish uchun saqlang. Uni `companyid` sarlavhasi sifatida uzatasiz:
-
-    | Sarlavha | Qiymat |
-    |---|---|
-    | `x-api-key` | Sizning API kalitingiz |
-    | `companyid` | Sizning Kompaniya ID ingiz |
-  </Step>
-</Steps>
+`companyId` — API kalitingiz tegishli bo'lgan workspace. `companies` shuningdek unga bog'langan asosiy yoki quyi workspace'larni ham ko'rsatadi; API kaliti faqat o'z workspace'i uchun ishlaydi, shuning uchun avtomatlashtirmoqchi bo'lgan har bir workspace'da alohida kalit yarating.
 
 ## Autentifikatsiya xulosasi
 
-Har bir autentifikatsiya qilingan API so'rovi kamida quyidagilarni talab qiladi:
+Har bir autentifikatsiyalangan so'rov uchun faqat API kalitingiz kerak:
 
 ```
 x-api-key: <YOUR_API_KEY>
-companyid: <YOUR_COMPANY_ID>
 ```
 
-API kaliti va Kompaniya ID si qo'lingizda bo'lgach, AgencyHandy API-ning qolgan qismidan foydalanishga tayyorsiz. Quyidagi endpoint qo'llanmalaridan biriga davom eting.
+- **Asosiy URL:** har bir yo'l `https://api.agencyhandy.com/api/v1` bilan boshlanadi. `https://api.agencyhandy.com/accounts/companies` manzilini `/api/v1`siz chaqirsangiz, `404 API not found` qaytadi.
+- **`companyid` sarlavhasi (ixtiyoriy):** eski misollar `companyid: <YOUR_COMPANY_ID>` yuboradi. Uni yuborishda davom etishingiz mumkin, lekin u kalitning o'z workspace ID'si bo'lishi kerak. Boshqa ID `403 PermissionError` bilan rad etiladi.
+- Agar vositangiz faqat bearer tokenini yubora olsa, **`Authorization: Bearer <YOUR_API_KEY>`** ham ishlaydi. Kalitni faqat bitta sarlavhada yuboring, ikkalasida emas.
+- **`401 Invalid API key (jwt malformed)`** qiymat to'liq kalit emasligini bildiradi: kalitni yaratganingizda uni to'liq nusxalang (API kalitlar ro'yxati faqat oxirgi besh belgini ko'rsatadi). **`401 Invalid api token`** kalit o'chirilganini bildiradi.
+- Har bir chaqiruv kalitni yaratgan a'zoning ruxsatlari bilan bajariladi.
+
+```bash cURL
+curl --request GET "https://api.agencyhandy.com/api/v1/members" \
+  --header "x-api-key: <YOUR_API_KEY>"
+```
+
+API kalitingiz bilan AgencyHandy API'sining qolgan qismidan foydalanishga tayyorsiz. Quyidagi endpoint qo'llanmalaridan biriga o'ting.
