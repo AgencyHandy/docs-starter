@@ -1166,7 +1166,7 @@
                 ]
               },
               {
-                "group": "Leistungen & Aufträge",
+                "group": "Leistungen & Bestellungen",
                 "icon": "package",
                 "pages": [
                   "de/services/overview",
@@ -1249,7 +1249,7 @@
                 ]
               },
               {
-                "group": "Aufträge & Leistungen",
+                "group": "Bestellungen & Leistungen",
                 "icon": "package",
                 "pages": [
                   "de/client/browse-and-order",

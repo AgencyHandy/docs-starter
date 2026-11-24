@@ -1,10 +1,10 @@
 ---
 title: "Angebote für Kunden in AgencyHandy erstellen und versenden"
 sidebarTitle: "Angebote"
-description: "Erstellen, anpassen und versenden Sie professionelle Angebote in AgencyHandy — inklusive Dienstleistungspreisen, Paketen, Kundenakzeptanz und automatischer Auftragserstellung."
+description: "Erstellen, anpassen und versenden Sie professionelle Angebote in AgencyHandy — inklusive Dienstleistungspreisen, Paketen, Kundenakzeptanz und automatischer Bestellerstellung."
 ---
 
-Die Angebotsfunktion von AgencyHandy bietet Ihnen einen professionellen End-to-End-Workflow, um Anfragen in aktive Projekte umzuwandeln. Sie können detaillierte Angebote mit Dienstleistungen, Paketen, Add-ons, Steuern und rechtlichen Bedingungen erstellen — und diese dann direkt über die Plattform an Kunden oder Leads senden. Sobald ein Kunde akzeptiert, kann AgencyHandy automatisch einen Auftrag und eine Rechnung erstellen und so den manuellen Aufwand beseitigen, der Abschlüsse verlangsamt.
+Die Angebotsfunktion von AgencyHandy bietet Ihnen einen professionellen End-to-End-Workflow, um Anfragen in aktive Projekte umzuwandeln. Sie können detaillierte Angebote mit Dienstleistungen, Paketen, Add-ons, Steuern und rechtlichen Bedingungen erstellen — und diese dann direkt über die Plattform an Kunden oder Leads senden. Sobald ein Kunde akzeptiert, kann AgencyHandy automatisch eine Bestellung und eine Rechnung erstellen und so den manuellen Aufwand beseitigen, der Abschlüsse verlangsamt.
 
 <Note>
   Nur **Super-Admins** und **Admins** können Angebote erstellen und versenden. Projektmanager (PMs) können Angebote einsehen, aber nicht versenden.
@@ -90,7 +90,7 @@ Der Abschnitt Einrichtung steuert, was nach dem Versenden des Angebots passiert.
 
 <CardGroup cols={2}>
   <Card title="Aktion nach Akzeptanz" icon="bolt">
-    Wählen Sie, was AgencyHandy tut, wenn das Angebot akzeptiert wird: **Nichts tun** oder automatisch **Auftrag & Rechnung erstellen**.
+    Wählen Sie, was AgencyHandy tut, wenn das Angebot akzeptiert wird: **Nichts tun** oder automatisch **Bestellung und Rechnung erstellen**.
   </Card>
   <Card title="Erinnerungen" icon="bell">
     Konfigurieren Sie Erinnerungsbenachrichtigungen, um Kunden anzustoßen, die bis zum Ablaufdatum nicht geantwortet haben.
@@ -128,8 +128,8 @@ Wenn Sie schnell ein Angebot senden möchten, das direkt an ein bestimmtes Diens
 
     Weisen Sie optional einen **Manager** dem Angebot zu.
   </Step>
-  <Step title="Auftragsdetails hinzufügen">
-    Schreiben Sie eine **Auftragsbeschreibung** (erforderlich), die beschreibt, was der Kunde erhalten wird. Fügen Sie unterstützende Dateien bis zu 1 GB an.
+  <Step title="Bestelldetails hinzufügen">
+    Schreiben Sie eine **Bestellbeschreibung** (erforderlich), die beschreibt, was der Kunde erhalten wird. Fügen Sie unterstützende Dateien bis zu 1 GB an.
   </Step>
   <Step title="Preisgestaltung und Bedingungen festlegen">
     Bestätigen Sie den **Preistyp** (einmalig oder Abonnement), legen Sie **Laufzeit**, **Menge**, **Budget** und **Währung** fest. Fügen Sie alle für das Angebot relevanten **Allgemeinen Geschäftsbedingungen** hinzu.
@@ -150,13 +150,13 @@ Wenn Sie schnell ein Angebot senden möchten, das direkt an ein bestimmtes Diens
 | **Entwurf** | Das Angebot wurde erstellt, aber noch nicht gesendet. |
 | **Gesendet** | Das Angebot wurde an den Kunden oder Lead übermittelt. |
 | **Ausstehend** | Der Kunde hat das Angebot geprüft und zur Diskussion zurückgesendet. |
-| **Akzeptiert** | Eine der Parteien hat die Angebotsbedingungen formal akzeptiert. Ein Auftrag wird automatisch erstellt, sofern konfiguriert. |
+| **Akzeptiert** | Eine der Parteien hat die Angebotsbedingungen formal akzeptiert. Eine Bestellung wird automatisch erstellt, sofern konfiguriert. |
 | **Abgelehnt** | Eine der Parteien hat das Angebot abgelehnt. Der Absender erhält eine Benachrichtigung mit dem Grund. |
 | **Archiviert** | Sie haben das Angebot zurückgezogen. Der Kunde kann es nicht mehr öffnen oder akzeptieren, und Sie können es jederzeit wiederherstellen. |
 
 ## Angebot akzeptieren
 
-Sowohl die Agentur als auch der Kunde können ein erhaltenes Angebot akzeptieren. Bei Akzeptanz erstellt AgencyHandy automatisch einen Auftrag (sofern in der Einrichtung konfiguriert).
+Sowohl die Agentur als auch der Kunde können ein erhaltenes Angebot akzeptieren. Bei Akzeptanz erstellt AgencyHandy automatisch eine Bestellung (sofern in der Einrichtung konfiguriert).
 
 <Steps>
   <Step title="Zu Empfangene Angebote gehen">
@@ -215,7 +215,7 @@ Sobald ein Angebot archiviert ist, kann Ihr Kunde es nicht mehr öffnen, akzepti
 Um es wiederherzustellen, wechseln Sie zur Ansicht **Archiviert**, öffnen Sie das Menü **⋯** des Angebots und klicken Sie auf **Archivierung aufheben**. Das Angebot kehrt unverändert in Ihre aktive Liste zurück, und Ihr Kunde kann es wieder öffnen.
 
 <Note>
-  Ein akzeptiertes Angebot können Sie nicht archivieren, da daraus bereits ein Auftrag geworden ist.
+  Ein akzeptiertes Angebot können Sie nicht archivieren, da daraus bereits eine Bestellung geworden ist.
 </Note>
 
 ## Öffentliche Angebotsansicht
@@ -233,8 +233,8 @@ Wenn Sie ein Angebot senden, erhalten Kunden einen Link zu einer öffentlichen A
   Sie können einem einzelnen Angebot mehrere E-Mail-Adressen hinzufügen und eine als primären Kontakt markieren. Angebote funktionieren sowohl mit registrierten Kunden als auch mit nicht registrierten Leads.
 </Accordion>
 
-<Accordion title="Automatisch generierte Aufträge und Rechnungen">
-  Wenn Sie den Einrichtungsbereich so konfigurieren, dass bei Akzeptanz „Auftrag & Rechnung erstellen“ ausgeführt wird, generiert AgencyHandy automatisch den verknüpften Auftrag und die Rechnung, sobald ein Angebot akzeptiert wird — keine manuellen Schritte erforderlich.
+<Accordion title="Automatisch generierte Bestellungen und Rechnungen">
+  Wenn Sie den Einrichtungsbereich so konfigurieren, dass bei Akzeptanz „Bestellung und Rechnung erstellen“ ausgeführt wird, generiert AgencyHandy automatisch die verknüpfte Bestellung und die Rechnung, sobald ein Angebot akzeptiert wird — keine manuellen Schritte erforderlich.
 </Accordion>
 
 <Accordion title="Angebots-Aktivitätsverfolgung">
