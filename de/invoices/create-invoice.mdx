@@ -4,7 +4,7 @@ sidebarTitle: "Rechnung erstellen"
 description: "Schritt-für-Schritt-Anleitung zum Erstellen einer Rechnung in AgencyHandy – Kunden auswählen, Beträge festlegen, Notizen hinzufügen, an den Kunden senden und Zahlungserinnerungen konfigurieren."
 ---
 
-Das Erstellen einer Rechnung in AgencyHandy ist ein unkomplizierter Prozess, der Ihre Abrechnung direkt mit Kunden und Aufträgen verknüpft. Sie geben den Kunden ein, verknüpfen den Auftrag, legen Beträge fest, fügen Notizen hinzu und senden – alles über ein einziges Formular. Nach dem Senden können Sie den Zahlungsstatus verfolgen, automatische Erinnerungen einrichten und die Rechnung jederzeit als PDF herunterladen.
+Das Erstellen einer Rechnung in AgencyHandy ist ein unkomplizierter Prozess, der Ihre Abrechnung direkt mit Kunden und Bestellungen verknüpft. Sie geben den Kunden ein, verknüpfen die Bestellung, legen Beträge fest, fügen Notizen hinzu und senden – alles über ein einziges Formular. Nach dem Senden können Sie den Zahlungsstatus verfolgen, automatische Erinnerungen einrichten und die Rechnung jederzeit als PDF herunterladen.
 
 <Note>
   Sie müssen **Super Admin**, **Admin** oder **PM** sein, um Rechnungen zu erstellen. Mindestens ein Kunde muss in Ihrem Workspace vorhanden sein, bevor Sie eine Rechnung erstellen können.
@@ -36,12 +36,12 @@ Bevor Sie mit der Erstellung von Rechnungen beginnen, sollten Sie Ihr Rechnungsp
     Klicken Sie auf **+ Rechnung erstellen**. Das Rechnungserstellungsformular wird geöffnet.
   </Step>
   <Step title="Kunden auswählen">
-    Wählen Sie den Namen des Kunden aus der Dropdown-Liste aus. Dies ist ein Pflichtfeld. Alle mit diesem Kunden verknüpften Auftrags-IDs werden automatisch im nächsten Feld ausgefüllt.
+    Wählen Sie den Namen des Kunden aus der Dropdown-Liste aus. Dies ist ein Pflichtfeld. Alle mit diesem Kunden verknüpften Bestell-IDs werden automatisch im nächsten Feld ausgefüllt.
 
-    Um eine **Direktrechnung** zu erstellen (nicht mit einem Auftrag verknüpft), können Sie das Feld Auftrags-ID leer lassen oder **Unabhängige E-Mail** auswählen, um an eine E-Mail-Adresse außerhalb Ihrer Kundenliste zu rechnen.
+    Um eine **Direktrechnung** zu erstellen (nicht mit einer Bestellung verknüpft), können Sie das Feld Bestell-ID leer lassen oder **Unabhängige E-Mail** auswählen, um an eine E-Mail-Adresse außerhalb Ihrer Kundenliste zu rechnen.
   </Step>
-  <Step title="Auftrags-ID auswählen">
-    Wählen Sie die spezifische Auftrags-ID aus, für die Sie abrechnen. Dadurch wird die Rechnung mit dem richtigen Auftrag im System verknüpft. Bei Direktrechnungen überspringen Sie dieses Feld.
+  <Step title="Bestell-ID auswählen">
+    Wählen Sie die spezifische Bestell-ID aus, für die Sie abrechnen. Dadurch wird die Rechnung mit der richtigen Bestellung im System verknüpft. Bei Direktrechnungen überspringen Sie dieses Feld.
   </Step>
   <Step title="Rechnungsadresse eingeben">
     Füllen Sie die **Zahlungsadresse** aus:
@@ -51,17 +51,17 @@ Bevor Sie mit der Erstellung von Rechnungen beginnen, sollten Sie Ihr Rechnungsp
 
     Diese Adresse erscheint auf der gedruckten Rechnung zur Einhaltung von Vorschriften und zur Klarheit.
   </Step>
-  <Step title="Auftrags- und Finanzdetails festlegen">
-    Geben Sie unter **Auftragsdetails** folgendes ein:
+  <Step title="Bestell- und Finanzdetails festlegen">
+    Geben Sie unter **Bestelldetails** folgendes ein:
 
     | Feld | Beschreibung |
     |-------|-------------|
     | **Währung** | Die Währung, in der Sie bezahlt werden möchten |
-    | **Auftrags-ID – Betrag** | Der mit dem Auftrag verbundene Geldbetrag |
+    | **Bestell-ID – Betrag** | Der mit der Bestellung verbundene Geldbetrag |
     | **Rabatt (%)** und **Rabattbetrag** | Eventuelle Rabatte anwenden |
     | **Bezahlter Betrag** | Bereits vom Kunden bezahlter Betrag |
     | **Fälliger Betrag** | Der verbleibende ausstehende Saldo |
-    | **Gesamtbetrag** | Der vollständige zahlbare Betrag für den Auftrag |
+    | **Gesamtbetrag** | Der vollständige zahlbare Betrag für die Bestellung |
 
     Klicken Sie bei **Direktrechnungen** auf **Position hinzufügen**, um Positionen manuell hinzuzufügen. Geben Sie Positionsname, Menge und Preis ein. Sie können mehrere Positionen hinzufügen. Verwenden Sie **+ Steuersätze**, um Steuersätze anzuwenden oder zu erstellen (inklusive oder exklusive).
   </Step>
@@ -74,7 +74,7 @@ Bevor Sie mit der Erstellung von Rechnungen beginnen, sollten Sie Ihr Rechnungsp
     - Rechnungsstatus (standardmäßig Entwurf)
     - Kundenname, Firmenname und Adresse
     - Zahlungsadresse
-    - Dienstleistungsname und Auftrags-ID
+    - Dienstleistungsname und Bestell-ID
     - Erstellungsdatum und Fälligkeitsdatum
     - Gesamtbetrag
 
@@ -201,9 +201,9 @@ Die Rechnungserinnerungsfunktion ermöglicht es Ihnen, Kunden automatisch über 
   </Step>
 </Steps>
 
-## Direktrechnungen (ohne Auftrags-ID)
+## Direktrechnungen (ohne Bestell-ID)
 
-Wenn Sie einem Kunden schnell eine Rechnung ausstellen müssen, ohne zuerst einen Auftrag zu erstellen, verwenden Sie den Direktrechnungs-Workflow.
+Wenn Sie einem Kunden schnell eine Rechnung ausstellen müssen, ohne zuerst eine Bestellung zu erstellen, verwenden Sie den Direktrechnungs-Workflow.
 
 <Steps>
   <Step title="Neue Rechnung starten">
@@ -216,8 +216,8 @@ Wenn Sie einem Kunden schnell eine Rechnung ausstellen müssen, ohne zuerst eine
     - Wählen Sie einen **bestehenden Kunden** aus dem Dropdown aus, oder
     - Wählen Sie **Unabhängige E-Mail**, um eine beliebige E-Mail-Adresse einzugeben – auch eine, die nicht als Kunde registriert ist
   </Step>
-  <Step title="Auftrags-ID leer lassen">
-    Überspringen Sie das Feld Auftrags-ID. AgencyHandy erstellt eine eigenständige Rechnung, die nicht mit einem Auftrag verknüpft ist.
+  <Step title="Bestell-ID leer lassen">
+    Überspringen Sie das Feld Bestell-ID. AgencyHandy erstellt eine eigenständige Rechnung, die nicht mit einer Bestellung verknüpft ist.
   </Step>
   <Step title="Positionen, Steuern und Rabatte hinzufügen">
     Klicken Sie auf **Position hinzufügen**, um Positionen mit Namen, Mengen und Preisen hinzuzufügen. Wenden Sie Steuersätze und Rabatte nach Bedarf an. Der Gesamtbetrag wird automatisch aktualisiert.
@@ -231,5 +231,5 @@ Wenn Sie einem Kunden schnell eine Rechnung ausstellen müssen, ohne zuerst eine
 </Steps>
 
 <Tip>
-  Direktrechnungen eignen sich ideal für Eilanfragen, Beratungsgespräche oder jegliche Arbeit, die außerhalb des normalen Auftrags-Workflows abgerechnet werden muss. Die Zahlungsverfolgung für eigenständige Rechnungen muss manuell verwaltet werden.
+  Direktrechnungen eignen sich ideal für Eilanfragen, Beratungsgespräche oder jegliche Arbeit, die außerhalb des normalen Bestell-Workflows abgerechnet werden muss. Die Zahlungsverfolgung für eigenständige Rechnungen muss manuell verwaltet werden.
 </Tip>

@@ -4,7 +4,7 @@ sidebarTitle: "Abonnements"
 description: "Wie AgencyHandy die wiederkehrende Abonnementabrechnung handhabt – automatisierte Rechnungen, Abrechnungszyklen, Zahlungsmethoden, Stornierungen und Wise-Zahlungslinks."
 ---
 
-Das Abonnementabrechnungssystem von AgencyHandy ermöglicht es Ihnen, den gesamten wiederkehrenden Umsatz-Workflow zu automatisieren. Wenn ein Kunde eine Dienstleistung abonniert, erstellt die Plattform eine Abonnement-ID, generiert Aufträge und stellt in jedem Abrechnungszyklus automatisch Rechnungen aus – ob täglich, wöchentlich, monatlich oder jährlich. Sie behalten die Kontrolle: Sie können Abonnementdetails einsehen, den Zahlungsverlauf überwachen, fehlgeschlagene Zahlungen bearbeiten und Abonnements bei Bedarf kündigen – alles innerhalb von AgencyHandy.
+Das Abonnementabrechnungssystem von AgencyHandy ermöglicht es Ihnen, den gesamten wiederkehrenden Umsatz-Workflow zu automatisieren. Wenn ein Kunde eine Dienstleistung abonniert, erstellt die Plattform eine Abonnement-ID, generiert Bestellungen und stellt in jedem Abrechnungszyklus automatisch Rechnungen aus – ob täglich, wöchentlich, monatlich oder jährlich. Sie behalten die Kontrolle: Sie können Abonnementdetails einsehen, den Zahlungsverlauf überwachen, fehlgeschlagene Zahlungen bearbeiten und Abonnements bei Bedarf kündigen – alles innerhalb von AgencyHandy.
 
 ## Wie die Abonnementabrechnung funktioniert
 
@@ -12,11 +12,11 @@ Der Abonnementlebenszyklus in AgencyHandy folgt sechs Schlüsselphasen.
 
 <Steps>
   <Step title="Abonnementbasierte Dienstleistung erstellen">
-    Navigieren Sie zu **Dienstleistungen** und klicken Sie auf **Neue Dienstleistung erstellen**. Wählen Sie **Abonnement** als Dienstleistungstyp.
+    Navigieren Sie zu **Leistungen** und klicken Sie auf **Neue Dienstleistung erstellen**. Wählen Sie **Abonnement** als Dienstleistungstyp.
 
     Definieren Sie:
     - **Abrechnungszyklus** — Täglich, Wöchentlich, Monatlich oder Jährlich
-    - **Verlängerungsverhalten** — Neuen Auftrag erstellen, Bestehenden Auftrag aktualisieren oder Unverändert belassen
+    - **Verlängerungsverhalten** — Neue Bestellung erstellen, Bestehende Bestellung aktualisieren oder Unverändert belassen
     - **Preisgestaltung & Zahlungsmethode** — PayPal, Stripe oder Manuell
 
     Klicken Sie auf **Veröffentlichen**, um die Dienstleistung verfügbar zu machen.
@@ -26,7 +26,7 @@ Der Abonnementlebenszyklus in AgencyHandy folgt sechs Schlüsselphasen.
 
     AgencyHandy erstellt automatisch:
     - Eine **Abonnement-ID**
-    - Einen **Auftrag**
+    - Eine **Bestellung**
     - Eine **Rechnung**
 
     Bei **PayPal- oder Stripe**-Zahlungen wird die Rechnung sofort als **Bezahlt** markiert. Bei **manueller Zahlung** bleibt die Rechnung **Offen**, bis die Agentur den Eingang bestätigt.
@@ -40,12 +40,12 @@ Der Abonnementlebenszyklus in AgencyHandy folgt sechs Schlüsselphasen.
     - Die Agentur erhält eine Benachrichtigung, die Zahlung zu wiederholen oder aktualisierte Zahlungsdetails anzufordern
   </Step>
   <Step title="Aktive Abonnements verwalten">
-    Navigieren Sie in der linken Seitenleiste zur **Abonnementverwaltung**, um alle aktiven und inaktiven Abonnements anzuzeigen. Wählen Sie ein beliebiges Abonnement aus, um dessen vollständige Details zu sehen.
+    Navigieren Sie in der linken Seitenleiste zu **Abonnements**, um alle aktiven und inaktiven Abonnements anzuzeigen. Wählen Sie ein beliebiges Abonnement aus, um dessen vollständige Details zu sehen.
   </Step>
   <Step title="Stornierungen bearbeiten">
     Wenn Sie ein Abonnement kündigen, können Sie wählen:
-    - **Vollständig kündigen** — alle zukünftigen Abrechnungen und Aufträge stoppen
-    - **Den letzten aktiven Auftrag weiterlaufen lassen** — dem Kunden ermöglichen, die Dienstleistung bis zur Deadline der aktuellen Periode weiter zu erhalten
+    - **Vollständig kündigen** — alle zukünftigen Abrechnungen und Bestellungen stoppen
+    - **Die letzte aktive Bestellung weiterlaufen lassen** — dem Kunden ermöglichen, die Dienstleistung bis zur Deadline der aktuellen Periode weiter zu erhalten
 
     Um eine Dienstleistung vollständig zu löschen, müssen alle aktiven Abonnements dieser Dienstleistung zuerst gekündigt werden.
   </Step>
@@ -82,10 +82,10 @@ Die Abonnement-Detailseite gibt Ihnen ein vollständiges Bild eines einzelnen Ab
     - **Zahlungsmethode** (Stripe, PayPal, Wise, Manuelles Banking usw.)
     - **Nächstes Zahlungsdatum**
   </Tab>
-  <Tab title="Auftragsverlauf">
-    - **Auftrags-ID**
+  <Tab title="Bestellverlauf">
+    - **Bestell-ID**
     - **Status** (z. B. Laufend, Abgeschlossen)
-    - **Startdatum** und **Fälligkeitsdatum** für jeden Auftrag
+    - **Startdatum** und **Fälligkeitsdatum** für jede Bestellung
   </Tab>
   <Tab title="Rechnungsverlauf">
     - **Rechnungs-ID**
@@ -99,7 +99,7 @@ Die Abonnement-Detailseite gibt Ihnen ein vollständiges Bild eines einzelnen Ab
 </Tabs>
 
 <Note>
-  Ein einzelnes Abonnement kann mehrere verknüpfte Aufträge und Rechnungen haben. Mit Abonnements verknüpfte Rechnungen werden dynamisch aktualisiert, wenn Zahlungen eingehen.
+  Ein einzelnes Abonnement kann mehrere verknüpfte Bestellungen und Rechnungen haben. Mit Abonnements verknüpfte Rechnungen werden dynamisch aktualisiert, wenn Zahlungen eingehen.
 </Note>
 
 ## Plan ändern
@@ -171,8 +171,8 @@ Wenn Sie internationale Zahlungen akzeptieren, können Sie einen **Wise-Zahlungs
   <Step title="Rechnungsbereich öffnen">
     Klicken Sie in der linken Seitenleiste auf **Rechnungen**, dann auf **+ Rechnung erstellen**.
   </Step>
-  <Step title="Kunden und Auftrag auswählen">
-    Wählen Sie den Kunden aus dem Dropdown aus. Alle zugehörigen Auftrags-IDs werden angezeigt. Wählen Sie die relevante Auftrags-ID aus und geben Sie den Betrag und die abzurechnenden Positionen ein.
+  <Step title="Kunden und Bestellung auswählen">
+    Wählen Sie den Kunden aus dem Dropdown aus. Alle zugehörigen Bestell-IDs werden angezeigt. Wählen Sie die relevante Bestell-ID aus und geben Sie den Betrag und die abzurechnenden Positionen ein.
   </Step>
   <Step title="Rabatte und Steuern anwenden">
     Fügen Sie einen eventuellen Rabattprozentsatz, Rabattbetrag, bezahlten Betrag, fälligen Betrag und MwSt./Steuerdetails hinzu. Geben Sie bei Bedarf Rechnungsadresse und Notizen an.
@@ -186,7 +186,7 @@ Wenn Sie internationale Zahlungen akzeptieren, können Sie einen **Wise-Zahlungs
 </Steps>
 
 <Tip>
-  Überprüfen Sie immer Ihren Wise-Zahlungslink und die Rechnungssummen, bevor Sie speichern. Vergewissern Sie sich, dass Auftragsdetails, Rabatte und Steuerinformationen korrekt sind, um Abrechnungsfehler zu vermeiden.
+  Überprüfen Sie immer Ihren Wise-Zahlungslink und die Rechnungssummen, bevor Sie speichern. Vergewissern Sie sich, dass Bestelldetails, Rabatte und Steuerinformationen korrekt sind, um Abrechnungsfehler zu vermeiden.
 </Tip>
 
 ## Wichtige Hinweise zur Abonnementabrechnung
@@ -199,11 +199,11 @@ Wenn Sie internationale Zahlungen akzeptieren, können Sie einen **Wise-Zahlungs
   Sobald ein Abonnement erstellt wurde, kann seine Abonnement-ID nicht mehr bearbeitet werden. Dies gewährleistet eine konsistente Nachverfolgung während der gesamten Laufzeit des Abonnements.
 </Accordion>
 
-<Accordion title="Fehlgeschlagene Zahlungen und Auftragserstellung">
-  Wenn eine Zahlung fehlschlägt, bleibt die Rechnung Offen und für den fehlgeschlagenen Zeitraum wird ein neuer Auftrag erstellt. Der Abonnementstatus bleibt **Aktiv**, bis ein Admin die Zahlung manuell wiederholt oder das Abonnement kündigt.
+<Accordion title="Fehlgeschlagene Zahlungen und Bestellerstellung">
+  Wenn eine Zahlung fehlschlägt, bleibt die Rechnung Offen und für den fehlgeschlagenen Zeitraum wird eine neue Bestellung erstellt. Der Abonnementstatus bleibt **Aktiv**, bis ein Admin die Zahlung manuell wiederholt oder das Abonnement kündigt.
 </Accordion>
 
-<Accordion title="Aufträge mit manueller Zahlung">
+<Accordion title="Bestellungen mit manueller Zahlung">
   Wenn ein Kunde außerhalb von Stripe oder PayPal zahlt (z. B. per Banküberweisung), muss der Admin die Rechnung in AgencyHandy manuell als **Bezahlt** markieren. Das System erledigt dies nicht automatisch für manuelle Zahlungen.
 </Accordion>
 
